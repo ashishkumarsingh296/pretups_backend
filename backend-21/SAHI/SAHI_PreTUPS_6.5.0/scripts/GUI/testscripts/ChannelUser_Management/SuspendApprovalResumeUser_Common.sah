@@ -1,0 +1,218 @@
+
+
+// This scripts contains all method to suspend, approve and resume channel user in the system
+
+_includeOnce("../../../../utility/ImportPackage.sah");
+
+var $l_naCsv = _readCSVFile("../../../GUI/testdata/NA_Login.csv");
+
+
+	var $g_msisdn;
+	var $g_remarks;
+	var $g_assertion;
+	var $a_Prefix;
+	
+	
+	
+	
+	function commonVaribleToSuspendApproveResumeUser($g_row, $g_col) {
+		
+		$g_msisdn = $g_suspendApproveResumeUser[$g_row][$g_col++];
+		$g_remarks = $g_suspendApproveResumeUser[$g_row][$g_col++];
+		$g_assertion = $g_suspendApproveResumeUser[$g_row][$g_col++];
+		
+	}
+	
+	
+	// Common methods to suspend, approve and resume channel user in the system 
+	
+		
+		
+		function commonMethodForSuspendUser() {
+			_click(_link("Channel user"));
+			_click(_link("Suspend channel user"));
+			_assertExists(_div("Suspend channel user"));
+			_setValue(_textbox("searchMsisdn"), $g_msisdn);
+			_setValue(_textarea("eventRemarks"), $g_remarks);
+			submit();
+		}
+		
+
+	//  .................. Methods for given test cases ..................... //
+		
+		function toCheckSubmitButtonOnSuspendChannelUserPage() {
+			
+			_click(_link("Channel user"));
+			_click(_link("Suspend channel user"));
+			_assertExists(_div("Suspend channel user"));
+			_assertExists(_submit("Submit"));
+		}
+		
+		function toChecKBackButtonOnSuspendChannelUserCnfPage() {
+			commonMethodForSuspendUser();
+			back();
+			if(_getValue(_textbox("searchMsisdn")) == $g_msisdn) {_log("Successful")}
+			else {_log("Failed back Check");}
+		}
+		
+		function suspendWithInvalidDetails() {
+			commonMethodForSuspendUser();
+			 _assertExists(_listItem("/"+ $g_assertion +".*/"));
+		}
+		
+		function suspendChannelUser() {
+			commonMethodForSuspendUser();
+			_click(_submit("Suspend"));
+			_assertExists(_listItem("/"+ $g_assertion +".*/"));
+		}
+		
+		function suspendTheSuspendedUser() {
+			commonMethodForSuspendUser();
+			_assertExists(_listItem("/"+ $g_assertion +".*/"));
+		}
+		
+  // ................................. Mehtods for channel user suspension approval .................................... // 
+		
+		
+		
+		
+		function commonFunctionForApproval() {
+			_click(_link("Channel user"));
+			_click(_link("Approval suspend channel user"));
+			_assertExists(_div("User approval for suspend"));
+			_setValue(_textbox("searchMsisdn"), $g_msisdn);
+			_setValue(_textarea("eventRemarks"), $g_remarks);
+			submit();
+		}
+		
+		function approveWithInvalidDetails() {
+			commonFunctionForApproval();
+			 _assertExists(_listItem("/"+ $g_assertion +".*/"));
+		}
+		
+		function toChecKBackButtonOnUserApprovalCnfPage() {
+			commonFunctionForApproval();
+			_assertExists(_div("User approval list for suspend"));
+			back();
+			if(_getValue(_textbox("searchMsisdn")) == $g_msisdn) {_log("Successful")}
+			else {_log("Failed back Check");}
+		}
+		
+		function toDiscardUserApprovalSuspension() {
+			commonFunctionForApproval();
+			_assertExists(_div("User approval list for suspend"));
+			_click(_radio("approvalArray[0][2]", _near(_cell("Discard"))));
+			submit();
+			confirm();
+			_assertExists(_listItem("/"+ $g_assertion +".*/"));
+		}
+		
+		function backCheckFromApprovalCnfPage() {
+			commonFunctionForApproval();
+			_assertExists(_div("User approval list for suspend"));
+			submit();
+			back();
+			_assertExists(_submit("Submit"));
+		}
+		
+		function cancelCheckFromApprovalCnfPage() {
+			commonFunctionForApproval();
+			_assertExists(_div("User approval list for suspend"));
+			submit(); cancel();
+			_assertExists(_div("User approval for suspend"));
+		}
+		
+		function approveChannelUserSuspension() {
+			commonFunctionForApproval();
+			_assertExists(_div("User approval list for suspend"));
+			submit();confirm();
+			_assertExists(_listItem("/"+ $g_assertion +".*/"));
+		}
+		
+    
+		// ..................... Method to resume channel User in the system ........................ // 
+		
+		
+		function test() {
+			_click(_link("Channel user"));
+			_click(_link("Resume channel user"));
+			_assertExists(_div("Resume channel user"));
+			_setValue(_textbox("searchMsisdn"), "7233333333");
+			_setValue(_textarea("eventRemarks"), "asdasd");
+			_click(_submit("Submit"));
+			_assertExists(_div("User list for resume"));
+			_click(_checkbox("resumeArray", _near(_cell("Select"))));
+			_click(_cell(84));
+			_click(_cell("tabcol[8]"));
+			_click(_checkbox("resumeArray"));
+			_click(_cell(84));
+			_click(_checkbox("resumeArray", _near(_cell("7233333333"))));
+			_click(_submit("Submit"));
+			_click(_submit("Confirm"));
+			_click(_listItem("Users successfully resumed"));
+		}
+		
+		function resumeChannelUserCommon() {
+			_click(_link("Channel user"));
+			_click(_link("Resume channel user"));
+			_assertExists(_div("Resume channel user"));
+			_setValue(_textbox("searchMsisdn"), $g_msisdn );
+			_setValue(_textarea("eventRemarks"), $g_remarks);
+			submit();
+			
+			
+		}
+		
+		
+		
+		function resumeWithInvalidDetails() {
+			resumeChannelUserCommon();
+			_assertExists(_listItem("/"+ $g_assertion +".*/"));
+		}
+		
+		function backCheckFromChannelUserResumePage() {
+			resumeChannelUserCommon();
+			back();
+			if(_getValue(_textbox("searchMsisdn")) == $g_msisdn) {_log("Successful")}
+			else {_log("Failed back Check");}
+		}
+		
+		function resumeWithoutSelectingAnyUser() {
+			resumeChannelUserCommon();
+			submit();
+			_assertExists(_listItem("/"+ $g_assertion +".*/"));
+		}
+		
+		function backCheckFromChannelUserResumeCnfPage() {
+			resumeChannelUserCommon();
+			_click(_checkbox("resumeArray", _near(_cell($g_msisdn))));
+			submit();
+			back();
+			_assertExists(_submit("Submit"));
+		}
+		function cancelCheckFromChannelUserResumeCnfPage() {
+			resumeChannelUserCommon();
+			_click(_checkbox("resumeArray", _near(_cell($g_msisdn))));
+			submit();
+			cancel();
+			_assertExists(_div("Resume channel user"));
+		}
+		
+		
+		function resumeSuspendedChannelUser() {
+			resumeChannelUserCommon();
+			_click(_checkbox("resumeArray", _near(_cell($g_msisdn))));
+			submit();confirm();
+			_assertExists(_listItem("/"+ $g_assertion +".*/"));
+		}
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+    

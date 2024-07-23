@@ -1,0 +1,1410 @@
+<html xmlns:util="in.co.sahi.util.XSLUtils">
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<style>
+					div{padding:3px;}
+					a{text-decoration:none;color:white;}
+					a.INFO{color:black;}
+					a.START,a.STOP{color:black;font-weight:bold;}
+					div.INFO{background-color:white;}
+					div.SUCCESS{background-color:green;color:white}
+					div.FAILURE,div.ERROR{background-color:red;color:white}
+					a.CUSTOM, a.CUSTOM2, a.CUSTOM4{color:black}
+					div.CUSTOM{background-color:yellow;}
+					div.CUSTOM1{background-color:orange;}
+					div.CUSTOM2{background-color:#EFEFEF;}
+					div.CUSTOM3{background-color:green;}
+					div.CUSTOM4{background-color:violet;}
+					div.CUSTOM5{background-color:indigo;}
+					div.networkActivity{float:right;width:200px;color:#ccc;cursor:pointer;display:none;padding:0px;}
+					a.SCRIPT{text-decoration:underline;}
+					span.extra{color:#CCC;margin-left:20px;}
+					div.SKIPPED{background-color:#eed;}
+					a.SKIPPED{color:gray;}
+					tr.step_SUCCESS{background-color:lightgreen;color:black;}
+					tr.step_FAILURE{background-color:red;color:white;}
+					div.GROUP {padding:0px;}
+					div.GROUP_LABEL {font-weight: bold;cursor:pointer; padding:5px;}
+					div.GROUP_INNER{padding:10px;display:none;border:1px solid gray;}
+				
+					table.summary {border-top:1px solid gray;border-right:1px solid
+					gray;border-spacing:0px;border-collapse:collapse;}
+					table.summary td{border-bottom:1px solid gray;border-left:1px solid
+					gray;padding:5px;text-align:right;}
+					td a.SCRIPT{float:left;}
+					tr.FAILURE{background-color:red;color:white;}
+					tr.SUCCESS{background-color:green;color:white;}
+					a{color:white;}
+					
+					body *{font-family:verdana;font-size:10pt;}
+					body {margin:10px; background-color:lightyellow;}
+					
+					tr.step_SUCCESS{background-color:lightgreen;color:black;}
+					tr.step_FAILURE{background-color:red;color:white;}
+					
+					#navbar a{color: blue;}
+					#navbar {padding:2px;border:1px solid white;border-bottom:1px solid gray;padding:1px}
+				</style>
+</head>
+<body onunload="onUnload()" onload="onLoad()">
+<script type="text/javascript">var scriptReportID = 'UserManagement_CreateNA_firefox__11Feb2014__10_41_44_142'</script><span>
+<h2>
+				Script Name: UserManagement_CreateNA.sah</h2>
+</span>
+<table class="summary" style="background-color:white;margin-top:20px;width:800px;">
+<tr>
+<td>Test</td><td>Total Steps</td><td>Failures</td><td>Errors</td><td>Success Rate</td><td>Time Taken (ms)</td><td>Node</td><td>Load</td><td>Browser</td>
+</tr>
+<tr class="SUCCESS">
+<td>UserManagement_CreateNA.sah</td><td>163</td><td>0</td><td>0</td><td>100
+							%
+						</td><td>48340</td><td>localhost:9999</td><td>0</td><td>firefox</td>
+</tr>
+<tr>
+<td colspan="9" style="text-align:left">Report Id: Pretups_MasterSuite_GUI_firefox__11Feb2014__10_41_09_941 | </td>
+</tr>
+</table>
+<table id="testCaseSummaryTable" class="summary" style="background-color:white;margin-top:20px;width:350px;">
+<tr>
+<td>Total Test Cases</td><td>Passed</td><td>Failed</td><td>Success Rate</td>
+</tr>
+<tr class="SUCCESS">
+<td>3</td><td>3</td><td>0</td><td>100
+							%
+						</td>
+</tr>
+</table>
+<table class="summary" style="background-color:white;margin-top:20px;width:700px;">
+<tr>
+<td>Test Case Id</td><td>Description</td><td>Status</td><td>Time Taken</td>
+</tr>
+<tr class="SUCCESS">
+<td>CEGTA0002</td><td>Given an application when user creates a network admin then it should be created successfully.</td><td>SUCCESS</td><td>14099</td>
+</tr>
+<tr class="SUCCESS">
+<td>CEGTA0003</td><td>Given a created network admin when super admin logs into the application and verifies that the network admin is created or not then the created network admin should be available in the View Operator User section</td><td>SUCCESS</td><td>2459</td>
+</tr>
+<tr class="SUCCESS">
+<td>CEGTA0004</td><td>Given an application when newly created network admin logs into the application for the first time then successfully change the password.</td><td>SUCCESS</td><td>14984</td>
+</tr>
+</table>
+<br>
+<div style="padding:10px;background-color:white;border:1px solid #ddd;">
+<div class="START">
+<a class="START">Starting script</a><a style="padding:10px; font-size:11px; color:black; text-decoration:underline;" href="javascript:void(0)" onclick="javascript:expandAll('false'); return false;">Expand All</a><a style="color:black; font-size:11px; text-decoration:underline;" href="javascript:void(0)" onclick="javascript:collapseAll('false'); return false;">Collapse All</a>
+</div>
+						
+							<div class="GROUP">
+				 		
+				 		<div class="GROUP_LABEL">[+] readMSISDNFromCSV()</div>
+						
+						<div class="GROUP_INNER">
+						
+						
+					
+					</div></div>
+					
+					
+						
+							<div class="GROUP">
+				 		
+				 		<div class="GROUP_LABEL">[+] ddmmyy()</div>
+						
+						<div class="GROUP_INNER">
+						
+						
+					
+					</div></div>
+					
+					
+						
+							<div class="GROUP">
+				 		
+				 		<div class="GROUP_LABEL">[+] timeStampTwo()</div>
+						
+						<div class="GROUP_INNER">
+						
+						
+					
+					</div></div>
+					
+					
+						
+							<div class="GROUP">
+				 		
+				 		<div class="GROUP_LABEL">[+] variableForUserGrade("AUT")</div>
+						
+						<div class="GROUP_INNER">
+						
+						
+						
+							<div class="GROUP">
+				 		
+				 		<div class="GROUP_LABEL">[+] timeStampTwo()</div>
+						
+						<div class="GROUP_INNER">
+						
+						
+					
+					</div></div>
+					
+					
+					
+					</div></div>
+					
+					
+						
+							<div class="GROUP">
+				 		
+				 		<div class="GROUP_LABEL">[+] variableForGradeName("AUT")</div>
+						
+						<div class="GROUP_INNER">
+						
+						
+						
+							<div class="GROUP">
+				 		
+				 		<div class="GROUP_LABEL">[+] currentTime()</div>
+						
+						<div class="GROUP_INNER">
+						
+						
+					
+					</div></div>
+					
+					
+					
+					</div></div>
+					
+					<div class="CUSTOM4">
+<div id="networkActivityLink1" class="networkActivity" onclick="showHideNetworkActivity(this, 'UserManagement_CreateNA_firefox__11Feb2014__10_41_44_142', '1')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/PretupsTA/scripts/GUI/testscripts/User_Management/UserManagement_CreateNA.sah&amp;n=13">Setup</span><span class="extra">
+								[874 ms] [10:41:46.295]
+							</span>
+<div id="harInfo1" style="display:none"></div>
+</div>
+						
+							<div class="GROUP">
+				 		
+				 		<div class="GROUP_LABEL">[+] createNA()</div>
+						
+						<div class="GROUP_INNER">
+						
+						
+						
+							<div class="GROUP">
+				 		
+				 		<div class="GROUP_LABEL">[+] login("http://172.16.1.121:9922/pretups", "English", "superadmin", 1357, "Welcome")</div>
+						
+						<div class="GROUP_INNER">
+						
+						<div class="INFO">
+<div id="networkActivityLink2" class="networkActivity" onclick="showHideNetworkActivity(this, 'UserManagement_CreateNA_firefox__11Feb2014__10_41_44_142', '2')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/PretupsTA/scripts/GUI/testscripts/Login/Login_Common.sah&amp;n=23">_navigateTo("http://172.16.1.121:9922/pretups")</span><span class="extra">
+								[111 ms] [10:41:46.440]
+							</span>
+<div id="harInfo2" style="display:none"></div>
+</div>
+<div class="INFO">
+<div id="networkActivityLink3" class="networkActivity" onclick="showHideNetworkActivity(this, 'UserManagement_CreateNA_firefox__11Feb2014__10_41_44_142', '3')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/PretupsTA/scripts/GUI/testscripts/Login/Login_Common.sah&amp;n=24">_setSelected(_select("language"), "English")</span><span class="extra">
+								[812 ms] [10:41:47.252]
+							</span>
+<div id="harInfo3" style="display:none"></div>
+</div>
+<div class="INFO">
+<div id="networkActivityLink4" class="networkActivity" onclick="showHideNetworkActivity(this, 'UserManagement_CreateNA_firefox__11Feb2014__10_41_44_142', '4')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/PretupsTA/scripts/GUI/testscripts/Login/Login_Common.sah&amp;n=25">_setValue(_textbox("loginID"), "superadmin")</span><span class="extra">
+								[157 ms] [10:41:47.409]
+							</span>
+<div id="harInfo4" style="display:none"></div>
+</div>
+<div class="CUSTOM1">
+<div id="networkActivityLink4" class="networkActivity" onclick="showHideNetworkActivity(this, 'UserManagement_CreateNA_firefox__11Feb2014__10_41_44_142', '4')" title="Show Network Activity">Show Network Activity</div>[ReferenceError: event is not defined (http://172.16.1.121:9922/pretups/jsp/common/popcalendar.js:703), ReferenceError: event is not defined (http://172.16.1.121:9922/pretups/jsp/common/popcalendar.js:703), ReferenceError: event is not defined (http://172.16.1.121:9922/pretups/jsp/common/popcalendar.js:703), ReferenceError: event is not defined (http://172.16.1.121:9922/pretups/jsp/common/popcalendar.js:703), ReferenceError: event is not defined (http://172.16.1.121:9922/pretups/jsp/common/popcalendar.js:703), ReferenceError: event is not defined (http://172.16.1.121:9922/pretups/jsp/common/popcalendar.js:703), ReferenceError: event is not defined (http://172.16.1.121:9922/pretups/jsp/common/popcalendar.js:703), ReferenceError: event is not defined (http://172.16.1.121:9922/pretups/jsp/common/popcalendar.js:703), ReferenceError: event is not defined (http://172.16.1.121:9922/pretups/jsp/common/popcalendar.js:703), ReferenceError: event is not defined (http://172.16.1.121:9922/pretups/jsp/common/popcalendar.js:703)]<span class="extra">
+								[48 ms] [10:41:47.457]
+							</span>
+<div id="harInfo4" style="display:none"></div>
+</div>
+<div class="INFO">
+<div id="networkActivityLink5" class="networkActivity" onclick="showHideNetworkActivity(this, 'UserManagement_CreateNA_firefox__11Feb2014__10_41_44_142', '5')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/PretupsTA/scripts/GUI/testscripts/Login/Login_Common.sah&amp;n=26">_setValue(_password("password"), 1357)</span><span class="extra">
+								[94 ms] [10:41:47.551]
+							</span>
+<div id="harInfo5" style="display:none"></div>
+</div>
+<div class="CUSTOM1">
+<div id="networkActivityLink5" class="networkActivity" onclick="showHideNetworkActivity(this, 'UserManagement_CreateNA_firefox__11Feb2014__10_41_44_142', '5')" title="Show Network Activity">Show Network Activity</div>[ReferenceError: event is not defined (http://172.16.1.121:9922/pretups/jsp/common/popcalendar.js:703), ReferenceError: event is not defined (http://172.16.1.121:9922/pretups/jsp/common/popcalendar.js:703), ReferenceError: event is not defined (http://172.16.1.121:9922/pretups/jsp/common/popcalendar.js:703), ReferenceError: event is not defined (http://172.16.1.121:9922/pretups/jsp/common/popcalendar.js:703)]<span class="extra">
+								[17 ms] [10:41:47.568]
+							</span>
+<div id="harInfo5" style="display:none"></div>
+</div>
+<div class="INFO">
+<div id="networkActivityLink6" class="networkActivity" onclick="showHideNetworkActivity(this, 'UserManagement_CreateNA_firefox__11Feb2014__10_41_44_142', '6')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/PretupsTA/scripts/GUI/testscripts/Login/Login_Common.sah&amp;n=27">_click(_submit("Login"))</span><span class="extra">
+								[110 ms] [10:41:47.678]
+							</span>
+<div id="harInfo6" style="display:none"></div>
+</div><!--SAHI_TESTCASE_FAIL_MARKER-->
+						
+							<div class="GROUP">
+				 		
+				 		<div class="GROUP_LABEL">[+] onScriptError([object])</div>
+						
+						<div class="GROUP_INNER">
+						
+						<div class="INFO">
+<div id="networkActivityLink8" class="networkActivity" onclick="showHideNetworkActivity(this, 'UserManagement_CreateNA_firefox__11Feb2014__10_41_44_142', '8')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/PretupsTA/utility/Screenshot.sah&amp;n=16">_call(window.resizeTo(2280, 2024))</span><span class="extra">
+								[79 ms] [10:41:58.320]
+							</span>
+<div id="harInfo8" style="display:none"></div>
+</div>
+<div class="INFO">
+<div id="networkActivityLink11" class="networkActivity" onclick="showHideNetworkActivity(this, 'UserManagement_CreateNA_firefox__11Feb2014__10_41_44_142', '11')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/PretupsTA/utility/Screenshot.sah&amp;n=17">_focusWindow()</span><span class="extra">
+								[1156 ms] [10:41:59.476]
+							</span>
+<div id="harInfo11" style="display:none"></div>
+</div>
+<div class="INFO">
+<div id="networkActivityLink12" class="networkActivity" onclick="showHideNetworkActivity(this, 'UserManagement_CreateNA_firefox__11Feb2014__10_41_44_142', '12')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/PretupsTA/utility/Screenshot.sah&amp;n=18">_takeScreenShot()</span><span class="extra">
+								[1 ms] [10:41:59.477]
+							</span><a href="/_s_/dyn/Log_viewLogs/images/UserManagement_CreateNA_firefox__11Feb2014__10_41_44_142_12.jpg" style="margin:0px;padding:0px" target="_blank"><img style="margin-top:15px;margin-bottom:30px;display:block;" src="/_s_/dyn/Log_viewLogs/images/UserManagement_CreateNA_firefox__11Feb2014__10_41_44_142_12.jpg" height="337"></a>
+<div id="harInfo12" style="display:none"></div>
+</div>
+					
+					</div></div>
+					
+					<div class="SUCCESS">
+<div id="networkActivityLink13" class="networkActivity" onclick="showHideNetworkActivity(this, 'UserManagement_CreateNA_firefox__11Feb2014__10_41_44_142', '13')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/PretupsTA/scripts/GUI/testscripts/Login/Login_Common.sah&amp;n=31">_assertExists(_span("/" + "Welcome" + ".*/"))</span><span class="extra">
+								[110 ms] [10:41:59.728]
+							</span>
+<div id="harInfo13" style="display:none"></div>
+</div>
+					
+					</div></div>
+					
+					
+						
+							<div class="GROUP">
+				 		
+				 		<div class="GROUP_LABEL">[CEGTA0002] Given an application when user creates a network admin then it should be created successfully.</div>
+						
+						<div class="GROUP_INNER">
+						
+						
+						
+							<div class="GROUP">
+				 		
+				 		<div class="GROUP_LABEL">[+] defineVariableToCreateNA(1, 2)</div>
+						
+						<div class="GROUP_INNER">
+						
+						
+						
+							<div class="GROUP">
+				 		
+				 		<div class="GROUP_LABEL">[+] variableForNA("AUT")</div>
+						
+						<div class="GROUP_INNER">
+						
+						
+						
+							<div class="GROUP">
+				 		
+				 		<div class="GROUP_LABEL">[+] currentTime()</div>
+						
+						<div class="GROUP_INNER">
+						
+						
+					
+					</div></div>
+					
+					
+					
+					</div></div>
+					
+					
+						
+							<div class="GROUP">
+				 		
+				 		<div class="GROUP_LABEL">[+] variableForChannelAdmin("AUT")</div>
+						
+						<div class="GROUP_INNER">
+						
+						
+						
+							<div class="GROUP">
+				 		
+				 		<div class="GROUP_LABEL">[+] currentTime()</div>
+						
+						<div class="GROUP_INNER">
+						
+						
+					
+					</div></div>
+					
+					
+					
+					</div></div>
+					
+					
+					
+					</div></div>
+					
+					
+						
+							<div class="GROUP">
+				 		
+				 		<div class="GROUP_LABEL">[+] createNetworkAdmin()</div>
+						
+						<div class="GROUP_INNER">
+						
+						<div class="INFO">
+<div id="networkActivityLink14" class="networkActivity" onclick="showHideNetworkActivity(this, 'UserManagement_CreateNA_firefox__11Feb2014__10_41_44_142', '14')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/PretupsTA/scripts/GUI/testscripts/User_Management/UserManagement_Common.sah&amp;n=91">_click(_link("Operator users"))</span><span class="extra">
+								[94 ms] [10:41:59.853]
+							</span>
+<div id="harInfo14" style="display:none"></div>
+</div>
+<div class="INFO">
+<div id="networkActivityLink15" class="networkActivity" onclick="showHideNetworkActivity(this, 'UserManagement_CreateNA_firefox__11Feb2014__10_41_44_142', '15')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/PretupsTA/scripts/GUI/testscripts/User_Management/UserManagement_Common.sah&amp;n=92">_click(_link("Add operator user"))</span><span class="extra">
+								[1343 ms] [10:42:01.196]
+							</span>
+<div id="harInfo15" style="display:none"></div>
+</div>
+<div class="INFO">
+<div id="networkActivityLink16" class="networkActivity" onclick="showHideNetworkActivity(this, 'UserManagement_CreateNA_firefox__11Feb2014__10_41_44_142', '16')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/PretupsTA/scripts/GUI/testscripts/User_Management/UserManagement_Common.sah&amp;n=93">_setSelected(_select("categoryCode"), "Network Admin")</span><span class="extra">
+								[953 ms] [10:42:02.149]
+							</span>
+<div id="harInfo16" style="display:none"></div>
+</div>
+<div class="INFO">
+<div id="networkActivityLink17" class="networkActivity" onclick="showHideNetworkActivity(this, 'UserManagement_CreateNA_firefox__11Feb2014__10_41_44_142', '17')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/PretupsTA/scripts/GUI/testscripts/User_Management/UserManagement_Common.sah&amp;n=94">_click(_submit("Submit"))</span><span class="extra">
+								[125 ms] [10:42:02.274]
+							</span>
+<div id="harInfo17" style="display:none"></div>
+</div>
+<div class="SUCCESS">
+<div id="networkActivityLink18" class="networkActivity" onclick="showHideNetworkActivity(this, 'UserManagement_CreateNA_firefox__11Feb2014__10_41_44_142', '18')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/PretupsTA/scripts/GUI/testscripts/User_Management/UserManagement_Common.sah&amp;n=95">_assertExists(_div("Add operator user details"))</span><span class="extra">
+								[1031 ms] [10:42:03.305]
+							</span>
+<div id="harInfo18" style="display:none"></div>
+</div>
+<div class="SUCCESS">
+<div id="networkActivityLink19" class="networkActivity" onclick="showHideNetworkActivity(this, 'UserManagement_CreateNA_firefox__11Feb2014__10_41_44_142', '19')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/PretupsTA/scripts/GUI/testscripts/User_Management/UserManagement_Common.sah&amp;n=96">_assertExists(_row("Category : Network Admin"))</span><span class="extra">
+								[141 ms] [10:42:03.446]
+							</span>
+<div id="harInfo19" style="display:none"></div>
+</div>
+						
+							<div class="GROUP">
+				 		
+				 		<div class="GROUP_LABEL">[+] commonDetailsForCreatingUsers("AUTNA1102104159")</div>
+						
+						<div class="GROUP_INNER">
+						
+						<div class="INFO">
+<div id="networkActivityLink20" class="networkActivity" onclick="showHideNetworkActivity(this, 'UserManagement_CreateNA_firefox__11Feb2014__10_41_44_142', '20')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/PretupsTA/scripts/GUI/testscripts/User_Management/UserManagement_Common.sah&amp;n=122">_setValue(_textbox("userName"), "AUTNA1102104159")</span><span class="extra">
+								[63 ms] [10:42:03.620]
+							</span>
+<div id="harInfo20" style="display:none"></div>
+</div>
+<div class="CUSTOM1">
+<div id="networkActivityLink20" class="networkActivity" onclick="showHideNetworkActivity(this, 'UserManagement_CreateNA_firefox__11Feb2014__10_41_44_142', '20')" title="Show Network Activity">Show Network Activity</div>[ReferenceError: event is not defined (http://172.16.1.121:9922/pretups/jsp/common/popcalendar.js:703), ReferenceError: event is not defined (http://172.16.1.121:9922/pretups/jsp/common/popcalendar.js:703), ReferenceError: event is not defined (http://172.16.1.121:9922/pretups/jsp/common/popcalendar.js:703), ReferenceError: event is not defined (http://172.16.1.121:9922/pretups/jsp/common/popcalendar.js:703), ReferenceError: event is not defined (http://172.16.1.121:9922/pretups/jsp/common/popcalendar.js:703), ReferenceError: event is not defined (http://172.16.1.121:9922/pretups/jsp/common/popcalendar.js:703), ReferenceError: event is not defined (http://172.16.1.121:9922/pretups/jsp/common/popcalendar.js:703), ReferenceError: event is not defined (http://172.16.1.121:9922/pretups/jsp/common/popcalendar.js:703), ReferenceError: event is not defined (http://172.16.1.121:9922/pretups/jsp/common/popcalendar.js:703), ReferenceError: event is not defined (http://172.16.1.121:9922/pretups/jsp/common/popcalendar.js:703), ReferenceError: event is not defined (http://172.16.1.121:9922/pretups/jsp/common/popcalendar.js:703), ReferenceError: event is not defined (http://172.16.1.121:9922/pretups/jsp/common/popcalendar.js:703), ReferenceError: event is not defined (http://172.16.1.121:9922/pretups/jsp/common/popcalendar.js:703), ReferenceError: event is not defined (http://172.16.1.121:9922/pretups/jsp/common/popcalendar.js:703), ReferenceError: event is not defined (http://172.16.1.121:9922/pretups/jsp/common/popcalendar.js:703)]<span class="extra">
+								[63 ms] [10:42:03.683]
+							</span>
+<div id="harInfo20" style="display:none"></div>
+</div>
+<div class="INFO">
+<div id="networkActivityLink21" class="networkActivity" onclick="showHideNetworkActivity(this, 'UserManagement_CreateNA_firefox__11Feb2014__10_41_44_142', '21')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/PretupsTA/scripts/GUI/testscripts/User_Management/UserManagement_Common.sah&amp;n=123">_setValue(_textbox("shortName"), "netuser123")</span><span class="extra">
+								[95 ms] [10:42:03.778]
+							</span>
+<div id="harInfo21" style="display:none"></div>
+</div>
+<div class="CUSTOM1">
+<div id="networkActivityLink21" class="networkActivity" onclick="showHideNetworkActivity(this, 'UserManagement_CreateNA_firefox__11Feb2014__10_41_44_142', '21')" title="Show Network Activity">Show Network Activity</div>[ReferenceError: event is not defined (http://172.16.1.121:9922/pretups/jsp/common/popcalendar.js:703), ReferenceError: event is not defined (http://172.16.1.121:9922/pretups/jsp/common/popcalendar.js:703), ReferenceError: event is not defined (http://172.16.1.121:9922/pretups/jsp/common/popcalendar.js:703), ReferenceError: event is not defined (http://172.16.1.121:9922/pretups/jsp/common/popcalendar.js:703), ReferenceError: event is not defined (http://172.16.1.121:9922/pretups/jsp/common/popcalendar.js:703), ReferenceError: event is not defined (http://172.16.1.121:9922/pretups/jsp/common/popcalendar.js:703), ReferenceError: event is not defined (http://172.16.1.121:9922/pretups/jsp/common/popcalendar.js:703), ReferenceError: event is not defined (http://172.16.1.121:9922/pretups/jsp/common/popcalendar.js:703), ReferenceError: event is not defined (http://172.16.1.121:9922/pretups/jsp/common/popcalendar.js:703), ReferenceError: event is not defined (http://172.16.1.121:9922/pretups/jsp/common/popcalendar.js:703)]<span class="extra">
+								[17 ms] [10:42:03.795]
+							</span>
+<div id="harInfo21" style="display:none"></div>
+</div>
+<div class="INFO">
+<div id="networkActivityLink22" class="networkActivity" onclick="showHideNetworkActivity(this, 'UserManagement_CreateNA_firefox__11Feb2014__10_41_44_142', '22')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/PretupsTA/scripts/GUI/testscripts/User_Management/UserManagement_Common.sah&amp;n=124">_setSelected(_select("userNamePrefixCode"), "Mr")</span><span class="extra">
+								[110 ms] [10:42:03.905]
+							</span>
+<div id="harInfo22" style="display:none"></div>
+</div>
+<div class="INFO">
+<div id="networkActivityLink23" class="networkActivity" onclick="showHideNetworkActivity(this, 'UserManagement_CreateNA_firefox__11Feb2014__10_41_44_142', '23')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/PretupsTA/scripts/GUI/testscripts/User_Management/UserManagement_Common.sah&amp;n=125">_setValue(_textbox("externalCode"), "13579")</span><span class="extra">
+								[141 ms] [10:42:04.046]
+							</span>
+<div id="harInfo23" style="display:none"></div>
+</div>
+<div class="CUSTOM1">
+<div id="networkActivityLink23" class="networkActivity" onclick="showHideNetworkActivity(this, 'UserManagement_CreateNA_firefox__11Feb2014__10_41_44_142', '23')" title="Show Network Activity">Show Network Activity</div>[ReferenceError: event is not defined (http://172.16.1.121:9922/pretups/jsp/common/popcalendar.js:703), ReferenceError: event is not defined (http://172.16.1.121:9922/pretups/jsp/common/popcalendar.js:703), ReferenceError: event is not defined (http://172.16.1.121:9922/pretups/jsp/common/popcalendar.js:703), ReferenceError: event is not defined (http://172.16.1.121:9922/pretups/jsp/common/popcalendar.js:703), ReferenceError: event is not defined (http://172.16.1.121:9922/pretups/jsp/common/popcalendar.js:703)]<span class="extra">
+								[95 ms] [10:42:04.141]
+							</span>
+<div id="harInfo23" style="display:none"></div>
+</div>
+<div class="INFO">
+<div id="networkActivityLink24" class="networkActivity" onclick="showHideNetworkActivity(this, 'UserManagement_CreateNA_firefox__11Feb2014__10_41_44_142', '24')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/PretupsTA/scripts/GUI/testscripts/User_Management/UserManagement_Common.sah&amp;n=126">_setValue(_textbox("empCode"), "1357")</span><span class="extra">
+								[48 ms] [10:42:04.189]
+							</span>
+<div id="harInfo24" style="display:none"></div>
+</div>
+<div class="CUSTOM1">
+<div id="networkActivityLink24" class="networkActivity" onclick="showHideNetworkActivity(this, 'UserManagement_CreateNA_firefox__11Feb2014__10_41_44_142', '24')" title="Show Network Activity">Show Network Activity</div>[ReferenceError: event is not defined (http://172.16.1.121:9922/pretups/jsp/common/popcalendar.js:703), ReferenceError: event is not defined (http://172.16.1.121:9922/pretups/jsp/common/popcalendar.js:703), ReferenceError: event is not defined (http://172.16.1.121:9922/pretups/jsp/common/popcalendar.js:703), ReferenceError: event is not defined (http://172.16.1.121:9922/pretups/jsp/common/popcalendar.js:703)]<span class="extra">
+								[79 ms] [10:42:04.268]
+							</span>
+<div id="harInfo24" style="display:none"></div>
+</div>
+<div class="INFO">
+<div id="networkActivityLink25" class="networkActivity" onclick="showHideNetworkActivity(this, 'UserManagement_CreateNA_firefox__11Feb2014__10_41_44_142', '25')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/PretupsTA/scripts/GUI/testscripts/User_Management/UserManagement_Common.sah&amp;n=127">_setValue(_textbox("msisdn"), "6221222469")</span><span class="extra">
+								[79 ms] [10:42:04.347]
+							</span>
+<div id="harInfo25" style="display:none"></div>
+</div>
+<div class="CUSTOM1">
+<div id="networkActivityLink25" class="networkActivity" onclick="showHideNetworkActivity(this, 'UserManagement_CreateNA_firefox__11Feb2014__10_41_44_142', '25')" title="Show Network Activity">Show Network Activity</div>[ReferenceError: event is not defined (http://172.16.1.121:9922/pretups/jsp/common/popcalendar.js:703), ReferenceError: event is not defined (http://172.16.1.121:9922/pretups/jsp/common/popcalendar.js:703), ReferenceError: event is not defined (http://172.16.1.121:9922/pretups/jsp/common/popcalendar.js:703), ReferenceError: event is not defined (http://172.16.1.121:9922/pretups/jsp/common/popcalendar.js:703), ReferenceError: event is not defined (http://172.16.1.121:9922/pretups/jsp/common/popcalendar.js:703), ReferenceError: event is not defined (http://172.16.1.121:9922/pretups/jsp/common/popcalendar.js:703), ReferenceError: event is not defined (http://172.16.1.121:9922/pretups/jsp/common/popcalendar.js:703), ReferenceError: event is not defined (http://172.16.1.121:9922/pretups/jsp/common/popcalendar.js:703), ReferenceError: event is not defined (http://172.16.1.121:9922/pretups/jsp/common/popcalendar.js:703), ReferenceError: event is not defined (http://172.16.1.121:9922/pretups/jsp/common/popcalendar.js:703)]<span class="extra">
+								[47 ms] [10:42:04.394]
+							</span>
+<div id="harInfo25" style="display:none"></div>
+</div>
+<div class="INFO">
+<div id="networkActivityLink26" class="networkActivity" onclick="showHideNetworkActivity(this, 'UserManagement_CreateNA_firefox__11Feb2014__10_41_44_142', '26')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/PretupsTA/scripts/GUI/testscripts/User_Management/UserManagement_Common.sah&amp;n=128">_setValue(_textbox("ssn"), "135791")</span><span class="extra">
+								[95 ms] [10:42:04.489]
+							</span>
+<div id="harInfo26" style="display:none"></div>
+</div>
+<div class="CUSTOM1">
+<div id="networkActivityLink26" class="networkActivity" onclick="showHideNetworkActivity(this, 'UserManagement_CreateNA_firefox__11Feb2014__10_41_44_142', '26')" title="Show Network Activity">Show Network Activity</div>[ReferenceError: event is not defined (http://172.16.1.121:9922/pretups/jsp/common/popcalendar.js:703), ReferenceError: event is not defined (http://172.16.1.121:9922/pretups/jsp/common/popcalendar.js:703), ReferenceError: event is not defined (http://172.16.1.121:9922/pretups/jsp/common/popcalendar.js:703), ReferenceError: event is not defined (http://172.16.1.121:9922/pretups/jsp/common/popcalendar.js:703), ReferenceError: event is not defined (http://172.16.1.121:9922/pretups/jsp/common/popcalendar.js:703), ReferenceError: event is not defined (http://172.16.1.121:9922/pretups/jsp/common/popcalendar.js:703)]<span class="extra">
+								[17 ms] [10:42:04.506]
+							</span>
+<div id="harInfo26" style="display:none"></div>
+</div>
+<div class="INFO">
+<div id="networkActivityLink27" class="networkActivity" onclick="showHideNetworkActivity(this, 'UserManagement_CreateNA_firefox__11Feb2014__10_41_44_142', '27')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/PretupsTA/scripts/GUI/testscripts/User_Management/UserManagement_Common.sah&amp;n=129">_setValue(_textbox("contactNo"), "6221222469")</span><span class="extra">
+								[141 ms] [10:42:04.647]
+							</span>
+<div id="harInfo27" style="display:none"></div>
+</div>
+<div class="CUSTOM1">
+<div id="networkActivityLink27" class="networkActivity" onclick="showHideNetworkActivity(this, 'UserManagement_CreateNA_firefox__11Feb2014__10_41_44_142', '27')" title="Show Network Activity">Show Network Activity</div>[ReferenceError: event is not defined (http://172.16.1.121:9922/pretups/jsp/common/popcalendar.js:703), ReferenceError: event is not defined (http://172.16.1.121:9922/pretups/jsp/common/popcalendar.js:703), ReferenceError: event is not defined (http://172.16.1.121:9922/pretups/jsp/common/popcalendar.js:703), ReferenceError: event is not defined (http://172.16.1.121:9922/pretups/jsp/common/popcalendar.js:703), ReferenceError: event is not defined (http://172.16.1.121:9922/pretups/jsp/common/popcalendar.js:703), ReferenceError: event is not defined (http://172.16.1.121:9922/pretups/jsp/common/popcalendar.js:703), ReferenceError: event is not defined (http://172.16.1.121:9922/pretups/jsp/common/popcalendar.js:703), ReferenceError: event is not defined (http://172.16.1.121:9922/pretups/jsp/common/popcalendar.js:703), ReferenceError: event is not defined (http://172.16.1.121:9922/pretups/jsp/common/popcalendar.js:703), ReferenceError: event is not defined (http://172.16.1.121:9922/pretups/jsp/common/popcalendar.js:703)]<span class="extra">
+								[95 ms] [10:42:04.742]
+							</span>
+<div id="harInfo27" style="display:none"></div>
+</div>
+<div class="INFO">
+<div id="networkActivityLink28" class="networkActivity" onclick="showHideNetworkActivity(this, 'UserManagement_CreateNA_firefox__11Feb2014__10_41_44_142', '28')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/PretupsTA/scripts/GUI/testscripts/User_Management/UserManagement_Common.sah&amp;n=130">_setSelected(_select("status"), "Active")</span><span class="extra">
+								[32 ms] [10:42:04.774]
+							</span>
+<div id="harInfo28" style="display:none"></div>
+</div>
+<div class="INFO">
+<div id="networkActivityLink29" class="networkActivity" onclick="showHideNetworkActivity(this, 'UserManagement_CreateNA_firefox__11Feb2014__10_41_44_142', '29')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/PretupsTA/scripts/GUI/testscripts/User_Management/UserManagement_Common.sah&amp;n=131">_setValue(_textbox("designation"), "NA_Admin")</span><span class="extra">
+								[188 ms] [10:42:04.962]
+							</span>
+<div id="harInfo29" style="display:none"></div>
+</div>
+<div class="CUSTOM1">
+<div id="networkActivityLink29" class="networkActivity" onclick="showHideNetworkActivity(this, 'UserManagement_CreateNA_firefox__11Feb2014__10_41_44_142', '29')" title="Show Network Activity">Show Network Activity</div>[ReferenceError: event is not defined (http://172.16.1.121:9922/pretups/jsp/common/popcalendar.js:703), ReferenceError: event is not defined (http://172.16.1.121:9922/pretups/jsp/common/popcalendar.js:703), ReferenceError: event is not defined (http://172.16.1.121:9922/pretups/jsp/common/popcalendar.js:703), ReferenceError: event is not defined (http://172.16.1.121:9922/pretups/jsp/common/popcalendar.js:703), ReferenceError: event is not defined (http://172.16.1.121:9922/pretups/jsp/common/popcalendar.js:703), ReferenceError: event is not defined (http://172.16.1.121:9922/pretups/jsp/common/popcalendar.js:703), ReferenceError: event is not defined (http://172.16.1.121:9922/pretups/jsp/common/popcalendar.js:703), ReferenceError: event is not defined (http://172.16.1.121:9922/pretups/jsp/common/popcalendar.js:703)]<span class="extra">
+								[1 ms] [10:42:04.963]
+							</span>
+<div id="harInfo29" style="display:none"></div>
+</div>
+<div class="INFO">
+<div id="networkActivityLink30" class="networkActivity" onclick="showHideNetworkActivity(this, 'UserManagement_CreateNA_firefox__11Feb2014__10_41_44_142', '30')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/PretupsTA/scripts/GUI/testscripts/User_Management/UserManagement_Common.sah&amp;n=132">_setSelected(_select("divisionCode"), "ARQ")</span><span class="extra">
+								[157 ms] [10:42:05.120]
+							</span>
+<div id="harInfo30" style="display:none"></div>
+</div>
+<div class="INFO">
+<div id="networkActivityLink31" class="networkActivity" onclick="showHideNetworkActivity(this, 'UserManagement_CreateNA_firefox__11Feb2014__10_41_44_142', '31')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/PretupsTA/scripts/GUI/testscripts/User_Management/UserManagement_Common.sah&amp;n=133">_setSelected(_select("departmentCode"), "ARQ")</span><span class="extra">
+								[126 ms] [10:42:05.246]
+							</span>
+<div id="harInfo31" style="display:none"></div>
+</div>
+<div class="INFO">
+<div id="networkActivityLink32" class="networkActivity" onclick="showHideNetworkActivity(this, 'UserManagement_CreateNA_firefox__11Feb2014__10_41_44_142', '32')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/PretupsTA/scripts/GUI/testscripts/User_Management/UserManagement_Common.sah&amp;n=134">_setValue(_textbox("address1"), "Hebbal")</span><span class="extra">
+								[157 ms] [10:42:05.403]
+							</span>
+<div id="harInfo32" style="display:none"></div>
+</div>
+<div class="CUSTOM1">
+<div id="networkActivityLink32" class="networkActivity" onclick="showHideNetworkActivity(this, 'UserManagement_CreateNA_firefox__11Feb2014__10_41_44_142', '32')" title="Show Network Activity">Show Network Activity</div>[ReferenceError: event is not defined (http://172.16.1.121:9922/pretups/jsp/common/popcalendar.js:703), ReferenceError: event is not defined (http://172.16.1.121:9922/pretups/jsp/common/popcalendar.js:703), ReferenceError: event is not defined (http://172.16.1.121:9922/pretups/jsp/common/popcalendar.js:703), ReferenceError: event is not defined (http://172.16.1.121:9922/pretups/jsp/common/popcalendar.js:703), ReferenceError: event is not defined (http://172.16.1.121:9922/pretups/jsp/common/popcalendar.js:703), ReferenceError: event is not defined (http://172.16.1.121:9922/pretups/jsp/common/popcalendar.js:703)]<span class="extra">
+								[16 ms] [10:42:05.419]
+							</span>
+<div id="harInfo32" style="display:none"></div>
+</div>
+<div class="INFO">
+<div id="networkActivityLink33" class="networkActivity" onclick="showHideNetworkActivity(this, 'UserManagement_CreateNA_firefox__11Feb2014__10_41_44_142', '33')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/PretupsTA/scripts/GUI/testscripts/User_Management/UserManagement_Common.sah&amp;n=135">_setValue(_textbox("address2"), "Hebbal")</span><span class="extra">
+								[126 ms] [10:42:05.545]
+							</span>
+<div id="harInfo33" style="display:none"></div>
+</div>
+<div class="CUSTOM1">
+<div id="networkActivityLink33" class="networkActivity" onclick="showHideNetworkActivity(this, 'UserManagement_CreateNA_firefox__11Feb2014__10_41_44_142', '33')" title="Show Network Activity">Show Network Activity</div>[ReferenceError: event is not defined (http://172.16.1.121:9922/pretups/jsp/common/popcalendar.js:703), ReferenceError: event is not defined (http://172.16.1.121:9922/pretups/jsp/common/popcalendar.js:703), ReferenceError: event is not defined (http://172.16.1.121:9922/pretups/jsp/common/popcalendar.js:703), ReferenceError: event is not defined (http://172.16.1.121:9922/pretups/jsp/common/popcalendar.js:703), ReferenceError: event is not defined (http://172.16.1.121:9922/pretups/jsp/common/popcalendar.js:703), ReferenceError: event is not defined (http://172.16.1.121:9922/pretups/jsp/common/popcalendar.js:703)]<span class="extra">
+								[110 ms] [10:42:05.655]
+							</span>
+<div id="harInfo33" style="display:none"></div>
+</div>
+<div class="INFO">
+<div id="networkActivityLink34" class="networkActivity" onclick="showHideNetworkActivity(this, 'UserManagement_CreateNA_firefox__11Feb2014__10_41_44_142', '34')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/PretupsTA/scripts/GUI/testscripts/User_Management/UserManagement_Common.sah&amp;n=136">_setValue(_textbox("city"), "Bangalore")</span><span class="extra">
+								[48 ms] [10:42:05.703]
+							</span>
+<div id="harInfo34" style="display:none"></div>
+</div>
+<div class="CUSTOM1">
+<div id="networkActivityLink34" class="networkActivity" onclick="showHideNetworkActivity(this, 'UserManagement_CreateNA_firefox__11Feb2014__10_41_44_142', '34')" title="Show Network Activity">Show Network Activity</div>[ReferenceError: event is not defined (http://172.16.1.121:9922/pretups/jsp/common/popcalendar.js:703), ReferenceError: event is not defined (http://172.16.1.121:9922/pretups/jsp/common/popcalendar.js:703), ReferenceError: event is not defined (http://172.16.1.121:9922/pretups/jsp/common/popcalendar.js:703), ReferenceError: event is not defined (http://172.16.1.121:9922/pretups/jsp/common/popcalendar.js:703), ReferenceError: event is not defined (http://172.16.1.121:9922/pretups/jsp/common/popcalendar.js:703), ReferenceError: event is not defined (http://172.16.1.121:9922/pretups/jsp/common/popcalendar.js:703), ReferenceError: event is not defined (http://172.16.1.121:9922/pretups/jsp/common/popcalendar.js:703), ReferenceError: event is not defined (http://172.16.1.121:9922/pretups/jsp/common/popcalendar.js:703), ReferenceError: event is not defined (http://172.16.1.121:9922/pretups/jsp/common/popcalendar.js:703)]<span class="extra">
+								[79 ms] [10:42:05.782]
+							</span>
+<div id="harInfo34" style="display:none"></div>
+</div>
+<div class="INFO">
+<div id="networkActivityLink35" class="networkActivity" onclick="showHideNetworkActivity(this, 'UserManagement_CreateNA_firefox__11Feb2014__10_41_44_142', '35')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/PretupsTA/scripts/GUI/testscripts/User_Management/UserManagement_Common.sah&amp;n=137">_setValue(_textbox("state"), "Karnataka")</span><span class="extra">
+								[79 ms] [10:42:05.861]
+							</span>
+<div id="harInfo35" style="display:none"></div>
+</div>
+<div class="CUSTOM1">
+<div id="networkActivityLink35" class="networkActivity" onclick="showHideNetworkActivity(this, 'UserManagement_CreateNA_firefox__11Feb2014__10_41_44_142', '35')" title="Show Network Activity">Show Network Activity</div>[ReferenceError: event is not defined (http://172.16.1.121:9922/pretups/jsp/common/popcalendar.js:703), ReferenceError: event is not defined (http://172.16.1.121:9922/pretups/jsp/common/popcalendar.js:703), ReferenceError: event is not defined (http://172.16.1.121:9922/pretups/jsp/common/popcalendar.js:703), ReferenceError: event is not defined (http://172.16.1.121:9922/pretups/jsp/common/popcalendar.js:703), ReferenceError: event is not defined (http://172.16.1.121:9922/pretups/jsp/common/popcalendar.js:703), ReferenceError: event is not defined (http://172.16.1.121:9922/pretups/jsp/common/popcalendar.js:703), ReferenceError: event is not defined (http://172.16.1.121:9922/pretups/jsp/common/popcalendar.js:703), ReferenceError: event is not defined (http://172.16.1.121:9922/pretups/jsp/common/popcalendar.js:703), ReferenceError: event is not defined (http://172.16.1.121:9922/pretups/jsp/common/popcalendar.js:703)]<span class="extra">
+								[48 ms] [10:42:05.909]
+							</span>
+<div id="harInfo35" style="display:none"></div>
+</div>
+<div class="INFO">
+<div id="networkActivityLink36" class="networkActivity" onclick="showHideNetworkActivity(this, 'UserManagement_CreateNA_firefox__11Feb2014__10_41_44_142', '36')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/PretupsTA/scripts/GUI/testscripts/User_Management/UserManagement_Common.sah&amp;n=138">_setValue(_textbox("country"), "India")</span><span class="extra">
+								[95 ms] [10:42:06.004]
+							</span>
+<div id="harInfo36" style="display:none"></div>
+</div>
+<div class="CUSTOM1">
+<div id="networkActivityLink36" class="networkActivity" onclick="showHideNetworkActivity(this, 'UserManagement_CreateNA_firefox__11Feb2014__10_41_44_142', '36')" title="Show Network Activity">Show Network Activity</div>[ReferenceError: event is not defined (http://172.16.1.121:9922/pretups/jsp/common/popcalendar.js:703), ReferenceError: event is not defined (http://172.16.1.121:9922/pretups/jsp/common/popcalendar.js:703), ReferenceError: event is not defined (http://172.16.1.121:9922/pretups/jsp/common/popcalendar.js:703), ReferenceError: event is not defined (http://172.16.1.121:9922/pretups/jsp/common/popcalendar.js:703), ReferenceError: event is not defined (http://172.16.1.121:9922/pretups/jsp/common/popcalendar.js:703)]<span class="extra">
+								[16 ms] [10:42:06.020]
+							</span>
+<div id="harInfo36" style="display:none"></div>
+</div>
+<div class="INFO">
+<div id="networkActivityLink37" class="networkActivity" onclick="showHideNetworkActivity(this, 'UserManagement_CreateNA_firefox__11Feb2014__10_41_44_142', '37')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/PretupsTA/scripts/GUI/testscripts/User_Management/UserManagement_Common.sah&amp;n=139">_setValue(_textbox("email"), "auto_NA@mahindracomviva.com")</span><span class="extra">
+								[220 ms] [10:42:06.240]
+							</span>
+<div id="harInfo37" style="display:none"></div>
+</div>
+<div class="CUSTOM1">
+<div id="networkActivityLink37" class="networkActivity" onclick="showHideNetworkActivity(this, 'UserManagement_CreateNA_firefox__11Feb2014__10_41_44_142', '37')" title="Show Network Activity">Show Network Activity</div>[ReferenceError: event is not defined (http://172.16.1.121:9922/pretups/jsp/common/popcalendar.js:703), ReferenceError: event is not defined (http://172.16.1.121:9922/pretups/jsp/common/popcalendar.js:703), ReferenceError: event is not defined (http://172.16.1.121:9922/pretups/jsp/common/popcalendar.js:703), ReferenceError: event is not defined (http://172.16.1.121:9922/pretups/jsp/common/popcalendar.js:703), ReferenceError: event is not defined (http://172.16.1.121:9922/pretups/jsp/common/popcalendar.js:703), ReferenceError: event is not defined (http://172.16.1.121:9922/pretups/jsp/common/popcalendar.js:703), ReferenceError: event is not defined (http://172.16.1.121:9922/pretups/jsp/common/popcalendar.js:703), ReferenceError: event is not defined (http://172.16.1.121:9922/pretups/jsp/common/popcalendar.js:703), ReferenceError: event is not defined (http://172.16.1.121:9922/pretups/jsp/common/popcalendar.js:703), ReferenceError: event is not defined (http://172.16.1.121:9922/pretups/jsp/common/popcalendar.js:703), ReferenceError: event is not defined (http://172.16.1.121:9922/pretups/jsp/common/popcalendar.js:703), ReferenceError: event is not defined (http://172.16.1.121:9922/pretups/jsp/common/popcalendar.js:703), ReferenceError: event is not defined (http://172.16.1.121:9922/pretups/jsp/common/popcalendar.js:703), ReferenceError: event is not defined (http://172.16.1.121:9922/pretups/jsp/common/popcalendar.js:703), ReferenceError: event is not defined (http://172.16.1.121:9922/pretups/jsp/common/popcalendar.js:703), ReferenceError: event is not defined (http://172.16.1.121:9922/pretups/jsp/common/popcalendar.js:703), ReferenceError: event is not defined (http://172.16.1.121:9922/pretups/jsp/common/popcalendar.js:703), ReferenceError: event is not defined (http://172.16.1.121:9922/pretups/jsp/common/popcalendar.js:703), ReferenceError: event is not defined (http://172.16.1.121:9922/pretups/jsp/common/popcalendar.js:703), ReferenceError: event is not defined (http://172.16.1.121:9922/pretups/jsp/common/popcalendar.js:703), ReferenceError: event is not defined (http://172.16.1.121:9922/pretups/jsp/common/popcalendar.js:703), ReferenceError: event is not defined (http://172.16.1.121:9922/pretups/jsp/common/popcalendar.js:703), ReferenceError: event is not defined (http://172.16.1.121:9922/pretups/jsp/common/popcalendar.js:703), ReferenceError: event is not defined (http://172.16.1.121:9922/pretups/jsp/common/popcalendar.js:703), ReferenceError: event is not defined (http://172.16.1.121:9922/pretups/jsp/common/popcalendar.js:703), ReferenceError: event is not defined (http://172.16.1.121:9922/pretups/jsp/common/popcalendar.js:703), ReferenceError: event is not defined (http://172.16.1.121:9922/pretups/jsp/common/popcalendar.js:703)]<span class="extra">
+								[1 ms] [10:42:06.241]
+							</span>
+<div id="harInfo37" style="display:none"></div>
+</div>
+<div class="INFO">
+<div id="networkActivityLink38" class="networkActivity" onclick="showHideNetworkActivity(this, 'UserManagement_CreateNA_firefox__11Feb2014__10_41_44_142', '38')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/PretupsTA/scripts/GUI/testscripts/User_Management/UserManagement_Common.sah&amp;n=140">_click(_image("calendar-icon.gif"))</span><span class="extra">
+								[125 ms] [10:42:06.366]
+							</span>
+<div id="harInfo38" style="display:none"></div>
+</div>
+<div class="INFO">
+<div id="networkActivityLink39" class="networkActivity" onclick="showHideNetworkActivity(this, 'UserManagement_CreateNA_firefox__11Feb2014__10_41_44_142', '39')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/PretupsTA/scripts/GUI/testscripts/User_Management/UserManagement_Common.sah&amp;n=141">_setValue(_textbox("appointmentDate"), "11/02/14")</span><span class="extra">
+								[157 ms] [10:42:06.523]
+							</span>
+<div id="harInfo39" style="display:none"></div>
+</div>
+<div class="CUSTOM1">
+<div id="networkActivityLink39" class="networkActivity" onclick="showHideNetworkActivity(this, 'UserManagement_CreateNA_firefox__11Feb2014__10_41_44_142', '39')" title="Show Network Activity">Show Network Activity</div>[ReferenceError: event is not defined (http://172.16.1.121:9922/pretups/jsp/common/popcalendar.js:703), ReferenceError: event is not defined (http://172.16.1.121:9922/pretups/jsp/common/popcalendar.js:703), ReferenceError: event is not defined (http://172.16.1.121:9922/pretups/jsp/common/popcalendar.js:703), ReferenceError: event is not defined (http://172.16.1.121:9922/pretups/jsp/common/popcalendar.js:703), ReferenceError: event is not defined (http://172.16.1.121:9922/pretups/jsp/common/popcalendar.js:703), ReferenceError: event is not defined (http://172.16.1.121:9922/pretups/jsp/common/popcalendar.js:703), ReferenceError: event is not defined (http://172.16.1.121:9922/pretups/jsp/common/popcalendar.js:703), ReferenceError: event is not defined (http://172.16.1.121:9922/pretups/jsp/common/popcalendar.js:703)]<span class="extra">
+								[79 ms] [10:42:06.602]
+							</span>
+<div id="harInfo39" style="display:none"></div>
+</div>
+<div class="INFO">
+<div id="networkActivityLink40" class="networkActivity" onclick="showHideNetworkActivity(this, 'UserManagement_CreateNA_firefox__11Feb2014__10_41_44_142', '40')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/PretupsTA/scripts/GUI/testscripts/User_Management/UserManagement_Common.sah&amp;n=142">_setValue(_textbox("webLoginID"), "AUTNA1102104159")</span><span class="extra">
+								[126 ms] [10:42:06.728]
+							</span>
+<div id="harInfo40" style="display:none"></div>
+</div>
+<div class="CUSTOM1">
+<div id="networkActivityLink40" class="networkActivity" onclick="showHideNetworkActivity(this, 'UserManagement_CreateNA_firefox__11Feb2014__10_41_44_142', '40')" title="Show Network Activity">Show Network Activity</div>[ReferenceError: event is not defined (http://172.16.1.121:9922/pretups/jsp/common/popcalendar.js:703), ReferenceError: event is not defined (http://172.16.1.121:9922/pretups/jsp/common/popcalendar.js:703), ReferenceError: event is not defined (http://172.16.1.121:9922/pretups/jsp/common/popcalendar.js:703), ReferenceError: event is not defined (http://172.16.1.121:9922/pretups/jsp/common/popcalendar.js:703), ReferenceError: event is not defined (http://172.16.1.121:9922/pretups/jsp/common/popcalendar.js:703), ReferenceError: event is not defined (http://172.16.1.121:9922/pretups/jsp/common/popcalendar.js:703), ReferenceError: event is not defined (http://172.16.1.121:9922/pretups/jsp/common/popcalendar.js:703), ReferenceError: event is not defined (http://172.16.1.121:9922/pretups/jsp/common/popcalendar.js:703), ReferenceError: event is not defined (http://172.16.1.121:9922/pretups/jsp/common/popcalendar.js:703), ReferenceError: event is not defined (http://172.16.1.121:9922/pretups/jsp/common/popcalendar.js:703), ReferenceError: event is not defined (http://172.16.1.121:9922/pretups/jsp/common/popcalendar.js:703), ReferenceError: event is not defined (http://172.16.1.121:9922/pretups/jsp/common/popcalendar.js:703), ReferenceError: event is not defined (http://172.16.1.121:9922/pretups/jsp/common/popcalendar.js:703), ReferenceError: event is not defined (http://172.16.1.121:9922/pretups/jsp/common/popcalendar.js:703), ReferenceError: event is not defined (http://172.16.1.121:9922/pretups/jsp/common/popcalendar.js:703)]<span class="extra">
+								[110 ms] [10:42:06.838]
+							</span>
+<div id="harInfo40" style="display:none"></div>
+</div>
+<div class="INFO">
+<div id="networkActivityLink41" class="networkActivity" onclick="showHideNetworkActivity(this, 'UserManagement_CreateNA_firefox__11Feb2014__10_41_44_142', '41')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/PretupsTA/scripts/GUI/testscripts/User_Management/UserManagement_Common.sah&amp;n=143">_setValue(_password("showPassword"), "Com@123")</span><span class="extra">
+								[111 ms] [10:42:06.949]
+							</span>
+<div id="harInfo41" style="display:none"></div>
+</div>
+<div class="CUSTOM1">
+<div id="networkActivityLink41" class="networkActivity" onclick="showHideNetworkActivity(this, 'UserManagement_CreateNA_firefox__11Feb2014__10_41_44_142', '41')" title="Show Network Activity">Show Network Activity</div>[ReferenceError: event is not defined (http://172.16.1.121:9922/pretups/jsp/common/popcalendar.js:703), ReferenceError: event is not defined (http://172.16.1.121:9922/pretups/jsp/common/popcalendar.js:703), ReferenceError: event is not defined (http://172.16.1.121:9922/pretups/jsp/common/popcalendar.js:703), ReferenceError: event is not defined (http://172.16.1.121:9922/pretups/jsp/common/popcalendar.js:703), ReferenceError: event is not defined (http://172.16.1.121:9922/pretups/jsp/common/popcalendar.js:703), ReferenceError: event is not defined (http://172.16.1.121:9922/pretups/jsp/common/popcalendar.js:703), ReferenceError: event is not defined (http://172.16.1.121:9922/pretups/jsp/common/popcalendar.js:703)]<span class="extra">
+								[1 ms] [10:42:06.950]
+							</span>
+<div id="harInfo41" style="display:none"></div>
+</div>
+<div class="INFO">
+<div id="networkActivityLink42" class="networkActivity" onclick="showHideNetworkActivity(this, 'UserManagement_CreateNA_firefox__11Feb2014__10_41_44_142', '42')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/PretupsTA/scripts/GUI/testscripts/User_Management/UserManagement_Common.sah&amp;n=144">_setValue(_password("confirmPassword"), "Com@123")</span><span class="extra">
+								[157 ms] [10:42:07.107]
+							</span>
+<div id="harInfo42" style="display:none"></div>
+</div>
+<div class="CUSTOM1">
+<div id="networkActivityLink42" class="networkActivity" onclick="showHideNetworkActivity(this, 'UserManagement_CreateNA_firefox__11Feb2014__10_41_44_142', '42')" title="Show Network Activity">Show Network Activity</div>[ReferenceError: event is not defined (http://172.16.1.121:9922/pretups/jsp/common/popcalendar.js:703), ReferenceError: event is not defined (http://172.16.1.121:9922/pretups/jsp/common/popcalendar.js:703), ReferenceError: event is not defined (http://172.16.1.121:9922/pretups/jsp/common/popcalendar.js:703), ReferenceError: event is not defined (http://172.16.1.121:9922/pretups/jsp/common/popcalendar.js:703), ReferenceError: event is not defined (http://172.16.1.121:9922/pretups/jsp/common/popcalendar.js:703), ReferenceError: event is not defined (http://172.16.1.121:9922/pretups/jsp/common/popcalendar.js:703), ReferenceError: event is not defined (http://172.16.1.121:9922/pretups/jsp/common/popcalendar.js:703)]<span class="extra">
+								[94 ms] [10:42:07.201]
+							</span>
+<div id="harInfo42" style="display:none"></div>
+</div>
+<div class="INFO">
+<div id="networkActivityLink43" class="networkActivity" onclick="showHideNetworkActivity(this, 'UserManagement_CreateNA_firefox__11Feb2014__10_41_44_142', '43')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/PretupsTA/scripts/GUI/testscripts/User_Management/UserManagement_Common.sah&amp;n=145">_setValue(_textarea("allowedIPs"), "")</span><span class="extra">
+								[32 ms] [10:42:07.233]
+							</span>
+<div id="harInfo43" style="display:none"></div>
+</div>
+<div class="INFO">
+<div id="networkActivityLink44" class="networkActivity" onclick="showHideNetworkActivity(this, 'UserManagement_CreateNA_firefox__11Feb2014__10_41_44_142', '44')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/PretupsTA/scripts/GUI/testscripts/User_Management/UserManagement_Common.sah&amp;n=147">_click(_checkbox("allowedDays[" + 0 + "]"))</span><span class="extra">
+								[157 ms] [10:42:07.390]
+							</span>
+<div id="harInfo44" style="display:none"></div>
+</div>
+<div class="INFO">
+<div id="networkActivityLink45" class="networkActivity" onclick="showHideNetworkActivity(this, 'UserManagement_CreateNA_firefox__11Feb2014__10_41_44_142', '45')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/PretupsTA/scripts/GUI/testscripts/User_Management/UserManagement_Common.sah&amp;n=147">_click(_checkbox("allowedDays[" + 1 + "]"))</span><span class="extra">
+								[126 ms] [10:42:07.516]
+							</span>
+<div id="harInfo45" style="display:none"></div>
+</div>
+<div class="INFO">
+<div id="networkActivityLink46" class="networkActivity" onclick="showHideNetworkActivity(this, 'UserManagement_CreateNA_firefox__11Feb2014__10_41_44_142', '46')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/PretupsTA/scripts/GUI/testscripts/User_Management/UserManagement_Common.sah&amp;n=147">_click(_checkbox("allowedDays[" + 2 + "]"))</span><span class="extra">
+								[126 ms] [10:42:07.642]
+							</span>
+<div id="harInfo46" style="display:none"></div>
+</div>
+<div class="INFO">
+<div id="networkActivityLink47" class="networkActivity" onclick="showHideNetworkActivity(this, 'UserManagement_CreateNA_firefox__11Feb2014__10_41_44_142', '47')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/PretupsTA/scripts/GUI/testscripts/User_Management/UserManagement_Common.sah&amp;n=147">_click(_checkbox("allowedDays[" + 3 + "]"))</span><span class="extra">
+								[126 ms] [10:42:07.768]
+							</span>
+<div id="harInfo47" style="display:none"></div>
+</div>
+<div class="INFO">
+<div id="networkActivityLink48" class="networkActivity" onclick="showHideNetworkActivity(this, 'UserManagement_CreateNA_firefox__11Feb2014__10_41_44_142', '48')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/PretupsTA/scripts/GUI/testscripts/User_Management/UserManagement_Common.sah&amp;n=147">_click(_checkbox("allowedDays[" + 4 + "]"))</span><span class="extra">
+								[126 ms] [10:42:07.894]
+							</span>
+<div id="harInfo48" style="display:none"></div>
+</div>
+<div class="INFO">
+<div id="networkActivityLink49" class="networkActivity" onclick="showHideNetworkActivity(this, 'UserManagement_CreateNA_firefox__11Feb2014__10_41_44_142', '49')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/PretupsTA/scripts/GUI/testscripts/User_Management/UserManagement_Common.sah&amp;n=147">_click(_checkbox("allowedDays[" + 5 + "]"))</span><span class="extra">
+								[125 ms] [10:42:08.019]
+							</span>
+<div id="harInfo49" style="display:none"></div>
+</div>
+<div class="INFO">
+<div id="networkActivityLink50" class="networkActivity" onclick="showHideNetworkActivity(this, 'UserManagement_CreateNA_firefox__11Feb2014__10_41_44_142', '50')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/PretupsTA/scripts/GUI/testscripts/User_Management/UserManagement_Common.sah&amp;n=147">_click(_checkbox("allowedDays[" + 6 + "]"))</span><span class="extra">
+								[126 ms] [10:42:08.145]
+							</span>
+<div id="harInfo50" style="display:none"></div>
+</div>
+<div class="INFO">
+<div id="networkActivityLink51" class="networkActivity" onclick="showHideNetworkActivity(this, 'UserManagement_CreateNA_firefox__11Feb2014__10_41_44_142', '51')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/PretupsTA/scripts/GUI/testscripts/User_Management/UserManagement_Common.sah&amp;n=149">_setValue(_textbox("allowedFormTime"), "00:00")</span><span class="extra">
+								[142 ms] [10:42:08.287]
+							</span>
+<div id="harInfo51" style="display:none"></div>
+</div>
+<div class="CUSTOM1">
+<div id="networkActivityLink51" class="networkActivity" onclick="showHideNetworkActivity(this, 'UserManagement_CreateNA_firefox__11Feb2014__10_41_44_142', '51')" title="Show Network Activity">Show Network Activity</div>[ReferenceError: event is not defined (http://172.16.1.121:9922/pretups/jsp/common/popcalendar.js:703), ReferenceError: event is not defined (http://172.16.1.121:9922/pretups/jsp/common/popcalendar.js:703), ReferenceError: event is not defined (http://172.16.1.121:9922/pretups/jsp/common/popcalendar.js:703), ReferenceError: event is not defined (http://172.16.1.121:9922/pretups/jsp/common/popcalendar.js:703), ReferenceError: event is not defined (http://172.16.1.121:9922/pretups/jsp/common/popcalendar.js:703)]<span class="extra">
+								[16 ms] [10:42:08.303]
+							</span>
+<div id="harInfo51" style="display:none"></div>
+</div>
+<div class="INFO">
+<div id="networkActivityLink52" class="networkActivity" onclick="showHideNetworkActivity(this, 'UserManagement_CreateNA_firefox__11Feb2014__10_41_44_142', '52')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/PretupsTA/scripts/GUI/testscripts/User_Management/UserManagement_Common.sah&amp;n=150">_setValue(_textbox("allowedToTime"), "23:59")</span><span class="extra">
+								[142 ms] [10:42:08.445]
+							</span>
+<div id="harInfo52" style="display:none"></div>
+</div>
+					
+					</div></div>
+					
+					<div class="CUSTOM1">
+<div id="networkActivityLink52" class="networkActivity" onclick="showHideNetworkActivity(this, 'UserManagement_CreateNA_firefox__11Feb2014__10_41_44_142', '52')" title="Show Network Activity">Show Network Activity</div>[ReferenceError: event is not defined (http://172.16.1.121:9922/pretups/jsp/common/popcalendar.js:703), ReferenceError: event is not defined (http://172.16.1.121:9922/pretups/jsp/common/popcalendar.js:703), ReferenceError: event is not defined (http://172.16.1.121:9922/pretups/jsp/common/popcalendar.js:703), ReferenceError: event is not defined (http://172.16.1.121:9922/pretups/jsp/common/popcalendar.js:703), ReferenceError: event is not defined (http://172.16.1.121:9922/pretups/jsp/common/popcalendar.js:703)]<span class="extra">
+								[1 ms] [10:42:08.540]
+							</span>
+<div id="harInfo52" style="display:none"></div>
+</div>
+<div class="INFO">
+<div id="networkActivityLink53" class="networkActivity" onclick="showHideNetworkActivity(this, 'UserManagement_CreateNA_firefox__11Feb2014__10_41_44_142', '53')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/PretupsTA/scripts/GUI/testscripts/User_Management/UserManagement_Common.sah&amp;n=98">_click(_link("Assign geographies"))</span><span class="extra">
+								[32 ms] [10:42:08.572]
+							</span>
+<div id="harInfo53" style="display:none"></div>
+</div>
+<div class="SUCCESS">
+<div id="networkActivityLink54" class="networkActivity" onclick="showHideNetworkActivity(this, 'UserManagement_CreateNA_firefox__11Feb2014__10_41_44_142', '54')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/PretupsTA/scripts/GUI/testscripts/User_Management/UserManagement_Common.sah&amp;n=99">_popup("eRecharge")._assertExists(_div("Assign geographies"), _lastAlert())</span><span class="extra">
+								[891 ms] [10:42:09.463]
+							</span>
+<div id="harInfo54" style="display:none"></div>
+</div>
+<div class="INFO">
+<div id="networkActivityLink55" class="networkActivity" onclick="showHideNetworkActivity(this, 'UserManagement_CreateNA_firefox__11Feb2014__10_41_44_142', '55')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/PretupsTA/scripts/GUI/testscripts/User_Management/UserManagement_Common.sah&amp;n=100">_popup("eRecharge")._click(_radio("geographicalCode", _in(_cell("Orange Guinea :"))))</span><span class="extra">
+								[125 ms] [10:42:09.588]
+							</span>
+<div id="harInfo55" style="display:none"></div>
+</div>
+<div class="CUSTOM1">
+<div id="networkActivityLink55" class="networkActivity" onclick="showHideNetworkActivity(this, 'UserManagement_CreateNA_firefox__11Feb2014__10_41_44_142', '55')" title="Show Network Activity">Show Network Activity</div>[TypeError: document.forms[1].checkNetwork is undefined (http://172.16.1.121:9922/pretups/userAddAction.do?forwardAction=userAddAction&method=assignGeography&page=0&time=1392113652324&requestType=add:218)]<span class="extra">
+								[79 ms] [10:42:09.667]
+							</span>
+<div id="harInfo55" style="display:none"></div>
+</div>
+<div class="INFO">
+<div id="networkActivityLink56" class="networkActivity" onclick="showHideNetworkActivity(this, 'UserManagement_CreateNA_firefox__11Feb2014__10_41_44_142', '56')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/PretupsTA/scripts/GUI/testscripts/User_Management/UserManagement_Common.sah&amp;n=101">_popup("eRecharge")._click(_submit("Add"))</span><span class="extra">
+								[48 ms] [10:42:09.715]
+							</span>
+<div id="harInfo56" style="display:none"></div>
+</div>
+<div class="INFO">
+<div id="networkActivityLink57" class="networkActivity" onclick="showHideNetworkActivity(this, 'UserManagement_CreateNA_firefox__11Feb2014__10_41_44_142', '57')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/PretupsTA/scripts/GUI/testscripts/User_Management/UserManagement_Common.sah&amp;n=102">_click(_radio("roleType"))</span><span class="extra">
+								[1015 ms] [10:42:10.730]
+							</span>
+<div id="harInfo57" style="display:none"></div>
+</div>
+<div class="INFO">
+<div id="networkActivityLink58" class="networkActivity" onclick="showHideNetworkActivity(this, 'UserManagement_CreateNA_firefox__11Feb2014__10_41_44_142', '58')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/PretupsTA/scripts/GUI/testscripts/User_Management/UserManagement_Common.sah&amp;n=103">_click(_link("Assign roles"))</span><span class="extra">
+								[126 ms] [10:42:10.856]
+							</span>
+<div id="harInfo58" style="display:none"></div>
+</div>
+<div class="SUCCESS">
+<div id="networkActivityLink59" class="networkActivity" onclick="showHideNetworkActivity(this, 'UserManagement_CreateNA_firefox__11Feb2014__10_41_44_142', '59')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/PretupsTA/scripts/GUI/testscripts/User_Management/UserManagement_Common.sah&amp;n=104">_popup("eRecharge")._assertExists(_div("Assign roles"), _lastAlert())</span><span class="extra">
+								[1093 ms] [10:42:11.949]
+							</span>
+<div id="harInfo59" style="display:none"></div>
+</div>
+<div class="INFO">
+<div id="networkActivityLink60" class="networkActivity" onclick="showHideNetworkActivity(this, 'UserManagement_CreateNA_firefox__11Feb2014__10_41_44_142', '60')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/PretupsTA/scripts/GUI/testscripts/User_Management/UserManagement_Common.sah&amp;n=105">_popup("eRecharge")._click(_checkbox("checkall"))</span><span class="extra">
+								[126 ms] [10:42:12.075]
+							</span>
+<div id="harInfo60" style="display:none"></div>
+</div>
+<div class="INFO">
+<div id="networkActivityLink61" class="networkActivity" onclick="showHideNetworkActivity(this, 'UserManagement_CreateNA_firefox__11Feb2014__10_41_44_142', '61')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/PretupsTA/scripts/GUI/testscripts/User_Management/UserManagement_Common.sah&amp;n=106">_popup("eRecharge")._click(_submit("Add"))</span><span class="extra">
+								[126 ms] [10:42:12.201]
+							</span>
+<div id="harInfo61" style="display:none"></div>
+</div>
+<div class="INFO">
+<div id="networkActivityLink62" class="networkActivity" onclick="showHideNetworkActivity(this, 'UserManagement_CreateNA_firefox__11Feb2014__10_41_44_142', '62')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/PretupsTA/scripts/GUI/testscripts/User_Management/UserManagement_Common.sah&amp;n=107">_click(_submit("Save"))</span><span class="extra">
+								[827 ms] [10:42:13.028]
+							</span>
+<div id="harInfo62" style="display:none"></div>
+</div>
+						
+							<div class="GROUP">
+				 		
+				 		<div class="GROUP_LABEL">[+] confirmCreationOfUser()</div>
+						
+						<div class="GROUP_INNER">
+						
+						<div class="INFO">
+<div id="networkActivityLink63" class="networkActivity" onclick="showHideNetworkActivity(this, 'UserManagement_CreateNA_firefox__11Feb2014__10_41_44_142', '63')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/PretupsTA/scripts/GUI/testscripts/User_Management/UserManagement_Common.sah&amp;n=237">_click(_submit("Confirm"))</span><span class="extra">
+								[735 ms] [10:42:13.764]
+							</span>
+<div id="harInfo63" style="display:none"></div>
+</div>
+					
+					</div></div>
+					
+					
+					
+					</div></div>
+					
+					
+					
+					</div></div>
+					
+					<div class="INFO">
+<div id="networkActivityLink64" class="networkActivity" onclick="showHideNetworkActivity(this, 'UserManagement_CreateNA_firefox__11Feb2014__10_41_44_142', '64')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/PretupsTA/scripts/GUI/testscripts/User_Management/UserManagement_Common.sah&amp;n=312">Network Admin Created Successfully</span><span class="extra">
+								[953 ms] [10:42:14.782]
+							</span>
+<div id="harInfo64" style="display:none"></div>
+</div>
+						
+							<div class="GROUP">
+				 		
+				 		<div class="GROUP_LABEL">[CEGTA0003] Given a created network admin when super admin logs into the application and verifies that the network admin is created or not then the created network admin should be available in the View Operator User section</div>
+						
+						<div class="GROUP_INNER">
+						
+						
+						
+							<div class="GROUP">
+				 		
+				 		<div class="GROUP_LABEL">[+] checkForNACreation()</div>
+						
+						<div class="GROUP_INNER">
+						
+						<div class="INFO">
+<div id="networkActivityLink65" class="networkActivity" onclick="showHideNetworkActivity(this, 'UserManagement_CreateNA_firefox__11Feb2014__10_41_44_142', '65')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/PretupsTA/scripts/GUI/testscripts/User_Management/UserManagement_Common.sah&amp;n=172">_click(_link("View operator user"))</span><span class="extra">
+								[141 ms] [10:42:14.988]
+							</span>
+<div id="harInfo65" style="display:none"></div>
+</div>
+<div class="INFO">
+<div id="networkActivityLink66" class="networkActivity" onclick="showHideNetworkActivity(this, 'UserManagement_CreateNA_firefox__11Feb2014__10_41_44_142', '66')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/PretupsTA/scripts/GUI/testscripts/User_Management/UserManagement_Common.sah&amp;n=173">_setSelected(_select("categoryCode"), "Network Admin")</span><span class="extra">
+								[813 ms] [10:42:15.801]
+							</span>
+<div id="harInfo66" style="display:none"></div>
+</div>
+<div class="INFO">
+<div id="networkActivityLink67" class="networkActivity" onclick="showHideNetworkActivity(this, 'UserManagement_CreateNA_firefox__11Feb2014__10_41_44_142', '67')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/PretupsTA/scripts/GUI/testscripts/User_Management/UserManagement_Common.sah&amp;n=174">_setValue(_textbox("userName"), "AUTNA1102104159")</span><span class="extra">
+								[172 ms] [10:42:15.973]
+							</span>
+<div id="harInfo67" style="display:none"></div>
+</div>
+<div class="CUSTOM1">
+<div id="networkActivityLink67" class="networkActivity" onclick="showHideNetworkActivity(this, 'UserManagement_CreateNA_firefox__11Feb2014__10_41_44_142', '67')" title="Show Network Activity">Show Network Activity</div>[ReferenceError: event is not defined (http://172.16.1.121:9922/pretups/jsp/common/popcalendar.js:703), ReferenceError: event is not defined (http://172.16.1.121:9922/pretups/jsp/common/popcalendar.js:703), ReferenceError: event is not defined (http://172.16.1.121:9922/pretups/jsp/common/popcalendar.js:703), ReferenceError: event is not defined (http://172.16.1.121:9922/pretups/jsp/common/popcalendar.js:703), ReferenceError: event is not defined (http://172.16.1.121:9922/pretups/jsp/common/popcalendar.js:703), ReferenceError: event is not defined (http://172.16.1.121:9922/pretups/jsp/common/popcalendar.js:703), ReferenceError: event is not defined (http://172.16.1.121:9922/pretups/jsp/common/popcalendar.js:703), ReferenceError: event is not defined (http://172.16.1.121:9922/pretups/jsp/common/popcalendar.js:703), ReferenceError: event is not defined (http://172.16.1.121:9922/pretups/jsp/common/popcalendar.js:703), ReferenceError: event is not defined (http://172.16.1.121:9922/pretups/jsp/common/popcalendar.js:703), ReferenceError: event is not defined (http://172.16.1.121:9922/pretups/jsp/common/popcalendar.js:703), ReferenceError: event is not defined (http://172.16.1.121:9922/pretups/jsp/common/popcalendar.js:703), ReferenceError: event is not defined (http://172.16.1.121:9922/pretups/jsp/common/popcalendar.js:703), ReferenceError: event is not defined (http://172.16.1.121:9922/pretups/jsp/common/popcalendar.js:703), ReferenceError: event is not defined (http://172.16.1.121:9922/pretups/jsp/common/popcalendar.js:703)]<span class="extra">
+								[110 ms] [10:42:16.083]
+							</span>
+<div id="harInfo67" style="display:none"></div>
+</div>
+<div class="INFO">
+<div id="networkActivityLink68" class="networkActivity" onclick="showHideNetworkActivity(this, 'UserManagement_CreateNA_firefox__11Feb2014__10_41_44_142', '68')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/PretupsTA/scripts/GUI/testscripts/User_Management/UserManagement_Common.sah&amp;n=175">_click(_submit("Submit"))</span><span class="extra">
+								[1 ms] [10:42:16.084]
+							</span>
+<div id="harInfo68" style="display:none"></div>
+</div>
+<div class="SUCCESS">
+<div id="networkActivityLink69" class="networkActivity" onclick="showHideNetworkActivity(this, 'UserManagement_CreateNA_firefox__11Feb2014__10_41_44_142', '69')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/PretupsTA/scripts/GUI/testscripts/User_Management/UserManagement_Common.sah&amp;n=176">_assertExists(_cell("User name :", _near(_cell("AUTNA1102104159"))))</span><span class="extra">
+								[1015 ms] [10:42:17.099]
+							</span>
+<div id="harInfo69" style="display:none"></div>
+</div>
+<div class="INFO">
+<div id="networkActivityLink70" class="networkActivity" onclick="showHideNetworkActivity(this, 'UserManagement_CreateNA_firefox__11Feb2014__10_41_44_142', '70')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/PretupsTA/scripts/GUI/testscripts/User_Management/UserManagement_Common.sah&amp;n=177">_click(_link("Logout"))</span><span class="extra">
+								[126 ms] [10:42:17.225]
+							</span>
+<div id="harInfo70" style="display:none"></div>
+</div>
+					
+					</div></div>
+					
+					
+					
+					</div></div>
+					
+					
+						
+							<div class="GROUP">
+				 		
+				 		<div class="GROUP_LABEL">[CEGTA0004] Given an application when newly created network admin logs into the application for the first time then successfully change the password.</div>
+						
+						<div class="GROUP_INNER">
+						
+						
+						
+							<div class="GROUP">
+				 		
+				 		<div class="GROUP_LABEL">[+] changeOldPasswordToNew("AUTNA1102104159")</div>
+						
+						<div class="GROUP_INNER">
+						
+						
+						
+							<div class="GROUP">
+				 		
+				 		<div class="GROUP_LABEL">[+] login("http://172.16.1.121:9922/pretups", "English", "AUTNA1102104159", "Com@123", "Change password")</div>
+						
+						<div class="GROUP_INNER">
+						
+						<div class="INFO">
+<div id="networkActivityLink71" class="networkActivity" onclick="showHideNetworkActivity(this, 'UserManagement_CreateNA_firefox__11Feb2014__10_41_44_142', '71')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/PretupsTA/scripts/GUI/testscripts/Login/Login_Common.sah&amp;n=23">_navigateTo("http://172.16.1.121:9922/pretups")</span><span class="extra">
+								[48 ms] [10:42:17.356]
+							</span>
+<div id="harInfo71" style="display:none"></div>
+</div>
+<div class="INFO">
+<div id="networkActivityLink72" class="networkActivity" onclick="showHideNetworkActivity(this, 'UserManagement_CreateNA_firefox__11Feb2014__10_41_44_142', '72')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/PretupsTA/scripts/GUI/testscripts/Login/Login_Common.sah&amp;n=24">_setSelected(_select("language"), "English")</span><span class="extra">
+								[828 ms] [10:42:18.184]
+							</span>
+<div id="harInfo72" style="display:none"></div>
+</div>
+<div class="INFO">
+<div id="networkActivityLink73" class="networkActivity" onclick="showHideNetworkActivity(this, 'UserManagement_CreateNA_firefox__11Feb2014__10_41_44_142', '73')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/PretupsTA/scripts/GUI/testscripts/Login/Login_Common.sah&amp;n=25">_setValue(_textbox("loginID"), "AUTNA1102104159")</span><span class="extra">
+								[172 ms] [10:42:18.356]
+							</span>
+<div id="harInfo73" style="display:none"></div>
+</div>
+<div class="CUSTOM1">
+<div id="networkActivityLink73" class="networkActivity" onclick="showHideNetworkActivity(this, 'UserManagement_CreateNA_firefox__11Feb2014__10_41_44_142', '73')" title="Show Network Activity">Show Network Activity</div>[ReferenceError: event is not defined (http://172.16.1.121:9922/pretups/jsp/common/popcalendar.js:703), ReferenceError: event is not defined (http://172.16.1.121:9922/pretups/jsp/common/popcalendar.js:703), ReferenceError: event is not defined (http://172.16.1.121:9922/pretups/jsp/common/popcalendar.js:703), ReferenceError: event is not defined (http://172.16.1.121:9922/pretups/jsp/common/popcalendar.js:703), ReferenceError: event is not defined (http://172.16.1.121:9922/pretups/jsp/common/popcalendar.js:703), ReferenceError: event is not defined (http://172.16.1.121:9922/pretups/jsp/common/popcalendar.js:703), ReferenceError: event is not defined (http://172.16.1.121:9922/pretups/jsp/common/popcalendar.js:703), ReferenceError: event is not defined (http://172.16.1.121:9922/pretups/jsp/common/popcalendar.js:703), ReferenceError: event is not defined (http://172.16.1.121:9922/pretups/jsp/common/popcalendar.js:703), ReferenceError: event is not defined (http://172.16.1.121:9922/pretups/jsp/common/popcalendar.js:703), ReferenceError: event is not defined (http://172.16.1.121:9922/pretups/jsp/common/popcalendar.js:703), ReferenceError: event is not defined (http://172.16.1.121:9922/pretups/jsp/common/popcalendar.js:703), ReferenceError: event is not defined (http://172.16.1.121:9922/pretups/jsp/common/popcalendar.js:703), ReferenceError: event is not defined (http://172.16.1.121:9922/pretups/jsp/common/popcalendar.js:703), ReferenceError: event is not defined (http://172.16.1.121:9922/pretups/jsp/common/popcalendar.js:703)]<span class="extra">
+								[79 ms] [10:42:18.435]
+							</span>
+<div id="harInfo73" style="display:none"></div>
+</div>
+<div class="INFO">
+<div id="networkActivityLink74" class="networkActivity" onclick="showHideNetworkActivity(this, 'UserManagement_CreateNA_firefox__11Feb2014__10_41_44_142', '74')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/PretupsTA/scripts/GUI/testscripts/Login/Login_Common.sah&amp;n=26">_setValue(_password("password"), "Com@123")</span><span class="extra">
+								[64 ms] [10:42:18.499]
+							</span>
+<div id="harInfo74" style="display:none"></div>
+</div>
+<div class="CUSTOM1">
+<div id="networkActivityLink74" class="networkActivity" onclick="showHideNetworkActivity(this, 'UserManagement_CreateNA_firefox__11Feb2014__10_41_44_142', '74')" title="Show Network Activity">Show Network Activity</div>[ReferenceError: event is not defined (http://172.16.1.121:9922/pretups/jsp/common/popcalendar.js:703), ReferenceError: event is not defined (http://172.16.1.121:9922/pretups/jsp/common/popcalendar.js:703), ReferenceError: event is not defined (http://172.16.1.121:9922/pretups/jsp/common/popcalendar.js:703), ReferenceError: event is not defined (http://172.16.1.121:9922/pretups/jsp/common/popcalendar.js:703), ReferenceError: event is not defined (http://172.16.1.121:9922/pretups/jsp/common/popcalendar.js:703), ReferenceError: event is not defined (http://172.16.1.121:9922/pretups/jsp/common/popcalendar.js:703), ReferenceError: event is not defined (http://172.16.1.121:9922/pretups/jsp/common/popcalendar.js:703)]<span class="extra">
+								[63 ms] [10:42:18.562]
+							</span>
+<div id="harInfo74" style="display:none"></div>
+</div>
+<div class="INFO">
+<div id="networkActivityLink75" class="networkActivity" onclick="showHideNetworkActivity(this, 'UserManagement_CreateNA_firefox__11Feb2014__10_41_44_142', '75')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/PretupsTA/scripts/GUI/testscripts/Login/Login_Common.sah&amp;n=27">_click(_submit("Login"))</span><span class="extra">
+								[64 ms] [10:42:18.626]
+							</span>
+<div id="harInfo75" style="display:none"></div>
+</div><!--SAHI_TESTCASE_FAIL_MARKER-->
+						
+							<div class="GROUP">
+				 		
+				 		<div class="GROUP_LABEL">[+] onScriptError([object])</div>
+						
+						<div class="GROUP_INNER">
+						
+						<div class="INFO">
+<div id="networkActivityLink77" class="networkActivity" onclick="showHideNetworkActivity(this, 'UserManagement_CreateNA_firefox__11Feb2014__10_41_44_142', '77')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/PretupsTA/utility/Screenshot.sah&amp;n=16">_call(window.resizeTo(2280, 2024))</span><span class="extra">
+								[79 ms] [10:42:29.096]
+							</span>
+<div id="harInfo77" style="display:none"></div>
+</div>
+<div class="INFO">
+<div id="networkActivityLink80" class="networkActivity" onclick="showHideNetworkActivity(this, 'UserManagement_CreateNA_firefox__11Feb2014__10_41_44_142', '80')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/PretupsTA/utility/Screenshot.sah&amp;n=17">_focusWindow()</span><span class="extra">
+								[1171 ms] [10:42:30.267]
+							</span>
+<div id="harInfo80" style="display:none"></div>
+</div>
+<div class="INFO">
+<div id="networkActivityLink81" class="networkActivity" onclick="showHideNetworkActivity(this, 'UserManagement_CreateNA_firefox__11Feb2014__10_41_44_142', '81')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/PretupsTA/utility/Screenshot.sah&amp;n=18">_takeScreenShot()</span><span class="extra">
+								[1 ms] [10:42:30.268]
+							</span><a href="/_s_/dyn/Log_viewLogs/images/UserManagement_CreateNA_firefox__11Feb2014__10_41_44_142_81.jpg" style="margin:0px;padding:0px" target="_blank"><img style="margin-top:15px;margin-bottom:30px;display:block;" src="/_s_/dyn/Log_viewLogs/images/UserManagement_CreateNA_firefox__11Feb2014__10_41_44_142_81.jpg" height="337"></a>
+<div id="harInfo81" style="display:none"></div>
+</div>
+					
+					</div></div>
+					
+					<div class="SUCCESS">
+<div id="networkActivityLink82" class="networkActivity" onclick="showHideNetworkActivity(this, 'UserManagement_CreateNA_firefox__11Feb2014__10_41_44_142', '82')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/PretupsTA/scripts/GUI/testscripts/Login/Login_Common.sah&amp;n=31">_assertExists(_span("/" + "Change password" + ".*/"))</span><span class="extra">
+								[48 ms] [10:42:30.442]
+							</span>
+<div id="harInfo82" style="display:none"></div>
+</div>
+					
+					</div></div>
+					
+					<div class="INFO">
+<div id="networkActivityLink83" class="networkActivity" onclick="showHideNetworkActivity(this, 'UserManagement_CreateNA_firefox__11Feb2014__10_41_44_142', '83')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/PretupsTA/scripts/GUI/testscripts/User_Management/UserManagement_Common.sah&amp;n=187">_setValue(_password("oldPassword"), "Com@123")</span><span class="extra">
+								[141 ms] [10:42:30.662]
+							</span>
+<div id="harInfo83" style="display:none"></div>
+</div>
+<div class="CUSTOM1">
+<div id="networkActivityLink83" class="networkActivity" onclick="showHideNetworkActivity(this, 'UserManagement_CreateNA_firefox__11Feb2014__10_41_44_142', '83')" title="Show Network Activity">Show Network Activity</div>[ReferenceError: event is not defined (http://172.16.1.121:9922/pretups/jsp/common/popcalendar.js:703), ReferenceError: event is not defined (http://172.16.1.121:9922/pretups/jsp/common/popcalendar.js:703), ReferenceError: event is not defined (http://172.16.1.121:9922/pretups/jsp/common/popcalendar.js:703), ReferenceError: event is not defined (http://172.16.1.121:9922/pretups/jsp/common/popcalendar.js:703), ReferenceError: event is not defined (http://172.16.1.121:9922/pretups/jsp/common/popcalendar.js:703), ReferenceError: event is not defined (http://172.16.1.121:9922/pretups/jsp/common/popcalendar.js:703), ReferenceError: event is not defined (http://172.16.1.121:9922/pretups/jsp/common/popcalendar.js:703)]<span class="extra">
+								[95 ms] [10:42:30.757]
+							</span>
+<div id="harInfo83" style="display:none"></div>
+</div>
+<div class="INFO">
+<div id="networkActivityLink84" class="networkActivity" onclick="showHideNetworkActivity(this, 'UserManagement_CreateNA_firefox__11Feb2014__10_41_44_142', '84')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/PretupsTA/scripts/GUI/testscripts/User_Management/UserManagement_Common.sah&amp;n=188">_setValue(_password("newPassword"), "Com@1357")</span><span class="extra">
+								[63 ms] [10:42:30.820]
+							</span>
+<div id="harInfo84" style="display:none"></div>
+</div>
+<div class="CUSTOM1">
+<div id="networkActivityLink84" class="networkActivity" onclick="showHideNetworkActivity(this, 'UserManagement_CreateNA_firefox__11Feb2014__10_41_44_142', '84')" title="Show Network Activity">Show Network Activity</div>[ReferenceError: event is not defined (http://172.16.1.121:9922/pretups/jsp/common/popcalendar.js:703), ReferenceError: event is not defined (http://172.16.1.121:9922/pretups/jsp/common/popcalendar.js:703), ReferenceError: event is not defined (http://172.16.1.121:9922/pretups/jsp/common/popcalendar.js:703), ReferenceError: event is not defined (http://172.16.1.121:9922/pretups/jsp/common/popcalendar.js:703), ReferenceError: event is not defined (http://172.16.1.121:9922/pretups/jsp/common/popcalendar.js:703), ReferenceError: event is not defined (http://172.16.1.121:9922/pretups/jsp/common/popcalendar.js:703), ReferenceError: event is not defined (http://172.16.1.121:9922/pretups/jsp/common/popcalendar.js:703), ReferenceError: event is not defined (http://172.16.1.121:9922/pretups/jsp/common/popcalendar.js:703)]<span class="extra">
+								[64 ms] [10:42:30.884]
+							</span>
+<div id="harInfo84" style="display:none"></div>
+</div>
+<div class="INFO">
+<div id="networkActivityLink85" class="networkActivity" onclick="showHideNetworkActivity(this, 'UserManagement_CreateNA_firefox__11Feb2014__10_41_44_142', '85')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/PretupsTA/scripts/GUI/testscripts/User_Management/UserManagement_Common.sah&amp;n=189">_setValue(_password("confirmNewPassword"), "Com@1357")</span><span class="extra">
+								[94 ms] [10:42:30.978]
+							</span>
+<div id="harInfo85" style="display:none"></div>
+</div>
+<div class="CUSTOM1">
+<div id="networkActivityLink85" class="networkActivity" onclick="showHideNetworkActivity(this, 'UserManagement_CreateNA_firefox__11Feb2014__10_41_44_142', '85')" title="Show Network Activity">Show Network Activity</div>[ReferenceError: event is not defined (http://172.16.1.121:9922/pretups/jsp/common/popcalendar.js:703), ReferenceError: event is not defined (http://172.16.1.121:9922/pretups/jsp/common/popcalendar.js:703), ReferenceError: event is not defined (http://172.16.1.121:9922/pretups/jsp/common/popcalendar.js:703), ReferenceError: event is not defined (http://172.16.1.121:9922/pretups/jsp/common/popcalendar.js:703), ReferenceError: event is not defined (http://172.16.1.121:9922/pretups/jsp/common/popcalendar.js:703), ReferenceError: event is not defined (http://172.16.1.121:9922/pretups/jsp/common/popcalendar.js:703), ReferenceError: event is not defined (http://172.16.1.121:9922/pretups/jsp/common/popcalendar.js:703), ReferenceError: event is not defined (http://172.16.1.121:9922/pretups/jsp/common/popcalendar.js:703)]<span class="extra">
+								[17 ms] [10:42:30.995]
+							</span>
+<div id="harInfo85" style="display:none"></div>
+</div>
+<div class="INFO">
+<div id="networkActivityLink86" class="networkActivity" onclick="showHideNetworkActivity(this, 'UserManagement_CreateNA_firefox__11Feb2014__10_41_44_142', '86')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/PretupsTA/scripts/GUI/testscripts/User_Management/UserManagement_Common.sah&amp;n=190">_click(_submit("Submit"))</span><span class="extra">
+								[110 ms] [10:42:31.105]
+							</span>
+<div id="harInfo86" style="display:none"></div>
+</div>
+<div class="SUCCESS">
+<div id="networkActivityLink87" class="networkActivity" onclick="showHideNetworkActivity(this, 'UserManagement_CreateNA_firefox__11Feb2014__10_41_44_142', '87')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/PretupsTA/scripts/GUI/testscripts/User_Management/UserManagement_Common.sah&amp;n=191">_assertExists(_listItem("Successfully changed password"))</span><span class="extra">
+								[968 ms] [10:42:32.073]
+							</span>
+<div id="harInfo87" style="display:none"></div>
+</div>
+<div class="INFO">
+<div id="networkActivityLink88" class="networkActivity" onclick="showHideNetworkActivity(this, 'UserManagement_CreateNA_firefox__11Feb2014__10_41_44_142', '88')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/PretupsTA/scripts/GUI/testscripts/User_Management/UserManagement_Common.sah&amp;n=192">_click(_link("Logout"))</span><span class="extra">
+								[126 ms] [10:42:32.199]
+							</span>
+<div id="harInfo88" style="display:none"></div>
+</div>
+					
+					</div></div>
+					
+					
+					
+					</div></div>
+					
+					<div class="INFO">
+<div id="networkActivityLink89" class="networkActivity" onclick="showHideNetworkActivity(this, 'UserManagement_CreateNA_firefox__11Feb2014__10_41_44_142', '89')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/PretupsTA/scripts/GUI/testscripts/User_Management/UserManagement_Common.sah&amp;n=328">Thus the password of the Network Admin created is changed successfully</span><span class="extra">
+								[48 ms] [10:42:32.338]
+							</span>
+<div id="harInfo89" style="display:none"></div>
+</div>
+					
+					</div></div>
+					
+					<div class="CUSTOM4">
+<div id="networkActivityLink90" class="networkActivity" onclick="showHideNetworkActivity(this, 'UserManagement_CreateNA_firefox__11Feb2014__10_41_44_142', '90')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/PretupsTA/scripts/GUI/testscripts/User_Management/UserManagement_CreateNA.sah&amp;n=18">Tear Down</span><span class="extra">
+								[48 ms] [10:42:32.481]
+							</span>
+<div id="harInfo90" style="display:none"></div>
+</div>
+<div class="STOP">
+<a class="STOP">Stopping script</a>
+</div>
+<script type="text/javascript">
+		
+		var openedElement = new Array();
+		var cookieHashMap = {};
+		function hideImage(i){i.style.display='none';}
+        var divs = document.getElementsByTagName('DIV'); 
+        for (var i=0; i<divs.length; i++){
+        	var d = divs[i]; 
+        	if (d.className == 'GROUP') { attachFn(d); markStatus(d);} 
+        }
+        function attachFn(d){ d.getElementsByTagName('DIV')[0].onclick = function () {showHideDiv(d);}	} 
+        function getInnerDiv(d){var els = d.getElementsByTagName('DIV'); for (var i=0; i<els.length;i++) {if (els[i].className == 'GROUP_INNER') return els[i];}}
+        function showHideDiv(groupDiv){
+        	var stepsDiv = getInnerDiv(groupDiv);
+        	var els = document.getElementsByTagName('DIV');
+        	for(var i = 0; i < els.length; i++){
+        		if (els[i] == stepsDiv){
+        			if(stepsDiv.style.display == 'block'){
+        				removeFromCookieArray(i);
+        				stepsDiv.style.display = 'none';
+        				changeIconToPlus(groupDiv);
+        				break;
+        			}else{
+        				stepsDiv.style.display = 'block';
+        				addToCookieArray(i);
+        				changeIconToMinus(groupDiv);
+        				break;
+        			}
+        		}	
+        	}
+        }; 
+        
+        function changeIconToMinus(groupDiv){
+        	if(groupDiv.className.indexOf("GROUP_LABEL") == 0){
+        		if(groupDiv.innerHTML.indexOf("[+]" == 0)){
+        			groupDiv.innerHTML = groupDiv.innerHTML.replace("[+]", "[-]");
+        		}
+        	}
+        	else{
+        		var div = getGroupLabelDiv(groupDiv);
+        		if(div){
+        			div.innerHTML = div.innerHTML.replace("[+]", "[-]");
+        		}
+        	}
+        }
+        
+        function changeIconToPlus(groupDiv){
+        	if(groupDiv.className.indexOf("GROUP_LABEL") == 0){
+        		if(groupDiv.innerHTML.indexOf("[-]" == 0)){
+        			groupDiv.innerHTML = groupDiv.innerHTML.replace("[-]", "[+]");
+        		}
+        	}
+        	else{
+        		var div = getGroupLabelDiv(groupDiv);
+        		if(div){
+        			div.innerHTML = div.innerHTML.replace("[-]", "[+]");
+        		}
+        	}
+        }
+        
+        function getGroupLabelDiv(groupDiv){
+        	var div = groupDiv.getElementsByTagName("DIV");
+        	for(var i=0;i<div.length;i++){
+        		if(div[i].className.indexOf("GROUP_LABEL") == 0){
+        			return div[i];
+        		}
+        	}
+        }
+        
+        function showHideNetworkActivity(el, scriptId, stepId){
+        	if(document.getElementById('harInfo' + stepId).innerHTML == ""){
+        		var html = "<iframe onload=\"setAutoHeight('harIFrame" + stepId +"')\" id=\"harIFrame" + stepId +"\" src=\"/_s_/dyn/pro/HARViewer_viewHARLogs?scriptReportId=" + scriptId + "&stepId=" + stepId + "\" style=\"width:100%;\"  frameborder=\"0\" />";
+        		document.getElementById('harInfo' + stepId).innerHTML = html;
+        	}
+        	var plus = "Show Network Activity";
+        	var minus = "Hide Network Activity";
+        	if(el.innerHTML == plus){
+        		el.innerHTML = minus;
+        		document.getElementById('harInfo' + stepId).style.display = "block";
+        	} else {
+        		el.innerHTML = plus;
+        		document.getElementById('harInfo' + stepId).style.display = "none";
+        	}
+        }
+        
+        function expandAll(isExcel){
+	        if(isExcel == "true"){
+	        	ignoregroup_showHideAll(true);
+	        }
+	        else{
+	        	var allDiv = document.getElementsByTagName('DIV');
+	        	for(var i=0; i<allDiv.length; i++){
+	        		if(allDiv[i].className == "GROUP_INNER"){
+	        			allDiv[i].style.display = "block";
+	        			addToCookieArray(i);
+	        			var iconDiv = allDiv[i].parentNode.children[0];
+						if(iconDiv.className.indexOf("GROUP_LABEL") == 0){
+							iconDiv.innerHTML = iconDiv.innerHTML.replace("[+]", "[-]");
+						}
+	        		}
+	        	}
+	        }
+        }
+        
+        function collapseAll(isExcel){
+        	if(isExcel == "true"){
+	        	ignoregroup_showHideAll(false);
+	        }
+	        else{
+	        	var allDiv = document.getElementsByTagName('DIV');
+	        	for(var i=0; i<allDiv.length; i++){
+	        		if(allDiv[i].className == "GROUP_INNER"){
+	        			allDiv[i].style.display = "none";
+	        			removeFromCookieArray(i);
+	        			var iconDiv = allDiv[i].parentNode.children[0];
+						if(iconDiv.className.indexOf("GROUP_LABEL") == 0){
+							iconDiv.innerHTML = iconDiv.innerHTML.replace("[-]", "[+]");
+						}
+	        		}
+	        	}
+	        }
+        }
+        
+        function setNetworkActivityLinks(){
+			var xmlhttp;
+			if (window.XMLHttpRequest){ // code for IE7+, Firefox, Chrome, Opera, Safari
+				xmlhttp=new XMLHttpRequest();
+			} else {// code for IE6, IE5
+				xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+  			}
+  			xmlhttp.onreadystatechange = function() {
+				if (this.readyState==4 && this.status==200) {
+			    	var steps = xmlhttp.responseText;
+			    	steps = steps.substring(1,steps.lastIndexOf("]"));
+			    	steps = steps.split(", ");
+			    	for(i = 0; i < steps.length; i++){
+			    		try{
+			    			document.getElementById('networkActivityLink' + steps[i]).style.display = 'block';
+			    		}catch(err){
+			    		}
+			    	}
+			    }
+			}
+  			xmlhttp.open("GET","/_s_/dyn/pro/HARViewer_getStepsWithNetworkActivity?scriptReportId=" + scriptReportID ,true);
+			xmlhttp.send();
+		}
+        function setAutoHeight(id){
+        	return;
+			var newheight;
+			if(document.getElementById(id)){
+				newheight=document.getElementById(id).contentWindow.document.body.scrollHeight;
+			}
+			document.getElementById(id).style.height= (newheight) + "px";
+		}
+		
+		
+        
+		function markStatus(d) {d.getElementsByTagName('DIV')[0].className += (d.innerHTML.indexOf('<!--SAHI_TESTCASE_FAIL_MARKER-->') == -1) ? ' SUCCESS' : ' FAILURE'};
+		function addToCookieArray(element){
+			openedElement.push(element)
+		}
+		function removeFromCookieArray(element){
+			removeByValue(openedElement,element)
+		}
+		function removeByValue(arr, val) {
+			for ( var i = 0; i < arr.length; i++) {
+				if (arr[i] == val) {
+					arr.splice(i, 1);
+					break;
+				}
+			}
+		}
+		function onLoad(){
+			var cookieValue = readCookie("OpenedElement");
+			if(cookieValue){
+				cookieHashMap = eval("("+cookieValue+")");
+				openedElement=cookieHashMap[scriptReportID];
+				if (!openedElement) openedElement = [];
+				delete cookieHashMap[scriptReportID];
+				var els = document.getElementsByTagName('DIV');
+				for(var i = 0; i < openedElement.length; i++){
+					els[openedElement[i]].style.display = 'block';
+					var iconDiv = els[openedElement[i]].parentNode.children[0];
+					if(iconDiv.className.indexOf("GROUP_LABEL") == 0){
+						iconDiv.innerHTML = iconDiv.innerHTML.replace("[+]", "[-]");
+					}
+        		}
+			}
+			setNetworkActivityLinks();
+		}
+		function onUnload(){
+			var count = 0;
+			var firstElement;
+			for(firstElement in cookieHashMap){
+				break;
+			}
+			for(var j in cookieHashMap){
+				count++;
+			}
+			if(count == 10){
+				delete cookieHashMap[firstElement];
+			}
+			cookieHashMap[scriptReportID] = openedElement;
+			var cookieValue = getJSON(cookieHashMap);
+			createCookie("OpenedElement", cookieValue, 1);
+		}
+		function getJSON(o) {
+			var s = "{";
+			for (var i in o) {
+				s += "'" + i + "':[" + o[i] + "],"
+			}
+			s += "}";
+			return s;
+		}
+		function createCookie(name,value,days)
+		{
+			if (days) {
+				var date = new Date();
+				date.setTime(date.getTime()+(days*24*60*60*1000));
+				var expires = "; expires="+date.toGMTString();
+			}
+			else var expires = "";
+			document.cookie = name+"="+value+expires+"; path=/";
+		}
+		
+		function readCookie(name)
+		{
+			var nameEQ = name + "=";
+			var ca = document.cookie.split(';');
+			for(var i=0;i < ca.length;i++)
+			{
+				var c = ca[i];
+				c = c.replace(/[,][}]$/,'}');
+				while (c.charAt(0)==' ') c = c.substring(1,c.length);
+				if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+			}
+			return null;
+		}
+		function fixImagePaths(){
+			if (location.href.indexOf("_s_") != -1) return;
+			var imgs = document.getElementsByTagName('IMG'); 
+	        for (var i=0; i<imgs.length; i++){
+	        	var img = imgs[i]; 	        	
+ 				if (img.src.indexOf("Log_viewLogs/images") != -1) {
+ 					img.src = makeRelative(img.src);
+ 					if (img.parentNode.tagName.toLowerCase() == "a") {
+ 						img.parentNode.href = makeRelative(img.parentNode.href);
+ 					}
+ 				}
+	        }
+		}
+		function makeRelative(s){
+			var ix = s.indexOf("/images/"); 
+			if (ix != -1) {
+				s = s.substring(ix+1);
+			}
+			return s;
+		}
+		fixImagePaths();
+        
+        </script>
+</div>
+<style>div.GROUP_LABEL {display:block;}</style>
+</body>
+</html>

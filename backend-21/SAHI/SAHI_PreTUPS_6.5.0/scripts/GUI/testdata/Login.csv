@@ -1,0 +1,2 @@
+Login Details,Test Case No,Test Case Decsription
+Login ,CEGTA0001,Given an application with valid credentials when a user logs into the application then the user should be able to login into the application

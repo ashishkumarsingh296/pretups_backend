@@ -1,0 +1,2 @@
+TestcaseId,TestcaseType,Module,Description
+TUNG13126,Positive,Channel to Channel Transfer through USSD,"To verify that value in the Type field of ""C2C transfer"" success Reponse."

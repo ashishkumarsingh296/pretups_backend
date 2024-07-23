@@ -1,0 +1,75 @@
+//#######################################
+//
+// This script is to add negative cases while try to modify keyword
+//
+//
+//#######################################
+
+
+
+_includeOnce("../../../../utility/ImportPackage.sah");
+_includeOnce("ServiceKeyword_Common_Negative.sah"); //For adding C2S card group	
+
+
+//====Login into Application====
+login($g_appURL, $g_LangEnglish, $g_superAdmin, $g_password, $g_assertMessage); //calls the Login function in Login.sah with the parameters(url, language, username, password, assertion)
+
+
+
+//===============Add New Service Keyword ===============================//
+
+
+var $g_keywordDetails = _readCSVFile("../../negative_testdata/ModifyServiceKeyword_NegativeCases.csv");
+
+	for(var $g_row = 1; $g_keywordDetails[$g_row] != null; $g_row++){
+		//	for(var $g_row = 33; $g_row != 38; $g_row++){
+			var $g_col = 0;
+			var $t = _testcase($g_keywordDetails[$g_row][$g_col++], $g_keywordDetails[$g_row][$g_col++]);
+			$t.start();
+			commonVaribleToModifyServiceKeyword($g_row, $g_col);
+			modifyServiceKeyword();
+			_assertExists(_listItem("/" + $g_assertion + ".*/"));
+			
+			
+			if(_exists(_listItem("/"+$g_assertion+".*/")) == false)
+				_log("Test Case failed");
+			$t.end();
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

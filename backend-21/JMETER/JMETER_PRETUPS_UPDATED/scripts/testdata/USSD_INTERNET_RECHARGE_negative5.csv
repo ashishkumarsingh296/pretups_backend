@@ -1,0 +1,2 @@
+TestcaseId,TestcaseType,Module,Description
+TUNG13152,Negative,Internet Recharge through USSD,To check that an unsucessful recharge happens when notification msisdn is not enterd

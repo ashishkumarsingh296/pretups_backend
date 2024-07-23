@@ -1,0 +1,19 @@
+Test Case No,Test Case Decsription,Service Name,Product Name,Product Code,Subscriber Type,Reciever Type,Status,Assertion
+TEST001,verify that sender receiver and stauts type got populated in the drop down,Add Buddy,,,,,,
+TEST002,Verify that network admin can add service product in the system ,Add Buddy,,,Prepaid Subscriber,Prepaid Subscriber,Active,Service product mapping for service Promo VAS Recharge added successfully
+TEST003,Verify that while going to add service product in the system product name is required ,Add Buddy,,TESTCODE,Prepaid Subscriber,Prepaid Subscriber,Active,Product name is required.
+TEST004,Verify that while going to add service product in the system code name is required ,Add Buddy,TESTNAME,,Prepaid Subscriber,Prepaid Subscriber,Active,Product code is required.
+TEST005,Verify that while going to add service product in the system status name is required ,Add Buddy,TESTNAME,TESTCODE,,Prepaid Subscriber,Active,Sender subscriber type is required.
+TEST006,Verify the functionality of back button on add service type product mapping page,Add Buddy,TESTNAME,TESTCODE,Prepaid Subscriber,Prepaid Subscriber,,Status is required.
+TEST007,Verify that product code should be only alphanumeric ,Add Buddy,TESTNAME,TESTCO&^,Prepaid Subscriber,Prepaid Subscriber,Active,Please enter product code in alphanumeric format
+TEST008,Try to submit a multiword product code in the system ,Add Buddy,TESTNAME,TEST CODE,Prepaid Subscriber,Prepaid Subscriber,Active,Please enter product code in alphanumeric format
+TEST009,Verify the functionality of reset button on add service type product mapping page,Add Buddy,NAME ,CODE,,,,
+TEST010,Verify that product name should be unique in the system while adding service product,Add Buddy,,,Prepaid Subscriber,Prepaid Subscriber,Active,Product name or product code already exists
+TEST011,Verify that product code should be unique in the system while adding service product,Add Buddy,,,Prepaid Subscriber,Prepaid Subscriber,Active,Product name or product code already exists
+TEST012,Verify that network admin can view the newly added service product in the system,Add Buddy,,,,,,
+TEST013,Veriry that nw admin cant add serivce product without entering service name,Add Buddy,,,,,,Service name is required.
+TEST014,Verify the functioanlity of back button on while modifying service product,,,,,,,
+TEST015,Veirfy the functionality of reset button on reset button while modifying service product,,,,,,,
+TEST016,Verify the functioanlity of back button on confirm page while modifying service product,,,,,,,
+TEST017,Verify that network admin can modify the service product in the system ,,,,,,,
+TEST018,Verify that network admin can delete service product in the system ,,,,,,,

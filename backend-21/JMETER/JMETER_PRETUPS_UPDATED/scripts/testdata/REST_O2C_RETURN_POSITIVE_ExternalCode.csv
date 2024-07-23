@@ -1,0 +1,2 @@
+TestcaseId,TestcaseType,Module,Description
+TUNG13041,Positive,O2C return through EXTCODE,To verify that Channel Users can Return TopUp Credits to their Operators by entering External code

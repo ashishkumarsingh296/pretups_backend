@@ -1,0 +1,2 @@
+TestcaseId,TestcaseType,Module,Description
+TUNG12722 ,Negative,Lite Recharge through EXTGW,User is barred as sender and performing the txn

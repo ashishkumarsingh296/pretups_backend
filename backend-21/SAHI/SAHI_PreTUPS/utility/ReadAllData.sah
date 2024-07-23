@@ -1,0 +1,56 @@
+//################################################
+//#Company Name: Mahindra Comviva Technologies Ltd.
+//#Application Name: Pretups
+//#Objective: It reads All Data such as Buttons, Common Links etc.
+//#Author Name: Nidhi Singh
+//#Created Date: 18/01/2014
+//###############################################
+
+var $g_MasterData = _readCSVFile("../conf/MasterData.csv");
+
+var $l_row = 1;
+var $l_col = 0;
+
+//Read Language
+var $g_LangEnglish = $g_MasterData[$l_row++][$l_col]; //Select the preferred language.
+var $g_LangFrench = $g_MasterData[$l_row++][$l_col];
+
+
+//Read Buttons
+$l_col++;
+$l_row = 1;
+var $g_BtnLogin = $g_MasterData[$l_row++][$l_col]; //Button to Login
+var $g_BtnReset = $g_MasterData[$l_row++][$l_col]; //Button to Reset
+var $g_BtnClose = $g_MasterData[$l_row++][$l_col]; //Button to Close
+var $g_BtnReLogin = $g_MasterData[$l_row++][$l_col]; //Button to Re-Login
+var $g_BtnSubmit = $g_MasterData[$l_row++][$l_col]; //Button to Submit 
+var $g_BtnAdd = $g_MasterData[$l_row++][$l_col]; //Button to Add 
+var $g_BtnSave = $g_MasterData[$l_row++][$l_col]; //Button to Save
+var $g_BtnConfirm = $g_MasterData[$l_row++][$l_col]; //Button to Confirm
+var $g_BtnApprove = $g_MasterData[$l_row++][$l_col]; //Button to Approve
+var $g_BtnDelete = $g_MasterData[$l_row++][$l_col]; //Button to Delete
+var $g_BtnBack = $g_MasterData[$l_row++][$l_col]; //Back Button
+var $g_BtnViewDetails = $g_MasterData[$l_row++][$l_col]; //Button to view Details
+var $g_BtnView = $g_MasterData[$l_row++][$l_col]; //Button to view 
+
+
+//Read Links
+$l_col++;
+$l_row = 1;
+var $g_LinkLogout = $g_MasterData[$l_row++][$l_col]; //Link to Logout 
+var $g_LinkAssignGeo = $g_MasterData[$l_row++][$l_col]; //Link to assign Geo.
+var $g_LinkAssignRoles = $g_MasterData[$l_row++][$l_col];//Link to assign Roles
+var $g_LinkAssignDomains = $g_MasterData[$l_row++][$l_col];//Link to assign Domains
+var $g_LinkAssignProducts = $g_MasterData[$l_row++][$l_col];//Link to assign Products
+// shashi added 
+var $g_LinkAssignServices = $g_MasterData[$l_row++][$l_col];//Link to assign Services
+var $g_LinkAssignPhoneNumbers = $g_MasterData[$l_row++][$l_col];//Link to assign Phone Numbers
+
+
+//Read DropDown's Value
+$l_col++;
+$l_row = 1;
+var $g_CategoryNA = $g_MasterData[$l_row++][$l_col]; //Select NA from dropdown
+var $g_CategorySubSA = $g_MasterData[$l_row++][$l_col]; //Select SubSA from dropdown
+var $g_CategoryCA = $g_MasterData[$l_row++][$l_col]; //Select channel admin from drop down
+var $g_CategoryCC = $g_MasterData[$l_row++][$l_col]; //Select Customer care from drop down

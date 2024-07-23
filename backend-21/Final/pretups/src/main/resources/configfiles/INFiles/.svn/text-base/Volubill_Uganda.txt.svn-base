@@ -1,0 +1,164 @@
+###########################################################################################################
+#       Uganda Volubill IN file
+#       If IN interface of Volubill is added in PreTUPS from superadmin
+#       then.
+#       File with this content and name of the IN ID.txt should be created at
+#       the
+#       path of the INFiles (defined in Constants.props).
+#
+#       Values of the variables in this file should be updated with the values
+#       provided by the
+#       Mobile Operator IN team
+#
+############################################################################################################
+
+
+#WSSD File location
+WSDD_LOCATION=/pretupshome/tomcat5_smsr/webapps/pretups/WEB-INF/classes/configfiles/INFiles/client_deploy.wsdd
+
+#Read time out
+READ_TIMEOUT=10000
+
+#User Name
+USER_NAME=dev
+
+#Password
+PASSWORD=orange
+
+#Servant Type
+SERVANT_TYPE=
+
+#Service Provider Name
+#SERVICE_PROVIDER_NAME=Test
+SERVICE_PROVIDER_NAME=OUG production
+
+#Do Charge tag
+DO_CHARGE=true
+
+#Warn time out
+WARN_TIME=10000
+
+##Time duration after which interface suspension expires.
+EXPIRY_TIME=120000
+
+## Package name with their costs
+
+25000_1=IEW Bronze 1 month
+25000_2=Mobile Internet 500MB
+300000_1=IEW Bronze 12 month
+75000_1=IEW Bronze 3 month
+150000_1=IEW Bronze 6 month
+150000_2=IEW Platinum 1 month
+85000_1=IEW Gold 1 month
+950000_1=IEW Gold 12 month
+250000_1=IEW Gold 3 month
+250000_2=IEW Silver 6 month
+490000_1=IEW Gold 6 month
+1750000_1=IEW Platinum 12
+450000_1=IEW Platinum 3 month
+880000_1=IEW Platinum 6
+45000_1=IEW Silver 1 month
+45000_2=Mobile Internet 1GB
+45000_3=all-in-one monthly
+500000_1=IEW Silver 12 month
+130000_1=IEW Silver 3 month
+1000_1=Mobile Internet 10MB
+20000_1=Mobile Internet 350MB
+5000_1=Mobile Internet 70MB
+299000_1=Unlimited Internet 1 month
+3049000_1=Unlimited Internet 12 months
+859000_1=Unlimited Internet 3 months
+1619000_1=Unlimited Internet 6 months
+3000_1=all-in-one daily
+15000_1=all-in-one weekly
+
+
+## The Multiplication Factor by which the transaction amout during recharge to be multiplied before sending to IN.
+MULT_FACTOR=1
+
+##This flag is used to define whether rounding of amount should be or not.
+ROUND_FLAG=Y
+
+
+
+##Indicates whether Cancel request supported by IN or not.(Possible values are Y/N)
+CANCEL_TXN_ALLOWED=N
+
+
+##If an ambiguous case occurs while credit, mapped error code can be set to one of the codes(SUCCESS, FAIL and AMBIGUOUS)
+SYSTEM_STATUS_MAPPING_CREDIT=250:250
+
+##If an ambiguous case occurs while credit, mapped error code can be set to one of the codes(SUCCESS, FAIL and AMBIGUOUS)
+SYSTEM_STATUS_MAPPING_CREDIT_ADJ=250:250
+
+##Defines the mapping of Interface language with the pretups language
+LANGUAGE_MAPPING=0:1,1:0
+
+DEFAULT_LANG=0;
+
+#Currency for the transaction.
+CURRENCY=INR
+
+##keep alive flag for connection
+KEEP_ALIVE=N
+
+##If an ambiguous case occurs while debitAdjust, mapped error code cannot be SUCCESS. It can only be FAIL or AMBIGUOUS
+SYSTEM_STATUS_MAPPING_DEBIT_ADJ=250:250
+
+##If an ambiguous case occurs while credit Back, mapped error code can not be fail, it can only be SUCCESS or AMBIGOUOS
+SYSTEM_STATUS_MAPPING_CREDIT_BCK=250:250
+
+
+##If any ambiguous response is received from IN, check if cancel txn allowed or not in the system. if not, pick mapped error code against NA otherwise pick mapped error code (206/250) against received response code of Cancellation from IN.
+##CANCEL_COMMAND_STATUS_MAPPING=INErrCode1,INErrCode2,INErrCode3,INErrCode4:cancel_err_code1|INErrCode5,INErrCode6:cancel_err_code2
+##cancel_err_code1, cancel_err_code2 will be written in recon log file.
+CANCEL_COMMAND_STATUS_MAPPING=NA:450
+
+##Remark1 in Reconcialiationlog
+REMARK1=
+
+##Remark1 in Reconcialiationlog
+REMARK2=
+
+WARN_TIMEOUT=10000
+
+#Read time out for validation request.
+READ_TIMEOUT_VAL=5000
+
+#Read time out for credit request.
+READ_TIMEOUT_CREDIT=7000
+
+#Read time out for debit request.
+READ_TIMEOUT_DEBIT=7000
+
+THRESHOLD_TIME=1000
+EXPIRY_TIME=1000
+
+PROCESS_SLEEP_TIME=500
+
+##Defines the cancel command status when cancel not supported by IN.
+CANCEL_NA=NA
+
+CONNECT_TIME_OUT=3000
+READ_TIME_OUT=7000
+
+##keep alive flag for connection
+KEEP_ALIVE=N
+
+#End URL of the web service.
+#END_URL=http://172.19.69.231:8183/axis/services/DCPService
+END_URL=http://172.19.69.209:8183/axis/services/DCPService
+
+PW_CALLBACK=com.btsl.pretups.inter.uganda_webservices.PWCallback
+
+#Soap action URI
+SOAP_ACTION_URI=http://www.volubill.com/DCPPort
+
+#Prefix to be removed from the mobile number, leave blank if nothing is to be removed
+MSISDN_REMOVE_PREFIX=
+
+#Prefix to be added to the mobile number as prefix, leave blank if nothing is to be added as prefix
+MSISDN_ADD_PREFIX=256
+
+#Whether seperate bonus is allowed or not
+SEPERATE_BONUS_ALLOWED=N

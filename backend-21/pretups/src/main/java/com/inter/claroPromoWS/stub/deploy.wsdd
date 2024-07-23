@@ -1,0 +1,139 @@
+<!-- Use this file to deploy some handlers/chains and services      -->
+<!-- Two ways to do this:                                           -->
+<!--   java org.apache.axis.client.AdminClient deploy.wsdd          -->
+<!--      after the axis server is running                          -->
+<!-- or                                                             -->
+<!--   java org.apache.axis.utils.Admin client|server deploy.wsdd   -->
+<!--      from the same directory that the Axis engine runs         -->
+
+<deployment
+    xmlns="http://xml.apache.org/axis/wsdd/"
+    xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
+  <!-- Services from ebsEntregaPromocion WSDL service -->
+
+  <service name="ebsEntregaPromocionSB11" provider="java:RPC" style="document" use="literal">
+      <parameter name="wsdlTargetNamespace" value="http://claro.com.pe/eai/ebs/promocion/EntregaPromocion/ws"/>
+      <parameter name="wsdlServiceElement" value="ebsEntregaPromocion"/>
+      <parameter name="schemaQualified" value="http://claro.com.pe/eai/ebs/promocion/EntregaPromocion/ws"/>
+      <parameter name="wsdlServicePort" value="ebsEntregaPromocionSB11"/>
+      <parameter name="className" value="com.inter.claroPromoWS.stub.EbsEntregaPromocionSOAP11BindingImpl"/>
+      <parameter name="wsdlPortType" value="ebsEntregaPromocionPortType"/>
+      <parameter name="typeMappingVersion" value="1.2"/>
+      <operation name="entregarPromocion" qname="entregarPromocion" returnQName="retNS:entregaPromocionResponse" xmlns:retNS="http://claro.com.pe/eai/ebs/promocion/EntregaPromocion/ws" returnType="rtns:>entregaPromocionResponse" xmlns:rtns="http://claro.com.pe/eai/ebs/promocion/EntregaPromocion/ws" soapAction="http://claro.com.pe/eai/ebs/promocion/EntregaPromocion/ws/types/entregarPromocion" >
+        <parameter qname="pns:entregaPromocionRequest" xmlns:pns="http://claro.com.pe/eai/ebs/promocion/EntregaPromocion/ws" type="tns:>entregaPromocionRequest" xmlns:tns="http://claro.com.pe/eai/ebs/promocion/EntregaPromocion/ws"/>
+      </operation>
+      <parameter name="allowedMethods" value="entregarPromocion"/>
+
+      <typeMapping
+        xmlns:ns="http://claro.com.pe/eai/ebs/promocion/EntregaPromocion/ws"
+        qname="ns:dataAdicionalResp"
+        type="java:com.inter.claroPromoWS.stub.DataAdicionalResp"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://claro.com.pe/eai/ebs/promocion/EntregaPromocion/ws"
+        qname="ns:dataAdicionalReq"
+        type="java:com.inter.claroPromoWS.stub.DataAdicionalReq"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://claro.com.pe/eai/ebs/promocion/EntregaPromocion/ws"
+        qname="ns:>entregaPromocionRequest"
+        type="java:com.inter.claroPromoWS.stub.EntregaPromocionRequest"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://claro.com.pe/eai/ebs/promocion/EntregaPromocion/ws"
+        qname="ns:audiTypeReq"
+        type="java:com.inter.claroPromoWS.stub.AudiTypeReq"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://claro.com.pe/eai/ebs/promocion/EntregaPromocion/ws"
+        qname="ns:>entregaPromocionResponse"
+        type="java:com.inter.claroPromoWS.stub.EntregaPromocionResponse"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://claro.com.pe/eai/ebs/promocion/EntregaPromocion/ws"
+        qname="ns:promocionReq"
+        type="java:com.inter.claroPromoWS.stub.PromocionReq"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+  </service>
+  <service name="ebsEntregaPromocionSB12" provider="java:RPC" style="document" use="literal">
+      <parameter name="wsdlTargetNamespace" value="http://claro.com.pe/eai/ebs/promocion/EntregaPromocion/ws"/>
+      <parameter name="wsdlServiceElement" value="ebsEntregaPromocion"/>
+      <parameter name="schemaQualified" value="http://claro.com.pe/eai/ebs/promocion/EntregaPromocion/ws"/>
+      <parameter name="wsdlServicePort" value="ebsEntregaPromocionSB12"/>
+      <parameter name="className" value="com.inter.claroPromoWS.stub.EbsEntregaPromocionSOAP12BindingImpl"/>
+      <parameter name="wsdlPortType" value="ebsEntregaPromocionPortType"/>
+      <parameter name="typeMappingVersion" value="1.2"/>
+      <operation name="entregarPromocion" qname="entregarPromocion" returnQName="retNS:entregaPromocionResponse" xmlns:retNS="http://claro.com.pe/eai/ebs/promocion/EntregaPromocion/ws" returnType="rtns:>entregaPromocionResponse" xmlns:rtns="http://claro.com.pe/eai/ebs/promocion/EntregaPromocion/ws" soapAction="http://claro.com.pe/eai/ebs/promocion/EntregaPromocion/ws/entregarPromocion" >
+        <parameter qname="pns:entregaPromocionRequest" xmlns:pns="http://claro.com.pe/eai/ebs/promocion/EntregaPromocion/ws" type="tns:>entregaPromocionRequest" xmlns:tns="http://claro.com.pe/eai/ebs/promocion/EntregaPromocion/ws"/>
+      </operation>
+      <parameter name="allowedMethods" value="entregarPromocion"/>
+
+      <typeMapping
+        xmlns:ns="http://claro.com.pe/eai/ebs/promocion/EntregaPromocion/ws"
+        qname="ns:dataAdicionalResp"
+        type="java:com.inter.claroPromoWS.stub.DataAdicionalResp"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://claro.com.pe/eai/ebs/promocion/EntregaPromocion/ws"
+        qname="ns:dataAdicionalReq"
+        type="java:com.inter.claroPromoWS.stub.DataAdicionalReq"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://claro.com.pe/eai/ebs/promocion/EntregaPromocion/ws"
+        qname="ns:>entregaPromocionRequest"
+        type="java:com.inter.claroPromoWS.stub.EntregaPromocionRequest"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://claro.com.pe/eai/ebs/promocion/EntregaPromocion/ws"
+        qname="ns:audiTypeReq"
+        type="java:com.inter.claroPromoWS.stub.AudiTypeReq"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://claro.com.pe/eai/ebs/promocion/EntregaPromocion/ws"
+        qname="ns:>entregaPromocionResponse"
+        type="java:com.inter.claroPromoWS.stub.EntregaPromocionResponse"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://claro.com.pe/eai/ebs/promocion/EntregaPromocion/ws"
+        qname="ns:promocionReq"
+        type="java:com.inter.claroPromoWS.stub.PromocionReq"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+  </service>
+</deployment>

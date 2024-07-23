@@ -1,0 +1,2 @@
+TestcaseId,TestcaseType,Module,Description
+TUNG12760,Positive,Bar user through Restful API,To verify user get barred successfully

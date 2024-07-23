@@ -1,0 +1,2 @@
+TestcaseId,TestcaseType,Module,Description
+TUNG12785,Positive,UnBar user through Restful API,To verify barred user list is loading when provide correct data

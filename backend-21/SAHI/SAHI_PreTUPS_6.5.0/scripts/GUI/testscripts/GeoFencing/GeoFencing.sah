@@ -1,0 +1,59 @@
+
+//######################################
+//
+// This script contains SAHI test cases for geo - fencing
+//
+//#######################################
+  
+
+//===== import scripts ===//
+_includeOnce("../../../../utility/ImportPackage.sah");
+
+_includeOnce("../../../GUI/testscripts/GeoFencing/GeoFencing_Common.sah"); //to suspend, approve and resume channel user in the system 
+
+
+//log in through network admin. Masters >> Geograpy cell-id management.
+
+//======================Pre-requisite check============================
+_log("Setup", "custom4");
+
+//If NA deos not exist, first create it and then create the Card Group
+var $l_naCsv = _readCSVFile("../../../GUI/testdata/NA_Login.csv"); //Reads the network admin credentials 
+var $g_networkAdmin1 = $l_naCsv[1][1];
+if($g_networkAdmin1 == "null"){
+	createNA(); // UserManagement_Common.sah
+	var $l_naCsv1 = _readCSVFile("../../../GUI/testdata/NA_Login.csv");
+	$g_networkAdmin1 = $l_naCsv1[1][1];
+	login($g_appURL,  $g_LangEnglish, $g_networkAdmin1, $g_commonPassword, $g_assertWelcome);
+}else{	 
+	login($g_appURL,  $g_LangEnglish, $g_networkAdmin1, $g_commonPassword, $g_assertWelcome);
+}
+
+//==================== Initiate testing ==================//
+
+var $g_GeoFencing = _readCSVFile("../../../GUI/testdata/GeoFencing.csv");
+
+
+	for(var $g_row = 1; $g_GeoFencing[$g_row] != null; $g_row++){
+		
+	//	for(var $g_row = 1; $g_row <= 1; $g_row++){
+		
+		var $g_col = 0;
+		var $number =   testCaseNumber($g_GeoFencing[$g_row][$g_col]);
+	
+		var $t = _testcase($g_GeoFencing[$g_row][$g_col++], $g_GeoFencing[$g_row][$g_col++]);
+		
+		commonVaribleForGeoFencing($g_row, $g_col);
+		
+		
+		$t.start();
+		if($number == 1)
+		        viewLinkForGeoFencing();	
+        else if($number == 2 || $number == 6 ||  $number == 7  )
+		        uploadFileWithInvalidDetails();
+		else if($number > 2 && $number < 6  )
+	       uploadWithInvalidInputDetails();
+		
+		$t.end();
+		
+	}

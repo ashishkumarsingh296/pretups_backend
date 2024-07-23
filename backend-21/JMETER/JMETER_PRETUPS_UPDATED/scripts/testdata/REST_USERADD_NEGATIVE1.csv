@@ -1,0 +1,2 @@
+TestcaseId,TestcaseType,Module,Description
+TUNG12809,Negative,Add user API through REST,TO verify that when  LOGinid is enter then password is mandatory .

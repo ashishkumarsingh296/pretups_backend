@@ -1,0 +1,64 @@
+//################################################
+//#Company Name: Mahindra Comviva Technologies Ltd.
+//#Application Name: Pretups
+//#Objective:To Read left pannel links of the application from csv file.
+//#Author Name: Nidhi Singh
+//#Created Date: 16/01/2014
+//###############################################
+
+//================Read the data from LeftPannel file====================
+
+var $l_rcsvLinks = _readExcelFile("../conf/PretupsLeftPanelLinkDetails.xlsx", "Sheet1");
+
+var $n = 0;
+var $m = 0;
+var $g_leftMenuBar_OperatorUser = $l_rcsvLinks[$m++][$n]; //Link to Operator User
+var $g_leftMenuBar_AddOperatorUser = $l_rcsvLinks[$m++][$n]; //Link to Add Operator User
+var $g_leftMenuBar_ViewOperatorUser = $l_rcsvLinks[$m++][$n]; //Link to View Operator User
+var $g_LeftMenuBar_ChannelDomain = $l_rcsvLinks[$m++][$n];  //Link to Channel Domain
+var $g_LeftMenuBar_AddChannelDomain = $l_rcsvLinks[$m++][$n];//Link to create Channel Domains
+var $g_LeftMenuBar_AddChannelCat = $l_rcsvLinks[$m++][$n];//Link to add Channel Categories
+var $g_LeftMenuBar_AddChannelAdmin = $l_rcsvLinks[$m++][$n];//Link to add Channel Admin
+var $g_LeftMenuBar_ChannelUser = $l_rcsvLinks[$m++][$n];//Link to Channel User
+var $g_LeftMenuBar_AddChannelUser = $l_rcsvLinks[$m++][$n];//Link to add Channel User
+var $g_LeftMenuBar_GradeMgmt = $l_rcsvLinks[$m++][$n];//Link to add User Grade
+var $g_LeftMenuBar_ProfileMgmt = $l_rcsvLinks[$m++][$n];//Link to Profile Management
+var $g_LeftMenuBar_CommProf = $l_rcsvLinks[$m++][$n];//Link to add Commission Profile
+var $g_LeftMenuBar_TCP = $l_rcsvLinks[$m++][$n];//Link to add Transfer Control Profile
+var $g_LeftMenuBar_UserApproval = $l_rcsvLinks[$m++][$n];//Link for User Approval
+var $g_LeftMenuBar_DelChannelUser = $l_rcsvLinks[$m++][$n];//Link to delete Channel User
+var $g_LeftMenuBar_ApproveDelChannelUser = $l_rcsvLinks[$m++][$n];//Link to approve Channel User
+var $g_LeftMenuBar_TransferRule = $l_rcsvLinks[$m++][$n];//Link to add Transfer Rule
+var $g_LeftMenuBar_O2CTransferRule = $l_rcsvLinks[$m++][$n];//Link to add O-2-C Transfer Rule
+var $g_LeftMenuBar_C2CTransferRule = $l_rcsvLinks[$m++][$n];//Link to add C-2-C Transfer Rule
+var $g_LeftMenuBar_C2STransferRule = $l_rcsvLinks[$m++][$n];//Link to add C-2-S Transfer Rule
+var $g_LeftMenuBar_CategoryLevelProfileMgmt = $l_rcsvLinks[$m++][$n];//Link to Category Level TCP
+var $g_LeftMenuBar_CardGroupMgmt = $l_rcsvLinks[$m++][$n];//Link to card group
+var $g_LeftMenuBar_C2SCardGroup = $l_rcsvLinks[$m++][$n];//Link to C2S card group
+var $g_LeftMenuBar_P2PCardGroup = $l_rcsvLinks[$m++][$n];//Link to P2P card group
+var $g_LeftMenuBar_NetworkStock = $l_rcsvLinks[$m++][$n];//Link to Network Stock
+var $g_LeftMenuBar_InitiateStock = $l_rcsvLinks[$m++][$n];//Link to initiate network stock
+var $g_LeftMenuBar_LevelOneApproval = $l_rcsvLinks[$m++][$n];//Link for level 1 network stock approval
+var $g_LeftMenuBar_LevelTwoApproval = $l_rcsvLinks[$m++][$n];//Link for level 2 network stock approval
+var $g_LeftMenuBar_O2C = $l_rcsvLinks[$m++][$n];//Link to Operator to channel
+var $g_LeftMenuBar_O2CInitiation = $l_rcsvLinks[$m++][$n];//Link to initiate Operator to channel
+var $g_LeftMenuBar_O2CApprovalLevelOne = $l_rcsvLinks[$m++][$n];//Link for approval O2C level 1
+var $g_LeftMenuBar_O2CApprovalLevelTwo = $l_rcsvLinks[$m++][$n];//Link for approval O2C level 2
+var $g_LeftMenuBar_O2CApprovalLevelThree = $l_rcsvLinks[$m++][$n];//Link for approval O2C level 3
+var $g_LeftMenuBar_TranferControlProfile = $l_rcsvLinks[$m++][$n];//Link for Transfer Control Profile Nt admin
+var $g_LeftMenuBar_ApproveBatchFOCLevelOne = $l_rcsvLinks[$m++][$n];//Link for Approve batch FOC level one
+var $g_LeftMenuBar_ApproveBulkCommPayoutLevelOne = $l_rcsvLinks[$m++][$n];//Link for Approve Bulk commission payout approval level 1
+var $g_LeftMenuBar_BulkCommPayoutUpload = $l_rcsvLinks[$m++][$n];//Link for bulk commission payout upload
+var $g_LeftMenuBar_InitaiteBulkCommPayout = $l_rcsvLinks[$m++][$n];//Link for initiate bulk commission payout 
+var $g_LeftMenuBar_InitaiteBatchO2CTrans = $l_rcsvLinks[$m++][$n];//Link for initiate batch o2ctransfer 
+var $g_LeftMenuBar_ApproveBatchO2CLevelOne = $l_rcsvLinks[$m++][$n];//Link for O2C batch approval level 1 
+var $g_LeftMenuBar_ApproveBatchO2CLevelTwo = $l_rcsvLinks[$m++][$n];//Link for O2C batch approval level 2
+var $g_LeftMenuBar_Withdrawal = $l_rcsvLinks[$m++][$n];//Link for O2C Withdrawal
+
+
+
+
+
+
+
+

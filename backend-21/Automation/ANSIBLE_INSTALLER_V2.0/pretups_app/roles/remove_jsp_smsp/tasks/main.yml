@@ -1,0 +1,4 @@
+---
+ - name: "removing JSP from SMSR"
+   shell: rm -rf {{ Tomcat_Path }}/webapps/pretups/jsp
+

@@ -1,0 +1,238 @@
+
+
+
+var $category;
+var $user;
+
+
+var $g_interfaceName;
+var $g_assertion;
+
+var $g_domain;
+var $g_categoryName;
+
+
+
+var $g_interfaceCategor; 
+var $g_interName ;
+var $g_queueSize;
+var $g_queueTimeOut ;
+var $g_requestTimeOut;
+var $g_retryInterval;
+
+
+function commonVarriableToViewDetails($g_row, $g_col) {
+	
+	$category = $g_viewDetails[$g_row][$g_col++];
+	$user = $g_viewDetails[$g_row][$g_col++];
+	
+}
+
+function commonVarriableToViewCategory() {
+	$g_domain  = $g_viewDetails[$g_row][$g_col++];
+	$g_categoryName  = $g_viewDetails[$g_row][$g_col++];
+}	
+
+
+function ViewSelfDetailsOfSuperAdmin() {
+	
+	_click(_link("Operator users"));
+	_click(_link("View self details"));
+	_assertExists(_cell($category, _near(_cell("Category :"))));
+	
+}
+
+
+function viewDetailsOfNetworkAdmin() {
+	
+	_click(_link("Operator users"));
+	_click(_link("View operator user"));
+	_setSelected(_select("categoryCode"), $category);
+	_setValue(_textbox("userName"), "%");
+	_click(_image("search.gif"));
+	_popup("eRecharge")._setSelected(_select("userId"), $user);
+	_popup("eRecharge")._click(_button("Submit"));
+	_click(_submit("Submit"));
+	_assertExists(_cell($category, _near(_cell("Category :"))));
+
+}
+
+function viewNetworkDetails() {
+	_click(_link("Masters"));
+	_click(_link("View network"));
+	_assertExists(_div("Network details"));
+}
+
+
+
+
+function viewCategoryDetails() {
+	
+	
+	
+	_click(_link("Channel domain"));
+	_click(_link("Category management"));
+	_setSelected(_select("domainCodeforCategory"),$g_domain);
+	_click(_submit("Submit"));
+	_assertExists(_cell("Category name", _near(_cell($g_categoryName))));
+}
+
+
+function updateServerCache() {
+	
+	_click(_link("Masters"));
+	_click(_link("Update cache"));
+	_assertExists(_div("Update cache"));
+	_click(_checkbox("cacheAll"));
+	_click(_button("Submit"));
+}
+
+
+
+
+// ............................ View  Details by network admin .................... //
+
+
+function commonVarriableToViewDetailsByNA() {
+	
+	$category = $g_viewDetailsByNA[$g_row][$g_col++];
+	$user = $g_viewDetailsByNA[$g_row][$g_col++];
+	
+}
+
+
+function addOperatorUserWithoutSelectingCategory() {
+
+	_click(_link("Operator users"));
+	_click(_link("Add operator user"));
+	_click(_submit("Submit"));
+	_assertExists(_listItem("Category is required."));
+
+}
+
+
+function viewSelfDetailsByNA() {
+	_click(_link("Operator users"));
+	_click(_link("View self details"));
+	_assertExists(_cell($category, _near(_cell("Category :"))));
+}
+
+
+
+function viewDetailsOfCA() {
+	
+	_click(_link("Operator users"));
+	_click(_link("View operator user"));
+	_setSelected(_select("categoryCode"), $category);
+	_setValue(_textbox("userName"), "%");
+	_click(_image("search.gif"));
+	_popup("eRecharge")._setSelected(_select("userId"), $user);
+	_popup("eRecharge")._click(_button("Submit"));
+	_click(_submit("Submit"));
+	_assertExists(_cell($category, _near(_cell("Category :"))));
+
+}
+
+
+function modifyNetworkInterfaceMapping() {
+	
+	$g_interfaceName = $g_viewDetails[5][2];
+	$g_assertion = $g_viewDetails[5][3];
+	
+	_click(_link("Masters"));
+	_click(_link("Network interfaces"));
+	_click(_radio("code", _near(_cell($g_interfaceName))));
+	_click(_submit("Modify"));
+	_setValue(_textbox("queueTimeOut"), "1001");
+	_click(_submit("Save"));
+	_click(_submit("Confirm"));
+	
+	_assertExists(_listItem("/"+$g_assertion+ ".*/"));
+	
+}
+
+
+function viewNetworkPrefix() {
+	
+	_click(_link("Masters"));
+	_click(_link("Network prefix"));
+	_assertExists(_div("Network prefixes"));
+	_assertExists(_cell("Network :", _near(_cell("Series type"))));
+
+	
+}
+
+
+function deactivateAndActivateNetworkStatus() {
+	
+	$assertion = "Network status successfully updated";
+	
+	_click(_link("Masters"));
+	_click(_link("Network status"));
+	_click(_checkbox("dataListIndexed[0].status", _near(_cell("NG"))));
+	_click(_submit("Save"));
+	_click(_submit("Confirm"));
+	_assertExists(_listItem("/"+$assertion+ ".*/"));
+	_click(_link("Network status"));
+	_click(_checkbox("dataListIndexed[0].status", _near(_cell("NG"))));
+	_click(_submit("Save"));
+	_click(_submit("Confirm"));
+	_assertExists(_listItem("/"+$g_assertion+ ".*/"));
+	
+}
+
+
+function commonVarriableForNetworkInterface($g_row, $g_col) {
+	
+	$g_interfaceCategory  = $g_viewDetails[$g_row][$g_col++];
+	$g_interName  = $g_viewDetails[$g_row][$g_col++];
+	$g_queueSize = $g_viewDetails[$g_row][$g_col++];
+	$g_queueTimeOut  = $g_viewDetails[$g_row][$g_col++];
+	$g_requestTimeOut = $g_viewDetails[$g_row][$g_col++];
+	$g_retryInterval = $g_viewDetails[$g_row][$g_col++];
+	$g_assertion = $g_viewDetails[$g_row][$g_col++];
+	
+}
+
+
+function mapInterfaceToSystem() {
+	
+	_click(_link("Masters"));
+	_click(_link("Network interfaces"));
+	_click(_submit("Add"));
+	_setSelected(_select("interfaceCategoryID"), $g_interfaceCategory);
+	_setSelected(_select("interfaceID"), $g_interName);
+	_setValue(_textbox("queueSize"), $g_queueSize);
+	_setValue(_textbox("queueTimeOut"), $g_queueTimeOut);
+	_setValue(_textbox("requestTimeOut"), $g_requestTimeOut);
+	_setValue(_textbox("nextCheckQueueReqSec"),$g_retryInterval);
+	_click(_submit("Save"));
+	_click(_submit("Confirm"));
+	_assertExists(_listItem("/"+$g_assertion+ ".*/"));
+	
+	
+	
+}
+
+
+
+
+
+//............................ View  Details by channel admin .................... //
+
+
+function viewSelfDetailsOfCA() {
+
+		_click(_link("Operator users"));
+		_click(_link("View self details"));
+		_assertExists(_cell("Channel Admin", _near(_cell("Category :"))));
+
+}
+
+
+
+
+
+
+
+

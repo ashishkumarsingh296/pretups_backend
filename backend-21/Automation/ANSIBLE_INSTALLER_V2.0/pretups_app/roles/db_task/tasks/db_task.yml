@@ -1,0 +1,110 @@
+---
+ - name: Copying LoadQueries.sql file to host machine
+   copy: src=LoadQueries.sql  dest="{{ BASE_DIR }}/{{ Temp_Dir }}" owner={{ db_user }} group={{ db_group }}  mode=0755
+
+ - name: Configuring LoadQueries.sql parameters
+   replace: dest="{{ BASE_DIR }}/{{ Temp_Dir }}/LoadQueries.sql" regexp='^(.*)<Log_Name>(.*)$' replace='\1{{ Log_Name }}\2'
+
+
+ - name: Dynamic query creation for Instance Load
+   lineinfile:
+    dest: "{{ BASE_DIR }}/{{ Temp_Dir }}/LoadQueries.sql"
+    insertbefore: '^COMMIT;'
+    line: "Insert into INSTANCE_LOAD
+   (INSTANCE_ID, INSTANCE_NAME, CURRENT_STATUS, IP, PORT, 
+    INSTANCE_LOAD, CREATED_ON, CREATED_BY, MODIFIED_ON, MODIFIED_BY, 
+    INSTANCE_TPS, REQUEST_TIME_OUT, INSTANCE_TYPE, LOAD_TYPE_TPS, MAX_ALLOWED_LOAD, 
+    MAX_ALLOWED_TPS, MODULE, SHOW_SMSC_STAT, SHOW_OAM_LOGS, IS_DR, 
+    AUTHENTICATION_PASS, CONTEXT)
+ Values
+   ('{{ item.InstanceId }}', '{{ item.InstanceName }}', 'Y', '{{ item.IP }}', '{{ item.Port }}', 
+    100, SYSDATE, 'ADMIN', SYSDATE, 'ADMIN', 
+    100, 10000, '{{ item.InstanceType }}', 'N', 1000, 
+    200, '{{ item.Module }}', 'Y', 'Y', 'P', 
+    'G23QYHTfjWlJFc2sU0PYiSIv+4o1JjR9htycY1T+a3A=', 'pretups');"
+   with_items:
+            - "{{ LoadTableEntries }}"
+
+ - name: Dynamic query creation for Rest in Instance Load
+   lineinfile:
+    dest: "{{ BASE_DIR }}/{{ Temp_Dir }}/LoadQueries.sql"
+    insertbefore: '^COMMIT;'
+    line: "Insert into INSTANCE_LOAD
+   (INSTANCE_ID, INSTANCE_NAME, CURRENT_STATUS, IP, PORT, 
+    INSTANCE_LOAD, CREATED_ON, CREATED_BY, MODIFIED_ON, MODIFIED_BY, 
+    INSTANCE_TPS, REQUEST_TIME_OUT, INSTANCE_TYPE, LOAD_TYPE_TPS, MAX_ALLOWED_LOAD, 
+    MAX_ALLOWED_TPS, MODULE, SHOW_SMSC_STAT, SHOW_OAM_LOGS, IS_DR, 
+    AUTHENTICATION_PASS, CONTEXT)
+ Values
+   ('{{ item.RST_INSTANCE_ID }}', '{{ item.InstanceName }}', 'Y', '{{ item.IP }}', '{{ item.Port }}', 
+    100, SYSDATE, 'ADMIN', SYSDATE, 'ADMIN', 
+    100, 10000, 'REST', 'N', 1000, 
+    200, '{{ item.Module }}', 'Y', 'Y', 'P', 
+    'G23QYHTfjWlJFc2sU0PYiSIv+4o1JjR9htycY1T+a3A=', 'pretups');"
+   with_items:
+            - "{{ LoadTableEntries }}"
+   when: item.InstanceType == "WEB"
+
+ - name: Dynamic query creation for Instance Load
+   lineinfile:
+    dest: "{{ BASE_DIR }}/{{ Temp_Dir }}/LoadQueries.sql"
+    insertbefore: '^COMMIT;'
+    line: "update INSTANCE_LOAD set INSTANCE_ID = '{{ item.InstanceId }}', INSTANCE_NAME = '{{ item.InstanceName }}', IP = '{{ item.IP }}', PORT = '{{ item.Port }}', INSTANCE_TYPE = '{{ item.InstanceType }}', MODULE = '{{ item.Module }}' where INSTANCE_ID = '{{ item.InstanceId }}';"
+   with_items:
+            - "{{ LoadTableEntries }}"
+
+ - name: Dynamic query creation for Network Load
+   lineinfile:
+    dest: "{{ BASE_DIR }}/{{ Temp_Dir }}/LoadQueries.sql"
+    insertbefore: '^COMMIT;'
+    line: insert into NETWORK_LOAD values ('{{ item.0.InstanceId }}','{{item.1}}','100','1000','1000',SYSDATE,'ADMIN',SYSDATE,'ADMIN','100','{{ item.0.C2S_INSTANCE_ID }}','{{ item.0.P2P_INSTANCE_ID }}','{{ item.0.RST_INSTANCE_ID }}');
+   with_subelements:
+            - "{{ LoadTableEntries }}"
+            - NetworkCode
+
+ - name: Dynamic query creation for Network Load
+   lineinfile:
+    dest: "{{ BASE_DIR }}/{{ Temp_Dir }}/LoadQueries.sql"
+    insertbefore: '^COMMIT;'
+    line: "update NETWORK_LOAD set INSTANCE_ID = '{{ item.0.InstanceId }}', NETWORK_CODE = '{{item.1}}', C2S_INSTANCE_ID = '{{ item.0.C2S_INSTANCE_ID }}', P2P_INSTANCE_ID = '{{ item.0.P2P_INSTANCE_ID }}', RST_INSTANCE_ID = '{{ item.0.RST_INSTANCE_ID }}' where INSTANCE_ID = '{{ item.0.InstanceId }}' and NETWORK_CODE = '{{item.1}}';"
+   with_subelements:
+            - "{{ LoadTableEntries }}"
+            - NetworkCode
+
+
+ - name: Dynamic query creation for Transaction Load
+   lineinfile:
+    dest: "{{ BASE_DIR }}/{{ Temp_Dir }}/LoadQueries.sql"
+    insertbefore: '^COMMIT;'
+    line: "Insert into TRANSACTION_LOAD
+   (INSTANCE_ID, NETWORK_CODE, INTERFACE_ID, SERVICE_TYPE, MAX_TRANSACTION_LOAD, 
+    MIN_SERVICE_TIMEOUT, OVER_FLOW_COUNT, CREATED_ON, CREATED_BY, MODIFIED_ON, 
+    MODIFIED_BY, TRANSACTION_TPS, REQUEST_TIME_OUT, NEXT_CHECK_TIMEOUT_SEC)
+ Values
+   ('{{ item.0.InstanceId }}', '{{ item.1 }}', '{{ item.0.INTERFACE_ID }}', '{{ item.0.ServiceType }}', 80, 
+    1000, 10, SYSDATE, 'SYSTEM', SYSDATE, 
+    'SYSTEM', 100, 1000, 1000);"
+   with_subelements:
+            - "{{ LoadTableEntries }}"
+            - NetworkCode
+   when: (item.0.InstanceType != "OAM") and (not item.0.loadbalancer)
+
+ - name: Dynamic query creation for Transaction Load
+   lineinfile:
+    dest: "{{ BASE_DIR }}/{{ Temp_Dir }}/LoadQueries.sql"
+    insertbefore: '^COMMIT;'
+    line: "update TRANSACTION_LOAD set INSTANCE_ID = '{{ item.0.InstanceId }}', NETWORK_CODE = '{{ item.1 }}', INTERFACE_ID = '{{ item.0.INTERFACE_ID }}', SERVICE_TYPE = '{{ item.0.ServiceType }}' where INSTANCE_ID = '{{ item.0.InstanceId }}' and NETWORK_CODE = '{{ item.1 }}' and INTERFACE_ID = '{{ item.0.INTERFACE_ID }}' and SERVICE_TYPE = '{{ item.0.ServiceType }}';"
+   with_subelements:
+            - "{{ LoadTableEntries }}"
+            - NetworkCode
+   when: (item.0.InstanceType != "OAM") and (not item.0.loadbalancer)
+
+ - name: "DB: Insert Load Table Queries"
+   shell: "{{ item }} chdir={{ BASE_DIR }}/{{ Temp_Dir }}"
+   with_items:
+   - sqlplus {{ PRETUPS_SCHEMA_USER_NAME }}/{{ PRETUPS_SCHEMA_PASSWORD }} << EOT @LoadQueries.sql exit; EOT
+   ignore_errors: yes
+   register: LoadQueries
+   failed_when: '"ERROR" in LoadQueries.stdout'
+   tags:
+    - LoadQueries_tags

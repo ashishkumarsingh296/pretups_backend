@@ -1,0 +1,25 @@
+--- 
+apiVersion: apps/v1
+kind: Deployment
+metadata: 
+  name: pretups-login-deployment
+  labels: 
+    app: pretups-login
+spec: 
+  replicas: 1
+  selector:
+    matchLabels:
+      app: pretups-login
+  template: 
+    metadata: 
+      labels: 
+        app: pretups-login
+    spec: 
+      containers: 
+        - 
+          image: "REGISTRY_IP:REGISTRY_PORT/pretups-ui-login:v1"
+          imagePullPolicy: Always
+          name: pretups-login
+          ports: 
+            - 
+              containerPort: LOGIN_MODULE_CONTAINER_PORT

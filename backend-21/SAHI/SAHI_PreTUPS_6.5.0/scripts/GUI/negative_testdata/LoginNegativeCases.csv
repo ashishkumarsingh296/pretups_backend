@@ -1,0 +1,11 @@
+TestCaseNo.,Discription,UserName,Password,Assertion
+TEST001,Try to login into application without providing any details,,,Login ID is required.
+TEST002,Try to login into the application without login id,,1357,Login ID is required.
+TEST003,Try to login into the application without password,btnadm,,Password is required.
+TEST004,Try to login with wrong useraname and password ,xyz,xyz,Authentication Failure. Please try again. In case you continue having troubles accessing the platform please contact Customer Care
+TEST005,Try to login into the application in which username containing .(dot),btn.adm,1357,Authentication Failure. Please try again. In case you continue having troubles accessing the platform please contact Customer Care
+TEST006,Try to login with a existing username and wrong password,btnadm,2468,Authentication Failure. Please try again. In case you continue having troubles accessing the platform please contact Customer Care
+TEST007,Try to login with a username containg special charactor,btn@adm,1357,Authentication Failure. Please try again. In case you continue having troubles accessing the platform please contact Customer Care
+TEST008,Try to login into apllication having spaces between username,btn adm,1357,Authentication Failure. Please try again. In case you continue having troubles accessing the platform please contact Customer Care
+TEST009,Try to login into application having space between password,btnadm,13 57,Authentication Failure. Please try again. In case you continue having troubles accessing the platform please contact Customer Care
+TEST010,Try to login into apllication having spaces between username and password,btn adm,13 57,Authentication Failure. Please try again. In case you continue having troubles accessing the platform please contact Customer Care

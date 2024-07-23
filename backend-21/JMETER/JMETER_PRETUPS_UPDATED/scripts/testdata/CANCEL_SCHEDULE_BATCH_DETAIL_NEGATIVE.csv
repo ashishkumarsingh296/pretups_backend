@@ -1,0 +1,2 @@
+BATCHID,TestcaseId,TestcaseType,Module,Description
+,,Negative,CANCEL Batch SCHEDULE RECHARGE,To verify that Corporate User is not able to view details of  Cancel Recharge if Batch ID is not present

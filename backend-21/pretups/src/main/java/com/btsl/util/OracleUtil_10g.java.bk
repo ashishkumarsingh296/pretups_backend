@@ -1,0 +1,251 @@
+package com.btsl.util;
+
+import java.sql.Connection;
+import java.sql.SQLException;
+import com.btsl.common.BTSLBaseException;
+import com.btsl.common.BaseException;
+import com.btsl.event.EventComponentI;
+import com.btsl.event.EventHandler;
+import com.btsl.event.EventIDI;
+import com.btsl.event.EventLevelI;
+import com.btsl.event.EventStatusI;
+import com.btsl.logging.Log;
+import com.btsl.logging.LogFactory;
+import com.btsl.util.Constants;
+import com.btsl.util.CryptoUtil;
+import oracle.jdbc.pool.OracleConnectionCacheImpl;
+import oracle.jdbc.pool.OracleConnectionCacheManager;
+import oracle.jdbc.pool.OracleDataSource;
+
+/* OracleUtil.java
+* Name                                 Date            History
+*------------------------------------------------------------------------
+* Abhijit Singh Chauhan              10/08/2006         Initial Creation
+*------------------------------------------------------------------------
+* Copyright (c) 2005 Bharti Telesoft Ltd.
+*/
+
+/**
+* Utility class for Oracle connection and other specifics.
+* please use ojdbc14.jar in classpath when compiling
+* @author abhijit
+*/
+public class OracleUtil
+{
+
+	private static OracleConnectionCacheImpl m_connectionSinglePool;
+	private static String DB_CONN_FAILED="00000";
+	private static boolean _creatingCache=false;
+	private static Log _log=LogFactory.getLog(OracleUtil.class.getName());
+	private static OracleDataSource _ods=null;
+	private static java.util.Properties _props = new java.util.Properties();
+	private static OracleConnectionCacheManager _occm=null;
+	private static  String _cacheName = "PRETUPS"; // Look for a specific cache
+
+	/**
+	* This method is used to create database connection cache, This method will be called if connection pool is null (occm ==null)
+	* This method read the different parameters from the Constant.props file and depending on the parameters it will create the 
+	* database connection pool
+	* @return - boolean, of pool craeted then true else false.
+	*/
+	static  boolean createCache()
+	{	try
+		{
+			if(!_creatingCache)
+			{
+				_creatingCache=true;
+				if(_log.isDebugEnabled())
+				_log.debug("createCache","Entered Creating oracle connection pool");
+
+				String db_url = Constants.getProperty("datasourceurl"); //"jdbc:oracle:thin:@172.16.1.31:1521:PRTP";
+				int i=db_url.indexOf(":");
+				int j=db_url.indexOf("@")-1;
+
+				String driver_type=db_url.substring(i,j);
+
+				if (driver_type.endsWith("thin"))
+				driver_type="thin";
+				else    driver_type="oci";
+
+				int p= db_url.indexOf("@");
+				int q=db_url.indexOf(":",++p);
+				String ip= db_url.substring(p,q);
+				String port =db_url.substring(++q,db_url.indexOf(":",q));
+				String sid=db_url.substring(db_url.lastIndexOf(":")+1,db_url.length());
+
+				String db_user = Constants.getProperty("userid");
+				if(db_user!=null)
+				db_user = new CryptoUtil().decrypt(db_user,Constants.KEY);
+				String db_password = Constants.getProperty("passwd");
+				if(db_password!=null)
+				db_password = new CryptoUtil().decrypt(db_password,Constants.KEY);
+
+				String strMinPoolSize=Constants.getProperty("minpoolsize");
+				String strPoolSize=Constants.getProperty("poolsize");
+				String oraclePoolLogFile=Constants.getProperty("oraclePoolLogFile");
+				int minPoolSize=0;
+				try
+				{
+					minPoolSize=Integer.parseInt(strMinPoolSize);
+				}//end of try
+				catch(Exception e) {minPoolSize=50;}
+				int poolSize=0;
+				try
+				{
+					poolSize=Integer.parseInt(strPoolSize);
+				}//end of try
+				catch(Exception e) {poolSize=60;}
+				int iPort=0;
+				try
+				{	
+					iPort=Integer.parseInt(port);
+				}//end of try
+				catch(Exception e) {iPort=1521;}
+
+				if(_log.isDebugEnabled())
+				_log.debug("createCache","userid=" + db_user + ", db password="+ db_password +", db_url="+ db_url+ ", minPoolSize="+ minPoolSize +" max poolSize="+poolSize+" oraclePoolLogFile="+oraclePoolLogFile+"cache name= "+_cacheName);
+
+				try
+				{
+				
+	// creating the instatnce of oracle datasource
+					_ods = new OracleDataSource(); 
+					// provide various attribute of database driver to make connection
+					_ods.setDriverType(driver_type);
+					_ods.setServerName(ip);
+					_ods.setNetworkProtocol("tcp");
+					_ods.setDatabaseName(sid);
+					_ods.setPortNumber(iPort);
+					_ods.setUser(db_user);
+					_ods.setPassword(db_password);
+
+					//create the cache manager instance
+					_occm =  OracleConnectionCacheManager.getConnectionCacheManagerInstance();
+					_props.setProperty("MinLimit", ""+minPoolSize); //Minimum connections in pool
+					_props.setProperty("MaxLimit", ""+poolSize); //Max Limit of the pool size, pool will not go beyond this
+					_props.setProperty("InitialLimit", ""+minPoolSize); //Initial pool size
+					_props.setProperty("InactivityTimeout", "0"); // Connectios from pool will not timeout
+
+					//creating and enabling cache
+					_ods.setConnectionCachingEnabled(true);
+					_ods.setConnectionCacheName(_cacheName);
+					_occm.createCache(_cacheName,_ods,_props);
+				}//end of try
+				catch (SQLException e)
+				{
+					_log.error("createCache","SQL Exception: ",e.getMessage());
+					e.printStackTrace();
+				}//end of catch
+			}//end of if recating Catche
+		}//end of try
+		catch ( Exception e)
+		{
+			_log.error("createCache","Exception: ",e.getMessage());
+			e.printStackTrace();
+			return false;
+		}//end of catch
+		finally
+		{
+			_creatingCache=false;
+			if(_log.isDebugEnabled())_log.debug("createCache","Exiting");
+		}//end of finally
+		return true;
+	}//end of createcatche
+
+
+	/**
+	* This method returns connection from the connection pool, if there is no
+	* connection in the pool then adds new connection in the connection pool.
+	* @return Connection
+	* @throws BTSLBaseException
+	*/
+	public static Connection getConnection() throws BTSLBaseException
+	{
+		Connection _conn = null;
+		try
+		{
+			if (_occm == null) //if pool is null then creating pool
+			if (!createCache())
+			throw new BaseException("btsl.project.databseconnectionfailed");
+			try
+			{
+				_conn = _ods.getConnection();
+				_conn.setAutoCommit(false);
+				if (_occm != null )
+					_log.error("getConnection","DB Connections active size:"+_occm.getNumberOfActiveConnections(_cacheName)+" connections available:"+_occm.getNumberOfAvailableConnections(_cacheName));
+			}//end of try
+			catch (SQLException e)
+			{
+				_log.error("getConnection","SQL Exception: "+e.getMessage());
+				e.printStackTrace();
+			}//end of catch
+
+			if (_conn == null)
+				throw new BTSLBaseException(DB_CONN_FAILED);
+
+			// Refresh all connections in cache
+		}
+		catch (BTSLBaseException be)
+		{
+			EventHandler.handle(EventIDI.DATABASE_CONECTION_PROBLEM,EventComponentI.SYSTEM, EventStatusI.RAISED,EventLevelI.FATAL, "", "", "", "","Database Connection Problem");
+			throw be;
+		}
+		catch (Exception ex)
+		{
+			EventHandler.handle(EventIDI.DATABASE_CONECTION_PROBLEM,EventComponentI.SYSTEM, EventStatusI.RAISED,EventLevelI.FATAL, "", "", "", "","Database Connection Problem");
+			_log.error("getConnection",	"Error in Connecting to the Database \n" + ex.getMessage()+ "\n");
+			ex.printStackTrace();
+			throw new BTSLBaseException(DB_CONN_FAILED);
+		}// end of catch
+		return _conn;
+	}//end of getConnection
+	
+	/**
+	* This method returns a single connection
+	* Creation date: (18/07/04)
+	* @return Connection, database connection
+	* @param none
+	*/
+	public static Connection getSingleConnection()
+	{
+		Connection dbConnection=null;
+		try
+		{
+			if(m_connectionSinglePool==null)
+			{
+				String db_url = Constants.getProperty("datasourceurl");
+				String db_user = Constants.getProperty("userid");
+				if(db_user!=null)
+				db_user = new CryptoUtil().decrypt(db_user,Constants.KEY);
+				String db_password = Constants.getProperty("passwd");
+				if(db_password!=null)
+				db_password = new CryptoUtil().decrypt(db_password,Constants.KEY);
+				//System.out.println("getConnection() >> userid=" + db_user + ",  password="+ db_password+ ", db_url="+ db_url);
+				if(db_url!=null)
+				{
+					m_connectionSinglePool= new OracleConnectionCacheImpl();
+					m_connectionSinglePool.setURL(db_url);
+					m_connectionSinglePool.setUser(db_user);
+					m_connectionSinglePool.setPassword(db_password);
+					m_connectionSinglePool.setCacheScheme(OracleConnectionCacheImpl.DYNAMIC_SCHEME);
+					m_connectionSinglePool.setMinLimit(1);
+					m_connectionSinglePool.setMaxLimit(1);
+				}
+				else
+				return null;
+			}//end of the m_connectionSinglePool
+
+			dbConnection = m_connectionSinglePool.getConnection();
+			dbConnection.setAutoCommit(false);
+			if(_log.isDebugEnabled())
+			_log.debug("getSingleConnection","After	getting connection from connection pool :"+dbConnection+" active size:"+m_connectionSinglePool.getActiveSize()+" Cache size:"+m_connectionSinglePool.getCacheSize());
+		}//end of try
+		catch(Exception ex)
+		{
+			// Trap errors
+			_log.error("getSingleConnection","Error in Connecting to the Database \n"+ex.getMessage() +"\n");
+			ex.printStackTrace();
+		}//end of catch
+		return dbConnection;
+	} // getConnection
+}//end of class oracleUtil

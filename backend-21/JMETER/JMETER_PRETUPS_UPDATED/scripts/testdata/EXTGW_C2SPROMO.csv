@@ -1,0 +1,25 @@
+TestcaseId,TestcaseType,Module,Description
+,Positive,C2S Promo Recharge,To verfiy that C2S Promo Recharge is successful with only MSISDN and PIN.
+,Positive,C2S Promo Recharge,To verfiy that C2S Promo Recharge is successful with only Login ID and Password.
+,Positive,C2S Promo Recharge,To verfiy that C2S Promo Recharge is successful with only EXTCODE
+,Positive,C2S Promo Recharge,To verfiy that C2S Promo Recharge is successful with ALL
+,Positive,C2S Promo Recharge,To verify C2S Promo Recharge is successful if channel user is barred as receiver.
+,Positive,C2S Promo Recharge,To verify C2S Promo Recharge is successful if Date is not present
+,Positive,C2S Promo Recharge,To verify C2S Promo Recharge is successful if user is insuspended
+,Negative,C2S Promo Recharge,To verify C2S Promo Recharge is not successful if user is outsuspended
+,Negative,C2S Promo Recharge,To verify C2S Promo Recharge is not successful if TCP is suspended
+,Negative,C2S Promo Recharge,To verify C2S Promo Recharge is not successful if channel user is suspended
+,Negative,C2S Promo Recharge,To verify C2S Promo Recharge is not successful if channel user barred as sender
+,Negative,C2S Promo Recharge,To verify C2S Promo Recharge not successful if EXTNWCODE not present
+,Negative,C2S Promo Recharge,To verify C2S Promo Recharge not successful if  EXTNWCODE invalid
+,Negative,C2S Promo Recharge,To verify C2S Promo Recharge not successful if PIN not present with ALL
+,Negative,C2S Promo Recharge,To verify C2S Promo Recharge not successful if PIN is invalid
+,Negative,C2S Promo Recharge,To verify C2S Promo Recharge not successful if Password is invalid
+,Negative,C2S Promo Recharge,To verify C2S Promo Recharge not successful if Password is missing when Login ID present
+,Negative,C2S Promo Recharge,To verify C2S Promo Recharge not successful if external reference number is not unique
+,Negative,C2S Promo Recharge,To verify C2S Promo Recharge not successful if MSISDN2 is missing
+,Negative,C2S Promo Recharge,To verify C2S Promo Recharge not successful if Amount is not present
+,Negative,C2S Promo Recharge,To verify C2S Promo Recharge not successful if Selector is missing
+,Negative,C2S Promo Recharge,To verify C2S Promo Recharge not successful if Amount present is negative
+,Positive,C2S Promo Recharge,To verify C2S Promo Recharge is successful with value in Bonus tag
+,Positive,C2S Promo Recharge,To verify C2S Promo Recharge is successful with data filled in all external data fields

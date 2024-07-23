@@ -1,0 +1,147 @@
+
+
+_includeOnce("../../../../utility/ImportPackage.sah");
+
+var $g_interfaceCategory;
+var $g_interfaceType;
+var $g_interfaceName;
+var $g_externalID;
+var $g_validityExpiry;
+var $g_topUpExpiry;
+var $g_language1;
+var $g_language2;
+var $g_status;
+var $g_serviceClassCode;
+var $g_serviceClassName;
+var $g_P2PSenderAllowed;
+var $g_P2PSenderDenied;
+var $g_P2PReceiverAllowed;
+var $g_P2PReceiverDenied;
+var $g_C2SReceiverAllowed;
+var $g_C2SReceiverDenied;
+var $assertion;
+
+
+function commonVaribleForSeviceClass($g_row, $g_col) {
+	
+	$g_interfaceCategory = $g_SeriviceClassDetails[$g_row][$g_col++];
+	$g_interfaceType = $g_SeriviceClassDetails[$g_row][$g_col++];
+	$g_interfaceName = $g_SeriviceClassDetails[$g_row][$g_col++];
+	$g_serviceClassCode = $g_SeriviceClassDetails[$g_row][$g_col++];
+	$g_serviceClassName = $g_SeriviceClassDetails[$g_row][$g_col++];
+	$g_status = $g_SeriviceClassDetails[$g_row][$g_col++];
+	$g_P2PSenderAllowed = $g_SeriviceClassDetails[$g_row][$g_col++];
+	$g_P2PSenderDenied = $g_SeriviceClassDetails[$g_row][$g_col++];
+	$g_P2PReceiverAllowed = $g_SeriviceClassDetails[$g_row][$g_col++];
+	$g_P2PReceiverDenied = $g_SeriviceClassDetails[$g_row][$g_col++];
+	$g_C2SReceiverAllowed = $g_SeriviceClassDetails[$g_row][$g_col++];
+	$g_C2SReceiverDenied = $g_SeriviceClassDetails[$g_row][$g_col++];
+	$assertion = $g_SeriviceClassDetails[$g_row][$g_col++];
+}
+
+
+
+
+
+function addServiceClass() {
+	
+	_click(_link("Masters"));
+	_click(_link("Service class management"));
+	_setSelected(_select("interfaceCategory"), $g_interfaceCategory);
+	_setSelected(_select("interfaceType"), $g_interfaceType);
+	_setSelected(_select("interfaceCode"), $g_interfaceName);
+	_click(_submit("Submit"));
+	_click(_submit("Add"));
+	_setValue(_textbox("serviceClassCode"), $g_serviceClassCode);
+	_setValue(_textbox("serviceClassName"), $g_serviceClassName);
+	_setSelected(_select("status"), "Active");
+	_click(_checkbox("p2pSenderSuspend"));
+	_click(_checkbox("p2pReceiverSuspend"));
+	_setValue(_textbox("p2pSenderAllowedStatus"),$g_P2PSenderAllowed );
+	_setValue(_textbox("p2pReceiverAllowedStatus"), $g_P2PReceiverAllowed);
+	_setValue(_textbox("c2sReceiverAllowedStatus"), $g_P2PReceiverAllowed);
+	_click(_checkbox("c2sReceiverSuspend"));
+	_click(_submit($g_BtnAdd));
+	_click(_submit($g_BtnConfirm));
+	_assertExists(_listItem("/"+$assertion+ ".*/"));
+	
+}
+
+
+function addInterfaceWithoutDetails() {
+	_click(_link("Masters"));
+	_click(_link("Service class management"));
+	_setSelected(_select("interfaceCategory"), $g_interfaceCategory);
+	_setSelected(_select("interfaceType"), $g_interfaceType);
+	_setSelected(_select("interfaceCode"), $g_interfaceName);
+	_click(_submit("Submit"));
+	_click(_submit("Add"));
+	_setValue(_textbox("serviceClassCode"), $g_serviceClassCode);
+	_setValue(_textbox("serviceClassName"), $g_serviceClassName);
+	_setSelected(_select("status"), "Active");
+	_click(_checkbox("p2pSenderSuspend"));
+	_click(_checkbox("p2pReceiverSuspend"));
+	_setValue(_textbox("p2pSenderAllowedStatus"),$g_P2PSenderAllowed );
+	_setValue(_textbox("p2pReceiverAllowedStatus"), $g_P2PReceiverAllowed);
+	_setValue(_textbox("c2sReceiverAllowedStatus"), $g_P2PReceiverAllowed);
+	_click(_checkbox("c2sReceiverSuspend"));
+	_click(_submit($g_BtnAdd));
+	_assertExists(_listItem("/"+$assertion+ ".*/"));
+}
+
+
+
+function modifyStatusOfServiceClass() {
+	_click(_link("Masters"));
+	_click(_link("Service class management"));
+	_setSelected(_select("interfaceCategory"), $g_interfaceCategory);
+	_setSelected(_select("interfaceType"), $g_interfaceType);
+	_setSelected(_select("interfaceCode"), $g_interfaceName);
+	_click(_submit("Submit"));
+	_click(_radio("radioIndex", _near(_cell($g_serviceClassCode))));
+	_click(_submit("Modify"));
+	_setSelected(_select("status"), $g_status);
+	_click(_submit("Modify"));
+	_click(_submit("Confirm"));
+	_assertExists(_listItem("/"+$assertion+ ".*/"));
+
+}
+
+
+function deleteServiceClass() {
+	_click(_link("Masters"));
+	_click(_link("Service class management"));
+	_setSelected(_select("interfaceCategory"), $g_interfaceCategory);
+	_setSelected(_select("interfaceType"), $g_interfaceType);
+	_setSelected(_select("interfaceCode"), $g_interfaceName);
+	_click(_submit("Submit"));
+	_click(_radio("radioIndex", _near(_cell($g_serviceClassCode))));
+	_click(_button("Delete"));
+	_assertExists(_listItem("/"+$assertion+ ".*/"));
+}
+
+
+
+
+
+function viewNetworks() {
+	
+	_click(_link("Masters"));
+	_click(_link("View network"));
+	_assertExists(_div("View network details"));
+	_click(_radio("code", _near(_cell("NG"))));
+	_click(_submit("View"));
+	_assertExists(_div("Network details"));
+	_click(_submit("Back"));
+}
+
+
+
+
+
+
+
+
+
+
+

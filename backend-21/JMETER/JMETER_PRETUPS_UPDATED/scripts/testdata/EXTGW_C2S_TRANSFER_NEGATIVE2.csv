@@ -1,0 +1,2 @@
+EXTNWCODE,AMOUNT,LANGUAGE1,LANGUAGE2,SELECTOR,TestcaseId,TestcaseType,Module,Description
+NG,100,0,0,1,TUNG12979,Negative,Recharge from Main Distributor to Subscriber ,To verify that when LOGINID is available in request then PASSWORD is mandatory for the request

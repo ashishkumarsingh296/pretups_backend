@@ -1,0 +1,110 @@
+
+package restassuredapi.pojo.c2sgetamountservicewiselistresponsepojo;
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import com.fasterxml.jackson.annotation.JsonAnyGetter;
+import com.fasterxml.jackson.annotation.JsonAnySetter;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+
+@JsonInclude(JsonInclude.Include.NON_NULL)
+@JsonPropertyOrder({
+    "type",
+    "date",
+    "txnstatus",
+    "c2sservicedetails",
+    "message",
+    "errorcode"
+})
+public class DataObject {
+
+    @JsonProperty("type")
+    private String type;
+    @JsonProperty("date")
+    private String date;
+    @JsonProperty("txnstatus")
+    private String txnstatus;
+    @JsonProperty("c2sservicedetails")
+    private List<C2sservicedetail> c2sservicedetails = null;
+    @JsonProperty("message")
+    private String message;
+    @JsonProperty("errorcode")
+    private String errorcode;
+    @JsonIgnore
+    private Map<String, Object> additionalProperties = new HashMap<String, Object>();
+
+    @JsonProperty("type")
+    public String getType() {
+        return type;
+    }
+
+    @JsonProperty("type")
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    @JsonProperty("date")
+    public String getDate() {
+        return date;
+    }
+
+    @JsonProperty("date")
+    public void setDate(String date) {
+        this.date = date;
+    }
+
+    @JsonProperty("txnstatus")
+    public String getTxnstatus() {
+        return txnstatus;
+    }
+
+    @JsonProperty("txnstatus")
+    public void setTxnstatus(String txnstatus) {
+        this.txnstatus = txnstatus;
+    }
+
+    @JsonProperty("c2sservicedetails")
+    public List<C2sservicedetail> getC2sservicedetails() {
+        return c2sservicedetails;
+    }
+
+    @JsonProperty("c2sservicedetails")
+    public void setC2sservicedetails(List<C2sservicedetail> c2sservicedetails) {
+        this.c2sservicedetails = c2sservicedetails;
+    }
+
+    @JsonProperty("message")
+    public String getMessage() {
+        return message;
+    }
+
+    @JsonProperty("message")
+    public void setMessage(String message) {
+        this.message = message;
+    }
+
+    @JsonProperty("errorcode")
+    public String getErrorcode() {
+        return errorcode;
+    }
+
+    @JsonProperty("errorcode")
+    public void setErrorcode(String errorcode) {
+        this.errorcode = errorcode;
+    }
+
+    @JsonAnyGetter
+    public Map<String, Object> getAdditionalProperties() {
+        return this.additionalProperties;
+    }
+
+    @JsonAnySetter
+    public void setAdditionalProperty(String name, Object value) {
+        this.additionalProperties.put(name, value);
+    }
+
+}

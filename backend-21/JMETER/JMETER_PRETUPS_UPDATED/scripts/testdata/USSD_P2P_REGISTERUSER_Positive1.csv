@@ -1,0 +1,2 @@
+TestcaseType,TestcaseId,Module,Description
+Positive,TUNG13206,Register user API through USSD,Register user through USSD by adding the required fields

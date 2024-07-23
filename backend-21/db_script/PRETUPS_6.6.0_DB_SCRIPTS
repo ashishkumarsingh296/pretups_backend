@@ -1,0 +1,1635 @@
+--Update URL for MASTER menu link
+update pages set page_url='/baruser/barreduser.form' where page_code='BAR01' and module_code='MASTER' and menu_item='Y' and menu_level='2';
+update pages set page_url='/baruser/barreduser.form?method=loadBarredUser' where page_code='BAR1Dmm' and module_code='MASTER' and menu_item='Y' and menu_level='1';
+
+--Added columns in WEB_SERVICES_TYPES table for webservice url and isrba required
+ALTER TABLE WEB_SERVICES_TYPES ADD (WEB_SERVICE_URL  VARCHAR2(250 BYTE));
+ALTER TABLE WEB_SERVICES_TYPES ADD (IS_RBA_REQUIRE  VARCHAR2(5 BYTE));
+ALTER TABLE WEB_SERVICES_TYPES ADD IS_DATA_VALIDATION_REQUIRE varchar2(5);
+
+--for incresing Length of WEB_SERVICE_TYPE columns
+
+ALTER TABLE WEB_SERVICES_TYPES MODIFY(WEB_SERVICE_TYPE VARCHAR2(25 BYTE));
+
+--Added a system prefernce for choice recharge
+Insert into SYSTEM_PREFERENCES
+   (PREFERENCE_CODE, NAME, TYPE, VALUE_TYPE, DEFAULT_VALUE, 
+    MIN_VALUE, MAX_VALUE, MAX_SIZE, DESCRIPTION, MODIFIED_ALLOWED, 
+    DISPLAY, MODULE, REMARKS, CREATED_ON, CREATED_BY, 
+    MODIFIED_ON, MODIFIED_BY, ALLOWED_VALUES, FIXED_VALUE)
+ Values
+   ('CHOICE_RECHARGE_APPLICABLE', 'CHOICE RECHARGE APPLICABLE', 'SYSTEMPRF', 'BOOLEAN', 'True', 
+    NULL, NULL, 50, 'CHOICE RECHARGE APPLICABLE ', 'Y', 
+    'Y', 'C2S', 'CHOICE RECHARGE', TO_DATE('02/29/2016 15:25:20', 'MM/DD/YYYY HH24:MI:SS'), 'ADMIN', 
+    TO_DATE('05/20/2016 11:36:34', 'MM/DD/YYYY HH24:MI:SS'), 'SU0001', 'true,false', 'Y');
+COMMIT;
+
+--Note: This script is only for one network, need to be added for rest of the networks as well
+Insert into PROCESS_STATUS
+   (PROCESS_ID, START_DATE, SCHEDULER_STATUS, EXECUTED_UPTO, EXECUTED_ON, 
+    EXPIRY_TIME, BEFORE_INTERVAL, DESCRIPTION, NETWORK_CODE, RECORD_COUNT)
+ Values
+   ('BATCARDGROUP', TO_DATE('05/20/2016 10:21:42', 'MM/DD/YYYY HH24:MI:SS'), 'C', TO_DATE('02/22/2007 17:58:49', 'MM/DD/YYYY HH24:MI:SS'), TO_DATE('04/03/2007 00:00:00', 'MM/DD/YYYY HH24:MI:SS'), 
+    60, 1440, 'C2S batch Cardgroup modification', 'NG', '0');
+COMMIT;
+
+
+--Update pages for Commission profile status left link
+Update pages set page_url='/commission-profile/status.form' where page_code='COMMPS001' and module_code='PROFILES';
+
+--Insert to WEB_SERVICES_TYPES for Commission profile status web services
+Insert into WEB_SERVICES_TYPES
+   (WEB_SERVICE_TYPE, DESCRIPTION, RESOURCE_NAME, VALIDATOR_NAME, FORMBEAN_NAME, 
+    CONFIG_PATH, IS_DATA_VALIDATION_REQUIRE, WEB_SERVICE_URL, IS_RBA_REQUIRE)
+ Values
+   ('COMMPS', 'Commission Profile Status', 'CommissionProfileService', NULL, 'com.btsl.pretups.channel.profile.web.CommissionProfileModel', 
+    'configfiles/restservice', 'N', 'commission-profile/load-commission-status', 'N');
+Insert into WEB_SERVICES_TYPES
+   (WEB_SERVICE_TYPE, DESCRIPTION, RESOURCE_NAME, VALIDATOR_NAME, FORMBEAN_NAME, 
+    CONFIG_PATH, IS_DATA_VALIDATION_REQUIRE, WEB_SERVICE_URL, IS_RBA_REQUIRE)
+ Values
+   ('COMMPSL', 'Commission Profile Status List', 'CommissionProfileService', 'configfiles/profile/validation-commission-status-list.xml', 'com.btsl.pretups.channel.profile.web.CommissionProfileModel', 
+    'configfiles/restservice', 'Y', 'commission-profile/load-commission-set-list', 'N');
+Insert into WEB_SERVICES_TYPES
+   (WEB_SERVICE_TYPE, DESCRIPTION, RESOURCE_NAME, VALIDATOR_NAME, FORMBEAN_NAME, 
+    CONFIG_PATH, IS_DATA_VALIDATION_REQUIRE, WEB_SERVICE_URL, IS_RBA_REQUIRE)
+ Values
+   ('COMMPLSS', 'Commission Profile Status List SUSPEND', 'CommissionProfileService', NULL, 'com.btsl.pretups.channel.profile.web.CommissionProfileModel', 
+    'configfiles/restservice', 'Y', 'commission-profile/save-suspend', 'N');
+	
+--Added script for Bar User module_code
+Insert into WEB_SERVICES_TYPES
+   (WEB_SERVICE_TYPE, DESCRIPTION, RESOURCE_NAME, VALIDATOR_NAME, FORMBEAN_NAME, 
+    CONFIG_PATH, WEB_SERVICE_URL, IS_RBA_REQUIRE, IS_DATA_VALIDATION_REQUIRE)
+ Values
+   ('UNBARUSER', 'Un Bar User', 'BarredUserRestService', 'configfiles/subscriber/validator-baruser.xml', 'com.btsl.pretups.subscriber.businesslogic.BarredUserVO', 
+    'configfiles/restservice', 'barred-user/unbar-user', 'Y', 'Y');
+Insert into WEB_SERVICES_TYPES
+   (WEB_SERVICE_TYPE, DESCRIPTION, RESOURCE_NAME, VALIDATOR_NAME, FORMBEAN_NAME, 
+    CONFIG_PATH, WEB_SERVICE_URL, IS_RBA_REQUIRE, IS_DATA_VALIDATION_REQUIRE)
+ Values
+   ('BARUSER', 'Bar User', 'BarredUserRestService', 'configfiles/subscriber/validator-baruser.xml', 'com.btsl.pretups.subscriber.businesslogic.BarredUserVO', 
+    'configfiles/restservice', 'barred-user/add-barred-user', 'Y', 'Y');
+Insert into WEB_SERVICES_TYPES
+   (WEB_SERVICE_TYPE, DESCRIPTION, RESOURCE_NAME, VALIDATOR_NAME, FORMBEAN_NAME, 
+    CONFIG_PATH, WEB_SERVICE_URL, IS_RBA_REQUIRE, IS_DATA_VALIDATION_REQUIRE)
+ Values
+   ('VIEWBARREDLIST', 'View Barred User', 'BarredUserRestService', 'configfiles/subscriber/validator-baruser.xml', 'com.btsl.pretups.subscriber.businesslogic.BarredUserVO', 
+    'configfiles/restservice', 'barred-user/fetch-barred-user-list', 'Y', 'Y');
+Insert into WEB_SERVICES_TYPES
+   (WEB_SERVICE_TYPE, DESCRIPTION, RESOURCE_NAME, VALIDATOR_NAME, FORMBEAN_NAME, 
+    CONFIG_PATH, WEB_SERVICE_URL, IS_RBA_REQUIRE, IS_DATA_VALIDATION_REQUIRE)
+ Values
+   ('LOOKUP', 'Lookup Cache', 'LookupsRestService', NULL, NULL, 
+    'configfiles/restservice', 'lookups/lookups-dropdown', 'N', 'Y');
+Insert into WEB_SERVICES_TYPES
+   (WEB_SERVICE_TYPE, DESCRIPTION, RESOURCE_NAME, VALIDATOR_NAME, FORMBEAN_NAME, 
+    CONFIG_PATH, WEB_SERVICE_URL, IS_RBA_REQUIRE, IS_DATA_VALIDATION_REQUIRE)
+ Values
+   ('SUBLOOKUP', 'Sub Lookup Cache', 'LookupsRestService', NULL, NULL, 
+    'configfiles/restservice', 'lookups/sub-lookups-dropdown', 'N', 'Y');
+	
+--Added to update url for unbar user module
+update pages set page_url='/baruser/unbaruser.form' where page_code='UNBAR01' and module_code='MASTER' and menu_item='Y' and menu_level='2';
+update pages set page_url='/baruser/unbaruser.form' where page_code='UNBAR1Dmm' and module_code='MASTER' and menu_item='Y' and menu_level='1';
+commit;
+
+update pages set page_url='/baruser/viewBarredUserAction.form' where page_code='VIEWBAR01' and module_code='MASTER' and menu_item='Y' and menu_level='2';
+update pages set page_url='/baruser/viewBarredUserAction.form' where page_code='VIEWBARDmm' and module_code='MASTER' and menu_item='Y' and menu_level='1';
+commit;
+
+--Added for COnfirm unbar user
+Insert into WEB_SERVICES_TYPES
+   (WEB_SERVICE_TYPE, DESCRIPTION, RESOURCE_NAME, VALIDATOR_NAME, FORMBEAN_NAME, 
+    CONFIG_PATH, WEB_SERVICE_URL, IS_RBA_REQUIRE, IS_DATA_VALIDATION_REQUIRE)
+ Values
+   ('CONUNBARUSER', 'Confirm Unbar User', 'BarredUserRestService', 'configfiles/subscriber/validator-baruser.xml', 'com.btsl.pretups.subscriber.businesslogic.BarredUserVO', 
+    'configfiles/restservice', 'barred-user/unbarred-barred-user-list', 'Y', 'Y');
+	
+--LastXTxnsSrvcWiseCR_DBScript
+Insert into SERVICE_TYPE
+   (SERVICE_TYPE, MODULE, TYPE, MESSAGE_FORMAT, REQUEST_HANDLER, 
+    ERROR_KEY, DESCRIPTION, FLEXIBLE, CREATED_ON, CREATED_BY, 
+    MODIFIED_ON, MODIFIED_BY, NAME, EXTERNAL_INTERFACE, UNREGISTERED_ACCESS_ALLOWED, 
+    STATUS, SEQ_NO, USE_INTERFACE_LANGUAGE, GROUP_TYPE, SUB_KEYWORD_APPLICABLE, 
+    FILE_PARSER, RECEIVER_USER_SERVICE_CHECK, ERP_HANDLER)
+ Values
+   ('LSTXTRFSRV', 'C2S', 'ALL', 'KEYWORD PIN', 'com.btsl.pretups.user.requesthandler.LastXTransferServiceWiseRequestHandler', 
+    'c2s.lasttransferstatusservicewise', 'Last X transfer servicewise report', 'Y', sysdate, 'ADMIN', 
+    sysdate, 'ADMIN', 'Last X Transfer Service Wise Report by Ext System', 'N', 'N', 
+    'Y', NULL, 'N', 'NA', 'N', 
+    NULL, 'Y', 'NA');
+	
+Insert into SERVICE_KEYWORDS
+   (KEYWORD, REQ_INTERFACE_TYPE, SERVICE_PORT, SERVICE_TYPE, NAME, 
+    STATUS, MENU, SUB_MENU, ALLOWED_VERSION, MODIFY_ALLOWED, 
+    CREATED_ON, CREATED_BY, MODIFIED_ON, MODIFIED_BY, SERVICE_KEYWORD_ID, 
+    SUB_KEYWORD)
+ Values
+   ('LSTXTRFSRV', 'EXTGW', '190', 'LSTXTRFSRV', 'Last X transfer Service Wise', 
+    'Y', NULL, NULL, NULL, 'Y', 
+    sysdate, 'SU0001', sysdate, 'SU0001', 'SVK0000144', 
+    NULL);
+COMMIT;	
+
+--LastXTrnsfrSrvWise_MessageDBScript
+set define off;
+Insert into MESSAGES_MASTER
+   (MESSAGE_TYPE, MESSAGE_CODE, DEFAULT_MESSAGE, NETWORK_CODE, MESSAGE1, 
+    MESSAGE2, MESSAGE3, MCLASS, DESCRIPTION, MESSAGE4, 
+    MESSAGE5)
+ Values
+   ('ALL', '1016019', 'mclass^2&pid^61:1016019:You can enquire for maximum {0} transactions', 'ALL', 'mclass^2&pid^61:1016019:You can enquire for maximum {0} transactions', 
+    NULL, NULL, 'Y', NULL, NULL, 
+    NULL);
+
+Insert into MESSAGES_MASTER
+   (MESSAGE_TYPE, MESSAGE_CODE, DEFAULT_MESSAGE, NETWORK_CODE, MESSAGE1, 
+    MESSAGE2, MESSAGE3, MCLASS, DESCRIPTION, MESSAGE4, 
+    MESSAGE5)
+ Values
+   ('ALL', '1016020', 'mclass^2&pid^61:1016020:Service type can not be blank for transaction type C2S', 'ALL', 'mclass^2&pid^61:1016020:Service type can not be blank for transaction type C2S', 
+    NULL, NULL, 'Y', NULL, NULL, 
+    NULL);	
+	
+Insert into MESSAGES_MASTER
+   (MESSAGE_TYPE, MESSAGE_CODE, DEFAULT_MESSAGE, NETWORK_CODE, MESSAGE1, 
+    MESSAGE2, MESSAGE3, MCLASS, DESCRIPTION, MESSAGE4, 
+    MESSAGE5)
+ Values
+   ('ALL', '1016021', 'mclass^2&pid^61:1016021:C2C INOUT can not be blank for transaction type C2C', 'ALL', 'mclass^2&pid^61:1016021:C2C INOUT can not be blank for transaction type C2C', 
+    NULL, NULL, 'Y', NULL, NULL, 
+    NULL);	
+	
+Insert into MESSAGES_MASTER
+   (MESSAGE_TYPE, MESSAGE_CODE, DEFAULT_MESSAGE, NETWORK_CODE, MESSAGE1, 
+    MESSAGE2, MESSAGE3, MCLASS, DESCRIPTION, MESSAGE4, 
+    MESSAGE5)
+ Values
+   ('ALL', '1016022', 'mclass^2&pid^61:1016022:You have not done any transaction in last {0} days', 'ALL', 'mclass^2&pid^61:1016022:You have not done any transaction in last {0} days', 
+    NULL, NULL, 'Y', NULL, NULL, 
+    NULL);
+	
+Insert into MESSAGES_MASTER
+   (MESSAGE_TYPE, MESSAGE_CODE, DEFAULT_MESSAGE, NETWORK_CODE, MESSAGE1, 
+    MESSAGE2, MESSAGE3, MCLASS, DESCRIPTION, MESSAGE4, 
+    MESSAGE5)
+ Values
+   ('ALL', '1016023', 'mclass^2&pid^61:1016023:Channel user MSISDN <MSISDN1> can not be blank', 'ALL', 'mclass^2&pid^61:1016023:Channel user MSISDN <MSISDN1> can not be blank', 
+    NULL, NULL, 'Y', NULL, NULL, 
+    NULL);
+	
+	
+Insert into MESSAGES_MASTER
+   (MESSAGE_TYPE, MESSAGE_CODE, DEFAULT_MESSAGE, NETWORK_CODE, MESSAGE1, 
+    MESSAGE2, MESSAGE3, MCLASS, DESCRIPTION, MESSAGE4, 
+    MESSAGE5)
+ Values
+   ('ALL', '24120', 'mclass^2&pid^61:24120:{0}- TxnID:{1},MSISDN:{2},Status:{3},Type:{4},Amount:{5},PostBal:{6}', 'ALL', 'mclass^2&pid^61:24120:{0}- TxnID:{1},MSISDN:{2},Status:{3},Type:{4},Amount:{5},PostBal:{6}', 
+    NULL, NULL, 'Y', NULL, NULL, 
+    NULL);	
+	
+Insert into MESSAGES_MASTER
+   (MESSAGE_TYPE, MESSAGE_CODE, DEFAULT_MESSAGE, NETWORK_CODE, MESSAGE1, 
+    MESSAGE2, MESSAGE3, MCLASS, DESCRIPTION, MESSAGE4, 
+    MESSAGE5)
+ Values
+   ('ALL', '24121', 'mclass^2&pid^61:24121:Transfer details {0}.', 'ALL', 'mclass^2&pid^61:24121:Transfer details {0}.', 
+    NULL, NULL, 'Y', NULL, NULL, 
+    NULL);
+	
+Insert into MESSAGES_MASTER
+   (MESSAGE_TYPE, MESSAGE_CODE, DEFAULT_MESSAGE, NETWORK_CODE, MESSAGE1, 
+    MESSAGE2, MESSAGE3, MCLASS, DESCRIPTION, MESSAGE4, 
+    MESSAGE5)
+ Values
+   ('ALL', '24124', 'mclass^2&pid^61:24124:Transfer details TxnID:{1},MSISDN:{2},Status:{3},Type:{4},Amount:{5},PostBal:{6}', 'ALL', 'mclass^2&pid^61:24124:Transfer details TxnID:{1},MSISDN:{2},Status:{3},Type:{4},Amount:{5},PostBal:{6}', 
+    NULL, NULL, 'Y', NULL, NULL, 
+    NULL);
+COMMIT;
+
+--Script_Add_promotional_trf_rule
+ALTER TABLE TRANSFER_RULES MODIFY  CATEGORY_CODE  DEFAULT 'ALL';
+ALTER TABLE TRANSFER_RULES MODIFY  GRADE_CODE  DEFAULT 'ALL';
+COMMIT;
+
+--Two factor Authentication DB_SCripts
+--Added table for storing users Generated OTP information
+CREATE TABLE USER_OTP
+(
+  USER_ID       VARCHAR2(15 BYTE),
+  MSISDN        VARCHAR2(15 BYTE),
+  OTP_PIN       VARCHAR2(32 BYTE),
+  STATUS        VARCHAR2(2 BYTE),
+  GENERATED_ON  DATE,
+  CREATED_BY    VARCHAR2(15 BYTE),
+  CREATED_ON    DATE,
+  MODIFIED_ON   DATE,
+  MODIFIED_BY   VARCHAR2(15 BYTE),
+  CONSUMED_ON   DATE
+);
+
+--Added column For marking Grades allowed for two factor Authentication
+ALTER TABLE CHANNEL_GRADES ADD IS_2FA_ALLOWED varchar2(1);
+ALTER TABLE CHANNEL_GRADES MODIFY IS_2FA_ALLOWED DEFAULT 'N';
+
+--Added a system preferences for Two factor Authentication
+Insert into SYSTEM_PREFERENCES
+   (PREFERENCE_CODE, NAME, TYPE, VALUE_TYPE, DEFAULT_VALUE, 
+    MIN_VALUE, MAX_VALUE, MAX_SIZE, DESCRIPTION, MODIFIED_ALLOWED, 
+    DISPLAY, MODULE, REMARKS, CREATED_ON, CREATED_BY, 
+    MODIFIED_ON, MODIFIED_BY, ALLOWED_VALUES, FIXED_VALUE)
+ Values
+   ('TWO_FA_REQ', 'TWO Factor Authentication Req', 'CATPRF', 'BOOLEAN', 'true', 
+    NULL, NULL, 50, 'two factor Authentication Required', 'Y', 
+    'Y', 'C2S', '2 factor Authentication Required', TO_DATE('07/04/2013 18:58:53', 'MM/DD/YYYY HH24:MI:SS'), 'ADMIN', 
+    TO_DATE('06/23/2016 09:33:01', 'MM/DD/YYYY HH24:MI:SS'), 'SU0001', 'true,false', 'Y');
+COMMIT;
+
+--Complete_FT_CR's_Scripts
+ALTER TABLE PROFILE_SET ADD
+(  	
+	OPT_IN_OUT_ENABLED          VARCHAR2(2 BYTE)  DEFAULT 'N'
+);
+ALTER TABLE CHANNEL_USERS ADD
+(  
+	OPT_IN_OUT_STATUS         VARCHAR2(2 BYTE)    DEFAULT 'O', 
+	REF_BASED VARCHAR2(5 BYTE),
+	OPT_IN_OUT_NOTIFY_DATE    DATE,  
+	OPT_IN_OUT_RESPONSE_DATE  DATE
+);
+alter table channel_users add ref_based varchar2(5 byte);
+
+------------------Adding LMS details for C2S Transfer
+ALTER TABLE C2S_TRANSFERS ADD (LMS_PROFILE  VARCHAR2(10));
+ALTER TABLE C2S_TRANSFERS ADD (LMS_VERSION  VARCHAR2(10));
+--Control Group 
+alter TABLE CHANNEL_USERS add (
+    CONTROL_GROUP         VARCHAR2(2 BYTE)    DEFAULT 'N'  
+);
+COMMIT;
+CREATE INDEX INDX_C2S_TRANSFER_LMS_PRF ON C2S_TRANSFERS (LMS_PROFILE, LMS_VERSION) TABLESPACE P_C2SINDX1;
+CREATE INDEX INDX_PRF_SET_APPLICABLE ON PROFILE_SET_VERSION (trunc(APPLICABLE_FROM), trunc(APPLICABLE_TO)) TABLESPACE PRTPDATA;
+
+ALTER TABLE P2P_SUBSCRIBERS ADD(email_id varchar2(100),imei varchar2(50));  
+--LMS Point Adjustment Module
+ALTER TABLE FOC_BATCHES MODIFY TYPE  VARCHAR2(3 BYTE)          DEFAULT 'FB';
+ALTER TABLE CHANNEL_TRANSFERS ADD 
+(
+    LMS_POINT_ADJUST_VALUE     NUMBER(20) DEFAULT 0
+);
+--Create history table of channel user
+CREATE TABLE CHANNEL_USERS_HISTORY
+(
+  USER_ID                   VARCHAR2(15 BYTE),
+  USER_GRADE                VARCHAR2(10 BYTE),
+  CONTACT_PERSON            NVARCHAR2(80),
+  TRANSFER_PROFILE_ID       VARCHAR2(10 BYTE),
+  COMM_PROFILE_SET_ID       VARCHAR2(10 BYTE),
+  IN_SUSPEND                VARCHAR2(1 BYTE),
+  OUT_SUSPEND               VARCHAR2(1 BYTE),
+  OUTLET_CODE               VARCHAR2(10 BYTE),
+  SUBOUTLET_CODE            VARCHAR2(10 BYTE),
+  ACTIVATED_ON              DATE,
+  APPLICATION_ID            VARCHAR2(20 BYTE),
+  MPAY_PROFILE_ID           VARCHAR2(20 BYTE),
+  USER_PROFILE_ID           VARCHAR2(20 BYTE),
+  IS_PRIMARY                VARCHAR2(1 BYTE),
+  MCOMMERCE_SERVICE_ALLOW   VARCHAR2(1 BYTE),
+  LOW_BAL_ALERT_ALLOW       VARCHAR2(1 BYTE),
+  MCATEGORY_CODE            VARCHAR2(10 BYTE),
+  ALERT_MSISDN              VARCHAR2(20 BYTE),
+  ALERT_TYPE                VARCHAR2(6 BYTE),
+  ALERT_EMAIL               VARCHAR2(60 BYTE),
+  VOMS_DECRYP_KEY           VARCHAR2(64 BYTE),
+  TRF_RULE_TYPE             VARCHAR2(10 BYTE),
+  AUTO_O2C_ALLOW            VARCHAR2(5 BYTE),
+  AUTO_FOC_ALLOW            VARCHAR2(1 BYTE),
+  LMS_PROFILE_UPDATED_ON    DATE,
+  LMS_PROFILE               VARCHAR2(10 BYTE),
+  REF_BASED                 VARCHAR2(5 BYTE),
+  ASSOCIATED_MSISDN         VARCHAR2(15 BYTE),
+  ASSOCIATED_MSISDN_TYPE    VARCHAR2(10 BYTE),
+  ASSOCIATED_MSISDN_CDATE   DATE,
+  ASSOCIATED_MSISDN_MDATE   DATE,
+  AUTO_C2C_ALLOW            VARCHAR2(1 BYTE),
+  AUTO_C2C_QUANTITY         NUMBER ,
+  OPT_IN_OUT_STATUS         VARCHAR2(2 BYTE),
+  OPT_IN_OUT_NOTIFY_DATE    DATE,
+  OPT_IN_OUT_RESPONSE_DATE  DATE,
+  CONTROL_GROUP             VARCHAR2(2 BYTE),
+  ENTRY_DATE                    DATE,
+  OPERATION_PERFORMED           VARCHAR2(1 BYTE)
+)
+TABLESPACE PRTPDATA
+PARTITION BY RANGE (ENTRY_DATE)
+(  
+  PARTITION CHANNEL_USERS_HISTORY_SEP15 VALUES LESS THAN (TO_DATE(' 2015-10-01 00:00:00', 'SYYYY-MM-DD HH24:MI:SS', 'NLS_CALENDAR=GREGORIAN')),
+  PARTITION CHANNEL_USERS_HISTORY_OCT15 VALUES LESS THAN (TO_DATE(' 2015-11-01 00:00:00', 'SYYYY-MM-DD HH24:MI:SS', 'NLS_CALENDAR=GREGORIAN')),
+  PARTITION CHANNEL_USERS_HISTORY_NOV15 VALUES LESS THAN (TO_DATE(' 2015-12-01 00:00:00', 'SYYYY-MM-DD HH24:MI:SS', 'NLS_CALENDAR=GREGORIAN')),
+  PARTITION CHANNEL_USERS_HISTORY_DEC15 VALUES LESS THAN (TO_DATE(' 2016-01-01 00:00:00', 'SYYYY-MM-DD HH24:MI:SS', 'NLS_CALENDAR=GREGORIAN'))
+);
+
+CREATE TABLE VERSION
+(
+  VERSION_NAME        VARCHAR2(100 BYTE)    NOT NULL,
+  VERSION_TYPE        VARCHAR2(20 BYTE)		NOT NULL,
+  INSTALLATION_DATE    date                 DEFAULT sysdate
+);
+
+Insert into SYSTEM_PREFERENCES   (PREFERENCE_CODE, NAME, TYPE, VALUE_TYPE, DEFAULT_VALUE,     MIN_VALUE, MAX_VALUE, MAX_SIZE, DESCRIPTION, MODIFIED_ALLOWED,     DISPLAY, MODULE, REMARKS, CREATED_ON, CREATED_BY,     MODIFIED_ON, MODIFIED_BY, ALLOWED_VALUES, FIXED_VALUE) Values   ('OPT_IN_OUT_ALLOW', 'OPT IN/OUT Allow in the system', 'SYSTEMPRF', 'BOOLEAN', 'true',     NULL, NULL, 50, 'If this flag is true then OPT IN/OUT enabled', 'N',     'N', 'C2S', 'If this flag is true then OPT IN/OUT enabled', sysdate, 'ADMIN',     sysdate, 'ADMIN', NULL, 'Y');
+Insert into PAGES   (PAGE_CODE, MODULE_CODE, PAGE_URL, MENU_NAME, MENU_ITEM,     SEQUENCE_NO, MENU_LEVEL, APPLICATION_ID) Values   ('LMSPOPT01', 'CCRPTLMS', '/lmsOptInOptOutAction.do?method=loadOptInReportDetails', 'LMS Reports', 'Y',     378, '2', '1');
+Insert into PAGES   (PAGE_CODE, MODULE_CODE, PAGE_URL, MENU_NAME, MENU_ITEM,     SEQUENCE_NO, MENU_LEVEL, APPLICATION_ID) Values   ('LMSPOPT1A', 'CCRPTLMS', '/lmsOptInOptOutAction.do?method=loadOptInReportDetails', 'LMS Reports', 'N',     378, '2', '1');
+Insert into PAGES   (PAGE_CODE, MODULE_CODE, PAGE_URL, MENU_NAME, MENU_ITEM,     SEQUENCE_NO, MENU_LEVEL, APPLICATION_ID) Values   ('LMSPOPTDm', 'CCRPTLMS', '/lmsOptInOptOutAction.do?method=loadOptInReportDetails', 'LMS Reports', 'Y',     378, '1', '1');
+Insert into PAGE_ROLES   (ROLE_CODE, PAGE_CODE, APPLICATION_ID) Values   ('LMSPOPTRPT', 'LMSPOPT1A', '1');
+Insert into PAGE_ROLES   (ROLE_CODE, PAGE_CODE, APPLICATION_ID) Values   ('LMSPOPTRPT', 'LMSPOPTDm', '1');
+Insert into PAGE_ROLES   (ROLE_CODE, PAGE_CODE, APPLICATION_ID) Values   ('LMSPOPTRPT', 'LMSPOPT01', '1');
+Insert into ROLES   (DOMAIN_TYPE, ROLE_CODE, ROLE_NAME, GROUP_NAME, STATUS,     ROLE_TYPE, FROM_HOUR, TO_HOUR, GROUP_ROLE, APPLICATION_ID,     GATEWAY_TYPES, ROLE_FOR, IS_DEFAULT, IS_DEFAULT_GROUPROLE) Values   ('OPERATOR', 'LMSPOPTRPT', 'LMS Opt-In/Opt-Out report', 'LMS Reports', 'Y',     'A', NULL, NULL, 'N', '1',     'WEB', 'B', 'N', 'N');
+Insert into CATEGORY_ROLES   (CATEGORY_CODE, ROLE_CODE, APPLICATION_ID) Values   ('BCU', 'LMSPOPTRPT', '1');
+Insert into PAGES   (PAGE_CODE, MODULE_CODE, PAGE_URL, MENU_NAME, MENU_ITEM,     SEQUENCE_NO, MENU_LEVEL, APPLICATION_ID) Values   ('LMSPSRPT01', 'CCRPTLMS', '/lmsProfileWiseTxnSummaryAction.do?method=loadReportDetails'||'&'||'type=DAILY', 'LMS Reports', 'Y',     377, '2', '1');
+Insert into PAGES   (PAGE_CODE, MODULE_CODE, PAGE_URL, MENU_NAME, MENU_ITEM,     SEQUENCE_NO, MENU_LEVEL, APPLICATION_ID) Values   ('LMSPSRPT1A', 'CCRPTLMS', '/lmsProfileWiseTxnSummaryAction.do?method=loadReportDetails'||'&'||'type=DAILY', 'LMS Reports', 'N',     377, '2', '1');
+Insert into PAGES   (PAGE_CODE, MODULE_CODE, PAGE_URL, MENU_NAME, MENU_ITEM,     SEQUENCE_NO, MENU_LEVEL, APPLICATION_ID) Values   ('LMSPSRPTDm', 'CCRPTLMS', '/lmsProfileWiseTxnSummaryAction.do?method=loadReportDetails'||'&'||'type=DAILY', 'LMS Reports', 'Y',     377, '1', '1');
+Insert into ROLES   (DOMAIN_TYPE, ROLE_CODE, ROLE_NAME, GROUP_NAME, STATUS,     ROLE_TYPE, FROM_HOUR, TO_HOUR, GROUP_ROLE, APPLICATION_ID,     GATEWAY_TYPES, ROLE_FOR, IS_DEFAULT, IS_DEFAULT_GROUPROLE) Values   ('OPERATOR', 'LMSPRORPT', 'LMS ProfileWise Txn report', 'LMS Reports', 'Y',     'A', NULL, NULL, 'N', '1',     'WEB', 'B', 'N', 'N');
+Insert into PAGE_ROLES   (ROLE_CODE, PAGE_CODE, APPLICATION_ID) Values   ('LMSPRORPT', 'LMSPSRPT01', '1');
+Insert into PAGE_ROLES   (ROLE_CODE, PAGE_CODE, APPLICATION_ID) Values   ('LMSPRORPT', 'LMSPSRPT1A', '1');
+Insert into PAGE_ROLES   (ROLE_CODE, PAGE_CODE, APPLICATION_ID) Values   ('LMSPRORPT', 'LMSPSRPTDm', '1');
+Insert into CATEGORY_ROLES   (CATEGORY_CODE, ROLE_CODE, APPLICATION_ID) Values   ('BCU', 'LMSPRORPT', '1');
+Insert into LOOKUP_TYPES   (LOOKUP_TYPE, LOOKUP_TYPE_NAME, CREATED_ON, CREATED_BY, MODIFIED_ON,     MODIFIED_BY, MODIFIED_ALLOWED) Values   ('IOTYP', 'Opt-In/Opt-Out Type', sysdate, 'ADMIN', sysdate,     'ADMIN', 'N');
+Insert into LOOKUPS   (LOOKUP_CODE, LOOKUP_NAME, LOOKUP_TYPE, STATUS, CREATED_ON,     CREATED_BY, MODIFIED_ON, MODIFIED_BY) Values   ('I', 'Opt-IN', 'IOTYP', 'Y', sysdate,     'ADMIN', sysdate, 'ADMIN');
+Insert into LOOKUPS   (LOOKUP_CODE, LOOKUP_NAME, LOOKUP_TYPE, STATUS, CREATED_ON,     CREATED_BY, MODIFIED_ON, MODIFIED_BY) Values   ('O', 'Opt-OUT', 'IOTYP', 'Y', sysdate,     'ADMIN', sysdate, 'ADMIN');
+Insert into LOOKUPS   (LOOKUP_CODE, LOOKUP_NAME, LOOKUP_TYPE, STATUS, CREATED_ON,     CREATED_BY, MODIFIED_ON, MODIFIED_BY) Values   ('ALL', 'ALL', 'IOTYP', 'Y', sysdate,     'ADMIN', sysdate, 'ADMIN');
+Insert into ROLES   (DOMAIN_TYPE, ROLE_CODE, ROLE_NAME, GROUP_NAME, STATUS,     ROLE_TYPE, FROM_HOUR, TO_HOUR, GROUP_ROLE, APPLICATION_ID,     GATEWAY_TYPES, ROLE_FOR, IS_DEFAULT, IS_DEFAULT_GROUPROLE) Values   ('DISTB_CHAN', 'LMSREDRPT', 'LMS Redemption Report', 'LMS Reports', 'Y',     'A', NULL, NULL, 'N', '1',     'WEB', 'B', 'N', 'N');
+insert into ROLES   (DOMAIN_TYPE, ROLE_CODE, ROLE_NAME, GROUP_NAME, STATUS,     ROLE_TYPE, FROM_HOUR, TO_HOUR, GROUP_ROLE, APPLICATION_ID,     GATEWAY_TYPES, ROLE_FOR, IS_DEFAULT, IS_DEFAULT_GROUPROLE) Values   ('CORPORATE', 'LMSREDRPT', 'LMS Redemption Report', 'LMS Reports', 'Y',     'A', NULL, NULL, 'N', '1',     'WEB', 'B', 'N', 'N');
+Insert into ROLES   (DOMAIN_TYPE, ROLE_CODE, ROLE_NAME, GROUP_NAME, STATUS,     ROLE_TYPE, FROM_HOUR, TO_HOUR, GROUP_ROLE, APPLICATION_ID,     GATEWAY_TYPES, ROLE_FOR, IS_DEFAULT, IS_DEFAULT_GROUPROLE) Values   ('PARTNERS', 'LMSREDRPT', 'LMS Redemption Report', 'LMS Reports', 'Y',     'A', NULL, NULL, 'N', '1',     'WEB', 'B', 'N', 'N');
+Insert into SERVICE_TYPE (SERVICE_TYPE, MODULE, TYPE, MESSAGE_FORMAT, REQUEST_HANDLER,     ERROR_KEY, DESCRIPTION, FLEXIBLE, CREATED_ON, CREATED_BY,     MODIFIED_ON, MODIFIED_BY, NAME, EXTERNAL_INTERFACE, UNREGISTERED_ACCESS_ALLOWED,     STATUS, SEQ_NO, USE_INTERFACE_LANGUAGE, GROUP_TYPE, SUB_KEYWORD_APPLICABLE,     FILE_PARSER, RECEIVER_USER_SERVICE_CHECK, ERP_HANDLER, RESPONSE_PARAM, REQUEST_PARAM,     UNDERPROCESS_CHECK_REQD) Values ('LMSPTRED', 'C2S', 'ALL', 'TYPE POINTS PIN', 'com.btsl.pretups.user.requesthandler.LmsPointsRedemptionRequestHandler',     'c2s.userLmsPoints', 'LMS PT Redemption', 'Y', sysdate, 'ADMIN', sysdate, 'ADMIN', 'User Lms Redemption', 'Y', 'N',     'Y', NULL, 'N', 'NA', 'N',     NULL, NULL, NULL, 'TYPE,DATE,TXNSTATUS,REDTXNID,REMPOINTS,CREDITEDAMOUNT,MESSAGE', 'TYPE,IMEI,EXTNWCODE,DATE,MSISDN,PIN,LOGINID,PASSWORD,EXTCODE,POINTS,LANGUAGE1',     'Y');
+UPDATE SERVICE_TYPE SET EXTERNAL_INTERFACE='Y' WHERE SERVICE_TYPE='LMSPTRED';
+Insert into SYSTEM_PREFERENCES   (PREFERENCE_CODE, NAME, TYPE, VALUE_TYPE, DEFAULT_VALUE,     MIN_VALUE, MAX_VALUE, MAX_SIZE, DESCRIPTION, MODIFIED_ALLOWED,     DISPLAY, MODULE, REMARKS, CREATED_ON, CREATED_BY,     MODIFIED_ON, MODIFIED_BY, ALLOWED_VALUES, FIXED_VALUE) Values   ('INVALID_PWD_COUNT_FOR_CAPTCHA', 'INVALID PWD COUNT FOR CAPTCHA', 'SYSTEMPRF', 'INT', '2',     2, 5, 5, 'INVALID PWD COUNT FOR CAPTCHA', NULL,     'N', 'C2S', 'INVALID PWD COUNT FOR CAPTCHA', sysdate, 'ADMIN',     sysdate, 'ADMIN', NULL, 'Y');
+UPDATE SYSTEM_PREFERENCES SET VALUE_TYPE='INT' WHERE PREFERENCE_CODE='AUTO_C2C_TRANSFER_AMT';
+UPDATE ROLES SET STATUS='Y'	 WHERE ROLE_CODE IN ('ROLESRVMAP','ROLEMSRVMAP','ROLESRVVMAP');
+Insert into LOOKUPS   (LOOKUP_CODE, LOOKUP_NAME, LOOKUP_TYPE, STATUS, CREATED_ON,     CREATED_BY, MODIFIED_ON, MODIFIED_BY) Values   ('CNTRLP', 'Controlled', 'LMPTY', 'N', sysdate,     'ADMIN', sysdate, 'ADMIN');
+--IN change related to recharge and other c2s services configuration 
+--UPDATE SYSTEM_PREFERENCES SET default_value='RC,EVD,GRC' WHERE PREFERENCE_CODE='SRVC_PROD_INTFC_MAPPING_ALLOWED';
+--UPDATE SYSTEM_PREFERENCES SET default_value='TRUE' WHERE PREFERENCE_CODE='SELECTOR_INTERFACE_MAPPING';
+Insert into SERVICE_TYPE(SERVICE_TYPE, MODULE, TYPE, MESSAGE_FORMAT, REQUEST_HANDLER,ERROR_KEY, DESCRIPTION, FLEXIBLE, CREATED_ON, CREATED_BY,MODIFIED_ON, MODIFIED_BY, NAME, EXTERNAL_INTERFACE, UNREGISTERED_ACCESS_ALLOWED,STATUS, SEQ_NO, USE_INTERFACE_LANGUAGE, GROUP_TYPE, SUB_KEYWORD_APPLICABLE,FILE_PARSER, RECEIVER_USER_SERVICE_CHECK, ERP_HANDLER, RESPONSE_PARAM, REQUEST_PARAM,UNDERPROCESS_CHECK_REQD) Values('OPTIN', 'C2S', 'ALL', 'KEYWORD PIN', 'com.btsl.pretups.user.requesthandler.clientrequesthandler.LMSProfileOptInOptOutRequestHandler','c2s.optinoptoutrequest', 'Opt-In/Opt-Out Request', 'Y', sysdate, 'ADMIN',sysdate, 'ADMIN', 'LMS Profile Opt-In', 'N', 'N','Y', NULL, 'N', 'NA', 'N',NULL, 'Y', 'NA', 'TYPE,TXNSTATUS,MESSAGE', 'TYPE,MSISDN','Y'); 
+Insert into SERVICE_TYPE(SERVICE_TYPE, MODULE, TYPE, MESSAGE_FORMAT, REQUEST_HANDLER,ERROR_KEY, DESCRIPTION, FLEXIBLE, CREATED_ON, CREATED_BY,MODIFIED_ON, MODIFIED_BY, NAME, EXTERNAL_INTERFACE, UNREGISTERED_ACCESS_ALLOWED,STATUS, SEQ_NO, USE_INTERFACE_LANGUAGE, GROUP_TYPE, SUB_KEYWORD_APPLICABLE,FILE_PARSER, RECEIVER_USER_SERVICE_CHECK, ERP_HANDLER, RESPONSE_PARAM, REQUEST_PARAM, UNDERPROCESS_CHECK_REQD) Values('OPTOUT', 'C2S', 'ALL', 'KEYWORD PIN', 'com.btsl.pretups.user.requesthandler.clientrequesthandler.LMSProfileOptInOptOutRequestHandler','c2s.optinoptoutrequest', 'Opt-In/Opt-Out Request', 'Y', sysdate, 'ADMIN',sysdate, 'ADMIN', 'LMS Profile Opt-Out', 'N', 'N','Y', NULL, 'N', 'NA', 'N',NULL, 'Y', 'NA', 'TYPE,TXNSTATUS,MESSAGE', 'TYPE,MSISDN','Y'); 
+update lookups set status='N' where LOOKUP_CODE='CNTRLP' and LOOKUP_TYPE='LMPTY';
+Insert into LOOKUP_TYPES   (LOOKUP_TYPE, LOOKUP_TYPE_NAME, CREATED_ON, CREATED_BY, MODIFIED_ON,  MODIFIED_BY, MODIFIED_ALLOWED)  Values   ('LMUTY', 'LMS Control group', sysdate, 'ADMIN', sysdate, 'ADMIN', 'N');
+Insert into LOOKUPS   (LOOKUP_CODE, LOOKUP_NAME, LOOKUP_TYPE, STATUS, CREATED_ON,     CREATED_BY, MODIFIED_ON, MODIFIED_BY)
+Values   ('N', 'Target user group', 'LMUTY', 'Y', sysdate,     'ADMIN', sysdate, 'ADMIN');
+Insert into LOOKUPS   (LOOKUP_CODE, LOOKUP_NAME, LOOKUP_TYPE, STATUS, CREATED_ON,     CREATED_BY, MODIFIED_ON, MODIFIED_BY)
+Values   ('Y', 'Control user group', 'LMUTY', 'Y', sysdate,     'ADMIN', sysdate, 'ADMIN');
+Insert into PAGES   (PAGE_CODE, MODULE_CODE, PAGE_URL, MENU_NAME, MENU_ITEM,     SEQUENCE_NO, MENU_LEVEL, APPLICATION_ID) Values   ('LMSPROAU01', 'CCRPTLMS', '/lmsProgramAction.do?method=loadLmsProgramDetails', 'LMS Reports', 'Y',     379, '2', '1');
+Insert into PAGES   (PAGE_CODE, MODULE_CODE, PAGE_URL, MENU_NAME, MENU_ITEM,     SEQUENCE_NO, MENU_LEVEL, APPLICATION_ID) Values   ('LMSPROAU1A', 'CCRPTLMS', '/lmsProgramAction.do?method=loadLmsProgramDetails', 'LMS Reports', 'N',     379, '2', '1');
+Insert into PAGES   (PAGE_CODE, MODULE_CODE, PAGE_URL, MENU_NAME, MENU_ITEM,     SEQUENCE_NO, MENU_LEVEL, APPLICATION_ID) Values   ('LMSPROAUDm', 'CCRPTLMS', '/lmsProgramAction.do?method=loadLmsProgramDetails', 'LMS Reports', 'Y',     379, '1', '1');
+Insert into PAGE_ROLES   (ROLE_CODE, PAGE_CODE, APPLICATION_ID) Values   ('LMSPROGRPT', 'LMSPROAU1A', '1');
+Insert into PAGE_ROLES   (ROLE_CODE, PAGE_CODE, APPLICATION_ID) Values   ('LMSPROGRPT', 'LMSPROAUDm', '1');
+Insert into PAGE_ROLES   (ROLE_CODE, PAGE_CODE, APPLICATION_ID) Values   ('LMSPROGRPT', 'LMSPROAU01', '1');
+Insert into ROLES   (DOMAIN_TYPE, ROLE_CODE, ROLE_NAME, GROUP_NAME, STATUS,     ROLE_TYPE, FROM_HOUR, TO_HOUR, GROUP_ROLE, APPLICATION_ID,     GATEWAY_TYPES, ROLE_FOR, IS_DEFAULT, IS_DEFAULT_GROUPROLE) Values   ('OPERATOR', 'LMSPROGRPT', 'LMS Program Associated report', 'LMS Reports', 'Y',     'A', NULL, NULL, 'N', '1',     'WEB', 'B', 'N', 'N');
+Insert into CATEGORY_ROLES   (CATEGORY_CODE, ROLE_CODE, APPLICATION_ID) Values   ('BCU', 'LMSPROGRPT', '1');
+Insert into SYSTEM_PREFERENCES(PREFERENCE_CODE, NAME, TYPE, VALUE_TYPE, DEFAULT_VALUE, MIN_VALUE, MAX_VALUE, MAX_SIZE, DESCRIPTION, MODIFIED_ALLOWED,     DISPLAY, MODULE, REMARKS, CREATED_ON, CREATED_BY,     MODIFIED_ON, MODIFIED_BY, ALLOWED_VALUES, FIXED_VALUE) Values   ('SRVC_PROD_INTFC_MAPPING_ALLOWED', 'srvc prod intfc mapng', 'SYSTEMPRF', 'STRING', 'RC,EVD,GRC,PRC,PCR,GMB,PPB',     0, 9999, 50, 'Allowed services for service type product interface mapping', 'N',     'N', 'C2S', 'Allowed services for service type product interface mapping', sysdate, 'ADMIN',     sysdate, 'ADMIN', NULL, 'Y');
+update COMMISSION_PROFILE_SET set  GEOGRAPHY_CODE='ALL' where GEOGRAPHY_CODE is null;
+update COMMISSION_PROFILE_SET set GRADE_CODE='ALL'  where GRADE_CODE is null;
+update roles set status='N' where role_code='LMSPWSUMRPT';
+Insert into ROLES(DOMAIN_TYPE, ROLE_CODE, ROLE_NAME, GROUP_NAME, STATUS,  ROLE_TYPE, FROM_HOUR, TO_HOUR, GROUP_ROLE, APPLICATION_ID,  GATEWAY_TYPES, ROLE_FOR, IS_DEFAULT, IS_DEFAULT_GROUPROLE) Values('OPERATOR', 'INITBLPT', 'Initiate Batch LMS Points', 'LMS Points Transfer', 'Y',  'A', NULL, NULL, 'N', '1',  'WEB', 'B', 'N', 'N');
+Insert into ROLES(DOMAIN_TYPE, ROLE_CODE, ROLE_NAME, GROUP_NAME, STATUS,  ROLE_TYPE, FROM_HOUR, TO_HOUR, GROUP_ROLE, APPLICATION_ID,  GATEWAY_TYPES, ROLE_FOR, IS_DEFAULT, IS_DEFAULT_GROUPROLE) Values('OPERATOR', 'BTLPTAPR1', 'Batch LMS Points Approval 1', 'LMS Points Transfer', 'Y',  'A', NULL, NULL, 'N', '1',  'WEB', 'B', 'N', 'N');
+Insert into ROLES(DOMAIN_TYPE, ROLE_CODE, ROLE_NAME, GROUP_NAME, STATUS,  ROLE_TYPE, FROM_HOUR, TO_HOUR, GROUP_ROLE, APPLICATION_ID,  GATEWAY_TYPES, ROLE_FOR, IS_DEFAULT, IS_DEFAULT_GROUPROLE) Values('OPERATOR', 'BTLPTAPR2', 'Batch LMS Points Approval 2', 'LMS Points Transfer', 'Y',  'A', NULL, NULL, 'N', '1',  'WEB', 'B', 'N', 'N');
+Insert into PAGES(PAGE_CODE, MODULE_CODE, PAGE_URL, MENU_NAME, MENU_ITEM,  SEQUENCE_NO, MENU_LEVEL, APPLICATION_ID) Values('BATLPT0007', 'OPT2CHNL', '/jsp/batchlptadjust/batchLPTReject.jsp', 'LPT batch approval level one', 'N',  390, '2', '1');
+Insert into PAGES(PAGE_CODE, MODULE_CODE, PAGE_URL, MENU_NAME, MENU_ITEM,  SEQUENCE_NO, MENU_LEVEL, APPLICATION_ID) Values('BATLPT0008', 'OPT2CHNL', '/jsp/batchlptadjust/batchLPTReject.jsp', 'LPT batch approval level two', 'N',  391, '2', '1');
+Insert into PAGES(PAGE_CODE, MODULE_CODE, PAGE_URL, MENU_NAME, MENU_ITEM,  SEQUENCE_NO, MENU_LEVEL, APPLICATION_ID) Values('BATLPT0010', 'OPT2CHNL', '/jsp/batchlptadjust/batchLPTApprove.jsp', 'LPT batch approval level one', 'N',  390, '2', '1');
+Insert into PAGES(PAGE_CODE, MODULE_CODE, PAGE_URL, MENU_NAME, MENU_ITEM,  SEQUENCE_NO, MENU_LEVEL, APPLICATION_ID) Values('BATLPT0011', 'OPT2CHNL', '/jsp/batchlptadjust/batchLPTApprove.jsp', 'LPT batch approval level two', 'N',  391, '2', '1');
+Insert into PAGES(PAGE_CODE, MODULE_CODE, PAGE_URL, MENU_NAME, MENU_ITEM,  SEQUENCE_NO, MENU_LEVEL, APPLICATION_ID) Values('BATLPT0013', 'OPT2CHNL', '/jsp/batchlptadjust/batchLPTProcessFile.jsp', 'LPT batch approval level one', 'N',  390, '2', '1');
+Insert into PAGES(PAGE_CODE, MODULE_CODE, PAGE_URL, MENU_NAME, MENU_ITEM,  SEQUENCE_NO, MENU_LEVEL, APPLICATION_ID) Values('BATLPT0014', 'OPT2CHNL', '/jsp/batchlptadjust/batchLPTProcessFile.jsp', 'LPT batch approval level two', 'N',  391, '2', '1');
+Insert into PAGES(PAGE_CODE, MODULE_CODE, PAGE_URL, MENU_NAME, MENU_ITEM,  SEQUENCE_NO, MENU_LEVEL, APPLICATION_ID) Values('BATLPT001A', 'OPT2CHNL', '/batchLPTTransferApproval1.do?method=focBatchApproval1Authorise', 'LPT batch approval level one', 'N',  390, '2', '1');
+Insert into PAGES(PAGE_CODE, MODULE_CODE, PAGE_URL, MENU_NAME, MENU_ITEM,  SEQUENCE_NO, MENU_LEVEL, APPLICATION_ID) Values('BATLPT002A', 'OPT2CHNL', '/batchLPTTransferApproval2.do?method=focBatchApproval2Authorise', 'LPT batch approval level two', 'N',  391, '2', '1');
+Insert into PAGES(PAGE_CODE, MODULE_CODE, PAGE_URL, MENU_NAME, MENU_ITEM,  SEQUENCE_NO, MENU_LEVEL, APPLICATION_ID) Values('BATLPT1DMM', 'OPT2CHNL', '/batchLPTTransferApproval1.do?method=focBatchApproval1Authorise', 'LPT batch approval level one', 'Y',  390, '1', '1');
+Insert into PAGES(PAGE_CODE, MODULE_CODE, PAGE_URL, MENU_NAME, MENU_ITEM,  SEQUENCE_NO, MENU_LEVEL, APPLICATION_ID) Values('BATLPT2DMM', 'OPT2CHNL', '/batchLPTTransferApproval2.do?method=focBatchApproval2Authorise', 'LPT batch approval level two', 'Y',  391, '1', '1');
+Insert into PAGES(PAGE_CODE, MODULE_CODE, PAGE_URL, MENU_NAME, MENU_ITEM,  SEQUENCE_NO, MENU_LEVEL, APPLICATION_ID) Values('BLPT01', 'OPT2CHNL', '/batchLPTTransferAction.do?method=loadUserListForLPT', 'Initiate Batch LPTTransfer', 'Y',  389, '2', '1');
+Insert into PAGES(PAGE_CODE, MODULE_CODE, PAGE_URL, MENU_NAME, MENU_ITEM,  SEQUENCE_NO, MENU_LEVEL, APPLICATION_ID) Values('BLPT01A', 'OPT2CHNL', '/batchLPTTransferAction.do?method=loadUserListForLPT', 'Initiate Batch LPTTransfer', 'N',  389, '2', '1');
+Insert into PAGES(PAGE_CODE, MODULE_CODE, PAGE_URL, MENU_NAME, MENU_ITEM,  SEQUENCE_NO, MENU_LEVEL, APPLICATION_ID) Values('BLPT01Dmm', 'OPT2CHNL', '/batchLPTTransferAction.do?method=loadUserListForLPT', 'Initiate Batch LPTTransfer', 'Y',  389, '1', '1');
+Insert into PAGES(PAGE_CODE, MODULE_CODE, PAGE_URL, MENU_NAME, MENU_ITEM,  SEQUENCE_NO, MENU_LEVEL, APPLICATION_ID) Values('BLPT02', 'OPT2CHNL', '/jsp/batchlptadjust/uploadLPTBatchOrder.jsp', 'Initiate Batch LPTTransfer', 'N',  389, '2', '1');
+Insert into PAGES(PAGE_CODE, MODULE_CODE, PAGE_URL, MENU_NAME, MENU_ITEM,  SEQUENCE_NO, MENU_LEVEL, APPLICATION_ID) Values('BLPT03', 'OPT2CHNL', '/jsp/batchlptadjust/uploadBatchFocResult.jsp', 'Initiate Batch LPTTransfer', 'N',  389, '2', '1');
+Insert into PAGES(PAGE_CODE, MODULE_CODE, PAGE_URL, MENU_NAME, MENU_ITEM,  SEQUENCE_NO, MENU_LEVEL, APPLICATION_ID) Values('BATLPT0001', 'OPT2CHNL', '/batchLPTTransferApproval1.do?method=focBatchApproval1Authorise', 'LPT batch approval level one', 'Y',  390, '2', '1');
+Insert into PAGES(PAGE_CODE, MODULE_CODE, PAGE_URL, MENU_NAME, MENU_ITEM,  SEQUENCE_NO, MENU_LEVEL, APPLICATION_ID) Values('BATLPT0002', 'OPT2CHNL', '/batchLPTTransferApproval2.do?method=focBatchApproval2Authorise', 'LPT batch approval level two', 'Y',  391, '2', '1');
+Insert into PAGES(PAGE_CODE, MODULE_CODE, PAGE_URL, MENU_NAME, MENU_ITEM,  SEQUENCE_NO, MENU_LEVEL, APPLICATION_ID) Values('BATLPT0004', 'OPT2CHNL', '/jsp/batchlptadjust/uploadFileForBatchLPTApproval.jsp', 'LPT batch approval level one', 'N',  390, '2', '1');
+Insert into PAGES(PAGE_CODE, MODULE_CODE, PAGE_URL, MENU_NAME, MENU_ITEM,  SEQUENCE_NO, MENU_LEVEL, APPLICATION_ID) Values('BATLPT0005', 'OPT2CHNL', '/jsp/batchlptadjust/uploadFileForBatchLPTApproval.jsp', 'LPT batch approval level two', 'N',  391, '2', '1');
+Insert into PAGE_ROLES(ROLE_CODE, PAGE_CODE, APPLICATION_ID) Values('INITBLPT', 'BLPT01Dmm', '1');
+Insert into PAGE_ROLES(ROLE_CODE, PAGE_CODE, APPLICATION_ID) Values('INITBLPT', 'BLPT01A', '1');
+Insert into PAGE_ROLES(ROLE_CODE, PAGE_CODE, APPLICATION_ID) Values('INITBLPT', 'BLPT02', '1');
+Insert into PAGE_ROLES(ROLE_CODE, PAGE_CODE, APPLICATION_ID) Values('INITBLPT', 'BLPT03', '1');
+Insert into PAGE_ROLES(ROLE_CODE, PAGE_CODE, APPLICATION_ID) Values('INITBLPT', 'BLPT01', '1');
+Insert into PAGE_ROLES(ROLE_CODE, PAGE_CODE, APPLICATION_ID) Values('BTLPTAPR1', 'BATLPT0001', '1');
+Insert into PAGE_ROLES(ROLE_CODE, PAGE_CODE, APPLICATION_ID) Values('BTLPTAPR2', 'BATLPT0002', '1');
+Insert into PAGE_ROLES(ROLE_CODE, PAGE_CODE, APPLICATION_ID) Values('BTLPTAPR1', 'BATLPT0004', '1');
+Insert into PAGE_ROLES(ROLE_CODE, PAGE_CODE, APPLICATION_ID) Values('BTLPTAPR2', 'BATLPT0005', '1');
+Insert into PAGE_ROLES(ROLE_CODE, PAGE_CODE, APPLICATION_ID) Values('BTLPTAPR1', 'BATLPT0007', '1');
+Insert into PAGE_ROLES(ROLE_CODE, PAGE_CODE, APPLICATION_ID) Values('BTLPTAPR2', 'BATLPT0008', '1');
+Insert into PAGE_ROLES(ROLE_CODE, PAGE_CODE, APPLICATION_ID) Values('BTLPTAPR1', 'BATLPT0010', '1');
+Insert into PAGE_ROLES(ROLE_CODE, PAGE_CODE, APPLICATION_ID) Values('BTLPTAPR2', 'BATLPT0011', '1');
+Insert into PAGE_ROLES(ROLE_CODE, PAGE_CODE, APPLICATION_ID) Values('BTLPTAPR1', 'BATLPT0013', '1');
+Insert into PAGE_ROLES(ROLE_CODE, PAGE_CODE, APPLICATION_ID) Values('BTLPTAPR2', 'BATLPT0014', '1');
+Insert into PAGE_ROLES(ROLE_CODE, PAGE_CODE, APPLICATION_ID) Values('BTLPTAPR1', 'BATLPT001A', '1');
+Insert into PAGE_ROLES(ROLE_CODE, PAGE_CODE, APPLICATION_ID) Values('BTLPTAPR2', 'BATLPT002A', '1');
+Insert into PAGE_ROLES(ROLE_CODE, PAGE_CODE, APPLICATION_ID) Values('BTLPTAPR1', 'BATLPT1DMM', '1');
+Insert into PAGE_ROLES(ROLE_CODE, PAGE_CODE, APPLICATION_ID) Values('BTLPTAPR2', 'BATLPT2DMM', '1');
+Insert into CATEGORY_ROLES(CATEGORY_CODE, ROLE_CODE, APPLICATION_ID) Values('BCU', 'BTLPTAPR1', '1');
+Insert into CATEGORY_ROLES(CATEGORY_CODE, ROLE_CODE, APPLICATION_ID) Values('BCU', 'BTLPTAPR2', '1');
+Insert into CATEGORY_ROLES(CATEGORY_CODE, ROLE_CODE, APPLICATION_ID) Values('BCU', 'BTLPTAPR3', '1');
+Insert into CATEGORY_ROLES(CATEGORY_CODE, ROLE_CODE, APPLICATION_ID) Values('BCU', 'INITBLPT', '1');
+Insert into SYSTEM_PREFERENCES(PREFERENCE_CODE, NAME, TYPE, VALUE_TYPE, DEFAULT_VALUE,  MIN_VALUE, MAX_VALUE, MAX_SIZE, DESCRIPTION, MODIFIED_ALLOWED,  DISPLAY, MODULE, REMARKS, CREATED_ON, CREATED_BY,  MODIFIED_ON, MODIFIED_BY, ALLOWED_VALUES, FIXED_VALUE) Values('EXTTXNMANDT_LPT', 'External Txn no Mandatory LPT', 'SYSTEMPRF', 'STRING', '4',  NULL, NULL, 7, 'For LPT External Txn Level Mandatory value will be mandatory to enter at which level. 0,1 means mandatory at  the initiation time and level 1 approval', 'N',  'N', 'C2S', 'External Txn Level Mandatory for LPT', sysdate, 'ADMIN',  sysdate, 'ADMIN', NULL, 'Y');
+Insert into SYSTEM_PREFERENCES(PREFERENCE_CODE, NAME, TYPE, VALUE_TYPE, DEFAULT_VALUE,  MIN_VALUE, MAX_VALUE, MAX_SIZE, DESCRIPTION, MODIFIED_ALLOWED,  DISPLAY, MODULE, REMARKS, CREATED_ON, CREATED_BY,  MODIFIED_ON, MODIFIED_BY, ALLOWED_VALUES, FIXED_VALUE) Values('EXT_CODE_MAND_LPT', 'Ext Code Req for Batch LPT', 'SYSTEMPRF', 'BOOLEAN', 'false',  NULL, NULL, 5, 'External Code Mandatory for Batch LPT', 'N',  'N', 'C2S', 'External Code Mandatory for Batch LPT', sysdate, 'ADMIN',  sysdate, 'SU0001', NULL, 'Y');
+Insert into SYSTEM_PREFERENCES(PREFERENCE_CODE, NAME, TYPE, VALUE_TYPE, DEFAULT_VALUE,  MIN_VALUE, MAX_VALUE, MAX_SIZE, DESCRIPTION, MODIFIED_ALLOWED,  DISPLAY, MODULE, REMARKS, CREATED_ON, CREATED_BY,  MODIFIED_ON, MODIFIED_BY, ALLOWED_VALUES, FIXED_VALUE) Values('LPT_ODR_APPROVAL_LVL', 'LPT Transfer Approval level', 'SYSTEMPRF', 'INT', '2',  1, 3, 1, 'If it is 1 level 1 approval required, if it is 2 level 2 approval required, if it is 3 level 3 approval required', 'N',  'N', 'C2S', 'LPT Transfer Approval level', sysdate, 'ADMIN',  sysdate, 'SU0001', '1,2,3', 'N');
+Insert into ROLES   (DOMAIN_TYPE, ROLE_CODE, ROLE_NAME, GROUP_NAME, STATUS,     ROLE_TYPE, FROM_HOUR, TO_HOUR, GROUP_ROLE, APPLICATION_ID,     GATEWAY_TYPES, ROLE_FOR, IS_DEFAULT, IS_DEFAULT_GROUPROLE) Values   ('OPERATOR', 'LMSPRGDRPT', 'Generate LMS Detail Report', 'LMS Reports', 'Y',     'A', NULL, NULL, 'N', '1',     'WEB', 'B', 'N', 'N');
+Insert into PAGES   (PAGE_CODE, MODULE_CODE, PAGE_URL, MENU_NAME, MENU_ITEM,     SEQUENCE_NO, MENU_LEVEL, APPLICATION_ID) Values   ('LMSPRGAU01', 'CCRPTLMS', '/LmsProgramDetailedReport.do?method=loadReportDetails', 'LMS Reports', 'Y',     379, '2', '1');
+Insert into PAGES   (PAGE_CODE, MODULE_CODE, PAGE_URL, MENU_NAME, MENU_ITEM,     SEQUENCE_NO, MENU_LEVEL, APPLICATION_ID) Values   ('LMSPRGAU1A', 'CCRPTLMS', '/LmsProgramDetailedReport.do?method=loadReportDetails', 'LMS Reports', 'N',     379, '2', '1');
+Insert into PAGES   (PAGE_CODE, MODULE_CODE, PAGE_URL, MENU_NAME, MENU_ITEM,     SEQUENCE_NO, MENU_LEVEL, APPLICATION_ID) Values   ('LMSPRGAUDm', 'CCRPTLMS', '/LmsProgramDetailedReport.do?method=loadReportDetails', 'LMS Reports', 'Y',     379, '1', '1');
+Insert into PAGE_ROLES   (ROLE_CODE, PAGE_CODE, APPLICATION_ID) Values   ('LMSREDRPT', 'LMSRDRPT01', '1');
+Insert into PAGE_ROLES   (ROLE_CODE, PAGE_CODE, APPLICATION_ID) Values   ('LMSREDRPT', 'LMSRDRPT1A', '1');
+Insert into PAGE_ROLES   (ROLE_CODE, PAGE_CODE, APPLICATION_ID) Values   ('LMSREDRPT', 'LMSRDRPTDm', '1');
+Insert into ROLES   (DOMAIN_TYPE, ROLE_CODE, ROLE_NAME, GROUP_NAME, STATUS,     ROLE_TYPE, FROM_HOUR, TO_HOUR, GROUP_ROLE, APPLICATION_ID,    GATEWAY_TYPES, ROLE_FOR, IS_DEFAULT, IS_DEFAULT_GROUPROLE)Values   ('OPERATOR', 'LMSPOADJRPT', 'LMS Point Adjustment Report', 'LMS Reports', 'Y',     'A', NULL, NULL, 'N','1',     'WEB', 'B', 'N', 'N');
+Insert into PAGES   (PAGE_CODE, MODULE_CODE, PAGE_URL, MENU_NAME, MENU_ITEM,     SEQUENCE_NO, MENU_LEVEL, APPLICATION_ID)Values   ('LMSPADJU01', 'CCRPTLMS', '/lmsPointAdjustmentDetailReport.do?method=loadReportDetails', 'LMS Reports', 'Y',     '392', '2', '1');
+Insert into PAGES   (PAGE_CODE, MODULE_CODE, PAGE_URL, MENU_NAME, MENU_ITEM,     SEQUENCE_NO, MENU_LEVEL, APPLICATION_ID)Values   ('LMSPADJU1A', 'CCRPTLMS', '/lmsPointAdjustmentDetailReport.do?method=loadReportDetails', 'LMS Reports', 'N',     '392', '2', '1');
+Insert into PAGES   (PAGE_CODE, MODULE_CODE, PAGE_URL, MENU_NAME, MENU_ITEM,     SEQUENCE_NO, MENU_LEVEL, APPLICATION_ID)Values   ('LMSPADJUDm', 'CCRPTLMS', '/lmsPointAdjustmentDetailReport.do?method=loadReportDetails', 'LMS Reports', 'Y',     '392', '1', '1');
+Insert into PAGE_ROLES   (ROLE_CODE, PAGE_CODE, APPLICATION_ID)Values   ('LMSPOADJRPT', 'LMSPADJU1A', '1');
+Insert into PAGE_ROLES   (ROLE_CODE, PAGE_CODE, APPLICATION_ID)Values   ('LMSPOADJRPT', 'LMSPADJUDm', '1');
+Insert into PAGE_ROLES   (ROLE_CODE, PAGE_CODE, APPLICATION_ID)Values   ('LMSPOADJRPT', 'LMSPADJU01', '1');
+Insert into CATEGORY_ROLES   (CATEGORY_CODE, ROLE_CODE, APPLICATION_ID)Values   ('BCU', 'LMSPOADJRPT', '1');
+Insert into LOOKUPS(LOOKUP_CODE, LOOKUP_NAME, LOOKUP_TYPE, STATUS, CREATED_ON, CREATED_BY, MODIFIED_ON, MODIFIED_BY) Values   ('LCR', 'Lms Point Credit', 'TRFT', 'Y', sysdate, 'ADMIN', sysdate, 'ADMIN');
+Insert into LOOKUPS(LOOKUP_CODE, LOOKUP_NAME, LOOKUP_TYPE, STATUS, CREATED_ON, CREATED_BY, MODIFIED_ON, MODIFIED_BY) Values   ('LDR', 'Lms Point Debit', 'TRFT', 'Y', sysdate, 'ADMIN', sysdate, 'ADMIN');
+Insert into VERSION (VERSION_NAME, VERSION_TYPE, INSTALLATION_DATE) Values ('PreTUPS_6.3.3', 'MAJOR', SYSDATE);
+Insert into LOOKUPS   (LOOKUP_CODE, LOOKUP_NAME, LOOKUP_TYPE, STATUS, CREATED_ON,     CREATED_BY, MODIFIED_ON, MODIFIED_BY)Values   ('GRP', 'Geography', 'CNTRL', 'Y', sysdate,     'ADMIN', sysdate, 'ADMIN');
+delete  from lookups where lookup_code='AMNT' and LOOKUP_TYPE = 'BUNTP';
+delete  from lookups where lookup_code='AMNT' and LOOKUP_TYPE = 'AMTYP';
+delete  from lookups where lookup_code='AMNT' and LOOKUP_TYPE = 'TRGYP';
+Insert into SERVICE_KEYWORDS(KEYWORD, REQ_INTERFACE_TYPE, SERVICE_PORT, SERVICE_TYPE, NAME,STATUS, MENU, SUB_MENU, ALLOWED_VERSION, MODIFY_ALLOWED,     CREATED_ON, CREATED_BY, MODIFIED_ON, MODIFIED_BY, SERVICE_KEYWORD_ID,SUB_KEYWORD, REQUEST_PARAM) Values('OPTIN', 'SMSC', '8501', 'OPTIN', 'OPTIN_SMSC','Y', NULL, NULL, NULL, 'Y',sysdate, 'SU0001', sysdate, 'SU0001', 'SVK0001003',NULL, NULL); 
+Insert into SERVICE_KEYWORDS(KEYWORD, REQ_INTERFACE_TYPE, SERVICE_PORT, SERVICE_TYPE, NAME,STATUS, MENU, SUB_MENU, ALLOWED_VERSION, MODIFY_ALLOWED,     CREATED_ON, CREATED_BY, MODIFIED_ON, MODIFIED_BY, SERVICE_KEYWORD_ID,SUB_KEYWORD, REQUEST_PARAM) Values('OPTOUT', 'SMSC', '8501', 'OPTOUT', 'OPTOUT_SMSC','Y', NULL, NULL, NULL, 'Y',sysdate, 'SU0001', sysdate, 'SU0001', 'SVK0001002',NULL, NULL);
+Insert into CATEGORY_ROLES   (CATEGORY_CODE, ROLE_CODE, APPLICATION_ID) select category_code, 'LMSREDRPT' ROLE_CODE, '1' APPLICATION_ID from categories where domain_code<>'OPT';
+Insert into CATEGORY_SERVICE_TYPE(CATEGORY_CODE, SERVICE_TYPE) select category_code, 'LMSPTRED' SERVICE_TYPE from categories where domain_code<>'OPT';
+Insert into LOOKUPS   (LOOKUP_CODE, LOOKUP_NAME, LOOKUP_TYPE, STATUS, CREATED_ON,     CREATED_BY, MODIFIED_ON, MODIFIED_BY) Values   ('Alcatel45', 'Alcatel45 Interface', 'INTCT', 'Y', sysdate,     'ADMIN', sysdate, 'ADMIN');
+Insert into LOOKUPS   (LOOKUP_CODE, LOOKUP_NAME, LOOKUP_TYPE, STATUS, CREATED_ON,     CREATED_BY, MODIFIED_ON, MODIFIED_BY) Values   ('ONIZTE', 'Niger Zte Interface', 'INTCT', 'Y', sysdate,     'ADMIN', sysdate, 'ADMIN');
+Insert into LOOKUPS(LOOKUP_CODE, LOOKUP_NAME, LOOKUP_TYPE, STATUS, CREATED_ON,CREATED_BY, MODIFIED_ON, MODIFIED_BY) Values   ('ONIZTE', 'Niger Zte Interface', 'INCAT', 'Y', sysdate,     'ADMIN', sysdate, 'ADMIN');
+Insert into LOOKUPS(LOOKUP_CODE, LOOKUP_NAME, LOOKUP_TYPE, STATUS, CREATED_ON,CREATED_BY, MODIFIED_ON, MODIFIED_BY) Values   ('Alcatel45', 'Alcatel45 Interface', 'INCAT', 'Y', sysdate,     'ADMIN', sysdate, 'ADMIN');
+update SYSTEM_PREFERENCES set DEFAULT_VALUE='com.btsl.pretups.util.clientutils.NigerUtil' where PREFERENCE_CODE='OPERATOR_UTIL_C';
+Insert into PROCESS_STATUS(PROCESS_ID, START_DATE, SCHEDULER_STATUS, EXECUTED_UPTO, EXECUTED_ON,  EXPIRY_TIME, BEFORE_INTERVAL, DESCRIPTION, NETWORK_CODE) Values('LPTBATCH', sysdate, 'C', sysdate, sysdate,  60, 1440, 'Batch LPT module', 'NG');
+Insert into IDS(ID_YEAR, ID_TYPE, NETWORK_CODE, LAST_NO, LAST_INITIALISED_DATE,  FREQUENCY, DESCRIPTION) Values('2015', 'LPT', 'NG', 0, sysdate,  'DAY', NULL);
+Insert into USERS   (USER_ID, USER_NAME, NETWORK_CODE, LOGIN_ID, PASSWORD,     CATEGORY_CODE, PARENT_ID, OWNER_ID, ALLOWED_IP, ALLOWED_DAYS,     FROM_TIME, TO_TIME, LAST_LOGIN_ON, EMPLOYEE_CODE, STATUS,     EMAIL, PSWD_MODIFIED_ON, CONTACT_PERSON, CONTACT_NO, DESIGNATION,     DIVISION, DEPARTMENT, MSISDN, USER_TYPE, CREATED_BY,     CREATED_ON, MODIFIED_BY, MODIFIED_ON, ADDRESS1, ADDRESS2,     CITY, STATE, COUNTRY, SSN, USER_NAME_PREFIX,     EXTERNAL_CODE, USER_CODE, SHORT_NAME, REFERENCE_ID, INVALID_PASSWORD_COUNT,     LEVEL1_APPROVED_BY, LEVEL1_APPROVED_ON, LEVEL2_APPROVED_BY, LEVEL2_APPROVED_ON, APPOINTMENT_DATE,     PASSWORD_COUNT_UPDATED_ON, PREVIOUS_STATUS, BATCH_ID, CREATION_TYPE, REMARKS,     PSWD_RESET, OLD_MSISDN, OLD_USER_CODE, MSISDN_MODIFIED,      COMPANY, FAX, FIRSTNAME, LASTNAME, LONGITUDE,     LATITUDE, RSAFLAG, BARRED_DELETION_BATCHID, AUTHENTICATION_ALLOWED) Values   ('SYSTEM', 'System', 'NG', NULL, NULL,     'SYSTEM', 'SYSTEM', 'SYSTEM', NULL, NULL,     NULL, NULL, sysdate, 'OM0001', 'Y',     NULL, sysdate, NULL, '60000001', 'Engg',     'SW', 'DIVID00017', '9821112345', 'OPERATOR', 'ADMIN',     sysdate, 'SU0001', sysdate, NULL, NULL,     NULL, NULL, 'Mauritius', NULL, 'MR',     NULL, NULL, NULL, NULL, 0,     NULL, NULL, NULL, NULL, NULL,     sysdate, 'Y', NULL, 'M', NULL,     'N', '9821112345', NULL, 'Y',      NULL, NULL, NULL, NULL, NULL,     NULL, 'N', NULL, 'N');
+
+Insert into SYSTEM_PREFERENCES
+   (PREFERENCE_CODE, NAME, TYPE, VALUE_TYPE, DEFAULT_VALUE, 
+    MIN_VALUE, MAX_VALUE, MAX_SIZE, DESCRIPTION, MODIFIED_ALLOWED, 
+    DISPLAY, MODULE, REMARKS, CREATED_ON, CREATED_BY, 
+    MODIFIED_ON, MODIFIED_BY, ALLOWED_VALUES, FIXED_VALUE)
+ Values
+   ('M_PRE_PERCENTAGE', 'Prepaid Percentage', 'CATPRF', 'INT', '5', 
+    0, 50, 3, 'This is the percentage to calculate the amount to be trnasfered', 'N', 
+    'N', 'C2S', 'Percentage', TO_DATE('12/27/2012 12:35:22', 'MM/DD/YYYY HH24:MI:SS'), 'ADMIN', 
+    TO_DATE('12/27/2012 12:35:22', 'MM/DD/YYYY HH24:MI:SS'), 'SU0001', NULL, 'N');
+Insert into SYSTEM_PREFERENCES
+   (PREFERENCE_CODE, NAME, TYPE, VALUE_TYPE, DEFAULT_VALUE, 
+    MIN_VALUE, MAX_VALUE, MAX_SIZE, DESCRIPTION, MODIFIED_ALLOWED, 
+    DISPLAY, MODULE, REMARKS, CREATED_ON, CREATED_BY, 
+    MODIFIED_ON, MODIFIED_BY, ALLOWED_VALUES, FIXED_VALUE)
+ Values
+   ('M_SLAVE_PERCENTAGE', 'Slave Percentage', 'CATPRF', 'INT', '5', 
+    0, 50, 3, 'This is the percentage to calculate the amount to be trnasfered', 'N', 
+    'N', 'C2S', 'Percentage', TO_DATE('12/27/2012 12:35:22', 'MM/DD/YYYY HH24:MI:SS'), 'ADMIN', 
+    TO_DATE('12/27/2012 12:35:22', 'MM/DD/YYYY HH24:MI:SS'), 'SU0001', NULL, 'N');
+	
+Insert into PROCESS_STATUS
+   (PROCESS_ID, START_DATE, SCHEDULER_STATUS, EXECUTED_UPTO, EXECUTED_ON, 
+    EXPIRY_TIME, BEFORE_INTERVAL, DESCRIPTION, NETWORK_CODE)
+ Values
+   ('MONREDPROC', TO_DATE('09/23/2015 17:34:00', 'MM/DD/YYYY HH24:MI:SS'), 'C', TO_DATE('09/23/2015 17:34:00', 'MM/DD/YYYY HH24:MI:SS'), TO_DATE('09/23/2015 00:00:00', 'MM/DD/YYYY HH24:MI:SS'), 
+    60, 1440, ' Monthly Redemption', 'MT');
+	
+	
+alter table channel_users modify OPT_IN_OUT_STATUS VARCHAR2(2 BYTE) DEFAULT 'N';
+alter table user_oth_profiles add VERSION VARCHAR2(5 BYTE) default '1';
+Insert into LOOKUPS (LOOKUP_CODE, LOOKUP_NAME, LOOKUP_TYPE, STATUS, CREATED_ON, CREATED_BY, MODIFIED_ON, MODIFIED_BY) Values ('GRD', 'Grade', 'PROMO', 'Y', sysdate, 'ADMIN', sysdate, 'ADMIN');
+update LOOKUPS set status='N' where LOOKUP_CODE='GDR' and LOOKUP_TYPE='PROMO';
+update pages set SEQUENCE_NO='2' where PAGE_CODE in ('C2SUPIN001','C2SUPINDMM','C2SUPIN002','C2SUPIN01A');
+update system_preferences set default_value=(select default_value from system_preferences where preference_code='USRLEVELAPPROVAL') where preference_code='USER_APPROVAL_LEVEL';
+update system_preferences set default_value='' where preference_code='USER_CREATION_MANDATORY_FIELDS';
+DROP TRIGGER TRIG_CHANNEL_USERS_HISTORYOPT;
+
+DROP TRIGGER TRIG_CHANNEL_USERS_HISTORY;
+
+CREATE OR REPLACE TRIGGER TRIG_CHANNEL_USERS_HISTORY
+AFTER INSERT OR UPDATE OR DELETE ON CHANNEL_USERS FOR EACH ROW
+BEGIN
+IF INSERTING THEN
+INSERT INTO CHANNEL_USERS_HISTORY (USER_ID, USER_GRADE, CONTACT_PERSON, TRANSFER_PROFILE_ID, COMM_PROFILE_SET_ID, 
+    IN_SUSPEND, OUT_SUSPEND, OUTLET_CODE, SUBOUTLET_CODE, ACTIVATED_ON, 
+    APPLICATION_ID, MPAY_PROFILE_ID, USER_PROFILE_ID, IS_PRIMARY, MCOMMERCE_SERVICE_ALLOW, 
+    LOW_BAL_ALERT_ALLOW, MCATEGORY_CODE, ALERT_MSISDN, ALERT_TYPE, ALERT_EMAIL, 
+    VOMS_DECRYP_KEY, TRF_RULE_TYPE, AUTO_O2C_ALLOW, AUTO_FOC_ALLOW, LMS_PROFILE_UPDATED_ON, 
+    LMS_PROFILE, REF_BASED, ASSOCIATED_MSISDN, ASSOCIATED_MSISDN_TYPE, ASSOCIATED_MSISDN_CDATE, 
+    ASSOCIATED_MSISDN_MDATE, AUTO_C2C_ALLOW, AUTO_C2C_QUANTITY, OPT_IN_OUT_STATUS, OPT_IN_OUT_NOTIFY_DATE, 
+    OPT_IN_OUT_RESPONSE_DATE, CONTROL_GROUP,ENTRY_DATE,OPERATION_PERFORMED)
+VALUES(:NEW.USER_ID, :NEW.USER_GRADE, :NEW.CONTACT_PERSON, :NEW.TRANSFER_PROFILE_ID, :NEW.COMM_PROFILE_SET_ID, 
+    :NEW.IN_SUSPEND, :NEW.OUT_SUSPEND, :NEW.OUTLET_CODE, :NEW.SUBOUTLET_CODE, :NEW.ACTIVATED_ON, :NEW.APPLICATION_ID, :NEW.MPAY_PROFILE_ID, :NEW.USER_PROFILE_ID, :NEW.IS_PRIMARY, :NEW.MCOMMERCE_SERVICE_ALLOW, :NEW.LOW_BAL_ALERT_ALLOW, :NEW.MCATEGORY_CODE, :NEW.ALERT_MSISDN, :NEW.ALERT_TYPE, :NEW.ALERT_EMAIL, :NEW.VOMS_DECRYP_KEY, :NEW.TRF_RULE_TYPE, :NEW.AUTO_O2C_ALLOW, :NEW.AUTO_FOC_ALLOW, :NEW.LMS_PROFILE_UPDATED_ON, :NEW.LMS_PROFILE, :NEW.REF_BASED, :NEW.ASSOCIATED_MSISDN, :NEW.ASSOCIATED_MSISDN_TYPE, :NEW.ASSOCIATED_MSISDN_CDATE, :NEW.ASSOCIATED_MSISDN_MDATE, :NEW.AUTO_C2C_ALLOW, :NEW.AUTO_C2C_QUANTITY, :NEW.OPT_IN_OUT_STATUS, :NEW.OPT_IN_OUT_NOTIFY_DATE, :NEW.OPT_IN_OUT_RESPONSE_DATE, :NEW.CONTROL_GROUP,sysdate,'I');
+ELSIF UPDATING THEN
+INSERT INTO CHANNEL_USERS_HISTORY (USER_ID, USER_GRADE, CONTACT_PERSON, TRANSFER_PROFILE_ID, COMM_PROFILE_SET_ID, 
+    IN_SUSPEND, OUT_SUSPEND, OUTLET_CODE, SUBOUTLET_CODE, ACTIVATED_ON, 
+    APPLICATION_ID, MPAY_PROFILE_ID, USER_PROFILE_ID, IS_PRIMARY, MCOMMERCE_SERVICE_ALLOW, 
+    LOW_BAL_ALERT_ALLOW, MCATEGORY_CODE, ALERT_MSISDN, ALERT_TYPE, ALERT_EMAIL, 
+    VOMS_DECRYP_KEY, TRF_RULE_TYPE, AUTO_O2C_ALLOW, AUTO_FOC_ALLOW, LMS_PROFILE_UPDATED_ON, 
+    LMS_PROFILE, REF_BASED, ASSOCIATED_MSISDN, ASSOCIATED_MSISDN_TYPE, ASSOCIATED_MSISDN_CDATE, 
+    ASSOCIATED_MSISDN_MDATE, AUTO_C2C_ALLOW, AUTO_C2C_QUANTITY, OPT_IN_OUT_STATUS, OPT_IN_OUT_NOTIFY_DATE, 
+    OPT_IN_OUT_RESPONSE_DATE, CONTROL_GROUP,ENTRY_DATE,OPERATION_PERFORMED)
+VALUES(:OLD.USER_ID,NVL( :OLD.USER_GRADE, :NEW.USER_GRADE), :OLD.CONTACT_PERSON,NVL( :OLD.TRANSFER_PROFILE_ID, :NEW.TRANSFER_PROFILE_ID), NVL(:OLD.COMM_PROFILE_SET_ID, :NEW.COMM_PROFILE_SET_ID),:OLD.IN_SUSPEND, :OLD.OUT_SUSPEND, :OLD.OUTLET_CODE, :OLD.SUBOUTLET_CODE, :OLD.ACTIVATED_ON, :OLD.APPLICATION_ID, :OLD.MPAY_PROFILE_ID, NVL(:OLD.USER_PROFILE_ID,:NEW.USER_PROFILE_ID), :OLD.IS_PRIMARY, :OLD.MCOMMERCE_SERVICE_ALLOW, :OLD.LOW_BAL_ALERT_ALLOW, :OLD.MCATEGORY_CODE, :OLD.ALERT_MSISDN, :OLD.ALERT_TYPE, :OLD.ALERT_EMAIL, :OLD.VOMS_DECRYP_KEY, :OLD.TRF_RULE_TYPE, :OLD.AUTO_O2C_ALLOW, :OLD.AUTO_FOC_ALLOW, :NEW.LMS_PROFILE_UPDATED_ON, :NEW.LMS_PROFILE, :OLD.REF_BASED, :OLD.ASSOCIATED_MSISDN, :OLD.ASSOCIATED_MSISDN_TYPE, :OLD.ASSOCIATED_MSISDN_CDATE, :OLD.ASSOCIATED_MSISDN_MDATE, :OLD.AUTO_C2C_ALLOW, :OLD.AUTO_C2C_QUANTITY, :NEW.OPT_IN_OUT_STATUS, :NEW.OPT_IN_OUT_NOTIFY_DATE, :NEW.OPT_IN_OUT_RESPONSE_DATE, :NEW.CONTROL_GROUP,sysdate,'U');
+ELSIF DELETING THEN
+INSERT INTO CHANNEL_USERS_HISTORY (USER_ID, USER_GRADE, CONTACT_PERSON, TRANSFER_PROFILE_ID, COMM_PROFILE_SET_ID, 
+    IN_SUSPEND, OUT_SUSPEND, OUTLET_CODE, SUBOUTLET_CODE, ACTIVATED_ON, 
+    APPLICATION_ID, MPAY_PROFILE_ID, USER_PROFILE_ID, IS_PRIMARY, MCOMMERCE_SERVICE_ALLOW, 
+    LOW_BAL_ALERT_ALLOW, MCATEGORY_CODE, ALERT_MSISDN, ALERT_TYPE, ALERT_EMAIL, 
+    VOMS_DECRYP_KEY, TRF_RULE_TYPE, AUTO_O2C_ALLOW, AUTO_FOC_ALLOW, LMS_PROFILE_UPDATED_ON, 
+    LMS_PROFILE, REF_BASED, ASSOCIATED_MSISDN, ASSOCIATED_MSISDN_TYPE, ASSOCIATED_MSISDN_CDATE, 
+    ASSOCIATED_MSISDN_MDATE, AUTO_C2C_ALLOW, AUTO_C2C_QUANTITY, OPT_IN_OUT_STATUS, OPT_IN_OUT_NOTIFY_DATE, 
+    OPT_IN_OUT_RESPONSE_DATE, CONTROL_GROUP,ENTRY_DATE,OPERATION_PERFORMED)
+VALUES(:OLD.USER_ID, :OLD.USER_GRADE, :OLD.CONTACT_PERSON, :OLD.TRANSFER_PROFILE_ID, :OLD.COMM_PROFILE_SET_ID,:OLD.IN_SUSPEND, :OLD.OUT_SUSPEND, :OLD.OUTLET_CODE, :OLD.SUBOUTLET_CODE, :OLD.ACTIVATED_ON, :OLD.APPLICATION_ID, :OLD.MPAY_PROFILE_ID, :OLD.USER_PROFILE_ID, :OLD.IS_PRIMARY, :OLD.MCOMMERCE_SERVICE_ALLOW, :OLD.LOW_BAL_ALERT_ALLOW, :OLD.MCATEGORY_CODE, :OLD.ALERT_MSISDN, :OLD.ALERT_TYPE, :OLD.ALERT_EMAIL, :OLD.VOMS_DECRYP_KEY, :OLD.TRF_RULE_TYPE, :OLD.AUTO_O2C_ALLOW, :OLD.AUTO_FOC_ALLOW, :OLD.LMS_PROFILE_UPDATED_ON, :OLD.LMS_PROFILE, :OLD.REF_BASED, :OLD.ASSOCIATED_MSISDN, :OLD.ASSOCIATED_MSISDN_TYPE, :OLD.ASSOCIATED_MSISDN_CDATE, :OLD.ASSOCIATED_MSISDN_MDATE, :OLD.AUTO_C2C_ALLOW, :OLD.AUTO_C2C_QUANTITY, :OLD.OPT_IN_OUT_STATUS, :OLD.OPT_IN_OUT_NOTIFY_DATE, :OLD.OPT_IN_OUT_RESPONSE_DATE, :OLD.CONTROL_GROUP,sysdate,'D');
+END IF;
+END;
+/
+
+
+CREATE OR REPLACE PROCEDURE SVC_SETOR_INTFC_MAPPING_INSERT
+    IS
+    v_service_type            SVC_SETOR_INTFC_MAPPING.SERVICE_TYPE%TYPE;                        
+    v_selector_code            SVC_SETOR_INTFC_MAPPING.SELECTOR_CODE%TYPE;                       
+    v_network_code            SVC_SETOR_INTFC_MAPPING.NETWORK_CODE%TYPE;                        
+    v_interface_id            SVC_SETOR_INTFC_MAPPING.INTERFACE_ID%TYPE;                        
+    v_prefix_id                SVC_SETOR_INTFC_MAPPING.PREFIX_ID%TYPE;                           
+    v_action                SVC_SETOR_INTFC_MAPPING.ACTION%TYPE;                              
+    v_method_type            SVC_SETOR_INTFC_MAPPING.METHOD_TYPE%TYPE;                         
+    v_count                    NUMBER(10);     
+
+    SQLException EXCEPTION;
+    EXITEXCEPTION EXCEPTION;
+
+    CURSOR   serise_cur IS select st.service_type,stm.selector_code, ns.sender_network, ss.interface_id,ss.prefix_id,ss.action,st.type  
+            from service_type st, network_services ns, service_type_selector_mapping stm, intf_ntwrk_prfx_mapping ss
+            where st.external_interface = 'Y'
+            and st.status = 'Y'
+            and ns.status='Y'
+            and ns.service_type=st.service_type
+            and st.type in('PRE','POST')
+            and stm.service_type=st.service_type
+            and stm.status='Y'
+            and ss.METHOD_TYPE=st.TYPE
+            and ss.NETWORK_CODE=ns.SENDER_NETWORK
+            order by st.module,st.service_type,stm.selector_code, ss.prefix_id,ss.action;
+
+    BEGIN
+                DBMS_OUTPUT.PUT_LINE('Start SVC_SETOR_INTFC_MAPPING_INSERT');
+                v_count:=1;
+
+               OPEN serise_cur;
+               LOOP
+                            FETCH serise_cur INTO v_service_type, v_selector_code, v_network_code, v_interface_id, v_prefix_id, v_action, v_method_type;
+                            EXIT WHEN serise_cur%NOTFOUND;
+                            
+                            INSERT INTO SVC_SETOR_INTFC_MAPPING(SERVICE_TYPE, SELECTOR_CODE, NETWORK_CODE, INTERFACE_ID, PREFIX_ID, ACTION, METHOD_TYPE, CREATED_ON, CREATED_BY, MODIFIED_ON, MODIFIED_BY, SRV_SELECTOR_INTERFACE_ID)
+                            VALUES (v_service_type,v_selector_code,v_network_code,v_interface_id, v_prefix_id, v_action, v_method_type, sysdate,'SYSTEM',sysdate,'SYSTEM',v_count);                         
+                             v_count:=v_count+1;
+
+                            END LOOP;
+                            CLOSE serise_cur;
+							
+							IF SQL%NOTFOUND THEN
+								DBMS_OUTPUT.PUT_LINE('SQL EXCEPTION while inserting into SVC_SETOR_INTFC_MAPPING, Error is '||SQLERRM);
+								RAISE SQLException;
+							END IF;
+
+            COMMIT;
+            DBMS_OUTPUT.PUT_LINE('End SVC_SETOR_INTFC_MAPPING_INSERT  v_count='||v_count);
+    
+END;
+/
+
+set timing on;
+set serveroutput on;
+
+BEGIN
+
+SVC_SETOR_INTFC_MAPPING_INSERT;
+
+END;
+/
+
+CREATE TABLE DAILY_C2S_LMS_SUMMARY
+(
+  trans_date          DATE,
+  user_id             VARCHAR2(20),
+  PRODUCT_CODE        VARCHAR2(10),
+  LMS_PROFILE         VARCHAR2(10),
+  TRansaction_amount  NUMBER(20)                DEFAULT 0,
+  transaction_count   NUMBER(16)                DEFAULT 0,
+  ACCUMULATED_POINTS  NUMBER(20)                DEFAULT 0
+) 
+TABLESPACE MISP_DATA
+LOGGING
+PARTITION BY RANGE (trans_date)
+(  
+  PARTITION DAILY_C2S_LMS_SUMMARY_DEC15 VALUES LESS THAN  (TO_DATE(' 2016-01-01 00:00:00', 'SYYYY-MM-DD HH24:MI:SS', 'NLS_CALENDAR=GREGORIAN'))
+    LOGGING
+    NOCOMPRESS
+)
+NOCOMPRESS 
+NOCACHE
+NOPARALLEL
+NOMONITORING;
+ALTER TABLE DAILY_C2S_LMS_SUMMARY ADD (CONSTRAINT DAILY_C2S_LMS_SUMMARY_PK PRIMARY KEY (trans_date, user_id, PRODUCT_CODE, LMS_PROFILE));
+alter table C2S_TRANSFERS_MISTMP add LMS_PROFILE   VARCHAR2(10 BYTE);
+CREATE OR REPLACE PROCEDURE update_accpnt_dly_c2s_lms_smry (
+							aiv_Date        	   IN  	VARCHAR2,
+	   	  		  			rtn_message           OUT   VARCHAR2,
+							rtn_messageforlog     OUT   VARCHAR2,
+							rtn_sqlerrmsgforlog   OUT   VARCHAR2
+	   	  		  			)
+IS
+p_trans_date			DAILY_C2S_LMS_SUMMARY.trans_date%type;
+p_user_id				DAILY_C2S_LMS_SUMMARY.user_id%type;
+p_product_code			DAILY_C2S_LMS_SUMMARY.product_code%type;
+p_lms_profile			DAILY_C2S_LMS_SUMMARY.lms_profile%type;
+p_accumulated_points	DAILY_C2S_LMS_SUMMARY.accumulated_points%type;
+p_count NUMBER;
+sqlexception EXCEPTION;-- Handles SQL or other Exception while checking records Exist
+ CURSOR update_cur is
+		SELECT USER_ID_OR_MSISDN, PRODUCT_CODE, PROFILE_ID, ACCUMULATED_POINTS,POINTS_DATE from  BONUS where PROFILE_TYPE='LMS' and POINTS_DATE=to_date(aiv_Date,'dd/mm/yy');
+	BEGIN
+	  p_count:=0;
+	  FOR user_records IN update_cur
+			 LOOP
+			     	p_user_id:=user_records.USER_ID_OR_MSISDN;
+					p_product_code:=user_records.product_code;
+					p_lms_profile:=user_records.PROFILE_ID;
+					p_accumulated_points:=user_records.accumulated_points;
+				 BEGIN
+					p_count:=p_count+1;
+					UPDATE DAILY_C2S_LMS_SUMMARY SET  accumulated_points=p_accumulated_points
+					WHERE user_id=p_user_id
+					AND product_code=p_product_code
+					AND trans_date=to_date(aiv_Date,'dd/mm/yy')
+					AND lms_profile=p_lms_profile;
+					EXCEPTION
+						WHEN OTHERS	   THEN
+								  DBMS_OUTPUT.PUT_LINE ('Exception in update_acc_pnt_daily_c2s_lms_summary Update SQL, User:' || p_user_id ||' DATE:'||p_trans_date||' Profile:'||p_lms_profile|| SQLERRM );
+								  rtn_messageforlog := 'Exception in update_acc_pnt_daily_c2s_lms_summary Update SQL, User:' || p_user_id||' DATE:'||p_trans_date||' Profile:'||p_lms_profile;
+								  rtn_sqlerrmsgforlog := SQLERRM;
+								  RAISE sqlexception;
+				 END;
+			 END LOOP;
+			 	rtn_message:='SUCCESS';
+				rtn_messageForLog :='PreTUPS update_acc_pnt_daily_c2s_lms_summary successfully executed, Excuted Date Time:'||SYSDATE||' For date:'||p_trans_date||' Number updates:'||p_count;
+				rtn_sqlerrMsgForLog :=' ';
+		EXCEPTION --Exception Handling of main procedure
+		 WHEN sqlexception THEN
+		 	  ROLLBACK;
+			  DBMS_OUTPUT.PUT_LINE('sqlException Caught='||SQLERRM);
+			  rtn_message :='FAILED';
+			  RAISE sqlexception;
+		 WHEN OTHERS THEN
+		 	  ROLLBACK;
+	     	  DBMS_OUTPUT.PUT_LINE('OTHERS ERROR in update_acc_pnt_daily_c2s_lms_summary procedure:='||SQLERRM);
+		      rtn_message :='FAILED';
+			  RAISE sqlexception;
+	END;
+/
+CREATE OR REPLACE PROCEDURE insert_dly_no_c2s_lms_smry (
+							aiv_Date        	   IN  	VARCHAR2,
+	   	  		  			rtn_message           OUT   VARCHAR2,
+							rtn_messageforlog     OUT   VARCHAR2,
+							rtn_sqlerrmsgforlog   OUT   VARCHAR2
+	   	  		  			)
+IS
+p_trans_date			DAILY_C2S_LMS_SUMMARY.trans_date%type;
+p_user_id				DAILY_C2S_LMS_SUMMARY.user_id%type;
+p_product_code			DAILY_C2S_LMS_SUMMARY.product_code%type;
+p_lms_profile			DAILY_C2S_LMS_SUMMARY.lms_profile%type;
+p_txn_amount			DAILY_C2S_LMS_SUMMARY.TRANSACTION_AMOUNT%type;
+p_txn_count				DAILY_C2S_LMS_SUMMARY.TRANSACTION_COUNT%type;
+p_accumulatepoint		DAILY_C2S_LMS_SUMMARY.ACCUMULATED_POINTS%type;
+p_count NUMBER;
+sqlexception EXCEPTION;-- Handles SQL or other Exception while checking records Exist
+CURSOR insert_cur is
+		select distinct cu.user_id,cu.LMS_PROFILE, ps.PRODUCT_CODE  from channel_users cu,  users U, PROFILE_SET_VERSION ps
+		where cu.LMS_PROFILE is not null and u.USER_ID=cu.USER_ID and u.status not in ('N','C') and cu.LMS_PROFILE=ps.SET_ID
+		minus 
+		select ds.user_id,ds.LMS_PROFILE, ds.PRODUCT_CODE from DAILY_C2S_LMS_SUMMARY ds where ds.TRANS_DATE=to_date(aiv_Date,'dd/mm/yy');
+	BEGIN
+	  p_count:=0;
+	  p_trans_date:=to_date(aiv_Date,'dd/mm/yy');	
+	  p_txn_amount:=0;
+	  p_txn_count:=0;
+	  p_accumulatepoint:=0;	  
+	  FOR user_records IN insert_cur
+			 LOOP
+			     	p_user_id:=user_records.USER_ID;
+					p_product_code:=user_records.product_code;
+					p_lms_profile:=user_records.LMS_PROFILE;
+				BEGIN
+					p_count:=p_count+1;
+					insert into DAILY_C2S_LMS_SUMMARY(trans_date,user_id,product_code,lms_profile,TRANSACTION_AMOUNT,TRANSACTION_COUNT,ACCUMULATED_POINTS) VALUES  (p_trans_date,p_user_id,p_product_code,p_lms_profile,p_txn_amount,p_txn_count,p_accumulatepoint);
+					EXCEPTION
+						WHEN OTHERS	   THEN
+								  DBMS_OUTPUT.PUT_LINE ('Exception in insert_dly_no_c2s_lms_smry Update SQL, User:' || p_user_id ||' DATE:'||p_trans_date||' Profile:'||p_lms_profile|| SQLERRM );
+								  rtn_messageforlog := 'Exception in insert_dly_no_c2s_lms_smry Update SQL, User:' || p_user_id||' DATE:'||p_trans_date||' Profile:'||p_lms_profile;
+								  rtn_sqlerrmsgforlog := SQLERRM;
+								  RAISE sqlexception;
+				 END;
+			 END LOOP;
+			 	rtn_message:='SUCCESS';
+				rtn_messageForLog :='PreTUPS insert_dly_no_c2s_lms_smry successfully executed, Excuted Date Time:'||SYSDATE||' For date:'||p_trans_date||' Number updates:'||p_count;
+				rtn_sqlerrMsgForLog :=' ';
+		EXCEPTION --Exception Handling of main procedure
+		 WHEN sqlexception THEN
+		 	  ROLLBACK;
+			  DBMS_OUTPUT.PUT_LINE('sqlException Caught='||SQLERRM);
+			  rtn_messageForLog :='insert_dly_no_c2s_lms_smry sqlException Caught='||SQLERRM;
+			  rtn_message :='FAILED';
+			  RAISE sqlexception;
+		 WHEN OTHERS THEN
+		 	  ROLLBACK;
+	     	  DBMS_OUTPUT.PUT_LINE('OTHERS ERROR in insert_dly_no_c2s_lms_smry procedure:='||SQLERRM);
+			  rtn_messageForLog :='OTHERS ERROR in insert_dly_no_c2s_lms_smry procedure'||SQLERRM;
+		      rtn_message :='FAILED';
+			  RAISE sqlexception;
+	END;
+/
+DROP TRIGGER TRIG_CHANNEL_USERS_HISTORY;
+CREATE OR REPLACE TRIGGER TRIG_CHANNEL_USERS_HISTORY
+AFTER INSERT OR UPDATE OR DELETE OF LMS_PROFILE, OPT_IN_OUT_STATUS, CONTROL_GROUP ON CHANNEL_USERS FOR EACH ROW
+BEGIN
+IF INSERTING THEN
+INSERT INTO CHANNEL_USERS_HISTORY (USER_ID, USER_GRADE, CONTACT_PERSON, TRANSFER_PROFILE_ID, COMM_PROFILE_SET_ID,
+    IN_SUSPEND, OUT_SUSPEND, OUTLET_CODE, SUBOUTLET_CODE, ACTIVATED_ON,
+    APPLICATION_ID, MPAY_PROFILE_ID, USER_PROFILE_ID, IS_PRIMARY, MCOMMERCE_SERVICE_ALLOW,
+    LOW_BAL_ALERT_ALLOW, MCATEGORY_CODE, ALERT_MSISDN, ALERT_TYPE, ALERT_EMAIL,
+    VOMS_DECRYP_KEY, TRF_RULE_TYPE, AUTO_O2C_ALLOW, AUTO_FOC_ALLOW, LMS_PROFILE_UPDATED_ON,
+    LMS_PROFILE, REF_BASED, ASSOCIATED_MSISDN, ASSOCIATED_MSISDN_TYPE, ASSOCIATED_MSISDN_CDATE,
+    ASSOCIATED_MSISDN_MDATE, AUTO_C2C_ALLOW, AUTO_C2C_QUANTITY, OPT_IN_OUT_STATUS, OPT_IN_OUT_NOTIFY_DATE,
+    OPT_IN_OUT_RESPONSE_DATE, CONTROL_GROUP,ENTRY_DATE,OPERATION_PERFORMED)
+VALUES(:NEW.USER_ID, :NEW.USER_GRADE, :NEW.CONTACT_PERSON, :NEW.TRANSFER_PROFILE_ID, :NEW.COMM_PROFILE_SET_ID,
+    :NEW.IN_SUSPEND, :NEW.OUT_SUSPEND, :NEW.OUTLET_CODE, :NEW.SUBOUTLET_CODE, :NEW.ACTIVATED_ON, :NEW.APPLICATION_ID, :NEW.MPAY_PROFILE_ID, :NEW.USER_PROFILE_ID, :NEW.IS_PRIMARY, :NEW.MCOMMERCE_SERVICE_ALLOW, :NEW.LOW_BAL_ALERT_ALLOW, :NEW.MCATEGORY_CODE, :NEW.ALERT_MSISDN, :NEW.ALERT_TYPE, :NEW.ALERT_EMAIL, :NEW.VOMS_DECRYP_KEY, :NEW.TRF_RULE_TYPE, :NEW.AUTO_O2C_ALLOW, :NEW.AUTO_FOC_ALLOW, :NEW.LMS_PROFILE_UPDATED_ON, :NEW.LMS_PROFILE, :NEW.REF_BASED, :NEW.ASSOCIATED_MSISDN, :NEW.ASSOCIATED_MSISDN_TYPE, :NEW.ASSOCIATED_MSISDN_CDATE, :NEW.ASSOCIATED_MSISDN_MDATE, :NEW.AUTO_C2C_ALLOW, :NEW.AUTO_C2C_QUANTITY, :NEW.OPT_IN_OUT_STATUS, :NEW.OPT_IN_OUT_NOTIFY_DATE, :NEW.OPT_IN_OUT_RESPONSE_DATE, :NEW.CONTROL_GROUP,sysdate,'I');
+ELSIF UPDATING AND (nvl(:NEW.LMS_PROFILE,'XYZ') <> nvl(:OLD.LMS_PROFILE,'XYZ')) then
+INSERT INTO CHANNEL_USERS_HISTORY (USER_ID, USER_GRADE, CONTACT_PERSON, TRANSFER_PROFILE_ID, COMM_PROFILE_SET_ID,
+    IN_SUSPEND, OUT_SUSPEND, OUTLET_CODE, SUBOUTLET_CODE, ACTIVATED_ON,
+    APPLICATION_ID, MPAY_PROFILE_ID, USER_PROFILE_ID, IS_PRIMARY, MCOMMERCE_SERVICE_ALLOW,
+    LOW_BAL_ALERT_ALLOW, MCATEGORY_CODE, ALERT_MSISDN, ALERT_TYPE, ALERT_EMAIL,
+    VOMS_DECRYP_KEY, TRF_RULE_TYPE, AUTO_O2C_ALLOW, AUTO_FOC_ALLOW, LMS_PROFILE_UPDATED_ON,
+    LMS_PROFILE, REF_BASED, ASSOCIATED_MSISDN, ASSOCIATED_MSISDN_TYPE, ASSOCIATED_MSISDN_CDATE,
+    ASSOCIATED_MSISDN_MDATE, AUTO_C2C_ALLOW, AUTO_C2C_QUANTITY, OPT_IN_OUT_STATUS, OPT_IN_OUT_NOTIFY_DATE,
+    OPT_IN_OUT_RESPONSE_DATE, CONTROL_GROUP,ENTRY_DATE,OPERATION_PERFORMED)
+VALUES(:OLD.USER_ID,NVL( :OLD.USER_GRADE, :NEW.USER_GRADE), :OLD.CONTACT_PERSON,NVL( :OLD.TRANSFER_PROFILE_ID, :NEW.TRANSFER_PROFILE_ID), NVL(:OLD.COMM_PROFILE_SET_ID, :NEW.COMM_PROFILE_SET_ID),:OLD.IN_SUSPEND, :OLD.OUT_SUSPEND, :OLD.OUTLET_CODE, :OLD.SUBOUTLET_CODE, :OLD.ACTIVATED_ON, :OLD.APPLICATION_ID, :OLD.MPAY_PROFILE_ID, NVL(:OLD.USER_PROFILE_ID,:NEW.USER_PROFILE_ID), :OLD.IS_PRIMARY, :OLD.MCOMMERCE_SERVICE_ALLOW, :OLD.LOW_BAL_ALERT_ALLOW, :OLD.MCATEGORY_CODE, :OLD.ALERT_MSISDN, :OLD.ALERT_TYPE, :OLD.ALERT_EMAIL, :OLD.VOMS_DECRYP_KEY, :OLD.TRF_RULE_TYPE, :OLD.AUTO_O2C_ALLOW, :OLD.AUTO_FOC_ALLOW, :NEW.LMS_PROFILE_UPDATED_ON, :NEW.LMS_PROFILE, :OLD.REF_BASED, :OLD.ASSOCIATED_MSISDN, :OLD.ASSOCIATED_MSISDN_TYPE, :OLD.ASSOCIATED_MSISDN_CDATE, :OLD.ASSOCIATED_MSISDN_MDATE, :OLD.AUTO_C2C_ALLOW, :OLD.AUTO_C2C_QUANTITY, :NEW.OPT_IN_OUT_STATUS, :NEW.OPT_IN_OUT_NOTIFY_DATE, :NEW.OPT_IN_OUT_RESPONSE_DATE, :NEW.CONTROL_GROUP,sysdate,'U');
+ELSIF UPDATING AND (nvl(:NEW.OPT_IN_OUT_STATUS,'XYZ') <> nvl(:OLD.OPT_IN_OUT_STATUS,'XYZ')) then
+INSERT INTO CHANNEL_USERS_HISTORY (USER_ID, USER_GRADE, CONTACT_PERSON, TRANSFER_PROFILE_ID, COMM_PROFILE_SET_ID,
+    IN_SUSPEND, OUT_SUSPEND, OUTLET_CODE, SUBOUTLET_CODE, ACTIVATED_ON,
+    APPLICATION_ID, MPAY_PROFILE_ID, USER_PROFILE_ID, IS_PRIMARY, MCOMMERCE_SERVICE_ALLOW,
+    LOW_BAL_ALERT_ALLOW, MCATEGORY_CODE, ALERT_MSISDN, ALERT_TYPE, ALERT_EMAIL,
+    VOMS_DECRYP_KEY, TRF_RULE_TYPE, AUTO_O2C_ALLOW, AUTO_FOC_ALLOW, LMS_PROFILE_UPDATED_ON,
+    LMS_PROFILE, REF_BASED, ASSOCIATED_MSISDN, ASSOCIATED_MSISDN_TYPE, ASSOCIATED_MSISDN_CDATE,
+    ASSOCIATED_MSISDN_MDATE, AUTO_C2C_ALLOW, AUTO_C2C_QUANTITY, OPT_IN_OUT_STATUS, OPT_IN_OUT_NOTIFY_DATE,
+    OPT_IN_OUT_RESPONSE_DATE, CONTROL_GROUP,ENTRY_DATE,OPERATION_PERFORMED)
+VALUES(:OLD.USER_ID,NVL( :OLD.USER_GRADE, :NEW.USER_GRADE), :OLD.CONTACT_PERSON,NVL( :OLD.TRANSFER_PROFILE_ID, :NEW.TRANSFER_PROFILE_ID), NVL(:OLD.COMM_PROFILE_SET_ID, :NEW.COMM_PROFILE_SET_ID),:OLD.IN_SUSPEND, :OLD.OUT_SUSPEND, :OLD.OUTLET_CODE, :OLD.SUBOUTLET_CODE, :OLD.ACTIVATED_ON, :OLD.APPLICATION_ID, :OLD.MPAY_PROFILE_ID, NVL(:OLD.USER_PROFILE_ID,:NEW.USER_PROFILE_ID), :OLD.IS_PRIMARY, :OLD.MCOMMERCE_SERVICE_ALLOW, :OLD.LOW_BAL_ALERT_ALLOW, :OLD.MCATEGORY_CODE, :OLD.ALERT_MSISDN, :OLD.ALERT_TYPE, :OLD.ALERT_EMAIL, :OLD.VOMS_DECRYP_KEY, :OLD.TRF_RULE_TYPE, :OLD.AUTO_O2C_ALLOW, :OLD.AUTO_FOC_ALLOW, :NEW.LMS_PROFILE_UPDATED_ON, :NEW.LMS_PROFILE, :OLD.REF_BASED, :OLD.ASSOCIATED_MSISDN, :OLD.ASSOCIATED_MSISDN_TYPE, :OLD.ASSOCIATED_MSISDN_CDATE, :OLD.ASSOCIATED_MSISDN_MDATE, :OLD.AUTO_C2C_ALLOW, :OLD.AUTO_C2C_QUANTITY, :NEW.OPT_IN_OUT_STATUS, :NEW.OPT_IN_OUT_NOTIFY_DATE, :NEW.OPT_IN_OUT_RESPONSE_DATE, :NEW.CONTROL_GROUP,sysdate,'U');
+ELSIF UPDATING AND (nvl(:NEW.CONTROL_GROUP,'XYZ') <> nvl(:OLD.CONTROL_GROUP,'XYZ')) then
+INSERT INTO CHANNEL_USERS_HISTORY (USER_ID, USER_GRADE, CONTACT_PERSON, TRANSFER_PROFILE_ID, COMM_PROFILE_SET_ID,
+    IN_SUSPEND, OUT_SUSPEND, OUTLET_CODE, SUBOUTLET_CODE, ACTIVATED_ON,
+    APPLICATION_ID, MPAY_PROFILE_ID, USER_PROFILE_ID, IS_PRIMARY, MCOMMERCE_SERVICE_ALLOW,
+    LOW_BAL_ALERT_ALLOW, MCATEGORY_CODE, ALERT_MSISDN, ALERT_TYPE, ALERT_EMAIL,
+    VOMS_DECRYP_KEY, TRF_RULE_TYPE, AUTO_O2C_ALLOW, AUTO_FOC_ALLOW, LMS_PROFILE_UPDATED_ON,
+    LMS_PROFILE, REF_BASED, ASSOCIATED_MSISDN, ASSOCIATED_MSISDN_TYPE, ASSOCIATED_MSISDN_CDATE,
+    ASSOCIATED_MSISDN_MDATE, AUTO_C2C_ALLOW, AUTO_C2C_QUANTITY, OPT_IN_OUT_STATUS, OPT_IN_OUT_NOTIFY_DATE,
+    OPT_IN_OUT_RESPONSE_DATE, CONTROL_GROUP,ENTRY_DATE,OPERATION_PERFORMED)
+VALUES(:OLD.USER_ID,NVL( :OLD.USER_GRADE, :NEW.USER_GRADE), :OLD.CONTACT_PERSON,NVL( :OLD.TRANSFER_PROFILE_ID, :NEW.TRANSFER_PROFILE_ID), NVL(:OLD.COMM_PROFILE_SET_ID, :NEW.COMM_PROFILE_SET_ID),:OLD.IN_SUSPEND, :OLD.OUT_SUSPEND, :OLD.OUTLET_CODE, :OLD.SUBOUTLET_CODE, :OLD.ACTIVATED_ON, :OLD.APPLICATION_ID, :OLD.MPAY_PROFILE_ID, NVL(:OLD.USER_PROFILE_ID,:NEW.USER_PROFILE_ID), :OLD.IS_PRIMARY, :OLD.MCOMMERCE_SERVICE_ALLOW, :OLD.LOW_BAL_ALERT_ALLOW, :OLD.MCATEGORY_CODE, :OLD.ALERT_MSISDN, :OLD.ALERT_TYPE, :OLD.ALERT_EMAIL, :OLD.VOMS_DECRYP_KEY, :OLD.TRF_RULE_TYPE, :OLD.AUTO_O2C_ALLOW, :OLD.AUTO_FOC_ALLOW, :NEW.LMS_PROFILE_UPDATED_ON, :NEW.LMS_PROFILE, :OLD.REF_BASED, :OLD.ASSOCIATED_MSISDN, :OLD.ASSOCIATED_MSISDN_TYPE, :OLD.ASSOCIATED_MSISDN_CDATE, :OLD.ASSOCIATED_MSISDN_MDATE, :OLD.AUTO_C2C_ALLOW, :OLD.AUTO_C2C_QUANTITY, :NEW.OPT_IN_OUT_STATUS, :NEW.OPT_IN_OUT_NOTIFY_DATE, :NEW.OPT_IN_OUT_RESPONSE_DATE, :NEW.CONTROL_GROUP,sysdate,'U');
+ELSIF DELETING THEN
+INSERT INTO CHANNEL_USERS_HISTORY (USER_ID, USER_GRADE, CONTACT_PERSON, TRANSFER_PROFILE_ID, COMM_PROFILE_SET_ID,
+    IN_SUSPEND, OUT_SUSPEND, OUTLET_CODE, SUBOUTLET_CODE, ACTIVATED_ON,
+    APPLICATION_ID, MPAY_PROFILE_ID, USER_PROFILE_ID, IS_PRIMARY, MCOMMERCE_SERVICE_ALLOW,
+    LOW_BAL_ALERT_ALLOW, MCATEGORY_CODE, ALERT_MSISDN, ALERT_TYPE, ALERT_EMAIL,
+    VOMS_DECRYP_KEY, TRF_RULE_TYPE, AUTO_O2C_ALLOW, AUTO_FOC_ALLOW, LMS_PROFILE_UPDATED_ON,
+    LMS_PROFILE, REF_BASED, ASSOCIATED_MSISDN, ASSOCIATED_MSISDN_TYPE, ASSOCIATED_MSISDN_CDATE,
+    ASSOCIATED_MSISDN_MDATE, AUTO_C2C_ALLOW, AUTO_C2C_QUANTITY, OPT_IN_OUT_STATUS, OPT_IN_OUT_NOTIFY_DATE,
+    OPT_IN_OUT_RESPONSE_DATE, CONTROL_GROUP,ENTRY_DATE,OPERATION_PERFORMED)
+VALUES(:OLD.USER_ID, :OLD.USER_GRADE, :OLD.CONTACT_PERSON, :OLD.TRANSFER_PROFILE_ID, :OLD.COMM_PROFILE_SET_ID,:OLD.IN_SUSPEND, :OLD.OUT_SUSPEND, :OLD.OUTLET_CODE, :OLD.SUBOUTLET_CODE, :OLD.ACTIVATED_ON, :OLD.APPLICATION_ID, :OLD.MPAY_PROFILE_ID, :OLD.USER_PROFILE_ID, :OLD.IS_PRIMARY, :OLD.MCOMMERCE_SERVICE_ALLOW, :OLD.LOW_BAL_ALERT_ALLOW, :OLD.MCATEGORY_CODE, :OLD.ALERT_MSISDN, :OLD.ALERT_TYPE, :OLD.ALERT_EMAIL, :OLD.VOMS_DECRYP_KEY, :OLD.TRF_RULE_TYPE, :OLD.AUTO_O2C_ALLOW, :OLD.AUTO_FOC_ALLOW, :OLD.LMS_PROFILE_UPDATED_ON, :OLD.LMS_PROFILE, :OLD.REF_BASED, :OLD.ASSOCIATED_MSISDN, :OLD.ASSOCIATED_MSISDN_TYPE, :OLD.ASSOCIATED_MSISDN_CDATE, :OLD.ASSOCIATED_MSISDN_MDATE, :OLD.AUTO_C2C_ALLOW, :OLD.AUTO_C2C_QUANTITY, :OLD.OPT_IN_OUT_STATUS, :OLD.OPT_IN_OUT_NOTIFY_DATE, :OLD.OPT_IN_OUT_RESPONSE_DATE, :OLD.CONTROL_GROUP,sysdate,'D');
+END IF;
+END;
+/
+
+DROP TRIGGER TRIG_CHANNEL_USERS_HISTORYOPT;
+
+COMMIT;
+Insert into PROCESS_STATUS   (PROCESS_ID, START_DATE, SCHEDULER_STATUS, EXECUTED_UPTO, EXECUTED_ON,     EXPIRY_TIME, BEFORE_INTERVAL, DESCRIPTION, NETWORK_CODE) Values   ('LMSC2SSUMMARY', sysdate-1, 'C', sysdate-2, sysdate-1,    360, 1440, 'LMS dataware house', 'MG');
+DROP TRIGGER TRIG_CHANNEL_USERS_HISTORY;
+CREATE OR REPLACE TRIGGER TRIG_CHANNEL_USERS_HISTORY
+AFTER INSERT OR UPDATE OR DELETE OF LMS_PROFILE, OPT_IN_OUT_STATUS, CONTROL_GROUP ON CHANNEL_USERS FOR EACH ROW
+BEGIN
+IF INSERTING THEN
+INSERT INTO CHANNEL_USERS_HISTORY (USER_ID, USER_GRADE, CONTACT_PERSON, TRANSFER_PROFILE_ID, COMM_PROFILE_SET_ID,
+    IN_SUSPEND, OUT_SUSPEND, OUTLET_CODE, SUBOUTLET_CODE, ACTIVATED_ON,
+    APPLICATION_ID, MPAY_PROFILE_ID, USER_PROFILE_ID, IS_PRIMARY, MCOMMERCE_SERVICE_ALLOW,
+    LOW_BAL_ALERT_ALLOW, MCATEGORY_CODE, ALERT_MSISDN, ALERT_TYPE, ALERT_EMAIL,
+    VOMS_DECRYP_KEY, TRF_RULE_TYPE, AUTO_O2C_ALLOW, AUTO_FOC_ALLOW, LMS_PROFILE_UPDATED_ON,
+    LMS_PROFILE, REF_BASED, ASSOCIATED_MSISDN, ASSOCIATED_MSISDN_TYPE, ASSOCIATED_MSISDN_CDATE,
+    ASSOCIATED_MSISDN_MDATE, AUTO_C2C_ALLOW, AUTO_C2C_QUANTITY, OPT_IN_OUT_STATUS, OPT_IN_OUT_NOTIFY_DATE,
+    OPT_IN_OUT_RESPONSE_DATE, CONTROL_GROUP,ENTRY_DATE,OPERATION_PERFORMED)
+VALUES(:NEW.USER_ID, :NEW.USER_GRADE, :NEW.CONTACT_PERSON, :NEW.TRANSFER_PROFILE_ID, :NEW.COMM_PROFILE_SET_ID,
+    :NEW.IN_SUSPEND, :NEW.OUT_SUSPEND, :NEW.OUTLET_CODE, :NEW.SUBOUTLET_CODE, :NEW.ACTIVATED_ON, :NEW.APPLICATION_ID, :NEW.MPAY_PROFILE_ID, :NEW.USER_PROFILE_ID, :NEW.IS_PRIMARY, :NEW.MCOMMERCE_SERVICE_ALLOW, :NEW.LOW_BAL_ALERT_ALLOW, :NEW.MCATEGORY_CODE, :NEW.ALERT_MSISDN, :NEW.ALERT_TYPE, :NEW.ALERT_EMAIL, :NEW.VOMS_DECRYP_KEY, :NEW.TRF_RULE_TYPE, :NEW.AUTO_O2C_ALLOW, :NEW.AUTO_FOC_ALLOW, :NEW.LMS_PROFILE_UPDATED_ON, :NEW.LMS_PROFILE, :NEW.REF_BASED, :NEW.ASSOCIATED_MSISDN, :NEW.ASSOCIATED_MSISDN_TYPE, :NEW.ASSOCIATED_MSISDN_CDATE, :NEW.ASSOCIATED_MSISDN_MDATE, :NEW.AUTO_C2C_ALLOW, :NEW.AUTO_C2C_QUANTITY, :NEW.OPT_IN_OUT_STATUS, :NEW.OPT_IN_OUT_NOTIFY_DATE, :NEW.OPT_IN_OUT_RESPONSE_DATE, :NEW.CONTROL_GROUP,sysdate,'I');
+ELSIF UPDATING AND (nvl(:NEW.LMS_PROFILE,'XYZ') <> nvl(:OLD.LMS_PROFILE,'XYZ')) then
+INSERT INTO CHANNEL_USERS_HISTORY (USER_ID, USER_GRADE, CONTACT_PERSON, TRANSFER_PROFILE_ID, COMM_PROFILE_SET_ID,
+    IN_SUSPEND, OUT_SUSPEND, OUTLET_CODE, SUBOUTLET_CODE, ACTIVATED_ON,
+    APPLICATION_ID, MPAY_PROFILE_ID, USER_PROFILE_ID, IS_PRIMARY, MCOMMERCE_SERVICE_ALLOW,
+    LOW_BAL_ALERT_ALLOW, MCATEGORY_CODE, ALERT_MSISDN, ALERT_TYPE, ALERT_EMAIL,
+    VOMS_DECRYP_KEY, TRF_RULE_TYPE, AUTO_O2C_ALLOW, AUTO_FOC_ALLOW, LMS_PROFILE_UPDATED_ON,
+    LMS_PROFILE, REF_BASED, ASSOCIATED_MSISDN, ASSOCIATED_MSISDN_TYPE, ASSOCIATED_MSISDN_CDATE,
+    ASSOCIATED_MSISDN_MDATE, AUTO_C2C_ALLOW, AUTO_C2C_QUANTITY, OPT_IN_OUT_STATUS, OPT_IN_OUT_NOTIFY_DATE,
+    OPT_IN_OUT_RESPONSE_DATE, CONTROL_GROUP,ENTRY_DATE,OPERATION_PERFORMED)
+VALUES(:OLD.USER_ID,NVL( :OLD.USER_GRADE, :NEW.USER_GRADE), :OLD.CONTACT_PERSON,NVL( :OLD.TRANSFER_PROFILE_ID, :NEW.TRANSFER_PROFILE_ID), NVL(:OLD.COMM_PROFILE_SET_ID, :NEW.COMM_PROFILE_SET_ID),:OLD.IN_SUSPEND, :OLD.OUT_SUSPEND, :OLD.OUTLET_CODE, :OLD.SUBOUTLET_CODE, :OLD.ACTIVATED_ON, :OLD.APPLICATION_ID, :OLD.MPAY_PROFILE_ID, NVL(:OLD.USER_PROFILE_ID,:NEW.USER_PROFILE_ID), :OLD.IS_PRIMARY, :OLD.MCOMMERCE_SERVICE_ALLOW, :OLD.LOW_BAL_ALERT_ALLOW, :OLD.MCATEGORY_CODE, :OLD.ALERT_MSISDN, :OLD.ALERT_TYPE, :OLD.ALERT_EMAIL, :OLD.VOMS_DECRYP_KEY, :OLD.TRF_RULE_TYPE, :OLD.AUTO_O2C_ALLOW, :OLD.AUTO_FOC_ALLOW, :NEW.LMS_PROFILE_UPDATED_ON, :NEW.LMS_PROFILE, :OLD.REF_BASED, :OLD.ASSOCIATED_MSISDN, :OLD.ASSOCIATED_MSISDN_TYPE, :OLD.ASSOCIATED_MSISDN_CDATE, :OLD.ASSOCIATED_MSISDN_MDATE, :OLD.AUTO_C2C_ALLOW, :OLD.AUTO_C2C_QUANTITY, :NEW.OPT_IN_OUT_STATUS, :NEW.OPT_IN_OUT_NOTIFY_DATE, :NEW.OPT_IN_OUT_RESPONSE_DATE, :NEW.CONTROL_GROUP,sysdate,'U');
+ELSIF UPDATING AND (nvl(:NEW.OPT_IN_OUT_STATUS,'XYZ') <> nvl(:OLD.OPT_IN_OUT_STATUS,'XYZ')) then
+INSERT INTO CHANNEL_USERS_HISTORY (USER_ID, USER_GRADE, CONTACT_PERSON, TRANSFER_PROFILE_ID, COMM_PROFILE_SET_ID,
+    IN_SUSPEND, OUT_SUSPEND, OUTLET_CODE, SUBOUTLET_CODE, ACTIVATED_ON,
+    APPLICATION_ID, MPAY_PROFILE_ID, USER_PROFILE_ID, IS_PRIMARY, MCOMMERCE_SERVICE_ALLOW,
+    LOW_BAL_ALERT_ALLOW, MCATEGORY_CODE, ALERT_MSISDN, ALERT_TYPE, ALERT_EMAIL,
+    VOMS_DECRYP_KEY, TRF_RULE_TYPE, AUTO_O2C_ALLOW, AUTO_FOC_ALLOW, LMS_PROFILE_UPDATED_ON,
+    LMS_PROFILE, REF_BASED, ASSOCIATED_MSISDN, ASSOCIATED_MSISDN_TYPE, ASSOCIATED_MSISDN_CDATE,
+    ASSOCIATED_MSISDN_MDATE, AUTO_C2C_ALLOW, AUTO_C2C_QUANTITY, OPT_IN_OUT_STATUS, OPT_IN_OUT_NOTIFY_DATE,
+    OPT_IN_OUT_RESPONSE_DATE, CONTROL_GROUP,ENTRY_DATE,OPERATION_PERFORMED)
+VALUES(:OLD.USER_ID,NVL( :OLD.USER_GRADE, :NEW.USER_GRADE), :OLD.CONTACT_PERSON,NVL( :OLD.TRANSFER_PROFILE_ID, :NEW.TRANSFER_PROFILE_ID), NVL(:OLD.COMM_PROFILE_SET_ID, :NEW.COMM_PROFILE_SET_ID),:OLD.IN_SUSPEND, :OLD.OUT_SUSPEND, :OLD.OUTLET_CODE, :OLD.SUBOUTLET_CODE, :OLD.ACTIVATED_ON, :OLD.APPLICATION_ID, :OLD.MPAY_PROFILE_ID, NVL(:OLD.USER_PROFILE_ID,:NEW.USER_PROFILE_ID), :OLD.IS_PRIMARY, :OLD.MCOMMERCE_SERVICE_ALLOW, :OLD.LOW_BAL_ALERT_ALLOW, :OLD.MCATEGORY_CODE, :OLD.ALERT_MSISDN, :OLD.ALERT_TYPE, :OLD.ALERT_EMAIL, :OLD.VOMS_DECRYP_KEY, :OLD.TRF_RULE_TYPE, :OLD.AUTO_O2C_ALLOW, :OLD.AUTO_FOC_ALLOW, :NEW.LMS_PROFILE_UPDATED_ON, :NEW.LMS_PROFILE, :OLD.REF_BASED, :OLD.ASSOCIATED_MSISDN, :OLD.ASSOCIATED_MSISDN_TYPE, :OLD.ASSOCIATED_MSISDN_CDATE, :OLD.ASSOCIATED_MSISDN_MDATE, :OLD.AUTO_C2C_ALLOW, :OLD.AUTO_C2C_QUANTITY, :NEW.OPT_IN_OUT_STATUS, :NEW.OPT_IN_OUT_NOTIFY_DATE, :NEW.OPT_IN_OUT_RESPONSE_DATE, :NEW.CONTROL_GROUP,sysdate,'U');
+ELSIF UPDATING AND (nvl(:NEW.CONTROL_GROUP,'XYZ') <> nvl(:OLD.CONTROL_GROUP,'XYZ')) then
+INSERT INTO CHANNEL_USERS_HISTORY (USER_ID, USER_GRADE, CONTACT_PERSON, TRANSFER_PROFILE_ID, COMM_PROFILE_SET_ID,
+    IN_SUSPEND, OUT_SUSPEND, OUTLET_CODE, SUBOUTLET_CODE, ACTIVATED_ON,
+    APPLICATION_ID, MPAY_PROFILE_ID, USER_PROFILE_ID, IS_PRIMARY, MCOMMERCE_SERVICE_ALLOW,
+    LOW_BAL_ALERT_ALLOW, MCATEGORY_CODE, ALERT_MSISDN, ALERT_TYPE, ALERT_EMAIL,
+    VOMS_DECRYP_KEY, TRF_RULE_TYPE, AUTO_O2C_ALLOW, AUTO_FOC_ALLOW, LMS_PROFILE_UPDATED_ON,
+    LMS_PROFILE, REF_BASED, ASSOCIATED_MSISDN, ASSOCIATED_MSISDN_TYPE, ASSOCIATED_MSISDN_CDATE,
+    ASSOCIATED_MSISDN_MDATE, AUTO_C2C_ALLOW, AUTO_C2C_QUANTITY, OPT_IN_OUT_STATUS, OPT_IN_OUT_NOTIFY_DATE,
+    OPT_IN_OUT_RESPONSE_DATE, CONTROL_GROUP,ENTRY_DATE,OPERATION_PERFORMED)
+VALUES(:OLD.USER_ID,NVL( :OLD.USER_GRADE, :NEW.USER_GRADE), :OLD.CONTACT_PERSON,NVL( :OLD.TRANSFER_PROFILE_ID, :NEW.TRANSFER_PROFILE_ID), NVL(:OLD.COMM_PROFILE_SET_ID, :NEW.COMM_PROFILE_SET_ID),:OLD.IN_SUSPEND, :OLD.OUT_SUSPEND, :OLD.OUTLET_CODE, :OLD.SUBOUTLET_CODE, :OLD.ACTIVATED_ON, :OLD.APPLICATION_ID, :OLD.MPAY_PROFILE_ID, NVL(:OLD.USER_PROFILE_ID,:NEW.USER_PROFILE_ID), :OLD.IS_PRIMARY, :OLD.MCOMMERCE_SERVICE_ALLOW, :OLD.LOW_BAL_ALERT_ALLOW, :OLD.MCATEGORY_CODE, :OLD.ALERT_MSISDN, :OLD.ALERT_TYPE, :OLD.ALERT_EMAIL, :OLD.VOMS_DECRYP_KEY, :OLD.TRF_RULE_TYPE, :OLD.AUTO_O2C_ALLOW, :OLD.AUTO_FOC_ALLOW, :NEW.LMS_PROFILE_UPDATED_ON, :NEW.LMS_PROFILE, :OLD.REF_BASED, :OLD.ASSOCIATED_MSISDN, :OLD.ASSOCIATED_MSISDN_TYPE, :OLD.ASSOCIATED_MSISDN_CDATE, :OLD.ASSOCIATED_MSISDN_MDATE, :OLD.AUTO_C2C_ALLOW, :OLD.AUTO_C2C_QUANTITY, :NEW.OPT_IN_OUT_STATUS, :NEW.OPT_IN_OUT_NOTIFY_DATE, :NEW.OPT_IN_OUT_RESPONSE_DATE, :NEW.CONTROL_GROUP,sysdate,'U');
+ELSIF DELETING THEN
+INSERT INTO CHANNEL_USERS_HISTORY (USER_ID, USER_GRADE, CONTACT_PERSON, TRANSFER_PROFILE_ID, COMM_PROFILE_SET_ID,
+    IN_SUSPEND, OUT_SUSPEND, OUTLET_CODE, SUBOUTLET_CODE, ACTIVATED_ON,
+    APPLICATION_ID, MPAY_PROFILE_ID, USER_PROFILE_ID, IS_PRIMARY, MCOMMERCE_SERVICE_ALLOW,
+    LOW_BAL_ALERT_ALLOW, MCATEGORY_CODE, ALERT_MSISDN, ALERT_TYPE, ALERT_EMAIL,
+    VOMS_DECRYP_KEY, TRF_RULE_TYPE, AUTO_O2C_ALLOW, AUTO_FOC_ALLOW, LMS_PROFILE_UPDATED_ON,
+    LMS_PROFILE, REF_BASED, ASSOCIATED_MSISDN, ASSOCIATED_MSISDN_TYPE, ASSOCIATED_MSISDN_CDATE,
+    ASSOCIATED_MSISDN_MDATE, AUTO_C2C_ALLOW, AUTO_C2C_QUANTITY, OPT_IN_OUT_STATUS, OPT_IN_OUT_NOTIFY_DATE,
+    OPT_IN_OUT_RESPONSE_DATE, CONTROL_GROUP,ENTRY_DATE,OPERATION_PERFORMED)
+VALUES(:OLD.USER_ID, :OLD.USER_GRADE, :OLD.CONTACT_PERSON, :OLD.TRANSFER_PROFILE_ID, :OLD.COMM_PROFILE_SET_ID,:OLD.IN_SUSPEND, :OLD.OUT_SUSPEND, :OLD.OUTLET_CODE, :OLD.SUBOUTLET_CODE, :OLD.ACTIVATED_ON, :OLD.APPLICATION_ID, :OLD.MPAY_PROFILE_ID, :OLD.USER_PROFILE_ID, :OLD.IS_PRIMARY, :OLD.MCOMMERCE_SERVICE_ALLOW, :OLD.LOW_BAL_ALERT_ALLOW, :OLD.MCATEGORY_CODE, :OLD.ALERT_MSISDN, :OLD.ALERT_TYPE, :OLD.ALERT_EMAIL, :OLD.VOMS_DECRYP_KEY, :OLD.TRF_RULE_TYPE, :OLD.AUTO_O2C_ALLOW, :OLD.AUTO_FOC_ALLOW, :OLD.LMS_PROFILE_UPDATED_ON, :OLD.LMS_PROFILE, :OLD.REF_BASED, :OLD.ASSOCIATED_MSISDN, :OLD.ASSOCIATED_MSISDN_TYPE, :OLD.ASSOCIATED_MSISDN_CDATE, :OLD.ASSOCIATED_MSISDN_MDATE, :OLD.AUTO_C2C_ALLOW, :OLD.AUTO_C2C_QUANTITY, :OLD.OPT_IN_OUT_STATUS, :OLD.OPT_IN_OUT_NOTIFY_DATE, :OLD.OPT_IN_OUT_RESPONSE_DATE, :OLD.CONTROL_GROUP,sysdate,'D');
+END IF;
+END;
+/
+DROP TRIGGER TRIG_CHANNEL_USERS_HISTORYOPT;
+
+------------ Added by Harsh for Last X Transfer Service Wise Report through External System ----------------
+Insert into SERVICE_TYPE
+   (SERVICE_TYPE, MODULE, TYPE, MESSAGE_FORMAT, REQUEST_HANDLER, 
+    ERROR_KEY, DESCRIPTION, FLEXIBLE, CREATED_ON, CREATED_BY, 
+    MODIFIED_ON, MODIFIED_BY, NAME, EXTERNAL_INTERFACE, UNREGISTERED_ACCESS_ALLOWED, 
+    STATUS, SEQ_NO, USE_INTERFACE_LANGUAGE, GROUP_TYPE, SUB_KEYWORD_APPLICABLE, 
+    FILE_PARSER, RECEIVER_USER_SERVICE_CHECK, ERP_HANDLER)
+ Values
+   ('LSTXTRFSRV', 'C2S', 'ALL', 'KEYWORD PIN', 'com.btsl.pretups.user.requesthandler.LastXTransferServiceWiseRequestHandler', 
+    'c2s.lasttransferstatusservicewise', 'Last X transfer servicewise report', 'Y', sysdate, 'ADMIN', 
+    sysdate, 'ADMIN', 'Last X Transfer Service Wise Report by Ext System', 'N', 'N', 
+    'Y', NULL, 'N', 'NA', 'N', 
+    NULL, 'Y', 'NA');
+	
+Insert into SERVICE_KEYWORDS
+   (KEYWORD, REQ_INTERFACE_TYPE, SERVICE_PORT, SERVICE_TYPE, NAME, 
+    STATUS, MENU, SUB_MENU, ALLOWED_VERSION, MODIFY_ALLOWED, 
+    CREATED_ON, CREATED_BY, MODIFIED_ON, MODIFIED_BY, SERVICE_KEYWORD_ID, 
+    SUB_KEYWORD)
+ Values
+   ('LSTXTRFSRV', 'EXTGW', '190', 'LSTXTRFSRV', 'Last X transfer Service Wise', 
+    'Y', NULL, NULL, NULL, 'Y', 
+    sysdate, 'SU0001', sysdate, 'SU0001', 'SVK0000144', 
+    NULL);
+
+Insert into MESSAGES_MASTER
+   (MESSAGE_TYPE, MESSAGE_CODE, DEFAULT_MESSAGE, NETWORK_CODE, MESSAGE1, 
+    MESSAGE2, MESSAGE3, MCLASS, DESCRIPTION, MESSAGE4, 
+    MESSAGE5)
+ Values
+   ('ALL', '1016019', 'mclass^2&pid^61:1016019:You can enquire for maximum {0} transactions', 'ALL', 'mclass^2&pid^61:1016019:You can enquire for maximum {0} transactions', 
+    NULL, NULL, 'Y', NULL, NULL, 
+    NULL);
+
+Insert into MESSAGES_MASTER
+   (MESSAGE_TYPE, MESSAGE_CODE, DEFAULT_MESSAGE, NETWORK_CODE, MESSAGE1, 
+    MESSAGE2, MESSAGE3, MCLASS, DESCRIPTION, MESSAGE4, 
+    MESSAGE5)
+ Values
+   ('ALL', '1016020', 'mclass^2&pid^61:1016020:Service type can not be blank for transaction type C2S', 'ALL', 'mclass^2&pid^61:1016020:Service type can not be blank for transaction type C2S', 
+    NULL, NULL, 'Y', NULL, NULL, 
+    NULL);	
+	
+Insert into MESSAGES_MASTER
+   (MESSAGE_TYPE, MESSAGE_CODE, DEFAULT_MESSAGE, NETWORK_CODE, MESSAGE1, 
+    MESSAGE2, MESSAGE3, MCLASS, DESCRIPTION, MESSAGE4, 
+    MESSAGE5)
+ Values
+   ('ALL', '1016021', 'mclass^2&pid^61:1016021:C2C INOUT can not be blank for transaction type C2C', 'ALL', 'mclass^2&pid^61:1016021:C2C INOUT can not be blank for transaction type C2C', 
+    NULL, NULL, 'Y', NULL, NULL, 
+    NULL);	
+	
+Insert into MESSAGES_MASTER
+   (MESSAGE_TYPE, MESSAGE_CODE, DEFAULT_MESSAGE, NETWORK_CODE, MESSAGE1, 
+    MESSAGE2, MESSAGE3, MCLASS, DESCRIPTION, MESSAGE4, 
+    MESSAGE5)
+ Values
+   ('ALL', '1016022', 'mclass^2&pid^61:1016022:You have not done any transaction in last {0} days', 'ALL', 'mclass^2&pid^61:1016022:You have not done any transaction in last {0} days', 
+    NULL, NULL, 'Y', NULL, NULL, 
+    NULL);
+	
+Insert into MESSAGES_MASTER
+   (MESSAGE_TYPE, MESSAGE_CODE, DEFAULT_MESSAGE, NETWORK_CODE, MESSAGE1, 
+    MESSAGE2, MESSAGE3, MCLASS, DESCRIPTION, MESSAGE4, 
+    MESSAGE5)
+ Values
+   ('ALL', '1016023', 'mclass^2&pid^61:1016023:Channel user MSISDN <MSISDN1> can not be blank', 'ALL', 'mclass^2&pid^61:1016023:Channel user MSISDN <MSISDN1> can not be blank', 
+    NULL, NULL, 'Y', NULL, NULL, 
+    NULL);
+	
+	
+Insert into MESSAGES_MASTER
+   (MESSAGE_TYPE, MESSAGE_CODE, DEFAULT_MESSAGE, NETWORK_CODE, MESSAGE1, 
+    MESSAGE2, MESSAGE3, MCLASS, DESCRIPTION, MESSAGE4, 
+    MESSAGE5)
+ Values
+   ('ALL', '24120', 'mclass^2&pid^61:24120:{0}- TxnID:{1},MSISDN:{2},Status:{3},Type:{4},Amount:{5},PostBal:{6}', 'ALL', 'mclass^2&pid^61:24120:{0}- TxnID:{1},MSISDN:{2},Status:{3},Type:{4},Amount:{5},PostBal:{6}', 
+    NULL, NULL, 'Y', NULL, NULL, 
+    NULL);	
+	
+Insert into MESSAGES_MASTER
+   (MESSAGE_TYPE, MESSAGE_CODE, DEFAULT_MESSAGE, NETWORK_CODE, MESSAGE1, 
+    MESSAGE2, MESSAGE3, MCLASS, DESCRIPTION, MESSAGE4, 
+    MESSAGE5)
+ Values
+   ('ALL', '24121', 'mclass^2&pid^61:24121:Transfer details {0}.', 'ALL', 'mclass^2&pid^61:24121:Transfer details {0}.', 
+    NULL, NULL, 'Y', NULL, NULL, 
+    NULL);
+	
+Insert into MESSAGES_MASTER
+   (MESSAGE_TYPE, MESSAGE_CODE, DEFAULT_MESSAGE, NETWORK_CODE, MESSAGE1, 
+    MESSAGE2, MESSAGE3, MCLASS, DESCRIPTION, MESSAGE4, 
+    MESSAGE5)
+ Values
+   ('ALL', '24124', 'mclass^2&pid^61:24124:Transfer details TxnID:{1},MSISDN:{2},Status:{3},Type:{4},Amount:{5},PostBal:{6}', 'ALL', 'mclass^2&pid^61:24124:Transfer details TxnID:{1},MSISDN:{2},Status:{3},Type:{4},Amount:{5},PostBal:{6}', 
+    NULL, NULL, 'Y', NULL, NULL, 
+    NULL);
+------------------ End here -----------------------------
+commit;
+
+--direct_payout_dbscript
+--Direct payout For supporting 10 Lakh users:
+
+alter table network_stock_transactions modify txn_no varchar(25);
+alter table network_stock_trans_items modify txn_no varchar(25);
+alter table network_stocks_history modify last_txn_no varchar(25);
+
+--adding indexes:
+
+CREATE INDEX COMM_PROFILE_SET_ID ON COMMISSION_PROFILE_PRODUCTS
+(COMM_PROFILE_SET_ID)
+LOGGING
+TABLESPACE PRTP_DATA
+PCTFREE    10
+INITRANS   2
+MAXTRANS   255
+STORAGE    (
+            INITIAL          16M
+            NEXT             16M
+            MINEXTENTS       1
+            MAXEXTENTS       UNLIMITED
+            PCTINCREASE      0
+            BUFFER_POOL      DEFAULT
+           )
+NOPARALLEL;
+
+CREATE INDEX COMM_PROFILE_SET_VERSION ON COMMISSION_PROFILE_PRODUCTS
+(COMM_PROFILE_SET_VERSION)
+LOGGING
+TABLESPACE PRTP_DATA
+PCTFREE    10
+INITRANS   2
+MAXTRANS   255
+STORAGE    (
+            INITIAL          16M
+            NEXT             16M
+            MINEXTENTS       1
+            MAXEXTENTS       UNLIMITED
+            PCTINCREASE      0
+            BUFFER_POOL      DEFAULT
+           )
+NOPARALLEL;
+
+CREATE INDEX IND_APPFROM ON COMMISSION_PROFILE_SET_VERSION
+(APPLICABLE_FROM)
+NOLOGGING
+TABLESPACE PRTP_DATA
+PCTFREE    10
+INITRANS   2
+MAXTRANS   255
+STORAGE    (
+            INITIAL          16M
+            NEXT             16M
+            MINEXTENTS       1
+            MAXEXTENTS       UNLIMITED
+            PCTINCREASE      0
+            BUFFER_POOL      DEFAULT
+           )
+NOPARALLEL;
+
+CREATE INDEX IND_CAT ON CHNL_TRANSFER_RULES
+(FROM_CATEGORY, TO_CATEGORY)
+NOLOGGING
+TABLESPACE PRTP_DATA
+PCTFREE    10
+INITRANS   2
+MAXTRANS   255
+STORAGE    (
+            INITIAL          16M
+            NEXT             16M
+            MINEXTENTS       1
+            MAXEXTENTS       UNLIMITED
+            PCTINCREASE      0
+            BUFFER_POOL      DEFAULT
+           )
+NOPARALLEL;
+
+CREATE INDEX IND_CATCODE ON CHANNEL_GRADES
+(CATEGORY_CODE)
+NOLOGGING
+TABLESPACE PRTP_DATA
+PCTFREE    10
+INITRANS   2
+MAXTRANS   255
+STORAGE    (
+            INITIAL          16M
+            NEXT             16M
+            MINEXTENTS       1
+            MAXEXTENTS       UNLIMITED
+            PCTINCREASE      0
+            BUFFER_POOL      DEFAULT
+           )
+NOPARALLEL;
+
+CREATE INDEX IND_COMM_PRO_SET_ID ON CHANNEL_USERS
+(COMM_PROFILE_SET_ID)
+NOLOGGING
+TABLESPACE PRTP_DATA
+PCTFREE    10
+INITRANS   2
+MAXTRANS   255
+STORAGE    (
+            INITIAL          16M
+            NEXT             16M
+            MINEXTENTS       1
+            MAXEXTENTS       UNLIMITED
+            PCTINCREASE      0
+            BUFFER_POOL      DEFAULT
+           )
+NOPARALLEL;
+
+CREATE INDEX IND_DAILYUPDATED ON USER_BALANCES
+(DAILY_BALANCE_UPDATED_ON)
+NOLOGGING
+TABLESPACE PRTP_DATA
+PCTFREE    10
+INITRANS   2
+MAXTRANS   255
+STORAGE    (
+            INITIAL          16M
+            NEXT             16M
+            MINEXTENTS       1
+            MAXEXTENTS       UNLIMITED
+            PCTINCREASE      0
+            BUFFER_POOL      DEFAULT
+           )
+NOPARALLEL;
+
+CREATE INDEX IND_DOMAIN_CODE ON CATEGORIES
+(DOMAIN_CODE, STATUS)
+NOLOGGING
+TABLESPACE PRTP_DATA
+PCTFREE    10
+INITRANS   2
+MAXTRANS   255
+STORAGE    (
+            INITIAL          16M
+            NEXT             16M
+            MINEXTENTS       1
+            MAXEXTENTS       UNLIMITED
+            PCTINCREASE      0
+            BUFFER_POOL      DEFAULT
+           )
+NOPARALLEL;
+
+CREATE INDEX IND_DOMAINCODE ON CHNL_TRANSFER_RULES
+(DOMAIN_CODE)
+NOLOGGING
+TABLESPACE PRTP_DATA
+PCTFREE    10
+INITRANS   2
+MAXTRANS   255
+STORAGE    (
+            INITIAL          16M
+            NEXT             16M
+            MINEXTENTS       1
+            MAXEXTENTS       UNLIMITED
+            PCTINCREASE      0
+            BUFFER_POOL      DEFAULT
+           )
+NOPARALLEL;
+
+CREATE INDEX IND_NTWCODE ON CHNL_TRANSFER_RULES
+(NETWORK_CODE)
+NOLOGGING
+TABLESPACE PRTP_DATA
+PCTFREE    10
+INITRANS   2
+MAXTRANS   255
+STORAGE    (
+            INITIAL          16M
+            NEXT             16M
+            MINEXTENTS       1
+            MAXEXTENTS       UNLIMITED
+            PCTINCREASE      0
+            BUFFER_POOL      DEFAULT
+           )
+NOPARALLEL;
+CREATE INDEX IND_NWCODE1 ON USERS
+(NETWORK_CODE)
+NOLOGGING
+TABLESPACE PRTP_DATA
+PCTFREE    10
+INITRANS   2
+MAXTRANS   255
+STORAGE    (
+            INITIAL          16M
+            NEXT             16M
+            MINEXTENTS       1
+            MAXEXTENTS       UNLIMITED
+            PCTINCREASE      0
+            BUFFER_POOL      DEFAULT
+           )
+NOPARALLEL;
+
+CREATE INDEX IND_NWCODE ON GEOGRAPHICAL_DOMAINS
+(NETWORK_CODE)
+NOLOGGING
+TABLESPACE PRTP_DATA
+PCTFREE    10
+INITRANS   2
+MAXTRANS   255
+STORAGE    (
+            INITIAL          16M
+            NEXT             16M
+            MINEXTENTS       1
+            MAXEXTENTS       UNLIMITED
+            PCTINCREASE      0
+            BUFFER_POOL      DEFAULT
+           )
+NOPARALLEL;
+CREATE INDEX IND_NW ON NETWORK_STOCKS
+(NETWORK_CODE, NETWORK_CODE_FOR, WALLET_TYPE, DAILY_STOCK_UPDATED_ON)
+NOLOGGING
+TABLESPACE PRTP_DATA
+PCTFREE    10
+INITRANS   2
+MAXTRANS   255
+STORAGE    (
+            INITIAL          16M
+            NEXT             16M
+            MINEXTENTS       1
+            MAXEXTENTS       UNLIMITED
+            PCTINCREASE      0
+            BUFFER_POOL      DEFAULT
+           )
+NOPARALLEL;
+CREATE INDEX IND_STA ON GEOGRAPHICAL_DOMAINS
+(STATUS)
+NOLOGGING
+TABLESPACE PRTP_DATA
+PCTFREE    10
+INITRANS   2
+MAXTRANS   255
+STORAGE    (
+            INITIAL          16M
+            NEXT             16M
+            MINEXTENTS       1
+            MAXEXTENTS       UNLIMITED
+            PCTINCREASE      0
+            BUFFER_POOL      DEFAULT
+           )
+NOPARALLEL;
+CREATE INDEX IND_STATUS ON USERS
+(STATUS)
+NOLOGGING
+TABLESPACE PRTP_DATA
+PCTFREE    10
+INITRANS   2
+MAXTRANS   255
+STORAGE    (
+            INITIAL          16M
+            NEXT             16M
+            MINEXTENTS       1
+            MAXEXTENTS       UNLIMITED
+            PCTINCREASE      0
+            BUFFER_POOL      DEFAULT
+           )
+NOPARALLEL;
+CREATE INDEX IND_STATUS1 ON NETWORK_PRODUCT_MAPPING
+(STATUS)
+NOLOGGING
+TABLESPACE PRTP_DATA
+PCTFREE    10
+INITRANS   2
+MAXTRANS   255
+STORAGE    (
+            INITIAL          16M
+            NEXT             16M
+            MINEXTENTS       1
+            MAXEXTENTS       UNLIMITED
+            PCTINCREASE      0
+            BUFFER_POOL      DEFAULT
+           )
+NOPARALLEL;
+CREATE INDEX IND_TRANSFER_PROFILE_ID ON CHANNEL_USERS
+(TRANSFER_PROFILE_ID)
+NOLOGGING
+TABLESPACE PRTP_DATA
+PCTFREE    10
+INITRANS   2
+MAXTRANS   255
+STORAGE    (
+            INITIAL          16M
+            NEXT             16M
+            MINEXTENTS       1
+            MAXEXTENTS       UNLIMITED
+            PCTINCREASE      0
+            BUFFER_POOL      DEFAULT
+           )
+NOPARALLEL;
+CREATE INDEX IND_TYPE ON CHNL_TRANSFER_RULES
+(STATUS, TYPE)
+NOLOGGING
+TABLESPACE PRTP_DATA
+PCTFREE    10
+INITRANS   2
+MAXTRANS   255
+STORAGE    (
+            INITIAL          16M
+            NEXT             16M
+            MINEXTENTS       1
+            MAXEXTENTS       UNLIMITED
+            PCTINCREASE      0
+            BUFFER_POOL      DEFAULT
+           )
+NOPARALLEL;
+
+CREATE INDEX IND_USERGRADE ON CHANNEL_USERS
+(USER_GRADE)
+NOLOGGING
+TABLESPACE PRTP_DATA
+PCTFREE    10
+INITRANS   2
+MAXTRANS   255
+STORAGE    (
+            INITIAL          16M
+            NEXT             16M
+            MINEXTENTS       1
+            MAXEXTENTS       UNLIMITED
+            PCTINCREASE      0
+            BUFFER_POOL      DEFAULT
+           )
+NOPARALLEL;
+
+CREATE INDEX INDEX_CATEGORY_CODE ON TRANSFER_PROFILE
+(CATEGORY_CODE)
+LOGGING
+TABLESPACE PRTP_DATA
+PCTFREE    10
+INITRANS   2
+MAXTRANS   255
+STORAGE    (
+            INITIAL          16M
+            NEXT             16M
+            MINEXTENTS       1
+            MAXEXTENTS       UNLIMITED
+            PCTINCREASE      0
+            BUFFER_POOL      DEFAULT
+           )
+NOPARALLEL;
+CREATE INDEX INDEX_PRNT_PROFILE_ID ON TRANSFER_PROFILE
+(PARENT_PROFILE_ID)
+NOLOGGING
+TABLESPACE PRTP_DATA
+PCTFREE    10
+INITRANS   2
+MAXTRANS   255
+STORAGE    (
+            INITIAL          16M
+            NEXT             16M
+            MINEXTENTS       1
+            MAXEXTENTS       UNLIMITED
+            PCTINCREASE      0
+            BUFFER_POOL      DEFAULT
+           )
+NOPARALLEL;
+
+CREATE INDEX INDEX_NETWORK_CODE ON TRANSFER_PROFILE
+(NETWORK_CODE)
+NOLOGGING
+TABLESPACE PRTP_DATA
+PCTFREE    10
+INITRANS   2
+MAXTRANS   255
+STORAGE    (
+            INITIAL          16M
+            NEXT             16M
+            MINEXTENTS       1
+            MAXEXTENTS       UNLIMITED
+            PCTINCREASE      0
+            BUFFER_POOL      DEFAULT
+           )
+NOPARALLEL;
+CREATE INDEX INDEX_STATUS ON TRANSFER_PROFILE
+(STATUS)
+NOLOGGING
+TABLESPACE PRTP_DATA
+PCTFREE    10
+INITRANS   2
+MAXTRANS   255
+STORAGE    (
+            INITIAL          16M
+            NEXT             16M
+            MINEXTENTS       1
+            MAXEXTENTS       UNLIMITED
+            PCTINCREASE      0
+            BUFFER_POOL      DEFAULT
+           )
+NOPARALLEL;
+
+CREATE INDEX INDX_COMMISSION_PROFILE_DETAILS ON COMMISSION_PROFILE_DETAILS
+(END_RANGE)
+LOGGING
+TABLESPACE PRTP_DATA
+PCTFREE    10
+INITRANS   2
+MAXTRANS   255
+STORAGE    (
+            INITIAL          16M
+            NEXT             16M
+            MINEXTENTS       1
+            MAXEXTENTS       UNLIMITED
+            PCTINCREASE      0
+            BUFFER_POOL      DEFAULT
+           )
+NOPARALLEL;
+
+
+--Direct payout For wirting failed entry in database:
+
+ALTER TABLE foc_batch_items ADD ERROR varchar(1000);
+Insert into SYSTEM_PREFERENCES
+   (PREFERENCE_CODE, NAME, TYPE, VALUE_TYPE, DEFAULT_VALUE, 
+    MIN_VALUE, MAX_VALUE, MAX_SIZE, DESCRIPTION, MODIFIED_ALLOWED, 
+    DISPLAY, MODULE, REMARKS, CREATED_ON, CREATED_BY, 
+    MODIFIED_ON, MODIFIED_BY, ALLOWED_VALUES, FIXED_VALUE)
+Values
+   ('DP_ONLINE_LIMIT', 'direct payout online limit', 'SYSTEMPRF', 'INT', '5', 
+    NULL, NULL, 10000, 'direct payout online limit', 'N', 
+    'Y', 'C2S', 'direct payout limit for online to offline process', TO_DATE('06/16/2005 00:00:00', 'MM/DD/YYYY HH24:MI:SS'), 'ADMIN', 
+    TO_DATE('06/17/2005 09:44:51', 'MM/DD/YYYY HH24:MI:SS'), 'ADMIN', NULL, 'Y');
+
+
+
+--For negative balance handling
+CREATE TABLE RECON_MISTMP
+(
+  TRANSFER_VALUE         NUMBER(20)             NOT NULL,
+  TRANSFER_STATUS        NUMBER(20),
+  RECONCILIATION_DATE    DATE,
+  RECONCILIATION_FLAG    VARCHAR2(2 BYTE),
+  SENDER_ID              VARCHAR2(200 BYTE),
+  NETWORK_CODE           VARCHAR2(5 BYTE),
+  RECEIVER_NETWORK_CODE  VARCHAR2(5 BYTE),
+  PRODUCT_CODE           VARCHAR2(10 BYTE)
+)
+TABLESPACE PRTPDATA
+PCTUSED    0
+PCTFREE    10
+INITRANS   1
+MAXTRANS   255
+STORAGE    (
+            INITIAL          64K
+            NEXT             1M
+            MINEXTENTS       1
+            MAXEXTENTS       UNLIMITED
+            PCTINCREASE      0
+            BUFFER_POOL      DEFAULT
+           )
+LOGGING 
+NOCOMPRESS 
+NOCACHE
+NOPARALLEL
+MONITORING;
+
+
+CREATE INDEX RECON_MISTEMP_SENDERID ON RECON_MISTMP
+(SENDER_ID)
+LOGGING
+TABLESPACE PRTPDATA
+PCTFREE    10
+INITRANS   2
+MAXTRANS   255
+STORAGE    (
+            INITIAL          64K
+            NEXT             1M
+            MINEXTENTS       1
+            MAXEXTENTS       UNLIMITED
+            PCTINCREASE      0
+            BUFFER_POOL      DEFAULT
+           )
+NOPARALLEL;
+CREATE INDEX RECON_DATE ON C2S_TRANSFERS
+(RECONCILIATION_DATE)
+LOGGING
+TABLESPACE PRTPDATA
+PCTFREE    10
+INITRANS   2
+MAXTRANS   255
+STORAGE    (
+            INITIAL          64K
+            NEXT             1M
+            MINEXTENTS       1
+            MAXEXTENTS       UNLIMITED
+            PCTINCREASE      0
+            BUFFER_POOL      DEFAULT
+           )
+NOPARALLEL;
+
+SET DEFINE OFF;
+Insert into SYSTEM_PREFERENCES
+   (PREFERENCE_CODE, NAME, TYPE, VALUE_TYPE, DEFAULT_VALUE, 
+    MIN_VALUE, MAX_VALUE, MAX_SIZE, DESCRIPTION, MODIFIED_ALLOWED, 
+    DISPLAY, MODULE, REMARKS, CREATED_ON, CREATED_BY, 
+    MODIFIED_ON, MODIFIED_BY, ALLOWED_VALUES, FIXED_VALUE)
+ Values
+   ('TIME_FOR_REVERSAL', 'Time for Reversal in hours', 'SYSTEMPRF', 'STRING', '48', 
+    0, 1000000, 50, 'Time for Reversal in hours', 'N', 
+    'Y', 'C2S', 'Time for Reversal in hours', TO_DATE('07/15/2016 10:00:56', 'MM/DD/YYYY HH24:MI:SS'), 'ADMIN', 
+    TO_DATE('07/15/2016 10:00:56', 'MM/DD/YYYY HH24:MI:SS'), 'SU0001', NULL, 'N');
+Insert into SYSTEM_PREFERENCES
+   (PREFERENCE_CODE, NAME, TYPE, VALUE_TYPE, DEFAULT_VALUE, 
+    MIN_VALUE, MAX_VALUE, MAX_SIZE, DESCRIPTION, MODIFIED_ALLOWED, 
+    DISPLAY, MODULE, REMARKS, CREATED_ON, CREATED_BY, 
+    MODIFIED_ON, MODIFIED_BY, ALLOWED_VALUES, FIXED_VALUE)
+ Values
+   ('TIME_FOR_REVERSAL_CCE', 'Time for Reversal for CCE', 'SYSTEMPRF', 'STRING', '48', 
+    0, 1000000, 50, 'Time for Reversal for CCE', 'N', 
+    'Y', 'C2S', 'Time for Reversal for CCE', TO_DATE('07/15/2016 10:00:56', 'MM/DD/YYYY HH24:MI:SS'), 'ADMIN', 
+    TO_DATE('07/15/2016 10:00:56', 'MM/DD/YYYY HH24:MI:SS'), 'SU0001', NULL, 'N');
+Insert into SYSTEM_PREFERENCES
+   (PREFERENCE_CODE, NAME, TYPE, VALUE_TYPE, DEFAULT_VALUE, 
+    MIN_VALUE, MAX_VALUE, MAX_SIZE, DESCRIPTION, MODIFIED_ALLOWED, 
+    DISPLAY, MODULE, REMARKS, CREATED_ON, CREATED_BY, 
+    MODIFIED_ON, MODIFIED_BY, ALLOWED_VALUES, FIXED_VALUE)
+ Values
+   ('ALLOWED_DAYS_FOR_REVERSAL', 'Days for batch reversal', 'SYSTEMPRF', 'STRING', '2', 
+    0, 1000000, 50, 'Days for batch reversal', 'N', 
+    'Y', 'C2S', 'Days for batch reversal', TO_DATE('07/15/2016 10:00:56', 'MM/DD/YYYY HH24:MI:SS'), 'ADMIN', 
+    TO_DATE('07/15/2016 10:00:56', 'MM/DD/YYYY HH24:MI:SS'), 'SU0001', NULL, 'N');
+Insert into SYSTEM_PREFERENCES
+   (PREFERENCE_CODE, NAME, TYPE, VALUE_TYPE, DEFAULT_VALUE, 
+    MIN_VALUE, MAX_VALUE, MAX_SIZE, DESCRIPTION, MODIFIED_ALLOWED, 
+    DISPLAY, MODULE, REMARKS, CREATED_ON, CREATED_BY, 
+    MODIFIED_ON, MODIFIED_BY, ALLOWED_VALUES, FIXED_VALUE)
+ Values
+   ('ALLOWED_SERVICES_FOR_REVERSAL', 'Allowed services for reversal', 'SYSTEMPRF', 'STRING', 'RC,GRC', 
+    NULL, NULL, 50, 'Allowed services for reversal', 'N', 
+    'Y', 'C2S', 'Allowed services for reversal', TO_DATE('07/15/2016 10:00:56', 'MM/DD/YYYY HH24:MI:SS'), 'ADMIN', 
+    TO_DATE('07/15/2016 10:00:56', 'MM/DD/YYYY HH24:MI:SS'), 'SU0001', NULL, 'N');
+Insert into SYSTEM_PREFERENCES
+   (PREFERENCE_CODE, NAME, TYPE, VALUE_TYPE, DEFAULT_VALUE, 
+    MIN_VALUE, MAX_VALUE, MAX_SIZE, DESCRIPTION, MODIFIED_ALLOWED, 
+    DISPLAY, MODULE, REMARKS, CREATED_ON, CREATED_BY, 
+    MODIFIED_ON, MODIFIED_BY, ALLOWED_VALUES, FIXED_VALUE)
+ Values
+   ('ALLOW_BULK_C2S_REVERSAL_MESSAGE', 'Allow bulk reversal message', 'SYSTEMPRF', 'BOOLEAN', 'true', 
+    NULL, NULL, 1, 'Allow bulk reversal message', 'N', 
+    'Y', 'C2S', 'Allow bulk reversal message', TO_DATE('07/15/2016 10:00:56', 'MM/DD/YYYY HH24:MI:SS'), 'ADMIN', 
+    TO_DATE('07/15/2016 10:00:56', 'MM/DD/YYYY HH24:MI:SS'), 'SU0001', NULL, 'N');
+Insert into SYSTEM_PREFERENCES
+   (PREFERENCE_CODE, NAME, TYPE, VALUE_TYPE, DEFAULT_VALUE, 
+    MIN_VALUE, MAX_VALUE, MAX_SIZE, DESCRIPTION, MODIFIED_ALLOWED, 
+    DISPLAY, MODULE, REMARKS, CREATED_ON, CREATED_BY, 
+    MODIFIED_ON, MODIFIED_BY, ALLOWED_VALUES, FIXED_VALUE)
+ Values
+   ('ALLOWED_GATEWAY_FOR_BULK_REVERSAL', 'Gateway for Bulk Reversal', 'SYSTEMPRF', 'STRING', 'WEB', 
+    NULL, NULL, 50, 'Gateway for Bulk Reversal', 'N', 
+    'Y', 'C2S', 'Gateway for Bulk Reversal', TO_DATE('07/15/2016 10:00:56', 'MM/DD/YYYY HH24:MI:SS'), 'ADMIN', 
+    TO_DATE('07/15/2016 10:00:56', 'MM/DD/YYYY HH24:MI:SS'), 'SU0001', NULL, 'N');
+COMMIT;
+
+
+--Added new column for Rest INSTANCES
+ALTER TABLE NETWORK_LOAD
+ ADD (RST_INSTANCE_ID  VARCHAR2(5 BYTE) DEFAULT 1 NOT NULL);
+ 
+SET DEFINE OFF;
+update WEB_SERVICES_TYPES set WEB_SERVICE_URL = '/rest/' || WEB_SERVICE_URL;
+commit;
+ 
+ 
+--Update pages for C2S Reversal left link
+Update pages set page_url='/c2srecharge/reversal.form' where page_code='C2SREV001';
+
+--Insert to WEB_SERVICES_TYPES for C2S Reversal web services
+Insert into WEB_SERVICES_TYPES
+   (WEB_SERVICE_TYPE, DESCRIPTION, RESOURCE_NAME, VALIDATOR_NAME, FORMBEAN_NAME, 
+    CONFIG_PATH, IS_DATA_VALIDATION_REQUIRE, WEB_SERVICE_URL, IS_RBA_REQUIRE)
+ Values
+   ('C2SREV', 'C2S Reversal', 'C2SReversalService', NULL, 'com.btsl.pretups.channel.transfer.web.C2SReversalModel', 
+    'configfiles/restservice', 'N', '/rest/cs/reversal', 'N');
+Insert into WEB_SERVICES_TYPES
+   (WEB_SERVICE_TYPE, DESCRIPTION, RESOURCE_NAME, VALIDATOR_NAME, FORMBEAN_NAME, 
+    CONFIG_PATH, IS_DATA_VALIDATION_REQUIRE, WEB_SERVICE_URL, IS_RBA_REQUIRE)
+ Values
+   ('C2SDOREV', 'C2S Do Reverse', 'C2SReversalRestService', NULL, 'com.btsl.pretups.channel.transfer.web.C2SReversalModel', 
+    'configfiles/restservice', 'Y', '/rest/cs/do-reverse', 'N');
+Insert into WEB_SERVICES_TYPES
+   (WEB_SERVICE_TYPE, DESCRIPTION, RESOURCE_NAME, VALIDATOR_NAME, FORMBEAN_NAME, 
+    CONFIG_PATH, IS_DATA_VALIDATION_REQUIRE, WEB_SERVICE_URL, IS_RBA_REQUIRE)
+ Values
+   ('C2SREVCONF', 'C2S Reversal Confirm', 'C2SReversalRestService', 'configfiles/channeluser/validation-c2s-reversal.xml', 'com.btsl.pretups.channel.transfer.web.C2SReversalModel', 
+    'configfiles/restservice', 'Y', '/rest/cs/reversal-confirm', 'N');
+Insert into WEB_SERVICES_TYPES
+   (WEB_SERVICE_TYPE, DESCRIPTION, RESOURCE_NAME, VALIDATOR_NAME, FORMBEAN_NAME, 
+    CONFIG_PATH, IS_DATA_VALIDATION_REQUIRE, WEB_SERVICE_URL, IS_RBA_REQUIRE)
+ Values
+   ('C2SREVSTAT', 'C2S Reversal Status', 'C2SReversalRestService', NULL, 'com.btsl.pretups.channel.transfer.web.C2SReversalModel', 
+    'configfiles/restservice', 'Y', '/rest/cs/reverse-status', 'N');
+
+--Added to update UNBAR USER url
+SET DEFINE OFF;
+update WEB_SERVICES_TYPES set WEB_SERVICE_URL = '/rest/barred-user/unbarred-user-list' where WEB_SERVICE_TYPE = 'UNBARUSER';
+commit;
+
+
+--Added for Card group Enquiry API
+SET DEFINE OFF;
+Insert into PRODUCT_SERVICE_TYPE_MAPPING
+   (PRODUCT_TYPE, SERVICE_TYPE, CREATED_BY, CREATED_ON, MODIFIED_BY, 
+    MODIFIED_ON, GIVE_ONLINE_DIFFERENTIAL, DIFFERENTIAL_APPLICABLE, SUB_SERVICE)
+ Values
+   ('PREPROD', 'CGENQREQ', 'ADMIN', TO_DATE('05/30/2006 00:00:00', 'MM/DD/YYYY HH24:MI:SS'), 'ADMIN', 
+    TO_DATE('05/30/2006 00:00:00', 'MM/DD/YYYY HH24:MI:SS'), 'Y', 'Y', 'DEF');
+COMMIT;
+
+SET DEFINE OFF;
+Insert into SERVICE_TYPE
+   (SERVICE_TYPE, MODULE, TYPE, MESSAGE_FORMAT, REQUEST_HANDLER, 
+    ERROR_KEY, DESCRIPTION, FLEXIBLE, CREATED_ON, CREATED_BY, 
+    MODIFIED_ON, MODIFIED_BY, NAME, EXTERNAL_INTERFACE, UNREGISTERED_ACCESS_ALLOWED, 
+    STATUS, SEQ_NO, USE_INTERFACE_LANGUAGE, GROUP_TYPE, SUB_KEYWORD_APPLICABLE, 
+    FILE_PARSER, ERP_HANDLER, RECEIVER_USER_SERVICE_CHECK, RESPONSE_PARAM, REQUEST_PARAM, 
+    UNDERPROCESS_CHECK_REQD)
+ Values
+   ('CGENQREQ', 'C2S', 'PRE', 'TYPE MSISDN1 PIN MSISDN2 SERVICETYPE AMOUNT', 'com.btsl.pretups.requesthandler.CardGroupEnquiryRequestHandler', 
+    'c2s.cardgroupenquiry', 'Card Group Enquiry', 'Y', TO_DATE('12/30/2015 18:19:39', 'MM/DD/YYYY HH24:MI:SS'), 'ADMIN', 
+    TO_DATE('12/30/2015 18:19:39', 'MM/DD/YYYY HH24:MI:SS'), 'ADMIN', 'CARD GROUP ENQUIRY', 'N', 'N', 
+    'Y', NULL, 'N', 'NA', 'N', 
+    NULL, NULL, NULL, 'TYPE,TXNSTATUS,MESSAGE,SERVICECLASS,MSISDN2,SLABAMT,CGDESC,SUBSERVICE', 'TYPE,MSISDN1,MSISDN2,SERVICETYPE,AMOUNT', 
+    'Y');
+COMMIT;
+
+
+SET DEFINE OFF;
+Insert into SERVICE_KEYWORDS
+   (KEYWORD, REQ_INTERFACE_TYPE, SERVICE_PORT, SERVICE_TYPE, NAME, 
+    STATUS, MENU, SUB_MENU, ALLOWED_VERSION, MODIFY_ALLOWED, 
+    CREATED_ON, CREATED_BY, MODIFIED_ON, MODIFIED_BY, SERVICE_KEYWORD_ID, 
+    SUB_KEYWORD, REQUEST_PARAM)
+ Values
+   ('CGENQREQ', 'USSD', '190', 'CGENQREQ', 'Card Group Enquiry', 
+    'Y', NULL, NULL, NULL, 'Y', 
+    TO_DATE('12/30/2015 18:19:50', 'MM/DD/YYYY HH24:MI:SS'), 'SU0001', TO_DATE('12/30/2015 18:19:50', 'MM/DD/YYYY HH24:MI:SS'), 'SU0001', 'SVK0000229', 
+    NULL, 'TYPE,MSISDN1,MSISDN2,SERVICETYPE,AMOUNT');
+Insert into SERVICE_KEYWORDS
+   (KEYWORD, REQ_INTERFACE_TYPE, SERVICE_PORT, SERVICE_TYPE, NAME, 
+    STATUS, MENU, SUB_MENU, ALLOWED_VERSION, MODIFY_ALLOWED, 
+    CREATED_ON, CREATED_BY, MODIFIED_ON, MODIFIED_BY, SERVICE_KEYWORD_ID, 
+    SUB_KEYWORD, REQUEST_PARAM)
+ Values
+   ('CGENQREQ', 'EXTGW', '190', 'CGENQREQ', 'Card Group Enquiry', 
+    'Y', NULL, NULL, NULL, 'Y', 
+    TO_DATE('12/30/2015 18:19:50', 'MM/DD/YYYY HH24:MI:SS'), 'SU0001', TO_DATE('12/30/2015 18:19:50', 'MM/DD/YYYY HH24:MI:SS'), 'SU0001', 'SVK0000299', 
+    NULL, 'TYPE,MSISDN1,EXTNWCODE,MSISDN2,SERVICETYPE,AMOUNT');
+COMMIT;
+
+update system_preferences
+set default_value='XML' where preference_code='SMS_PIN_BYPASS_GATEWAY';
+
+UPDATE GEOGRAPHICAL_DOMAINS SET GRPH_DOMAIN_NAME='Vodafone Punjab' where GRPH_DOMAIN_CODE='PB' and NETWORK_CODE='PB';
+commit;

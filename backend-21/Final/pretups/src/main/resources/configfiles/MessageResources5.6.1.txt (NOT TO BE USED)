@@ -1,0 +1,1491 @@
+Start New messagesResources entries for PreTUPS5.6.1 ##################################################
+##Addition By Babu Kunwar For Pretups 5.6.1 Version###
+##         Corporate IAT Recharge JSP Entries      ###
+CORPIATRC=IAT restricted list Mgmt.
+IATBTCHRC=IAT batch rechrage Mgmt.
+IATUPRL001=Uplaod IAT restricted list
+IATUPRL01M=Uplaod IAT restricted list
+IATUPRL01A=Uplaod IAT restricted list
+IATAPPR001=Approve IAT restricted list
+IATAPP001M=Approve IAT restricted list
+IATASOC001=Associate IAT restricted list
+IATASOC01M=Associate IAT restricted list
+IATDEASC01=Deassociate IAT restricted list
+IATDEASCMM=Deassociate IAT restricted list
+IATSUSPDMM=Suspend IAT restricted list
+IATSUSPD01=Suspend IAT restricted list
+IATRESM0MM=Resume IAT restricted list
+IATRESM001=Resume IAT restricted list
+IATVIEW001=View IAT restricted list
+IATVIEW00M=View IAT restricted list
+IATASRPT01=Associated IAT Reports
+IATASRPT0M=Associated IAT Reports
+IATRSRPT01=Restricted IAT Reports
+IATRSRPT0M=Restricted IAT Reports
+IATSCHRC01=IAT Schedule Recharge
+IATSCHRC0M=IAT Schedule Recharge
+IATRESCH01=IAT Reschedule Recharge
+IATRESCH0M=IAT Reschedule Recharge
+IATTRFR001=View IAT Schedule Rchrg
+IATTRFR00M=View IAT Schedule Rchrg
+IATBCTRF01=View IAT Schedule Batch
+IATBCTRF0M=View IAT Schedule Batch
+IATSTS001=IAT Shedule Status Rpt.
+IATSTS00MM=IAT Shedule Status Rpt.
+IATCNCL001=IAT Cancel Schedule Topup
+IATCNCL0MM=IAT Cancel Schedule Topup
+IATCNCBT01=IAT Cancel Topup Batch
+IATCNCBT0M=IAT Cancel Topup Batch
+IATBTRPT01=IAT BatchID Reports
+IATBTRPT0M=IAT BatchID Reports
+IATDELM001=Delete IAT restricted list
+IATDELM00M=Delete IAT restricted list
+iatrestrictedsubs.seluserforbulkreg.heading=Upload IAT restricted list
+iatrestrictedsubs.seluserforbulkreg.label.subtype=Subscriber Type
+iatrestrictedsubs.seluserforbulkreg.label.uploadedfile=Upload File Path
+iatrestrictedsubs.seluserforbulkreg.label.noofrecords=Number of Records
+iatrestrictedsubs.commonjsp.label.geodomain=Geographical domain
+iatrestrictedsubs.scheduletopupdetails.msg.noneed=No need to do a user search in case of your own category
+iatrestrictedsubs.commonjsp.label.domain=Domain
+iatrestrictedsubs.commonjsp.label.category=Category
+iatrestrictedsubs.commonjsp.label.user=User name
+iatrestrictedsubs.commonjsp.error.msg.selzonefirst=Select the geographical domain first
+iatrestrictedsubs.commonjsp.error.msg.selcatfirst=Select the category first
+iatrestrictedsubs.commonjsp.error.msg.nodomain=For this menu option, no domains are avialable. 
+iatrestrictedsubs.selectsubscribertype.error.nouserexists=No user exists by {0} name.
+iatrestrictedsubs.selectsubscribertype.error.usermorethanone=More than one user exists by {0} name, search the user first.
+iatrestrictedsubs.seluserforsinglereg.label.searchuser=Search user
+iatrestrictedsubs.seluserforsinglereg.label.username=User name
+iatrestrictedsubs.seluserforbulkreg.error.otherfilesizemissing=Other file size is missing in Constant property file.
+iatrestrictedsubs.seluserforbulkreg.error.nostart=[START] tag not found in the file.
+iatrestrictedsubs.seluserforbulkreg.error.noend=[END] tag not found in the file.
+iatrestrictedsubs.seluserforbulkreg.error.dupmsisdn=Duplicate MSISDN
+iatrestrictedsubs.seluserforbulkreg.error.invlidmsisdn=Invalid MSISDN
+iatrestrictedsubs.seluserforbulkreg.error.prenotfound=Network prefix not found
+iatrestrictedsubs.seluserforbulkreg.error.unsuportednw=Unsupported Network
+iatrestrictedsubs.seluserforbulkreg.error.alreadyexist=Mobile number already exists under IAT restricted list.
+iatrestrictedsubs.seluserforbulkreg.error.cannotreg=Cannot Register the subscriber
+iatrestrictedsubs.seluserforbulkreg.error.maxsizereached=The number of records in the file exceeds the maximum limit "{0}".
+iatrestrictedsubs.seluserforbulkreg.noofrecords.required=Number of records is required.
+iatrestrictedsubs.seluserforbulkreg.noofrecords.greaterthanzero=Number of records must be greater than zero.
+iatrestrictedsubs.seluserforbulkreg.noofrecords.mustbenumeric=Number of records must be numeric.
+iatrestrictedsubs.seluserforbulkreg.file.required=Upload file path is required.
+iatrestrictedsubs.seluserforbulkreg.error.otherfilesizemissing=Other file size is missing in Constant property file
+iatrestrictedsubs.seluserforapproval.heading=Search user for restricted list
+iatrestrictedsubs.selectsubsforapp.label.geodomain=Geographical domain
+iatrestrictedsubs.selectsubsforapp.label.domian=Domain
+iatrestrictedsubs.selectsubsforapp.label.category=Category
+iatrestrictedsubs.selectsubsforapp.label.user=User Name
+iatrestrictedsubs.selectsubsforapp.label.status =Status
+iatrestrictedsubs.selectsubsforapp.label.serialnumber = Sr. No.
+iatrestrictedsubs.selectsubsforapp.label.approveall=Approve all
+iatrestrictedsubs.selectsubsforapp.label.rejectall=Reject all
+iatrestrictedsubs.selectsubsforapp.label.discardall=Discard all
+iatrestrictedsubs.selectsubsforapp.label.msisdn= MSISDN
+iatrestrictedsubs.selectsubsforapp.label.createdon = Registered on
+iatrestrictedsubs.confirmsubsapproval.nosubsforapproval=No records were found.
+iatrestrictedsubs.confirmsubsapproval.selectatleastone=Select at least one MSISDN.
+iatrestrictedsubs.confirmsubsapproval.label.geodomain=Geographical domain
+iatrestrictedsubs.confirmsubsapproval.label.domian=Domain
+iatrestrictedsubs.confirmsubsapproval.label.category=Category
+iatrestrictedsubs.confirmsubsapproval.label.user=User name
+iatrestrictedsubs.confirmsubsapproval.label.status=Status
+iatrestrictedsubs.confirmsubsapproval.label.serialnumber = Sr. No.
+iatrestrictedsubs.confirmsubsapproval.label.msisdn= MSISDN
+iatrestrictedsubs.confirmsubsapproval.label.createdon = Registered on
+iatrestrictedsubs.confirmsubsapproval.label.approveall=Approve all
+iatrestrictedsubs.confirmsubsapproval.label.rejectall=Reject all
+iatrestrictedsubs.confirmsubsapproval.label.discardall=Discard all
+iatrestrictedsubs.selectsubsforapp.heading=Select IAT restricted MSISDN for approval.
+iatrestrictedsubs.confirmsubsapproval.success =MSISDN's approval is confirmed
+iatrestrictedsubs.confirmsubsapproval.fail=MSISDN's approval is not confirmed
+iatrestrictedsubs.associatesubscriberdetails.heading=Associate IAT restricted MSISDN
+iatrestrictedsubs.associatesubscriberdetails.label.subscribertype=Subscriber type
+iatrestrictedsubs.associatesubscriberdetailsbulk.heading=Associate IAT restricted MSISDN in bulk
+iatrestrictedsubs.associatesubscriberdetails.label.goedomain=Geographical domain
+iatrestrictedsubs.associatesubscriberdetails.label.domain=Domain
+iatrestrictedsubs.associatesubscriberdetails.label.category=Category
+iatrestrictedsubs.associatesubscriberdetails.label.user=User name
+iatrestrictedsubs.associatesubscriberdetails.label.subscribertype=Subscriber type
+restrictedsubs.associatesubscriberdetails.label.filename=File name
+iatrestrictedsubs.associatesubscriberdetails.label.downloadlinkfile=Click here to download IAT Restricted list
+iatrestrictedsubs.associatesubscriberdetails.label.numberofrecord=Number of records
+iatrestrictedsubs.associatesubscriberdetails.label.msisdn=Approved IAT MSISDNS
+iatrestrictedsubs.associatesubscriberdetails.label.fileheading=IAT Approved Restricted MSISDN List
+iatrestrictedsubs.associatesubscriberdetails.label.subsID=Subscriber ID
+iatrestrictedsubs.associatesubscriberdetails.label.subsName=Employee Name
+iatrestrictedsubs.associatesubscriberdetails.label.subsCode=Employee Code
+iatrestrictedsubs.associatesubscriberdetails.label.restrictedType=Restricted Type
+iatrestrictedsubs.associatesubscriberdetails.label.countryCode=Country Code
+iatrestrictedsubs.associatesubscriberdetails.label.filelanguage=Language(English=0 and Other=1)
+iatrestrictedsubs.associatesubscriberdetails.label.goedomain=Geographical domain
+iatrestrictedsubs.associatesubscriberdetails.label.domain=Domain
+iatrestrictedsubs.associatesubscriberdetails.label.category=Category
+iatrestrictedsubs.associatesubscriberdetails.label.user=User name
+iatrestrictedsubs.associatesubscriberdetails.label.subscribertype=Subscriber type
+iatrestrictedsubs.associatesubscriberdetails.label.filename=File name
+iatrestrictedsubs.associatesubscriberdetails.msg.nodatafound=No approved MSISDNS exists.
+iatrestrictedsubs.associatesubscriberdetails.msg.numofrecordmissing=Maximum number of records for approved restricted subscriber list was not found in constant.props file.
+iatrestrictedsubs.associatesubscriberdetails.msg.notreadable=File does not contain any readable data.
+iatrestrictedsubs.associatesubscriberdetails.msg..eofmissing=File does not contain "eof" (end of file mark).
+iatrestrictedsubs.associatesubscriberdetails.msg.invalidnoofrecord=Invalid number of records.
+iatrestrictedsubs.associatesubscriberdetails.msg.noofrecordexeced=Number of record in file exceeds the defined limit.
+iatrestrictedsubs.associatesubscriberdetails.errorlog.msg.blankmsisdn=Blank MSISDN.
+iatrestrictedsubs.associatesubscriberdetails.errorlog.msg.duplicatemsisdn=Duplicate MSISDN.
+iatrestrictedsubs.associatesubscriberdetails.errorlog.msg.invalidmsisdn=Invalid MSISDN.
+iatrestrictedsubs.associatesubscriberdetails.errorlog.msg.empcodenull=Subscriber code is null.
+iatrestrictedsubs.associatesubscriberdetails.errorlog.msg.empcodeinvalid=Subscriber code length should not be more than {0}.
+iatrestrictedsubs.associatesubscriberdetails.errorlog.msg.empnamenull=Subscriber name is null.
+iatrestrictedsubs.associatesubscriberdetails.errorlog.msg.empnameinvalid=Subscriber name length should not be more than {0}.
+iatrestrictedsubs.associatesubscriberdetails.errorlog.msg.languagenull=Language code is missing.
+iatrestrictedsubs.associatesubscriberdetails.errorlog.msg.invalidlanguage=Invalid language code as {0}. It should be numeric value as defined in the System.
+iatrestrictedsubs.associatesubscriberdetails.errorlog.msg.notapproved=MSISDN is not approved or already associated.
+iatrestrictedsubs.associatesubscriberdetails.msg.novaliddatainfile=No valid data found in the file.
+iatrestrictedsubs.associatesubscriberdetails.errorlog.msg.notapproved=MSISDN is not approved or already associated.
+iatrestrictedsubs.associatesubscriberdetails.msg.filenotmoved=File is uploaded and processed, but the file could not be moved to archive. Please contact System Admin.
+iatrestrictedsubs.associatesubscriberdetails.msg.success=File is uploaded and processed successfully.
+iatrestrictedsubs.associatesubscriberdetails.msg.success.error.msg=File is uploaded and processed successfully. Click Error link to view invalid MSISDN list.
+iatrestrictedsubs.associatesubscriberdetails.label.numberofrecord=Number of records
+iatrestrictedsubs.associatesubscriberdetails.label.msg0=[
+iatrestrictedsubs.associatesubscriberdetails.label.msg1=] records of [
+iatrestrictedsubs.associatesubscriberdetails.label.msg2=] are processed successfully.
+iatrestrictedsubs.associatesubscriberdetails.label.downloadlink=Click here to view the error logs
+iatrestrictedsubs.associatesubscriberdetails.label.errorheading=Error log
+iatrestrictedsubs.associatesubscriberdetails.label.line=Line number
+iatrestrictedsubs.associatesubscriberdetails.label.msisdn=MSISDN
+iatrestrictedsubs.associatesubscriberdetails.label.reason=Reason
+iatrestrictedsubs.associatesubscriberdetailsbulk.headingconfirm=Confirm Bulk Association
+iatrestrictedsubs.deassociatesubscriber.heading=De-associate IAT subscriber
+iatrestrictedsubs.loadsubscribertodeassociate.label.msisdns=MSISDN
+iatrestrictedsubs.deassociatesubscriberdetails.label.goedomain=Geographical domain
+iatrestrictedsubs.deassociatesubscriberdetails.label.domain=Domain
+iatrestrictedsubs.deassociatesubscriberdetails.label.category=Category
+iatrestrictedsubs.deassociatesubscriberdetails.label.user=User name
+iatrestrictedsubs.deassociatesubscriberdetails.label.msisdn=MSISDN
+iatrestrictedsubs.loadsubscribertodeassociate.label.msisdns=MSISDN
+iatrestrictedsubs.dessociatesubscriberdetails.error.msg.activeorsuspended={0} these mobile numbers are not in the associated mobile number list.
+iatrestrictedsubs.dessociatesubscriberdetails.error.msg.scheduled={0} these mobile numbers are scheduled. Deassociation not allowed.
+iatrestrictedsubs.deassociatesubscriberdetails.label.geodomain=Geographical domain
+iatrestrictedsubs.deassociatesubscriberdetails.label.user=User name
+iatrestrictedsubs.deassociatesubscriberdetails.label.category=Category
+iatrestrictedsubs.deassociatesubscriberdetails.label.owner=Owner
+iatrestrictedsubs.deassociatesubscriberdetails.label.subname=Subscriber name
+iatrestrictedsubs.deassociatesubscriberdetails.label.subcode=Subscriber code
+iatrestrictedsubs.deassociatesubscriberdetails.label.msisdn=Mobile number
+iatrestrictedsubs.deassociatesubscriberdetails.label.mintramount=Min. TXN amount
+iatrestrictedsubs.deassociatesubscriberdetails.label.maxtramount=Max. TXN amount
+iatrestrictedsubs.deassociatesubscriberdetails.label.monthlytrlimit=Monthly TXN limit
+iatrestrictedsubs.deassociatesubscriberdetails.label.regdatetime=Registration date-time
+iatrestrictedsubs.deassociatesubscriberdetails.label.status=Status
+iatrestrictedsubs.deassociatesubscriberdetails.label.sno=Sr. No.
+iatrestrictedsubs.subslistingfordeassociation.err.msg.selectsub=Select at least one record to de-associate.
+iatrestrictedsubs.inputmsisdnsfordeass.success.msg.deasssuccwitherrmsg=These mobile numbers cannot be de-associated.
+iatrestrictedsubs.input.msisdnsfordeass.succes.msg.deasssucc=Successfully de-associated the mobile numbers.
+iatrestrictedsubs.deassociatesubscriberdetails.label.domian=Domain
+iatrestrictedsubs.deassociatesubscriberdetails.label.selectall=Select All
+iatrestrictedsubs.subslistingforsuspend.label.sno=Sr. No.
+iatrestrictedsubs.inputmsisdnsforsuspend.label.submsisdn=Subscriber(s) MSISDN(s)
+iatrestrictedsubs.subslistingforsuspend.heading=Suspend subscriber
+iatrestrictedsubs.subslistingforsuspend.label.geodomain=Geographical domain
+iatrestrictedsubs.subslistingforsuspend.label.domian=Domain
+iatrestrictedsubs.subslistingforsuspend.label.owner=Owner
+iatrestrictedsubs.subslistingforsuspend.label.category=Category
+iatrestrictedsubs.subslistingforsuspend.label.user=User name
+iatrestrictedsubs.subslistingforsuspend.label.msisdn=MSISDN
+iatrestrictedsubs.subslistingforsuspend.label.sno=Sl. No.
+iatrestrictedsubs.subslistingforsuspend.label.subcode=Subscriber code
+iatrestrictedsubs.subslistingforsuspend.label.subname=Subscriber name
+iatrestrictedsubs.subslistingforsuspend.label.mintramount=Min. TXN amount
+iatrestrictedsubs.subslistingforsuspend.label.maxtramount=Max. TXN amount
+iatrestrictedsubs.subslistingforsuspend.label.monthlytrlimit=Monthly transfer limit
+iatrestrictedsubs.subslistingforsuspend.label.currtxn=Current TXN
+iatrestrictedsubs.subslistingforsuspend.label.status=Status
+iatrestrictedsubs.subslistingforsuspend.label.regdate=Registration date/time
+iatrestrictedsubs.subslistingforsuspend.label.selectall=Select all
+iatrestrictedsubs.subslistingforsuspend.err.msg.selectsub=Select at least one record to suspend.
+iatrestrictedsubs.inputmsisdnsforsuspend.err.msg.novalidmsidn='{0}' is not a valid mobile number.
+iatrestrictedsubs.inputmsisdnsforsuspend.err.msg.duplicatemsisdn=Mobile number '{0}' is a duplicate mobile number.
+iatrestrictedsubs.inputmsisdnsforsuspend.err.msg.statusnew=Mobile number '{0}' cannot be suspended as its status is "New".
+iatrestrictedsubs.inputmsisdnsforsuspend.err.msg.statusapprove=Mobile number '{0}' cannot be suspended as its status is "Approve".
+iatrestrictedsubs.inputmsisdnsforsuspend.err.msg.statussuspend=Mobile number '{0}' is already suspended.
+iatrestrictedsubs.inputmsisdnsforresume.err.msg.statusactive=Mobile number '{0}' is already active.
+iatrestrictedsubs.inputmsisdnsforsuspend.err.msg.nosubfound=Mobile number '{0}' does not exist under this user.
+iatrestrictedsubs.subslistingforsuspend.err.msg.selectsub=Select at least one record to suspend.
+iatrestrictedsubs.inputmsisdnsforsuspend.success.msg.suspendsuccwitherrmsg=Suspension process has been completed. These mobile numbers could not be suspended : {0} due to some database problem.
+iatrestrictedsubs.inputmsisdnsforsuspend.success.msg.suspendsucc=Suspension of subscriber(s) completed successfully.
+iatrestrictedsubs.inputmsisdnsforresume.heading=Resume subscriber
+iatrestrictedsubs.inputmsisdnsforresume.label.submsisdn=Subscriber(s) MSISDN(s)
+iatrestrictedsubs.subslistingforresume.heading=Resume subscriber
+iatrestrictedsubs.subslistingforresume.label.geodomain=Geographical domain
+iatrestrictedsubs.subslistingforresume.label.domian=Domain
+iatrestrictedsubs.subslistingforresume.label.owner=Owner
+iatrestrictedsubs.subslistingforresume.label.category=Category
+iatrestrictedsubs.subslistingforresume.label.user=User name
+iatrestrictedsubs.subslistingforresume.label.msisdn=MSISDN
+iatrestrictedsubs.subslistingforresume.label.sno=Sl. No.
+iatrestrictedsubs.subslistingforresume.label.subcode=Subscriber code
+iatrestrictedsubs.subslistingforresume.label.subname=Subscriber name
+iatrestrictedsubs.subslistingforresume.label.mintramount=Min. TXN amount
+iatrestrictedsubs.subslistingforresume.label.maxtramount=Max. TXN amount
+iatrestrictedsubs.subslistingforresume.label.monthlytrlimit=Monthly transfer limit
+iatrestrictedsubs.subslistingforresume.label.currtxn=Current TXN
+iatrestrictedsubs.subslistingforresume.label.status=Status
+iatrestrictedsubs.subslistingforresume.label.regdate=Registration date/time
+iatrestrictedsubs.subslistingforresume.label.selectall=Select all
+iatrestrictedsubs.subslistingforresume.err.msg.selectsub=Select at least one record to resume.
+iatrestrictedsubs.inputmsisdnsforresume.success.msg.resumesuccwitherrmsg=Resumption process has been completed. These mobile numbers could not be suspended : {0} due to some database problem.
+iatrestrictedsubs.inputmsisdnsforresume.success.msg.resumesucc=Resumption of subscriber(s) completed successfully.
+iatrestrictedsubs.viewrestrictedsubs.label.heading=View restricted subscribers
+iatrestrictedsubs.viewrestrictedsubs.label.mobile=Mobile number
+iatrestrictedsubs.viewrestrictedsubs.label.fromdate=From date
+iatrestrictedsubs.viewrestrictedsubs.label.todate=To date
+iatrestrictedsubs.error.msg.subscriber.notfound=Subscriber was not found. Please provide MSISDN along with country code.
+iatrestrictedsubs.viewrestrictedsubs.label.heading=View restricted subscribers
+iatrestrictedsubs.viewrestrictedsubsdetails.label.heading=View restricted subscriber details
+iatrestrictedsubs.viewrestrictedsubsdetails.label.geodomain=Geographical domain
+iatrestrictedsubs.viewrestrictedsubsdetails.label.domain=Domain
+iatrestrictedsubs.viewrestrictedsubsdetails.label.category=Category
+iatrestrictedsubs.viewrestrictedsubsdetails.label.username=User name
+iatrestrictedsubs.viewrestrictedsubsdetails.label.fromdate=From date
+iatrestrictedsubs.viewrestrictedsubsdetails.label.todate=To date
+iatrestrictedsubs.viewrestrictedsubsdetails.label.mobileno=Mobile number
+iatrestrictedsubs.viewrestrictedsubsdetails.label.employeecode=Subscriber code
+iatrestrictedsubs.viewrestrictedsubsdetails.label.emploeename=Subscriber name
+iatrestrictedsubs.viewrestrictedsubsdetails.label.mintxnamnt=Min. TXN amount
+iatrestrictedsubs.viewrestrictedsubsdetails.label.maxtxnamnt=Max. TXN amount
+iatrestrictedsubs.viewrestrictedsubsdetails.label.mnlytrsferlmt=Monthly TXN limit
+iatrestrictedsubs.viewrestrictedsubsdetails.label.totaltransactioncount=Total TXN count
+iatrestrictedsubs.viewrestrictedsubsdetails.label.totaltransactionamt=Total TXN amount
+iatrestrictedsubs.viewrestrictedsubsdetails.label.countryCode=Country Code
+iatrestrictedsubs.viewrestrictedsubsdetails.label.countryName=Country Name
+iatrestrictedsubs.viewrestrictedsubsdetails.label.status=Status
+iatrestrictedsubs.viewrestrictedsubsdetails.label.createdon=Created on
+iatrestrictedsubs.viewrestrictedsubsdetails.label.createdby=Created by
+iatrestrictedsubs.viewrestrictedsubsdetails.label.associatedon=Associated on
+iatrestrictedsubs.viewrestrictedsubsdetails.label.associatedby=Associated by
+iatrestrictedsubs.viewrestrictedsubsdetails.error.label=Not a Valid MSISDN. Please provide along with country code.
+iatrestrictedsubs.viewrestrictedsubs.label.mobile.msg=(<b>Note: </b>If no mobile number is  specified, then details of all mobile numbers for the specified date range will be displayed.)
+iatrestrictedsubs.web.viewscheduleaction.cancelconfirmschedule.batchid.success.msg={0} is successfully cancelled.
+iatrestrictedsubs.web.viewscheduleaction.cancelconfirmschedule.batchid.fail.msg=Unable to cancel {0}
+iatrestrictedsubs.error.msg.subscriber.notfound=Subscriber was not found. 
+iatrestrictedsub.reports.associatedlist.label.heading=Associated MSISDN Reports
+iatrestrictedsub.reports.associatedlist.menu.label.subscriberstatus=Subscriber Status
+iatrestrictedsubs.commonjsp.error.msg.nocategory=For this menu option no such category exists.
+iatrestrictedsubs.commonjsp.error.msg.nodomain=For this menu option, no domains are available.
+iatrestrictedsub.reports.restrictedmsisdn.label.heading=Restricted MSISDN reports
+iatrestrictedsubs.reports.includerestricteduser.label.zone=Zone
+iatrestrictedsubs.reports.includerestricteduser.label.domain=Domain
+iatrestrictedsubs.reports.includerestricteduser.label.category=Channel category
+iatrestrictedsubs.reports.includerestricteduser.label.user=Channel user
+iatrestrictedsubs.reports.includerestricteduser.error.select=Please select 
+iatrestrictedsubs.reports.includerestricteduser.label.status=Subscriber status
+iatrestrictedsub.reports.searchrestricteduser.label.user=Search User
+iatrestrictedsub.reports.searchrestricteduser.label.chuser=Channel User
+iatrestrictedsub.reports.iatassociatedmsisdnreport.label.heading=Associated MSISDN list
+iatrestrictedsub.reports.iatrestrictedmsisdn.label.heading=Restricted MSISDN list
+iatrestrictedsubs.batchrechrage.heading=IAT Schedule recharge
+iatrestrictedsubs.batchrechrage.label.geodomain=Geographical domain
+iatrestrictedsubs.batchrechrage.label.domain=Domain
+iatrestrictedsubs.batchrechrage.label.category=Category
+iatrestrictedsubs.batchrechrage.label.user=User name
+iatrestrictedsubs.batchrechrage.label.servicetype=Service type
+iatrestrictedsubs.batchrechrage.msg.noservicetype=No service is defined. Please contact your Customer Care.
+iatrestrictedsubs.batchrechrage.msg.noneed=No need to do a user search in case of your own category
+iatrestrictedsubs.batchrechrage.label.downloadlink=Download file template
+iatrestrictedsubs.batchrechrage.label.scheduledate=Schedule date
+iatrestrictedsubs.batchrechrage.label.uploadfilepath=Upload file path
+iatrestrictedsubs.batchrechrage.label.norecord=Number of records
+iatrestrictedsubs.batchrechrage.errmsg.scheduledate=Schedule date {0} should be current or future date.
+iatrestrictedsubs.batchrechrage.file.heading=Restricted mobile number list
+iatrestrictedsubs.batchrechrage.file.label.msisdn=Mobile number*
+iatrestrictedsubs.batchrechrage.file.label.subscriberid=Subscriber ID*
+iatrestrictedsubs.batchrechrage.file.label.subscribername=Subscriber name*
+iatrestrictedsubs.batchrechrage.file.label.mintxnamt=Minimum transaction amount*
+iatrestrictedsubs.batchrechrage.file.label.maxtxnamt=Maximum transaction amount*
+iatrestrictedsubs.batchrechrage.file.label.monthlimit=Monthly limit*
+iatrestrictedsubs.batchrechrage.file.label.usedlimit=Used limit*
+iatrestrictedsubs.batchrechrage.file.label.reqamt=Requested amount*
+iatrestrictedsubs.batchrechrage.file.label.subservice=Sub-service (CVG=1 and C=2 and VG=3)*
+iatrestrictedsubs.batchrechrage.errorfile.msg.duplicatemsisdn=Mobile number is duplicate.
+iatrestrictedsubs.batchrechrage.errorfile.msg.invalidmsisdn=Mobile number is not valid.
+iatrestrictedsubs.batchrechrage.errorfile.msg.networkprefixnotfound=Network prefix not found.
+iatrestrictedsubs.batchrechrage.errorfile.msg.networknotsupport=Not form supported network.
+iatrestrictedsubs.batchrechrage.errorfile.msg.reqamtinvalid={0} is not a valid requested amount.
+iatrestrictedsubs.batchrechrage.errorfile.msg.subserviceinvalid={0} is not a valid sub-service value.
+iatrestrictedsubs.batchrechrage.errorfile.msg.reqamtnotfound=Requested amount is not found in the file.
+iatrestrictedsubs.batchrechrage.errorfile.msg.subservicenotfound=Sub-service value is not found in the file.
+iatrestrictedsubs.batchrechrage.errorfile.msg.noinfo=Either no information was found or the mobile number is already scheduled.
+iatrestrictedsubs.batchrechrage.errorfile.msg.amtnotinrange=Requested amount {0} is not in between minimum amount and maximum amount.
+iatrestrictedsubs.batchrechrage.errorfile.msg.notassociated=Mobile number is not associated with the user.
+iatrestrictedsubs.batchrechrage.errorfile.msg.alreadyscheduled=Mobile number is already scheduled or is underprocess.
+iatrestrictedsubs.batchrechrage.msg.filepathmissing=File path is not defined. Please contact Customer Care
+iatrestrictedsubs.batchrechrage.msg.contentsizemissing=File content size is not defined. Please contact Customer Care
+iatrestrictedsubs.batchrechrage.msg.eofmissing=File does not contain "eof" (end of file mark)
+iatrestrictedsubs.batchrechrage.msg.invalidnoofrecord=Specified number of records does not match with the actual number of records present in the file
+iatrestrictedsubs.batchrechrage.msg.noofrecordexeced=File should not contains more than {0} number of records
+iatrestrictedsubs.batchrechrage.msg.novaliddatainfile=Scheduling has been failed. Please check the error log
+iatrestrictedsubs.batchrechrage.msg.filenomove=File is uploaded and processed, but cannot be move to archive. Please try after some time
+iatrestrictedsubs.batchrechrage.msg.success=File is uploaded and processed successfully. For this schedule batch ID is {0}
+iatrestrictedsubs.batchrechrage.msg.unsuccess=File cannot be uploaded and processed at this time. Please try after some time
+iatrestrictedsubs.batchrechrage.msg.viewerrorlog=Click here to view the error log
+iatrestrictedsubs.batchrechrage.heading.errorlog=IAT Error log
+iatrestrictedsubs.scheduletopuperrorlog.label.line=Line number
+iatrestrictedsubs.scheduletopuperrorlog.label.msisdn=Mobile number
+iatrestrictedsubs.scheduletopuperrorlog.label.reason=Failure reason
+iatrestrictedsubs.batchrechrage.msg0=[
+iatrestrictedsubs.batchrechrage.msg1= ] Out of [
+iatrestrictedsubs.batchrechrage.msg2= ] records processed successfully
+iatrestrictedsubs.batchrechrage.msg.notreadable=File does not contain any readable data.
+iatrestrictedsubs.batchrechrage.msg.sevicenotallowedtoschedule=No service is allowed to schedule
+iatrestrictedsubs.batchrechrage.file.notallowed=Please select radio button then download the file.
+iatrestrictedsubs.batchrechrage.msg.unsuccess=File cannot be uploaded and processed at this time. Please try after some time
+iatrestrictedsubs.batchrechrage.msg.eofmissing=File does not contain "eof" (end of file mark)
+iatrestrictedsubs.batchrechrage.msg.zerorecords=Uploaded file does not have any records.
+iatrestrictedsubs.batchrechrage.msg.invalidnoofrecord=Specified number of records does not match with the actual number of records present in the file
+iatrestrictedsubs.batchrechrage.msg.noofrecordexeced=File should not contains more than {0} number of records
+iatrestrictedsubs.batchrechrage.errorfile.msg.duplicatemsisdn=Mobile number is duplicate.
+iatrestrictedsubs.batchrechrage.msg.success=File is uploaded and processed successfully. IAT Shedule Batch ID is {0}.
+iatrestrictedsubs.rescheduletopupdetails.msg.success=File is uploaded and processed successfully. IAT Schedule of batch ID {0} has been cancelled and a new IAT schedule of batch ID {1} is created.
+iatrestrictedsubs.rescheduletopup.heading=IAT Re-schedule recharge
+iatrestrictedsubs.rescheduletopupdetails.heading=IAT Re-schedule recharge
+iatrestrictedsubs.rescheduletopupdetails.label.geodomain=Geographical domain
+iatrestrictedsubs.rescheduletopupdetails.label.domain=Domain
+iatrestrictedsubs.rescheduletopupdetails.label.category=Category
+iatrestrictedsubs.rescheduletopupdetails.label.user=User name
+iatrestrictedsubs.rescheduletopupdetails.label.servicetype=Service type
+iatrestrictedsubs.rescheduletopupdetails.msg.noservicetype=No service is defined. Please contact Customer Care.
+iatrestrictedsubs.rescheduletopupdetails.label.batchid=Batch ID
+iatrestrictedsubs.rescheduletopupdetails.label.scheduleby=Schedule by
+iatrestrictedsubs.rescheduletopupdetails.label.scheduledate=Scheduled date
+iatrestrictedsubs.rescheduletopupdetails.label.status=Status
+iatrestrictedsubs.rescheduletopupdetails.label.downloadschedule=Download schedule
+iatrestrictedsubs.rescheduletopupdetails.label.downloadlink=Click here to download the list
+iatrestrictedsubs.rescheduletopupdetails.label.rescheduledate=Re-schedule date
+iatrestrictedsubs.rescheduletopupdetails.label.uploadfilepath=Upload file path
+iatrestrictedsubs.rescheduletopupdetails.label.norecord=Total records
+iatrestrictedsubs.rescheduletopupdetails.label.uploadrecord=Upload fail records
+iatrestrictedsubs.rescheduletopupdetails.label.cnclrecord=Canceled records
+iatrestrictedsubs.rescheduletopupdetails.label.nodatafound=There is no schedule found for the user {0} for re-scheduling
+iatrestrictedsubs.rescheduletopupdetails.msg.wronglinkclick=Click on the selected radio button link
+iatrestrictedsubs.rescheduletopupdetails.errmsg.scheduledate=Re-schedule date {0} should be current or future date
+iatrestrictedsubs.rescheduletopupdetails.msg.success=File is uploaded and processed successfully. Schedule of batch ID {0} has been cancelled and a new schedule of batch ID {1} is created.
+iatrestrictedsubs.scheduletopupdetails.msg.sevicenotallowedtoschedule=No service is allowed to schedule
+iatrestrictedsubs.rescheduletopupdetails.msg.unsuccess=File cannot be uploaded and processed at this time. Please try after some time
+iatrestrictedsubs.rescheduletopupdetails.label.batchtype=Batch type
+iatrestrictedsubs.rescheduletopupdetails.label.initiatoruser=Initiator user
+iatrestrictedsubs.cancelScheduleBatchDetail.label.initioruser=Initiator user
+iatrestrictedsubs.displaydetailsforcancelsinglesub.label.initiatoruser=Initiator user
+iatrestrictedsubs.cancelschedulebatch.label.initiatoruser=Initiator user
+iatrestrictedsubs.viewsingleschedulerecharge.label.initiatoruser=Initiator user
+iatrestrictedsubs.viewtransferschedulebatch.label.initiatoruser=Initiator user
+iatrestrictedsubs.viewsingletrfschedule.label.heading=IAT View schedule transfer
+iatrestrictedsubs.viewsingletrfschedule.label.msisdn=Mobile number
+iatrestrictedsubs.viewsingletrfschedule.msg.invalidmsisdn=The specified mobile number is not valid
+iatrestrictedsubs.viewsingletrfschedule.msg.nonetworkprefix=Network prefix is not defined for the specified mobile number
+iatrestrictedsubs.viewsingletrfschedule.msg.nonetworksupportmsisdn=Mobile number is not from supported network
+iatrestrictedsubs.viewsingletrfschedule.msg.nouserinfo=The specified mobile number does not exist under the user {0} 
+iatrestrictedsubs.viewsingletrfschedule.msg.noschedule=No schedule found for the specified mobile number
+iatrestrictedsubs.viewsingleschedulerecharge.label.heading=IAT View schedule recharge
+iatrestrictedsubs.viewsingleschedulerecharge.label.geographicaldomain=Geographical domain
+iatrestrictedsubs.viewsingleschedulerecharge.label.domain=Domain
+iatrestrictedsubs.viewsingleschedulerecharge.label.category=Category
+iatrestrictedsubs.viewsingleschedulerecharge.label.username=User name
+iatrestrictedsubs.viewsingleschedulerecharge.label.msisdn=Mobile number
+iatrestrictedsubs.viewsingleschedulerecharge.label.subscribername=Subscriber name
+iatrestrictedsubs.viewsingleschedulerecharge.label.subscribercode=Subscriber code
+iatrestrictedsubs.viewsingleschedulerecharge.label.scheduledamount=Scheduled amount
+iatrestrictedsubs.viewsingleschedulerecharge.label.mintxnamount=Min. TXN amount
+iatrestrictedsubs.viewsingleschedulerecharge.label.maxtxnamount=Max. TXN amount
+iatrestrictedsubs.viewsingleschedulerecharge.label.monthlytranflimit=Monthly TXN limit
+iatrestrictedsubs.viewsingleschedulerecharge.label.usedlimit=Used limit
+iatrestrictedsubs.viewsingleschedulerecharge.label.scheduleddate=Scheduled date
+iatrestrictedsubs.viewsingleschedulerecharge.label.scheduledstatus=Scheduled status
+iatrestrictedsubs.viewsingleschedulerecharge.label.subservice=Sub-service
+iatrestrictedsubs.viewsingleschedulerecharge.label.batchid=Batch ID
+iatrestrictedsubs.viewsingleschedulerecharge.label.servicetype=Service type
+iatrestrictedsubs.viewsingleschedulerecharge.label.scheduledby=Scheduled by
+iatrestrictedsubs.viewsingleschedulerecharge.label.scheduledon=Scheduled on
+iatrestrictedsubs.showScheduleDetails.error.msisdnnotvalid=Not a valid MSISDN. Please provide with country code.
+iatrestrictedsubs.viewtransferschedule.label.heading=IAT View schedule transfer
+iatrestrictedsubs.cancelSchedule.label.heading=Cancel schedule TopUp by batch
+iatrestrictedsubs.viewtransferschedulebatch.label.heading=IAT View batch schedule
+iatrestrictedsubs.viewtransferschedulebatch.label.geodomain=Geographical domain
+iatrestrictedsubs.viewtransferschedulebatch.label.domain=Domain
+iatrestrictedsubs.viewtransferschedulebatch.label.category=Category
+iatrestrictedsubs.viewtransferschedulebatch.label.username=User name
+iatrestrictedsubs.viewtransferschedulebatch.label.batchid=Batch ID
+iatrestrictedsubs.viewtransferschedulebatch.label.noofrecord=Number of records
+iatrestrictedsubs.viewtransferschedulebatch.label.scheduleby=Scheduled by
+iatrestrictedsubs.viewtransferschedulebatch.label.scheduledate=Scheduled date
+iatrestrictedsubs.viewtransferschedulebatch.label.status=Status
+iatrestrictedsubs.viewtransferschedulebatch.label.note=Note: Click on the batch ID to view the corrosponding batch details 
+iatrestrictedsubs.viewtransferschedulebatch.label.noscheuled=There is no schedule found.
+iatrestrictedsub.reports.schedulesubscriber.label.heading=IAT Scheduled TopUp execution status
+iatrestrictedsubs.viewtransferschedule.label.toscheduledate=To schedule date
+iatrestrictedsubs.viewtransferschedule.label.fromscheduledate=From schedule date
+iatrestrictedsubs.viewtransferschedule.label.schedulestatus=Schedule status
+iatrestrictedsubs.cancelschedulerecharge.heading=IAT Cancel schedule TopUp
+iatrestrictedsubs.displaydetailsforcancelsinglesub.heading=IAT Schedule TopUp details
+iatrestrictedsubs.displaydetailsforcancelsinglesub.label.msisdns=MSISDN
+iatrestrictedsubs.displaydetailsforcancelsinglesub.label.batchid=Batch ID
+iatrestrictedsubs.displaydetailsforcancelsinglesub.label.shduldby=Scheduled by
+iatrestrictedsubs.displaydetailsforcancelsinglesub.label.emploeename=Subscriber name
+iatrestrictedsubs.displaydetailsforcancelsinglesub.label.emploeecode=Subscriber code
+iatrestrictedsubs.displaydetailsforcancelsinglesub.label.shduldamnt=Scheduled amount
+iatrestrictedsubs.displaydetailsforcancelsinglesub.label.mintxnamnt=Min. TXN amount
+iatrestrictedsubs.displaydetailsforcancelsinglesub.label.maxtxnamnt=Max. TXN amount
+iatrestrictedsubs.displaydetailsforcancelsinglesub.label.mnlytrsferlmt=Monthly TXN limit
+iatrestrictedsubs.displaydetailsforcancelsinglesub.label.usedlmt=Used limit
+iatrestrictedsubs.displaydetailsforcancelsinglesub.label.shdulddate=Scheduled date
+iatrestrictedsubs.displaydetailsforcancelsinglesub.label.slctall=Select all
+iatrestrictedsubs.displaydetailsforcancelsinglesub.label.geodomain=Geographical domain
+iatrestrictedsubs.displaydetailsforcancelsinglesub.label.domain=Domain
+iatrestrictedsubs.displaydetailsforcancelsinglesub.label.category=Category
+iatrestrictedsubs.displaydetailsforcancelsinglesub.label.username=User name
+iatrestrictedsubs.displaydetailsforcancelsinglesub.label.shduldstatus=Scheduled status
+iatrestrictedsubs.displaydetailsforcancelsinglesub.msg.unsuccess= Schedule cannot be canceled successfully. Please try later
+iatrestrictedsubs.displaydetailsforcancelsinglesub.msg.success=Schedule has been cancelled successfully 
+iatrestrictedsubs.displaydetailsforcancelsinglesub.msg.recordnotfound=Schedule record not found.
+iatrestrictedsubs.displaydetailsforcancelsinglesub.msg.recordselected=No records selected
+iatrestrictedsubs.displaydetailsforcancelsinglesub.msg.nonetworkfound=No network found for mobile number {0}.
+iatrestrictedsubs.displaydetailsforcancelsinglesub.msg.networknotsupported=Mobile number {0} is not from supported network.
+iatrestrictedsubs.displaydetailsforcancelsinglesub.msg.numbernotscheduled=The mobile number {0} is not scheduled in selected batch, please select correct batch or enter correct mobile number.
+iatrestrictedsubs.cancelschedulebatch.label.heading=Cancel batch schedule
+iatrestrictedsubs.cancelschedulebatch.label.geodomain=Geographical domain
+iatrestrictedsubs.cancelschedulebatch.label.domain=Domain
+iatrestrictedsubs.cancelschedulebatch.label.category=Category
+iatrestrictedsubs.cancelschedulebatch.label.username=User name
+iatrestrictedsubs.cancelschedulebatch.label.batchid=Batch ID
+iatrestrictedsubs.selectbatchcancelsingleschedule.label.batchid=Batch ID
+iatrestrictedsubs.cancelschedulebatch.label.noofrecord=Number of records
+iatrestrictedsubs.cancelschedulebatch.label.scheduleby=Scheduled by
+iatrestrictedsubs.cancelschedulebatch.label.scheduledate=Scheduled date
+iatrestrictedsubs.cancelschedulebatch.label.status=Status
+iatrestrictedsubs.cancelschedulebatch.label.check=Select all
+iatrestrictedsubs.cancelschedulebatch.label.note=Note: Click on the batch ID to view the corrosponding batch details 
+iatrestrictedsubs.cancelschedulebatch.label.noscheuled=There is no schedule found.
+iatrestrictedsubs.cancelconfirmschedulebatch.label.chkbox=At least select one check box.
+iatrestrictedsubs.scheduletopupdetails.file.iatmsisdn.heading=CORPORATE IAT MOBILE NUMBERS
+iatrestrictedsubs.scheduletopupdetails.file.iatmsisdn=MOBILE NUMBER*
+iatrestrictedsubs.scheduletopupdetails.file.subscriberID=SUBSCRIBER ID*
+iatrestrictedsubs.scheduletopupdetails.file.subscriberName=Subscriber Name*
+iatrestrictedsubs.scheduletopupdetails.file.subserviceType=Sub-service (CVG=1 and C=2 and VG=3)*
+iatrestrictedsubs.scheduletopupdetails.file.requestedAmt=REQUESTED AMOUNT*
+iatrestrictedsubs.batchrechragedetails.errorfile.msg.invalidmsisdn=Not a valid MSISDN.
+iatrestrictedsubs.batchrechragedetails.errorfile.msg.subservicenotfound=Sub-service value is not found in the file.
+iatrestrictedsubs.batchrechragedetails.errorfile.msg.reqamtnotfound=Requested amount is not found in the file.
+iatrestrictedsubs.batchrechragedetails.errorfile.msg.subserviceinvalid={0} is not a valid sub-service value.
+iatrestrictedsubs.batchrechragedetails.errorfile.msg.reqamtinvalid={0} is not a valid requested amount.
+iatrestrictedsubs.batchrechragedetails.errorfile.msg.amtnotinrange=Requested amount {0} is not in between minimum amount and maximum amount.
+iatrestrictedsubs.batchrechragedetails.errorfile.msg.notassociated=Mobile number is not associated with the user.
+iatrestrictedsubs.batchrechragedetails.errorfile.msg.alreadyscheduled=Mobile number is already scheduled or is underprocess.
+iatrestrictedsubs.rescheduletopupdetails.msg.novaliddatainfile=Re-scheduling has been failed. Please check the error log.
+iatrestrictedsubs.batchrechragedetails.errorfile.msg.noinfo=Either no information was found or the mobile number is already scheduled.
+iatrestrictedsubs.rescheduletopupdetails.msg.unsuccess=File cannot be uploaded and processed at this time. Please try after some time
+iatrestrictedsubs.selectbatchcancelsingleschedule.viewbatchdetails=View batch details
+iatrestrictedsubs.viewschedulerecharge.label.heading=View schedule recharge
+iatrestrictedsubs.viewschedulerecharge.label.geodomain=Geographical domain
+iatrestrictedsubs.viewschedulerecharge.label.domain=Domain
+iatrestrictedsubs.viewschedulerecharge.label.category=Category
+iatrestrictedsubs.viewschedulerecharge.label.username=User Name
+iatrestrictedsubs.viewschedulerecharge.label.batchid=Batch ID
+iatrestrictedsubs.viewschedulerecharge.label.scheduleddate=Scheduled Date
+iatrestrictedsubs.displaydetailsforcancelsinglesub.label.batchtype=Batch Type
+iatrestrictedsubs.subsdetailsforunblack.label.sno=Sr. No.
+iatrestrictedsubs.displaydetailsforcancelsinglesub.label.subservice=Sub Service
+iatrestrictedsubs.cancelScheduleBatchDetail.label.batchID=Batch ID
+iatrestrictedsubs.cancelScheduleBatchDetail.label.batchtype=Batch type
+iatrestrictedsubs.cancelScheduleBatchDetail.label.batchtstatus=Batch status
+iatrestrictedsubs.cancelScheduleBatchDetail.label.servicetype=Service type
+iatrestrictedsubs.cancelScheduleBatchDetail.label.scheduleddate=Scheduled date
+iatrestrictedsubs.cancelScheduleBatchDetail.label.batchsize=Batch size
+iatrestrictedsubs.cancelScheduleBatchDetail.label.cancelledcount=Cancelled size
+iatrestrictedsubs.cancelScheduleBatchDetail.label.successcount=Scheduled size
+iatrestrictedsubs.cancelScheduleBatchDetail.label.msisden=Mobile number
+iatrestrictedsubs.cancelScheduleBatchDetail.label.scheduledamt=Amount
+iatrestrictedsubs.cancelScheduleBatchDetail.label.schestatus=Mobile number status
+iatrestrictedsubs.cancelScheduleBatchDetail.label.txnstatus=Transaction status
+iatrestrictedsubs.cancelScheduleBatchDetail.label.failedcount=Upload failed count
+iatrestrictedsubs.cancelScheduleBatchDetail.label.totalcount=Total records uploaded
+iatrestrictedsubs.cancelScheduleBatchDetail.label.processfailedcount=Process failed count
+iatrestrictedsubs.cancelScheduleBatchDetail.label..geodomain=Geographical Domain
+iatrestrictedsubs.cancelScheduleBatchDetail.label.domain=Domain
+iatrestrictedsubs.cancelScheduleBatchDetail.label.category=Category
+iatrestrictedsubs.cancelScheduleBatchDetail.label.userName= User Name
+iatrestrictedsubs.cancelScheduleBatchDetail.label.
+iatrestrictedsubs.viewschedulerecharge.label.msisdn=MSISDN
+iatrestrictedsubs.viewschedulerecharge.label.subscribername=Subscriber name
+iatrestrictedsubs.viewschedulerecharge.label.subscribercode=Subscriber code
+iatrestrictedsubs.viewschedulerecharge.label.scheduledamt=Scheduled amount
+iatrestrictedsubs.viewschedulerecharge.label.mintxnamt=Min. TXN Amt.
+iatrestrictedsubs.viewschedulerecharge.label.maxtxnamt=Max. TXN Amt.
+iatrestrictedsubs.viewschedulerecharge.label.monthlylimit=Monthly TXN limit
+iatrestrictedsubs.viewschedulerecharge.label.usedlimit=Used limit
+iatrestrictedsubs.viewschedulerecharge.label.scheduleddate=Schedule date
+iatrestrictedsubs.viewschedulerecharge.label.schestatus= Schedule status
+iatrestrictedsubs.viewschedulerecharge.label.txnstatus=TXN status
+iatrestrictedsubs.viewschedulerecharge.label.scheduleddatecancledate=Scheduled/Canceled date
+iatrestrictedsubs.viewschedulerecharge.label.notfound=No scheduled informaion of MSISDN/subscriber found in this batch.
+iatrestrictedsubs.viewsingleschedulerecharge.label.transferid=Transfer ID
+iatrestrictedsubs.viewsingleschedulerecharge.label.transferstatus=Transfer status
+iatrestrictedsubs.viewsingleschedulerecharge.label.batchtype=Batch type
+iatrestrictedsubs.inputmsisdnsforsuspend.err.msg.nosubfound=Mobile number '{0}' does not exist under this user
+iatrestrictedsubs.reports.includeuser.label.zone=Zone
+iatrestrictedsubs.reports.includeuser.label.domain=Domain
+iatrestrictedsubs.reports.includeuser.label.category=Channel category
+iatrestrictedsubs.reports.includeuser.label.user=Channel user
+iatrestrictedsubs.reports.includeuser.error.select=Please select
+iatrestrictedsubs.reports.includeUserWithoutALL.error.search=Search Not Allowed For
+iatrestrictedsub.reports.iatbatchwaisereport.label.heading=IAT Batch execution TopUp status
+iatrestrictedsub.reports.iatbatchwaisereport.label.batchid=Batch number
+iatrestrictedsub.reports.includeUserWithoutALL.label.batchid=Batch number
+iatrestrictedsubs.iatbatchwaisereport.label.batchid.msg=In the above text box please specify the Batch number without specifing the date.
+iatrestrictedsub.reports.searchuser.label.user=Search user
+iatrestrictedsub.reports.searchuser.label.chuser=Channel user
+iatrestrictedsub.reports.associatedlist.menu.label=User Status
+iatrestrictedsub.reports.includeUserWithoutALL.label.batchid=Batch ID
+iatrestrictedsub.reports.includeUserWithoutALL.label.zone=Zone
+iatrestrictedsub.reports.includeUserWithoutALL.label.domain=Domain
+iatrestrictedsub.reports.includeUserWithoutALL.label.category=Category
+iatrestrictedsubs.seluserforbulkreg.error.file=Please provide file to upload.
+iatrestrictedsubs.seluserforbulkreg.error.dirPath=Upload file path not present.
+iatrestrictedsubs.associatesubscriberdetails.msg.filepath=Download File path not found.
+iatrestrictedsubs.associatesubscriberdetails.errorlog.msg.duplicateusercode=Dupicate User Code
+iatrestrictedsubs.sublistingfordelete.heading=IAT delete subscriber
+iatrestrictedsubs.sublistingfordelete.label.sno=Sr. No.
+iatrestrictedsubs.sublistingfordelete.label.subsmsisdn=Subscriber's MSISDN
+iatrestrictedsubs.sublistingfordelete.label.commaseperated=(More than one MSISDN must be seperated by comma)
+iatrestrictedsubs.sublistingfordelete.label.geodomain=Geographical domain
+iatrestrictedsubs.sublistingfordelete.label.domain=Domain
+iatrestrictedsubs.sublistingfordelete.label.ownername=Owner
+iatrestrictedsubs.sublistingfordelete.label.category=Category
+iatrestrictedsubs.sublistingfordelete.label.username=User name
+iatrestrictedsubs.sublistingfordelete.label.subscribername=Subscriber name
+iatrestrictedsubs.sublistingfordelete.label.subscribercode=Subscriber code
+iatrestrictedsubs.sublistingfordelete.label.msisdn=MSISDN
+iatrestrictedsubs.sublistingfordelete.label.mintxnamount=Min. TXN amount
+iatrestrictedsubs.sublistingfordelete.label.maxtxnamount=Max. TXN amount
+iatrestrictedsubs.sublistingfordelete.label.montrlimit=Monthly transfer limit
+iatrestrictedsubs.sublistingfordelete.label.currenttxn=Current TXN
+iatrestrictedsubs.sublistingfordelete.label.status=Status
+iatrestrictedsubs.sublistingfordelete.label.regdatetime=Registration date-time
+iatrestrictedsubs.sublistingfordelete.label.selectall=Select all
+iatrestrictedsubs.sublistingfordelete.label.selectallsubscriber=All subscriber
+iatrestrictedsubs.loadsubslistfordelete.error.invalidmsisdns=Invalid MSISDN list {0}.It should be numeric and valid MSISDN
+iatrestrictedsubs.loadsubslistfordelete.error.invalid=Invalid MSISDN.It should be numeric and valid MSISDN
+iatrestrictedsubs.sublistingfordelete.msg.msisdninvalid=Subscriber(s) MSISDN(s) is/are not valid (Does not belong to your network)
+iatrestrictedsubs.sublistingfordelete.msg.msisdnnotfound=Subscriber(s) MSISDN(s) is/are not valid for deletion
+iatrestrictedsubs.sublistingfordelete.msg.subdeleteall=Restricted subscriber(s) deleted successfully
+iatrestrictedsubs.sublistingfordelete.msg.deleteunsuccess=Restricted subscriber(s) {0} cannot be deleted at this time 
+iatrestrictedsubs.sublistingfordelete.msg.selectatleastone=Atleast one of the field should be specified for MSISDN 
+iatrestrictedsubs.sublistingfordelete.msg.selectcheckbox=Select atleast one record for deletion
+iatrestrictedsubs.inputmsisdnsfordelete.selectatleastonechkbox=Select atleast one check box to perform the operation.
+iatrestrictedsubs.sublistingfordelete.msg.nosubsfound=No subscriber exists for the selected values
+iatrestrictedsubs.sublistingfordelete.msg.subdeleteallfailed=Restricted subscriber(s) cannot be deleted at this time. Please try after sometime 
+iatrestrictedsubs.loadsubslistfordelete.error.invalidresmsisdns=Invalid restricted subscriber MSISDN list {0}. Please correct to proceed
+iatrestrictedsubs.sublistingfordelete.msg.delete.confirm=Deletion cannot be reverted. Are you sure you want to delete all subscribers?
+iatrestrictedsubs.loadsubslistfordelete.error.invalidresmsisdns=Invalid restricted subscriber MSISDN list {0}. Please correct to proceed
+iatrestrictedsubs.sublistingfordelete.msg.selectcheckbox=Select atleast one record for deletion
+iatrestrictedsubs.sublistingfordelete.msg.subdeleteall=Restricted subscriber(s) deleted successfully
+iatrestrictedsubs.sublistingfordelete.msg.deleteunsuccess=Restricted subscriber(s) {0} cannot be deleted at this time
+iatrestrictedsubs.sublistingfordelete.msg.nosubsfound=No subscriber exists for the selected values
+iatrestrictedsubs.sublistingfordelete.errmsg.userselectfirst=Select the user first
+iatrestrictedsubs.sublistingfordelete.errmsg.selcatfirst=Select the category first
+iatrestrictedsubs.sublistingfordelete.errmsg.selectzonefirst=Select the geographical domain first
+iatrestrictedsubs.sublistingfordelete.errmsg.seldomainfirst=Select the domain first
+iatrestrictedsubs.associatesubscriberdetails.errorlog.msg.countrycodenull=Country Code is Blank.
+iatrestrictedsubs.associatesubscriberdetails.errorlog.msg.invalidcountrycode=Invalid Country Code.
+
+iatrestrictedsubs.seluserforbulkreg.label.geodomain=Geographical Domain
+iatrestrictedsubs.seluserforbulkreg.label.domain=Domain
+iatrestrictedsubs.seluserforbulkreg.label.category=Category
+iatrestrictedsubs.seluserforbulkreg.label.user=User Name
+iatrestrictedsubs.seluserforbulkreg.label.subtype=Subscriber Type
+iatrestrictedsubs.seluserforbulkreg.label.uploadedfile=Upload File Path
+iatrestrictedsubs.seluserforbulkreg.label.noofrecords=Number of Records
+restrictedsubs.associatesubscriberdetails.msg.notreadable=File does not contain any readable data.
+
+####			MOBINIL CR DEVELOPMENT	Babu Kunwar		###########
+
+user.selectchanneluserforview.label.externalcode=External Code
+user.selectchanneluserforview.error.user.extcode=User external code does not exist.
+user.selectchanneluserforview.error.user.extcodeatsamelevel=External code ({0}) is at same level as you.
+user.selectchanneluserforview.error.user.extcodenotinsamedomain=External code ({0}) does not exist in this domain.
+user.selectchanneluserforview.error.user.extcodenotinsamegeodomain=External code ({0}) does not exist in this geographical domain.
+user.selectchanneluserforview.error.user.extcodenotagent=External code ({0}) does not exist in agent list.
+user.selectchanneluserforview.error.user.extcodedeleted=User having External code ({0}) does not exsists or is deleted.
+user.addchanneluserview.label.resgistrationdate=Registration Date
+user.addchanneluserview.label.createdon=Created On
+channeltransfer.c2cenquirytransferlist.label.senderpostbal=Sender Post Balance
+channeltransfer.c2cenquirytransferlist.label.senderprebal=Sender Pre Balance
+channeltransfer.c2cenquirytransferlist.label.receiverprebal=Receiver Pre Balance
+channeltransfer.c2cenquirytransferlist.label.receiverpostbal=Receiver Post Balance
+operatortransfer.o2cenquirytransferlist.label.senderpostbal=Sender Post Balance
+operatortransfer.o2cenquirytransferlist.label.senderprebal=Sender Pre Balance
+operatortransfer.o2cenquirytransferlist.label.receiverprebal=Receiver Pre Balance
+operatortransfer.o2cenquirytransferlist.label.receiverpostbal=Receiver Post Balance
+c2s.reports.statuswiseextusers.label.or=or
+c2s.reports.statuswiseextusers.label.externalcode=External Code
+c2s.reports.statuswiseextusers.label.msisdn=MSISDN
+c2s.reports.statuswiseextusers.label.loginid=Login ID
+c2s.reports.statuswiseextusers.error.msg.required.value=Enter either the values of mobile number OR values of Zone, Channel domain ,Channel category, Category user, Login ID, External Code
+c2s.reports.statuswiseextusers.error.msg.required.domain=Domain is required.
+c2s.reports.statuswiseextusers.error.msg.required.category=Category is required.
+c2s.reports.statuswiseextusers.error.msg.required.user=User is required.
+c2s.reports.statuswiseextusers.error.msg.required.userStatus=User Status is required.
+c2s.reports.statuswiseextusers.error.msisdnnotinsamenetwork={0} Mobile number does not belong to {1} network.
+c2s.reports.statuswiseextusers.error.msg.nouser.exists=No user exists.
+c2s.reports.statuswiseextusers.error.msg.nouser.exists.byexternalcode=No User exists by external code {0}.
+c2s.reports.statuswiseextusers.error.msg.nouser.exists.bymsisdn=No User exists by msisdn {0}.
+c2s.reports.statuswiseextusers.error.msg.nouser.exists.byloginid=No User exists by login id {0}.
+
+#####################  MOBINIL ENDS #################################33
+
+######Start:- Messages for Servce Type Selector Mapping #######
+SSM001= Service Type Selector Mapping
+SSMDMM= Service Type Selector Mapping
+servicetypeselectormapping.selectservicetypes.label.servicetypes=Service Name
+servicetypeselectormapping.selectservicetypes.heading=Select Service Type
+servicetypeselectormapping.selectservicetypesdetails.heading=Service Selector List
+servicetypeselectormapping.selectservicetypesdetails.servicetype=Service Type
+servicetypeselectormapping.selectservicetypesdetails.select=Select
+servicetypeselectormapping.selectservicetypesdetails.selectorname=Selector Name
+servicetypeselectormapping.selectservicetypesdetails.status=Status
+servicetypeselectormapping.selectservicetypesdetails.sendersubtype=Sender Subscriber Type
+servicetypeselectormapping.selectservicetypesdetails.receiversubtype=Receiver Subscriber Type
+servicetypeselectormapping.selectservicetypesdetails.isdefault=Default
+servicetypeselectormapping.selectservicetypesdetails.nodata=No Mapping found.
+servicetypeselectormapping.addmapping.heading.add=Add Service Selector Mapping
+servicetypeselectormapping.modifyinterface.heading.modify=Modify Service Selector Mapping
+servicetypeselectormapping.label.isdefault=Default
+servicetypeselectormapping.label.yes=Yes
+servicetypeselectormapping.label.no=No
+servicetypeselectormapping.isdefault.alreadyexists=Default Mapping already exist for this service.
+servicetypeselectormapping.add.success=Service Selector Mapping for service {0} added successfully
+servicetypeselectormapping.mapping.alreadyexists=Service Selector Mapping already exists.
+servicetypeselectormapping.modify.success=Service Selector Mapping for service {0} modified successfully
+servicetypeselectormapping.help.selectservice.heading=Select service name
+servicetypeselectormapping.help.selectservice.title=Select service name
+servicetypeselectormapping.selectservicetypes.help.servicetypes=Service Name
+servicetypeselectormapping.selectservicetypes.help.select=Select
+servicetypeselectormapping.selectservicetypes.help.selectorname=Selector Name
+servicetypeselectormapping.selectservicetypes.help.status=Status
+servicetypeselectormapping.selectservicetypes.help.sendersubtype=Sender Subscriber Type
+servicetypeselectormapping.selectservicetypes.help.receiversubtype=Receiver Subscriber Type
+servicetypeselectormapping.selectservicetypes.help.isdefault=Default
+servicetypeselectormapping.selectservicetypes.help.add=Add selector
+servicetypeselectormapping.selectservicetypes.help.modify=Modify selector
+servicetypeselectormapping.selectservicetypesdetails.selectorcode=Selector Code
+servicetypeselectormapping.invalid.selector=Please enter a code greater than 3
+servicetypeselectormapping.invalid.selectorformat=Please enter a numeric format
+servicetypeselectormapping.selector.preexists=Selector code already exists
+######End:- Messages for Servce Type Selector Mapping #######
+
+##############Harpreet New Entry for Alert Type################################
+
+channel.associateAlertMsisdn.file2.lable.alertType=Alert Type
+channel.associateAlertMsisdn.file1.lable.alertType=Alert Type
+channel.processUploadedFile.error.alertTypeIsNull =Alert Type is Null
+channel.processUploadedFile.error.alertTypeIsInvalid=Invalid Alert Type.Alert Type can be any combination of S P O.And it should be separated by ';'
+channel.processUploadedFile.error.alertTypeNotSeparatedBySemicolon=Alert Types should be separated by ';'
+channel.processUploadedFile.error.alertMSISDNIsNull=For Alert Type other 'O',Alert MSISDN can not be null
+
+
+######### Entries for bulk update of SIM transactionID #######
+UPBKTXID01=Bulk Upload TXN ID
+UPBKTXIDDM=Bulk Upload TXN ID
+master.bulkupdatesimtxnid.heading=Bulk Update SIM transaction ID
+master.uploadbulktemptxnidfile.label.filename=File Name
+master.bulkupdatesimtxnid.confirm.heading=Confirm File Upload
+master.bulkupdatesimtxnid.error.delimitermissingincons=Delimiter missing in the property file, please contact System Admin.
+master.bulkupdatesimtxnid.error.filepathmissingincons=File path is missing in the property file, please contact System Admin.
+master.bulkupdatesimtxnid.error.contentssizehmissingincons=Contents size is missing in the property file, please contact System Admin.
+master.bulkupdatesimtxnid.error.blankline=There should not be any blank line b/w the records of uploaded file
+master.bulkupdatesimtxnid.error.novalidcontentssize=The file contents size exceeds the limit
+master.bulkupdatesimtxnid.message.nomsisdn=No valid mobile number in the file for updation
+master.bulkupdatesimtxnid.error.filenomove=File cannot be moved for backup purpose
+master.bulkupdatesimtxnid.message.success=Updated successfully
+master.bulkupdatesimtxnid.message.invalidmsisdnlist=Updation process is complete, and these are invalid mobile numbers in the file : <br> {0}
+master.bulkupdatesimtxnid.msg.sureconfirm=Updation of the SIM Transaction ID cannot be reverted. Are you sure to continue?
+master.bulkupdatesimtxnid.error.invalidfile=File should be in txt format.
+master.bulkupdatesimtxnid.error.filenotuploaded=File cannot be uploaded on the server, please contact System Admin.
+master.bulkupdatesimtxnid.uploadfile.heading=Select the text file to be uploaded
+master.resultofbulkupdatetxnid.msg0= [
+master.resultofbulkupdatetxnid.msg1= ] Out of [
+master.resultofbulkupdatetxnid.msg2= ] records processed successfully.
+master.resultofbulkupdatetxnid.viewerrorinfo=<font color="red"><b>[ View error log ]</b></font>
+master.viewbulkupdatesimtxniderrlog.heading=Error log
+master.viewbulkupdatesimtxniderrlog.label.sno=Sr. No.
+master.viewbulkupdatesimtxniderrlog.label.msisdn=Mobile number
+master.viewbulkupdatesimtxniderrlog.label.reason=Failure reason
+master.bulkupdatesimtxnid.error.invalidmsisdn=Invalid MSISDN
+master.bulkupdatesimtxnid.error.prenotfound=Network prefix not found
+master.bulkupdatesimtxnid.error.unsuportednw=Unsupported Network
+master.bulkupdatesimtxnid.error.msisdnnotfound=User Does Not Exist
+master.viewbulkupdatesimtxniderrlog.viewerrorinfodetails=View error log
+
+############# Entry for O2C & C2C transfer rule : added by nilesh
+OPINTRF001=Initiate O2C transfer rule
+OPINTRF1DM=Initiate O2C transfer rule
+operatortrfrule.associatetrfrule.label.status=status
+operatortrfrule.includeassociatetrfrule.label.transferallowed=Transfer allowed
+channeltrfrule.includeassociatetrfrule.error.transfertyperequired=Select atleast one of the transfer type : transfer/withdraw/return 
+channeltrfrule.suspendtrfrule.msg.suspendrequest=Suspend Request for transfer rule is successful.Approval is required.
+msg.suspendrequest.confirm=Are you sure you want to make a suspend request?
+msg.resumerequest.confirm=Are you sure you want to make a resume request?
+channeltrfrule.resumetrfrule.msg.resumerequest=Resume Request for transfer rule is successful.Approval is required.
+channeltrfrule.suspendtrfrule.msg.suspendunsuccess=Transfer rule cannot be suspended,please try after some time.
+channeltrfrule.resumetrfrule.msg.resumeunsuccess=Transfer rule cannot be resumed, please try after some time.
+channeltrfrule.firstandsecondapplimit.required=First approval limit and Second Approval limit is required.
+channeltrfrule.firstapplimit.required=First approval limit is required.
+channeltrfrule.secondapplimit.required=Second approval limit is required.
+OPAPTRF001=O2C transfer rule approval
+OPAPTRF1DM=O2C transfer rule approval
+channeltrfrule.associatetrfrulelimit.error.numeric=Given approval limit value is not a numeric value.
+msg.approval.confirm=Approval cannot be reverted. Are you sure you want to approve?
+msg.reject.confirm=Rejection cannot be reverted. Are you sure you want to reject?
+channeltrfrule.msg.approved=Approval is successful.
+channeltrfrule.msg.notapproved=Transfer rule cannot be approved, please try after some time.
+channeltrfrule.rejecttrfrule.msg.reject=Transfer rule has been rejected successfully.
+channeltrfrule.rejecttrfrule.msg.rejectunsuccess=Transfer rule cannot be rejected. It is applicable only for new status.
+CHINTRF001=Initiate C2C transfer rule
+CHINTRF1DM=Initiate C2C transfer rule
+operatortrfrule.associatetrfrule.label.currentstatus=Current Status
+operatortrfrule.associatetrfrule.label.previousstatus=Previous Status
+operatortrfrule.viewtrfrule.label.currentstatus=Current Status
+operatortrfrule.viewtrfrule.label.previousstatus=Previous Status
+channeltrfrule.resumetrfrule.msg.resumescenario=Only suspended transfer rule can be resumed.
+channeltrfrule.suspendtrfrule.msg.suspendnotpossiblefornew=Suspension of transfer rule for New status is not possible.
+channeltrfrule.modify.notpossible=Only active transfer rule can be modified.
+channeltrfrule.selectcategorydomain.label.ruletype=Rule type
+channeltrfrule.associatetrfrule.label.status=Status
+channeltrfrule.selectcategorydomainforc2c.label.domainname=Domain
+channeltrfrule.associatetrfruleforc2c.label.domainname=Domain
+channeltrfrule.includeassociatetrfruleforc2c.label.domainname=Domain
+channeltrfrule.includeassociatetrfruleforc2c.label.ruletype=Rule type
+CHAPTRF001=C2C transfer rule approval
+CHAPTRF1DM=C2C transfer rule approval
+channeltrfrule.associatetrfrule.label.currentstatus=Current Status
+channeltrfrule.associatetrfrule.label.previousstatus=Previous Status
+channeltrfrule.includeassociatetrfrule.label.domainname=Domain
+channeltrfrule.suspendtrfrule.msg.suspendnotpossibleforsuspendrequest=Transfer rule cannot be suspended as it is already in suspend request status.
+channeltrfrule.suspendtrfrule.msg.suspendnotpossibleforresumerequest=Transfer rule cannot be suspended as it is in resume request status.
+channeltrfrule.suspendtrfrule.msg.suspendnotpossibleforsuspended=You cannot suspend the transfer rule as it is already suspended.
+channeltrfrule.suspendtrfrule.msg.suspendnotpossibleformodifyrequest=You cannot suspend the transfer rule as it is in modify request status.
+channeltrfrule.selectcategorydomain.label.domainname=Domain
+channeltrfrule.addtrfrule.msg.addfromcategory=From category is required.
+channeltrfrule.addtrfrule.msg.addtocategory=To category is required.
+channeltrfrule.addtrfrule.msg.addproductlist=Associate atleast one product.
+channeltrfrule.includeassociatetrfrule.label.ruletype=Rule type
+channeltrfrule.includeassociatetrfrule.label.transferallowed=Transfer Allowed
+channeltrfrule.associatetrfrule.label.ruletype=Rule Type
+channeltrfrule.updatetrfrule.msg.modifyrequestsuccess=Modify request is successful.Need approval for modification.
+channeltrfrule.addtrfrule.msg.transferorwithdrawallowed=Select atleast one of the transfer types :transfer or withdraw.
+channeltrfrule.addtrfrule.msg.controltransferlistnotselected=Select one of the values of Control transfer level list.
+channeltrfrule.addtrfrule.msg.controlwithdrawlistnotselected=Select one of the values of Control withdraw level list.
+channeltrfrule.associatetrfrulelimit.error.firstgreaterthansecondlimit=First approval limit can not be greater than second approval limit.
+channeltrfrule.associatetrfrulelimit.error.product=Product association is required.
+channeltrfrule.associatetrfrulelimit.error.listnull=No rransfer rule exists For approval.
+channeltrfrule.associatetrfrule.label.domainname=Domain
+channeltrfrule.operation.msg.trfrulealreadyexist=Transfer rule already exists, please try with other categories.
+channeltrfrule.addtrfrule.msg.addsuccessapprequired=Transfer rule added sucessfully, need approval.
+#########Added by Nilesh : SMS PIN for C2C Transfer
+channeltransfer.chnltochnlviewproduct.msg.smspininvalid=Invalid PIN
+c2ctranfer.c2ctransfer.label.leftbraces=(
+c2ctranfer.c2ctransfer.label.rightbraces=)
+c2ctranfer.c2ctransfer.label.of=Of
+channeltransfer.chnltochnlviewproduct.msg.smspinnull=PIN is required.
+channeltransfer.chnltochnlviewproduct.label.enteryourpin=Enter your PIN
+channeltransfer.chnltochnlviewproduct.label.smspin=PIN
+
+###### additional commision
+profile.commissionprofiledetail.label.status=Status
+profile.addadditionalprofile.label.status=Status
+profile.commissionprofiledetailview.label.status=Status
+
+########
+
+#######################  End messagesResources entries for PreTUPS5.6.1 ##################################################
+
+###########################  Added by Amit Raheja   #########################################
+############Entry for C2S transfer enquiry###########
+channel.transfer.c2s.xls.enq.fileheading=C2S Transfer Enquiry
+channel.transfer.c2s.xls.enq.service=Service
+channel.transfer.c2s.xls.enq.sendermsisdn=Sender Mobile Number
+channel.transfer.c2s.xls.enq.receivermsisdn=Receiver Mobile Number
+channel.transfer.c2s.xls.enq.fromdate=From Date
+channel.transfer.c2s.xls.enq.todate=To Date
+channel.transfer.c2s.xls.enq.transferid=Transfer Number
+channel.transfer.c2s.xls.enq.trfdate=Transfer date & time
+channel.transfer.c2s.xls.enq.subser=Sub service
+channel.transfer.c2s.xls.enq.prod=Product name
+channel.transfer.c2s.xls.enq.diffapp=Differential applicable
+channel.transfer.c2s.xls.enq.diffgiven=Differential given
+channel.transfer.c2s.xls.enq.sendername=Sender name
+channel.transfer.c2s.xls.enq.sendernw=Sender network code
+channel.transfer.c2s.xls.enq.trfvalue=Transfer value
+channel.transfer.c2s.xls.enq.reqsrc=Request source
+channel.transfer.c2s.xls.enq.txnstatus=Txn status
+channel.transfer.c2s.xls.enq.errormsg=Error message
+channel.transfer.c2s.xls.enq.serialno=Serial number
+########End#########
+
+channeltransfer.c2ctransferenquiry.error.msg=At least one of transfer number, user mobile number or to mobile number is required.
+
+################### Addition ends ###################################################
+
+#### Start for Bulk de-register/suspend/resume
+## Added for bulk resume of channel user by Vinay ---- New Messages
+user.uploadFileForChUserUnregisterBulk.label.resume=Resume		
+user.uploadFileForChUserUnregisterBulk.msg.resume.confirm=Are you sure you want to resume?
+user.uploadFileForChUserUnregisterBulk.message.success.resume=Resume successfully
+user.uploadFileForChUserUnregisterBulk.message.invalidmsisdnlist.resume=Resume process is completed and resume of these mobile numbers is not permitted : <br> {0}
+## Modified
+UNBLKCHU01 = De-register/suspend/resume -batch
+UNBLKCHUDM = De-register/suspend/resume -batch
+user.uploadFileForChUserUnregisterBulk.msg.note=Note: <b>Approval of the de-register/suspend/resume is not required.</b>
+
+#### End for Bulk de-register/suspend/resume
+
+//added by jasmine modify message management
+
+
+MSGMAG001=Message Management
+MSGMAGDMM=Message Management
+
+message.management.label.heading= Message management 
+
+message.management.label.message1= Message 1
+message.management.label.messagecode=Message Code
+message.management.label.defaultmessage=Default Message
+message.management.label.defaultmessage2=Message 2
+message.management.label.defaultmessage3=Message 3
+
+message.management.label.emptytmessage2=Message 2  is empty.
+message.management.label.emptytmessage3=Message 3 is empty.
+message.management.label.saamemessage2=Message 2 is the same as previous please modify if required
+message.management.label.saamemessage3=Message 3 is the same as previous please modify if required
+message.management.label.modifySuccesfully=Messages updated successfully
+message.management.label.invalidmessagecode=Invalid Message Code.
+message.management.successfully.modified=Successfully Modify Message.
+
+############ For Inactive User Report
+
+INUSREP01=Inactive User Report
+INUSREPDM=Incacive User Report
+c2s.reports.inactiveuserreport.heading=Inactive User Report
+c2s.reports.web.inactiveuserreportform.error.msg.required.value=Please enter the correct values.
+c2s.reports.inactiveuserreport.label.geographicaldomain=Geographical domain
+c2s.reports.inactiveuserreport.label.channeldomain=Channel domain
+c2s.reports.inactiveuserreport.label.channelcategory=Channel category
+c2s.reports.inactiveuserreport.label.channelcategoryuser=Category user
+c2s.reports.inactiveuserreport.label.fromdate=From date
+c2s.reports.inactiveuserreport.label.todate=To date
+
+#############Reconcilation Reports and Jsp###
+
+c2s.reconciliation.displaydetail.label.intrefid =Reference id
+p2p.reconciliation.displaydetail.label.refid=Reference id
+
+
+
+#######################    CATEGORY DEVELOPMENT BABU KUNWAR #######################
+CATEGORY01= Channel category Mgmt.
+CATEGORY0M= Channel category Mgmt.
+CATVIEW001= View channel category
+CATVIEW00M= View channel category
+channeldomain.selectDomainForChannelCategory.heading=Select channel domain
+channeldomain.selectDomainForChannelCategory.domainname=Domain Name
+channeldomain.viewChannelCategoryDetails.heading=View channel category details
+channeldomain.viewChannelCategoryDetails.label.select=Select
+channeldomain.viewChannelCategoryDetails.label.domain=Domain
+channeldomain.viewChannelCategoryDetails.label.categorycode=Category code
+channeldomain.viewChannelCategoryDetails.label.categoryname=Category name
+channeldomain.viewChannelCategoryDetails.label.domaincode=Domain code
+channeldomain.viewChannelCategoryDetails.label.useridprefix=UserID prefix
+channeldomain.viewChannelCategoryDetails.label.parentcategory=Parent category
+channeldomain.viewChannelCategoryDetails.label.sequencenumber=Sequence number
+channeldomain.viewChannelCategoryDetails.label.categorytype=Category type
+channeldomain.viewChannelCategoryDetails.label.domainname=Domain
+channeldomain.loadcategory.nodatafound=No categories found
+channeldomains.deletechannelcategory.deletesuccess=Category successfully deleted.
+channeldomains.deletechannelcategory.deletenotsuccess=Category cannot be deleted now, please try later.
+channeldomain.addchannelcategory.heading=Add channel category
+channeldomain.addchannelcategory.label.domaintype=Domain type
+channeldomain.addchannelcategory.label.domaincode=Domain code
+channeldomain.addchannelcategory.label.domainname=Domain name
+channeldomain.addchannelcategory.label.categorycode=Category code
+channeldomain.addchannelcategory.label.categoryname=Category name
+channeldomain.addchannelcategory.label.categorytypename=Category type
+channeldomain.addchannelcategory.label.geographicaldomain=Geographical domain
+channeldomain.addchannelcategory.label.multiplegeographicaldomain=Multiple geographical domain
+channeldomain.addchannelcategory.label.roletype=Role type
+channeldomain.addchannelcategory.label.viewonnetworkblock=View on network block
+channeldomain.addchannelcategory.label.status=Status
+channeldomain.addchannelcategory.label.useridprefix=UserID prefix
+channeldomain.addchannelcategory.label.outletesallowed=Outlets allowed 
+channeldomain.addchannelcategory.label.allowedsources=Allowed sources
+channeldomain.addchannelcategory.label.smsstk=SMS/STK
+channeldomain.addchannelcategory.label.web=WEB
+channeldomain.addchannelcategory.label.loginsettings=Login settings
+channeldomain.addchannelcategory.label.multipleloginallowed=Multiple login allowed
+channeldomain.addchannelcategory.label.maxlogincount=Max. login count
+channeldomain.addchannelcategory.label.multiplegeographicalarea=Multiple geographical area
+channeldomain.addchannelcategory.label.restrictedmsisdn=Restricted MSISDN
+channeldomain.addchannelcategory.label.unctrltransferallowed=Uncontrolled transfer allowed
+channeldomain.addchannelcategory.label.scheduletransferallowed=Scheduled transfer allowed
+channeldomain.addchannelcategory.label.maxtransactionmsisdn=Max. transaction MSISDN
+channeldomain.addchannelcategory.label.agentAllowed=Agent allowed
+channeldomain.addchannelcategory.label.hierarchyAllowed=Hierarchy allowed
+channeldomain.addchannelcategory.label.displayallowed=Display allowed
+channeldomain.addchannelcategory.label.modifiedallowed=Modified allowed
+channeldomain.addchannelcategory.label.serviceallowed=Services allowed
+channeldomain.addchannelcategory.label.producttypeassociationallowed=Product type association allowed
+channeldomain.addchannelcategory.error.useridprefix={0} should contain only alphabets
+channeldomain.addchannelcategory.heading=Add channel category
+channeldomain.addchannelcategory.label.assignroles=Roles information
+channeldomain.addchannelcategory.link.assignroles=Assign roles
+channeldomain.addchannelcategory.categorycode.notalphanumeric={0} should be alphanumeric single word
+channeldomain.addcategory.label.lowbalancealertllow=Allow low balance alert
+channeldomain.addchannelcategory.label.listmanagement=Restricted list management
+channeldomain.addchannelcategory.label.transfertolistonly=Transfer to list only
+channeldomain.addcategory.label.transfertolistonly=Transfer to list only
+channeldomain.addchannelcategory.transfertolistonly=Transfer to list only
+channeldomain.addchannelcategory.label.rechargetrhparent
+channeldomain.addchannelcategory.label.rechargetrhparent=Recharge through parent only
+channeldomain.addchannelcategory.label.cp2ppayer=CP2P payer
+channeldomain.addchannelcategory.label.cp2ppayee=CP2P payee
+channeldomain.addchannelcategory.label.cp2pwithinlist=CP2P within list
+channeldomain.addchannelcategory.label.leveltype=Level type:
+channeldomain.addchannelcategory.label.listmanagement=Restricted list management
+
+user.assignChannelCategoryRoles.heading=Assign roles
+user.assignChannelCategoryRoles.label.associatedassignroles=Associated roles
+user.assignChannelCategoryRoles.label.grouproletype=Group role
+user.assignChannelCategoryRoles.label.systemroletype=System role
+user.assignChannelCategoryRoles.label.roleslistnotexist=No role list exists
+
+domain.modifyChannelCategoryConfirmation.heading=Modify channel category
+domain.modifyChannelCategoryConfirmation.msg.categoryrolesuccess=Category roles successfully updated
+domain.modifyChannelCategoryConfirmation.msg.categoryroleunsuccess=Category roles updation operation failed
+domain.modifyChannelCategoryConfirmation.label.assignroles=System roles information
+domain.modifyChannelCategoryConfirmation.label.grouproles=Group roles information
+domain.modifyChannelCategoryConfirmation.label.grouproleslistnotexist=No group role assigned
+domain.modifyChannelCategoryConfirmation.link.assignroles=Assign roles
+channeldomains.addingcategory.validate.mxlogincountvalue=Max. transaction MSISDN should not be more then 2.
+channeldomains.addingcategory.validate.mxlogincountvalue.null=Max. transaction MSISDN can't be blank.
+
+category.viewchannelcategory.heading=Select category for view
+category.viewchannelcategory.label.domaincode=Domain code
+category.viewchannelcategory.label.domainname=Domain name
+category.viewchannelcategory.label.categorycode=Category code
+category.viewchannelcategory.label.categoryname=Category name
+category.viewchannelcategory.label.useridprefix=User ID prefix
+category.viewchannelcategory.label.sequenceno=Sequence number
+category.viewchannelcategory.label.categorytype=Category type
+category.viewchannelcategory.label.nocategoryexists=No catergory list exists
+category.viewchannelcategory.heading=Category details
+category.viewchannelcategory.msg.nocategoryexists=No category details exists.
+
+
+
+##added by jasmine kaur
+##SuperAdmin ->Channel Domain>>Channel Domain Management >>Page name(View Domain Details) -->>DOMAIN001  
+domain.viewchanneldomaindetails.heading=View Channel domain details
+domain.viewchanneldomaindetails.label.select=Select
+domain.viewchanneldomaindetails.label.domaincode=Channel Domain code
+domain.viewchanneldomaindetails.label.domainname=Channel Domain name
+domain.viewchanneldomaindetails.label.domaintype=Channel Domain type
+domain.viewchanneldomaindetails.label.status=Status
+##SuperAdmin ->Channel Domain>>Domain Management >>Page name(Add/modify Domain Details) -->>DOMAIN002 /  DOMAIN004 
+domain.addchanneldomain.heading=Add Channel domain details
+domain.addchanneldomain.label.domaintype=Channel Domain type
+domain.addchanneldomain.label.domaincode=Channel Domain code
+domain.addchanneldomain.label.domainname=Channel Domain name
+domain.addchanneldomain.label.numberofcategories=Number of Channel categories
+domain.viewchanneldomaindetails.label.ownercategory=Owner Channel  category
+domain.addchnlcategory.heading=Add owner Channel category details
+domain.addchnlcategory.message= Channel Domain name not selected. Select domain name again
+domain.addchnlcategory.label.domaintype=Channel Domain type
+domain.addchnlcategory.label.domaincode=Channel Domain code
+domain.addchnlcategory.label.domainname=Channel Domain name
+domain.addchnlcategory.label.numberofcategories=Number of Channel categories
+domain.addchnlcategory.label.categorycode= Channel Category code
+domain.addchnlcategory.label.categoryname=Channel Category name
+domain.addchnlcategory.label.geographicaldomain=Geographical domain
+domain.addchnlcategory.label.multiplegeographicaldomain=Multiple geographical domain
+domain.addchnlcategory.label.roletype=Role type
+domain.addchnlcategory.label.viewonnetworkblock=View on network block
+domain.addchnlcategory.label.status=Status
+domain.addchnlcategory.label.outletesallowed=Outlets allowed
+domain.addchnlcategory.label.allowedsources=Allowed sources
+domain.addchnlcategory.label.assignroles=Roles information
+domain.addchnlcategory.link.assignroles=Assign roles
+domain.addchnlcategory.label.stk=STK
+domain.addchnlcategory.label.smsstk=SMS/STK
+domain.addchnlcategory.label.web=WEB
+domain.addchnlcategory.label.loginsettings=Login settings
+domain.addchnlcategory.label.multipleloginallowed=Multiple login allowed
+domain.addchnlcategory.label.maxlogincount=Max. login count
+domain.addchnlcategory.label.useridprefix=UserID prefix
+domain.addchnlcategory.label.multiplegeographicalarea=Multiple geographical area
+
+domain.addchnlcategory.label.scheduletransferallowed=Scheduled transfer allowed
+domain.addchnlcategory.label.maxtransactionmsisdn=Max. transaction MSISDN
+domain.addchnlcategory.label.displayallowed=Display allowed
+domain.addchnlcategory.label.modifiedallowed=Modified allowed
+domain.addchnlcategory.label.producttypeassociationallowed=Product type association allowed
+domain.addchnlcategory.label.serviceallowed=Services allowed
+domain.addchnlcategory.label.restrictedmsisdn=Restricted MSISDN
+domain.addchnlcategory.label.hierarchyallowed=Hierarchy allowed
+domain.addchnlcategory.label.agentallowed=Agent allowed
+domain.addchnlcategory.error.useridprefix={0} should contain only alphabets
+domain.addchnlcategory.label.notalphanumeric={0} should be alphanumeric single word
+
+
+domain.addownerchannelcategory.label.rechargetrhparent=Recharge through parent only
+domain.addownerchannelcategory.label.cp2ppayer=CP2P payer
+domain.addownerchannelcategory.label.cp2ppayee=CP2P payee
+domain.addownerchannelcategory.label.cp2pwithinlist=CP2P within list
+domain.addownerchannelcategory.label.leveltype=Level type:
+domain.addownerchannelcategory.label.listmanagement=Restricted list management
+
+domain.addownerchannelcategory.label.transfertolistonly=Transfer to list only
+
+user.addchnloperatoruser.label.roleslistnotexist=No roles assigned yet
+domain.addchnlcategory.label.lowbalancealertllow=Allow low balance alert
+domain.identifyAction.validate.mxlogincountvalue=Max. transaction MSISDN should not be more then 2.
+
+domain.identifyAction.invalidate.numbercategory=No of Channel categories should be  more than or equal to  {0}
+domain.addchannelcategory.error.noOfcategories=No of categories should be greater than or equal to  1.
+domain.channelmodifydomain.heading=Modify Channel domain details
+domain.channelmodifydomain.label.domaintype=Channel Domain type
+domain.channelmodifydomain.label.domaincode=Channel Domain code
+domain.channelmodifydomain.label.domainname=Channel Domain name
+domain.channelmodifydomain.label.numberofcategories=Number of Channel categories
+domain.channelmodifydomain.label.status=Status
+
+DOMAIN001=Channel Domain Mgmt.
+DOMAN001Dm=Channel Domain Mgmt.
+domain.addchanneldomain.domaincode.notalphanumeric={0} should be alphanumeric single word
+
+
+########For Batch User Creation with secondary MSISDN###
+bulkuser.processuploadedfile.error.maxtrnMsisdnexceed=Maximum number of transection MSISDNs should be less than {0} for this category
+bulkuser.modify.xlsfile.details.number=Mobile number*
+bulkuser.modify.xlsfile.details.number.comment=Mobile number that is assigned to the channel user for STK related transactions (First is primary).
+bulkuser.processuploadedfile.error.msisdnmorethanallowed=Number of mobile numbers is more than allowed.
+bulkuser.xlsfile.details.mobilenumberprisec.comment=Mobile number that is to be assigned to the channel user for mobile related activities (First is primary).
+
+######################Added by Harpreet for Email Notification###########################
+
+channel.associateAlertMsisdn.file1.lable.alertEmail=Alert Email
+channel.associateAlertMsisdn.file2.lable.alertEmail=Alert Email
+channel.processUploadedFile.error.alertEmailIsInvalid=Email Id is not Valid
+channel.processUploadedFile.error.alertEmailIsNumber=Only Single Email ID is allowed.
+
+
+
+
+########### ADDED by ANU FOR C2C or C2S transaction for specific dial##########################################
+
+C2SC2CSM01=C2C or C2S summary batch report
+C2SC2CSMDM=C2C or C2S summary batch report
+c2cc2strans.reports.summary.heading=C2C or C2S summary batch report
+c2cc2strans.reports.summary.lable.type=Login ID/Mobile Number
+c2cc2strans.reports.summary.lable.uploadedfile=File Name
+c2cc2strans.reports.summary.lable.c2s=C2S
+c2cc2strans.reports.summary.lable.c2c=C2C
+c2cc2strans.reports.summary.lable.operation=Operation
+c2cc2strans.reports.summary.label.fromdate=From date
+c2cc2strans.reports.summary.label.todate=To date
+c2cc2strans.reports.summary.label.downloadlist=Click here to download the required report
+c2cc2strans.reports.summary.label.msg0=[
+c2cc2strans.reports.summary.label.msg1=] out of [
+c2cc2strans.reports.summary.label.msg2=] records processed successfully.
+
+c2cc2strans.reports.summary.viewerrorinfo=View error log
+
+c2cc2strans.reports.summary.errlog.heading=View error log
+c2cc2strans.reports.summary.errlog.label.linenumber=Line number
+c2cc2strans.reports.summary.errlog.label.value=Value
+c2cc2strans.reports.summary.errlog.label.reason=Error reason
+
+user.uploadFileForC2sC2cTransSummaryRpt.error.filenotuploaded=File could not be uploaded on the server. Please contact System Admin.
+user.uploadFileForC2sC2cTransSummaryRpt.error.delimitermissingincons=Delimiter missing in the constant property file, please contact System Admin.
+user.uploadFileForC2sC2cTransSummaryRpt.error.filepathmissingincons=File path is missing in the constant property file, please contact System Admin.
+user.uploadFileForC2sC2cTransSummaryRpt.error.contentssizehmissingincons=Contents size is missing in the constant property file, please contact System Admin.
+user.uploadFileForC2sC2cTransSummaryRpt.error.contentssizenotvalidincons=Variable NO_OF_CONTENTS is not valid in the constant property file, please contact System Admin.
+###user.uploadFileForC2sC2cTransSummaryRpt.error.blankline=There should not be any blank line b/w the records of uploaded file
+user.uploadFileForC2sC2cTransSummaryRpt.error.novalidcontentssize=The file contents size exceeds the limit
+user.uploadFileForC2sC2cTransSummaryRpt.error.duplicateentry=This value is duplicate entry in the file
+user.uploadFileForC2sC2cTransSummaryRpt.error.invalidloginid=Invalid LoginId
+user.uploadFileForC2sC2cTransSummaryRpt.error.invalidmsisdn=Invalid MSISDN
+user.uploadFileForC2sC2cTransSummaryRpt.error.prenotfound=Network prefix not found
+user.uploadFileForC2sC2cTransSummaryRpt.error.unsuportednw=Unsupported Network
+user.uploadFileForC2sC2cTransSummaryRpt.error.msisdnnotfound=No Data Found
+user.uploadFileForC2sC2cTransSummaryRpt.viewerrorinfodetails=View error log
+###user.uploadFileForC2sC2cTransSummaryRpt.msg.novaliddatainfile=No valid data found in the file
+user.uploadFileForC2sC2cTransSummaryRpt.msg.notreadable=File does not contain any readable data.
+user.uploadFileForC2sC2cTransSummaryRpt.error.filenomove=File cannot be moved for backup purpose
+
+############XLS file entries for C2C Transaction for specific dail
+c2cTransSummaryRpt.xlsfile.detail.heading= Channel C2C Transactions
+c2cTransSummaryRpt.xlsfile.detail.serialnumber=S.No.
+c2cTransSummaryRpt.xlsfile.detail.username=UserName
+c2cTransSummaryRpt.xlsfile.detail.msisdn=Mobile Number
+c2cTransSummaryRpt.xlsfile.detail.geodomainname=Geographical Domain
+c2cTransSummaryRpt.xlsfile.detail.category=Category Name
+c2cTransSummaryRpt.xlsfile.detail.productname=Product Name
+c2cTransSummaryRpt.xlsfile.detail.transfersubtype=Transfer Sub Type
+c2cTransSummaryRpt.xlsfile.detail.intotalamount=In Total Amount
+c2cTransSummaryRpt.xlsfile.detail.intotaltransactions=In Total Transactions
+c2cTransSummaryRpt.xlsfile.detail.outtotalamount=Out Total Amount
+c2cTransSummaryRpt.xlsfile.detail.outtotaltransactions=Out Total Transactions
+
+############XLS file entries for C2S Transaction for specific dail
+c2sTransSummaryRpt.xlsfile.detail.heading= Channel C2S Transactions
+c2sTransSummaryRpt.xlsfile.detail.serialnumber=S.No.
+c2sTransSummaryRpt.xlsfile.detail.username=UserName
+c2sTransSummaryRpt.xlsfile.detail.msisdn=Mobile Number
+c2sTransSummaryRpt.xlsfile.detail.geodomainname=Geographical Domain
+c2sTransSummaryRpt.xlsfile.detail.category=Category Name
+c2sTransSummaryRpt.xlsfile.detail.servicetype= Service Type
+c2sTransSummaryRpt.xlsfile.detail.totaltransaction=Total Transaction
+c2sTransSummaryRpt.xlsfile.detail.totalfailtransactions=Total fail Transactions
+c2sTransSummaryRpt.xlsfile.detail.totalrechargecount=Total Recharge Count
+c2sTransSummaryRpt.xlsfile.detail.totalrechargeamount=Total Recharge Amount
+
+
+##Added by Chhaya Sikheria for Message Management
+MSGS01=Messages Management
+MSGS01A=Messages Management
+MSGSDMM=Messages Management
+MSGMGMT=Manage Messages
+messages.messagesManagement.heading=Messages Management
+messages.messagesManagement.label.downloadlist=Click here to download message list
+messages.messagesManagement.label.path=Uploaded file path
+messages.messagesManagement.error.filenotuploaded=File cannot be uploaded, please try after some time.
+messages.messagesManagement.msg.success=Messages uploaded successfully. Please Update the corresponding Cache, changes will not be effective until the required cache is updated.
+messages.messagesManagement.update.msg.fail=Messages have not been updated successfully into DB.
+messages.messagesManagement.file.exist=Uploaded file name already exist.
+messages.messagesManagement.error.norecordinfile=There are no records in the file to be processed
+messages.messagesManagement.error.exttxnmissing=External txn number is missing
+messages.messagesManagement.error.invalidfile=File contains invalid number of columns
+messages.messagesManagement.error.pathnotdefined=Upload file path is not defined, please contact customer care.
+##Message Excel File Heading labels
+
+messages.xlsheading.label.networkcode=Network code*  
+messages.xlsheading.label.key=Key*
+messages.xlsheading.label.defaultmsg=Default Message (English)*
+messages.xlsheading.label.arguments=Arguments
+messages.xlsheading.label.englishmsg=Message (English)
+messages.xlsheading.label.frenchmsg=Message (French)
+messages.xlsheading.label.arabicmsg=Message (Arabic)
+
+##Added by Chhaya Sikheria for Batch O2C Withdraw
+O2CBWDR01=Initiate batch O2C withdraw
+O2CBWDR01M=Initiate batch O2C withdraw
+
+O2CWRAP01=O2C Batch Withdraw Approval One
+O2CWRAP01M=O2C Batch Withdraw Approval One
+
+O2CWRAP02=O2C Batch Withdraw Approval Two
+O2CWRAP02M=O2C Batch Withdraw Approval Two
+
+
+batcho2c.initiateBatchO2CWithdraw.label.geographicaldomain
+batcho2c.initiateBatchO2CWithdraw.heading=Initiate batch O2C withdraw
+batcho2c.initiateBatchO2CWithdraw.label.geographicaldomain=Geographical domain
+batcho2c.initiateBatchO2CWithdraw.label.domain=Channel domain
+batcho2c.initiateBatchO2CWithdraw.label.category=User category
+batcho2c.initiateBatchO2CWithdraw.label.producttype=Product
+batcho2c.initiateBatchO2CWithdraw.label.downloadlist=Click here to download user list
+batcho2c.initiateBatchO2CWithdraw.label.downloadtemplate=Click here to download file template
+batcho2c.initiateBatchO2CWithdraw.label.path=Uploaded file path
+batcho2c.initiateBatchO2CWithdraw.label.batchname=Batch name
+batcho2c.initiateBatchO2CWithdraw.category.required=Category is required.
+batcho2c.initiateBatchO2CWithdraw.product.required=Product is required.
+
+batcho2c.selectcategoryforbatcho2c.errormsg.noproducttype=No product type is associated with you to perform the operation.
+batcho2c.uploadbatcho2cfile.msg.fileexists=File already exists on the server, please check your file
+batcho2c.uploadbatcho2cfile.msg.filenamelarge=File name "{0}" cannot be more than {1} characters
+batcho2c.validatebatcho2cfile.error.pathnotdefined=Upload file path is not defined, please contact customer care.
+batcho2c.validatebatcho2cfile.error.filenotuploaded=File cannot be uploaded, please try after some time.
+batcho2c.selectcategoryforbatcho2c.geographicaldomain.required=Select geographical domain first.
+batcho2c.selectcategoryforbatcho2c.domain.required=Select channel domain first.
+batcho2c.selectcategoryforbatcho2c.category.required=Select channel user category first.
+batcho2c.selectcategoryforbatcho2c.product.required=Select product first.
+batchfoc.selectcategoryforbatcho2c.nodata.networkstock=Network stock is not craeted for Product {0}
+
+##message for batch foc process already running. 
+batcho2c.processfile.error.alreadyexecution=Batch O2C process for initiate/approve is already running, please try after some time.
+
+batcho2c.processuploadedfile.error.invalidfile=File contains invalid number of columns
+batcho2c.processuploadedfile.error.norecordinfile=There are no records in the file to be processed
+batcho2c.processuploadedfile.error.exttxnmaxsize=External transaction number cannot be greater than {0} characters
+batcho2c.processuploadedfile.error.externalcodemaxsize=External code cannot be greater than {0} characters
+
+
+
+batcho2c.uploadfocbatchorder.heading=Upload batch O2C transfer file
+batcho2c.uploadfocbatchorder.label.batchname=Batch name
+batcho2c.uploadfocbatchorder.label.geographicalname=Geographical domain
+batcho2c.uploadfocbatchorder.label.domainname=Channel domain
+batcho2c.uploadfocbatchorder.label.category=User category
+batcho2c.uploadfocbatchorder.label.product=Product
+batcho2c.uploadfocbatchorder.label.productmrp=Product MRP(INR)
+batcho2c.uploadfocbatchorder.label.productshortcode=Product short code
+batcho2c.uploadfocbatchorder.label.filepath=Uploaded file path
+batcho2c.uploadfocbatchorder.label.defaultlang=Language 1
+batcho2c.uploadfocbatchorder.label.secondlang=Language 2
+
+batcho2c.uploadfocbatchorder.label.msg0=[
+batcho2c.uploadfocbatchorder.label.msg1=] out of [
+batcho2c.uploadfocbatchorder.label.msg2=] records contains error.
+batcho2c.uploadfocbatchorder.label.secondlang=Language 2
+batcho2c.uploadfocbatchorder.label.viewerrorinfo=Click here to view the errors
+
+##Excel File Heading labels
+batcho2c.xlsheading.label.msisdn=Mobile number*  
+batcho2c.xlsheading.label.loginid=Login ID*
+batcho2c.xlsheading.label.usercategory=User Category
+batcho2c.xlsheading.label.usergrade=User Grade
+batcho2c.xlsheading.label.exttxnnumbermandt=External txn Number*
+batcho2c.xlsheading.label.exttxnnumber=External txn Number
+batcho2c.xlsheading.label.extntxndate=External txn Date
+batcho2c.xlsheading.label.externalcode=External Code
+batcho2c.xlsheading.label.quantity=Quantity*
+batcho2c.xlsheading.label.remarks=Remarks
+
+
+batcho2c.processuploadedfile.error.usernotexist=User Not Exist
+batcho2c.processuploadedfile.error.comprfsuspended=Commission profile is suspended
+batcho2c.processuploadedfile.error.trfprfsuspended=Transfer profile is suspended
+batcho2c.processuploadedfile.error.userinsuspend=User is IN suspended
+batcho2c.processuploadedfile.error.nocomprfassociated=No commission profile is associated till today
+batcho2c.initiatebatchfoctransfer.msg.error.trfrulenotdefined=Transfer rule not defined
+batcho2c.initiatebatchfoctransfer.msg.error.withnotallowed= Withdraw is not allowed
+batcho2c.initiatebatchfoctransfer.msg.error.trfprofilenotdefined=Transfer profile for this product is not defined
+
+batcho2c.processuploadedfile.msg.success=Batch {1}({0}) initiated successfully with {2} records.
+batcho2c.processuploadedfile.error.invalidfile=File contains invalid number of columns
+
+
+
+
+batcho2c.uploadbatchforo2capproval.level1heading=Level 1 Batch O2C withdraw approval
+batcho2c.uploadbatchforo2capproval.approvallevel2=Level 2 Approval withdraw
+batcho2c.uploadbatchforo2capproval.closerecords=Closed withdraw
+batcho2c.uploadbatchforo2capproval.cancelorders=Rejected withdraw
+batcho2c.uploadbatchforo2capproval.filepath=File name
+batcho2c.uploadbatchforo2capproval.defaultlang=Language1
+batcho2c.uploadbatchforo2capproval.secondlang=Language2
+batcho2c.uploadbatchforo2capproval.downloadlink=Click here to download file
+
+batcho2c.selectbatchforo2capproval.select=Select
+batcho2c.selectbatchforo2capproval.batchid=Batch ID
+batcho2c.selectbatchforo2capproval.level1heading=Level 1 Batch O2C withdraw approval
+batcho2c.selectbatchforo2capproval.level2heading=Level 2 Batch O2C withdraw approval
+batcho2c.selectbatchforo2capproval.level3heading=Level 3 Batch O2C withdraw approval
+batcho2c.selectbatchforo2capproval.select=Select
+batcho2c.selectbatchforo2capproval.batchid=Batch number
+batcho2c.selectbatchforo2capproval.batchname=Batch name
+batcho2c.selectbatchforo2capproval.productname=Product name
+batcho2c.selectbatchforo2capproval.productmrp=Product MRP(INR)
+batcho2c.selectbatchforo2capproval.totalorders=Total withdraw
+batcho2c.selectbatchforo2capproval.neworders=New withdraw
+batcho2c.selectbatchforo2capproval.approvallevel1=Level 1 approval withdraw
+batcho2c.selectbatchforo2capproval.approvallevel2=Level 2 approval withdraw
+batcho2c.selectbatchforo2capproval.closerecords=Closed withdraw
+batcho2c.selectbatchforo2capproval.cancelorders=Rejected withdraw
+batcho2c.uploadbatchforo2capproval.level1heading=Level 1 Batch O2C withdraw approval
+batcho2c.uploadbatchforo2capproval.level2heading=Level 2 Batch O2C withdraw approval
+batcho2c.uploadbatchforo2capproval.level3heading=Level 3 Batch O2C withdraw approval
+batcho2c.uploadbatchforo2capproval.select=Select
+batcho2c.uploadbatchforo2capproval.batchid=Batch number
+batcho2c.uploadbatchforo2capproval.batchname=Batch name
+batcho2c.uploadbatchforo2capproval.productname=Product name
+batcho2c.uploadbatchforo2capproval.productmrp=Product MRP(INR)
+batcho2c.uploadbatchforo2capproval.totalorders=Total withdraw
+batcho2c.uploadbatchforo2capproval.neworders=New withdraw
+batcho2c.uploadbatchforo2capproval.approvallevel1=Level 1 Approval withdraw
+batcho2c.uploadbatchforo2capproval.approvallevel2=Level 2 Approval withdraw
+batcho2c.uploadbatchforo2capproval.closerecords=Closed withdraw
+batcho2c.uploadbatchforo2capproval.cancelorders=Rejected withdraw
+batcho2c.uploadbatchforo2capproval.filepath=File name
+batcho2c.uploadbatchforo2capproval.defaultlang=Language1
+batcho2c.uploadbatchforo2capproval.secondlang=Language2
+batcho2c.uploadbatchforo2capproval.downloadlink=Click here to download file
+batcho2c.selectbatchforo2capproval.msg.recordnotfound=No withdraw found for approval
+batcho2c.batchfocprocessfile.msg.filepathmissing=Upload file path missing in Constant property file
+
+batcho2c.downloadfileforapproval.label.bachdetailid=Batch detail number
+batcho2c.downloadfileforapproval.label.mobilenumber=Mobile number
+batcho2c.downloadfileforapproval.label.usercat=User category
+batcho2c.downloadfileforapproval.label.usergrade=User grade
+batcho2c.downloadfileforapproval.label.userlogin=Login ID
+batcho2c.downloadfileforapproval.label.batchid=Batch number
+batcho2c.downloadfileforapproval.label.qty=Qty
+batcho2c.downloadfileforapproval.label.extnum=Ext. txn. no.
+batcho2c.downloadfileforapproval.label.extdate=Ext. txn. date
+batcho2c.downloadfileforapproval.label.initiatedby=Initiated by
+batcho2c.downloadfileforapproval.label.Initiatedon=Initiated on
+batcho2c.downloadfileforapproval.label.apprv1by=Level 1 approved by
+batcho2c.downloadfileforapproval.label.apprv2by=Level 2 approved by
+batcho2c.downloadfileforapproval.label.apprv1on=Level 1 approved on
+batcho2c.downloadfileforapproval.label.apprv2on=Level 2 approved on
+batcho2c.downloadfileforapproval.label.currentstatus=Current status
+batcho2c.downloadfileforapproval.label.requiredaction=Required action(Approve=Y, Reject=N or Discard=D or blank)
+batcho2c.downloadfileforapproval.label.remarks=Remark
+batcho2c.downloadfileforapproval.label.externalcode=External code
+
+batcho2c.batcho2creject.label.remark=Remarks
+batcho2c.batcho2capprovereject.msg0= [
+batcho2c.batcho2capprovereject.msg1= ] out of [
+batcho2c.batcho2capprovereject.msg2= ] records contains error
+batcho2c.batcho2capprovereject.label.downloadlink=Click here to view the error logs
+batcho2c.batcho2capprovereject.msg.batchmodify=Batch is already modified by someone else, please reload the data
+batcho2c.batcho2creject.msg.bachprocesssuccessfully=Batch is processed successfully, {0} records rejected.
+batcho2c.batcho2creject.msg.bachprocessfailedsuccess=Batch is processed successfully, {0} records rejected.
+batcho2c.batcho2creject.msg.bachprocessfailed=No records could be rejected
+batcho2c.batcho2capprove.msg.nochildrecordfound=No record found for process
+batcho2c.batcho2capprove.msg.invalidlengthremark=Remarks field cannot contain more than 100 characters.
+batcho2c.uploadbatchforo2capproval.defaultlang=Language1
+batcho2c.uploadbatchforo2capproval.secondlang=Language2
+batcho2c.batcho2capprove.msg.operationnotpermitted=This operation is not permitted as external txn number is mandatory at this level
+batcho2c.batcho2capprove.msg.bachprocessfailedsuccessclose=Batch is processed successfully, {0} records approved.
+batcho2c.batcho2capprove.msg.bachprocessfailed=No records could be approved
+batcho2c.batcho2capprove.msg.bachprocessfailedsuccess=Batch is processed successfully, {0} records approved. Next level of approval is required for approved records.
+batcho2c.batcho2capprove.msg.bachprocesssuccessfullyclose=Batch is processed successfully, {0} records approved.
+batcho2c.batchapprovereject.msg.error.usersuspend=User is suspend
+batcho2c.batchapprovereject.msg.error.recordnotupdated=Record not updated successfully
+batcho2c.batcho2cprocessfile.msg.filepathmandatory=(For process file only)
+batcho2c.batcho2capprove.label.remark=Remarks
+batcho2c.batcho2capprove.msg.confirmapprove=Approval cannot be reverted, Are you sure to approve complete batch?
+batcho2c.batcho2capprove.level1heading=Level 1 Batch O2C transfer approval
+batcho2c.batcho2cprocessfile.msg.filesizemissing=File size is missing in Constant property file
+batcho2c.processuploadedfile.error.invalidfile={0} is not a valid file.
+batcho2c.errorlog.label.errorheading=Error log
+
+batcho2c.batcho2capprove.msg.bachprocessfilefailed=File is not valid, {0} records discarded.
+batcho2c.batcho2capprovereject.msg.batchmodify=Batch is already modified by someone else, please reload the data
+batcho2c.batcho2cprocessfile.msg.bachprocessfilesuccessfully=File is uploaded and processed successfully, {0} records processed successfully and {1} records discarded.
+batcho2c.batcho2capprove.msg.bachprocessfilefailedall=No valid record in file for processing, {0} records discarded.
+batcho2c.batcho2capprove.msg.bachprocessfilefailedsuccess=File is uploaded and processed successfullyt, {0} records processed successfully and {1} records discarded.
+
+
+
+
+###########   IAT CORPORATE RESOURCE AFTER BUG FIX ##################
+iatrestrictedsubs.seluserforbulkreg.error.ntwrkprfx=MSISDN prefix not found OR Reciever country short name are not same. 
+iatrestrictedsubs.seluserforbulkreg.error.countryCode=MSISDN does not start with defined country code in system.
+iatrestrictedsubs.seluserforbulkreg.error.msisdnnofilter=Mobile number cannot be filetered now. Please contact System Admin.
+iatrestrictedsubs.associatesubscriberdetails.errorlog.msg.invalidlanguage=Invalid language code as {0}. It is not defined in the System.
+iatrestrictedsubs.associatesubscriberdetails.errorlog.msg.subscriberCodeNull=Employee code is null.
+iatrestrictedsubs.seluserforbulkreg.error.filenotuploaded=File could not be uploaded on the server. Please contact System Admin.
+iatrestrictedsubs.associatesubscriberdetails.errorlog.msg.empcodeinvalid=Employee code length should not be more than {0}.
+iatrestrictedsubs.associatesubscriberdetails.errorlog.msg.empcodenull=Employee code is null.
+iatrestrictedsubs.associatesubscriberdetails.errorlog.msg.empnamenull=Employee name is null
+iatrestrictedsubs.associatesubscriberdetails.errorlog.msg.invalidcode=Invalid country code. Country Code must be {0}.
+iatrestrictedsubs.associatesubscriberdetails.errorlog.msg.invalidcodelength=Invalid country code length.
+
+
+
+batcho2c.processuploadedfile.error.exttxnnumunique=External txn number should be unique
+batcho2c.processuploadedfile.error.exttxndateinvalid=External txn date is invalid
+batcho2c.processuploadedfile.error.invaliddata=Invalid data
+batcho2c.processuploadedfile.error.exttxnmissing=External txn number is missing
+batcho2c.processuploadedfile.error.exttxndatemissing=External txn date is missing
+batcho2c.processuploadedfile.error.exttxnnumnumeric=External txn number should be numeric
+batcho2c.processuploadedfile.error.externalcodeisreq=External code is missing
+batcho2c.processuploadedfile.error.upto2DecimalOnly=Requested quantity for product , should be upto 2 decimal only.
+batcho2c.processuploadedfile.error.qtynonnumeric=Quantity should be non negative value
+batcho2c.processuploadedfile.error.qtynumeric=Quantity should be numeric
+batcho2c.processuploadedfile.error.qtyreq=Quantity is required
+
+
+
+batcho2c.initiatebatchO2Ctransfer.msg.error.exttxnalreadyexists=External txn number already exist
+
+//added by jasmine kaur
+message.management.label.blankmessagecode=Blank Message Code
+message.management.label.requiredmessage1=Message1 should not be Blank
+
+##  Final BUG Fix  ###########
+iatrestrictedsubs.confirmsubsapproval.reject.success=MSISDN successfully rejected.
+iatrestrictedsubs.confirmsubsapproval.discard.success=MSISDN successfully discarded.
+iatrestrictedsubs.scheduletopupdetails.msg.filepathmissing=File path is not defined. Please contact Customer Care.
+iatrestrictedsubs.scheduletopupdetails.msg.notreadable=File does not contain any readable data.
+iatrestrictedsubs.inputmsisdnsforsuspend.err.msg.delnotincons=Delimiter is not defined in constant property file.
+iatrestrictedsubs.viewrestrictedsubs.label.todate.isrequired=To date
+iatrestrictedsubs.viewrestrictedsubs.label.fromdate.isrequired=From Date
+iatrestrictedsubs.scheduletopupdetails.label.servicetype=Service Type
+
+
+##### PVG BUG FIX FOR USER EVENT REMARKS ###
+userreturn.returnproductlist.error.remarksrequired=Remarks should not be blank
+
+
+//Modified by deepika aggarwal: bug fixing for 5.7
+
+domain.addchannelcategory.error.domaincode.alreadyexists=Domain code already exists either in active/inactive state. Please Enter another Domain code.
+domain.addchannelcategory.error.domainname.alreadyexists=Domain name already exists  either in active/inactive state. Please Enter another Domain Name.
+domain.savedomain.error.categorycode.alreadyexists=Category code already exists either in active/inactive state. Please Enter another Category code.
+domain.savedomain.error.categoryname.alreadyexists=Category name already exists either in active/inactive state. Please Enter another Category name.
+
+##Batch O2C Withdraw Comment
+batcho2c.xlsfile.details.msisdn.comment=Mobile number of channel user. If mobile number is not specified then login ID or external code needs to be specified.
+batcho2c.xlsfile.details.loginID.comment=Login ID of channel user. If login ID is not specified then mobile number or external code needs to be specified.
+batcho2c.xlsfile.details.externaltxnnum.comment=External code of channel user. If external code is not specified then mobile number or login ID needs to be specified.
+batcho2c.xlsfile.details.userCategory.comment=User category of the Channel user 
+
+batcho2c.initiateBatchO2CWithdraw.maskmsg.batchname={0} should contain alphanumeric characters only.
+batcho2c.initiateBatchO2CWithdraw.commissionprofile.product.notdefine=Commission profile slab for the requested quantity of this product is not defined.
+
+batcho2c.selectcategoryforbatcho2c.heading=Initiate batch O2C withdraw
+batcho2c.uploado2cbatchorder.heading=Upload batch O2C withdraw file
+
+batcho2c.selectcategoryforbatcho2c.label.geographicaldomain=Geographical domain
+batcho2c.selectcategoryforbatcho2c.label.domain=Channel domain
+batcho2c.selectcategoryforbatcho2c.label.category=User category
+batcho2c.selectcategoryforbatcho2c.label.producttype=Product
+batcho2c.selectcategoryforbatcho2c.label.downloadlist=Click here to download user list
+batcho2c.selectcategoryforbatcho2c.label.downloadtemplate=Click here to download file template
+batcho2c.selectcategoryforbatcho2c.label.batchname=Batch name
+batcho2c.selectcategoryforbatcho2c.label.path=Uploaded file path
+
+############# added by nilesh : bug fixing for 5.7 ################
+master.addslabdetails.error.startgreatertoendrange=from range should not be greater than end range in the same slab
+profile.addcommissionprofile.error.invalidendrange=To range should be greater than or equal to from range of slab {0}
+profile.commissionprofilelist.message.note=Un-check the checkbox to deactivate commission profile, also specify the message to be shown to the users. Also, default commission profile can not be deactivated.
+profile.activationprofiledetail.error.invalidendrange=To range should be greater than or equal to from range of slab {0}
+profile.activationprofiledetail.count.error.invalidendrange=To range should be greater than or equal to from range for slab {0} in total count slabs
+profile.activationprofiledetail.amount.error.invalidendrange=To range should be greater than or equal to from range for slab {0} in total amount slabs
+
+
+channeltrfrule.deletetrfrule.msg.user.fromCategoryExist=User exist under from category. Transfer rule cannot be deleted.
+channeltrfrule.deletetrfrule.msg.deletesuccess.request=Transfer rule deletion request successful.
+channeltrfrule.msg.approved.delete=Transfer rule successfully deleted.
+servicetypeselectormapping.invalid.selectorformat=Please enter a numeric format for selector code
+channeltrfrule.deletetrfrule.msg.deletesuccess.notpossible=deletion is possible only in case of Active/Suspended state.
+
+
+
+
+##############added for bug removal
+button.submit.deactivate=Deactivate
+button.submit.cnfrmDeactivate=Confirm Deactivate
+misfromdatetodatenote.label.note=NOTE: From date should be greater or equal to {0} and to date should be less than or equal to {1}.
+misdailydatenote.label.note=NOTE: Date should be greater or equal to {0} and less than or equal to {1}.
+report.dailydate.range.error.msg=Date should be in the range from {0} to {1}.
+messages.messagesManagement.label.browsebutton=Browse button
+
+messages.messagesManagement.error.ntcodemissing=Network code arguments is missing
+messages.messagesManagement.error.msgargmissing=Message arguments is missing
+messages.messagesManagement.error.defaultmsgmiss=Default message is missing
+messages.messagesManagement.error.msgcodemissing=Message code is missing
+
+messages.errorlog.label.line=Line Number
+messages.errorlog.label.msgcode=Message Code
+messages.errorlog.label.reason=Reason

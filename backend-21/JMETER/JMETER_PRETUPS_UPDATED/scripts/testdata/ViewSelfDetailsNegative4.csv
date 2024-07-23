@@ -1,0 +1,2 @@
+TestcaseId,TestcaseType,Module,Description
+,Negative,View Self Details,"To verify validation message appears ""User ID or Password is incorrec"" when wrong PASSWORD provided"

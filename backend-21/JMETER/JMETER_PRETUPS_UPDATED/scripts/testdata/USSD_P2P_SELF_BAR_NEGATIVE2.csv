@@ -1,0 +1,2 @@
+TestcaseId,TestcaseType,Module,Description
+TUNG13213,Negative,Self Bar,To Verify Self Bar is Not working when Registered Msisdn is passed

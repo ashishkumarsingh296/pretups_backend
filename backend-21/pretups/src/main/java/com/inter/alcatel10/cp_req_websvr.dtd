@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!ELEMENT cp_request (cp_id,cp_transaction_id,op_transaction_id,application,action,user_id)>
+<!ELEMENT cp_id (#PCDATA)>
+<!ELEMENT cp_transaction_id (#PCDATA)>
+<!ELEMENT op_transaction_id (#PCDATA)>
+<!ELEMENT application (#PCDATA)>
+<!ELEMENT action (#PCDATA)>
+<!ELEMENT user_id (#PCDATA)>
+<!ATTLIST user_id type CDATA "MSISDN" >

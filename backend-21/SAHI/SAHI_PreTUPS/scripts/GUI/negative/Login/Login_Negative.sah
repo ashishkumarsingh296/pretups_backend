@@ -1,0 +1,33 @@
+
+
+
+//===== import scripts ===//
+_includeOnce("../../../../utility/ImportPackage.sah");
+_includeOnce("Login_Common_Negative.sah");
+
+// ===== Pre-Condition check ==== //
+// Not applicable 
+
+var $g_NegativeLogin = _readCSVFile("../../negative_testdata/LoginNegativeCases.csv");
+
+
+var $g_row;
+var $g_col;
+
+for($g_row = 1; $g_NegativeLogin[$g_row] != null; $g_row++){
+	$g_col = 0;
+	var $t = _testcase($g_NegativeLogin[$g_row][$g_col++], $g_NegativeLogin[$g_row][$g_col++]);
+	$t.start();
+	variableForNegativeLogin($g_row, $g_col);
+	
+	var $isLogin = negativeLogin();
+	
+	if($isLogin == true){
+		_log("Login into the application ");
+	}
+	
+	$t.end();
+}
+
+
+

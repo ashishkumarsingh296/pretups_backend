@@ -1,0 +1,117 @@
+//#######################################
+//
+// This script to add new Interface
+//
+//#######################################
+
+
+
+_includeOnce("../../../../utility/ImportPackage.sah");
+_includeOnce("../../../GUI/testscripts/Interface_Management/InterfaceManagement_Common.sah"); //For adding new inteface
+
+
+//====================== Pre-requisite check ============================
+_log("Setup", "custom4");
+
+//====Login into Application====
+login($g_appURL, $g_LangEnglish, $g_superAdmin, $g_password, $g_assertMessage); //calls the Login function in Login.sah with the parameters(url, language, username, password, assertion)
+
+
+//==================== To add new service keyword by super admin ==================//
+
+var $g_InterfaceDetails = _readCSVFile("../../../GUI/testdata/Interface_Details.csv"); //Reads the network details
+
+
+
+			for(var $g_row = 1; $g_InterfaceDetails[$g_row] != null; $g_row++){
+			
+					var $g_col = 0;
+					var $temp_testCaseNo = $g_InterfaceDetails[$g_row][$g_col++];
+					var $t = _testcase($temp_testCaseNo, $g_InterfaceDetails[$g_row][$g_col++]);
+					
+					$t.start();
+					
+					if($temp_testCaseNo == "TEST001"){
+						commonVaribleForInterface($g_row, $g_col);
+						addInterface();
+					}
+					
+					else if($temp_testCaseNo == "TEST002"){
+						commonVaribleForInterface($g_row, $g_col);
+						addInterfaceWithoutDetails();
+					}
+					
+					else if($temp_testCaseNo == "TEST003"){
+						commonVaribleForInterface($g_row, $g_col);
+						modifyInterfaceWithoutDetails();
+					}
+					else if($temp_testCaseNo == "TEST004"){
+						commonVaribleForInterface($g_row, $g_col);
+						deleteInterface();
+					}
+					
+					
+					
+					
+					$t.end();
+		}
+		
+		
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    function toCheckDupplicateEntryOfIntyerfaceName() {
+    	
+    	
+    	_log($g_InterfaceDetails[0][0]);
+    	
+    	
+	var $name = $g_InterfaceDetails[6][2];
+    	
+    	_navigateTo("http://172.16.1.121:1818/pretups");
+    	_setValue(_textbox("loginID"), "superadmin");
+    	_setValue(_password("password"), "1357");
+    	_click(_submit("Login"));
+    	_click(_radio("code[1]"));
+    	_click(_submit("Submit"));
+    	_click(_link("Masters"));
+    	_click(_link("Interface management"));
+    	_setSelected(_select("interfaceCategoryCode"), "Postpaid Interface");
+    	_click(_submit("Submit"));
+    	_click(_submit("Add"));
+    	_setSelected(_select("interfaceTypeId"), "CS4 Ericssion Post");
+    	_setValue(_textbox("interfaceDescription"), $name );
+    	_setValue(_textbox("externalId"), "24234");
+    	_setValue(_textbox("valExpiryTime"), "20000");
+    	_setValue(_textbox("topUpExpiryTime"), "10000");
+    	_setValue(_textarea("language1Message"), "asdasdasd");
+    	_setValue(_textarea("language2Message"), "asdasda");
+    	_setSelected(_select("statusCode"), "Active");
+    	_click(_submit("Submit"));
+    	_click(_submit("Confirm"));
+    	_click(_listItem("Interface name already exists"));
+    	_click(_cell("Add service keyword"));
+
+    	
+    	_assertExists(_listItem("Interface name already exists"));
+
+    	
+
+    		
+	}
+
+
+
+
+

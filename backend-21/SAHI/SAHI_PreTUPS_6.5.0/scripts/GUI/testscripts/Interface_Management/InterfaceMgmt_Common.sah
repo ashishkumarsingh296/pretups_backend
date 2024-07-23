@@ -1,0 +1,378 @@
+
+
+_includeOnce("../../../../utility/ImportPackage.sah");
+
+var $g_interfaceCategory;
+var $g_interfaceType;
+var $g_interfaceName;
+var $g_externalID;
+var $g_validityExpiry;
+var $g_topUpExpiry;
+var $g_language1;
+var $g_language2;
+var $g_status;
+
+// For Service Class 
+var $g_serviceClassCode;
+var $g_serviceClassName;
+var $g_P2PSenderAllowed;
+var $g_P2PReceiverAllowed;
+var $g_P2PReceiverAllowed;
+
+var $l_serviceClassName;
+
+var $error = false;
+
+
+function commonVariableForNewInterface($a_row, $a_column) {
+	
+	$g_interfaceCategory = $g_InterfaceDetails[$a_row][$a_column++];
+	$g_interfaceType = $g_InterfaceDetails[$a_row][$a_column++];
+	$g_interfaceName = interfaceName($g_autoPrefix);
+	$g_externalID = varriableExternalID();
+	$g_validityExpiry = $g_InterfaceDetails[$a_row][$a_column++];
+	$g_topUpExpiry = $g_InterfaceDetails[$a_row][$a_column++];
+	$g_language1 = $g_InterfaceDetails[$a_row][$a_column++];
+	$g_language2 = $g_InterfaceDetails[$a_row][$a_column++];
+	$g_status = $g_InterfaceDetails[$a_row][$a_column++];
+}
+
+
+function addViewModifyInterface() {
+	var $l_row = 1;
+	var $l_col = 0;
+	var $t1 = _testcase($g_InterfaceDetails[$l_row][$l_col++], $g_InterfaceDetails[$l_row][$l_col++]);
+	$t1.start();
+	commonVariableForNewInterface($l_row,$l_col);
+	var $l_error = addInterface();
+	
+	if($l_error == true){
+		var $l_naCsv = _readCSVFile("../../../GUI/testdata/NA_Login.csv");
+		$l_naCsv[13][1] = $g_interfaceCategory;
+		$l_naCsv[13][2] = $g_interfaceType;
+		$l_naCsv[13][3] = $g_interfaceName;
+		_writeCSVFile($l_naCsv, "../../../GUI/testdata/NA_Login.csv", 1); // Writes the newly created Channel User in a csv file.
+		_click(_link($g_LinkLogout));
+		_log("Interface is added successfully");
+	}
+	
+	$t1.end();
+	_closeBrowser();
+	_wait(1000);
+	_openBrowser();
+	
+	
+// ================= Try to view the newly added interface ================== //
+	 $l_row = 2;
+	 $l_col = 0;
+	login($g_appURL, $g_LangEnglish, $g_superAdmin, $g_password, $g_assertMessage); // Login into the application with super Admin 
+	var $t2 = _testcase($g_InterfaceDetails[$l_row][$l_col++], $g_InterfaceDetails[$l_row][$l_col++]);
+	$t2.start();
+	var $error = viewInterface($g_interfaceCategory, $g_interfaceName);
+	if($error == true)
+		_log("Successfully view the newly added Interface");
+	
+	$t2.end();
+	_closeBrowser();
+	_wait(1000);
+	_openBrowser();
+	
+// ================= Try to modify the newly added service keyword ================== //
+	 $l_row = 3;
+	 $l_col = 0;
+	login($g_appURL, $g_LangEnglish, $g_superAdmin, $g_password, $g_assertMessage); // Login into the application with super Admin 
+	var $t3 = _testcase($g_InterfaceDetails[$l_row][$l_col++], $g_InterfaceDetails[$l_row][$l_col++]);
+	$t3.start();
+	$l_col = $l_col+2;
+	$g_validityExpiry = $g_InterfaceDetails[$l_row][$l_col];
+	_log("shashi " + $g_validityExpiry);
+	var $error = modifyInterface1($g_interfaceCategory, $g_interfaceName);//Name changed by fiza as same function was being called for Service Class Modification
+	if($error == true)
+		_log("Successfully modified the newly added interface");
+	$t3.end();
+	_closeBrowser();
+	
+	
+}
+
+
+
+function addInterface() {
+	
+	
+	$error = dbFetchExternaIDAndInterfaceName($g_externalID, $g_interfaceName);
+	if($error == false)
+	{	
+		_log("Interface name or External ID is already existing  ");
+		return;
+	}	
+		
+	_click(_link("Masters"));
+	_click(_link("Interface management"));
+	_assertExists(_div("Select interface category"));
+	_setSelected(_select("interfaceCategoryCode"), $g_interfaceCategory);
+	_click(_submit($g_BtnSubmit));
+	_assertExists(_div("Interface list"));
+	_click(_submit($g_BtnAdd));
+	_setSelected(_select("interfaceTypeId"), $g_interfaceType);
+	_setValue(_textbox("interfaceDescription"), $g_interfaceName);
+	_setValue(_textbox("externalId"), $g_externalID);
+	_setValue(_textbox("valExpiryTime"), $g_validityExpiry);
+	_setValue(_textbox("topUpExpiryTime"), $g_topUpExpiry);
+	_setValue(_textarea("language1Message"), $g_language1);
+	_setValue(_textarea("language2Message"), $g_language2);
+	_setSelected(_select("statusCode"), $g_status);
+	_click(_submit($g_BtnSubmit));
+	_click(_submit($g_BtnConfirm));
+
+	_assertExists(_listItem("/"+"added successfully" + ".*/"));
+	if(_exists(_listItem("/"+"added successfully" + ".*/"))){
+		return true;
+	}	
+	else{
+		_log("Interface has not been added successfully");
+		return false;
+	}
+}
+
+
+
+function viewInterface($g_interfaceCategory, $g_interfaceName) {
+	_click(_link("Masters"));
+	_click(_link("Interface management"));
+	_assertExists(_div("Select interface category"));
+	_setSelected(_select("interfaceCategoryCode"), $g_interfaceCategory);
+	_click(_submit($g_BtnSubmit));
+
+	_assertExists(_cell($g_interfaceName, _near(_cell("Interface name"))));
+	if(_exists(_cell($g_interfaceName, _near(_cell("Interface name"))))){
+		_click(_submit("back"));
+		return true;
+	}
+}
+
+function modifyInterface1($g_interfaceCategory, $g_interfaceName) {
+	//Name changed by fiza as same function was being called for Service Class Modification
+	_click(_link("Masters"));
+	_click(_link("Interface management"));
+	_assertExists(_div("Select interface category"));
+	_setSelected(_select("interfaceCategoryCode"), $g_interfaceCategory);
+	_click(_submit($g_BtnSubmit));
+	_click(_radio("radioIndex", _near(_cell($g_interfaceName))));
+	_click(_submit("Modify"));
+	_setValue(_textbox("valExpiryTime"), $g_validityExpiry );
+	_click(_submit($g_BtnSubmit));
+	_click(_submit($g_BtnConfirm));
+	_assertExists(_listItem("/"+"modified successfully"+".*/"));
+	if(_exists(_listItem("/"+"modified successfully"+".*/"))){
+		return true;
+	}
+	
+}
+
+
+
+function varriableExternalID(){
+	 
+	$l_time = currentTime();
+	var $keyword = "IN"+ $l_time; //AUTONAcurrentTime
+	 return $keyword;
+ }
+
+
+
+function interfaceName($g_autoPrefix){
+	 $l_time = currentTime(); // fetch current time(CurretnTime)
+	 $l_networkName = $g_autoPrefix + "IN" + $l_time; //AUTONAcurrentTime
+	 return $l_networkName;
+}
+
+function serviceClassName($g_autoPrefix){
+	 $l_time = currentTime(); // fetch current time(CurretnTime)
+	 $l_networkName = $g_autoPrefix + "SER" + $l_time; //AUTONAcurrentTime
+	 return $l_networkName;
+}
+
+
+function genServiceClassCode($a_autoPrefix){
+	var $l_umCsv = _readCSVFile("../../../GUI/testdata/UserManagement_CreateNA.csv");
+	var $l_serviceClassCode1 =  $l_umCsv[1][27];
+	var $l_serviceClassCode;
+	var $l_serviceClassCode2;
+	$l_serviceClassCode = parseInt($l_serviceClassCode1);
+	$l_serviceClassCode = $l_serviceClassCode + 1;
+	$l_serviceClassCode = $l_serviceClassCode.toString();
+	$l_serviceClassCode2 = $a_autoPrefix + $l_serviceClassCode; //AUTO800
+	
+	$l_umCsv[1][27] = $l_serviceClassCode;
+	_writeCSVFile($l_umCsv, "../../../GUI/testdata/UserManagement_CreateNA.csv", 1);
+	
+	
+		return $l_serviceClassCode2;
+}
+
+
+
+
+ // =================== To add, view and modify new service class  ========================= //
+
+function addViewModifyServiceClass(){
+	
+	var $t1 = _testcase("TEST060", "Super admin login into application and add a service class for an interface ");
+	$t1.start();
+	commonVariableForServiceClass($l_row,$l_col);
+	var $l_error = addServiceClass();
+	
+	if($l_error == true){
+		var $l_naCsv = _readCSVFile("../../../GUI/testdata/NA_Login.csv");
+		$l_naCsv[13][4] = $g_serviceClassName;
+		_writeCSVFile($l_naCsv, "../../../GUI/testdata/NA_Login.csv", 1); // Writes the newly created Channel User in a csv file.
+		_click(_link($g_LinkLogout));
+		_log("New Service has been added successfully");
+	}
+	
+	$t1.end();
+	_closeBrowser();
+	_wait(1000);
+	_openBrowser();
+	
+	
+	
+	// ======================= Try to view the newly added service class ============================ //
+
+	login($g_appURL, $g_LangEnglish, $g_superAdmin, $g_password, $g_assertMessage); // Login into the application with super Admin 
+	var $t2 = _testcase("TEST061", "Given super admin login into application and try to view newly added service class");
+	$t2.start();
+	var $error = viewServiceClass($g_serviceClassName );
+	if($error == true)
+		_log("Successfully view the newly added added service class");
+	
+	$t2.end();
+	_closeBrowser();
+	_wait(1000);
+	_openBrowser();
+
+	// ================= Try to modify the newly added service keyword ================== //
+	
+	login($g_appURL, $g_LangEnglish, $g_superAdmin, $g_password, $g_assertMessage); // Login into the application with super Admin 
+	var $t3 = _testcase("TEST062", "Given super admin login into application and try to modify serivice class");
+	$t3.start();
+	$l_serviceClassName = $g_serviceClassName;
+	
+	$l_serviceClassName= $l_serviceClassName.toString() + "M";
+	
+	_log("shashi 909898" + $l_serviceClassName);
+	
+	var $error = modifyInterface($g_serviceClassName, $l_serviceClassName);
+	if($error == true)
+		_log("Successfully modified the newly added interface");
+	$t3.end();
+	_closeBrowser();	
+	
+	
+	
+
+	
+}
+
+function commonVariableForServiceClass(){
+	
+	var $l_naCsv = _readCSVFile("../../../GUI/testdata/NA_Login.csv");
+	
+	$g_interfaceCategory = $l_naCsv[13][1];
+	$g_interfaceType = $l_naCsv[13][2];
+	$g_interfaceName = $l_naCsv[13][3];
+	
+	$g_serviceClassCode = genServiceClassCode($g_autoPrefix);
+	$g_serviceClassName = serviceClassName($g_autoPrefix);;
+	
+	$g_P2PSenderAllowed = $g_P2PReceiverAllowed = $g_P2PReceiverAllowed = "ALL";
+	
+}
+
+
+
+function addServiceClass() {
+	
+	$error = dbFetchServiceClassCodeAndServiceClassName($g_serviceClassCode, $g_serviceClassName);
+	
+	if($error == false)
+	{	
+		_log("Service Class Code  or Service class name is already existing  ");
+		return;
+	}	
+		
+	_click(_link("Masters"));
+	_click(_link("Service class management"));
+	_assertExists(_div("Select interface"));
+	_setSelected(_select("interfaceCategory"), $g_interfaceCategory);
+	_setSelected(_select("interfaceType"), $g_interfaceType);
+	_setSelected(_select("interfaceCode"), $g_interfaceName);
+	_click(_submit("Submit"));
+	_click(_submit("Add"));
+	_setValue(_textbox("serviceClassCode"), $g_serviceClassCode);
+	_setValue(_textbox("serviceClassName"), $g_serviceClassName);
+	_setSelected(_select("status"), "Active");
+	_click(_checkbox("p2pSenderSuspend"));
+	_click(_checkbox("p2pReceiverSuspend"));
+	_setValue(_textbox("p2pSenderAllowedStatus"),$g_P2PSenderAllowed );
+	_setValue(_textbox("p2pReceiverAllowedStatus"), $g_P2PReceiverAllowed);
+	_setValue(_textbox("c2sReceiverAllowedStatus"), $g_P2PReceiverAllowed);
+	_click(_checkbox("c2sReceiverSuspend"));
+	_click(_submit($g_BtnAdd));
+	_click(_submit($g_BtnConfirm));
+	
+	_assertExists(_listItem("/"+"Service class added successfully" + ".*/"));
+	if(_exists(_listItem("/"+"Service class added successfully"+ ".*/"))){
+		return true;
+	}	
+	else{
+		_log("Service Class  has not been added successfully");
+		return false;
+	}
+}
+
+function viewServiceClass($g_serviceClassName) {
+	
+
+	_click(_link("Masters"));
+	_click(_link("Service class management"));
+	_assertExists(_div("Select interface"));
+	_setSelected(_select("interfaceCategory"), $g_interfaceCategory);
+	_setSelected(_select("interfaceType"), $g_interfaceType);
+	_setSelected(_select("interfaceCode"), $g_interfaceName);
+	_click(_submit("Submit"));
+	_assertExists(_div("Service class details"));
+	_assertExists(_cell($g_serviceClassName, _near(_cell("Service class name"))));
+	if(_exists(_cell($g_serviceClassName, _near(_cell("Service class name"))))) {
+		_click(_submit("back"));
+		return true;
+	}
+	
+}
+
+
+
+function modifyInterface($g_serviceClassName, $l_serviceClassName) {
+	
+	_click(_link("Masters"));
+	_click(_link("Service class management"));
+	_assertExists(_div("Select interface"));
+	_setSelected(_select("interfaceCategory"), $g_interfaceCategory);
+	_setSelected(_select("interfaceType"), $g_interfaceType);
+	_setSelected(_select("interfaceCode"), $g_interfaceName);
+	_click(_submit("Submit"));
+	_assertExists(_div("Service class details"));
+	_click(_radio("radioIndex", _near(_cell($g_serviceClassName))));
+	_click(_submit("Modify"));
+	_setValue(_textbox("serviceClassName"), $l_serviceClassName);
+	_click(_submit("Modify"));
+	_click(_submit($g_BtnConfirm));
+	_assertExists(_listItem("/" + "Service class modified successfully" + ".*/"));
+	
+	if(_exists(_listItem("/" + "Service class modified successfully" + ".*/"))){
+		return true;
+	}
+	
+}
+

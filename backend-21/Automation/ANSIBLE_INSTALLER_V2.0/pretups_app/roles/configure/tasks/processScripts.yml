@@ -1,0 +1,20 @@
+---
+ - name: list of the .sh files and store it in register
+   command: chdir={{ Tomcat_Path }}/webapps/pretups/WEB-INF/pretups_scripts find -type f -name "*.sh"
+   register: SH_FILES
+   tags:
+     - SHFILENAME
+
+ - name: print SH_FILES
+   debug: msg="SH_FILES is {{ SH_FILES.stdout }}"
+   tags:
+     - SHFILENAME
+
+ - name: "let's make it work: processScripts.yml: replace the variable with the concrete value: TOMCAT_PATH"
+#   shell: sed -i 's/<Tomcat-Path>/{{ SED_VARIABLE }}/g' *.sh chdir={{ Tomcat_Path }}/webapps/pretups/WEB-INF/pretups_scripts/
+   replace: dest={{ Tomcat_Path }}/webapps/pretups/WEB-INF/pretups_scripts/{{ item.split('./')|last }}  regexp='^(.*)<Tomcat-Path>(.*)$' replace='\1{{ Tomcat_Path }}\2'
+#   replace: dest="{{ Tomcat_Path }}"/webapps/pretups/WEB-INF/pretups_scripts/*.sh  regexp='^(.*)<Tomcat-Path>(.*)$' replace='\1{{ Tomcat_Path }}\2'
+   with_items: "{{ SH_FILES.stdout_lines }}"
+   tags:
+     - SHFILENAME
+

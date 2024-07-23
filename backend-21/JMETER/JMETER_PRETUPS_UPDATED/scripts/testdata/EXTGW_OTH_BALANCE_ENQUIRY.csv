@@ -1,0 +1,21 @@
+TestcaseId,TestcaseType,Module,Description
+,P,Other User Balance Enquiry,To verify that other user balance enquiry is successful with MSISDN and PIN
+,P,Other User Balance Enquiry,To verify that other user balance enquiry is successful with EXTCODE
+,P,Other User Balance Enquiry,To verify that other user balance enquiry is successful with LoginID and Password
+,P,Other User Balance Enquiry,To verify that other user balance enquiry is successful with MSISDN EXTCODE and LoginID
+,P,Other User Balance Enquiry,To verify that other user balance enquiry is successful with MSISDN and LoginID combination
+,P,Other User Balance Enquiry,To verify that other user balance enquiry is successful with EXTCODE and LoginID combination
+,P,Other User Balance Enquiry,To verify that other user balance enquiry is successful with EXTCODE and MSISDN combination
+,P,Other User Balance Enquiry,To verify that other user balance enquiry is successful in case user enters self MSISDN in MSISDN2 tag
+,N,Other User Balance Enquiry,To verify that other user balance enquiry is not successful when invalid PIN is entered with valid MSISDN Login ID and EXTCODE
+,N,Other User Balance Enquiry,To verify that other user balance enquiry is not successful when invalid LoginID is entered with valid MSISDN PIN Password and EXTCODE
+,N,Other User Balance Enquiry,To verify that other user balance enquiry is not successful when invalid EXTCODE is entered with valid MSISDN PIN Password and LoginID
+,N,Other User Balance Enquiry,To verify that other user balance enquiry is not successful when invalid MSISDN2 is entered with valid MSISDN  LoginID and EXTCODE
+,N,Other User Balance Enquiry,To verify that other user balance enquiry is not successful when invalid MSISDN is entered with valid PIN  LoginID Password and EXTCODE
+,N,Other User Balance Enquiry,To verify that other user balance enquiry is not successful when MSISDN tag is blank
+,N,Other User Balance Enquiry,To verify that other user balance enquiry is not successful when PIN tag is blank
+,N,Other User Balance Enquiry,To verify that other user balance enquiry is not successful when Password tag is blank
+,N,Other User Balance Enquiry,To verify that other user balance enquiry is not successful when LoginID tag is blank
+,N,Other User Balance Enquiry,To verify that other user balance enquiry is not successful when all tags MSISDN  LoginID EXTCODE blank
+,N,Other User Balance Enquiry,To verify that other user balance enquiry is not successful when lower hierarchy user try to enquire for upper hierarchy user balance
+,N,Other User Balance Enquiry,To verify that other user balance enquiry is not successful when user try to enquire for other hierarchy user and other domain user balance

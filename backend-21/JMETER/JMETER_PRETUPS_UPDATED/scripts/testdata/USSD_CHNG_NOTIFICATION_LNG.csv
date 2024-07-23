@@ -1,0 +1,6 @@
+TestcaseId,TestcaseType,Module,Description
+TUNG12824,Positive,Change notification language,To verfy that user is able to change the notification language by entering all mandatory fields.
+TUNG12826,Negative,Change notification language,To verify that error is displayed when invalid language code is added
+TUNG12827,Negative,Change notification language,To verify that error is displayed when MSISDN is blank
+TUNG12828,Negative,Change notification language,To verify that error is displayed when invalid MSISDN is added
+TUNG12829,Negative,Change notification language,To verify that error is displayed when invalid PIN is added

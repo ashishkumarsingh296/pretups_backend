@@ -1,0 +1,396 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jmeterTestPlan version="1.2" properties="2.7" jmeter="2.12 r1636949">
+  <hashTree>
+    <TestPlan guiclass="TestPlanGui" testclass="TestPlan" testname="Test Plan" enabled="true">
+      <stringProp name="TestPlan.comments"></stringProp>
+      <boolProp name="TestPlan.functional_mode">false</boolProp>
+      <boolProp name="TestPlan.serialize_threadgroups">true</boolProp>
+      <elementProp name="TestPlan.user_defined_variables" elementType="Arguments" guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+        <collectionProp name="Arguments.arguments"/>
+      </elementProp>
+      <stringProp name="TestPlan.user_define_classpath"></stringProp>
+    </TestPlan>
+    <hashTree>
+      <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+        <collectionProp name="HeaderManager.headers">
+          <elementProp name="" elementType="Header">
+            <stringProp name="Header.name">content-type</stringProp>
+            <stringProp name="Header.value">application/json</stringProp>
+          </elementProp>
+          <elementProp name="" elementType="Header">
+            <stringProp name="Header.name">accept</stringProp>
+            <stringProp name="Header.value">application/json</stringProp>
+          </elementProp>
+        </collectionProp>
+      </HeaderManager>
+      <hashTree/>
+      <Arguments guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+        <collectionProp name="Arguments.arguments">
+          <elementProp name="host" elementType="Argument">
+            <stringProp name="Argument.name">host</stringProp>
+            <stringProp name="Argument.value">127.0.0.1</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+            <stringProp name="Argument.desc">Server Domain  IP Address</stringProp>
+          </elementProp>
+          <elementProp name="port" elementType="Argument">
+            <stringProp name="Argument.name">port</stringProp>
+            <stringProp name="Argument.value">8007</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+            <stringProp name="Argument.desc">Server Port which listen for request</stringProp>
+          </elementProp>
+          <elementProp name="protocol" elementType="Argument">
+            <stringProp name="Argument.name">protocol</stringProp>
+            <stringProp name="Argument.value">http</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+            <stringProp name="Argument.desc">Protocol for sending request</stringProp>
+          </elementProp>
+          <elementProp name="path" elementType="Argument">
+            <stringProp name="Argument.name">path</stringProp>
+            <stringProp name="Argument.value">/pretups/rest/common/rest-controller/</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+            <stringProp name="Argument.desc">URL for common rest controller</stringProp>
+          </elementProp>
+          <elementProp name="loginID" elementType="Argument">
+            <stringProp name="Argument.name">loginID</stringProp>
+            <stringProp name="Argument.value">superadmin</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+            <stringProp name="Argument.desc">login id of the user who is performing action</stringProp>
+          </elementProp>
+          <elementProp name="password" elementType="Argument">
+            <stringProp name="Argument.name">password</stringProp>
+            <stringProp name="Argument.value">1357</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+            <stringProp name="Argument.desc">password of the user who is performing action</stringProp>
+          </elementProp>
+          <elementProp name="dataLoginID" elementType="Argument">
+            <stringProp name="Argument.name">dataLoginID</stringProp>
+            <stringProp name="Argument.value">superadmin</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+            <stringProp name="Argument.desc">Login ID of the user for which action has been taken</stringProp>
+          </elementProp>
+          <elementProp name="type1" elementType="Argument">
+            <stringProp name="Argument.name">type1</stringProp>
+            <stringProp name="Argument.value">VIEWSELFDETAILS</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+            <stringProp name="Argument.desc">File type which has to process</stringProp>
+          </elementProp>
+          <elementProp name="externalCode" elementType="Argument">
+            <stringProp name="Argument.name">externalCode</stringProp>
+            <stringProp name="Argument.value"></stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+            <stringProp name="Argument.desc">External code of the user who is  performing operation</stringProp>
+          </elementProp>
+          <elementProp name="CSV path" elementType="Argument">
+            <stringProp name="Argument.name">CSV path</stringProp>
+            <stringProp name="Argument.value">D:/CSV</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+            <stringProp name="Argument.desc">Test Data Path</stringProp>
+          </elementProp>
+          <elementProp name="ViewSelfDetailsNegativeResultcsv" elementType="Argument">
+            <stringProp name="Argument.name">ViewSelfDetailsNegativeResultcsv</stringProp>
+            <stringProp name="Argument.value">D:/CSV/ViewSelfDetailsNegativeResult${__time(ddMMyyyyHHmmss,)}.csv</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+            <stringProp name="Argument.desc">Test Result Path for Negative Cases</stringProp>
+          </elementProp>
+          <elementProp name="ViewSelfDetailsPositiveResultcsv" elementType="Argument">
+            <stringProp name="Argument.name">ViewSelfDetailsPositiveResultcsv</stringProp>
+            <stringProp name="Argument.value">D:/CSV/ViewSelfDetailsPositiveResult${__time(ddMMyyyyHHmmss,)}.csv</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+            <stringProp name="Argument.desc">Test Result Path for Positive Cases</stringProp>
+          </elementProp>
+        </collectionProp>
+      </Arguments>
+      <hashTree/>
+      <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="true">
+        <boolProp name="ResultCollector.error_logging">false</boolProp>
+        <objProp>
+          <name>saveConfig</name>
+          <value class="SampleSaveConfiguration">
+            <time>true</time>
+            <latency>true</latency>
+            <timestamp>true</timestamp>
+            <success>true</success>
+            <label>true</label>
+            <code>true</code>
+            <message>true</message>
+            <threadName>true</threadName>
+            <dataType>true</dataType>
+            <encoding>false</encoding>
+            <assertions>true</assertions>
+            <subresults>true</subresults>
+            <responseData>false</responseData>
+            <samplerData>false</samplerData>
+            <xml>false</xml>
+            <fieldNames>false</fieldNames>
+            <responseHeaders>false</responseHeaders>
+            <requestHeaders>false</requestHeaders>
+            <responseDataOnError>false</responseDataOnError>
+            <saveAssertionResultsFailureMessage>false</saveAssertionResultsFailureMessage>
+            <assertionsResultsToSave>0</assertionsResultsToSave>
+            <bytes>true</bytes>
+            <threadCounts>true</threadCounts>
+          </value>
+        </objProp>
+        <stringProp name="filename"></stringProp>
+      </ResultCollector>
+      <hashTree/>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="View Self Details Positive Scenario" enabled="true">
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+          <stringProp name="LoopController.loops">1</stringProp>
+        </elementProp>
+        <stringProp name="ThreadGroup.num_threads">1</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">1</stringProp>
+        <longProp name="ThreadGroup.start_time">1484112441000</longProp>
+        <longProp name="ThreadGroup.end_time">1484112441000</longProp>
+        <boolProp name="ThreadGroup.scheduler">false</boolProp>
+        <stringProp name="ThreadGroup.duration"></stringProp>
+        <stringProp name="ThreadGroup.delay"></stringProp>
+      </ThreadGroup>
+      <hashTree>
+        <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="CSV Data set config" enabled="true">
+          <stringProp name="filename">${CSV path}/ViewSelfDetailsPositive.csv</stringProp>
+          <stringProp name="fileEncoding"></stringProp>
+          <stringProp name="variableNames"></stringProp>
+          <stringProp name="delimiter">,</stringProp>
+          <boolProp name="quotedData">false</boolProp>
+          <boolProp name="recycle">true</boolProp>
+          <boolProp name="stopThread">false</boolProp>
+          <stringProp name="shareMode">shareMode.all</stringProp>
+        </CSVDataSet>
+        <hashTree/>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="View Self Details" enabled="true">
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">{&quot;loginId&quot;:&quot;${loginID}&quot;,&quot;password&quot;:&quot;${password}&quot;,&quot;data&quot;:{&quot;loginId&quot;:&quot;${dataLoginID}&quot;},&quot;type&quot;:&quot;${type1}&quot;,&quot;externalCode&quot;:&quot;${externalCode}&quot;}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">${host}</stringProp>
+          <stringProp name="HTTPSampler.port">${port}</stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          <stringProp name="HTTPSampler.protocol">${protocol}</stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">${path}</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <boolProp name="HTTPSampler.monitor">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree/>
+        <BeanShellPostProcessor guiclass="TestBeanGUI" testclass="BeanShellPostProcessor" testname="Result Writer" enabled="true">
+          <boolProp name="resetInterpreter">false</boolProp>
+          <stringProp name="parameters"></stringProp>
+          <stringProp name="filename"></stringProp>
+          <stringProp name="script">import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.JSONArray;
+import java.util.List;
+import org.apache.jmeter.util.JMeterUtils;
+
+
+
+String jsonString = prev.getResponseDataAsString();
+
+JSONObject jsonObject = new JSONObject();
+JSONParser jsonParser = new JSONParser();
+
+
+
+
+jsonObject = (JSONObject) jsonParser.parse(jsonString);
+String statusCodeReq = jsonObject.get(&quot;statusCode&quot;).toString();
+String status = jsonObject.get(&quot;status&quot;).toString();
+
+
+
+String statusCode = &quot;&quot;;
+if(statusCodeReq.equalsIgnoreCase(&quot;400&quot;) &amp;&amp; status.equalsIgnoreCase(&quot;false&quot;)){
+	statusCode = &quot;FAIL&quot;;
+}else{
+	statusCode = &quot;PASS&quot;;
+}
+
+
+
+
+String TestCaseID = vars.get(&quot;TestcaseId&quot;);//argument name must be same as defined in csv file
+String Module = vars.get(&quot;Module&quot;);//argument name must be same as defined in csv file
+String Description = vars.get(&quot;Description&quot;);//argument name must be same as defined in csv file
+String CsvRequest = vars.get(&quot;CsvRequest&quot;);
+
+
+
+PrintData=&quot;Test case ID:&quot;+TestCaseID+&quot;|Module:&quot;+Module+&quot;|Description:&quot;+Description+&quot;|Request:&quot;+CsvRequest+&quot;|Response:&quot;+jsonString+&quot;|Status:&quot;+statusCode;
+
+
+log.info(PrintData);
+String resultcsvpath = vars.get(&quot;ViewSelfDetailsPositiveResultcsv&quot;);
+f = new FileOutputStream(resultcsvpath,  true);
+p = new PrintStream(f); 
+
+
+this.interpreter.setOut(p); 
+
+
+print(PrintData);
+f.close();
+
+
+
+
+
+
+
+</stringProp>
+        </BeanShellPostProcessor>
+        <hashTree/>
+        <BeanShellPreProcessor guiclass="TestBeanGUI" testclass="BeanShellPreProcessor" testname="Request Reader" enabled="true">
+          <stringProp name="filename"></stringProp>
+          <stringProp name="parameters"></stringProp>
+          <boolProp name="resetInterpreter">false</boolProp>
+          <stringProp name="script">//-- SKD
+// -- updating the variables
+var sampler = ctx.getCurrentSampler();
+var Arguments = sampler.getArguments();
+vars.put(&quot;CsvRequest&quot;,&quot;Request&quot;+Arguments);</stringProp>
+        </BeanShellPreProcessor>
+        <hashTree/>
+      </hashTree>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="View Self Details Negative Scenario" enabled="true">
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+          <stringProp name="LoopController.loops">7</stringProp>
+        </elementProp>
+        <stringProp name="ThreadGroup.num_threads">1</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">1</stringProp>
+        <longProp name="ThreadGroup.start_time">1484116352000</longProp>
+        <longProp name="ThreadGroup.end_time">1484116352000</longProp>
+        <boolProp name="ThreadGroup.scheduler">false</boolProp>
+        <stringProp name="ThreadGroup.duration"></stringProp>
+        <stringProp name="ThreadGroup.delay"></stringProp>
+      </ThreadGroup>
+      <hashTree>
+        <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="CSV Data set config" enabled="true">
+          <stringProp name="filename">${CSV path}/ViewSelfDetailsNegative.csv</stringProp>
+          <stringProp name="fileEncoding"></stringProp>
+          <stringProp name="variableNames"></stringProp>
+          <stringProp name="delimiter">,</stringProp>
+          <boolProp name="quotedData">false</boolProp>
+          <boolProp name="recycle">true</boolProp>
+          <boolProp name="stopThread">false</boolProp>
+          <stringProp name="shareMode">shareMode.all</stringProp>
+        </CSVDataSet>
+        <hashTree/>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="View Self Details" enabled="true">
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">{&quot;loginId&quot;:&quot;${loginID}&quot;,&quot;password&quot;:&quot;${password}&quot;,&quot;data&quot;:{&quot;loginId&quot;:&quot;${dataLoginID}&quot;},&quot;type&quot;:&quot;${type1}&quot;,&quot;externalCode&quot;:&quot;${externalCode}&quot;}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">${host}</stringProp>
+          <stringProp name="HTTPSampler.port">${port}</stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          <stringProp name="HTTPSampler.protocol">${protocol}</stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">${path}</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <boolProp name="HTTPSampler.monitor">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree/>
+        <BeanShellPostProcessor guiclass="TestBeanGUI" testclass="BeanShellPostProcessor" testname="Result Writer" enabled="true">
+          <boolProp name="resetInterpreter">false</boolProp>
+          <stringProp name="parameters"></stringProp>
+          <stringProp name="filename"></stringProp>
+          <stringProp name="script">import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.JSONArray;
+import java.util.Set;
+import org.apache.jmeter.util.JMeterUtils;
+
+
+String jsonString = prev.getResponseDataAsString();
+
+JSONObject jsonObject = new JSONObject();
+JSONParser jsonParser = new JSONParser();
+
+jsonObject = (JSONObject) jsonParser.parse(jsonString);
+String statusCodeReq = jsonObject.get(&quot;statusCode&quot;).toString();
+String status = jsonObject.get(&quot;status&quot;).toString();
+
+
+
+String statusCode = &quot;&quot;;
+if(statusCodeReq.equalsIgnoreCase(&quot;400&quot;) &amp;&amp; status.equalsIgnoreCase(&quot;false&quot;)){
+	statusCode = &quot;FAIL&quot;;
+}else{
+	statusCode = &quot;PASS&quot;;
+}
+
+
+String TestCaseID = vars.get(&quot;TestcaseId&quot;);//argument name must be same as defined in csv file
+String Module = vars.get(&quot;Module&quot;);//argument name must be same as defined in csv file
+String Description = vars.get(&quot;Description&quot;);//argument name must be same as defined in csv file
+String CsvRequest = vars.get(&quot;CsvRequest&quot;);
+
+
+
+PrintData=&quot;Test case ID:&quot;+TestCaseID+&quot;|Module:&quot;+Module+&quot;|Description:&quot;+Description+&quot;|Request:&quot;+CsvRequest+&quot;|Response:&quot;+jsonString+&quot;|Status:&quot;+statusCode;
+
+
+log.info(PrintData);
+String resultcsvpath = vars.get(&quot;ViewSelfDetailsNegativeResultcsv&quot;);
+f = new FileOutputStream(resultcsvpath,  true);
+p = new PrintStream(f); 
+
+this.interpreter.setOut(p); 
+
+
+print(PrintData);
+f.close();
+
+
+
+
+
+
+
+</stringProp>
+        </BeanShellPostProcessor>
+        <hashTree/>
+        <BeanShellPostProcessor guiclass="TestBeanGUI" testclass="BeanShellPostProcessor" testname="Request Reader" enabled="true">
+          <boolProp name="resetInterpreter">false</boolProp>
+          <stringProp name="parameters"></stringProp>
+          <stringProp name="filename"></stringProp>
+          <stringProp name="script">//-- SKD
+// -- updating the variables
+var sampler = ctx.getCurrentSampler();
+var Arguments = sampler.getArguments();
+vars.put(&quot;CsvRequest&quot;,&quot;Request&quot;+Arguments);</stringProp>
+        </BeanShellPostProcessor>
+        <hashTree/>
+      </hashTree>
+    </hashTree>
+  </hashTree>
+</jmeterTestPlan>

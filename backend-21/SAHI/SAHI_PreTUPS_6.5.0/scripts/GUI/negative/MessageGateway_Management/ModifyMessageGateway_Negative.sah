@@ -1,0 +1,64 @@
+//#######################################
+//
+// This script is to add negative cases while try to modify Message Gateway 
+//
+//#######################################
+
+
+
+_includeOnce("../../../../utility/ImportPackage.sah");
+_includeOnce("MessageGateway_Common_Negative.sah"); //For modfication of message gateway
+
+var $l_naCsv = _readCSVFile("../../../GUI/testdata/NA_Login.csv"); 
+
+//====Login into Application====
+login($g_appURL, $g_LangEnglish, $g_superAdmin, $g_password, $g_assertMessage); //calls the Login function in Login.sah with the parameters(url, language, username, password, assertion)
+
+
+// Select the Message gateway which is to be modified.
+
+_log("Setup", "custom4");
+
+
+
+_log("shashi " + $l_naCsv[0][0]);
+
+//var $l_messageGatewayName = $l_naCsv[18][1];
+
+//_log("shashi " + $l_messageGatewayName );
+
+//selectMessageGatewayForModification($l_messageGatewayName);
+
+//=============== Modify Message Gateway ===============================//
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

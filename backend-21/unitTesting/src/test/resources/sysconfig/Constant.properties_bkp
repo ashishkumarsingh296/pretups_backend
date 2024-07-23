@@ -1,0 +1,144 @@
+#Configurations settings.
+
+url=http://172.16.7.25:8888/pretups
+DBURL=jdbc:oracle:thin:@172.30.21.11:1521:Ora12c
+DBNAME=prtp_rmpDB5
+DBPASSWORD = "prtp_rmpDB5"
+
+#url=http://172.16.7.25:5588/pretups/
+#DBURL=jdbc:oracle:thin:@172.16.7.36:1521:mmoney2
+#DBNAME=DL_PRTP_VFI
+#DBPASSWORD = "DL_PRTP_VFI"
+
+#Data sheet paths.
+filePath= .//Output//DataProvider.xlsx
+DomainAndCategorySheetPath= .//Output//DomainAndCategorySheet.xlsx
+UsersSheetPath=.//Output//Users.xlsx
+ServicesSheetPath= .//Output//ServicesSheet.xlsx
+TCPSheetPath= .//TCP.xlsx
+
+#Card Group variables.
+ApplicableFromHour= 23:00
+StartRange= 1
+EndRange= 999999999999
+ValidityType= Highest
+ValidityDays= 99999
+GracePeriod= 99999
+MultipleOf= 0.01
+Tax1Type= Pct
+Tax1Rate= 1
+Tax2Type= Pct
+Tax2Rate= 1
+ProcessingFeeType= Pct
+ProcessingFeeRate= 1
+ProcessingFeeMinAmount= 0.01
+ProcessingFeeMaxAmount= 999999999999
+ReceiverConversionFactor= 1
+BonusType= Pct
+BonusValue= 1
+BonusValidity= 1
+BonusConversionFactor= 1
+BonusValidityDays= 99999
+
+
+
+#Transfer Control Profile variables.
+
+status=Active
+#Balance preferences.
+balancePreferenceMinimumResidualBalance=0
+balancePreferenceMaximumResidualBalance=500000
+perC2STransactionAmountMinimum=0
+perC2STransactionAmountMaximum=500000
+alertingBalance=10000
+allowedMaxPercentage=100
+
+#Transfer Control Preferences---"Daily".
+DailyTransferInCount=100
+DailyTransferInAlertingCount=5
+DailyTransferInValue=5000
+DailyTransferInAlertingValue=4000
+DailyChannelTransferOutCount=100
+DailyChannelTransferOutAlertingCount=5
+DailyChannelTransferOutValue=10000
+DailyChannelTransferOutAlertingValue=1000
+DailySubscriberTransferOutCount=100
+DailySubscriberTransferOutAlertingCount=10
+DailySubscriberTransferOutValue=100000
+DailySubscriberTransferOutAlertingValue=1000
+DailySubscriberTransferInCount=100
+DailySubscriberTransferInAlertingCount=10
+DailySubscriberTransferInValue=100000
+DailySubscriberTransferInAlertingValue=1000
+
+#Transfer Control Preferences---"Weekly".
+WeeklyTransferInCount=500
+WeeklyTransferInAlertingCount=25
+WeeklyTransferInValue=25000
+WeeklyTransferInAlertingValue=20000
+WeeklyChannelTransferOutCount=500
+WeeklyChannelTransferOutAlertingCount=25
+WeeklyChannelTransferOutValue=25000
+WeeklyChannelTransferOutAlertingValue=20000
+WeeklySubscriberTransferOutCount=500
+WeeklySubscriberTransferOutAlertingCount=50
+WeeklySubscriberTransferOutValue=500000
+WeeklySubscriberTransferOutAlertingValue=5000
+WeeklySubscriberTransferInCount=500
+WeeklySubscriberTransferInAlertingCount=50
+WeeklySubscriberTransferInValue=500000
+WeeklySubscriberTransferInAlertingValue=5000
+
+#Transfer Control Preferences---"Monthly".
+MonthlyTransferInCount=2000
+MonthlyTransferInAlertingCount=100
+MonthlyTransferInValue=100000
+MonthlyTransferInAlertingValue=80000
+MonthlyChannelTransferOutCount=2000
+MonthlyChannelTransferOutAlertingCount=100
+MonthlyChannelTransferOutValue=100000
+MonthlyChannelTransferOutAlertingValue=80000
+MonthlySubscriberTransferOutCount=2000
+MonthlySubscriberTransferOutAlertingCount=200
+MonthlySubscriberTransferOutValue=2000000
+MonthlySubscriberTransferOutAlertingValue=20000
+MonthlySubscriberTransferInCount=2000
+MonthlySubscriberTransferInAlertingCount=200
+MonthlySubscriberTransferInValue=2000000
+MonthlySubscriberTransferInAlertingValue=20000
+
+#Commission Profile variables.
+GeographicalDomain= ALL
+grade= ALL
+MultipleOf= 1
+MintransferValue= 1
+MaxTransferValue= 999999999999
+FromRangeSlab0 = 1
+ToRangeSlab0= 999999999
+CommissionTypeSlab0= Pct
+CommissionRateSlab0= 1
+Tax1TypeSlab0= Pct
+Tax1RateSlab0= 0
+Tax2TypeSlab0= Pct
+Tax2RateSlab0= 0
+Tax3TypeSlab0= Pct
+Tax3RateSlab0= 0
+
+#Operator user creation variables.
+Category= Network Admin
+FirstName= Operator
+LastName= User
+ShortName= Optr
+UserNamePrefix= Mr
+Address1= 5782	Suite 8
+Address2= 4th Level Gateway Tower
+City= city
+State= state
+Country= country
+EmailID= email123@abc.com
+Password= 1357
+ConfirmPassword= 1357
+
+#Initiate Network Stock Properties
+InitiateNetworkStockAmount= 500
+

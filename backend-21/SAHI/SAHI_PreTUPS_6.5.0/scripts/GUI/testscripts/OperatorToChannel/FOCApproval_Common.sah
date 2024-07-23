@@ -1,0 +1,179 @@
+
+
+// This scripts contains all the common methods to approve FOC transfer
+// Created By Shashi Ranjan Singh 
+
+_includeOnce("../../../../utility/ImportPackage.sah");
+
+var $l_naCsv = _readCSVFile("../../../GUI/testdata/NA_Login.csv");
+
+
+	var $g_msisdn;
+	var $g_refNumber;
+	var $g_assertion;
+	
+	var $a_Prefix;
+	
+	
+	
+	function commonVaribleToApproveO2C($g_row, $g_col) {
+		
+		$g_msisdn = $g_approveO2CTransfer[$g_row][$g_col++];
+		$g_assertion = $g_approveO2CTransfer[$g_row][$g_col++];
+		
+		$g_refNumber = $l_naCsv[26][1] // from CSV
+		// $g_extTxnNumber  = extReferenceNumber();  for futher use 
+	}
+	
+	
+	function approveFOCTransferCommonOne() {
+		_click(_link("Operator to channel"));
+		_click(_link("Level one FOC approval"));
+		_assertExists(_div("Search channel user for FOC approval"));
+		_setValue(_textbox("userCode"), $g_msisdn);
+	}
+	
+
+	function approveLevelTwoFOCTransferCommonOne() {
+		_click(_link("Operator to channel"));
+		_click(_link("Level two FOC approval"));
+		_assertExists(_div("Search channel user for FOC approval"));
+		_setValue(_textbox("userCode"), $g_msisdn);
+	}
+	
+	function selectTransfer() {
+		_click(_radio("selectedTransfer", _near(_cell($g_refNumber))));
+	}
+	
+	
+	
+	function commonMethodsForApprovalFOC() {
+		approveFOCTransferCommonOne();
+		submit();
+		_assertExists(_div("Level 1 FOC orders list"));
+		selectTransfer();
+		submit();
+		_assertExists(_div("FOC transfer approval level one"));
+	}
+	
+	function test() {
+		_click(_link("Operator to channel"));
+		_click(_link("Level one FOC approval"));
+		_assertExists(_div("Search channel user for FOC approval"));
+		_setValue(_textbox("userCode"), "7233333333");
+		_click(_button("Reset"));
+		_setValue(_textbox("userCode"), "7233333333");
+		_click(_submit("Submit"));
+		_assertExists(_div("Level 1 FOC orders list"));
+		_assertExists(_cell("Reference number", _near(_cell("2808164010"))));
+		_click(_submit("Submit", _near(_cell("2808164010"))));
+		_assertExists(_div("FOC transfer approval level one"));
+		_click(_submit("Approve"));
+		_click(_submit("Back"));
+		_click(_submit("Reject"));
+		_click(_submit("Back"));
+		_setValue(_textbox("externalTxnNum"), "adad");
+		_click(_reset("Reset"));
+		_click(_submit("Back"));
+		_click(_div("Level 1 FOC orders list"));
+		_doubleClick(_div("Level 1 FOC orders list"));
+}
+	
+	
+//.......................... Mehtods for the given test cases ................... //
+	
+	function viewInitiatedFOCTransfer() {
+		approveFOCTransferCommonOne();
+		submit();
+		_assertExists(_cell("Reference number", _near(_cell($g_refNumber))));
+	}
+	
+	function invalidMSISDForFOCTransfer() {
+		approveFOCTransferCommonOne();
+		submit();
+		_assertExists(_listItem("/"+ $g_assertion +".*/"));
+	}
+	
+	function toChecKResetButtonOnSearchChannelUser() {
+		_wait(1000);
+		approveFOCTransferCommonOne();_wait(1000);
+		buttonReset();
+		if(_getValue(_textbox("userCode")) == "") {_log("Successful")}
+		else {_log("Failed Reset Check");}
+	}
+	
+	function toChecKBackButtonOnFOCOrderListPage() {
+		approveFOCTransferCommonOne();
+		submit();
+		_assertExists(_div("Level 1 FOC orders list"));
+		back();
+		_assertExists(_div("Search channel user for FOC approval"));
+	}
+	
+	function toChecKBackButtonOnLevelOnePage() {
+		
+		back();
+		_assertExists(_div("Level 1 FOC orders list"));
+	}
+	
+	function toChecKRejectButtonOnLevelOnePage() {
+		commonMethodsForApprovalFOC();
+		reject();
+		_assertExists(_submit("Confirm"));
+	}
+	
+	function toChecKResetButtonOnLevelOnePage() {
+		commonMethodsForApprovalFOC();
+		_setValue(_textbox("externalTxnNum"), "123456");
+		reset();
+		if(_getValue(_textbox("externalTxnNum")) == "") {_log("Successful")}
+		else {_log("Failed Reset Check");}
+	}
+
+	function toChecKBackButtonOnLevelOnePage() {
+		commonMethodsForApprovalFOC();
+		back();
+		_assertExists(_div("Level 1 FOC orders list"));
+	}
+
+	function toChecKApprovekButtonOnLevelOnePage() {
+		commonMethodsForApprovalFOC();
+		approve();
+		_assertExists(_submit("Confirm"));
+	}
+	function toChecKBackButtonOnConfirmationPage() {
+		commonMethodsForApprovalFOC();
+		approve();
+		back();
+		_assertExists(_submit("Approve"));
+	}
+	function toChecKCancelButtonOnConfirmationPage() {
+		commonMethodsForApprovalFOC();
+		approve(); cancel();
+		_assertExists(_div("Level 1 FOC orders list"));
+	}
+
+	function approvalFOCAtLevelOne() {
+		commonMethodsForApprovalFOC();
+		approve(); confirm();
+		_assertExists(_div("Level 1 FOC orders list"));
+		_assertExists(_cell($g_assertion, _near(_cell("Status"))));
+	}
+	
+	
+	function viewFOCTransferAtLevelTwoApproval() {
+		approveLevelTwoFOCTransferCommonOne();
+		submit();
+		_assertExists(_cell("Reference number", _near(_cell("2808164010"))));
+	}
+	
+	function approveFOCTransferAtLevelTwo() {
+		approveLevelTwoFOCTransferCommonOne();
+		submit();
+		selectTransfer();submit();approve();
+		confirm();
+	}
+	
+	 
+	
+	

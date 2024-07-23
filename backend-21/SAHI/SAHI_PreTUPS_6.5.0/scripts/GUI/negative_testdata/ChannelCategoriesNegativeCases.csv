@@ -1,0 +1,31 @@
+TestCaseNo.,Discription,Category Code,Category Name,Geographical Domain,Role Type,UserID Prefix,MaxTransMSISDN,MaxLoginCount,Assertion
+TEST001,Try to submit without giving any category details,,,,,,,,Channel Category code is required.
+TEST002,Try to submit without category code,,Testing02,Sub Area,Dynamic,jk,2,2,Channel Category code is required.
+TEST003,Try to submit without category name,TEST02,,Sub Area,Dynamic,jk,2,2,Channel Category name is required.
+TEST004,Try to submit without geographical domain,TEST02,Testing02,,Dynamic,jk,2,2,Geographical domain is required.
+TEST005,Try to submit without role type,TEST02,Testing02,Sub Area,,jk,2,2,Role type is required.
+TEST006,Try to submit without userID prefix,TEST02,Testing02,Sub Area,Dynamic,,2,2,UserID prefix is required.
+TEST007,Try to submit without MaxTrans  MSISDN,TEST02,Testing02,Sub Area,Dynamic,jk,,2,Max. transaction MSISDN is required.
+TEST008,Try to submit without Max login count,TEST02,Testing02,Sub Area,Dynamic,jk,2,,Max. login count is required.
+TEST009,Try to submit category code having one space,TEST 02,Testing02,Sub Area,Dynamic,jk,2,2,Channel Category code should be alphanumeric single word
+TEST010,Try to submit category code having more than one space,TES 0 2,Testing02,Sub Area,Dynamic,jk,2,2,Channel Category code should be alphanumeric single word
+TEST011,Try to submit category code contaning special charactor,TEST&&*,Testing02,Sub Area,Dynamic,jk,2,2,Channel Category code should be alphanumeric single word
+TEST012,Try to submit category code consist of special charactor,!@#%%^&,Testing02,Sub Area,Dynamic,jk,2,2,Channel Category code should be alphanumeric single word
+TEST013,Try to submit category code contaning decimal value,10.1,Testing02,Sub Area,Dynamic,jk,2,2,Channel Category code should be alphanumeric single word
+TEST014,Try to submit negative number as category code,-100,Testing02,Sub Area,Dynamic,jk,2,2,Channel Category code should be alphanumeric single word
+TEST015,Try to submit category code as number having space,1 1,Testing02,Sub Area,Dynamic,jk,2,2,Channel Category code should be alphanumeric single word
+TEST016,Try to submit user prefixID as number ,TEST02,Testing02,Sub Area,Dynamic,0,2,2,UserID prefix should contain only alphabets
+TEST017,Try to submit negative number as category code,TEST02,Testing02,Sub Area,Dynamic,-1,2,2,UserID prefix should contain only alphabets
+TEST018,Try to submit prefixID consisting of only charactor,TEST02,Testing02,Sub Area,Dynamic,$$,2,2,UserID prefix should contain only alphabets
+TEST019,Try to submit prefix code consisting of charactor and special charactor,TEST02,Testing02,Sub Area,Dynamic,a$,2,2,UserID prefix should contain only alphabets
+TEST020,Try to submit double quotes as category code,TEST02,Testing02,Sub Area,Dynamic,"""""",2,2,UserID prefix should contain only alphabets
+TEST021,Try to submit charactor as Max. transaction MSISDN  ,TEST02,Testing02,Sub Area,Dynamic,jk,A,2,Max. transaction MSISDN must be an integer.
+TEST022,Try to submit special charactor as Max. transaction MSISDN  ,TEST02,Testing02,Sub Area,Dynamic,jk,#,2,Max. transaction MSISDN must be an integer.
+TEST023,Try to submit dot as Max. transaction MSISDN  ,TEST02,Testing02,Sub Area,Dynamic,jk,.,2,Max. transaction MSISDN must be an integer.
+TEST024,Try to submit Max. Login count as zero,TEST02,Testing02,Sub Area,Dynamic,jk,2,0,Max. login count must be greater than 0
+TEST025,Try to submit Max. Login count as charactor,TEST02,Testing02,Sub Area,Dynamic,jk,2,u,Max. login count must be an integer.
+TEST026,Try to submit Max. Login count as negative number,TEST02,Testing02,Sub Area,Dynamic,jk,2,-10,Max. login count should be non negative numeric value
+TEST027,Try to submit Max. Login count as decimal value,TEST02,Testing02,Sub Area,Dynamic,jk,2,0.1,Max. login count must be an integer.
+TEST028,Try to submit a charactor within quote as Max. Login count,TEST02,Testing02,Sub Area,Dynamic,jk,2,"""A""",Max. login count must be an integer.
+TEST029,Try to submit special charactor as Max. Login count,TEST02,Testing02,Sub Area,Dynamic,jk,2,@,Max. login count must be an integer.
+TEST030,Try to submit number contanig space as max. Login count.,TEST02,Testing02,Sub Area,Dynamic,jk,2,1 1,Max. login count must be an integer.

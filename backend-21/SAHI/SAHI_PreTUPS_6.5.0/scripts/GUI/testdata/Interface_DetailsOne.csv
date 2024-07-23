@@ -1,0 +1,5 @@
+TestCase Details,TestCase Description,Interface Category,Interface Type,Validity Expiry time,TopUp Expiry Time,Language-1,Language-2,Status
+TEST001,Given a super admin login into the application and adding new interface ,Postpaid Interface,CS4 Ericssion Post,20000,10000,English -1,English-2,Active
+TEST002,Given a super admin login into the application and try to view newly added interface,,,,,,,
+TEST003,Given a super admin login into the application and try to modify validity expiry time of interface,,,15000,,,,
+TEST004,Given super admin try to modify topup expiry time for new interface,,,,9000,,,

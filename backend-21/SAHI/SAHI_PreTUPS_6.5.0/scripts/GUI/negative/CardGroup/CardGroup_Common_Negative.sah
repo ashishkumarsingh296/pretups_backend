@@ -1,0 +1,223 @@
+//######################################
+//
+//This script has common variable and method for card group. 
+//
+//#######################################
+
+var $g_serviceType;
+var $g_subService;
+var $g_cardGroupName;
+var $g_calendarImg;
+var $g_applicableTime;
+var $g_cardGroupCode;
+var $g_startRange;
+var $g_endRange;
+var $g_validityPeriod;
+var $g_gracePeriod;
+var $g_multipleOf;
+var $g_senderTax1Rate;
+var $g_senderTax2Rate;
+var $g_senderAccessFeeRate;
+var $g_minSenderAccessFee;
+var $g_maxSenderAccessFee;
+var $g_senderConvFactor;
+var $g_receiverTax1Rate;
+var $g_receiverTax2Rate;
+var $g_receiverAccessFeeRate;
+var $g_minReceiverAccessFee;
+var $g_maxReceiverAccessFee;
+var $g_receiverConvFactor;
+var $g_bonusBundleValue;
+var $g_bonusBundleValidity;
+var $g_bonusBundleConvFac;
+var $g_bonusBundleValidityDays;
+var $g_assertion;
+
+var $g_cardGroupSetType;
+
+function commonVariableForP2PCardGroup($a_row, $a_col){
+	
+	$g_serviceType = $g_P2PCardGroup[$a_row][$a_col++];
+	$g_subService = $g_P2PCardGroup[$a_row][$a_col++];
+	$g_cardGroupName = $g_P2PCardGroup[$a_row][$a_col++];
+	$g_calendarImg = $g_P2PCardGroup[$a_row][$a_col++];
+	$g_applicableTime = $g_P2PCardGroup[$a_row][$a_col++];
+	$g_cardGroupCode = $g_P2PCardGroup[$a_row][$a_col++];
+	$g_startRange = $g_P2PCardGroup[$a_row][$a_col++];
+	$g_endRange = $g_P2PCardGroup[$a_row][$a_col++];
+	$g_validityPeriod = $g_P2PCardGroup[$a_row][$a_col++];
+	$g_gracePeriod = $g_P2PCardGroup[$a_row][$a_col++];
+	$g_multipleOf = $g_P2PCardGroup[$a_row][$a_col++];
+	$g_senderTax1Rate = $g_P2PCardGroup[$a_row][$a_col++];
+	$g_senderTax2Rate = $g_P2PCardGroup[$a_row][$a_col++];
+	$g_senderAccessFeeRate = $g_P2PCardGroup[$a_row][$a_col++];
+	$g_minSenderAccessFee = $g_P2PCardGroup[$a_row][$a_col++];
+	$g_maxSenderAccessFee = $g_P2PCardGroup[$a_row][$a_col++];
+	$g_senderConvFactor = $g_P2PCardGroup[$a_row][$a_col++];
+	$g_receiverTax1Rate = $g_P2PCardGroup[$a_row][$a_col++];
+	$g_receiverTax2Rate = $g_P2PCardGroup[$a_row][$a_col++];
+	$g_receiverAccessFeeRate = $g_P2PCardGroup[$a_row][$a_col++];
+	$g_minReceiverAccessFee = $g_P2PCardGroup[$a_row][$a_col++];
+	$g_maxReceiverAccessFee = $g_P2PCardGroup[$a_row][$a_col++];
+	$g_receiverConvFactor = $g_P2PCardGroup[$a_row][$a_col++];
+	$g_bonusBundleValue = $g_P2PCardGroup[$a_row][$a_col++];
+	$g_bonusBundleValidity = $g_P2PCardGroup[$a_row][$a_col++];
+	$g_bonusBundleConvFac = $g_P2PCardGroup[$a_row][$a_col++];
+	$g_bonusBundleValidityDays = $g_P2PCardGroup[$a_row][$a_col++];
+	$g_assertion = $g_P2PCardGroup[$a_row][$a_col++];
+}
+
+function addP2PCardGroup(){
+	
+
+				_click(_link("Card group"));
+				_click(_link("Add P2P card group"));
+				_setSelected(_select("serviceTypeId"), $g_serviceType);
+				_setSelected(_select("cardGroupSubServiceID"), $g_subService);
+				_setValue(_textbox("cardGroupSetName"), $g_cardGroupName);
+				_click(_image($g_calendarImg));
+				_setValue(_textbox("applicableFromDate"), $g_currentDate);
+				_setValue(_textbox("applicableFromHour"), $g_applicableTime);
+				_click(_image("Add card group"));
+				_selectWindow("eRecharge");
+				_popup("eRecharge")._setValue(_textbox("cardGroupCode"),  $g_cardGroupCode);
+				_popup("eRecharge")._setValue(_textbox("startRange"), $g_startRange);
+				_popup("eRecharge")._setValue(_textbox("endRange"), $g_endRange);
+				_popup("eRecharge")._setValue(_textbox("validityPeriod"),  $g_validityPeriod);
+				_popup("eRecharge")._setValue(_textbox("gracePeriod"), $g_gracePeriod);
+				_popup("eRecharge")._setValue(_textbox("multipleOf"), $g_multipleOf);
+				_popup("eRecharge")._click(_checkbox("online"));
+				_popup("eRecharge")._click(_checkbox("both"));
+				_popup("eRecharge")._setValue(_textbox("senderTax1Rate"), $g_senderTax1Rate);
+				_popup("eRecharge")._setValue(_textbox("senderTax2Rate"), $g_senderTax2Rate);
+				_popup("eRecharge")._setValue(_textbox("senderAccessFeeRate"), $g_senderAccessFeeRate);
+				_popup("eRecharge")._setValue(_textbox("minSenderAccessFee"), $g_minSenderAccessFee);
+				_popup("eRecharge")._setValue(_textbox("maxSenderAccessFee"), $g_maxSenderAccessFee);
+				_popup("eRecharge")._setValue(_textbox("senderConvFactor"), $g_senderConvFactor );
+				_popup("eRecharge")._setValue(_textbox("receiverTax1Rate"), $g_receiverTax1Rate);
+				_popup("eRecharge")._setValue(_textbox("receiverTax2Rate"), $g_receiverTax2Rate);
+				_popup("eRecharge")._setValue(_textbox("receiverAccessFeeRate"), $g_receiverAccessFeeRate);
+				_popup("eRecharge")._setValue(_textbox("minReceiverAccessFee"),  $g_minReceiverAccessFee);
+				_popup("eRecharge")._setValue(_textbox("maxReceiverAccessFee"), $g_maxReceiverAccessFee);
+				_popup("eRecharge")._setValue(_textbox("receiverConvFactor"), $g_receiverConvFactor);
+				_popup("eRecharge")._setValue(_textbox("tempAccListIndexed[0].bonusValue"),  $g_bonusBundleValue);
+				_popup("eRecharge")._setValue(_textbox("tempAccListIndexed[0].bonusValidity"), $g_bonusBundleValidity);
+				_popup("eRecharge")._setValue(_textbox("tempAccListIndexed[0].multFactor"), $g_bonusBundleConvFac);
+				_popup("eRecharge")._setValue(_textbox("bonusValidityValue"), $g_bonusBundleValidityDays);
+				
+				
+				_popup("eRecharge")._call(_submit("Add").click());
+				_wait(1000)
+				
+				
+				if(_condition(_exists(_popup("eRecharge")._div("P2P card group details"))))
+				{
+						_log("shashi on PopUp");
+						_popup("eRecharge")._assertExists(_listItem("/" +$g_assertion + ".*/"));
+					
+						_popup("eRecharge")._click(_link("Close"));
+						
+						return true;
+				}
+				else {
+					_click(_submit($g_BtnSave));
+					return false;
+				}
+					
+}					
+				/*_selectWindow("eRecharge");
+					_click(_link("Close"));
+					_selectWindow();
+				*/	
+				/* Vishsal Sir 
+				_selectWindow($g_window_mahindraComvivaTechnologiesLtd); //From utility (ButtonsInSMSP.sah) Here used selectWindow() for closing the window
+				_click(_link("Close"));
+				_selectWindow(); //Here used selectWinsow() for activate the main SMSP window
+				 */
+				
+//========================= function of C2S Card Group ================//
+
+function commonVariableForC2SCardGroup($a_row, $a_col){
+	
+	$g_serviceType = $g_C2SCardGroup[$a_row][$a_col++];
+	$g_subService = $g_C2SCardGroup[$a_row][$a_col++];
+	$g_cardGroupName = $g_C2SCardGroup[$a_row][$a_col++];
+	$g_calendarImg = $g_C2SCardGroup[$a_row][$a_col++];
+	$g_applicableTime = $g_C2SCardGroup[$a_row][$a_col++];
+	$g_cardGroupSetType = $g_C2SCardGroup[$a_row][$a_col++];
+	$g_cardGroupCode = $g_C2SCardGroup[$a_row][$a_col++];
+	$g_startRange = $g_C2SCardGroup[$a_row][$a_col++];
+	$g_endRange = $g_C2SCardGroup[$a_row][$a_col++];
+	$g_validityPeriod = $g_C2SCardGroup[$a_row][$a_col++];
+	$g_gracePeriod = $g_C2SCardGroup[$a_row][$a_col++];
+	$g_multipleOf = $g_C2SCardGroup[$a_row][$a_col++];
+	$g_receiverTax1Rate = $g_C2SCardGroup[$a_row][$a_col++];
+	$g_receiverTax2Rate = $g_C2SCardGroup[$a_row][$a_col++];
+	$g_receiverAccessFeeRate = $g_C2SCardGroup[$a_row][$a_col++];
+	$g_minReceiverAccessFee = $g_C2SCardGroup[$a_row][$a_col++];
+	$g_maxReceiverAccessFee = $g_C2SCardGroup[$a_row][$a_col++];
+	$g_receiverConvFactor = $g_C2SCardGroup[$a_row][$a_col++];
+	$g_bonusBundleValue = $g_C2SCardGroup[$a_row][$a_col++];
+	$g_bonusBundleValidity = $g_C2SCardGroup[$a_row][$a_col++];
+	$g_bonusBundleConvFac = $g_C2SCardGroup[$a_row][$a_col++];
+	$g_bonusBundleValidityDays = $g_C2SCardGroup[$a_row][$a_col++];
+	$g_assertion = $g_C2SCardGroup[$a_row][$a_col++];
+}
+
+function addC2SCardGroup (){
+
+			_click(_link("Card group"));
+			_click(_link("Add C2S card group"));
+			_setSelected(_select("serviceTypeId"), $g_serviceType);
+			_setSelected(_select("cardGroupSubServiceID"), $g_subService);
+			_setValue(_textbox("cardGroupSetName"), $g_cardGroupName);
+			_click(_image($g_calendarImg));
+			_setValue(_textbox("applicableFromDate"), $g_currentDate);
+			
+			_setValue(_textbox("applicableFromHour"), $g_applicableTime);
+			_setSelected(_select("setType"), $g_cardGroupSetType);
+			_click(_image("Add card group"));
+			_selectWindow("eRecharge");
+			_popup("eRecharge")._setValue(_textbox("cardGroupCode"), $g_cardGroupCode);
+			_popup("eRecharge")._setValue(_textbox("startRange"), $g_startRange);
+			_popup("eRecharge")._setValue(_textbox("endRange"), $g_endRange);
+			_popup("eRecharge")._setValue(_textbox("validityPeriod"), $g_validityPeriod);
+			_popup("eRecharge")._setValue(_textbox("gracePeriod"), $g_gracePeriod);
+			_popup("eRecharge")._setValue(_textbox("multipleOf"), $g_multipleOf);
+			_popup("eRecharge")._click(_checkbox("online"));
+			_popup("eRecharge")._click(_checkbox("both"));
+			_popup("eRecharge")._setValue(_textbox("receiverTax1Rate"), $g_receiverTax1Rate);
+			_popup("eRecharge")._setValue(_textbox("receiverTax2Rate"), $g_receiverTax2Rate);
+			_popup("eRecharge")._setValue(_textbox("receiverAccessFeeRate"), $g_receiverAccessFeeRate);
+			_popup("eRecharge")._setValue(_textbox("minReceiverAccessFee"), $g_minReceiverAccessFee);
+			_popup("eRecharge")._setValue(_textbox("maxReceiverAccessFee"), $g_maxReceiverAccessFee);
+			_popup("eRecharge")._setValue(_textbox("receiverConvFactor"), $g_receiverConvFactor);
+			_popup("eRecharge")._setValue(_textbox("tempAccListIndexed[0].bonusValue"), $g_bonusBundleValue );
+			_popup("eRecharge")._setValue(_textbox("tempAccListIndexed[0].bonusValidity"), $g_bonusBundleValidity );
+			_popup("eRecharge")._setValue(_textbox("tempAccListIndexed[0].multFactor"),$g_bonusBundleConvFac );
+			_popup("eRecharge")._setValue(_textbox("bonusValidityValue"), $g_bonusBundleValidityDays );
+			
+			_popup("eRecharge")._call(_submit("Add").click());
+			_wait(1000);
+			
+			if(_condition(_exists(_popup("eRecharge")._div("C2S card group details"))))
+			{
+					_log("shashi on PopUp for C2S");
+					_popup("eRecharge")._assertExists(_listItem("/" +$g_assertion+ ".*/"));
+					_popup("eRecharge")._click(_link("Close"));
+					return true;
+			}
+			else {
+				_click(_submit($g_BtnSave));
+				return false;
+			}
+			
+
+}
+
+				
+				
+				
+			
+
+

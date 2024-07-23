@@ -1,0 +1,119 @@
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/tomcat7/apache-tomcat-7.0.30/lib
+END
+jasper-el.jar
+K 25
+svn:wc:ra_dav:version-url
+V 124
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/tomcat7/apache-tomcat-7.0.30/lib/jasper-el.jar
+END
+el-api.jar
+K 25
+svn:wc:ra_dav:version-url
+V 121
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/tomcat7/apache-tomcat-7.0.30/lib/el-api.jar
+END
+tomcat-i18n-es.jar
+K 25
+svn:wc:ra_dav:version-url
+V 129
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/tomcat7/apache-tomcat-7.0.30/lib/tomcat-i18n-es.jar
+END
+tomcat-dbcp.jar
+K 25
+svn:wc:ra_dav:version-url
+V 126
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/tomcat7/apache-tomcat-7.0.30/lib/tomcat-dbcp.jar
+END
+jsp-api.jar
+K 25
+svn:wc:ra_dav:version-url
+V 122
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/tomcat7/apache-tomcat-7.0.30/lib/jsp-api.jar
+END
+catalina-ant.jar
+K 25
+svn:wc:ra_dav:version-url
+V 127
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/tomcat7/apache-tomcat-7.0.30/lib/catalina-ant.jar
+END
+catalina-tribes.jar
+K 25
+svn:wc:ra_dav:version-url
+V 130
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/tomcat7/apache-tomcat-7.0.30/lib/catalina-tribes.jar
+END
+catalina.jar
+K 25
+svn:wc:ra_dav:version-url
+V 123
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/tomcat7/apache-tomcat-7.0.30/lib/catalina.jar
+END
+tomcat-coyote.jar
+K 25
+svn:wc:ra_dav:version-url
+V 128
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/tomcat7/apache-tomcat-7.0.30/lib/tomcat-coyote.jar
+END
+tomcat-i18n-ja.jar
+K 25
+svn:wc:ra_dav:version-url
+V 129
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/tomcat7/apache-tomcat-7.0.30/lib/tomcat-i18n-ja.jar
+END
+ecj-3.7.2.jar
+K 25
+svn:wc:ra_dav:version-url
+V 124
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/tomcat7/apache-tomcat-7.0.30/lib/ecj-3.7.2.jar
+END
+jasper.jar
+K 25
+svn:wc:ra_dav:version-url
+V 121
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/tomcat7/apache-tomcat-7.0.30/lib/jasper.jar
+END
+tomcat-jdbc.jar
+K 25
+svn:wc:ra_dav:version-url
+V 126
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/tomcat7/apache-tomcat-7.0.30/lib/tomcat-jdbc.jar
+END
+catalina-ha.jar
+K 25
+svn:wc:ra_dav:version-url
+V 126
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/tomcat7/apache-tomcat-7.0.30/lib/catalina-ha.jar
+END
+tomcat-util.jar
+K 25
+svn:wc:ra_dav:version-url
+V 126
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/tomcat7/apache-tomcat-7.0.30/lib/tomcat-util.jar
+END
+annotations-api.jar
+K 25
+svn:wc:ra_dav:version-url
+V 130
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/tomcat7/apache-tomcat-7.0.30/lib/annotations-api.jar
+END
+tomcat-api.jar
+K 25
+svn:wc:ra_dav:version-url
+V 125
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/tomcat7/apache-tomcat-7.0.30/lib/tomcat-api.jar
+END
+tomcat-i18n-fr.jar
+K 25
+svn:wc:ra_dav:version-url
+V 129
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/tomcat7/apache-tomcat-7.0.30/lib/tomcat-i18n-fr.jar
+END
+servlet-api.jar
+K 25
+svn:wc:ra_dav:version-url
+V 126
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/tomcat7/apache-tomcat-7.0.30/lib/servlet-api.jar
+END

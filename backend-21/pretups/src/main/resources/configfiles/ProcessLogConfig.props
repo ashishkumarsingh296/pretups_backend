@@ -1,0 +1,164 @@
+##########################################################################################################	ProcessLogConfig.props
+##	This is the properties file for the log configuration of the PreTUPS processes
+##      To get the proper log of the PreTUPS processes path of the log files should be set
+##  	properly.
+##	Log of the processes will be available at the specified path
+##	
+##	Any process executing in PreTUPS should give this file as the parameter
+##	All the logs are in the daily appender mode, means log files will be made
+##	on the daily basis
+##
+##########################################################################################################
+
+## Common logger for the processes, these logs will be printed in the diverted script output
+## Set root logger level to DEBUG and its only appender to A1.
+log4j.rootLogger=DEBUG, A1
+#log4j.logger.org.apache.commons.digester.Digester=info
+#log4j.logger.org.apache.catalina.startup.TldConfig=info
+#log4j.logger.org.apache.struts.util.PropertyMessageResources=info
+#log4j.logger.org.apache.catalina.session.ManagerBase=info
+#log4j.logger.com.btsl.pretups.preference.businesslogic.PreferenceCache=info
+
+# A1 is set to be a ConsoleAppender.
+log4j.appender.A1=org.apache.log4j.ConsoleAppender
+
+# A1 uses PatternLayout.
+log4j.appender.A1.layout=org.apache.log4j.PatternLayout
+log4j.appender.A1.layout.ConversionPattern=%d : %-4r [%t] %-5p %c %x - %m%n
+
+
+## Log file configuration entries for MessageSentLog Logger, Any message sent from the PreTUPS
+## will be logged in this file
+log4j.logger.com.btsl.pretups.logging.MessageSentLog=INFO,MessageSentLog
+log4j.additivity.com.btsl.pretups.logging.MessageSentLog=false
+log4j.appender.MessageSentLog=org.apache.log4j.DailyRollingFileAppender
+log4j.appender.MessageSentLog.File=<Tomcat-Path>/logs/messageSentLog.log
+#log4j.appender.MessageSentLog.MaxFileSize=100KB
+log4j.appender.MessageSentLog.DatePattern='.'yyyy-MM-dd
+log4j.appender.MessageSentLog.layout=org.apache.log4j.PatternLayout
+log4j.appender.MessageSentLog.layout.ConversionPattern=%d   %m%n  
+
+
+## Log file configuration entries for Database Archiving and Purging Loger, logs related to the 
+## Database archival will be logged here
+log4j.logger.com.btsl.purging=DEBUG,DatabasePurgingLog
+log4j.additivity.com.btsl.purging=false
+log4j.appender.DatabasePurgingLog=org.apache.log4j.DailyRollingFileAppender
+log4j.appender.DatabasePurgingLog.File=<Tomcat-Path>/logs/DatabasePurgingLog.log
+#log4j.appender.DatabasePurgingLog.MaxFileSize=100000KB
+log4j.appender.DatabasePurgingLog.DatePattern='.'yyyy-MM-dd
+log4j.appender.DatabasePurgingLog.layout=org.apache.log4j.PatternLayout
+log4j.appender.DatabasePurgingLog.layout.ConversionPattern=%d   %m%n
+
+
+## Log file configuration entries for Processes Log, logs related to the processes will be 
+## maintained in this log file, if this logger is used in the program
+log4j.logger.com.btsl.pretups.processes=DEBUG,ProcessesLog
+log4j.additivity.com.btsl.pretups.processes=false
+log4j.appender.ProcessesLog=org.apache.log4j.DailyRollingFileAppender
+log4j.appender.ProcessesLog.File=<Tomcat-Path>/logs/ProcessesLog.log
+#log4j.appender.ProcessesLog.MaxFileSize=100000KB
+log4j.appender.ProcessesLog.DatePattern='.'yyyy-MM-dd
+log4j.appender.ProcessesLog.layout=org.apache.log4j.PatternLayout
+log4j.appender.ProcessesLog.layout.ConversionPattern=%d   %m%n
+
+
+## Log file configuration entries for Event Log, any error coming in the execution of the process
+## will be logged here, if there is any error coming Event log is the best place to check for the 
+## error
+log4j.logger.com.btsl.event.EventLogger=DEBUG,EventLog
+log4j.additivity.com.btsl.event.EventLogger=false
+log4j.appender.EventLog=org.apache.log4j.DailyRollingFileAppender
+log4j.appender.EventLog.File=<Tomcat-Path>/logs/EventLog.log
+log4j.appender.NetworkStockLog.DatePattern='.'yyyy-MM-dd
+log4j.appender.EventLog.layout=org.apache.log4j.PatternLayout
+log4j.appender.EventLog.layout.ConversionPattern= %d- %m%n 
+
+
+## Log file configuration entries for ScheduleTopUp process, Single line logger of the schedule topup
+## batch process will be maintained here
+log4j.logger.com.btsl.pretups.channel.logging.ScheduledBatchLogger=INFO,ScheduledBatchLogger
+log4j.additivity.com.btsl.pretups.channel.logging.ScheduledBatchLogger=false
+log4j.appender.ScheduledBatchLogger=org.apache.log4j.DailyRollingFileAppender
+log4j.appender.ScheduledBatchLogger.File=<Tomcat-Path>/logs/ScheduledBatchLog.log
+#log4j.appender.ScheduledBatchLogger.MaxFileSize=100KB
+log4j.appender.ScheduledBatchLogger.DatePattern='.'yyyy-MM-dd
+log4j.appender.ScheduledBatchLogger.layout=org.apache.log4j.PatternLayout
+log4j.appender.ScheduledBatchLogger.layout.ConversionPattern=%d   %m%n 
+
+
+## Log file configuration entries for ScheduleTopUp process, Single line logger of the schedule topup
+## request process will be maintained here, for schedule topup processing request wise log
+## check this log file
+log4j.logger.com.btsl.pretups.channel.logging.ScheduledTopUpLogger=INFO,ScheduledTopUpLogger
+log4j.additivity.com.btsl.pretups.channel.logging.ScheduledTopUpLogger=false
+log4j.appender.ScheduledTopUpLogger=org.apache.log4j.DailyRollingFileAppender
+log4j.appender.ScheduledTopUpLogger.File=<Tomcat-Path>/logs/ScheduledTopUpLog.log
+#log4j.appender.ScheduledTopUpLogger.MaxFileSize=100KB
+log4j.appender.ScheduledTopUpLogger.DatePattern='.'yyyy-MM-dd
+log4j.appender.ScheduledTopUpLogger.layout=org.apache.log4j.PatternLayout
+log4j.appender.ScheduledTopUpLogger.layout.ConversionPattern=%d   %m%n 
+
+
+## Log file configuration entries for WhiteList processing, Single line logger of the whiete list
+## management will be maintained here,
+log4j.logger.com.btsl.pretups.logging.FileProcessLogger=INFO,FileProcessLogger
+log4j.additivity.com.btsl.pretups.logging.FileProcessLogger=false
+log4j.appender.FileProcessLogger =org.apache.log4j.DailyRollingFileAppender
+log4j.appender.FileProcessLogger.File =<Tomcat-Path>/logs/FileProcessLog.log
+#log4j.appender.FileProcessLogger.MaxFileSize=100KB
+log4j.appender.FileProcessLogger.DatePattern='.'yyyy-MM-dd
+log4j.appender.FileProcessLogger.layout=org.apache.log4j.PatternLayout
+log4j.appender.FileProcessLogger.layout.ConversionPattern=%d   %m%n
+
+
+##For Alarm Sender Class
+log4j.logger.com.btsl.alarm.AlarmSender=DEBUG,AlarmSenderLog
+log4j.additivity.com.btsl.alarm.AlarmSender=false
+log4j.appender.AlarmSenderLog=org.apache.log4j.DailyRollingFileAppender
+log4j.appender.AlarmSenderLog.File=<Tomcat-Path>/logs/AlarmSender.log
+log4j.appender.AlarmSenderLog.DatePattern='.'yyyy-MM-dd
+log4j.appender.AlarmSenderLog.layout=org.apache.log4j.PatternLayout
+log4j.appender.AlarmSenderLog.layout.ConversionPattern=%m%n
+
+
+## New Entries for VOMS Module
+
+#Logger for VOMS batches
+log4j.logger.com.btsl.voms.vomslogging.VomsBatchInfoLog=INFO,VomsBatchInfoLog
+log4j.appender.VomsBatchInfoLog=org.apache.log4j.DailyRollingFileAppender
+log4j.appender.VomsBatchInfoLog.File=<Tomcat-Path>/logs/VomsBatchInfoLog_output.log
+log4j.appender.VomsBatchInfoLog.DatePattern='.'yyyy-MM-dd
+log4j.appender.VomsBatchInfoLog.layout=org.apache.log4j.PatternLayout
+log4j.appender.VomsBatchInfoLog.layout.ConversionPattern=%5p [%t] (%F:%L) - %m%n 
+
+#Logger for VOMS voucher change status
+log4j.logger.com.btsl.voms.vomslogging.VomsVoucherChangeStatusLog=INFO,VomsVoucherChangeStatusLog
+log4j.appender.VomsVoucherChangeStatusLog=org.apache.log4j.DailyRollingFileAppender
+log4j.appender.VomsVoucherChangeStatusLog.File=<Tomcat-Path>/logs/voucherstatus_output.log
+log4j.appender.VomsVoucherChangeStatusLog.DatePattern='.'yyyy-MM-dd
+log4j.appender.VomsVoucherChangeStatusLog.layout=org.apache.log4j.PatternLayout
+log4j.appender.VomsVoucherChangeStatusLog.layout.ConversionPattern=%5p [%t] (%F:%L) - %m%n
+
+
+## Log file configuration entries for MNP file processing
+
+log4j.logger.com.btsl.pretups.logging.MNPPocessingLog=INFO,MNPPocessingLog
+log4j.additivity.com.btsl.pretups.logging.MNPPocessingLog=false
+log4j.appender.MNPPocessingLog =org.apache.log4j.DailyRollingFileAppender
+log4j.appender.MNPPocessingLog.File =<Tomcat-Path>/logs/MNPPocessingLog.log
+#log4j.appender.MNPPocessingLog.MaxFileSize=100KB
+log4j.appender.MNPPocessingLog.DatePattern='.'yyyy-MM-dd
+log4j.appender.MNPPocessingLog.layout=org.apache.log4j.PatternLayout
+log4j.appender.MNPPocessingLog.layout.ConversionPattern=%d   %m%n
+
+
+
+## Log file configuration entries for LMB SOSSettlement process
+log4j.logger.com.btsl.pretups.logging.SOSSettlementRequestLog=INFO,SOSSettlementRequestLog
+log4j.additivity.com.btsl.pretups.logging.SOSSettlementRequestLog=false
+log4j.appender.SOSSettlementRequestLog=org.apache.log4j.DailyRollingFileAppender
+log4j.appender.SOSSettlementRequestLog.File=<Tomcat-Path>/logs/SOSSettlementRequestLog.log
+log4j.appender.SOSSettlementRequestLog.DatePattern='.'yyyy-MM-dd
+log4j.appender.SOSSettlementRequestLog.layout=org.apache.log4j.PatternLayout
+log4j.appender.SOSSettlementRequestLog.layout.ConversionPattern=%5p [%t] (%F:%L) - %m%n 

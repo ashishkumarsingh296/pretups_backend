@@ -1,0 +1,2 @@
+TestcaseId,TestcaseType,Module,Description
+TUNG13123,Positive,Channel to Channel Transfer through USSD,To verify that response is initiated successfully for C2C transfer with all the mandatory fields.

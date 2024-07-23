@@ -1,0 +1,37 @@
+.inputBg2
+{
+	background-color:rgb(230,230,230);
+	height:50px;
+	margin:6% 17% 0% 20%;
+	
+}
+
+.buttonText
+{
+	font-size:15px;
+	font-weight:bold;
+	color:rgb(227,45,55);
+}
+
+.buttonBg
+{
+	background-color:black;
+	padding:18% 0% 18% 0%;
+	font-weight:bold;
+	color:rgb(227,45,55);
+	margin:0% 100% 0% 100%;
+}
+
+.buttonBgBlue
+{
+	font-weight:bold;
+	color:rgb(227,45,55);
+	margin:0% 100% 0% 100%;
+	padding:18% 0% 18% 0%;
+
+}
+
+.bgImage
+{	
+	background-color:rgb(53,53,53);
+}

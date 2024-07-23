@@ -1,0 +1,2 @@
+TestcaseId,TestcaseType,Module,Description
+TUNG13136,Negative,Fix Line Recharge through USSD,To verify that for C2S Transfer (Fix Recharge)  When MSISDN is available in request then PIN is mandatory for the request

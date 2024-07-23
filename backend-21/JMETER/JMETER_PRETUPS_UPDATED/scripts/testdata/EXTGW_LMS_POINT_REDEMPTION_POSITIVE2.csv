@@ -1,0 +1,2 @@
+TestcaseId,TestcaseType,Module,Description
+TUNG13027,Positive,LMS Point Redemption through EXTGW,To verify that Channel User can redeem the loyality points if only external code of the channel user is entered

@@ -1,0 +1,47 @@
+//################################################
+//#Company Name: Mahindra Comviva Technologies Ltd.
+//#Application Name: PretupsTA
+//#Objective: To create Channel Admin
+//#Author Name: Nidhi Singh
+//#Created Date: 03/02/2014
+//###############################################
+
+//===========================Import Scripts============================	 
+_includeOnce("../../../../utility/ImportPackage.sah");	//For importing common files	
+	
+//login($g_appURL,  $g_LangEnglish, $g_superAdmin, $g_password, $g_assertMessage); 
+
+//======================= View Details of super admin, network admin and channel Admin ==== //
+
+var $g_userDetails = _readCSVFile("../../../GUI/testdata/ViewOperatorUserDetails.csv");
+var $l_naCsv = _readCSVFile("../../../GUI/testdata/NA_Login.csv");
+
+var $g_userName;
+var $g_networkAdmin = $l_naCsv[1][1];
+var $g_channelAdmin = $l_naCsv[2][1];
+//var $g_channelUser = $l_naCsv[3][1];
+var $tempLoginId;
+
+var $Arr = new Array();
+	$Arr = [$g_superAdmin, $g_networkAdmin, $g_channelAdmin];
+
+ 
+
+var $g_row;
+var $g_col;
+
+
+	for(var $g_row = 1; $g_userDetails[$g_row] != null;  $g_row++){
+		$g_col = 0;
+		var $t = _testcase($g_userDetails[$g_row][$g_col++], $g_userDetails[$g_row][$g_col++]);
+		$t.start();
+		$tempLoginId =$Arr[$g_row-1]; 
+		if($tempLoginId == $g_superAdmin )
+			login($g_appURL,  $g_LangEnglish, $tempLoginId, $g_password, $g_assertMessage); 
+		else 
+			login($g_appURL,  $g_LangEnglish, $tempLoginId, $g_commonPassword, $g_assertWelcome);
+		viewSelfDetails($tempLoginId);
+		$t.end();
+	}
+
+

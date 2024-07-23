@@ -1,0 +1,39 @@
+//######################################
+//
+//This script to add negative cases while going to create new network
+//
+//#######################################
+
+
+//===== import scripts ===//
+_includeOnce("../../../../utility/ImportPackage.sah");
+_includeOnce("NetworkManagement_Common_Negative.sah");
+
+
+// ===== Pre-Condition check ==== //
+
+
+//====== Login into the application ====== //
+login($g_appURL, $g_LangEnglish, $g_superAdmin, $g_password, $g_assertMessage);
+
+	
+	
+	//===============Add New network ===============================//
+	
+	var $g_networkDetails = _readCSVFile("../../negative_testdata/AddNetwork_NegativeCases.csv");
+	for(var $g_row = 1; $g_networkDetails[$g_row] != null; $g_row++){
+	//for(var $g_row = 94; $g_row != 96; $g_row++){
+		var $g_col = 0;
+		var $t = _testcase($g_networkDetails[$g_row][$g_col++], $g_networkDetails[$g_row][$g_col++]);
+		$t.start();
+		commonVaribleForAddNetworks($g_row, $g_col);
+		addNewNetwork();
+		_assertExists(_listItem("/"+$g_assertion+".*/"));
+		
+		if(_exists(_listItem("/"+$g_assertion+".*/")) == false)
+			_log("Test Case failed");
+		$t.end();
+	}
+
+	
+	

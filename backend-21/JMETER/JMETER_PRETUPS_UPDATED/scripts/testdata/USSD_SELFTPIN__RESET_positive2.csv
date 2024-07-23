@@ -1,0 +1,2 @@
+TestcaseId,TestcaseType,Module,Description
+TUNG10193 ,Positive,Self TPIN Reset through USSD,To verify that the latest OTP is considered if Initiate PIN Reset Request is hit multiple times.

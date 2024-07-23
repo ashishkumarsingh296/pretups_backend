@@ -1,0 +1,8 @@
+FROM openjdk:11
+WORKDIR /data1/pretupsapp
+COPY pretups_login pretups_login
+#COPY pretups-ui apache-tomcat-9.0.31_smsr/webapps/pretups-ui
+ 
+#ARG MYJAVAOPTS
+#ENV JAVA_OPTS=$MYJAVAOPTS
+CMD ["pretups_login/loginstart.sh", "run"]

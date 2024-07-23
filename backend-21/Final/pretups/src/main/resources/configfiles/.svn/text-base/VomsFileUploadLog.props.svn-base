@@ -1,0 +1,96 @@
+##########################################################################################################	ProcessLogConfig.props
+##	This is the properties file for the log configuration of the PreTUPS processes
+##      To get the proper log of the PreTUPS processes path of the log files should be set
+##  	properly.
+##	Log of the processes will be available at the specified path
+##	
+##	Any process executing in PreTUPS should give this file as the parameter
+##	All the logs are in the daily appender mode, means log files will be made
+##	on the daily basis
+##
+##########################################################################################################
+
+## Common logger for the processes, these logs will be printed in the diverted script output
+## Set root logger level to DEBUG and its only appender to A1.
+log4j.rootLogger=DEBUG, MYFILE
+#log4j.logger.org.apache.commons.digester.Digester=info
+#log4j.logger.org.apache.catalina.startup.TldConfig=info
+#log4j.logger.org.apache.struts.util.PropertyMessageResources=info
+#log4j.logger.org.apache.catalina.session.ManagerBase=info
+#log4j.logger.com.btsl.pretups.preference.businesslogic.PreferenceCache=info
+
+# A1 is set to be a ConsoleAppender.
+log4j.appender.A1=org.apache.log4j.ConsoleAppender
+
+# A1 uses PatternLayout.
+log4j.appender.A1.layout=org.apache.log4j.PatternLayout
+log4j.appender.A1.layout.ConversionPattern=%d : %-4r [%t] %-5p %c %x - %m%n
+
+
+log4j.appender.MYFILE=org.apache.log4j.DailyRollingFileAppender
+log4j.appender.MYFILE.File=/home/pretups_oma/tomcat5/logs/Voucher_out.log
+#log4j.appender.MYFILE.DatePattern='.'yyyy-MM-dd
+log4j.appender.MYFILE.MaxFileSize=100KB
+log4j.appender.MYFILE.layout=org.apache.log4j.PatternLayout
+log4j.appender.MYFILE.layout.ConversionPattern=%d : %-4r [%t] %-5p %c %x - %m%n
+
+
+## Log file configuration entries for MessageSentLog Logger, Any message sent from the PreTUPS
+## will be logged in this file
+log4j.logger.com.btsl.pretups.logging.MessageSentLog=INFO,MessageSentLog
+log4j.appender.MessageSentLog=org.apache.log4j.DailyRollingFileAppender
+log4j.appender.MessageSentLog.File=/home/pretups_oma/tomcat5/logs/messageSentLog.log
+#log4j.appender.MessageSentLog.MaxFileSize=100KB
+log4j.appender.MessageSentLog.DatePattern='.'yyyy-MM-dd
+log4j.appender.MessageSentLog.layout=org.apache.log4j.PatternLayout
+log4j.appender.MessageSentLog.layout.ConversionPattern=%d   %m%n  
+
+
+## Log file configuration entries for Processes Log, logs related to the processes will be 
+## maintained in this log file, if this logger is used in the program
+log4j.logger.com.btsl.pretups.processes=DEBUG,ProcessesLog
+log4j.appender.ProcessesLog=org.apache.log4j.DailyRollingFileAppender
+log4j.appender.ProcessesLog.File=/home/pretups_oma/tomcat5/logs/ProcessesLog.log
+#log4j.appender.ProcessesLog.MaxFileSize=100000KB
+log4j.appender.ProcessesLog.DatePattern='.'yyyy-MM-dd
+log4j.appender.ProcessesLog.layout=org.apache.log4j.PatternLayout
+log4j.appender.ProcessesLog.layout.ConversionPattern=%d   %m%n
+
+
+## Log file configuration entries for Event Log, any error coming in the execution of the process
+## will be logged here, if there is any error coming Event log is the best place to check for the 
+## error
+log4j.logger.com.btsl.event.EventLogger=DEBUG,EventLog
+log4j.appender.EventLog=org.apache.log4j.DailyRollingFileAppender
+log4j.appender.EventLog.File=/home/pretups_oma/tomcat5/logs/EventLog.log
+log4j.appender.NetworkStockLog.DatePattern='.'yyyy-MM-dd
+log4j.appender.EventLog.layout=org.apache.log4j.PatternLayout
+log4j.appender.EventLog.layout.ConversionPattern= %d- %m%n 
+
+
+#----------Added for New Logger of Alarm Sender-----
+##For Alarm Sender Class
+log4j.logger.com.btsl.alarm.AlarmSender=DEBUG,AlarmSenderLog
+log4j.additivity.com.btsl.alarm.AlarmSender=false
+log4j.appender.AlarmSenderLog=org.apache.log4j.DailyRollingFileAppender
+log4j.appender.AlarmSenderLog.File=/home/pretups_oma/tomcat5/logs/ProccessAlarmSender.log
+log4j.appender.AlarmSenderLog.DatePattern='.'yyyy-MM-dd
+log4j.appender.AlarmSenderLog.layout=org.apache.log4j.PatternLayout
+log4j.appender.AlarmSenderLog.layout.ConversionPattern=%m%n
+
+#VOMS Batch
+log4j.logger.com.btsl.voms.vomslogging.VomsBatchInfoLog=INFO,VomsBatchInfoLog
+log4j.appender.VomsBatchInfoLog=org.apache.log4j.DailyRollingFileAppender
+log4j.appender.VomsBatchInfoLog.File=/home/pretups_oma/tomcat5/logs/VomsBatchInfoLog_output.log
+log4j.appender.VomsBatchInfoLog.DatePattern='.'yyyy-MM-dd
+log4j.appender.VomsBatchInfoLog.layout=org.apache.log4j.PatternLayout
+log4j.appender.VomsBatchInfoLog.layout.ConversionPattern=%5p [%t] (%F:%L) - %m%n
+
+#VOMS voucher change status
+log4j.logger.com.btsl.voms.vomslogging.VomsVoucherChangeStatusLog=INFO,VomsVoucherChangeStatusLog
+log4j.appender.VomsVoucherChangeStatusLog=org.apache.log4j.DailyRollingFileAppender
+log4j.appender.VomsVoucherChangeStatusLog.File=/home/pretups_oma/tomcat5/logs/voucherstatus_output.log
+log4j.appender.VomsVoucherChangeStatusLog.DatePattern='.'yyyy-MM-dd
+log4j.appender.VomsVoucherChangeStatusLog.layout=org.apache.log4j.PatternLayout
+log4j.appender.VomsVoucherChangeStatusLog.layout.ConversionPattern=%5p [%t] (%F:%L) - %m%n
+

@@ -1,0 +1,5 @@
+Test Case No,Test Case Decsription,Status,MSISDN,Remarks,Assertion,
+TEST001,Given that channel admin loggin into application and try to change the status of a user which is not present in the system,Active,9871163075,Remarks,User Not Present ,
+TEST002,Given that channel admin loggin into application and try to change the status without giving MSISDN and remarks,Active,,,Enter MSISDN,
+TEST003,Given that channel admin loggin into application and try to change the status ony with remarks,,,Remarks,Select status,
+TEST004,To verify that channel admin login into application and try to change status adminstratively & then verify from channel enquiry ,Expired,7200009908,Remarks for change status,User modified Successfully,Expired

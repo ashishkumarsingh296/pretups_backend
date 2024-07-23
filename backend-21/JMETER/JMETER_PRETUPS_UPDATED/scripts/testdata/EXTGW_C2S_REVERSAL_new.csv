@@ -1,0 +1,23 @@
+TestcaseId,TestcaseType,Module,Description
+TUNG12180 ,Positive,Recharge Reversal,C2S Recharge Reversal should work through external gateway with transaction id and sender details.
+TUNG12181 ,Positive,Recharge Reversal,C2S Recharge Reversal should work through external gateway when all parameters are added.
+,Positive,Recharge Reversal,C2S Recharge Reversal is successful with Login ID and password
+,Positive,Recharge Reversal,C2S Recharge Reversal is successful with External code
+,Positive,Recharge Reversal,C2S Recharge Reversal is successful with Correct MSISDN2 and Transaction ID
+,Positive,Recharge Reversal,C2S Recharge Reversal is successful without Language code entered.
+,Positive,Recharge Reversal,C2S Recharge Reversal is successful without External Reference number.
+,Negative,Recharge Reversal,C2S Recharge Reversal is not successful if Channel user is barred as sender.
+,Positive,Recharge Reversal,C2S Recharge Reversal is  successful if Channel user is out suspended.
+,Negative,Recharge Reversal,C2S Recharge Reversal not successful with blank external network code
+,Negative,Recharge Reversal,C2S Recharge Reversal not successful with blank transaction ID
+,Negative,Recharge Reversal,C2S Recharge Reversal not successful with invalid transaction ID
+,Negative,Recharge Reversal,C2S Recharge Reversal not successful with invalid external network code
+,Negative,Recharge Reversal,C2S Recharge Reversal not successful with invalid PIN
+,Negative,Recharge Reversal,C2S Recharge Reversal not successful with invalid Password
+,Negative,Recharge Reversal,C2S Recharge Reversal not successful with invalid MSISDN2
+,Negative,Recharge Reversal,C2S Recharge Reversal not successful with TXN ID of C2S performed by different channel user
+,Positive,Recharge Reversal,C2S Recharge Reversal is successful if commission profile is suspended
+,Negative,Recharge Reversal,C2S Recharge Reversal is not successful if transfer control profile is suspended
+,Positive,Recharge Reversal,C2S Recharge Reversal is successful if channel user is barred as receiver
+,Negative,Recharge Reversal,C2S Recharge Reversal is not successful if channel user is in suspended
+,Negative,Recharge Reversal,C2S Recharge Reversal not successful if TXNID is already reversed.

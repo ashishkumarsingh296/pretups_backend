@@ -1,0 +1,31 @@
+INSERT INTO page_ui_roles
+(role_code, page_code)
+VALUES('ICCIDKEYMGMT', 'P_NW_ICCID_IMSI');
+
+INSERT INTO page_ui_roles
+(role_code, page_code)
+VALUES('ICCIDMSISDNMGMT', 'P_NW_ICCID_IMSI');
+
+INSERT INTO role_ui_mapping
+(role_ui_parent_id, role_ui_id, rule_code)
+VALUES('networkAdmin', 'Upload_Key_ICCID/Management', 'ICCIDKEYMGMT');
+
+INSERT INTO role_ui_mapping
+(role_ui_parent_id, role_ui_id, rule_code)
+VALUES('networkAdmin', 'Upload_Num_ICCID/Management', 'ICCIDMSISDNMGMT');
+
+INSERT INTO page_ui_roles
+(role_code, page_code)
+VALUES('ICCIDDELETE', 'P_NW_ICCID_IMSI');
+
+INSERT INTO role_ui_mapping
+(role_ui_parent_id, role_ui_id, rule_code)
+VALUES('networkAdmin', 'Upload_Dlt_ICCID/Management', 'ICCIDDELETE');
+
+INSERT INTO page_ui_roles
+(role_code, page_code)
+VALUES('BC2SRTRULES', 'P_NW_TRF_RULES_C2S');
+
+INSERT INTO role_ui_mapping
+(role_ui_parent_id, role_ui_id, rule_code)
+VALUES('networkAdmin', 'Batch_C2S_Transfer', 'BC2SRTRULES');

@@ -1,0 +1,129 @@
+---
+
+
+- name: "Trying to create pretups user."
+  hosts: appservers-pretups
+  serial: 1
+  become: yes
+  user: "{{ ansible_ssh_user }}"
+  gather_facts: true
+  vars_files:
+    - roles/create_user/vars/main.yml
+  roles: 
+    - {role: create_user, tags: create_user_web}
+
+
+- name: "create directory structure as per the Installation in pretupshome"
+  hosts: appservers-pretups
+  gather_facts: true
+  serial: 1
+  become: yes
+  user: "{{ ansible_ssh_user }}"
+  vars_files:
+  - roles/create_directory/vars/main.yml
+  - roles/create_user/vars/main.yml 
+  roles:
+  - {role: create_directory, tags: create_pretupshome_web}
+
+- name: "create directory structure as per the Installation in pretupsvar"
+  hosts: appservers-pretups
+  gather_facts: true
+  serial: 1
+  become: yes
+  user: "{{ ansible_ssh_user }}"
+  vars_files:
+  - roles/create_directory/vars/main.yml
+  - roles/create_user/vars/main.yml
+  roles:
+  - {role: create_pretupsvars, tags: create_pretupsvar_web}
+
+- name: "create directory on the destination to keep java"
+  hosts: appservers-pretups
+  gather_facts: true
+  serial: 1
+  become: yes
+  become_user: "{{ USER_NAME }}"
+  vars_files:
+  - roles/copy_java/vars/main.yml
+  roles:
+  - {role: copy_java, tags: java_web}
+
+
+
+
+- name: "copy tomcat inside pretups home directory"
+  hosts: appservers-pretups
+  gather_facts: true
+  serial: 1
+  become: yes
+  become_user: "{{ USER_NAME }}"
+  vars_files:
+  - roles/copy_tomcat/vars/main.yml
+  roles:
+  - {role: copy_tomcat, tags: tomcat_web}
+
+
+
+- name: "copy pretups.war inside the tomcat/webapps directory"
+  hosts: appservers-pretups
+  gather_facts: false
+  serial: 1
+  become: yes
+  become_user: "{{ USER_NAME }}"
+  vars_files:
+  - roles/copy_war/vars/main.yml
+  roles:
+  - {role: copy_war, tags: pretups.war,war}
+
+- name: "configure LogConfig.props"
+  hosts: appservers-pretups
+  gather_facts: yes
+  serial: 1
+  become: true
+  become_user: "{{ USER_NAME }}"
+  vars_files:
+  - roles/copy_war/vars/main.yml
+  roles:
+  - {role: configure_LogConfig, tags: configure_LogConfig}
+
+- name: "configure Constant.props, pretupsSTart.sh, pretupsStop.sh, configuration_default.props"
+  hosts: appservers-pretups
+  gather_facts: yes
+  serial: 1
+  become: true
+  become_user: "{{ USER_NAME }}"
+  vars_files:
+  - roles/copy_war/vars/main.yml
+  - roles/configure/vars/main.yml
+  - roles/copy_java/vars/main.yml
+  - roles/create_user/vars/main.yml
+  - roles/db_schema_create/vars/main.yml
+  - roles/db_ship_scripts/vars/main.yml
+  roles:
+  - {role: configure, tags: configure,constant,logconfig}
+
+
+
+- name: "copy SMSC Gateway file inside pretups home directory"
+  hosts: appservers-pretups
+  gather_facts: true
+  serial: 1
+  become: true
+  become_user: "{{ USER_NAME }}"
+  roles:
+  - {role: copy_SMSCGateway, tags: copy_SMSCGateway}
+
+
+#- name: Tomcat deployment playbook
+#  hosts: appservers-pretups       # Inventory hosts group / server to act on
+#  become: yes               # If to escalate privilege
+#  become_method: sudo       # Set become method
+#  remote_user: root         # Update username for remote server
+#  vars:
+#    tomcat_ver: 9.0.30                          # Tomcat version to install
+#    ui_manager_user: manager                    # User who can access the UI manager section only
+#    ui_manager_pass: Str0ngManagerP@ssw3rd      # UI manager user password
+#    ui_admin_username: admin                    # User who can access bpth manager and admin UI sections
+#    ui_admin_pass: Str0ngAdminP@ssw3rd          # UI admin password
+#  roles:
+#    - pretups-ui

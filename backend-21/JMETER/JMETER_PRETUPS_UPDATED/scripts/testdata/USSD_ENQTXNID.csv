@@ -1,0 +1,8 @@
+TestcaseId,TestcaseType,Module,Description
+,Positive,Inquiry by TXNID,To verfiy that Inquiry by transaction ID is successful by all valid details
+,Negative,Inquiry by TXNID,To verfiy that Inquiry by transaction ID is not successful by incorrect MSISDN
+,Negative,Inquiry by TXNID,To verfiy that Inquiry by transaction ID is not successful with PIN incorrect
+,Negative,Inquiry by TXNID,To verfiy that Inquiry by transaction ID is not successful if PIN is blank
+,Negative,Inquiry by TXNID,To verfiy that Inquiry by transaction ID is not successful if TXNID is balnk
+,Negative,Inquiry by TXNID,To verfiy that Inquiry by transaction ID is not successful if Transaction ID is other than C2S.
+,Negative,Inquiry by TXNID,To verfiy that Inquiry by transaction ID is not successful by channel user if Transaction is performed by another channel user.

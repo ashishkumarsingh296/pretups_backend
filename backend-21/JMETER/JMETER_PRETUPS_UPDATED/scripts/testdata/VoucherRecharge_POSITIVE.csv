@@ -1,0 +1,4 @@
+TestcaseId,TestcaseType,Module,Description
+,Positive,Voucher Recharge,To verify Voucher Recharge by Self runs successfully 
+,Positive,Voucher Recharge,To verify Voucher Recharge by Others runs successfully without Info tag
+,Positive,Voucher Recharge,To verify Voucher Recharge by Others runs successfully with Info tag

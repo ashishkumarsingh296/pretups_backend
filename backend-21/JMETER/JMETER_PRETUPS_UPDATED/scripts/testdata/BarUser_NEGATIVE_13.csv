@@ -1,0 +1,2 @@
+TestcaseId,TestcaseType,Module,Description
+TUNG12768,Negative,Bar user through Restful API,To verify barred reason text length should not exceed more than 100 character

@@ -1,0 +1,2 @@
+TestcaseId,TestcaseType,Module,Description
+TUNG12892 ,N,Private Registration,To verify that if subscriber sid is more than or less than the size defined then registration should not be successful

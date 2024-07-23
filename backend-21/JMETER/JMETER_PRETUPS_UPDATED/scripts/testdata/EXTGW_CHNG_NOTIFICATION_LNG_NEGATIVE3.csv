@@ -1,0 +1,2 @@
+TestcaseId,TestcaseType,Module,Description
+TUNG12827,Negative,Change notification language,To verify that error is played when invalid external network code is added

@@ -1,0 +1,2 @@
+TestcaseId,TestcaseType,Module,Description
+TUNG12800,Negative,View barred list through RESTFul API,To verfiy user barred type is required to get  barred user list

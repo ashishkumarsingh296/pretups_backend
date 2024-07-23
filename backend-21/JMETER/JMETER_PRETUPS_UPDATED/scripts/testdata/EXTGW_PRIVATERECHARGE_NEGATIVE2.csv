@@ -1,0 +1,2 @@
+TestcaseId,TestcaseType,Module,Description
+TUNG12874,Positive,Private Recharge,To check that a successful recharge happens when selector is not entered

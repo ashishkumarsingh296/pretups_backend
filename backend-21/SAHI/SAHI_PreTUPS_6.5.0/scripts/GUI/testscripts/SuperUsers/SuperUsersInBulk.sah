@@ -1,0 +1,53 @@
+//######################################
+//
+//This script is for super users
+//
+//#######################################
+
+
+//===== import scripts ===//
+_includeOnce("../../../../utility/ImportPackage.sah");
+_includeOnce("../../../GUI/testscripts/SuperUsers/SuperUsers_Common.sah"); 
+
+
+//======================Pre-requisite check============================
+_log("Setup", "custom4");
+
+//====Login into Application====
+login($g_appURL, $g_LangEnglish, $g_superAdmin, $g_password, $g_assertMessage); //calls the Login function in Login.sah with the parameters(url, language, username, password, assertion)
+
+
+// ....................... Test cases for superusers  ............. //
+
+var $g_SuperUsersDetailsInBulk = _readCSVFile("../../../GUI/testdata/SuperUsersInBulk.csv"); //Reads  details 
+
+
+
+	for(var $g_row = 1; $g_SuperUsersDetailsInBulk[$g_row] != null; $g_row++){
+		
+				var $g_col = 0;
+				var $number =   testCaseNumber($g_SuperUsersDetailsInBulk[$g_row][$g_col]);
+							
+				var $t = _testcase($g_SuperUsersDetailsInBulk[$g_row][$g_col++], $g_SuperUsersDetailsInBulk[$g_row][$g_col++]);
+			
+				$t.start();
+				
+				commonVaribleForSuperUsersInBulk($g_row, $g_col);
+				
+				if($number == 16)
+					batchSuperNA();
+				
+				else if($number == 17)
+					batchSuperCA();
+				
+				else if($number==18)
+					batchSuperCCE();
+				
+				
+					
+				$t.end();
+	}
+
+
+
+	

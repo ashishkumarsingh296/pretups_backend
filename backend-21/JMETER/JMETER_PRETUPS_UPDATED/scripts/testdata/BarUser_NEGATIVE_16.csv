@@ -1,0 +1,2 @@
+TestcaseId,TestcaseType,Module,Description
+TUNG12771,Negative,Bar user through Restful API,To verify error comes when wrong data provided

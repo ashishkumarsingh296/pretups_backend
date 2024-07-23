@@ -1,0 +1,41 @@
+
+ALTER TABLE channel_users ADD autoo2c_threshold_value numeric(20) NULL DEFAULT 0;
+ALTER Table channel_users ADD autoo2c_transaction_amt numeric(20) NULL DEFAULT 0;
+
+
+INSERT INTO page_ui_roles
+(role_code, page_code)
+VALUES('AUTOC2CCRLMT', 'P_AUTO_O2C');
+
+
+INSERT INTO pages_ui
+(page_code, module_code, page_url, menu_name, show_menu, sequence_no, menu_level, parent_page_code, image, role_code, domain_type, category_code, page_type, app_name, is_default)
+VALUES('P_AUTO_O2C', 'COMMON', '/autoO2CCreditLimit', 'Auto Operator to Channel', 'Y', 14.2, '2', 'P_STOCK_MGMT_MAIN', NULL, NULL, 'OPERATOR', 'BCU', NULL, 'eTopup', NULL);
+
+
+INSERT INTO roles
+(domain_type, role_code, role_name, group_name, status, role_type, from_hour, to_hour, group_role, application_id, gateway_types, role_for, is_default, is_default_grouprole, access_type, sub_group_name, sub_group_role, view_roles)
+VALUES('OPERATOR', 'AUTOO2CCRLMT', 'Auto O2C Credit Limit', 'Masters', 'Y', 'A', NULL, NULL, 'N', '1', 'WEB', 'B', 'N', 'N', 'B', 'Sub_Group', 'N', 'Y');
+
+
+INSERT INTO role_ui_mapping
+(role_ui_parent_id, role_ui_id, rule_code)
+VALUES('adminChannelUser', 'Auto_O2C_credit_Limit', 'AUTOO2CCRLMT');
+
+
+INSERT INTO user_roles
+(user_id, role_code, gateway_types)
+VALUES('NGBC0000003721', 'AUTOO2CCRLMT', 'WEB');
+
+INSERT INTO category_roles
+(category_code, role_code, application_id)
+VALUES('BCU', 'AUTOO2CCRLMT', '1');
+
+
+INSERT INTO system_preferences
+(preference_code, "name", "type", value_type, default_value, min_value, max_value, max_size, description, modified_allowed, display, "module", remarks, created_on, created_by, modified_on, modified_by, allowed_values, fixed_value)
+VALUES('AUTO_O2C_USER_SPECIFIC_AMOUNT', 'Auto O2C user specfic transfer amount', 'SYSTEMPRF', 'BOOLEAN', 'true', NULL, NULL, 50, 'Auto O2C user specfic transfer amount', 'Y', 'Y', 'C2S', 'Auto O2C user specfic transfer amount', '2013-07-05 00:00:00.000', 'ADMIN', '2017-05-17 00:00:00.000', 'SU0001', NULL, 'Y');
+
+
+
+

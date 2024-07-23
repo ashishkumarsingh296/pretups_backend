@@ -1,0 +1,145 @@
+
+
+// This scripts contains all the common methods to approve O2C transfer
+// Created By Shashi Ranjan Singh 
+
+_includeOnce("../../../../utility/ImportPackage.sah");
+
+var $l_naCsv = _readCSVFile("../../../GUI/testdata/NA_Login.csv");
+
+
+	var $g_msisdn;
+	var $g_refNumber;
+	var $g_extTxnNumber;
+	var $g_calendarImg;
+	var $g_approvalQuantity;
+	var $g_remarks;
+	var $g_assertion;
+	
+	var $a_Prefix;
+	
+	
+	
+	function commonVaribleToApproveO2C($g_row, $g_col) {
+		
+		$g_msisdn = $g_approveO2CTransfer[$g_row][$g_col++];
+		$g_extTxnNumber = $g_approveO2CTransfer[$g_row][$g_col++];
+		$g_calendarImg = $g_approveO2CTransfer[$g_row][$g_col++];
+		$g_approvalQuantity = $g_approveO2CTransfer[$g_row][$g_col++];
+		$g_remarks = $g_approveO2CTransfer[$g_row][$g_col++];
+		$g_assertion = $g_approveO2CTransfer[$g_row][$g_col++];
+		
+		
+		$g_refNumber = $l_naCsv[26][1] // from CSV
+		// $g_extTxnNumber  = extReferenceNumber();  for futher use 
+		
+	}
+	
+	function approveO2CTransferCommonOne() {
+		_click(_link("Operator to channel"));
+		_click(_link("Approve level 1"));
+		_setValue(_textbox("userCode"), $g_msisdn);
+	}
+	
+	
+	function approveO2CTransferCommonTwo() {
+		_assertExists(_div("Transfer approval level one"));//moved four lines down by Fiza for O2Ctransfer 
+		_setValue(_textbox("externalTxnNum"), $g_refNumber);
+		_click(_image($g_calendarImg));
+		_setValue(_textbox("externalTxnDate"), $g_currentDate);
+		_setValue(_textbox("channelTransferIndexed[0].firstApprovedQuantity"),$g_approvalQuantity );
+		_setValue(_textarea("approve1Remark"), $g_remarks);
+	}
+	
+	function selectTransfer() {
+		_click(_radio("selectedTransfer", _near(_cell($g_refNumber))));
+	}
+	
+	function approveO2CTransferCommon() {
+		approveO2CTransferCommonOne();
+		submit();
+		selectTransfer();
+		submit();
+		approveO2CTransferCommonTwo();
+	}
+	
+	function viewInitiatedO2CTransfer() {
+		approveO2CTransferCommonOne();
+		submit();
+		_assertExists(_div("Operator to channel transfer details"));
+		_assertExists(_cell("Reference number", _near(_cell($g_refNumber))));
+	}
+	
+	function invalidMSISDForO2CTransfer() {
+		approveO2CTransferCommonOne();
+		submit();
+		_assertExists(_listItem("/"+ $g_assertion +".*/"));
+	}
+	
+	function toChecKResetButtonOnSearchDomainPage() {
+		_wait(1000);
+		approveO2CTransferCommonOne();_wait(1000);
+		buttonReset();
+		if(_getValue(_textbox("userCode")) == "") {_log("Successful")}
+		else {_log("Failed Reset Check");}
+	}
+	
+	function toChecKBackButtonOnO2CDetailsPage() {
+		approveO2CTransferCommonOne();
+		submit();
+		_assertExists(_div("Operator to channel transfer details"));
+		back();
+		_assertExists(_div("Select domain"));
+	}
+	
+	function commonO2CApprovalAction(){
+		approveO2CTransferCommonOne();
+		submit();
+		selectTransfer();
+		submit();
+	}
+	
+	function toChecKBackButtonOnLevelOnePage() {
+		commonO2CApprovalAction();
+		back();
+		_assertExists(_div("Operator to channel transfer details"));
+	}
+	
+	function toChecKRejectButtonOnLevelOnePage() {
+		commonO2CApprovalAction();
+		reject();
+		_assertExists(_submit("Confirm"));
+	}
+	
+	function invalidTxnDate(){
+		commonO2CApprovalAction();
+		_setValue(_textbox("externalTxnNum"), $g_refNumber);
+		_setValue(_textbox("externalTxnDate"), $g_calendarImg);
+		_setValue(_textbox("channelTransferIndexed[0].firstApprovedQuantity"),$g_approvalQuantity );
+		_setValue(_textarea("approve1Remark"), $g_remarks);
+		approve();
+		_assertExists(_listItem("/"+ $g_assertion +".*/"));
+	}
+	
+	function invalidDetailsForO2CApproval() {
+		commonO2CApprovalAction();
+		approveO2CTransferCommonTwo();
+		approve();
+		_assertExists(_listItem("/"+ $g_assertion +".*/"));
+	}
+	
+	
+	function extReferenceNumber(){
+		 $l_time = currentTime(); // fetch current time(CurretnTime)
+		 var  $l_name = $l_time; //AUTONAcurrentTime
+		 return $l_name;
+	}
+	
+	// level two approval should be taken care of  and some more to be added to the script.
+
+
+
+
+	 
+	
+	

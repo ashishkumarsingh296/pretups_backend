@@ -1,0 +1,1734 @@
+--Alter table TRANSFER_RULES for column CELL_GROUP_ID for Location based promotion support for vouchers
+ALTER TABLE TRANSFER_RULES ADD CELL_GROUP_ID VARCHAR2(10) ;
+
+--Alter Query For Remarks Column in Voms Batches
+ALTER TABLE voms_batches ADD ( first_approver_remarks VARCHAR2(50),second_approver_remarks VARCHAR2(50),
+third_approver_remarks VARCHAR2(50),first_approved_by VARCHAR2(20),second_approved_by VARCHAR2(20),
+third_approved_by VARCHAR2(20),first_approved_on DATE,second_approved_on DATE,third_approved_on DATE);
+Commit;
+
+
+Insert into SYSTEM_PREFERENCES
+   (PREFERENCE_CODE, NAME, TYPE, VALUE_TYPE, DEFAULT_VALUE, 
+    MIN_VALUE, MAX_VALUE, MAX_SIZE, DESCRIPTION, MODIFIED_ALLOWED, 
+    DISPLAY, MODULE, REMARKS, CREATED_ON, CREATED_BY, 
+    MODIFIED_ON, MODIFIED_BY, ALLOWED_VALUES, FIXED_VALUE)
+Values
+   ('P2P_PRE_SERVCLASS_AS_POST', 'P2P module Pre to pre and pre - post support', 'SYSTEMPRF', 'BOOLEAN', 'false', 
+    10, 10, 50, 'P2P module Pre to pre and pre - post support', 'N', 
+    'N', 'P2P', 'P2P module Pre to pre and pre - post support', TO_DATE('06/16/2005 00:00:00', 'MM/DD/YYYY HH24:MI:SS'), 'ADMIN', 
+    TO_DATE('06/16/2005 00:00:00', 'MM/DD/YYYY HH24:MI:SS'), 'ADMIN', 'true,false', 'Y');
+		
+COMMIT;
+
+--DWH changes for INFO tags and DUAL Commission file
+CREATE OR REPLACE PROCEDURE RP2PDWHTEMPPRC
+(
+           P_DATE                 IN DATE,
+           P_MASTERCNT            OUT NUMBER,
+           P_CHTRANSCNT           OUT    NUMBER,
+           P_C2STRANSCNT          OUT    NUMBER,
+           P_MESSAGE              OUT VARCHAR2
+)
+IS
+
+SQLEXCEPTION EXCEPTION;
+EXITEXCEPTION EXCEPTION;
+
+BEGIN
+        DBMS_OUTPUT.PUT_LINE('START RP2P DWH PROC');
+
+        EXECUTE IMMEDIATE 'TRUNCATE TABLE TEMP_RP2P_DWH_MASTER';
+        EXECUTE IMMEDIATE 'TRUNCATE TABLE TEMP_RP2P_DWH_CHTRANS';
+        EXECUTE IMMEDIATE 'TRUNCATE TABLE TEMP_RP2P_DWH_C2STRANS';
+
+
+    INSERT INTO TEMP_RP2P_DWH_MASTER ( SRNO, DATA )
+    SELECT ROWNUM,(U.USER_ID||','||PARENT_ID||','||OWNER_ID||','||USER_TYPE||','||EXTERNAL_CODE||','||MSISDN
+    ||','||REPLACE(L.LOOKUP_NAME,',',' ')||','||REPLACE(LOGIN_ID,',',' ')||','||U.CATEGORY_CODE||','||CAT.CATEGORY_NAME||','||
+    UG.GRPH_DOMAIN_CODE||','||REPLACE(GD.GRPH_DOMAIN_NAME,',',' ')||','||
+    REPLACE(USER_NAME,',',' ')||','||REPLACE(CITY,',',' ')||','||REPLACE(STATE,',',' ')||','||REPLACE(COUNTRY,',',' ')||',' ||',' ) DATA FROM USERS U, 
+
+CATEGORIES CAT,USER_GEOGRAPHIES UG,GEOGRAPHICAL_DOMAINS GD,LOOKUPS L, LOOKUP_TYPES LT
+    WHERE U.USER_ID=UG.USER_ID AND U.CATEGORY_CODE=CAT.CATEGORY_CODE AND U.STATUS<>'C'
+    AND UG.GRPH_DOMAIN_CODE=GD.GRPH_DOMAIN_CODE AND L.LOOKUP_CODE=U.STATUS
+    AND LT.LOOKUP_TYPE='URTYP' AND LT.LOOKUP_TYPE=L.LOOKUP_TYPE 
+    AND TRUNC(U.CREATED_ON)<=P_DATE
+    AND USER_TYPE='CHANNEL';
+    COMMIT;
+    SELECT MAX(SRNO) INTO P_MASTERCNT FROM TEMP_RP2P_DWH_MASTER;
+
+
+
+    INSERT INTO TEMP_RP2P_DWH_CHTRANS ( SRNO, DATA )
+    SELECT ROWNUM,DATA FROM (SELECT (CT.TRANSFER_ID||','||REQUEST_GATEWAY_TYPE||','||TO_CHAR
+
+(CT.TRANSFER_DATE,'DD/MM/YYYY')
+    ||','||TO_CHAR(CT.CREATED_ON,'DD/MM/YYYY HH12:MI:SS PM')||','||CT.NETWORK_CODE
+    ||','||CT.TRANSFER_TYPE||','||CT.TRANSFER_SUB_TYPE||','||CT.TRANSFER_CATEGORY
+    ||','||CT.TYPE||','||CT.FROM_USER_ID||','||CT.TO_USER_ID||','||CT.MSISDN||','||CT.TO_MSISDN
+    ||','||CT.SENDER_CATEGORY_CODE||','||CT.RECEIVER_CATEGORY_CODE||','||
+    CTI.SENDER_DEBIT_QUANTITY||','||CTI.RECEIVER_CREDIT_QUANTITY||','||CT.TRANSFER_MRP
+    ||','||CTI.MRP||','||CTI.PAYABLE_AMOUNT||','||CTI.NET_PAYABLE_AMOUNT||','||0
+    ||','||CTI.TAX1_VALUE||','||CTI.TAX2_VALUE||','||CTI.TAX3_VALUE||','||CTI.COMMISSION_VALUE
+    ||','||','||','||CT.EXT_TXN_NO||','||TO_CHAR(CT.EXT_TXN_DATE,'DD/MM/YYYY')||','||','||CTI.PRODUCT_CODE||','||','
+    || DECODE(CT.STATUS ,'CLOSE','200','240') ||','||','||','||','||','||','||','||','||','||','||CT.CELL_ID||','
+||CTI.SENDER_POST_STOCK||','||CTI.SENDER_PREVIOUS_STOCK||','||CTI.RECEIVER_POST_STOCK||','||CTI.RECEIVER_PREVIOUS_STOCK||','||','||','||CT.SOS_STATUS||','||CT.SOS_SETTLEMENT_DATE||','||CTI.OTF_TYPE||','||CTI.OTF_RATE||','||CTI.OTF_AMOUNT||','||CT.INFO1||','||CT.INFO2||','||CT.INFO3||','||CT.INFO4||','||CT.INFO5||','||CT.DUAL_COMM_TYPE||',') DATA     
+
+            FROM CHANNEL_TRANSFERS CT,CHANNEL_TRANSFERS_ITEMS CTI
+    WHERE CT.TRANSFER_ID=CTI.TRANSFER_ID(+)
+    AND CT.STATUS IN('CLOSE','CNCL') 
+    AND TRUNC(CT.CLOSE_DATE)=P_DATE
+    ORDER BY CT.MODIFIED_ON,CT.TYPE);
+    COMMIT;
+    SELECT MAX(SRNO) INTO P_CHTRANSCNT FROM TEMP_RP2P_DWH_CHTRANS;
+
+
+
+    INSERT INTO TEMP_RP2P_DWH_C2STRANS ( SRNO, DATA,TRANSFER_STATUS)
+    SELECT ROWNUM,DATA,TRANSFER_STATUS FROM (SELECT (CT.TRANSFER_ID||','||REQUEST_GATEWAY_TYPE||','||TO_CHAR
+
+(CT.TRANSFER_DATE,'DD/MM/YYYY')
+    ||','||TO_CHAR(CT.TRANSFER_DATE_TIME,'DD/MM/YYYY HH12:MI:SS PM')||','||CT.NETWORK_CODE||','||CT.SERVICE_TYPE||','||','||   'SALE'||','||'C2S'||','||
+
+CT.SENDER_ID||','||','||CT.SENDER_MSISDN||','||CT.RECEIVER_MSISDN||','||
+    CT.SENDER_CATEGORY||','||','||CT.SENDER_TRANSFER_VALUE||','||CT.RECEIVER_TRANSFER_VALUE||','||
+    CT.TRANSFER_VALUE||','||CT.QUANTITY||','||','||','|| CT.RECEIVER_ACCESS_FEE||','||
+    CT.RECEIVER_TAX1_VALUE||','||CT.RECEIVER_TAX2_VALUE||','||0||','||','||CT.DIFFERENTIAL_APPLICABLE||','||
+    CT.DIFFERENTIAL_GIVEN||','||','||','||','||CT.PRODUCT_CODE||','||CT.CREDIT_BACK_STATUS||','||CT.TRANSFER_STATUS
+    ||','||CT.RECEIVER_BONUS_VALUE||','||CT.RECEIVER_VALIDITY||','||CT.RECEIVER_BONUS_VALIDITY||','
+    ||CT.SERVICE_CLASS_CODE||','||CT.INTERFACE_ID||','||CT.CARD_GROUP_CODE
+    ||','||REPLACE(KV.VALUE,',',' ')||','||CT.SERIAL_NUMBER||','||CT.INTERFACE_REFERENCE_ID||','||CT.CELL_ID||','||CT.SENDER_POST_BALANCE||','||CT.SENDER_PREVIOUS_BALANCE||','||CT.RECEIVER_POST_BALANCE||','||CT.RECEIVER_PREVIOUS_BALANCE||','||CT.REVERSAL_ID||','||CT.SUB_SERVICE ||','||','||','||','||CT.INFO1 ||','||CT.INFO2 ||','||CT.INFO3 ||','||CT.INFO4 ||','||CT.INFO5 ||',') DATA,CT.TRANSFER_STATUS TRANSFER_STATUS
+    FROM C2S_TRANSFERS CT, KEY_VALUES KV ,Service_Type_Selector_Mapping STSM WHERE 
+    CT.TRANSFER_DATE=P_DATE  AND 
+    stsm.SELECTOR_CODE=CT.SUB_SERVICE AND stsm.SERVICE_TYPE=CT.SERVICE_TYPE 
+    AND KV.KEY(+)=CT.ERROR_CODE AND KV.TYPE(+)='C2S_ERR_CD' ORDER BY CT.TRANSFER_DATE_TIME);
+    COMMIT;
+
+    SELECT MAX(SRNO) INTO P_C2STRANSCNT FROM TEMP_RP2P_DWH_C2STRANS;
+
+
+    DBMS_OUTPUT.PUT_LINE('RP2P DWH PROC COMPLETED');
+    P_MESSAGE:='SUCCESS';
+
+    EXCEPTION
+                 WHEN SQLEXCEPTION THEN
+            P_MESSAGE:='NOT ABLE TO MIGRATE DATA, SQL EXCEPTION OCCOURED';
+            RAISE EXITEXCEPTION;
+                 WHEN OTHERS THEN
+                        P_MESSAGE:='NOT ABLE TO MIGRATE DATA, EXCEPTION OCCOURED';
+                        RAISE  EXITEXCEPTION;
+
+END;	
+COMMIT;
+
+	
+ALTER TABLE
+	SOS_SETTLEMENT_FAIL_RECCORDS DROP
+		CONSTRAINT PK_SOS_SETTLE_FAIL_REC;
+COMMIT;
+
+--Release 7.4 Voucher Order Request  Changes Starts----
+INSERT INTO PAGES
+(PAGE_CODE, MODULE_CODE, PAGE_URL, MENU_NAME, MENU_ITEM, SEQUENCE_NO, MENU_LEVEL, APPLICATION_ID, SPRING_PAGE_URL)
+VALUES('VOMSRQI001', 'VOMSOREQ', '/jsp/voucherOrderRequest/selectDistType.jsp', 'Voucher Request Order Initiate', 'N', 40, '2', '1', '/jsp/voucherOrderRequest/selectDistType.jsp');
+INSERT INTO PAGES
+(PAGE_CODE, MODULE_CODE, PAGE_URL, MENU_NAME, MENU_ITEM, SEQUENCE_NO, MENU_LEVEL, APPLICATION_ID, SPRING_PAGE_URL)
+VALUES('VOMSRQI002', 'VOMSOREQ', '/jsp/voucherOrderRequest/voucherOrderReqDetails.jsp', 'Voucher Request Order Initiate', 'N', 40, '2', '1', '/jsp/voucherOrderRequest/voucherOrderReqDetails.jsp');
+INSERT INTO PAGES
+(PAGE_CODE, MODULE_CODE, PAGE_URL, MENU_NAME, MENU_ITEM, SEQUENCE_NO, MENU_LEVEL, APPLICATION_ID, SPRING_PAGE_URL)
+VALUES('VOMSRQI003', 'VOMSOREQ', '/jsp/voucherOrderRequest/voucherOrderReqProductDetails.jsp', 'Voucher Request Order Initiate', 'N', 40, '2', '1', '/jsp/voucherOrderRequest/voucherOrderReqProductDetails.jsp');
+INSERT INTO PAGES
+(PAGE_CODE, MODULE_CODE, PAGE_URL, MENU_NAME, MENU_ITEM, SEQUENCE_NO, MENU_LEVEL, APPLICATION_ID, SPRING_PAGE_URL)
+VALUES('VOMSRQI004', 'VOMSOREQ', '/jsp/voucherOrderRequest/voucherOrderReqProductDetailsConfirm.jsp', 'Voucher Request Order Initiate', 'N', 40, '2', '1', '/jsp/voucherOrderRequest/voucherOrderReqProductDetailsConfirm.jsp');
+INSERT INTO PAGES
+(PAGE_CODE, MODULE_CODE, PAGE_URL, MENU_NAME, MENU_ITEM, SEQUENCE_NO, MENU_LEVEL, APPLICATION_ID, SPRING_PAGE_URL)
+VALUES('VOMSRQO001', 'VOMSOREQ', '/voucherOrderReqDistType.do?method=channelUserInitiatedOrder', 'Voucher Request Order', 'Y', 40, '2', '1', '/voucherOrderReqDistType.do?method=channelUserInitiatedOrder');
+INSERT INTO PAGES
+(PAGE_CODE, MODULE_CODE, PAGE_URL, MENU_NAME, MENU_ITEM, SEQUENCE_NO, MENU_LEVEL, APPLICATION_ID, SPRING_PAGE_URL)
+VALUES('VOMSRQODMM', 'VOMSOREQ', '/voucherOrderReqDistType.do?method=channelUserInitiatedOrder', 'Voucher Request Order', 'Y', 40, '1', '1', '/voucherOrderReqDistType.do?method=channelUserInitiatedOrder');
+INSERT INTO PAGES
+(PAGE_CODE, MODULE_CODE, PAGE_URL, MENU_NAME, MENU_ITEM, SEQUENCE_NO, MENU_LEVEL, APPLICATION_ID, SPRING_PAGE_URL)
+VALUES('VOMSRQO01A', 'VOMSOREQ', '/voucherOrderReqDistType.do?method=channelUserInitiatedOrder', 'Voucher Request Order', 'N', 40, '2', '1', '/voucherOrderReqDistType.do?method=channelUserInitiatedOrder');
+
+INSERT INTO PAGE_ROLES
+(ROLE_CODE, PAGE_CODE, APPLICATION_ID)
+VALUES('INITVOMSOREQ', 'VOMSRQO01A', '1');
+
+INSERT INTO PAGE_ROLES
+(ROLE_CODE, PAGE_CODE, APPLICATION_ID)
+VALUES('INITVOMSOREQ', 'VOMSRQODMM', '1');
+
+INSERT INTO PAGE_ROLES
+(ROLE_CODE, PAGE_CODE, APPLICATION_ID)
+VALUES('INITVOMSOREQ', 'VOMSRQO001', '1');
+
+INSERT INTO PAGE_ROLES
+(ROLE_CODE, PAGE_CODE, APPLICATION_ID)
+VALUES('INITVOMSOREQ', 'VOMSRQI001', '1');
+
+INSERT INTO PAGE_ROLES
+(ROLE_CODE, PAGE_CODE, APPLICATION_ID)
+VALUES('INITVOMSOREQ', 'VOMSRQI002', '1');
+
+INSERT INTO PAGE_ROLES
+(ROLE_CODE, PAGE_CODE, APPLICATION_ID)
+VALUES('INITVOMSOREQ', 'VOMSRQI003', '1');
+
+INSERT INTO PAGE_ROLES
+(ROLE_CODE, PAGE_CODE, APPLICATION_ID)
+VALUES('INITVOMSOREQ', 'VOMSRQI004', '1');
+
+INSERT INTO MODULES
+(MODULE_CODE, MODULE_NAME, SEQUENCE_NO, APPLICATION_ID)
+VALUES('VOMSOREQ', 'Voucher Order Request', 40, '1');
+
+INSERT INTO CATEGORY_ROLES
+(CATEGORY_CODE, ROLE_CODE, APPLICATION_ID)
+VALUES('DIST', 'INITVOMSOREQ', '1');
+
+INSERT INTO ROLES
+(DOMAIN_TYPE, ROLE_CODE, ROLE_NAME, GROUP_NAME, STATUS, ROLE_TYPE, FROM_HOUR, TO_HOUR, GROUP_ROLE, APPLICATION_ID, GATEWAY_TYPES, ROLE_FOR, IS_DEFAULT, IS_DEFAULT_GROUPROLE, ACCESS_TYPE)
+VALUES('DISTB_CHAN', 'INITVOMSOREQ', 'Voucher Order Request Initiate', 'Voucher Order Request', 'Y', 'A', NULL, NULL, 'N', '1', 'WEB', 'B', 'N', 'N', 'B');
+
+COMMIT;
+
+---- Release 7.4 : Download Vouchers for Voucher Order Requests starts
+INSERT INTO ROLES
+(DOMAIN_TYPE, ROLE_CODE, ROLE_NAME, GROUP_NAME, STATUS, ROLE_TYPE, FROM_HOUR, TO_HOUR, GROUP_ROLE, APPLICATION_ID, GATEWAY_TYPES, ROLE_FOR, IS_DEFAULT, IS_DEFAULT_GROUPROLE, ACCESS_TYPE)
+VALUES('DISTB_CHAN', 'DOWNVOMS', 'Voms voucher download', 'Voucher Download', 'Y', 'A', NULL, NULL, 'N', '1', 'WEB', 'B', 'N', 'N', 'B');
+
+INSERT INTO CATEGORY_ROLES
+(CATEGORY_CODE, ROLE_CODE, APPLICATION_ID)
+VALUES('DIST', 'DOWNVOMS', '1');
+COMMIT;
+---- Release 7.4 : Download Vouchers for Voucher Order Requests ends
+
+/* Channel Transfer Items - Tejeshvi*/
+CREATE TABLE CHANNEL_VOUCHER_ITEMS (
+	TRANSFER_ID 		VARCHAR2(20) 	NOT NULL,
+	TRANSFER_DATE 		DATE 			NOT NULL,
+	VOUCHER_TYPE 		VARCHAR2(15) 	NOT NULL,
+	PRODUCT_ID 			VARCHAR2(15),
+	MRP 				NUMBER(10,0) 	NOT NULL,
+	REQUESTED_QUANTITY	NUMBER(20,0) 	NOT NULL,
+	FROM_SERIAL_NO 		VARCHAR2(16),
+	TO_SERIAL_NO 		VARCHAR2(16)
+);
+
+COMMIT;
+
+/* On demand voucher - Test type - Tejeshvi*/
+ALTER TABLE VOMS_TYPES MODIFY "TYPE" VARCHAR2(2) DEFAULT 'E';
+
+INSERT INTO VOMS_TYPES
+(VOUCHER_TYPE, NAME, SERVICE_TYPE_MAPPING, STATUS, CREATED_ON, CREATED_BY, MODIFIED_ON, MODIFIED_BY, "TYPE")
+VALUES('test_phy', 'Test', 'RC', 'Y', TIMESTAMP '2018-09-14 16:59:49.000000', 'SU0001', TIMESTAMP '2018-09-14 16:59:49.000000', 'SU0001', 'PT');
+INSERT INTO VOMS_TYPES
+(VOUCHER_TYPE, NAME, SERVICE_TYPE_MAPPING, STATUS, CREATED_ON, CREATED_BY, MODIFIED_ON, MODIFIED_BY, "TYPE")
+VALUES('test_elect', 'Test', 'EVD', 'Y', TIMESTAMP '2018-09-14 16:59:49.000000', 'SU0001', TIMESTAMP '2018-09-14 16:59:49.000000', 'SU0001', 'ET');
+
+
+INSERT INTO LOOKUPS
+(LOOKUP_CODE, LOOKUP_NAME, LOOKUP_TYPE, STATUS, CREATED_ON, CREATED_BY, MODIFIED_ON, MODIFIED_BY)
+VALUES('ET', 'Electronic Test', 'VTYPE', 'Y', TIMESTAMP '2005-11-06 00:00:00.000000', 'ADMIN', TIMESTAMP '2005-11-06 00:00:00.000000', 'ADMIN');
+INSERT INTO LOOKUPS
+(LOOKUP_CODE, LOOKUP_NAME, LOOKUP_TYPE, STATUS, CREATED_ON, CREATED_BY, MODIFIED_ON, MODIFIED_BY)
+VALUES('PT', 'Physical Test', 'VTYPE', 'Y', TIMESTAMP '2005-11-06 00:00:00.000000', 'ADMIN', TIMESTAMP '2005-11-06 00:00:00.000000', 'ADMIN');
+
+
+
+INSERT INTO VOMS_VTYPE_SERVICE_MAPPING(VOUCHER_TYPE, SERVICE_TYPE, SUB_SERVICE, STATUS, SERVICE_ID)
+VALUES('test_elect', 'EVD', '1', 'Y', 406);
+INSERT INTO VOMS_VTYPE_SERVICE_MAPPING(VOUCHER_TYPE, SERVICE_TYPE, SUB_SERVICE, STATUS, SERVICE_ID)
+VALUES('test_phy', 'EVD', '1', 'Y', 390);
+INSERT INTO VOMS_VTYPE_SERVICE_MAPPING(VOUCHER_TYPE, SERVICE_TYPE, SUB_SERVICE, STATUS, SERVICE_ID)
+VALUES('test_phy', 'RC', '3', 'Y', 391);
+INSERT INTO VOMS_VTYPE_SERVICE_MAPPING(VOUCHER_TYPE, SERVICE_TYPE, SUB_SERVICE, STATUS, SERVICE_ID)
+VALUES('test_phy', 'RC', '123', 'Y', 392);
+INSERT INTO VOMS_VTYPE_SERVICE_MAPPING(VOUCHER_TYPE, SERVICE_TYPE, SUB_SERVICE, STATUS, SERVICE_ID)
+VALUES('test_phy', 'RC', '12', 'Y', 393);
+
+
+
+/* On demand voucher - Test type - Tejeshvi*/
+
+/* Payment Gateway - Tejeshvi*/
+CREATE TABLE CHANNEL_TRANSFER_PAYMENTS (
+	TRANSFER_ID 		VARCHAR2(15) 	NOT NULL,
+	PAYMENT_ID 			VARCHAR2(15) 	NOT NULL,
+	TRANSFER_DATE 		DATE 			NOT NULL,
+	TRANSFER_DATE_TIME	DATE			NOT NULL,
+	PAYMENT_STATUS 		VARCHAR2(10) 	NOT NULL,
+	PAYMENT_AMOUNT		NUMBER(20)	 	NOT NULL
+);
+/* Payment Gateway - Tejeshvi*/
+
+ALTER TABLE CHANNEL_TRANSFERS ADD PMT_INST_STATUS VARCHAR2(15) DEFAULT 'NA' NOT NULL ;
+
+/*  Added Product Type in Look Up table to give flexibility in case of Voucher Order Requests starts**/
+INSERT INTO LOOKUP_TYPES
+(LOOKUP_TYPE, LOOKUP_TYPE_NAME, CREATED_ON, CREATED_BY, MODIFIED_ON, MODIFIED_BY, MODIFIED_ALLOWED)
+VALUES('VMSPT', 'VMS Product Type', TIMESTAMP '2016-03-30 15:50:34.000000', 'ADMIN', TIMESTAMP '2016-03-30 15:50:34.000000', 'ADMIN', 'N');
+
+INSERT INTO LOOKUPS
+(LOOKUP_CODE, LOOKUP_NAME, LOOKUP_TYPE, STATUS, CREATED_ON, CREATED_BY, MODIFIED_ON, MODIFIED_BY)
+VALUES('PREPROD', 'Prepaid', 'VMSPT', 'Y', TIMESTAMP '2007-02-14 00:00:00.000000', 'ADMIN', TIMESTAMP '2007-02-14 00:00:00.000000', 'ADMIN');
+
+INSERT INTO LOOKUPS
+(LOOKUP_CODE, LOOKUP_NAME, LOOKUP_TYPE, STATUS, CREATED_ON, CREATED_BY, MODIFIED_ON, MODIFIED_BY)
+VALUES('POSTPROD', 'Postpaid', 'VMSPT', 'Y', TIMESTAMP '2007-02-14 00:00:00.000000', 'ADMIN', TIMESTAMP '2007-02-14 00:00:00.000000', 'ADMIN');
+/*  Added Product Type in Look Up table to give flexibility in case of Voucher Order Requests ends **/
+
+COMMIT;
+
+ALTER TABLE CHANNEL_TRANSFERS ADD RECONCILIATION_BY VARCHAR2(15);
+ALTER TABLE CHANNEL_TRANSFERS ADD RECONCILIATION_DATE DATE;
+ALTER TABLE CHANNEL_TRANSFERS ADD RECONCILIATION_FLAG VARCHAR2 (1);     
+ALTER TABLE CHANNEL_TRANSFERS ADD RECONCILIATION_REMARK VARCHAR2 (50);
+COMMIT;
+
+
+/* add p2p promotional transfer rule entries */
+
+Insert into ROLES
+   (DOMAIN_TYPE, ROLE_CODE, ROLE_NAME, GROUP_NAME, STATUS, 
+    ROLE_TYPE, FROM_HOUR, TO_HOUR, GROUP_ROLE, APPLICATION_ID, 
+    GATEWAY_TYPES, ROLE_FOR, IS_DEFAULT, IS_DEFAULT_GROUPROLE, ACCESS_TYPE)
+ Values
+   ('OPERATOR', 'ADDP2PPROMTRFRULE', 'Add p2p promotnl transfer rule', 'P2P Promotional transfer rule', 'Y', 
+    'A', NULL, NULL, 'N', '1', 
+    'WEB', 'B', 'N', 'N', 'B');
+	
+	
+Insert into PAGES
+   (PAGE_CODE, MODULE_CODE, PAGE_URL, MENU_NAME, MENU_ITEM, 
+    SEQUENCE_NO, MENU_LEVEL, APPLICATION_ID, SPRING_PAGE_URL)
+ Values
+   ('P2PPRADDMM', 'P2PPRTRFRL', '/selectP2pPromotionalLevelAdd.do?method=loadPromotionalLevel', 'Add p2p promotnl transfer rule', 'Y', 
+    1, '1', '1', '/selectP2pPromotionalLevelAdd.do?method=loadPromotionalLevel');
+Insert into PAGES
+   (PAGE_CODE, MODULE_CODE, PAGE_URL, MENU_NAME, MENU_ITEM, 
+    SEQUENCE_NO, MENU_LEVEL, APPLICATION_ID, SPRING_PAGE_URL)
+ Values
+   ('P2PPRAD001', 'P2PPRTRFRL', '/selectP2pPromotionalLevelAdd.do?method=loadPromotionalLevel', 'Add p2p promotnl transfer rule', 'Y', 
+    1, '2', '1', '/selectP2pPromotionalLevelAdd.do?method=loadPromotionalLevel');
+Insert into PAGES
+   (PAGE_CODE, MODULE_CODE, PAGE_URL, MENU_NAME, MENU_ITEM, 
+    SEQUENCE_NO, MENU_LEVEL, APPLICATION_ID, SPRING_PAGE_URL)
+ Values
+   ('P2PPRAD01A', 'P2PPRTRFRL', '/selectP2pPromotionalLevelAdd.do?method=loadPromotionalLevel', 'Add p2p promotnl transfer rule', 'N', 
+    1, '2', '1', '/selectP2pPromotionalLevelAdd.do?method=loadPromotionalLevel');
+Insert into PAGES
+   (PAGE_CODE, MODULE_CODE, PAGE_URL, MENU_NAME, MENU_ITEM, 
+    SEQUENCE_NO, MENU_LEVEL, APPLICATION_ID, SPRING_PAGE_URL)
+ Values
+   ('P2PPRAD002', 'P2PPRTRFRL', '/jsp/transferrules/addP2pPromotionalTransferRule.jsp', 'Add p2p promotnl transfer rule', 'N', 
+    1, '2', '1', '/jsp/transferrules/addP2pPromotionalTransferRule.jsp');
+Insert into PAGES
+   (PAGE_CODE, MODULE_CODE, PAGE_URL, MENU_NAME, MENU_ITEM, 
+    SEQUENCE_NO, MENU_LEVEL, APPLICATION_ID, SPRING_PAGE_URL)
+ Values
+   ('P2PPRAD003', 'P2PPRTRFRL', '/jsp/transferrules/confirmAddP2pPromoTransferRuleDetails.jsp', 'Add p2p promotnl transfer rule', 'N', 
+    1, '2', '1', '/jsp/transferrules/confirmAddP2pPromoTransferRuleDetails.jsp');
+
+
+Insert into PAGE_ROLES
+   (ROLE_CODE, PAGE_CODE, APPLICATION_ID)
+ Values
+   ('ADDP2PPROMTRFRULE', 'P2PPRAD001', '1');
+Insert into PAGE_ROLES
+   (ROLE_CODE, PAGE_CODE, APPLICATION_ID)
+ Values
+   ('ADDP2PPROMTRFRULE', 'P2PPRAD002', '1');
+Insert into PAGE_ROLES
+   (ROLE_CODE, PAGE_CODE, APPLICATION_ID)
+ Values
+   ('ADDP2PPROMTRFRULE', 'P2PPRAD003', '1');
+Insert into PAGE_ROLES
+   (ROLE_CODE, PAGE_CODE, APPLICATION_ID)
+ Values
+   ('ADDP2PPROMTRFRULE', 'P2PPRAD01A', '1');
+Insert into PAGE_ROLES
+   (ROLE_CODE, PAGE_CODE, APPLICATION_ID)
+ Values
+   ('ADDP2PPROMTRFRULE', 'P2PPRADDMM', '1');
+
+
+Insert into MODULES
+   (MODULE_CODE, MODULE_NAME, SEQUENCE_NO, APPLICATION_ID)
+ Values
+   ('P2PPRTRFRL', 'P2P Promotional transfer rule', 389, '1');
+
+
+Insert into CATEGORY_ROLES
+   (CATEGORY_CODE, ROLE_CODE, APPLICATION_ID)
+ Values
+   ('NWADM', 'ADDP2PPROMTRFRULE', '1');
+   
+
+Insert into GROUP_ROLES
+   (GROUP_ROLE_CODE, ROLE_CODE)
+ Values
+   ('NWADM', 'ADDP2PPROMTRFRULE'); 
+
+
+Insert into SYSTEM_PREFERENCES
+   (PREFERENCE_CODE, NAME, TYPE, VALUE_TYPE, DEFAULT_VALUE, 
+    MIN_VALUE, MAX_VALUE, MAX_SIZE, DESCRIPTION, MODIFIED_ALLOWED, 
+    DISPLAY, MODULE, REMARKS, CREATED_ON, CREATED_BY, 
+    MODIFIED_ON, MODIFIED_BY, ALLOWED_VALUES, FIXED_VALUE)
+ Values
+   ('P2P_PRO_TRF_ST_LVL_CODE', 'P2P Promotional trf start level', 'NETWORKPRF', 'INT', '1', 
+    NULL, NULL, 50, 'P2P Promotional transfer rule start level. 1 for subsscriber, 2 for Cell id', 'Y', 
+    'Y', 'P2P', 'P2P Promotional transfer rule start level. 1 for subsscriber, 2 for Cell id', TO_DATE('10/10/2018 00:00:00', 'MM/DD/YYYY HH24:MI:SS'), 'ADMIN', 
+    TO_DATE('10/10/2018 15:03:14', 'MM/DD/YYYY HH24:MI:SS'), 'SU0001', '1,2', 'Y');
+    
+    Insert into NETWORK_PREFERENCES
+   (NETWORK_CODE, PREFERENCE_CODE, VALUE, CREATED_ON, CREATED_BY, 
+    MODIFIED_ON, MODIFIED_BY)
+ Values
+   ('NG', 'P2P_PRO_TRF_ST_LVL_CODE', '1', TO_DATE('02/13/2012 13:41:21', 'MM/DD/YYYY HH24:MI:SS'), 'NGLA0000000002', 
+    TO_DATE('02/13/2012 13:41:55', 'MM/DD/YYYY HH24:MI:SS'), 'NGLA0000000002');
+
+
+Insert into LOOKUP_TYPES
+   (LOOKUP_TYPE, LOOKUP_TYPE_NAME, CREATED_ON, CREATED_BY, MODIFIED_ON, 
+    MODIFIED_BY, MODIFIED_ALLOWED)
+ Values
+   ('P2PPROMO', 'P2P Promotional Level', TO_DATE('02/14/2007 00:00:00', 'MM/DD/YYYY HH24:MI:SS'), 'ADMIN', TO_DATE('12/02/2007 00:00:00', 'MM/DD/YYYY HH24:MI:SS'), 
+    'ADMIN', 'N');
+   
+
+Insert into LOOKUPS
+   (LOOKUP_CODE, LOOKUP_NAME, LOOKUP_TYPE, STATUS, CREATED_ON, 
+    CREATED_BY, MODIFIED_ON, MODIFIED_BY)
+ Values
+   ('SUB', 'Subscriber', 'P2PPROMO', 'Y', TO_DATE('01/04/2013 00:00:00', 'MM/DD/YYYY HH24:MI:SS'), 
+    'ADMIN', TO_DATE('01/04/2013 00:00:00', 'MM/DD/YYYY HH24:MI:SS'), 'ADMIN');
+
+   
+Insert into LOOKUPS
+   (LOOKUP_CODE, LOOKUP_NAME, LOOKUP_TYPE, STATUS, CREATED_ON, 
+    CREATED_BY, MODIFIED_ON, MODIFIED_BY)
+ Values
+   ('CEL', 'Cell Group', 'P2PPROMO', 'Y', TO_DATE('01/04/2013 00:00:00', 'MM/DD/YYYY HH24:MI:SS'), 
+    'ADMIN', TO_DATE('01/04/2013 00:00:00', 'MM/DD/YYYY HH24:MI:SS'), 'ADMIN');
+	
+
+
+
+COMMIT;
+
+/* modify p2p promotional transfer rule entries */
+
+
+Insert into ROLES
+   (DOMAIN_TYPE, ROLE_CODE, ROLE_NAME, GROUP_NAME, STATUS, 
+    ROLE_TYPE, FROM_HOUR, TO_HOUR, GROUP_ROLE, APPLICATION_ID, 
+    GATEWAY_TYPES, ROLE_FOR, IS_DEFAULT, IS_DEFAULT_GROUPROLE, ACCESS_TYPE)
+ Values
+   ('OPERATOR', 'MODP2PPROMTRFRULE', 'Mod p2p promotnl transfer rule', 'P2P Promotional transfer rule', 'Y', 
+    'A', NULL, NULL, 'N', '1', 
+    'WEB', 'B', 'N', 'N', 'B');
+
+
+
+
+Insert into PAGES
+   (PAGE_CODE, MODULE_CODE, PAGE_URL, MENU_NAME, MENU_ITEM, 
+    SEQUENCE_NO, MENU_LEVEL, APPLICATION_ID, SPRING_PAGE_URL)
+ Values
+   ('P2PPRMD01A', 'P2PPRTRFRL', '/selectP2pPromotionalLevelModify.do?method=loadPromotionalLevel', 'Mod p2p promotnl transfer rule', 'N', 
+    2, '2', '1', '/selectP2pPromotionalLevelModify.do?method=loadPromotionalLevel');
+Insert into PAGES
+   (PAGE_CODE, MODULE_CODE, PAGE_URL, MENU_NAME, MENU_ITEM, 
+    SEQUENCE_NO, MENU_LEVEL, APPLICATION_ID, SPRING_PAGE_URL)
+ Values
+   ('P2PPRMDDMM', 'P2PPRTRFRL', '/selectP2pPromotionalLevelModify.do?method=loadPromotionalLevel', 'Mod p2p promotnl transfer rule', 'Y', 
+    2, '1', '1', '/selectP2pPromotionalLevelModify.do?method=loadPromotionalLevel');
+Insert into PAGES
+   (PAGE_CODE, MODULE_CODE, PAGE_URL, MENU_NAME, MENU_ITEM, 
+    SEQUENCE_NO, MENU_LEVEL, APPLICATION_ID, SPRING_PAGE_URL)
+ Values
+   ('P2PPRMD001', 'P2PPRTRFRL', '/selectP2pPromotionalLevelModify.do?method=loadPromotionalLevel', 'Mod p2p promotnl transfer rule', 'Y', 
+    2, '2', '1', '/selectP2pPromotionalLevelModify.do?method=loadPromotionalLevel');
+Insert into PAGES
+   (PAGE_CODE, MODULE_CODE, PAGE_URL, MENU_NAME, MENU_ITEM, 
+    SEQUENCE_NO, MENU_LEVEL, APPLICATION_ID, SPRING_PAGE_URL)
+ Values
+   ('P2PPRMD002', 'P2PPRTRFRL', '/jsp/transferrules/searchP2pPromotionalRuleDetailsModify.jsp', 'Mod p2p promotnl transfer rule', 'N', 
+    2, '2', '1', '/jsp/transferrules/searchP2pPromotionalRuleDetailsModify.jsp');
+Insert into PAGES
+   (PAGE_CODE, MODULE_CODE, PAGE_URL, MENU_NAME, MENU_ITEM, 
+    SEQUENCE_NO, MENU_LEVEL, APPLICATION_ID, SPRING_PAGE_URL)
+ Values
+   ('P2PPRMD003', 'P2PPRTRFRL', '/jsp/transferrules/selectP2pPromotionalTransferRules.jsp', 'Mod p2p promotnl transfer rule', 'N', 
+    2, '2', '1', '/jsp/transferrules/selectP2pPromotionalTransferRules.jsp');
+Insert into PAGES
+   (PAGE_CODE, MODULE_CODE, PAGE_URL, MENU_NAME, MENU_ITEM, 
+    SEQUENCE_NO, MENU_LEVEL, APPLICATION_ID, SPRING_PAGE_URL)
+ Values
+   ('P2PPRMD004', 'P2PPRTRFRL', '/jsp/transferrules/modifyP2pPromotionalTransferRules.jsp', 'Mod p2p promotnl transfer rule', 'N', 
+    2, '2', '1', '/jsp/transferrules/modifyP2pPromotionalTransferRules.jsp');
+Insert into PAGES
+   (PAGE_CODE, MODULE_CODE, PAGE_URL, MENU_NAME, MENU_ITEM, 
+    SEQUENCE_NO, MENU_LEVEL, APPLICATION_ID, SPRING_PAGE_URL)
+ Values
+   ('P2PPRMD005', 'P2PPRTRFRL', '/jsp/transferrules/confirmModifyP2pPromotionalTransferRules.jsp', 'Mod p2p promotnl transfer rule', 'N', 
+    2, '2', '1', '/jsp/transferrules/confirmModifyP2pPromotionalTransferRules.jsp');
+
+
+
+
+
+Insert into PAGE_ROLES
+   (ROLE_CODE, PAGE_CODE, APPLICATION_ID)
+ Values
+   ('MODP2PPROMTRFRULE', 'P2PPRMD001', '1');
+Insert into PAGE_ROLES
+   (ROLE_CODE, PAGE_CODE, APPLICATION_ID)
+ Values
+   ('MODP2PPROMTRFRULE', 'P2PPRMD002', '1');
+Insert into PAGE_ROLES
+   (ROLE_CODE, PAGE_CODE, APPLICATION_ID)
+ Values
+   ('MODP2PPROMTRFRULE', 'P2PPRMD003', '1');
+Insert into PAGE_ROLES
+   (ROLE_CODE, PAGE_CODE, APPLICATION_ID)
+ Values
+   ('MODP2PPROMTRFRULE', 'P2PPRMD004', '1');
+Insert into PAGE_ROLES
+   (ROLE_CODE, PAGE_CODE, APPLICATION_ID)
+ Values
+   ('MODP2PPROMTRFRULE', 'P2PPRMD005', '1');
+Insert into PAGE_ROLES
+   (ROLE_CODE, PAGE_CODE, APPLICATION_ID)
+ Values
+   ('MODP2PPROMTRFRULE', 'P2PPRMD01A', '1');
+Insert into PAGE_ROLES
+   (ROLE_CODE, PAGE_CODE, APPLICATION_ID)
+ Values
+   ('MODP2PPROMTRFRULE', 'P2PPRMDDMM', '1');
+
+
+
+Insert into CATEGORY_ROLES
+   (CATEGORY_CODE, ROLE_CODE, APPLICATION_ID)
+ Values
+   ('NWADM', 'MODP2PPROMTRFRULE', '1');
+	
+	COMMIT;
+
+	
+	/* view p2p promotional transfer rule entries */
+	
+	
+Insert into PAGES
+   (PAGE_CODE, MODULE_CODE, PAGE_URL, MENU_NAME, MENU_ITEM, 
+    SEQUENCE_NO, MENU_LEVEL, APPLICATION_ID, SPRING_PAGE_URL)
+ Values
+   ('P2PPRV01A', 'P2PPRTRFRL', '/selectP2pPromotionalLevelView.do?method=loadPromotionalLevel', 'View p2p promtnl transfer rule', 'N', 
+    3, '2', '1', '/selectP2pPromotionalLevelView.do?method=loadPromotionalLevel');
+Insert into PAGES
+   (PAGE_CODE, MODULE_CODE, PAGE_URL, MENU_NAME, MENU_ITEM, 
+    SEQUENCE_NO, MENU_LEVEL, APPLICATION_ID, SPRING_PAGE_URL)
+ Values
+   ('P2PPRVDMM', 'P2PPRTRFRL', '/selectP2pPromotionalLevelView.do?method=loadPromotionalLevel', 'View p2p promtnl transfer rule', 'Y', 
+    3, '1', '1', '/selectP2pPromotionalLevelView.do?method=loadPromotionalLevel');
+Insert into PAGES
+   (PAGE_CODE, MODULE_CODE, PAGE_URL, MENU_NAME, MENU_ITEM, 
+    SEQUENCE_NO, MENU_LEVEL, APPLICATION_ID, SPRING_PAGE_URL)
+ Values
+   ('P2PPRV001', 'P2PPRTRFRL', '/selectP2pPromotionalLevelView.do?method=loadPromotionalLevel', 'View p2p promtnl transfer rule', 'Y', 
+    3, '2', '1', '/selectP2pPromotionalLevelView.do?method=loadPromotionalLevel');
+Insert into PAGES
+   (PAGE_CODE, MODULE_CODE, PAGE_URL, MENU_NAME, MENU_ITEM, 
+    SEQUENCE_NO, MENU_LEVEL, APPLICATION_ID, SPRING_PAGE_URL)
+ Values
+   ('P2PPRV002', 'P2PPRTRFRL', '/jsp/transferrules/searchP2pPromotionalRuleDetailsView.jsp', 'View p2p promtnl transfer rule', 'N', 
+    3, '2', '1', '/jsp/transferrules/searchP2pPromotionalRuleDetailsView.jsp');
+Insert into PAGES
+   (PAGE_CODE, MODULE_CODE, PAGE_URL, MENU_NAME, MENU_ITEM, 
+    SEQUENCE_NO, MENU_LEVEL, APPLICATION_ID, SPRING_PAGE_URL)
+ Values
+   ('P2PPRV003', 'P2PPRTRFRL', '/jsp/transferrules/viewP2pPromotionalTransferRulesView.jsp', 'View p2p promtnl transfer rule', 'N', 
+    3, '2', '1', '/jsp/transferrules/viewP2pPromotionalTransferRulesView.jsp');
+
+
+
+
+Insert into PAGE_ROLES
+   (ROLE_CODE, PAGE_CODE, APPLICATION_ID)
+ Values
+   ('VWP2PPROMTRFRULE', 'P2PPRV001', '1');
+Insert into PAGE_ROLES
+   (ROLE_CODE, PAGE_CODE, APPLICATION_ID)
+ Values
+   ('VWP2PPROMTRFRULE', 'P2PPRV002', '1');
+Insert into PAGE_ROLES
+   (ROLE_CODE, PAGE_CODE, APPLICATION_ID)
+ Values
+   ('VWP2PPROMTRFRULE', 'P2PPRV003', '1');
+Insert into PAGE_ROLES
+   (ROLE_CODE, PAGE_CODE, APPLICATION_ID)
+ Values
+   ('VWP2PPROMTRFRULE', 'P2PPRV01A', '1');
+Insert into PAGE_ROLES
+   (ROLE_CODE, PAGE_CODE, APPLICATION_ID)
+ Values
+   ('VWP2PPROMTRFRULE', 'P2PPRVDMM', '1');
+
+
+
+Insert into CATEGORY_ROLES
+   (CATEGORY_CODE, ROLE_CODE, APPLICATION_ID)
+ Values
+   ('NWADM', 'VWP2PPROMTRFRULE', '1');
+
+
+Insert into ROLES
+   (DOMAIN_TYPE, ROLE_CODE, ROLE_NAME, GROUP_NAME, STATUS, 
+    ROLE_TYPE, FROM_HOUR, TO_HOUR, GROUP_ROLE, APPLICATION_ID, 
+    GATEWAY_TYPES, ROLE_FOR, IS_DEFAULT, IS_DEFAULT_GROUPROLE, ACCESS_TYPE)
+ Values
+   ('OPERATOR', 'VWP2PPROMTRFRULE', 'View p2p promotnl transfer rule', 'P2P Promotional transfer rule', 'Y', 
+    'A', NULL, NULL, 'N', '1', 
+    'WEB', 'B', 'N', 'N', 'B');
+COMMIT;
+
+
+Insert into SERVICE_TYPE
+   (SERVICE_TYPE, MODULE, TYPE, MESSAGE_FORMAT, REQUEST_HANDLER, 
+    ERROR_KEY, DESCRIPTION, FLEXIBLE, CREATED_ON, CREATED_BY, 
+    MODIFIED_ON, MODIFIED_BY, NAME, EXTERNAL_INTERFACE, UNREGISTERED_ACCESS_ALLOWED, 
+    STATUS, SEQ_NO, USE_INTERFACE_LANGUAGE, GROUP_TYPE, SUB_KEYWORD_APPLICABLE, 
+    FILE_PARSER, ERP_HANDLER, RECEIVER_USER_SERVICE_CHECK, RESPONSE_PARAM, REQUEST_PARAM, 
+    UNDERPROCESS_CHECK_REQD)
+Values
+   ('CHCGENREQ', 'C2S', 'PRE', 'TYPE MSISDN1 PIN SERVICETYPE', 'com.btsl.pretups.requesthandler.ChannelUserCGEnquiryRequestHandler', 
+    'c2s.ChannelUserCGEnquiryRequestHandler', 'ChannelUser Card Group Enquiry', 'Y', TO_DATE('12/30/2015 18:19:39', 'MM/DD/YYYY HH24:MI:SS'), 'ADMIN', 
+    TO_DATE('12/30/2015 18:19:39', 'MM/DD/YYYY HH24:MI:SS'), 'ADMIN', 'ChannelUser Card Group Enquiry', 'N', 'N', 
+    'Y', NULL, 'N', 'NA', 'N', 
+    NULL, NULL, NULL, 'TYPE MSISDN1 PIN SERVICETYPE', 'TYPE MSISDN1 PIN SERVICETYPE', 
+    'Y');
+COMMIT;
+
+
+/* O2C Reconciliation entries */
+
+Insert into CATEGORY_ROLES (CATEGORY_CODE, ROLE_CODE, APPLICATION_ID) 
+    Values('NWADM', 'RECO2CTRF', '1');
+
+Insert into ROLES
+   (DOMAIN_TYPE, ROLE_CODE, ROLE_NAME, GROUP_NAME, STATUS, 
+    ROLE_TYPE, FROM_HOUR, TO_HOUR, GROUP_ROLE, APPLICATION_ID, 
+    GATEWAY_TYPES, ROLE_FOR, IS_DEFAULT, IS_DEFAULT_GROUPROLE, ACCESS_TYPE)
+Values
+   ('OPERATOR', 'RECO2CTRF', 'O2C reconciliation', 'Reconciliation', 'Y', 
+    'A', NULL, NULL, 'N', '1', 
+    'WEB', 'B', 'N', 'N', 'B');
+
+Insert into PAGES
+   (PAGE_CODE, MODULE_CODE, PAGE_URL, MENU_NAME, MENU_ITEM, 
+    SEQUENCE_NO, MENU_LEVEL, APPLICATION_ID, SPRING_PAGE_URL)
+Values
+   ('O2CREC101', 'RECONCIL', '/o2cReconciliation.do?method=selectDateRange1', ' O2C reconciliation', 'Y', 
+    10, '2', '1', '/transferApprovalDomainOne.do?method=searchDomainLevelOne');
+Insert into PAGES
+   (PAGE_CODE, MODULE_CODE, PAGE_URL, MENU_NAME, MENU_ITEM, 
+    SEQUENCE_NO, MENU_LEVEL, APPLICATION_ID, SPRING_PAGE_URL)
+Values
+   ('O2CREC101A', 'RECONCIL', '/o2cReconciliation.do?method=selectDateRange1', ' O2C reconciliation', 'N', 
+    10, '2', '1', '/transferApprovalDomainOne.do?method=searchDomainLevelOne');
+Insert into PAGES
+   (PAGE_CODE, MODULE_CODE, PAGE_URL, MENU_NAME, MENU_ITEM, 
+    SEQUENCE_NO, MENU_LEVEL, APPLICATION_ID, SPRING_PAGE_URL)
+Values
+   ('O2CREC104', 'RECONCIL', '/jsp/channeltransfer/transferApprovalListLevelOne.jsp', ' O2C reconciliation', 'N', 
+    10, '2', '1', '/jsp/channeltransfer/transferApprovalListLevelOne.jsp');
+Insert into PAGES
+   (PAGE_CODE, MODULE_CODE, PAGE_URL, MENU_NAME, MENU_ITEM, 
+    SEQUENCE_NO, MENU_LEVEL, APPLICATION_ID, SPRING_PAGE_URL)
+Values
+   ('O2CREC106', 'RECONCIL', '/jsp/channeltransfer/transferDetailApprovalLevelOne.jsp', ' O2C reconciliation', 'N', 
+    10, '2', '1', '/jsp/channeltransfer/transferDetailApprovalLevelOne.jsp');
+Insert into PAGES
+   (PAGE_CODE, MODULE_CODE, PAGE_URL, MENU_NAME, MENU_ITEM, 
+    SEQUENCE_NO, MENU_LEVEL, APPLICATION_ID, SPRING_PAGE_URL)
+Values
+   ('O2CREC1DMM', 'RECONCIL', '/o2cReconciliation.do?method=selectDateRange1', ' O2C reconciliation', 'Y', 
+    10, '1', '1', '/transferApprovalDomainOne.do?method=searchDomainLevelOne');
+
+
+Insert into PAGE_ROLES
+   (ROLE_CODE, PAGE_CODE, APPLICATION_ID)
+Values
+   ('RECO2CTRF', 'O2CREC101', '1');
+Insert into PAGE_ROLES
+   (ROLE_CODE, PAGE_CODE, APPLICATION_ID)
+Values
+   ('RECO2CTRF', 'O2CREC101A', '1');
+Insert into PAGE_ROLES
+   (ROLE_CODE, PAGE_CODE, APPLICATION_ID)
+Values
+   ('RECO2CTRF', 'O2CREC104', '1');
+Insert into PAGE_ROLES
+   (ROLE_CODE, PAGE_CODE, APPLICATION_ID)
+Values
+   ('RECO2CTRF', 'O2CREC106', '1');
+Insert into PAGE_ROLES
+   (ROLE_CODE, PAGE_CODE, APPLICATION_ID)
+Values
+   ('RECO2CTRF', 'O2CREC1DMM', '1');
+
+
+COMMIT;
+
+/* Payment gateway entries */
+Insert into SYSTEM_PREFERENCES
+   (PREFERENCE_CODE, NAME, TYPE, VALUE_TYPE, DEFAULT_VALUE, 
+    MIN_VALUE, MAX_VALUE, MAX_SIZE, DESCRIPTION, MODIFIED_ALLOWED, 
+    DISPLAY, MODULE, REMARKS, CREATED_ON, CREATED_BY, 
+    MODIFIED_ON, MODIFIED_BY, ALLOWED_VALUES, FIXED_VALUE)
+Values
+   ('PG_INTEFRATION_ALLOWED', 'PG Integration Allowed', 'SYSTEMPRF', 'BOOLEAN', 'true', 
+    NULL, NULL, 50, 'PG Integration Allowed', 'N', 
+    'Y', 'C2S', 'PG Integration Allowed', TO_DATE('04/21/2008 14:03:00', 'MM/DD/YYYY HH24:MI:SS'), 'ADMIN', 
+    TO_DATE('04/21/2008 14:03:00', 'MM/DD/YYYY HH24:MI:SS'), 'ADMIN', NULL, 'Y');
+
+COMMIT;
+
+INSERT INTO LOOKUPS
+(LOOKUP_CODE, LOOKUP_NAME, LOOKUP_TYPE, STATUS, CREATED_ON, CREATED_BY, MODIFIED_ON, MODIFIED_BY)
+VALUES('PENDING', 'Pending', 'TSTAT', 'Y', TIMESTAMP '2005-08-18 00:00:00.000000', 'ADMIN', TIMESTAMP '2005-08-18 00:00:00.000000', 'ADMIN');
+
+INSERT INTO LOOKUPS
+(LOOKUP_CODE, LOOKUP_NAME, LOOKUP_TYPE, STATUS, CREATED_ON, CREATED_BY, MODIFIED_ON, MODIFIED_BY)
+VALUES('ONLINE', 'Online', 'PMTYP', 'Y', TIMESTAMP '2005-08-04 00:00:00.000000', 'ADMIN', TIMESTAMP '2005-08-04 00:00:00.000000', 'ADMIN');
+
+
+Insert into INTERFACE_TYPES
+   (INTERFACE_TYPE_ID, INTERFACE_NAME, INTERFACE_CATEGORY, HANDLER_CLASS, UNDERPROCESS_MSG_REQD, 
+    MAX_NODES, URI_REQ)
+Values
+   ('PG01', 'Payment Gateway 01', 'PG', 'com.inter.pg.PaymentGatewayHandler', 'N', 
+    1, 'Y');
+Insert into INTERFACE_TYPES
+   (INTERFACE_TYPE_ID, INTERFACE_NAME, INTERFACE_CATEGORY, HANDLER_CLASS, UNDERPROCESS_MSG_REQD, 
+    MAX_NODES, URI_REQ)
+Values
+   ('PG02', 'Payment Gateway 02', 'PG', 'com.inter.pg.PaymentGatewayHandler', 'N', 
+    1, 'Y');
+Insert into LOOKUP_TYPES
+   (LOOKUP_TYPE, LOOKUP_TYPE_NAME, CREATED_ON, CREATED_BY, MODIFIED_ON, 
+    MODIFIED_BY, MODIFIED_ALLOWED)
+Values
+   ('PGTYP', 'Payment Gateway Name', TO_DATE('11/08/2005 00:00:00', 'MM/DD/YYYY HH24:MI:SS'), 'ADMIn', TO_DATE('11/08/2005 00:00:00', 'MM/DD/YYYY HH24:MI:SS'), 
+    'ADMIN', 'N');
+Insert into LOOKUPS
+   (LOOKUP_CODE, LOOKUP_NAME, LOOKUP_TYPE, STATUS, CREATED_ON, 
+    CREATED_BY, MODIFIED_ON, MODIFIED_BY)
+Values
+   ('PG01', 'Payment Gateway 1', 'PGTYP', 'Y', TO_DATE('08/18/2005 00:00:00', 'MM/DD/YYYY HH24:MI:SS'), 
+    'ADMIN', TO_DATE('08/18/2005 00:00:00', 'MM/DD/YYYY HH24:MI:SS'), 'ADMIN');
+Insert into LOOKUPS
+   (LOOKUP_CODE, LOOKUP_NAME, LOOKUP_TYPE, STATUS, CREATED_ON, 
+    CREATED_BY, MODIFIED_ON, MODIFIED_BY)
+Values
+   ('PG02', 'Payment Gateway 2', 'PGTYP', 'Y', TO_DATE('08/04/2005 00:00:00', 'MM/DD/YYYY HH24:MI:SS'), 
+    'ADMIN', TO_DATE('08/04/2005 00:00:00', 'MM/DD/YYYY HH24:MI:SS'), 'ADMIN');
+COMMIT;
+
+Insert into PAGES
+   (PAGE_CODE, MODULE_CODE, PAGE_URL, MENU_NAME, MENU_ITEM, 
+    SEQUENCE_NO, MENU_LEVEL, APPLICATION_ID, SPRING_PAGE_URL)
+Values
+   ('O2CREC105', 'RECONCIL', '/jsp/channeltransfer/viewTransferApproval.jsp', ' O2C reconciliation', 'N', 
+    10, '2', '1', '/jsp/channeltransfer/viewTransferApproval.jsp');
+    
+    Insert into PAGE_ROLES
+   (ROLE_CODE, PAGE_CODE, APPLICATION_ID)
+Values
+   ('RECO2CTRF', 'O2CREC105', '1');
+   INSERT INTO NETWORK_INTERFACE_MODULES
+(MODULE, NETWORK_CODE, METHOD_TYPE, COMM_TYPE, IP, PORT, CLASS_NAME)
+VALUES('C2S', 'NG', 'PG', 'SINGLE_JVM', NULL, NULL, 'com.btsl.pretups.inter.module.InterfaceModule');
+
+INSERT INTO INTERFACES
+(INTERFACE_ID, EXTERNAL_ID, INTERFACE_DESCRIPTION, INTERFACE_TYPE_ID, STATUS, CLOUSER_DATE, MESSAGE_LANGUAGE1, MESSAGE_LANGUAGE2, CONCURRENT_CONNECTION, SINGLE_STATE_TRANSACTION, CREATED_ON, CREATED_BY, MODIFIED_ON, MODIFIED_BY, STATUS_TYPE, VAL_EXPIRY_TIME, TOPUP_EXPIRY_TIME, NUMBER_OF_NODES)
+VALUES('INTID00075', 'PG', 'paymentgateway', 'PG01', 'Y', TIMESTAMP '2018-10-17 13:40:41.000000', 'test1', 'test1', 10, 'Y', TIMESTAMP '2018-10-17 13:40:41.000000', 'SU0001', TIMESTAMP '2018-10-17 13:40:41.000000', 'SU0001', 'M', 100000, 100000, '1');
+
+ALTER TABLE USERS MODIFY PAYMENT_TYPE VARCHAR2(25) ; 
+
+INSERT INTO SYSTEM_PREFERENCES
+(PREFERENCE_CODE, NAME, TYPE, VALUE_TYPE, DEFAULT_VALUE, MIN_VALUE, MAX_VALUE, MAX_SIZE, DESCRIPTION, MODIFIED_ALLOWED, DISPLAY, MODULE, REMARKS, CREATED_ON, CREATED_BY, MODIFIED_ON, MODIFIED_BY, ALLOWED_VALUES, FIXED_VALUE)
+VALUES('CHNLUSR_VOUCHER_CATGRY_ALLWD', 'Chnl User Voucher Allwed Categories', 'CATPRF', 'BOOLEAN', 'false', NULL, NULL, 50, 'Chnl User Voucher Allwed Categories', 'Y', 'Y', 'C2S', 'Chnl User Voucher Allwed Categories', TIMESTAMP '2005-06-21 00:00:00.000000', 'ADMIN', TIMESTAMP '2012-02-08 12:48:44.000000', 'SU0001', 'false,true', 'N');
+	
+COMMIT;
+   
+
+Insert into SYSTEM_PREFERENCES
+   (PREFERENCE_CODE, NAME, TYPE, VALUE_TYPE, DEFAULT_VALUE, 
+    MIN_VALUE, MAX_VALUE, MAX_SIZE, DESCRIPTION, MODIFIED_ALLOWED, 
+    DISPLAY, MODULE, REMARKS, CREATED_ON, CREATED_BY, 
+    MODIFIED_ON, MODIFIED_BY, ALLOWED_VALUES, FIXED_VALUE)
+ Values
+   ('P2P_PROMO_TRF_APP', 'p2p Promotional trf applicable', 'NETWORKPRF', 'BOOLEAN', 'false', 
+    NULL, NULL, 50, 'p2p Promotional transfer rule applicable', 'Y', 
+    'Y', 'C2S', 'p2p Promotional transfer rule applicable', TO_DATE('10/16/2018 00:00:00', 'MM/DD/YYYY HH24:MI:SS'), 'ADMIN', 
+    TO_DATE('10/18/2018 15:03:14', 'MM/DD/YYYY HH24:MI:SS'), 'SU0001', NULL, 'Y');
+
+	
+
+Insert into NETWORK_PREFERENCES
+   (NETWORK_CODE, PREFERENCE_CODE, VALUE, CREATED_ON, CREATED_BY, 
+    MODIFIED_ON, MODIFIED_BY)
+ Values
+   ('NG', 'P2P_PROMO_TRF_APP', 'true', TO_DATE('10/13/2018 13:41:21', 'MM/DD/YYYY HH24:MI:SS'), 'NGLA0000000002', 
+    TO_DATE('10/13/2018 13:41:55', 'MM/DD/YYYY HH24:MI:SS'), 'NGLA0000000002');
+ALTER TABLE CHANNEL_TRANSFERS MODIFY PMT_INST_NO VARCHAR2(50) ;
+
+ALTER TABLE CHANNEL_VOUCHER_ITEMS ADD S_NO NUMBER(3) NOT NULL;
+ 	
+COMMIT;	
+
+/* O2C Reconciliation report entries */
+
+Insert into CATEGORY_ROLES (CATEGORY_CODE, ROLE_CODE, APPLICATION_ID) 
+    Values('NWADM', 'PRERECO2CTRF', '1');
+
+Insert into ROLES
+   (DOMAIN_TYPE, ROLE_CODE, ROLE_NAME, GROUP_NAME, STATUS, 
+    ROLE_TYPE, FROM_HOUR, TO_HOUR, GROUP_ROLE, APPLICATION_ID, 
+    GATEWAY_TYPES, ROLE_FOR, IS_DEFAULT, IS_DEFAULT_GROUPROLE, ACCESS_TYPE)
+Values
+   ('OPERATOR', 'PRERECO2CTRF', 'O2C reconciliation report', 'Reconciliation', 'Y', 
+    'A', NULL, NULL, 'N', '1', 
+    'WEB', 'B', 'N', 'N', 'B');
+
+Insert into PAGES
+   (PAGE_CODE, MODULE_CODE, PAGE_URL, MENU_NAME, MENU_ITEM, 
+    SEQUENCE_NO, MENU_LEVEL, APPLICATION_ID, SPRING_PAGE_URL)
+Values
+   ('PREREC101', 'RECONCIL', '/o2cReconciliation.do?method=selectDateRange2', 'O2C reconciliation report', 'Y', 
+    10, '2', '1', '/transferApprovalDomainOne.do?method=searchDomainLevelOne');
+Insert into PAGES
+   (PAGE_CODE, MODULE_CODE, PAGE_URL, MENU_NAME, MENU_ITEM, 
+    SEQUENCE_NO, MENU_LEVEL, APPLICATION_ID, SPRING_PAGE_URL)
+Values
+   ('PREREC101A', 'RECONCIL', '/o2cReconciliation.do?method=selectDateRange2', 'O2C reconciliation report', 'N', 
+    10, '2', '1', '/transferApprovalDomainOne.do?method=searchDomainLevelOne');
+
+Insert into PAGES
+   (PAGE_CODE, MODULE_CODE, PAGE_URL, MENU_NAME, MENU_ITEM, 
+    SEQUENCE_NO, MENU_LEVEL, APPLICATION_ID, SPRING_PAGE_URL)
+Values
+   ('PREREC1DMM', 'RECONCIL', '/o2cReconciliation.do?method=selectDateRange2', 'O2C reconciliation report', 'Y', 
+    10, '1', '1', '/transferApprovalDomainOne.do?method=searchDomainLevelOne');
+
+
+Insert into PAGE_ROLES
+   (ROLE_CODE, PAGE_CODE, APPLICATION_ID)
+Values
+   ('PRERECO2CTRF', 'PREREC101', '1');
+Insert into PAGE_ROLES
+   (ROLE_CODE, PAGE_CODE, APPLICATION_ID)
+Values
+   ('PRERECO2CTRF', 'PREREC101A', '1');
+
+Insert into PAGE_ROLES
+   (ROLE_CODE, PAGE_CODE, APPLICATION_ID)
+Values
+   ('PRERECO2CTRF', 'PREREC1DMM', '1');
+
+
+COMMIT;
+
+/* O2C Reconciled report entries */
+
+Insert into CATEGORY_ROLES (CATEGORY_CODE, ROLE_CODE, APPLICATION_ID) 
+    Values('NWADM', 'POSRECO2CTRF', '1');
+
+Insert into ROLES
+   (DOMAIN_TYPE, ROLE_CODE, ROLE_NAME, GROUP_NAME, STATUS, 
+    ROLE_TYPE, FROM_HOUR, TO_HOUR, GROUP_ROLE, APPLICATION_ID, 
+    GATEWAY_TYPES, ROLE_FOR, IS_DEFAULT, IS_DEFAULT_GROUPROLE, ACCESS_TYPE)
+Values
+   ('OPERATOR', 'POSRECO2CTRF', 'O2C reconciled report', 'Reconciliation', 'Y', 
+    'A', NULL, NULL, 'N', '1', 
+    'WEB', 'B', 'N', 'N', 'B');
+
+Insert into PAGES
+   (PAGE_CODE, MODULE_CODE, PAGE_URL, MENU_NAME, MENU_ITEM, 
+    SEQUENCE_NO, MENU_LEVEL, APPLICATION_ID, SPRING_PAGE_URL)
+Values
+   ('POSREC101', 'RECONCIL', '/o2cReconciliation.do?method=selectDateRange3', 'O2C reconciled report', 'Y', 
+    10, '2', '1', '/transferApprovalDomainOne.do?method=searchDomainLevelOne');
+Insert into PAGES
+   (PAGE_CODE, MODULE_CODE, PAGE_URL, MENU_NAME, MENU_ITEM, 
+    SEQUENCE_NO, MENU_LEVEL, APPLICATION_ID, SPRING_PAGE_URL)
+Values
+   ('POSREC101A', 'RECONCIL', '/o2cReconciliation.do?method=selectDateRange3', 'O2C reconciled report', 'N', 
+    10, '2', '1', '/transferApprovalDomainOne.do?method=searchDomainLevelOne');
+
+Insert into PAGES
+   (PAGE_CODE, MODULE_CODE, PAGE_URL, MENU_NAME, MENU_ITEM, 
+    SEQUENCE_NO, MENU_LEVEL, APPLICATION_ID, SPRING_PAGE_URL)
+Values
+   ('POSREC1DMM', 'RECONCIL', '/o2cReconciliation.do?method=selectDateRange3', 'O2C reconciled report', 'Y', 
+    10, '1', '1', '/transferApprovalDomainOne.do?method=searchDomainLevelOne');
+
+
+Insert into PAGE_ROLES
+   (ROLE_CODE, PAGE_CODE, APPLICATION_ID)
+Values
+   ('POSRECO2CTRF', 'POSREC101', '1');
+Insert into PAGE_ROLES
+   (ROLE_CODE, PAGE_CODE, APPLICATION_ID)
+Values
+   ('POSRECO2CTRF', 'POSREC101A', '1');
+
+Insert into PAGE_ROLES
+   (ROLE_CODE, PAGE_CODE, APPLICATION_ID)
+Values
+   ('POSRECO2CTRF', 'POSREC1DMM', '1');
+
+
+COMMIT;
+
+
+Insert into SYSTEM_PREFERENCES
+   (PREFERENCE_CODE, NAME, TYPE, VALUE_TYPE, DEFAULT_VALUE, 
+    MIN_VALUE, MAX_VALUE, MAX_SIZE, DESCRIPTION, MODIFIED_ALLOWED, 
+    DISPLAY, MODULE, REMARKS, CREATED_ON, CREATED_BY, 
+    MODIFIED_ON, MODIFIED_BY, ALLOWED_VALUES, FIXED_VALUE)
+ Values
+   ('SERVICES_ALLOWED_SHOW_CARDGROUPLIST', 'secvices allowed to show cardgrouplist', 'SYSTEMPRF', 'STRING', 'ABC', 
+    NULL, NULL, 50, 'Service Type Name allowed to show cardgrouplist on C2S webpage', 'Y', 
+    'Y', 'C2S', 'Comma separated service type name for invoice no in C2S', TO_DATE('12/17/2013 00:00:00', 'MM/DD/YYYY HH24:MI:SS'), 'ADMIN', 
+    TO_DATE('12/17/2013 07:39:23', 'MM/DD/YYYY HH24:MI:SS'), 'SU0001', NULL, 'Y');
+COMMIT;
+
+INSERT INTO CONTROL_PREFERENCES
+(CONTROL_CODE, NETWORK_CODE, PREFERENCE_CODE, VALUE, CREATED_ON, CREATED_BY, MODIFIED_ON, MODIFIED_BY, "TYPE")
+VALUES('DIST', 'NG', 'CHNLUSR_VOUCHER_CATGRY_ALLWD', 'true', TIMESTAMP '2018-10-30 18:58:47.000000', 'NGLA0000003720', TIMESTAMP '2018-10-30 18:58:47.000000', 'NGLA0000003720', 'CATPRF');
+
+
+
+	
+	SET DEFINE OFF;
+update system_preferences set default_value ='true' where preference_code='REC_MSG_SEND_ALLOW';
+Insert into SYSTEM_PREFERENCES
+   (PREFERENCE_CODE, NAME, TYPE, VALUE_TYPE, DEFAULT_VALUE, 
+    MIN_VALUE, MAX_VALUE, MAX_SIZE, DESCRIPTION, MODIFIED_ALLOWED, 
+    DISPLAY, MODULE, REMARKS, CREATED_ON, CREATED_BY, 
+    MODIFIED_ON, MODIFIED_BY, ALLOWED_VALUES, FIXED_VALUE)
+ Values
+   ('LAST_C2C_ENQ_MSG_REQ', 'Last C2C Enq msg required', 'SYSTEMPRF', 'BOOLEAN', 'false', 
+    NULL, NULL, 50, 'Check whetherLast C2C Enq msg required for receiver', 'N', 
+    'Y', 'C2S', 'Check whetherLast C2C Enq msg required for receiver', TO_DATE('06/16/2005 00:00:00', 'MM/DD/YYYY HH24:MI:SS'), 'ADMIN', 
+    TO_DATE('06/16/2005 00:00:00', 'MM/DD/YYYY HH24:MI:SS'), 'ADMIN', NULL, 'Y');
+Insert into SYSTEM_PREFERENCES
+   (PREFERENCE_CODE, NAME, TYPE, VALUE_TYPE, DEFAULT_VALUE, 
+    MIN_VALUE, MAX_VALUE, MAX_SIZE, DESCRIPTION, MODIFIED_ALLOWED, 
+    DISPLAY, MODULE, REMARKS, CREATED_ON, CREATED_BY, 
+    MODIFIED_ON, MODIFIED_BY, ALLOWED_VALUES, FIXED_VALUE)
+ Values
+   ('USSD_REC_MSG_SEND_ALLOW', 'USSD Receiver message allow', 'SERTYPPREF', 'BOOLEAN', 'false', 
+    NULL, NULL, 50, 'Service type wise receiver USSD message allow flag.', 'Y', 
+    'Y', 'C2S', 'Service type wise receiver USSD message allow flag.', TO_DATE('06/18/2008 00:00:00', 'MM/DD/YYYY HH24:MI:SS'), 'ADMIN', 
+    TO_DATE('10/09/2008 11:13:41', 'MM/DD/YYYY HH24:MI:SS'), 'SU0001', NULL, 'Y');
+COMMIT;
+
+
+SET DEFINE OFF;
+Insert into SYSTEM_PREFERENCES
+   (PREFERENCE_CODE, NAME, TYPE, VALUE_TYPE, DEFAULT_VALUE, 
+    MIN_VALUE, MAX_VALUE, MAX_SIZE, DESCRIPTION, MODIFIED_ALLOWED, 
+    DISPLAY, MODULE, REMARKS, CREATED_ON, CREATED_BY, 
+    MODIFIED_ON, MODIFIED_BY, ALLOWED_VALUES, FIXED_VALUE)
+ Values
+   ('C2S_SEQ_ALWD', 'C2S Sequence Allowed', 'SYSTEMPRF', 'BOOLEAN', 'false', 
+    NULL, NULL, 50, 'Flag to Enable/Disable the Sequence Generation', 'Y', 
+    'Y', 'C2S', 'Flag to Enable/Disable the Sequence Generation', TO_DATE('11/04/2015 23:52:13', 'MM/DD/YYYY HH24:MI:SS'), 'ADMIN', 
+    TO_DATE('11/04/2015 23:52:13', 'MM/DD/YYYY HH24:MI:SS'), 'SU0001', NULL, 'Y');
+Insert into SYSTEM_PREFERENCES
+   (PREFERENCE_CODE, NAME, TYPE, VALUE_TYPE, DEFAULT_VALUE, 
+    MIN_VALUE, MAX_VALUE, MAX_SIZE, DESCRIPTION, MODIFIED_ALLOWED, 
+    DISPLAY, MODULE, REMARKS, CREATED_ON, CREATED_BY, 
+    MODIFIED_ON, MODIFIED_BY, ALLOWED_VALUES, FIXED_VALUE)
+ Values
+   ('C2S_SEQID_FOR_GWC', 'Gateway Codes for Sequence ID', 'SYSTEMPRF', 'STRING', '', 
+    NULL, NULL, 50, 'List of comma separated Gateway Codes For Which the Sequence ID is applied', 'Y', 
+    'Y', 'C2S', 'Gateway Code For Which the Sequence ID is applied', TO_DATE('11/04/2015 23:52:18', 'MM/DD/YYYY HH24:MI:SS'), 'ADMIN', 
+    TO_DATE('12/01/2017 16:17:45', 'MM/DD/YYYY HH24:MI:SS'), 'CPSU0000094155', NULL, 'Y');
+Insert into SYSTEM_PREFERENCES
+   (PREFERENCE_CODE, NAME, TYPE, VALUE_TYPE, DEFAULT_VALUE, 
+    MIN_VALUE, MAX_VALUE, MAX_SIZE, DESCRIPTION, MODIFIED_ALLOWED, 
+    DISPLAY, MODULE, REMARKS, CREATED_ON, CREATED_BY, 
+    MODIFIED_ON, MODIFIED_BY, ALLOWED_VALUES, FIXED_VALUE)
+ Values
+   ('C2S_SEQID_APPL_SER', 'Services for Seq ID Generation', 'SYSTEMPRF', 'STRING', '', 
+    NULL, NULL, 50, 'List of comma separated Service Codes for Which Generation of Seq ID is applicable', 'Y', 
+    'Y', 'C2S', 'List of comma separated Service Codes for Which Generation of Seq ID is applicable', TO_DATE('11/04/2015 23:52:24', 'MM/DD/YYYY HH24:MI:SS'), 'ADMIN', 
+    TO_DATE('11/04/2015 23:52:24', 'MM/DD/YYYY HH24:MI:SS'), 'SU0001', 'BPB,DC,DTH,FLRC,PIN,PMD,RC', 'Y');
+COMMIT;
+
+SET DEFINE OFF;
+Insert into SYSTEM_PREFERENCES
+   (PREFERENCE_CODE, NAME, TYPE, VALUE_TYPE, DEFAULT_VALUE, 
+    MIN_VALUE, MAX_VALUE, MAX_SIZE, DESCRIPTION, MODIFIED_ALLOWED, 
+    DISPLAY, MODULE, REMARKS, CREATED_ON, CREATED_BY, 
+    MODIFIED_ON, MODIFIED_BY, ALLOWED_VALUES, FIXED_VALUE)
+ Values
+   ('ADDITIONAL_IN_FIELDS_ALLOWED', 'ADDITIONAL IN FIELDS ALLOWED', 'SYSTEMPRF', 'STRING', '', 
+    NULL, NULL, 50, 'ADDITIONAL IN FIELDS ALLOWED', 'N', 
+    'N', 'P2P', 'ADDITIONAL IN FIELDS ALLOWED', TO_DATE('12/01/2017 00:58:06', 'MM/DD/YYYY HH24:MI:SS'), 'ADMIN', 
+    TO_DATE('12/01/2017 00:58:06', 'MM/DD/YYYY HH24:MI:SS'), 'ADMIN', NULL, 'Y');
+COMMIT;
+
+INSERT INTO CONTROL_PREFERENCES
+(CONTROL_CODE, NETWORK_CODE, PREFERENCE_CODE, VALUE, CREATED_ON, CREATED_BY, MODIFIED_ON, MODIFIED_BY, "TYPE")
+VALUES('DIST', 'NG', 'CHNLUSR_VOUCHER_CATGRY_ALLWD', 'true', TIMESTAMP '2018-10-30 18:58:47.000000', 'NGLA0000003720', TIMESTAMP '2018-10-30 18:58:47.000000', 'NGLA0000003720', 'CATPRF');
+COMMIT
+
+ALTER TABLE COMMISSION_PROFILE_PRODUCTS
+ADD payment_mode VARCHAR2(10) DEFAULT 'ALL';
+
+INSERT INTO LOOKUP_TYPES
+(LOOKUP_TYPE, LOOKUP_TYPE_NAME, CREATED_ON, CREATED_BY, MODIFIED_ON, MODIFIED_BY, MODIFIED_ALLOWED)
+VALUES('PMTMD', 'Payment Mode', TIMESTAMP '2005-06-10 17:24:56.000000', 'ADMIN', TIMESTAMP '2005-06-10 17:24:56.000000', 'ADMIN', 'N');
+
+
+
+INSERT INTO LOOKUPS
+(LOOKUP_CODE, LOOKUP_NAME, LOOKUP_TYPE, STATUS, CREATED_ON, CREATED_BY, MODIFIED_ON, MODIFIED_BY)
+VALUES('DD', 'Demand Draft', 'PMTMD', 'Y', TIMESTAMP '2005-08-04 00:00:00.000000', 'ADMIN', TIMESTAMP '2005-08-04 00:00:00.000000', 'ADMIN');
+
+INSERT INTO LOOKUPS
+(LOOKUP_CODE, LOOKUP_NAME, LOOKUP_TYPE, STATUS, CREATED_ON, CREATED_BY, MODIFIED_ON, MODIFIED_BY)
+VALUES('CHQ', 'Cheque', 'PMTMD', 'Y', TIMESTAMP '2005-08-04 00:00:00.000000', 'ADMIN', TIMESTAMP '2005-08-04 00:00:00.000000', 'ADMIN');
+
+INSERT INTO LOOKUPS
+(LOOKUP_CODE, LOOKUP_NAME, LOOKUP_TYPE, STATUS, CREATED_ON, CREATED_BY, MODIFIED_ON, MODIFIED_BY)
+VALUES('OTH', 'Others', 'PMTMD', 'Y', TIMESTAMP '2005-08-04 00:00:00.000000', 'ADMIN', TIMESTAMP '2005-08-04 00:00:00.000000', 'ADMIN');
+
+INSERT INTO LOOKUPS
+(LOOKUP_CODE, LOOKUP_NAME, LOOKUP_TYPE, STATUS, CREATED_ON, CREATED_BY, MODIFIED_ON, MODIFIED_BY)
+VALUES('CASH', 'Cash', 'PMTMD', 'Y', TIMESTAMP '2005-08-04 00:00:00.000000', 'ADMIN', TIMESTAMP '2005-08-04 00:00:00.000000', 'ADMIN');
+
+INSERT INTO LOOKUPS
+(LOOKUP_CODE, LOOKUP_NAME, LOOKUP_TYPE, STATUS, CREATED_ON, CREATED_BY, MODIFIED_ON, MODIFIED_BY)
+VALUES('ONLINE', 'Online', 'PMTMD', 'Y', TIMESTAMP '2005-08-04 00:00:00.000000', 'ADMIN', TIMESTAMP '2005-08-04 00:00:00.000000', 'ADMIN');
+
+INSERT INTO LOOKUPS
+(LOOKUP_CODE, LOOKUP_NAME, LOOKUP_TYPE, STATUS, CREATED_ON, CREATED_BY, MODIFIED_ON, MODIFIED_BY)
+VALUES('ALL', 'DEFAULT', 'PMTMD', 'Y', TIMESTAMP '2005-08-04 00:00:00.000000', 'ADMIN', TIMESTAMP '2005-08-04 00:00:00.000000', 'ADMIN');
+
+COMMIT;
+
+
+
+ALTER TABLE COMMISSION_PROFILE_PRODUCTS
+   MODIFY PAYMENT_MODE  VARCHAR(10) NOT NULL;
+
+ALTER TABLE COMMISSION_PROFILE_PRODUCTS
+ADD CONSTRAINT UK_COMMISSION_PROFILE_PRODUCTS UNIQUE (COMM_PROFILE_SET_ID, PRODUCT_CODE, PAYMENT_MODE, COMM_PROFILE_SET_VERSION);
+
+Insert into SYSTEM_PREFERENCES
+   (PREFERENCE_CODE, NAME, TYPE, VALUE_TYPE, DEFAULT_VALUE, 
+    MIN_VALUE, MAX_VALUE, MAX_SIZE, DESCRIPTION, MODIFIED_ALLOWED, 
+    DISPLAY, MODULE, REMARKS, CREATED_ON, CREATED_BY, 
+    MODIFIED_ON, MODIFIED_BY, ALLOWED_VALUES, FIXED_VALUE)
+Values
+   ('PAYMENT_MODE_ALWD', 'Payment Mode allowed', 'SYSTEMPRF', 'BOOLEAN', 'false', 
+    NULL, NULL, 50, 'Flag to Enable/Disable Payment Mode allowed', 'Y', 
+    'Y', 'C2S', 'Flag to Enable/Disable Payment Mode allowed', TO_DATE('01/24/2637 23:52:13', 'MM/DD/YYYY HH24:MI:SS'), 'ADMIN', 
+    TO_DATE('01/24/2637 23:52:13', 'MM/DD/YYYY HH24:MI:SS'), 'SU0001', NULL, 'Y');
+
+COMMIT;
+
+INSERT INTO SYSTEM_PREFERENCES
+(PREFERENCE_CODE, NAME, "TYPE", VALUE_TYPE, DEFAULT_VALUE, MIN_VALUE, MAX_VALUE, MAX_SIZE, DESCRIPTION, MODIFIED_ALLOWED, DISPLAY, MODULE, REMARKS, CREATED_ON, CREATED_BY, MODIFIED_ON, MODIFIED_BY, ALLOWED_VALUES, FIXED_VALUE)
+VALUES('O2CAMB_MINUTES_DELAY', 'Delay in ambiguous transaction for O2C Recon', 'SYSTEMPRF', 'INT', '-5', -100, 60, 50, 'Delay in ambiguous transaction for O2C Recon', 'N', 'Y', 'C2S', 'Delay in ambiguous transaction for O2C Recon', TIMESTAMP '2005-06-16 00:00:00.000000', 'ADMIN', TIMESTAMP '2005-09-12 03:39:55.000000', 'SU0001', NULL, 'Y');
+
+UPDATE SYSTEM_PREFERENCES
+SET default_value = 'yyyy/MM/dd HH24:mi:ss' where preference_code = 'DATE_TIME_FORMAT'
+
+ALTER TABLE VOMS_VOUCHERS
+ADD (VOUCHER_TYPE  VARCHAR2(12));
+
+ALTER TABLE VOMS_VOUCHERS
+ADD (CONSUMED_GATEWAY_TYPE  VARCHAR2(12));
+
+ALTER TABLE VOMS_VOUCHERS
+ADD (CONSUMED_GATEWAY_CODE  VARCHAR2(12));
+
+
+CREATE TABLE VOMS_VOUCHER_DAILY_SUMMARY
+(
+  SUMMARY_DATE             DATE,
+  PRODUCT_ID               VARCHAR2(15 BYTE),
+  VOUCHER_TYPE             VARCHAR2(15 BYTE),
+  DENOMINATION             NUMBER(16)           DEFAULT 0,
+  PRODUCTION_NETWORK_CODE  VARCHAR2(2 BYTE),
+  USER_NETWORK_CODE        VARCHAR2(2 BYTE),
+  TOTAL_GENERATED          NUMBER(16)           DEFAULT 0,
+  TOTAL_ENABLED            NUMBER(16)           DEFAULT 0,
+  TOTAL_STOLEN             NUMBER(16)           DEFAULT 0,
+  TOTAL_ON_HOLD            NUMBER(16)           DEFAULT 0,
+  TOTAL_DAMAGED            NUMBER(16)           DEFAULT 0,
+  OTHER_STATUS             NUMBER(16)           DEFAULT 0,
+  TOTAL_CONSUMED           NUMBER(16)           DEFAULT 0,
+  TOTAL_WAREHOUSE          NUMBER(16)           DEFAULT 0,
+  TOTAL_PRINTING           NUMBER(16)           DEFAULT 0,
+  TOTAL_SUSPENDED          NUMBER(16)           DEFAULT 0,
+  TOTAL_EXPIRED            NUMBER(16)  			DEFAULT 0
+);
+
+
+CREATE UNIQUE INDEX PK_VOMS_VOU_DAI_SUM ON VOMS_VOUCHER_DAILY_SUMMARY
+(SUMMARY_DATE, PRODUCT_ID, PRODUCTION_NETWORK_CODE, USER_NETWORK_CODE, VOUCHER_TYPE);
+
+
+Insert into PROCESS_STATUS
+   (PROCESS_ID, START_DATE, SCHEDULER_STATUS, EXECUTED_UPTO, EXECUTED_ON, 
+    EXPIRY_TIME, BEFORE_INTERVAL, DESCRIPTION, NETWORK_CODE, RECORD_COUNT)
+ Values
+   ('VOUCHERDASUM', TO_DATE('08/31/2018 15:45:05', 'MM/DD/YYYY HH24:MI:SS'), 'C', TO_DATE('08/30/2018 00:00:00', 'MM/DD/YYYY HH24:MI:SS'), TO_DATE('08/31/2018 15:45:04', 'MM/DD/YYYY HH24:MI:SS'), 
+    360, 1440, 'VOMS Summary process', 'NG', 0);
+
+Insert into SYSTEM_PREFERENCES
+   (PREFERENCE_CODE, NAME, TYPE, VALUE_TYPE, DEFAULT_VALUE, 
+    MIN_VALUE, MAX_VALUE, MAX_SIZE, DESCRIPTION, MODIFIED_ALLOWED, 
+    DISPLAY, MODULE, REMARKS, CREATED_ON, CREATED_BY, 
+    MODIFIED_ON, MODIFIED_BY, ALLOWED_VALUES, FIXED_VALUE)
+ Values
+   ('VMS_ALLOW_CONTENT_TYPE', 'VMS Allowed Content Type', 'SYSTEMPRF', 'STRING', 'pdf,doc,docx', 
+    NULL, NULL, 50, 'VMS Allowed Content Type', 'N', 
+    'N', 'P2P', 'VMS Allowed Content Type', TO_DATE('02/20/2639 00:58:06', 'MM/DD/YYYY HH24:MI:SS'), 'ADMIN', 
+    TO_DATE('02/20/2639 00:58:06', 'MM/DD/YYYY HH24:MI:SS'), 'ADMIN', NULL, 'Y');
+COMMIT;
+
+/* Adding column for Upload Signed request form starts*/
+ALTER TABLE VOMS_BATCHES ADD SIGNED_DOC BLOB ;
+COMMENT ON COLUMN VOMS_BATCHES.REQUEST_FORM IS 'Signed Copy of approvals' ;
+
+ALTER TABLE VOMS_BATCHES ADD SIGNED_DOC_TYPE VARCHAR2(100) ;
+COMMENT ON COLUMN VOMS_BATCHES.SIGNED_DOC_TYPE IS 'Document type of Signed Copy' ;
+
+ALTER TABLE VOMS_BATCHES ADD SIGNED_DOC_FILE_PATH VARCHAR2(500) ;
+COMMENT ON COLUMN VOMS_BATCHES.SIGNED_DOC_FILE_PATH IS 'File path at server of Signed Copy' ;
+COMMIT;
+/* Adding column for Upload Signed request form ends*/
+
+
+/* Rightel reports db queries added */
+
+INSERT INTO pages
+            (page_code, module_code, page_url,
+             menu_name, menu_item, sequence_no, menu_level, application_id,
+             spring_page_url
+            )
+     VALUES ('VOMSTRC001', 'VOMSREPORT', '/statRecharge.do?method=statRechargeReport',
+             'Statistics of Recharge', 'Y', 591, '2', '1',
+             '/statRecharge.do?method=statRechargeReport'
+            );
+INSERT INTO pages
+            (page_code, module_code, page_url,
+             menu_name, menu_item, sequence_no, menu_level, application_id,
+             spring_page_url
+            )
+     VALUES ('VOMSTRCDMM', 'VOMSREPORT', '/statRecharge.do?method=statRechargeReport',
+             'Statistics of Recharge', 'Y', 591, '1', '1',
+             '/statRecharge.do?method=statRechargeReport'
+            );
+INSERT INTO pages
+            (page_code, module_code, page_url,
+             menu_name, menu_item, sequence_no, menu_level, application_id,
+             spring_page_url
+            )
+     VALUES ('VOMSTRC01A', 'VOMSREPORT', '/statRecharge.do?method=statRechargeReport',
+             'Statistics of Recharge', 'N', 591, '2', '1',
+             '/statRecharge.do?method=statRechargeReport'
+            );
+
+
+
+INSERT INTO page_roles
+            (role_code, page_code, application_id
+            )
+     VALUES ('VCSTATRCHREPORT', 'VOMSTRC001', '1'
+            );
+INSERT INTO page_roles
+            (role_code, page_code, application_id
+            )
+     VALUES ('VCSTATRCHREPORT', 'VOMSTRCDMM', '1'
+            );
+INSERT INTO page_roles
+            (role_code, page_code, application_id
+            )
+     VALUES ('VCSTATRCHREPORT', 'VOMSTRC01A', '1'
+            );
+
+
+INSERT INTO ROLES
+            (domain_type, role_code, role_name,
+             group_name, status, role_type, from_hour, to_hour, group_role,
+             application_id, gateway_types, role_for, is_default,
+             is_default_grouprole, access_type
+            )
+     VALUES ('OPERATOR', 'VCSTATRCHREPORT', 'Statistics of Recharge',
+             'Voucher Reports', 'Y', 'A', NULL, NULL, 'N',
+             '1', 'WEB', 'B', 'N',
+             'N', 'B'
+            );
+			
+			
+INSERT INTO category_roles
+            (category_code, role_code, application_id
+            )
+     VALUES ('BCU', 'VCSTATSRVREPORT', '1'
+            );
+
+INSERT INTO pages
+            (page_code, module_code, page_url,
+             menu_name, menu_item, sequence_no, menu_level, application_id,
+             spring_page_url
+            )
+     VALUES ('VOMSTSR001', 'VOMSREPORT', '/statService.do?method=statServiceReport',
+             'Statistics of Service', 'Y', 593, '2', '1',
+             '/statService.do?method=statServiceReport'
+            );
+INSERT INTO pages
+            (page_code, module_code, page_url,
+             menu_name, menu_item, sequence_no, menu_level, application_id,
+             spring_page_url
+            )
+     VALUES ('VOMSTSRDMM', 'VOMSREPORT', '/statService.do?method=statServiceReport',
+             'Statistics of Service', 'Y', 593, '1', '1',
+             '/statService.do?method=statServiceReport'
+            );
+INSERT INTO pages
+            (page_code, module_code, page_url,
+             menu_name, menu_item, sequence_no, menu_level, application_id,
+             spring_page_url
+            )
+     VALUES ('VOMSTSR01A', 'VOMSREPORT', '/statService.do?method=statServiceReport',
+             'Statistics of Service', 'N', 593, '2', '1',
+             '/statService.do?method=statServiceReport'
+            );
+
+
+
+INSERT INTO page_roles
+            (role_code, page_code, application_id
+            )
+     VALUES ('VCSTATSRVREPORT', 'VOMSTSR001', '1'
+            );
+INSERT INTO page_roles
+            (role_code, page_code, application_id
+            )
+     VALUES ('VCSTATSRVREPORT', 'VOMSTSRDMM', '1'
+            );
+INSERT INTO page_roles
+            (role_code, page_code, application_id
+            )
+     VALUES ('VCSTATSRVREPORT', 'VOMSTSR01A', '1'
+            );
+
+
+INSERT INTO ROLES
+            (domain_type, role_code, role_name,
+             group_name, status, role_type, from_hour, to_hour, group_role,
+             application_id, gateway_types, role_for, is_default,
+             is_default_grouprole, access_type
+            )
+     VALUES ('OPERATOR', 'VCSTATSRVREPORT', 'Statistics of Service',
+             'Voucher Reports', 'Y', 'A', NULL, NULL, 'N',
+             '1', 'WEB', 'B', 'N',
+             'N', 'B'
+            );	
+
+
+
+
+ INSERT INTO category_roles
+            (category_code, role_code, application_id
+            )
+     VALUES ('BCU', 'ETOPC2SREPORT', '1'
+            );
+
+INSERT INTO pages
+            (page_code, module_code, page_url,
+             menu_name, menu_item, sequence_no, menu_level, application_id,
+             spring_page_url
+            )
+     VALUES ('ETOPC2S001', 'ETOPUPRPT', '/bundleCharge.do?method=bundleChargeReport',
+             'Bundle and charge Report', 'Y', 594, '2', '1',
+             '/bundleCharge.do?method=bundleChargeReport'
+            );
+INSERT INTO pages
+            (page_code, module_code, page_url,
+             menu_name, menu_item, sequence_no, menu_level, application_id,
+             spring_page_url
+            )
+     VALUES ('ETOPC2SDDM', 'ETOPUPRPT', '/bundleCharge.do?method=bundleChargeReport',
+             'Bundle and charge Report', 'Y', 594, '1', '1',
+             '/bundleCharge.do?method=bundleChargeReport'
+            );
+INSERT INTO pages
+            (page_code, module_code, page_url,
+             menu_name, menu_item, sequence_no, menu_level, application_id,
+             spring_page_url
+            )
+     VALUES ('ETOPC2S01A', 'ETOPUPRPT', '/bundleCharge.do?method=bundleChargeReport',
+             'Bundle and charge Report', 'N', 594, '2', '1',
+             '/bundleCharge.do?method=bundleChargeReport'
+            );
+
+
+
+INSERT INTO page_roles
+            (role_code, page_code, application_id
+            )
+     VALUES ('ETOPC2SREPORT', 'ETOPC2S001', '1'
+            );
+INSERT INTO page_roles
+            (role_code, page_code, application_id
+            )
+     VALUES ('ETOPC2SREPORT', 'ETOPC2SDDM', '1'
+            );
+INSERT INTO page_roles
+            (role_code, page_code, application_id
+            )
+     VALUES ('ETOPC2SREPORT', 'ETOPC2S01A', '1'
+            );
+
+
+INSERT INTO ROLES
+            (domain_type, role_code, role_name,
+             group_name, status, role_type, from_hour, to_hour, group_role,
+             application_id, gateway_types, role_for, is_default,
+             is_default_grouprole, access_type
+            )
+     VALUES ('OPERATOR', 'ETOPC2SREPORT', 'Bundle and charge Report',
+             'ETopUp Reports', 'Y', 'A', NULL, NULL, 'N',
+             '1', 'WEB', 'B', 'N',
+             'N', 'B'
+            );
+
+
+INSERT INTO category_roles
+            (category_code, role_code, application_id
+            )
+     VALUES ('BCU', 'ETOPINSDCSRPT', '1'
+            );
+
+INSERT INTO pages
+            (page_code, module_code, page_url,
+             menu_name, menu_item, sequence_no, menu_level, application_id,
+             spring_page_url
+            )
+     VALUES ('ETOPIND001', 'ETOPUPRPT', '/increaseDecrease.do?method=increaseDecreaseReport',
+             'Inc Dec Credit Transaction', 'Y', 596, '2', '1',
+             '/increaseDecrease.do?method=increaseDecreaseReport'
+            );
+INSERT INTO pages
+            (page_code, module_code, page_url,
+             menu_name, menu_item, sequence_no, menu_level, application_id,
+             spring_page_url
+            )
+     VALUES ('ETOPINDDDM', 'ETOPUPRPT', '/increaseDecrease.do?method=increaseDecreaseReport',
+             'Inc Dec Credit Transaction', 'Y', 596, '1', '1',
+             '/increaseDecrease.do?method=increaseDecreaseReport'
+            );
+INSERT INTO pages
+            (page_code, module_code, page_url,
+             menu_name, menu_item, sequence_no, menu_level, application_id,
+             spring_page_url
+            )
+     VALUES ('ETOPIND01A', 'ETOPUPRPT', '/increaseDecrease.do?method=increaseDecreaseReport',
+             'Inc Dec Credit Transaction', 'N', 596, '2', '1',
+             '/increaseDecrease.do?method=increaseDecreaseReport'
+            );
+
+
+
+INSERT INTO page_roles
+            (role_code, page_code, application_id
+            )
+     VALUES ('ETOPINSDCSRPT', 'ETOPIND001', '1'
+            );
+INSERT INTO page_roles
+            (role_code, page_code, application_id
+            )
+     VALUES ('ETOPINSDCSRPT', 'ETOPINDDDM', '1'
+            );
+INSERT INTO page_roles
+            (role_code, page_code, application_id
+            )
+     VALUES ('ETOPINSDCSRPT', 'ETOPIND01A', '1'
+            );
+
+
+INSERT INTO ROLES
+            (domain_type, role_code, role_name,
+             group_name, status, role_type, from_hour, to_hour, group_role,
+             application_id, gateway_types, role_for, is_default,
+             is_default_grouprole, access_type
+            )
+     VALUES ('OPERATOR', 'ETOPINSDCSRPT', 'Inc Dec Credit Transaction',
+             'ETopUp Reports', 'Y', 'A', NULL, NULL, 'N',
+             '1', 'WEB', 'B', 'N',
+             'N', 'B'
+            );
+
+
+Insert into LOOKUPS
+   (LOOKUP_CODE, LOOKUP_NAME, LOOKUP_TYPE, STATUS, CREATED_ON, 
+    CREATED_BY, MODIFIED_ON, MODIFIED_BY)
+ Values
+   ('O2CCASH', 'O2C Cash', 'INCQTTYP', 'Y', TO_DATE('11/29/2018 00:00:00', 'MM/DD/YYYY HH24:MI:SS'), 
+    'ADMIN', TO_DATE('11/29/2018 00:00:00', 'MM/DD/YYYY HH24:MI:SS'), 'ADMIN');
+Insert into LOOKUPS
+   (LOOKUP_CODE, LOOKUP_NAME, LOOKUP_TYPE, STATUS, CREATED_ON, 
+    CREATED_BY, MODIFIED_ON, MODIFIED_BY)
+ Values
+   ('O2CCONGMNT', 'O2C Consignment', 'INCQTTYP', 'Y', TO_DATE('11/29/2018 00:00:00', 'MM/DD/YYYY HH24:MI:SS'), 
+    'ADMIN', TO_DATE('11/29/2018 00:00:00', 'MM/DD/YYYY HH24:MI:SS'), 'ADMIN');
+Insert into LOOKUPS
+   (LOOKUP_CODE, LOOKUP_NAME, LOOKUP_TYPE, STATUS, CREATED_ON, 
+    CREATED_BY, MODIFIED_ON, MODIFIED_BY)
+ Values
+   ('O2CONLINE', 'O2C Online', 'INCQTTYP', 'Y', TO_DATE('11/29/2018 00:00:00', 'MM/DD/YYYY HH24:MI:SS'), 
+    'ADMIN', TO_DATE('11/29/2018 00:00:00', 'MM/DD/YYYY HH24:MI:SS'), 'ADMIN');
+	Insert into LOOKUPS
+   (LOOKUP_CODE, LOOKUP_NAME, LOOKUP_TYPE, STATUS, CREATED_ON, 
+    CREATED_BY, MODIFIED_ON, MODIFIED_BY)
+ Values
+   ('O2CFOC', 'O2C FOC', 'INCQTTYP', 'Y', TO_DATE('11/29/2018 00:00:00', 'MM/DD/YYYY HH24:MI:SS'), 
+    'ADMIN', TO_DATE('11/29/2018 00:00:00', 'MM/DD/YYYY HH24:MI:SS'), 'ADMIN');
+	Insert into LOOKUPS
+   (LOOKUP_CODE, LOOKUP_NAME, LOOKUP_TYPE, STATUS, CREATED_ON, 
+    CREATED_BY, MODIFIED_ON, MODIFIED_BY)
+ Values
+   ('C2C', 'C2C', 'INCQTTYP', 'Y', TO_DATE('11/29/2018 00:00:00', 'MM/DD/YYYY HH24:MI:SS'), 
+    'ADMIN', TO_DATE('11/29/2018 00:00:00', 'MM/DD/YYYY HH24:MI:SS'), 'ADMIN');
+	
+
+Insert into LOOKUP_TYPES
+   (LOOKUP_TYPE, LOOKUP_TYPE_NAME, CREATED_ON, CREATED_BY, MODIFIED_ON, 
+    MODIFIED_BY, MODIFIED_ALLOWED)
+ Values
+   ('INCQTTYP', 'Quantity Type Increase', TO_DATE('12/29/2018 00:00:00', 'MM/DD/YYYY HH24:MI:SS'), 'ADMIN', TO_DATE('12/29/2018 00:00:00', 'MM/DD/YYYY HH24:MI:SS'), 
+    'ADMIN', 'N');
+
+
+	
+Insert into LOOKUPS
+   (LOOKUP_CODE, LOOKUP_NAME, LOOKUP_TYPE, STATUS, CREATED_ON, 
+    CREATED_BY, MODIFIED_ON, MODIFIED_BY)
+ Values
+   ('O2CWITHDRW', 'O2C Withdraw', 'DECQTTYP', 'Y', TO_DATE('11/29/2018 00:00:00', 'MM/DD/YYYY HH24:MI:SS'), 
+    'ADMIN', TO_DATE('11/29/2018 00:00:00', 'MM/DD/YYYY HH24:MI:SS'), 'ADMIN');
+Insert into LOOKUPS
+   (LOOKUP_CODE, LOOKUP_NAME, LOOKUP_TYPE, STATUS, CREATED_ON, 
+    CREATED_BY, MODIFIED_ON, MODIFIED_BY)
+ Values
+   ('O2CREVSAL', 'O2C Reversal', 'DECQTTYP', 'Y', TO_DATE('11/29/2018 00:00:00', 'MM/DD/YYYY HH24:MI:SS'), 
+    'ADMIN', TO_DATE('11/29/2018 00:00:00', 'MM/DD/YYYY HH24:MI:SS'), 'ADMIN');
+Insert into LOOKUPS
+   (LOOKUP_CODE, LOOKUP_NAME, LOOKUP_TYPE, STATUS, CREATED_ON, 
+    CREATED_BY, MODIFIED_ON, MODIFIED_BY)
+ Values
+   ('C2CWITHDRW', 'C2C Withdraw', 'DECQTTYP', 'Y', TO_DATE('11/29/2018 00:00:00', 'MM/DD/YYYY HH24:MI:SS'), 
+    'ADMIN', TO_DATE('11/29/2018 00:00:00', 'MM/DD/YYYY HH24:MI:SS'), 'ADMIN');
+Insert into LOOKUPS
+   (LOOKUP_CODE, LOOKUP_NAME, LOOKUP_TYPE, STATUS, CREATED_ON, 
+    CREATED_BY, MODIFIED_ON, MODIFIED_BY)
+ Values
+   ('C2CREVSAL', 'C2C Reversal', 'DECQTTYP', 'Y', TO_DATE('11/29/2018 00:00:00', 'MM/DD/YYYY HH24:MI:SS'), 
+    'ADMIN', TO_DATE('11/29/2018 00:00:00', 'MM/DD/YYYY HH24:MI:SS'), 'ADMIN');
+Insert into LOOKUPS
+   (LOOKUP_CODE, LOOKUP_NAME, LOOKUP_TYPE, STATUS, CREATED_ON, 
+    CREATED_BY, MODIFIED_ON, MODIFIED_BY)
+ Values
+   ('C2SRC', 'C2S Recharge', 'DECQTTYP', 'Y', TO_DATE('11/29/2018 00:00:00', 'MM/DD/YYYY HH24:MI:SS'), 
+    'ADMIN', TO_DATE('11/29/2018 00:00:00', 'MM/DD/YYYY HH24:MI:SS'), 'ADMIN');
+Insert into LOOKUPS
+   (LOOKUP_CODE, LOOKUP_NAME, LOOKUP_TYPE, STATUS, CREATED_ON, 
+    CREATED_BY, MODIFIED_ON, MODIFIED_BY)
+ Values
+   ('C2SBRC', 'C2S Bundle Recharge', 'DECQTTYP', 'Y', TO_DATE('11/29/2018 00:00:00', 'MM/DD/YYYY HH24:MI:SS'), 
+    'ADMIN', TO_DATE('11/29/2018 00:00:00', 'MM/DD/YYYY HH24:MI:SS'), 'ADMIN');
+	
+Insert into LOOKUP_TYPES
+   (LOOKUP_TYPE, LOOKUP_TYPE_NAME, CREATED_ON, CREATED_BY, MODIFIED_ON, 
+    MODIFIED_BY, MODIFIED_ALLOWED)
+ Values
+   ('DECQTTYP', 'Quantity Type Decrease', TO_DATE('12/29/2018 00:00:00', 'MM/DD/YYYY HH24:MI:SS'), 'ADMIN', TO_DATE('12/29/2018 00:00:00', 'MM/DD/YYYY HH24:MI:SS'), 
+    'ADMIN', 'N');	
+
+commit;	
+
+
+
+Insert into ROLES
+   (DOMAIN_TYPE, ROLE_CODE, ROLE_NAME, GROUP_NAME, STATUS, 
+    ROLE_TYPE, FROM_HOUR, TO_HOUR, GROUP_ROLE, APPLICATION_ID, 
+    GATEWAY_TYPES, ROLE_FOR, IS_DEFAULT, IS_DEFAULT_GROUPROLE, ACCESS_TYPE)
+ Values
+   ('OPERATOR', 'VOMSSTATREPORT', 'Voucher Statistics Report', 'Voucher Reports', 'Y', 
+    'A', NULL, NULL, 'N', '1', 
+    'WEB', 'B', 'N', 'N', 'B');
+
+
+Insert into CATEGORY_ROLES
+   (CATEGORY_CODE, ROLE_CODE, APPLICATION_ID)
+ Values
+   ('BCU', 'VOMSSTATREPORT', '1');
+
+
+Insert into PAGE_ROLES
+   (ROLE_CODE, PAGE_CODE, APPLICATION_ID)
+ Values
+   ('VOMSSTATREPORT', 'VCSTAT001', '1');
+Insert into PAGE_ROLES
+   (ROLE_CODE, PAGE_CODE, APPLICATION_ID)
+ Values
+   ('VOMSSTATREPORT', 'VCSTATDMM', '1');
+Insert into PAGE_ROLES
+   (ROLE_CODE, PAGE_CODE, APPLICATION_ID)
+ Values
+   ('VOMSSTATREPORT', 'VCSTAT01A', '1');
+
+
+
+Insert into PAGES
+   (PAGE_CODE, MODULE_CODE, PAGE_URL, MENU_NAME, MENU_ITEM, 
+    SEQUENCE_NO, MENU_LEVEL, APPLICATION_ID, SPRING_PAGE_URL)
+ Values
+   ('VCSTAT001', 'VOMSREPORT', '/voucherStatistics.do?method=loadVoucherStatisticsReport', 'Voucher Statistics Report', 'Y', 
+    10, '2', '1', NULL);
+Insert into PAGES
+   (PAGE_CODE, MODULE_CODE, PAGE_URL, MENU_NAME, MENU_ITEM, 
+    SEQUENCE_NO, MENU_LEVEL, APPLICATION_ID, SPRING_PAGE_URL)
+ Values
+   ('VCSTATDMM', 'VOMSREPORT', '/voucherStatistics.do?method=loadVoucherStatisticsReport', 'Voucher Statistics Report', 'Y', 
+    10, '1', '1', NULL);
+Insert into PAGES
+   (PAGE_CODE, MODULE_CODE, PAGE_URL, MENU_NAME, MENU_ITEM, 
+    SEQUENCE_NO, MENU_LEVEL, APPLICATION_ID, SPRING_PAGE_URL)
+ Values
+   ('VCSTAT01A', 'VOMSREPORT', '/voucherStatistics.do?method=loadVoucherStatisticsReport', 'Voucher Statistics Report', 'N', 
+    10, '2', '1', NULL);
+COMMIT;
+
+
+
+Insert into MODULES
+   (MODULE_CODE, MODULE_NAME, SEQUENCE_NO, APPLICATION_ID)
+ Values
+   ('ETOPUPRPT', 'ETopUp Reports', 23, '1');
+COMMIT;
+
+SET DEFINE OFF;
+Insert into PAGES
+   (PAGE_CODE, MODULE_CODE, PAGE_URL, MENU_NAME, MENU_ITEM, 
+    SEQUENCE_NO, MENU_LEVEL, APPLICATION_ID, SPRING_PAGE_URL)
+ Values
+   ('TOTSALEDMM', 'ETOPUPRPT', '/voucherDelivery.do?method=loadVoucherDeliveryReport', 'Total Sales Report', 'Y', 
+    3, '1', '1', NULL);
+Insert into PAGES
+   (PAGE_CODE, MODULE_CODE, PAGE_URL, MENU_NAME, MENU_ITEM, 
+    SEQUENCE_NO, MENU_LEVEL, APPLICATION_ID, SPRING_PAGE_URL)
+ Values
+   ('TOTSALE01A', 'ETOPUPRPT', '/voucherDelivery.do?method=loadVoucherDeliveryReport', 'Total Sales Report', 'N', 
+    3, '2', '1', NULL);
+Insert into PAGES
+   (PAGE_CODE, MODULE_CODE, PAGE_URL, MENU_NAME, MENU_ITEM, 
+    SEQUENCE_NO, MENU_LEVEL, APPLICATION_ID, SPRING_PAGE_URL)
+ Values
+   ('TOTSALE001', 'ETOPUPRPT', '/voucherDelivery.do?method=loadVoucherDeliveryReport', 'Total Sales Report', 'Y', 
+    3, '2', '1', NULL);
+
+
+
+Insert into PAGE_ROLES
+   (ROLE_CODE, PAGE_CODE, APPLICATION_ID)
+ Values
+   ('TOTSALESREPORT', 'TOTSALE001', '1');
+Insert into PAGE_ROLES
+   (ROLE_CODE, PAGE_CODE, APPLICATION_ID)
+ Values
+   ('TOTSALESREPORT', 'TOTSALE01A', '1');
+Insert into PAGE_ROLES
+   (ROLE_CODE, PAGE_CODE, APPLICATION_ID)
+ Values
+   ('TOTSALESREPORT', 'TOTSALEDMM', '1');
+
+
+
+Insert into ROLES
+   (DOMAIN_TYPE, ROLE_CODE, ROLE_NAME, GROUP_NAME, STATUS, 
+    ROLE_TYPE, FROM_HOUR, TO_HOUR, GROUP_ROLE, APPLICATION_ID, 
+    GATEWAY_TYPES, ROLE_FOR, IS_DEFAULT, IS_DEFAULT_GROUPROLE, ACCESS_TYPE)
+ Values
+   ('OPERATOR', 'TOTSALESREPORT', 'Total Sales Report', 'ETopUp Reports', 'Y', 
+    'A', NULL, NULL, 'N', '1', 
+    'WEB', 'B', 'N', 'N', 'B');
+
+
+Insert into CATEGORY_ROLES
+   (CATEGORY_CODE, ROLE_CODE, APPLICATION_ID)
+ Values
+   ('BCU', 'TOTSALESREPORT', '1');
+
+
+Insert into PAGES
+   (PAGE_CODE, MODULE_CODE, PAGE_URL, MENU_NAME, MENU_ITEM, 
+    SEQUENCE_NO, MENU_LEVEL, APPLICATION_ID, SPRING_PAGE_URL)
+ Values
+   ('TOTC2SDMM', 'ETOPUPRPT', '/voucherDelivery.do?method=loadVoucherDeliveryReport', 'Total C2S Report', 'Y', 
+    10, '1', '1', NULL);
+Insert into PAGES
+   (PAGE_CODE, MODULE_CODE, PAGE_URL, MENU_NAME, MENU_ITEM, 
+    SEQUENCE_NO, MENU_LEVEL, APPLICATION_ID, SPRING_PAGE_URL)
+ Values
+   ('TOTC2S01A', 'ETOPUPRPT', '/voucherDelivery.do?method=loadVoucherDeliveryReport', 'Total C2S Report', 'N', 
+    10, '2', '1', NULL);
+Insert into PAGES
+   (PAGE_CODE, MODULE_CODE, PAGE_URL, MENU_NAME, MENU_ITEM, 
+    SEQUENCE_NO, MENU_LEVEL, APPLICATION_ID, SPRING_PAGE_URL)
+ Values
+   ('TOTC2S001', 'ETOPUPRPT', '/voucherDelivery.do?method=loadVoucherDeliveryReport', 'Total C2S Report', 'Y', 
+    10, '2', '1', NULL);
+
+
+
+Insert into PAGE_ROLES
+   (ROLE_CODE, PAGE_CODE, APPLICATION_ID)
+ Values
+   ('TOTC2SREPORT', 'TOTC2S001', '1');
+Insert into PAGE_ROLES
+   (ROLE_CODE, PAGE_CODE, APPLICATION_ID)
+ Values
+   ('TOTC2SREPORT', 'TOTC2S01A', '1');
+Insert into PAGE_ROLES
+   (ROLE_CODE, PAGE_CODE, APPLICATION_ID)
+ Values
+   ('TOTC2SREPORT', 'TOTC2SDMM', '1');
+
+
+Insert into ROLES
+   (DOMAIN_TYPE, ROLE_CODE, ROLE_NAME, GROUP_NAME, STATUS, 
+    ROLE_TYPE, FROM_HOUR, TO_HOUR, GROUP_ROLE, APPLICATION_ID, 
+    GATEWAY_TYPES, ROLE_FOR, IS_DEFAULT, IS_DEFAULT_GROUPROLE, ACCESS_TYPE)
+ Values
+   ('OPERATOR', 'TOTC2SREPORT', 'Total C2S Report', 'ETopUp Reports', 'Y', 
+    'A', NULL, NULL, 'N', '1', 
+    'WEB', 'B', 'N', 'N', 'B');
+
+
+Insert into CATEGORY_ROLES
+   (CATEGORY_CODE, ROLE_CODE, APPLICATION_ID)
+ Values
+   ('BCU', 'TOTC2SREPORT', '1');
+COMMIT;
+
+
+INSERT INTO category_roles
+            (category_code, role_code, application_id
+            )
+     VALUES ('BCU', 'ETOPO2CRPT', '1'
+            );
+
+INSERT INTO pages
+            (page_code, module_code, page_url,
+             menu_name, menu_item, sequence_no, menu_level, application_id,
+             spring_page_url
+            )
+     VALUES ('ETOPO2C001', 'ETOPUPRPT', '/etopO2CPayment.do?method=etopO2CPaymentReport',
+             'Cash Online Paymnet Process', 'Y', 596, '2', '1',
+             '/etopO2CPayment.do?method=etopO2CPaymentReport'
+            );
+INSERT INTO pages
+            (page_code, module_code, page_url,
+             menu_name, menu_item, sequence_no, menu_level, application_id,
+             spring_page_url
+            )
+     VALUES ('ETOPO2CDDM', 'ETOPUPRPT', '/etopO2CPayment.do?method=etopO2CPaymentReport',
+             'Cash Online Paymnet Process', 'Y', 596, '1', '1',
+             '/etopO2CPayment.do?method=etopO2CPaymentReport'
+            );
+INSERT INTO pages
+            (page_code, module_code, page_url,
+             menu_name, menu_item, sequence_no, menu_level, application_id,
+             spring_page_url
+            )
+     VALUES ('ETOPO2C01A', 'ETOPUPRPT', '/etopO2CPayment.do?method=etopO2CPaymentReport',
+             'Cash Online Paymnet Process', 'N', 596, '2', '1',
+             '/etopO2CPayment.do?method=etopO2CPaymentReport'
+            );
+
+
+
+INSERT INTO page_roles
+            (role_code, page_code, application_id
+            )
+     VALUES ('ETOPO2CRPT', 'ETOPO2C001', '1'
+            );
+INSERT INTO page_roles
+            (role_code, page_code, application_id
+            )
+     VALUES ('ETOPO2CRPT', 'ETOPO2CDDM', '1'
+            );
+INSERT INTO page_roles
+            (role_code, page_code, application_id
+            )
+     VALUES ('ETOPO2CRPT', 'ETOPO2C01A', '1'
+            );
+
+
+INSERT INTO ROLES
+            (domain_type, role_code, role_name,
+             group_name, status, role_type, from_hour, to_hour, group_role,
+             application_id, gateway_types, role_for, is_default,
+             is_default_grouprole, access_type
+            )
+     VALUES ('OPERATOR', 'ETOPO2CRPT', 'Cash Online Paymnet Process',
+             'ETopUp Reports', 'Y', 'A', NULL, NULL, 'N',
+             '1', 'WEB', 'B', 'N',
+             'N', 'B'
+            );
+
+			INSERT INTO LOOKUPS
+(LOOKUP_CODE, LOOKUP_NAME, LOOKUP_TYPE, STATUS, CREATED_ON, CREATED_BY, MODIFIED_ON, MODIFIED_BY)
+VALUES('PENDING', 'Pending', 'CTSTA', 'Y', TIMESTAMP '2005-08-18 00:00:00.000000', 'ADMIN', TIMESTAMP '2005-08-18 00:00:00.000000', 'ADMIN');
+
+COMMIT;
+
+INSERT INTO SYSTEM_PREFERENCES
+(PREFERENCE_CODE, NAME, "TYPE", VALUE_TYPE, DEFAULT_VALUE, MIN_VALUE, MAX_VALUE, MAX_SIZE, DESCRIPTION, MODIFIED_ALLOWED, DISPLAY, MODULE, REMARKS, CREATED_ON, CREATED_BY, MODIFIED_ON, MODIFIED_BY, ALLOWED_VALUES, FIXED_VALUE)
+VALUES('EMAIL_DEFAULT_LOCALE', 'Default locale for Email', 'SYSTEMPRF', 'STRING', 'en_US', NULL, NULL, 50, 'Default locale for Email', 'N', 'Y', 'C2S', 'Default locale for Email', TIMESTAMP '2005-06-16 00:00:00.000000', 'ADMIN', TIMESTAMP '2005-06-17 09:44:51.000000', 'ADMIN', NULL, 'Y');
+COMMIT;
+
+update SYSTEM_PREFERENCES set MODULE= 'P2P' where PREFERENCE_CODE= 'P2P_PROMO_TRF_APP';
+commit;
+
+Insert into SYSTEM_PREFERENCES
+   (PREFERENCE_CODE, NAME, TYPE, VALUE_TYPE, DEFAULT_VALUE, 
+    MIN_VALUE, MAX_VALUE, MAX_SIZE, DESCRIPTION, MODIFIED_ALLOWED, 
+    DISPLAY, MODULE, REMARKS, CREATED_ON, CREATED_BY, 
+    MODIFIED_ON, MODIFIED_BY, ALLOWED_VALUES, FIXED_VALUE)
+Values
+   ('PAYMENT_VERIFICATION_ALLOWED', 'Payment Verifcation required', 'SYSTEMPRF', 'BOOLEAN', 'false', 
+    NULL, NULL, 50, 'Payment second layer Verifcation required', 'Y', 
+    'Y', 'C2S', 'Chnl User Voucher Allwed Categories', TO_DATE('06/21/2005 00:00:00', 'MM/DD/YYYY HH24:MI:SS'), 'ADMIN', 
+    TO_DATE('02/08/2012 12:48:44', 'MM/DD/YYYY HH24:MI:SS'), 'SU0001', 'false,true', 'N');
+commit;
+
+ALTER TABLE CHANNEL_TRANSFERS ADD (INFO6  VARCHAR2(100 BYTE),INFO7  VARCHAR2(100 BYTE),	INFO8  VARCHAR2(100 BYTE),INFO9  VARCHAR2(100 BYTE),INFO10  VARCHAR2(100 BYTE));
+commit;

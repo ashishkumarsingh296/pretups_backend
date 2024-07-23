@@ -1,0 +1,3 @@
+loginId,password,data,senderMsisdn,type,externalCode,TestcaseId,TestcaseType,Module,Description
+btdist,1357,R160726.1755.100002,,C2SREVSTAT,,TUNG12907,Positive,get c2s reversal txn detail,To get c2s reversal transaction detail by txn id 
+btdist,1357,R160726.1755.100002,,C2SREVSTAT,,TUNG12908,Negative,get c2s reversal txn detail,Unsuccessful transaction by Invalid transaction ID

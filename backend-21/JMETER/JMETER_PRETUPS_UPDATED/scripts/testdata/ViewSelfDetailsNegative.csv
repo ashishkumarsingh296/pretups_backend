@@ -1,0 +1,8 @@
+loginID,password,dataLoginID,type1,externalCode,TestcaseId,TestcaseType,Module,Description
+,1357,superadmin,VIEWSELFDETAILS,,,Negative,View Self Details,"To verfy validation message appears ""Login Id is not available in request"" when LOGIN_ID   not provided"
+superadmin,,superadmin,VIEWSELFDETAILS,,,Negative,View Self Details,"To verify validation messsage appears ""Password is not available in request"" when password is not provided"
+superadmin1,1357,superadmin,VIEWSELFDETAILS,,,Negative,View Self Details,"To verify validation message appears ""User does not exists in the system"" when wrong LOGIN_ID provided"
+superadmin,1234,superadmin,VIEWSELFDETAILS,,,Negative,View Self Details,"To verify validation message appears ""User ID or Password is incorrec"" when wrong PASSWORD provided"
+superadmin,1357,superadmin,,,,Negative,View Self Details,"To verify validation message appears ""Action type does not exists in the request"" when TYPE is not provided"
+superadmin,1357,superadmin1,VIEWSELFDETAILS,,,Negative,View Self Details,"To verify validation message appears ""invalid.login.id"" when provide invalid login id"
+superadmin,1357,,VIEWSELFDETAILS,,,Negative,View Self Details,"To verify validation message appears ""login.id.required"" when do not provide dataLoginID"

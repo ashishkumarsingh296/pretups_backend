@@ -1,0 +1,74 @@
+//######################################
+//
+//This script to add, modify and view user status in the system 
+//
+//#######################################
+
+
+//===== import scripts ===//
+_includeOnce("../../../../utility/ImportPackage.sah");
+_includeOnce("../../../GUI/testscripts/User_Status_Configuration/UserStatus_Common.sah"); //For adding user status configuration in the system 
+
+//======================Pre-requisite check============================
+_log("Setup", "custom4");
+
+login($g_appURL, $g_LangEnglish, $g_superAdmin, $g_password, $g_assertMessage); //calls the Login function in Login.sah with the parameters(url, language, username, password, assertion) 
+
+
+
+// ....................... Test cases for User stauts configuration  ............. //
+
+var $g_userStatusDetails = _readCSVFile("../../../GUI/testdata/UserStatusConiguration.csv"); //Reads user status details 
+
+
+
+	for(var $g_row = 1; $g_userStatusDetails[$g_row] != null; $g_row++){
+		
+				var $g_col = 0;
+				var $number =   testCaseNumber($g_userStatusDetails[$g_row][$g_col]);
+				
+				
+			
+				var $t = _testcase($g_userStatusDetails[$g_row][$g_col++], $g_userStatusDetails[$g_row][$g_col++]);
+			
+				$t.start();
+				
+				commonVaribleForUSerStatus($g_row, $g_col);
+				
+				if($number == 1)
+					viewGatewayInDropDown();
+				else if($number == 2)
+					backButtonOnAddPage();
+				else if($number == 3)
+					backButtonOnAddConfirmpage();
+				else if($number == 4)
+					addUserStatus();
+				else if($number == 5)
+					backFormModifyPage();
+				else if($number == 6)
+					backFormModifyComfirmPage();
+				else if($number == 7)
+					modifyUserStaus();
+				else if($number == 8)
+					backButtonOnViewPage();
+				else if($number == 9)
+					ViewTheUserStatus();
+				else if($number == 10)
+					addUserStatusForExistingConfiguration();
+				else if($number == 11)
+					modifyUserStatusForNonExistingConfiguration();
+				else if($number == 12)
+					viewUserStatusForNonExistingConfiguration();
+				else if($number > 12  && $number < 17)
+					addUserStatusWithInvalidDetails();
+				else if($number == 17)
+					addWithoutSelectingUserStatus();
+				else if($number == 18)
+					modifyWithoutSelectingUserStatus();
+
+				$t.end();
+	}
+
+
+
+	

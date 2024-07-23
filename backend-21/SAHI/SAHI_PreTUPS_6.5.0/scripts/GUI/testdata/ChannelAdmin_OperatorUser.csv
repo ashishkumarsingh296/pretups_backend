@@ -1,0 +1,2 @@
+TestCaseNo. ,Discription,MSISDN,Remarks,Old PIN,New PIN,Cnf PIN,Assertion
+TEST001,Verify that channel admin loggin into application and try to view operator user like customer care,,,,,,

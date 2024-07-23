@@ -1,0 +1,5 @@
+TestcaseId,TestcaseType,Module,Description
+,Negative,Last Transfer Details,To check that a user is not able to enquire its Last Transfer Details by entering only MSISDN 
+,Negative,Last Transfer Details,To check that a user is not able to enquire its Last Transfer Details by entering only LoginId 
+,Negative,Last Transfer Details,To check that a user is not able to enquire its Last Transfer Details by not entering External Code
+,Negative,Last Transfer Details,To check that a user is not able to enquire its Last Transfer Details by not entering MSISDN_PIN LoginId_Password and ExternalCode

@@ -1,0 +1,151 @@
+/**
+ * Channel User Transfer OTP Common Methods
+ */
+
+/**
+ * Initiate User Migration
+ * @param $distUser
+ * @param $ivrUser
+ * @param $isUsingMSISDN
+ * @param $verifyMessage
+ */
+function initiateUserMigration($distUser, $ivrUser, $viaMSISDN, $verifyMessage){
+	try{
+		
+		login($distUser);
+		navigateChannelUserTransfer("User Transfer OTP Initiation");
+		if ($viaMSISDN){
+			_setValue(_textbox("msisdn"), $ivrUser.MSISDN);
+		}else{
+			_setSelected(_select("geography"), $distUser.ChannelUserType.GeographicalDomain);
+			_setSelected(_select("domain"), $ivrUser.ChannelUserType.Domain);
+			_setSelected(_select("category"), $ivrUser.ChannelUserType.Category);
+
+			selectUserFromSearch("Owner User *", $ivrUser.ChannelUserType.OwnerUser);
+			selectUserFromSearch("Channel User *", $ivrUser);		
+		}
+		_click(_submit("Submit"));
+
+		_click(_submit("OK"));
+
+		// verify that transaction is initiated
+		if ($verifyMessage == "initiated"){
+			_assertVisible(_span("User Transfer Request for "+ $ivrUser.MSISDN +" has been initiated succesfully.Please ask to user for transfer confirmation OTP."));
+		}else if($verifyMessage == "already initiated"){
+			_assertVisible(_span("User Transfer Request for {0} already initiated ,So request can not be initiated successfully."));
+		}else if($verifyMessage == "same domain"){
+			_assertVisible(_span("User Transfer Request cannot be initiated succesfully.Since user details is not valid."));
+		}
+
+	}catch(e){
+		_logException(e);
+		_log("Failed to Initiate User Migration", "error");
+	}			
+}
+
+/**
+ * Initiate User Migration Confirmation
+ * 		This will validate the page and will navigate to page where User can provide OTP
+ * @param $distUser
+ * @param $ivrUser
+ * @param $viaMSISDN
+ * @param $confirm
+ * @param $verifyTimeout
+ * @param $waitTime
+ */
+function confirmUserMigration($distUser, $ivrUser, $viaMSISDN, $reTryOTP, $waitTime){
+	try{
+		
+		var $otp = decryptOTP($ivrUser);	// Get the OTP
+
+		login($distUser);
+		navigateChannelUserTransfer("User Transfer OTP Confirmation");
+
+		if ($viaMSISDN){
+			_setValue(_textbox("msisdn"), $ivrUser.MSISDN);
+		}else{
+			// Provide details
+			_setSelected(_select("geography"), $ivrUser.ChannelUserType.GeographicalDomain);
+			_setSelected(_select("domain"), $ivrUser.ChannelUserType.Domain);
+			_setSelected(_select("category"), $ivrUser.ChannelUserType.Category);			
+		}
+		_click(_submit("Submit"));
+
+		// Verify the Page, if not via MSISDN a new page opens
+		if (!$viaMSISDN){
+			var $currentParent = $ivrUser.getCurrentParentUserName();
+			var $currentOwner  = $ivrUser.getCurrentOwnerUserName();
+			_wait(2000);
+			_assertVisible(_div("User Transfer OTP Confirmation"), "Verify the header");
+			_assertVisible(_cell($ivrUser.ChannelUserType.GeographicalDomain,_under(_tableHeader("Geographical Domain"))), "verify geographical Domain");
+			_assertVisible(_cell($ivrUser.ChannelUserType.Domain,_under(_tableHeader("Domain"))), "verify  Domain");
+			_assertVisible(_cell($ivrUser.ChannelUserType.Category,_under(_tableHeader("Category"))), "verify  Category");		
+
+			// Verify The transaction exists
+			_assertVisible(_cell($ivrUser.FirstName + " Last Name", _under(_tableHeader("User Name"))), "verify User Name");			
+			_assertVisible(_cell($currentParent + " Last Name", _under(_tableHeader("Parent Name"))), "verify Parent User Name");
+			_assertVisible(_cell($currentOwner + " Last Name", _under(_tableHeader("Owner Name"))), "verify Owner User Name");
+			_assertVisible(_cell($ivrUser.MSISDN, _under(_tableHeader("Msisdn"))), "verify User MSISDN");
+
+			_click(_radio("userList", _leftOf(_cell($ivrUser.MSISDN))));
+			_click(_submit("Submit"));
+		}
+
+		_assertVisible(_div("OTP Confirmation:"));
+		_assertVisible(_label("Please enter OTP to confirm user transfer *"));	
+
+		
+		if ($waitTime){
+			/*
+			 * If the OTP is expired the User should get a alert message
+			 * that the Migration has Failed due to OTP expiration
+			 */
+			_wait($waitTime);
+			_setValue(_password("otp"), $otp); // set correct OTP
+			_click(_submit("Submit[1]"));
+			_assertVisible(_span("OTP has Expired.Kindly initiate the request again."));	
+		}else{
+			/*
+			 * Validate OTP 
+			 */
+			if ($reTryOTP){
+				_setValue(_password("otp"), "invalidOTP<@#$>");
+				_click(_submit("Submit[1]"));
+				_assertVisible(_span("OTP is incorrect."));
+			}			
+			_setValue(_password("otp"), $otp); // set correct OTP
+			_click(_submit("Submit[1]"));			
+			_assertVisible(_span("User(s) transferred successfully."));	
+		}
+
+		if (_isVisible(_button(/Close/))){
+			_click(_button(/Close/));
+		}		
+
+	}catch(e){
+		_logException(e);
+		_log("Confirm User Migratin Failed", "error");
+	}	
+}
+
+/**
+ * 
+ * @param $initiaterUser - User who has initiated the Transfer
+ * @returns OTP
+ */
+function decryptOTP($targetUser){
+	try{	
+		
+		var $result = executeQuery("Select u1.OTP from User_migration_request u1 , Users u2 where u2.LOGIN_ID ='"+ $targetUser.UserName +"' AND u1.TO_USER_ID = u2.USER_ID");
+		var $encryptedOTP = $result[0][0];
+		_navigateTo($CONFIG.ENCRYPT_URL);
+		_setValue(_textbox("t1"), $encryptedOTP);
+		_click(_submit("Decrypt Text"));
+		var $OTP = _getText(_cell(2));
+		return $OTP;
+
+	}catch(e){
+		_logException(e);
+		_log("Failed to fetch OTP and decrypt the same", "error");
+	}		
+}

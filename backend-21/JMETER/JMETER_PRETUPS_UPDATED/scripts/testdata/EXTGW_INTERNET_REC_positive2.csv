@@ -1,0 +1,2 @@
+TestcaseId,TestcaseType,Module,Description
+TUNG12861 ,P,Internet Recharge,To check that a successful recharge happens when only loginid and password are entered along with other mandatory fields

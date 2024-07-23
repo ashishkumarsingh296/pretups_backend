@@ -1,0 +1,17 @@
+loginId,password,module,userType,barredType,fromDate,toDate,msisdn,type,externalCode,TestcaseId,TestcaseType,Module,Description
+btchadm,1357,C2S,RECEIVER,SL017,01-07-2016,27-07-2016,7211111111,VIEWBARREDLIST,,TUNG12795,Positive,View barred list through RESTFul API,To verify list of barred user coming when provide correct MSISDN
+btchadm,1357,C2S,RECEIVER,SL017,01-07-2016,27-07-2016,sadjaskd,VIEWBARREDLIST,,TUNG12793,Negative,View barred list through RESTFul API,To verify msisdn is valid or not
+btchadm,1357,C2S,RECEIVER,SL017,01-07-2016,27-07-2016,$^$%^,VIEWBARREDLIST,,TUNG12794,Negative,View barred list through RESTFul API,To verify msisdn is valid or not
+btchadm,1357,,,,01-07-2016,27-07-2016,,VIEWBARREDLIST,,TUNG12796,Negative,View barred list through RESTFul API,To verify mandatory fields is required
+btchadm,1357,C2S,RECEIVER,SL017,01-07-2016,27-07-2016,7211111111,VIEWBARREDLIST,,TUNG12797,Negative,View barred list through RESTFul API,"To verify barred user list is coming when provide correct form , to date and other mandatory fields"
+btchadm,1357,,RECEIVER,SL017,01-07-2016,27-07-2016,,VIEWBARREDLIST,,TUNG12798,Negative,View barred list through RESTFul API,To verify mandatory fields are required to get  barred user list
+btchadm,1357,C2S,,SL017,01-07-2016,27-07-2016,7211111111,VIEWBARREDLIST,,TUNG12799,Negative,View barred list through RESTFul API,To verfiy user type is required to get  barred user list
+btchadm,1357,C2S,RECEIVER,,01-07-2016,27-07-2016,7211111111,VIEWBARREDLIST,,TUNG12800,Negative,View barred list through RESTFul API,To verfiy user barred type is required to get  barred user list
+btchadm,1357,C2S,RECEIVER,SL017,01-07-2016,27-07-2016,7211111111,VIEWBARREDLIST,,TUNG12801,Negative,View barred list through RESTFul API,To verify form date is required to get barred user list
+btchadm,1357,C2S,RECEIVER,SL017,01-07-2016,27-07-2016,7211111111,VIEWBARREDLIST,,TUNG12802,Negative,View barred list through RESTFul API,To verify to date is required to verify barred user list
+btchadm,1357,C2S,RECEIVER,SL017,01-07-2016,27-07-2016,7211111111,VIEWBARREDLIST,,TUNG12803,Negative,View barred list through RESTFul API,To verify from date must be in proper format to get barred user list
+btchadm,1357,C2S,RECEIVER,SL017,01-07-2016,27-07-2016,7211111111,VIEWBARREDLIST,,TUNG12804,Negative,View barred list through RESTFul API,To verify to date must be in proper format to get barred user list
+btchadm,1357,C2S,RECEIVER,SL017,01-07-2016,27-07-2016,7211111111,VIEWBARREDLIST,,TUNG12805,Negative,View barred list through RESTFul API,To verfiy both form and to date must be in proper format to get barred user list
+btchadm,1357,C2S,RECEIVER,SL017,01-07-2016,27-07-2016,7211111111,VIEWBARREDLIST,,TUNG12806,Negative,View barred list through RESTFul API,To verify to date must not be future date
+btchadm,1357,C2S,RECEIVER,SL017,01-07-2016,27-07-2016,7211111111,VIEWBARREDLIST,,TUNG12807,Negative,View barred list through RESTFul API,To verify from date should not be future date also from date from date must be less than to date
+btchadm,1357,C2S,RECEIVER,SL017,01-07-2016,27-07-2016,7211111111,VIEWBARREDLIST,,TUNG12808,Negative,View barred list through RESTFul API,To verify both form and to date must not be future date

@@ -1,0 +1,2 @@
+TestcaseId,TestcaseType,Module,Description
+TUNG12772,Positive,Confirm Unbar user through Restful API,To verify user unbarred successfully

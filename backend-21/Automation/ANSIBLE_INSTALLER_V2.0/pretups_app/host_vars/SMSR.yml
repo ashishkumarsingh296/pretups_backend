@@ -1,0 +1,122 @@
+##ansible_ssh_user = user name of host machine with root credentials
+##ansible_ssh_pass = password of above mentioned user
+ansible_ssh_user: root
+ansible_ssh_pass: gqwerty
+
+INSTANCE_TYPE: SMSR
+
+#specify user name to create or existing group name
+GROUP_NAME: pretupsUser
+
+#specify user name to create or existing user name
+#password for this user will be pretups123
+USER_NAME: pretupsUser
+
+#specify home directory name to create or existing
+HOME_DIR_NAME: pretupsHome
+
+#specify home directory name for logs to create or existing
+LOG_DIR_NAME: pretupsVar
+
+#specify log path directory which will be inside pretupsvar directory (logs will be at /pretupsvar/given_dir_name_here
+#whatever name is provided here, ansible will create providedname directory inside pretupsvar and logs will be there only, path will be inside LogConfig
+LOG_DIRECTORY_FOLDER_NAME: Pretups_logs_SMSR
+
+#IP contains IP address of host
+IP: 172.30.20.31
+
+#INSTANCE_ID is for application INSTANCE_ID in Constant.props
+INSTANCE_ID: 16
+
+#JDK_SOFT_LINK will be the name of soft link for jdk
+JDK_SOFT_LINK: PRETUPS_SMSR
+
+#SHUTDOWN_PORT , CONNECTOR_PORT and AJP_CONNECTOR_PORT are for various ports defined in server.xml. These port values must be changed
+SHUTDOWN_PORT: 2221
+CONNECTOR_PORT: 2222
+AJP_CONNECTOR_PORT: 2223
+
+#Following entries are for database. DBNAME is the encrypted value of DB_Name(Schema name of DB)
+#If below fields are not required for any specific database, no need to change their values
+DBType: postgres  # provide input whether database is (oracle/ postgres)
+
+##If dataBase is postgres
+## The name of owner of Database with password
+USERNAME: c01817897e2eabe7
+PASSWORD: c01817897e2eabe7
+
+
+DBIP: 172.16.11.121
+DBIP_CON_STRING: 172.16.11.121
+DBPORT: 5432
+SID: test12c
+DB_Name: pretups_ansible
+DBNAME: 42f8b1df22eaaa78ee6a3bf6ce6900d0
+DBPWD: 42f8b1df22eaaa78ee6a3bf6ce6900d0
+
+
+#tomcat_name is the name of tomcat, If name is "abc_tomcat" then "abc_tomcat.tar.gz" must be present inside pretups_app/roles/copy_tomcat/files
+tomcat_name: tomcat8_SMSR
+
+#Following parameters are jdk and tomcat configuration related, may or may not be changed as per need.
+connectionTimeout: 500000
+maxThreads: 200
+minSpareThreads: 50
+maxSpareThreads: 75
+enableLookups: false
+maxHttpHeaderSize: 8192
+acceptCount: 50
+disableUploadTimeout: true
+#redirectPort and redirectPort_AJP should be changed
+redirectPort: 8443
+enableLookups_AJP: false
+redirectPort_AJP: 8445
+#JAVA_OPTS for PreTUPS application
+Xms: 512
+Xmx: 1024
+Xmn: 256
+
+################  Report related configuration  #######
+report_licensekey: AC1001-9B8F-D02556-E20115-04F8
+cache_report_IP: 172.16.11.121
+cache_report_PORT: 1522
+cache_report_SID: test12c
+cache_report_db_password: pretups7_ansibletest
+cache_report_db_username: pretups7_ansibletest
+odbc_report_IP: 172.16.11.121
+odbc_report_PORT: 1522
+odbc_report_SID: test12c
+odbc_user: pretups7_ansibletest
+odbc_password: pretups7_ansibletest
+oracle_report_IP: 172.16.11.121
+oracle_report_PORT: 1522
+oracle_report_SID: test12c
+oracle_inet_class: com.inet.report.DatabaseOracle
+oracle_user: pretups7_ansibletest
+oracle_password: pretups7_ansibletest
+########### pdsodbc.dll.xml & pdsora7.dll.xml configuration ########
+db_user_name: pretups7_ansibletest
+db_password: pretups7_ansibletest
+
+################ modified ##############
+#Name of the JDK being shipped. Same name of the file must be present with the extention of .tar.gz in roles/copy_java/files
+JRE_NAME: jdk1.8.0_74
+
+#OAM IP
+OAM_HOST_IP: 172.16.11.91
+
+#Admin mobile no
+ADMIN_MOBILE: 99717008
+#DB min and max pool size configuration
+minpoolsize: 20
+poolsize: 22
+#Country Code
+COUNTRY_CODE: 224
+
+#variable for placing the catalina.out . This variable is changed in tomcat/bin/catalina.sh file. Donot change this
+CATALINA_OUT_LOG_PATH_SMSR: "/{{ LOG_DIR_NAME }}/{{ LOG_DIRECTORY_FOLDER_NAME }}"
+
+################# Added in 6.5 ########
+LANG_PRO: en_US
+XMS_PROCESS: -Xms512m
+XMX_PROCESS: -Xmx512m

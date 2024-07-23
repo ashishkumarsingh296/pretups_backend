@@ -1,0 +1,227 @@
+##########################################################################################################
+#	
+#	If IN interface of HuaweiEVR IN file is added in PreTUPS from superadmin then.
+#	File with this content and name of the IN ID.txt should be created at the 
+#	path of the INFiles (defined in Constants.props).
+#
+#	Values of the variables in this file should be updated with the values provided by the 
+#	Mobile Operator IN team
+#
+############################################################################################################
+
+
+#Defines the name with full path of the class that would be pooled
+CLIENT_HANDLER_CLASS=com.btsl.pretups.inter.huaweievr.HuaweiEVRSocketWrapper
+
+#IP for the SocketServer, where the request would be sent.
+SOCKET_IP=172.16.1.175
+
+#At this port server would listen the request to accept the socket connection.
+SOCKET_PORT=4050
+#SOCKET_PORT=29999
+
+#Pool size to pool the number of socket connections.
+MAX_POOL_SIZE=2
+
+#Defines the sleep time between the pooling of oject.
+POOL_SLEEP=1000
+
+#Time out for the socket connection, value should be in milisecond.
+SOCKET_TIMEOUT=10000
+
+#Number of retries when connection object is invalid.
+RETRY_CON_INVAL=1
+
+#sleep time between retries when connection object is invalid.
+SLEEP_CON_INVAL=200
+
+#This would define the time at which the thread will sleep, if there is no object found in the pool.
+SLEEP_TIME=1000
+
+#Number of retry to get a object from the pool,if there is no object currently for the C2S request.
+C2S_RETRY_ATTEMPT=3
+
+#Number of retry to get a object from the pool,if there is no object currently for the P2P request.
+P2P_RETRY_ATTEMPT=4
+
+#Defines the user name for authentication
+#USER_NAME=pretups
+USER_NAME=telesoft
+
+#Defines the Password for the authentication.
+#PASSWORD=1357
+PASSWORD=tmib018
+
+#This defines the version of SMI system and would be set by the Operator.
+VERSION_NUMBER=1.01
+
+#This defines the terminal and would be set by the Operator
+TERM=internal
+
+#This would define the Login command for the login request to the IN.
+LOGIN_COMMAND=LOGIN   :PSWD=%p,USER=%u
+
+#It denotes the service that the operator applies for.
+LOGIN_SERIVICE=SRVM
+
+#This defines the session control parameter and would be used for the login request.
+DLGLGN=DLGLGN
+
+#This would define the Logout command for the login request to the IN.
+LOGOUT_COMMAND=LOGOUT  :USER=%u
+
+#It denotes the service that the operator applies for.
+LOGOUT_SERIVICE=SRVM
+
+#This defines the session control parameter and would be used for the login request.
+DLGLGN=DLGLGN
+
+#Reserv parameter for session,CONFIRM
+RSV=0000
+
+#Control parameter,it denotes that Transaction starts
+DLGCTRL=TXBEG
+
+
+#Reserve parameter for the transaction header,still TB confirm
+TSRV=0000
+
+#Start flag used to send as first four bytes of any MML message
+START_FLAG=`SC`
+
+#This command is used to query PPS subscriber's information.
+#Each word in the command should be of length 8 with space padding.
+ACNTINFO_COMMAND=DISP    PPS     ACNTINFO:
+
+#This defines the session control parameter and would be used for all services other than login and logout.
+DLGCON=DLGCON
+
+#This command is used to recharge the subscriber's account.
+#Each word in the command should be of length 8 with space padding.
+RECHARGE_COMMAND=CHGTRIG CHRG    ACNT    :
+
+#This defines the charge type to be identified at IN side.
+CHRGTYPE=3
+
+#This defines that operator's query for re-charge service
+RECHARGE_SERIVICE=CHRG
+
+#Heart Beat Command
+HEART_BEAT_COMMAND=HBHB
+
+##Following two parameters are used for Heart beat. It is prefered to send 4 heartbeat msgs in 120 seconds for each connection.
+OPTIMUM_HEART_BEAT_COUNT=4
+
+OPTIMUM_HEART_BEAT_TIME=120000
+
+#This is used to change Pretups specific amount in to IN spesific amount and vice-versa.
+MULTIPLICATION_FACTOR=10000
+
+
+#This is used to set language mapping between Pretups and IN system.
+#We have to map lang code returned (2) from Huawei IN.
+LANGUAGE_MAPPING=2:0,1:1
+
+#This flag is used to check whether amount should be rounded of or not.
+ROUND_FLAG=Y
+
+#Language code should be sent in Request.
+MSG_HEAD_LANGUAGE=English
+
+#heart beat sleep time
+HEART_BEAT_SLEEP_TIME=30000
+
+#By this factor INModule would multiply the amount while sending the request and recieved amount from IN would be devided.
+HUAWEI_MULT_FACTOR=0.01
+
+#Ambiguous cases
+CON_INVAL_CASES=27,36
+
+##Defines that the validation of subscriber(senders) is required for PRC
+PRC_S=N
+
+##Defines that the validation of subscriber(Receiver) is required for PRC
+PRC_R=N
+
+##Defines that the validation of subscriber(Receiver) is required for RC
+RC_R=N
+
+##Defines that the validation of subscriber(senders) is required for ACCINFO
+ACCINFO_S=Y
+
+##Defines that the validation of subscriber(senders) is required for PREG
+PREG_S=Y
+
+##Defines that the validation of subscriber(Receiver) is required for EVD
+EVD_R=Y
+
+##Defines that the validation of subscriber(Receiver) is required for EVR
+EVR_R=Y
+
+
+#Indicates whether Cancel request supported by IN or not.(Possible values are Y/N)
+CANCEL_TXN_ALLOWED=N
+
+##If any ambiguous response is received from IN, then retry/cancel command is sent to IN. Then response of retry/cancel is matched in the IN file and mapped error code (250/206/200) is picked and sent to Controller.
+##SYSTEM_STATUS_MAPPING=INErrCode1,INErrCode2,INErrCode3,INErrCode4:system_err_code1|INErrCode5,INErrCode6:system_err_code2
+##system_err_code1 and system_err_code2 will be sent to system and written in recon log file.
+#SYSTEM_STATUS_MAPPING=250:250
+##If receiver credit is AMBIGUOS, then in SYSTEM_PREFERENCE, CREDIT_BACK_ALLOWED should be N.
+
+#If an ambiguous case occurs while credit, mapped error code can be set to one of the codes(SUCCESS, FAIL and AMBIGUOUS)
+SYSTEM_STATUS_MAPPING_CREDIT=250:250
+
+#If an ambiguous case occurs while credit, mapped error code can be set to one of the codes(SUCCESS, FAIL and AMBIGUOUS)
+SYSTEM_STATUS_MAPPING_CREDIT_ADJ=250:250
+
+#If an ambiguous case occurs while debitAdjust, mapped error code cannot be SUCCESS. It can only be FAIL or AMBIGUOUS
+SYSTEM_STATUS_MAPPING_DEBIT_ADJ=250:250
+
+#If an ambiguous case occurs while credit Back, mapped error code can not be fail, it can only be SUCCESS or AMBIGOUOS
+SYSTEM_STATUS_MAPPING_CREDIT_BCK=250:250
+
+
+##If any ambiguous response is received from IN, check if cancel txn allowed or not in the system. if not, pick mapped error code against NA otherwise pick mapped error code (206/250) against received response code of Cancellation from IN. 
+##CANCEL_COMMAND_STATUS_MAPPING=INErrCode1,INErrCode2,INErrCode3,INErrCode4:cancel_err_code1|INErrCode5,INErrCode6:cancel_err_code2
+##cancel_err_code1, cancel_err_code2 will be written in recon log file.
+CANCEL_COMMAND_STATUS_MAPPING=NA:450
+
+#Defines the cancel command status when cancel not supported by IN. 
+CANCEL_NA=NA
+
+
+#maximum number of ambiguous transactions allowed till threshold time.
+NO_ALLWD_AMB_TXN=5
+
+##time duration in which maximum number of ambiguous transactions is defined
+THRESHOLD_TIME=60000
+
+##Time duration after which interface suspension expires.
+EXPIRY_TIME=432000000
+
+##Auto Resumption supported by IN or not.
+AUTO_RESUME_SUPPORT=N
+
+#Interface closure feature supported or not
+INTFCE_CLSR_SUPPORT=N
+
+
+##Remark1 in Reconcialiationlog
+REMARK1=
+
+##Remark1 in Reconcialiationlog
+REMARK2=
+
+#All following parameters will be used while validating subscriber's type
+READ_TIMEOUT_VAL=5000
+
+URL=http://172.16.1.175:7050/pretups/HuaweiEVRTestServlet
+
+CONNECT_TIMEOUT=4000
+
+KEEP_ALIVE=N
+
+WARN_TIMEOUT=1000
+
+DEFAULT_ACCOUNT_STATUS=ACTIVE
+

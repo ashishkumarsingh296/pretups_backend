@@ -1,0 +1,10 @@
+loginID,password,dataLoginID,networkCode,type2,externalCode,TestcaseId,TestcaseType,Module,Description
+,1357,superadmin,NG,SUBMITCHANGENETWORK,,TUNG17832,Negative,Change Network,"To verfy validation message appears ""Login Id is not available in request"" when LOGIN_ID   not provided"
+superadmin,,superadmin,NG,SUBMITCHANGENETWORK,, TUNG17833,Negative,Change Network,"To verify validation messsage appears ""Password is not available in request"" when password is not provided"
+superadmin1,1357,superadmin,NG,SUBMITCHANGENETWORK,,TUNG17827,Negative,Change Network,"To verify validation message appears ""User does not exists in the system"" when wrong LOGIN_ID provided"
+superadmin,1234,superadmin,NG,SUBMITCHANGENETWORK,,TUNG17828,Negative,Change Network,"To verify validation message appears ""User ID or Password is incorrec"" when wrong PASSWORD provided"
+superadmin,1357,superadmin,NG,,, TUNG17829,Negative,Change Network,"To verify validation message appears ""Action type does not exists in the request"" when TYPE is not provided"
+superadmin,1357,superadmin1,NG,SUBMITCHANGENETWORK,, TUNG17830,Negative,Change Network,"To verify validation message appears ""login.invalid"" when provide invalid login id"
+superadmin,1357,,NG,SUBMITCHANGENETWORK,, TUNG17831,Negative,Change Network,"To verify validation message appears ""login.required"" when do not provide dataLoginID"
+superadmin,1357,superadmin,,SUBMITCHANGENETWORK,,TUNG17834 ,Negative,Change Network,"To verify validation message appears ""Network Code is invalid or left blank"" "
+superadmin,1357,superadmin,NGR,SUBMITCHANGENETWORK,, TUNG17835,Negative,Change Network,"To verify validation message appears ""Network Code is invalid or left blank"" "

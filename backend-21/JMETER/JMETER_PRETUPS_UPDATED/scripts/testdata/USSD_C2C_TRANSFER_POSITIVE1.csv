@@ -1,0 +1,2 @@
+TestcaseId,TestcaseType,Module,Description
+TUNG13117,Positive,Channel to Channel Transfer through USSD,"To verify that channel user is able to initiate the ""transfer"" through USSD with all the mandatory fields."

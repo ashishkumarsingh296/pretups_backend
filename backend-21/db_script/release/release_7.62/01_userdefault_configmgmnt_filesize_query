@@ -1,0 +1,24 @@
+
+update
+	system_preferences
+set
+	"name" = 'Maximum file size in bytes',
+	"type" = 'SYSTEMPRF',
+	value_type = 'INT',
+	default_value = '2097152',
+	min_value = 0,
+	max_value = 10000000,
+	max_size = 10000000,
+	description = 'MAX File Size For Bulk',
+	modified_allowed = 'N',
+	display = 'Y',
+	"module" = 'C2S',
+	remarks = 'MAX File Size For Bulk',
+	created_on = '2021-02-03 00:00:00.000',
+	created_by = 'ADMIN',
+	modified_on = '2021-03-03 03:39:55.000',
+	modified_by = 'SU0001',
+	allowed_values = null,
+	fixed_value = 'Y'
+where
+	preference_code = 'MAX_BULK_FILE_SIZE_BYTES';

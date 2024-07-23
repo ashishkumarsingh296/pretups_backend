@@ -1,0 +1,2 @@
+TestcaseId,TestcaseType,Module,Description
+TUNG10184,Positive,Self TPIN iniitiate through USSD,To check if the user is able to initiate the request for Self PIN Reset through USSD according to the Security Question field defined.

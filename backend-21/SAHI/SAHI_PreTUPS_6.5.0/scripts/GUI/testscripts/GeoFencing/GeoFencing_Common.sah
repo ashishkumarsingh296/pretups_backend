@@ -1,0 +1,49 @@
+
+// This scripts contains all method to suspend, approve and resume channel user in the system
+
+_includeOnce("../../../../utility/ImportPackage.sah");
+
+
+var $l_filePath;
+var $g_assertion;
+
+function commonVaribleForGeoFencing () {
+	
+}
+
+function commonVaribleForGeoFencing($g_row, $g_col) {
+	
+	$l_filePath = $g_GeoFencing[$g_row][$g_col++];
+	$g_assertion = $g_GeoFencing[$g_row][$g_col++];
+	
+}
+
+
+
+
+function viewLinkForGeoFencing() {	
+	
+    _click(_link("Masters"));
+    _assertExists(_link("Geography cell-id management"));
+}
+
+
+function uploadFileWithInvalidDetails() {
+	
+		_click(_link("Masters"));
+	    _click(_link("Geography cell-id management"));
+	    _setFile2(_file("file"), $l_filePath);
+	    _click(_submit("Upload"));
+	    _click(_submit("Confirm"));
+	    _assertExists(_listItem("/"+ $g_assertion +".*/"));
+}
+
+
+function uploadWithInvalidInputDetails() {
+	_click(_link("Masters"));
+	_click(_link("Geography cell-id management"));
+    _setFile2(_file("file"), $l_filePath);
+    _click(_submit("Upload"));
+    _click(_submit("Confirm"));
+    _assertExists(_link("/"+ $g_assertion +".*/"));
+}

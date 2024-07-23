@@ -1,0 +1,98 @@
+//#######################################
+//
+// This script to add modify and delete Group Role
+//
+//#######################################
+
+
+
+_includeOnce("../../../../utility/ImportPackage.sah");
+_includeOnce("../../../GUI/testscripts/Group_Role_Management/GroupRoleManagement_Common.sah"); //For adding new Group Role 
+
+
+//======================Pre-requisite check============================
+_log("Setup", "custom4");
+
+//====Login into Application====
+login($g_appURL, $g_LangEnglish, $g_superAdmin, $g_password, $g_assertMessage); //calls the Login function in Login.sah with the parameters(url, language, username, password, assertion)
+
+
+//==================== To add service class by super admin ==================//
+
+var $g_GroupRolesDetails = _readCSVFile("../../../GUI/testdata/GroupRoleManagement.csv"); //Reads the network details
+
+
+
+
+
+for(var $g_row = 1; $g_GroupRolesDetails[$g_row] != null; $g_row++){
+
+	var $g_col = 0;
+	var $temp_testCaseNo = $g_GroupRolesDetails[$g_row][$g_col++];
+	var $t = _testcase($temp_testCaseNo, $g_GroupRolesDetails[$g_row][$g_col++]);
+	
+	$t.start();
+	
+	if($temp_testCaseNo == "TEST001"){
+		commonVariableForGroupRole($g_row, $g_col);
+		addGroupRole();
+	}
+	
+	else if($temp_testCaseNo == "TEST002"){
+		commonVariableForGroupRole($g_row, $g_col);
+		addGroupRoleWithoutDomain();
+	}
+	
+	else if($temp_testCaseNo == "TEST003"){
+		commonVariableForGroupRole($g_row, $g_col);
+		addGroupRoleWithoutRoleCode();
+	}
+	else if($temp_testCaseNo == "TEST004"){
+		commonVariableForGroupRole($g_row, $g_col);
+		modifyGroupRole();
+	}
+	
+	
+	
+	
+	$t.end();
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

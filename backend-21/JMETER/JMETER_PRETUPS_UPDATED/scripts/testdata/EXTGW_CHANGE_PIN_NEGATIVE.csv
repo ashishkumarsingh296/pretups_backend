@@ -1,0 +1,10 @@
+TestcaseId,TestcaseType,Module,Description
+TUNG12745,Negative,Change Pin,To verify Change Pin is not Working with Different Network
+TUNG12746,Negative,Change Pin,To verify Change Pin is not Working when Network Code Left Blank
+TUNG12747,Negative,Change Pin,To Verify Change Pin is Not working when No Msisdn or Login ID is present
+TUNG12748,Negative,Change Pin,To Verfiy Change Pin is not Working With incorrect value of Pin
+TUNG12749,Negative,Change Pin,To Verfiy Change Pin is not Working when Old Pin and New Pin are Same
+TUNG12750,Negative,Change Pin,To Verfiy Change Pin is not Working when Confirm Pin and New Pin are Different
+TUNG12751,Negative,Change Pin,To Verfiy Change Pin is not Working when  OLD Pin left Blank
+TUNG12752,Negative,Change Pin,To Verfiy Change Pin is not Working when  NEW Pin left Blank
+TUNG12753,Negative,Change Pin,To Verfiy Change Pin is not Working when  Confirm  Pin left Blank

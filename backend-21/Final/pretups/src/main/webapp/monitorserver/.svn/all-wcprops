@@ -1,0 +1,215 @@
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/monitorserver
+END
+instanceCounters.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 136
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/monitorserver/instanceCounters.jsp
+END
+updateCountersNetwork.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 141
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/monitorserver/updateCountersNetwork.jsp
+END
+networkServiceLoadCountersSummary1.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 154
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/monitorserver/networkServiceLoadCountersSummary1.jsp
+END
+initialiseCountersTransaction.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 149
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/monitorserver/initialiseCountersTransaction.jsp
+END
+initialiseCountersAll.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 141
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/monitorserver/initialiseCountersAll.jsp
+END
+LmDisplayAlarmLog.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 137
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/monitorserver/LmDisplayAlarmLog.jsp
+END
+diskspace_db.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 132
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/monitorserver/diskspace_db.jsp
+END
+transactionCounters.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 139
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/monitorserver/transactionCounters.jsp
+END
+updateCountersInterface.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 143
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/monitorserver/updateCountersInterface.jsp
+END
+SMSCGateway.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 131
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/monitorserver/SMSCGateway.jsp
+END
+LmPendingAlarm.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 134
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/monitorserver/LmPendingAlarm.jsp
+END
+initialiseCountersNetwork.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 145
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/monitorserver/initialiseCountersNetwork.jsp
+END
+sessionUser.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 131
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/monitorserver/sessionUser.jsp
+END
+networkServiceLoadCountersSummary.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 153
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/monitorserver/networkServiceLoadCountersSummary.jsp
+END
+initialiseCountersInstance.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 146
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/monitorserver/initialiseCountersInstance.jsp
+END
+activeSessions.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 134
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/monitorserver/activeSessions.jsp
+END
+networkServiceLoadCounters.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 146
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/monitorserver/networkServiceLoadCounters.jsp
+END
+LmDeleteAlarm.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 133
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/monitorserver/LmDeleteAlarm.jsp
+END
+totalConcurrentUser.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 139
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/monitorserver/totalConcurrentUser.jsp
+END
+diskspace.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 129
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/monitorserver/diskspace.jsp
+END
+initialiseCountersInterface.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 147
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/monitorserver/initialiseCountersInterface.jsp
+END
+locationCounters.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 136
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/monitorserver/locationCounters.jsp
+END
+interfaceCounters.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 137
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/monitorserver/interfaceCounters.jsp
+END
+test.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 124
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/monitorserver/test.jsp
+END
+loginMonitorServer.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 138
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/monitorserver/loginMonitorServer.jsp
+END
+updateCountersInstance.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 142
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/monitorserver/updateCountersInstance.jsp
+END
+networkServiceLoadCounters.jsp_240406
+K 25
+svn:wc:ra_dav:version-url
+V 153
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/monitorserver/networkServiceLoadCounters.jsp_240406
+END
+memoryCounters.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 134
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/monitorserver/memoryCounters.jsp
+END
+initialiseCountersNetworkServiceLoad.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 156
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/monitorserver/initialiseCountersNetworkServiceLoad.jsp
+END
+pullCounters.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 132
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/monitorserver/pullCounters.jsp
+END
+diskspace_web.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 133
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/monitorserver/diskspace_web.jsp
+END
+updateCountersTransaction.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 145
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/monitorserver/updateCountersTransaction.jsp
+END
+showOptions.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 131
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/monitorserver/showOptions.jsp
+END
+updateCountersAll.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 137
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/monitorserver/updateCountersAll.jsp
+END
+concurrentUser.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 134
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/monitorserver/concurrentUser.jsp
+END

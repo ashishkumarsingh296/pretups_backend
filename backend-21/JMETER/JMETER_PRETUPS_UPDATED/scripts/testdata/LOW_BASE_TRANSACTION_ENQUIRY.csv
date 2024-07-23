@@ -1,0 +1,19 @@
+loginId,password,agentMobileNo,subscriberMobileNo,rechargeDate,type,externalCode,TestcaseId,TestcaseType,Module,Description
+btchadm,1357,7200009910,7200000001,01-09-2016,LOWBALRCH,,TUNG13278,Positive,Low Base Transaction Enquiry,To validate Recharge details display when provide correct value in all input fields
+btchadm,1357,,,,LOWBALRCH,,TUNG13267,Negative,Low Base Transaction Enquiry,To validate validation is working for new Low Base Transaction Enquiry form
+btchadm,1357,,7200000001,01-09-2016,LOWBALRCH,,TUNG13573 ,Negative,Low Base Transaction Enquiry,To validate Agent Mobile number required validation is working
+btchadm,1357,7200009910,7200000001,,LOWBALRCH,,TUNG13574 ,Negative,Low Base Transaction Enquiry,To validate Date field required validation is working
+btchadm,1357,7200009910,7200000001,16-09-2016,LOWBALRCH,,TUNG13270,Negative,Low Base Transaction Enquiry,To validate future date not allowed validation working in date field
+btchadm,1357,7200009910,7200000001,16-09-2016,LOWBALRCH,,TUNG13273,Negative,Low Base Transaction Enquiry,"To validate ""No data found for this retailer"" message appears when wrong input value provided for Subscriber Mobile Number"
+btchadm,1357,7200009910,7200000001,16-09-2016,LOWBALRCH,,TUNG13274,Negative,Low Base Transaction Enquiry,"To validate ""No data found for this retailer"" message appears when wrong input value provided"
+btchadm,1357,7200009910,7200000001,16-09-2016,LOWBALRCH,,TUNG13275,Negative,Low Base Transaction Enquiry,"To validate ""No data found for this retailer"" message appears when wrong input value provided for Agent and Subscriber"
+btchadm,1357,7200009910,7200000001,16-09-2016,LOWBALRCH,,TUNG13272,Negative,Low Base Transaction Enquiry,"To validate ""No data found for this retailer"" message appears when wrong input value provided for Agent Mobile Number"
+btchadm,1357,dfdfdsjf,7200000001,16-09-2016,LOWBALRCH,,TUNG13268,Negative,Low Base Transaction Enquiry,To validate Special and Alphanumeric character validation is working on Agent Mobile Number textbox for Low Base Transaction form
+btchadm,1357,$^%$^%$,7200000001,16-09-2016,LOWBALRCH,,TUNG13268,Negative,Low Base Transaction Enquiry,To validate Special and Alphanumeric  character validation is working on Agent Mobile Number textbox for Low Base Transaction form
+btchadm,1357,7200009910,HGJHG,16-09-2016,LOWBALRCH,,TUNG13269,Negative,Low Base Transaction Enquiry,To validate Special and Alphanumeric  character validation is working on Subscriber Mobile Number textbox for Low Base Transaction form
+btchadm,1357,7200009910,%^&%&^,16-09-2016,LOWBALRCH,,TUNG13269,Negative,Low Base Transaction Enquiry,To validate Special and Alphanumeric character validation is working on Subscriber Mobile Number textbox for Low Base Transaction form
+btchadm,1357,hjkjhjkhk,hkhk,16-09-2016,LOWBALRCH,,TUNG13575 ,Negative,Low Base Transaction Enquiry,To validate Alphanumeric validation is working on Agent and Subscriber Mobile No field
+btchadm,1357,%^&%^,^*^*&^,16-09-2016,LOWBALRCH,,TUNG13576 ,Negative,Low Base Transaction Enquiry,To validate Special character validation is working on Agent and Subscriber Mobile No field
+btchadm,1357,7200009910,7200000001,&^&*(^,LOWBALRCH,,TUNG13577 ,Negative,Low Base Transaction Enquiry,To validate Special character validation is working on date field
+btdist,1357,7200009910,7200000001,&^&*(^,,,TUNG13578 ,Negative,Low Base Transaction Enquiry,"To validate ""Action type does not exists in the request"" message display when type not provided"
+btchadm,1357,7200009920,7200000101,15-09-2016,LOWBALRCH,,TUNG13276,Negative,Low Base Transaction Enquiry,"To validate  ""low.base.transaction.no.data.found.for.this.retailer"" message comes when no data found"

@@ -1,0 +1,6 @@
+TestcaseId,TestcaseType,Module,Description
+TUNG13032,Positive,Daily status report through USSD,"To verify that channel user is able to initiate the ""Daily Status Report"" request through USSD with all the mandatory fields."
+TUNG13034,Positive,Daily status report through USSD,"To verify that following ""PIN"" tag name is available while initiating ""Daily Status Report"" request through USSD and user is able to iniate successfully without entering value in it."
+TUNG13037,Positive,Daily status report through USSD,"To verify that response is initiated successfully with all the mandatory fields(TYPE,TXNSTATUS)and valid values"
+TUNG13038,Positive,Daily status report through USSD,"To verify that TXNSTATUS field contain 200 value if ""Daily Status Report"" response is generated successfully else it display value other than 200"
+TUNG13039,Positive,Daily status report through USSD,"To verify that success ""Daily Status Report"" response field contain all the  fields values in the character limit"

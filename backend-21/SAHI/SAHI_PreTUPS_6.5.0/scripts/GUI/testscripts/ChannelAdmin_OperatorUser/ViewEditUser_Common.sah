@@ -1,0 +1,135 @@
+
+
+// This scripts contains all method to manage channel User password in the system
+
+_includeOnce("../../../../utility/ImportPackage.sah");
+
+var $l_naCsv = _readCSVFile("../../../GUI/testdata/NA_Login.csv");
+
+
+	var $g_userType;
+	var $g_domain;
+	var $g_category;
+	var $g_user;
+	var $g_assertion;
+	
+	var $g_chadm;
+	
+	
+	
+	function commonVaribleToViewAndEditUser($g_row, $g_col) {
+		
+		$g_userType = $g_viewEditUsers[$g_row][$g_col++];
+		$g_domain = $g_viewEditUsers[$g_row][$g_col++];
+		$g_category = $g_viewEditUsers[$g_row][$g_col++];
+		$g_user = $g_viewEditUsers[$g_row][$g_col++];
+		$g_assertion = $g_viewEditUsers[$g_row][$g_col++];
+	}
+	
+	// ................... Shashi is here ................................. //
+	
+	function test() {
+		
+		_click(_link("Operator users"));
+		_click(_link("View/Edit user"))
+		_assertExists(_div("Select user domain/category"));
+		_setSelected(_select("userType"), "Operator User");
+		_setSelected(_select("domainCode"), "Not Applicable");
+		_setSelected(_select("categoryCode"), "Customer Care");
+		_click(_submit("Submit"));
+		_assertExists(_div("User list"));
+		_click(_submit("Back"));
+		
+		_assertExists(_cell("btcce", _near(_cell("User name"))));
+	}
+	
+	function commonMethodToViewUserOne() {
+		_click(_link("Operator users"));
+		_click(_link("View/Edit user"))
+		_assertExists(_div("Select user domain/category"));
+	}
+	
+	
+	function commonMethodToViewOperatorUser() {
+		commonMethodToViewUserOne();
+		_setSelected(_select("userType"), $g_userType );
+		_setSelected(_select("domainCode"), $g_domain);
+		_setSelected(_select("categoryCode"), $g_category );
+	}
+	
+	
+	
+	
+	function viewOperatorUser() {
+		commonMethodToViewOperatorUser();
+		submit();
+		_assertExists(_div("User list"));
+		_assertExists(_cell($g_user, _near(_cell("User name"))));
+	}
+	
+	function valuesInUserTypeDropDown() {
+		commonMethodToViewUserOne();
+		_setSelected(_select("userType"),1);
+		if(_getSelectedText(_select("userType")) == $g_userType ) {_log("Succssful")}
+		else {_log("Test Cases is failed")}
+	}
+	
+	function valueInDoaminDropDown() {
+		commonMethodToViewUserOne();
+		_setSelected(_select("userType"), $g_userType );
+		_setSelected(_select("domainCode"),1);
+		if(_getSelectedText(_select("domainCode")) == $g_domain ) {_log("Succssful")}
+		else {_log("Test Cases is failed")}
+	}
+	
+	
+	
+	function valueInCategoryDropDown() {
+		commonMethodToViewUserOne();
+		_setSelected(_select("userType"), $g_userType );
+		_setSelected(_select("domainCode"), $g_domain);
+		_setSelected(_select("domainCode"),1);
+		if(_getSelectedText(_select("categoryCode")) == $g_category ) {_log("Succssful")}
+		else {_log("Test Cases is failed")}
+	}
+	
+
+	
+	function viewOperatorUserWithInvalidDetails() {
+		commonMethodToViewOperatorUser();
+		submit();
+		 _assertExists(_listItem("/"+ $g_assertion +".*/"));
+	}
+	
+	function checKSubmitButtonOnViewOperatorPage() {
+		commonMethodToViewUserOne();
+		_assertExists(_submit("Submit"));
+	}
+	
+	function backButtonCheckOnUserListPage() {
+		
+		commonMethodToViewOperatorUser();
+		back();
+		if(_getSelectedText(_select("userType")) == $g_userType ) {_log("Succssful")}
+		else {_log("Test Cases is failed")}
+	}
+	
+	function viewChannelAdminSelfDetails() {
+		
+		$g_chadm = $l_naCsv1[2][1];
+		_click(_link("Operator users"));
+		_click(_link("View self details"));
+		_assertExists(_div("View operator user details"));
+		_assertExists(_cell($g_chadm, _near(_cell("User name :"))));
+	}
+	
+	
+	
+	
+	// ................... Shashi is here ................................. //
+	
+	
+	
+	
+    
+    

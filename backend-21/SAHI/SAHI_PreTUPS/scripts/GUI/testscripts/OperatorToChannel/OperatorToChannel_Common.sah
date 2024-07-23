@@ -1,0 +1,156 @@
+//##########################################
+//
+//
+//Objective: - Objeective of this script to add commom method for O2C transaction.
+//
+//
+//###########################################
+
+
+var $g_msisdn;
+var $g_referenceNumber;
+var $g_quantity;
+var $g_remark;
+var $g_paymentType;
+var $g_calendarImg;
+var $g_PIN;
+var $g_levelOneRemark;
+var $g_levelTwoRemark;
+var $1_error1 =0;
+
+var $g_externalTxnNumber;
+
+_log("shashi for common PIN " + $g_commonPIN);
+
+function variableForInitiateO2C($a_row, $a_col){
+
+		var $l_ChUser = _readCSVFile("../../testdata/ChUser_Details.csv");
+		
+		
+		$g_referenceNumber = randomNumber();
+		$g_quantity = $g_O2CTransferDetails[$a_row][$a_col++];
+		$g_remark = $g_O2CTransferDetails[$a_row][$a_col++];
+		$g_paymentType = $g_O2CTransferDetails[$a_row][$a_col++];
+		$g_calendarImg = $g_O2CTransferDetails[$a_row][$a_col++];
+		$g_levelOneRemark = $g_O2CTransferDetails[$a_row][$a_col++];
+		$g_levelTwoRemark = $g_O2CTransferDetails[$a_row][$a_col++];
+	//	
+	//	$g_PIN = $l_ChUser[1][25];
+		$g_externalTxnNumber = randomNumber();
+
+}
+		
+
+function O2CTransferDetails($g_msisdn){
+	
+		_click(_link($g_LeftMenuBar_O2C));
+		_click(_link($g_LeftMenuBar_O2CInitiation));
+		_setValue(_textbox("userCode"), $g_msisdn );
+		_click(_submit("Submit"));
+		_assertExists(_div($g_O2CTransferDetailsAssertion));
+}
+
+function initiateO2Ctransfer(){
+
+		_setValue(_textbox("refrenceNum"), $g_referenceNumber);
+		_setValue(_textbox("dataListIndexed[0].requestedQuantity"), $g_quantity);
+		_setValue(_textarea("remarks"), $g_remark);
+		_setSelected(_select("paymentInstCode"), $g_paymentType);
+		_click(_image($g_calendarImg));
+		_setValue(_textbox("paymentInstDate"), $g_currentDate);
+		_setValue(_password("smsPin"), $g_commonPIN);
+		_click(_submit($g_BtnSubmit));
+		_assertExists(_div($g_O2CTransferDetailsConfirmation));
+
+		confirmButton();
+		if(_exists(_listItem("/"+ $g_O2CTransferInitiation +".*/")))
+		{
+			_log("O2C Transfer has been initiated successfully");
+		}
+		else{
+			_log("O2C Transfer has not initiated succesfully");
+		}
+		
+	// ============================  Level one Approval for O2C transfer ======================= //
+		
+		var $t2 = _testcase("TEST001", "Given a channel admin logs into application and approve level 1 O2C Transfer ");
+		$t2.start();
+		var $g_channelAdmin = $l_naCsv[2][1];
+		login($g_appURL, $g_LangEnglish, $g_channelAdmin, $g_commonPassword, $g_assertWelcome); //Login as Channel Admin
+		approveLevelOneForO2C($referenceNumber); // Function defined in ChannelUser_Common.sah for approving Channel User
+		$t2.end();
+		_log("O2C level one approval");
+	
+		
+// ============================  Level two Approval for O2C transfer ======================= //
+		if($1_error1 == 0){
+		var $t2 = _testcase("TEST002", "Given a channel admin logs into application and approve level 2 O2C Transfer ");
+		$t2.start();
+		var $g_channelAdmin = $l_naCsv[2][1];
+		login($g_appURL, $g_LangEnglish, $g_channelAdmin, $g_commonPassword, $g_assertWelcome); //Login as Channel Admin
+		approveLevelTwoForO2C($referenceNumber); // Function defined in ChannelUser_Common.sah for approving Channel User
+		$t2.end();
+		_log("O2C level two approval");
+			
+		}
+		
+		
+	// ===============================================================================//
+		
+		
+function approveLevelOneForO2C($referenceNumber){
+			_click(_link($g_LeftMenuBar_O2C));
+			_click(_link("Approve level 1"));
+			_assertExists(_div("Transfer approval level one"));
+			_setValue(_textbox("userCode"), $g_msisdn);
+			_click(_radio("selectedTransfer", _near(_cell($referenceNumber))));
+			_click(_submit($g_BtnSubmit));
+			_setValue(_textbox("externalTxnNum"), $g_externalTxnNumber);
+
+			_click(_image($g_calendarImg));
+			_setValue(_textbox("externalTxnDate"), $g_currentDate);
+			
+			_setValue(_textbox("channelTransferIndexed[0].firstApprovedQuantity"),$g_quantity );
+			_setValue(_textarea("approve1Remark"), $g_levelOneRemark);
+			_click(_submit($g_BtnApprove));
+			
+			if(_exists(_bold($g_O2CTransferComplete)) == true){
+				$1_error1 = 1;
+			}
+			confirmButton();
+			}
+		
+}
+
+
+function approveLevelTwoForO2C($referenceNumber){
+	_click(_link($g_LeftMenuBar_O2C));
+	_click(_link("Approve level 2"));
+	_assertExists(_div("Transfer approval level two"));
+	_setValue(_textbox("userCode"), $g_msisdn);
+	_click(_radio("selectedTransfer", _near(_cell($referenceNumber))));
+	_click(_submit($g_BtnSubmit));
+	_setValue(_textbox("externalTxnNum"), $g_externalTxnNumber);
+
+	_click(_image($g_calendarImg));
+	_setValue(_textbox("externalTxnDate"), $g_currentDate);
+	
+	_setValue(_textbox("channelTransferIndexed[0].secondApprovedQuantity"),$g_quantity );
+	_setValue(_textarea("approve2Remark"), $g_levelTwoRemark);
+	_click(_submit($g_BtnApprove));
+	
+	if(_exists(_bold($g_O2CTransferComplete)) == true){
+		$1_error1 = 1;
+	}
+	confirmButton();
+	}
+
+
+
+
+function confirmButton(){
+	_click(_submit($g_BtnConfirm));	
+}
+
+
+

@@ -1,0 +1,2 @@
+TestcaseId,TestcaseType,Module,Description
+P2PCREDITTRF1,Negative,Credit Transfer,To validate  credit transfer fails when PIN is missing

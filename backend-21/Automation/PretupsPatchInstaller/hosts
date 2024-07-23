@@ -1,0 +1,15 @@
+[webservers]
+WEB2 ansible_ssh_user=pretups ansible_ssh_pass=pretups123
+WEB1 ansible_ssh_user=pretups ansible_ssh_pass=pretups123
+
+[smsrservers]
+SMSR1  ansible_ssh_user=pretups ansible_ssh_pass=pretups123
+SMSR2  ansible_ssh_user=pretups ansible_ssh_pass=pretups123
+
+[smspservers]
+SMSP1  ansible_ssh_user=pretups ansible_ssh_pass=pretups123
+SMSP2  ansible_ssh_user=pretups ansible_ssh_pass=pretups123
+
+[dbservers]  
+DB_SERVERS ansible_ssh_user=ora12cR2 ansible_ssh_pass=ora12cR2
+#DB_SERVERS ansible_ssh_user=pgdb ansible_ssh_pass=pgdb

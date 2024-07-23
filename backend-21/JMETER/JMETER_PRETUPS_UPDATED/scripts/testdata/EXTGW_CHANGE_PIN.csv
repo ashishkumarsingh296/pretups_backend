@@ -1,0 +1,12 @@
+DATE,EXTNWCODE,MSISDN,OLDPIN,NEWPIN,CONFIRMPIN,LOGINID,PASSWORD,LANGUAGE1,EXTREFNUM,REMARKS,TestcaseId,TestcaseType,Module,Description
+,NG,7212121514,1358,1357,1357,,,0,,,TUNG13078,Positive,Change Pin,To verify Change Pin is Working With MSISDN 
+,NG,,1357,1358,1358,harshadm,1358,0,,,TUNG13079,Positive,Change Pin,To verify Change Pin is Working With Login Id and Password
+,PB,7212121514,1357,1358,1358,,,,,,TUNG12745,Negative,Change Pin,To verify Change Pin is not Working with Different Network
+,,7212121514,1357,1358,1358,,,,,,TUNG12746,Negative,Change Pin,To verify Change Pin is not Working when Network Code Left Blank
+,NG,,1357,1358,1358,,,,,,TUNG12747,Negative,Change Pin,To Verify Change Pin is Not working when No Msisdn or Login ID is present
+,NG,7212121514,2468,2467,2467,,,,,,TUNG12748,Negative,Change Pin,To Verfiy Change Pin is not Working With incorrect value of Pin
+,NG,7212121514,1358,1358,1358,,,0,,,TUNG12749,Negative,Change Pin,To Verfiy Change Pin is not Working when Old Pin and New Pin are Same
+,NG,7212121514,1358,1357,1358,,,0,,,TUNG12750,Negative,Change Pin,To Verfiy Change Pin is not Working when Confirm Pin and New Pin are Different
+,NG,7212121514, ,1357,1358,,,0,,,TUNG12751,Negative,Change Pin,To Verfiy Change Pin is not Working when  OLD Pin left Blank
+,NG,7212121514,1358,,1358,,,0,,,TUNG12752,Negative,Change Pin,To Verfiy Change Pin is not Working when  NEW Pin left Blank
+,NG,7212121514,1358,1357,,,,0,,,TUNG12753,Negative,Change Pin,To Verfiy Change Pin is not Working when  Confirm  Pin left Blank

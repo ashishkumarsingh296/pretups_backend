@@ -1,0 +1,53 @@
+---
+ - name: Copying Manual Scripts file to host machine
+   template: src={{ item }}.sql  dest="{{ BASE_DIR }}/{{ Temp_Dir }}" owner={{ db_user }} group={{ db_group }}  mode=0755
+   when: IsManualScripts
+   tags:
+    - ManualScripts_tags
+   with_items:
+            - "{{ ManualScriptsName }}"
+
+ - name: Copying Manual Scripts sh file to host machine
+   template: src=ManualScript.sh  dest="{{ BASE_DIR }}/{{ Temp_Dir }}" owner={{ db_user }} group={{ db_group }}  mode=0755
+   when: IsManualScripts
+   tags:
+    - ManualScripts_tags
+
+ - name: "DB: Running Manual Queries-generating shell scripts"
+   lineinfile:
+    dest: "{{ BASE_DIR }}/{{ Temp_Dir }}/ManualScript.sh"
+    insertbefore: '^exit;'
+    line: "sqlplus {{ PRETUPS_SCHEMA_USER_NAME }}/{{ PRETUPS_SCHEMA_PASSWORD }} @{{ item }}.sql;"
+   tags:
+    - ManualScripts_tags
+   when: IsManualScripts
+   with_items:
+            - "{{ ManualScriptsName }}"
+
+ - name : Running Manual Scripts sh file
+   shell: "sh ManualScript.sh chdir={{ BASE_DIR }}/{{ Temp_Dir }}"
+   register: ManualScript
+   ignore_errors: yes
+   tags:
+    - ManualScripts_tags
+   when: IsManualScripts
+
+
+ - name: "running Load Table Queries related Tasks"
+   include: db_task.yml
+   when: LoadTableQueries
+
+ - name: Copying SQLScripts.sql file to host machine
+   copy: src=SQLScripts.sql  dest="{{ BASE_DIR }}/{{ Temp_Dir }}" owner={{ db_user }} group={{ db_group }}  mode=0755
+   when: AdditionalQueries
+
+ - name: "DB: Additional Queries"
+   shell: "{{ item }} chdir={{ BASE_DIR }}/{{ Temp_Dir }}"
+   with_items:
+   - sqlplus {{ PRETUPS_SCHEMA_USER_NAME }}/{{ PRETUPS_SCHEMA_PASSWORD }} << EOT @SQLScripts.sql exit; EOT
+   ignore_errors: yes
+   register: SQLScripts
+   failed_when: '"ERROR" in SQLScripts.stdout'
+   tags:
+    - NewQueries_tags
+   when: AdditionalQueries

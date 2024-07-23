@@ -1,0 +1,7 @@
+MSISDN,SID,NEWSID,LANGUAGE1,TestcaseId,TestcaseType,Module,Description
+7285967490,,,0,TUNG12887 ,P,Private Registration,To verify that a subcriber is successfully registered in the system (automatic registration)
+7285967497,1.11E+14,,0,TUNG12888 ,P,Private Registration,To verify that a subcriber is successfully registered in the system (manual registration)
+,,,0,TUNG12889 ,N,Private Registration,To verify that registration request fails on if mandatory field is not filled
+7285967496,,,0,TUNG12890 ,P,Private Registration,To verify that an already registered subscriber cannot initate registration request
+7285967496,1.11E+14,1.11E+14,0,TUNG12891,P,Private Registration,To verify that an already registered  subscriber can modify its sid
+7285967498,1.11E+18,,0,TUNG12892 ,N,Private Registration,To verify that if subscriber sid is more than or less than the size defined then registration should not be successful

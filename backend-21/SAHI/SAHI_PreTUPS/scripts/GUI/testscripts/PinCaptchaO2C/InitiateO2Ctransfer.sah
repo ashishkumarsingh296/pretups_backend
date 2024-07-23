@@ -1,0 +1,39 @@
+
+
+// This is script to initiate Batch O2c
+
+
+//===========================Import Scripts============================	 
+	_includeOnce("../../../../utility/ImportPackage.sah");	//For importing common files
+	
+	_includeOnce("../../../GUI/testscripts/PinCaptchaO2C/InitiateO2C_Common.sah"); 
+
+//======================Pre-requisite check============================
+_log("Setup", "custom4");
+
+// Login with channel admin 
+
+var $l_naCsv = _readCSVFile("../../../GUI/testdata/NA_Login.csv"); //Reads Channel Admin login ID from csv file
+var $g_channelAdmin = $l_naCsv[2][1];
+	if($g_channelAdmin == "null"){ //If Channel Admin is not present then create it 
+		createCA(); //Function defined in UserManagement_Common.sah
+		var $l_naCsv = _readCSVFile("../../../GUI/testdata/NA_Login.csv"); //Reads Channel Admin login ID from csv file
+		 $g_channelAdminn = $l_naCsv[2][1];
+		login($g_appURL, $g_LangEnglish, $g_channelAdminn, $g_commonPassword, $g_assertWelcome); //Login as Channel Admin
+	}
+	else{	 
+		login($g_appURL, $g_LangEnglish, $g_channelAdmin, $g_commonPassword, $g_assertWelcome); //Login as Channel Admin(Login_Common.sah)
+	}
+
+
+// ............... Function to initiate Batch o2c transfer
+	
+initiateBatchO2CTransfer();
+
+//............... Function to initiate Batch o2c transfer with invalid pin
+//n_initiateBatchO2CTrans_invalidPin();
+
+//............... Function to initiate Batch o2c transfer with empty pin
+
+//n_initiateBatchO2CTrans_emptyPin();
+	

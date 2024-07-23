@@ -1,0 +1,2 @@
+TestcaseId,TestcaseType,Module,Description
+TUNG23096,Positive,REST - Change Pin,"To verify that In case of Msisdn and pin , Request should be successful"

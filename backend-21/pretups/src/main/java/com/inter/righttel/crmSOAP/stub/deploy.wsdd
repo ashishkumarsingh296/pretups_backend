@@ -1,0 +1,599 @@
+<!-- Use this file to deploy some handlers/chains and services      -->
+<!-- Two ways to do this:                                           -->
+<!--   java org.apache.axis.client.AdminClient deploy.wsdd          -->
+<!--      after the axis server is running                          -->
+<!-- or                                                             -->
+<!--   java org.apache.axis.utils.Admin client|server deploy.wsdd   -->
+<!--      from the same directory that the Axis engine runs         -->
+
+<deployment
+    xmlns="http://xml.apache.org/axis/wsdd/"
+    xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
+  <!-- Services from TopupService WSDL service -->
+
+  <service name="TopupServiceHttpsSoap12Endpoint" provider="java:RPC" style="document" use="literal">
+      <parameter name="wsdlTargetNamespace" value="http://www.inew-cs.com/mvno/integration/TopupService/"/>
+      <parameter name="wsdlServiceElement" value="TopupService"/>
+      <parameter name="schemaUnqualified" value="http://www.inew-cs.com/mvno/integration/TopupService/"/>
+      <parameter name="wsdlServicePort" value="TopupServiceHttpsSoap12Endpoint"/>
+      <parameter name="className" value="com.inter.righttel.crmSOAP.stub.TopupServiceSoap12BindingImpl"/>
+      <parameter name="wsdlPortType" value="TopupServicePortType"/>
+      <parameter name="typeMappingVersion" value="1.2"/>
+      <operation name="queryTopup" qname="queryTopup" returnQName="retNS:QueryTopupResponse" xmlns:retNS="http://www.inew-cs.com/mvno/integration/TopupService/" returnType="rtns:QueryTopupResponseType" xmlns:rtns="http://www.inew-cs.com/mvno/integration/TopupService/" soapAction="http://www.inew-cs.com/mvno/integration/TopupService/queryTopup" >
+        <parameter qname="pns:QueryTopupRequest" xmlns:pns="http://www.inew-cs.com/mvno/integration/TopupService/" type="tns:QueryTopupRequestType" xmlns:tns="http://www.inew-cs.com/mvno/integration/TopupService/"/>
+      </operation>
+      <operation name="topup" qname="topup" returnQName="retNS:TopupResponse" xmlns:retNS="http://www.inew-cs.com/mvno/integration/TopupService/" returnType="rtns:TopupResponseType" xmlns:rtns="http://www.inew-cs.com/mvno/integration/TopupService/" soapAction="http://www.inew-cs.com/mvno/integration/TopupService/topup" >
+        <parameter qname="pns:TopupRequest" xmlns:pns="http://www.inew-cs.com/mvno/integration/TopupService/" type="tns:topupRequestType" xmlns:tns="http://www.inew-cs.com/mvno/integration/TopupService/"/>
+      </operation>
+      <operation name="initTopup" qname="initTopup" returnQName="retNS:InitTopupResponse" xmlns:retNS="http://www.inew-cs.com/mvno/integration/TopupService/" returnType="rtns:InitTopupResponseType" xmlns:rtns="http://www.inew-cs.com/mvno/integration/TopupService/" soapAction="http://www.inew-cs.com/mvno/integration/TopupService/initTopup" >
+        <parameter qname="pns:InitTopupRequest" xmlns:pns="http://www.inew-cs.com/mvno/integration/TopupService/" type="tns:InitTopupRequestType" xmlns:tns="http://www.inew-cs.com/mvno/integration/TopupService/"/>
+      </operation>
+      <operation name="cancelTopup" qname="cancelTopup" returnQName="retNS:CancelTopupResponse" xmlns:retNS="http://www.inew-cs.com/mvno/integration/TopupService/" returnType="rtns:CancelTopupResponseType" xmlns:rtns="http://www.inew-cs.com/mvno/integration/TopupService/" soapAction="http://www.inew-cs.com/mvno/integration/TopupService/cancelTopup" >
+        <parameter qname="pns:CancelTopupRequest" xmlns:pns="http://www.inew-cs.com/mvno/integration/TopupService/" type="tns:CancelTopupRequestType" xmlns:tns="http://www.inew-cs.com/mvno/integration/TopupService/"/>
+      </operation>
+      <operation name="validateTopup" qname="validateTopup" returnQName="retNS:ValidateTopupResponse" xmlns:retNS="http://www.inew-cs.com/mvno/integration/TopupService/" returnType="rtns:ValidateTopupResponseType" xmlns:rtns="http://www.inew-cs.com/mvno/integration/TopupService/" soapAction="http://www.inew-cs.com/mvno/integration/TopupService/validateTopup" >
+        <parameter qname="pns:ValidateTopupRequest" xmlns:pns="http://www.inew-cs.com/mvno/integration/TopupService/" type="tns:ValidateTopupRequestType" xmlns:tns="http://www.inew-cs.com/mvno/integration/TopupService/"/>
+      </operation>
+      <parameter name="allowedMethods" value="cancelTopup queryTopup topup initTopup validateTopup"/>
+
+      <typeMapping
+        xmlns:ns="http://www.inew-cs.com/mvno/integration/TopupService/"
+        qname="ns:TopupResponseType"
+        type="java:com.inter.righttel.crmSOAP.stub.TopupResponseType"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://www.inew-cs.com/mvno/integration/TopupService/"
+        qname="ns:ValidateTopupResponseType"
+        type="java:com.inter.righttel.crmSOAP.stub.ValidateTopupResponseType"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://www.inew-cs.com/mvno/integration/TopupService/"
+        qname="ns:InitTopupResponseType"
+        type="java:com.inter.righttel.crmSOAP.stub.InitTopupResponseType"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://www.inew-cs.com/mvno/integration/TopupService/"
+        qname="ns:ValidateTopupRequestType"
+        type="java:com.inter.righttel.crmSOAP.stub.ValidateTopupRequestType"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://www.inew-cs.com/mvno/integration/TopupService/"
+        qname="ns:BaseRequestType"
+        type="java:com.inter.righttel.crmSOAP.stub.BaseRequestType"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://www.inew-cs.com/mvno/integration/TopupService/"
+        qname="ns:QueryTopupResponseType"
+        type="java:com.inter.righttel.crmSOAP.stub.QueryTopupResponseType"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://www.inew-cs.com/mvno/integration/TopupService/"
+        qname="ns:SourceType"
+        type="java:com.inter.righttel.crmSOAP.stub.SourceType"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://www.inew-cs.com/mvno/integration/TopupService/"
+        qname="ns:CancelTopupRequestType"
+        type="java:com.inter.righttel.crmSOAP.stub.CancelTopupRequestType"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://www.inew-cs.com/mvno/integration/TopupService/"
+        qname="ns:MSISDN"
+        type="java:com.inter.righttel.crmSOAP.stub.MSISDN"
+        serializer="org.apache.axis.encoding.ser.SimpleSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.SimpleDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://www.inew-cs.com/mvno/integration/TopupService/"
+        qname="ns:topupRequestType"
+        type="java:com.inter.righttel.crmSOAP.stub.TopupRequestType"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://www.inew-cs.com/mvno/integration/TopupService/"
+        qname="ns:AccountType"
+        type="java:com.inter.righttel.crmSOAP.stub.AccountType"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://www.inew-cs.com/mvno/integration/TopupService/"
+        qname="ns:SubscriberType"
+        type="java:com.inter.righttel.crmSOAP.stub.SubscriberType"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://www.inew-cs.com/mvno/integration/TopupService/"
+        qname="ns:QueryTopupRequestType"
+        type="java:com.inter.righttel.crmSOAP.stub.QueryTopupRequestType"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://www.inew-cs.com/mvno/integration/TopupService/"
+        qname="ns:CancelTopupResponseType"
+        type="java:com.inter.righttel.crmSOAP.stub.CancelTopupResponseType"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://www.inew-cs.com/mvno/integration/TopupService/"
+        qname="ns:InitTopupRequestType"
+        type="java:com.inter.righttel.crmSOAP.stub.InitTopupRequestType"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+  </service>
+  <service name="TopupServiceHttpsSoap11Endpoint" provider="java:RPC" style="document" use="literal">
+      <parameter name="wsdlTargetNamespace" value="http://www.inew-cs.com/mvno/integration/TopupService/"/>
+      <parameter name="wsdlServiceElement" value="TopupService"/>
+      <parameter name="schemaUnqualified" value="http://www.inew-cs.com/mvno/integration/TopupService/"/>
+      <parameter name="wsdlServicePort" value="TopupServiceHttpsSoap11Endpoint"/>
+      <parameter name="className" value="com.inter.righttel.crmSOAP.stub.TopupServiceSoap11BindingImpl"/>
+      <parameter name="wsdlPortType" value="TopupServicePortType"/>
+      <parameter name="typeMappingVersion" value="1.2"/>
+      <operation name="queryTopup" qname="queryTopup" returnQName="retNS:QueryTopupResponse" xmlns:retNS="http://www.inew-cs.com/mvno/integration/TopupService/" returnType="rtns:QueryTopupResponseType" xmlns:rtns="http://www.inew-cs.com/mvno/integration/TopupService/" soapAction="http://www.inew-cs.com/mvno/integration/TopupService/queryTopup" >
+        <parameter qname="pns:QueryTopupRequest" xmlns:pns="http://www.inew-cs.com/mvno/integration/TopupService/" type="tns:QueryTopupRequestType" xmlns:tns="http://www.inew-cs.com/mvno/integration/TopupService/"/>
+      </operation>
+      <operation name="topup" qname="topup" returnQName="retNS:TopupResponse" xmlns:retNS="http://www.inew-cs.com/mvno/integration/TopupService/" returnType="rtns:TopupResponseType" xmlns:rtns="http://www.inew-cs.com/mvno/integration/TopupService/" soapAction="http://www.inew-cs.com/mvno/integration/TopupService/topup" >
+        <parameter qname="pns:TopupRequest" xmlns:pns="http://www.inew-cs.com/mvno/integration/TopupService/" type="tns:topupRequestType" xmlns:tns="http://www.inew-cs.com/mvno/integration/TopupService/"/>
+      </operation>
+      <operation name="initTopup" qname="initTopup" returnQName="retNS:InitTopupResponse" xmlns:retNS="http://www.inew-cs.com/mvno/integration/TopupService/" returnType="rtns:InitTopupResponseType" xmlns:rtns="http://www.inew-cs.com/mvno/integration/TopupService/" soapAction="http://www.inew-cs.com/mvno/integration/TopupService/initTopup" >
+        <parameter qname="pns:InitTopupRequest" xmlns:pns="http://www.inew-cs.com/mvno/integration/TopupService/" type="tns:InitTopupRequestType" xmlns:tns="http://www.inew-cs.com/mvno/integration/TopupService/"/>
+      </operation>
+      <operation name="cancelTopup" qname="cancelTopup" returnQName="retNS:CancelTopupResponse" xmlns:retNS="http://www.inew-cs.com/mvno/integration/TopupService/" returnType="rtns:CancelTopupResponseType" xmlns:rtns="http://www.inew-cs.com/mvno/integration/TopupService/" soapAction="http://www.inew-cs.com/mvno/integration/TopupService/cancelTopup" >
+        <parameter qname="pns:CancelTopupRequest" xmlns:pns="http://www.inew-cs.com/mvno/integration/TopupService/" type="tns:CancelTopupRequestType" xmlns:tns="http://www.inew-cs.com/mvno/integration/TopupService/"/>
+      </operation>
+      <operation name="validateTopup" qname="validateTopup" returnQName="retNS:ValidateTopupResponse" xmlns:retNS="http://www.inew-cs.com/mvno/integration/TopupService/" returnType="rtns:ValidateTopupResponseType" xmlns:rtns="http://www.inew-cs.com/mvno/integration/TopupService/" soapAction="http://www.inew-cs.com/mvno/integration/TopupService/validateTopup" >
+        <parameter qname="pns:ValidateTopupRequest" xmlns:pns="http://www.inew-cs.com/mvno/integration/TopupService/" type="tns:ValidateTopupRequestType" xmlns:tns="http://www.inew-cs.com/mvno/integration/TopupService/"/>
+      </operation>
+      <parameter name="allowedMethods" value="cancelTopup queryTopup topup initTopup validateTopup"/>
+
+      <typeMapping
+        xmlns:ns="http://www.inew-cs.com/mvno/integration/TopupService/"
+        qname="ns:TopupResponseType"
+        type="java:com.inter.righttel.crmSOAP.stub.TopupResponseType"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://www.inew-cs.com/mvno/integration/TopupService/"
+        qname="ns:ValidateTopupResponseType"
+        type="java:com.inter.righttel.crmSOAP.stub.ValidateTopupResponseType"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://www.inew-cs.com/mvno/integration/TopupService/"
+        qname="ns:InitTopupResponseType"
+        type="java:com.inter.righttel.crmSOAP.stub.InitTopupResponseType"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://www.inew-cs.com/mvno/integration/TopupService/"
+        qname="ns:ValidateTopupRequestType"
+        type="java:com.inter.righttel.crmSOAP.stub.ValidateTopupRequestType"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://www.inew-cs.com/mvno/integration/TopupService/"
+        qname="ns:BaseRequestType"
+        type="java:com.inter.righttel.crmSOAP.stub.BaseRequestType"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://www.inew-cs.com/mvno/integration/TopupService/"
+        qname="ns:QueryTopupResponseType"
+        type="java:com.inter.righttel.crmSOAP.stub.QueryTopupResponseType"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://www.inew-cs.com/mvno/integration/TopupService/"
+        qname="ns:SourceType"
+        type="java:com.inter.righttel.crmSOAP.stub.SourceType"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://www.inew-cs.com/mvno/integration/TopupService/"
+        qname="ns:CancelTopupRequestType"
+        type="java:com.inter.righttel.crmSOAP.stub.CancelTopupRequestType"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://www.inew-cs.com/mvno/integration/TopupService/"
+        qname="ns:MSISDN"
+        type="java:com.inter.righttel.crmSOAP.stub.MSISDN"
+        serializer="org.apache.axis.encoding.ser.SimpleSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.SimpleDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://www.inew-cs.com/mvno/integration/TopupService/"
+        qname="ns:topupRequestType"
+        type="java:com.inter.righttel.crmSOAP.stub.TopupRequestType"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://www.inew-cs.com/mvno/integration/TopupService/"
+        qname="ns:AccountType"
+        type="java:com.inter.righttel.crmSOAP.stub.AccountType"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://www.inew-cs.com/mvno/integration/TopupService/"
+        qname="ns:SubscriberType"
+        type="java:com.inter.righttel.crmSOAP.stub.SubscriberType"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://www.inew-cs.com/mvno/integration/TopupService/"
+        qname="ns:QueryTopupRequestType"
+        type="java:com.inter.righttel.crmSOAP.stub.QueryTopupRequestType"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://www.inew-cs.com/mvno/integration/TopupService/"
+        qname="ns:CancelTopupResponseType"
+        type="java:com.inter.righttel.crmSOAP.stub.CancelTopupResponseType"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://www.inew-cs.com/mvno/integration/TopupService/"
+        qname="ns:InitTopupRequestType"
+        type="java:com.inter.righttel.crmSOAP.stub.InitTopupRequestType"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+  </service>
+  <service name="TopupServiceHttpSoap12Endpoint" provider="java:RPC" style="document" use="literal">
+      <parameter name="wsdlTargetNamespace" value="http://www.inew-cs.com/mvno/integration/TopupService/"/>
+      <parameter name="wsdlServiceElement" value="TopupService"/>
+      <parameter name="schemaUnqualified" value="http://www.inew-cs.com/mvno/integration/TopupService/"/>
+      <parameter name="wsdlServicePort" value="TopupServiceHttpSoap12Endpoint"/>
+      <parameter name="className" value="com.inter.righttel.crmSOAP.stub.TopupServiceSoap12BindingImpl"/>
+      <parameter name="wsdlPortType" value="TopupServicePortType"/>
+      <parameter name="typeMappingVersion" value="1.2"/>
+      <operation name="queryTopup" qname="queryTopup" returnQName="retNS:QueryTopupResponse" xmlns:retNS="http://www.inew-cs.com/mvno/integration/TopupService/" returnType="rtns:QueryTopupResponseType" xmlns:rtns="http://www.inew-cs.com/mvno/integration/TopupService/" soapAction="http://www.inew-cs.com/mvno/integration/TopupService/queryTopup" >
+        <parameter qname="pns:QueryTopupRequest" xmlns:pns="http://www.inew-cs.com/mvno/integration/TopupService/" type="tns:QueryTopupRequestType" xmlns:tns="http://www.inew-cs.com/mvno/integration/TopupService/"/>
+      </operation>
+      <operation name="topup" qname="topup" returnQName="retNS:TopupResponse" xmlns:retNS="http://www.inew-cs.com/mvno/integration/TopupService/" returnType="rtns:TopupResponseType" xmlns:rtns="http://www.inew-cs.com/mvno/integration/TopupService/" soapAction="http://www.inew-cs.com/mvno/integration/TopupService/topup" >
+        <parameter qname="pns:TopupRequest" xmlns:pns="http://www.inew-cs.com/mvno/integration/TopupService/" type="tns:topupRequestType" xmlns:tns="http://www.inew-cs.com/mvno/integration/TopupService/"/>
+      </operation>
+      <operation name="initTopup" qname="initTopup" returnQName="retNS:InitTopupResponse" xmlns:retNS="http://www.inew-cs.com/mvno/integration/TopupService/" returnType="rtns:InitTopupResponseType" xmlns:rtns="http://www.inew-cs.com/mvno/integration/TopupService/" soapAction="http://www.inew-cs.com/mvno/integration/TopupService/initTopup" >
+        <parameter qname="pns:InitTopupRequest" xmlns:pns="http://www.inew-cs.com/mvno/integration/TopupService/" type="tns:InitTopupRequestType" xmlns:tns="http://www.inew-cs.com/mvno/integration/TopupService/"/>
+      </operation>
+      <operation name="cancelTopup" qname="cancelTopup" returnQName="retNS:CancelTopupResponse" xmlns:retNS="http://www.inew-cs.com/mvno/integration/TopupService/" returnType="rtns:CancelTopupResponseType" xmlns:rtns="http://www.inew-cs.com/mvno/integration/TopupService/" soapAction="http://www.inew-cs.com/mvno/integration/TopupService/cancelTopup" >
+        <parameter qname="pns:CancelTopupRequest" xmlns:pns="http://www.inew-cs.com/mvno/integration/TopupService/" type="tns:CancelTopupRequestType" xmlns:tns="http://www.inew-cs.com/mvno/integration/TopupService/"/>
+      </operation>
+      <operation name="validateTopup" qname="validateTopup" returnQName="retNS:ValidateTopupResponse" xmlns:retNS="http://www.inew-cs.com/mvno/integration/TopupService/" returnType="rtns:ValidateTopupResponseType" xmlns:rtns="http://www.inew-cs.com/mvno/integration/TopupService/" soapAction="http://www.inew-cs.com/mvno/integration/TopupService/validateTopup" >
+        <parameter qname="pns:ValidateTopupRequest" xmlns:pns="http://www.inew-cs.com/mvno/integration/TopupService/" type="tns:ValidateTopupRequestType" xmlns:tns="http://www.inew-cs.com/mvno/integration/TopupService/"/>
+      </operation>
+      <parameter name="allowedMethods" value="cancelTopup queryTopup topup initTopup validateTopup"/>
+
+      <typeMapping
+        xmlns:ns="http://www.inew-cs.com/mvno/integration/TopupService/"
+        qname="ns:TopupResponseType"
+        type="java:com.inter.righttel.crmSOAP.stub.TopupResponseType"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://www.inew-cs.com/mvno/integration/TopupService/"
+        qname="ns:ValidateTopupResponseType"
+        type="java:com.inter.righttel.crmSOAP.stub.ValidateTopupResponseType"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://www.inew-cs.com/mvno/integration/TopupService/"
+        qname="ns:InitTopupResponseType"
+        type="java:com.inter.righttel.crmSOAP.stub.InitTopupResponseType"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://www.inew-cs.com/mvno/integration/TopupService/"
+        qname="ns:ValidateTopupRequestType"
+        type="java:com.inter.righttel.crmSOAP.stub.ValidateTopupRequestType"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://www.inew-cs.com/mvno/integration/TopupService/"
+        qname="ns:BaseRequestType"
+        type="java:com.inter.righttel.crmSOAP.stub.BaseRequestType"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://www.inew-cs.com/mvno/integration/TopupService/"
+        qname="ns:QueryTopupResponseType"
+        type="java:com.inter.righttel.crmSOAP.stub.QueryTopupResponseType"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://www.inew-cs.com/mvno/integration/TopupService/"
+        qname="ns:SourceType"
+        type="java:com.inter.righttel.crmSOAP.stub.SourceType"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://www.inew-cs.com/mvno/integration/TopupService/"
+        qname="ns:CancelTopupRequestType"
+        type="java:com.inter.righttel.crmSOAP.stub.CancelTopupRequestType"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://www.inew-cs.com/mvno/integration/TopupService/"
+        qname="ns:MSISDN"
+        type="java:com.inter.righttel.crmSOAP.stub.MSISDN"
+        serializer="org.apache.axis.encoding.ser.SimpleSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.SimpleDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://www.inew-cs.com/mvno/integration/TopupService/"
+        qname="ns:topupRequestType"
+        type="java:com.inter.righttel.crmSOAP.stub.TopupRequestType"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://www.inew-cs.com/mvno/integration/TopupService/"
+        qname="ns:AccountType"
+        type="java:com.inter.righttel.crmSOAP.stub.AccountType"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://www.inew-cs.com/mvno/integration/TopupService/"
+        qname="ns:SubscriberType"
+        type="java:com.inter.righttel.crmSOAP.stub.SubscriberType"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://www.inew-cs.com/mvno/integration/TopupService/"
+        qname="ns:QueryTopupRequestType"
+        type="java:com.inter.righttel.crmSOAP.stub.QueryTopupRequestType"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://www.inew-cs.com/mvno/integration/TopupService/"
+        qname="ns:CancelTopupResponseType"
+        type="java:com.inter.righttel.crmSOAP.stub.CancelTopupResponseType"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://www.inew-cs.com/mvno/integration/TopupService/"
+        qname="ns:InitTopupRequestType"
+        type="java:com.inter.righttel.crmSOAP.stub.InitTopupRequestType"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+  </service>
+  <service name="TopupServiceHttpSoap11Endpoint" provider="java:RPC" style="document" use="literal">
+      <parameter name="wsdlTargetNamespace" value="http://www.inew-cs.com/mvno/integration/TopupService/"/>
+      <parameter name="wsdlServiceElement" value="TopupService"/>
+      <parameter name="schemaUnqualified" value="http://www.inew-cs.com/mvno/integration/TopupService/"/>
+      <parameter name="wsdlServicePort" value="TopupServiceHttpSoap11Endpoint"/>
+      <parameter name="className" value="com.inter.righttel.crmSOAP.stub.TopupServiceSoap11BindingImpl"/>
+      <parameter name="wsdlPortType" value="TopupServicePortType"/>
+      <parameter name="typeMappingVersion" value="1.2"/>
+      <operation name="queryTopup" qname="queryTopup" returnQName="retNS:QueryTopupResponse" xmlns:retNS="http://www.inew-cs.com/mvno/integration/TopupService/" returnType="rtns:QueryTopupResponseType" xmlns:rtns="http://www.inew-cs.com/mvno/integration/TopupService/" soapAction="http://www.inew-cs.com/mvno/integration/TopupService/queryTopup" >
+        <parameter qname="pns:QueryTopupRequest" xmlns:pns="http://www.inew-cs.com/mvno/integration/TopupService/" type="tns:QueryTopupRequestType" xmlns:tns="http://www.inew-cs.com/mvno/integration/TopupService/"/>
+      </operation>
+      <operation name="topup" qname="topup" returnQName="retNS:TopupResponse" xmlns:retNS="http://www.inew-cs.com/mvno/integration/TopupService/" returnType="rtns:TopupResponseType" xmlns:rtns="http://www.inew-cs.com/mvno/integration/TopupService/" soapAction="http://www.inew-cs.com/mvno/integration/TopupService/topup" >
+        <parameter qname="pns:TopupRequest" xmlns:pns="http://www.inew-cs.com/mvno/integration/TopupService/" type="tns:topupRequestType" xmlns:tns="http://www.inew-cs.com/mvno/integration/TopupService/"/>
+      </operation>
+      <operation name="initTopup" qname="initTopup" returnQName="retNS:InitTopupResponse" xmlns:retNS="http://www.inew-cs.com/mvno/integration/TopupService/" returnType="rtns:InitTopupResponseType" xmlns:rtns="http://www.inew-cs.com/mvno/integration/TopupService/" soapAction="http://www.inew-cs.com/mvno/integration/TopupService/initTopup" >
+        <parameter qname="pns:InitTopupRequest" xmlns:pns="http://www.inew-cs.com/mvno/integration/TopupService/" type="tns:InitTopupRequestType" xmlns:tns="http://www.inew-cs.com/mvno/integration/TopupService/"/>
+      </operation>
+      <operation name="cancelTopup" qname="cancelTopup" returnQName="retNS:CancelTopupResponse" xmlns:retNS="http://www.inew-cs.com/mvno/integration/TopupService/" returnType="rtns:CancelTopupResponseType" xmlns:rtns="http://www.inew-cs.com/mvno/integration/TopupService/" soapAction="http://www.inew-cs.com/mvno/integration/TopupService/cancelTopup" >
+        <parameter qname="pns:CancelTopupRequest" xmlns:pns="http://www.inew-cs.com/mvno/integration/TopupService/" type="tns:CancelTopupRequestType" xmlns:tns="http://www.inew-cs.com/mvno/integration/TopupService/"/>
+      </operation>
+      <operation name="validateTopup" qname="validateTopup" returnQName="retNS:ValidateTopupResponse" xmlns:retNS="http://www.inew-cs.com/mvno/integration/TopupService/" returnType="rtns:ValidateTopupResponseType" xmlns:rtns="http://www.inew-cs.com/mvno/integration/TopupService/" soapAction="http://www.inew-cs.com/mvno/integration/TopupService/validateTopup" >
+        <parameter qname="pns:ValidateTopupRequest" xmlns:pns="http://www.inew-cs.com/mvno/integration/TopupService/" type="tns:ValidateTopupRequestType" xmlns:tns="http://www.inew-cs.com/mvno/integration/TopupService/"/>
+      </operation>
+      <parameter name="allowedMethods" value="cancelTopup queryTopup topup initTopup validateTopup"/>
+
+      <typeMapping
+        xmlns:ns="http://www.inew-cs.com/mvno/integration/TopupService/"
+        qname="ns:TopupResponseType"
+        type="java:com.inter.righttel.crmSOAP.stub.TopupResponseType"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://www.inew-cs.com/mvno/integration/TopupService/"
+        qname="ns:ValidateTopupResponseType"
+        type="java:com.inter.righttel.crmSOAP.stub.ValidateTopupResponseType"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://www.inew-cs.com/mvno/integration/TopupService/"
+        qname="ns:InitTopupResponseType"
+        type="java:com.inter.righttel.crmSOAP.stub.InitTopupResponseType"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://www.inew-cs.com/mvno/integration/TopupService/"
+        qname="ns:ValidateTopupRequestType"
+        type="java:com.inter.righttel.crmSOAP.stub.ValidateTopupRequestType"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://www.inew-cs.com/mvno/integration/TopupService/"
+        qname="ns:BaseRequestType"
+        type="java:com.inter.righttel.crmSOAP.stub.BaseRequestType"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://www.inew-cs.com/mvno/integration/TopupService/"
+        qname="ns:QueryTopupResponseType"
+        type="java:com.inter.righttel.crmSOAP.stub.QueryTopupResponseType"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://www.inew-cs.com/mvno/integration/TopupService/"
+        qname="ns:SourceType"
+        type="java:com.inter.righttel.crmSOAP.stub.SourceType"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://www.inew-cs.com/mvno/integration/TopupService/"
+        qname="ns:CancelTopupRequestType"
+        type="java:com.inter.righttel.crmSOAP.stub.CancelTopupRequestType"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://www.inew-cs.com/mvno/integration/TopupService/"
+        qname="ns:MSISDN"
+        type="java:com.inter.righttel.crmSOAP.stub.MSISDN"
+        serializer="org.apache.axis.encoding.ser.SimpleSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.SimpleDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://www.inew-cs.com/mvno/integration/TopupService/"
+        qname="ns:topupRequestType"
+        type="java:com.inter.righttel.crmSOAP.stub.TopupRequestType"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://www.inew-cs.com/mvno/integration/TopupService/"
+        qname="ns:AccountType"
+        type="java:com.inter.righttel.crmSOAP.stub.AccountType"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://www.inew-cs.com/mvno/integration/TopupService/"
+        qname="ns:SubscriberType"
+        type="java:com.inter.righttel.crmSOAP.stub.SubscriberType"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://www.inew-cs.com/mvno/integration/TopupService/"
+        qname="ns:QueryTopupRequestType"
+        type="java:com.inter.righttel.crmSOAP.stub.QueryTopupRequestType"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://www.inew-cs.com/mvno/integration/TopupService/"
+        qname="ns:CancelTopupResponseType"
+        type="java:com.inter.righttel.crmSOAP.stub.CancelTopupResponseType"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://www.inew-cs.com/mvno/integration/TopupService/"
+        qname="ns:InitTopupRequestType"
+        type="java:com.inter.righttel.crmSOAP.stub.InitTopupRequestType"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+  </service>
+</deployment>

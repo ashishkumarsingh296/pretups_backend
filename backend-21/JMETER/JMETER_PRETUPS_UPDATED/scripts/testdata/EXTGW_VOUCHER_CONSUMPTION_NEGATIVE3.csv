@@ -1,0 +1,2 @@
+TestcaseId,TestcaseType,Module,Description
+TUNG13159,Negative,Voucher Consumption through EXTGW,To verify that the request is not processed if serial is not present.

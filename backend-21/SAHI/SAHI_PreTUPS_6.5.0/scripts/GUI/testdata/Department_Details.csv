@@ -1,0 +1,4 @@
+Test Case No.,Discription,Division Type,Division Name,Department Name,ShortCode,Assertion
+TEST001,Super Admin login into application and try to add department,Operator,IT division,Aut Deparment,AUTDEPT,Department added successfully
+TEST002,Super admin try to create an application without enter any division details,,,,,Division type is required.
+TEST003,Super admin try to modify division in the system,Operator,IT division,Aut Deparment,AUTDEPTM,Department modified successfully.

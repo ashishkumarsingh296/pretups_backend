@@ -1,0 +1,17 @@
+ - name: "DB: send the template for the DB configuration" 
+   template: src=customize.sql  dest=~/customize_{{ tomcat_no }}.sql owner={{ pretups_user }} group={{ pretups_user }}  mode=0755
+ 
+ - name: "DB: insert Load table entry"
+   shell: sqlplus / as sysdba << EOT @customize_{{ tomcat_no }}.sql exit; EOT chdir=~/
+   ignore_errors: yes
+   register: customize
+   failed_when: '"ERROR" in customize.stdout'
+   tags:
+    - customize_tags
+
+ - name: "DB: fetching file from remote server"
+   fetch: src=~/customize_{{ tomcat_no }}.sql dest=~/customize_{{ tomcat_no }}.sql flat=yes fail_on_missing=yes
+ 
+ - name: "DB: deleting the customization file"
+   shell: rm -rf customize_{{ tomcat_no }}.sql  chdir=~/
+

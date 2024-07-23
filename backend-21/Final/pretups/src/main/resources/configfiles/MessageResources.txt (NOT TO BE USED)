@@ -1,0 +1,221 @@
+#######################Entries for the zero balance counter########################
+
+ZBALDET001=User zero balance counter detail
+ZBALDET01A=User zero balance counter detail
+ZBALDETDMM=User zero balance counter detail
+
+zerobalancecounter.detail.reports.heading=Zero balance counter detail report
+zerobalancecounter.reports.label.thresholdtype=Threshold type
+zerobalancecounter.reports.label.fromdate=From date
+zerobalancecounter.reports.label.todate=To date
+zerobalancecounter.reports.label.msisdn=Mobile number:
+zerobalancecounter.reports.label.zone=Zone
+zerobalancecounter.reports.label.channeldomain=Channel domain
+zerobalancecounter.reports.label.channelcategory=Channel category
+zerobalancecounter.reports.label.channelcategoryuser=Category user
+
+ZBALSUM001=User zero balance counter summary
+ZBALSUM01A=User zero balance counter summary
+ZBALSUMDMM=User zero balance counter summary
+
+zerobalancecounter.summary.reports.heading=Zero balance counter summary report
+zerobalancecounter.reports.label.daily=Daily
+zerobalancecounter.reports.label.monthly=Monthly
+
+#############################ends here#############################################
+
+############################for private recharge ###################################
+
+vmcategory.addsubcategoryforvoms.label.type=Type
+vomsreport.voucherstatus.type=Type
+vomsreport.voucherreconcile.type=Type
+vmvoms.uploadvoucherfile.label.type=Type
+vmvoms.selectcategory.err.msg.noselector=No type found for this combination.
+
+vomsreport.voucherenquiry.label.type=Type
+c2stranfer.c2srecharge.label.evdpin=PIN
+
+
+vomsvoucher.changestatus.errormsg.notype=No type exists.
+voms.changevoucherstatus.label.type=Type
+voms.confirmchangevoucherstatus.label.type=Type
+
+################################################################################
+
+##### Multiple voucher distribution #######
+
+c2stranfer.c2srecharge.label.noofvouchers=No of vouchers
+c2stranfer.c2srecharge.label.denomination=Denomination
+c2stranfer.c2srecharge.error.noofvouchersnumeric=No of vouchers specified by you is incorrect. It should be numerical.
+c2stranfer.c2srecharge.error.noofvouchersgreaterthanzero=No of vouchers specified by you is incorrect. It should be greater than zero
+c2stranfer.c2srecharge.error.noofvouchers=No of vouchers is required
+c2stranfer.c2srecharge.error.denomination=Denomination is required
+c2stranfer.c2srecharge.error.msisdn=MSISDN is required
+c2stranfer.c2srecharge.error.amount=Amount is required
+c2stranfer.c2srecharge.error.msisdnnumeric=MSISDN specified by you is incorrect. It should be numerical.
+c2stranfer.c2srecharge.error.invalidmsisdn=MSISDN is invalid
+c2stranfer.c2srecharge.multiple.voucher.datasheet.heading=Details of vouchers downloaded 
+c2stranfer.c2srecharge.multiple.voucher.datasheet.label.voucherserial=Voucher serial number
+c2stranfer.c2srecharge.multiple.voucher.datasheet.label.voucherpin=Voucher pin number
+c2stranfer.c2srecharge.multiple.voucher.datasheet.label.vouchertxnid=Voucher transaction id
+c2stranfer.c2srecharge.multiple.voucher.datasheet.label.voucherstatus=Voucher status
+c2stranfer.c2srecharge.mvd.label.notification=Click here to download voucher file.
+c2stranfer.c2srecharge.mvd.label.decryptionkey=Decryption Key
+c2stranfer.c2srecharge.mvd.label.batchno=Voucher Batch No.
+c2stranfer.c2srecharge.mvd.label.mrp=Total Voucher MRP
+c2stranfer.c2srecharge.mvd.label.noofvoucher=Total No. of Voucher
+c2stranfer.c2srecharge.mvd.label.fromserial=From Serial No
+c2stranfer.c2srecharge.mvd.label.toserial=To Serial No
+c2stranfer.c2srecharge.mvd.label.utility=Click here to download decryption utility
+
+
+#### MVD enquiry #####
+
+MVDENQ001 = Bulk voucher download enquiry
+MVDENQDMM1 = Bulk voucher download enquiry
+bulk.voucher.distribution.mvdtransferenquiry.heading=Bulk voucher download enquiry
+bulk.voucher.distribution.mvdtransferenquiry.label.batchnumber=Batch number
+bulk.voucher.distribution.mvdtransferenquiry.label.denomination=Denomination
+bulk.voucher.distribution.mvdtransferenquiry.label.fromdate=From date
+bulk.voucher.distribution.mvdtransferenquiry.label.todate=To date
+
+bulk.voucher.distribution.mvdtransferenquiry.label.geodomain=Geographical domain
+bulk.voucher.distribution.mvdtransferenquiry.label.domain=Domain
+bulk.voucher.distribution.mvdtransferenquiry.label.category=Category
+bulk.voucher.distribution.mvdtransferenquiry.label.username=User name
+bulk.voucher.distribution.mvdtransferenquiry.label.batchid=Batch ID
+bulk.voucher.distribution.mvdtransferenquiry.label.noofvoucher=Number of Voucher
+bulk.voucher.distribution.mvdtransferenquiry.label.decryptionkey=Decryption Key
+bulk.voucher.distribution.mvdtransferenquiry.label.nobatch=There is no batch found.
+bulk.voucher.distribution.mvdtransferenquiry.label.note=Note: Click on the batch ID to download the encrypted voucher file.
+bulk.voucher.distribution.mvdtransferenquiry.label.utilitynote=Note: Click on the link to download the decryption utility.
+
+
+##User's roles report
+
+
+user.selectcategory.label.userType=User type
+user.selectUserType.heading=Select user type
+c2s.reports.UserType.label=User type
+c2s.reports.operatorUserList.label.heading=Internal user roles report
+c2s.reports.channelUserList.label.heading=External user roles report
+c2s.reports.statuswisechannelusers.label.heading=External user roles report
+c2s.reports.c2sStatuswiseoperatorUser.label.heading=Internal user roles report
+c2s.reports.c2sStatuswiseOperatorUser.label.division=Division
+c2s.reports.c2sStatuswiseOperatorUser.label.department=Department
+c2s.reports.c2sStatuswiseOperatorUser.label.userstatus=Status
+c2s.reports.c2sStatuswiseOperatorUser.label.sorttype=Sort type
+c2s.reports.c2sStatuswiseOperatorUser.label.from=From date
+c2s.reports.c2sStatuswiseOperatorUser.label.to=To date
+c2s.reports.statuswisechusers.label.zone=Zone
+c2s.reports.statuswisechusers.label.channeldomain=Channel domain
+c2s.reports.statuswisechusers.label.channelcategory=Channel category
+c2s.reports.statuswisechusers.label.channelcategoryuser=Channel category user
+c2s.reports.statuswisechtusers.label.userstatus=User status
+c2s.reports.statuswisechusers.label.sorttype=Sort type
+c2s.reports.statuswisechusers.combo.username=User name
+c2s.reports.statuswisechusers.combo.gradewise=User grade
+c2s.reports.userrole.error.Zone=Zone is required
+c2s.reports.userrole.error.domainCode=Channel domain is required
+c2s.reports.userrole.error.parentCategoryCode=Channel category is required
+c2s.reports.userrole.error.userName=Channel category user is required
+c2s.reports.userrole.error.userStatus=User status is required
+
+
+## user's roles report ##
+ROIEU001=Internal user roles report
+ROIEUDMM=Internal user roles report
+ROEU001=External user roles report
+ROEUDMM=External user roles report
+
+c2s.reports.c2sStatuswiseOperatorUser.label.usertype=User type
+
+
+#### END ####
+batchfoc.processuploadedfile.error.invalidfile={0} is not a valid file.
+#################### credit card registration ##########################
+## credit card registration
+cp2p.user.creditcard.registration.heading=Credit card registration
+cp2p.user.creditcard.registration.bankname=Name of bank
+cp2p.user.creditcard.registration.nameofembossing=Embossed name
+cp2p.user.creditcard.registration.nickname=Nick name
+cp2p.user.creditcard.registration.cardnumber=Card number
+cp2p.user.creditcard.registration.cardexpiry=Card expiry
+lable.note.expiryformat=(mm/yy)
+cp2p.user.creditcard.registration.dateofbirth=Date of birth
+label.dateformat=dd/mm/yyyy
+cp2p.user.creditcard.registration.address=Address
+cp2p.user.creditcard.registration.emailid=Emailid
+cp2p.user.creditcard.registration.acceptterms=Accept terms & condition
+CARDREG001=Credit card management
+CARDREG01A=Credit card management
+CARDREGDMM=Credit card management
+CARDMGT=Credit card management
+common.logout.message.session.expired=Session has been expired
+cp2p.user.creditcard.registration.error.cardnumber={0} must contain only numeric values.
+cp2p.user.creditcard.registration.error.cardnumber.invalidlength={0} must contains four digits.
+cp2p.user.creditcard.registration.cardexpiry.required=Card expiry is required.
+cp2p.user.creditcard.registration.cardnumber.required=Card number is required.
+cp2p.user.creditcard.registration.cardnumber.invalid=Card number is invalid.
+cp2p.user.creditcard.registration.cardnumber.alreadyexist=Credit card is already registered.
+cp2p.user.creditcard.registration.cardexpiry.invalid=Card expiry is invalid.
+cp2p.user.creditcard.registration.cardexpiry.invalidmonth=Card expiry month is invalid.
+cp2p.user.creditcard.registration.cardexpiry.invalidyear=Card expiry year is invalid.
+cp2p.user.creditcard.registration.nickname.alreadyexist=Nickname is already exist. 
+cp2p.user.creditcard.registration.success=Credit card is registered successfully.
+cp2p.user.creditcard.registration.bankname.invalid=Bankname is invalid.
+cp2p.user.creditcard.registration.nickname.invalid=Nickname should be alphanumeric,special character is not allowed.
+cp2p.user.creditcard.registration.defautCard=Default card
+cp2p.user.creditcard.registration.dateofbirth.invalid=Date of birth is invalid.
+cp2p.user.creditcard.registration.failed=Card regitration is failed.
+cp2p.user.creditcard.management.heading=Credit card management
+cp2p.user.creditcard.label.select=Select
+cp2p.user.creditcard.modify.heading=Modify credit card details
+cp2p.user.creditcard.view.heading=View credit card details
+cp2p.user.creditcard.registration.modified=Card details modified successfully.
+cp2p.user.creditcard.deletion.failed=Default card details cannot be deleted.
+cp2p.user.creditcard.deletion.success=Card details deleteted successfully.
+cp2p.user.creditcard.modification.failed=Card modification is failed.
+cp2p.user.creditcard.registration.cardexpired=Card is already expired,please try with other card.
+cp2p.user.creditcard.registration.cardName.invalid=Embossed name is invalid.
+label.seperator.slash=/
+cp2p.user.creditcard.registration.unknowntype=Sorry for inconvenience card type is unknown in system.
+##################################
+
+
+##Entries for pages of add active profile added on 22/07/2010
+vomsproduct.addactiveproduct.label.type=Type
+VMACPR003=Add active profile details
+vomsproduct.addactiveproduct.error.type=Type is required
+
+subscriber.unbaruser.msg.mobileno.notauthorise=You are not authorized to un-bar mobile number {0}.
+
+##User closing balance 
+URCLOBL001=User Closing Balance
+URCLOBLDMM=User Closing Balance
+user.closing.balance.label.heading=Channel user closing balance
+user.closing.balance.xlsfile.heading= User's Closing Balance Summary
+user.closing.balance.user.name=User Name
+user.closing.balance.user.msisdn=Mobile No
+user.closing.balance.user.category=Category
+user.closing.balance.user.geography=Geography
+user.closing.balance.user.parent.name=Parent Name
+user.closing.balance.user.parent.msisdn=Parent Mobile No
+user.closing.balance.user.grand.name=Grand Parent
+user.closing.balance.user.grand.msisdn=Grand Parent Mobile No
+user.closing.balance.no.data.found=No data found with the current search parameters
+user.report.closing.balance.label.fromamount=From Amount
+user.report.closing.balance.label.toamount=To Amount
+btsl.error.msg.fromamtgreatertoamt=From amount should be lesser than to amount
+btsl.error.msg.toamtequalszero=To amount can not be zero
+btsl.error.msg.fromamtequalszero=From amount can not be zero
+
+c2s.reports.web.userreportform.error.msg.dateormonth.required=Month range or date range is  required
+c2s.reports.c2snewregisteredusers.label.Selectdate=Daily
+c2s.reports.c2snewregisteredusers.label.selectmonth=Monthly
+############bundle management######
+error.bundle=Bundle is mapped with sub service.So,it cannot be deleted.
+bonus.bundle.master.errors.bundlecode.not.valid=Please select bundle code
+bonus.bundle.master.errors.bundlename.not.valid=Please select bundle name
+######################################
+cardgroup.set.batch.modify.msg.date.required= Date in proper format(dd/mm/yy)

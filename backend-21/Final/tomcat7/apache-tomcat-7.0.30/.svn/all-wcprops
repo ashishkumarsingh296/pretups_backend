@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/tomcat7/apache-tomcat-7.0.30
+END
+LICENSE
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/tomcat7/apache-tomcat-7.0.30/LICENSE
+END
+RUNNING.txt
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/tomcat7/apache-tomcat-7.0.30/RUNNING.txt
+END
+NOTICE
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/tomcat7/apache-tomcat-7.0.30/NOTICE
+END
+RELEASE-NOTES
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/tomcat7/apache-tomcat-7.0.30/RELEASE-NOTES
+END

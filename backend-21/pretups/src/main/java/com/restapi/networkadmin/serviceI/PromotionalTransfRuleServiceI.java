@@ -1,0 +1,28 @@
+package com.restapi.networkadmin.serviceI;
+
+import java.util.Locale;
+
+import com.btsl.common.BTSLBaseException;
+import com.restapi.networkadmin.requestVO.AddPromoTransferReqVO;
+import com.restapi.networkadmin.requestVO.DeletePromoTransferReqVO;
+import com.restapi.networkadmin.requestVO.ModifyPromoTransferReqVO;
+import com.restapi.networkadmin.requestVO.PromoLoadParentParamReq;
+import com.restapi.networkadmin.requestVO.PromoTransferDropdownListReq;
+import com.restapi.networkadmin.requestVO.SearchPromoTransferReqVO;
+import com.restapi.networkadmin.responseVO.AddPromoTransferRuleRespVO;
+import com.restapi.networkadmin.responseVO.DeletePromoTransferRespVO;
+import com.restapi.networkadmin.responseVO.ModifyPromoTransfRuleRespVO;
+import com.restapi.networkadmin.responseVO.PromoDepDropdownlistRespVO;
+import com.restapi.networkadmin.responseVO.PromoLoadParentUserRespVO;
+import com.restapi.networkadmin.responseVO.SearchPromoTransferRespVO;
+
+public interface PromotionalTransfRuleServiceI {
+	
+	public PromoDepDropdownlistRespVO getPromoDependencyDropDownlist(PromoTransferDropdownListReq promoTransferDropdownListReq,String userLoginId) throws BTSLBaseException;
+	public PromoLoadParentUserRespVO loadParentUserList(PromoLoadParentParamReq promoLoadParentParamReq,String userLoginId) throws BTSLBaseException;
+	public SearchPromoTransferRespVO searchPromoTransferData(SearchPromoTransferReqVO searchPromoTransferReqVO,String userLoginId) throws BTSLBaseException;
+	public AddPromoTransferRuleRespVO addPromoTransferData(AddPromoTransferReqVO addPromoTransferReqVO,String userLoginId,Locale locale) throws BTSLBaseException;
+	public ModifyPromoTransfRuleRespVO modifyPromoTransferData(ModifyPromoTransferReqVO modifyPromoTransferReqVO,String userLoginId,Locale locale) throws BTSLBaseException;
+	public DeletePromoTransferRespVO deletePromoTransferData(DeletePromoTransferReqVO deletePromoTransferReqVO,String userLoginId,Locale locale) throws BTSLBaseException;
+
+}

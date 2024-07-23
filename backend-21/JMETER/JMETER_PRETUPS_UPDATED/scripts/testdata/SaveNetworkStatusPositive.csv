@@ -1,0 +1,2 @@
+TestcaseId,TestcaseType,Module,Description
+,Positive,Network Status,To validate that user is able to get a list of networks with updated status

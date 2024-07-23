@@ -1,0 +1,2 @@
+TestcaseId,TestcaseType,Module,Description
+,Positive,Last Transaction Details,Last Transaction details API by all MSISDN LoginID and EXTCODE present

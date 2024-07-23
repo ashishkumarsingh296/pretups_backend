@@ -1,0 +1,3 @@
+Test Case Id,Description,Priority,Functionality,Release,Script,Tags,Start URL
+CEGTA0001,Given an application with valid credentials when a user logs into the application then the user should be able to login into the application,M,Login Management,Pretups6.1,CreateSubSuperAdmin.sah,Y,
+CEGTA0002,Given a Super Admin with valid credentials when user creates a network admin then it should be created successfully.,M,User Management,Pretups6.1,CreateCustomerCare_Negative.sah,Y,

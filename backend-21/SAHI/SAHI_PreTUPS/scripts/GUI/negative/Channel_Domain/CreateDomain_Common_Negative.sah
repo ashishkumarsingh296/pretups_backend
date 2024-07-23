@@ -1,0 +1,159 @@
+
+
+
+var $g_domainDetails = _readCSVFile("../../testdata/ChannelDomain_Details.csv");
+
+var $a_domainType = "Distributor Channel";
+var $a_domainCode;
+var $a_domainName;
+var $a_NOC=1;
+var $a_categoryCode;
+var $a_categoryName;
+var $a_geoDomain;
+var $a_roleType;
+var $a_userIDPrefix;
+var $a_maxTranMSISDN =2;
+var $a_maxLoginCount = 2;
+var $assertion;
+var $a_gradeCode;
+var $a_gradeName;
+
+
+
+
+function variableForChannelDomain($a_row, $a_col) {
+	
+	$a_domainType = $g_ChannelDomain[$g_row][$g_col++];
+	$a_domainCode = $g_ChannelDomain[$g_row][$g_col++];
+	$a_domainName = $g_ChannelDomain[$g_row][$g_col++];
+	$a_NOC = $g_ChannelDomain[$g_row][$g_col++];
+	$assertion = $g_ChannelDomain[$g_row][$g_col++];
+	
+}
+
+function addChannelDomain() {
+	
+	_click(_link($g_LeftMenuBar_ChannelDomain));
+	_click(_link($g_LeftMenuBar_AddChannelDomain));
+	_assertExists(_div($g_assertViewDomainDet)); 
+	_click(_submit($g_BtnAdd));
+	_setSelected(_select("domainTypeCode"), $a_domainType);
+	_setValue(_textbox("domainCodeforDomain"), $a_domainCode);
+	_setValue(_textbox("domainName"), $a_domainName);	
+	_setValue(_textbox("numberOfCategories"), $a_NOC);
+	_click(_submit($g_BtnSubmit));
+	
+	//_assertExists(_listItem($assertion)); 
+	
+	if(_exists($g_assertAddOwnerCategoryDetails)){
+		return true;
+	}else {
+		return false;
+	}
+}
+
+function variableForChannelCategory($a_row, $a_col) {
+	
+	$a_categoryCode = $g_ChannelCategory[$g_row][$g_col++];
+	$a_categoryName = $g_ChannelCategory[$g_row][$g_col++];
+	$a_geoDomain = $g_ChannelCategory[$g_row][$g_col++];
+	$a_roleType = $g_ChannelCategory[$g_row][$g_col++];
+	$a_userIDPrefix = $g_ChannelCategory[$g_row][$g_col++];
+	$a_maxTranMSISDN = $g_ChannelCategory[$g_row][$g_col++];
+	$a_maxLoginCount = $g_ChannelCategory[$g_row][$g_col++];
+	$assertion = $g_ChannelCategory[$g_row][$g_col++];
+	
+}
+
+
+function commonVaribaleForDomainAndCategory() {
+	
+	var $1_row  =1;
+	var $1_col = 0;
+	
+	$a_domainCode = genChannelDomainCode($g_autoPrefix); //Automatically generate Domain Code
+	$a_categoryCode = genChannelCategoryCode($g_autoPrefix); //Automatically generate Category Code
+	$a_userIDPrefix = randomString();
+		
+	
+	$a_domainType = $g_domainDetails[$1_row][$1_col++];
+	$a_domainName = $g_domainDetails[$1_row][$1_col++] + $timeStamp;
+	$a_categoryName= $g_domainDetails[$1_row][++$1_col] + $timeStamp;
+	$a_geoDomain= $g_domainDetails[$1_row][++$1_col];
+	$a_roleType= $g_domainDetails[$1_row][++$1_col];
+	
+	_log("shashi " + $a_domainName + " shashi " + $a_categoryName );
+}
+
+
+function variableForGradeMgmt($a_row, $a_col) {
+	
+	$a_gradeCode = $g_gradeMgmt[$a_row][$a_col++];
+	$a_gradeName = $g_gradeMgmt[$a_row][$a_col++];
+	$a_assertion = $g_gradeMgmt[$a_row][$a_col++];
+}
+
+
+function addGradeDetails() {
+	
+	_click(_link($g_LeftMenuBar_ChannelDomain));
+	_click(_link($g_LeftMenuBar_GradeMgmt));
+	
+	_setSelected(_select("domainCodeforDomain"), $a_domainName);
+	_setSelected(_select("domainCodeforDomain"), $a_categoryName);
+	_click(_submit($g_BtnSubmit));
+
+	
+	
+	_click(_submit($g_BtnAdd));
+	_setValue(_textbox("gradeCode"), $a_gradeCode);
+	_setValue(_textbox("gradeName"), $a_gradeName);
+	_click(_submit($g_BtnSave));
+	
+}
+
+
+
+
+function addChannelDomainAndCategory(){
+	
+	_setValue(_textbox("categoryCode"), $a_categoryCode);
+	
+	_setValue(_textbox("categoryName"), $a_categoryName);
+	_setSelected(_select("grphDomainType"), $a_geoDomain);
+	_setSelected(_select("fixedRoles"), $a_roleType);
+	_click(_checkbox("outletsAllowed"));
+	_setValue(_textbox("userIdPrefix"), $a_userIDPrefix);
+	_click(_checkbox("hierarchyAllowed"));
+	_click(_link($g_LinkAssignRoles));
+	_popup("eRecharge")._assertExists(_div($g_assertRole));
+	_popup("eRecharge")._click(_checkbox("checkall"));
+	_popup("eRecharge")._click(_submit($g_BtnAdd));
+	_click(_checkbox("checkArray"));
+	_click(_checkbox("checkArray[2]"));
+	_click(_checkbox("checkArray[4]"));
+	_click(_checkbox("multipleLoginAllowed"));
+
+	var $l_chkBoxes = new Array();
+	$l_chkBoxes = _collect("_checkbox", "/.*/");
+	for( var $i = 1; $i < $l_chkBoxes.length; $i++){
+	      _check($l_chkBoxes[$i]);
+	}
+	_setValue(_textbox("maxTxnMsisdn"), $a_maxTranMSISDN);
+	_setValue(_textbox("maxLoginCount"), $a_maxLoginCount);
+	_click(_submit($g_BtnSubmit));
+	
+	
+}
+
+
+
+
+
+
+
+
+
+
+
+

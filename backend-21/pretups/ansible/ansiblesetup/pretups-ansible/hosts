@@ -1,0 +1,16 @@
+[appservers-pretups]
+172.30.24.194 ansible_user=prtp7_27orc1 ansible_become_pass=prtp7_27orc1 ansible_ssh_pass=prtp7_27orc1
+
+[appservers-pretupsui]
+172.30.24.194 ansible_user=prtp7_27orc1 ansible_become_pass=prtp7_27orc1 ansible_ssh_pass=prtp7_27orc1
+
+[login-servers]
+172.30.24.194 ansible_user=prtp7_27orc1 ansible_become_pass=prtp7_27orc1 ansible_ssh_pass=prtp7_27orc1
+
+
+
+[redis-nodes]
+172.30.24.194 ansible_user=prtp7_27orc1 ansible_become_pass=prtp7_27orc1 ansible_ssh_pass=prtp7_27orc1
+
+[nodejs-nodes]
+172.30.24.194 ansible_user=prtp7_27orc1 ansible_become_pass=prtp7_27orc1 ansible_ssh_pass=prtp7_27orc1

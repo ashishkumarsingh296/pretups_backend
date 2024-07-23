@@ -1,0 +1,18 @@
+//################################################
+//#Company Name: Mahindra Comviva Technologies Ltd.
+//#Application Name: PretupsTA
+//#Objective: To create Channel Admin
+//#Author Name: Nidhi Singh
+//#Created Date: 03/02/2014
+//###############################################
+
+//===========================Import Scripts============================	 
+_includeOnce("../../../../utility/ImportPackage.sah");	//For importing common files	
+	
+//======================Pre-requisite check============================
+_log("Setup", "custom4");
+	
+	createCA(); //Calls the createCA() function defined in UserManagement_Common.sah
+	
+//==================================================
+_log("Tear Down", "custom4");

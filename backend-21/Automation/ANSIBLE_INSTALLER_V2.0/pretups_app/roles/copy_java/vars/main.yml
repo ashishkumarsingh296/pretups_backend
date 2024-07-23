@@ -1,0 +1,2 @@
+#JDK_SOFT_LINK: PRETUPS_JAVA
+PROJECT_ROOT: "{{ Project_Root.stdout }}"

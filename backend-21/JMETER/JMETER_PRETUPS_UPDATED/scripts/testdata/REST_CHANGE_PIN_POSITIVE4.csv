@@ -1,0 +1,2 @@
+TestcaseId,TestcaseType,Module,Description
+TUNG23102,Positive,REST - Change Pin,"To verify that request is sucessfully when  EXTCODE ,login id & password, and msisdn pin is present in Rest API request"

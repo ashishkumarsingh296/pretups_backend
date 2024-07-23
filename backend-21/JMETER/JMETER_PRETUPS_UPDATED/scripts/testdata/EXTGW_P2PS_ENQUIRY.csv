@@ -1,0 +1,20 @@
+TestcaseId,TestcaseType,Module,Description
+,Positive,P2P subscriber transfer enquiry,To verfiy that P2P Subscriber transfer enquiry is successful with all valid details.
+,Positive,P2P subscriber transfer enquiry,To verfiy that P2P Subscriber transfer enquiry is successful if from date  is blank in request
+,Positive,P2P subscriber transfer enquiry,To verfiy that P2P Subscriber transfer enquiry is successful if to date  is blank in request
+,Positive,P2P subscriber transfer enquiry,To verfiy that P2P Subscriber transfer enquiry is successful if transaction id is blank in request
+,Positive,P2P subscriber transfer enquiry,To verfiy that P2P Subscriber transfer enquiry is successful if Date tag is blank in request
+,Positive,P2P subscriber transfer enquiry,To verfiy that P2P Subscriber transfer enquiry is successful if Category code is blank in request
+,Positive,P2P subscriber transfer enquiry,To verfiy that P2P Subscriber transfer enquiry is successful if Category code and Employee code both are blank in request
+,Positive,P2P subscriber transfer enquiry,To verfiy that P2P Subscriber transfer enquiry is successful if external reference number  is blank in request
+,Positive,P2P subscriber transfer enquiry,To verfiy that P2P Subscriber transfer enquiry is successful if Sender MSISDN  is blank in request
+,Positive,P2P subscriber transfer enquiry,To verfiy that P2P Subscriber transfer enquiry is successful if Transaction id and Sender MSISDN are blank in request
+,Negative,P2P subscriber transfer enquiry,To verfiy that P2P Subscriber transfer enquiry is not successful if Netowrk code is invalid in request
+,Negative,P2P subscriber transfer enquiry,To verfiy that P2P Subscriber transfer enquiry is not successful if Netowrk code is blank in request
+,Negative,P2P subscriber transfer enquiry,To verfiy that P2P Subscriber transfer enquiry is not successful if transaction id is other than P2P in request
+,Negative,P2P subscriber transfer enquiry,To verfiy that P2P Subscriber transfer enquiry is not successful if type tag is blank in request
+,Negative,P2P subscriber transfer enquiry,To verfiy that P2P Subscriber transfer enquiry is not successful if category code is present but employee code is blank in request
+,Negative,P2P subscriber transfer enquiry,To verfiy that P2P Subscriber transfer enquiry is not successful if category code is present but employee code is invalid in request
+,Negative,P2P subscriber transfer enquiry,To verfiy that P2P Subscriber transfer enquiry is not successful if category code is invalid in request
+,Negative,P2P subscriber transfer enquiry,To verfiy that P2P Subscriber transfer enquiry is not successful if invalid Login id present
+,Negative,P2P subscriber transfer enquiry,To verfiy that P2P Subscriber transfer enquiry is not successful if Login id is present and Password is blank

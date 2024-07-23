@@ -1,0 +1,20 @@
+loginId,password,name,msisdn,userType,module,barredType,barredReason,type,externalCode,TestcaseId,TestcaseType,Module,Description
+btchadm,1357,Sachine,7214177112,RECEIVER,C2S,SL021,Testing,BARUSER,,TUNG12760,Positive,Bar user through Restful API,To verify user get barred successfully
+btchadm,1357,,,,,,,BARUSER,,TUNG12754,Negative,Bar user through Restful API,To verify mandatory fields
+btchadm,1357,Sachine,^&*^&*,RECEIVER,C2S,SL021,Testing,BARUSER,,TUNG12755,Negative,Bar user through Restful API,To verify only alphabetic character allowed for name
+btchadm,1357,Sachine,&%^&%,RECEIVER,C2S,SL021,Testing,BARUSER,,TUNG12756,Negative,Bar user through Restful API,To verify only alphabetic character allowed for name
+btchadm,1357,Sachine,ajdhasdk,RECEIVER,C2S,SL021,Testing,BARUSER,,TUNG12757,Negative,Bar user through Restful API,To verify only numeric character allowed for msisdn
+btchadm,1357,Sachine,7214177113,RECEIVER,C2S,SL021,Testing,BARUSER,,TUNG12758,Negative,Bar user through Restful API,To verify channel admin will not be able to bar user form other network
+btchadm,1357,Sachine,9611111111,RECEIVER,C2S,SL021,Testing,BARUSER,,TUNG12759,Negative,Bar user through Restful API,To verify user from unsupported network will not get barred
+btchadm,1357,Sachine,7214177114,RECEIVER,C2S,SL021,Testing,BARUSER,,TUNG12761,Negative,Bar user through Restful API,"To verify user who is barred already can not be barred again.
+Note: User can get barred only if barredType is different and not avaiable in DB"
+btchadm,1357,Sachine,7264646466,RECEIVER,C2S,SL021,Testing,BARUSER,,TUNG12762,Negative,Bar user through Restful API,To verify MSISDN can not be barred if user is not active in system
+btchadm,1357,Sachine,7214177115,,C2S,SL021,Testing,BARUSER,,TUNG12763,Negative,Bar user through Restful API,To verify user type is required to bar user
+btchadm,1357,Sachine,,RECEIVER,C2S,SL021,Testing,BARUSER,,TUNG12764,Negative,Bar user through Restful API,To verify MSISDN is required to bar user
+btchadm,1357,Sachine,7214177116,RECEIVER,,SL021,Testing,BARUSER,,TUNG12765,Negative,Bar user through Restful API,To verify module is required to bar user
+btchadm,1357,Sachine,7214177117,RECEIVER,C2S,,Testing,BARUSER,,TUNG12766,Negative,Bar user through Restful API,To verify user bartype is required to bar user
+btchadm,1357,Sachine,7214177118,RECEIVER,C2S,SL021,,BARUSER,,TUNG12767,Negative,Bar user through Restful API,To verify barred reason is required to bar user
+btchadm,1357,Sachine,7214177119,RECEIVER,C2S,SL021,Testingggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggg,BARUSER,,TUNG12768,Negative,Bar user through Restful API,To verify barred reason text length should not exceed more than 100 character
+btchadm,1357,Sachine,7214177122,RECEIVER,C2S,SL021,Testing,BARUSER,,TUNG12769,Negative,Bar user through Restful API,To verify msisdn is valid or not
+btchadm,1357,Sachine,7214177132,"RECEIVER,",C2S,SL021,Testing,BARUSER,,TUNG12770,Negative,Bar user through Restful API,To verify reqest format is correct or not
+,btchadm,1357,Sachine,7211111111,RECEIVER,C2S,SL021,Testing,BARUSER,TUNG12771,Negative,Bar user through Restful API,To verify error comes when wrong data provided

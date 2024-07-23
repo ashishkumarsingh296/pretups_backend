@@ -1,0 +1,2 @@
+TestcaseId,TestcaseType,Module,Description
+TUNG22326,Negative,SOS Settlement EXTGW,To verify that when parent or owner enters wrong password then gets proper response.

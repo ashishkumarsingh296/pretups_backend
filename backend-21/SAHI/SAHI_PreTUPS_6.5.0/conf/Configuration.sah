@@ -1,0 +1,48 @@
+//* PRETUPS Entity *
+/**
+ * Constants
+ * change this as per environment
+ */
+var $l_readExcel = _readExcelFile("../conf/PretupsConfigInputs.xlsx", "Sheet1");
+
+var $l_row = 3;
+var $l_col = 2;
+
+var $appURL = $l_readExcel[$l_row++][$l_col];	        //application web URL
+var $autoPrefix = $l_readExcel[$l_row++][$l_col];	    //automation prefix used to create users etc.
+var $superAdmin = $l_readExcel[$l_row++][$l_col];       //Super Admin user name 
+var $password = $l_readExcel[$l_row++][$l_col]/1;       //Super Admin password
+var $commonPassword = $l_readExcel[$l_row++][$l_col];   //Common password for all users.
+
+//DB details
+var $dbIP = $l_readExcel[$l_row++][$l_col];			    //IP address of database server
+var $dbPort = $l_readExcel[$l_row++][$l_col]/1;      	//port number of database server
+var $dbSid = $l_readExcel[$l_row++][$l_col];			//SID of database server
+var $dbUserName = $l_readExcel[$l_row++][$l_col];		//database user name
+var $dbPassword = $l_readExcel[$l_row++][$l_col];		//database password
+var $commonPIN = $l_readExcel[$l_row++][$l_col];		
+
+var $CONFIG = {
+		// Application
+		URL					   : $appURL,
+		USER_CREATION_PASSWORD : "Com@123",	 // Don't change This	
+		LANGUAGE			   : "English",
+		PIN					   : "1357",
+		
+		// Users
+		CHADMIN				   : "btchadm",
+		COMMON_PASSWORD		   : "1357",
+		
+		// Database
+		DB_IP				   : $dbIP,
+		DB_SID			       : $dbSid,
+		DB_PORT				   : $dbPort,
+		DB_USERNAME			   : $dbUserName,
+		DB_PASSWORD			   : $dbPassword,
+
+		// Specific
+		GEO_DOMAIN			   : "Municipality",
+		DOMAIN				   : "Distribution Channel",
+		OUTLET   			   : "Telecom",
+		ENCRYPT_URL			   : "http://172.16.10.239:7575/encdec/index.jsp"		
+};

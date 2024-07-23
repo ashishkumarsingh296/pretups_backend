@@ -1,0 +1,1611 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.btsl.pretups</groupId>
+	<artifactId>pretups</artifactId>
+	<packaging>war</packaging>
+	<version>6.5.0</version>
+	<name>Pretups Maven Webapp</name>
+	<description>Pretups Transaction Project</description>
+	<url>http://localhost:8080/pretups</url>
+
+	<repositories>
+		<repository>
+			<id>PreTUPS Internal Repository</id>
+			<url>file://${basedir}/project_repo_lib</url>
+		</repository>
+		<repository>
+  <id>captcha</id>
+  <name>BotDetect Captcha Repository</name>
+  <url>https://git.captcha.com/botdetect-java-captcha.git/blob_plain/HEAD:/</url>
+</repository>
+	</repositories>
+
+	<properties>
+
+		<project.hudson.deploy.url>
+			http://172.16.9.33:8080/hudson-2.2.1
+		</project.hudson.deploy.url>
+
+		<project.svn.url>
+			http://172.16.1.57/PRETUPS/branches/PreTUPS_Maven/Code/
+		</project.svn.url>
+
+		<project.site.deploy.url>
+			file://172.16.9.33/tomcat-7.0.27/webapps/mavenizedPreTUPS_new/
+		</project.site.deploy.url>
+
+		<project.build.directory>
+			${basedir}/target/classes
+		</project.build.directory>
+
+		<project.site.pmd.configurationFile>
+			${basedir}/src/site/resources/config/pmd-ruleSets/rule_error_errorHigh.xml
+		</project.site.pmd.configurationFile>
+
+		<project.site.checkstyle.configurationFile>
+			${basedir}/src/site/resources/config/checkstyle/checkstyle.xml
+		</project.site.checkstyle.configurationFile>
+
+		<project.site.inforeports.custonBundle>
+			${project.basedir}/src/site/custom/project-info-report.properties
+		</project.site.inforeports.custonBundle>
+
+		<project.build.sourceEncoding>
+			UTF-8
+		</project.build.sourceEncoding>
+
+		<project.reporting.outputEncoding>
+			UTF-8
+		</project.reporting.outputEncoding>
+
+	</properties>
+
+	<scm>
+		<connection>scm:svn:${project.svn.url}</connection>
+		<developerConnection>
+			scm:svn:${project.svn.url}
+		</developerConnection>
+		<url>${project.svn.url}</url>
+		<!-- <username>username</username> <password>password</password> -->
+	</scm>
+
+	<reporting>
+
+		<plugins>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>
+					maven-project-info-reports-plugin
+				</artifactId>
+				<inherited>false</inherited>
+				<version>2.7</version>
+				<configuration>
+					<!-- By default -->
+					<customBundle>
+						${project.site.inforeports.custonBundle}
+					</customBundle>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jxr-plugin</artifactId>
+				<version>2.3</version>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-pmd-plugin</artifactId>
+				<version>2.7.1</version>
+				<reportSets>
+					<reportSet>
+						<reports>
+							<report>pmd</report>
+						</reports>
+					</reportSet>
+				</reportSets>
+
+				<configuration>
+					<rulesets>
+						<!--<ruleset>${project.site.pmd.configurationFile}</ruleset> -->
+						<ruleset>
+							C:\MFS_Workspace\preTUPS_Maven\preTUPS_Maven\src\site\resources\config\pmd-ruleSets\rule_error_errorHigh.xml
+						</ruleset>
+					</rulesets>
+					<sourceEncoding>utf-8</sourceEncoding>
+					<minimumTokens>100</minimumTokens>
+					<targetJdk>1.8</targetJdk>
+					<argLine>-Xmx2048m</argLine>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-javadoc-plugin</artifactId>
+				<version>2.9.1</version>
+				<configuration>
+					<encoding>
+						${project.reporting.outputEncoding}
+					</encoding>
+					<encoding>UTF-8</encoding>
+					<excludePackageNames>
+						com.btsl.pretups.inter.*
+					</excludePackageNames>
+					<show>public</show>
+					<quiet>true</quiet>
+					<minmemory>1g</minmemory>
+					<maxmemory>1g</maxmemory>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>jdepend-maven-plugin</artifactId>
+				<version>2.0-beta-2</version>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.rat</groupId>
+				<artifactId>apache-rat-plugin</artifactId>
+				<version>0.8</version>
+			</plugin>
+
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>findbugs-maven-plugin</artifactId>
+				<version>2.5.2</version>
+				<configuration>
+					<fork>true</fork>
+					<maxHeap>1024</maxHeap>
+					<minmemory>1g</minmemory>
+					<maxmemory>1g</maxmemory>
+					<xmlOutput>true</xmlOutput>
+					<excludeFilterFile>
+						C:\MFS_Workspace\preTUPS_Maven\preTUPS_Maven\src\site\resources\config\findbugs-exclude.xml
+					</excludeFilterFile>
+					<omitVisitors>
+						ExplicitSerialization,BooleanReturnNull,CheckImmutableAnnotation,CloneIdiom,
+						ComparatorIdiom,DontCatchIllegalMonitorStateException,DontUseEnum,DroppedException,
+						EmptyZipFileEntry,EqualsOperandShouldHaveClassCompatibleWithThis,FinalizerNullsFields,
+						FindOpenStream,InheritanceUnsafeGetResource,InstantiateStaticClass,IteratorIdioms,
+						ReadReturnShouldBeChecked,FindRefComparison,FindUnrelatedTypesInGenericContainer,IncompatMask,
+						Naming,FindHEmismatch,FindNullDeref,FormatStringChecker,MethodReturnCheck,
+						OverridingEqualsNotSymmetrical,DumbMethods,SerializableIdiom,FindPuzzlers,FindUseOfNonSerializableValue,
+						InitializationChain,NoteUnconditionalParamDerefs,FindFinalizeInvocations,AppendingToAnObjectOutputStream,
+						BadAppletConstructor,BadSyntaxForRegularExpression,BadlyOverriddenAdapter,CheckExpectedWarnings,
+						FindMaskedFields,FindNullDerefsInvolvingNonShortCircuitEvaluation,FindSelfComparison2,FindUninitializedGet,
+						InfiniteLoop,InfiniteRecursiveLoop,InitializeNonnullFieldsInConstructor,IntCast2LongAsInstant,InvalidJUnitTest,
+						QuestionableBooleanAssignment,ReadOfInstanceFieldInMethodInvokedByConstructorInSuperclass,RepeatedConditionals,
+						SuperfluousInstanceOf,SuspiciousThreadInterrupted,UncallableMethodOfAnonymousClass,VarArgsProblems,
+						CheckTypeQualifiers,FindBadCast2,FindDeadLocalStores,FindFieldSelfAssignment,FindFloatEquality,
+						FindLocalSelfAssignment2,FindSelfComparison,IDivResultCastToDouble,SwitchFallthrough,UnreadFields,
+						BadUseOfReturnValue,CallToUnsupportedMethod,ConfusedInheritance,ConfusionBetweenInheritedAndOuterMethod,
+						DuplicateBranches,FindBadForLoop,FindCircularDependencies,FindNonShortCircuit,FindUselessControlFlow,
+						InconsistentAnnotations,LoadOfKnownNullValue,MultithreadedInstanceAccess,PreferZeroLengthArrays,
+						PublicSemaphores,RedundantInterfaces,RuntimeExceptionCapture,UselessSubclassMethod,XMLFactoryBypass,
+						FindUnsatisfiedObligation,LostLoggerDueToWeakReference,DefaultEncodingDetector,DoInsideDoPrivileged,
+						FindReturnRef,MutableStaticFields,AtomicityProblem,DontIgnoreResultOfPutIfAbsent,FindDoubleCheck,
+						FindEmptySynchronizedBlock,FindInconsistentSync2,FindJSR166LockMonitorenter,FindMismatchedWaitOrNotify,
+						FindNakedNotify,FindRunInvocations,FindSleepWithLockHeld,FindSpinLoop,FindTwoLockWait,FindUnconditionalWait,
+						FindUnreleasedLock,FindUnsyncGet,LazyInit,MutableLock,StartInConstructor,StaticCalendarDetector,
+						SynchronizeAndNullCheckField,SynchronizeOnClassLiteralNotGetClass,SynchronizingOnContentsOfFieldToProtectField,
+						VolatileUsage,WaitInLoop,BadResultSetAccess
+					</omitVisitors>
+					<onlyAnalyze>
+						org.codehaus.mojo.findbugs.*
+					</onlyAnalyze>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-report-plugin</artifactId>
+				<version>2.13</version>
+			</plugin>
+
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>cobertura-maven-plugin</artifactId>
+				<version>2.5.2</version>
+				<configuration>
+					<argLine>-Xmx512m -XX:MaxPermSize=256m</argLine>
+				</configuration>
+
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-checkstyle-plugin</artifactId>
+				<version>2.10</version>
+				<configuration>
+					<configLocation>
+						${project.site.checkstyle.configurationFile}
+					</configLocation>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>versions-maven-plugin</artifactId>
+				<version>2.0</version>
+			</plugin>
+
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>taglist-maven-plugin</artifactId>
+				<version>2.4</version>
+			</plugin>
+
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>dashboard-maven-plugin</artifactId>
+				<version>1.0.0-beta-1</version>
+			</plugin>
+
+		</plugins>
+
+	</reporting>
+
+	<distributionManagement>
+		<site>
+			<id>site.server</id>
+			<url>${project.site.deploy.url}</url>
+		</site>
+	</distributionManagement>
+
+	<dependencies>
+
+
+	<!-- https://mvnrepository.com/artifact/com.itextpdf/itextpdf -->
+	<dependency>
+		<groupId>com.itextpdf</groupId>
+		<artifactId>itextpdf</artifactId>
+		<version>5.5.13.1</version>
+		<systemPath>${basedir}/src/main/webapp/WEB-INF/lib/itextpdf-5.5.13.1.jar</systemPath>
+		<scope>system</scope>
+	</dependency>
+	
+	<dependency>
+			<groupId>org.mockito</groupId>
+            <artifactId>mockito-core</artifactId>
+            <version>3.5.5</version>
+			<systemPath>${basedir}/src/main/webapp/WEB-INF/lib/mockito-core-3.5.5.jar</systemPath>
+			<scope>system</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.objenesis</groupId>
+            <artifactId>objenesis</artifactId>
+            <version>3.1</version>
+			<systemPath>${basedir}/src/main/webapp/WEB-INF/lib/objenesis-3.1.jar</systemPath>
+			<scope>system</scope>
+		</dependency><dependency>
+  <groupId>com.captcha</groupId>
+  <artifactId>botdetect-servlet</artifactId>
+  <version>4.0.beta3.7</version>
+  <systemPath>${basedir}/src/main/webapp/WEB-INF/lib/botdetect-servlet-4.0.beta3.7.jar</systemPath>
+		<scope>system</scope>
+</dependency>
+<dependency>
+            <groupId>org.hsqldb</groupId>
+            <artifactId>hsqldb</artifactId>
+            <version>2.3.4</version>
+            <scope>system</scope>
+            <systemPath>${basedir}/src/main/webapp/WEB-INF/lib/hsqldb.jar</systemPath>
+        </dependency>
+<dependency>
+  <groupId>com.captcha</groupId>
+  <artifactId>botdetect</artifactId>
+  <version>4.0.beta3.7</version>
+  <systemPath>${basedir}/src/main/webapp/WEB-INF/lib/botdetect-4.0.beta3.7.jar</systemPath>
+		<scope>system</scope>
+</dependency>
+		<dependency>
+			<groupId>net.bytebuddy</groupId>
+            <artifactId>byte-buddy</artifactId>
+            <version>1.10.14</version>
+			<systemPath>${basedir}/src/main/webapp/WEB-INF/lib/byte-buddy-1.10.14.jar</systemPath>
+			<scope>system</scope>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/net.bytebuddy/byte-buddy-agent -->
+        <dependency>
+        <groupId>net.bytebuddy</groupId>
+        <artifactId>byte-buddy-agent</artifactId>
+        <version>1.10.12</version>
+		<systemPath>${basedir}/src/main/webapp/WEB-INF/lib/byte-buddy-agent-1.10.12.jar</systemPath>
+        <scope>system</scope>
+        </dependency>
+		<!-- https://mvnrepository.com/artifact/net.java.dev.jna/jna-platform -->
+<dependency>
+    <groupId>net.java.dev.jna</groupId>
+    <artifactId>jna-platform</artifactId>
+    <version>5.6.0</version>
+	<systemPath>${basedir}/src/main/webapp/WEB-INF/lib/jna-platform-5.6.0.jar</systemPath>
+	 <scope>system</scope>
+</dependency>
+<!-- https://mvnrepository.com/artifact/net.java.dev.jna/jna -->
+<dependency>
+    <groupId>net.java.dev.jna</groupId>
+    <artifactId>jna</artifactId>
+    <version>5.6.0</version>
+	<systemPath>${basedir}/src/main/webapp/WEB-INF/lib/jna-5.6.0.jar</systemPath>
+	 <scope>system</scope>
+</dependency>
+<!-- https://mvnrepository.com/artifact/org.mockito/mockito-inline -->
+<dependency>
+    <groupId>org.mockito</groupId>
+    <artifactId>mockito-inline</artifactId>
+    <version>3.5.5</version>
+	<systemPath>${basedir}/src/main/webapp/WEB-INF/lib/mockito-inline-3.5.5.jar</systemPath>
+    <scope>system</scope>
+</dependency>
+		<dependency>
+			<groupId>org.testng</groupId>
+			<artifactId>testng</artifactId>
+			<version>6.8</version>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>univocity</groupId>
+			<artifactId>library</artifactId>
+			<version>1.0</version>
+			<systemPath>${basedir}/src/main/webapp/WEB-INF/lib/univocity-parsers-2.2.3.jar</systemPath>
+			<scope>system</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>activation</groupId>
+			<artifactId>activation</artifactId>
+			<version>1.1.1</version>
+			<systemPath>${basedir}/src/main/webapp/WEB-INF/lib/activation-1.1.1.jar</systemPath>
+			<scope>system</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>antlr</groupId>
+			<artifactId>antlr</artifactId>
+			<version>1.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>mail</groupId>
+			<artifactId>mail</artifactId>
+			<version>1.0</version>
+		</dependency>
+
+
+
+ <dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+			<version>3.1.0</version>
+			<systemPath>${basedir}/src/main/webapp/WEB-INF/lib/javax.servlet-api-3.1.0.jar</systemPath>
+			<scope>system</scope>
+		</dependency> 
+		
+ 		<dependency>
+			<groupId>servlet</groupId>
+			<artifactId>servlet</artifactId>
+			<version>1.0</version>
+		</dependency>
+ 
+		<dependency>
+			<groupId>slf4j-api</groupId>
+			<artifactId>slf4j-api</artifactId>
+			<version>1.7.6</version>
+			<systemPath>${basedir}/src/main/webapp/WEB-INF/lib/slf4j-api-1.7.6.jar</systemPath>
+			<scope>system</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>struts</groupId>
+			<artifactId>struts</artifactId>
+			<version>1.0.1</version>
+			<systemPath>${basedir}/src/main/webapp/WEB-INF/lib/struts-1.0.1.jar</systemPath>
+			<scope>system</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>cos</groupId>
+			<artifactId>cos</artifactId>
+			<version>1.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>commons-collections</groupId>
+			<artifactId>commons-collections</artifactId>
+			<version>1.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>commons-digester</groupId>
+			<artifactId>commons-digester</artifactId>
+			<version>1.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>commons-discovery</groupId>
+			<artifactId>commons-discovery</artifactId>
+			<version>0.2</version>
+			<systemPath>${basedir}/src/main/webapp/WEB-INF/lib/commons-discovery-0.2.jar</systemPath>
+			<scope>system</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>commons-fileupload</groupId>
+			<artifactId>commons-fileupload</artifactId>
+			<version>1.3</version>
+		</dependency>
+
+		<dependency>
+			<groupId>commons-lang</groupId>
+			<artifactId>commons-lang</artifactId>
+			<version>1.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>commons-logging</groupId>
+			<artifactId>commons-logging</artifactId>
+			<version>1.2</version>
+			<systemPath>${basedir}/src/main/webapp/WEB-INF/lib/commons-logging-1.2.jar</systemPath>
+			<scope>system</scope>
+		</dependency>
+
+
+		<dependency>
+			<groupId>commons-validator</groupId>
+			<artifactId>commons-validator</artifactId>
+			<version>1.5.0</version>
+		</dependency>
+		
+		<dependency>
+		    <groupId>org.apache.commons</groupId>
+		    <artifactId>commons-collections4</artifactId>
+		    <version>4.3</version>
+		    <systemPath>${basedir}/src/main/webapp/WEB-INF/lib/commons-collections4-4.3.jar</systemPath>
+		    <scope>system</scope>
+		</dependency>
+		
+		<dependency>
+			<groupId>comversestub</groupId>
+			<artifactId>comversestub</artifactId>
+			<version>1.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>struts-legacy</groupId>
+			<artifactId>struts-legacy</artifactId>
+			<version>1.0</version>
+		</dependency>
+
+
+
+		<dependency>
+			<groupId>commons-codec</groupId>
+			<artifactId>commons-codec</artifactId>
+			<version>1.10</version>
+			<systemPath>${basedir}/src/main/webapp/WEB-INF/lib/commons-codec-1.10.jar</systemPath>
+			<scope>system</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>jaxrpc</groupId>
+			<artifactId>jaxrpc</artifactId>
+			<version>1.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>jaxrpc-api</groupId>
+			<artifactId>jaxrpc-api</artifactId>
+			<version>1.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>saaj</groupId>
+			<artifactId>saaj</artifactId>
+			<version>1.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>saaj-impl</groupId>
+			<artifactId>saaj-impl</artifactId>
+			<version>1.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>saaj-api</groupId>
+			<artifactId>saaj-api</artifactId>
+			<version>1.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>wsdl4j</groupId>
+			<artifactId>wsdl4j</artifactId>
+			<version>1.5.1</version>
+			<systemPath>${basedir}/src/main/webapp/WEB-INF/lib/wsdl4j-1.5.1.jar</systemPath>
+			<scope>system</scope>
+		</dependency>
+
+
+		<dependency>
+			<groupId>pager-taglib</groupId>
+			<artifactId>pager-taglib</artifactId>
+			<version>1.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>jaxrpc-impl</groupId>
+			<artifactId>jaxrpc-impl</artifactId>
+			<version>1.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>jaxrpc-impl_1</groupId>
+			<artifactId>jaxrpc-impl_1</artifactId>
+			<version>1.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>jaxrpc-spi</groupId>
+			<artifactId>jaxrpc-spi</artifactId>
+			<version>1.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>OPCI</groupId>
+			<artifactId>OPCI</artifactId>
+			<version>1.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>OrbixWeb</groupId>
+			<artifactId>OrbixWeb</artifactId>
+			<version>1.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>ojdbc8</groupId>
+			<artifactId>ojdbc8</artifactId>
+			<version>8</version>
+			<systemPath>${basedir}/src/main/webapp/WEB-INF/lib/ojdbc8.jar</systemPath>
+			<scope>system</scope>
+		</dependency>
+
+
+		<dependency>
+			<groupId>jxl</groupId>
+			<artifactId>jxl</artifactId>
+			<version>1.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>nls_charset12</groupId>
+			<artifactId>nls_charset12</artifactId>
+			<version>12</version>
+			<systemPath>${basedir}/src/main/webapp/WEB-INF/lib/nls_charset12.jar</systemPath>
+			<scope>system</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>authapi</groupId>
+			<artifactId>authapi</artifactId>
+			<version>1.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>rsaexternal</groupId>
+			<artifactId>rsaexternal</artifactId>
+			<version>1.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>edtftpj</groupId>
+			<artifactId>edtftpj</artifactId>
+			<version>1.5.4</version>
+			<systemPath>${basedir}/src/main/webapp/WEB-INF/lib/edtftpj-1.5.4.jar</systemPath>
+			<scope>system</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>FastInfoset</groupId>
+			<artifactId>FastInfoset</artifactId>
+			<version>1.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>jakarta-oro</groupId>
+			<artifactId>jakarta-oro</artifactId>
+			<version>1.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>idl</groupId>
+			<artifactId>idl</artifactId>
+			<version>1.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>c3p0</groupId>
+			<artifactId>c3p0</artifactId>
+			<version>0.9.5.3</version>
+			<systemPath>${basedir}/src/main/webapp/WEB-INF/lib/c3p0-0.9.5.3.jar</systemPath>
+			<scope>system</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>ESAPI</groupId>
+			<artifactId>ESAPI</artifactId>
+			<version>2.0-rc4</version>
+		</dependency>
+
+		<dependency>
+			<groupId>libgetsetsnmp</groupId>
+			<artifactId>libgetsetsnmp</artifactId>
+			<version>1.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>log4j</groupId>
+			<artifactId>log4j</artifactId>
+			<version>1.2.14</version>
+			<systemPath>${basedir}/src/main/webapp/WEB-INF/lib/log4j-1.2.14.jar</systemPath>
+			<scope>system</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>j-ftp</groupId>
+			<artifactId>j-ftp</artifactId>
+			<version>1.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>milton-api</groupId>
+			<artifactId>milton-api</artifactId>
+			<version>1.5.3</version>
+		</dependency>
+
+		<dependency>
+			<groupId>jsr173_api</groupId>
+			<artifactId>jsr173_api</artifactId>
+			<version>1.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>Scheduler</groupId>
+			<artifactId>Scheduler</artifactId>
+			<version>1.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>json-simple</groupId>
+			<artifactId>json-simple</artifactId>
+			<version>1.1.1</version>
+		</dependency>
+
+		<dependency>
+			<groupId>milton-servlet</groupId>
+			<artifactId>milton-servlet</artifactId>
+			<version>1.4</version>
+		</dependency>
+
+		<dependency>
+			<groupId>xfire-core</groupId>
+			<artifactId>xfire-core</artifactId>
+			<version>1.2.6</version>
+		</dependency>
+
+		<dependency>
+			<groupId>ognl</groupId>
+			<artifactId>ognl</artifactId>
+			<version>3.1.15</version>
+			<systemPath>${basedir}/src/main/webapp/WEB-INF/lib/ognl-3.1.15.jar</systemPath>
+			<scope>system</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>struts2-core</groupId>
+			<artifactId>struts2-core</artifactId>
+			<version>2.3.15.2</version>
+			<systemPath>${basedir}/src/main/webapp/WEB-INF/lib/struts2-core-2.3.15.2.jar</systemPath>
+			<scope>system</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>struts2-sitemesh-plugin</groupId>
+			<artifactId>struts2-sitemesh-plugin</artifactId>
+			<version>2.3.15.2</version>
+			<systemPath>${basedir}/src/main/webapp/WEB-INF/lib/struts2-sitemesh-plugin-2.3.15.2.jar</systemPath>
+			<scope>system</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>struts2-tiles3-plugin</groupId>
+			<artifactId>struts2-tiles3-plugin</artifactId>
+			<version>2.3.15.2</version>
+			<systemPath>${basedir}/src/main/webapp/WEB-INF/lib/struts2-tiles3-plugin-2.3.15.2.jar</systemPath>
+			<scope>system</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>xwork-core</groupId>
+			<artifactId>xwork-core</artifactId>
+			<version>2.3.35</version>
+			<systemPath>${basedir}/src/main/webapp/WEB-INF/lib/xwork-core-2.3.35.jar</systemPath>
+			<scope>system</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>struts2-dojo-plugin</groupId>
+			<artifactId>struts2-dojo-plugin</artifactId>
+			<version>2.3.15.2</version>
+			<systemPath>${basedir}/src/main/webapp/WEB-INF/lib/struts2-dojo-plugin-2.3.15.2.jar</systemPath>
+			<scope>system</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>simplecaptcha</groupId>
+			<artifactId>simplecaptcha</artifactId>
+			<version>1.2.1</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-aop</artifactId>
+			<version>5.1.5</version>
+			<systemPath>${basedir}/src/main/webapp/WEB-INF/lib/spring-aop-5.1.5.jar</systemPath>
+			<scope>system</scope>
+		</dependency>
+		<dependency>
+     		<groupId>com.opencsv</groupId>
+     		<artifactId>opencsv</artifactId>
+     		<version>4.5</version>
+     		<systemPath>${basedir}/src/main/webapp/WEB-INF/lib/opencsv-4.5.jar</systemPath>
+     		<scope>system</scope>
+  		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-beans</artifactId>
+			<version>5.1.5</version>
+			<systemPath>${basedir}/src/main/webapp/WEB-INF/lib/spring-beans-5.1.5.jar</systemPath>
+			<scope>system</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context</artifactId>
+			<version>5.1.5</version>
+			<systemPath>${basedir}/src/main/webapp/WEB-INF/lib/spring-context-5.1.5.jar</systemPath>
+			<scope>system</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-core</artifactId>
+			<version>5.1.5</version>
+			<systemPath>${basedir}/src/main/webapp/WEB-INF/lib/spring-core-5.1.5.jar</systemPath>
+			<scope>system</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-expression</artifactId>
+			<version>5.1.5</version>
+			<systemPath>${basedir}/src/main/webapp/WEB-INF/lib/spring-expression-5.1.5.jar</systemPath>
+			<scope>system</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-tx</artifactId>
+			<version>5.1.5</version>
+			<systemPath>${basedir}/src/main/webapp/WEB-INF/lib/spring-tx-5.1.5.jar</systemPath>
+			<scope>system</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-web</artifactId>
+			<version>5.1.5</version>
+			<systemPath>${basedir}/src/main/webapp/WEB-INF/lib/spring-web-5.1.5.jar</systemPath>
+		<scope>system</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-webmvc</artifactId>
+			<version>5.1.5</version>
+			<systemPath>${basedir}/src/main/webapp/WEB-INF/lib/spring-webmvc-5.1.5.jar</systemPath>
+			<scope>system</scope>
+		</dependency>
+		
+		<!-- <dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-lang3</artifactId>
+			<version>3.1</version>
+		</dependency> -->
+		
+		
+		
+		
+		<!-- https://mvnrepository.com/artifact/org.json/json -->
+<dependency>
+    <groupId>org.json</groupId>
+    <artifactId>json</artifactId>
+    <version>20171018</version>
+</dependency>
+		
+		
+		
+		
+		
+		
+		
+		<!-- https://mvnrepository.com/artifact/org.springframework.security/spring-security-config -->
+<dependency>
+    <groupId>org.springframework.security</groupId>
+    <artifactId>spring-security-config</artifactId>
+    <version>5.1.5.RELEASE</version>
+	<systemPath>${basedir}/src/main/webapp/WEB-INF/lib/spring-security-config-5.1.5.RELEASE.jar</systemPath>
+	<scope>system</scope>
+</dependency>
+
+
+<!-- https://mvnrepository.com/artifact/org.springframework.security/spring-security-core -->
+<dependency>
+    <groupId>org.springframework.security</groupId>
+    <artifactId>spring-security-core</artifactId>
+    <version>5.1.5.RELEASE</version>
+	<systemPath>${basedir}/src/main/webapp/WEB-INF/lib/spring-security-core-5.1.5.RELEASE.jar</systemPath>
+	<scope>system</scope>
+</dependency>
+
+
+
+<!-- https://mvnrepository.com/artifact/org.springframework.security/spring-security-web -->
+<dependency>
+    <groupId>org.springframework.security</groupId>
+    <artifactId>spring-security-web</artifactId>
+    <version>5.1.5.RELEASE</version>
+	<systemPath>${basedir}/src/main/webapp/WEB-INF/lib/spring-security-web-5.1.5.RELEASE.jar</systemPath>
+	<scope>system</scope>
+</dependency>
+
+
+<!-- commons-lang-1.0  -->
+
+
+
+<!-- https://mvnrepository.com/artifact/io.swagger/swagger-jaxrs -->
+<dependency>
+    <groupId>io.swagger</groupId>
+    <artifactId>swagger-jaxrs</artifactId>
+    <version>1.5.21</version>
+	<systemPath>${basedir}/src/main/webapp/WEB-INF/lib/swagger-jaxrs-1.5.21.jar</systemPath>
+	<scope>system</scope>
+</dependency>
+
+
+
+<!-- https://mvnrepository.com/artifact/org.apache.commons/commons-lang3 -->
+<dependency>
+    <groupId>org.apache.commons</groupId>
+    <artifactId>commons-lang3</artifactId>
+    <version>3.8.1</version>
+	<systemPath>${basedir}/src/main/webapp/WEB-INF/lib/commons-lang3-3.8.1.jar</systemPath>
+	<scope>system</scope>
+</dependency>
+
+
+
+
+<!-- https://mvnrepository.com/artifact/io.swagger/swagger-core -->
+<dependency>
+    <groupId>io.swagger</groupId>
+    <artifactId>swagger-core</artifactId>
+    <version>1.5.21</version>
+	<systemPath>${basedir}/src/main/webapp/WEB-INF/lib/swagger-core-1.5.21.jar</systemPath>
+	<scope>system</scope>
+</dependency>
+
+
+
+
+<!-- https://mvnrepository.com/artifact/io.swagger/swagger-models -->
+<dependency>
+    <groupId>io.swagger</groupId>
+    <artifactId>swagger-models</artifactId>
+    <version>1.5.21</version>
+	<systemPath>${basedir}/src/main/webapp/WEB-INF/lib/swagger-models-1.5.21.jar</systemPath>
+	<scope>system</scope>
+</dependency>
+
+
+
+
+<!-- https://mvnrepository.com/artifact/io.swagger/swagger-annotations -->
+<dependency>
+    <groupId>io.swagger</groupId>
+    <artifactId>swagger-annotations</artifactId>
+    <version>1.5.21</version>
+	<systemPath>${basedir}/src/main/webapp/WEB-INF/lib/swagger-annotations-1.5.21.jar</systemPath>
+	<scope>system</scope>
+</dependency>
+
+
+
+
+<!-- https://mvnrepository.com/artifact/org.springframework.plugin/spring-plugin-core -->
+<dependency>
+    <groupId>org.springframework.plugin</groupId>
+    <artifactId>spring-plugin-core</artifactId>
+    <version>1.2.0.RELEASE</version>
+	<systemPath>${basedir}/src/main/webapp/WEB-INF/lib/spring-plugin-core-1.2.0.RELEASE.jar</systemPath>
+	<scope>system</scope>
+</dependency>
+
+
+
+<!-- https://mvnrepository.com/artifact/io.springfox/springfox-swagger2 -->
+<dependency>
+    <groupId>io.springfox</groupId>
+    <artifactId>springfox-swagger2</artifactId>
+    <version>2.9.2</version>
+	<systemPath>${basedir}/src/main/webapp/WEB-INF/lib/springfox-swagger2-2.9.2.jar</systemPath>
+	<scope>system</scope>
+
+</dependency>
+
+
+<!-- https://mvnrepository.com/artifact/io.springfox/springfox-core -->
+<dependency>
+    <groupId>io.springfox</groupId>
+    <artifactId>springfox-core</artifactId>
+    <version>2.9.2</version>
+	<systemPath>${basedir}/src/main/webapp/WEB-INF/lib/springfox-core-2.9.2.jar</systemPath>
+	<scope>system</scope>
+</dependency>
+
+
+
+<!-- https://mvnrepository.com/artifact/org.springframework.plugin/spring-plugin-metadata -->
+<dependency>
+    <groupId>org.springframework.plugin</groupId>
+    <artifactId>spring-plugin-metadata</artifactId>
+    <version>2.0.0.RELEASE</version>
+	<systemPath>${basedir}/src/main/webapp/WEB-INF/lib/spring-plugin-metadata-2.0.0.RELEASE.jar</systemPath>
+	<scope>system</scope>
+</dependency>
+
+
+
+
+<!-- https://mvnrepository.com/artifact/com.fasterxml/classmate -->
+<dependency>
+    <groupId>com.fasterxml</groupId>
+    <artifactId>classmate</artifactId>
+    <version>1.5.1</version>
+	<systemPath>${basedir}/src/main/webapp/WEB-INF/lib/classmate-1.5.1.jar</systemPath>
+	<scope>system</scope>
+</dependency>
+
+
+
+<!-- https://mvnrepository.com/artifact/io.springfox/springfox-schema -->
+<dependency>
+    <groupId>io.springfox</groupId>
+    <artifactId>springfox-schema</artifactId>
+    <version>2.9.2</version>
+	<systemPath>${basedir}/src/main/webapp/WEB-INF/lib/springfox-schema-2.9.2.jar</systemPath>
+	<scope>system</scope>
+</dependency>
+
+
+
+
+
+<!-- https://mvnrepository.com/artifact/io.springfox/springfox-spi -->
+<dependency>
+    <groupId>io.springfox</groupId>
+    <artifactId>springfox-spi</artifactId>
+    <version>2.9.2</version>
+	<systemPath>${basedir}/src/main/webapp/WEB-INF/lib/springfox-spi-2.9.2.jar</systemPath>
+	<scope>system</scope>
+</dependency>
+
+
+
+
+
+<!-- https://mvnrepository.com/artifact/io.springfox/springfox-swagger-common -->
+<dependency>
+    <groupId>io.springfox</groupId>
+    <artifactId>springfox-swagger-common</artifactId>
+    <version>2.9.2</version>
+	<systemPath>${basedir}/src/main/webapp/WEB-INF/lib/springfox-swagger-common-2.9.2.jar</systemPath>
+	<scope>system</scope>
+</dependency>
+
+
+
+
+<!-- https://mvnrepository.com/artifact/io.springfox/springfox-spring-web -->
+<dependency>
+    <groupId>io.springfox</groupId>
+    <artifactId>springfox-spring-web</artifactId>
+    <version>2.9.2</version>
+	<systemPath>${basedir}/src/main/webapp/WEB-INF/lib/springfox-spring-web-2.9.2.jar</systemPath>
+	<scope>system</scope>
+</dependency>
+
+
+
+
+		
+		
+	
+		<dependency>
+			<groupId>com.google.code.gson</groupId>
+			<artifactId>gson</artifactId>
+			<version>2.2.2</version>
+		</dependency>
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>jstl</artifactId>
+			<version>1.2</version>
+		</dependency>
+		<dependency>
+			<groupId>jsch</groupId>
+			<artifactId>jsch</artifactId>
+			<version>0.1.52</version>
+		</dependency>
+
+
+		<dependency>
+			<groupId>org.ow2.asm</groupId>
+			<artifactId>asm-debug-all</artifactId>
+			<version>5.0.1</version>
+		</dependency>
+
+
+		<dependency>
+			<groupId>javax.xml.bind</groupId>
+			<artifactId>jaxb-api</artifactId>
+			<version>2.2.7</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.osgi</groupId>
+			<artifactId>org.osgi.core</artifactId>
+			<version>4.2.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>javax.persistence</groupId>
+			<artifactId>persistence-api</artifactId>
+			<version>1.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>pretupsCore</groupId>
+			<artifactId>library</artifactId>
+			<version>1.0</version>
+			<systemPath>${basedir}/src/main/webapp/WEB-INF/lib/pretupsCore.jar</systemPath>
+			<scope>system</scope>
+		</dependency>
+		<dependency>
+			<groupId>inetcore</groupId>
+			<artifactId>library</artifactId>
+			<version>1.0</version>
+			<systemPath>${basedir}/src/main/webapp/WEB-INF/lib/inetcore.jar</systemPath>
+			<scope>system</scope>
+		</dependency>
+		<dependency>
+			<groupId>moneyconversion</groupId>
+			<artifactId>library</artifactId>
+			<version>1.0</version>
+			<systemPath>${basedir}/src/main/webapp/WEB-INF/lib/moneyconversion.jar</systemPath>
+			<scope>system</scope>
+		</dependency>
+		
+
+		<dependency>
+			<groupId>inter</groupId>
+			<artifactId>library</artifactId>
+			<version>1.0</version>
+			<systemPath>${basedir}/src/main/webapp/WEB-INF/lib/inter.jar</systemPath>
+			<scope>system</scope>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.jboss.resteasy</groupId>
+			<artifactId>resteasy-jackson2-provider</artifactId>
+			<version>3.6.0.Final</version>
+			<systemPath>${basedir}/src/main/webapp/WEB-INF/lib/resteasy-jackson2-provider-3.6.0.Final.jar</systemPath>
+			<scope>system</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.jboss.resteasy</groupId>
+			<artifactId>resteasy-client</artifactId>
+			<version>3.6.0.Final</version>
+			<systemPath>${basedir}/src/main/webapp/WEB-INF/lib/resteasy-client-3.6.0.Final.jar</systemPath>
+			<scope>system</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.jboss.resteasy</groupId>
+			<artifactId>resteasy-jaxrs</artifactId>
+			<version>3.6.0.Final</version>
+			<systemPath>${basedir}/src/main/webapp/WEB-INF/lib/resteasy-jaxrs-3.6.0.Final.jar</systemPath>
+			<scope>system</scope>
+		</dependency>
+		
+
+
+		<dependency>
+		    <groupId>com.monitorjbl</groupId>
+		    <artifactId>xlsx-streamer</artifactId>
+		    <version>2.1.0</version>
+		    <systemPath>${basedir}/src/main/webapp/WEB-INF/lib/xlsx-streamer-2.1.0.jar</systemPath>
+			<scope>system</scope>
+		</dependency>
+
+		<dependency>
+			 <groupId>EjecutarTrama</groupId>
+			 <artifactId>EjecutarTrama</artifactId>
+			 <version>1.0</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>com.ibm.icu</groupId>
+			<artifactId>icu4j</artifactId>
+			<version>61.1</version>
+			<systemPath>${basedir}/src/main/webapp/WEB-INF/lib/icu4j-61.1.jar</systemPath>
+			<scope>system</scope>
+		</dependency>
+		<dependency>
+		    <groupId>org.owasp.encoder</groupId>
+		    <artifactId>encoder</artifactId>
+		    <version>1.2</version>
+		    <systemPath>${basedir}/src/main/webapp/WEB-INF/lib/encoder-1.2.jar</systemPath>
+			<scope>system</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.google.guava</groupId>
+			<artifactId>guava</artifactId>
+			<version>21.0</version>
+			<systemPath>${basedir}/src/main/webapp/WEB-INF/lib/guava-21.0.jar</systemPath>
+			<scope>system</scope>
+     </dependency>
+				<dependency>
+			<groupId>org.apache.poi</groupId>
+			<artifactId>poi</artifactId>
+			<version>3.17</version>
+			<systemPath>${basedir}/src/main/webapp/WEB-INF/lib/poi-3.17.jar</systemPath>
+			<scope>system</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.poi</groupId>
+			<artifactId>poi-ooxml</artifactId>
+			<version>3.17</version>
+			<systemPath>${basedir}/src/main/webapp/WEB-INF/lib/poi-ooxml-3.17.jar</systemPath>
+			<scope>system</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.poi</groupId>
+			<artifactId>poi-ooxml-schemas</artifactId>
+			<version>3.17</version>
+			<systemPath>${basedir}/src/main/webapp/WEB-INF/lib/poi-ooxml-schemas-3.17.jar</systemPath>
+			<scope>system</scope>
+		</dependency>
+		<!-- <dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+			<version>3.1.0</version>
+			<systemPath>${basedir}/src/main/webapp/WEB-INF/lib/javax.servlet-api-3.1.0.jar</systemPath>
+			<scope>system</scope>
+		</dependency> -->
+
+<dependency>
+		    <groupId>com.fasterxml.jackson.core</groupId>
+		    <artifactId>jackson-annotations</artifactId>
+		    <version>2.9.8</version>
+		    <systemPath>${basedir}/src/main/webapp/WEB-INF/lib/jackson-annotations-2.9.8.jar</systemPath>
+			<scope>system</scope>
+		</dependency>
+		<dependency>
+		    <groupId>com.fasterxml.jackson.core</groupId>
+		    <artifactId>jackson-core</artifactId>
+		    <version>2.9.8</version>
+		    <systemPath>${basedir}/src/main/webapp/WEB-INF/lib/jackson-core-2.9.8.jar</systemPath>
+			<scope>system</scope>
+		</dependency>
+		<dependency>
+		    <groupId>com.fasterxml.jackson.core</groupId>
+		    <artifactId>jackson-databind</artifactId>
+		    <version>2.9.8</version>
+		    <systemPath>${basedir}/src/main/webapp/WEB-INF/lib/jackson-databind-2.9.8.jar</systemPath>
+			<scope>system</scope>
+		</dependency>
+		<dependency>
+		    <groupId>com.fasterxml.jackson.core</groupId>
+		    <artifactId>jackson-jaxrs-base</artifactId>
+		    <version>2.9.8</version>
+		    <systemPath>${basedir}/src/main/webapp/WEB-INF/lib/jackson-jaxrs-base-2.9.8.jar</systemPath>
+			<scope>system</scope>
+		</dependency>
+		<dependency>
+		    <groupId>com.fasterxml.jackson.core</groupId>
+		    <artifactId>jackson-jaxrs-json-provider</artifactId>
+		    <version>2.9.8</version>
+		    <systemPath>${basedir}/src/main/webapp/WEB-INF/lib/jackson-jaxrs-json-provider-2.9.8.jar</systemPath>
+			<scope>system</scope>
+		</dependency>
+		<dependency>
+		    <groupId>com.fasterxml.jackson.core</groupId>
+		    <artifactId>jackson-module-jaxb-annotations</artifactId>
+		    <version>2.9.8</version>
+		    <systemPath>${basedir}/src/main/webapp/WEB-INF/lib/jackson-module-jaxb-annotations-2.9.8.jar</systemPath>
+			<scope>system</scope>
+		</dependency>
+		
+		<dependency>
+		    <groupId>commons-io</groupId>
+		    <artifactId>commons-io</artifactId>
+		    <version>2.5</version>
+		    <systemPath>${basedir}/src/main/webapp/WEB-INF/lib/commons-io-2.5.jar</systemPath>
+			<scope>system</scope>
+		</dependency>
+		
+		<dependency>
+		    <groupId>org.apache.httpcomponents</groupId>
+		    <artifactId>httpclient</artifactId>
+		    <version>4.5.4</version>
+		    <systemPath>${basedir}/src/main/webapp/WEB-INF/lib/httpclient-4.5.4.jar</systemPath>
+			<scope>system</scope>
+		</dependency>
+		
+		<dependency>
+		    <groupId>org.apache.httpcomponents</groupId>
+		    <artifactId>httpcore</artifactId>
+		    <version>4.4.7</version>
+		    <systemPath>${basedir}/src/main/webapp/WEB-INF/lib/httpcore-4.4.7.jar</systemPath>
+			<scope>system</scope>
+		</dependency>
+		
+		<dependency>
+		    <groupId>javax.json.bind</groupId>
+		    <artifactId>javax.json.bind-api</artifactId>
+		    <version>1.0</version>
+		    <systemPath>${basedir}/src/main/webapp/WEB-INF/lib/javax.json.bind-api-1.0.jar</systemPath>
+			<scope>system</scope>
+		</dependency>
+		
+		<dependency>
+		    <groupId>org.glassfish.web</groupId>
+		    <artifactId>javax.servlet.jsp.jstl</artifactId>
+		    <version>1.2.3</version>
+		    <systemPath>${basedir}/src/main/webapp/WEB-INF/lib/javax.servlet.jsp.jstl-1.2.3.jar</systemPath>
+			<scope>system</scope>
+		</dependency>
+		
+		<dependency>
+		    <groupId>org.jboss.spec.javax.annotation</groupId>
+		    <artifactId>jboss-annotations-api_1.2_spec</artifactId>
+		    <version>1.0.0.Final</version>
+		    <systemPath>${basedir}/src/main/webapp/WEB-INF/lib/jboss-annotations-api_1.2_spec-1.0.0.Final.jar</systemPath>
+			<scope>system</scope>
+		</dependency>
+		
+		<dependency>
+		    <groupId>org.jboss.spec.javax.xml.bind</groupId>
+		    <artifactId>jboss-jaxb-api_2.3_spec</artifactId>
+		    <version>1.0.0.Final</version>
+		    <systemPath>${basedir}/src/main/webapp/WEB-INF/lib/jboss-jaxb-api_2.3_spec-1.0.0.Final.jar</systemPath>
+			<scope>system</scope>
+		</dependency>
+		
+		<dependency>
+		    <groupId>org.jboss.spec.javax.ws.rs</groupId>
+		    <artifactId>jboss-jaxrs-api_2.1_spec</artifactId>
+		    <version>1.0.0.Final</version>
+		    <systemPath>${basedir}/src/main/webapp/WEB-INF/lib/jboss-jaxrs-api_2.1_spec-1.0.0.Final.jar</systemPath>
+			<scope>system</scope>
+		</dependency>
+		
+		<dependency>
+		    <groupId>org.jboss.logging</groupId>
+		    <artifactId>jboss-logging</artifactId>
+		    <version>3.3.1.Final</version>
+		    <systemPath>${basedir}/src/main/webapp/WEB-INF/lib/jboss-logging-3.3.1.Final.jar</systemPath>
+			<scope>system</scope>
+		</dependency>
+		
+		<dependency>
+		    <groupId>com.github.fge</groupId>
+		    <artifactId>json-patch</artifactId>
+		    <version>1.7</version>
+		    <systemPath>${basedir}/src/main/webapp/WEB-INF/lib/json-patch-1.7.jar</systemPath>
+			<scope>system</scope>
+		</dependency>
+		
+		<dependency>
+		    <groupId>org.reactivestreams</groupId>
+		    <artifactId>reactive-streams</artifactId>
+		    <version>1.0.2</version>
+		    <systemPath>${basedir}/src/main/webapp/WEB-INF/lib/reactive-streams-1.0.2.jar</systemPath>
+			<scope>system</scope>
+		</dependency>
+		
+		<dependency>
+			<groupId>bcpg</groupId>
+			<artifactId>bcpg</artifactId>
+			<version>1.5.0</version>
+			<systemPath>${basedir}/src/main/webapp/WEB-INF/lib/bcpg-jdk15on-150.jar</systemPath>
+			<scope>system</scope>
+		</dependency>
+		<dependency>
+			<groupId>bcprov</groupId>
+			<artifactId>bcprov</artifactId>
+			<version>1.5.0</version>
+			<systemPath>${basedir}/src/main/webapp/WEB-INF/lib/bcprov-jdk15on-150.jar</systemPath>
+			<scope>system</scope>
+		</dependency>
+		<dependency>
+			<groupId>jcraft</groupId>
+			<artifactId>jcraft</artifactId>
+			<version>0.1.52</version>
+			<systemPath>${basedir}/src/main/webapp/WEB-INF/lib/jsch-0.1.52.jar</systemPath>
+			<scope>system</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.kafka</groupId>
+			<artifactId>kafka-clients</artifactId>
+			<version>0.10.0.0</version>
+			<systemPath>${basedir}/src/main/webapp/WEB-INF/lib/kafka-clients-0.10.0.0.jar</systemPath>
+			<scope>system</scope>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.hyperic</groupId>
+			<artifactId>sigar</artifactId>
+			<version>1.6.4</version>
+			<systemPath>${basedir}/src/main/webapp/WEB-INF/lib/sigar-1.6.4.jar</systemPath>
+			<scope>system</scope>
+		</dependency>
+		
+		<dependency>
+    		<groupId>com.jcraft</groupId>
+    		<artifactId>jsch</artifactId>
+    		<version>0.1.42</version>
+    		<systemPath>${basedir}/src/main/webapp/WEB-INF/lib/jsch-0.1.42.jar</systemPath>
+			<scope>system</scope>
+		</dependency>	
+		
+	</dependencies>
+
+	<build>
+
+		<finalName>pretups</finalName>
+		<resources>
+			<resource>
+				<directory>src/main/resources</directory>
+				<filtering>true</filtering>
+				<includes>
+					<!-- <include>**/*.xml</include> <include>**/*.properties</include> -->
+					<include>Constants.props</include>
+					<include>LogConfig.props</include>
+					<include>ESAPI.properties</include>
+					<include>KPIConfig.props</include>
+					<include>MessageResources.properties</include>
+					<include>Messages.properties</include>
+					<include>QueryFile.props</include>
+					<include>Reports_label.properties</include>
+					<include>validation.properties</include>
+				</includes>
+			</resource>
+
+			<resource>
+				<directory>src/main/resources</directory>
+				<filtering>false</filtering>
+				<!-- <excludes> <exclude>**/*.xml</exclude> </excludes> -->
+			</resource>
+			<resource>
+				<directory>src/main/java</directory>
+				<includes>
+					<include>**/*.xml</include>
+					<include>**/*.properties</include>
+				</includes>
+			</resource>
+
+			<!-- <resource> <directory>src/main/tag</directory> <targetPath>lib</targetPath> 
+				</resource> -->
+
+		</resources>
+
+		<pluginManagement>
+			<plugins>
+				<!-- To disable creation of META-INF/maven files -->
+
+				<plugin>
+					<groupId>org.codehaus.mojo</groupId>
+					<artifactId>tomcat-maven-plugin</artifactId>
+					<version>1.1</version>
+					<dependencies>
+						<dependency>
+							<groupId>org.codehaus.mojo</groupId>
+							<artifactId>tomcat-maven-plugin</artifactId>
+							<version>1.1</version>
+						</dependency>
+					</dependencies>
+				</plugin>
+
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-jar-plugin</artifactId>
+					<version>2.3</version>
+					<configuration>
+						<includes>
+							<include>
+								${project.build.directory}/generated-classes/**/*.class
+							</include>
+						</includes>
+						<excludes>
+							<exclude>
+								${project.build.directory}/classes/**/*.class
+							</exclude>
+						</excludes>
+					</configuration>
+				</plugin>
+
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-compiler-plugin</artifactId>
+					<version>3.1</version>
+					<configuration>
+						<source>1.8</source>
+						<target>1.8</target>
+						<encoding>Cp1252</encoding>
+						<verbose>true</verbose>
+						<!--<fork>true</fork> -->
+						<!-- <executable>${JAVA_1_6_HOME}/bin/javac</executable> -->
+
+						<excludes>
+
+							<exclude>com/client/**/*.java</exclude>
+							<exclude>com/client/ldap/*.java</exclude>
+
+
+						</excludes>
+					</configuration>
+				</plugin>
+
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-war-plugin</artifactId>
+					<version>2.1.1</version>
+					<configuration>
+						<excludes>jsp/selftopup*/**/*.*,jsp/faq_*/**/*.*,jsp/help_*/**/*.*,jsp/webhelps/webhelps*/**/*.*,monitorserver/**/*.*,WEB-INF/reports_ar*/**/*.*,WEB-INF/selftopup_s*/**/*.*,WEB-INF/lib/RechargeGatewayIdls.jar,WEB-INF/lib/unboundid-ldapsdk-1.1.3.jar,WEB-INF/lib/c3p0-0.9.5.2.jar,WEB-INF/lib/log4j-1.2.9.jar,WEB-INF/lib/postgresql-42.2.2.jar</excludes>
+						<archive>
+							<addMavenDescriptor>
+								false
+							</addMavenDescriptor>
+						</archive>
+					</configuration>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-javadoc-plugin</artifactId>
+					<version>2.9.1</version>
+					<executions>
+						<execution>
+							<id>attach-javadocs</id>
+							<goals>
+								<goal>jar</goal>
+							</goals>
+						</execution>
+					</executions>
+				</plugin>
+
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-site-plugin</artifactId>
+					<version>3.3</version>
+					<dependencies>
+						<dependency><!-- add support for ssh/scp for site deploy -->
+							<groupId>org.apache.maven.wagon</groupId>
+							<artifactId>wagon-ssh</artifactId>
+							<version>1.0</version>
+						</dependency>
+					</dependencies>
+				</plugin>
+
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>
+						maven-surefire-report-plugin
+					</artifactId>
+					<version>2.6</version>
+					<configuration>
+						<skipTests>flase</skipTests>
+					</configuration>
+				</plugin>
+
+				<plugin>
+					<groupId>org.codehaus.mojo</groupId>
+					<artifactId>sql-maven-plugin</artifactId>
+					<version>1.5</version>
+					<dependencies>
+						<!-- specify the dependent jdbc driver here -->
+						<dependency>
+							<groupId>ojdbc5</groupId>
+							<artifactId>ojdbc5</artifactId>
+							<version>11.1.0.7.0</version>
+						</dependency>
+					</dependencies>
+					<configuration>
+						<driver>oracle.jdbc.driver.OracleDriver</driver>
+						<url>
+							jdbc:oracle:thin:@172.16.1.156:1521:prtp
+						</url>
+						<!-- <username>mobiquity_b7</username> <password>mobiquity_b7</password> -->
+						<settingsKey>182DBServer</settingsKey>
+						<skip>false</skip>
+						<onError>abort</onError>
+						<keepFormat>false</keepFormat>
+						<autocommit>false</autocommit>
+					</configuration>
+				</plugin>
+
+
+
+
+<plugin>
+	<groupId>org.jacoco</groupId>
+	<artifactId>jacoco-maven-plugin</artifactId>
+	<version>0.8.5</version>
+	<executions>
+		<execution>
+			<id>prepare-agent</id>
+			<goals>
+				<goal>prepare-agent</goal>
+			</goals>
+		</execution>
+		<execution>
+			<id>report</id>
+			<phase>prepare-package</phase>
+			<goals>
+				<goal>report</goal>
+			</goals>
+		</execution>
+		<execution>
+			<id>post-unit-test</id>
+			<phase>test</phase>
+			<goals>
+				<goal>report</goal>
+			</goals>
+			<configuration>
+				<dataFile>target/jacoco.exec</dataFile>
+				<outputDirectory>target/jacoco-ut</outputDirectory>
+			</configuration>
+		</execution>
+	</executions>
+	<configuration>
+		<systemPropertyVariables>
+			<jacoco-agent.destfile>target/jacoco.exec</jacoco-agent.destfile>
+		</systemPropertyVariables>
+	</configuration>
+</plugin>
+
+
+			</plugins>
+
+
+
+
+
+		</pluginManagement>
+
+	</build>
+
+</project>

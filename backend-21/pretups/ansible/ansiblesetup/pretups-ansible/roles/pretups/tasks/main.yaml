@@ -1,0 +1,34 @@
+---
+#- name: Create a pretups directory
+#  file:
+#    path: /usr/share/tomcat/webapps/pretups
+#    state: directory
+#    owner: tomcat
+#    group: tomcat
+#    mode: 0777
+
+- name: Create a pretups conf directory
+  file:
+    path: /usr/share/tomcat/conf/pretups
+    state: directory
+    owner: tomcat
+    group: tomcat
+    mode: 0777
+
+
+- name: Move directory contents
+  #command: cp -r /home/pretups/ansiblesetup/code/pretups/conf/pretups/. /usr/share/tomcat/conf/pretups/
+  ansible.builtin.copy:
+    src: /home/pretups/ansiblesetup/code/pretups/conf/pretups/.
+    dest: /usr/share/tomcat/conf/
+    owner: tomcat
+    group: tomcat
+
+
+- name: Move directory contents
+  #command: cp -r /home/pretups/ansiblesetup/code/pretups/pretups.war /usr/share/tomcat/webapps/
+  ansible.builtin.copy:
+    src: /home/pretups/ansiblesetup/code/pretups/pretups.war
+    dest: /usr/share/tomcat/webapps/
+    owner: tomcat
+    group: tomcat

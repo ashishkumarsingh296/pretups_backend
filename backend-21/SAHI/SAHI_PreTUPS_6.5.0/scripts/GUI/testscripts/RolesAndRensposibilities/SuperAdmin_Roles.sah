@@ -1,0 +1,101 @@
+// ...................... Verify Names of link and sublink by super admin ...... 
+//
+//
+//
+//
+//
+//........................Roles And Responsibility .............................. 
+
+
+
+_includeOnce("../../../../utility/ImportPackage.sah");
+
+var $g_linkSuperAdmin = _readCSVFile("../../../GUI/testdata/Link_SuperAdmin.csv"); // Read Links For SuperAdmin
+
+var $g_subLinkSuperAdmin = _readCSVFile("../../../GUI/testdata/SubLink_SuperAdmin.csv"); //Read Sub Links For SuperAdmin
+
+
+
+var $g_writeLinkSuperAdmin = _readCSVFile("../../../GUI/testdata/Write_Link_SuperAdmin.csv");
+
+
+
+//====Login into Application====
+login($g_appURL, $g_LangEnglish, $g_superAdmin, $g_password, $g_assertMessage); //calls the Login function in Login.sah with the parameters(url, language, username, password, assertion)
+
+
+_assertExists(_div("/" + "Category : Super Admin" + ".*/"));
+
+
+var $rw = 0;
+var $cl = 1;
+
+
+
+for(var $g_row = 1; $g_linkSuperAdmin[$g_row] != null; $g_row++){
+	var $g_col = 0;
+	$rw = 0;
+	
+	_assertExists(_link($g_linkSuperAdmin[$g_row][$g_col]));
+
+	if(_exists(_link($g_linkSuperAdmin[$g_row][$g_col]))){
+	
+	
+		_click(_link($g_linkSuperAdmin[$g_row][$g_col]));
+		_log( $g_linkSuperAdmin[$g_row][$g_col] + " : link is visible");
+		
+		
+		$g_writeLinkSuperAdmin[$rw++][$cl] = $g_linkSuperAdmin[$g_row][$g_col] + " is available";
+		_writeCSVFile($g_writeLinkSuperAdmin, "../../../GUI/testdata/Write_Link_SuperAdmin.csv", 1);
+		
+		for(var $g_innerLink = 0;   $g_subLinkSuperAdmin[0][$g_innerLink] != null; $g_innerLink++){
+			
+			if( $g_linkSuperAdmin[$g_row][$g_col] == $g_subLinkSuperAdmin[0][$g_innerLink])
+			{
+				for(var $g_tempRow = 1; $g_subLinkSuperAdmin[$g_tempRow] != null; $g_tempRow++ ){
+					
+					if($g_subLinkSuperAdmin[$g_tempRow][$g_innerLink] == "")
+							break;
+					
+					_assertExists(_link($g_subLinkSuperAdmin[$g_tempRow][$g_innerLink]));
+					
+					if(_exists(_link($g_subLinkSuperAdmin[$g_tempRow][$g_innerLink]))){
+						_click(_link($g_subLinkSuperAdmin[$g_tempRow][$g_innerLink]))
+						_log( $g_subLinkSuperAdmin[$g_tempRow][$g_innerLink] + " : Sub-link under link " + $g_linkSuperAdmin[$g_row][$g_col] +" is visible " );
+						
+						$g_writeLinkSuperAdmin[$rw++][$cl] = $g_subLinkSuperAdmin[$g_tempRow][$g_innerLink] + " is available";
+						_writeCSVFile($g_writeLinkSuperAdmin, "../../../GUI/testdata/Write_Link_SuperAdmin.csv", 1);
+						
+					}else{
+						_log( $g_subLinkSuperAdmin[$g_tempRow][$g_innerLink] + " : Sub-link under link " + $g_linkSuperAdmin[$g_row][$g_col] +" is not visible " );
+						
+						$g_writeLinkSuperAdmin[$rw++][$cl] = $g_subLinkSuperAdmin[$g_tempRow][$g_innerLink] + " is not available";
+						_writeCSVFile($g_writeLinkSuperAdmin, "../../../GUI/testdata/Write_Link_SuperAdmin.csv", 1);
+						
+					}
+				}
+					
+					
+				}
+				
+		}	
+			
+		}else{
+			_log( $g_linkSuperAdmin[$g_row][$g_col] + " : link is not visible");
+			$g_writeLinkSuperAdmin[$rw++][$cl] = $g_linkSuperAdmin[$g_row][$g_col] + " is not available";
+			_writeCSVFile($g_writeLinkSuperAdmin, "../../../GUI/testdata/Write_Link_SuperAdmin.csv", 1);
+		}
+		
+	$cl++;
+	
+	
+	}
+	
+
+
+
+	
+
+
+
+

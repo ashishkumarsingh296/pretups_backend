@@ -1,0 +1,2 @@
+TestcaseId,TestcaseType,Module,Description
+ P2PGMBBAR4,Negative,Give Me Balance,GMB BAR should Not  be Successful from USSD  when Mandatory Parameters are missing

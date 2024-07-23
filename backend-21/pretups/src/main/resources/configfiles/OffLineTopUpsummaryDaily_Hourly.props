@@ -1,0 +1,25 @@
+PROCESS_ID=TDSRD
+MAX_ROWS=65000
+FILE_SUBSTR_DATE_FORMAT=_ddMMyy_hhmmss
+DATE_FORMAT=dd/MM/yyyy
+DATE_TIME_FORMAT=dd/MM/yy hh:mm:ss
+TIME_IN_CRON=5
+TDSRD_DIR=<Report-Generation-Path>
+TDSRD_HEADER=Date,Channel user Mobile Number,Current Balance,C2C Transfer-IN Amount,C2S Transfer Amount
+TDSRD_QRY=select rownum,to_char(sysdate,'dd-MM-yyyy hh:mi:ss') ||','||msisdn||','||nvl(ub.BALANCE,0) ||','||nvl ((select sum(ct.TRANSFER_MRP) from channel_transfers ct where ct.TO_USER_ID  =u.USER_ID),0)||','||nvl((select sum(c.TRANSFER_VALUE) from  c2s_transfers c where c.sender_ID=u.USER_ID  and c.TRANSFER_DATE_TIME >? and  c.TRANSFER_DATE_TIME < ? ),0 ) AS DATA from users u,user_balances ub where status='Y' and u.MSISDN is not null and u.USER_ID=ub.USER_ID(+)
+TDSRD_EXT=.csv
+TDSRD_PREFIX_NAME=OFFLINE_DAILY
+
+PROCESS_ID_H=TDSRH
+MAX_ROWS=65000
+FILE_SUBSTR_DATE_FORMAT=_ddMMyy_hhmmss
+DATE_FORMAT=dd/MM/yyyy
+DATE_TIME_FORMAT=dd/MM/yy hh:mm:ss
+
+TDSRH_DIR=<Report-Generation-Path>
+TDSRH_HEADER=Date,Channel user Mobile Number,Current Balance,C2C Transfer-IN Amount,C2S Transfer Amount
+TDSRH_QRY=select rownum,to_char(sysdate,'dd-MM-yyyy hh:mi:ss') ||','||msisdn||','||nvl(ub.BALANCE,0) ||','||nvl ((select sum(ct.TRANSFER_MRP) from channel_transfers ct where ct.TO_USER_ID  =u.USER_ID),0)||','||nvl((select sum(c.TRANSFER_VALUE) from  c2s_transfers c where c.sender_ID=u.USER_ID  and c.TRANSFER_DATE_TIME >sysdate and  c.TRANSFER_DATE_TIME < sysdate -1  ),0 ) AS DATA from users u,user_balances ub where status='Y' and u.MSISDN is not null and u.USER_ID=ub.USER_ID(+)
+
+
+TDSRH_EXT=.csv
+TDSRH_PREFIX_NAME=OFFLINE_HOURLY

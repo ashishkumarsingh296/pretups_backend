@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="PreTUPS Automation Suite" verbose="2" parallel="tests">
+
+    <test name="Smoke" parallel="none" preserve-order="true">
+        <classes>
+        
+        <!-- Authentication Management -->
+            <class name="restassuredapi.test.OAuthenticationTest"/>
+        	<class name="restassuredapi.test.RefreshTokenTest"/>
+            
+        <!-- C2C File Operations -->    
+        	<class name="restassuredapi.test.C2CFileDownload"/>
+        	<class name="restassuredapi.test.C2CFileUpload"/>
+        	
+      
+        <!-- C2C Receiver --> 	  
+        	<class name="restassuredapi.test.AutoCompleteUserDetails"/>
+        	<class name="restassuredapi.test.C2CStockReturn"/>
+        	<class name="restassuredapi.test.C2CStockTransferAndApproval"/>
+        	<class name="restassuredapi.test.C2CStockInitiateAndApproval"/>
+        	<class name="restassuredapi.test.C2CStockMultiple"/>
+        	<class name="restassuredapi.test.C2CTransferApprovalListStock"/>
+        	<class name="restassuredapi.test.C2CTransferApprovalListVoucher"/>
+        	<class name="restassuredapi.test.C2CViewTransferDetailsStock"/>
+            <class name="restassuredapi.test.C2CViewTransferDetailsVoucher"/>
+            <class name="restassuredapi.test.C2CVoucherInitiateAndApproval"/>
+        	<class name="restassuredapi.test.C2CVoucherTransferandApproval"/>
+        	<class name="restassuredapi.test.C2CStockWithdraw"/>
+        	<class name="restassuredapi.test.ViewVoucherC2CO2CTrfDetails"/>
+        	
+            
+            
+        <!-- C2S Receiver -->	
+        	<class name="restassuredapi.test.C2CStockTxnDetailTest"/>
+            <class name="restassuredapi.test.C2CVoucherTxnDetailTest"/>
+            <class name="restassuredapi.test.C2SGetTransactionDetails"/>
+        	<class name="restassuredapi.test.GetDomainCategory"/>
+            <class name="restassuredapi.test.ViewTxnCalculationVoucherStock"/>
+            <class name="restassuredapi.test.ViewPassBookTest"/>
+            <class name="restassuredapi.test.TrfUsersDetails"/>
+            <class name="restassuredapi.test.UserPaymentType"/>
+            <class name="restassuredapi.test.TotalIncomeDetailedViewTest"/>
+            <class name="restassuredapi.test.TotalTransactionDetailedViewTest"/>
+            <class name="restassuredapi.test.GetUserWidgetTest"/>
+            <class name="restassuredapi.test.O2CStockTxnDetailTest"/>
+            <class name="restassuredapi.test.O2CVoucherTxnDetailTest"/>
+            <class name="restassuredapi.test.PendingApprovalTxnCount"/>
+            <class name="restassuredapi.test.C2SUserBalanceTest"/>
+            
+        	
+        <!-- C2S Services -->	
+        	<class name="restassuredapi.test.BulkGiftRecharge"/>
+        	<class name="restassuredapi.test.C2SBulkInternetRecharge"/>
+        	<class name="restassuredapi.test.C2SBulkPrepaidRecharge"/>
+        	<class name="restassuredapi.test.InternetRecharge"/>
+        	<class name="restassuredapi.test.DvdApiTest"/>
+        	<class name="restassuredapi.test.DvdBulkTest"/>
+        	<class name="restassuredapi.test.EVDRecharge"/>
+            <class name="restassuredapi.test.FixedRecharge"/>
+            <class name="restassuredapi.test.C2SGetMvdDenomination"/>
+            <class name="restassuredapi.test.LoadReversalList"/> 
+      		<class name="restassuredapi.test.GiftRecharge"/>	
+      		<class name="restassuredapi.test.MVDRecharge"/>
+            <class name="restassuredapi.test.PostpaidBillPayment"/>
+            <class name="restassuredapi.test.C2SReversal"/>
+            <class name="restassuredapi.test.PrepaidRecharge"/>
+            <class name="restassuredapi.test.C2SSubServicesList"/>
+            <class name="restassuredapi.test.GetUserServiceBalance"/>
+            <class name="restassuredapi.test.ServicesListTest"/>
+            <class name="restassuredapi.test.GetCategoryListFromDomainCodeTest"/>
+            
+            
+        <!-- Channel Users -->
+            <class name="restassuredapi.test.UserAssociateProfile"/>
+            <class name="restassuredapi.test.CUChannelUserList"/>
+            <class name="restassuredapi.test.GetDomainCategoryParentCat"/>
+            <class name="restassuredapi.test.FetchUserDetails"/>
+            <class name="restassuredapi.test.CategoryList"/>
+            <class name="restassuredapi.test.UserPropertiesLists"/>
+            <class name="restassuredapi.test.UserProfileThreshold"/>
+            <class name="restassuredapi.test.userVerificationTest"/>
+            <class name="restassuredapi.test.ChangeNotificationLangTest"/>
+            <class name="restassuredapi.test.ReprintVoucherTest"/>
+            <class name="restassuredapi.test.ApprovalSuspenChannelUser"/>
+            <class name="restassuredapi.test.BulkSusResCUTest"/>
+            
+            
+      
+        <!-- File Operations -->
+        	<class name="restassuredapi.test.ErrorFile"/>
+        	<class name="restassuredapi.test.DVDMasterSheetDownload"/>
+		    <class name="restassuredapi.test.DvdDownloadTemplate"/>
+            <class name="restassuredapi.test.FixedRechargeDownloadTemplate"/>
+            <class name="restassuredapi.test.GiftRechargeDownloadTemplate"/>
+            <class name="restassuredapi.test.InternetRechargeDownloadTemplate"/>
+		    <class name="restassuredapi.test.InternetRechargeRestrictedList"/>
+		    <class name="restassuredapi.test.O2cPurchaseOrWithdrawTemplateTest"/>
+            <class name="restassuredapi.test.O2cPurchaseOrWithdrawUserListTest"/> 
+		    <class name="restassuredapi.test.CustomerRechargeDownloadTemplate"/>
+		    <class name="restassuredapi.test.CustomerRechargeRestrictedList"/>
+		    <class name="restassuredapi.test.C2CBatchDownloadTemplate"/>
+		    <class name="restassuredapi.test.DownloadUserReport"/>
+            <class name="restassuredapi.test.C2CBatchUsersListDownload"/>
+                  
+        <!-- O2C Batch Services -->
+            <class name="restassuredapi.test.BulkO2CApprovalList"/>
+        	<class name="restassuredapi.test.BatchO2CTransfer"/>
+        	<class name="restassuredapi.test.O2CFileWithdrawUpload"/>
+        	<class name="restassuredapi.test.BatchO2CApprovalDetailsTest"/>
+        	<class name="restassuredapi.test.O2CBulkTrfWidProcessApprovalTest"/>
+            <class name="restassuredapi.test.O2CBulkAppRejTrfWidTest"/>
+            <class name="restassuredapi.test.BulkFOCTransferTest"/>
+            <class name="restassuredapi.test.FocBatchStockTransferAppRejTest"/>
+            <class name="restassuredapi.test.FOCBulkTrfWidProcessApprovalTest"/>
+            
+        <!-- O2C Services -->
+        	<class name="restassuredapi.test.FocTransferInitiate"/>
+        	<class name="restassuredapi.test.O2CApprovalList"/>
+            <class name="restassuredapi.test.O2CChannelUserList"/>  
+            <class name="restassuredapi.test.GetGeoDomainCatDetails"/>
+            <class name="restassuredapi.test.GetO2CProducts"/>
+            <class name="restassuredapi.test.O2COwnerUserList"/>
+            <class name="restassuredapi.test.O2CSearchDetailsTest"/>
+            <class name="restassuredapi.test.GetUserInfoApiTest"/>
+            <class name="restassuredapi.test.O2cVoucherInitiateCUAndApproval"/>
+            <class name="restassuredapi.test.O2cVoucherTransferOptAndApproval"/>
+            <class name="restassuredapi.test.O2CWithdrawal"/>
+ 			<class name="restassuredapi.test.O2CStockInitiateCUAndApproval"/>
+          	<class name="restassuredapi.test.O2CStockInitiateOptAndApproval"/>
+            <class name="restassuredapi.test.O2cChannelUserReturn"/>
+            <class name="restassuredapi.test.FOCInitiateAndApproval"/>
+            <class name="restassuredapi.test.ChUserPaymentMethodAndRange"/>
+            
+        <!-- Staff Users -->
+       	 	<class name="restassuredapi.test.StaffUserService"/>
+       	 	<class name="restassuredapi.test.FetchStaffUserTest"/>	
+       	 	
+        <!-- Regular Expression -->
+       		<class name="restassuredapi.test.RegexAPITest"/>
+       		
+        <!-- User Services -->
+            <class name="restassuredapi.test.UserPinManagement"/>
+            <class name="restassuredapi.test.suspendResumeTest"/>
+            
+          
+        <!-- Voucher Services -->
+            <class name="restassuredapi.test.GetVoucherInfo"/>
+            <class name="restassuredapi.test.C2CBuyVoucherCountInfo"/>
+            <class name="restassuredapi.test.ValidateVoucherInfoTest"/>
+        <!-- User Widgets  -->       
+            <class name="restassuredapi.test.UpdateUserWidget"/>
+            <class name="restassuredapi.test.GetUserWidgetTest"/>
+            
+         <!-- Staff User List -->   
+           	<class name="restassuredapi.test.GetStaffUsersTest"/>
+           
+          <!-- Redis API -->   
+           	<class name="restassuredapi.test.LookupCacheApiTest"/>
+           	<class name="restassuredapi.test.SubLookupCacheApiTest"/>
+           	<class name="restassuredapi.test.PreferenceCacheApiTest"/>
+         
+        </classes>
+    </test>
+
+</suite>

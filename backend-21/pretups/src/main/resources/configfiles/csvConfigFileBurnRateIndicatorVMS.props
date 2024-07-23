@@ -1,0 +1,14 @@
+PROCESS_ID=BURN_RATE_INDICATOR
+MAX_ROWS=65000
+FILE_SUBSTR_DATE_FORMAT=_ddMMyy_hhmmss_
+DATE_FORMAT=dd/MM/yyyy
+DATE_TIME_FORMAT=dd/MM/yy hh:mm:ss
+
+
+BURN_RATE_INDICATOR_DIR=<Tomcat-path>/logs/csvreports
+BURN_RATE_INDICATOR_HEADER=SUMMARY DATE,MSISDN,USER ID,USER NAME,PROFILE NAME,DENOMINATION,USER NETWORK NAME,TOTAL DISTRIBUTED,TOTAL RECHARGED, OTHER STATUS
+BURN_RATE_INDICATOR_QRY=SELECT ROW_NUMBER() OVER (ORDER BY v.summary_date, v.user_id,v.user_network_code,v.production_network_code,v.product_id ),TO_CHAR(v.summary_date,'DD-fmMON-YY') || ',' || u.msisdn || ',' || v.user_id || ',' || u.user_name || ',' || p.product_name || ',' || (p.mrp/?) || ',' || n.network_name ||',' ||  v.total_distributed || ',' || v.total_recharged || ','||sum(v.total_expired+v.total_stolen_dmg+v.total_onhold+v.total_suspended) from VOMS_DAILY_BURNED_VOUCHERS v, USERS u, VOMS_PRODUCTS p, networks n WHERE v.user_id=u.user_id  and v.product_id = p.product_id and v.user_network_code=n.network_code and v.summary_date < ? and v.summary_date> ? -2 GROUP BY  v.summary_date ,u.msisdn ,v.user_id ,u.user_name , p.product_name , p.mrp , n.network_name ,  v.total_distributed , v.total_recharged,v.user_network_code,v.production_network_code,v.product_id 
+BURN_RATE_INDICATOR_EXT=.csv
+BURN_RATE_INDICATOR_PREFIX_NAME=BURNRATE_INDICATOR
+BURN_RATE_INDICATOR_TEMP_TBL=TEMP_BURN_RATE_INDICATOR
+BURN_RATE_INDICATOR_DYN_ARG=3

@@ -1,0 +1,4 @@
+---
+# - name: "creating the Directory in parallel to pretupshomei in SMSP"
+#   shell: mkdir -p {{ pretups_smsplogs }}/old_logs  {{ pretups_cronlogs }}/backup_logs chdir={{ from_path }}/{{ pretupsvar }}
+

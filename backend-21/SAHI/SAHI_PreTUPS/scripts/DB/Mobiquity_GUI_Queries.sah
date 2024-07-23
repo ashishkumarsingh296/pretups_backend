@@ -1,0 +1,3052 @@
+//#############################################################################
+//#Company Name: Comviva Technologies Ltd.
+//#Application Name: Mobiquity
+//#Objective:To fire queries to Mobiquity database to fetch data for GUI cases
+//#Author Name: Automation Team
+//#Created Date: 09/10/2012
+//#############################################################################
+
+//======================Import Scripts=====================
+	_include("../../../utility/OracleDBConnection.sah");
+
+//================Fetch password from Database=============
+
+/**
+ *This function fetches Operator password from database 
+ *@param[in] - $a_msisdn		Operator User MSISDN
+ *@return - $l_password		operator password
+ *@author - Anantha Shakti
+ */
+function dbFetchOperatorPassword($a_msisdn){
+	var $l_query = "select MESSAGE from SENTSMS where MSISDN='" + $a_msisdn + "' AND MESSAGE LIKE '%Password%' AND MESSAGE LIKE '%" + $g_operatorUsername + "%'";
+	var $l_rs = dbConnection($l_query);
+	var $l_passwordString = $l_rs[0]["MESSAGE"];		
+	var $l_data = new Array();
+	var $l_lines = $l_passwordString.replace(/\r/g, '').split("\n");
+	
+	for (var $i = 0; $i < $l_lines.length; $i++){
+		$l_data[$i] = $l_lines[0].split("Password"); 
+	}
+	
+	var $l_password = $l_data[0][1].split(" ");		
+	return $l_password[1];	
+}
+
+//=================================Fetch Channel User password from Database=================================//
+
+/** 
+ *This function fetches channel user password from database 
+ *@param[in] - $a_msisdn		channel User MSISDN
+ *@return - $l_password		channel password
+ *@author - Mallikarjuna V
+ */
+function dbFetchChannelUserPassword($a_msisdn){
+	
+	var $l_query = "select MESSAGE from SENTSMS where MSISDN='" + $a_msisdn + "' AND MESSAGE LIKE '%Password%' AND MESSAGE LIKE '%" + $g_username + "%' AND MESSAGE LIKE '%PIN:%'";
+	var $l_rs = dbConnection($l_query);
+	var $l_passwordString = $l_rs[0]["MESSAGE"];		
+	var $l_data = new Array();
+	var $l_lines = $l_passwordString.replace(/\r/g, '').split("\n");
+	
+	for (var $i = 0; $i < $l_lines.length; $i++){
+		$l_data[$i] = $l_lines[0].split("Password:"); 
+	}
+	
+	var $l_password = $l_data[0][1].split(" ");		
+	return $l_password[0];
+}
+
+//=================================Fetch web group role name  from Database=================================//
+
+/**
+ *This function fetches web group role name
+ *@param[in] - $a_groupRole		web group role starts with
+ *@return - $l_role			web group role name
+ *@author - Mallikarjuna V
+ */
+function webGroupRole($a_groupRole){
+	
+	var $l_query = "select GROUP_ROLE_CODE from GROUP_ROLES where GROUP_ROLE_CODE LIKE '%" + $a_groupRole + "%'";
+	var $a_groupRole = dbConnection($l_query);	
+	var $l_role = $a_groupRole[0];		
+	return $l_role;
+}
+	
+//=================================Validate created user=================================//
+
+/**
+ *This function checks the created user exists in the data base
+ *@param [in] - $a_userName		created user name
+ *@returns - $l_loginID		login ID of the user
+ *@author - Anantha Shakti
+ */
+function userLoginIDCheck($a_userName){
+	var $l_query = "select LOGIN_ID from USERS where LOGIN_ID like '" + $a_userName + "%' and STATUS = 'Y' and rownum <= 1 and INVALID_PASSWORD_COUNT is null and PASSWORD_COUNT_UPDATED_ON is null order by LEVEL2_APPROVED_ON DESC";
+	var $l_userName = dbConnection($l_query);	
+	var $l_loginID = $l_userName[0];		
+	return $l_loginID;
+}
+
+//=================================Fech group role code=================================//
+
+/**
+ *This function fetches group role code from the database
+ *@param [in] - null
+ *@returns - $l_role		group role code
+ *@note - This function uses global vaiable $g_roleCode
+ *@author Anantha Shakti
+ */
+function groupRoleCode(){
+	$l_query		=	"select GROUP_ROLE_CODE from SYS_GROUP_ROLES where GROUP_ROLE_CODE like '" + $g_roleCode + "%' and rownum <= 1";
+	$l_role = dbConnection($l_query); 	
+	return $l_role[0];
+}
+
+/**
+ *This function fetches group role code from the database
+ *@param [in] - Role Code ($a_roleCode)
+ *@returns - $l_role		group role code
+ *@author Manas Ranjan P
+ */
+function fetchGroupRoleCode($a_roleCode){
+	$l_query		=	"select GROUP_ROLE_CODE from SYS_GROUP_ROLES where GROUP_ROLE_CODE like '" + $a_roleCode + "%' and rownum <= 1";
+	$l_role = dbConnection($l_query); 	
+	return $l_role[0];
+}
+/**
+ *This function fetches group role code from the database
+ *@param [in] - $a_catCode,$a_roleCode
+ *@returns - $l_role		group role code
+  *@author Devadas
+ */
+function activeGroupRoleCode($a_categoryCode,$g_bankCode){
+	if($g_bankCode == null){
+		$l_query =	"select GROUP_ROLE_CODE from SYS_GROUP_ROLES where STATUS = 'Y' and CATEGORY_CODE = '" + $a_categoryCode + "' and rownum <= 1";
+	} else {
+	$l_query =	"select GROUP_ROLE_CODE from SYS_GROUP_ROLES where STATUS = 'Y' and CATEGORY_CODE = '" + $a_categoryCode + "' and BANK_ID = '" + $g_bankCode + "' and rownum <= 1";
+	}
+	$l_role = dbConnection($l_query); 	
+	return $l_role[0];
+}
+//=================================Fetch Password=================================//
+
+/** 
+ *This function fetches the password from DB which gets reseted
+ *@param[in] - $a_msisnIR		Operator User MSISDN
+ *@return - $l_resetPwd		Reseted password
+ *@author - Vishal Agarwal
+ */
+function dbFetchResetPassword($a_msisnIR){
+	var $l_query = "select MESSAGE from ( select * from SENTSMS where MSISDN='" + $a_msisnIR + "' AND MESSAGE LIKE '%reinitialised%' order by DELIVEREDON DESC) where rownum <= 1";
+	
+	var $l_rs = dbConnection($l_query);	
+	var $l_passwordString = $l_rs[0]["MESSAGE"];		
+	var $l_data = new Array();
+	var $l_lines = $l_passwordString.replace(/\r/g, '').split(".Please");
+	
+	for (var $i = 0; $i < $l_lines.length; $i++){
+		$l_data[$i] = $l_lines[0].split("to: "); 
+	}
+	
+	var $l_resetPwd = $l_data[1];				//It will fetch the sixth word from the message line i.e. reset password
+	return $l_resetPwd[1];
+}
+
+//=================================Fetch Channel User PIN from Database=================================//
+
+/** 
+ *This function fetches channel user PIN from database 
+ *@param[in] - $a_msisdn		channel User MSISDN
+ *@return - $l_password		channel PIN
+ *@author - Anantha Sakthi
+ */
+function dbFetchChannelUserPin($a_msisdn){
+	
+	var $l_query = "select MESSAGE from SENTSMS where MSISDN='" + $a_msisdn + "' AND MESSAGE LIKE '%mPIN:%'";
+	var $l_rs = dbConnection($l_query);
+	var $l_passwordString = $l_rs[0]["MESSAGE"];	
+	var $l_data = new Array();
+	var $l_lines = $l_passwordString.replace(/\r/g, '').split("for");
+	for (var $i = 0; $i < $l_lines.length; $i++){
+		$l_data[$i] = $l_lines[0].split("mPIN:"); 
+	}
+	
+	var $l_password = $l_data[0][1].split(" ");	
+	var $l_pin = $l_password[1];
+	
+	return $l_pin;
+}
+
+/** 
+ *This function fetches subscriber PIN from database 
+ *@param[in] - $a_msisdn		channel User MSISDN
+ *@return - $l_password		channel PIN
+ *@author - Anantha Sakthi
+ */
+function dbFetchSubscriberMPin($a_msisdn){
+	
+	var $l_query = "select MESSAGE from SENTSMS where MSISDN='" + $a_msisdn + "' AND MESSAGE LIKE '%successful with mPin%'";
+	var $l_rs = dbConnection($l_query);
+	var $l_passwordString = $l_rs[0]["MESSAGE"];	
+	var $l_data = new Array();
+	var $l_lines = $l_passwordString.replace(/\r/g, '').split(" for");
+	for (var $i = 0; $i < $l_lines.length; $i++){
+		$l_data[$i] = $l_lines[0].split("mPin "); 
+	}
+	
+	var $l_password = $l_data[0][1].split("mPin ");	
+	var $l_pin = $l_password[0];
+	return $l_pin;
+}
+
+//=================================Fetch Channel User PIN from Database=================================//
+
+/** 
+*This function fetches channel user PIN from database 
+*@param[in] - $a_msisdn		channel User MSISDN
+*@return - $l_password		channel PIN
+*@author - Anantha Sakthi
+*/
+function dbFetchSubscriberTPin($a_msisdn){
+	var $l_query = "select MESSAGE from SENTSMS where MSISDN='" + $a_msisdn + "' AND MESSAGE LIKE '%PIN:%'";	
+	var $l_rs = dbConnection($l_query);
+	var $l_passwordString = $l_rs[0]["MESSAGE"];		
+	var $l_data = new Array();
+	var $l_lines = $l_passwordString.replace(/\r/g, '').split("PIN:");
+	
+	for (var $i = 0; $i < $l_lines.length; $i++){
+		$l_data[$i] = $l_lines[1].split(" for"); 
+	}
+	
+	var $l_password = $l_data[0][0].split(" for");
+	var $l_pin = $l_password[0];
+	return $l_pin;
+}
+
+/** 
+ *This function fetches channel user PIN from database 
+ *@param[in] - $a_msisdn		channel User MSISDN
+ *@return - $l_password		channel PIN
+ *@author - Anantha Sakthi
+ */
+function dbFetchChannelUserTPin($a_msisdn){
+	
+	var $l_query = "select MESSAGE from SENTSMS where MSISDN='" + $a_msisdn + "' AND MESSAGE LIKE '%Login Id:%' AND MESSAGE LIKE '%PIN:%'";
+	var $l_rs = dbConnection($l_query);
+	var $l_passwordString = $l_rs[0]["MESSAGE"];		
+	var $l_data = new Array();
+	var $l_lines = $l_passwordString.replace(/\r/g, '').split("\n");
+	
+	for (var $i = 0; $i < $l_lines.length; $i++){
+		$l_data[$i] = $l_lines[0].split("PIN:"); 
+	}
+	
+	var $l_password = $l_data[0][1].split(" ");		
+	return $l_password[0];
+}
+
+//=================================Fetch subscriber PIN from Database=================================//
+
+/** 
+ *This function fetches channel user PIN from database 
+ *@param[in] - $a_msisdn		subscriber MSISDN
+ *@return - $l_password		channel PIN
+ *@author - Anantha Sakthi
+ */
+function dbFetchSubscriberPin($a_msisdn){
+	
+	var $l_query = "select MESSAGE from SENTSMS where MSISDN='" + $a_msisdn + "' AND MESSAGE LIKE '%add initiated successfully%' AND MESSAGE LIKE '%Pin%'";
+	var $l_rs = dbConnection($l_query);
+	var $l_passwordString = $l_rs[0]["MESSAGE"];		
+
+		$l_data = $l_passwordString.split("Pin "); 
+	
+	var $l_password = $l_data[1].split(" ");		
+	return $l_password[0];
+}
+
+//=================================Fetch Login ID=================================//
+
+/**
+ *This function fetches the login id from DB based on users id
+ *@param [in] - id		users id(NA,CA,WH)
+ *@return - loginID		
+ *@author - Anantha Sakthi
+ */
+function fetchLoginID($a_id){	
+	var $l_query = "select LOGIN_ID from USERS where LOGIN_ID like '" + $g_autoPrefix + "" + $a_id + "%' and USER_NAME not like '%AutoUser%' and STATUS = 'Y' and rownum <= 1 and INVALID_PASSWORD_COUNT is null and PASSWORD_COUNT_UPDATED_ON is null order by LEVEL2_APPROVED_ON DESC";
+	var $l_fetchLoginID = dbConnection($l_query);	
+	var $l_loginID = $l_fetchLoginID[0];		
+	return $l_loginID;
+}
+
+//=================================Fetch inputs for global search=================================//
+
+/**
+ *This function fetches different values (first name/last name/last login/user created on/modified on/last transaction) from the database
+ *@param [in] - $a_globalSearch		column name that needs to be searched with (first name/last name/last login/user created on/modified on/last transaction)
+ *@returns - $l_fetchGlobalSearch	values from that column (first name/last name/last login/user created on/modified on/last transaction) 
+ *@author Anantha Shakti
+ */
+function fetchGlobalSearch($a_globalSearch){
+	
+	var $l_query = "select " + $a_globalSearch + " from USERS where rownum <= 1 order by CREATED_ON DESC";	
+	var $l_fetchGlobalSearch = dbConnection($l_query);	
+	return $l_fetchGlobalSearch[0];
+}
+
+//=================================Fetch channel user login id =================================//
+
+/**
+ *This function fetches channel user login ID from database
+ *@param [in] - $a_id	type of channel user (WH/RT/MR/HM)
+ *@returns - $l_loginID complete login ID for the type of user
+ *@author - Mallikarjuna V
+ */
+function fetchChannelLoginID($a_id){	
+	var $l_query = "select LOGIN_ID from USERS where LOGIN_ID like '" + $g_autoPrefix + "" + $a_id + "%' and USER_NAME not like '%AutoUser%' and STATUS = 'Y' and rownum <= 1 and user_id not in (select party_id from mtx_party_black_list) order by LEVEL2_APPROVED_ON DESC";	
+	var $g_userName = dbConnection($l_query);	
+	var $l_loginID = $g_userName[0];		
+	return $l_loginID;
+}
+
+//=================================Fetch MSISDN =================================//
+
+/**
+ *This function fetches MSISDN value from database
+ *@param [in] - $a_userName	user name (NA/WH/CA/MR etc)
+ *@returns - $l_msisdn	MSISDN value
+ *@author - Vishal Agarwal
+ */
+function fetchMSISDN($a_userName){
+	var $l_query = "select MSISDN from USERS where LOGIN_ID = '" + $a_userName + "' and rownum <= 1 order by LEVEL2_APPROVED_ON DESC";
+	var $MS = dbConnection($l_query);	
+	var $l_msisdn = $MS[0];		
+	return $l_msisdn;
+}
+
+//=================================Fetch agent code=================================//
+
+/**
+ *This function fetches the agent code from DB based on users id
+ *@param [in] - id		users id(NA,CA,WH)
+ *@return - l_agentCode		
+ *@author - Anantha Sakthi
+ */
+function fetchAgentCode($a_id){	
+	var $l_query = "select AGENT_CODE from USERS where LOGIN_ID like '" + $g_autoPrefix + "" + $a_id + "%' and USER_NAME not like '%AutoUser%' and STATUS = 'Y' and not MSISDN in (select ACCOUNT_NUMBER from MTX_PARTY_BLACK_LIST )and rownum <= 1 order by LEVEL2_APPROVED_ON DESC";
+	var $l_fetchAgentCode = dbConnection($l_query);	
+	var $l_agentCode = $l_fetchAgentCode[0];		
+	return $l_agentCode;
+}
+
+//=================================Fetch Channel User MSISDN =================================//
+
+/**
+ *This function fetches MSISDN value from database
+ *@param [in] - $a_id	user type (NA/WH/CA/MR etc)
+ *@returns - $l_msisdn	MSISDN value
+ *@author - Mallikarjuna V
+ */
+function fetchChannelMSISDN($a_id){	
+	var $l_query = "select MSISDN from USERS where LOGIN_ID like '" + $g_autoPrefix + "" + $a_id + "%' and STATUS = 'Y' and not MSISDN in (select ACCOUNT_NUMBER from MTX_PARTY_BLACK_LIST )and rownum <= 1";	
+	var $l_msisdnChannel = dbConnection($l_query);	
+	var $l_channelMsisdn = $l_msisdnChannel[0];		
+	return $l_channelMsisdn;
+}
+
+/**
+ *This function fetches Name for MSISDN value from database
+ *@param [in] - $a_id	user type (NA/WH/CA/MR etc)
+ *@returns - $l_msisdn	MSISDN value
+ *@author - Mallikarjuna V
+ */
+function fetchChannelUserName($a_msisdn){
+	
+	var $l_query = "select USER_NAME from USERS where MSISDN ='"+$a_msisdn+"'";	
+	var $l_msisdnChannelUser = dbConnection($l_query);	
+	var $l_channelUser = $l_msisdnChannelUser[0];		
+	return $l_channelUser;
+}
+//===========Fetch Transfer Rule ID ======================//
+
+/**
+ *This function fetches transfer rule id from the DB
+ *@param [in] - null
+ *@returns - $l_TRID		transfer rule ID
+ *@author - Nayana Kumari
+ */
+function fetchTransferRuleID(){
+	var $l_query = "select TRANSFER_RULE_ID from MTX_TRANSFER_RULES where SERVICE_TYPE='" + $g_dbServiceType + "' AND PAYER_CATEGORY_CODE='" + $g_dbPayerCategoryCode + "' AND PAYEE_CATEGORY_CODE='" + $g_dbPayeeCategoryCode + "' AND PAYER_PROVIDER_ID='" + $g_dbPayerProviderID + "' AND PAYEE_PROVIDER_ID='" + $g_dbPayeeProviderID + "' AND PAYER_PAYMENT_TYPE_ID='" + $g_dbPayerPaymentType + "' AND PAYEE_PAYMENT_TYPE_ID='" + $g_dbPayeePaymentType + "' AND PAYER_PAYMENT_METHOD_TYPE='" + $g_dbPayerMethodType + "' AND PAYEE_PAYMENT_METHOD_TYPE='" + $g_dbPayeeMethodType + "'";
+	var $l_TRID = dbConnection($l_query); 
+	var $l_TRIDWallet = $l_TRID[0];
+	return $l_TRIDWallet;
+}
+
+//===========Fetch Suspended Transfer Rule ID ======================//
+
+/**
+ *This function fetches transfer rule id based on status id as "S"(Suspend) from the DB
+ *@param [in] - null
+ *@returns - $l_suspendTRID		suspend transfer rule ID
+ *@author - Nayana Kumari
+ */
+function fetchSuspendTransferRuleID(){
+	var $l_query = "select TRANSFER_RULE_ID from MTX_TRANSFER_RULES where SERVICE_TYPE='" + $g_dbServiceType + "' AND PAYER_CATEGORY_CODE='" + $g_dbPayerCategoryCode + "' AND PAYEE_CATEGORY_CODE='" + $g_dbPayeeCategoryCode + "' AND STATUS_ID = 'S' AND PAYER_PROVIDER_ID='" + $g_dbPayerProviderID + "' AND PAYEE_PROVIDER_ID='" + $g_dbPayeeProviderID + "' AND PAYER_PAYMENT_TYPE_ID='" + $g_dbPayerPaymentType + "' AND PAYEE_PAYMENT_TYPE_ID='" + $g_dbPayeePaymentType + "' AND PAYER_PAYMENT_METHOD_TYPE='" + $g_dbPayerMethodType + "' AND PAYEE_PAYMENT_METHOD_TYPE='" + $g_dbPayeeMethodType + "'";
+	var $l_suspendTRID = dbConnection($l_query); 
+	return $l_suspendTRID[0];
+}
+
+//===========Reject the existing Transfer Rule based on status id in approval page============//
+
+/**
+ *This function fetches transfer rule id based on status id from DB and reject that transfer rule in 
+ *approval page in GUI
+ *@param [in] - null
+ *@returns - $l_TRID		transfer rule ID
+ *@author - Nayana Kumari
+ */
+function fetchTRIDAndReject(){
+  var $l_query = "select TRANSFER_RULE_ID from MTX_TRANSFER_RULES_M where ( ( SERVICE_TYPE='" + $g_dbServiceType + "' AND PAYER_CATEGORY_CODE='" + $g_dbPayerCategoryCode + "' AND PAYEE_CATEGORY_CODE='" + $g_dbPayeeCategoryCode + "' AND PAYER_PROVIDER_ID='" + $g_dbPayerProviderID + "' AND PAYEE_PROVIDER_ID='" + $g_dbPayeeProviderID + "'AND PAYER_PAYMENT_METHOD_TYPE='" + $g_dbPayerMethodType + "' AND PAYEE_PAYMENT_METHOD_TYPE='" + $g_dbPayeeMethodType + "' AND PAYER_PAYMENT_TYPE_ID='" + $g_dbPayerPaymentType + "' AND PAYEE_PAYMENT_TYPE_ID='" + $g_dbPayeePaymentType + "') AND ( STATUS_ID='SI' OR STATUS_ID='DI' OR STATUS_ID='AI' OR STATUS_ID='UI' ) )";
+  var $l_TRID = dbConnection($l_query); 
+  return $l_TRID[0];
+}
+
+//===========Reject the existing Transfer Rule for Bank Services based on status id in approval page============//
+
+/**
+ *This function fetches transfer rule id based on status id from DB and reject that transfer rule in 
+ *approval page in GUI
+ *@param [in] - null
+ *@returns - $l_TRID		transfer rule ID
+ *@author - Vishal Agarwal
+ */
+function fetchTRIDForBankServicesAndReject(){
+  var $l_query = "select TRANSFER_RULE_ID from MTX_TRANSFER_RULES_M where ( ( SERVICE_TYPE='" + $g_dbServiceType + "' AND PAYER_CATEGORY_CODE='" + $g_dbPayerCategoryCode + "' AND PAYEE_CATEGORY_CODE='" + $g_dbPayeeCategoryCode + "' AND PAYER_PROVIDER_ID='" + $g_dbPayerProviderID + "' AND PAYEE_PROVIDER_ID='" + $g_dbPayeeProviderID + "'AND PAYER_PAYMENT_METHOD_TYPE='" + $g_dbPayerMethodType + "' AND PAYEE_PAYMENT_METHOD_TYPE='" + $g_dbPayeeMethodType + "' AND PAYER_PAYMENT_TYPE_ID='" + $g_dbPayerPaymentType + "' AND PAYEE_PAYMENT_TYPE_ID='" + $g_dbPayeePaymentType + "') AND ( STATUS_ID='SI' OR STATUS_ID='DI' OR STATUS_ID='AI' OR STATUS_ID='UI' ) )";
+  var $l_TRID = dbConnection($l_query); 
+  var $l_TRIDBank = $l_TRID[0];
+  return $l_TRIDBank;
+}
+
+//=================================Fetch Zone=================================//
+
+/**
+ *This function is used to fetch the zone from the DB
+ *@param [in] - null
+ *@returns - $l_geoData	zone
+ *@author - Mallikarjuna V
+ */
+function geoZoneSearch() {
+	$l_query = "select GRPH_DOMAIN_NAME from GEOGRAPHICAL_DOMAINS where GRPH_DOMAIN_CODE like '" + $g_autoPrefix + "%' and GRPH_DOMAIN_TYPE ='ZO' and rownum <=1";
+	$l_geoData = dbConnection($l_query); 
+	return $l_geoData;
+}
+
+//=================================Fetch Area=================================//
+
+/**
+ *This function is used to fetch the area from the DB
+ *@param [in] - null
+ *@returns - $l_geoData	area
+ *@author - Mallikarjuna V
+ */
+function geoAreaSearch() {
+	$l_query = "select GRPH_DOMAIN_NAME from GEOGRAPHICAL_DOMAINS where GRPH_DOMAIN_CODE like '" + $g_autoPrefix + "%' and GRPH_DOMAIN_TYPE ='AR' and rownum <= 1";
+	$l_geoData = dbConnection($l_query); 
+	return $l_geoData[0];
+}
+
+//=================================Fetch Active Service Charge ID=================================//
+
+/**
+ *This function is used to fetch the active service charge ID from the DB
+ *@param [in] - null
+ *@returns - $l_txSrvcID	service charge ID
+ *@note - This function uses global parameters $g_dbSrvcType, $g_dbPayerGradeCode, $g_dbPayeeGradeCode, $g_dbPayerPaymentMethodType, $g_dbPayeePaymentMethodType, $g_dbPayerPaymentTypeID, $g_dbPayeePaymentTypeID, $g_dbPayerProviderID, $g_dbPayeeProviderID.
+ *@author - Vishal Agarwal
+ */
+function activeSrvcChrgID(){
+	var $l_query = "select SERVICE_CHARGE_ID from MTX_SERVICE_CHARGE where ( ( SERVICE_TYPE='" + $g_dbSrvcType + "' AND PAYER_GRADE_CODE='" + $g_dbPayerGradeCode + "' AND PAYEE_GRADE_CODE='" + $g_dbPayeeGradeCode + "' AND PAYER_PAYMENT_METHOD_TYPE='" + $g_dbPayerPaymentMethodType + "' AND PAYEE_PAYMENT_METHOD_TYPE='" + $g_dbPayeePaymentMethodType + "' AND PAYER_PAYMENT_TYPE_ID='" + $g_dbPayerPaymentTypeID + "' AND PAYEE_PAYMENT_TYPE_ID='" + $g_dbPayeePaymentTypeID + "' AND PAYER_PROVIDER_ID='" + $g_dbPayerProviderID + "' AND PAYEE_PROVIDER_ID='" + $g_dbPayeeProviderID + "' ) AND ( STATUS_ID='Y' ) )";
+	var $l_txSrvcID = dbConnection($l_query); 
+	var $l_txAcSrvcID = $l_txSrvcID[0];
+	return $l_txAcSrvcID;
+}
+
+//=================================Fetch Suspended Service Charge ID=================================//
+
+/**
+ *This function is used to fetch the Suspended service charge ID from the DB
+ *@param [in] - null
+ *@returns - $l_txSrvcID	service charge ID
+ *@note - This function uses global parameters $g_dbSrvcType, $g_dbPayerGradeCode, $g_dbPayeeGradeCode, $g_dbPayerPaymentMethodType, $g_dbPayeePaymentMethodType, $g_dbPayerPaymentTypeID, $g_dbPayeePaymentTypeID, $g_dbPayerProviderID, $g_dbPayeeProviderID.
+ *@author - Vishal Agarwal
+ */
+function suspndedSrvcChrgID(){
+	var $l_query = "select SERVICE_CHARGE_ID from MTX_SERVICE_CHARGE where ( ( SERVICE_TYPE='" + $g_dbSrvcType + "' AND PAYER_GRADE_CODE='" + $g_dbPayerGradeCode + "' AND PAYEE_GRADE_CODE='" + $g_dbPayeeGradeCode + "' AND PAYER_PAYMENT_METHOD_TYPE='" + $g_dbPayerPaymentMethodType + "' AND PAYEE_PAYMENT_METHOD_TYPE='" + $g_dbPayeePaymentMethodType + "' AND PAYER_PAYMENT_TYPE_ID='" + $g_dbPayerPaymentTypeID + "' AND PAYEE_PAYMENT_TYPE_ID='" + $g_dbPayeePaymentTypeID + "' AND PAYER_PROVIDER_ID='" + $g_dbPayerProviderID + "' AND PAYEE_PROVIDER_ID='" + $g_dbPayeeProviderID + "' ) AND ( STATUS_ID='S' ) )";
+	var $l_txSrvcID = dbConnection($l_query); 
+	var $l_txSusSrvcID = $l_txSrvcID[0];
+	return $l_txSusSrvcID;
+}
+
+
+
+//==========Fetch Approve or Modify or Delete Initiated State Service Charge ID=======//
+
+/**
+ *This function is used to fetch the Modify or Delete Initiated State service charge ID from the DB
+ *@param [in] - null
+ *@returns - $l_txSrvcID	service charge ID
+ *@note - This function uses global parameters $g_dbSrvcType, $g_dbPayerGradeCode, $g_dbPayeeGradeCode, $g_dbPayerPaymentMethodType, $g_dbPayeePaymentMethodType, $g_dbPayerPaymentTypeID, $g_dbPayeePaymentTypeID, $g_dbPayerProviderID, $g_dbPayeeProviderID.
+ *@author - Vishal Agarwal
+ */
+ 
+function modifyDltSrvcChrgID(){
+	var $l_query = "select SERVICE_CHARGE_ID from MTX_SERVICE_CHARGE_M where ( ( SERVICE_TYPE='" + $g_dbSrvcType + "' AND PAYER_GRADE_CODE='" + $g_dbPayerGradeCode + "' AND PAYEE_GRADE_CODE='" + $g_dbPayeeGradeCode + "' AND PAYER_PAYMENT_METHOD_TYPE='" + $g_dbPayerPaymentMethodType + "' AND PAYEE_PAYMENT_METHOD_TYPE='" + $g_dbPayeePaymentMethodType + "' AND PAYER_PAYMENT_TYPE_ID='" + $g_dbPayerPaymentTypeID + "' AND PAYEE_PAYMENT_TYPE_ID='" + $g_dbPayeePaymentTypeID + "' AND PAYER_PROVIDER_ID='" + $g_dbPayerProviderID + "' AND PAYEE_PROVIDER_ID='" + $g_dbPayeeProviderID + "' ) AND ( STATUS_ID='UI' OR STATUS_ID='DI' ) )";
+	var $l_txSrvcID = dbConnection($l_query); 
+	var $l_txModDelSrvcID = $l_txSrvcID[0];
+	return $l_txModDelSrvcID;
+}
+
+/**
+ *This function is used to fetch the Approve Initiated State service charge ID from the DB
+ *@param [in] - null
+ *@returns - $l_txSrvcID	service charge ID
+ *@note - This function uses global parameters $g_dbSrvcType, $g_dbPayerGradeCode, $g_dbPayeeGradeCode, $g_dbPayerPaymentMethodType, $g_dbPayeePaymentMethodType, $g_dbPayerPaymentTypeID, $g_dbPayeePaymentTypeID, $g_dbPayerProviderID, $g_dbPayeeProviderID.
+ *@author - Vishal Agarwal
+ */
+ 
+function approveInitiatedSrvcChrgID(){
+	var $l_query = "select SERVICE_CHARGE_ID from MTX_SERVICE_CHARGE_M where ( ( SERVICE_TYPE='" + $g_dbSrvcType + "' AND PAYER_GRADE_CODE='" + $g_dbPayerGradeCode + "' AND PAYEE_GRADE_CODE='" + $g_dbPayeeGradeCode + "' AND PAYER_PAYMENT_METHOD_TYPE='" + $g_dbPayerPaymentMethodType + "' AND PAYEE_PAYMENT_METHOD_TYPE='" + $g_dbPayeePaymentMethodType + "' AND PAYER_PAYMENT_TYPE_ID='" + $g_dbPayerPaymentTypeID + "' AND PAYEE_PAYMENT_TYPE_ID='" + $g_dbPayeePaymentTypeID + "' AND PAYER_PROVIDER_ID='" + $g_dbPayerProviderID + "' AND PAYEE_PROVIDER_ID='" + $g_dbPayeeProviderID + "' ) AND ( STATUS_ID='AI' ) )";
+	var $l_txSrvcID = dbConnection($l_query); 
+	var $l_txAprvInitSrvcID = $l_txSrvcID[0];
+	return $l_txAprvInitSrvcID;
+}
+
+//===============Active Service Charge Name============//
+
+/**
+ *This function is used to fetch Active Service Charge Name
+ *@param [in] - null
+ *@returns - $l_txSrvcName	service charge name
+ *@note - This function uses global parameters $g_dbSrvcType, $g_dbPayerGradeCode, $g_dbPayeeGradeCode, $g_dbPayerPaymentMethodType, $g_dbPayeePaymentMethodType, $g_dbPayerPaymentTypeID, $g_dbPayeePaymentTypeID, $g_dbPayerProviderID, $g_dbPayeeProviderID.
+ *@author - Vishal Agarwal
+ */
+function activeSrvcChrgName(){
+	var $l_query = "select SERVICE_CHARGE_NAME from MTX_SERVICE_CHARGE where ( ( SERVICE_TYPE='" + $g_dbSrvcType + "' AND PAYER_GRADE_CODE='" + $g_dbPayerGradeCode + "' AND PAYEE_GRADE_CODE='" + $g_dbPayeeGradeCode + "' AND PAYER_PAYMENT_METHOD_TYPE='" + $g_dbPayerPaymentMethodType + "' AND PAYEE_PAYMENT_METHOD_TYPE='" + $g_dbPayeePaymentMethodType + "' AND PAYER_PAYMENT_TYPE_ID='" + $g_dbPayerPaymentTypeID + "' AND PAYEE_PAYMENT_TYPE_ID='" + $g_dbPayeePaymentTypeID + "' AND PAYER_PROVIDER_ID='" + $g_dbPayerProviderID + "' AND PAYEE_PROVIDER_ID='" + $g_dbPayeeProviderID + "' ) AND ( STATUS_ID='Y') ) ORDER BY LAST_VERSION DESC";
+	var $l_txSrvcName = dbConnection($l_query); 
+	var $l_txAcSrvcName = $l_txSrvcName[0];
+
+	return $l_txAcSrvcName;
+}
+
+/**
+ *This function is used to fetch all  Service Charge Name with  Version
+ *@param [in] - null
+ *@returns - $l_txSrvcName	service charge name and last version 
+ *@note - This function uses global parameters $g_dbNFSCSrvcType, $g_dbNFSCPayerGradeCode, $g_dbNFSCPayeeGradeCode, $g_dbNFSCPayerPaymentMethodType, $g_dbNFSCPayeePaymentMethodType, $g_dbNFSCPayerPaymentTypeID, $g_dbNFSCPayeePaymentTypeID, $g_dbNFSCPayerProviderID, $g_dbNFSCPayeeProviderID.
+ *@author - Manas Ranjan Pradhan
+ */
+function activeSrvcChrgNameVersions(){
+	var $l_query = "select SERVICE_CHARGE_NAME,LAST_VERSION from MTX_SERVICE_CHARGE where ( ( SERVICE_TYPE='" + $g_dbNFSCSrvcType + "' AND PAYER_GRADE_CODE='" + $g_dbNFSCPayerGradeCode + "' AND PAYEE_GRADE_CODE='" + $g_dbNFSCPayeeGradeCode + "' AND PAYER_PAYMENT_METHOD_TYPE='" + $g_dbNFSCPayerPaymentMethodType + "' AND PAYEE_PAYMENT_METHOD_TYPE='" + $g_dbNFSCPayeePaymentMethodType + "' AND PAYER_PAYMENT_TYPE_ID='" + $g_dbNFSCPayerPaymentTypeID + "' AND PAYEE_PAYMENT_TYPE_ID='" + $g_dbNFSCPayeePaymentTypeID + "' AND PAYER_PROVIDER_ID='" + $g_dbNFSCPayerProviderID + "' AND PAYEE_PROVIDER_ID='" + $g_dbNFSCPayeeProviderID + "' ) AND ( STATUS_ID='Y') ) ORDER BY LAST_VERSION DESC";
+	var $l_txSrvcVrsn = dbConnection($l_query); 
+	return $l_txSrvcVrsn;
+}
+
+
+//===============Active Service Charge Name for Bank To Wallet============//
+
+/**
+ *This function is used to fetch Active Service Charge Name for Bank To Wallet
+ *@param [in] - null
+ *@returns - $l_txSrvcName	service charge name
+ *@note - This function uses global parameters $g_dbSrvcType, $g_dbPayerGradeCode, $g_dbPayeeGradeCode, $g_dbPayerPaymentMethodType, $g_dbPayeePaymentMethodType, $g_dbPayerPaymentTypeID, $g_dbPayeePaymentTypeID, $g_dbPayerProviderID, $g_dbPayeeProviderID.
+ *@author - Vishal Agarwal
+ */
+function activeSrvcChrgNameForBankToWallet(){
+	var $l_query = "select SERVICE_CHARGE_NAME from MTX_SERVICE_CHARGE where ( ( SERVICE_TYPE='" + $g_dbSrvcType + "' AND PAYER_GRADE_CODE='" + $g_dbPayerGradeCode + "' AND PAYEE_GRADE_CODE='" + $g_dbPayeeGradeCode + "' AND PAYER_PAYMENT_METHOD_TYPE='" + $g_dbPayerPaymentMethodType + "' AND PAYEE_PAYMENT_METHOD_TYPE='" + $g_dbPayeePaymentMethodType + "' AND PAYEE_PAYMENT_TYPE_ID='" + $g_dbPayeePaymentTypeID + "' AND PAYER_PROVIDER_ID='" + $g_dbPayerProviderID + "' AND PAYEE_PROVIDER_ID='" + $g_dbPayeeProviderID + "' ) AND ( STATUS_ID='Y') ) ORDER BY LAST_VERSION DESC";
+	var $l_txSrvcName = dbConnection($l_query); 
+	var $l_txAcSrvcName = $l_txSrvcName[0];
+	return $l_txAcSrvcName;
+}
+
+//===============Active Service Charge Name for Wallet To Bank============//
+
+/**
+ *This function is used to fetch Active Service Charge Name for Wallet To Bank
+ *@param [in] - null
+ *@returns - $l_txSrvcName	service charge name
+ *@note - This function uses global parameters $g_dbSrvcType, $g_dbPayerGradeCode, $g_dbPayeeGradeCode, $g_dbPayerPaymentMethodType, $g_dbPayeePaymentMethodType, $g_dbPayerPaymentTypeID, $g_dbPayeePaymentTypeID, $g_dbPayerProviderID, $g_dbPayeeProviderID.
+ *@author - Vishal Agarwal
+ */
+function activeSrvcChrgNameForWalletToBank(){
+	var $l_query = "select SERVICE_CHARGE_NAME from MTX_SERVICE_CHARGE where ( ( SERVICE_TYPE='" + $g_dbSrvcType + "' AND PAYER_GRADE_CODE='" + $g_dbPayerGradeCode + "' AND PAYEE_GRADE_CODE='" + $g_dbPayeeGradeCode + "' AND PAYER_PAYMENT_METHOD_TYPE='" + $g_dbPayerPaymentMethodType + "' AND PAYEE_PAYMENT_METHOD_TYPE='" + $g_dbPayeePaymentMethodType + "' AND PAYER_PAYMENT_TYPE_ID='" + $g_dbPayerPaymentTypeID + "' AND PAYER_PROVIDER_ID='" + $g_dbPayerProviderID + "' AND PAYEE_PROVIDER_ID='" + $g_dbPayeeProviderID + "' ) AND ( STATUS_ID='Y') ) ORDER BY LAST_VERSION DESC";
+	var $l_txSrvcName = dbConnection($l_query); 
+	var $l_txAcSrvcName = $l_txSrvcName[0];
+	return $l_txAcSrvcName;
+}
+
+//===============Active Service Charge Name============//
+
+/**
+ *This function is used to fetch Active Service Charge Name for Bank
+ *@param [in] - null
+ *@returns - $l_txSrvcName	service charge name
+ *@note - This function uses global parameters $g_dbSrvcType, $g_dbPayerGradeCode, $g_dbPayeeGradeCode, $g_dbPayerPaymentMethodType, $g_dbPayeePaymentMethodType, $g_dbPayerPaymentTypeID, $g_dbPayeePaymentTypeID, $g_dbPayerProviderID, $g_dbPayeeProviderID.
+ *@author - Vishal Agarwal
+ */
+function activeSrvcChrgNameForBankToBank(){
+	var $l_query = "select SERVICE_CHARGE_NAME from MTX_SERVICE_CHARGE where ( ( SERVICE_TYPE='" + $g_dbSrvcType + "' AND PAYER_GRADE_CODE='" + $g_dbPayerGradeCode + "' AND PAYEE_GRADE_CODE='" + $g_dbPayeeGradeCode + "' AND PAYER_PAYMENT_METHOD_TYPE='" + $g_dbPayerPaymentMethodType + "' AND PAYEE_PAYMENT_METHOD_TYPE='" + $g_dbPayeePaymentMethodType + "' AND PAYER_PROVIDER_ID='" + $g_dbPayerProviderID + "' AND PAYEE_PROVIDER_ID='" + $g_dbPayeeProviderID + "' ) AND ( STATUS_ID='Y') ) ORDER BY LAST_VERSION DESC";
+	var $l_txSrvcName = dbConnection($l_query); 
+	var $l_txAcSrvcName = $l_txSrvcName[0];
+	return $l_txAcSrvcName;
+}
+
+//=========Fetch Suspended Service Charge Name===========//
+
+/**
+ *This function is used to fetch Suspended Service Charge Name
+ *@param [in] - null
+ *@returns - $l_txSrvcName	service charge name
+ *@note - This function uses global parameters $g_dbSrvcType, $g_dbPayerGradeCode, $g_dbPayeeGradeCode, $g_dbPayerPaymentMethodType, $g_dbPayeePaymentMethodType, $g_dbPayerPaymentTypeID, $g_dbPayeePaymentTypeID, $g_dbPayerProviderID, $g_dbPayeeProviderID.
+ *@author - Vishal Agarwal
+ */
+function suspendedSrvcChrgName(){
+	var $l_query = "select SERVICE_CHARGE_NAME from MTX_SERVICE_CHARGE where ( ( SERVICE_TYPE='" + $g_dbSrvcType + "' AND PAYER_GRADE_CODE='" + $g_dbPayerGradeCode + "' AND PAYEE_GRADE_CODE='" + $g_dbPayeeGradeCode + "' AND PAYER_PAYMENT_METHOD_TYPE='" + $g_dbPayerPaymentMethodType + "' AND PAYEE_PAYMENT_METHOD_TYPE='" + $g_dbPayeePaymentMethodType + "' AND PAYER_PAYMENT_TYPE_ID='" + $g_dbPayerPaymentTypeID + "' AND PAYEE_PAYMENT_TYPE_ID='" + $g_dbPayeePaymentTypeID + "' AND PAYER_PROVIDER_ID='" + $g_dbPayerProviderID + "' AND PAYEE_PROVIDER_ID='" + $g_dbPayeeProviderID + "' ) AND ( STATUS_ID='S' ) )";
+	var $l_txSrvcName = dbConnection($l_query);
+	var $l_txAcSusSrvcName = $l_txSrvcName[0];
+	return $l_txAcSusSrvcName;
+}
+
+//=====Fetch Approve or Modify or Delete Initiated Service Charge Name=====//
+
+/**
+ *This function is used to fetch Modify or Delete Initiated Service Charge Name
+ *@param [in] - null
+ *@returns - $l_txSrvcName	service charge name
+ *@note - This function uses global parameters $g_dbSrvcType, $g_dbPayerGradeCode, $g_dbPayeeGradeCode, $g_dbPayerPaymentMethodType, $g_dbPayeePaymentMethodType, $g_dbPayerPaymentTypeID, $g_dbPayeePaymentTypeID, $g_dbPayerProviderID, $g_dbPayeeProviderID.
+ *@author - Vishal Agarwal
+ */
+function modifyDltSrvcChrgName(){
+	var $l_query = "select SERVICE_CHARGE_NAME from MTX_SERVICE_CHARGE_M where ( ( SERVICE_TYPE='" + $g_dbSrvcType + "' AND PAYER_GRADE_CODE='" + $g_dbPayerGradeCode + "' AND PAYEE_GRADE_CODE='" + $g_dbPayeeGradeCode + "' AND PAYER_PAYMENT_METHOD_TYPE='" + $g_dbPayerPaymentMethodType + "' AND PAYEE_PAYMENT_METHOD_TYPE='" + $g_dbPayeePaymentMethodType + "' AND PAYER_PAYMENT_TYPE_ID='" + $g_dbPayerPaymentTypeID + "' AND PAYEE_PAYMENT_TYPE_ID='" + $g_dbPayeePaymentTypeID + "' AND PAYER_PROVIDER_ID='" + $g_dbPayerProviderID + "' AND PAYEE_PROVIDER_ID='" + $g_dbPayeeProviderID + "' ) AND ( STATUS_ID='UI' OR STATUS_ID='DI' ) )";
+	var $l_txSrvcName = dbConnection($l_query); 
+	var $l_txModDelSrvcName = $l_txSrvcName[0];
+	return $l_txModDelSrvcName;
+}
+
+/**
+ *This function is used to fetch Approve Initiated Service Charge Name
+ *@param [in] - null
+ *@returns - $l_txSrvcName	service charge name
+ *@note - This function uses global parameters $g_dbSrvcType, $g_dbPayerGradeCode, $g_dbPayeeGradeCode, $g_dbPayerPaymentMethodType, $g_dbPayeePaymentMethodType, $g_dbPayerPaymentTypeID, $g_dbPayeePaymentTypeID, $g_dbPayerProviderID, $g_dbPayeeProviderID.
+ *@author - Vishal Agarwal
+ */
+ 
+function approveInitiatedSrvcChrgName(){
+	var $l_query = "select SERVICE_CHARGE_NAME from MTX_SERVICE_CHARGE_M where ( ( SERVICE_TYPE='" + $g_dbSrvcType + "' AND PAYER_GRADE_CODE='" + $g_dbPayerGradeCode + "' AND PAYEE_GRADE_CODE='" + $g_dbPayeeGradeCode + "' AND PAYER_PAYMENT_METHOD_TYPE='" + $g_dbPayerPaymentMethodType + "' AND PAYEE_PAYMENT_METHOD_TYPE='" + $g_dbPayeePaymentMethodType + "' AND PAYER_PAYMENT_TYPE_ID='" + $g_dbPayerPaymentTypeID + "' AND PAYEE_PAYMENT_TYPE_ID='" + $g_dbPayeePaymentTypeID + "' AND PAYER_PROVIDER_ID='" + $g_dbPayerProviderID + "' AND PAYEE_PROVIDER_ID='" + $g_dbPayeeProviderID + "' ) AND ( STATUS_ID='AI' ) )";
+	var $l_txSrvcName = dbConnection($l_query); 
+	var $l_txAprvInitSrvcName = $l_txSrvcName[0];
+	return $l_txAprvInitSrvcName;
+}
+
+//===============Latest Active Service Charge Version============//
+
+/**
+ *This function is used to fetch latest Active Service Charge Version
+ *@param [in] - null
+ *@returns - $l_txSrvcName	service charge name
+ *@note - This function uses global parameters $g_dbSrvcType, $g_dbPayerGradeCode, $g_dbPayeeGradeCode, $g_dbPayerPaymentMethodType, $g_dbPayeePaymentMethodType, $g_dbPayerPaymentTypeID, $g_dbPayeePaymentTypeID, $g_dbPayerProviderID, $g_dbPayeeProviderID.
+ *@author - Vishal Agarwal
+ */
+function activeLatestSrvcChrgNameVersion(){
+	var $l_query = "select LAST_VERSION from MTX_SERVICE_CHARGE where ( ( SERVICE_TYPE='" + $g_dbSrvcType + "' AND PAYER_GRADE_CODE='" + $g_dbPayerGradeCode + "' AND PAYEE_GRADE_CODE='" + $g_dbPayeeGradeCode + "' AND PAYER_PAYMENT_METHOD_TYPE='" + $g_dbPayerPaymentMethodType + "' AND PAYEE_PAYMENT_METHOD_TYPE='" + $g_dbPayeePaymentMethodType + "' AND PAYER_PAYMENT_TYPE_ID='" + $g_dbPayerPaymentTypeID + "' AND PAYEE_PAYMENT_TYPE_ID='" + $g_dbPayeePaymentTypeID + "' AND PAYER_PROVIDER_ID='" + $g_dbPayerProviderID + "' AND PAYEE_PROVIDER_ID='" + $g_dbPayeeProviderID + "' ) AND ( STATUS_ID='Y') ) ORDER BY LAST_VERSION DESC";
+	var $l_txSrvcVrsn = dbConnection($l_query); 
+	var $l_txSrvcVersion = $l_txSrvcVrsn[0];
+
+	return $l_txSrvcVersion;
+}
+
+//===========Fetch Suspended Transfer Rule ID ======================//
+
+/**
+ *This function fetches transfer rule id based on status id as "S"(Suspend) from the DB
+ *@param [in] - null
+ *@returns - $l_suspendTRID		suspend transfer rule ID
+ *@author - Vishal Agarwal
+ */
+function fetchSusTransferRuleID(){
+	var $l_query = "select TRANSFER_RULE_ID from MTX_TRANSFER_RULES where SERVICE_TYPE='" + $g_dbServiceType + "' AND PAYER_CATEGORY_CODE='" + $g_dbPayerCategoryCode + "' AND PAYEE_CATEGORY_CODE='" + $g_dbPayeeCategoryCode + "' AND STATUS_ID = 'S' AND PAYER_PROVIDER_ID='" + $g_dbPayerProviderID + "' AND PAYEE_PROVIDER_ID='" + $g_dbPayeeProviderID + "' AND PAYER_PAYMENT_TYPE_ID='" + $g_dbPayerPaymentType + "' AND PAYEE_PAYMENT_TYPE_ID='" + $g_dbPayeePaymentType + "' AND PAYER_PAYMENT_METHOD_TYPE='" + $g_dbPayerMethodType + "' AND PAYEE_PAYMENT_METHOD_TYPE='" + $g_dbPayeeMethodType + "'";
+	var $l_suspendTRID = dbConnection($l_query);
+	var $l_susTRID = $l_suspendTRID[0];
+	return $l_susTRID;
+}
+
+//=================================Fetch Mobile group code from Db=================================//
+
+/**
+ *This function is used to fetch Mobile group code
+ *@param [in] - $a_mobCode	mobile code
+ *@returns - $l_mobgrpcode	Mobile group code
+ *@author - Anantha Shakti
+ */
+function mobGroupCode($a_mobCode){
+	var $l_query = "select GROUP_ROLE_CODE from GROUP_ROLES where GROUP_ROLE_CODE LIKE '%" + $a_mobCode + "%'";
+	var $l_mobgrpcode = dbConnection($l_query); 
+	return $l_mobgrpcode[0];
+}
+
+/**
+ *This function is used to fetch web group code
+ *@param [in] - $a_webCode	mobile code
+ *@returns - $l_webgrpcode	Mobile group code
+ *@author - Anantha Shakti
+ */
+function webGroupCode($a_mobCode){
+	var $l_query = "select GROUP_ROLE_CODE from SYS_GROUP_ROLES where CATEGORY_CODE = 'SUBS' and GROUP_ROLE_TYPE = 'WEB' and status = 'Y'";
+	var $l_webgrpcode = dbConnection($l_query); 
+	return $l_webgrpcode[0];
+}
+
+//======================Fetch Transfer profile is present or not in db=================================//
+
+/**
+ *This function is used to validate Transfer profile is present
+ *@param [in] - null
+ *@returns - $l_tcpPrfChk	TCP
+ *@note - This function uses global parameters $g_dbCatgCode, $g_dbProflType, $g_dbPaymntIDDesc.
+ *@author - Anantha Shakti
+ */
+function tcpProfileChk(){
+	var $l_query =null;
+	if($g_dbPaymntIDDesc!=null && $g_dbPaymntIDDesc=="ALL"){
+		$l_query = "select PROFILE_NAME from MTX_TRF_CNTRL_PROFILE where CATEGORY_CODE = '" + $g_dbCatgCode + "' and STATUS_ID = 'Y' and PAYMENT_METHOD_TYPE_ID_DESC = '" + $g_dbPaymntIDDesc + "'";	
+	}
+	else{
+		$l_query = "select PROFILE_NAME from MTX_TRF_CNTRL_PROFILE where CATEGORY_CODE = '" + $g_dbCatgCode + "' and PROFILE_TYPE = '" + $g_dbProflType + "' and STATUS_ID = 'Y' and PAYMENT_METHOD_TYPE_ID_DESC = '" + $g_dbPaymntIDDesc + "'";
+	}
+	var $l_tcpPrfChk = dbConnection($l_query); 
+	return $l_tcpPrfChk[0];
+}
+
+//======================Fetch Transfer profile is present or not in db=================================//
+
+/**
+ *This function is used to validate Transfer profile is present
+ *@param [in] - null
+ *@returns - $l_tcpPrfChk	TCP
+ *@note - This function uses global parameters $g_dbCatgCode, $g_dbProflType, $g_dbPaymntIDDesc.
+ *@author - Anantha Shakti
+ */
+function tcpCATProfileChk(){
+	var $l_query = "select PROFILE_NAME from MTX_TRF_CNTRL_PROFILE where CATEGORY_CODE = '" + $g_dbCatgCode + "' and PROFILE_TYPE = '" + $g_dbProflType + "' and STATUS_ID = 'Y' and PAYMENT_METHOD_TYPE_ID = '" + $g_tcpPaymentInst + "' and PAYMENT_METHOD_TYPE_ID_DESC like '" + $g_dbPaymntIDDesc + "%'";
+	var $l_tcpPrfChk = dbConnection($l_query); 
+	return $l_tcpPrfChk[0];
+}
+
+//======================Fetch Transfer profile is present or not in db=================================//
+
+/**
+ *This function is used to validate Transfer profile is present
+ *@param [in] - null
+ *@returns - $l_tcpPrfChk	TCP
+ *@note - This function uses global parameters $g_dbCatgCode, $g_dbProflType, $g_dbPaymntIDDesc and $g_dbproviderID(which is added extra to query with perticular MFS Provider in the DB).
+ *@author - V Nagaraju
+ */
+function tcpCATProfileChecking(){
+	var $l_query = "select PROFILE_NAME from MTX_TRF_CNTRL_PROFILE where CATEGORY_CODE = '" + $g_dbCatgCode + "' and PROFILE_TYPE = '" + $g_dbProflType + "' and STATUS_ID = 'Y' and PAYMENT_METHOD_TYPE_ID = '" + $g_tcpPaymentInst + "' and PAYMENT_METHOD_TYPE_ID_DESC like '" + $g_dbPaymntIDDesc + "%' and PROVIDER_ID like '" + $g_dbproviderID + "%'";
+	var $l_tcpPrfChk = dbConnection($l_query); 
+	return $l_tcpPrfChk[0];
+}
+
+
+//======================Fetch Transfer profile role type is present or not in db=================================//
+
+/**
+ *This function is used to validate Transfer profile is present
+ *@param [in] - null
+ *@returns - $l_tcpPrfChk	TCP
+ *@note - This function uses global parameters $g_dbCatgCode, $g_dbProflType, $g_dbPaymntIDDesc.
+ *@author - Anantha Shakti
+ */
+function tcpRoleProfileChk(){
+	var $l_query = "select PROFILE_NAME from MTX_TRF_CNTRL_PROFILE where CATEGORY_CODE = '" + $g_dbCatgCode + "' and GRADE_CODE = '"+$g_gradeCode+"' and  PROFILE_TYPE = '" + $g_dbProflType + "' and STATUS_ID = 'Y' and PAYMENT_METHOD_TYPE_ID = '" + $g_tcpPaymentInst + "' and PAYMENT_METHOD_TYPE_ID_DESC like '" + $g_dbPaymntIDDesc + "%'";
+	var $l_tcpPrfChk = dbConnection($l_query); 
+	return $l_tcpPrfChk[0];
+}
+
+
+/**
+ *This function is used to validate Transfer profile is present And Suspended Or Not
+ *@param [in] - null
+ *@returns - Profile ID ($l_tcpPrfChk)	
+ *@note - This function uses global parameters $g_dbCatgCode, $g_dbProflType, $g_dbPaymntIDDesc.
+ *@author - Manas Ranjan P
+ */
+function checkTCPRoleProfile(){
+	var $l_query = "select PROFILE_ID from MTX_TRF_CNTRL_PROFILE where PROFILE_NAME like '"+$g_autoPrefix+"%' and CATEGORY_CODE = '" + $g_dbCatgCode + "' and GRADE_CODE = '"+$g_gradeCode+"' and  PROFILE_TYPE = '" + $g_dbProflType + "' and STATUS_ID in ('S','Y') and PAYMENT_METHOD_TYPE_ID = '" + $g_tcpPaymentInst + "' and PAYMENT_METHOD_TYPE_ID_DESC like '" + $g_dbPaymntIDDesc + "%'";
+	var $l_tcpPrfChk = dbConnection($l_query); 
+	return $l_tcpPrfChk[0];
+}
+
+/**
+ *This function is used to validate Transfer profile is present
+ *@param [in] - null
+ *@returns - $l_tcpPrfChk	TCP
+ *@note - This function uses global parameters $g_dbCatgCode, $g_dbProflType, $g_dbPaymntIDDesc and $g_dbproviderID(which is added extra to query with perticular MFS Provider in the DB).
+ *@author - V Nagaraju
+ */
+function tcpRoleProfileChecking(){
+	var $l_query = "select PROFILE_NAME from MTX_TRF_CNTRL_PROFILE where PROFILE_NAME like '"+$g_autoPrefix+"%' and CATEGORY_CODE = '" + $g_dbCatgCode + "' and PROFILE_TYPE = '" + $g_dbProflType + "' and STATUS_ID = 'Y' and PAYMENT_METHOD_TYPE_ID = '" + $g_tcpPaymentInst + "' and PAYMENT_METHOD_TYPE_ID_DESC like '" + $g_dbPaymntIDDesc + "%' and PROVIDER_ID like '" + $g_dbproviderID + "%'";
+	var $l_tcpPrfChk = dbConnection($l_query); 
+	return $l_tcpPrfChk[0];
+}
+
+
+//======================Fetch Bank Id=================================//
+
+/**
+ *This function is used to fetch the bank id.
+ *@param [in] - null
+ *@returns - $l_bankId	
+ *@author - Anantha Shakti
+ */
+
+function fetchBankId($a_bankName){
+	var $l_query = "select BANK_ID from MBK_BANK_DETAILS where BANK_NAME = '"+$a_bankName+"'";
+	var $l_bankId = dbConnection($l_query); 
+	return $l_bankId[0];
+}
+
+//=====Fetch MSISDN of Wholesaler which is associated with Bank=====//
+
+/**
+ *This function is used to Fetch MSISDN of Wholesaler which is associated with Bank
+ *@param [in] - $a_bankId
+ *					Bank Id of the bank which is been associated with Wholesaler
+ *@returns - $l_whsLinkedToBank
+ *				Wholesaler linked to Bank
+ *@author - Vishal Agarwal
+ */
+
+function fetchWHSRelatedToBank($a_bankId){
+	var $l_query = "select MSISDN from USERS where USER_ID=(select USER_ID from MBK_CUST_ACCOUNTS where BANK_ID='" + $a_bankId + "' and USER_GRADE = 'GWS' and PROVIDER_ID = '101' and rownum <= 1) and rownum <= 1";
+	var $l_whs = dbConnection($l_query); 
+	var $l_whsLinkedToBank = $l_whs[0];
+	return $l_whsLinkedToBank;
+}
+
+//=====Fetch Bank Name of Wholesaler which is associated with Bank=====//
+
+/**
+ *This function is used to Fetch Bank Name of Wholesaler which is associated with Bank
+ *@param [in] - $a_bankId
+ *					Bank Id of the bank which is been associated with Wholesaler
+ *@returns - $l_whsLinkedToBank
+ *				Bank linked to Wholesaler
+ *@author - Vishal Agarwal
+ */
+function fetchBankNameRelatedToWholesaler($a_WHMSISDN){
+	var $l_query = "select BANK_NAME from MBK_BANK_DETAILS where BANK_ID=(select BANK_ID from MBK_CUST_ACCOUNTS where USER_ID=(select USER_ID from USERS where MSISDN = '" + $a_WHMSISDN + "'))";
+	var $l_whsBankName = dbConnection($l_query); 
+	var $l_whsLinkedToBank = $l_whsBankName[0];
+	return $l_whsLinkedToBank;
+}
+
+//======================Fetch suspended Transfer profile is present or not in db=================================//
+
+/**
+ *This function is used to validate Transfer profile is present
+ *@param [in] - null
+ *@returns - $l_tcpPrfChk	TCP
+ *@note - This function uses global parameters $g_dbCatgCode, $g_dbProflType, $g_dbPaymntIDDesc.
+ *@author - Anantha Shakti
+ */
+
+function tcpSuspendProfileChk(){
+	var $l_query = "select PROFILE_NAME from MTX_TRF_CNTRL_PROFILE where CATEGORY_CODE = '" + $g_dbCatgCode + "' and PROFILE_TYPE = '" + $g_dbProflType + "' and STATUS_ID = 'S' and PAYMENT_METHOD_TYPE_ID_DESC = '" + $g_dbPaymntIDDesc + "' and PAYMENT_METHOD_TYPE_ID = '" + $g_tcpPaymentInst + "'";
+	var $l_tcpPrfChk = dbConnection($l_query); 
+	return $l_tcpPrfChk[0];
+}
+
+//=======================Fetch Transfer profile is in Accept or Reject state in db=================//
+
+/**
+ *This function is used to validate Transfer profile is in Accept or Reject state
+ *@param [in] - null
+ *@returns - $l_tcpAppRej	TCP
+ *@author - Anantha Shakti
+ */
+function tcpProfAppRej(){
+	var $l_query = "select PROFILE_ID from MTX_TRF_CNTRL_PROFILE_M where ( STATUS_ID='SI' OR STATUS_ID='DI' OR STATUS_ID='UI') and PROFILE_TYPE='ROLE'";
+	var $l_tcpAppRej = dbConnection($l_query); 
+	return $l_tcpAppRej[0];
+}
+
+/**
+ *This function is used to validate Transfer profile is in Accept or Reject state
+ *@param [in] - null
+ *@returns - $l_chkTCPInitiated	TCP
+ *@author - Manas Ranjan P
+ */
+function CheckTCPProfileInitited(){
+	var $l_query = "select PROFILE_ID from MTX_TRF_CNTRL_PROFILE_M where  GRADE_CODE ='" + $g_gradeCode + "' AND PROFILE_TYPE = '" + $g_dbProflType + "' and PAYMENT_METHOD_TYPE_ID_DESC ='" + $g_dbPaymntIDDesc + "' and PROVIDER_ID = '" + $g_mfs1ProviderId + "' and ( STATUS_ID='SI' OR STATUS_ID='DI' OR STATUS_ID='UI') ";
+	var $l_chkTCPInitiated = dbConnection($l_query); 
+	return $l_chkTCPInitiated[0];
+}
+
+//====================Fetch Transfer profile is present or not in db====================//
+
+/**
+ *This function is used to validate Transfer profile is present
+ *@param [in] - null
+ *@returns - $l_tcpPrfIniChk	TCP
+ *@author - Anantha Shakti
+ */
+function tcpCustInitiateChk(){
+	var $l_query = "select PROFILE_ID from MTX_TRF_CNTRL_PROFILE_M where STATUS_ID='AI' and CATEGORY_CODE = '" + $g_dbCatgCode + "' and PAYMENT_METHOD_TYPE_ID_DESC = 'ALL' and PROFILE_TYPE='CAT' and rownum<=1";
+	var $l_tcpPrfIniChk = dbConnection($l_query); 
+	return $l_tcpPrfIniChk[0];
+}
+
+//====================Fetch Transfer profile is present or not in db====================//
+
+/**
+ *This function is used to validate Transfer profile is present
+ *@param [in] - null
+ *@returns - $l_tcpPrfIniChk	TCP
+ *@author - Anantha Shakti
+ */
+function tcpCatInitiateChk(){
+	var $l_query = "select PROFILE_ID from MTX_TRF_CNTRL_PROFILE_M where STATUS_ID='AI' and CATEGORY_CODE = '" + $g_dbCatgCode + "' and PAYMENT_METHOD_TYPE_ID_DESC NOT like '%ALL%' and PROFILE_TYPE='CAT' and PAYMENT_METHOD_TYPE_ID = '" + $g_tcpPaymentInst + "' and rownum<=1";
+	var $l_tcpPrfIniChk = dbConnection($l_query); 
+	return $l_tcpPrfIniChk[0];
+}
+
+//====================Fetch Transfer profile is present or not in db====================//
+
+/**
+ *This function is used to validate Transfer profile is present
+ *@param [in] - null
+ *@returns - $l_tcpPrfIniChk	TCP
+ *@author - V Nagaraju
+ */
+function tcpCatInitiateChecking(){
+	var $l_query = "select PROFILE_ID from MTX_TRF_CNTRL_PROFILE_M where STATUS_ID='AI' and CATEGORY_CODE = '" + $g_dbCatgCode + "' and PAYMENT_METHOD_TYPE_ID_DESC NOT like '%ALL%' and PROFILE_TYPE='CAT' and PAYMENT_METHOD_TYPE_ID = '" + $g_tcpPaymentInst + "' and PROVIDER_ID = '" + $g_dbproviderID + "' and rownum<=1";
+	var $l_tcpPrfIniChk = dbConnection($l_query); 
+	return $l_tcpPrfIniChk[0];
+}
+
+
+//=================================Fetch Web group Role from Database=================================//
+
+/**
+ *This function fetches Web group Role
+ *@param [in] - null
+ *@returns - $l_webGroup Web group role
+ *@note - This function uses global variable $g_webGroup,
+ *@author - Anantha Shakti
+ */
+function fetchWebGroupRole(){	
+	var $l_query = "select GROUP_ROLE_CODE from GROUP_ROLES where GROUP_ROLE_CODE LIKE '%" + $g_webGroup + "%' and rownum <=1";
+	var $l_webGroup = dbConnection($l_query);	
+	return $l_webGroup;
+}
+
+//=================================Fetch Channel zone from Database=================================//
+
+/**
+ *This function fetches Web group Role
+ *@param [in] - null
+ *@returns - $l_geoData  channel zone
+ *@author - Mallikarjuna V
+ */
+function channelZone() {
+
+  $l_query = "select GRPH_DOMAIN_NAME from GEOGRAPHICAL_DOMAINS where GRPH_DOMAIN_NAME like '" + $g_autoPrefix + "%' and PARENT_GRPH_DOMAIN_CODE NOT like '%SN%' and rownum <=1";
+  var $l_geoData = dbConnection($l_query); 
+  return $l_geoData[0];
+ }
+ 
+//=================================Fetch Bank Name from Database=================================//
+ 
+/**
+ *This function fetches bank name from the data base
+ *@param [in] - null
+ *@returns - $l_bank  bank name
+ *@author - Shreyata Sugandhi
+ */
+function bankName(){
+	$l_query = "select distinct BANK_NAME from MBK_BANK_DETAILS mb,sys_service_pymt_subtype_map sm where mb.bank_id=sm.bank_id and rownum <= 1 and sm.PROVIDER_ID = '"+ $g_mfs1ProviderId +"' and BANK_NAME like '%" + $g_autoPrefix + "BKN%' and BANK_POOL_ACCOUNT_NO is not null";
+	var $l_bnk = dbConnection($l_query);
+	var $l_bank	= $l_bnk[0];
+	return $l_bank;
+ }
+
+//=====================Fetch unliked MFS Provider Bank Name from Database============================//
+ 
+/**
+ *This function fetches bank name which is not likned with any MFS Provider from the data base
+ *@param [in] - null
+ *@returns - $l_bank  bank name
+ *@author - Shreyata Sugandhi
+ */
+function unlinkedMFSPBankName(){
+	$l_query = "select  b.BANK_NAME from MBK_CUST_ACCOUNTS a,MBK_BANK_DETAILS b where BANK_NAME like '%" + $g_autoPrefix + "BKN%' and BANK_POOL_ACCOUNT_NO is not null and STATUS_ID = 'Y' and PROVIDER_ID is null  and rownum <= 1 order by MODIFIED_ON DESC";
+	var $l_bnk = dbConnection($l_query);
+	var $l_bank	= $l_bnk[0];
+	return $l_bank;
+ }
+ 
+ //=========================Check if created Bank Name is added in Database====================//
+ 
+/**
+ *This function validate bank name
+ *@param [in] - $g_bankName  bank name
+ *@returns - null
+ *@note - This function uses global variabal $l_bank
+ *@author - Shreyata Sugandhi
+ */
+function validateCreatedBankInDB(){
+	$l_query = "select BANK_NAME from MBK_BANK_DETAILS where BANK_NAME like '%" + $g_bankName + "%'";
+	var $l_bnk = dbConnection($l_query);
+	var $l_bank	= $l_bnk[0];
+	_assertEqual($g_bankName, $l_bank);
+ }
+ 
+//=========================Fetch Channel User  in Database====================//
+ 
+/**
+ *This function fetches channel user
+ *@param [in] - null
+ *@returns - $l_chnlUsr  channel user
+ *@author - Mallikarjuna V
+ */
+ function fetchChannelUser(){
+  $l_query = "select USER_NAME from USERS where USER_NAME like '%AUT%' and USER_TYPE='CHANNEL' and LOGIN_ID like '%AUT%'  and  ( (PREVIOUS_STATUS != 'RI') AND (PREVIOUS_STATUS != 'UI') AND (PREVIOUS_STATUS != 'DI') AND (PREVIOUS_STATUS != 'SI') AND (PREVIOUS_STATUS != 'AI')) and rownum < 2 order by LEVEL2_APPROVED_BY DESC"; 
+  $l_chnlUsr = dbConnection($l_query); 
+  return $l_chnlUsr[0];
+ }
+ 
+//=========================Fetch Modified Channel User in Database====================//
+ 
+ /**
+  *This function fetches modified channel user 
+  *@param [in] - null
+  *@returns - $l_geoData  channel zone
+  *@author - Mallikarjuna V
+  */
+function fetchModifyChannelUser(){
+  $l_query = "select USER_NAME from USERS where USER_NAME like '%AUT%' and USER_TYPE='CHANNEL' and PREVIOUS_STATUS!='AI' and LOGIN_ID like '%AUT%' and STATUS = 'Y' and rownum <= 1 order by LEVEL2_APPROVED_ON DESC";
+  $l_chnlUsr = dbConnection($l_query); 
+  return $l_chnlUsr[0];
+ }
+ 
+//=========================Fetch Approved Channel User====================//
+
+/**
+ *This function fetches channel user
+ *@param [in] - null
+ *@returns - $l_chnlUsr  channel user
+ *@author - Mallikarjuna V
+ */
+function fetchApprChannelUser(){
+  $l_query = "select USER_NAME from USERS where USER_NAME like '%AUT%' and USER_TYPE='CHANNEL' and LOGIN_ID like '%AUT%' and PREVIOUS_STATUS ='AI' "; 
+  $l_chnelUsr = dbConnection($l_query); 
+  return $l_chnelUsr[0];
+ }
+ 
+ //=========================Fetch Channel User  MSISDN to modify====================// 
+ 
+/**
+ *This function fetches channel user MSISDN
+ *@param [in] - null
+ *@returns - $l_chnlMsidn  channel user MSISDN
+ *@author - Mallikarjuna V
+ */
+function channelMsisdn(){
+	$l_query = "select MSISDN from USERS where USER_NAME like '%AUT%' and USER_TYPE='CHANNEL' and LOGIN_ID like '%AUT%' and  status = 'Y' and rownum < 2 order by LEVEL2_APPROVED_BY DESC"; 
+	$l_chnlMsidn =dbConnection($l_query); 
+	return $l_chnlMsidn[0];
+}
+ 
+//======= Fetch Another User MSISDN for the Same Category User ========//
+/**
+ *This function fetches another MSISDN value for the same Category user from the database(Where it wouldn't get logged In User MSISDN)
+ *@param [in] - $loginId	login User Id
+ **@param [in] - $CategoryCode	Category Code(WHS/NWADM/BCU/BNKADM)
+ *@returns - $l_msisdn	MSISDN value
+ *@author - Saravanan P
+ */
+function fetchAnotherMSISDN($loginId,$CategoryCode){
+	
+	var $l_query = "select MSISDN from USERS where LOGIN_ID != '" + $loginId + "' AND CATEGORY_CODE ='"+$CategoryCode+"' AND STATUS = 'Y' and rownum <= 1";	
+	var $l_msisdn = dbConnection($l_query);	
+	var $l_AnotherMsisdn = $l_msisdn[0];		
+	return $l_AnotherMsisdn;
+}
+
+
+/**
+ *This function validates whether the joining commission rule is created or not based on Rule_ID
+ *@param [in] - null
+ *@returns - $$l_RULEID  Rule ID
+ *@author - R Bharath Kumar
+ */
+
+function fetchRuleId(){
+	$l_query = "select RULE_ID from MTX_JOINING_COMM_RULE where SERVICE_TYPE = '" + $g_dbServiceType + "'";
+	var $l_RULEID = dbConnection($l_query); 
+	return $l_RULEID[0];
+}
+
+/**
+ *This function fetches MSISDN value from database
+ *@param [in] - $s_id	user type (SUBS)
+ *@returns - $l_msisdn	MSISDN value
+ *@author - R Bharath Kumar
+ * Modified by Devadas
+ */
+function fetchActiveSubscriberMSISDN(){
+	
+	var $l_query = "select MSISDN from MTX_PARTY where USER_NAME like 'AUT%' and rownum <= 1 and STATUS = 'Y'" ;	
+	var $l_msisdnSubsciber = dbConnection($l_query);	
+	var $l_msisdnSubsciber = $l_msisdnSubsciber[0];		
+	return $l_msisdnSubsciber;
+}
+
+/**
+*This function fetches MSISDN value from database
+*@param [in] - $a_providerId	Provider ID of SUBSCRIBER
+*@returns - $l_msisdn	MSISDN value
+*@author - R Bharath Kumar
+*/
+function fetchSubscriberMSISDN($a_providerId){
+	//var $l_query = "select MSISDN from MTX_PARTY_ACCESS where ACQUISITION_PAID = 'Y' and PROVIDER_ID = '" + $a_providerId + "' and PIN_MODIFIED_ON IS NOT NULL and not STATUS in (select STATUS from MTX_PARTY where STATUS = 'S') and not MSISDN in (select ACCOUNT_NUMBER from MTX_PARTY_BLACK_LIST ) and rownum<=1";
+	var $l_query = "select mp.msisdn from mtx_party mp,mtx_party_access ma where mp.status='Y' and mp.user_Id = ma.user_id and ma.acquisition_paid='Y' and ma.comm_paid='Y' and ma.PROVIDER_ID = '" + $a_providerId + "' and ma.PIN_MODIFIED_ON IS NOT NULL and ma.MPIN_LSB_MODIFIED_ON IS NOT NULL and not mp.MSISDN in (select ACCOUNT_NUMBER from MTX_PARTY_BLACK_LIST ) and rownum<=1";
+	
+	var $l_msisdnSubsciber = dbConnection($l_query);	
+	var $l_msisdnSubsciber = $l_msisdnSubsciber[0];	
+	return $l_msisdnSubsciber;
+}
+
+/**
+*This function fetches MSISDN value Ohter than already fetched from database
+*@param [in] - $s_id	user type (SUBS)
+*@returns - $l_msisdn	MSISDN value
+*@author - Devadas
+*/
+function fetchOtheSubscriberMSISDN($a_providerId,$a_msisdn1){
+	
+	//var $l_query = "select MSISDN from MTX_PARTY_ACCESS where rownum = 1 and ACQUISITION_PAID = 'Y' and not MSISDN in (select ACCOUNT_NUMBER from MTX_PARTY_BLACK_LIST ) and STATUS = 'Y' and PROVIDER_ID = '" + $a_providerId + "'  and MSISDN<>'"+$a_msisdn1+"' ";
+	var $l_query = "select MSISDN from MTX_PARTY_ACCESS where rownum = 1 and ACQUISITION_PAID = 'Y' and MSISDN in (select MSISDN from mtx_party where status='Y') and not MSISDN in (select ACCOUNT_NUMBER from MTX_PARTY_BLACK_LIST ) and STATUS = 'Y' and PROVIDER_ID = '" + $a_providerId + "'  and MSISDN<>'"+$a_msisdn1+"' "; // modified by Anjibabu
+	var $l_msisdnSubsciber = dbConnection($l_query);	
+	var $l_msisdnSubsciber = $l_msisdnSubsciber[0];		
+	return $l_msisdnSubsciber;
+}
+
+
+//=========================Fetch Subscriber UserId from mtx party table====================// 
+
+/**
+ *This function fetches user_id from mtx_party
+ *@param [in] - null
+ *@returns - $l_userId  Subscriber UserId
+ *@author - R Bharath Kumar
+ */
+function fetchSubscriberUserId(){
+	$l_query = "select USER_ID from MTX_PARTY where msisdn =  '"+ $g_msisdn + "' and status in('Y','S')";
+	$l_userId =dbConnection($l_query); 
+	return $l_userId[0];
+}
+
+//=========================Fetch Subscriber Party Id from Blacklist table====================// 
+
+/**
+ *This function fetches party_id from mtx_party_lak_list table 
+ *@param [in] - null
+ *@returns - $l_partyId  Subscriber PartyId
+ *@author - R Bharath Kumar
+ */
+function fetchSubscriberPartyId($l_userId){
+	$l_query = "select PARTY_ID from MTX_PARTY_BLACK_LIST where PARTY_ID = '"+$l_userId+"'";
+	$l_partyId =dbConnection($l_query); 
+	return $l_partyId[0];
+}
+
+//=========================Fetch Channel UserId from Users table====================// 
+
+/**
+ *This function fetches user_id from mtx_party
+ *@param [in] - null
+ *@returns - $l_userId  Subscriber UserId
+ *@author - R Bharath Kumar
+ */
+function fetchChannelUserUserId(){
+	$l_query = "select USER_ID from USERS where msisdn =  '"+ $g_msisdn + " ' ";
+	$l_userId =dbConnection($l_query); 
+	return $l_userId[0];
+}
+
+//=========================Fetch Party Id from Blacklist table====================// 
+
+/**
+ *This function fetches party_id from mtx_party_blacklist table 
+ *@param [in] - null
+ *@returns - $l_partyId  Subscriber PartyId
+ *@author - R Bharath Kumar
+ */
+function fetchChannelUserPartyId($l_userId){
+	$l_query = "select PARTY_ID from MTX_PARTY_BLACK_LIST where PARTY_ID = '"+$l_userId+"'";
+	$l_partyId =dbConnection($l_query); 
+	return $l_partyId[0];
+}
+
+//======= Fetch Subscriber User MSISDN Related to Bank ========//
+/**
+ *This function fetches Subscriber MSISDN value who is related to BANK
+ *@param [in] - $a_mfs1ProviderId	Provider Id
+ *@returns - $l_msisdn	MSISDN value
+ *@author - Vishal Agarwal
+ */
+function fetchSubscriberMSISDNRelatedToBank($a_mfs1ProviderId){	
+	var $l_query = "select MSISDN from MTX_PARTY,MBK_CUST_ACCOUNTS where MTX_PARTY.USER_ID=MBK_CUST_ACCOUNTS.USER_ID and MTX_PARTY.STATUS='Y' and MBK_CUST_ACCOUNTS.STATUS_ID='Y' and MBK_CUST_ACCOUNTS.USER_GRADE='SUBS' and MBK_CUST_ACCOUNTS.PROVIDER_ID='" + $a_mfs1ProviderId + "' and rownum<=1";	
+	var $l_msisdn = dbConnection($l_query);	
+	var $l_AnotherMsisdn = $l_msisdn[0];		
+	return $l_AnotherMsisdn;
+}
+
+//======= Fetch Bank Name related to Subscriber User MSISDN Related to Bank ========//
+/**
+ *This function fetches Bank Name regarding Subscriber MSISDN value who is related to BANK
+ *@param [in] - $a_mfs1ProviderId	Provider Id
+ *@returns - $l_msisdn	MSISDN value
+ *@author - Vishal Agarwal
+ */
+function fetchBankRelatedToSubscriberMSISDNRelatedToBank($a_mfs1ProviderId){	
+	var $l_query = "select BANK_NAME from MBK_BANK_DETAILS where BANK_ID=(select BANK_ID from MTX_PARTY,MBK_CUST_ACCOUNTS where MTX_PARTY.USER_ID=MBK_CUST_ACCOUNTS.USER_ID and MTX_PARTY.STATUS='Y' and MBK_CUST_ACCOUNTS.STATUS_ID='Y' and MBK_CUST_ACCOUNTS.USER_GRADE='SUBS' and MBK_CUST_ACCOUNTS.PROVIDER_ID='" + $a_mfs1ProviderId + "' and rownum<=1)";	
+	var $l_msisdn = dbConnection($l_query);	
+	var $l_bankName = $l_msisdn[0];		
+	return $l_bankName;
+}
+
+/**
+ *This function fetches Suspended subscriber MSISDN value from database
+ *@param [in] - $s_id	user type (SUBS)
+ *@returns - $l_msisdn	MSISDN value
+ *@author - R Bharath Kumar
+ */
+function fetchSuspendedSubscriberMSISDN(){
+	
+	var $l_query = "select MSISDN from MTX_PARTY where rownum <= 1 and STATUS = 'S'" ;	
+	var $l_msisdnSubsciber = dbConnection($l_query);	
+	var $l_msisdnSubsciber = $l_msisdnSubsciber[0];		
+	return $l_msisdnSubsciber;
+}
+
+
+/**
+ *This function is used to fetch the active service charge ID from the DB
+ *@param [in] - null
+ *@returns - $l_txSrvcID	service charge ID
+ *@note - This function uses global parameters $g_dbNFSCSrvcType, $g_dbNFSCPayerGradeCode, $g_dbNFSCPayeeGradeCode, $g_dbNFSCPayerPaymentMethodType, $g_dbNFSCPayeePaymentMethodType, $g_dbNFSCPayerPaymentTypeID, $g_dbNFSCPayeePaymentTypeID, $g_dbNFSCPayerProviderID, $g_dbNFSCPayeeProviderID.
+ *@author - devadas challa
+ *
+ */
+function modifyDltNFSrvcChrgID(){
+	var $l_query = "select SERVICE_CHARGE_ID from MTX_SERVICE_CHARGE_M  where service_type = '"+$g_dbServType+ "'and payer_grade_code = '"+$g_dbpayergradecode+"' and payee_grade_code = '"+$g_dbpayeegradecode+"' and payer_payment_method_type = '"+$g_dbPayerPaymentMethodType+"' and payer_payment_type_id = '"+$g_dbPayerPaymentTypeID+"' and payer_provider_id = '"+$g_dbPayerProviderID+"' and payee_provider_id = '"+$g_dbPayeeProviderID+"'  AND ( STATUS_ID='UI' OR STATUS_ID='DI' ) ";
+	var $l_txSrvcID = dbConnection($l_query); 
+	return $l_txSrvcID[0];
+}
+
+
+//========================Fetch Suspended Channel User MSISDN from database=============
+/**
+ *This function fetches suspended channel user MSISDN
+ *@param [in] - null
+ *@returns - $l_suspendedchnlMsidn  channel user MSISDN
+ *@author - Hemanth Kumar
+ */
+function suspendedChannelMsisdnList($g_categoryCode){
+	$l_query = "select MSISDN  from users where status='S' and category_code='"+$g_categorycode+"'"; 
+	
+	$l_chnlMsidn =dbConnection($l_query); 
+	return $l_chnlMsidn[0];
+}
+
+//========================Fetch Suspended Channel User MSISDN from database=============
+/**
+ *This function fetches list of suspended channel user MSISDN
+ *@param [in] - null
+ *@returns - $l_suspendedchnlMsidnList  
+ *@author - V Nagaraju
+ */
+function suspendedChannelMsisdnList($a_categoryCode){
+
+	var $l_query = "select MSISDN  from users where status='S' and category_code='"+$a_categoryCode+"'"; 
+	var $l_suspendedchnlMsidnList =dbConnection($l_query); 
+	return $l_suspendedchnlMsidnList;
+}
+
+//========================Fetch Suspended Channel User Login Id from database=============
+/**
+ *This function fetches suspended channel user Login Id
+ *@param [in] - null
+ *@returns - $l_suspendedchnlLoginId  channel user MSISDN
+ *@author - Hemanth Kumar
+ */
+function suspendedChannelLoginId(){
+	$l_query = "select login_id from users where status='S' and category_code='"+$g_category_code+"'"; 
+	
+	$l_chnlMsidn =dbConnection($l_query); 
+	return $l_chnlMsidn[0];
+}
+/**
+ *This function is used to for check whether profile name is exist with this  combination or not
+ *@param [in] - null
+ *@returns - $l_txSrvcName	service charge name
+ *@note - This function uses global parameters $g_dbSrvcType, $g_dbPayerGradeCode, $g_dbPayeeGradeCode, $g_dbPayerPaymentMethodType, $g_dbPayeePaymentMethodType, $g_dbPayerPaymentTypeID, $g_dbPayeePaymentTypeID, $g_dbPayerProviderID, $g_dbPayeeProviderID.
+ *@author - manas
+ */
+ 
+function activeNFSrvcChrgName(){
+	 if($g_dbPayerPaymentMethodType=="NONE")
+		 var $l_query = "select SERVICE_CHARGE_NAME from mtx_service_charge where service_type = '"+$g_dbServType+ "' and payer_grade_code = '"+$g_dbpayergradecode+"' and payee_grade_code = '"+$g_dbpayeegradecode+"' and payer_payment_method_type = '"+$g_dbPayerPaymentMethodType+"' and payer_provider_id = '"+$g_dbPayerProviderID+"' and payee_provider_id = '"+$g_dbPayeeProviderID+"' and status_id = 'Y' ";
+	 
+	 else
+		 var $l_query = "select SERVICE_CHARGE_NAME from mtx_service_charge where service_type = '"+$g_dbServType+ "' and payer_grade_code = '"+$g_dbpayergradecode+"' and payee_grade_code = '"+$g_dbpayeegradecode+"' and payer_payment_method_type = '"+$g_dbPayerPaymentMethodType+"' and payer_payment_type_id = '"+$g_dbPayerPaymentTypeID+"' and payer_provider_id = '"+$g_dbPayerProviderID+"' and payee_provider_id = '"+$g_dbPayeeProviderID+"' and status_id = 'Y' ";
+	 var $l_txSrvcName = dbConnection($l_query); 
+	
+	return $l_txSrvcName[0];
+}
+
+
+/**
+ *This function fetches channel user MSISDN
+ *@param [in] - null
+ *@returns - $l_chnlMsidn  channel user MSISDN
+ *@author - Manas Ranjan Pradhan
+ */
+function fetchBarredTypeMSSIDN(){
+	$l_query = "select PARTY_LOGIN_ID,BARRING_TYPE from mtx_party_barred_hist where MSISDN = '7700086060'";
+	$l_chnlMsidn =dbConnection($l_query); 
+	return $l_chnlMsidn[0];
+}
+/**
+ *This function fetches channel user MSISDN
+ *@param [in] - null
+ *@returns - $l_chnlMsidn  channel user MSISDN
+ *@author - Manas Ranjan Pradhan
+ */
+function fetchBarredMSSIDN(){
+	$l_query = "select ACCOUNT_NUMBER from mtx_party_black_list where type = 'BY_OPT' and party_name = '"+$g_wholeshaleName+"'";
+	$l_chnlMsidn =dbConnection($l_query); 
+	return $l_chnlMsidn[0];
+}
+/**
+ *This function fetches channel user MSISDN
+ *@param [in] - null
+ *@returns - $l_chnlMsidn  channel user MSISDN
+ *@author - Manas Ranjan Pradhan
+ */
+function fetchBarredSenderMSSIDN(){
+	$l_query = "select mpbh.barring_type,mpbh.msisdn,mpbl.party_name from mtx_party_black_list mpbl,mtx_party_barred_hist mpbh where mpbl.party_name = mpbh.party_login_id and mpbh.category_code ='WH'";
+	$l_chnlMsidn =dbConnection($l_query); 
+	return $l_chnlMsidn[0];
+}
+/**
+ *This function fetches All active  MFS provider  from database
+ *@returns - $l_MFSProviderlist	MFSProvider value
+ *@author - Manas Ranjan Pradhan
+ */
+function getProfileID($a_msisdn){
+	
+	var $l_query = "select mpay_profile_id from mtx_wallet where msisdn='"+$a_msisdn+"' and payment_type_id='"+$g_pymtTypeId+"' and provider_id='"+$g_providerID+"'" ;	
+	var $l_profileId = dbConnection($l_query);		
+	var $l_profile = $l_profileId[0];		
+	
+	return $l_profile;
+}
+
+/**
+ *This function fetches All active  MFS provider  from database
+ *@returns - $l_MFSProviderlist	MFSProvider value
+ *@author - Manas Ranjan Pradhan
+ */
+function getProfileID($a_msisdn,$a_pymtTypeId,$a_providerID){
+	
+	var $l_query = "select mpay_profile_id from mtx_wallet where msisdn='"+$a_msisdn+"' and payment_type_id='"+$a_pymtTypeId+"' and provider_id='"+$a_providerID+"'" ;	
+	var $l_profileId = dbConnection($l_query);		
+	var $l_profile = $l_profileId[0];		
+	
+	return $l_profile;
+}
+
+/**
+ *This function fetches All active  MFS provider  from database
+ *@returns - $l_MFSProviderlist	MFSProvider value
+ *@author - Manas Ranjan Pradhan
+ */
+function getProfileStatus($a_msisdn,$a_pymtTypeId,$a_providerID){
+	
+	var $l_query =  "select mtc.STATUS_ID from MTX_TRF_CNTRL_PROFILE mtc,mtx_wallet mw where  mw.msisdn='"+$a_msisdn+"' and mw.payment_type_id='"+$a_pymtTypeId+"' and mw.provider_id='"+$a_providerID+"' and mtc.profile_id = mw.mpay_profile_id";
+	var $l_profileId = dbConnection($l_query);		
+	var $l_profile = $l_profileId[0];		
+	
+	return $l_profile;
+}
+
+/**
+ *This function fetches userName based on MSISDN
+ *@param [in] - $a_msisdn	msisdn
+
+ *@returns - $l_userName	UserNAme value
+ *@author - Manas RAnjan Pradhan
+ */
+function fetchUserNameBasedOnMSISDN($a_msisdn){
+	
+	var $l_query = "select login_id from users where msisdn='"+$a_msisdn+"' and status='Y'";	
+	var $l_userName = dbConnection($l_query);	
+	var $l_userNm = $l_userName[0];		
+	return $l_userNm;
+}
+
+/**
+ *This function Checks the category code is avaialble in preference table
+ *@param [in] -null
+ *@returns - $l_count
+ *@author - Hemanth kumar
+ */
+function chkCategoryCodeInPreferences(){
+	
+	var $l_query = "select count(*) from mtx_system_preferences where preference_code='EXT_REQ_CAT' and default_value like '%WHS%'" ;	
+	var $l_count = dbConnection($l_query);	
+			
+	return $l_count[0];
+}
+
+/**
+ *This function fetches the service charge  details
+ *@param [in] -null
+ *@returns - This function uses global parameters($a_dbSrvcType1,$a_dbPayerGradeCode1,$a_dbPayeeGradeCode1,$a_dbPayerPaymentMethodType1,$a_dbPayeePaymentMethodType1,$a_dbPayerPaymentTypeID1,$a_dbPayeePaymentTypeID1,$a_dbPayerProviderID1,$a_dbPayeeProviderID1)
+ *@author - Saravanan
+ */
+function fetchServiceChargeDetails($a_dbSrvcType1,$a_dbPayerGradeCode1,$a_dbPayeeGradeCode1,$a_dbPayerPaymentMethodType1,$a_dbPayeePaymentMethodType1,$a_dbPayerPaymentTypeID1,$a_dbPayeePaymentTypeID1,$a_dbPayerProviderID1,$a_dbPayeeProviderID1){
+	$l_query = "select short_code,service_charge_name,last_version from mtx_service_charge where ( ( SERVICE_TYPE='" + $a_dbSrvcType1 + "' AND PAYER_GRADE_CODE='" + $a_dbPayerGradeCode1 + "' AND PAYEE_GRADE_CODE='" + $a_dbPayeeGradeCode1 + "' AND PAYER_PAYMENT_METHOD_TYPE='" + $a_dbPayerPaymentMethodType1 + "' AND PAYEE_PAYMENT_METHOD_TYPE='" + $a_dbPayeePaymentMethodType1 + "' AND PAYER_PAYMENT_TYPE_ID='" + $a_dbPayerPaymentTypeID1 + "' AND PAYEE_PAYMENT_TYPE_ID='" + $a_dbPayeePaymentTypeID1 + "' AND PAYER_PROVIDER_ID='" + $a_dbPayerProviderID1 + "' AND PAYEE_PROVIDER_ID='" + $a_dbPayeeProviderID1 + "' ) AND ( STATUS_ID='Y') ) ORDER BY LAST_VERSION DESC";
+	$l_servDetails =dbConnection($l_query); 
+	return $l_servDetails[0];
+}
+
+/**
+ *This function fetches the suspended service charge  details
+ *@param [in] -null
+ *@returns - This function uses global parameters($a_dbSrvcType1,$a_dbPayerGradeCode1,$a_dbPayeeGradeCode1,$a_dbPayerPaymentMethodType1,$a_dbPayeePaymentMethodType1,$a_dbPayerPaymentTypeID1,$a_dbPayeePaymentTypeID1,$a_dbPayerProviderID1,$a_dbPayeeProviderID1)
+ *@author - Saravanan
+ */
+
+function fetchSUSServiceChargeDetails($a_dbSrvcType1,$a_dbPayerGradeCode1,$a_dbPayeeGradeCode1,$a_dbPayerPaymentMethodType1,$a_dbPayeePaymentMethodType1,$a_dbPayerPaymentTypeID1,$a_dbPayeePaymentTypeID1,$a_dbPayerProviderID1,$a_dbPayeeProviderID1){
+	$l_query = "select short_code,service_charge_name,last_version from mtx_service_charge where ( ( SERVICE_TYPE='" + $a_dbSrvcType1 + "' AND PAYER_GRADE_CODE='" + $a_dbPayerGradeCode1 + "' AND PAYEE_GRADE_CODE='" + $a_dbPayeeGradeCode1 + "' AND PAYER_PAYMENT_METHOD_TYPE='" + $a_dbPayerPaymentMethodType1 + "' AND PAYEE_PAYMENT_METHOD_TYPE='" + $a_dbPayeePaymentMethodType1 + "' AND PAYER_PAYMENT_TYPE_ID='" + $a_dbPayerPaymentTypeID1 + "' AND PAYEE_PAYMENT_TYPE_ID='" + $a_dbPayeePaymentTypeID1 + "' AND PAYER_PROVIDER_ID='" + $a_dbPayerProviderID1 + "' AND PAYEE_PROVIDER_ID='" + $a_dbPayeeProviderID1 + "' ) AND ( STATUS_ID='S') ) ORDER BY LAST_VERSION DESC";
+	$l_servDetails =dbConnection($l_query); 
+	return $l_servDetails[0];
+}
+
+/**
+ *This function fetches the suspended service charge  name
+ *@param [in] -null
+ *@returns - This function uses global parameters($a_dbSrvcType1,$a_dbPayerGradeCode1,$a_dbPayeeGradeCode1,$a_dbPayerPaymentMethodType1,$a_dbPayeePaymentMethodType1,$a_dbPayerPaymentTypeID1,$a_dbPayeePaymentTypeID1,$a_dbPayerProviderID1,$a_dbPayeeProviderID1)
+ *@author - Saravanan
+ */
+
+function suspendedServiceChrgName($a_dbSrvcType1,$a_dbPayerGradeCode1,$a_dbPayeeGradeCode1,$a_dbPayerPaymentMethodType1,$a_dbPayeePaymentMethodType1,$a_dbPayerPaymentTypeID1,$a_dbPayeePaymentTypeID1,$a_dbPayerProviderID1,$a_dbPayeeProviderID1){
+	var $l_query = "select SERVICE_CHARGE_NAME from MTX_SERVICE_CHARGE where ( ( SERVICE_TYPE='" + $a_dbSrvcType1 + "' AND PAYER_GRADE_CODE='" + $a_dbPayerGradeCode1 + "' AND PAYEE_GRADE_CODE='" + $a_dbPayeeGradeCode1 + "' AND PAYER_PAYMENT_METHOD_TYPE='" + $a_dbPayerPaymentMethodType1 + "' AND PAYEE_PAYMENT_METHOD_TYPE='" + $a_dbPayeePaymentMethodType1 + "' AND PAYER_PAYMENT_TYPE_ID='" + $a_dbPayerPaymentTypeID1 + "' AND PAYEE_PAYMENT_TYPE_ID='" + $a_dbPayeePaymentTypeID1 + "' AND PAYER_PROVIDER_ID='" + $a_dbPayerProviderID1 + "' AND PAYEE_PROVIDER_ID='" + $a_dbPayeeProviderID1 + "' ) AND ( STATUS_ID='S' ) ) ORDER BY LAST_VERSION DESC";
+	var $l_txSrvcName = dbConnection($l_query);
+	var $l_txAcSusSrvcName = $l_txSrvcName[0];
+	return $l_txAcSusSrvcName;
+}
+
+/**
+ *This function is used to fetch Active Service Charge Name
+ *@param [in] - null
+ *@returns - $l_txSrvcName	service charge name
+ *@note - This function uses global parameters $g_dbSrvcType, $g_dbPayerGradeCode, $g_dbPayeeGradeCode, $g_dbPayerPaymentMethodType, $g_dbPayeePaymentMethodType, $g_dbPayerPaymentTypeID, $g_dbPayeePaymentTypeID, $g_dbPayerProviderID, $g_dbPayeeProviderID.
+ *@author - devadas
+ */
+function activeSrvcChrgNameMulti(){
+	var $l_query = "select SERVICE_CHARGE_NAME from MTX_SERVICE_CHARGE where ( ( SERVICE_TYPE='" + $g_dbSrvcType1 + "' AND PAYER_GRADE_CODE='" + $g_dbPayerGradeCode1 + "' AND PAYEE_GRADE_CODE='" + $g_dbPayeeGradeCode1 + "' AND PAYER_PAYMENT_METHOD_TYPE='" + $g_dbPayerPaymentMethodType1 + "' AND PAYEE_PAYMENT_METHOD_TYPE='" + $g_dbPayeePaymentMethodType1 + "' AND PAYER_PAYMENT_TYPE_ID='" + $g_dbPayerPaymentTypeID1 + "' AND PAYEE_PAYMENT_TYPE_ID='" + $g_dbPayeePaymentTypeID1 + "' AND PAYER_PROVIDER_ID='" + $g_dbPayerProviderID1+ "' AND PAYEE_PROVIDER_ID='" + $g_dbPayeeProviderID1 + "' ) AND ( STATUS_ID<>'N') ) ORDER BY LAST_VERSION DESC";
+	var $l_txSrvcName = dbConnection($l_query); 
+	var $l_txAcSrvcName = $l_txSrvcName[0];
+
+	return $l_txAcSrvcName;
+}
+
+/**
+ *This function fetches MSISDN value from database
+ *@param [in] - $a_id	user type (NA/WH/CA/MR etc)
+ *@returns - $l_msisdn	MSISDN value
+ *@author - Mallikarjuna V
+ */
+function fetchBankAssociatedUser($a_channelUserMobNum){
+	
+	var $l_query = "select * from users u, mbk_cust_accounts m where u.user_id=m.user_id and u.msisdn='"+$a_channelUserMobNum+"'";	
+	var $l_msisdnChannel = dbConnection($l_query);	
+	var $l_channelMsisdn = $l_msisdnChannel[0];		
+	return $l_channelMsisdn;
+}
+/**
+ *This function fetches Owner's Username and lastname value from database
+ *@param [in] - $a_categoryName	category name 
+ *@returns - $a_userName_lastName	Username and lastname
+ *@author - Anantha kumar.BN
+ */
+function fetchOwnerName($a_categoryName){
+	
+	var $l_query = "select user_name||' '||last_name from users u,mtx_categories mc where u.category_code=mc.category_code and mc.category_name='"+$a_categoryName+"'";	
+	var $a_userName_lastName = dbConnection($l_query);
+	return $a_userName_lastName[0];
+}
+/**
+ *This function fetches Parent's Username with login id value from database
+ *@param [in] - $a_categoryName	parent category name 
+ *@returns - $a_userNameWithLoginId	Username with login id
+ *@author - Anantha kumar.BN
+ */
+function fetchParentName($a_parentCategoryName){
+	
+	var $l_query = "select user_name||' '||last_name||'('||login_id||')' from users u,mtx_categories mc where u.category_code=mc.category_code and mc.category_name='"+$a_parentCategoryName+"'";	
+	var $l_userNameWithLoginId = dbConnection($l_query);	
+	return $l_userNameWithLoginId[0];
+}
+/**
+ *This function fetches Parent's geography value from database
+ *@param [in] - $a_parentLoginId	parent login id
+ *@returns - $l_parentGeo	parent geography
+ *@author - Anantha kumar.BN
+ */
+function fetchParentGeo($a_parentLoginId){
+	
+	var $l_query = "select UG.grph_Domain_Code from user_geographies UG,users U where ug.user_id= u.user_id and u.login_id='"+$a_parentLoginId+"'";	
+	var $l_parentGeo = dbConnection($l_query);	
+	return $l_parentGeo[0];
+}
+
+/**
+ *This function is used to Fetch MSISDN of Wholesaler  which  is having  bank association 
+ *@param [in] - $a_bankId  -------Bank Id of the bank which is been associated with Wholesaler
+ *@param [in] - $a_providerId --- Provider id like 101,102 etc.
+ *@param [in] - $a_StatusID ------Status id of Wholsaler bank. 
+ *@param [in] - $a_userGrade------User grade.
+ *@returns - $l_whsLinkedToBank--- Wholesaler linked to Bank
+ *@author - Hemanth Kumar
+ */
+
+function getMSISDNByUserTypeAndBank($a_bankId,$a_providerId,$a_StatusID,$a_userGrade){
+	var $l_query = "select MSISDN from USERS where USER_ID=(select USER_ID from MBK_CUST_ACCOUNTS where BANK_ID='" + $a_bankId + "' and USER_GRADE = '"+$a_userGrade+"' and PROVIDER_ID = '"+ $a_providerId + "' and STATUS_ID='"+$a_StatusID+"' and rownum = 1) and rownum = 1";
+	var $l_whs = dbConnection($l_query); 
+	var $l_whsLinkedToBank = $l_whs[0];
+	return $l_whsLinkedToBank;
+}
+
+/**
+ *This function is used to Fetch LOGIN ID of Wholesaler  which  is having  bank association 
+ *@param [in] - $a_bankId  -------Bank Id of the bank which is been associated with Wholesaler
+ *@param [in] - $a_providerId --- Provider id like 101,102 etc.
+ *@param [in] - $a_StatusID ------Status id of Wholsaler bank. 
+ *@param [in] - $a_userGrade------User grade.
+ *@returns - $l_whsLinkedToBank--- Wholesaler linked to Bank
+ *@author - Hemanth Kumar
+ */
+
+function getLoginIdByUserTypeAndBank($a_bankId,$a_providerId,$a_StatusID,$a_userGrade){
+	var $l_query = "select LOGIN_ID from USERS where USER_ID=(select USER_ID from MBK_CUST_ACCOUNTS where BANK_ID='" + $a_bankId + "' and USER_GRADE = '"+$a_userGrade+"' and PROVIDER_ID = '"+ $a_providerId + "' and STATUS_ID='"+$a_StatusID+"' and rownum = 1) and rownum = 1";
+	var $l_whs = dbConnection($l_query); 
+	var $l_whsLinkedToBank = $l_whs[0];
+	return $l_whsLinkedToBank;
+}
+/**
+ *This function fetches Barred Subscriber from database.
+ *@param [in] - $g_msisdn value
+ *@returns - $l_partyId	MSISDN value
+ *@author - Ajita Kumar Patro
+ */
+function fetchBarredSubscriber($a_msisdn){
+		
+	var $l_query = "select b.party_id from MTX_PARTY_BLACK_LIST b, MTX_PARTY p where p.user_id = b.party_id and p.msisdn='"+$a_msisdn+"'";
+	var $l_partyId = dbConnection($l_query);	
+	var $l_partyId = $l_partyId[0];		
+	return $l_partyId;
+}
+
+/**
+ *This function BankId from  database
+ *@param [in] - $g_bankTypeId value
+ *@returns - $l_bankId	value
+ *@author - Ajita Kumar Patro
+ */
+function fetchBankId($a_bankTypeId){
+		
+	var $l_query = "select bank_id from mbk_bank_details where bank_name = '"+$a_bankTypeId+"'";
+	var $l_bankId = dbConnection($l_query);	
+	var $l_bankId = $l_bankId[0];		
+	return $l_bankId;
+}
+
+/**
+ *This function Barred And Suspended Subscriber from  database
+ *@param [in] - $a_msisdn_withBank
+ *@returns - $l_SubInform
+ *@author - Ajita Kumar Patro
+ */
+function fetchBarredAndSuspendedSubscriber($a_msisdn_withBank){
+		
+	var $l_query = "SELECT USER_ID FROM MTX_PARTY M,MTX_PARTY_BLACK_LIST MB WHERE M.USER_ID = MB.PARTY_ID AND M.STATUS = 'S' AND M.MSISDN = '"+$a_msisdn_withBank+"'";
+	var $l_SubInform = dbConnection($l_query);	
+	return $l_SubInform;
+}
+
+
+/**
+ *This function is used to Fetch Subscriber  which is associated with Bank
+ *@param [in] - $a_bankId,$g_sub,$g_prId
+ 
+ *@returns - $l_subLinkedToBank
+ *			Subscriber associate with linked to Bank
+ *@author - Ajita Kumar Patro
+ */
+
+function fetchSUBSRelatedToBank($a_bankId,$a_sub,$a_prId){
+	var $l_query = "select MSISDN from MTX_PARTY where USER_ID=(select USER_ID from MBK_CUST_ACCOUNTS where BANK_ID='"+$a_bankId+"' and USER_GRADE = '"+ $a_sub+"' and PROVIDER_ID = '"+$a_prId+"' and STATUS_ID='Y' and rownum = 1) and rownum = 1";
+	var $l_sub = dbConnection($l_query); 
+	var $l_subLinkedToBank = $l_sub[0];
+	return $l_subLinkedToBank;
+}
+
+/**
+ *This function is used to Fetch  Suspanded Subscriber MSISDN 
+ *@param [in] - $a_msisdn
+ *@returns -  $l_userName
+ *@author - Ajita Kumar Patro
+ */
+function fetchSuspendedSubscriber($a_msisdn){
+	var $l_query = "select USER_NAME from MTX_PARTY where  STATUS = 'S' and MSISDN ='"+$a_msisdn+"'";
+	var $l_sub = dbConnection($l_query); 
+	var $l_userName = $l_sub[0];
+	return $l_userName;
+}
+/**
+ *This function fetches un registered Profile id   from database
+ *@param [in] - $a_subChannelGrade,$a_provider,$a_pymtWalletType,$a_roleType
+ *@returns - $l_unRegProfileID	Profile value
+ *@author - Manas Ranjan Pradhan
+ */
+function getUnRegProfileID($a_subChannelGrade,$a_provider,$a_pymtWalletType,$a_roleType){
+	var $l_query = "SELECT PROFILE_ID FROM MTX_TRF_CNTRL_PROFILE WHERE GRADE_CODE='"+$a_subChannelGrade+"' AND PROVIDER_ID='"+$a_provider+"' AND PAYMENT_METHOD_TYPE_ID='"+$a_pymtWalletType+"' AND PAYMENT_METHOD_TYPE_ID_DESC='"+$a_roleType+"'";	
+	var $l_unRegProfileID = dbConnection($l_query);	
+	var $l_unRegProfileID = $l_unRegProfileID[0];		
+	return $l_unRegProfileID;
+}
+
+
+/**
+ *This function is used to fetch the un register userID and register userid using msisdn
+ *@param [in] - $a_MSISDN
+ *@returns - $$a_unRegUserId and reg UserId
+ *@author - Manas Ranjan Pradhan
+ */
+function fetchUnRegMSISDN($a_MSISDN){
+	var $l_query = "SELECT USER_ID FROM MTX_PARTY WHERE MSISDN = '"+$a_MSISDN+"'  UNION SELECT UNREG_USER_ID FROM MTX_UNREG_USER WHERE MSISDN = '"+$a_MSISDN+"'";
+	var $l_RegAndUnRegUserId = dbConnection($l_query);	
+	return $l_RegAndUnRegUserId;
+}
+
+/**
+ *This function is used to fetch Payee count From respected service type
+ *@param [in] - $a_userID,$a_serviceType,$a_bearerID
+ *@returns - $l_payeeCount	return how many transaction occure as unregister as well as register
+ *@author - Manas Ranjan Pradhan
+ */
+function fetchPayeeCount($a_userID,$a_serviceType,$a_bearerID){
+	var $l_query = "select PAYEE_COUNT from threshold_count where user_id='"+$a_userID+"' AND service_type = '"+$a_serviceType+"' AND bearer_id = '"+$a_bearerID+"' AND rownum = '1'";
+	var $l_payeeCnt = dbConnection($l_query);	
+	var $l_payeeCount = $l_payeeCnt[0];	
+	return $l_payeeCount;
+}
+
+/**
+ *This function fetches userid from mtx_party
+ *@param [in] - $a_msisdn
+ *@returns - $l_userId  Subscriber UserId
+ *@author - Manas Ranjan Pradhan
+ */
+function fetchSubscriberUserId($a_msisdn){
+	$l_query = "select USER_ID from MTX_PARTY where msisdn =  '"+ $a_msisdn + "' and status in('Y','S')";
+	$l_userId =dbConnection($l_query); 
+	return $l_userId[0];
+}
+
+/**
+ *This function fetches Wallet Details of Channel User from database
+ *@param [in] - $a_categoryCode	Category Code(WHS/RT/)
+ *@returns - $l_waDet	wallet details(MSISDN,PROVIDER_ID,PAYMENT_TYPE_ID)
+ *@author - Saravanan P
+ */
+function getChannelUserWalletDetails($a_categoryCode)
+{
+	var $l_query = "SELECT MW.MSISDN , MW.PROVIDER_ID, MW.PAYMENT_TYPE_ID FROM MTX_WALLET MW WHERE MW.MSISDN IN " +
+			"(SELECT US.MSISDN FROM USERS US WHERE US.CATEGORY_CODE = '"+$a_categoryCode+"' AND US.LOGIN_ID LIKE 'AUT%' AND US.STATUS = 'Y' AND ROWNUM <= 1) AND MW.PAYMENT_METHOD_TYPE_ID = 'WALLET' AND MW.STATUS = 'Y' ORDER BY MW.PAYMENT_TYPE_ID ASC";	
+	var $l_waDet = dbConnection($l_query);
+	var $l_waDetails = null;
+	if($l_waDet != null && $l_waDet.length > 0)
+	{
+		$l_waDetails = $l_waDet[0];
+	}
+	return $l_waDetails;
+}
+
+/**
+ *This function is used to validate Transfer profile is present
+ *@param [in] - null
+ *@returns - $l_tcpPrfChk	TCP
+ *@note - This function uses global parameters $g_dbCatgCode, $g_dbProflType, $g_dbPaymntIDDesc.
+ *@author - Bharath Kumar
+ */
+function tcpRoleProfileChkCommon(){
+	var $l_query = "select PROFILE_NAME from MTX_TRF_CNTRL_PROFILE where PROFILE_NAME like '"+$g_autoPrefix+"%' and CATEGORY_CODE = '" + $g_dbCatgCode + "' and GRADE_CODE = '"+$g_gradeCode+"' and  PROFILE_TYPE = '" + $g_dbProflType + "' and STATUS_ID = 'Y' and PAYMENT_METHOD_TYPE_ID = '" + $g_tcpPaymentInst + "' and PAYMENT_METHOD_TYPE_ID_DESC like '" + $g_dbPaymntIDDesc + "%'";
+	var $l_tcpPrfChk = dbConnection($l_query); 
+	var $l_tcpPrfChkCommon = $l_tcpPrfChk[0];
+	return $l_tcpPrfChkCommon;
+	
+}
+
+/**
+ *This function is used to fetch latest Active Service Charge Name,Version to Modify the Service Charge
+ *@param [in] - null
+ *@returns - $l_txSrvcdetails	service charge details
+ *@note - This function uses global parameters $g_dbSrvcType, $g_dbPayerGradeCode, $g_dbPayeeGradeCode, $g_dbPayerPaymentMethodType, $g_dbPayeePaymentMethodType, $g_dbPayerPaymentTypeID, $g_dbPayeePaymentTypeID, $g_dbPayerProviderID, $g_dbPayeeProviderID.
+ *@author - Saravanan P
+ */
+function fetchLatestSrvcChrgNameVersion(){
+	var $l_query = "SELECT MC.SERVICE_CHARGE_NAME ||'('||MC.LAST_VERSION||','||TO_CHAR(MV.APPLICABLE_FROM, 'dd-MON-yyyy hh:MI:SS')||')' AS DET FROM MTX_SERVICE_CHARGE MC ,MTX_SERVICE_CHARGE_VERSION MV WHERE MC.SERVICE_TYPE='" + $g_dbSrvcType + "' AND MC.PAYER_GRADE_CODE='" + $g_dbPayerGradeCode + "' AND MC.PAYEE_GRADE_CODE='" + $g_dbPayeeGradeCode + "' AND MC.PAYER_PAYMENT_METHOD_TYPE='" + $g_dbPayerPaymentMethodType + "' AND MC.PAYEE_PAYMENT_METHOD_TYPE ='" + $g_dbPayeePaymentMethodType + "' AND MC.PAYER_PAYMENT_TYPE_ID='" + $g_dbPayerPaymentTypeID + "' AND MC.PAYEE_PAYMENT_TYPE_ID='" + $g_dbPayeePaymentTypeID + "' AND MC.PAYER_PROVIDER_ID='" + $g_dbPayerProviderID + "' AND MC.PAYEE_PROVIDER_ID='" + $g_dbPayeeProviderID + "' AND MC.STATUS_ID ='Y' AND MC.SERVICE_CHARGE_ID = MV.SERVICE_CHARGE_ID AND MC.LAST_VERSION = MV.SERVICE_CHARGE_VERSION AND ROWNUM <= 1 ORDER BY MC.LAST_VERSION DESC";
+	var $l_txSrvcVrsn = dbConnection($l_query);
+	var $l_txSrvcdetails = null;
+	if($l_txSrvcVrsn != null && $l_txSrvcVrsn.length > 0)
+	{
+		$l_txSrvcdetails = $l_txSrvcVrsn[0].DET;
+	}	
+
+	return $l_txSrvcdetails;
+}
+
+/**
+ *This function is used to get the balance of channel user.
+ *@param [in] - provider id of channel user
+ *@param [in] -MSISDN of channel user
+ *@returns - channel user balance
+ *@author - Hemanth Kumar
+ */
+function getChUserBalance($a_providerId,$a_MSISDN){
+	var $l_query="select sum(balance) from MTX_WALLET_BALANCES mbw, mtx_wallet mw where mbw.wallet_number=mw.wallet_number and mw.provider_id='" +$a_providerId+"' and mw.msisdn='"+$a_MSISDN+"'";
+	var $l_balance= dbConnection($l_query);
+	return $l_balance;
+}
+
+/**
+ *This function is used to fetch the SMS(Where it contains Newly Registered Subscriber Wallet Details) 
+ *@param [in] - $a_msisdn	New Subscriber Msisdn.
+ *@returns - $l_subWallDetails	Subscriber Wallet details
+ *@author - Saravanan P
+ */
+function fetchNewRegSubWalletDetails($a_msisdn)
+{
+	var $l_query = "SELECT MESSAGE FROM SENTSMS WHERE MSISDN = '"+$a_msisdn +"' AND MESSAGE LIKE 'Your account creation is successful%' ORDER BY DELIVEREDON DESC";
+	var $l_subWallet = dbConnection($l_query);
+	var $l_subWallDetails = null;
+	if($l_subWallet != null && $l_subWallet.length > 0)
+	{
+		$l_subWallDetails = $l_subWallet[0].toString();
+	}	
+	return $l_subWallDetails;
+}
+
+/**
+ *This function is used to fetch the SMS(Where it contains Newly Registered Subscriber Wallet Details) 
+ *@param [in] - $a_msisdn	New Subscriber Msisdn.
+ *@returns - $l_subWallDetails	Subscriber Wallet details
+ *@author - Anjibabu
+ */
+function fetchNewRegSubWalletDetailsinWEB($a_msisdn)
+{
+	var $l_query = "SELECT MESSAGE FROM SENTSMS WHERE MSISDN = '"+$a_msisdn +"' AND MESSAGE LIKE 'You have been registered in Mobiquity%' ORDER BY DELIVEREDON DESC";
+	var $l_subWallet = dbConnection($l_query);
+	var $l_subWallDetails = null;
+	if($l_subWallet != null && $l_subWallet.length > 0)
+	{
+		$l_subWallDetails = $l_subWallet[0].toString();
+	}	
+	return $l_subWallDetails;
+}
+
+/**
+ *This function is used to fetch the bankId of barred channel user
+ *@param [in] - $a_msisdn	channel user msisdn
+ *@returns - $l_channelBankID	channel user login id
+ *@author - Saravanan P
+ */
+function fetchBankIdforBarredChannelUser($a_msisdn)
+{
+	var $l_query = "select bank_id from MBK_CUST_ACCOUNTS mc,mtx_party_black_list mb  where mc.user_id=mb.party_id and mc.user_id = (select USER_ID from USERS where MSISDN = '"+$a_msisdn+"' and rownum =1)";  
+	var $l_bankID = dbConnection($l_query);	
+	var $l_channelBankID = $l_bankID[0];	
+	return $l_channelBankID;
+}
+
+/**
+ *This function is used to get the channel user msisdn whose balance is zero. 
+ *@param [in] - provider id of channel user
+ *@param [in] - Grade code of channel user
+ *@param [in] - Balance 
+ *@returns - MSISDN 
+ *@author - Hemanth Kumar
+ */
+function getChUserMSISDNWithSpecificBalance($a_providerId,$a_balance,$a_dbPayeeGradeCode,$a_Status){
+	var $l_query="select MSISDN from MTX_WALLET_BALANCES mbw, mtx_wallet mw where mbw.wallet_number=mw.wallet_number and mw.provider_id='"+$a_providerId+"' and mbw.balance='"+$a_balance+"' and mw.user_grade='"+$a_dbPayeeGradeCode+"' and mw.STATUS='"+$a_Status+"' and not MSISDN in (select ACCOUNT_NUMBER from MTX_PARTY_BLACK_LIST )";
+	var $l_MSISDN= dbConnection($l_query);
+	return $l_MSISDN[3];
+}
+
+/**
+ *This function is used to get the Transaction message for perticular transaction id. 
+ *@param [in] - Transaction id
+ *@param [in] - MSISDN  
+ *@returns - Transaction Message
+ *@author - Hemanth Kumar
+ */
+function getTxnMsg($a_TXNID,$a_msisdn){
+	var $l_query="SELECT MESSAGE FROM SENTSMS WHERE REFERENCE='"+$a_TXNID+"' and MSISDN='"+$a_msisdn+"'";
+	var $l_Message= dbConnection($l_query);
+	return $l_Message[0];
+}
+
+/**
+ *This function is used to fetch the msisdn which is associated with the bank
+ *@param [in] - $a_id	channel user prefix
+ *@returns - $l_msisdnBank	Channel user msisdn
+ *@author - R Bharath Kumar
+ */
+function fetchBankAssociatedMSISDN($a_id)
+{
+	var $l_query = "select msisdn from USERS U,MBK_CUST_ACCOUNTS MC where U.USER_ID = MC.USER_ID  and U.USER_NAME like '" + $g_autoPrefix + "" + $a_id + "%'";
+	var $l_bMsisdn = dbConnection($l_query);	
+	var $l_msisdnBank = $l_bMsisdn[0];	
+	return $l_msisdnBank;
+}
+
+/**
+ *This function is used to fetch the list of available channel user msisdn from DB
+ *@param [in] - $a_id
+ *@returns - $l_CHMsisdnList	Channel user msisdn list
+ *@author - V Nagaraju
+ */
+function fetchListOfAvailableChannelUserMSISDN($a_id)
+{
+	var $l_query = "select msisdn from USERS U,MBK_CUST_ACCOUNTS MC where U.USER_ID = MC.USER_ID  and U.USER_NAME like '" + $g_autoPrefix + "" + $a_id + "%'";
+	var $l_CHMsisdnList = dbConnection($l_query);
+	return $l_CHMsisdnList;
+}
+
+/**
+ *This function is used to fetch the username,categoryName,DomainName of ChannelUser from DB
+ *@param [in] - $a_msisdn
+ *@returns - $l_CHMsisdnList	Channel user msisdn list
+ *@author - V Nagaraju
+ */
+function fetchuserNameCategoryNameDomainNameForChannelUser($a_msisdn){
+	var $l_query = "SELECT u.user_name,mc.category_name,md.domain_name FROM users u,mtx_categories mc,mtx_domains md WHERE u.msisdn='"+$a_msisdn+"' AND u.category_code =mc.category_code AND mc.domain_code=md.domain_code and mc.category_type='CHUSER'";
+	var $l_List = dbConnection($l_query);
+	return $l_List[0];
+}
+
+/**
+ *This function is used to fetch suspend channel user Approval UserName  from DB
+ *@param [in] - $a_msisdn,$a_category_code
+ *@returns - $l_CHUsername	Channel user userName
+ *@author - V Nagaraju
+ */
+function fetchSuspendInitiateNotApprovedChannelUserName($a_msisdn,$a_category_code){
+	var $l_query = "SELECT u.user_name FROM users u,users_m um WHERE u.user_id=um.user_id and um.status='SI' and u.msisdn='"+$a_msisdn+"' and u.category_code='"+$a_category_code+"' and u.status='Y'";	
+	var $l_CHUsername = dbConnection($l_query);
+	return $l_CHUsername[0];
+}
+
+/**
+ *This function is used to fetch resumed channel user Approval UserName  from DB
+ *@param [in] - $a_msisdn,$a_category_code
+ *@returns - $l_CHUsername	Channel user userName
+ *@author - V Nagaraju
+ */
+function fetchResumedInitiateNotApprovedChannelUserName($a_msisdn,$a_category_code){
+	var $l_query = "SELECT u.user_name FROM users u,users_m um WHERE u.user_id=um.user_id and um.status='RI' and u.msisdn='"+$a_msisdn+"' and u.category_code='"+$a_category_code+"' and u.status='S'";	
+	var $l_CHUsername = dbConnection($l_query);
+	return $l_CHUsername[0];
+}
+
+/**
+ *This function is used to fetch the username which is associated with the bank
+ *@param [in] - $a_msisdn	channel user msisdn
+ *@returns - $l_bankMSISDNUserName	user name of channel user
+ *@author - R Bharath Kumar
+ */
+function fetchUserNameBankAssociatedMSISDN($a_msisdn)
+{
+	var $l_query = "select USER_NAME from USERS where msisdn = '"+$a_msisdn+"'" ; 
+	var $l_userName = dbConnection($l_query);	
+	var $l_bankMSISDNUserName = $l_userName[0];	
+	return $l_bankMSISDNUserName;
+}
+
+/**
+ *This function is used to get the Count of employee under perticular channel user 
+ *@param [in] - MSISDN  
+ *@returns - Count
+ *@author - Hemanth Kumar
+ */
+function getCountOfEmp($a_MSISDN){
+	var $l_query="select count(EMP_ID) from mtx_employee me where ME.EMP_STATUS<>'N' and me.manager_id=(select user_id from users where msisdn='"+$a_MSISDN+"' AND ROWNUM = 1 )";
+	var $l_count= dbConnection($l_query);
+	return $l_count;
+}
+
+
+
+/**
+ *This function is used to fetch the active Operator-id which is created under NA.
+ *@param [in] - null
+ *@returns - Active Operator-id
+ *@author - Rajesh CP
+ */
+
+function fetchActiveOperator(){	
+	var $l_query = "select OPERATOR_ID from MBK_OPERATORS where status = 'Y'";
+	var $l_operatorId = dbConnection($l_query); 
+	return $l_operatorId[0];
+
+}
+/**
+
+ *This function is used to get the barred  employee Id. 
+ *@param [in] - MSISDN  
+ *@returns - Emp Id
+ *@author - Hemanth Kumar
+ */
+function getBarredEmpId($a_MSISDN){
+	var $l_query="select EMP_ID from mtx_employee  me ,USERS U where U.USER_ID=ME.MANAGER_ID and me.emp_blacklist_status='Y' and u.msisdn='"+$a_MSISDN+"'  ";
+	var $l_EmpId= dbConnection($l_query);
+	return $l_EmpId[0];
+}
+
+/**
+ *This function is used to get the suspended employee Id. 
+ *@param [in] - MSISDN  
+ *@returns - Emp Id
+ *@author - Hemanth Kumar
+ */
+function getSuspendedEmpId($a_MSISDN){
+	var $l_query="select EMP_ID from mtx_employee  me ,USERS U where U.USER_ID=ME.MANAGER_ID and me.emp_status='S' and u.msisdn='"+$a_MSISDN+"'  ";
+	var $l_EmpId= dbConnection($l_query);
+	return $l_EmpId[0];
+}
+
+/**
+ *This function is used to get the Barred channel user MSISDN based on barring type. 
+ *@param [in] -  Barring type
+ *@returns - MSISDN
+ *@author - Hemanth Kumar
+ */
+function getBarredChannelUserMSISDN($a_Barring_Type){
+	var $l_query="SELECT BL.ACCOUNT_NUMBER FROM MTX_PARTY_BLACK_LIST BL,USERS U WHERE U.MSISDN=BL.ACCOUNT_NUMBER AND  BL.BLACK_LIST_TYPE_ID='"+$a_Barring_Type+"'";
+	var $l_MSISDN= dbConnection($l_query);
+	return $l_MSISDN[0];
+}
+
+/***
+*This function is used to Fetch LoginID of Wholesaler which is associated with  Bank
+*@param [in] - $a_bankId Bank Id of the bank which is been associated with Wholesaler
+*@returns - $l_whsLinkedToBank Wholesaler linked to Bank 
+*@author - Hemanth Kumar
+*/
+
+function fetchWHSLoginIdRelatedToActiveBank($a_bankId,$a_providerId){
+	var $l_query = "select LOGIN_ID from USERS where USER_ID=(select USER_ID from MBK_CUST_ACCOUNTS where BANK_ID='" + $a_bankId + "' and USER_GRADE = 'GWS' and PROVIDER_ID = '"+ $a_providerId + "' and STATUS_ID='Y' and rownum <= 1) and rownum <= 1";
+	var $l_whs = dbConnection($l_query); 
+	var $l_whsLinkedToBank = $l_whs[0];
+	return $l_whsLinkedToBank;
+}
+
+/***
+*This function is used to Fetch LoginID of Wholesaler which is associated with  Bank
+*@param [in] - $a_bankId Bank Id of the bank which is been associated with Wholesaler
+*@returns - $l_whsLinkedToBank Wholesaler linked to Bank
+*@author - Hemanth Kumar
+*/
+
+function fetchAnotherWHSMSISDNRelatedToActiveBank($l_WHSLoginId,$a_bankId,$a_providerId){
+	
+	var $l_query = "select MSISDN from USERS where (LOGIN_ID not like '"+$l_WHSLoginId+"') and( USER_ID=(select USER_ID from MBK_CUST_ACCOUNTS where BANK_ID='" + $a_bankId + "' and USER_GRADE = 'GWS' and PROVIDER_ID = '"+ $a_providerId + "' and STATUS_ID='Y' and rownum <= 1) and rownum <= 1)";	
+
+	var $l_whs = dbConnection($l_query); 
+	var $l_anotherWhsLinkedToBank = $l_whs[0];
+	return $l_anotherWhsLinkedToBank;
+
+}
+
+/**
+ *This function is used to fetch the threshould count of particular Subscriber.
+ *@param [in] - $a_msisdn,$a_serviceType,$a_beareaId
+ *@returns - $l_threshouldCount
+ *@author - Devadas 
+
+ */
+
+function fetchThreshouldCount($a_msisdn,$a_serviceType,$a_beareaId){	
+	var $l_query = "select tc.payee_count from mtx_party p, threshold_count tc where p.user_id = tc.user_id and p.msisdn='"+$a_msisdn+"' and tc.service_type '"+$a_serviceType+"'and tc.BEARER_ID = '"+$a_beareaId+"'";
+	var $l_threshouldCount = dbConnection($l_query); 
+	return $l_threshouldCount[0];
+}
+/**
+ *This function is used to get all the  employee ids of perticular channel user 
+ *@param [in] - MSISDN  
+ *@returns - Emp Ids
+ *@author - Hemanth Kumar
+ */
+function getEmpIds($a_MSISDN){
+	var $l_EmpIds=new Array();
+	//var $l_query="select EMP_ID from mtx_employee  me  where me.emp_status='Y' and  me.manager_id=(select user_id from users where msisdn='"+$a_MSISDN+"') order by  EMP_ID";
+	var $l_query="select EMP_ID from mtx_employee  me ,USERS U where U.USER_ID=ME.MANAGER_ID and me.emp_status='Y' and u.msisdn='"+$a_MSISDN+"'  order by  EMP_ID";
+	var $l_EmpIds= dbConnection($l_query);
+	return $l_EmpIds;
+}
+
+/**
+ *This function is used to get the existing  employee first name. 
+ *@param [in] - MSISDN  
+ *@returns - Emp First Name
+ *@author - Hemanth Kumar
+ */
+function getEmpFirstName($a_MSISDN){
+	var $l_query="select ME.EMP_FIRST_NAME from mtx_employee me,USERS U where U.USER_ID=ME.MANAGER_ID and  me.emp_status='Y' and u.msisdn='"+$a_MSISDN+"'";
+	var $l_EmpFName= dbConnection($l_query);
+	return $l_EmpFName[0];
+}
+
+/**
+ *This function is used to get the existing  employee last name. 
+ *@param [in] - MSISDN  
+ *@returns - Emp Last Name
+ *@author - Hemanth Kumar
+ */
+function getEmpLastName($a_MSISDN){
+	var $l_query="select ME.EMP_LAST_NAME from mtx_employee  me,USERS U where U.USER_ID=ME.MANAGER_ID and  me.emp_status='Y' and u.msisdn='"+$a_MSISDN+"'";
+	var $l_EmpLName= dbConnection($l_query);
+	return $l_EmpLName[0];
+}
+
+/**
+ *This function is used to get the status of the employee
+ *@param [in] - MSISDN  
+ *@returns - Emp status
+ *@author - Hemanth Kumar
+ */
+
+function getEmpStatus($a_MSISDN,$a_EmpId){
+	var $l_query="SELECT ME.EMP_STATUS FROM MTX_EMPLOYEE ME,USERS U WHERE U.USER_ID=ME.MANAGER_ID AND ME.EMP_STATUS<>'N' AND U.MSISDN='"+$a_MSISDN+"' AND ME.EMP_ID='"+$a_EmpId+"'";
+	var $l_EmpStatus= dbConnection($l_query);
+	return $l_EmpStatus[0];
+}
+/**
+ *This function is used to fetch the pin failure count of employee.
+ *@param [in] - $a_msisdn,$a_serviceType,$a_beareaId
+ *@returns - failure count
+ *@author - Devadas 
+ */
+function getEmpPinFailureCount($a_MSISDN,$a_empId){
+	var $l_query="SELECT ME.NUMBER_OF_PIN_CODE_FAILURE FROM MTX_EMPLOYEE ME,USERS U WHERE U.USER_ID=ME.MANAGER_ID AND U.MSISDN='"+$a_MSISDN+"' AND ME.EMP_STATUS <> 'N' AND ME.EMP_ID = '"+$a_empId+"'";
+	var $l_pinFailureCount= dbConnection($l_query);
+	var $l_count = $l_pinFailureCount[0];	
+	return $l_count;
+
+}
+/**
+ *This function is used to fetch the identiicationNumber of particular Subscriber.
+ *@param [in] - $a_msisdn
+ *@returns - $l_identiicationNumber
+ *@author - Devadas 
+ */
+
+function fetchIdNumberOfSubscriber($a_msisdn){	
+	var $l_query = "select EXTERNAL_CODE from mtx_party where msisdn = '"+$a_msisdn+"' and status = 'Y'";
+	var $l_identiicationNumber = dbConnection($l_query); 
+	return $l_identiicationNumber[0];
+}
+
+/**
+ * This function is used to fetch the  Subscriber created through USSD.
+ *@param 
+ *@returns - $l_msisdn
+ *@author - Devadas 
+ */
+function fetchUSSDSubscriber(){
+	var $l_query = "select msisdn from mtx_party where USER_NAME_PREFIX is null and status = 'Y' and rownum = 1";
+	//var $l_query = "select msisdn from mtx_party where status = 'Y' where rownum=1";
+	var $l_msisdn = dbConnection($l_query); 
+	return $l_msisdn[0];
+}
+
+/**
+ * this function fetches available stock from IND01 
+ * @returns
+ * @author devadas
+ */
+function fetchAvailableStock(){
+	var $l_query = "SELECT BALANCE/ (SELECT DEFAULT_VALUE FROM MTX_SYSTEM_PREFERENCES WHERE PREFERENCE_CODE = 'CURRENCY_FACTOR')BALANCE FROM MTX_WALLET_BALANCES WHERE WALLET_NUMBER ='IND01'";
+	var $l_availableStock = dbConnection($l_query); 
+	return $l_availableStock[0];
+}
+
+/**
+ *This function is used to get   employee ids of perticular channel user based on status
+ *@param [in] - employee status of channel user  ($a_empStatus)
+ *@param [in] - emp black list of channel user($a_empBlackList)
+ *@param [in] - msisdn of channel user($a_MSISDN)
+ *@returns - Emp Ids
+ *@author - Manas Ranjan Pradhan
+ */
+function getEmpIdsBasedOnStatus($a_empStatus,$a_empBlackList,$a_MSISDN){
+	var $l_query="SELECT ME.EMP_ID FROM MTX_EMPLOYEE ME,USERS U WHERE U.USER_ID=ME.MANAGER_ID AND ME.EMP_STATUS ='"+$a_empStatus+"' AND ME.EMP_BLACKLIST_STATUS = '"+$a_empBlackList+"' AND U.MSISDN='"+$a_MSISDN+"'";
+	var $l_EmpID= dbConnection($l_query);
+	var $l_EmpID = $l_EmpID[0];	
+	return $l_EmpID;
+}
+
+
+/**
+ *This function is used to fetch the Acquisition paid MSISDN to check the balance
+ *@param [in] - null
+ *@returns - Acquisition paid--MSISDN
+ *@author - Rajesh CP
+ */
+
+function fetchAcquisitionPaidAndBankLinkedMsisdn(){
+	
+	var $l_query = "SELECT MSISDN FROM MTX_PARTY_ACCESS  WHERE ACQUISITION_PAID = 'Y' AND MOBILE_BANKING = 'Y'";
+	var $l_acquisitionPaid = dbConnection($l_query); 
+	return $l_acquisitionPaid[0];
+
+}
+/**
+ *This function is used to get Tcp Profile Name of Merchant
+ *@param [in] - $a_providerId,$a_paymentMethodTypeIdDesc
+ *@returns - Merchant Tcp Profile Name
+ *@author - Vadde Nagaraju
+ */
+function fetchMerchantTcpProfileName($a_ProviderId,$a_paymentMethodTypeIdDesc,$a_profileType){
+	var $l_query="select profile_name from mtx_trf_cntrl_profile where category_code='MER' and status_id='Y' and profile_type='"+$a_profileType+"' and provider_id='"+$a_ProviderId+"' and payment_method_type_id_desc='"+$a_paymentMethodTypeIdDesc+"' and profile_name like 'AUTMER%'";
+	var $l_profileName= dbConnection($l_query);
+	var $l_TcpPrfName = $l_profileName[0];	
+	return $l_TcpPrfName;
+}
+
+//======================Fetch Initiated Transfer profile is present or not in db=================================//
+
+/**
+ *This function is used to fetch the status of the TCP Normal Role Type
+ *@param [in] - null
+ *@returns - $$l_tcpStatus	TCP
+ *@note - This function uses global parameters $g_dbCatgCode, $g_dbProflType, $g_dbPaymntIDDesc.
+ *@author - V Nagaraju
+ */
+
+function fetchprfNameAndStatusOfTcpProfile($a_msisdn){
+	//$l_query = "select mtcp.profile_name,mtcp.status_id from mtx_trf_cntrl_profile mtcp,mtx_wallet mw where mtcp.profile_id=mw.mpay_profile_id and mw.msisdn='"+$a_msisdn+"' and mtcp.category_code = '"+$g_dbCatgCode+"' and mtcp.profile_type='"+$g_dbProflType+"' and mtcp.payment_method_type_id='"+$g_tcpPaymentInst+"' and mtcp.status_id <> 'N' and mtcp.payment_method_type_id_desc='"+$g_pymtTypeId+"' and mtcp.provider_id='"+$g_providerID+"'";
+	var $l_query = "select mtcp.profile_name,mtcp.status_id from mtx_trf_cntrl_profile mtcp,mtx_wallet mw where mtcp.profile_id=mw.mpay_profile_id and mw.msisdn='"+$a_msisdn+"' and mtcp.category_code = '"+$g_dbCatgCode+"' and mtcp.profile_type='"+$g_dbProflType+"' and mtcp.payment_method_type_id='"+$g_tcpPaymentInst+"' and mtcp.status_id <> 'N' and mtcp.payment_method_type_id_desc='"+$g_pymtTypeId+"' and mtcp.provider_id='"+$g_providerID+"'";
+	var $l_prfNameAndStatusOfTcpProfile = dbConnection($l_query); 
+	return $l_prfNameAndStatusOfTcpProfile;
+}
+
+/**
+ * This function is fetch the channel user who is not in black list.
+ * @param[in] - category code of the channel user
+ * @param[in] - provider of the channel user
+ * @return - MSISDN of Channel User
+ * @author  Hemanth Kumar 28/03/2013
+ */	
+function getChUserMSISDN($a_categoryCode,$a_providerID){
+//	var $l_query = "SELECT DISTINCT(U.MSISDN) FROM USERS U, MTX_WALLET MW, MTX_WALLET_BALANCES MWB ,user_phones up  WHERE U.CATEGORY_CODE='"+$a_categoryCode+"' AND U.STATUS = 'Y' AND( U.USER_ID NOT IN(SELECT PARTY_ID FROM MTX_PARTY_BLACK_LIST)) AND MW.USER_ID=U.USER_ID AND MW.PIN_MODIFIED_ON IS NOT NULL AND MW.WALLET_NUMBER=MWB.WALLET_NUMBER AND MWB.BALANCE>0 and u.user_id=up.user_id and up.provider_id='"+$a_providerID+"'";
+	var $l_ChMSISDN = dbConnection($l_query); 
+	return $l_ChMSISDN[0];
+	
+}
+/**
+ *This function is used to check profile exist or not based on catgory code like (SUBS) and grade code like (USUBS)
+ *@param [in] - Category Code ($a_dbCatgCode)
+ *@param [in] - Profile Type ($a_dbProflType) 
+ *@param [in] - Payment method type ($a_tcpPaymentInst)
+ *@param [in] - Payment method type id desc ($a_pymtTypeId)
+ *@param [in] - Grade Code ($a_gradeCode)
+ *@param [in] - Provider Id ($a_providerID)
+ *@returns - profile name
+ *@author - Manas Ranjan Pradhan
+ */
+
+function checkTCPProfileExist($a_dbCatgCode,$a_dbProflType,$a_tcpPaymentInst,$a_pymtTypeId,$a_gradeCode,$a_providerID){
+	
+	var $l_query="SELECT PROFILE_NAME  FROM MTX_TRF_CNTRL_PROFILE where CATEGORY_CODE = '"+$a_dbCatgCode+"'  AND PROFILE_TYPE = '"+$a_dbProflType+"'  AND STATUS_ID = 'Y' AND PAYMENT_METHOD_TYPE_ID = '"+$a_tcpPaymentInst+"'  AND PAYMENT_METHOD_TYPE_ID_DESC like '"+$a_pymtTypeId+"%' AND GRADE_CODE = '"+$a_gradeCode+"'  AND PROVIDER_ID = '"+$a_providerID+"'";
+	var $l_profileName= dbConnection($l_query);
+	var $l_profileName = $l_profileName[0];	
+	return $l_profileName;
+}
+/**
+ * ****************************************************************
+ * This function is fetch the channel user who is not in black list.
+ * 
+ * @param[in] - category code of the channel user
+ * @param[in] - provider of the channel user
+ * @return - MSISDN of Channel User
+ ****************************************************************** @author  Hemanth Kumar 30/03/2013
+ */	
+function getChUserMSISDNAndLoginID($a_categoryCode,$a_providerID,$a_walletType){
+	var $l_query = "SELECT DISTINCT(U.MSISDN), u.login_id FROM USERS U, MTX_WALLET MW, MTX_WALLET_BALANCES MWB ,user_phones up  WHERE U.CATEGORY_CODE='"+$a_categoryCode+"' AND U.STATUS = 'Y' AND( U.USER_ID NOT IN(SELECT PARTY_ID FROM MTX_PARTY_BLACK_LIST)) AND MW.USER_ID=U.USER_ID AND up.MPIN_LSB_MODIFIED_ON IS NOT NULL AND MW.PIN_MODIFIED_ON IS NOT NULL AND MW.WALLET_NUMBER=MWB.WALLET_NUMBER AND mw.payment_type_id='"+$a_walletType+"' and u.user_id=up.user_id and up.provider_id='"+$a_providerID+"' and rownum <= 2";
+	var $l_ChMSISDNAndLoginID= dbConnection($l_query); 
+	return $l_ChMSISDNAndLoginID;
+	
+}
+
+/**
+ * ****************************************************************
+ * This function is fetch the balance of the Subscriber
+ * 
+ * @param[in] - $a_msisdn,$a_paymentTypeId,$a_providerID
+ * @return - Balance of Subscriber
+ * @author V Nagaraju
+ ******************************************************************
+ */	
+function fetchUserBalance($a_msisdn,$a_paymentTypeId,$a_providerID){
+	var $l_query = "SELECT mwb.balance FROM mtx_wallet_balances MWB,mtx_wallet  mw WHERE mw.msisdn='"+$a_msisdn+"' and not MSISDN in (select ACCOUNT_NUMBER from MTX_PARTY_BLACK_LIST ) and mw.wallet_number=mwb.wallet_number and mw.payment_type_id='" + $a_paymentTypeId + "' and mw.provider_id='" + $a_providerID + "'";
+	var $l_subBalance = dbConnection($l_query); 
+	return $l_subBalance;	
+}
+
+/**
+ *This function is used to fetch the bank associated subscriber msisdn.
+ *@param [in] - null
+ *@returns - $l_msisdn
+ *@author - Anantha kumar.BN 
+ */
+
+function fetchBankAssociatedSubs(){	
+	var $l_query = "select msisdn from mtx_party mp,mbk_cust_accounts mb where mp.user_id=mb.user_id and mp.status='Y' and mb.status_id='Y'";
+	var $l_msisdn = dbConnection($l_query); 
+	return $l_msisdn[0];
+}
+/**
+ * ****************************************************************
+ * This function is fetch the Name of the service charge 
+ * 
+ * @param[in] - null
+ * @return - Name of the Service charge
+ * @author V Nagaraju
+ ******************************************************************
+ */	
+function fetchServiceChargeName($a_payerGradeCode,$a_payeeGradeCode,$a_payerPaymentTypeId,$a_payeePaymentTypeId,$a_payerProviderId,$a_payeeProviderId){
+	var $l_query = "select SERVICE_CHARGE_NAME from MTX_SERVICE_CHARGE WHERE payer_grade_code='"+$a_payerGradeCode+"' and payee_grade_code='"+$a_payeeGradeCode+"' and payer_payment_type_id='"+$a_payerPaymentTypeId+"' and payee_payment_type_id='"+$a_payeePaymentTypeId+"' and payer_provider_id='"+$a_payerProviderId+"' and payee_provider_id='"+$a_payeeProviderId+"'";
+	var $l_serviceChargeName= dbConnection($l_query); 
+	return $l_serviceChargeName;
+	
+}
+/**
+ *This function fetches bank names from the data base
+ *@param [in] - null
+ *@returns - $l_bank  bank name
+ *@author - Anantha kumar.BN
+ */
+function fetchBankNames(){
+	$l_query = "select distinct BANK_NAME from MBK_BANK_DETAILS mb,sys_service_pymt_subtype_map sm where mb.bank_id=sm.bank_id and rownum <= 1 and sm.PROVIDER_ID = '"+ $g_mfs1ProviderId +"' and BANK_NAME like '%" + $g_autoPrefix + "BKN%' and BANK_POOL_ACCOUNT_NO is not null";
+	var $l_bnkNames = dbConnection($l_query);
+	return $l_bnkNames;
+ }
+ 
+ /**
+ *This function fetches multiple bank names from the data base
+ *@param [in] - null
+ *@returns - $l_bank  bank name
+ *@author - Anantha kumar.BN
+ */
+function fetchMultipleBankNames(){
+	$l_query = "select distinct BANK_NAME from MBK_BANK_DETAILS mb,sys_service_pymt_subtype_map sm where mb.bank_id=sm.bank_id and sm.PROVIDER_ID = '"+ $g_mfs1ProviderId +"' and BANK_NAME like '%" + $g_autoPrefix + "BKN%' and BANK_POOL_ACCOUNT_NO is not null";
+	var $l_bnkNames = dbConnection($l_query);
+	return $l_bnkNames;
+ }
+ 
+/**
+ * ****************************************************************
+ * This function is fetch the channel user msisdn and login id of black listed user.
+ * @param[in] - barring type
+ * @param[in] - category code of the channel user
+ * @return - MSISDN and login id of Channel User
+ ****************************************************************** @author  Hemanth Kumar 05/04/2013
+ */	
+function getBarredChUserMSISDNAndLoginID($a_barringType,$a_category){
+	var $l_query = "select u.msisdn,u.login_id from mtx_party_black_list mpb,users u where u.user_id=mpb.party_id and mpb.black_list_type_id='"+$a_barringType+"' and u.category_code='"+$a_category+"'";
+	var $l_ChMSISDNAndLoginID= dbConnection($l_query); 
+	return $l_ChMSISDNAndLoginID;
+	
+}
+/**
+ * ****************************************************************
+ * This function is fetch the subscriber MSISDN.
+ * 
+ * @param[in] - category code of subscriber
+ * @param[in] - provider of the subscriber
+ * @return - MSISDN of subscriber
+ ****************************************************************** @author  Hemanth Kumar 05/04/2013
+ */	
+function getSubscriberMSISDN($a_categoryCode,$a_providerID,$a_walletType){
+	 var $l_query = "SELECT DISTINCT(mp.MSISDN) FROM mtx_party mp, MTX_WALLET MW, MTX_WALLET_BALANCES MWB ,mtx_party_access mpa WHERE mp.CATEGORY_CODE='"+$a_categoryCode+"' AND mp.STATUS = 'Y' AND( mp.USER_ID NOT IN(SELECT PARTY_ID FROM MTX_PARTY_BLACK_LIST)) AND MW.USER_ID=mp.USER_ID AND MW.PIN_MODIFIED_ON IS NOT NULL AND mw.payment_type_id='"+$a_walletType+"' and mp.user_id=mpa.user_id and mpa.provider_id='"+$a_providerID+"'";
+	 var $l_SubMSISDN= dbConnection($l_query); 
+	 return $l_SubMSISDN;
+	 
+	}
+/**
+ * ****************************************************************
+ * This function is fetch the subscriber MSISDN.
+ * 
+ * @param[in] - category code of subscriber
+ * @param[in] - provider of the subscriber
+ * @return - MSISDN of subscriber
+ ****************************************************************** @author  Hemanth Kumar 05/04/2013
+ */	
+function getSubscriberIdentificationNumber($a_msisdn){
+	var $l_query = "select external_code from mtx_party where msisdn='"+$a_msisdn+"'";
+	var $l_SubIDN= dbConnection($l_query); 
+	return $l_SubIDN;
+	
+}
+/**
+ * ****************************************************************
+ * This function is fetch the modify initiated status of subscriber.
+ * 
+ * @param[in] - $a_subsMsisdn code- MSISDN of subscriber
+ * @return -status of subscriber
+ * @author  Anantha Kumar.BN 10/04/2013
+ ****************************************************************** 
+ */	
+function fetchSubscriberStatus($a_subsMsisdn){
+	var $l_query = "SELECT status FROM mtx_party_m WHERE msisdn='"+$a_subsMsisdn+"'" ;
+	var $l_subsStatus= dbConnection($l_query); 
+	return $l_subsStatus[0];
+	
+}
+/**
+ * ****************************************************************
+ * This function is fetch the channel user who is not in black list and invalid pin count is 0.
+ * 
+ * @param[in] - category code of the channel user
+ * @param[in] - provider of the channel user
+ * @return - MSISDN of Channel User
+ ****************************************************************** @author  Hemanth Kumar 09/04/2013
+ */	
+function getChUserMSISDNAndLoginIDWithInvalidPinCount($a_categoryCode,$a_providerID,$a_walletType){
+	var $l_query = "SELECT DISTINCT(U.MSISDN), u.login_id FROM USERS U, MTX_WALLET MW, MTX_WALLET_BALANCES MWB ,user_phones up  WHERE U.CATEGORY_CODE='"+$a_categoryCode+"' AND U.STATUS = 'Y' AND( U.USER_ID NOT IN(SELECT PARTY_ID FROM MTX_PARTY_BLACK_LIST)) AND MW.USER_ID=U.USER_ID AND MW.PIN_MODIFIED_ON IS NOT NULL AND MW.WALLET_NUMBER=MWB.WALLET_NUMBER AND MWB.BALANCE>10*(select default_value from mtx_system_preferences where preference_code='CURRENCY_FACTOR') and mw.payment_type_id='"+$a_walletType+"' and u.user_id=up.user_id and up.provider_id='"+$a_providerID+"' and up.invalid_pin_count='0'";
+	var $l_ChMSISDNAndLoginID= dbConnection($l_query); 
+	return $l_ChMSISDNAndLoginID;
+	}
+
+/**
+ *This function is used to fetch the two banks associated subscriber msisdn.
+ *@param [in] - null
+ *@returns - $l_msisdn
+ *@author - Anantha kumar.BN 
+ */
+
+function fetchTwoBanksAssociatedSubs(){	
+	var $l_query = "select msisdn,count(mb.user_id),mb.user_id from mtx_party mp,mbk_cust_accounts mb where mp.user_id=mb.user_id and mp.status='Y' and mb.status_id='Y' group by mp.msisdn,mb.user_id having count(*)>=2";
+	var $l_msisdn = dbConnection($l_query); 
+	return $l_msisdn[0];
+}
+/**
+ * ****************************************************************
+ * This function is fetch the TCP name based on TCP ID.
+ * 
+ * @param[in] - category code of the channel user
+ * @param[in] - provider of the channel user
+ * @return - MSISDN of Channel User
+ ****************************************************************** @author  Hemanth Kumar 09/04/2013
+ */	
+function getTCPName($a_TCPId){
+	var $l_query = "select PROFILE_NAME from MTX_TRF_CNTRL_PROFILE where PROFILE_ID='"+$a_TCPId+"' and status_id='Y'";
+	var $l_TCPName= dbConnection($l_query); 
+	return $l_TCPName;
+	}
+
+/**
+ * ****************************************************************
+ * This function is fetch the bank name of channel user
+ * @param[in] - $a_userName - channel user name
+ * @return - Bank name of Channel User
+ ****************************************************************** 
+ */	
+function fetchUserBankName($a_userName){
+	var $l_query = "select bank_name from mbk_bank_details md where md.bank_id=(select bank_id from users u,mbk_cust_accounts mb where mb.user_id=u.user_id and u.user_name='"+$a_userName+"')";
+	var $l_bankName= dbConnection($l_query); 
+	return $l_bankName;
+	}
+	/**
+ * ****************************************************************
+ * This function is fetch biller category code
+ * @param[in] - null
+ * @return - biller category code
+ ******************************************************************  @author  Hemanth Kumar 09/05/2013
+ */	
+function fetchBillerCategoryCode(){
+	var $l_query = "select category_code from sys_merchant_category";
+	var $l_billerCategoryCode= dbConnection($l_query); 
+	return $l_billerCategoryCode[0];
+	}
+/**
+ * ****************************************************************
+ * This function is fetch biller TCP
+ * @param[in] - null
+ * @return - biller tcp name
+ ******************************************************************  @author  Hemanth Kumar 09/05/2013
+ */	
+function fetchBillerTCP($a_walletType){
+	var $l_query = "select  profile_name from mtx_trf_cntrl_profile where category_code = 'WBILLMER' and profile_type = 'ROLE' and status_id = 'Y' and payment_method_type_id_desc='"+$a_walletType+"'";
+	var $l_billerTCP= dbConnection($l_query); 
+	return $l_billerTCP[0];
+	}
+/**
+ * ****************************************************************
+ * This function is fetch existing biller code
+ * @param[in] - null
+ * @return - biller code
+ ******************************************************************  @author  Hemanth Kumar 09/05/2013
+ */	
+function getExistingBillerCode($a_billerCategoryCode){
+	var $l_query = "select identifier from sys_merchant_party where category_code='"+$a_billerCategoryCode+"'";
+	var $l_billercode= dbConnection($l_query); 
+	return $l_billercode[0];
+	}
+/**
+ *This function fetches transfer rule id from the DB
+ *@param [in] - null
+ *@returns - $l_TRID		transfer rule ID
+ *@author - Hemanth Kumar
+ */
+function fetchTransferRuleIDWithParameters($a_dbServiceType,$a_dbPayerCategoryCode,$a_dbPayeeCategoryCode,$a_dbPayerProviderID,$a_dbPayeeProviderID,$a_dbPayerPaymentType,$a_dbPayeePaymentType,$a_dbPayerMethodType,$a_dbPayeeMethodType){
+	var $l_query = "select TRANSFER_RULE_ID from MTX_TRANSFER_RULES where SERVICE_TYPE='" + $a_dbServiceType + "' AND PAYER_CATEGORY_CODE='" + $a_dbPayerCategoryCode + "' AND PAYEE_CATEGORY_CODE='" + $a_dbPayeeCategoryCode + "' AND PAYER_PROVIDER_ID='" + $a_dbPayerProviderID + "' AND PAYEE_PROVIDER_ID='" + $a_dbPayeeProviderID + "' AND PAYER_PAYMENT_TYPE_ID='" + $a_dbPayerPaymentType + "' AND PAYEE_PAYMENT_TYPE_ID='" + $a_dbPayeePaymentType + "' AND PAYER_PAYMENT_METHOD_TYPE='" + $a_dbPayerMethodType + "' AND PAYEE_PAYMENT_METHOD_TYPE='" + $a_dbPayeeMethodType + "'";
+	var $l_TRID = dbConnection($l_query); 
+	var $l_TRIDWallet = $l_TRID[0];
+	return $l_TRIDWallet;
+}
+
+/**
+ *This function fetches channel user provider id
+ *@param [in] - msisdn 
+ *@returns - provider id
+ *@author - Hemanth Kumar
+ */
+function fetchCHUserProviderID($a_msisdn){
+	var $l_query = "select  provider_id from user_phones up,users u where u.msisdn='"+$a_msisdn+"' " ;
+	var $l_providerId= dbConnection($l_query); 
+	
+	return  $l_providerId[0];
+}
+
+
+//=================================================================================
+
+/**
+ * This function is used to fetch the  Subscriber created through USSD.
+ *@param 
+ *@returns - $l_msisdn
+ *@author - Devadas 
+ */
+function fetchIVRSubscriber(){
+	var $l_query = "select msisdn from mtx_party where USER_NAME_PREFIX is null and status = 'Y' and rownum = 1";
+	//var $l_query = "select msisdn from mtx_party where status = 'Y' where rownum=1";
+	var $l_msisdn = dbConnection($l_query); 
+	return $l_msisdn[0];
+}
+
+
+/**
+ *This function fetches geography area of channel user
+ *@param [in] - null
+ *@returns - $l_geoData1  channel geography
+ *@author - R.Bharath Kumar
+ */
+
+function channelGeo($a_zone){
+	$l_query = "select GRPH_DOMAIN_NAME from GEOGRAPHICAL_DOMAINS where PARENT_GRPH_DOMAIN_CODE = '"+$a_zone+"' and GRPH_DOMAIN_TYPE = 'AR' and rownum <=1";
+	  var $l_geoData1 = dbConnection($l_query); 
+	  var $l_data = $l_geoData1[0];
+	  return $l_data;
+}
+
+
+/**
+ * This function is used to fetch the Login of the subscriber
+ * @param[in] - $a_msisdn		Subscriber MSISDN
+ * @return - $l_passwordID		Subscriber password
+ * @author - R Bharath Kumar 
+*/
+
+function dbFetchSubscriberPassword($a_msisdn){
+		var $l_query = "select MESSAGE from SENTSMS where MSISDN='" + $a_msisdn + "' AND MESSAGE LIKE '%PIN:%'";	
+		var $l_rs = dbConnection($l_query);
+		var $l_passwordString = $l_rs[0]["MESSAGE"];		
+		var $l_data = new Array();
+		var $l_lines = $l_passwordString.replace(/\r/g, '').split("Password:");
+		
+		for (var $i = 0; $i < $l_lines.length; $i++){
+			$l_data[$i] = $l_lines[1].split(" "); 
+		}
+		
+		var $l_password = $l_data[0][0].split(" ");
+		var $l_passwordID = $l_password[0];
+		return $l_passwordID;
+}
+
+/**
+ * This function is used to fetch the login ID of the subscriber
+ * @param[in] - $a_msisdn		Subscriber MSISDN
+ * @return - $l_loginID		Subscriber LoginId
+ * @author - R Bharath Kumar 
+ */
+function dbFetchSubscriberLoginId($a_msisdn){
+	var $l_query = "select MESSAGE from SENTSMS where MSISDN='" + $a_msisdn + "' AND MESSAGE LIKE '%PIN:%'";	
+	var $l_rs = dbConnection($l_query);
+	var $l_loginString = $l_rs[0]["MESSAGE"];		
+	var $l_data = new Array();
+	var $l_lines = $l_loginString.replace(/\r/g, '').split("Password:");
+	
+	for (var $i = 0; $i < $l_lines.length; $i++){
+		$l_data[$i] = $l_lines[1].split(" "); 
+	}
+	
+	var $l_login = $l_data[0][0].split(" ");
+	var $l_loginID = $l_login[0];
+	return $l_loginID;
+}
+
+/**
+ * This function is used to fetch the Tpin of the subscriber when registered through Self USSD.
+ * @param[in] - $a_msisdn		Subscriber MSISDN
+ * @return - $l_Tpin		Subscriber Tpin
+ * @author - R Bharath Kumar 
+*/
+
+function dbFetchSubscriberTPinWhenResiteredThroughSelf($a_msisdn){
+	var $l_query = "select MESSAGE from SENTSMS where MSISDN='" + $a_msisdn + "' AND MESSAGE LIKE '%Login Id%'";	
+	var $l_rs = dbConnection($l_query);
+	var $l_loginString = $l_rs[0]["MESSAGE"];		
+	var $l_data = new Array();
+	var $l_lines = $l_loginString.replace(/\r/g, '').split("Pin");
+	
+	for (var $i = 0; $i < $l_lines.length; $i++){
+		$l_data[$i] = $l_lines[1].split(" Provider"); 
+	}
+	
+	$l_pin = $l_data[0][0].split(" Provider");
+	var $l_Tpin = $l_pin[0];
+	return $l_Tpin;
+}
+
+/**
+ * This function is used to fetch the password of the subscriber when registered through self USSD
+ * @param[in] - $a_msisdn		Subscriber MSISDN
+ * @return - $l_passwordID		Subscriber password
+ * @author - R Bharath Kumar 
+*/
+
+function dbFetchSubscriberPasswordWhenRegisteredThroughSelf($a_msisdn){
+	var $l_query = "select MESSAGE from SENTSMS where MSISDN='" + $a_msisdn + "' AND MESSAGE LIKE '%Login Id%'";	
+	var $l_rs = dbConnection($l_query);
+	var $l_passwordString = $l_rs[0]["MESSAGE"];		
+	var $l_data = new Array();
+	var $l_lines = $l_passwordString.replace(/\r/g, '').split("Password:");
+	
+	for (var $i = 0; $i < $l_lines.length; $i++){
+		$l_data[$i] = $l_lines[1].split(".Thank "); 
+	}
+	
+	var $l_password = $l_data[0][0].split(".Thank ");
+	var $l_passwordID = $l_password[0];
+	return $l_passwordID;
+}
+
+/**
+ * This function is used to fetch the passcode for the unregistered subscriber
+ * @param[in] - $a_msisdn		Subscriber MSISDN
+ * @return - $l_passcode		Passcode
+ * @author - R Bharath Kumar 
+ */
+function fetchPasscode($a_msisdn){
+	var $l_query = "select MESSAGE from SENTSMS where MSISDN ='"+$a_msisdn+"' AND MESSAGE like '%passcode%'";
+	var $l_rs = dbConnection($l_query); 
+	var $l_passcodeString = $l_rs[0]["MESSAGE"];		
+	var $l_data = new Array();
+	var $l_lines = $l_passcodeString.replace(/\r/g, '').split("passcode is :");
+	
+	for (var $i = 0; $i < $l_lines.length; $i++){
+		$l_data[$i] = $l_lines[1].split(","); 
+	}
+	
+	var $l_code = $l_data[0][0].split(",");
+	var $l_passcode = $l_code[0];
+	return $l_passcode;
+}
+
+/**
+ * This function is used to fetch the Pseudo user MPin 
+ * @param[in] - $a_msisdn		Pseudo user MSISDN
+ * @return - $l_passwordID		Subscriber password
+ * @author - R Bharath Kumar 
+*/
+
+function dbFetchPseudoUserMPin($a_msisdn){
+	var $l_query = "select MESSAGE from SENTSMS where MSISDN='" + $a_msisdn + "' AND MESSAGE LIKE '%MPIN%'";	
+	var $l_rs = dbConnection($l_query);
+	var $l_passwordString = $l_rs[0]["MESSAGE"];		
+	var $l_data = new Array();
+	var $l_lines = $l_passwordString.replace(/\r/g, '').split("MPIN:");
+	
+	for (var $i = 0; $i < $l_lines.length; $i++){
+		$l_data[$i] = $l_lines[1].split("."); 
+	}
+	
+	var $l_password = $l_data[0][0].split(".");
+	var $l_passwordID = $l_password[0];
+	return $l_passwordID;
+}
+
+/**
+ * This function is used to fetch Pseudo user TPin
+ * @param[in] - $a_msisdn		Pseudo user MSISDN
+ * @return - $l_passwordID		Subscriber password
+ * @author - R Bharath Kumar 
+*/
+
+function dbFetchPseudoUserTPin($a_msisdn){
+	var $l_query = "select MESSAGE from SENTSMS where MSISDN='" + $a_msisdn + "' AND MESSAGE LIKE '%PIN:%'";	
+	var $l_rs = dbConnection($l_query);
+	var $l_passwordString = $l_rs[0]["MESSAGE"];		
+	var $l_data = new Array();
+	var $l_lines = $l_passwordString.replace(/\r/g, '').split("PIN:");
+	
+	for (var $i = 0; $i < $l_lines.length; $i++){
+		$l_data[$i] = $l_lines[1].split(" "); 
+	}
+	
+	var $l_password = $l_data[0][0].split(" ");
+	var $l_passwordID = $l_password[0];
+	return $l_passwordID;
+}
+
+/**
+ * This function is used to fetch the password of the Pseudo User when registered through self USSD
+ * @param[in] - $a_msisdn		PseudoUser MSISDN
+ * @return - $l_passwordID		PseudoUser password
+ * @author - R Bharath Kumar 
+*/
+
+function dbFetchPseudoUserPassword($a_msisdn){
+	var $l_query = "select MESSAGE from SENTSMS where MSISDN='" + $a_msisdn + "' AND MESSAGE LIKE '%Password:%'";	
+	
+	var $l_rs = dbConnection($l_query);
+	var $l_passwordString = $l_rs[0]["MESSAGE"];		
+	var $l_data = new Array();
+	var $l_lines = $l_passwordString.replace(/\r/g, '').split("Password: ");
+	
+	for (var $i = 0; $i < $l_lines.length; $i++){
+		$l_data[$i] = $l_lines[1].split(" "); 
+	}
+	var $l_password = $l_lines[1];
+	return $l_password;
+}
+
+/**
+ * This function is used to check whether permission is given to the channel user
+ * @param[in] - $a_msisdn	Channel User MSISDN
+ * @return - $l_status		Status of the Channel users
+ * @author - R Bharath Kumar 
+ */
+
+function checkPseudoPermission($a_loginID){
+	var $l_query = "select status from mtx_pseudo_permission where user_id = (select user_id from users where login_id = '"+$a_loginID+"' and status = 'Y')";
+	var $l_status = dbConnection($l_query); 
+	return $l_status;
+}
+
+
+/**
+ * This function is used to check whether category type is created or not for Pseudo User
+ * @param[in] - $a_category,$a_loginID	 Category type of the channel user
+ * @return - $l_categoryName  Pseudo User category
+ * @author - R Bharath Kumar 
+ */
+function checkCategoryForPseudoUser($a_loginID,$a_category){
+	var $l_query = "select pseudo_cat_code from mtx_pseudo_categories where user_id = (select user_id from users where login_id = '"+$a_loginID+"') and parent_cat_name = '"+$a_category+"' and status = 'Y'"; 
+	var $l_category = dbConnection($l_query); 
+	var $l_categoryName = $l_category[0];
+	return $l_categoryName;
+}
+
+/**
+ * 	This function is used to Reject the Pseudo category type
+ * 	@param[in] - $a_category,$a_loginID	 Category type of the channel user
+ * 	@return - $l_categoryName  Pseudo User category
+ * 	@Author - R Bharath Kumar
+ * 
+ */ 
+function rejectPseudoCategoryType($a_loginID,$a_category){
+	var $l_query = "select pseudo_cat_id from mtx_pseudo_categories_m where user_id = (select user_id from users where login_id = '"+$a_loginID+"') and parent_cat_name = '"+$a_category+"' and status = 'AI'"; 
+	var $l_rejectCategory = dbConnection($l_query); 
+	var $l_categoryType = $l_rejectCategory[0];
+	return $l_categoryType;
+}
+
+/**
+ * This function is used to fetch the Pseudo user login Id and password
+ * @param - $a_categoryType,$a_providerId
+ * @return - null
+ * @author - R Bharath Kumar
+ * 
+ */
+function getPseudoUserMSISDNAndLoginId($a_categoryType,$a_providerId,$a_loginID){
+	var $l_query = "SELECT DISTINCT(U.MSISDN), u.login_id FROM USERS U, user_phones up,MTX_WALLET MW  WHERE U.USER_TYPE='"+$a_categoryType +"' AND U.STATUS = 'Y' AND( U.USER_ID NOT IN(SELECT PARTY_ID FROM MTX_PARTY_BLACK_LIST)) and u.user_id=up.user_id and up.provider_id='"+ $a_providerId +"' and up.MPIN_LSB_MODIFIED_ON IS NOT NULL AND MW.PIN_MODIFIED_ON IS NOT NULL and U.PARENT_ID = (select user_id from users where login_id = '"+$a_loginID+"') and rownum <= 2";
+	var $l_PUMSISDNAndLoginID= dbConnection($l_query); 
+	return $l_PUMSISDNAndLoginID;
+}
+
+/**
+ *This function is used to fetch the Interest Profile from the DB
+ *@param [in] - null
+ *@returns - $l_IntProf	Interest Profile
+ *@author - Dilp Gowda
+ */
+function searchInterestProfile() {
+	$l_query = "select PROFILE_NAME from INTEREST_PROFILE_NAMES  where PROFILE_NAME like '%" + $g_autoPrefix + "%' and rownum <=1";
+	$l_interestProfile = dbConnection($l_query); 
+	return $l_interestProfile[0];
+}
+
+/**
+ *This function is used to fetch the Interest Profile which is active and the latest version from the DB
+ *@param [in] - null
+ *@returns - $l_interestProfileCode	
+ *@author - Dilp Gowda
+ */
+function searchInterestProfileandCode() {
+	$l_query = "select PROFILE_CODE,PROFILE_NAME from INTEREST_PROFILE_NAMES ipn where PROFILE_NAME like '%" + $g_autoPrefix + "%' and profile_version in(select max(ipv.profile_version)from INTEREST_PROFILE_NAMES ipv "
+			+"where ipv.profile_code=ipn.profile_code) and ipn.STATUS='Y'and rownum <=1 order by PROFILE_CODE ASC";
+	$l_interestProfileCode = dbConnection($l_query); 
+	return $l_interestProfileCode[0][0]+" - "+$l_interestProfileCode[0][1];
+}
+
+/**
+ *This function is used to fetch the status of Interest Profile from the DB
+ *@param [in] - $l_InterestProfileNarration Interest Profile Narration
+ *@returns - $l_status
+ *@author - Dilp Gowda
+ */
+function checkStatusofInterestProfile($l_InterestProfileNarration) {
+	$l_query = "select STATUS from INTEREST_PROFILE_NAMES  where PROFILE_NAME='"+ $l_InterestProfileNarration +"'";
+	$l_status = dbConnection($l_query); 
+	return $l_status[0];
+	
+}
+
+/**
+ *This function is used to fetch the interest code of Interest Profile from the DB
+ *@param [in] - $l_InterestProfileNarration Interest Profile Narration
+ *@returns - $l_InterestCode
+ *@author - Dilp Gowda
+ */
+function getInterestCodeofInterestProfile($l_interestCode) {
+	$l_query = "select PROFILE_CODE from INTEREST_PROFILE_NAMES  where PROFILE_NAME='"+ $l_InterestProfileNarration +"'";
+	$l_interestCode = dbConnection($l_query); 
+	return $l_interestCode[0];
+	
+}
+
+/**
+ *This function is used to fetch the Interest Profile from the DB to delete initiate
+ *@param [in] - $g_statusID Status ID of the Interest Profile
+ *@returns - $l_dltinterestProfile
+ *@author - Dalia Debnath
+ */
+function deleteInterestProfile($g_statusID){
+
+    $l_query="Select PROFILE_NAME from INTEREST_PROFILE_NAMES where PROFILE_NAME like '" + $g_autoPrefix + "%' and INTEREST_ID not in (Select INTEREST_ID from INTEREST_PRO_DEF_ASSOC where effective_upto is null) "
+    				+ " and INTEREST_ID not in (Select INTEREST_ID from INTEREST_PRO_DEF_ASSOC_M) "
+                    + " and INTEREST_ID not in (Select INTEREST_ID from INTEREST_EXCEPTION where effective_upto is null) "
+                    + " and INTEREST_ID not in (Select INTEREST_ID from INTEREST_EXCEPTION_M) " 
+                    + " and STATUS='"+$g_statusID+"' and rownum <=1 order by PROFILE_CODE ASC";
+    $l_dltInterestProfile = dbConnection($l_query);
+    return $l_dltInterestProfile[0];
+}
+
+
+/**
+ *This function is used to fetch the Active Interest Profile from the DB 
+ *@param [in] - null
+ *@returns - $l_interestProfile
+ *@author - Dilip Gowda
+ */
+function searchActiveInterestProfile() {
+	$l_query = "select PROFILE_NAME from INTEREST_PROFILE_NAMES  where PROFILE_NAME like '%" + $g_autoPrefix + "%' and rownum <=1 and STATUS='Y'";
+	$l_interestProfile = dbConnection($l_query); 
+	return $l_interestProfile[0];
+}
+
+
+/**
+ *This function is used to fetch the Interest Profile from the DB based on the Status ID passed
+ *@param [in] - $g_StatusID Status ID of the Interest Profile
+ *@returns - $l_interestProfileCode
+ *@author - Dilip Gowda
+*/
+function getInterestProfile($g_StatusID){
+	$l_query="Select PROFILE_CODE, PROFILE_NAME from INTEREST_PROFILE_NAMES where PROFILE_NAME like '%" + $g_autoPrefix + "%' and STATUS='"+$g_StatusID+"'";
+	$l_interestProfileCode = dbConnection($l_query); 
+	//return $l_interestProfileCode[0][0]+" - "+$l_interestProfileCode[0][1];
+	return $l_interestProfileCode;
+}
+
+
+/**
+ *This function is used to fetch leaf GL Accounts for Modify GL Account
+ *@param [in] - $l_glAccount,$l_accType
+ *@returns - $l_coaId
+ *@author - Dalia Debnath
+*/
+function getCOAaccount($l_accType,$l_glAccount){
+	$l_query = "Select account_desc from chart_of_accounts coa where node_type='L' and int_ext_ind like '%" + $l_accType + "%' "
+				+ " and status='Y' and account_group like '%" + $l_glAccount + "%' and rownum <=1";
+	$l_coaId = dbConnection($l_query); 
+	return $l_coaId[0][0];
+}
+/**
+ *This function is used to fetch the GL Account length 
+ *@param [in] - null
+ *@returns - $l_acclength
+ *@author - Dalia Debnath
+ */
+function getAccLength(){
+	$l_query = "Select default_value from mtx_system_preferences where preference_code='GL_ACCOUNT_NUMBER_LENGTH'";
+	$l_acclength = dbConnection($l_query);
+	return $l_acclength;
+}
+/**
+ *This function is used to fetch mapped GL Account
+ *@param [in] - $g_autoPrefix
+ *@returns - $l_mappedGlAcc
+ *@author - Dalia Debnath
+ */
+function getMappedGlAcc(){
+	$l_query = "Select account_desc from CHART_OF_ACCOUNTS coa where account_desc like '%" + $g_autoPrefix + "%' and status='Y' "
+			+ " and node_type='L' and coa.coa_id in (Select mp.gl_coa_id from mapping_profile mp where coa.coa_id=mp.gl_coa_id) and rownum<=1";
+	$l_mappedGlAcc = dbConnection($l_query);
+	if($l_mappedGlAcc == ""){
+		return null;
+	}
+	return $l_mappedGlAcc[0][0];
+	
+}
+/**
+ *This function is used to fetch GL Account who is having balance
+ *@param [in] - $g_autoPrefix
+ *@returns - $l_mappedGlAcc
+ *@author - Dalia Debnath
+ */
+function getGlAccwithBalance(){
+	$l_query = "Select account_desc from CHART_OF_ACCOUNTS where balance!=0 and account_desc like '%" + $g_autoPrefix + "%' "
+			+ " and node_type='L' and status='Y' || (Select coa_id from daily_gl_account_balances where balance!=0) and rownum<=1";
+	$l_glAccwithBalance = dbConnection($l_query);
+	if($l_glAccwithBalance == ""){
+		return null;
+	}
+	return $l_glAccwithBalance[0][0];
+	
+}
+/**
+ *This function is used to fetch a GL Account to create child GL account
+ *@param [in] - $l_glAccount
+ *@returns - $l_getGlAccount
+ *@author - Dalia Debnath
+ */
+function getGlAccount(){
+	$l_query = "Select account_desc, account_id from CHART_OF_ACCOUNTS where balance=0 and account_desc like '%" + $g_autoPrefix + "%' "
+			+ " and account_group like '%" + $l_glAccount + "%' and status='Y' and coa_id not in (Select gl_coa_id from mapping_profile) "
+			+ " and coa_id not in (Select coa_id from daily_gl_account_balances) and rownum <=1 order by coa_id asc";
+	$l_getGlAccount = dbConnection($l_query);
+	return $l_getGlAccount;
+}
+/**
+ *This function is used to fetch an External GL Account who doesn't have balance in account
+ *@param [in] - $l_accType
+ *@returns - $l_fetchGlAccount
+ *@author - Dalia Debnath
+ */
+function fetchGlAccount(){
+	$l_query = "Select account_desc from CHART_OF_ACCOUNTS where balance=0 and account_desc like '%" + $g_autoPrefix +"%' "
+			+ " and int_ext_ind like '%" + $l_accType +"%' and status='Y' and coa_id not in (Select gl_coa_id from mapping_profile) "
+			+ " and coa_id not in (Select coa_id from daily_gl_account_balances) and rownum <=1 order by coa_id asc";
+	$l_fetchGlAccount = dbConnection($l_query);
+	return $l_fetchGlAccount[0][0];
+}
+/**
+ *This function is used to fetch the account group of a GL Account
+ *@param [in] - null
+ *@returns - $l_accGroup
+ *@author - Dalia Debnath
+ */
+function getGlAccGroup($l_childGlAccount){
+	$l_query = "Select account_group from CHART_OF_ACCOUNTS where account_desc like '%" + $l_childGlAccount + "%' and rownum<=1";
+	$l_accGroup = dbConnection($l_query);
+	return $l_accGroup[0][0];
+}
+/**
+ *This function is used to fetch the Unmapped Internal leaf GL Accounts for GL Association
+ *@param [in] - $l_glAccount,$l_accType
+ *@returns - $l_coaId
+ *@author - Dalia Debnath
+*/
+function getUnmappedGlAcc($l_accType,$l_glAccount){
+	$l_query = "Select account_desc from chart_of_accounts coa where node_type='L' and int_ext_ind like '%" + $l_accType + "%' and status='Y' " 
+				+ " and account_group like '%" + $l_glAccount + "%' and coa_id not in (Select gl_coa_id from mapping_profile) and rownum <=1";
+	$l_coaId = dbConnection($l_query);
+	if($l_coaId == ""){
+		return null;
+	}
+	return $l_coaId[0][0];
+}
+
+/**
+ *This function is used to fetch the Associated Interest Profile from the DB based on the Status ID passed
+ *@param [in] - $g_StatusID Status ID of the Interest Profile
+ *@returns - $l_interestProfileCode
+ *@author - Prathibha R
+*/
+
+function getAssIntProfile($g_StatusID)
+{
+	$l_query = "Select PROFILE_CODE, PROFILE_NAME, PROFILE_VERSION from INTEREST_PROFILE_NAMES where STATUS='"+$g_StatusID+"' and INTEREST_ID in (select INTEREST_ID from INTEREST_PRO_DEF_ASSOC) and rownum<=1";
+	$l_interestProfileCode = dbConnection($l_query);
+	return $l_interestProfileCode;
+}
+
+/**
+ *This function is used to fetch the Count of the Associated user wallets for a Interest Profile based on the ProfileCode passed
+ *@param [in] - $g_ProfileCode Profile code of the Interest Profile
+ *@returns - $l_count
+ *@author - Prathibha R
+*/
+
+function countAssProfile($g_ProfileCode)
+{
+	$l_query = "select count(IA.INTEREST_ID) from  interest_profile_names IP ,INTEREST_PRO_DEF_ASSOC IA  WHERE IA.EFFECTIVE_UPTO is null and IP.profile_code='" + $g_ProfileCode + "' and IP.interest_id=IA.interest_id";
+	var $l_count = dbConnection($l_query);
+	return $l_count;
+}
+
+/**
+ *This function is used to fetch the Count of the profile versions based on the  ProfileCode passed
+ *@param [in] - $g_ProfileCode Profile code of the Interest Profile
+ *@returns - $$l_VersionCount
+ *@author - Prathibha R
+*/
+function countProVersion($g_ProfileCode)
+{
+	$l_query = "select count(profile_code) from interest_profile_names where profile_code = '" + $g_ProfileCode + "'";
+	var $l_VersionCount = dbConnection($l_query);
+	return $l_VersionCount;
+}
+
+
+
+/**
+ *This function is used to fetch the Count of the profile versions based on the  ProfileCode passed
+ *@param [in] - $g_ProfileCode Profile code of the Interest Profile
+ *@returns - $l_VersionCount
+ *@author - Prathibha R
+*/
+function ActiveVersion($g_ProfileCode)
+{
+	$l_query = "select PROFILE_VERSION from INTEREST_PROFILE_NAMES where profile_code = '" + $g_ProfileCode + "' and status ='Y'";
+	var $l_VersionCount = dbConnection($l_query);
+	return $l_VersionCount;
+}
+
+/**
+ *This function is used to fetch the Names of the Active Interest Profiles in the system
+ *@param [in] - 
+ *@returns - $l_ProfileNames
+ *@author - Prathibha R
+*/
+function ActiveProfiles()
+{
+	$l_query = "select PROFILE_NAME from INTEREST_PROFILE_NAMES where status ='Y' order by profile_name asc";
+	var $l_ProfileNames = dbConnection($l_query);
+	return $l_ProfileNames;
+}
+/**
+ *This function is used to fetch the Count of the Active Interest Profiles in the system
+ *@param [in] - 
+ *@returns - $l_ProfilesCount
+ *@author - Prathibha R
+*/
+function ActiveProfilesCount()
+{
+	$l_query = "select count(PROFILE_NAME) from INTEREST_PROFILE_NAMES where status ='Y'";
+	var $l_ProfilesCount = dbConnection($l_query);
+	return $l_ProfilesCount;
+}
+
+
+/**
+ *This function is used to fetch the Interested of the Profile which is associated for a perticular User & wallet
+ *@param [in] - $grade for the grade of the user and $PaymentId for the wallet number
+ *@returns - $InterestId
+ *@author - Prathibha R
+*/
+function SearchAssProfEntry($grade, $PaymentId)
+{
+	$l_query = "SELECT INTEREST_ID FROM interest_pro_def_assoc where grade = '" + $grade + "' and payment_type_id = '" + $PaymentId + "'";
+	var $InterestId = dbConnection($l_query);
+	return $InterestId;
+}
+
+
+/**
+ *This function is used to fetch the wallet & grade of the user based on the msisdn
+ *@param [in] - $g_MSISDN for the grade of the user and $PaymentId for the wallet number
+ *@returns - $l_walletDetails
+ *@author - Prathibha R
+*/
+function CheckAvailWallets($g_MSISDN)
+{
+	$l_query = "select sp.payment_method_subtype_id, cg.grade_name from mtx_wallet mw, sys_payment_method_subtypes sp, channel_grades cg where sp.payment_type_id =mw.payment_type_id and cg.grade_code = mw.user_grade and mw.msisdn = '" + $g_MSISDN + "'order by mw.provider_id,mw.payment_type_id asc";
+	var $l_walletDetails = dbConnection($l_query);
+	return $l_walletDetails;
+}
+
+/**
+ *This function is used to fetch the first & last names of the user based on the msisdn
+ *@param [in] - $g_MSISDN 
+ *@returns - $l_first_last
+ *@author - Prathibha R
+*/
+function first_lastnames($g_MSISDN)
+{
+	$l_query = "select user_name, last_name from mtx_party where msisdn='" + $g_MSISDN + "'";
+	var $l_first_last = dbConnection($l_query);
+	return $l_first_last;
+}

@@ -1,0 +1,651 @@
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<script type="text/javascript" src="wgt:158106024/1.0/checkDevice.js"/>
+<link rel="stylesheet" type="text/css" href="wgt:158106024/1.0/commonStyle.css" /> 
+<!--link rel="stylesheet" type="text/css" href="wgt:158106024/1.0/commonStyle1.css" /--> 
+
+<script type="text/javascript" src="wgt:179878594/1.0/pretups.js"></script>
+<script type="text/javascript" src="wgt:179878594/1.0/configuration.js"></script>
+<script type="text/javascript" src="wgt:179878594/1.0/util.js"></script>
+<script type="text/javascript" src="wgt:179878594/1.0/strings.js"></script>
+<script type="text/javascript" src="strings.js"></script>
+<script type="text/javascript" src="recharge.js"></script>
+</head>
+
+<body onload="rechargeMenu()"> 
+
+<div id="Menu_Recharge" style="background-color:rgb(242,242,242);display: none" class="c3lMenu bgColor"><setvar name='mobilenu' value=''/><setvar name='amount' value=''/><setvar name='pin value=''/></div>
+<div id="Main_Menu"  style="display: none" class="c3lMenu bgImage"></div>
+<div id="services" style="background-color:rgb(242,242,242);display: none" class="c3lMenu bgColor"></div>
+<div id="toast" type='toast' class="c3lMenu bgColor" style='display: none'></div>
+<div id="post1" type="info" class="c3lMenu" style="display: none;">	</div>
+<div id="bcalculator" style="background-color:rgb(242,242,242);display: none" class="c3lMenu"></div>
+<div id="baseRsp" style="background-color:rgb(242,242,242);display: none" class="c3lMenu"></div>
+<div id="addResponse" style="background-color:rgb(242,242,242);display: none" class="c3lMenu"></div>
+<div id="vasid" style="background-color:rgb(242,242,242);display: none" class="c3lMenu bgColor"></div>
+<div id="vasid1" style="background-color:rgb(242,242,242);display: none" class="c3lMenu bgColor"></div>
+
+<div id='myAcc'  type='popup'  transition='1' class='c3lMenu bgColor' valign='top' height='100%'>
+<script>
+document.write("<div width='100%' class='c3lTitle'> <a class='c3lMenuGroup' align='left'  href='close:'><img   width='15%'  valign='middle' resimg='icon_back.9.png' src='icon_back.9.png'/></a><span class='topText'   id='pretitle' valign='middle'  >"+STR_MYACC+"</span><span id='pretitle1' valign='middle' ><a class='c3lMenuGroup' href='#vertMenu'><img  style='margin-left:50%;margin-top:3%' width='3%' valign='middle' resimg='verticalmenu.png' src='verticalmenu.png'/></a></span><hr/></div>");
+document.write("<div  class='c3lTitle'><span align='left' valign='middle' style='margin-top:7%;'  class='menuText'>"+widget.retrieveWidgetUserData(179878594,"launchMSISDN")+"</span><hr class='gray'/></div>");
+//document.write("<div  class='c3lTitle'><span align='left' valign='middle' style='margin-top:7%;' class='menuText'>"+widget.retrieveWidgetUserData(179878594,"Email")+"</span><hr class='gray'/></div>");
+
+</script>
+</div>
+
+<div id='vertMenu' type='popup' transition='4' class='c3lMenu bgColor' style='background-color:rgb(238,238,238);margin-top:15%'  align='right' height='20%' width='50%'><parent name='vertparent'  href='close://' />
+
+<script>
+document.write("<a href='#changepin' class ='c3lMenuGroup eachMenu'  width='100%'><img valign='middle' align='left' resimg='settings.png' src='settings.png' /><span align='left' valign='middle'  class='menuText'>"+STR_CHANGEPIN+"</span><img class='imageWidtharr' valign='middle' align='right'  resimg='rightarr.png' src='rightarr.png'/></a><hr class='gray'/>");
+
+document.write("<a href='wgt:179878594/1.0:logout()' class ='c3lMenuGroup eachMenu'  width='100%'><img valign='middle' align='left' resimg='logout.png' src='logout.png' /><span align='left' valign='middle'  class='menuText'>"+STR_LOGOUT+"</span><img valign='middle' align='right' class='imageWidtharr'  resimg='rightarr.png' src='rightarr.png' /></a><hr class='gray'/>");
+//document.write("<a href='#changepin' class ='c3lMenuGroup eachMenu'  width='100%'><img valign='middle' align='left' resimg='settings.png' src='settings.png' /><span align='left' valign='middle'  class='menuText'>"+STR_CHANGEPIN+"</span><img class='imageWidtharr' valign='middle' align='right'  resimg='rightarr.png' src='rightarr.png'/></a><hr class='gray'/>");
+//window.location = "wgt:979446865/1.0:rechargeMenu()"
+//wgt:179878594/1.0:logout()
+</script>
+</div>
+
+<div id='basecommission' class='c3lMenu bgColor' style='background-color:rgb(238,238,238);'>
+<script>
+
+document.write(
+"<div width='100%' class='c3lTitle'> <a class='c3lMenuGroup' align='left'  href='wgt:979446865/1.0:rechargeMenu()'><img   width='15%'  valign='middle' resimg='icon_back.9.png' src='icon_back.9.png'/></a><span class='topText'   id='pretitle' valign='middle'  >"+BUTTON_BASECOMMISSION+"</span><hr/></div>"+
+baseCalculator()+
+"<div class='c3lMenuGroup buttonAllMenu1'><a id='basbut' class='c3lMenuGroup buttonAllMenu' href=\"baseCalculation($product,$servicetype,$amount)\"><span class='buttonText'  align='center'>"+BUTTON_CALCULATOR+"</span></a></div>"
+
+);
+</script>
+</div>
+
+
+<div id='addcommission' class='c3lMenu bgColor' style='background-color:rgb(238,238,238);'>
+<script>
+document.write(
+"<div width='100%' class='c3lTitle'> <a class='c3lMenuGroup' align='left'  href='wgt:979446865/1.0:rechargeMenu()'><img   width='15%'  valign='middle' resimg='icon_back.9.png' src='icon_back.9.png'/></a><span class='topText'   id='pretitle' valign='middle'  >"+BUTTON_ADDCOMISSION+"</span><hr/></div>"+
+additionalCalculator()+
+"<div class='c3lMenuGroup buttonAllMenu1'><a id='adbut' class='c3lMenuGroup buttonAllMenu' href=\"additionalCalcultion($product,$adservices,$gateway,$amount)\"><span class='buttonText'  align='center'>"+BUTTON_CALCULATOR+"</span></a></div>"
+);
+</script>
+</div>
+
+
+<div id="transfer" style="background-color:rgb(242,242,242);display:none" class="c3lMenu bgColor">
+<script>
+document.write(title()+
+				
+		//"<div width='100%' class='c3lTitle marginBottom20'><a class='c3lMenuGroup' align='left' style='padding:10% 10% 10% 10%' href='#menulist'><img   width='8%'  valign='middle' src='menu.png'/></a><span class='topSize'  id='pretitle' align='center'>" + STR_PRETUPS_TITLE + "</span><a href='#settingslist'><img align='right' style='margin-right:5%' width='10%'  valign='middle' src='settingsmore.png'/></a><hr /></div>"+
+		"<div class='c3lMenuGroup' style='padding-left:15px;padding-right:15px;padding-bottom:5px;'><input  id='mobilenu' 	name='mobilenu' type='mobileno' maxLength='" + MSISDN_LENGTH + "' class='inputBg3' emptyok='false' title='" + STR_MSISDN_TITLE + "'  /></div>"+
+		"<div class='c3lMenuGroup' style='padding-left:15px;padding-right:15px;padding-bottom:5px;'><input  id='amount' 	name='amount' type='decimal' maxLength='" + AMOUNT_LENGTH + "' class='inputBg2' emptyok='false' title='" + STR_AMOUNT_TITLE + "'  /></div>"+
+		"<div class='c3lMenuGroup' style='padding-left:15px;padding-right:15px;padding-bottom:5px;'><input id='pin' name='pin' class='c3lMenuGroup' type='numpassword' class='inputBg2' maxLength='" + PIN_LENGTH + "' emptyok='false' title='"+STR_PIN_TITLE+"' encrypt='true' /></div>"+
+              "<div class='c3lMenuGroup buttonAllMenu1'><a  id='gprsbut' class='c3lMenuGroup buttonAllMenu' href=\"wgt:203139478/1.0:sendTransferReq($mobilenu,$amount,$pin);\" althref='sms://inapp?to=+919986027668&text=PRC $mobilenu$:$amount$:$pin$'	><span class='buttonText' align='center'>"+STR_TRANSFER+"</span></a></div>"+
+		"<div class='c3lMenuGroup buttonAllMenu1'><a id='smsbut' style='visibility:hidden' class='c3lMenuGroup buttonAllMenu' href='sms://inapp?to=+919986027668&text=PRC $mobilenu$:$amount$:$pin$' ><span class='buttonText'  align='center'>"+STR_TRANSFER_SMS+"</span></a></div>" +
+		"<div class='c3lMenuGroup buttonAllMenu1'><a id='ussdbut' class='c3lMenuGroup buttonAllMenu' style='visibility:hidden' href='tel://call=*123*$mobilenu$*$amount$*$pin$#'><span class='buttonText' align='center'>"+STR_TRANSFER_USSD+"</span></a></div>"
+			
+);
+if(Number(clientVersion_actual) < Number(clientVersion_config) && widget.clientVersion.indexOf("ANDROID") > -1)
+{
+document.write(navBottom(7));
+}
+</script>
+</div>
+
+
+<div id="withdraw" style="display:none" class="c3lMenu bgColor">
+<script>
+document.write(title()+
+		//"<div width='100%' class='c3lTitle marginBottom20'><a class='c3lMenuGroup' align='left' style='padding:10% 10% 10% 10%' href='#menulist'><img   width='8%'  valign='middle' src='menu.png'/></a><span class='topSize'  id='pretitle' align='center'>" + STR_PRETUPS_TITLE + "</span><a href='#settingslist'><img align='right' style='margin-right:5%' width='10%'  valign='middle' src='settingsmore.png'/></a><hr /></div>"+
+		"<div class='c3lMenuGroup' style='padding-left:15px;padding-right:15px;padding-bottom:5px;'><input  id='mobilenu' 	name='mobilenu' type='mobileno' maxLength='" + MSISDN_LENGTH + "' class='inputBg3' emptyok='false' title='" + STR_MSISDN_TITLE + "'  /></div>"+
+		"<div class='c3lMenuGroup' style='padding-left:15px;padding-right:15px;padding-bottom:5px;'><input  id='amount' 	name='amount' type='decimal' maxLength='" + AMOUNT_LENGTH + "' class='inputBg2' emptyok='false' title='" + STR_AMOUNT_TITLE + "'  /></div>"+
+		"<div class='c3lMenuGroup' style='padding-left:15px;padding-right:15px;padding-bottom:5px;'><input id='pin' name='pin' class='c3lMenuGroup' type='numpassword' class='inputBg2' maxLength='" + PIN_LENGTH + "' emptyok='false' title='"+STR_PIN_TITLE+"' encrypt='true' /></div>"+
+		"<div class='c3lMenuGroup buttonAllMenu1'><a id='gprsbut' class='c3lMenuGroup buttonAllMenu' href=\"wgt:221608327/1.0:sendWithdrawReq($mobilenu,$amount,$pin);\" althref='sms://inapp?to=+919986027668&text=PRC $mobilenu$:$amount$:$pin$'	><span class='buttonText' align='center'>"+STR_WITHDRAW+"</span></a></div>"+
+		"<div class='c3lMenuGroup buttonAllMenu1'><a id='smsbut' style='visibility:hidden' class='c3lMenuGroup buttonAllMenu' href='sms://inapp?to=+919986027668&text=PRC $mobilenu$:$amount$:$pin$' ><span class='buttonText'  align='center'>"+STR_WITHDRAW_SMS+"</span></a></div>" +
+		"<div class='c3lMenuGroup buttonAllMenu1'><a id='ussdbut' class='c3lMenuGroup buttonAllMenu' style='visibility:hidden' href='tel://call=*123*$mobilenu$*$amount$*$pin$#'><span class='buttonText' align='center'>"+STR_WITHDRAW_USSD+"</span></a></div>"
+);
+/* if(Number(clientVersion_actual) < Number(clientVersion_config))
+{
+	document.write(navBottom(7));
+} */
+</script>
+</div>
+<div id="billpay" style="display:none" class="c3lMenuGroup bgColor">
+<script>
+document.write(title()+
+//		"<div width='100%' class='c3lTitle marginBottom20'><a class='c3lMenuGroup' align='left' style='padding:10% 10% 10% 10%' href='#menulist'><img   width='8%'  valign='middle' src='menu.png'/></a><span class='topSize'  id='pretitle' align='center'>" + STR_PRETUPS_TITLE + "</span><a href='#settingslist'><img align='right' style='margin-right:5%' width='10%'  valign='middle' src='settingsmore.png'/></a><hr /></div>"+
+		"<div class='c3lMenuGroup' style='padding-left:15px;padding-right:15px;padding-bottom:5px;'><input  id='mobilenu' 	name='mobilenu' type='mobileno' maxLength='" + MSISDN_LENGTH + "' class='inputBg3' emptyok='false' title='" + STR_MSISDN_TITLE + "'  /></div>"+
+		"<div class='c3lMenuGroup' style='padding-left:15px;padding-right:15px;padding-bottom:5px;'><input  id='amount' 	name='amount' type='decimal' maxLength='" + AMOUNT_LENGTH + "' class='inputBg2' emptyok='false' title='" + STR_AMOUNT_TITLE + "'  /></div>"+
+		"<div class='c3lMenuGroup' style='padding-left:15px;padding-right:15px;padding-bottom:5px;'><input id='pin' name='pin' class='c3lMenuGroup' type='numpassword' class='inputBg2' maxLength='" + PIN_LENGTH + "' emptyok='false' title='"+STR_PIN_TITLE+"' encrypt='true' /></div>"+
+		"<div class='c3lMenuGroup buttonAllMenu1'><a id='gprsbut' class='c3lMenuGroup buttonAllMenu' href=\"wgt:121929525/1.0:sendbillpayreq($mobilenu,$amount,$pin);\"	althref='sms://inapp?to=+919986027668&text=PRC $mobilenu$:$amount$:$pin$' ><span class='buttonText' align='center'>"+STR_BILLPAY+"</span></a></div>"+
+		"<div class='c3lMenuGroup buttonAllMenu1'><a id='smsbut' style='visibility:hidden' class='c3lMenuGroup buttonAllMenu' href='sms://inapp?to=+919986027668&text=PRC $mobilenu$:$amount$:$pin$' ><span class='buttonText'  align='center'>"+STR_BILLPAY_SMS+"</span></a></div>" +
+		"<div class='c3lMenuGroup buttonAllMenu1'><a id='ussdbut' class='c3lMenuGroup buttonAllMenu' style='visibility:hidden' href='tel://call=*123*$mobilenu$*$amount$*$pin$#'><span class='buttonText' align='center'>"+STR_BILLPAY_USSD+"</span></a></div>"
+);
+if(Number(clientVersion_actual) < Number(clientVersion_config) && widget.clientVersion.indexOf("ANDROID") > -1)
+{
+	document.write(navBottom(2));
+}
+</script>
+</div>
+
+<div id="otherbal" style="display:none" class="c3lMenu bgColor">
+		<script>
+document.write( title()+
+		//"<div width='100%' class='c3lTitle marginBottom20'><a class='c3lMenuGroup' align='left' style='padding:10% 10% 10% 10%' href='#menulist'><img   width='8%'  valign='middle' src='menu.png'/></a><span class='topSize'  id='pretitle' align='center'>" + STR_PRETUPS_TITLE + "</span><a href='#settingslist'><img align='right' style='margin-right:5%' width='10%'  valign='middle' src='settingsmore.png'/></a><hr /></div>"+
+		"<div class='c3lMenuGroup' style='padding-left:15px;padding-right:15px;padding-bottom:5px;'><input  id='mobilenu' 	name='mobilenu' type='mobileno' maxLength='" + MSISDN_LENGTH + "' class='inputBg3' emptyok='false' title='" + STR_MSISDN_TITLE + "'  /></div>"+
+		"<div class='c3lMenuGroup' style='padding-left:15px;padding-right:15px;padding-bottom:5px;'><input id='pin' name='pin' class='c3lMenuGroup' type='numpassword' class='inputBg2' maxLength='" + PIN_LENGTH + "' emptyok='false' title='"+STR_PIN_TITLE+"' encrypt='true' /></div>"+
+		"<div class='c3lMenuGroup buttonAllMenu1'><a id='gprsbut' class='c3lMenuGroup buttonAllMenu'	href=\"wgt:915403602/1.0:sendOtherBalReq($mobilenu,$pin);\" althref='sms://inapp?to=+919986027668&text=PRC $mobilenu$:$pin$'	><span class='buttonText' align='center'>"+STR_OTHERBAL+"</span></a></div>"+
+		"<div class='c3lMenuGroup buttonAllMenu1'><a id='smsbut' style='visibility:hidden' class='c3lMenuGroup buttonAllMenu' href='sms://inapp?to=+919986027668&text=PRC $mobilenu$:$pin$' ><span class='buttonText'  align='center'>"+STR_OTHERBAL_SMS+"</span></a></div>" +
+		"<div class='c3lMenuGroup buttonAllMenu1'><a id='ussdbut' class='c3lMenuGroup buttonAllMenu' style='visibility:hidden' href='tel://call=*123*$mobilenu$*$pin$#'><span class='buttonText' align='center'>"+STR_OTHERBAL_USSD+"</span></a></div>"
+);
+</script>
+</div>
+
+<div id="returnstock" style="display:none" class="c3lMenu bgColor">
+		<script>
+document.write( title()+
+		//"<div width='100%' class='c3lTitle marginBottom20'><a class='c3lMenuGroup' align='left' style='padding:10% 10% 10% 10%' href='#menulist'><img   width='8%'  valign='middle' src='menu.png'/></a><span class='topSize'  id='pretitle' align='center'>" + STR_PRETUPS_TITLE + "</span><a href='#settingslist'><img align='right' style='margin-right:5%' width='10%'  valign='middle' src='settingsmore.png'/></a><hr /></div>"+
+		"<div class='c3lMenuGroup' style='padding-left:15px;padding-right:15px;padding-bottom:5px;'><input  id='mobilenu' 	name='mobilenu' type='mobileno' maxLength='" + MSISDN_LENGTH + "' class='inputBg3' emptyok='false' title='" + STR_MSISDN_TITLE + "'  /></div>"+
+		"<div class='c3lMenuGroup' style='padding-left:15px;padding-right:15px;padding-bottom:5px;'><input  id='amount' 	name='amount' type='decimal' maxLength='" + AMOUNT_LENGTH + "' class='inputBg2' emptyok='false' title='" + STR_AMOUNT_TITLE + "'  /></div>"+
+		"<div class='c3lMenuGroup' style='padding-left:15px;padding-right:15px;padding-bottom:5px;'><input id='pin' name='pin' class='c3lMenuGroup' type='numpassword' class='inputBg2' maxLength='" + PIN_LENGTH + "' emptyok='false' title='"+STR_PIN_TITLE+"' encrypt='true' /></div>"+
+		"<div class='c3lMenuGroup buttonAllMenu1'><a id='gprsbut' class='c3lMenuGroup buttonAllMenu' 	href=\"wgt:914499429/1.0:sendstockReq($mobilenu,$amount,$pin);\" althref='sms://inapp?to=+919986027668&text=PRC $amount$:$pin$'	><span class='buttonText' align='center'>"+STR_RETURNSTOCK+"</span></a></div>"+
+		"<div class='c3lMenuGroup buttonAllMenu1'><a id='smsbut' style='visibility:hidden' class='c3lMenuGroup buttonAllMenu' href='sms://inapp?to=+919986027668&text=PRC $mobilenu$:$amount$:$pin$' ><span class='buttonText'  align='center'>"+STR_RETURNSTOCK_SMS+"</span></a></div>" +
+		"<div class='c3lMenuGroup buttonAllMenu1'><a id='ussdbut' class='c3lMenuGroup buttonAllMenu' style='visibility:hidden' href='tel://call=*123*$mobilenu$*$amount$*$pin$#'><span class='buttonText' align='center'>"+STR_RETURNSTOCK_USSD+"</span></a></div>"
+);
+if(Number(clientVersion_actual) < Number(clientVersion_config) && widget.clientVersion.indexOf("ANDROID") > -1)
+{
+	document.write(navBottom(3));
+}
+</script>
+
+</div>
+<div id="reports" style="display:none" class="c3lMenu bgColor">
+<script>
+document.write(title()+
+		//"<div width='100%' class='c3lTitle marginBottom20'><a class='c3lMenuGroup' align='left' style='padding:10% 10% 10% 10%' href='#menulist'><img   width='8%'  valign='middle' src='menu.png'/></a><span class='topSize'  id='pretitle' align='center'>" + STR_PRETUPS_TITLE + "</span><a href='#settingslist'><img align='right' style='margin-right:5%' width='10%'  valign='middle' src='settingsmore.png'/></a><hr /></div>"+
+		"<div class='c3lMenuGroup' style='padding-left:15px;padding-right:15px;padding-bottom:5px;'><a id='gprsbut' class='c3lMenuGroup buttonBg' 	href=\"wgt:194750352/1.0:stockbalreq();\"  althref='sms://inapp?to=+919986027668&text=PRC' ><span class='buttonText' align='center'>"+STR_STOCKBAL+"</span></a></div>"+
+		"<div class='c3lMenuGroup' style='padding-left:15px;padding-right:15px;padding-bottom:5px;'><a id='gprsbut1' class='c3lMenuGroup buttonBg' 	href=\"wgt:194750352/1.0:dailyreports();\" althref='sms://inapp?to=+919986027668&text=PRC'><span class='buttonText' align='center'>"+STR_DAILYREPORT+"</span></a></div>"+
+		"<div class='c3lMenuGroup' style='padding-left:15px;padding-right:15px;padding-bottom:5px;'><a id='gprsbut2' class='c3lMenuGroup buttonBg' 	href=\"wgt:194750352/1.0:lasttrans();\" althref='sms://inapp?to=+919986027668&text=PRC'><span class='buttonText' align='center'>"+STR_LASTTRANS+"</span></a></div> "+
+		"<div class='c3lMenuGroup' style='padding-left:15px;padding-right:15px;padding-bottom:5px;'><a id='gprsbut3' class='c3lMenuGroup buttonBg' 	href=\"wgt:194750352/1.0:last5transac();\" althref='sms://inapp?to=+919986027668&text=PRC'><span class='buttonText' align='center'>"+STR_LAST5TRANS+"</span></a></div> "+
+		"<div class='c3lMenuGroup' style='padding-left:15px;padding-right:15px;padding-bottom:5px;'> <a id='smsbut' class='c3lMenuGroup buttonBg' 	style='visibility:hidden'	 href='sms://inapp?to=+919986027668&text=PRC' ><span class='buttonText' align='center'>"+STR_STOCKBAL_SMS+"</span></a></div>"+
+		"<div class='c3lMenuGroup' style='padding-left:15px;padding-right:15px;padding-bottom:5px;'><a id='smsbut1' class='c3lMenuGroup buttonBg' 	style='visibility:hidden'	 href='sms://inapp?to=+919986027668&text=PRC'><span class='buttonText' align='center'>"+STR_DAILYREPORT_SMS+"</span></a></div>"+
+		"<div class='c3lMenuGroup' style='padding-left:15px;padding-right:15px;padding-bottom:5px;'><a id='smsbut2' class='c3lMenuGroup buttonBg' 	style='visibility:hidden'	 href='sms://inapp?to=+919986027668&text=PRC'><span class='buttonText' align='center'>"+STR_LASTTRANS_SMS+"</span></a></div>" +
+		"<div class='c3lMenuGroup' style='padding-left:15px;padding-right:15px;padding-bottom:5px;'><a id='smsbut3' class='c3lMenuGroup buttonBg' 	style='visibility:hidden'	 href='sms://inapp?to=+919986027668&text=PRC'><span class='buttonText' align='center'>"+STR_LAST5TRANS_SMS+"</span></a></div>"+
+		"<div class='c3lMenuGroup' style='padding-left:15px;padding-right:15px;padding-bottom:5px;'><a id='ussdbut' class='c3lMenuGroup buttonBg' 	style='visibility:hidden' 	 href='tel://call=*123#' ><span class='buttonText' align='center'>"+STR_STOCKBAL_USSD+"</span></a></div>"+
+		"<div class='c3lMenuGroup' style='padding-left:15px;padding-right:15px;padding-bottom:5px;'><a id='ussdbut1' class='c3lMenuGroup buttonBg' 	style='visibility:hidden'	 href='tel://call=*123#'><span class='buttonText' align='center'>"+STR_DAILYREPORT_USSD+"</span></a></div>"+
+		"<div class='c3lMenuGroup' style='padding-left:15px;padding-right:15px;padding-bottom:5px;'><a id='ussdbut2' class='c3lMenuGroup buttonBg' 	style='visibility:hidden'	 href='tel://call=*123#'><span class='buttonText' align='center'>"+STR_LASTTRANS_USSD+"</span></a></div>" +
+		"<div class='c3lMenuGroup' style='padding-left:15px;padding-right:15px;padding-bottom:5px;'><a id='ussdbut3' class='c3lMenuGroup buttonBg' 	style='visibility:hidden'	 href='tel://call=*123#'><span class='buttonText' align='center'>"+STR_LAST5TRANS_USSD+"</span></a></div>"
+);
+if(Number(clientVersion_actual) < Number(clientVersion_config) && widget.clientVersion.indexOf("ANDROID") > -1)
+{
+	document.write(navBottom(4));
+}
+</script>
+</div>
+</div>
+<div id="giftRecharge" style="display:none" class="c3lMenu bgColor">
+<script>
+document.write(title()+
+		//"<div width='100%' class='c3lTitle marginBottom20'><a class='c3lMenuGroup' align='left' style='padding:10% 10% 10% 10%' href='#menulist'><img   width='8%'  valign='middle' src='menu.png'/></a><span class='topSize'  id='pretitle' align='center'>" + STR_PRETUPS_TITLE + "</span><a href='#settingslist'><img align='right' style='margin-right:5%' width='10%'  valign='middle' src='settingsmore.png'/></a><hr /></div>"+
+		"<div class='c3lMenuGroup' style='padding-left:15px;padding-right:15px;padding-bottom:5px;'><input  id='payeemobilenu' 	name='payeemobilenu' type='mobileno' maxLength='" + MSISDN_LENGTH + "' class='inputBg3' emptyok='false' title='"+GIFT_FROM_TEXT+"'  /></div>"+
+		"<div class='c3lMenuGroup' style='padding-left:15px;padding-right:15px;padding-bottom:5px;'><input  id='Giftermobilenu' 	name='Giftermobilenu' type='mobileno' maxLength='" + MSISDN_LENGTH + "' class='inputBg2' emptyok='false' title='"+GIFT_TO_TEXT+"'  /></div>"+
+		//"<input  emptyok='false' maxlength='" + MSISDN_LENGTH + "' id='payeemobilenu' class='inputBg2' name='payeemobilenu' type='mobileno' title='Enter Payee MSISDN' value=''  />"+
+		//"<input  emptyok='false' maxlength='" + MSISDN_LENGTH + "' id='Giftermobilenu' class='inputBg2' name='Giftermobilenu' type='mobileno' title='Enter Gifter MSISDN' value=''  />"+
+		"<div class='c3lMenuGroup' style='padding-left:15px;padding-right:15px;padding-bottom:5px;'><input  id='amount' 	name='amount' type='decimal' maxLength='" + AMOUNT_LENGTH + "' class='inputBg2' emptyok='false' title='" + STR_AMOUNT_TITLE + "'  /></div>"+
+		"<div class='c3lMenuGroup' style='padding-left:15px;padding-right:15px;padding-bottom:5px;'><input id='pin' name='pin' class='c3lMenuGroup' type='numpassword' class='inputBg2' maxLength='" + PIN_LENGTH + "' emptyok='false' title='"+STR_PIN_TITLE+"' encrypt='true' /></div>"+
+		"<div class='c3lMenuGroup buttonAllMenu1'><a id='gprsbut' class='c3lMenuGroup buttonAllMenu' 	href=\"wgt:194232707/1.0:sendGiftRechargeReq($payeemobilenu,$Giftermobilenu,$amount,$pin);\" althref='sms://inapp?to=+919986027668&text=PRC $payeemobilenu$:$Giftermobilenu$:$amount$:$pin$'><span class='buttonText' align='center'>"+STR_GIFT_RECHARGE_BUT+"</span></a></div>"+
+		"<div class='c3lMenuGroup buttonAllMenu1'><a id='smsbut' style='visibility:hidden' class='c3lMenuGroup buttonAllMenu' href='sms://inapp?to=+919986027668&text=PRC $payeemobilenu$:$Giftermobilenu$:$amount$:$pin$' ><span class='buttonText'  align='center'>"+STR_GIFT_RECHARGE_SMS+"</span></a></div>" +
+		"<div class='c3lMenuGroup buttonAllMenu1'><a id='ussdbut' class='c3lMenuGroup buttonAllMenu' style='visibility:hidden' href='tel://call=*123*$payeemobilenu$*$Giftermobilenu$*$amount$*$pin$#'><span class='buttonText' align='center'>"+STR_GIFT_RECHARGE_USSD+"</span></a></div>"
+);
+if(Number(clientVersion_actual) < Number(clientVersion_config) && widget.clientVersion.indexOf("ANDROID") > -1)
+{
+	document.write(navBottom(5));
+}
+</script>
+
+</div>
+<div id="elecvocher" style="display:none" class="c3lMenu bgColor">
+<script>
+document.write(title()+
+	//	"<div width='100%' class='c3lTitle marginBottom20'><a class='c3lMenuGroup' align='left' style='padding:10% 10% 10% 10%' href='#menulist'><img   width='8%'  valign='middle' src='menu.png'/></a><span class='topSize'  id='pretitle' align='center'>" + STR_PRETUPS_TITLE + "</span><a href='#settingslist'><img align='right' style='margin-right:5%' width='10%'  valign='middle' src='settingsmore.png'/></a><hr /></div>"+
+		"<div class='c3lMenuGroup' style='padding-left:15px;padding-right:15px;padding-bottom:5px;'><input  id='mobilenu' 	name='mobilenu' type='mobileno' maxLength='" + MSISDN_LENGTH + "' class='inputBg3' emptyok='false' title='" + STR_MSISDN_TITLE + "'  /></div>"+
+		"<div class='c3lMenuGroup' style='padding-left:15px;padding-right:15px;padding-bottom:5px;'><input  id='amount' 	name='amount' type='decimal' maxLength='" + AMOUNT_LENGTH + "' class='inputBg2' emptyok='false' title='" + STR_AMOUNT_TITLE + "'  /></div>"+
+		"<div class='c3lMenuGroup' style='padding-left:15px;padding-right:15px;padding-bottom:5px;'><input id='pin' name='pin' class='c3lMenuGroup' type='numpassword' class='inputBg2' maxLength='" + PIN_LENGTH + "' emptyok='false' title='"+STR_PIN_TITLE+"' encrypt='true' /></div>"+
+		"<div class='c3lMenuGroup buttonAllMenu1'><a id='gprsbut' class='c3lMenuGroup buttonAllMenu' 	href=\"wgt:243664544/1.0:sendElevoucherReq($mobilenu,$amount,$pin)\" althref='sms://inapp?to=+919986027668&text=PRC $mobilenu$:$amount$:$pin$' 	><span class='buttonText' align='center'>"+STR_ELECVOCHER+"</span></a></div>"+
+		"<div class='c3lMenuGroup buttonAllMenu1'><a id='smsbut' style='visibility:hidden' class='c3lMenuGroup buttonAllMenu' href='sms://inapp?to=+919986027668&text=PRC $mobilenu$:$amount$:$pin$' ><span class='buttonText'  align='center'>"+STR_ELECVOCHER_SMS+"</span></a></div>" +
+		"<div class='c3lMenuGroup buttonAllMenu1'><a id='ussdbut' class='c3lMenuGroup buttonAllMenu' style='visibility:hidden' href='tel://call=*123*$mobilenu$*$amount$*$pin$#'><span class='buttonText' align='center'>"+STR_ELECVOCHER_USSD+"</span></a></div>"
+);
+if(Number(clientVersion_actual) < Number(clientVersion_config) && widget.clientVersion.indexOf("ANDROID") > -1)
+{
+	document.write(navBottom(8));
+}
+</script>
+
+</div>
+<div id="changepin" style="display:none" class="c3lMenu bgColor">
+<script>
+document.write(title()+
+		//"<div width='100%' class='c3lTitle marginBottom20'><a class='c3lMenuGroup' align='left' style='padding:10% 10% 10% 10%' href='#menulist'><img   width='8%'  valign='middle' src='menu.png'/></a><span class='topSize'  id='pretitle' align='center'>" + STR_PRETUPS_TITLE + "</span><a style='padding:10% 10% 10% 10%' href='#settingslist'><img align='right'  width='10%'  valign='middle' src='settingsmore.png'/></a><hr /></div>"+
+		"<div class='c3lMenuGroup' style='padding-left:15px;padding-right:15px;padding-bottom:5px;'><input id='oldpin' name='oldpin' class='c3lMenuGroup' type='numpassword' class='inputBg3' maxLength='" + PIN_LENGTH + "' emptyok='false' title='"+STR_OLDPIN_TITLE+"' encrypt='true' /></div>"+
+		"<div class='c3lMenuGroup' style='padding-left:15px;padding-right:15px;padding-bottom:5px;'><input id='newpin' name='newpin' class='c3lMenuGroup' type='numpassword' class='inputBg2' maxLength='" + PIN_LENGTH + "' emptyok='false' title='"+STR_NEWPIN_TITLE+"' encrypt='true' /></div>"+
+		"<div class='c3lMenuGroup' style='padding-left:15px;padding-right:15px;padding-bottom:5px;'><input id='confirmnewpin' name='confirmnewpin' class='c3lMenuGroup' type='numpassword' class='inputBg2' maxLength='" + PIN_LENGTH + "' emptyok='false' title='"+STR_CONFIRMPIN_TITLE+"' encrypt='true' /></div>"+
+		"<div class='c3lMenuGroup buttonAllMenu1'><a id='gprsbut' class='c3lMenuGroup buttonAllMenu' 	href=\"wgt:189153428/1.0:sendchangepinreq($oldpin,$newpin,$confirmnewpin)\"	 althref='sms://inapp?to=+919986027668&text=PRC $oldpin$:$newpin$:$confirmnewpin$' ><span class='buttonText' align='center'>"+STR_CHANGEPIN+"</span></a></div>"+
+		"<div class='c3lMenuGroup buttonAllMenu1'><a id='smsbut' style='visibility:hidden' class='c3lMenuGroup buttonAllMenu' href='sms://inapp?to=+919986027668&text=PRC $oldpin$:$newpin$:$confirmnewpin$' ><span class='buttonText'  align='center'>"+STR_CHANGEPIN_SMS+"</span></a></div>" +
+		"<div class='c3lMenuGroup buttonAllMenu1'><a id='ussdbut' class='c3lMenuGroup buttonAllMenu' style='visibility:hidden' href='tel://call=*123*$oldpin$*$newpin$*$confirmnewpin$#'><span class='buttonText' align='center'>"+STR_CHANGEPIN_USSD+"</span></a></div>"
+		//navBottom(6)
+);
+if(Number(clientVersion_actual) < Number(clientVersion_config) && widget.clientVersion.indexOf("ANDROID") > -1)
+{
+	document.write(navBottom(6));
+}
+</script>
+</div>
+<div id="rechargeStatus" style="display:none" class="c3lMenu bgColor">
+<script>
+document.write(title()+
+		//"<div width='100%' class='c3lTitle marginBottom20'><a class='c3lMenuGroup' align='left' style='padding:10% 10% 10% 10%' href='#menulist'><img   width='8%'  valign='middle' src='menu.png'/></a><span class='topSize'  id='pretitle' align='center'>" + STR_PRETUPS_TITLE + "</span><a style='padding:10% 10% 10% 10%' href='#settingslist'><img align='right'  width='10%'  valign='middle' src='settingsmore.png'/></a><hr /></div>"+
+		"<div class='c3lMenuGroup' style='padding-left:15px;padding-right:15px;padding-bottom:5px;'><input id='txnid' name='txnid' class='c3lMenuGroup' type='text' class='inputBg3' maxLength='"+NAME_LEN+"' emptyok='false' title='"+STR_TXN_ID_TITLE+"' encrypt='true' /></div>"+
+		"<div class='c3lMenuGroup' style='padding-left:15px;padding-right:15px;padding-bottom:5px;'><input id='pin' name='pin' class='c3lMenuGroup' type='numpassword' class='inputBg2' maxLength='" + PIN_LENGTH + "' emptyok='false' title='"+STR_PIN_TITLE+"' encrypt='true' /></div>"+
+		"<div class='c3lMenuGroup buttonAllMenu1'><a id='gprsbut' class='c3lMenuGroup buttonAllMenu' 	href=\"sendReqRechStatus($txnid,$pin)\"	 althref='sms://inapp?to=+919986027668&text=PRC $txnid$:$pin$' ><span class='buttonText' align='center'>"+STR_RECHARGE_STATUS+"</span></a></div>"+
+		"<div class='c3lMenuGroup buttonAllMenu1'><a id='smsbut' style='visibility:hidden' class='c3lMenuGroup buttonAllMenu' href='sms://inapp?to=+919986027668&text=PRC $txnid$:$pin$' ><span class='buttonText'  align='center'>"+STR_RECHARGE_STATUS_SMS+"</span></a></div>" +
+		"<div class='c3lMenuGroup buttonAllMenu1'><a id='ussdbut' class='c3lMenuGroup buttonAllMenu' style='visibility:hidden' href='tel://call=*123*$txnid$*$pin$#'><span class='buttonText' align='center'>"+STR_RECHARGE_STATUS_USSD+"</span></a></div>"
+);
+</script>
+</div>
+
+<div id="commission" display:none" class="c3lMenu bgColor">
+<script>
+document.write(title()+
+		
+           /*
+            		
+		//"<div width='100%' class='c3lTitle marginBottom20'><a class='c3lMenuGroup' align='left' style='padding:10% 10% 10% 10%' href='#menulist'><img   width='8%'  valign='middle' src='menu.png'/></a><span class='topSize'  id='pretitle' align='center'>" + STR_PRETUPS_TITLE + "</span><a href='#settingslist'><img align='right' style='margin-right:5%' width='10%'  valign='middle' src='settingsmore.png'/></a><hr /></div>"+
+		 "<div class='c3lMenuGroup marginTop15' style='padding-left:15px;padding-right:15px;padding-bottom:5px;'><input  id='amount' 	name='amount' type='decimal' maxLength='" + AMOUNT_LENGTH + "' class='inputBg2' emptyok='false' title='" + STR_AMOUNT_TITLE + "'  /></div>"+
+              
+            "<div class='c3lMenuGroup' style='padding-left:15px;padding-right:15px;padding-bottom:5px;'><setvar name='serviceType' value=''/> <select align='left' id='serviceType' name='serviceType' sendIndex='false'>"+
+	     "<option class='c3lMenuGroup' value='selectservicetype' id='selectservicetype'>Select seriveType</option>"+
+             "<option class='c3lMenuGroup' value='c2c' id ='c2c' onclick='c3lhide:services1;addDiv;comType&c3lshow:normDiv'>C2C</option>"+
+             "<option class='c3lMenuGroup' value='o2c' id='o2c' onclick='c3lhide:services1;addDiv;comType&c3lshow:normDiv'>O2C</option>"+
+	      "<option class='c3lMenuGroup' value='c2s' id ='c2s' onclick='c3lshow:services1;addDiv&c3lhide:comType;normDiv'>C2S</option></div>"+
+		
+              "<div class='c3lMenuGroup' style='padding-left:15px;padding-right:15px;padding-bottom:5px;' ><setvar name='services1' value=''/> <select align='left' id='services1' name='services1' sendIndex='false' style='visibility:hidden'>"+
+              "<option class='c3lMenuGroup' value='selectservice' id='selectservice'>Select service</option>"+
+              "<option class='c3lMenuGroup' value='normal' id='billpay1'>bill payment</option>"+
+		"<option class='c3lMenuGroup' value='normal' id='billpay2'>Recharge</option></div>"+
+               
+               //var ccccc = document.getElementById("serviceType");
+
+               "<div class='c3lMenuGroup' style='padding-left:15px;padding-right:15px;padding-bottom:5px;'><setvar name='comType' value=''/> <select align='left' id='comType' name='comType' sendIndex='false'>"+ 
+	        "<option class='c3lMenuGroup' value='addtional' id = 'additional'>Additional</option>"+
+               "<option class='c3lMenuGroup' value='normal' id='normal'>Normal</option></div>"+
+
+             "<div class='c3lMenuGroup' style='padding-left:15px;padding-right:15px;padding-bottom:5px;'><setvar name='addDiv' value=''/> <select align='left' id='addDiv' name='addDiv' sendIndex='false' style='visibility:hidden'>"+ 
+	        "<option class='c3lMenuGroup' value='addtional' id = 'additional'>Additional</option></div>"+
+              
+              
+             "<div class='c3lMenuGroup' style='padding-left:15px;padding-right:15px;padding-bottom:5px;'><setvar name='normDiv' value=''/> <select align='left' id='normDiv' name='normDiv' sendIndex='false' style='visibility:hidden'>"+ 
+	        
+              "<option class='c3lMenuGroup' value='normal' id='normal'>Normal</option></div>"+
+
+*/
+              //"<div class='c3lMenuGroup buttonAllMenu1  marginTop15'><a  id='gprsbut111' class='c3lMenuGroup buttonAllMenu'  href='javascript:baseCalculator();' ><span class='buttonText' align='center'>"+BUTTON_BASECOMMISSION+"</span></a></div>"+
+		"<div class='c3lMenuGroup buttonAllMenu1  marginTop15'><a  id='gprsbut111' class='c3lMenuGroup buttonAllMenu'  href='#basecommission'><span class='buttonText' align='center'>"+BUTTON_BASECOMMISSION+"</span></a></div>"+
+
+             "<div class='c3lMenuGroup buttonAllMenu1  marginTop15'><a  id='gprsbut' class='c3lMenuGroup buttonAllMenu' href='#addcommission'><span class='buttonText' align='center'>"+BUTTON_ADDCOMISSION+"</span></a></div>"
+
+              //"<div class='c3lMenuGroup buttonAllMenu1'><a id='smsbut' style='visibility:hidden' class='c3lMenuGroup buttonAllMenu' href='sms://inapp?to=+919986027668&text=PRC $mobilenu$:$amount$:$pin$' ><span class='buttonText'  align='center'>"+BUTTON_CALCULATOR_SMS+"</span></a></div>" +
+		//"<div class='c3lMenuGroup buttonAllMenu1'><a id='ussdbut' class='c3lMenuGroup buttonAllMenu' style='visibility:hidden' href='tel://call=*123*$mobilenu$*$amount$*$pin$#'><span class='buttonText' align='center'>"+BUTTON_CALCULATOR_USSD+"</span></a></div>"
+	
+
+
+	
+);
+</script>
+</div>
+
+<div id="vasrechargeDiv" style="background-color:rgb(242,242,242);display:none" class="c3lMenu bgColor">
+<script>
+document.write(title()+
+				
+		"<div class='c3lMenuGroup buttonAllMenu1' style='margin-top:6%'><a  id='gprsbut' class='c3lMenuGroup'><span class='buttonText' align='center'>"+STR_VASRECHARGE+"</span></a></div>"+
+		"<div class='c3lMenuGroup' style='padding-left:15px;padding-right:15px;padding-bottom:5px;'><input  id='mobilenu' 	name='mobilenu' type='mobileno' maxLength='" + MSISDN_LENGTH + "' class='inputBg3' emptyok='false' title='" + STR_MSISDN_TITLE + "'  /></div>"+
+		VASServicesList()+
+              "<div class='c3lMenuGroup' style='padding-left:15px;padding-right:15px;padding-bottom:5px;'><input  id='amount' 	name='amount' type='decimal' maxLength='" + AMOUNT_LENGTH + "' class='inputBg2' emptyok='false' title='" + STR_AMOUNT_TITLE + "'  /></div>"+
+		"<div class='c3lMenuGroup' style='padding-left:15px;padding-right:15px;padding-bottom:5px;'><input id='pin' name='pin' class='c3lMenuGroup' type='numpassword' class='inputBg2' maxLength='" + PIN_LENGTH + "' emptyok='false' title='"+STR_PIN_TITLE+"' encrypt='true' /></div>"+
+              "<div class='c3lMenuGroup buttonAllMenu1'><a  id='gprsbut' class='c3lMenuGroup buttonAllMenu' href=\"VASService($mobilenu,$product,$amount,$pin)\"><span class='buttonText' align='center'>"+STR_SUBMIT+"</span></a></div>"
+               //"<div class='c3lMenuGroup buttonAllMenu1'><a id='smsbut' style='visibility:hidden' class='c3lMenuGroup buttonAllMenu' href='sms://inapp?to=+919986027668&text=PRC $mobilenu$:$amount$:$pin$' ><span class='buttonText'  align='center'>"+STR_SUBMIT_SMS+"</span></a></div>" +
+		//"<div class='c3lMenuGroup buttonAllMenu1'><a id='ussdbut' class='c3lMenuGroup buttonAllMenu' style='visibility:hidden' href='tel://call=*123*$mobilenu$*$amount$*$pin$#'><span class='buttonText' align='center'>"+STR_SUBMIT_USSD+"</span></a></div>"
+			
+);
+if(Number(clientVersion_actual) < Number(clientVersion_config) && widget.clientVersion.indexOf("ANDROID") > -1)
+{
+document.write(navBottom(7));
+}
+</script>
+</div>
+
+<div id="enquiryvas" style="background-color:rgb(242,242,242);display:none" class="c3lMenu bgColor">
+<script>
+document.write(title()+
+
+"<div class='c3lMenuGroup buttonAllMenu1' style='margin-top:6%'><a  id='gprsbut' class='c3lMenuGroup'><span class='buttonText' align='center'>"+STR_VASENQUIRY+"</span></a></div>"+ 
+
+vasenquiry() 
+//"<div class='c3lMenuGroup buttonAllMenu1'><a  id='gprsbut' class='c3lMenuGroup buttonAllMenu' href=\"VASService($mobilenu,$product,$amount,$pin)\"><span class='buttonText' align='center'>"+STR_SUBMIT+"</span></a></div>"
+
+		
+);
+if(Number(clientVersion_actual) < Number(clientVersion_config) && widget.clientVersion.indexOf("ANDROID") > -1)
+{
+document.write(navBottom(7));
+}
+</script>
+</div>
+
+
+<div title='PreTUPS' id="exitApp" type="confirm" class="c3lMenu" style="display: none;"></div>
+<div id="rechargeReq" type="confirm" class="c3lMenu" style="display: none;">	</div>
+<div id="post" type="info" class="c3lMenu" style="display: none;">	</div>
+<div id="post2" type="info" class="c3lMenu" style="display: none;">	</div>
+<div id="alert" type="info" class="c3lMenu" style="display: none;">	</div>	
+
+<!-- <div id='menulist' type='drawer'   class='c3lMenu' style='background-color:rgb(230,230,230);margin-top:-90%' align='left'  height='100%'   width='50%'> -->
+<div id='menulist' type='popup' transition = '2' valign='top'  class='c3lMenu' style='background-color:rgb(238,238,238)'  align='left'  height='100%'   width='70%'><parent name='categoryparent'  href='close://' />
+<!-- <div width='100%' style='margin-top:10%' class='c3lTitle'><a  class='c3lMenuGroup' style='padding:10% 10% 10% 10%' valign='middle' href='close:'><img align='left'  width='16%'    src='menu.png'/></a><span class='topSize'  id='pretitle' align='center'>Menu</span><hr /></div> -->
+<script>
+if(widget.clientVersion.indexOf("ANDROID") > -1)
+{
+document.write("<div class='c3lTitle'><a  class='c3lMenuGroup' valign='middle' href='close:'><img width='30%' align='left' resimg='icon_back.9.png' src='icon_back.9.png'/></a><img width='72%' src='pretups_logo.png' resimg='pretups_logo.png'/><hr/></div>");
+}
+/*var serviceCollp = "";
+var serviceExpand = "";
+document.write(serviceExpand += "<div><a id ='display' class='c3lMenuGroup eachMenu'  href='c3lshow:billpay&c3lhide:billpay'  width='100%'><img valign='middle'  align='left' resimg='recharge.png' src='recharge.png' /><span align='left' valign='middle'  class='menuText'>"+STR_SERVICES+"</span><img class ='imageWidth' valign='middle' align='right'  resimg='minus.png' src='minus.png' /></a></div>");
+document.write(serviceExpand += "<a href='close://action=c3lshow:gprsbut&action=c3lhide:ussdbut;smsbut&action=Menulist:Menu_Recharge' class ='c3lMenuGroup eachMenu'  width='100%'><img valign='middle' align='left' resimg='recharge.png' src='recharge.png' /><span align='left' valign='middle'  class='menuText'>"+STR_RECHARGE+"</span><img valign='middle' class='imageWidtharr' align='right'  resimg='rightarr.png' src='rightarr.png' /></a>");
+document.write(serviceExpand += "<a href='close://action=c3lshow:gprsbut&action=c3lhide:ussdbut;smsbut&action=Menulist:billpay' class ='c3lMenuGroup eachMenu'  width='100%'><img valign='middle' align='left' resimg='billpayment.png' src='billpayment.png' /><span align='left' valign='middle'  class='menuText'>"+STR_BILLPAY+"</span><img valign='middle' class='imageWidtharr' align='right'  resimg='rightarr.png' src='rightarr.png' /></a><hr class='gray'/></div>");
+*/
+var pfList = "TRS,TDS";
+//var menuList = widget.retrieveUserData("menuList");
+ pfList = pfList.split(",");
+
+for(var i=0;i<pfList.length;i++)
+{
+	var pfcode = pfList[i];	
+	if(pfcode == "TDS")
+	{
+		if(widget.clientVersion.indexOf("J2ME") != -1)
+		{
+			document.write("<a href='#transfer' class ='c3lMenuGroup eachMenu'  width='100%'><img valign='middle' align='left' resimg='transfer.png' src='transfer.png' /><span align='left' valign='middle'  class='menuText'>"+STR_TRANSFER+"</span><img valign='middle' align='right'  resimg='rightarr.png' src='rightarr.png' /></a><hr class='gray'/>");
+			document.write("<a href='#withdraw' class ='c3lMenuGroup eachMenu'  width='100%'><img valign='middle' align='left' resimg='withdraw.png' src='withdraw.png' /><span align='left' valign='middle'  class='menuText'>"+STR_WITHDRAW+"</span><img valign='middle' align='right'  resimg='rightarr.png' src='rightarr.png' /></a><hr class='gray'/>");
+			document.write("<a href='#otherbal' class ='c3lMenuGroup eachMenu'  width='100%'><img valign='middle' align='left' resimg='otherbal.png' src='otherbal.png' /><span align='left' valign='middle'  class='menuText'>"+STR_OTHERBAL+"</span><img valign='middle' align='right'  resimg='rightarr.png' src='rightarr.png' /></a><hr class='gray'/>");
+				
+		}else
+		{
+			document.write("<a href='close://action=c3lshow:gprsbut&action=c3lhide:ussdbut;smsbut&action=Menulist:transfer' class ='c3lMenuGroup eachMenu'  width='100%'><img valign='middle' align='left' resimg='transfer.png' src='transfer.png' /><span align='left' valign='middle'  class='menuText'>"+STR_TRANSFER+"</span><img class='imageWidtharr' valign='middle' align='right'  resimg='rightarr.png' src='rightarr.png' /></a><hr class='gray'/>");
+			document.write("<a href='close://action=c3lshow:gprsbut&action=c3lhide:ussdbut;smsbut&action=Menulist:withdraw' class ='c3lMenuGroup eachMenu'  width='100%'><img valign='middle' align='left' resimg='withdraw.png' src='withdraw.png' /><span align='left' valign='middle'  class='menuText'>"+STR_WITHDRAW+"</span><img class='imageWidtharr' valign='middle' align='right'  resimg='rightarr.png' src='rightarr.png' /></a><hr class='gray'/>");
+			document.write("<a href='close://action=c3lshow:gprsbut&action=c3lhide:ussdbut;smsbut&action=Menulist:otherbal' class ='c3lMenuGroup eachMenu'  width='100%'><img valign='middle' align='left' resimg='otherbal.png' src='otherbal.png' /><span align='left' valign='middle'  class='menuText'>"+STR_OTHERBAL+"</span><img class='imageWidtharr' valign='middle' align='right'  resimg='rightarr.png' src='rightarr.png' /></a><hr class='gray'/>");
+		}		
+	}
+	if(pfcode == "TRS")
+	{
+		if(widget.clientVersion.indexOf("J2ME") != -1)
+		{
+			document.write("<a href='#Menu_Recharge' class ='c3lMenuGroup eachMenu'  width='100%'><img valign='middle' align='left' resimg='recharge.png' src='recharge.png' /><span align='left' valign='middle'  class='menuText'>"+STR_RECHARGE+"</span><img valign='middle' align='right'  resimg='rightarr.png' src='rightarr.png' /></a><hr class='gray'/>");
+			document.write("<a href='#billpay' class ='c3lMenuGroup eachMenu'  width='100%'><img valign='middle' align='left' resimg='billpayment.png' src='billpayment.png' /><span align='left' valign='middle'  class='menuText'>"+STR_BILLPAY+"</span><img valign='middle' align='right'  resimg='rightarr.png' src='rightarr.png' /></a><hr class='gray'/>");
+			document.write("<a href='#giftRecharge' class ='c3lMenuGroup eachMenu'  width='100%'><img valign='middle' align='left' resimg='giftrecharge.png' src='giftrecharge.png' /><span align='left' valign='middle'  class='menuText'>"+STR_GIFT_RECHARGE_BUT+"</span><img valign='middle' align='right'  resimg='rightarr.png' src='rightarr.png' /></a><hr class='gray'/>");
+			document.write("<a href='#reports' class ='c3lMenuGroup eachMenu'  width='100%'><img valign='middle' align='left' resimg='reports.png' src='reports.png' /><span align='left' valign='middle'  class='menuText'>"+STR_REPORT+"</span><img valign='middle' align='right'  resimg='rightarr.png' src='rightarr.png' /></a><hr class='gray'/>");
+			document.write("<a href='#returnstock' class ='c3lMenuGroup eachMenu'  width='100%'><img valign='middle' align='left' resimg='returnstock.png' src='returnstock.png' /><span align='left' valign='middle'  class='menuText'>"+STR_RETURNSTOCK+"</span><img valign='middle' align='right'  resimg='rightarr.png' src='rightarr.png' /></a><hr class='gray'/>");
+			document.write("<a href='#elecvocher' class ='c3lMenuGroup eachMenu'  width='100%'><img valign='middle' align='left' resimg='evoucher.png' src='evoucher.png' /><span align='left' valign='middle'  class='menuText'>"+STR_ELECVOCHER+"</span><img valign='middle' align='right'  resimg='rightarr.png' src='rightarr.png' /></a><hr class='gray'/>");
+			document.write("<a href='#rechargeStatus' class ='c3lMenuGroup eachMenu'  width='100%'><img valign='middle' align='left' resimg='rechargeStatus.png' src='rechargeStatus.png' /><span align='left' valign='middle'  class='menuText'>"+STR_RECHARGE_STATUS+"</span><img valign='middle' align='right'  resimg='rightarr.png' src='rightarr.png' /></a><hr class='gray'/>");
+				
+		}else
+		{
+                                         
+			document.write("<a href='close://action=c3lshow:gprsbut&action=c3lhide:ussdbut;smsbut&action=Menulist:Menu_Recharge' class ='c3lMenuGroup eachMenu'  width='100%'><img valign='middle' align='left' resimg='recharge.png' src='recharge.png' /><span align='left' valign='middle'  class='menuText'>"+STR_RECHARGE+"</span><img valign='middle' class='imageWidtharr' align='right'  resimg='rightarr.png' src='rightarr.png' /></a><hr class='gray'/>");
+                     document.write("<a href='close://action=c3lshow:gprsbut&action=c3lhide:ussdbut;smsbut&action=Menulist:vasrechargeDiv' class ='c3lMenuGroup eachMenu'  width='100%'><img valign='middle' align='left' resimg='recharge.png' src='recharge.png'/><span align='left' valign='middle'  class='menuText'>"+STR_VASRECHARGE+"</span><img valign='middle' align='right' class='imageWidtharr' resimg='rightarr.png' src='rightarr.png' /></a><hr class='gray'/>");
+						document.write("<a href='close://action=c3lshow:gprsbut&action=c3lhide:ussdbut;smsbut&action=Menulist:enquiryvas' class ='c3lMenuGroup eachMenu'  width='100%'><img valign='middle' align='left' resimg='recharge.png' src='recharge.png'/><span align='left' valign='middle'  class='menuText'>"+STR_VASENQUIRY+"</span><img valign='middle' align='right' class='imageWidtharr' resimg='rightarr.png' src='rightarr.png' /></a><hr class='gray'/>");
+
+			document.write("<a href='close://action=c3lshow:gprsbut&action=c3lhide:ussdbut;smsbut&action=Menulist:billpay' class ='c3lMenuGroup eachMenu'  width='100%'><img valign='middle' align='left' resimg='billpayment.png' src='billpayment.png' /><span align='left' valign='middle'  class='menuText'>"+STR_BILLPAY+"</span><img valign='middle' class='imageWidtharr' align='right'  resimg='rightarr.png' src='rightarr.png' /></a><hr class='gray'/>");
+			document.write("<a href='close://action=c3lshow:gprsbut&action=c3lhide:ussdbut;smsbut&action=Menulist:giftRecharge' class ='c3lMenuGroup eachMenu'  width='100%'><img valign='middle' align='left' resimg='giftrecharge.png' src='giftrecharge.png' /><span align='left' valign='middle'  class='menuText'>"+STR_GIFT_RECHARGE_BUT+"</span><img  class='imageWidtharr' valign='middle' align='right'  resimg='rightarr.png' src='rightarr.png' /></a><hr class='gray'/>");
+			document.write("<a href='close://action=c3lshow:gprsbut;gprsbut1;gprsbut2;gprsbut3&action=c3lhide:ussdbut;ussdbut1;ussdbut2;ussdbut3;smsbut;smsbut1;smsbut2;smsbut3&action=Menulist:reports' class ='c3lMenuGroup eachMenu'  width='100%'><img valign='middle' align='left' resimg='reports.png' src='reports.png' /><span align='left' valign='middle'  class='menuText'>"+STR_REPORT+"</span><img  class='imageWidtharr' valign='middle' align='right'  resimg='rightarr.png' src='rightarr.png' /></a><hr class='gray'/>");
+			document.write("<a href='close://action=c3lshow:gprsbut&action=c3lhide:ussdbut;smsbut&action=Menulist:returnstock' class ='c3lMenuGroup eachMenu'  width='100%'><img valign='middle' align='left' resimg='returnstock.png' src='returnstock.png' /><span align='left' valign='middle'  class='menuText'>"+STR_RETURNSTOCK+"</span><img valign='middle' align='right' class='imageWidtharr' resimg='rightarr.png' src='rightarr.png' /></a><hr class='gray'/>");
+			document.write("<a href='close://action=c3lshow:gprsbut&action=c3lhide:ussdbut;smsbut&action=Menulist:elecvocher' class ='c3lMenuGroup eachMenu'  width='100%'><img valign='middle' align='left' resimg='evoucher.png' src='evoucher.png' /><span align='left' valign='middle'  class='menuText'>"+STR_ELECVOCHER+"</span><img valign='middle' align='right'  resimg='rightarr.png' class='imageWidtharr' src='rightarr.png' /></a><hr class='gray'/>");
+			document.write("<a href='close://action=c3lshow:gprsbut&action=c3lhide:ussdbut;smsbut&action=Menulist:rechargeStatus' class ='c3lMenuGroup eachMenu'  width='100%'><img valign='middle' align='left' resimg='rechargeStatus.png' src='rechargeStatus.png' /><span align='left' valign='middle'  class='menuText'>"+STR_RECHARGE_STATUS+"</span><img valign='middle' align='right' class='imageWidtharr' resimg='rightarr.png' src='rightarr.png' /></a><hr class='gray'/>");
+                     document.write("<a href='close://action=c3lshow:gprsbut&action=c3lhide:ussdbut;smsbut&action=Menulist:commission' class ='c3lMenuGroup eachMenu'  width='100%'><img valign='middle' align='left' resimg='calculator1.png' src='calculator1.png' /><span align='left' valign='middle'  class='menuText'>"+STR_COMMISSION+"</span><img valign='middle' align='right' class='imageWidtharr' resimg='rightarr.png' src='rightarr.png' /></a><hr class='gray'/>");
+                   // document.write("<a href='wgt:965029172/1.0:calculator();//action=Menulist:newcommission' class ='c3lMenuGroup eachMenu'  width='100%'><img valign='middle' align='left' resimg='calculator1.png' src='calculator1.png' /><span align='left' valign='middle'  class='menuText'>New Commission</span><img valign='middle' align='right' class='imageWidtharr' resimg='rightarr.png' src='rightarr.png' /></a><hr class='gray'/>");
+
+		}
+			
+	}
+	if(pfcode == "TS")
+	{
+		if(widget.clientVersion.indexOf("J2ME") != -1)
+		{
+			document.write("<a href='#transfer' class ='c3lMenuGroup eachMenu'  width='100%'><img valign='middle' align='left' resimg='transfer.png' src='transfer.png' /><span align='left' valign='middle'  class='menuText'>"+STR_TRANSFER+"</span><img valign='middle' align='right'  resimg='rightarr.png' src='rightarr.png' /></a><hr class='gray'/>");
+		}else
+		{
+		document.write("<a href='close://action=c3lshow:gprsbut&action=c3lhide:ussdbut;smsbut&action=Menulist:transfer' class ='c3lMenuGroup eachMenu'  width='100%'><img valign='middle' align='left' resimg='recharge.png' src='recharge.png' /><span align='left' valign='middle'  class='menuText'>"+STR_TRANSFER+"</span><img valign='middle' align='right'  resimg='rightarr.png' src='rightarr.png' /></a><hr class='gray'/>");
+		}
+	}
+	if(pfcode == "WS")
+	{	
+		if(widget.clientVersion.indexOf("J2ME") != -1)
+		{
+			document.write("<a href='#withdraw' class ='c3lMenuGroup eachMenu'  width='100%'><img valign='middle' align='left' resimg='withdraw.png' src='withdraw.png' /><span align='left' valign='middle'  class='menuText'>"+STR_WITHDRAW+"</span><img valign='middle' align='right'  resimg='rightarr.png' src='rightarr.png' /></a><hr class='gray'/>");
+		}else
+		{
+		document.write("<a href='close://action=c3lshow:gprsbut&action=c3lhide:ussdbut;smsbut&action=Menulist:withdraw' class ='c3lMenuGroup eachMenu'  width='100%'><img valign='middle' align='left' resimg='recharge.png' src='recharge.png' /><span align='left' valign='middle'  class='menuText'>"+STR_WITHDRAW+"</span><img valign='middle' align='right' class='imageWidtharr' resimg='rightarr.png' src='rightarr.png' /></a><hr class='gray'/>");
+		}
+	}
+	if(pfcode == "RS")
+	{
+		if(widget.clientVersion.indexOf("J2ME") != -1)
+		{
+			document.write("<a href='#Menu_Recharge' class ='c3lMenuGroup eachMenu'  width='100%'><img valign='middle' align='left' resimg='recharge.png' src='recharge.png' /><span align='left' valign='middle'  class='menuText'>"+STR_RECHARGE+"</span><img valign='middle' align='right'  resimg='rightarr.png' src='rightarr.png' /></a><hr class='gray'/>");
+			document.write("<a href='close://action=c3lshow:gprsbut&action=c3lhide:ussdbut;smsbut&action=Menulist:rechargeStatus' class ='c3lMenuGroup eachMenu'  width='100%'><img valign='middle' align='left' resimg='rechargeStatus.png' src='rechargeStatus.png' /><span align='left' valign='middle'  class='menuText'>"+STR_RECHARGE_STATUS+"</span><img valign='middle' align='right'  resimg='rightarr.png' src='rightarr.png' /></a><hr class='gray'/>");
+		}else
+		{
+		document.write("<a href='close://action=c3lshow:gprsbut&action=c3lhide:ussdbut;smsbut&action=Menulist:Menu_Recharge' class ='c3lMenuGroup eachMenu'  width='100%'><img valign='middle' align='left' resimg='recharge.png' src='recharge.png' /><span align='left' valign='middle'  class='menuText'>"+STR_RECHARGE+"</span><img valign='middle' align='right' class='imageWidtharr' resimg='rightarr.png' src='rightarr.png' /></a><hr class='gray'/>");
+		document.write("<a href='close://action=c3lshow:gprsbut&action=c3lhide:ussdbut;smsbut&action=Menulist:rechargeStatus' class ='c3lMenuGroup eachMenu'  width='100%'><img valign='middle' align='left' resimg='rechargeStatus.png' src='rechargeStatus.png' /><span align='left' valign='middle'  class='menuText'>"+STR_RECHARGE_STATUS+"</span><img valign='middle' align='right' class='imageWidtharr' resimg='rightarr.png' src='rightarr.png' /></a><hr class='gray'/>");
+		}
+	}if(pfcode == "BPS")
+	{
+		if(widget.clientVersion.indexOf("J2ME") != -1)
+		{
+			document.write("<a href='#billpay' class ='c3lMenuGroup eachMenu'  width='100%'><img valign='middle' align='left' resimg='billpayment.png' src='billpayment.png' /><span align='left' valign='middle'  class='menuText'>"+STR_BILLPAY+"</span><img valign='middle' align='right'  resimg='rightarr.png' src='rightarr.png' /></a><hr class='gray'/>");
+		}else
+		{
+			
+			document.write("<a href='close://action=c3lshow:gprsbut&action=c3lhide:ussdbut;smsbut&action=Menulist:billpay' class ='c3lMenuGroup eachMenu'  width='100%'><img valign='middle' align='left' resimg='billpayment.png' src='billpayment.png' /><span align='left' valign='middle'  class='menuText'>"+STR_BILLPAY+"</span><img valign='middle' align='right'  resimg='rightarr.png' src='rightarr.png' /></a><hr class='gray'/>");
+		}
+	}if(pfcode == "GRS")
+	{
+		if(widget.clientVersion.indexOf("J2ME") != -1)
+		{
+			document.write("<a href='close://action=c3lshow:gprsbut&action=c3lhide:ussdbut;smsbut&action=Menulist:giftRecharge' class ='c3lMenuGroup eachMenu'  width='100%'><img valign='middle' align='left' resimg='giftrecharge.png' src='giftrecharge.png' /><span align='left' valign='middle'  class='menuText'>"+STR_GIFT_RECHARGE_BUT+"</span><img valign='middle' align='right'  resimg='rightarr.png' src='rightarr.png' /></a><hr class='gray'/>");
+		}else
+		{
+			document.write("<a href='close://action=c3lshow:gprsbut&action=c3lhide:ussdbut;smsbut&action=Menulist:giftRecharge' class ='c3lMenuGroup eachMenu'  width='100%'><img valign='middle' align='left' resimg='giftrecharge.png' src='giftrecharge.png' /><span align='left' valign='middle'  class='menuText'>"+STR_GIFT_RECHARGE_BUT+"</span><img valign='middle' align='right'  resimg='rightarr.png' src='rightarr.png' /></a><hr class='gray'/>");
+		}
+	}if(pfcode == "RTS")
+	{
+		if(widget.clientVersion.indexOf("J2ME") != -1)
+		{
+			document.write("<a href='#reports' class ='c3lMenuGroup eachMenu'  width='100%'><img valign='middle' align='left' resimg='reports.png' src='reports.png' /><span align='left' valign='middle'  class='menuText'>"+STR_REPORT+"</span><img valign='middle' align='right'  resimg='rightarr.png' src='rightarr.png' /></a><hr class='gray'/>");
+		}else
+		{
+			document.write("<a href='close://action=c3lshow:gprsbut;gprsbut1;gprsbut2;gprsbut3&action=c3lhide:ussdbut;ussdbut1;ussdbut2;ussdbut3;smsbut;smsbut1;smsbut2;smsbut3&action=Menulist:reports' class ='c3lMenuGroup eachMenu'  width='100%'><img valign='middle'class='imageWidtharr' align='left' resimg='reports.png' src='reports.png' /><span align='left' valign='middle'  class='menuText'>"+STR_REPORT+"</span><img valign='middle' align='right'  resimg='rightarr.png' src='rightarr.png' /></a><hr class='gray'/>");
+		}
+	}if(pfcode == "RSS")
+	{
+		if(widget.clientVersion.indexOf("J2ME") != -1)
+		{
+			document.write("<a href='close://action=c3lshow:gprsbut&action=c3lhide:ussdbut;smsbut&action=Menulist:returnstock' class ='c3lMenuGroup eachMenu'  width='100%'><img valign='middle' align='left' resimg='returnstock.png' src='returnstock.png' /><span align='left' valign='middle'  class='menuText'>"+STR_RETURNSTOCK+"</span><img valign='middle' align='right'  resimg='rightarr.png' src='rightarr.png' /></a><hr class='gray'/>");
+		}else
+		{
+			document.write("<a href='close://action=c3lshow:gprsbut&action=c3lhide:ussdbut;smsbut&action=Menulist:returnstock' class ='c3lMenuGroup eachMenu'  width='100%'><img valign='middle' align='left' resimg='returnstock.png' src='returnstock.png' /><span align='left' valign='middle'  class='menuText'>"+STR_RETURNSTOCK+"</span><img valign='middle' align='right'  resimg='rightarr.png' src='rightarr.png' /></a><hr class='gray'/>");
+		}
+	}
+	if(pfcode == "EVS")
+	{
+		if(widget.clientVersion.indexOf("J2ME") != -1)
+		{
+			document.write("<a href='close://action=c3lshow:gprsbut&action=c3lhide:ussdbut;smsbut&action=Menulist:elecvocher' class ='c3lMenuGroup eachMenu'  width='100%'><img valign='middle' align='left' resimg='evoucher.png' src='evoucher.png' /><span align='left' valign='middle'  class='menuText'>"+STR_ELECVOCHER+"</span><img valign='middle' align='right'  resimg='rightarr.png' src='rightarr.png' /></a><hr class='gray'/>");
+		}else
+		{
+			document.write("<a href='close://action=c3lshow:gprsbut&action=c3lhide:ussdbut;smsbut&action=Menulist:elecvocher' class ='c3lMenuGroup eachMenu'  width='100%'><img valign='middle' align='left' resimg='evoucher.png' src='evoucher.png' /><span align='left' valign='middle'  class='menuText'>"+STR_ELECVOCHER+"</span><img valign='middle' align='right'  resimg='rightarr.png' src='rightarr.png' /></a><hr class='gray'/>");
+		}
+	}
+	
+}
+
+ /*
+if(BILLPAYMENT)
+	{
+		if(widget.clientVersion.indexOf("J2ME") != -1)
+		{
+			document.write("<a href='#billpay' class ='c3lMenuGroup eachMenu'  width='100%'><img valign='middle' align='left' resimg='billpayment.png' src='billpayment.png' /><span align='left' valign='middle'  class='menuText'>"+STR_BILLPAY+"</span><img valign='middle' align='right'  resimg='rightarr.png' src='rightarr.png' /></a><hr class='gray'/>");
+		}else
+		{
+		
+			document.write("<a href='close://action=c3lshow:gprsbut&action=c3lhide:ussdbut;smsbut&action=Menulist:billpay' class ='c3lMenuGroup eachMenu'  width='100%'><img valign='middle' align='left' resimg='billpayment.png' src='billpayment.png' /><span align='left' valign='middle'  class='menuText'>"+STR_BILLPAY+"</span><img valign='middle' class='imageWidtharr' align='right'  resimg='rightarr.png' src='rightarr.png' /></a><hr class='gray'/>");
+		}
+	}
+
+if(RETURNSTOCK)
+	{
+		if(widget.clientVersion.indexOf("J2ME") != -1)
+		{
+			document.write("<a href='#returnstock' class ='c3lMenuGroup eachMenu'  width='100%'><img valign='middle' align='left' resimg='returnstock.png' src='returnstock.png' /><span align='left' valign='middle'  class='menuText'>"+STR_RETURNSTOCK+"</span><img valign='middle' align='right'  resimg='rightarr.png' src='rightarr.png' /></a><hr class='gray'/>");
+
+		}else
+		{
+			document.write("<a href='close://action=c3lshow:gprsbut&action=c3lhide:ussdbut;smsbut&action=Menulist:returnstock' class ='c3lMenuGroup eachMenu'  width='100%'><img valign='middle' align='left' resimg='returnstock.png' src='returnstock.png' /><span align='left' valign='middle'  class='menuText'>"+STR_RETURNSTOCK+"</span><img valign='middle' align='right' class='imageWidtharr' resimg='rightarr.png' src='rightarr.png' /></a><hr class='gray'/>");
+		}
+	}
+
+if(GIFTRECHARGE)
+	{
+		if(widget.clientVersion.indexOf("J2ME") != -1)
+		{
+			document.write("<a href='#giftRecharge' class ='c3lMenuGroup eachMenu'  width='100%'><img valign='middle' align='left' resimg='giftrecharge.png' src='giftrecharge.png' /><span align='left' valign='middle'  class='menuText'>"+STR_GIFT_RECHARGE_BUT+"</span><img valign='middle' align='right'  resimg='rightarr.png' src='rightarr.png' /></a><hr class='gray'/>");
+		}else
+		{
+			document.write("<a href='close://action=c3lshow:gprsbut&action=c3lhide:ussdbut;smsbut&action=Menulist:giftRecharge' class ='c3lMenuGroup eachMenu'  width='100%'><img valign='middle' align='left' resimg='giftrecharge.png' src='giftrecharge.png' /><span align='left' valign='middle'  class='menuText'>"+STR_GIFT_RECHARGE_BUT+"</span><img  class='imageWidtharr' valign='middle' align='right'  resimg='rightarr.png' src='rightarr.png' /></a><hr class='gray'/>");
+		}
+	}
+	
+if(REPORTS)
+	{
+		if(widget.clientVersion.indexOf("J2ME") != -1)
+		{
+			document.write("<a href='#reports' class ='c3lMenuGroup eachMenu'  width='100%'><img valign='middle' align='left' resimg='reports.png' src='reports.png' /><span align='left' valign='middle'  class='menuText'>"+STR_REPORT+"</span><img valign='middle' align='right'  resimg='rightarr.png' src='rightarr.png' /></a><hr class='gray'/>");
+		}else
+		{
+			document.write("<a href='close://action=c3lshow:gprsbut;gprsbut1;gprsbut2;gprsbut3&action=c3lhide:ussdbut;ussdbut1;ussdbut2;ussdbut3;smsbut;smsbut1;smsbut2;smsbut3&action=Menulist:reports' class ='c3lMenuGroup eachMenu'  width='100%'><img valign='middle' align='left' resimg='reports.png' src='reports.png' /><span align='left' valign='middle'  class='menuText'>"+STR_REPORT+"</span><img  class='imageWidtharr' valign='middle' align='right'  resimg='rightarr.png' src='rightarr.png' /></a><hr class='gray'/>");
+		}
+	}
+	
+if(TRANSFER)
+	{
+		if(widget.clientVersion.indexOf("J2ME") != -1)
+		{
+			document.write("<a href='#transfer' class ='c3lMenuGroup eachMenu'  width='100%'><img valign='middle' align='left' resimg='transfer.png' src='transfer.png' /><span align='left' valign='middle'  class='menuText'>"+STR_TRANSFER+"</span><img valign='middle' align='right'  resimg='rightarr.png' src='rightarr.png' /></a><hr class='gray'/>");
+		}else
+		{
+			document.write("<a href='close://action=c3lshow:gprsbut&action=c3lhide:ussdbut;smsbut&action=Menulist:transfer' class ='c3lMenuGroup eachMenu'  width='100%'><img valign='middle' align='left' resimg='transfer.png' src='transfer.png' /><span align='left' valign='middle'  class='menuText'>"+STR_TRANSFER+"</span><img valign='middle' align='right' class='imageWidtharr' resimg='rightarr.png' src='rightarr.png' /></a><hr class='gray'/>");
+		}
+	}
+	
+if(WITHDRAW)
+	{
+		if(widget.clientVersion.indexOf("J2ME") != -1)
+		{
+			document.write("<a href='#withdraw' class ='c3lMenuGroup eachMenu'  width='100%'><img valign='middle' align='left' resimg='withdraw.png' src='withdraw.png' /><span align='left' valign='middle'  class='menuText'>"+STR_WITHDRAW+"</span><img valign='middle' align='right'  resimg='rightarr.png' src='rightarr.png' /></a><hr class='gray'/>");
+		
+		}else
+		{
+			document.write("<a href='close://action=c3lshow:gprsbut&action=c3lhide:ussdbut;smsbut&action=Menulist:withdraw' class ='c3lMenuGroup eachMenu'  width='100%'><img valign='middle' align='left' resimg='withdraw.png' src='withdraw.png' /><span align='left' valign='middle'  class='menuText'>"+STR_WITHDRAW+"</span><img valign='middle' align='right' class='imageWidtharr' resimg='rightarr.png' src='rightarr.png' /></a><hr class='gray'/>");
+		}
+	}
+
+if(ELECVOUCHER)
+	{
+		if(widget.clientVersion.indexOf("J2ME") != -1)
+		{
+			document.write("<a href='#elecvocher' class ='c3lMenuGroup eachMenu'  width='100%'><img valign='middle' align='left' resimg='evoucher.png' src='evoucher.png' /><span align='left' valign='middle'  class='menuText'>"+STR_ELECVOCHER+"</span><img valign='middle' align='right'  resimg='rightarr.png' src='rightarr.png' /></a><hr class='gray'/>");
+			
+		}else
+		{
+			document.write("<a href='close://action=c3lshow:gprsbut&action=c3lhide:ussdbut;smsbut&action=Menulist:elecvocher' class ='c3lMenuGroup eachMenu'  width='100%'><img valign='middle' align='left' resimg='evoucher.png' src='evoucher.png' /><span align='left' valign='middle'  class='menuText'>"+STR_ELECVOCHER+"</span><img valign='middle' align='right'  resimg='rightarr.png' class='imageWidtharr' src='rightarr.png' /></a><hr class='gray'/>");
+		}
+	}
+	
+if(RECHARGE)
+	{
+		if(widget.clientVersion.indexOf("J2ME")!= -1)
+			{
+				document.write("<a href='#Menu_Recharge' class ='c3lMenuGroup eachMenu'  width='100%'><img valign='middle' align='left' resimg='recharge.png' src='recharge.png' /><span align='left' valign='middle'  class='menuText'>"+STR_RECHARGE+"</span><img valign='middle' align='right'  resimg='rightarr.png' src='rightarr.png' /></a><hr class='gray'/>");
+			}else
+			{
+				document.write("<a href='close://action=c3lshow:gprsbut&action=c3lhide:ussdbut;smsbut&action=Menulist:Menu_Recharge' class ='c3lMenuGroup eachMenu'  width='100%'><img valign='middle' align='left' resimg='recharge.png' src='recharge.png' /><span align='left' valign='middle'  class='menuText'>"+STR_RECHARGE+"</span><img valign='middle' class='imageWidtharr' align='right'  resimg='rightarr.png' src='rightarr.png' /></a><hr class='gray'/>");
+			}
+	}
+
+if(OTHERBALANCE)
+	{
+		if(widget.clientVersion.indexOf("J2ME")!= -1)
+		{
+			document.write("<a href='#otherbal' class ='c3lMenuGroup eachMenu'  width='100%'><img valign='middle' align='left' resimg='otherbal.png' src='otherbal.png' /><span align='left' valign='middle'  class='menuText'>"+STR_OTHERBAL+"</span><img valign='middle' align='right'  resimg='rightarr.png' src='rightarr.png' /></a><hr class='gray'/>");
+		}else
+		{
+			document.write("<a href='close://action=c3lshow:gprsbut&action=c3lhide:ussdbut;smsbut&action=Menulist:otherbal' class ='c3lMenuGroup eachMenu'  width='100%'><img valign='middle' align='left' resimg='otherbal.png' src='otherbal.png' /><span align='left' valign='middle'  class='menuText'>"+STR_OTHERBAL+"</span><img valign='middle' class='imageWidtharr' align='right'  resimg='rightarr.png' src='rightarr.png' /></a><hr class='gray'/>");
+		}
+	}
+*/	
+if(widget.clientVersion.indexOf("J2ME") != -1)
+{
+	//document.write("<a href='#changepin' class ='c3lMenuGroup eachMenu'  width='100%'><img valign='middle' align='left' resimg='settings.png' src='settings.png' /><span align='left' valign='middle'  class='menuText'>"+STR_CHANGEPIN+"</span><img valign='middle' align='right'  resimg='rightarr.png' src='rightarr.png'/></a><hr class='gray'/>");
+}else
+{
+	//document.write("<a href='close://action=c3lshow:gprsbut&action=c3lhide:ussdbut;smsbut&action=Menulist:changepin' class ='c3lMenuGroup eachMenu'  width='100%'><img valign='middle' align='left' resimg='settings.png' src='settings.png' /><span align='left' valign='middle'  class='menuText'>"+STR_CHANGEPIN+"</span><img class='imageWidtharr' valign='middle' align='right'  resimg='rightarr.png' src='rightarr.png'/></a><hr class='gray'/>");
+}
+//document.write("<a href='wgt:179878594/1.0:logout()' class ='c3lMenuGroup eachMenu'  width='100%'><img valign='middle' align='left' resimg='logout.png' src='logout.png' /><span align='left' valign='middle'  class='menuText'>"+STR_LOGOUT+"</span><img valign='middle' align='right' class='imageWidtharr'  resimg='rightarr.png' src='rightarr.png' /></a><hr class='gray'/>");
+ 
+</script>
+
+<!-- <a href='#Menu_Recharge' class ='c3lMenuGroup' style='margin:2% 2% 2% 2%;padding:20% 10% 20% 10%;background-color:white' width='100%'><img valign='middle' align='left' resimg='recharge.png' src='recharge.png' /><span  valign='middle'  style='margin-left:5%;font-weight:bold;font-size:10px;color:rgb(94,94,96)'>Recharge</span><img valign='middle'  align='right' resimg='rightarr.png' src='rightarr.png' /></a><hr style='color:grey'/>
+<a href='#billpay' class ='c3lMenuGroup' style='margin:2% 2% 2% 2%;padding:20% 10% 20% 10%;background-color:white' width='100%'><img valign='middle' align='left' resimg='billpayment.png' src='billpayment.png' /><span  valign='middle'  style='margin-left:5%;font-weight:bold;font-size:10px;color:rgb(94,94,96)'>Bill Payment</span><img valign='middle'  align='right' resimg='rightarr.png' src='rightarr.png' /></a><hr style='color:grey'/>
+<a href='#giftRecharge' class ='c3lMenuGroup' style='margin:2% 2% 2% 2%;padding:20% 10% 20% 10%;background-color:white' width='100%'><img valign='middle' align='left' resimg='giftrecharge.png' src='giftrecharge.png' /><span  valign='middle'  style='margin-left:5%;font-weight:bold;font-size:10px;color:rgb(94,94,96)'>Gift Recharge</span><img valign='middle'  align='right' resimg='rightarr.png' src='rightarr.png' /></a><hr style='color:grey'/>
+<a href='#reports' class ='c3lMenuGroup' style='margin:2% 2% 2% 2%;padding:20% 10% 20% 10%;background-color:white' width='100%'><img valign='middle' align='left' resimg='reports.png' src='reports.png' /><span  valign='middle'  style='margin-left:5%;font-weight:bold;font-size:10px;color:rgb(94,94,96)'>Reports</span><img valign='middle'  align='right' resimg='rightarr.png' src='rightarr.png' /></a><hr style='color:grey'/>
+<a href='#returnstock' class ='c3lMenuGroup' style='margin:2% 2% 2% 2%;padding:20% 10% 20% 10%;background-color:white' width='100%'><img valign='middle' align='left' resimg='returnstock.png' src='returnstock.png' /><span  valign='middle'  style='margin-left:5%;font-weight:bold;font-size:10px;color:rgb(94,94,96)'>Return Stock</span><img valign='middle'  align='right' resimg='rightarr.png' src='rightarr.png' /></a><hr style='color:grey'/>
+<a href='#elecvocher' class ='c3lMenuGroup' style='margin:2% 2% 2% 2%;padding:20% 10% 20% 10%;background-color:white' width='100%'><img valign='middle' align='left' resimg='settings.png' src='settings.png' /><span  valign='middle'  style='margin-left:5%;font-weight:bold;font-size:10px;color:rgb(94,94,96)'>e-Voucher</span><img valign='middle'  align='right' resimg='rightarr.png' src='rightarr.png' /></a><hr style='color:grey'/>
+ --></div>
+
+<div id='selectmode' type='popup'  transition='1' class='c3lMenu bgColor' valign='top' align='right'   width='50%'>
+
+ <script>
+ //document.write(selectionMode());
+//document.write("<a href='#Menu_Recharge' class ='c3lMenuGroup eachMenu'  width='100%'><span align='left' valign='middle'  class='menuText'>GPRS mode</span><img valign='middle' align='right'  resimg='rightarr.png' src='rightarr.png' /></a><hr class='gray'/>");
+//document.write("<a href='#Menu_Recharge' class ='c3lMenuGroup eachMenu'  width='100%'><span align='left' valign='middle'  class='menuText'>USSD mode</span><img valign='middle' align='right'  resimg='rightarr.png' src='rightarr.png' /></a><hr class='gray'/>");
+//document.write("<a href='#Menu_Recharge' class ='c3lMenuGroup eachMenu'  width='100%'><span align='left' valign='middle'  class='menuText'>SMS mode</span><img valign='middle' align='right'  resimg='rightarr.png' src='rightarr.png' /></a><hr class='gray'/>");
+</script> 
+
+<script> 
+function toggle() {
+	var ele = document.getElementById("rechargeStatus");
+	var text = document.getElementById("display");
+	if(ele.style.display == "block") {
+    		ele.style.display = "none";
+		text.innerHTML = "show";
+  	}
+	else {
+		ele.style.display = "block";
+		text.innerHTML = "hide";
+	}
+} 
+</script>
+</div>	
+</body>
+</html>
+

@@ -1,0 +1,102 @@
+<!-- Use this file to deploy some handlers/chains and services      -->
+<!-- Two ways to do this:                                           -->
+<!--   java org.apache.axis.client.AdminClient deploy.wsdd          -->
+<!--      after the axis server is running                          -->
+<!-- or                                                             -->
+<!--   java org.apache.axis.utils.Admin client|server deploy.wsdd   -->
+<!--      from the same directory that the Axis engine runs         -->
+
+<deployment
+    xmlns="http://xml.apache.org/axis/wsdd/"
+    xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
+  <!-- Services from EbsPinVirtualService WSDL service -->
+
+  <service name="EbsPinVirtualSoapPort" provider="java:RPC" style="document" use="literal">
+      <parameter name="wsdlTargetNamespace" value="http://claro.com.pe/eai/venta/PinVirtual"/>
+      <parameter name="wsdlServiceElement" value="EbsPinVirtualService"/>
+      <parameter name="schemaQualified" value="http://claro.com.pe/eai/venta/PinVirtual"/>
+      <parameter name="wsdlServicePort" value="EbsPinVirtualSoapPort"/>
+      <parameter name="className" value="com.inter.claroPINRechargeWS.stub.EbsPinVirtualSOAPBindingImpl"/>
+      <parameter name="wsdlPortType" value="EbsPinVirtual"/>
+      <parameter name="typeMappingVersion" value="1.2"/>
+      <operation name="consultarDatosPINxTelefono" qname="consultarDatosPINxTelefono" returnQName="retNS:consultarDatosPINxTelefonoResponse" xmlns:retNS="http://claro.com.pe/eai/venta/PinVirtual" returnType="rtns:>consultarDatosPINxTelefonoResponse" xmlns:rtns="http://claro.com.pe/eai/venta/PinVirtual" soapAction="http://claro.com.pe/eai/venta/PinVirtual/consultarDatosPINxTelefono" >
+        <parameter qname="pns:consultarDatosPINxTelefonoRequest" xmlns:pns="http://claro.com.pe/eai/venta/PinVirtual" type="tns:>consultarDatosPINxTelefonoRequest" xmlns:tns="http://claro.com.pe/eai/venta/PinVirtual"/>
+      </operation>
+      <operation name="detallePin" qname="detallePin" returnQName="retNS:detallePINResponse" xmlns:retNS="http://claro.com.pe/eai/venta/PinVirtual" returnType="rtns:>detallePINResponse" xmlns:rtns="http://claro.com.pe/eai/venta/PinVirtual" soapAction="http://claro.com.pe/eai/venta/PinVirtual/detallePin" >
+        <parameter qname="pns:detallePINRequest" xmlns:pns="http://claro.com.pe/eai/venta/PinVirtual" type="tns:>detallePINRequest" xmlns:tns="http://claro.com.pe/eai/venta/PinVirtual"/>
+      </operation>
+      <operation name="enviarSMSPendientes" qname="enviarSMSPendientes" returnQName="retNS:enviarSMSPendientesResponse" xmlns:retNS="http://claro.com.pe/eai/venta/PinVirtual" returnType="rtns:>enviarSMSPendientesResponse" xmlns:rtns="http://claro.com.pe/eai/venta/PinVirtual" soapAction="http://claro.com.pe/eai/venta/PinVirtual/enviarSMSPendientes" >
+        <parameter qname="pns:enviarSMSPendientesRequest" xmlns:pns="http://claro.com.pe/eai/venta/PinVirtual" type="tns:>enviarSMSPendientesRequest" xmlns:tns="http://claro.com.pe/eai/venta/PinVirtual"/>
+      </operation>
+      <operation name="recargaPinVirtual" qname="recargaPinVirtual" returnQName="retNS:recargaPinVirtualResponse" xmlns:retNS="http://claro.com.pe/eai/venta/PinVirtual" returnType="rtns:>recargaPinVirtualResponse" xmlns:rtns="http://claro.com.pe/eai/venta/PinVirtual" soapAction="http://claro.com.pe/eai/venta/PinVirtual/recargaPinVirtual" >
+        <parameter qname="pns:recargaPinVirtualRequest" xmlns:pns="http://claro.com.pe/eai/venta/PinVirtual" type="tns:>recargaPinVirtualRequest" xmlns:tns="http://claro.com.pe/eai/venta/PinVirtual"/>
+      </operation>
+      <parameter name="allowedMethods" value="consultarDatosPINxTelefono detallePin enviarSMSPendientes recargaPinVirtual"/>
+
+      <typeMapping
+        xmlns:ns="http://claro.com.pe/eai/venta/PinVirtual"
+        qname="ns:>consultarDatosPINxTelefonoResponse"
+        type="java:com.inter.claroPINRechargeWS.stub.ConsultarDatosPINxTelefonoResponse"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://claro.com.pe/eai/venta/PinVirtual"
+        qname="ns:>enviarSMSPendientesResponse"
+        type="java:com.inter.claroPINRechargeWS.stub.EnviarSMSPendientesResponse"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://claro.com.pe/eai/venta/PinVirtual"
+        qname="ns:>enviarSMSPendientesRequest"
+        type="java:com.inter.claroPINRechargeWS.stub.EnviarSMSPendientesRequest"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://claro.com.pe/eai/venta/PinVirtual"
+        qname="ns:>detallePINResponse"
+        type="java:com.inter.claroPINRechargeWS.stub.DetallePINResponse"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://claro.com.pe/eai/venta/PinVirtual"
+        qname="ns:>detallePINRequest"
+        type="java:com.inter.claroPINRechargeWS.stub.DetallePINRequest"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://claro.com.pe/eai/venta/PinVirtual"
+        qname="ns:>consultarDatosPINxTelefonoRequest"
+        type="java:com.inter.claroPINRechargeWS.stub.ConsultarDatosPINxTelefonoRequest"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://claro.com.pe/eai/venta/PinVirtual"
+        qname="ns:>recargaPinVirtualRequest"
+        type="java:com.inter.claroPINRechargeWS.stub.RecargaPinVirtualRequest"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://claro.com.pe/eai/venta/PinVirtual"
+        qname="ns:>recargaPinVirtualResponse"
+        type="java:com.inter.claroPINRechargeWS.stub.RecargaPinVirtualResponse"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+  </service>
+</deployment>

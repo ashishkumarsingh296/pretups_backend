@@ -1,0 +1,40 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+		<script type="text/javascript" src="wgt:214807648/1.0/checkDevice.js"/>
+		<link rel="stylesheet" type="text/css" href="wgt:214807648/1.0/common.css" />
+		
+		<script type="text/javascript" src="wgt:264711061/1.0/recharge.js"></script>
+		<script type="text/javascript" 	src="wgt:913980753/1.0/configuration.js"></script>
+		<script type="text/javascript" 	src="wgt:913980753/1.0/util.js"></script>
+		<script type="text/javascript" src="wgt:950181717/1.0/xmlRequest.js"></script>
+		<script type="text/javascript" src="wgt:913980753/1.0/strings.js"></script>
+		<script type="text/javascript" src="cards.js"></script>
+		
+</head>
+
+<body onload="javascript:cards();">
+	<div title="" id="cardPage"  style="display: none" class="c3lMenu bgColor" />
+	<div title="" id="cardDetailsPage" style="display: none" class="c3lMenu bgColor" />
+	<div title="" id="nocardPage" style="display: none" class="c3lMenu bgColor"/>
+	<div title="" id="addcardPage" type='popup' height='100%' valign='top' transition='8'	 style="display: none" class="c3lMenu bgColor" />
+	<div id='addcardpopup' type='popup' valign='bottom' style="display: none"  transition='3'	class="c3lMenu">
+	<script>
+	document.write("<div id='conf'  style='background-color:white'><div class='c3lMenuGroup navConfPadding'><span id='confpaytext1'  class='navConfTitle'>"+STR_CONF+"</span><hr /><div class='c3lMenuGroup marginTop15' align='center'><a class='c3lMenuGroup navBgImage' href=\"close://action=keypad://clearall?name=$pin$\"><img id='cvvcancel'  align='center' resimg='button_cancel.9.png'  src='"+imagePath+"button_cancel.9.png' /></a><input class='inputBg1 navInput'  align='center' id='pin' name='pin' maxLength='"+PIN_LENGTH+"' type='numpassword' title= '"+STR_PIN+"'  emptyok='false'  encrypt='true' /><a class='c3lMenuGroup navBgImage' href=\"wgt:950181717/1.0:sendaddCardReq($cardName,$cardNum,'',$expiry,$nickName,$pin);\"><img id='cvvaccept'  align='center' resimg='button_accept.9.png'  src='"+imagePath+"button_accept.9.png' /></a></div></div></div>");
+	</script>
+	</div>
+	<div title="" id="backHome" style="display: none" class="c3lMenu bgColor" />
+	<div title="" id="backpayOption" type='popup' width='100%' height='100%' style="display: none" class="c3lMenu bgColor" />
+	<div title="" id="editcard" type='popup' valign='top' width='100%' height='100%' transition='8' style="display: none" class="c3lMenu bgColor"/>
+	<div title="" id="popuppage" type='popup' valign='bottom' style="display: none"  transition='3'	class="c3lMenu"/>
+	<div title="" id="deletecard" style="display: none" class="c3lMenu bgColor"/>
+	<div title="" id="toasttest" type="toast" style="display: none" class="c3lMenu bgColor"/>
+	<div title="" id="toast" type="toast" style="display: none" class="c3lMenu bgColor"/>
+	<div title="" id="alert" type="alert" style="display: none" class="c3lMenu bgColor"/>
+
+</body>
+</html>
+
+
+	

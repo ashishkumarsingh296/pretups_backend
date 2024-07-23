@@ -1,0 +1,6 @@
+---
+# - name: "creating the Directory in parallel to pretupshome in SMSR"
+#   shell: mkdir -p {{ pretups_smsrlogs }}/old_logs  {{ pretups_cronlogs }}/backup_logs chdir={{ from_path }}/{{ pretupsvar }}
+#   file: path=/{{ SMSR_LOG_DIR_NAME }}/{{ LOG_DIRECTORY_PREFIX_NAME }}_{{ INSTANCE_NAME }} state=directory owner={{ SMSR_USER_NAME }} group={{ SMSR_GROUP_NAME }} mode=0755
+#   when: DO_U_WANT_TO_CREATE_SMSR_LOG_DIR
+

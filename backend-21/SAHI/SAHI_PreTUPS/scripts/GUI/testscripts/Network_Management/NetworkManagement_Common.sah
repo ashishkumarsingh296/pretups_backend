@@ -1,0 +1,200 @@
+
+
+
+
+_includeOnce("../../../../utility/ImportPackage.sah");
+
+var $g_networkCode;
+var $g_networkName;
+var $g_ShortName;
+var $g_CompanyName;
+var $g_headerName;
+var $g_ERPCode;
+var $g_address1;
+var $g_address2;
+var $g_city;
+var $g_state;
+var $g_zipCode;
+var $g_country;
+var $g_remarks;
+var $g_language1;
+var $g_language2;
+var $g_tax1;
+var $g_tax2;
+var $g_countryPrefixCode;
+var $g_serviceID;
+
+
+function commonVariableForNetwork($a_row, $a_column) {
+
+	$g_networkCode = randomString();
+	$g_networkName = variableNetworkName($g_autoPrefix);
+	$g_ShortName = networkShortName($g_autoPrefix);
+	$g_ERPCode = "ERP"+randomString();
+	$g_CompanyName = $g_NetworkDetails[$a_row][$a_column++];
+	$g_headerName = $g_NetworkDetails[$a_row][$a_column++];
+	$g_address1 = $g_NetworkDetails[$a_row][$a_column++];
+	$g_address2 = $g_NetworkDetails[$a_row][$a_column++];
+	$g_city = $g_NetworkDetails[$a_row][$a_column++];
+	$g_state = $g_NetworkDetails[$a_row][$a_column++];
+	$g_zipCode = $g_NetworkDetails[$a_row][$a_column++];
+	$g_country = $g_NetworkDetails[$a_row][$a_column++];
+	$g_remarks = $g_NetworkDetails[$a_row][$a_column++];
+	$g_language1 = $g_NetworkDetails[$a_row][$a_column++];
+	$g_language2 = $g_NetworkDetails[$a_row][$a_column++];
+	$g_tax1 = $g_NetworkDetails[$a_row][$a_column++];
+	$g_tax2 = $g_NetworkDetails[$a_row][$a_column++];
+	$g_countryPrefixCode = $g_NetworkDetails[$a_row][$a_column++];
+	$g_serviceID = $g_NetworkDetails[$a_row][$a_column++];
+
+}
+
+
+
+function addViewModifyNetwork() {
+	var $l_row = 1;
+	var $l_col = 0;
+	var $t1 = _testcase($g_NetworkDetails[$l_row][$l_col++], $g_NetworkDetails[$l_row][$l_col++]);
+	$t1.start();
+	commonVariableForNetwork($l_row,$l_col);
+	var $l_error = createNewNetwork();
+	if($l_error == true){
+		var $l_naCsv = _readCSVFile("../../../GUI/testdata/NA_Login.csv");
+		$l_naCsv[11][1] = $g_networkName;
+		_writeCSVFile($l_naCsv, "../../../GUI/testdata/NA_Login.csv", 1); // Writes the newly created Channel User in a csv file.
+		_click(_link($g_LinkLogout));
+		_log("Network has been added successfully");
+	}
+	$t1.end();
+	_closeBrowser();
+	_wait(1000);
+	_openBrowser();
+	
+	
+	// ================= Try to view the newly created network ================== //
+	
+	login($g_appURL, $g_LangEnglish, $g_superAdmin, $g_password, $g_assertMessage); // Login into the application with super Admin 
+	var $t2 = _testcase("TEST002", "Given super admin login into application and try to view newly cerated network");
+	$t2.start();
+	var $error = viewNewNetwork($g_networkName);
+	if($error == true)
+		_log("Successfully view the newly created network");
+	
+	$t2.end();
+	_closeBrowser();
+	_wait(1000);
+	_openBrowser();
+	
+	
+	// ================= Try to modify the newly created network ================== //
+	
+	login($g_appURL, $g_LangEnglish, $g_superAdmin, $g_password, $g_assertMessage); // Login into the application with super Admin 
+	var $t3 = _testcase("TEST003", "Given super admin login into application and try to modify company name of newly cerated network");
+	$t3.start();
+	var $error = modifyNewNetwork($g_networkName);
+	if($error == true)
+		_log("Successfully modified the newly created network");
+	
+	$t3.end();
+	_closeBrowser();
+	
+}
+
+
+
+function createNewNetwork() {
+	
+	_click(_link("Masters"));
+	_click(_link("Network management"));
+	_click(_submit("Add"));
+	_setValue(_textbox("networkCode"), $g_networkCode);
+	_setValue(_textbox("networkName"), $g_networkName);
+	_setValue(_textbox("networkShortName"), $g_ShortName);
+	_setValue(_textbox("companyName"),$g_CompanyName );
+	_setValue(_textbox("reportHeaderName"), $g_headerName);
+	_setValue(_textbox("erpNetworkCode"), $g_ERPCode);
+	_setValue(_textbox("address1"),	$g_address1 );
+	_setValue(_textbox("address2"), $g_address2);
+	_setValue(_textbox("city"), $g_city);
+	_setValue(_textbox("state"), $g_state);
+	_setValue(_textbox("zipCode"), $g_zipCode);
+	_setValue(_textbox("country"), $g_country);
+	_setValue(_textarea("remarks"), $g_remarks);
+	_setValue(_textarea("language1Message"), $g_language1);
+	_setValue(_textarea("language2Message"), $g_language2 );
+	_setValue(_textbox("text1Value"), $g_tax1);
+	_setValue(_textbox("text2Value"), $g_tax2);
+	_setValue(_textbox("countryPrefixCode"), $g_countryPrefixCode);
+	_setSelected(_select("serviceSetID"), $g_serviceID);
+	_click(_submit($g_BtnSave));
+	_click(_submit($g_BtnConfirm));
+	
+	_assertExists(_listItem("/"+$g_assertNetworkAddedSuccessfully+".*/"));
+	
+	if(_exists(_listItem("/"+$g_assertNetworkAddedSuccessfully+".*/"))){
+		return true;
+	}	
+	else{
+		_log("Network has not been added successfully");
+	return false;
+	}
+}
+
+
+
+
+
+
+function viewNewNetwork($g_networkName) {
+	_click(_link("Masters"));
+	_click(_link("Network management"));
+	_click(_link("View network"));
+	_click(_radio("code", _near(_cell($g_networkName))));
+	_click(_submit("View"));
+	_assertExists(_div("Network details"));
+	_assertExists(_cell("Network name :", _near(_cell($g_networkName))));
+	if(_exists(_cell("Network name :", _near(_cell($g_networkName)))))
+		return true;
+}
+
+function modifyNewNetwork($g_networkName) {
+	_click(_link("Masters"));
+	_click(_link("Network management"));
+	_click(_radio("code", _near(_cell($g_networkName))));
+	_click(_submit("Modify"));
+	_assertExists(_div("Modify network details"));
+	_setValue(_textbox("companyName"), "Mahindra");
+	_click(_submit("Save"));
+	_click(_submit("confirm"));
+	_assertExists(_listItem("/"+$g_assertNetworkUpdatedSuccessfully+".*/"));
+	if(_exists(_listItem("/"+$g_assertNetworkUpdatedSuccessfully+".*/"))){
+		return true;
+	}
+	
+}
+
+
+
+function variableNetworkName($a_Prefix){
+	 $l_time = currentTime(); // fetch current time(CurretnTime)
+	 $l_networkName = $a_Prefix + "NW" + $l_time; //AUTONAcurrentTime
+	 return $l_networkName;
+}
+
+
+
+function networkShortName($a_Prefix){
+	 $l_time = currentTime(); // fetch current time(CurretnTime)
+	 $l_networkName = $a_Prefix + "N" + $l_time; //AUTONAcurrentTime
+	 return $l_networkName;
+}
+
+
+
+
+
+
+
+
+
+

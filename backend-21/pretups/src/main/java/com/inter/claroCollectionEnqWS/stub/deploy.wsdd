@@ -1,0 +1,83 @@
+<!-- Use this file to deploy some handlers/chains and services      -->
+<!-- Two ways to do this:                                           -->
+<!--   java org.apache.axis.client.AdminClient deploy.wsdd          -->
+<!--      after the axis server is running                          -->
+<!-- or                                                             -->
+<!--   java org.apache.axis.utils.Admin client|server deploy.wsdd   -->
+<!--      from the same directory that the Axis engine runs         -->
+
+<deployment
+    xmlns="http://xml.apache.org/axis/wsdd/"
+    xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
+  <!-- Services from ConsultaPagos WSDL service -->
+
+  <service name="ConsultaPagosSOAP" provider="java:RPC" style="document" use="literal">
+      <parameter name="wsdlTargetNamespace" value="http://claro.com.pe/eai/oac/consultapagos/"/>
+      <parameter name="wsdlServiceElement" value="ConsultaPagos"/>
+      <parameter name="schemaQualified" value="http://claro.com.pe/eai/oac/consultapagos/"/>
+      <parameter name="wsdlServicePort" value="ConsultaPagosSOAP"/>
+      <parameter name="className" value="com.inter.claroCollectionEnqWS.stub.ConsultaPagosSOAPImpl"/>
+      <parameter name="wsdlPortType" value="ConsultaPagos"/>
+      <parameter name="typeMappingVersion" value="1.2"/>
+      <operation name="consultaDeuda" qname="consultaDeuda" returnQName="retNS:consultaDeudaResponse" xmlns:retNS="http://claro.com.pe/eai/oac/consultapagos/" returnType="rtns:>consultaDeudaResponse" xmlns:rtns="http://claro.com.pe/eai/oac/consultapagos/" soapAction="http://claro.com.pe/eai/oac/consultapagos/consultaDeuda" >
+        <parameter qname="pns:consultaDeuda" xmlns:pns="http://claro.com.pe/eai/oac/consultapagos/" type="tns:>consultaDeuda" xmlns:tns="http://claro.com.pe/eai/oac/consultapagos/"/>
+      </operation>
+      <parameter name="allowedMethods" value="consultaDeuda"/>
+
+      <typeMapping
+        xmlns:ns="http://claro.com.pe/eai/oac/consultapagos/"
+        qname="ns:AuditType"
+        type="java:com.inter.claroCollectionEnqWS.stub.AuditType"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://claro.com.pe/eai/oac/consultapagos/"
+        qname="ns:DeudaDocumentoType"
+        type="java:com.inter.claroCollectionEnqWS.stub.DeudaDocumentoType"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <arrayMapping
+        xmlns:ns="http://claro.com.pe/eai/oac/consultapagos/"
+        qname="ns:DeudaDocumentosType"
+        type="java:com.inter.claroCollectionEnqWS.stub.DeudaDocumentoType[]"
+        innerType="cmp-ns:DeudaDocumentoType" xmlns:cmp-ns="http://claro.com.pe/eai/oac/consultapagos/"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://claro.com.pe/eai/oac/consultapagos/"
+        qname="ns:>consultaDeuda"
+        type="java:com.inter.claroCollectionEnqWS.stub.ConsultaDeuda"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <arrayMapping
+        xmlns:ns="http://claro.com.pe/eai/oac/consultapagos/"
+        qname="ns:DeudaServiciosType"
+        type="java:com.inter.claroCollectionEnqWS.stub.DeudaServicioType[]"
+        innerType="cmp-ns:DeudaServicioType" xmlns:cmp-ns="http://claro.com.pe/eai/oac/consultapagos/"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://claro.com.pe/eai/oac/consultapagos/"
+        qname="ns:DeudaServicioType"
+        type="java:com.inter.claroCollectionEnqWS.stub.DeudaServicioType"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://claro.com.pe/eai/oac/consultapagos/"
+        qname="ns:>consultaDeudaResponse"
+        type="java:com.inter.claroCollectionEnqWS.stub.ConsultaDeudaResponse"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+  </service>
+</deployment>

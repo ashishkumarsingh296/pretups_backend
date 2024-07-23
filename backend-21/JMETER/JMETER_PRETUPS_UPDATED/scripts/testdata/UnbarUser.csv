@@ -1,0 +1,14 @@
+loginId,password,module,userType,msisdn,barredReason,type,externalCode,TestcaseId,TestcaseType,Module,Description
+btchadm,1357,C2S,RECEIVER,7214177112,Testing,UNBARUSER,,TUNG12785,Positive,UnBar user through Restful API,To verify barred user list is loading when provide correct data
+btchadm,1357,,RECEIVER,7254402211,Testing,UNBARUSER,,TUNG12780,Negative,UnBar user through Restful API,To verify module is required
+btchadm,1357,C2S,,7254402211,Testing,UNBARUSER,,TUNG12781,Negative,UnBar user through Restful API,To verify user type is required
+btchadm,1357,C2S,RECEIVER,,Testing,UNBARUSER,,TUNG12782,Negative,UnBar user through Restful API,To verify msisdn is required
+btchadm,1357,C2S,RECEIVER,7254402211,,UNBARUSER,,TUNG12783,Negative,UnBar user through Restful API,To verify barred reasonis required
+btchadm,1357,,,,,UNBARUSER,,TUNG12784,Negative,UnBar user through Restful API,To verify all mandatory fields are required
+btchadm,1357,C2S,RECEIVER,9654402231,Testing,UNBARUSER,,TUNG12786,Negative,UnBar user through Restful API,to verify user cant get barred user list when provide unsupported network msisdn
+btchadm,1357,C2S,RECEIVER,7254402211,Testing,UNBARUSER,,TUNG12787,Negative,UnBar user through Restful API,To verify msisdn is not valid
+btchadm,1357,C2S,RECEIVER,sdsad,Testing,UNBARUSER,,TUNG12788,Negative,UnBar user through Restful API,To verify msisdn is not valid
+btchadm,1357,C2S,RECEIVER,^&^*,Testing,UNBARUSER,,TUNG12789,Negative,UnBar user through Restful API,To verfy barred reason length should not exceed more than 100 character
+btchadm,1357,C2S,RECEIVER,7254402211,Testinggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggg,UNBARUSER,,TUNG12790,Negative,UnBar user through Restful API,To verify barred user can not get list of barred user when provide msisdn of other network
+btchadm,1357,C2S,RECEIVER,7154402211,Testing,UNBARUSER,,TUNG12791,Negative,UnBar user through Restful API,To verify barred user does not exists
+btchadm,1357,C2S,RECEIVER,7254402211,Testing,UNBARUSER,,TUNG12792,Negative,UnBar user through Restful API,To verify user is not active user

@@ -1,0 +1,2 @@
+PRODUCTCODE,QTY,LANGUAGE1,TestcaseId,TestcaseType,Module,Description
+101,45,,TUNG23138,Positive,REST - C2C return,"To verify that In case of Msisdn and pin , Request should be successful"

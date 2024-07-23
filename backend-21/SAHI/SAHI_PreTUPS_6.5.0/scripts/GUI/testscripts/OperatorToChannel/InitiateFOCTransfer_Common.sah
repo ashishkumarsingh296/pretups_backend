@@ -1,0 +1,152 @@
+
+
+// This scripts contains all the common methods to initiate FOC transfer
+
+_includeOnce("../../../../utility/ImportPackage.sah");
+
+var $l_naCsv = _readCSVFile("../../../GUI/testdata/NA_Login.csv");
+
+
+	var $g_msisdn;
+	var $g_productType;
+	var $g_refNumber;
+	var $g_quantity;
+	var $g_PIN;
+	var $g_assertion;
+	
+	var $a_Prefix;
+	
+	
+	function commonVaribleToInitiateFOC($g_row, $g_col) {
+		
+		$g_msisdn = $g_FOCTransfer[$g_row][$g_col++];
+		$g_productType = $g_FOCTransfer[$g_row][$g_col++];
+		$g_refNumber = " ";
+		$g_quantity = $g_FOCTransfer[$g_row][$g_col++];
+		$g_PIN = $g_FOCTransfer[$g_row][$g_col++];
+		$g_assertion = $g_FOCTransfer[$g_row][$g_col++];
+		// $g_refNumber = referenceNumber($g_autoPrefix); .......... For futher use
+	}
+	
+	 
+	
+	function initiateFOCTransferCommonOne() {
+		_click(_link("Operator to channel"));
+		_click(_link("Initiate FOC transfer"));
+		_assertExists(_div("Search channel user for FOC transfer"));
+		_setValue(_textbox("userCode"), $g_msisdn);
+		_setSelected(_select("productTypeWithUserCode"), $g_productType);
+	}
+	
+	function initiateFOCTransferCommonTwo() {
+		_assertExists(_div("FOC transfer details"));
+		_setValue(_textbox("refrenceNum"), $g_refNumber );
+		_setValue(_textbox("dataListIndexed[0].requestedQuantity"), $g_quantity);
+		_setValue(_password("smsPin"),$g_PIN);
+	}
+	
+	function commonMethodForFOCTransfer() {
+		initiateFOCTransferCommonOne();
+		submit();
+		initiateFOCTransferCommonTwo();
+		submit();
+	}
+	
+	function referenceNumber(){
+		$l_time = currentTime(); // fetch current time(CurretnTime)
+		 var  $l_name = $l_time; //AUTONAcurrentTime
+		 return $l_name;
+	}
+
+// .............. Methods required for FOC Transfer ........... //
+	
+	
+	function initiateFOCWithInvalidMSISDN() {
+		initiateFOCTransferCommonOne();
+		submit();
+		_assertExists(_listItem("/"+ $g_assertion +".*/"));
+	}
+	
+	function toCheckPopulatedValueInProductType() {
+		_click(_link("Operator to channel"));
+		_click(_link("Initiate FOC transfer"));
+		_setSelected(_select("productTypeWithUserCode"), 1);
+		var $temp = _getSelectedText(_select("productTypeWithUserCode"));
+		if($temp == $g_productType ) {_log("Successful");}
+		else { _log("Failed");}
+	}
+	
+	function toCheckResetFunctionalityOnSearchChannelUserPage() {
+		
+		initiateFOCTransferCommonOne();
+		buttonReset();
+		if(_getValue(_textbox("userCode")) == "") {_log("Successful")}
+		else {_log("Failed Reset Check");}
+	}
+	
+	function toCheckBackFunctionalityOnFOCTransferDetailspage() {
+		initiateFOCTransferCommonOne();
+		submit();
+		_assertExists(_div("FOC transfer details"));
+		back();
+		_assertExists(_div("Search channel user for FOC transfer"));
+	}
+	
+	function toCheckResetFunctionalityOnFOCTransferDetailspage() {
+		initiateFOCTransferCommonOne();
+		submit();
+		initiateFOCTransferCommonTwo();
+		reset();
+		if(_getValue(_textbox("refrenceNum")) == "") {_log("Successful")}
+		else {_log("Failed Reset Check");}
+	}
+	
+	function initiateFOCWithInvalidDetails() {
+		commonMethodForFOCTransfer();
+		_assertExists(_listItem("/"+ $g_assertion +".*/"));
+	}
+
+	function toCheckSubmitFunctionalityOnFOCTransferDetailspage() {
+		commonMethodForFOCTransfer();
+		_assertExists(_div("FOC transfer details"));
+		_assertExists(_submit("Confirm"));
+	}
+	
+	function toCheckBackFunctionalityOnConfirmPage() {
+		commonMethodForFOCTransfer();
+		_assertExists(_div("FOC transfer details"));
+		back();
+		_assertExists(_reset("Reset", _near(_submit("Submit"))));
+	}
+
+
+	function toCheckCancelFunctionalityOnConfirmPage() {
+		commonMethodForFOCTransfer();
+		_assertExists(_div("FOC transfer details"));
+		cancel();
+		_assertExists(_div("Search channel user for FOC transfer"));
+	}
+	
+	
+	function initiateFOCTransfer() {
+		
+		$g_refNumber = referenceNumber();
+		
+		commonMethodForFOCTransfer();
+		confirm();
+		_assertExists(_listItem("/"+ $g_assertion +".*/"));
+		
+		if(_exists(_listItem("/"+$g_assertion+".*/"))){
+			$l_naCsv[27][1] = $g_refNumber;
+			_writeCSVFile($l_naCsv, "../../../GUI/testdata/NA_Login.csv", 1); // Write the ref number of O2C initiation for further approval 
+			_log("FOC Transfer has been initiated successfully");
+		}
+		else {
+			_log("FOC Transfer has not been initiated successfully");
+		}
+	}
+	
+
+	 
+	
+	

@@ -1,0 +1,2 @@
+TestcaseId,TestcaseType,Module,Description
+TUNG13124,Positive,Channel to Channel Transfer through USSD,"To verify that TXNSTATUS field contain 200 value if ""C2C transfer"" response is generated successfully else it display value other than 200"

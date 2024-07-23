@@ -1,0 +1,76 @@
+//######################################
+//
+//This script is for super users
+//
+//#######################################
+
+
+//===== import scripts ===//
+_includeOnce("../../../../utility/ImportPackage.sah");
+_includeOnce("../../../GUI/testscripts/SuperUsers/SuperUsers_Common.sah"); 
+
+
+//======================Pre-requisite check============================
+_log("Setup", "custom4");
+
+//====Login into Application====
+login($g_appURL, $g_LangEnglish, $g_superAdmin, $g_password, $g_assertMessage); //calls the Login function in Login.sah with the parameters(url, language, username, password, assertion)
+
+
+//login($g_appURL,  $g_LangEnglish, $g_cce, $g_commonPassword, $g_assertWelcome);
+	
+
+// ....................... Test cases for superusers  ............. //
+
+var $g_SuperUsersDetails = _readCSVFile("../../../GUI/testdata/SuperUsers.csv"); //Reads  details 
+
+
+
+	for(var $g_row = 1; $g_SuperUsersDetails[$g_row] != null; $g_row++){
+		
+				var $g_col = 0;
+				var $number =   testCaseNumber($g_SuperUsersDetails[$g_row][$g_col]);
+							
+				var $t = _testcase($g_SuperUsersDetails[$g_row][$g_col++], $g_SuperUsersDetails[$g_row][$g_col++]);
+			
+				$t.start();
+				
+				commonVaribleForSuperUsers($g_row, $g_col);
+				
+				if($number == 1)
+					createSuperNA();
+				else if($number==2)
+					approveSuperNA();
+				else if($number==3)
+					modifySuperNA();
+				else if($number == 4)
+					viewSuperNA();
+				else  if($number==5)
+					createSuperCA();	
+				else if($number ==6)
+					approveSuperCA();
+				else if($number==7)
+					modifySuperCA();
+				else if($number==8)
+					viewSuperCA();
+				else if($number== 9)
+					createSuperCCE();
+				else if($number== 10)
+					approveSuperCCE();	
+				else if($number==11)
+					modifySuperCCE();
+				else if($number == 12)
+					viewSuperCCE();
+				else if($number==13)
+					superCCELogin();
+      			else if($number==14)
+					superNALogin();
+      			else if($number ==15)
+					superCALogin();
+					
+				$t.end();
+	}
+
+
+
+	

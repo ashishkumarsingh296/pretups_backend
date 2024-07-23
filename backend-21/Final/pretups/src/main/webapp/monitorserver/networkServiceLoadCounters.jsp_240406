@@ -1,0 +1,107 @@
+<%
+/**
+ *
+ * @(#)interfaceLoadCounters.jsp
+ *  ------------------------------------------------------------------
+ *  Author 		Date(DD/MM/YYYY)	History
+ *  ------------------------------------------------------------------
+ * Gurjeet              14/07/2005			Creation
+ *  ------------------------------------------------------------------
+ */
+%>
+<html>
+<head>
+<title>eRecharge Monitor Server</title>
+<jsp:include page="/monitorserver/common/topband.jsp">
+<jsp:param name="helpFile" value="/help/pretupsRequestCounters.jsp" />
+</jsp:include>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link href="<%= request.getContextPath()%>/monitorserver/common/main.css" rel="stylesheet" type="text/css">
+</head><body>
+<body leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" >
+<table border="1" cellspacing="0" cellpadding="0"  >
+<tr>
+<%@ page import="com.btsl.loadcontroller.*,java.util.*" %>
+<%@ page import="com.btsl.util.Constants" %>
+<%@ page import="com.btsl.util.BTSLUtil" %>
+<div class="heading"><center><strong>eRecharge Request Counters:</strong></center></div>
+<br/>
+
+<%
+Hashtable networkServiceLoadHash = LoadControllerCache.getNetworkServiceLoadHash();
+Set keySet = networkServiceLoadHash.keySet();
+java.util.Iterator tempItr = keySet.iterator();
+java.util.Iterator itr = keySet.iterator();
+NetworkServiceLoadVO networkServiceLoadVO = null;
+String tempkey=null;
+if(tempItr.hasNext())
+{
+	tempkey = (String)tempItr.next();
+	networkServiceLoadVO = (NetworkServiceLoadVO)networkServiceLoadHash.get(tempkey);
+%>
+<p class ="message">Last Initialized time:&nbsp;<%=networkServiceLoadVO.getLastInitializationTime()%></p>
+<br>
+<%
+}
+networkServiceLoadVO = null;
+String key = null;
+int count =0;
+%>
+<td class="tabhead">Sr no.</td>
+<td class="tabhead">Instance ID</td>
+<td class="tabhead">Network Code</td>
+<td class="tabhead">Gateway Type</td>
+<td class="tabhead">Service Type</td>
+<td class="tabhead">Service Name</td>
+<td class="tabhead">Received Counts</td>
+<td class="tabhead">Success Counts</td>
+<td class="tabhead">Fail Counts</td>
+<td class="tabhead">Under Process Counts</td>
+<td class="tabhead">Other Fail Counts</td>
+<td class="tabhead">Other Network Request Counts</td>
+<td class="tabhead">Last Received Time</td>
+<td class="tabhead">Average Service Time(ms)</td>
+<td class="tabhead">Last Request Service Time(ms)</td>
+<td class="tabhead">Before Gateway Found Error</td>
+<td class="tabhead">Before Network Found Error</td>
+<td class="tabhead">Before Service Type Found Error</td>
+<td class="tabhead">Last Request ID</td>
+</tr>
+<%
+while(itr.hasNext())
+{
+	key = (String)itr.next();
+    networkServiceLoadVO = (NetworkServiceLoadVO)networkServiceLoadHash.get(key);
+	count = count + 1;
+%>
+<tr>
+<td class="tabcol"><%=count%></td>
+<td class="tabcol"><%=networkServiceLoadVO.getInstanceID()%></td>
+<td class="tabcol"><%=networkServiceLoadVO.getNetworkCode()%></td>
+<td class="tabcol"><%=networkServiceLoadVO.getGatewayType()%></td>
+<td class="tabcol"><%=networkServiceLoadVO.getServiceType()%></td>
+<td class="tabcol"><%=networkServiceLoadVO.getServiceName()%></td>
+<td class="tabcol"><%=networkServiceLoadVO.getRecievedCount()%></td>
+<td class="tabcol"><%=networkServiceLoadVO.getSuccessCount()%></td>
+<td class="tabcol"><%=networkServiceLoadVO.getFailCount()%></td>
+<td class="tabcol"><%=networkServiceLoadVO.getUnderProcessCount()%></td>
+<td class="tabcol"><%=networkServiceLoadVO.getOthersFailCount()%></td>
+<td class="tabcol"><%=networkServiceLoadVO.getOtherNetworkReqCount()%></td>
+<td class="tabcol"><%=networkServiceLoadVO.getLastReceievedTime()%></td>
+
+<td class="tabcol"><%=BTSLUtil.roundToStr(networkServiceLoadVO.getAverageServiceTime(),3)%></td>
+<td class="tabcol"><%=BTSLUtil.roundToStr(networkServiceLoadVO.getLastRequestServiceTime(),3)%></td>
+<td class="tabcol"><%=networkServiceLoadVO.getBeforeGatewayFoundError()%></td>
+<td class="tabcol"><%=networkServiceLoadVO.getBeforeNetworkFoundError()%></td>
+<td class="tabcol"><%=networkServiceLoadVO.getBeforeServiceTypeFoundError()%></td>
+<td class="tabcol"><%=networkServiceLoadVO.getLastRequestID()%></td>
+
+</tr>
+<%
+}
+%>
+</table>
+<jsp:include page="/monitorserver/common/bottomband.jsp"/>
+</body>
+</html>
+

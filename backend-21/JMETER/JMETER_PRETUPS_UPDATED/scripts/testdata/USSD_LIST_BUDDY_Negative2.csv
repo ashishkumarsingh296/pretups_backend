@@ -1,0 +1,2 @@
+TestcaseId,TestcaseType,Module,Description
+TUNG2862,Negative,P2P list buddy,To verify that List Buddy request is unsuccessful if PIN is empty

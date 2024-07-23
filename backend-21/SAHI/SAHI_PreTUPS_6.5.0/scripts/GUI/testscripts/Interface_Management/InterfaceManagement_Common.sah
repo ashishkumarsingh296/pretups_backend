@@ -1,0 +1,192 @@
+
+
+
+
+
+_includeOnce("../../../../utility/ImportPackage.sah");
+
+var $g_interfaceCategory;
+var $g_interfaceType;
+var $g_interfaceName;
+var $g_externalID;
+var $g_validityExpiry;
+var $g_topUpExpiry;
+var $g_language1;
+var $g_language2;
+var $g_status;
+var $g_assertion;
+var $g_nodes;
+var $g_uri;
+var $g_i;
+var $g_status1;
+
+// added by Parul .........for node management
+
+function randomNumberForIPPort( $lengthOfnumber)
+{
+	var $num = "0123456789";
+	var $randomNumber='';
+	for(var $i=0; $i < $lengthOfnumber; $i++ ){
+	var $randomNumber = Math.floor(Math.random() * $num.length);
+	$randomNumber += $num.substring($randomNumber, $randomNumber + 1);
+	}
+	return $randomNumber;
+}
+
+
+
+
+function IP($a_Prefix)
+{
+	 $g_ipadd = $a_Prefix + randomNumberForIPPort("1"); 
+	 return $g_ipadd;
+}
+
+function port()
+{
+    // $g_port =randomNumberForIPPort("8"); 
+  	 $g_port= _savedRandom(2000);
+	 return $g_port;
+}
+
+function interfaceName()
+{
+	 $l_time = currentTime(); // fetch current time(CurretnTime)
+	 $l_interfacerName =  "AUT" + $l_time; 
+	 return $l_interfacerName;
+}
+
+function externalID()
+{
+     $l_time = currentTime(); // fetch current time(CurretnTime)
+	 $l_interfacerName =  "AUTID" + $l_time; 
+	 return $l_interfacerName;
+  
+}
+
+
+
+function commonVaribleForInterface($g_row, $g_col) {
+
+	
+	$g_interfaceCategory = $g_InterfaceDetails[$g_row][$g_col++];
+	$g_interfaceType = $g_InterfaceDetails[$g_row][$g_col++];
+  	
+  		//added by parul.........for node management
+  	$g_nodes = $g_InterfaceDetails[$g_row][$g_col++];
+	$g_validityExpiry = $g_InterfaceDetails[$g_row][$g_col++];
+	$g_topUpExpiry = $g_InterfaceDetails[$g_row][$g_col++];
+	$g_language1 = $g_InterfaceDetails[$g_row][$g_col++];
+	$g_language2 = $g_InterfaceDetails[$g_row][$g_col++];
+	$g_status = $g_InterfaceDetails[$g_row][$g_col++];
+  
+  		//added by parul.........for node management
+	$g_uri =$g_InterfaceDetails[$g_row][$g_col++];
+    $g_status1 = $g_InterfaceDetails[$g_row][$g_col++];
+	$g_assertion = $g_InterfaceDetails[$g_row][$g_col++];
+	
+}
+
+function addInterface() {
+	
+	_click(_link("Masters"));
+	_click(_link("Interface management"));
+	_setSelected(_select("interfaceCategoryCode"), $g_interfaceCategory);
+	_click(_submit($g_BtnSubmit));
+	_assertExists(_div("Interface list"));
+	_click(_submit($g_BtnAdd));
+	_setSelected(_select("interfaceTypeId"), $g_interfaceType);
+     $g_interfaceName = interfaceName();
+	_setValue(_textbox("interfaceDescription"), $g_interfaceName);
+  	 $g_externalID = externalID();
+	_setValue(_textbox("externalId"), $g_externalID);
+  	_setValue(_textbox("noOfNodes"), $g_nodes);
+	_setValue(_textbox("valExpiryTime"), $g_validityExpiry);
+	_setValue(_textbox("topUpExpiryTime"), $g_topUpExpiry);
+	_setValue(_textarea("language1Message"), $g_language1);
+	_setValue(_textarea("language2Message"), $g_language2);
+	_setSelected(_select("statusCode"), $g_status);
+ 	_click(_link("Setup IP Nodes*"));
+	_selectWindow("eRecharge");
+    
+  		//added by parul.........for node management
+	 var $i=0;
+  	while($i<$g_nodes)
+  	{
+     $g_ip=IP("172.16.1.");
+     $g_port=port();
+    _setValue(_textbox("nodeSlabsListIndexed[" +$i + "].ip"), $g_ip);
+	_setValue(_textbox("nodeSlabsListIndexed["+$i+ "].port"), $g_port);
+	_setValue(_textbox("nodeSlabsListIndexed["+$i+ "].uri"),$g_uri);
+	_setSelected(_select("nodeSlabsListIndexed["+$i+ "].nodeStatus"),  $g_status1);
+     $i++;
+    }
+	
+	_click(_submit("Add/Modify"));
+	_selectWindow();
+	_click(_submit($g_BtnSubmit));
+	_click(_submit($g_BtnConfirm));
+
+	_assertExists(_listItem("/"+$g_assertion+ ".*/"));
+}
+
+
+function addInterfaceWithoutDetails() {
+	_click(_link("Masters"));
+	_click(_link("Interface management"));
+	_setSelected(_select("interfaceCategoryCode"), $g_interfaceCategory);
+	_click(_submit($g_BtnSubmit));
+	//_assertExists(_div("Interface list"));
+	_click(_submit($g_BtnAdd));
+	_setSelected(_select("interfaceTypeId"), $g_interfaceType);
+	_click(_submit($g_BtnSubmit));
+	_assertExists(_listItem("/"+$g_assertion+ ".*/"));
+}
+
+
+
+
+ function modifyInterfaceWithoutDetails() {
+	 	_click(_link("Masters"));
+		_click(_link("Interface management"));
+		_setSelected(_select("interfaceCategoryCode"), $g_interfaceCategory);
+		_click(_submit($g_BtnSubmit));
+		_click(_radio("radioIndex", _near(_cell($g_interfaceName))));
+		_click(_submit($g_BtnModify));
+   		_setValue(_textbox("interfaceDescription"), $g_interfaceName);
+		_setValue(_textbox("externalId"), $g_externalID);
+		_setValue(_textbox("valExpiryTime"), $g_validityExpiry);
+		_setValue(_textbox("topUpExpiryTime"), $g_topUpExpiry);
+		_setValue(_textarea("language1Message"), $g_language1);
+		_setValue(_textarea("language2Message"), $g_language2);
+		_setSelected(_select("statusCode"), $g_status);
+		_click(_submit($g_BtnSubmit));
+		_assertExists(_listItem("/"+$g_assertion+ ".*/"));
+}
+ 
+ 
+ 
+ function deleteInterface() {
+	 
+	 	_click(_link("Masters"));
+		_click(_link("Interface management"));
+		_setSelected(_select("interfaceCategoryCode"), $g_interfaceCategory);
+		_click(_submit($g_BtnSubmit));
+		_click(_radio("radioIndex", _near(_cell($g_interfaceName))));
+		_click(_button("Delete"));
+		_assertExists(_listItem("/"+$g_assertion+ ".*/"));
+	
+}
+ 
+
+
+
+
+
+
+
+
+
+
+
+

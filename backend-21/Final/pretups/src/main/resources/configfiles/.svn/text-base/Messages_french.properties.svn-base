@@ -1,0 +1,1929 @@
+x## Rapport du transfert quotidien
+8508=mclass^2&pid^61:8508:Format message invalide, le format correct est {0}
+7035=mclass^2&pid^61:7035:Bien vouloir changer votre code PIN puisqu'il n'a pas été modifié depuis{0} jour
+7015=mclass^2&pid^61:7015:Code PIN invalide
+7042=mclass^2&pid^61:7042:Votre code PIN est bloqué, bien vouloir contacter le service clientèle
+1999=mclass^2&pid^61:1999:Votre demande ne peut pas être traitée en ce moment, bien vouloir essayer ultérieurment
+4406=mclass^2&pid^61:4406:Transfert journalier de {0} Produit : Transfert : Renvois entrée:{1}, sortie{2}, Transfert abonné sortie:{3}  
+4405=mclass^2&pid^61:4405:Aucun transfert n'a été fait par cet {0} utilisateur
+4400=mclass^2&pid^61:4400:Aucun transfert n'a été fait
+4404=mclass^2&pid^61:4404:Produit de transfert journalier:transfert:renvois: entrée:{0}, sortie{1}, transfert abonné sortie:{2} 
+	
+## Rapport du dernier transfert
+8509=mclass^2&pid^61:8509:Format message invalide, le format correct est {0}
+4337=mclass^2&pid^61:4337:Aucune transaction n'a été faite
+4331=mclass^2&pid^61:4331:Aucune transaction n'a été faite
+4334=mclass^2&pid^61:4334:Statut du dernier tranfert de la transaction ID:{0}, date de la période de transfert:{1}, msisdn:{2}, statut du transfert:{3}, type de service:{4}, produit:{5}, valeur:{6}
+4335=mclass^2&pid^61:4335:Statut du dernier tranfert de la transaction ID:{0}, date de la période de transfert:{1}, msisdn:{2}, statut du transfert:{3}, type de service:{4}, produit:{5}, valeur:{6}
+4336=mclass^2&pid^61:4336:Statut du dernier tranfert de la transaction ID:{0}, date de la période de transfert:{1}, msisdn:{2}, statut du transfert:{3}, type de service:{4}, produit:{5}, valeur:{6}
+4333=mclass^2&pid^61:4333:Statut du dernier tranfert de la transaction ID:{0}, date de la période de transfert:{1}, type de transfert:{2}, statut:{3}, produit&valeur:{4}, montant net à payer:{5}
+
+##Language de notification en série	
+8504=mclass^2&pid^61:8504:Format message invalide, le format correct est {0}
+1993=mclass^2&pid^61:1993:Code de langage invalide, il devrait être en valeur numérique 0 pour l'anglais ou 1 pour le français
+1990=mclass^2&pid^61:1990:Code de langage invalide
+1991=mclass^2&pid^61:1991:le langage a changé avec succès à {0}
+1992=mclass^2&pid^61:1992:le langage ne peut être changé, bien vouloir essayer ultérieurement
+	
+##Code PIN modifié
+8506=mclass^2&pid^61:8506:Format message invalide, le format correct est {0}
+4325=mclass^2&pid^61:4325:Votre code PIN est vide. Essayer encore avec un code PIN valide
+8505=mclass^2&pid^61:8505:le nouveau code PIN ne peut être similaire au code PIN {0} défaillant
+4316=mclass^2&pid^61:4316:L'ancien code PIN et le nouveau code PIN ne devraient pas être similaires 
+4318=mclass^2&pid^61:4318:Le nouveau code PIN devrait être numérique
+4319=mclass^2&pid^61:4319:Longueur de PIN est invalide, Il devrait être entre {0} et {1}.
+4326=mclass^2&pid^61:4326:Votre code PIN ne devrait pas contenir des numéros consécutifs
+4327=mclass^2&pid^61:4327:Votre code PIN ne devrait pas contenir les mêmes indices 
+4317=mclass^2&pid^61:4317:Le nouveau code PIN et le code PIN confirmé devraient être similaires
+4321=mclass^2&pid^61:4321:Changement du code PIN défaillant, bien vouloir essayer ultérieurement
+4320=mclass^2&pid^61:4320:Votre code PIN a été bien changé. Votre nouveau code PIN est {0}
+	
+##Solde de l'utilisateur (Agent autonome/Détaillant)
+8507=mclass^2&pid^61:8507:Format message invalide, le format correct est {0}
+4309=mclass^2&pid^61:4309:Aucun transfert n'a été fait par l'utilisateur {0}
+4308=mclass^2&pid^61:4308:Le solde disponible de l'utilisateur {0} est {1}
+43081=mclass^2&pid^61:43081:Le solde disponible de l'utilisateur {0} est {1} et le solde de leurs agents est {2}
+4305=mclass^2&pid^61:4305:Aucun transfert n'a été fait
+4300=mclass^2&pid^61:4300:Votre solde pour le produit {0}
+4303=mclass^2&pid^61:4303:Votre solde pour le produit {0} et le solde de vos agents est {1}
+	
+#### Transfert RP2P 
+
+5001=mclass^2&pid^61:5001:Vous êtes suspendu comme un expéditeur du canal
+5002=mclass^2&pid^61:5002:Le numéro du mobile devrait être numérique
+2008=mclass^2&pid^61:2008:Format message invalide, bien vouloir contacter le service clientèle
+5003=mclass^2&pid^61:5003:Pour le produit {0}, la quantité demandée devrait être numérique
+5004=mclass^2&pid^61:5004:Pour le produit {0}, le code devrait être numérique
+
+3543=mclass^2&pid^61:3543:Vous avez déjà enrégistré comme {0}.
+3532=mclass^2&pid^61:3532:Vous avez déjà enrégistré comme {0}.
+4354=mclass^2&pid^61:4354:Ce série de nombre de mobile n'est pas défini dans le système.
+
+##added for last transfer requesthandler for CRE_INT_CR00030
+4338=mclass^2&pid^61:4338:Dernier statut de transfert de ID de transaction:{0}, date et heure de transfert:{1}, MSISDN:{2}, statut de transfert:{3}, type de service:{4}, produit:{5}, valeur:{6}
+4339=mclass^2&pid^61:4339:Dernier statut de transfert de ID de transaction:{0}, date et heure de transfert:{1}, MSISDN:{2}, statut de transfert:{3}, type de service:{4}, produit:{5}, valeur:{6}
+4356=mclass^2&pid^61:4356:Vous ne pouvez pas faire une transaction vous-même 
+4357=mclass^2&pid^61:4357:Votre demande courant de transférer {2} INR ne peut pas traité puis'que votre montant de transfert mensuel est {0} INR & la limite maximum autorisé est {1} INR
+9958_WEB=mclass^2&pid^61:9958:Votre demande de paiement de facture port payé de INR {0} de {4} est accepté pour traitement, ID de transaction est {2}.
+9960_WEB=mclass^2&pid^61:9960:Votre demande de paiement de facture port payé de INR {0} est sous traitement, ID de transaction {2}. 
+9963_WEB=mclass^2&pid^61:9963:Veuillez confirmer votre statut de demande de paiement de facture port payé du service clientéle, ID de transaction est {1}, montant est {2}.
+9964_WEB=mclass^2&pid^61:9964:Le demande de paiement de facture port payé de INR {2}  ne peut pas traité, ID de transaction est {1}.
+9958_SMSC=mclass^2&pid^61:9958:Votre demande de paiement de facture port payé de INR {0} de {1} est accepté pour traitement, ID de transaction est {2}.
+9960_SMSC=mclass^2&pid^61:9960:Votre demande de paiement de facture port payé de INR {0} de {1} est sous traitement, ID de transaction {2}. 
+9963_SMSC=mclass^2&pid^61:9963:Veuillez confirmer votre statut de demande de paiement de facture port payé du service clientéle, transaction de {0}, ID de transaction est {1}, montant est {2}.
+9964_SMSC=mclass^2&pid^61:9964:Le demande de paiement de facture port payé de INR {2} de {0} ne peut pas traité, ID de transaction est {1}.
+9958_USSD=mclass^2&pid^61:9958:Votre demande de paiement de facture port payé de INR {0} de {1} est accepté pour traitement, ID de transaction est {2}.
+9960_USSD=mclass^2&pid^61:9960:Votre demande de paiement de facture port payé de INR {0} de {1} est sous traitement, ID de transaction {2}. 
+9963_USSD=mclass^2&pid^61:9963:Veuillez confirmer votre statut de demande de paiement de facture port payé du service clientéle, transaction de {0}, ID de transaction est {1}, montant est {2}.
+9964_USSD=mclass^2&pid^61:9964:Le demande de paiement de facture port payé de INR. {2} de {0} ne peut pas traité, ID de transaction est {1}.
+3548=mclass^2&pid^61:3548:Le processus ne peut pas créer l'annuaire au chemin specifié.
+3552=mclass^2&pid^61:3552:Date:{0} Compte:{1}
+3553=mclass^2&pid^61:3553:Les cas ambigu de C2S s'est produite; {0}, veuillez arranger ces cas autrement le processus C2S MIS ne sera pas executér.
+3554=mclass^2&pid^61:3554:Date:{0} Compte:{1}
+3555=mclass^2&pid^61:3555:Les cas ambigu de P2P s'est produite; {0}, veuillez arranger ces cas autrement le processus P2P MIS ne sera pas executér.
+5011=mclass^2&pid^61:5011:Le transfert n'est pas autorisé pour l'utilisateur {0}
+5012=mclass^2&pid^61:5012:Aucun produit n'est assigné pour l'utilisateur {0} pour transférer 
+5014={0}:{1}
+5016={0}:{1}
+5018={0}:{1}
+5020={0}:{1}
+5062=mclass^2&pid^61:5062:Votre pourcentage maximum permis {0} est moins pour le transfer de produit(s) {1}:{2}
+#5061=mclass^1&pid^61:Selon votre profil de la catégorie,le solde résiduel minimum est moins pour le transfert de produit {0}:{1}
+5022=mclass^2&pid^61:5022:{0}
+#5063=mclass^2&pid^61:Selon votre profil de la catégorie, le pourcentage maximum permis {2} est moins pour le transfert de produit {0}:{1}
+5023={0}:{1}
+5060=mclass^2&pid^61:5060:L'utilisateur {0} n'a aucun profil applicable de commission jusqu'à aujourd'hui
+#5064={0}.
+5025={0}:{1}
+5028={0}:{1}
+8100={0}:{1}
+8101={0}:{1}
+8113=mclass^2&pid^61:8113:Le retrait pour produit(s) {0} a été éffectué par {4}. Votre nouveau solde de produit(s) {1}.Transaction ID est {2}
+5029=mclass^2&pid^61:5029:Le transfert a été échoué. L'utilisateur {0} a atteint à son transfert maximal {1}
+5030=mclass^2&pid^61:5030:Le transfert a été échoué. L'utilisateur {0} a atteint à son transfert maximal {1}
+5031=mclass^2&pid^61:5031:Le transfert a été échoué. L'utilisateur {0} a atteint à son transfert maximal {1}
+5032=mclass^2&pid^61:5032:Le transfert a été échoué. L'utilisateur {0} a atteint à son transfert maximal {1}
+5034=l'utilisateur n'a pas le solde de produit {0}
+5035=mclass^2&pid^61:5035:Vous n'est pas autorisé de retourner parce'que votre utilisateur de parent n'existe pas ou peut être suspendu
+5036={0}:{1}
+5038={0}:{1}
+5040={0}:{1}
+5045=mclass^2&pid^61:5045:Le transfert permis seulement dans le même domaine et avale la hiérarchie
+
+##this is the common message shown on the stk on every type of txn.=
+7007=mclass^2&pid^61:7007:Votre demande ne peut pas être traitée en ce moment, veuillez contacter le service clientèle
+#9903=mclass^1&pid^61:Vous avez été transferés de l'utilisateur {0} à l'utilisateur {1}, votre solde est pour le produit {2}
+9904=mclass^2&pid^61:9904:Vous avez été transferés de l'utilisateur {0} à l'utilisateur {1}
+9906=mclass^2&pid^61:9906:L'utilisateur {0} ont été transferés à partir d votre compte 
+9907=mclass^2&pid^61:9907:L'utilisateur {0} ont été transférés dans votre compte
+#9905={0}:{1}
+
+##messages for the c2c receiver=
+8088={0}:{1}
+8089={0}:{1}
+8091={0}:{1}
+8092={0}:{1}
+8094={0}:{1}
+8095={0}:{1}
+
+##O2C and FOC Transfer Messages=
+8080=mclass^2&pid^61:8080:La demande du transfert O2C de produit(s) {1} a été approuvé avec succès, montant net payable est {2}, votre nouveau solde de produit(s) {3}.Transfert ID est {0}
+8081={0}:{1}
+8004=mclass^2&pid^61:8004:La demande du transfert O2C de produit(s) {1} a été annulé, votre solde pour le produit(s) {2}. Transfert ID est {0}
+
+##defined for FOC Transfer=
+8082=mclass^2&pid^61:8082:La demande du transfert FOC de produit(s) {1} a été approuvé avec succès,votre nouveau solde de produit(s) {2}. Transfert ID est {0}. {3}
+8083={0}:{1}: {3}
+8084=mclass^2&pid^61:8084:La demande du transfert FOC de produit(s) {1} a été annulé,votre nouveau solde de produit(s) {2}. Transfert ID est {0}
+
+##defined for O2C WITHDRAW=
+8085=mclass^2&pid^61:8085:La demande de retrait d'O2C de produit(s) {1} est succès,montant net recevable est {2},votre nouveau solde de produit(s) {3}.Transfert ID est {0}
+8086={0}:{1}
+
+##counts check(also used in C2C and FOC)=
+5213=mclass^2&pid^61:5213:{0}, Le décompte d'entrée journalier des transferts externes a atteint au maximum permis, veuillez essayer le jour suivante pour transférer  
+5214=mclass^2&pid^61:5214:{0}, Le décompte d'entrée hebdomadaire des transferts externes a atteint au maximum permis, veuillez essayer la semaine suivante pour transférer  
+5215=mclass^2&pid^61:5215:{0}, Le décompte d'entrée mensuel des transferts externes a atteint au maximum permis, veuillez essayer le mois suivant pour transférer  
+5216=mclass^2&pid^61:5216:{0}, La valeur d'entrée journaliere des transferts externes a atteint au maximum permis, veuillez essayer le jour suivant pour transférer  
+5217=mclass^2&pid^61:5217:{0}, La valeur d'entrée hebdomadaire des transferts externes a atteint au maximum permis, veuillez essayer la semaine suivante pour transférer  
+5218=mclass^2&pid^61:5218:{0}, La valeur d'entrée mensuelle des transferts externes a atteint au maximum permis, veuillez essayer le mois suivant pour transférer  
+5219=mclass^2&pid^61:5219:{0}, Le décompte de sortie journalier des transferts externes a atteint au maximum permis, veuillez essayer le jour suivant pour transférer  
+5220=mclass^2&pid^61:5220:{0}, Le décompte de sortie hebdomadaire des transferts externes a atteint au maximum permis, veuillez essayer la semaine suivante pour transférer  
+5221=mclass^2&pid^61:5221:{0}, Le décompte de sortie mensuel des transferts externes a atteint au maximum permis, veuillez essayer le mois suivant pour transférer  
+5222=mclass^2&pid^61:5222:{0}, La valeur de sortie journaliere des transferts externes a atteint au maximum permis, veuillez essayer le jour suivant pour transférer  
+5223=mclass^2&pid^61:5223:{0}, La valeur de sortie hebdomadaire des transferts externes a atteint au maximum permis, veuillez essayer la semaine suivante pour transférer  
+5224=mclass^2&pid^61:5224:{0}, La valeur de sortie mensuelle des transferts externes a atteint au maximum permis, veuillez essayer le mois suivant pour transférer  
+
+## category level counts check=:# category level counts check:
+5300=mclass^2&pid^61:5300:{0}, Le profil du transfert n'est pas associé à votre catégorie
+5301=mclass^2&pid^61:5301:{0}, Le décompte d'entrée journalier des transferts a atteint au maximum permis, veuillez essayer le jour suivant pour transférer  
+5302=mclass^2&pid^61:5302:{0}, Le décompte d'entrée hebdomadaire des transferts a atteint au maximum permis, veuillez essayer la semaine suivante pour transférer  
+5303=mclass^2&pid^61:5303:{0}, Le décompte d'entrée mensuel des transferts a atteint au maximum permis, veuillez essayer le mois suivant pour transférer  
+5304=mclass^2&pid^61:5304:{0}, La valeur d'entrée journaliere des transferts a atteint au maximum permis, veuillez essayer le jour suivant pour transférer  
+5305=mclass^2&pid^61:5305:{0}, La valeur d'entrée hebdomadaire des transferts a atteint au maximum permis, veuillez essayer la semaine suivante pour transférer  
+5306=mclass^2&pid^61:5306:{0}, La valeur d'entrée mensuelle des transferts a atteint au maximum permis, veuillez essayer le mois suivant pour transférer  
+5307=mclass^2&pid^61:5307:{0}, Le décompte de sortie journalier des transferts a atteint au maximum permis, veuillez essayer le jour suivant pour transférer  
+5308=mclass^2&pid^61:5308:{0}, Le décompte de sortie hebdomadaire des transferts a atteint au maximum permis, veuillez essayer la semaine suivante pour transférer  
+5309=mclass^2&pid^61:5309:{0}, Le décompte de sortie mensuel des transferts a atteint au maximum permis, veuillez essayer le mois suivant pour transférer  
+5310=mclass^2&pid^61:5310:{0}, La valeur de sortie journaliere des transferts a atteint au maximum permis, veuillez essayer le jour suivant pour transférer  
+5311=mclass^2&pid^61:5311:{0}, La valeur de sortie hebdomadaire des transferts a atteint au maximum permis, veuillez essayer la semaine suivante pour transférer  
+5312=mclass^2&pid^61:5312:{0}, La valeur de sortie mensuelle des transferts externes a atteint au maximum permis, veuillez essayer le mois suivant pour transférer  
+5313=mclass^2&pid^61:5313:{0}, Le décompte d'entrée journalier des transferts externes a atteint au maximum permis, veuillez essayer le jour suivante pour transférer  
+5314=mclass^2&pid^61:5314:{0}, Le décompte d'entrée hebdomadaire des transferts externes a atteint au maximum permis, veuillez essayer la semaine suivante pour transférer  
+5315=mclass^2&pid^61:5315:{0}, Le décompte d'entrée mensuel des transferts externes a atteint au maximum permis, veuillez essayer le mois suivant pour transférer  
+5316=mclass^2&pid^61:5316:{0}, La valeur d'entrée journaliere des transferts externes a atteint au maximum permis, veuillez essayer le jour suivant pour transférer  
+5317=mclass^2&pid^61:5317:{0}, La valeur d'entrée hebdomadaire des transferts externes a atteint au maximum permis, veuillez essayer la semaine suivante pour transférer  
+5318=mclass^2&pid^61:5318:{0}, La valeur d'entrée mensuelle des transferts externes a atteint au maximum permis, veuillez essayer le mois suivant pour transférer  
+5319=mclass^2&pid^61:5319:{0}, Le décompte de sortie journalier des transferts externes a atteint au maximum permis, veuillez essayer le jour suivant pour transférer  
+5320=mclass^2&pid^61:5320:{0}, Le décompte de sortie hebdomadaire des transferts externes a atteint au maximum permis, veuillez essayer la semaine suivante pour transférer  
+5321=mclass^2&pid^61:5321:{0}, Le décompte de sortie mensuel des transferts externes a atteint au maximum permis, veuillez essayer le mois suivant pour transférer  
+5322=mclass^2&pid^61:5322:{0}, La valeur de sortie journaliere des transferts externes a atteint au maximum permis, veuillez essayer le jour suivant pour transférer  
+5323=mclass^2&pid^61:5323:{0}, La valeur de sortie hebdomadaire des transferts externes a atteint au maximum permis, veuillez essayer la semaine suivante pour transférer  
+5324=mclass^2&pid^61:5324:{0}, La valeur de sortie mensuelle des transferts externes a atteint au maximum permis, veuillez essayer le mois suivant pour transférer  
+
+##C2S messages=
+TXN_STATUS_200=TXN_STATUS_200:Succès
+TXN_STATUS_205=TXN_STATUS_205:Sous traitement
+TXN_STATUS_206=TXN_STATUS_206:Echoué
+TXN_STATUS_250=TXN_STATUS_250:Ambigu
+
+##C2S Balance Query messages=
+4301={0}:{1}
+4302={0}:{1}:{2}
+43083={0}:{1}:{2}
+43082={0}:{1}:{2}
+4306=mclass^2&pid^61:4306:Un utilisateur de canal est permis de vérifier le solde de l'autre utilisateur de canal
+4310=mclass^2&pid^61:4310:Le longuer du numéro de mobile est invalide
+4311=mclass^2&pid^61:4311:Le numéro de mobile doit être numérique
+4313=mclass^2&pid^61:4313:L'enquête de solde échoue, veuillez essayer ultérieurment 
+4314={0}:{1}
+43142={0}:{1}:{2}
+
+##C2S PIN Change messages=
+4315=mclass^2&pid^61:4315:PIN ne peut pas être mis à jour
+4322=mclass^2&pid^61:4322:Le mot de passe que vous avez entré n'est pas correcte 
+4324=mclass^2&pid^61:4324:PIN n'est pas demandé à utiliser ce service
+
+##C2S AdminController=
+9001=mclass^2&pid^61:9001:Le mot de clé principal n'est pas ADM
+9002=mclass^2&pid^61:9002:Le mot de clé d'opération non trouvé
+9003=mclass^2&pid^61:9003:Message non trouvé
+9004=mclass^2&pid^61:9004:Jet de byte de message non trouvé
+9005=mclass^2&pid^61:9005:Message de mise à jour de SIM envoyé 
+9006=mclass^2&pid^61:9006:SIM mis à jour avec succès 
+9007=mclass^2&pid^61:9007:Une erreur s'est produit en traitant votre demande.Nous la résoudrons bientôt. Veuillez essayer ultérieurment. 
+9010=mclass^2&pid^61:9010:Votre demande de enregistrement est sous traitement,veuillez n'effectuer aucune opération pour les 15 minutes suivantes  
+9011=mclass^2&pid^61:9011:Votre demande de enregistrement  est sous traitement,veuillez attente 15 minutes
+9012=mclass^2&pid^61:9012:Votre enregistrement est réussi. Vous pouvez commencer à employer des services prépayés de remplissage
+
+##Last Transfer Status =
+4332={0}:{1}
+#8000=mclass^2&pid^61:Vous êtes débarré du service {0}, vous pouvez enregistrer pour le service {0} maintenant 
+9980=mclass^2&pid^61:9980:Vous êtes débarré du système
+9981=mclass^2&pid^61:9981:Vous êtes barré dans le système
+8001=mclass^2&pid^61:8001:Service téléchargé avec succès
+9910=mclass^2&pid^61:9910:Votre PIN a été remise à {0}, veuillez changer votre PIN pour la raison de sécurité
+9911=mclass^2&pid^61:9911:Votre PIN a été débloqué, votre PIN est {0}
+9912=mclass^2&pid^61:9912:Votre PIN a été débloqué
+9913=mclass^2&pid^61:9913:votre PIN est {0}
+9914=mclass^2&pid^61:9914:Votre mot de clé a été remise à {0}, veuillez changer votre mot de clé
+9915=mclass^2&pid^61:9915:Votre mot de clé a été débloqué, votre mot de clé est {0}
+9916=mclass^2&pid^61:9916:Votre mot de clé a été débloqué
+9917=mclass^2&pid^61:9917:votre mot de clé est {0}
+
+##Daily Transfer Report=
+4401={0}:{1}:{2}
+4402={0}:{1}:{2}
+4403={0}:{1}:{2}
+
+##C2S Change Language=
+7017=mclass^2&pid^61:7017:Le numéro de mobile {0} n'est pas correcte.Il devrait se composer des chiffres {1}.
+
+##skey=:#skey:
+3012=mclass^2&pid^61:3012:Votre demande ne peut pas être traitée en ce moment,veuillez essayer ultérieurment.
+3013=mclass^2&pid^61:3013:Votre demande ne peut pas être traitée en ce moment,veuillez essayer ultérieurment.
+3015=mclass^2&pid^61:3015:Format de message invalide.Veuillez contacter le service clientèle.
+3016=mclass^2&pid^61:3016:Format de message invalide.Veuillez contacter le service clientèle.
+3017=mclass^2&pid^61:3017:Format de message invalide.Veuillez contacter le service clientèle.
+2043=mclass^2&pid^61:2043:La dernière demande de destinataire est sous traitement,veuillez essayer ultérieurment 
+2100=mclass^2&pid^61:2100:Désolé,le transfert à ce profil n'est pas permissible.
+7028=mclass^2&pid^61:7028:Votre demande ne peut pas être traitée en ce moment,veuillez essayer ultérieurment.
+7058=mclass^2&pid^61:7058:le numéro de mobile est invalide
+7051=mclass^2&pid^61:7051:Votre demande ne peut pas être traitée en ce moment,veuillez essayer ultérieurment.
+7052=mclass^2&pid^61:7052:Votre demande ne peut pas être traitée en ce moment,veuillez essayer ultérieurment.
+7049=mclass^2&pid^61:7049:Votre demande ne peut pas être traitée en ce moment,veuillez essayer ultérieurment.
+
+## change pin controller
+4060=mclass^2&pid^61:4060:La vieille PIN et la nouvelle PIN ne peuvent pas être même
+4070=mclass^2&pid^61:4070:Le PIN que vous avez entré est incorrect. Il devrait être des 4 octets numérique non- consécutifs.
+4076=mclass^2&pid^61:4076:Votre PIN a été changé avec succès.Votre nouveau PIN est {0}
+4077=mclass^2&pid^61:4077:Votre demande de changer le PIN a été echoué,veuillez essayer ultérieurment. 
+4078=mclass^2&pid^61:4078:Le mot de passe que vous avez entré n'est pas correcte.Mot de passe ne devrait pas {0}.
+4075=mclass^2&pid^61:4075:Longueur de PIN est invalide, Il devrait être entre {0} et {1}.
+4065=mclass^2&pid^61:4065:La nouvelle PIN et confirm PIN ne sont pas même
+4079=mclass^2&pid^61:4079:Le PIN que vous avez entré est incorrect. Il devrait être des 4 octets non- consécutifs.
+4080=mclass^2&pid^61:4080:Le PIN que vous avez entré est incorrect. Il devrait être des 4 octets différents.
+1004=mclass^2&pid^61:1004:Désolé, vous êtes temporairement suspendus d'utiliser ce service.Veuillez contacter le service clientèle.
+1005=mclass^2&pid^61:1005:Désolé, vous êtes temporairement bloqué d'utiliser ce service.Veuillez contacter le service clientèle.
+1006=mclass^2&pid^61:1006:Vous n'êtes pas encore activés pour utiliser ce service,veuillez contacter le service clientèle.
+1007=mclass^2&pid^61:1007:Mot de clé service non trouvé
+8501=mclass^2&pid^61:8501:Ce service n'est pas disponible avec votre profil courant.
+8502=mclass^2&pid^61:8502:Ce service n'est pas disponible avec profil courant de destinataire.
+222=mclass^2&pid^61:222:Votre demande de trasférer {2} INR à {0} sera traité bientôt.Le numéro de transaction est {1}.
+223=mclass^2&pid^61:223:Votre demande de trasférer {1} INR ne peut pas être traité en ce moment.Le numéro de transaction est {0}.
+224=mclass^2&pid^61:224:Votre demande de {0} ne peut pas être traité en ce moment, veuillez esssayer ultérieurment
+225=mclass^2&pid^61:225:Le numéro de transaction {2} de transférer {1} INR à {0} ne peut pas être traité en ce moment, veuillez esssayer ultérieurment
+213=mclass^2&pid^61:213:Le numéro de transaction {0} de transférer {1} INR est sous traitement. Votre valeur de transfert sera {2} INR
+214=mclass^2&pid^61:214:Le numéro de transaction {1} de transférer {2} INR à {0} est sous traitement.
+215=mclass^2&pid^61:215:Votre compte a été crédité en arrière pour le nombre échoué de transaction {1} de transférer {2} INR à {0}. Votre solde courante est {3} INR
+201=mclass^2&pid^61:201:Le numéro de transaction {1} de transférer {2} INR à {0} est reussi. Votre nouveau solde est {5} INR. Votre valeur de transfert est {3} INR et le frais d'accés est {6} INR
+202=mclass^2&pid^61:202:Le numéro de transaction {0} de {1} INR de {5} est reussi.Valeur transférée est {2} INR, fais d'accés est {6} INR.Votre nouveau solde est {3} et la validité est {4}. 
+203=mclass^2&pid^61:203:Le numéro de transaction {0} de {1} est sous traitement.
+1000=mclass^2&pid^61:1000:Le numéro de mobile que vous avez entré n'est pas correcte.
+1001=mclass^2&pid^61:1001:Format de message invalide. Veuillez contacter la service clientèle.
+600=mclass^2&pid^61:600:Le numéro de transaction {1} de transférer {2} INR à {0} est reussi. Votre valeur de transfert est {3} INR et le frais d'accés est {5} INR
+601=mclass^2&pid^61:601:Le numéro de transaction {0} de transférer {1} INR de {3} est reussi. La valeur transferée est {2} et le frais d'accés est {4} INR. Veuillez vérifier votre solde. 
+602=mclass^2&pid^61:602:Votre compte a été crédité en arriére pour le nombre échoué de transaction {1} de transférer {2} INR à {0}.
+2013=mclass^2&pid^61:2013:Désolé, vous ne peut pas transférer crédit à votre compte.
+2101=mclass^2&pid^61:2101:Format de message invalide. Veuillez contacter la service clientèle.
+2002=mclass^2&pid^61:2002:Votre demande ne peut pa être traité en ce moment, veuillez essayer ultérieurment.
+2107=mclass^2&pid^61:2107:Format de message invalide. Veuillez contacter la service clientèle.
+2090=mclass^2&pid^61:2090:Désolé,vous n'est pas autorisé d'utliser ce service.
+1009=mclass^2&pid^61:1009:Format de message invalide. Veuillez contacter la service clientèle.
+2004=mclass^2&pid^61:2004:Votre demande précedent est sous traitement,veuillez essayer ultérieurment. 
+2005=mclass^2&pid^61:2005:Votre demande précedent est sous traitement,veuillez essayer ultérieurment.
+2006=mclass^2&pid^61:2006:Format de message invalide. Veuillez contacter la service clientèle.
+2007=mclass^2&pid^61:2007:Votre demande ne peut pas être traité en ce moment,veuillez essayer ultérieurment
+2009=mclass^2&pid^61:2009:Le numéro de mobile {0} est invalide
+2010=mclass^2&pid^61:2010:Le PIN que vous avec écrit est incorrecte.
+1008=mclass^2&pid^61:1008:La valeur de transfert n'est pas autorisé. Il devrait être plus que zéro.
+2035=mclass^2&pid^61:2035:Vous avez atteint le numéro maximum de transactions autorisé journalier de {1}.
+2036=mclass^2&pid^61:2036:Votre demande courant de transférer {2} INR ne peut pas être traité du fait que votre montant de transfert journalier est {0}INR et la limite maximum autorisé est {1} INR
+2037=mclass^2&pid^61:2037:Vous avez atteint le numéro maximum de transactions autorisé hebdomadaire de {1}.
+2038=mclass^2&pid^61:2038:Votre demande courant de transférer {2} INR ne peut pas être traité du fait que votre montant de transfert hebdomadaire est {0}INR et la limite maximum autorisé est {1} INR
+2039=mclass^2&pid^61:2039:Vous avez atteint le numéro maximum de transactions autorisé mensuel de {1}
+2040=mclass^2&pid^61:2040:Votre demande courant de transférer {2} INR ne peut pas être traité du fait que votre montant de transfert mensuel est {0}INR et la limite maximum autorisé est {1} INR
+2047=mclass^2&pid^61:2047:Votre demande courant de transférer {0} INR ne peut pas être traité du fait que vous pouvez transférer jusqu'a {2} pourcentage de votre solde.
+2048=mclass^2&pid^61:2048:Votre transaction ne peut pas être traité du fait que votre validité {0} est moins quela validité autorisé {1}
+2049=mclass^2&pid^61:2049:Votre demande courant de transférer {2} INR ne peut pas être traité du fait que vous devriez avoir un minimum de {1} à rester dans votre compte.   
+2053=mclass^2&pid^61:2053:Vous avez barré d'utiliser le système du fait que vos tentatives consécutives d'échouer de {1} ont attient, veuillez contacter la service clientèle 
+2070=mclass^2&pid^61:2070:Votre demande ne peut pas être traité en ce moment, veuillez essayer ultérieurment.
+2071=mclass^2&pid^61:2071:La valeur de transfert invalide {0}
+2072=mclass^2&pid^61:2072:Ce numéro de mobile {0} ne peut pas être transférer du fait que son expiration est {2} et la grace permise est {1}
+2073=mclass^2&pid^61:2073:Le montant demandé de {0} INR n'est pas valide, il devrait être dans les multiples de {1} INR 
+4240=mclass^2&pid^61:4240:Votre dernier statut de transaction est ambigu alors vous ne peut pas vous de-registre maintenant,Veuillez contacter le service clientèle.  
+4013=mclass^2&pid^61:4013:Vous êtes de-registré avec succès  
+4014=mclass^2&pid^61:4014:Votre demande de de-registre a été échoué
+4032=mclass^2&pid^61:4032:L'utilisateur ne peut pas être repris parce que l'utilisateur n'est pas suspendu.
+4035=mclass^2&pid^61:4035:Vous avez été suspendu pour ce service.
+4036=mclass^2&pid^61:4036:Votre demande ne peut pas être traité en ce moment,veuillez essayer ultérieurment
+4033=mclass^2&pid^61:4033:Vos services a été repris avec succès 
+4034=mclass^2&pid^61:4034:Votre demande ne peut pas être traité en ce moment,veuillez essayer ultérieurment
+4227=mclass^2&pid^61:4227:Vous ne pouvez pas vous barré, vous pouvez de-registre ou suspendre vos services.
+4228=mclass^2&pid^61:4228:Vous avez été barré avec succès d'utiliser les services. Pour utiliser le service encore veuillez contacter le service clientèle.
+4220=mclass^2&pid^61:4220:Jusqu'à ce que maintenant vous n'ayez fait aucune transaction 
+4223=mclass^2&pid^61:4223:Votre demande de transfert de {0} INR pour numéro {1} est {2}
+4225=mclass^2&pid^61:4225:Nombre des transferts pour aujourd'hui: {0}. Montant de transfert pour aujourd'hui:{1} INR.:Nombre des transferts dans le mois courant: {2}.Montant de transfert dans le mois courant: {3} INR
+4226=mclass^2&pid^61:4226:Votre demande ne peut pas être traité en ce moment, veuillez essayer ultérieurment  
+4222=mclass^2&pid^61:4222:Votre demande ne peut pas être traité en ce moment, veuillez essayer ultérieurment  
+4221=mclass^2&pid^61:4221:Nombre de transferts {0}, montant de transfert:{1} INR,nombre du limite de transferts pour le mois: {2}, limite total de montant de transferts:{3} EGP
+250=mclass^2&pid^61:250:Votre demande ne peut pas être traité en ce moment,veuillez essayer ultérieurment
+#error.general.sql.processing=mclass^2&pid^61:error.general.sql.processing:Your request cannot be processed at this time, please try again later.
+4081=mclass^2&pid^61:4081:Le mot de passe que vous avez entré n'est pas correcte.
+4082=mclass^2&pid^61:4082:Vous avez été enregistré avec succès
+4083=mclass^2&pid^61:4083:Vous avez été enregistré avec succès, votre mot de passe est {0}
+
+##Ferma IN handler status code used in both C2S and P2P=
+8800=mclass^2&pid^61:8800:Type d'accès invalide
+8801=mclass^2&pid^61:8801:Utilisateur n'est pas présent dans la base de données prépayée
+8802=mclass^2&pid^61:8802:Statut d'utilisateur invalide et code de valeur de récharge invalide
+8803=mclass^2&pid^61:8803:Votre demande ne peut pas être traité pour identification double de transaction 
+8804=mclass^2&pid^61:8804:Crédit insuffisant d'utilisateur pour l'opération de débit
+8805=mclass^2&pid^61:8805:Identification inconnue d'interface
+9990=mclass^2&pid^61:9990:Format de message invalide pour enregistrement, veuillez contacter le service clientèle
+9992=mclass^2&pid^61:9992:Classe service non trouvée, veuillez contacter le service clientèle
+9993=mclass^2&pid^61:9993:Classe service suspendu, veuillez contacter le service clientèle
+9994=mclass^2&pid^61:9994:Statut de compte non autorisé,veuillez contacter le service clientèle
+9995=mclass^2&pid^61:9995:Classe service non trouvée, veuillez contacter le service clientèle
+9991=mclass^2&pid^61:9991:Vous avez été enregistré avec succès.
+9996=mclass^2&pid^61:9996:Votre classe service est suspendu, veuillez contacter le service clientèle
+9997=mclass^2&pid^61:9997:Statut de compte non autorisé,veuillez contacter le service clientèle
+
+##Alert messages-- P2P+C2S both=
+#3501=mclass^2&pid^61:3501:Votre solde pour produit {0} est bas.
+3502=mclass^2&pid^61:3502:Votre PIN expirerons à {0}, veuillez changer votre PIN pour les raisons de sécurité
+3503=mclass^2&pid^61:3503:Votre mot de passe expirerons à {0}, veuillez changer votre mot de passe pour les raisons de sécurité
+12000=mclass^2&pid^61:12000:Vous avez été activé avec succès dans PreTUPS, votre ID de connexion web est {0},veuillez obtenir votre mot de passe de Web du service clientèle 
+12001=mclass^2&pid^61:12001:Vous avez été activé avec succès dans PreTUPS, votre numéro de mobile de transaction primaire est {0},veuillez obtenir votre PIN de Web du service clientèle 
+12002=mclass^2&pid^61:12002:Vous avez été activé avec succès dans PreTUPS,votre ID de connexion web est {0} et numéro de mobile de transaction primaire est {1}, veuillez obtenir votre mot de passe de Web et PIN du service clientèle
+3504={0}:{1}
+3505=mclass^2&pid^61:3505:Votre solde pour produit(s) {0} est sur le point de finir,veuillez acheter
+8550=mclass^2&pid^61:8550:Classe service de ce numéro de mobile est suspendu comme un éxpiditeur de P2P
+8551=mclass^2&pid^61:8551:Classe service de ce numéro de mobile est suspendu comme un éxpiditeur de P2P
+8096={0}:{1}
+2016=mclass^2&pid^61:2016:Désolé, le transfert à ce profil est non autorisé
+2045=mclass^2&pid^61:2045:Valeur de transfert de {0} INR est non autorisé du fait que la valeur de transfert minimum est {1} INR
+2046=mclass^2&pid^61:2046:Valeur de transfert de {0} INR est non autorisé du fait que la valeur de transfert maximum est {1} INR
+2044=mclass^2&pid^61:2044:Votre demande ne peut pas être traité en ce moment, veuillez essayer ultérieurment 
+2054=mclass^2&pid^61:2054:Votre demande ne peut pas être traité du fait que votre période de grace a été expiré.
+9901=mclass^2&pid^61:9901:vous êtes supprimé du système
+9902=mclass^2&pid^61:9902:Vous avez activé dans le système. Votre SMS PIN est {0}
+9920=mclass^2&pid^61:9920:Votre service P2P a été suspendu
+9921=mclass^2&pid^61:9921:Votre service P2P a été reprise
+11111=mclass^2&pid^61:11111:Demande invalide
+4230=Vous avez été barré en raison de PIN invalide consécutifs
+2024=mclass^2&pid^61:2024:Désolé, vous êtes barré temporairement d'utiliser ce service. Veuillez contacter le service clientèle.
+9988=mclass^2&pid^61:9988:Message format invalide. Le format correcte du message est: {0}
+#btsl.project.databseconnectionfailed=btsl.project.databseconnectionfailed:Due to some maintenance problem database is down, please try after some time
+9987=mclass^2&pid^61:9987:Ce service n'est pas disponible avec le statut courant de destinataire.
+9998=mclass^2&pid^61:9998:Vous avez été enrégistré avec succés, votre mot de passe est {0}
+2015=mclass^2&pid^61:2015:Le numéro de mobile {0} provient d'un réseau incompatible
+2022=mclass^2&pid^61:2022:Désolé, vous êtes barré temporairement d'utiliser ce service en raison d'entrées multiple de mot de passe invalide. Veuillez contacter le service clientèle
+8097={0}:{1}
+8098={0}:{1}
+8099={0}:{1}
+8005={0}:{1}
+8006={0}:{1}
+8102={0}:{1}
+8103={0}:{1}
+250_S=mclass^2&pid^61:250:Votre demande ne peut pas être traitée maintenant, veuillez essayer ultérieurment.
+250_R=mclass^2&pid^61:250:Votre demande ne peut pas être traitée maintenant, veuillez essayer ultérieurment.
+17001_S=mclass^2&pid^61:17001:Votre demande ne peut pas être traitée maintenant, veuillez essayer ultérieurment.
+17001_R=mclass^2&pid^61:17001:Votre demande ne peut pas être traitée maintenant, veuillez essayer ultérieurment.
+17002_S=mclass^2&pid^61:17002:Votre demande ne peut pas être traitée maintenant, veuillez essayer ultérieurment.
+17002_R=mclass^2&pid^61:17002:Votre demande ne peut pas être traitée maintenant, veuillez essayer ultérieurment.
+17003_S=mclass^2&pid^61:17003:Votre demande ne peut pas être traitée maintenant, veuillez essayer ultérieurment.
+17003_R=mclass^2&pid^61:17003:Votre demande ne peut pas être traitée maintenant, veuillez essayer ultérieurment.
+17004_S=mclass^2&pid^61:17004:Votre demande ne peut pas être traitée maintenant, veuillez essayer ultérieurment.
+17004_R=mclass^2&pid^61:17004:Votre demande ne peut pas être traitée maintenant, veuillez essayer ultérieurment.
+17005_S=mclass^2&pid^61:17005:Votre demande ne peut pas être traitée maintenant, veuillez essayer ultérieurment.
+17005_R=mclass^2&pid^61:17005:Votre demande ne peut pas être traitée maintenant, veuillez essayer ultérieurment.
+17006_S=mclass^2&pid^61:17006:Votre demande ne peut pas être traitée maintenant, veuillez essayer ultérieurment.
+17006_R=mclass^2&pid^61:17006:Votre demande ne peut pas être traitée maintenant, veuillez essayer ultérieurment.
+17007_S=mclass^2&pid^61:17007:Votre demande ne peut pas être traitée maintenant, veuillez essayer ultérieurment.
+17007_R=mclass^2&pid^61:17007:Votre demande ne peut pas être traitée maintenant, veuillez essayer ultérieurment.
+17008_S=mclass^2&pid^61:17008:Votre demande ne peut pas être traitée maintenant, veuillez essayer ultérieurment.
+17008_R=mclass^2&pid^61:17008:Votre demande ne peut pas être traitée maintenant, veuillez essayer ultérieurment.
+17009_S=mclass^2&pid^61:17009:Votre demande ne peut pas être traitée maintenant, veuillez essayer ultérieurment.
+17009_R=mclass^2&pid^61:17009:Votre demande ne peut pas être traitée maintenant, veuillez essayer ultérieurment.
+17010_S=mclass^2&pid^61:17010:Votre demande ne peut pas être traitée maintenant, veuillez essayer ultérieurment.
+17010_R=mclass^2&pid^61:17010:Votre demande ne peut pas être traitée maintenant, veuillez essayer ultérieurment.
+17011_S=mclass^2&pid^61:17011:Votre demande ne peut pas être traitée maintenant, veuillez essayer ultérieurment.
+17011_R=mclass^2&pid^61:17011:Votre demande ne peut pas être traitée maintenant, veuillez essayer ultérieurment.
+17012_S=mclass^2&pid^61:17012:Votre demande ne peut pas être traitée maintenant, veuillez essayer ultérieurment.
+17012_R=mclass^2&pid^61:17012:Votre demande ne peut pas être traitée maintenant, veuillez essayer ultérieurment.
+17013_S=mclass^2&pid^61:17013:Votre demande ne peut pas être traitée maintenant, veuillez essayer ultérieurment.
+17013_R=mclass^2&pid^61:17013:Votre demande ne peut pas être traitée maintenant, veuillez essayer ultérieurment.
+17014_S=mclass^2&pid^61:17014:Votre demande ne peut pas être traitée maintenant, veuillez essayer ultérieurment.
+17014_R=mclass^2&pid^61:17014:Votre demande ne peut pas être traitée maintenant, veuillez essayer ultérieurment.
+17015_S=mclass^2&pid^61:17015:Votre demande ne peut pas être traitée maintenant, veuillez essayer ultérieurment.
+17015_R=mclass^2&pid^61:17015:Votre demande ne peut pas être traitée maintenant, veuillez essayer ultérieurment.
+17016_S=mclass^2&pid^61:17016:Votre demande ne peut pas être traitée maintenant, veuillez essayer ultérieurment.
+17016_R=mclass^2&pid^61:17016:Votre demande ne peut pas être traitée maintenant, veuillez essayer ultérieurment.
+17017_S=mclass^2&pid^61:17017:Votre demande ne peut pas être traitée maintenant, veuillez essayer ultérieurment.
+17017_R=mclass^2&pid^61:17017:Votre demande ne peut pas être traitée maintenant, veuillez essayer ultérieurment.
+12050_S=mclass^2&pid^61:12050:Votre demande ne peut pas être traitée maintenant, veuillez essayer ultérieurment.
+12050_R=mclass^2&pid^61:12050:Votre demande ne peut pas être traitée maintenant, veuillez essayer ultérieurment.
+18800_S=mclass^2&pid^61:18800:Votre demande ne peut pas être traitée maintenant, veuillez essayer ultérieurment.
+18800_R=mclass^2&pid^61:18800:Votre demande ne peut pas être traitée maintenant, veuillez essayer ultérieurment.
+18801_S=mclass^2&pid^61:18801:Votre demande ne peut pas être traitée maintenant, veuillez essayer ultérieurment.
+18801_R=mclass^2&pid^61:18801:Votre demande ne peut pas être traitée maintenant, veuillez essayer ultérieurment.
+18802_S=mclass^2&pid^61:18802:Votre demande ne peut pas être traitée maintenant, veuillez essayer ultérieurment.
+18802_R=mclass^2&pid^61:18802:Votre demande ne peut pas être traitée maintenant, veuillez essayer ultérieurment.
+18803_R=mclass^2&pid^61:18803:Votre demande ne peut pas être traitée maintenant, veuillez essayer ultérieurment.
+18803_S=mclass^2&pid^61:18803:Votre demande ne peut pas être traitée maintenant, veuillez essayer ultérieurment.
+18804_S=mclass^2&pid^61:18804:Votre demande ne peut pas être traitée maintenant, veuillez essayer ultérieurment.
+18804_R=mclass^2&pid^61:18804:Votre demande ne peut pas être traitée maintenant, veuillez essayer ultérieurment.
+18805_S=mclass^2&pid^61:18805:Votre demande ne peut pas être traitée maintenant, veuillez essayer ultérieurment.
+18805_R=mclass^2&pid^61:18805:Votre demande ne peut pas être traitée maintenant, veuillez essayer ultérieurment.
+13001_S=mclass^2&pid^61:13001:Votre demande ne peut pas être traitée maintenant, veuillez essayer ultérieurment.
+13001_R=mclass^2&pid^61:13001:Votre demande ne peut pas être traitée maintenant, veuillez essayer ultérieurment.
+13002_S=mclass^2&pid^61:13002:Votre demande ne peut pas être traitée maintenant, veuillez essayer ultérieurment.
+13002_R=mclass^2&pid^61:13002:Votre demande ne peut pas être traitée maintenant, veuillez essayer ultérieurment.
+13003_S=mclass^2&pid^61:13003:Votre demande ne peut pas être traitée maintenant, veuillez essayer ultérieurment.
+13003_R=mclass^2&pid^61:13003:Votre demande ne peut pas être traitée maintenant, veuillez essayer ultérieurment.
+13004_S=mclass^2&pid^61:13004:Votre demande ne peut pas être traitée maintenant, veuillez essayer ultérieurment.
+13004_R=mclass^2&pid^61:13004:Votre demande ne peut pas être traitée maintenant, veuillez essayer ultérieurment.
+9956=mclass^2&pid^61:9956:Numéro de transaction {1} de {2} pour {0} est réussi. Votre nouveau solde est {5}.Votre valeur de transfert {3} et valeur de transfert de recepteur est {4}
+
+##Added for corporate
+12007=mclass^2&pid^61:12007:Vous êtes modifié avec succès dans PreTUPS, votre identité de connexion web est {0}, et votre mot de passe est {1}
+12008=mclass^2&pid^61:12008:Vous êtes modifié avec succès dans PreTUPS, votre identité de connexion web est {0}
+12009=mclass^2&pid^61:12009:Vous êtes modifié avec succès dans PreTUPS, votre mot de passe de connexion web est {0}
+12010=mclass^2&pid^61:12010:Vous êtes modifié avec succès dans PreTUPS, votre identité de connexion web est {0}, et votre PIN est {1}
+12011=mclass^2&pid^61:12011:Vous êtes modifié avec succès dans PreTUPS, votre mot de passe de connexion web est {0}, et votre PIN est {1}
+12012=mclass^2&pid^61:12012:Vous êtes modifié avec succès dans PreTUPS,votre identité de connexion web est {0},et votre mot de passe est {1},et PIN est {2}
+12013=mclass^2&pid^61:12013:Vous êtes modifié avec succès dans PreTUPS, votre PIN est {0}
+
+################For Pretups5.0##############################
+207_SERID00005=mclass^2&pid^61:207:Numéro de transaction {0} de recharge {1} INR de {4} est réussi. Votre nouveau solde est {3} INR, nouveau validité jusqu'à {6} & nouveau grâce jusqu'à {5}.	
+603_SERID00005=mclass^2&pid^61:603:Numéro de transaction {0} de recharge {1} INR de {2} est réussi. Veuillez vérifier votre solde.
+202_SERID00005=mclass^2&pid^61:202:Numéro de transaction {0} de {1} INR de {5} est réussi. La valeur transféré est {2} INR,frais d'accès est {6} INR Votre nouveau solde est {3} est validité est {4}.
+601_SERID00005=mclass^2&pid^61:601:Numéro de transaction {0} de transférer {1} INR de {3} est réussi. La valeur transféré est {2} & frais d'accès est {4} INR. Veuillez vérifier votre solde.
+9956_SERID00005=mclass^2&pid^61:9956:Numéro de transaction {1} de {2} pour {0} est réussi. Votre nouveau solde est {5}. Votre valeur de transfert {3} et valeur de transfert de recepteur est {4}
+201_SERID00005=mclass^2&pid^61:201:Numéro de transaction {1} de transférer {2} INR à {0} est réussi. Votre nouveau solde est {5} INR Votre valeur de transfert est {3} INR et frais d'accès est {6} INR
+600_SERID00005=mclass^2&pid^61:600:Numéro de transaction {1} de transférer {2} INR à {0} est réussi. Votre valeur de transfert est {3} INR et frais d'accès est {5} INR 
+207_SERID00010=mclass^2&pid^61:207:Numéro de transaction {0} de recharge {1} INR de {4} est réussi. Votre nouveau solde est {3} INR, nouveau validité jusqu'à {6} & nouveau grâce jusqu'à {5}
+603_SERID00010=mclass^2&pid^61:603:Numéro de transaction {0} de recharge {1} INR de {2} est réussi. Veuillez vérifier votre solde.
+202_SERID00010=mclass^2&pid^61:202:Numéro de transaction {0} de {1} INR de {5} est réussi. La valeur transféré est {2} INR, frais d'accès est {6} INR Votre nouveau solde est {3} et validité est {4}.
+601_SERID00010=mclass^2&pid^61:601:Numéro de transaction {0} de transférer {1} INR de {3} est réussi. La valeur transféré est {2} & frais d'accès est {4} INR. Veuillez vérifier votre solde.
+9956_SERID00010=mclass^2&pid^61:9956:Numéro de transaction {1} de {2} pour {0} est réussi. Votre nouveau solde est {5}. Votre valeur de transfert {3} et valeur de transfert de recepteur est {4}
+201_SERID00010=mclass^2&pid^61:201:Numéro de transaction {1} de transférer {2} INR à {0} est réussi. Votre nouveau solde est {5} INR Votre valeur de transfert est {3} INR et frais d'accès est {6} INR
+600_SERID00010=mclass^2&pid^61:600:Numéro de transaction {1} de transférer {2} INR à {0} est réussi. Votre valeur de transfert est {3} INR et frais d'accès est {5} INR
+9958=mclass^2&pid^61:9958:Votre paiement de facture port payé de INR. {0} de {1} est accepté pour traitement, Identité de transaction est {2}.  
+9959=mclass^2&pid^61:9959:Numéro de transaction {1} pour paiement de facture port payé de INR. {0} pour {2} est accepté pour traitement, votre nouveau solde est INR. {3}.
+9960=mclass^2&pid^61:9960:Votre demande de paiement de facture port payé de INR. {0} de {1} est sous traitement, Identité de transaction {2}.
+9961=mclass^2&pid^61:9961:Demande de paiement de facture port payé de INR. {0} pour {1} est sous traitement, votre nouveau solde sera INR. {3}, Identité de transaction est {1}.
+9962=mclass^2&pid^61:9962:Demande de paiement de facture port payé de INR. {0} pour {2} sera traité sous peu, Identité de transaction est {1}.
+9963=mclass^2&pid^61:9963:Veuillez confirmer votre demande de paiement de facture port payé de la service clientéle, transaction de {0}, identité de transaction est {1}, montant est {2}.
+9964=mclass^2&pid^61:9964:Demande de paiement de facture port payé de INR. {0} de {1} ne peut pas être traité, identité de transaction est {2}.
+9969=mclass^2&pid^61:9969:Désolé, vous ne peut pas payer votre facture, le nombre de client ne peut pas similaire comme votre.
+9970=mclass^2&pid^61:9970:Ce service n'est pas disponible avec votre profil de contrôle courant.
+9971=mclass^2&pid^61:9971:Ce service n'est pas disponible avec votre profil courant.
+9972=mclass^2&pid^61:9972:Désolé, vous n'est pas autorisé pour paiement de facture port payé. 
+13005_R=mclass^2&pid^61:13005:Demande de paiement de facture port payé de INR. {1} pour {2} ne peut pas être traité, identité de transaction est {0}.Le système de facturation peut être en baisse, veuillez essayer ultérieurment.
+13005_S=mclass^2&pid^61:13005:Demande de paiement de facture port payé de INR. {1} pour {2} ne peut pas être traité, identité de transaction est {0}.Le système de facturation peut être en baisse, veuillez essayer ultérieurment.
+3528=mclass^2&pid^61:3528:Le processus ne peut pas mettre à jour la date faite maximum dans la base de données. 
+3530=mclass^2&pid^61:3530:Une certaine erreur s'est produite, processus ne peut pas continuer. 
+
+##added for postpaid and prepaid based message saperation
+9973=mclass^2&pid^61:9973:Vous ne peut pas utiliser ce service au sein du {0} minutes de dernier transaction réussite.
+9974=mclass^2&pid^61:9974:Votre demande courant de transférer {0} INR ne peut pas être traité puis'que votre montant de transfert quotidien  est {1} INR & la limite maximum autorisé est {2} INR
+9975=mclass^2&pid^61:9975:Vous avez attient le nombre maximum quotidien de transactions autorisé de {2}.
+
+##added Singhal for postpaid and prepaid based message saperation
+3533=mclass^2&pid^61:3533:La valeur de transfert de {0} INR n'est pas autorisé puis'que la valeur de transfert minimum autorisé est {1} INR
+3534=mclass^2&pid^61:3534:La valeur de transfert de {0} INR n'est pas autorisé puis'que la valeur de transfert maximum autorisé est {1} INR
+3535=mclass^2&pid^61:3535:Vous avez attient le nombre maximum quotidien de transactions autorisé de {1}.
+3536=mclass^2&pid^61:3536:Vous avez attient le nombre maximum hebdomadaire de transactions autorisé de {1}.
+3537=mclass^2&pid^61:3537:Vous avez attient le nombre maximum mensuel de transactions autorisé de {1}.
+3538=mclass^2&pid^61:3538:Votre demande courant de transférer {2} INR ne peut pas être traité puis'que votre montant de transfert quotidien est {0} INR & la limite maximum autorisé est {1} INR
+3539=mclass^2&pid^61:3539:Votre demande courant de transférer {2} INR ne peut pas être traité puis'que votre montant de transfert hebdomadaire est {0} INR & la limite maximum autorisé est {1} INR
+3540=mclass^2&pid^61:3540:Votre demande courant de transférer {2} INR ne peut pas être traité puis'que votre montant de transfert mensuel est {0} INR & la limite maximum autorisé est {1} INR
+3541=mclass^2&pid^61:3541:Votre demande courant de transférer {0} INR ne peut pas être traité puis'que vous pouvez transférer jusqu'au {2} pourcentage de votre solde.
+3542=mclass^2&pid^61:3542:Votre demande courant de transférer {2} INR ne peut pas être traité puis'que vous devriez avoir un minimum de {1} à rester dans votre compte.  
+3549=mclass^2&pid^61:3549:Le demande à partir de cette interface n'est pas autorisé
+3550=mclass^2&pid^61:3550:Le demande à partir de cette interface n'est pas autorisé
+3551=mclass^2&pid^61:3551:Le demande à partir de cette interface n'est pas autorisé
+6666=mclass^2&pid^61:6666:Votre demande ne peut pas être traité maintenant, veuillez contacter le service clientéle.
+17001=mclass^2&pid^61:17001:Votre demande ne peut pas être traité maintenant, veuillez esayer ultérieurment.
+17002=mclass^2&pid^61:17002:Votre demande ne peut pas être traité maintenant, veuillez esayer ultérieurment.
+17003=mclass^2&pid^61:17003:Votre demande ne peut pas être traité maintenant, veuillez esayer ultérieurment.
+17004=mclass^2&pid^61:17004:Votre demande ne peut pas être traité maintenant, veuillez esayer ultérieurment.
+17005=mclass^2&pid^61:17005:Votre demande ne peut pas être traité maintenant, veuillez esayer ultérieurment.
+17006=mclass^2&pid^61:17006:Votre demande ne peut pas être traité maintenant, veuillez esayer ultérieurment.
+17007=mclass^2&pid^61:17007:Votre demande ne peut pas être traité maintenant, veuillez esayer ultérieurment.
+17008=mclass^2&pid^61:17008:Votre demande ne peut pas être traité maintenant, veuillez esayer ultérieurment.
+17009=mclass^2&pid^61:17009:Votre demande ne peut pas être traité maintenant, veuillez esayer ultérieurment.
+17010=mclass^2&pid^61:17010:Votre demande ne peut pas être traité maintenant, veuillez esayer ultérieurment.
+17011=mclass^2&pid^61:17011:Votre demande ne peut pas être traité maintenant, veuillez esayer ultérieurment.
+17012=mclass^2&pid^61:17012:Votre demande ne peut pas être traité maintenant, veuillez esayer ultérieurment.
+17013=mclass^2&pid^61:17013:Votre demande ne peut pas être traité maintenant, veuillez esayer ultérieurment.
+17014=mclass^2&pid^61:17014:Votre demande ne peut pas être traité maintenant, veuillez esayer ultérieurment.
+17015=mclass^2&pid^61:17015:Votre demande ne peut pas être traité maintenant, veuillez esayer ultérieurment.
+17016=mclass^2&pid^61:17016:Votre demande ne peut pas être traité maintenant, veuillez esayer ultérieurment.
+17017=mclass^2&pid^61:17017:Votre demande ne peut pas être traité maintenant, veuillez esayer ultérieurment.
+12050=mclass^2&pid^61:12050:Votre demande ne peut pas être traité maintenant, veuillez esayer ultérieurment.
+18800=mclass^2&pid^61:18800:Votre demande ne peut pas être traité maintenant, veuillez esayer ultérieurment.
+18801=mclass^2&pid^61:18801:Votre demande ne peut pas être traité maintenant, veuillez esayer ultérieurment.
+18802=mclass^2&pid^61:18802:Votre demande ne peut pas être traité maintenant, veuillez esayer ultérieurment.
+18803=mclass^2&pid^61:18803:Votre demande ne peut pas être traité maintenant, veuillez esayer ultérieurment.
+18804=mclass^2&pid^61:18804:Votre demande ne peut pas être traité maintenant, veuillez esayer ultérieurment.
+18805=mclass^2&pid^61:18805:Votre demande ne peut pas être traité maintenant, veuillez esayer ultérieurment.
+13001=mclass^2&pid^61:13001:Votre demande ne peut pas être traité maintenant, veuillez esayer ultérieurment.
+13002=mclass^2&pid^61:13002:Votre demande ne peut pas être traité maintenant, veuillez esayer ultérieurment.
+13003=mclass^2&pid^61:13003:Votre demande ne peut pas être traité maintenant, veuillez esayer ultérieurment.
+13004=mclass^2&pid^61:13004:Votre demande ne peut pas être traité maintenant, veuillez esayer ultérieurment.
+5056=mclass^2&pid^61:5056:L'utilisateur {0} vient d'un réseau non soutenu
+5057=mclass^2&pid^61:5057:L'utilisateur {0} est rayé comme recepteur dans le système, bien vouloir contacter le service clientèle
+5005=mclass^2&pid^61:5005:Les détails de l'utilisateur {0} sont introuvables
+5008=mclass^2&pid^61:5008:L'utilisateur {0} est suspendu comme recepteur du canal
+5048=mclass^2&pid^61:5048:Désolé, vous ne peut pas transférer crédit au votre compte 
+5006=mclass^2&pid^61:5006:Le profil de la commission pour l'utilisateur {0} est supendu. La raison est {1}
+5007=mclass^2&pid^61:5007:Le profil du transfert pour l'utilisateur {0} est suspendu
+5044=mclass^2&pid^61:5044:Le transfert est permis seulement au sein du même domaine
+5009=mclass^2&pid^61:5009:La règle du transfert n'est pas définé entre {0} à {1}
+5010=mclass^2&pid^61:5010:Selon la règle du transfert, le transfert n'est pas autorisé à la catégorie {0}
+5046=mclass^2&pid^61:5046:La transaction n'est pas autorisé à {0} puisque la règle de transfert n'est pas définie
+5049=mclass^2&pid^61:5049:Aucun pruduit actif n'existe dans le système, bien vouloir contacter le service clientèle
+5050=mclass^2&pid^61:5050:Aucun produit actif n'existe dans votre réseau, bien vouloir contacter le service clientèle
+5054=mclass^2&pid^61:5054:L'utilisateur {0} n'a pas de solde pour la transaction
+5055=mclass^2&pid^61:5055:L'utilisateur {0} ne peut pas exécuter une transaction comme {1}
+5051=mclass^2&pid^61:5051:Aucun profil de commission (applicable) avec l'utilisateur jusqu'au présent
+5052=mclass^2&pid^61:5052:Aucun produit n'est associé avec le profil de commission qui soit associé à l'utilisateur {0}
+5053=mclass^2&pid^61:5053:Le produit associé à votre réseau ne se trouve pas dans le profil de la commission applicable à l'utilisateur {0} 
+5047=mclass^2&pid^61:5047:Aucun produit n'est autorisé à {0} pour le transfert
+5058=mclass^2&pid^61:5058:Le produit n'est pas associé aux règles de tranfert de l'utilisateur {0}
+5021=mclass^2&pid^61:5021:E récharge {0} ne vous sont pas autorisé pour le transfert.
+5013=mclass^2&pid^61:5013:Le montant du transfert demandé devrait être plus que le montant du trasfert minimum  pour {0}
+5015=mclass^2&pid^61:5015:Le montant de transfert demandé devrait être moins que le montant de transfert maximum pour {0}
+5017=mclass^2&pid^61:5017:Les produits demandés devraient être en multiple de {0}
+5019=mclass^2&pid^61:5019:Le solde est moins que la quantité demandée {0}
+5027=mclass^2&pid^61:5027:La plaque de commission n'est pas définie pour le produit et la quantité demandée {0}
+5200=mclass^2&pid^61:5200:{0}, le profil de transfert n'existe pas
+5201=mclass^2&pid^61:5201:{0}, le transfert journalier en compte a atteint le maximum consenti, veuillez essayer de transférer le jour suivant 
+5204=mclass^2&pid^61:5204:{0}, le transfert journalier en valeur a atteint le maximum , veuillez essayer de transférer le jour suivant 
+5202=mclass^2&pid^61:5202:{0}, le transfert hebdomadaire en compte a atteint le maximum consenti , veuillez essayer de transférer la semaine suivante 
+5205=mclass^2&pid^61:5205:{0}, le transfert hebdomadaire en valeur a atteint le maximum , veuillez essayer de transférer la semaine suivante 
+5203=mclass^2&pid^61:5203:{0}, le transfert mensuel en compte a atteint le maximum consenti, veuillez essayer de transférer le mois suivant 
+5206=mclass^2&pid^61:5206:{0}, le transfert mensuel en valeur a atteint le maximum consentis, veuillez essayer de transférer le mois suivant 
+5207=mclass^2&pid^61:5207:{0}, le transfert quotidien hors compte a atteint le maximum consenti, veuillez essayer de transférer le jour suivant 
+5210=mclass^2&pid^61:5210:{0}, le transfert quotidien hors valeur a atteint le maximum consenti, veuillez essayer de transférer le jour suivant 
+5208=mclass^2&pid^61:5208:{0}, le transfert hebdomadaire hors compte a atteint le maximum consenti, veuillez essayer de transférer la semaine suivante 
+5211=mclass^2&pid^61:5211:{0}, le transfert hebdomadaire hors valeur a atteint le maximum consenti, veuillez essayer de transférer la semaine suivante 
+5209=mclass^2&pid^61:5209:{0}, le transfert mensuel hors compte a atteint le maximum consenti, veuillez essayer de transférer le mois suivant 
+5212=mclass^2&pid^61:5212:{0}, le transfert mensuel hors valeur a atteint le maximum consenti, veuillez essayer de tranférer le mois suivant 
+5033=mclass^2&pid^61:5033:Le solde de l'utilisateur est inexistant pour les produits
+5065=mclass^2&pid^61:5065:Votre solde est moins que le solde résiduel minimum {0} pour le transfert des produit(s) {1}:{2}
+5024=mclass^2&pid^61:5024:Le transfert n'est pas accordé puisque le recepteur atteint sa limite de solde maximum pour le transfert {0} des produit(s)
+5026=mclass^2&pid^61:5026:La transaction n'a pas réussi
+8115=mclass^2&pid^61:8115:Le transfert des produit(s) {0} doit être effectué par {4}. Votre nouveau solde de produit(s) {1}. La transaction ID est {2}
+8114=mclass^2&pid^61:8114:Demande de transfert de produit(s) {0} à {4} est réussi. Votre nouveau solde des produit(s) {1}. ID de Transaction est {2}
+8087=mclass^2&pid^61:8087:Le transfert de produit(s) {0} a été effectué par {4}, le montant net payable est {3}. Votre nouveau solde de produit(s) {1}. La transaction ID est {2}
+5037=mclass^2&pid^61:5037:Demande de transfert de produit(s) {0} à {4} est réussi, montant recevable nette est {3}. Votre nouveau solde des produit(s) {1}. ID de Transaction est {2}
+	
+## Renvoi RP2P (PAS APPLICABLE POUR OCM)
+5043=mclass^2&pid^61:5043:Selon la règle de transfert, le renvoi n'est pas autorisé à l'utilisateur {0}
+8111=mclass^2&pid^61:8111:Le renvoi du produit(s) {0} a  été effectué par {4}. Votre nouveau solde de produit(s) {1}. La transaction ID est {2}
+8090=mclass^2&pid^61:8090:Le renvoi des produit(s) {0} a été effectué par {4},montant net payable {3}. Votre nouveau solde de produits {1}. La transaction ID est {2}
+8110=mclass^2&pid^61:8110:Demande de retour de produit(s) {0} à {4} est réussi. Votre nouveau solde des produit(s) {1}. ID de Transaction est {2}
+5041=mclass^2&pid^61:5041:Demande de retour de produit(s) {0} à {4} est réussi, montant recevable nette est {3}. Votre nouveau solde des produit(s) {1}. ID de Transaction est {2}
+
+## Retrait RP2P
+5042=mclass^2&pid^61:5042:Le retrait n'est pas permis de la catégorie {0} de l'utilisateur
+8093=mclass^2&pid^61:8093:Le retrait des produits {0} a été effectué par {4}, le montant net recevable est {3}. Votre nouveau solde de produits {1}. La transaction ID est {2}
+8112=mclass^2&pid^61:8112:Demande de retraite de produit(s) {0} à {4} est réussi. Votre nouveau solde des produit(s) {1}. ID de Transaction est {2}
+5039=mclass^2&pid^61:5039:Demande de retraite de produit(s) {0} à {4} est réussi, montant payable nette est {3}. Votre nouveau solde des produit(s) {1}. ID de Transaction est {2} 
+
+## Messages de validation commune pour RP2P
+6000=mclass^2&pid^61:6000:Numéro du mobile invalide
+2003=mclass^2&pid^61:2003:Vous êtes rayé de l'utilisation du système, bien vouloir contacter le service clientèle
+7054=mclass^2&pid^61:7054:Vous n'êtes pas autorisé à utiliser le système
+7050=mclass^2&pid^61:7050:Votre domaine géographique est suspendu pour le moment, bien vouloir essayer ultérieurment
+7002=mclass^2&pid^61:7002:Vous êtes suspendu de l'utilisation du système, bien vouloir contacter le service clientèle
+7003=mclass^2&pid^61:7003:Vous êtes bloqué de l'usage du système, bien vouloir contacter le service clientèle
+7036=mclass^2&pid^61:7036:Vous êtes pas encore activé pour utiliser le système, bien vouloir contacter le service clientèle
+7037=mclass^2&pid^61:7037:Vous êtes pas encore activé pour utiliser le système, bien vouloir contacter le service clientèle
+7000=mclass^2&pid^61:7000:Votre précédente demande est sous traitement, bien vouloir essayer ultérieurment
+7001=mclass^2&pid^61:7001:Votre demande précedent est sous traitement, veuillez réessayer plus tard 
+7005=mclass^2&pid^61:7005:Désolé, vous n'est pas autorisé d'utiliser SMSs pour ce service
+7038=mclass^2&pid^61:7038:Vous n' êtes pas permis à utiliser cette interface, bien vouloir contacter le service clientèle
+7030=mclass^2&pid^61:7030:Mot de clé service non-trouvé
+7039=mclass^2&pid^61:7039:Ce service est suspendu en ce moment , bien vouloir essayer ultérieurment
+4323=mclass^2&pid^61:4323:Format de message invalide, bien vouloir contacter le service clientèle
+200=200:Succès 
+
+## Messages de transfert de crédit RP2P
+7034=mclass^2&pid^61:7034:Format de message invalide, le format correct est {0}
+7016=mclass^2&pid^61:7016:Numéro du mobile du recepteur invalide
+7018=mclass^2&pid^61:7018:Le numéro du mobile {0} est invalide. Il devrait être de {1} indices
+7019=mclass^2&pid^61:7019:Le numéro de mobile que vous avez entré est incorrecte. Il devrait être un numéro de 10 chiffres.
+7020=mclass^2&pid^61:7020:Le montant de demande invalide.
+7021=mclass^2&pid^61:7021:Le montant de demande invalide. Montant devrait être dans le format numérique.
+7022=mclass^2&pid^61:7022:Le montant demandé invalide. Il devrait être supérieur à zéro.
+8500=mclass^2&pid^61:8500:Valeur du sélectionneur invalide, bien vouloir contacter le service clientèle
+8510=mclass^2&pid^61:8510:Language de notification du bénéficiaire invalide
+7055=mclass^2&pid^61:7055:Vous ne pouvez pas utiliser ce service dans les {0} minutes de la dernière transaction réussie
+#2050=mclass^2&pid^61:2050:Le numéro de mobile {0} ne peut pas utiliser le service de récharge de crédit dans {1} minutes de dernier transaction réussite.  
+#2052=mclass^2&pid^61:2052:Votre demande courant de récharge {0} INR ne peut pas être traité puis'que le montant quotidien de récharge pour {1} est {2}INR & la limite maximum autorisé est {3} INR
+#2051=mclass^2&pid^61:2051:Votre demande courant de récharge {0} INR ne peut pas être traité puis'que les récharges quotidien pour {1} est {2}. & les récharges maximum autorisé est {3}
+#6010=mclass^2&pid^61:6010:Votre demande courant de récharge {1} INR ne peut pas être traité puis'que vous n'avez pas assez de crédit.
+#6011=mclass^2&pid^61:6011: Votre demande courant de récharge {0} INR ne prut pas être traité puis'que vous devez avoir un solde minimum résiduel de {3} INR
+#6013=mclass^2&pid^61:6013:Votre demande courant de récharge {0} INR ne peut pas être traité puis'que votre montant de transfert quotidien est {1} INR & la limite maximum autorisé est {2} INR
+#6015=mclass^2&pid^61:6015:Votre demande courant de récharge {0} INR ne peut pas être traité puis'que votre montant de transfert hebdomadaire est {1} INR & la limite maximum autorisé est {2} INR
+#6017=mclass^2&pid^61:6017:Votre demande courant de récharge {0} INR ne peut pas être traité puis'que votre montant de transfert mensuel est {1} INR & la limite maximum autorisé est {2} INR
+7027=mclass^2&pid^61:7027:Votre demande ne peut pas être traitée en ce moment, bien vouloir essayer ultérieurment
+7026=mclass^2&pid^61:7026:Votre demande ne peut pas être traitée à présent, bien vouloir essayer plus tard 
+207_WEB=mclass^2&pid^61:207:Le numéro de la transaction {0} de recharger {1} INR a réussi. Votre nouveau solde est {3} INR et la validité est {6}. La nouvelle date de grâce est {5}
+207_SMSC=mclass^2&pid^61:207:Le numéro de la transaction {0} de recharger {1} INR de {4} a réussi. Votre nouveau solde est {3} et la validité est {6}. La nouvelle date de grâce est {5}
+207_USSD=mclass^2&pid^61:207:Le numéro de la transaction {0} de recharger {1} INR de {4} a réussi. Votre nouveau solde est {3} et la validité est {6}. La nouvelle date de grâce est {5}
+603_WEB=mclass^2&pid^61:603:Le numéro de la transaction {0} de recharger {1} INR a réussi. Bien vouloir confirmer votre solde. 
+603_SMSC=mclass^2&pid^61:603:Le numéro de la transaction {0} de recharger {1} INR a réussi. Bien vouloir confirmer votre solde. 
+603_USSD=mclass^2&pid^61:603:Le numéro de la transaction {0} de recharger {1} INR a réussi. Bien vouloir confirmer votre solde.
+#210=mclass^2&pid^61:210:Le numéro de la transaction {1} de {2} pour {0} a réussi. Votre nouveau balance est {3}. Le nouveau solde du recepteur est {5} et la validité est {4}.
+208_WEB=mclass^2&pid^61:208:Le numéro de la transaction {0} de recharger {3} est sous traitement.
+208_SMSC=mclass^2&pid^61:208:Le numéro de la transaction {0} de recharger {3} est sous traitement.
+208_USSD=mclass^2&pid^61:208:Le numéro de la transaction {0} de recharger {3} est sous traitement.
+209=mclass^2&pid^61:209:Le numéro de la transaction {1} de recharger {2} INR pour {0} est sous traitement. Votre nouveau solde est {4}
+216=mclass^2&pid^61:216:Votre demande de recharger {2} INR pour {0} sera traitée bientôt. Le numéro de la transaction est {1}.
+217=mclass^2&pid^61:217:Votre demande de recharger {1} INR ne peut pas être traitée en ce moment, le numéro de transaction est {0}
+2021=mclass^2&pid^61:2021:Le demande précédent de destinataire est sous traitement, Veuiller essayer ultérieurment.
+9955=mclass^2&pid^61:9955:Le transfert à ce numéro de mobile n'est pas possible en ce moment.Veuillez contacter le service clientèle.
+218=mclass^2&pid^61:218:Votre demande de {0} ne peut pas être traitée en ce moment,veuillez essayer ultérieurment
+219=mclass^2&pid^61:219:Votre demande de {1} pour {0} ne peut pas être traitée en ce moment, numéro de la transaction est {2}, veuillez essayer ultérieurment
+220=mclass^2&pid^61:220:Votre demande de {0} pour {1} ne peut pas être traitée en ce moment, numéro de la transaction est {2}, veuillez essayer ultérieurment
+211=mclass^2&pid^61:211:Commission additionnelle de {2} pour ID de transfert {1} a été credité. Votre nouveau solde est {3} est ID de l'ajustement est {0}  
+
+## added for C2S recharge=
+230_WEB=mclass^2&pid^61:230:Veuiller confirmer votre statut de transaction du service clientéle, transaction de {2}, ID de transaction {0}, montant est {1}
+230_SMSC=mclass^2&pid^61:230:Veuiller confirmer votre statut de transaction du service clientéle, transaction de {2}, ID de transaction {0}, montant est {1}
+230_USSD=mclass^2&pid^61:230:Veuiller confirmer votre statut de transaction du service clientéle, transaction de {2}, ID de transaction {0}, montant est {1}
+231_WEB=mclass^2&pid^61:231:Votre demande de transfert pour ID de transaction {0} de montant {1} ne peut pas être traité.
+231_SMSC=mclass^2&pid^61:231:Votre demande de transfert de {2} pour ID de transaction {0} de montant {1} ne peut pas être traité.
+231_USSD=mclass^2&pid^61:231:Votre demande de transfert de {2} pour ID de transaction {0} de montant {1} ne peut pas être traité.
+3560=mclass^2&pid^61:3560:Le processus de disparité de solde executé pour le solde d'utilisateur.Exeption en obtenant DANS des transactions de canal 
+3561=mclass^2&pid^61:3561:Le processus de disparité de solde executé pour le solde d'utilisateur.Exeption en obtenant HORS des transactions de canal 
+3562=mclass^2&pid^61:3562:Le processus de disparité de solde executé pour le solde d'utilisateur.Exeption en obtenant des transactions de récharge 
+3563=mclass^2&pid^61:3563:Le processus de disparité de solde executé pour le solde d'utilisateur.Exeption en executant le processus.
+3564=mclass^2&pid^61:3564:Le processus de disparité de solde executé pour le stock de réseau.Exeption en obtenant DANS des transactions de canal 
+3565=mclass^2&pid^61:3565:Le processus de disparité de solde executé pour le stock de réseau.Exeption en executant le processus
+
+## Translated on 19-07-06
+202_SMSC=mclass^2&pid^61:202:Numéro de transaction {0} de {1} INR de {5} est réussi. La valeur transféré est {2} INR,frais d'accès est {6} INR Votre nouveau solde est {3} est validité est {4}.
+202_USSD=mclass^2&pid^61:202:Numéro de transaction {0} de {1} INR de {5} est réussi. La valeur transféré est {2} INR,frais d'accès est {6} INR Votre nouveau solde est {3} est validité est {4}.
+202_WEB=mclass^2&pid^61:202:Numéro de transaction {0} de {1} INR est réussi. La valeur transféré est {2} INR,frais d'accès est {6} INR Votre nouveau solde est {3} est validité est {4}.
+601_SMSC=mclass^2&pid^61:601:Le numéro de transaction {0} de transférer {1} INR de {3} est reussi. La valeur transferée est {2} et le frais d'accés est {4} INR. Veuillez vérifier votre solde.
+601_USSD=mclass^2&pid^61:601:Le numéro de transaction {0} de transférer {1} INR de {3} est reussi. La valeur transferée est {2} et le frais d'accés est {4} INR. Veuillez vérifier votre solde.
+601_WEB=mclass^2&pid^61:601:Le numéro de transaction {0} de transférer {1} INR est reussi. La valeur transferée est {2} et le frais d'accés est {4} INR. Veuillez vérifier votre solde.
+230=mclass^2&pid^61:230:Veuillez confirmer votre statut de transaction du service clientéle, transaction du {2}, ID de transaction est {0}, montant est {1}. 
+231=mclass^2&pid^61:231:Votre demande de transfert du {2} pour ID de transaction {0} de montant {1} ne peut pas être traité.
+233=mclass^2&pid^61:233:Veuillez confirmer votre statut de transaction du service clientéle, transaction du {0}, ID de transaction est {1}, montant est {2}. 
+235=mclass^2&pid^61:235:Votre demande de transfert du {0} pour ID de transaction {1} de montant {2} ne peut pas être traité.
+1111=mclass^2&pid^61:1111:Langue de notification de destinataire invalide.
+1112=mclass^2&pid^61:1112:Format de message invalid. Le format correcte de message est: {0}
+2014=mclass^2&pid^61:2014:Montant invalide
+3506=mclass^2&pid^61:3506:Vous n'avez pas le solde suffisant pour votre récharge programmé {0}.
+3514=Produit:{0} Solde:{1} Montant de récharge:{2}
+3507=mclass^2&pid^61:3507:Souscripteur restrient n'existe pas.
+3508=mclass^2&pid^61:3508:Souscripteur restrient est suspendu.
+3511=mclass^2&pid^61:3511:Montant specifié est moins que minimum autorisé.
+3512=mclass^2&pid^61:3512:Montant specifié est plus que maximum autorisé.
+3513=mclass^2&pid^61:3513:Limite mensuel pour souscripteur a été attient.
+3515=mclass^2&pid^61:3515:Des données de transactions d'interface ont été purgées jusqu'à {0}. 
+3516=mclass^2&pid^61:3516:Le processus de disparité de solde exécuté avec succés pour solde d'utilisateur. Aucune disparité n'a trouvé. 
+3517=mclass^2&pid^61:3517:Le processus de disparité de solde exécuté avec succés pour solde d'utilisateur. Disparité trouvé.
+3518=mclass^2&pid^61:3518:Le processus de disparité de solde exécuté avec succés pour stock de réseau. Aucune disparité n'a trouvé. 
+3519=mclass^2&pid^61:3519:Le processus de disparité de solde exécuté avec succés pour stock de réseau. Disparité trouvé.
+3520=mclass^2&pid^61:3520:Le processus ne peut pas trouver les données dans Constants.props.
+3521=mclass^2&pid^61:3521:L'entrée de ce processus n'est pas trouvé dans le base de données.
+3522=mclass^2&pid^61:3522:Le processus ne peut pas mis à jour le statut dans le base de données.
+3523=mclass^2&pid^61:3523:Le processus ne peut pas trouver date de debut dans le base de données.
+3524=mclass^2&pid^61:3524:Le processus fonctionne déjà, ainsi ne peut pas être exécuté encore. 
+3525=mclass^2&pid^61:3525:Le processus ne peut pas trouver la date jusqu'à quel il a été executé.
+3526=mclass^2&pid^61:3526:Le transaction ambigu ou qui est sous traitement a été trouvée dans le base de données. 
+3527=mclass^2&pid^61:3527:Le processus a été exécuté déjà jusqu'à aujourd'hui.
+3529=mclass^2&pid^61:3529:Vous êtes dans le liste noire dans le systéme. 
+3556=mclass^2&pid^61:3556:Votre limite maximum quotidienne de demande {0} pour ce service est atteinte. 
+3557=mclass^2&pid^61:3557:Votre limite maximum quotidienne de demande {0} pour ce service est atteinte.
+3558=mclass^2&pid^61:3558:Votre limite maximum mensuel de demande {0} pour ce service est atteinte.
+3559=mclass^2&pid^61:3559:Votre limite maximum mensuel de demande {0} pour ce service est atteinte.
+4010=mclass^2&pid^61:4010:Erreur d'enregistrement
+4011=mclass^2&pid^61:4011:Le numéro de mobile {0} est enregistré avec succés comme {1}. Votre PIN est {2}
+4012=mclass^2&pid^61:4012:Le numéro de mobile {0} est enregistré avec succés comme {1}. Votre PIN est {2}
+4015=mclass^2&pid^61:4015:Le numéro de mobile {0} est dêjà enregistré avec succés comme {1}, veuillez contacter le service clientéle.
+4100=mclass^2&pid^61:4100:Copain n'est pas ajouté dans votre liste, veuillez essayer ultérieurment
+4101=mclass^2&pid^61:4101:Copain {0} est ajouté avec succés dans votre liste
+4105=mclass^2&pid^61:4105:Nom {0} fourni dans le message est invalide
+4110=mclass^2&pid^61:4110:Nom de copain {0} dêjà existe dans votre liste de copain, veuillez ajouter copain avec un nom différent
+4111=mclass^2&pid^61:4111:Numéro de mobile de copain {0} dêjà existe dans votre liste de copain
+4115=mclass^2&pid^61:4115:Aucune copain n'est trouvé dans votre liste de copain
+4116=mclass^2&pid^61:4116:Votre liste de copain est {0} 
+4117=mclass^2&pid^61:4117:Copain que vous essayez d'ajouter n'appartient pas à votre réseau
+4118=mclass^2&pid^61:4118:Votre demande ne peut pas être traité en ce moment, veuillez essayer ultérieurment.
+4199=mclass^2&pid^61:4199:Aucun tel copain trouvé
+4200=mclass^2&pid^61:4200:Votre demande de supprimer copain est echoué, veuillez essayer ultérieurment.
+4201=mclass^2&pid^61:4201:Copain {0} a été supprimé avec succés
+4202=mclass^2&pid^61:4202:Copain {0} n'existe pas dans votre liste de copain
+5059=mclass^2&pid^61:5059:Utilisateur {0} n'est pas active dans le systéme, veuillez contacter le service clientéle
+5066=mclass^2&pid^61:5066:Quantité demandé {0} n'est pas une quantité valide
+6019=mclass^2&pid^61:6019:Quantité demandé {0} doit être dans la limite de {1} et {2}
+7059=mclass^2&pid^61:7059:Aucun bloc diffrentiel de commission trouvé pour ce montant
+8104=Produit {0} est suspendu
+9900=mclass^2&pid^61:9900:Votre PIN a été débloqué, votre PIN est {0}
+9918=mclass^2&pid^61:9918:Votre PIN est {0}
+9919=mclass^2&pid^61:9919:Votre PIN a été réinitialiser, votre PIN est {0}
+9967=mclass^2&pid^61:9967:Le numéro de transaction {0} de {1} pour {2} a echoué, veuillez essayer ultérieurment.
+9966=mclass^2&pid^61:9966:Le numéro de transaction {0} de {1} pour {2} a echoué, veuillez essayer ultérieurment.
+9976=mclass^2&pid^61:9976:Numéro n'existe pas dans la liste blanc.
+9977=mclass^2&pid^61:9977:Le PIN que vous êtes entrée est incorrecte.
+9978=mclass^2&pid^61:9978:Votre PIN a été bloqué, veuillez contacter le service clientéle
+9979=mclass^2&pid^61:9979:Le numéro de mobile {0} est enregistré avec succés comme {1}
+9982=mclass^2&pid^61:9982:Sélecteur de langue invalide.Veuillez contacter le service clientéle. 
+9984=mclass^2&pid^61:9984:Votre suppression est sous traitement, demande n'est pas autorisé.Veuillez contacter le service clientéle. 
+9983=mclass^2&pid^61:9983:Votre suspension est sous traitement, demande n'est pas autorisé.Veuillez contacter le service clientéle. 
+9986=mclass^2&pid^61:9986:Message format invalide. Le format correcte du message est: {0} 
+9985=mclass^2&pid^61:9985:Message format invalide. Le format correcte du message est: {0}
+9989=mclass^2&pid^61:9989:Message format invalide. Le format correcte du message est: {0}
+9999=mclass^2&pid^61:9999:Votre PIN a été débloqué
+12003=mclass^2&pid^61:12003:Vous êtes modifié avec succés dans PreTUPS, votre ID de connexion web est {0}, et votre mot de passe est {1}
+12004=mclass^2&pid^61:12004:Vous êtes modifié avec succés dans PreTUPS, votre ID de connexion web est {0}
+12005=mclass^2&pid^61:12005:Vous êtes modifié avec succés dans PreTUPS, votre mot de passe de connexion web est {1}
+12006=mclass^2&pid^61:12006:Vous êtes désenregistré dans PreTUPS
+
+## Messages translated  on 26/07/06
+4307=mclass^2&pid^61:4307:Vous n'est pas autorisé de vérifier les soldes des autres.
+8511=mclass^2&pid^61:8511:Le montant {0} INR demandé  n'est pas autorisé car la valeur de transfert minimum autorisé est {1} INR
+8512=mclass^2&pid^61:8512:Le montant {0} INR demandé  n'est pas autorisé car la valeur de transfert maximum autorisé est {1} INR
+6001=mclass^2&pid^61:6001:Le format du message invalide. Veuiller contacter le service clientéle. 
+6010=mclass^2&pid^61:6010:Votre demande courant de transférer {1} INR ne peut pas être traité car vous n'avez pas assez de crédit.
+6011=mclass^2&pid^61:6011:Votre demande courant de transferer {1} INR pour prduit {0}ne peut pas être traité car votre solde courant est {2} INR et vous devez avoir minimum solde de {3} INR.
+6012=mclass^2&pid^61:6012:Vous avez attient le nombre maximum quotidien de transactions autorisé de {0}
+6013=mclass^2&pid^61:6013:Votre demande courant de transférer {0} INR ne peut pas être traité car votre montant de transfert quotidien est {1} INR et la limite maximum autorisé est {2} INR. 
+6014=mclass^2&pid^61:6014:Vous avez attient le nombre maximum hebdomadaire des transactions autorisé de {0}.
+6015=mclass^2&pid^61:6015:Votre demande courant de transférer {0} INR ne peut pas être traité car votre montant de transfert hebdomadaire est {1} INR et la limite maximum autorisé est {2} INR. 
+6016=mclass^2&pid^61:6016:Vous avez attient le nombre maximum mensuel des transactions autorisé de {0}.
+6017=mclass^2&pid^61:6017:Votre demande courant de transférer {0} INR ne peut pas être traité car votre montant de transfert hebdomadaire est {1} INR et la limite maximum autorisé est {2} INR. 
+2050=mclass^2&pid^61:2050:Ce numéro de mobile {0} ne peut pas utiliser ce service au sein de {1} minutes de la dernière transaction réussie
+2051=mclass^2&pid^61:2051:Votre demande courant de transférer {0} INR ne peut pas être traité car le nombre de transfert quotidien pour {1} est {2}. et le nombre maximum autorisé de transfert est {3}.
+2052=mclass^2&pid^61:2052:Votre demande courant de transférer {0} INR  ne peut pas être effectuée car le montant du transfert quotidien pour {1} est {2} INR et la limite maximum autorisé est {3} INR
+7023=mclass^2&pid^61:7023:Désolé, vous ne peut pas transférer crédit au votre compte. Le numéro d'expéditeur et celui de destinataire ne peut pas similaires.
+8503=mclass^2&pid^61:8503:Ce service n'est pas disponible avec le profil courant de destinataire.
+210=mclass^2&pid^61:210:La transaction numéro {1} de récharger {2} INR  à {0} a réussi. Votre nouveau solde est {3} INR.
+221=mclass^2&pid^61:221:Votre compte a été crédité en arriére pour le nombre echoué de transaction {2} de transférer {1} INR. à {0}. Votre solde courant est {3} INR.
+7053=mclass^2&pid^61:7053:Numéro de mobile que vous avez entré est invalide
+7025=mclass^2&pid^61:7025:Désole, le transfert à ce profil n'est pas autorisé
+7033=mclass^2&pid^61:7033:Désolé, vous n'est pas autorisé pour le récharge de crédit.
+7056=mclass^2&pid^61:7056:Votre demande courant de transférer {0} INR ne peut pas être traité car votre montant de transfert quotidien est {1} INR et la limite maximum autorisé est {2} INR.
+7057=mclass^2&pid^61:7057:Vous avez attient le nombre maximum quotidien des transactions autorisé de {2}.
+7040=mclass^2&pid^61:7040:Désolé, le récharge à ce profil n'est pas autorisé.
+7041=mclass^2&pid^61:7041:Ce service n'est pas disponible avec votre profil courant. 
+3071=mclass^2&pid^61:3071:Votre transaction sera traité sous peu.
+error.general.sql.processing=mclass^2&pid^61:error.general.sql.processing:Votre requête ne peut  être traitée pour le moment, veuillez réessayer ultérieurement.
+2018=mclass^2&pid^61:2018:Ce service n'est pas disponible avec votre profil courant.
+2019=mclass^2&pid^61:2019:Ce service n'est pas disponible avec votre statut courant.
+2023=mclass^2&pid^61:2023:Désolé, le numéro de mobile {0} de destinataire n'est pas autorisé pour ce service
+btsl.project.databseconnectionfailed=btsl.project.databseconnectionfailed:En raison d'une panne technique, le base de donnés est echoué, veuiller essayer ultérieurment
+2020=mclass^2&pid^61:2020:La dernière demande de destinataire {0} est sous traitement, veuiller essayer ultérieurment
+9968=mclass^2&pid^61:9968:Demande de paiement de facture port payé de INR {0}  ne peut pas être traité, identité de transaction est {2}.
+
+### Missing Keys Added on 07/08/06
+207=mclass^2&pid^61:207:Numéro de transaction {0} de récharger {1} INR de {4} est réussi.Votre nouveau solde est {3} INR, nouveau validité jusqu'à {6} & nouveau grâce jusqu'à {5}.
+208=mclass^2&pid^61:208:Numéro de transaction {0} de récharger {3} INR est sous traitement.
+603=mclass^2&pid^61:603:Numéro de transaction {0} de récharger {1} INR de {2} est réussi.Veuiller vérifier votre solde.
+1900=mclass^2&pid^61:1900:Code de langue invalide.
+1901=mclass^2&pid^61:1901:Langue a été changé avec succès à {0}
+1902=mclass^2&pid^61:1902:Langue ne peut pas été changé maintenant, veuiller essayer ultérieurment. 
+1903=mclass^2&pid^61:1903:Code de langue invalide. Veuiller entrer 0 pour Anglais ou 1 pour Francais.
+3566= mclass^2&pid^61:3566:Quantité demandé doit être plus que zéro
+3567= mclass^2&pid^61:3567:Le numéro de mobile de recepteur est invalide
+3568= mclass^2&pid^61:3568: Ce service n'est pas disponible avec le profil courant de recepteur
+3570=mclass^2&pid^61:3570:ID de badge {0} Compte réussi {1} Compte échoué {2} Disques Total {3} Disques traité {4} Disques non traité {5}
+
+##Keys added on 28/08/06
+6667=mclass^2&pid^61:6667:Montant invalide
+6668=mclass^2&pid^61:6668:Montant invalide
+6669=mclass^2&pid^61:6669:Montant doit être plus que zéro
+6670=mclass^2&pid^61:6670:Montant requis {0} doit être taille moins que ou égal à  {1}
+6671=mclass^2&pid^61:6671:Nom de copain est exigé
+6672=mclass^2&pid^61:6672:Nom de copain ne doit pas plus que {1} caractéres
+6674=mclass^2&pid^61:6674:Abonné peut avoir un maximum de {0} copains
+6675=mclass^2&pid^61:6675:Format de message invalide, le format correcte est {0}
+6676=mclass^2&pid^61:6676:Nom de copain ne peut pas avoir les caractéres spécial
+6677=mclass^2&pid^61:6677:Numéro de copain {0} provient d'un réseau incompatible
+6678=mclass^2&pid^61:6678:Format de message invalide, le format correcte est {0}
+6679=mclass^2&pid^61:6679:Format de message invalide, le format correcte est {0}
+6680=mclass^2&pid^61:6680:Format de message invalide, le format correcte est {0}
+6681=mclass^2&pid^61:6681:Vous ne peut pas désenregistré car vous avez les transactions en suspens. Veuiller contacter le service clientèle
+6682=mclass^2&pid^61:6682:Format de message invalide, le format correcte est {0}
+6683=mclass^2&pid^61:6683:Vous ne peut pas utiliser ce service car vous avez déjà enregistré
+6684=mclass^2&pid^61:6684:Format de message invalide, le format correcte est {0}
+6685=mclass^2&pid^61:6685:Vous ne peut pas suspendu car vous avez déjà suspendu
+6686=mclass^2&pid^61:6686:Copain invalide MSISDN
+
+##Changed messages
+7004=mclass^2&pid^61:7004:Source de la requête n'est pas autorisé.
+7006=mclass^2&pid^61:7006:Projection de numéro de mobile manque, veuillez contacter la service clientèle.
+7008=mclass^2&pid^61:7008:Message vide est en requête, veuillez vérifier votre format de requête.
+7009=mclass^2&pid^61:7009:Votre demande ne peut pas être traité en ce moment, veuillez contacter la service clientèle. 
+7010=mclass^2&pid^61:7010:Votre demande ne peut pas être traité en ce moment, veuillez contacter la service clientèle. 
+7011=mclass^2&pid^61:7011:Clé de POS invalide, veuillez contacter la service clientèle. 
+7029=mclass^2&pid^61:7029:La requête d'ID de transaction invalide, veuillez contacter la service clientèle. 
+7012=mclass^2&pid^61:7012:STK n'est pas enregistré, veuillez contacter la service clientèle. 
+7014=mclass^2&pid^61:7014:STK invalide, veuillez contacter la service clientèle. 
+7013=mclass^2&pid^61:7013:Vous n'est pas autorisé d'utiliser ce service.
+7031=mclass^2&pid^61:7031:Numéro de mobile de recepteur provient d'un réseau incompatible.
+6002=mclass^2&pid^61:6002:Interface de requête invalide, veuillez contacter la service clientèle. 
+6003=mclass^2&pid^61:6003:Interface de requête invalide, veuillez contacter la service clientèle. 
+6007=mclass^2&pid^61:6007:Montant de requête n'est pas autorisé dans votre réseau, veuillez contacter la service clientèle. 
+6008=mclass^2&pid^61:6008:Montant n'est pas valide dans le réseau, veuillez contacter la service clientèle. 
+6009=mclass^2&pid^61:6009:Montant de requête n'est pas autorisé dans votre réseau, veuillez contacter la service clientèle. 
+6005=mclass^2&pid^61:6005:Montant n'est pas valide dans le réseau, veuillez contacter la service clientèle. 
+6018=mclass^2&pid^61:6018:Montant de requête n'est pas autorisé pour le service, veuillez contacter la service clientèle. 
+8513=mclass^2&pid^61:8513:Réseau est temporairement suspendu, veuillez essayer plus tard.
+8514=mclass^2&pid^61:8514:Réseau est temporairement suspendu, veuillez essayer plus tard.
+8515=mclass^2&pid^61:8515:Interface de compte est suspendu, veuillez essayer plus tard.
+3010=mclass^2&pid^61:3010:Votre Skey précedent n'a pas été utilisé, veuillez essayer plus tard.
+3011=mclass^2&pid^61:3011:Votre Skey précedent n'a pas été utilisé, veuillez essayer plus tard.
+3014=mclass^2&pid^61:3014:Votre demamde ne peut pas être traité en ce moment, veuillez contacter la service clientèle. 
+7024=mclass^2&pid^61:7024:Numéro de mobile de recepteur n'est pas valide, veuillez contacter la service clientèle. 
+7032=mclass^2&pid^61:7032:Votre demamde ne peut pas être traité en ce moment, veuillez essayer plus tard.
+7045=mclass^2&pid^61:7045:Service n'est pas autorisé dans votre réseau, veuillez contacter la service clientèle. 
+7046=mclass^2&pid^61:7046:Service requis est temporairement suspendu dans votre réseau, veuillez essayer plus tard.
+7047=mclass^2&pid^61:7047:Service n'est pas autorisé dans votre réseau. 
+7044=mclass^2&pid^61:7044:Profil de commission est suspendu, veuillez essayer plus tard.
+1002=mclass^2&pid^61:1002:Interface de requête invalide, veuillez essayer plus tard.
+1003=mclass^2&pid^61:1003:Interface de requête invalide, veuillez essayer plus tard.
+2011=mclass^2&pid^61:2011:Votre demande ne peut pas être traité en ce moment, veuillez essayer plus tard.
+2012=mclass^2&pid^61:2012:Votre demande ne peut pas être traité en ce moment, veuillez essayer plus tard.
+2110=mclass^2&pid^61:2110:Votre demande ne peut pas être traité en ce moment, veuillez essayer plus tard.
+2111=mclass^2&pid^61:2111:Votre demande ne peut pas être traité en ce moment, veuillez essayer plus tard.
+2103=mclass^2&pid^61:2103:Votre demande ne peut pas être traité en ce moment, veuillez essayer plus tard.
+2104=mclass^2&pid^61:2104:Votre demande ne peut pas être traité en ce moment, veuillez essayer plus tard.
+2105=mclass^2&pid^61:2105:Votre demande ne peut pas être traité en ce moment, veuillez essayer plus tard.
+2106=mclass^2&pid^61:2106:Votre demande ne peut pas être traité en ce moment, veuillez essayer plus tard.
+2001=mclass^2&pid^61:2001:Numéro de mobile provient d'un réseau incompatible.
+7048=mclass^2&pid^61:7048:Numéro de mobile de recepteur provient d'un réseau incompatible.
+616=mclass^2&pid^61:616:Votre demande ne peut pas être traité en ce moment, veuillez essayer plus tard.
+2108=mclass^2&pid^61:2108:Interface de compte n'est pas trouvé, veuillez contacter le service clientèle.
+2109=mclass^2&pid^61:2109:Interface de compte de recepteur n'est pas trouvé, veuillez contacter le service clientèle.
+7043=mclass^2&pid^61:7043:L'ensemble de groupe de cartes est suspendu, veuillez essayer plus tard.
+2017=mclass^2&pid^61:2017:Classe service invalide, veuillez contacter le service clientèle.
+2102=mclass^2&pid^61:2102:Interface de requête invalide, veuillez contacter le service clientèle.
+505=mclass^2&pid^61:505:Votre demamde ne peut pas être traité en ce moment, veuillez essayer plus tard.
+3070=mclass^2&pid^61:3070:Votre demamde ne peut pas être traité en ce moment, veuillez essayer plus tard.
+6004=mclass^2&pid^61:6004:Montant de requète n'est pas autorisé pour ce service, veuillez contacter le service clientèle.
+6006=mclass^2&pid^61:6006:Montant n'est pas valide dans le réseau, veuillez contacter le service clientèle.
+
+P2P_RECON_RPT_REPORT_LABEL=Code de réseau, ID d 'interface, Type d'interface, Type de service, Sous service, Catégorie de transfert, ID de transfert, ID de référence d'interface, ID de référence, Code de réponse d'interface, ID d'interface, Numéro de mobile, Type d'utilisateur, Statut de transfert, Code du groupe de carte, Date de transfert, Date et heure de transfert, Type d'entrée, Validité de prime de recepteur, Valeur de prime de recepteur, Période de grâce de recepteur, Valeur requis, Valeur de transfert
+C2S_RECON_RPT_REPORT_LABEL=Code de réseau, ID d 'interface, Type d'interface, Type de service, Sous service, ID de transfert, ID de référence d'interface, ID de référence, Code de réponse d'interface, ID externe, MSISDN d'expéditeur, MSISDN d'recepteur, Statut de transfert, Code du groupe de carte, Date de transfert, Date et heure de transfert, Validité de prime de recepteur, Valeur de prime de recepteur, Période de grâce de recepteur, Valeur requis, Valeur de transfert
+
+
+##Add for Daily Report In XLS
+dailyreport.c2s.sheet.name=Statut de service de C2S 
+dailyreport.p2p.sheet.name=Statut de service de P2P
+dailyreport.hourlybreakup.sheet.name=Dissolution horaire
+dailyreport.header=PreTUPS
+BTOPUP=TopUp de copain
+ETOPUP=eTopUP
+ERECH=eRecharge
+dailyreport.failure.recharge.report=Rapport de recharge échoué
+dailyreport.success.recharge.report=Rapport de recharge réussi
+dailyreport.generatedon=Généré le :
+dailyreport.date=Date :
+dailyreport.network=Réseau	:
+dailyreport.networks=Réseau
+dailyreport.product=Produit
+dailyreport.count=Compte
+dailyreport.amount=Montant
+dailyreport.service=Service
+dailyreport.errorcodes=Codes d'erreur
+dailyreport.fortheday={0} (Pour le jour)
+dailyreport.forthemonth={0} (Pour le mois)
+dailyreport.summary=SOMMAIRE
+dailyreport.totalrequest=Requêtes total
+dailyreport.totalsuccess=Total réussi
+dailyreport.totalfailed=Total échoué
+dailyreport.totalamigous=Total ambigu
+dailyreport.totalunderprocess=Total sous traitement
+dailyreport.forday=Pour le jour
+dailyreport.formonth=Pour le mois
+dailyreport.hourly.breakup1=0-1
+dailyreport.hourly.breakup2=1-2
+dailyreport.hourly.breakup3=2-3
+dailyreport.hourly.breakup4=3-4
+dailyreport.hourly.breakup5=4-5
+dailyreport.hourly.breakup6=5-6
+dailyreport.hourly.breakup7=6-7
+dailyreport.hourly.breakup8=7-8
+dailyreport.hourly.breakup9=8-9
+dailyreport.hourly.breakup10=9-10
+dailyreport.hourly.breakup11=10-11
+dailyreport.hourly.breakup12=11-12
+dailyreport.hourly.breakup13=12-13
+dailyreport.hourly.breakup14=13-14
+dailyreport.hourly.breakup15=14-15
+dailyreport.hourly.breakup16=15-16
+dailyreport.hourly.breakup17=16-17
+dailyreport.hourly.breakup18=17-18
+dailyreport.hourly.breakup19=18-19
+dailyreport.hourly.breakup20=19-20
+dailyreport.hourly.breakup21=20-21
+dailyreport.hourly.breakup22=21-22
+dailyreport.hourly.breakup23=22-23
+dailyreport.hourly.breakup24=23-24
+dailyreport.total=Total
+dailyreport.success=Succés
+dailyreport.successcount=Compte réussi
+dailyreport.totalcount=Compte total
+dailyreport.hourrange=Limite d'heure
+dailyreport.c2ssummary=SOMMAIRE C2S
+dailyreport.p2psummary=SOMMAIRE P2P
+dailyreport.c2s.failure.recharge.report=Rapport de recharge échoué de C2S
+dailyreport.p2p.failure.recharge.report=Rapport de recharge échoué de P2P
+dailyreport.success.recharge.report.c2s.hourly=C2S d'heure en heure
+dailyreport.success.recharge.report.p2p.hourly=P2P d'heure en heure
+
+##messages for the c2s reconciliation process
+7700=mclass^2&pid^61:7700:ID de transaction {0} de date {1} pour le client {2} de montant {3} est échouée
+7701=mclass^2&pid^61:7701:ID de transaction {0} de date {1} pour le client {2} de montant {3} est échouée, votre compte est crédité en arriére et votre nouveau solde est {4}
+7702=mclass^2&pid^61:7702:ID de transaction {0} de date {1} pour le client {2} de montant {3} est réussi
+7703=mclass^2&pid^61:7703:ID de transaction {0} de date {1} pour le client {2} de montant {3} est réussi, votre nouveau solde est {4}
+7704=mclass^2&pid^61:7704:ID de transaction {0} de date {1} pour le client {2} de montant {3} est réussi, commission additionelle est {4} et votre nouveau solde est {5}
+
+##Daily report summary 
+dailyreport.summary.sheet.name=Rapport de sommaire
+dailyreport.summary.report.name=Rapport de service
+dailyreport.summary.header.name=PreTUPS
+dailyreport.summary.date.label=Date:-
+dailyreport.summary.generatedon.label=Généré le:-
+dailyreport.summary.c2s.misdate=Dernier date de C2S MIS 
+dailyreport.summary.p2p.misdate=Dernier date de P2P MIS 
+
+dailyreport.summary.network.label=Réseaux
+dailyreport.summary.products.label=Produits
+dailyreport.summary.fortheday={0} (Pour le jour)
+dailyreport.summary.forthemonth={0} (Pour le mois)
+dailyreport.summary.channelservices.label=Services de canal
+dailyreport.summary.count.label=Compte
+dailyreport.summary.value.label=Valeur (INR)
+dailyreport.summary.products.noproducts=Aucun produit n'est pas disponible
+
+dailyreport.summary.service.O2C_T=Transferts de O2C
+dailyreport.summary.service.O2C_W=Retraite de O2C
+dailyreport.summary.service.O2C_R=Retour de O2C
+dailyreport.summary.service.C2C_T=Transferts de C2C
+dailyreport.summary.service.C2C_W=Retraite de C2C
+dailyreport.summary.service.C2C_R=Retour de C2C
+
+dailyreport.summary.service.networkstock=Stock de réseau
+dailyreport.summary.total.label=Total
+dailyreport.summary.forthedayp2p={0} (Pour le jour)
+dailyreport.summary.forthemonthp2p={0} (Pour le mois)
+
+dailyreport.summary.p2pservices.label=Services de P2P
+dailyreport.summary.p2pcount.label=Compte
+dailyreport.summary.p2pvalue.label=Valeur (INR)
+dailyreport.summary.p2pproducts.noproducts=Aucun produit n'est pas disponible
+dailyreport.summary.p2ptotal.label=Total
+dailyreport.summary.activeusers.label=Utilisateurs active
+dailyreport.summary.forthedayusers.label=Pour le jour
+dailyreport.summary.forthemonthusers.label=Pour le mois
+dailyreport.summary.channelusers.label=Utilisateurs de canal
+dailyreport.summary.p2pusers.label=Abonnés de P2P
+dailyreport.summary.summproducts.label=Produits
+dailyreport.summary.summstock.label=Stock
+dailyreport.summary.productCode={0}
+dailyreport.summary.networkStock.total=Stock de réseau
+dailyreport.summary.userbalance.total=Solde d'utilisateur
+
+##Added against Test Lab report
+4328=mclass^2&pid^61:4328:Logueur de PIN est invalise. Il devrait être entre {0} et {1}.
+
+
+##Added for balance mismatch process
+3572=mclass^2&pid^61:3572:Le processus de disparité de solde exécuté pour le solde d'utilisateur. Exception en obtenant le solde de fermeture.
+3574=mclass^2&pid^61:3574:Le processus de disparité de solde exécuté pour le solde d'utilisateur. Exception en obtenant le montant différentiel
+3571=mclass^2&pid^61:3571:Le processus de disparité de solde exécuté pour le stock de réseau. Exception en obtenant le stock de fermeture.
+3573=mclass^2&pid^61:3573:Le processus de disparité de solde exécuté pour le stock de réseau. Exception en obtenant les transactions de stock.
+3575=mclass^2&pid^61:3575:Le processus de disparité de solde exécuté pour le stock de réseau. Exception en obtenant max de date
+3576=mclass^2&pid^61:3576:Le processus de disparité de solde exécuté pour le stock de réseau. Exception en obtenant le solde courant.
+3577=mclass^2&pid^61:3577:Le processus de disparité de solde exécuté pour le stock de réseau. Exception en obtenant les transactions de réconciliation.
+
+##Add for c2sbillpaymentcontroller
+5555=mclass^2&pid^61:5555:Montant invalide
+5556=mclass^2&pid^61:5556:La série de ce nombre de compte n'existe pas dans le système.
+5557=mclass^2&pid^61:5557:Vous ne pouvez pas payer votre facture, le nombre de client ne peut pas être similaire de votres.
+5558=mclass^2&pid^61:5558:Ce service n'est pas disponible avec votre profil courant.
+5559=mclass^2&pid^61:5559:Ce service n'est pas disponible avec votre profil du contrôle de transfert courant.
+5560=mclass^2&pid^61:5560:Vous n'est pas autorisé d'utiliser le service de paiement de facture.
+5561=mclass^2&pid^61:5561:Vous avez être interdit temporairement d'utiliser ce service. Veuiller contacter le service clientèle. 
+5562=mclass^2&pid^61:5562:Votre demande ne peut pas être traité en ce moment, veuillez essayer plus tard.
+5563=mclass^2&pid^61:5563:Votre demande de payer le facture de {1} INR ne peut pas être traité en ce moment. Le nombre de transaction est {0}.
+5564=mclass^2&pid^61:5564:Votre demande de {0} INR ne peut pas être traité en ce moment, veuillez essayer plus tard.
+5565=mclass^2&pid^61:5565:Le nombre de compte du destinataire est invalide, veuillez contacter le service clientèle. 
+5566=mclass^2&pid^61:5566:L'interface du compte est suspendu, veuillez essayer plus tard.
+5567=mclass^2&pid^61:5567:Votre demande sera traité sous peu.
+5568=mclass^2&pid^61:5568:Votre demande ne peut pas être traité en ce moment, veuillez essayer plus tard.
+5569=mclass^2&pid^61:5569:Votre demande de payer le facture de {2} INR pour {0} sera traité sous peu, ID de transaction est {1}.
+5570=mclass^2&pid^61:5570:Votre demande de payer le facture de {2} INR pour {0} est sous traitement, ID de transaction est {1}.
+5571=mclass^2&pid^61:5571:Votre demande de payer le facture de {2} INR par {3} est sous traitement. Votre valeur de transfert est {1} et ID de transaction est {0}.
+5572=mclass^2&pid^61:5572:Votre demande de payer le facture de {0} INR de {1} est réussi, votre facture restant est {2}. 
+5573=mclass^2&pid^61:5573:Veuillez confirmer le statut de votre demande de la paiement de la facture du service clientèle, transaction de {2}, ID de transaction est {0}, montant est {1}.
+5574=mclass^2&pid^61:5574:Le nombre de transaction {0} de payer le facture de {3} INR de {2} est réussi. Votre valeur de transfert est {1}. Veuillez vérifier votre solde.  
+5575=mclass^2&pid^61:5575:Le nombre de transaction {1} de payer le facture de {2} INR pour {0} est accepté pour traitement, votre nouveau solde est INR {3}.  
+5576=mclass^2&pid^61:5576:Votre demande de paiement de la facture de {1} INR de {2} ne peut pas être traité, ID de transaction est {0}.
+5577=mclass^2&pid^61:5577:Identité du destinataire invalide.
+5578=mclass^2&pid^61:5578:Le nombre du compte du destinataire {0} n'est pas correcte. Il devrait contenir des {1} octets. 
+5579=mclass^2&pid^61:5579:Le nombre du compte {0} n'est pas correcte. Il devrait contenir des {1} octets. 
+5580=mclass^2&pid^61:5580:Le nombre du compte du destinataire {0} provient d'un réseau non-soutenu.
+5581=mclass^2&pid^61:5581:Nombre invalide de notification du destinataire.
+5582=mclass^2&pid^61:5582:Langue invalide de notification du destinataire.
+5583=mclass^2&pid^61:5583:Format incorrecte du message. Le format correcte du message est: {0} 
+5584=mclass^2&pid^61:5584:Nombre de transaction {0} de {1} est sous traitement.
+5585=mclass^2&pid^61:5585:Le nombre de compte du destinataire que vous êtes spécifié est invalide, il devrait être une valeur numérique.
+
+## new entries added for O2C transfer
+6101=mclass^2&pid^61:6101:Catégorie du transfert non autorisé
+6102=mclass^2&pid^61:6102:Le type de paiement n'a été pas trouvé
+6103=mclass^2&pid^61:6103:Le nombre d'instrument de paiement est invalide 
+6104=mclass^2&pid^61:6104:Date d'instrument de paiement est vide
+6105=mclass^2&pid^61:6105:Type de paiement est vide
+6106=mclass^2&pid^61:6106:Date d'instrument de paiement  n'est pas dans le format correcte.
+6107=mclass^2&pid^61:6107:Le transfert n'a été pas autorisé maintenant, veuillez essayer plus tard. 
+6108=mclass^2&pid^61:6108:Les produit(s) spécifiés dans le demande n'assortit pas avec des produit(s) de réseau
+6109=mclass^2&pid^61:6109:Les produit(s) spécifiés dans le demande n'assortit pas avec des produit(s) du profil de commission
+6110=mclass^2&pid^61:6110:Les produit(s) spécifiés dans le demande n'assortit pas avec des produit(s) du profil de contrôle du transfert
+6111=mclass^2&pid^61:6111:Nombre de transaction externe est négative.
+6112=mclass^2&pid^61:6112:Nombre de transaction externe n'est pas numérique.
+6113=mclass^2&pid^61:6113:Nombre de transaction externe n'est pas unique.
+6114=mclass^2&pid^61:6114:Nombre de référence est vide
+6115=mclass^2&pid^61:6115:Remarque n'est pas dans le format correcte
+6116=mclass^2&pid^61:6116:Le message n'est pas dans le format correcte
+6119=mclass^2&pid^61:6119:Nombre de transaction externe est vide.
+6120=mclass^2&pid^61:6120:Date externe est vide
+6121=mclass^2&pid^61:6121:Date externe n'est pas dans le format correcte
+6122=mclass^2&pid^61:6122:La quantité demandé est invalide
+6123=mclass^2&pid^61:6123:La longueur du nombre de référence est invalide
+6124=mclass^2&pid^61:6124:Les produits demandé sont de types différent
+6125=mclass^2&pid^61:6125:Les produit(s) spécifiés dans le demande n'assortit pas avec des produit(s) de la règle de transfert 
+6160={0}:{1}
+6161={0}:{1}
+6162=mclass^2&pid^61:6162:Le transfert des produit(s) {0} a été fait par {4}, montant nette payable est {3}. Votre nouveau solde des produit(s) est {1}, ID de transaction est {2}.  
+6163={0}:{1}
+6164={0}:{1}
+6165=mclass^2&pid^61:6165:Le transfert des produit(s) {0} a été fait par {4}, montant nette payable est {3}. Votre nouveau solde des produit(s) est {1}, ID de transaction est {2}.
+
+## new entries added for O2CReturn
+13043=mclass^2&pid^61:13043:Votre nombre est interdit
+13044=mclass^2&pid^61:13044:Quantité demandé est invalide
+13045=mclass^2&pid^61:13045:ID de transaction externe est négative
+13046=mclass^2&pid^61:13046:Erreur dans le transaction de stock du réseau
+13047=mclass^2&pid^61:13047:Erreur en mettant à jour de transferts dans comptes de l'utilisateur
+13049=mclass^2&pid^61:13049:Stock du réseau n'a été pas crédité
+13050=mclass^2&pid^61:13050:Erreur en mettant à jour le solde quotidien de l'utilisateur
+13051=mclass^2&pid^61:13051:Votre numéro n'est pas active
+13200=mclass^2&pid^61:13200:Demande de retour des produit(s) {0} est réussi, montant nette payable est {3}. Votre nouveau solde des produit(s) est {1}. ID de transaction est {2} 
+13201={0}:{1}
+13202={0}:{1}
+
+##new entries added for O2CWithdraw
+7109=mclass^2&pid^61:7109:Le produit n'a pas été associé à la règle du transfert.
+7110=mclass^2&pid^61:7110:Le produit n'a pas été associé au profil de commission. 
+7111=mclass^2&pid^61:7111:Le version dernier du profil de commission n'a pas été associé. 
+7112=mclass^2&pid^61:7112:Le produit n'a pas été associé au profil de transfert.
+7113=mclass^2&pid^61:7113:Erreur en mettant à jour la base des données.
+7114=mclass^2&pid^61:7114:La retraite des produit(s) {0} a été effectué par {4}, montant nette recevable est {3}. Votre nouveau solde des produit(s) est {1}. ID de transaction est {2}
+7115={0}:{1}
+7116={0}:{1}
+
+##New Key added
+111=mclass^2&pid^61:111:Format du message d'initier le transfert d'O2C invalide
+112=mclass^2&pid^61:112:Format du message de transfert d'O2C direct invalide
+113=mclass^2&pid^61:113:Format du message de retour O2C invalide
+114=mclass^2&pid^61:114:Format du message de retraite O2C invalide
+311=mclass^2&pid^61:311:Code du réseau et réseau de MSISDN n'assortit pas
+312=mclass^2&pid^61:312:Erreur: Code de réseau non trouvé
+313=mclass^2&pid^61:313:Utilisateur invalide
+
+##New Interface Error Code-I, Status code
+19001_R=mclass^2&pid^61:19001:Aucun IDs de l'interface programmé pour le récepteur
+19001_S=mclass^2&pid^61:19001:Aucun IDs de l'interface programmé pour l'expéditeur
+19001_R=mclass^2&pid^61:19001:Aucun IDs de l'interface programmé pour le récepteur
+19001_S=mclass^2&pid^61:19001:Aucun IDs de l'interface programmé pour l'expéditeur
+19001_R=mclass^2&pid^61:19001:Aucun IDs de l'interface programmé pour le récepteur
+19001_S=mclass^2&pid^61:19001:Aucun IDs de l'interface programmé pour l'expéditeur
+19001_R=mclass^2&pid^61:19001:Aucun IDs de l'interface programmé pour le récepteur
+19001_S=mclass^2&pid^61:19001:Aucun IDs de l'interface programmé pour l'expéditeur
+19001_R=mclass^2&pid^61:19001:Aucun IDs de l'interface programmé pour le récepteur
+19001_S=mclass^2&pid^61:19001:Aucun IDs de l'interface programmé pour l'expéditeur
+
+19002_R=mclass^2&pid^61:19002:Erreur en obtenant le programmateur pour le récepteur
+19002_S=mclass^2&pid^61:19002:Erreur en obtenant le programmateur pour l'expéditeur
+19002_R=mclass^2&pid^61:19002:Erreur en obtenant le programmateur pour le récepteur
+19002_S=mclass^2&pid^61:19002:Erreur en obtenant le programmateur pour l'expéditeur
+19002_R=mclass^2&pid^61:19002:Erreur en obtenant le programmateur pour le récepteur
+19002_S=mclass^2&pid^61:19002:Erreur en obtenant le programmateur pour l'expéditeur
+19002_R=mclass^2&pid^61:19002:Erreur en obtenant le programmateur pour le récepteur
+19002_S=mclass^2&pid^61:19002:Erreur en obtenant le programmateur pour l'expéditeur
+19002_R=mclass^2&pid^61:19002:Erreur en obtenant le programmateur pour le récepteur
+19002_S=mclass^2&pid^61:19002:Erreur en obtenant le programmateur pour l'expéditeur
+
+19003_R=mclass^2&pid^61:19003:Erreur en programmant le noeud pour le récepteur
+19003_S=mclass^2&pid^61:19003:Erreur en programmant le noeud pour l'expéditeur
+19003_R=mclass^2&pid^61:19003:Erreur en programmant le noeud pour le récepteur
+19003_S=mclass^2&pid^61:19003:Erreur en programmant le noeud pour l'expéditeur
+19003_R=mclass^2&pid^61:19003:Erreur en programmant le noeud pour le récepteur
+19003_S=mclass^2&pid^61:19003:Erreur en programmant le noeud pour l'expéditeur
+19003_R=mclass^2&pid^61:19003:Erreur en programmant le noeud pour le récepteur
+19003_S=mclass^2&pid^61:19003:Erreur en programmant le noeud pour l'expéditeur
+19003_R=mclass^2&pid^61:19003:Erreur en programmant le noeud pour le récepteur
+19003_S=mclass^2&pid^61:19003:Erreur en programmant le noeud pour l'expéditeur
+
+19004_R=mclass^2&pid^61:19004:Erreur en initialisant des paramètres de noeud pour le récepteur 
+19004_S=mclass^2&pid^61:19004:Erreur en initialisant des paramètres de noeud pour l'expéditeur
+19004_R=mclass^2&pid^61:19004:Erreur en initialisant des paramètres de noeud pour le récepteur 
+19004_S=mclass^2&pid^61:19004:Erreur en initialisant des paramètres de noeud pour l'expéditeur
+19004_R=mclass^2&pid^61:19004:Erreur en initialisant des paramètres de noeud pour le récepteur 
+19004_S=mclass^2&pid^61:19004:Erreur en initialisant des paramètres de noeud pour l'expéditeur
+19004_R=mclass^2&pid^61:19004:Erreur en initialisant des IDs des paramètres de noeud pour le récepteur 
+19004_S=mclass^2&pid^61:19004:Erreur en initialisant des paramètres de noeud pour l'expéditeur
+19004_R=mclass^2&pid^61:19004:Erreur en initialisant des paramètres de noeud pour le récepteur 
+19004_S=mclass^2&pid^61:19004:Erreur en initialisant des paramètres de noeud pour l'expéditeur
+
+19005_R=mclass^2&pid^61:19005:Le vérification maximum de noeud a atteint pour le récepteur
+19005_S=mclass^2&pid^61:19005:Le vérification maximum de noeud a atteint pour l'expéditeur
+19005_R=mclass^2&pid^61:19005:Le vérification maximum de noeud a atteint pour le récepteur
+19005_S=mclass^2&pid^61:19005:Le vérification maximum de noeud a atteint pour l'expéditeur
+19005_R=mclass^2&pid^61:19005:Le vérification maximum de noeud a atteint pour le récepteur
+19005_S=mclass^2&pid^61:19005:Le vérification maximum de noeud a atteint pour l'expéditeur
+19005_R=mclass^2&pid^61:19005:Le vérification maximum de noeud a atteint pour le récepteur
+19005_S=mclass^2&pid^61:19005:Le vérification maximum de noeud a atteint pour l'expéditeur
+19005_R=mclass^2&pid^61:19005:Le vérification maximum de noeud a atteint pour le récepteur
+19005_S=mclass^2&pid^61:19005:Le vérification maximum de noeud a atteint pour l'expéditeur
+
+##Keys added for DP6
+7351=ICCID n'est pas trouvé dans la demande.
+7352=Le message viérge est en demande, veuillez vérifier votre format de demande.
+7353=La clé de POS invalide, veuillez contacter le service clientèle
+7354=Votre demande ne peut pas être traité en ce moment, veuillez contacter le service clientèle
+7355=Votre demande ne peut pas être traité en ce moment, veuillez contacter le service clientèle
+7356=Le projection de numéro de mobile manque, veuillez contacter le service clientèle
+7357=Votre demande ne peut pas être traité en ce moment, veuillez contacter le service clientèle
+7358=Désolé, vous n'est pas autorisé d'utiliser SMSs pour ce service. 
+7359=Désolé, vous n'est pas autorisé d'utiliser les applications de e-recharge SIM pour ce service.
+7360=Votre demande es sous traitement.
+7361=Votre demande ne peut pas être traité en ce moment, veuillez contacter le service clientèle.
+
+##New Keys added on 16/01/07
+7885=mclass^2&pid^61:7885:Format de message invalide. Le format correcte est : {0}
+7886=mclass^2&pid^61:7886:N'est pas un ID de transfert valide
+7887=mclass^2&pid^61:7887:Statut dernier de transfert de ID de transaction:{0}, date et heure de transfert:{1},MSISDN:{2},statut de transfert:{3}, type de service:{4}, produit:{5}, valeur:{6} 
+7888=mclass^2&pid^61:7888:Statut dernier de transfert de ID de transaction:{0}, date et heure de transfert:{1},MSISDN:{2},statut de transfert:{3}, type de service:{4}, produit:{5}, valeur:{6} 
+7889=mclass^2&pid^61:7889:Statut dernier de transfert de ID de transaction:{0}, date et heure de transfert:{1},MSISDN:{2},statut de transfert:{3}, type de service:{4}, produit:{5}, valeur:{6} 
+7890=mclass^2&pid^61:7890:Statut dernier de transfert de ID de transaction:{0}, date et heure de transfert:{1},MSISDN:{2},statut de transfert:{3}, type de service:{4}, produit:{5}, valeur:{6} 
+7891=mclass^2&pid^61:7891:Statut dernier de transfert de ID de transaction:{0}, date et heure de transfert:{1},MSISDN:{2},statut de transfert:{3}, type de service:{4}, produit:{5}, valeur:{6} 
+
+##New Keys added on 18/01/07
+7892=mclass^2&pid^61:7892:Aucun utilisateur n'est trouvé dans le réseau.
+7893=mclass^2&pid^61:7893:Aucun utilisateur n'existe, mot de passe est invalide.
+7894=mclass^2&pid^61:7894:Aucun utilisateur n'existe, code externe est invalide.
+7895=mclass^2&pid^61:7895:Aucun utilisateur n'existe, ID de connexion est invalide.
+7896=mclass^2&pid^61:7896:Aucun transaction n'est effectué par vous.
+
+##New Keys added on 19/01/07
+7880=mclass^2&pid^61:7880:Le processus ne peut pas éxecuté à cause d'une marque de service invalide
+7881=mclass^2&pid^61:7881:Le processus ne peut pas éxecuté avec succès parce que mis à jour des base de données ont échoué 
+7882=mclass^2&pid^61:7882:Le processus ne peut pas éxecuté avec succès parce que mis à jour de cache a échoué
+7883=mclass^2&pid^61:7883:{0} processus de reprendre/suspendre completé avec succès 
+7884=mclass^2&pid^61:7884:Erreur s'est produite pendant l'éxecution de {0} processus de reprendre/suspendre 
+7897=mclass^2&pid^61:7897:Ce service n'est pas disponible temporairement, veuiller essayer plus tard.
+
+
+########################################################################################################
+		####################### ENTRIES ONLY FOR VOMS ###########################
+########################################################################################################
+
+## Error codes for VOMS Inventory report
+88840=mclass^2&pid^61:88840:Le processus de création de rapport d'inventaire de bon n'a pas pu être exécuté 
+88841=mclass^2&pid^61:88841:Exception en obtenant le raccordement de base de données 
+88842=mclass^2&pid^61:88842:Exception en obtenant les valeurs constants
+88843=mclass^2&pid^61:88843:Exception dans le jet de rendement de dossier d'ouverture  
+88844=mclass^2&pid^61:88844:Exception tout en envoyant le courrier 
+88845=mclass^2&pid^61:88845:Exception tout en chargeant l'information de bon 
+88846=mclass^2&pid^61:88846:Exception tout en chargeant l'information d'archive de bon
+88847=mclass^2&pid^61:88847:Exception tout en chargeant les comptes de bon
+88848=mclass^2&pid^61:88848:Exception tout en chargeant l'information de sommaire de bon
+88849=mclass^2&pid^61:88849:Exception tout en chargeant la liste de badge
+88850=mclass^2&pid^61:88850:Exception tout en analysant la valeur de corde à longue 
+88851=mclass^2&pid^61:88851:Exception tout en faisant l'annuaire de dossier à l'emplacement indiqué dans constants.props 
+88852=mclass^2&pid^61:88852:Exception tout en chargeant le dossier de constants.props
+88853=mclass^2&pid^61:88853:Exception tout en chargeant le dossier de LogConfig.props
+88854=mclass^2&pid^61:88854:Exception en obtenent le lieu 
+88855=mclass^2&pid^61:88855:Exception tout en envoyant le courrier 
+88856=mclass^2&pid^61:88856:Exception quand encore essai pour exécuter le processus pour aujourd'hui 
+
+## Labels for VOMS Inventory report
+dailyreport.inventory.sheet0.mainheading=Système de gestion de bon
+dailyreport.inventory.xlrpt.sheet0=Rapport d'inventaire
+dailyreport.inventory.xlrpt.sheet1=Rapport d'activité
+#dailyreport.inventory.sheet0.mainheading=Système de gestion de bon
+dailyreport.inventory.sheet0.circle=Réseau
+dailyreport.inventory.sheet0.inventReport=Rapport d'inventaire
+dailyreport.inventory.sheet0.date=Date
+dailyreport.inventory.sheet0.generatedon=Généré le :
+dailyreport.inventory.sheet0.productname=Produit
+dailyreport.inventory.sheet0.genlabel=Généré
+dailyreport.inventory.sheet0.enablabel=Permis
+dailyreport.inventory.sheet0.rchlabel=Rechargé
+dailyreport.inventory.sheet0.stdalabel=Volé/Neutralisé avant permis
+dailyreport.inventory.sheet0.stdaafterlabel=Volé/Neutralisé aprés permis
+dailyreport.inventory.sheet0.onholdlabel=Sur la prise
+dailyreport.inventory.sheet0.prodnamelabel=Profil
+dailyreport.inventory.sheet0.emailenavaillabel=Bons disponible
+dailyreport.inventory.sheet0.prodnamemrplabel=MRP
+dailyreport.inventory.sheet0.todaystotallabel=Total d'aujourd'hui
+dailyreport.inventory.sheet0.archivedlabel=Archivée
+dailyreport.inventory.sheet0.availballabel=Solde disponible
+dailyreport.inventory.sheet0.availballmrplabel=Valeur
+dailyreport.inventory.sheet0.totalballabel=Total
+dailyreport.inventory.sheet0.reconcilelabel=Reconcilé
+dailyreport.inventory.sheet0.reconciledlabel=Reconcilé
+dailyreport.inventory.sheet0.emailgenlabel=Généré
+dailyreport.inventory.sheet0.emailgenarchlabel=Généré archivé
+dailyreport.inventory.sheet0.emailenlabel=Permis
+dailyreport.inventory.sheet0.emailenarchlabel=Permis archivé
+dailyreport.inventory.sheet1.mainheading=Système de gestion de bon
+dailyreport.inventory.sheet1.circle=Réseau
+dailyreport.inventory.sheet1.actReport=Rapport d'activité
+dailyreport.inventory.sheet1.date=Date
+dailyreport.inventory.sheet1.generatedon=Généré le :
+dailyreport.inventory.sheet1.creatbatchlabel=Création des badges
+dailyreport.inventory.sheet1.productslabel=Produits
+dailyreport.inventory.sheet1.batcheslabel=Badges
+dailyreport.inventory.sheet1.voucherslabel=Bons
+dailyreport.inventory.sheet1.batchtypelabel=Type de badge
+dailyreport.inventory.sheet1.batchtotallabel=Total
+dailyreport.inventory.sheet1.batchsucclabel=Réussi
+dailyreport.inventory.sheet1.batchfaillabel=Echoué
+dailyreport.inventory.sheet1.vouchertotlabel=Total
+dailyreport.inventory.sheet1.vouchersucclabel=Réussi
+dailyreport.inventory.sheet1.voucherfaillabel=Echoué
+dailyreport.inventory.sheet1.voucherdownloadlabel=Téléchargement de bon
+dailyreport.inventory.sheet1.prodnamelabel=Profil
+dailyreport.inventory.sheet1.prodmrplabel=MRP (INR)
+dailyreport.inventory.sheet1.batchnolabel=Numéro de badge
+dailyreport.inventory.sheet1.totvouchlabel=Bons total
+dailyreport.inventory.sheet1.fromsnolabel=De numéro de sérié
+dailyreport.inventory.sheet1.tosnolabel=Au numéro de sérié
+dailyreport.inventory.sheet1.totsucclabel=Total réussi
+dailyreport.inventory.sheet1.totfaillabel=Total echoué
+dailyreport.inventory.sheet1.toddownctlabel=Téléchargement d'aujourd'hui
+dailyreport.inventory.sheet1.totaildownctlabel=Téléchargement total
+dailyreport.inventory.sheet1.vostatuschglabel=Activités de changement de statut de bon
+dailyreport.inventory.sheet1.fromstatlabel=De statut
+dailyreport.inventory.sheet1.tostatlabel=Au statut
+dailyreport.inventory.sheet1.noodvouchlabel=Nombre des bons
+dailyreport.inventory.sheet1.vgenerated=Bons généré
+dailyreport.inventory.sheet1.venabled=Bon permis
+dailyreport.inventory.sheet1.vonhold=Bon sur la prise
+dailyreport.inventory.sheet1.vstolen=Bon volé
+dailyreport.inventory.sheet1.vdamaged=Bon endommagé
+dailyreport.inventory.sheet1.vconsumed=Bon consommé
+dailyreport.inventory.sheet1.nobatcheslabel=Aucun badges n'a fait
+dailyreport.inventory.sheet0.diststock=Stock de canal
+voms.project.status.vstoldama=Volé-Neutralisé
+dailyreport.inventory.sheet0.totallabel=Total
+dailyreport.inventory.xlrpt.bodymessagestart=Rapport d'inventaire généré par le système pour {0} 
+cummreport.recharges.xlrpt.sheet0=-Rapport de recharge
+voms.project.status.vgenerated=Généré
+voms.project.status.vunderprocess=Sous traitement
+voms.project.status.vconsumed=Consommé
+voms.project.status.vstolen=Volé
+voms.project.status.vsold=Vendu
+voms.project.status.vonhold=Sur la prise
+voms.project.status.vdamaged=Neutralisé
+voms.project.status.vreconcile=Reconcilé
+voms.project.status.venabled=Permis
+voms.project.status.vscheduled=Programmé
+dailyreport.inventory.email.tableactivitylabel=Activité
+dailyreport.inventory.email.tableproductlabel=Produit
+dailyreport.inventory.email.tablecountlabel=Compte
+dailyreport.inventory.email.sectableactivitylabel=Activité
+dailyreport.inventory.email.secforlabel=Produit
+dailyreport.inventory.email.sectablebtaffectlabel=Badges affecté
+dailyreport.inventory.email.sectablecountlabel=Compte
+dailyreport.inventory.email.thirdtableactivitylabel=Activité
+dailyreport.inventory.email.thirdprodlabel=Produit
+dailyreport.inventory.email.thirdtablefromlabel=De statut
+dailyreport.inventory.email.thirdtabletolabel=Au statut
+dailyreport.inventory.email.thirdtablecountlabel=Compte
+dailyreport.inventory.email.exceptionalcaseslabel=Cases exceptionelle
+
+##voucher Upload Process
+5901=mclass^2&pid^61:5901:La connection ne peut pas être ouvert
+5902=mclass^2&pid^61:5902:L'annuaire indiqué ne contient aucun dossier 
+5903=mclass^2&pid^61:5903:Le format d'en-tête n'est pas correct 
+5904=mclass^2&pid^61:5904:Le dossier indiqué de bon à télécharger n'existent pas 
+5905=mclass^2&pid^61:5905:Le format du dossier indiqué de bon est invalide
+5906=mclass^2&pid^61:5906:La prolongation du dossier n'est pas définie 
+5907=mclass^2&pid^61:5907:L'annuaire indiqué n'existent pas 
+5908=mclass^2&pid^61:5908:Le seperateur de nom de fichier n'est pas indiqué 
+5909=mclass^2&pid^61:5909:Le dossier de Constants.props n'est pas indiqué
+5910=mclass^2&pid^61:5910:Le dossier de ProcessLogConfig.props n'est pas indiqué
+5911=mclass^2&pid^61:5911:L'entrée pour le processus n'a pas pu être trouvée dans la base de données 
+5912=mclass^2&pid^61:5912:Le processus est déjà en cours
+5913=mclass^2&pid^61:5913:Le statut de processus ne peut pas être mis à jour
+5914=mclass^2&pid^61:5914:L'instance de la classe intéressée d'analyseur n'a pas pu être créé 
+5915=mclass^2&pid^61:5915:Les dossiers initiaux sont absents 
+5916=mclass^2&pid^61:5916:Le mot de passe n'a pas pu être recherché 
+5917=mclass^2&pid^61:5917:Tentative invalide d'accès 
+5918=mclass^2&pid^61:5918:Le nombre de disques dans le dossier pas match que le nombre a indiqué par l'utilisateur 
+5919=mclass^2&pid^61:5919:Le nombre d'erreurs dans le dossier excèdent le nombre maximum permis 
+#5920=mclass^2&pid^61:5920:
+5921=mclass^2&pid^61:5921:L'emplacemenmt de mouvement pour la protection n'existent pas 
+5922=mclass^2&pid^61:5922:Le dossier de bon n'a pas pu être déplacé à l'emplacement de protection 
+5923=mclass^2&pid^61:5923:Tentative de connexion invalide
+5924=mclass^2&pid^61:5924:Erreur en insérant des bons dans la table 
+5925=mclass^2&pid^61:5925:Le produit indiqué n'existent pas dans le système 
+5926=mclass^2&pid^61:5926:Erreur interne en recherchant les données 
+5927=mclass^2&pid^61:5927:L'utilisateur n'est pas autorisé à courir le processus 
+5928=mclass^2&pid^61:5928:Erreur générale de traitement
+5929=mclass^2&pid^61:5929:Le nombre de disques dans le dossier sont plus que le nombre maximum permis 
+5930=mclass^2&pid^61:5930:Erreur de configuration
+5931=mclass^2&pid^61:5931:Disparité de disques 
+5932=mclass^2&pid^61:5932:Disque n'existe pas pour être inséré 
+5933=mclass^2&pid^61:5933:Le PIN déjà existe dans le système
+5934=mclass^2&pid^61:5934:Le numéro de série existe déjà dans le système 
+
+##Messages for EVD/EVR
+6687=mclass^2&pid^61:6687:Désolé, vous n'est pas autorisé d'utiliser ce service.
+6688=mclass^2&pid^61:6688:Ce service n'est pas disponible avec votre profil de transfert courant.
+6689=mclass^2&pid^61:6689:Ce service n'est pas disponible avec votre profil courant.
+6690=mclass^2&pid^61:6690:Montant préferé spécifié dans le message est invalide, veuiller spécifier le montant correcte.
+6691=Ce série des numéros de mobile n'est pas définis dans le système.
+6692=mclass^2&pid^61:6692:Votre demande ne peut pas étre traité en ce moment, veuillez essayer plus tard. 
+6693=mclass^2&pid^61:6693:Vote demande pour le bon pour rechrger {1} INR ne peut pas étre traité en ce moment. Le numéro de transaction est {0}.
+6694=mclass^2&pid^61:6694:Votre demande de {0} ne peut pas étre traité en ce moment, veuillez essayer plus tard. 
+6695=mclass^2&pid^61:6695:Interface de compte n'est pas active.
+6696_SERID00008=mclass^2&pid^61:6696:Numéro de transaction {0} de {7} INR de {4} est réussi. Votre nouveau solde est {3} INR, nouveau validité jusqu'à {6} & nouveau grâce jusqu'à {5}. 
+6696_WEB=mclass^2&pid^61:6696:Numéro de transaction {0} de {7} INR est réussi. Votre nouveau solde est {3} INR, nouveau validité jusqu'à {6} & nouveau grâce jusqu'à {5}. 
+6696_USSD=mclass^2&pid^61:6696:Numéro de transaction {0} de {7} INR de {4} est réussi. Votre nouveau solde est {3} INR, nouveau validité jusqu'à {6} & nouveau grâce jusqu'à {5}. 
+6696_SMSC=mclass^2&pid^61:6696:Numéro de transaction {0} de {7} INR de {4} est réussi. Votre nouveau solde est {3} INR, nouveau validité jusqu'à {6} & nouveau grâce jusqu'à {5}. 
+6697_SERID00008=mclass^2&pid^61:6697:Numéro de transaction {0} de {3} INR de {2} est réussi.
+6697_WEB=mclass^2&pid^61:6697:Numéro de transaction {0} de {3} INR de {2} est réussi.
+6697_SMSC=mclass^2&pid^61:6697:Numéro de transaction {0} de {3} INR de {2} est réussi.
+6697_USSD=mclass^2&pid^61:6697:Numéro de transaction {0} de {3} INR de {2} est réussi.
+6698=mclass^2&pid^61:6698:Le numéro de transaction {1} de {2} INR à {0} est réussi. Votre nouveau solde est {3} INR est nombre de série est {9}
+6699=mclass^2&pid^61:6699:Veuillez confirmer votre statut de transaction du service clientèle, transaction de {2}, ID de transaction est {0}, montant est {1}.
+6700=mclass^2&pid^61:6700:Votre demande de {2} pour ID de transaction {0} de montant {1} ne peut pas être traité.
+6701=mclass^2&pid^61:6701:Votre demande de {2} INR à {0} sera traité bientôt. Numéro de transaction est {1}.
+6702=mclass^2&pid^61:6702:Interface de compte de numéro de recepteur n'est pas trouvé. 
+6703=mclass^2&pid^61:6703:Numéro de transaction {0} de {3} INR est sous traitement. 
+6704=mclass^2&pid^61:6704:Interface de bon n'est pas trouvé.
+6705=mclass^2&pid^61:6705:Nombre de série pour le bon de MRP {1} pour le client {2} est {4}, ID de transaction est {0}. 
+6706=mclass^2&pid^61:6706:PIN pour le bon de MRP {1} du fournisseur {2} est {3}, ID de transaction est {0} et le nombre de série est {4}.
+14001_S=mclass^2&pid^61:14001:Aucun bon n'existe pour le montant demandé.
+14001_R=mclass^2&pid^61:14001:Aucun bon n'existe pour le montant demandé.
+14002_S=mclass^2&pid^61:14002:Aucun bon n'existe pour le montant demandé.
+14002_R=mclass^2&pid^61:14002:Aucun bon n'existe pour le montant demandé.
+14000_S=mclass^2&pid^61:14000:Votre demande ne peut pas être traité en ce moment, veuillez contacter le service clientèle.
+14000_R=mclass^2&pid^61:14000:Votre demande ne peut pas être traité en ce moment, veuillez contacter le service clientèle.
+14003_S=mclass^2&pid^61:14003:Votre demande ne peut pas être traité en ce moment, veuillez contacter le service clientèle.
+14003_R=mclass^2&pid^61:14003:Votre demande ne peut pas être traité en ce moment, veuillez contacter le service clientèle.
+
+##New entries
+6707=mclass^2&pid^61:6707:Votre demande ne peut pas être traité en ce moment, veuillez contacter le service clientèle.
+6708=mclass^2&pid^61:6708:Votre demande ne peut pas être traité en ce moment, veuillez contacter le service clientèle.
+6709=mclass^2&pid^61:6709:Votre demande ne peut pas être traité en ce moment, veuillez contacter le service clientèle.
+6710=mclass^2&pid^61:6710:Votre demande ne peut pas être traité en ce moment, veuillez contacter le service clientèle.
+88857=mclass^2&pid^61:88857:Le nombre d'expéditeur et de récepteur ne peut pas être même. 
+6711=mclass^2&pid^61:6711:PIN ne peut pas envoyé avec succès.
+6600=mclass^2&pid^61:6600:Nombre de PIN est {0} pour le nombre de série {1}.
+6601=mclass^2&pid^61:6601:L'erreur de numéro de série double dans le dossierde bon
+
+##Entries added on 20/02/07
+6603=mclass^2&pid^61:6603:Longueur du tête incorrecte
+6604=mclass^2&pid^61:6604:Nombre total des disques est plus que le nombre des disques autorisé
+6605=mclass^2&pid^61:6605:Longueur PIN dans le tête doit être un intéger
+6606=mclass^2&pid^61:6606:Erreur dans la monnaie
+6607=mclass^2&pid^61:6607:Quelques bons sont moins que des seuils minimum définés: {0}. 
+6608={0}-{1} 
+6609=mclass^2&pid^61:6609:Le processus n'a pas trouvé le date jusqu'au quel il doit être exécuté.
+6610=mclass^2&pid^61:6610:Le processus est incapable de mettre à jour le date fait maximum dans les base de données.
+6611=mclass^2&pid^61:6611:Une certaine erreur s'est produite, on ne peut pas continuer le processus.
+6612=mclass^2&pid^61:6612:Le numéro de transaction {1} de {2} INR à {0} est réussi. Votre nouveau solde est {3} INR.
+
+
+############################# END OF ENTRIES FOR VOMS ################################################
+
+## added on 13/02/07
+6602=mclass^2&pid^61:6602:Votre demande courant de transférer {1} INR pour le produit {0} ne peut pas être traité puisque votre solde courant est {2} INR et vous pouvez transférer seulement {3} pourcentage de votre solde.
+
+15000=mclass^2&pid^61:15000:Erreur en initializant la piscine de raccordement des objets du client
+15001=mclass^2&pid^61:15001:Erreur en obtenant les objets du client de la piscine de raccordement.
+15002=mclass^2&pid^61:15002:Les objets gratuit du client ne sont pas disponible dans la piscine de raccordement.
+15003=mclass^2&pid^61:15003:Erreur en obtenant nouveau objet du client
+15004=mclass^2&pid^61:15004:Erreur en initializant l'objet du client
+15005=mclass^2&pid^61:15005:Erreur en essayant de faire une connection au système IN
+15006=mclass^2&pid^61:15006:Erreur en initializant la raccordement
+15007=mclass^2&pid^61:15007:Erreur en commençant le fil du battement du coeur
+15008=mclass^2&pid^61:15008:Erreur en detruisant le fil du battement du coeur
+
+4328=mclass^2&pid^61:4309:Utilisateur ne voit pas la même niveau de la solde.
+
+## Missing keys added on 3/5/07
+
+15009=mclass^2&pid^61:15009:Erreur s'est produite en initiant des propriété des fermeture de l'interface
+15010=mclass^2&pid^61:15010:Erreur s'est produite pendant le mis à jour des propriété des fermeture de l'interface
+500_R=mclass^2&pid^61:500:Votre demande ne peut pas être traité en ce moment, veuillez essayer plus tard.
+500_S=mclass^2&pid^61:500:Votre demande ne peut pas être traité en ce moment, veuillez essayer plus tard.
+7898=mclass^2&pid^61:7898:Ce service n'est pas disponible temporairement, veuillez essayer plus tard
+7899=mclass^2&pid^61:7899:{0} reprendre/suspendre l'exécution automatique échoué en raison d'une certaine erreur
+7900=mclass^2&pid^61:7900:{0} reprendre/suspendre l'exécution automatique fini avec succès
+mgtreport.ambiguous=Ambigu
+mgtreport.amount=Montant
+mgtreport.count=Compte
+mgtreport.credit=Crédit
+mgtreport.daily=(Quotidien)
+mgtreport.date=Date:
+mgtreport.debit=Débit
+mgtreport.fail=L'echec
+mgtreport.generatedon=Généré sur:
+mgtreport.header=PreTUPS
+mgtreport.header.interfaceWise=Sommaire selon l'interface
+mgtreport.interface=Interface
+mgtreport.module=Module:
+mgtreport.monthly=(Mensuel)
+mgtreport.network=Réseau
+mgtreport.receiverInterface=Interface de recepteur
+mgtreport.receiverValidation=Validation de recepteur
+mgtreport.recharge.header=Rapport de sommaire de direction
+mgtreport.senderCategory=Catégorie de l'expéditeur
+mgtreport.senderInterface=Interface de l'expéditeur
+mgtreport.senderValidation=Validation de l'expéditeur
+mgtreport.service=Service
+mgtreport.sheet.name=Rapport de sommaire de direction
+mgtreport.success=Succès
+mgtreport.total=Total
+mgtreport.validation=Validation
+techreport.ambiguous=Ambigu
+techreport.amount=Montant
+techreport.c2s.recharge.header=Rapport technique de C2S
+techreport.c2s.sheet.name=Rapport technique de C2S
+techreport.count=Compte
+techreport.date=Date:
+techreport.fail=L'echec
+techreport.generatedon=Généré sur:
+techreport.header=PreTUPS
+techreport.interface=Interface
+techreport.network=Réseau
+techreport.p2p.recharge.header=Rapport technique de P2P 
+techreport.p2p.sheet.name=Rapport technique de P2P 
+techreport.receiverInterface=Interface du recepteur
+techreport.senderInterface=Interface de l'expéditeur
+techreport.service=Service
+techreport.success=Succès
+techreport.total=Total
+techreport.underprocess=Sous traitement
+
+00000=mclass^2&pid^61:00000:Votre demande ne peut pas être traité en ce moment, veuillez essayer plus tard. Merci.
+
+## Messages for MVD
+18881=mclass^2&pid^61:18881:Vous pouvez téléchargé seulement à (0) nombre des bons dans une demande.
+18882=mclass^2&pid^61:18882:Votre demande ne peut pas être traité en ce moment, veuillez essayer plus tard. Merci.
+18884=mclass^2&pid^61:18884:Désolé, vous n'est pas autorisé d'utiliser ce service.
+18885=mclass^2&pid^61:18885:Ce service n'est pas disponible avec votre profil de transfert courant
+18886=mclass^2&pid^61:18886:Ce service n'est pas disponible avec votre profil de commission courant
+18887=mclass^2&pid^61:18887:Montant préfére spécifié dans le message est invalide, veuillez spécifier montant exacte.
+18888=mclass^2&pid^61:18888:Votre demande d'envoyer {2} bons de {1} INR ne peut pas être traité en ce moment. Nombre de transaction est {0} à {3}.
+18889=mclass^2&pid^61:18889:Votre demande pour {0} bons de {1} INR ne peut pas être traité en ce moment, veuillez essayer plus tard.
+18892=mclass^2&pid^61:18892:Veuillez confirmer votre statut de transaction du service clientèle, transaction de {2}, ID de transaction est de {0} à {4}, montant est {1}, qunatité est {5}.
+18893=mclass^2&pid^61:18893:Votre demande de {2} de ID de transaction {0} à {4} de montant {1} pour la quantité {5} ne peut pas être traité.
+18894=mclass^2&pid^61:18894:Votre demande de {3} bons de montant {2} INR à {0} sera traité sous peu. Nombre de transaction est de {1} à {4}.
+18896=mclass^2&pid^61:18896:PIN pour les bons de MRP {1} de détaillant {2} est {3}, ID de tranaction est {0}
+18897=mclass^2&pid^61:18897:Nombre demandé de bons ne sont pas disponibles.
+18898=mclass^2&pid^61:18898:Vous avez attient le nombre maximun quotidien des transactions permis de {0}.
+18899=mclass^2&pid^61:18899:Votre demande courant de transferer {3} bons de {0} INR ne peut pas être traité parce que votre montant de transfert quotidien est {1} INR et la limite maximale autorisé est {2} INR.
+18900=mclass^2&pid^61:18900:Vous avez attient le nombre maximun hebdomadaire des transactions permis de {0}.
+18901=mclass^2&pid^61:18901:Votre demande courant de transferer {3} bons de {0} INR ne peut pas être traité parce que votre montant de transfert hebdomadaire est {1} INR et la limite maximale autorisé est {2} INR
+18902=mclass^2&pid^61:18902:Vous avez attient le nombre maximun mensuel des transactions permis de {0}.
+18903=mclass^2&pid^61:18903:Votre demande courant de transferer {3} bons de {0} INR ne peut pas être traité parce que votre montant de transfert mensuel est {1} INR et la limite maximale autorisé est {2} INR
+18904=mclass^2&pid^61:18904:Vous ne pouvez pas utiliser ce service au sein de {0} minutes de dernier transaction réussi.
+18905=mclass^2&pid^61:18905:Vous ne pouvez pas utiliser ce service au sein de {0} minutes de dernier transaction réussi.
+18906=mclass^2&pid^61:18906:Votre demande courant de transferer {3} bons de {0} INR ne peut pas être traité parce que votre montant de transfert quotidien est {1} INR et la limite maximale autorisé est {2} INR.
+18907=mclass^2&pid^61:18907:Votre demande courant de transferer {3} bons de {0} INR ne peut pas être traité parce que votre montant de transfert quotidien est {1} INR et la limite maximale autorisé est {2} INR.
+18908=mclass^2&pid^61:18908:Vous avez attient le nombre maximum quotidien  des transactions permis de {2}.
+18909=mclass^2&pid^61:18908:Vous avez attient le nombre maximum quotidien  des transactions permis de {2}.
+18910=mclass^2&pid^61:18910:Nombre de transaction {1} à {6} envoyer {5} bons des {2} INR à {0} est sous traitement. Votre nouveau solde est {4} INR.
+18911=mclass^2&pid^61:18911:Il n'y a aucun produit avec MRP spécifié.
+18912=mclass^2&pid^61:18912:On ne peut pas mis à jour les bons.
+18913=mclass^2&pid^61:18913:On ne peut pas mis à jour les bons.
+18914=mclass^2&pid^61:18914:Votre compte a été credité en arriere pour nombre de transaction echoué {2} à {4} pour envoyer {5} bons de {1} INR à {0}. Votre nouveau solde est {3} INR.
+18915=mclass^2&pid^61:18915:Votre demande courant de transferer {4} bons des {1} INR pour produit {0} ne peut pas être traité parce que votre solde courant est {2} INR et vous pouvez transferer seulement {3} pourcentage de votre solde.
+18916=mclass^2&pid^61:18916:Votre demande courant de transferer {4} bons des {1} INR pour produit {0} ne peut pas être traité parce que votre solde courant est {2} INR et vous devrait avoir solde restant de {3} INR
+18917=mclass^2&pid^61:18917:Votre demande courant de transferer {3} bons de {1} INR ne peut pas être traité parce que vous n'est pas assez crédit.
+18918=mclass^2&pid^61:18918:Valeur des bons requis {0} devrait être dans la rangéé de {1} et {2}
+
+#Entries for MNP 
+7792=mclass^2&pid^61:7792:Numéro de mobile invalide
+7777=mclass^2&pid^61:7777:Port de prèfixe nest pas défini
+7793=mclass^2&pid^61:7793:Port de prèfixe nest pas défini
+7790=mclass^2&pid^61:7790:Numéro de mobile n'est pas de votre réseau
+7778=mclass^2&pid^61:7778:Numéro de mobile dèjà existe dans votre système.
+7803=mclass^2&pid^61:7803:Utilisateur est dèjà suspendu
+7791=mclass^2&pid^61:7791:Suspension d'utilisateur de canal echoué, veuillez essayer plus tard.
+7789=mclass^2&pid^61:7789:Le processus de mis à jour de numéro de mobile echoué, veuillez essayer plus tard
+
+15002_R=mclass^2&pid^61:15002:L'objet gratuit de client n'est pas disponible dans le groupe de racordement.
+18920=mclass^2&pid^61:18920:Quantité demandé est invalide.
+
+13070=mclass^2&pid^61:13070:Votre demamde ne peut pas être traité en ce moment, veuillez essayer plus tard.
+23070=mclass^2&pid^61:23070:Votre demamde ne peut pas être traité en ce moment, veuillez essayer plus tard.
+33070=mclass^2&pid^61:33070:Votre demamde ne peut pas être traité en ce moment, veuillez essayer plus tard.
+79001=mclass^2&pid^61:79001:Pour {0} service, execution de mis à jour de auto cache echoué.
+79002=mclass^2&pid^61:79002:Pour {0} service, execution de mis à jour de auto cache avec succès sur des instances {1} et echoué pour des instances {2}.
+
+
+7061=mclass^2&pid^61:7061:Veuiller changer votre PIN.
+7062=mclass^2&pid^61:7062:Veuiller changer votre PIN défaut.
+7595=mclass^2&pid^61:7595:Format incorrecte du date de grâce
+7596=mclass^2&pid^61:7596:Recharge n'est pas autorisé puis que des jours autorisé dépasse la période de grâce pour l'utilisateur suspendu.
+7597=mclass^2&pid^61:7597:Montant insuffisant pour la service d'arriere de nombre.
+7599=mclass^2&pid^61:7599:Valeur de transfert insuffisant pour obtenir la service d'arriere de nombre.
+
+EXTERNAL_FILE_HEADER=Identification de transfert, L'identification d'expéditeur, Nom d'expéditeur, L'expéditeur MSISDN, Code de catégorie d'expéditeur, Code de domaine d'expéditeur, Le code externe, Identification de propriétaire, Nom de propriétaire, Le code externe de propriétaire, Identification de parent, Nom de parent, Code externe de parent, Type de source, Le récepteur MSISDN, A demandé la quantité, Quantité de débit d'expéditeur, La quantité de crédit de récepteur, Identification d'interface, Type de service, Le type secondaire de service, Identification de classe de service, Nom de classe de service, Date de transfert, Transfèrent le date time
+
+226_SERID00005=mclass^2&pid^61:226:Nombre de transaction {0} pour recharger {1} INR de {3} est réussi. Votre nouveau solde est {1} INR, nouvelle validité jusqu'à {2} & frais de l'accès {5}.
+226_SERID00010=mclass^2&pid^61:226:Nombre de transaction {0} pour recharger {1} INR de {3} est réussi. Votre nouveau solde est {1} INR, nouvelle validité jusqu'à {2} & frais de l'accès {5}.
+226_WEB=mclass^2&pid^61:226:Nombre de transaction {0} pour recharger {1} INR de {3} est réussi. Votre nouveau solde est {1} INR, nouvelle validité jusqu'à {2} & frais de l'accès {5}.
+226_SMSC=mclass^2&pid^61:226:Nombre de transaction {0} pour recharger {1} INR de {3} est réussi. Votre nouveau solde est {1} INR, nouvelle validité jusqu'à {2} & frais de l'accès {5}.
+226_USSD=mclass^2&pid^61:226:Nombre de transaction {0} pour recharger {1} INR de {3} est réussi. Votre nouveau solde est {1} INR, nouvelle validité jusqu'à {2} & frais de l'accès {5}.
+226=mclass^2&pid^61:226:Nombre de transaction {0} pour recharger {1} INR de {3} est réussi. Votre nouveau solde est {1} INR, nouvelle validité jusqu'à {2} & frais de l'accès {5}.
+
+227_SERID00005=mclass^2&pid^61:227:Nombre de transaction {0} pour recharger {1} INR de {3} est réussi. Votre nouveau solde est {1} INR, nouvelle validité jusqu'à {2} & frais de l'accès {5}.
+227_SERID00010=mclass^2&pid^61:227:Nombre de transaction {0} pour recharger {1} INR de {3} est réussi. Votre nouveau solde est {1} INR, nouvelle validité jusqu'à {2} & frais de l'accès {5}.
+227_WEB=mclass^2&pid^61:227:Nombre de transaction {0} pour recharger {1} INR de {3} est réussi. Votre nouveau solde est {1} INR, nouvelle validité jusqu'à {2} & frais de l'accès {5}.
+227_SMSC=mclass^2&pid^61:227:Nombre de transaction {0} pour recharger {1} INR de {3} est réussi. Votre nouveau solde est {1} INR, nouvelle validité jusqu'à {2} & frais de l'accès {5}.
+227_USSD=mclass^2&pid^61:227:Nombre de transaction {0} pour recharger {1} INR de {3} est réussi. Votre nouveau solde est {1} INR, nouvelle validité jusqu'à {2} & frais de l'accès {5}.
+227=mclass^2&pid^61:227:Nombre de transaction {0} pour recharger {1} INR de {3} est réussi. Votre nouveau solde est {1} INR, nouvelle validité jusqu'à {2} & frais de l'accès {5}.
+
+20001=mclass^2&pid^61:20001:Erreur tout en recherchant le taux de conversion.
+20001_S=mclass^2&pid^61:20001:Erreur tout en recherchant le taux de conversion.
+20001_R=mclass^2&pid^61:20001:Erreur tout en recherchant le taux de conversion.
+
+##Weekly Amount
+19000=mclass^2&pid^61:19000:Votre demande courant de transférer {0} INR ne peut pas être traité parce que votre montant de trasfert hebdomadaire est {1} INR & la limite maximum permis est {2} INR.
+19001=mclass^2&pid^61:19001:Votre demande courant de transférer {0} INR ne peut pas être traité parce que votre montant de trasfert hebdomadaire est {1} INR & la limite maximum permis est {2} INR.
+19004=mclass^2&pid^61:19004:Votre demande courant de transférer {0} INR ne peut pas être traité parce que votre montant de trasfert hebdomadaire pour {1} est {2} INR & la limite maximum permis est {3} INR.
+
+##Monthly Amount
+19002=mclass^2&pid^61:19002:Votre demande courant de transférer {0} INR ne peut pas être traité parce que votre montant de trasfert mensuel est {1} INR & la limite maximum permis est {2} INR.
+19003=mclass^2&pid^61:19003:Votre demande courant de transférer {0} INR ne peut pas être traité parce que votre montant de trasfert mensuel est {1} INR & la limite maximum permis est {2} INR.
+19005=mclass^2&pid^61:19005:Votre demande courant de transférer {0} INR ne peut pas être traité parce que votre montant de trasfert mensuel pour {1} est {2} INR & la limite maximum permis est {3} INR.
+
+##Weekly count
+19006=mclass^2&pid^61:19006:Vous avez attient le nombre maximum des transactions permis de {2}.
+19007=mclass^2&pid^61:19007:Vous avez attient le nombre maximum des transactions de {2}.
+19010=mclass^2&pid^61:19010:Votre demande courant de transférer {0} INR ne peut pas être traité parce que nombre de transferts hebdomadaire pour {1} est {2}. & la limite maximum de nombre de transactions permis est {3}.
+
+##Monthly Count
+19008=mclass^2&pid^61:19008:Vous avez attient le nomre maximum des transactions permis de {2}.
+19009=mclass^2&pid^61:19009:Vous avez attient le nombre maximum des transactions permis de {2}.
+19011=mclass^2&pid^61:19011:Votre demande courant de transférer {0} INR ne peut pas être traité parce que nombre de transferts mensuel pour {1} est {2}. & la limite maximum de nombre de transactions permis est {3}.
+
+## Maximum Allowed Amount
+19012=mclass^2&pid^61:19012:Votre demande courant de transférer {0} INR ne peut pas être traité parce que le solde totale après récharge pour {1} sera être {2} & le solde maximum disponible est {3}.
+19013=mclass^2&pid^61:19013:Votre demande courant de transférer {0} INR ne peut pas être traité parce que le solde totale après récharge pour {1} sera être {2} & le solde maximum disponible est {3}.
+19014=mclass^2&pid^61:19014:Votre demande courant de transférer {0} INR ne peut pas être traité parce que le solde totale après récharge pour {1} sera être {2} & le solde maximum disponible est {3}.
+
+3578=mclass^2&pid^61:3578:Votre demande courant de transférer {2} INR ne peut pas être traitée comme votre limite maximale autorisée est {1} INR.
+
+##for c2s enquiry status
+21004=mclass^2&pid^61:21004:ID de l'ensemble de groupe de carte non trouvé.
+21005=mclass^2&pid^61:21005:Aucune bloc ne défini pour ID de l'ensemble de groupe de carte.
+21006=mclass^2&pid^61:21006:Bloc de groupe de carte non trouvé
+
+21001_S=mclass^2&pid^61:21001:Transaction est réussi.
+21001_R=mclass^2&pid^61:21001:Transaction est réussi.
+21001=mclass^2&pid^61:21001:Transaction est réussi.
+
+21002_S=mclass^2&pid^61:21002:Transaction est echoué.
+21002_R=mclass^2&pid^61:21002:Transaction est echoué.
+21002=mclass^2&pid^61:21002:Transaction est echoué.
+
+21007=mclass^2&pid^61:21007:Ce service n'est pas autorisé à user de C2S enquête.
+21008=mclass^2&pid^61:21008:Ce service n'est pas permis dans ce réseau pour C2S enquête.
+
+
+##############################################################################################################
+		###################### Messages created in 5.1.2 ############################
+##############################################################################################################
+
+##Entries for pin history management
+7063=mclass^2&pid^61:7063:Nouveau PIN ne devrait pas le même comme les derniers PINs {0}.
+7064=mclass^2&pid^61:7064:Nouveau PIN ne devrait pas le même comme les derniers PINs {0}.
+
+#ICCID MSISDN Mapping 
+19032=Les deux, MSISDN et ICCID sont exigé de traiter la demande
+19033=MSISDN et ICCID specifié sont dèjà projeté
+19034=Erreur en updation le projection. Veuiller essayer plus tard.
+19035=ICCID est invalide.
+19036=Les deux, MSISDN et ICCID sont vierge.
+19037=ICCID est vierge.
+19038=MSISDN est vierge.
+
+##Messages key for Validity Update. 
+22003=mclass^2&pid^61:22003:Numéro de transaction {0} de l'extension de la validité de {2} jours de {1} est réussi. Frais applicable est {3}
+22004=mclass^2&pid^61:22004:Numéro de transaction {1} de l'extension de la validité de {3} jours à {0} est réussi. Frais applicable est {2} 
+
+18897_S=mclass^2&pid^61:18897:Bons avec le statut permis n'est pas trouvé.
+18897_R=mclass^2&pid^61:18897:Bons avec le statut permis n'est pas trouvé.
+
+##DoubleRechargeChange
+251=mclass^2&pid^61:251:Votre demande ne peut pas être traitée en ce moment,veuillez essayer ultérieurment.
+252=mclass^2&pid^61:252:Votre demande ne peut pas être traitée en ce moment,veuillez essayer ultérieurment.
+253=mclass^2&pid^61:253:Votre demande ne peut pas être traitée en ce moment,veuillez essayer ultérieurment.
+254=mclass^2&pid^61:254:Votre demande ne peut pas être traitée en ce moment,veuillez essayer ultérieurment.
+255=mclass^2&pid^61:255:Votre demande ne peut pas être traitée en ce moment,veuillez essayer ultérieurment.
+
+##############################################################################################################
+		###################### Messages created in 5.1.3 ############################
+##############################################################################################################
+
+##Entry for Taxi Phone User
+21009=mclass^2&pid^61:21009:L'abonné n'est pas autorisé pour récharge de C2S payeur
+21010=mclass^2&pid^61:21010:L'expéditeur n'est pas autorisé cmme un payeur P2P
+21011=mclass^2&pid^61:21011:Service de bénéficiaire P2P n'est pas autorisé au recepteur
+21012=mclass^2&pid^61:21012:Erreur dans l'abonné de la liste noire restrient.
+
+## DAILY TRANSFER SIMMARY MESSAGE (
+21013=mclass^2&pid^61:21013:Erreur envoyant des messages de transfert quotidien.
+21014=nom de service {0}, montant des transactions réussi {1} montant des transactions ambigu {2}
+21015=mclass^2&pid^61:21015:Nom de produit {0} solde d'ouverture {1} solde de fermeture {2} montant FOC {3} Achat nette {4} montant de transfert de canal {5} Transaction C2S {6}.
+21016=mclass^2&pid^61:21016:Executé jusqu'au n'est trouvé.
+21017=mclass^2&pid^61:21017:Processus executé jusqu'au date specifié.
+
+
+#Entries for Gift Recharge
+140001=mclass^2&pid^61:140001:Desolé, vous ne pouvez pas faire recharge de cadeau à vous même. Expéditeur et numéro de récipient de cadeau ne peut pas être même.
+140002=mclass^2&pid^61:140002:Desolé, vous ne pouvez pas faire recharge de cadeau. Donnez-le de et numéro de Donnez-le à ne peut pas être même.
+140003=mclass^2&pid^61:140003:Desolé, vous ne pouvez pas faire recharge de cadeau. Expéditeur et numéro de donnez-le à ne peut pas être même.
+140004=mclass^2&pid^61:140004:Ce service n'est pas disponible avec votre profil de contrôle courant.
+140005=mclass^2&pid^61:140005:Ce service n'est pas disponible avec votre profil courant.
+14006=mclass^2&pid^61:14006:Desolé, vous ne pouvez pas faire recharge de cadeau.
+14007=mclass^2&pid^61:14007:Votre demande de donner un recharge de cadeau de {1} INR à {2} ne peut pas être traité en ce moment. Numéro de transaction est {0}.
+14008=mclass^2&pid^61:14008:Votre demande de donner un recharge de cadeau de {2} INR de {3}({4}) à {0} serait traité sous peu. Numéro de transaction est {1}.
+14009=mclass^2&pid^61:14009:Veuiller confirmer votre statut de demande de recharge de cadeau du service clientèle, transaction de {0}, à {4}, ID de transaction est {1}, montant est {2}.
+14010=mclass^2&pid^61:14010:Numéro de transaction {1} de donner recharge de cadeau {2} INR de {9}({10}) à {0} est réussi. Votre nouveau solde est {3} INR.
+14011=mclass^2&pid^61:14011:Numéro de transaction {0} de donner recharge de cadeau {1} INR à {7} est réussi.
+14012=mclass^2&pid^61:14012:Numéro de transaction {0} de donner recharge de cadeau {3} INR à {7} est sous traitement.
+14013=mclass^2&pid^61:14013:Numéro de transaction {1} de donner recharge de cadeau {2} INR de {5}({6}) à {0} est sous traitement. Votre nouveau solde est {4} INR.
+14014=mclass^2&pid^61:14014:Votre demande de donner recharge de cadeau à {4} pour ID de transaction {0} de montant {1} INR ne peut pas être traité.
+14015=mclass^2&pid^61:14015:Recharge de félicitation {1} INR à ête donné à vous par {7}({8}). Veuiller verifier votre solde.
+14016=mclass^2&pid^61:14016:Recharge de félicitation {1} INR à ête donné à vous par {11}({12}).Votre nouveau solde est {3} INR, nouveau validité jusqu'à {6} & nouveau grâce jusqu'à {5}.
+14017=mclass^2&pid^61:14017:Doué par numéro de mobile que vous avez entré est incorrecte. Il devient être un numéro.
+14018=mclass^2&pid^61:14018:Doué par numéro de mobile {0} est incorrecte. Il devrait être contenir de  {1} octets.
+14019=mclass^2&pid^61:14019:Doué par numéro de mobile {0} est incorrecte. Il devrait être contenir de  {1} octets.
+14020=mclass^2&pid^61:14020:Nom de doué par ne peut pas être nulle.
+#14021=mclass^2&pid^61:14021:Votre demande de donner recharge de cadeau{1} INR à {2} ne peut pas être traité en ce moment. Numéro de transaction est {0}.
+14022=mclass^2&pid^61:14022:Votre demande de donner recharge de cadeau {2} INR à {0} seait traité sous peu. Numéro de transaction est  {1}.
+14023=mclass^2&pid^61:14023:Desolé, doué à numéro de mmobile est interdit. Veuiller contacter le service clientèle.
+14024=mclass^2&pid^61:14024:Montant invalide
+14025=mclass^2&pid^61:14025:Donner un cadeau au numéro de mobile n'est pas défini dans le système.
+14026=mclass^2&pid^61:14026:Une erreur s'es produite e traitant votre demande. Nous le résoudrons sous peu. Veuiller essayer encore plus tard.
+14027=mclass^2&pid^61:14027:Donner un cadeau au numéro de mobile n'est pas valide, veuiller contacter le service clientèle.
+14028=mclass^2&pid^61:14028:Interface de compte est suspendu, veuiller essayer encore plus tard.
+14029=mclass^2&pid^61:14029:Votre transaction sera traité sous peu.
+14030=mclass^2&pid^61:14030:Votre demande ne peut pas être traité en ce moment, veuiller essayer encore plus tard.
+14031=mclass^2&pid^61:14031:Votre demande ne peut pas être traité en ce moment, veuiller essayer encore plus tard.
+14032=mclass^2&pid^61:14032:Votre demande de recharge de cadeau de {0} INR au {1} ne peut pas être traité en ce moment, veuiller essayer plus tard
+
+
+## added for sender message (P2P) for daily, monthly or weekly threshold values  (TO BE COMMENTED)
+#9956=mclass^2&pid^61:9956:Numéro de transaction {1} de {2} pour {0} est réussi. Votre nouveau solde est {5}. Votre valeur de transfert {3} et valeur de transfert de recepteur est {4}.Votre compte de transfert restant quotidien est {9} et montant est {8} INR.
+#9956=mclass^2&pid^61:9956:Numéro de transaction {1} de {2} pour {0} est réussi. Votre nouveau solde est {5}. Votre valeur de transfert {3} et valeur de transfert de recepteur est {4}.Votre compte de transfert restant hebdomadaire est {13} et montant est {12} INR.
+#9956=mclass^2&pid^61:9956:Numéro de transaction {1} de {2} pour {0} est réussi. Votre nouveau solde est {5}. Votre valeur de transfert {3} et valeur de transfert de recepteur est {4}.Votre compte de transfert restant mensuel est {11} et montant est {10} INR.
+
+#201=mclass^2&pid^61:201:Numéro de transaction {1} de transférer {2} INR à {0} est réussi. Votre nouveau solde est {5} INR. Votre valeur de transfert est {3} INR et le frais d'accès est {6} INR.Votre compte de transfert restant quotidien est {9} et montant est {8} INR.
+#201=mclass^2&pid^61:201:Numéro de transaction {1} de transférer {2} INR à {0} est réussi. Votre nouveau solde est {5} INR. Votre valeur de transfert est {3} INR et le frais d'accès est {6} INR.Votre compte de transfert restant hebdomadaire est {13} et montant est {12} INR.
+#201=mclass^2&pid^61:201:Numéro de transaction {1} de transférer {2} INR à {0} est réussi. Votre nouveau solde est {5} INR. Votre valeur de transfert est {3} INR et le frais d'accès est {6} INR.Votre compte de transfert restant mensuel est {11} et montant est {10} INR.
+
+#600=mclass^2&pid^61:600:N. de transaction {1} pour {2} INR à {0} est réussi, valeur transféré est {3} INR et frais d'accès chargé est {5} INR. Votre compte de transfert restant quotidien est {8} et montant est {7} INR
+#600=mclass^2&pid^61:600:N. de transaction {1} pour {2} INR à {0} est réussi, valeur transféré est {3} INR et frais d'accès chargé est {5} INR. Votre compte de transfert restant hebdomadaire est {12} et montant est {11} INR
+#600=mclass^2&pid^61:600:N. de transaction {1} pour {2} INR à {0} est réussi, valeur transféré est {3} INR et frais d'accès chargé est {5} INR. Votre compte de transfert restant mensuel est {10} et montant est {9} INR
+
+21018=mclass^2&pid^61:{0}
+4456=mclass^2&pid^61:4456:Recharge n'est pas autorisé pour ce numéro.
+
+239=mclass^2&pid^61:239:Numéro de transaction {0} de {1} INR de {5} est réussi. La valeur transféré est {2} INR, frais d'accès est {6} INR. Votre nouveau solde est {3} et validité est {4}.
+236=mclass^2&pid^61:236:Numéro de transaction {0} pour récharger {1} INR de {4} est réussi.Votre nouveau solde est {3} INR, nouvelle validité jusu'au {6} et nouveau grâce jusqu'à {5}.
+237=mclass^2&pid^61:237:Numéro de transaction {0} pour récharger {1} INR de {2} est réussi. Veuiller vérifier votre solde.
+238=mclass^2&pid^61:238:Numéro de transaction {0} pour récharger {1} INR de {3} est réussi. Votre nouveau solde est {1} INR, nouvelle validité jusqu'au {2} et frais d'accès est {5}.
+229=mclass^2&pid^61:229:Numéro de transaction {0} pour récharger {1} INR de {3} est réussi. Votre nouveau solde est {1} INR, nouvelle validité jusqu'au {2} et frais d'accès est {5}.
+241=mclass^2&pid^61:241:Numéro de transaction {0} pour transferer {1} INR de {3} est réussi. La valeur transféré est {2} et frais d'accès est {4} INR. Veuiller vérifier votre solde
+
+
+##Added for EVR
+5936=mclass^2&pid^61:5936:Interface n'est defini pour envoyer le bon
+5937=mclass^2&pid^61:5937:Bon non trouvé
+
+4445={0}-S={1},F={2},T={3}
+4446=Hr({0}) {1}
+4447=Till {0} {1}
+4448={0}
+4449=mclass^2&pid^61:4449:{0}.
+
+##Translation required
+
+21019=mclass^0&pid^0:21019: Transaction failed. Vous ne pouvez pas payer plus que le projet de loi votre montant facturé. Actuellement, votre montant facturé est (1) INR.
+21020=mclass^0&pid^0:21020: Transaction failed. Le client {0} ne peut pas payer plus que le projet de loi de son montant réel facturé. Actuellement, son montant réel est facturé (2) INR.
+4457=mclass^2&pid^61:4457:CP2P service n'est pas autorisée pour ce numéro.
+43084=mclass^2&pid^61:43084: Il n’y a pas de solde
+5938=mclass^2&pid^61:5938: Le processus d'accord de commission additionnelle a déjà été exécuté jusqu’à présent.
+5939=mclass^2&pid^61:5939: Le processus d'accord de commission additionnelle ne peut pas mis à jour le date max. jusqu’à lequel il à été exécuté.
+5940=mclass^2&pid^61:5940: Le processus d'accord de commission additionnelle ne peut pas trouver le date jusqu’à le quel le processus a été exécuté.
+5941=mclass^2&pid^61:5941: Une s’est produite dans le processus d’accord de commission additionnelle, impossible de continuer.
+5942=mclass^2&pid^61:5942: Transaction ambigu et/ou sous traitement existe, impossible de continuer.
+5943=mclass^2&pid^61:5943: Le processus d'accord de commission additionnelle ne peut pas mis à jour le stock de réseau, alors existant.
+5944=mclass^2&pid^61:5944: Le processus d'accord de commission additionnelle ne peut pas mis à jour le transaction de stock de réseau, alors existant.
+5945=mclass^2&pid^61:5945: Le processus d'accord de commission additionnelle ne peut pas mis à jour les données d’ajustement, alors existant.
+5946=mclass^2&pid^61:5946: Stock de réseau n’existe pas.
+5947=mclass^2&pid^61:5947: Stock de réseau est moins que le montant à déduire
+
+2075=mclass^2&pid^61:2075:Montant demandé est invalide, veuillez essayer avec un autre montant.
+5950=mclass^2&pid^61:5950:Des erreur se sont prodit pour le quell, le processus ne peut pas continuer.
+5951=mclass^2&pid^61:5951:Processus ne peut pas trouver les paramètres constant dans le dossier de configuration
+5952=mclass^2&pid^61:5952:Processus ne peut pas trouver les donnés mis à jour 
+
+
+##############################################################################################################
+		###################### Messages created in 5.2.1 ############################
+##############################################################################################################
+
+12017=mclass^2&pid^61:12017: Stock de réseau pour le réseau {0} et produit {3} est {1}, qui est sous la limite mininum de {2}.
+
+222002=mclass^2&pid^61:222002:Demande de transferts des produit(s) C2C {1} à été approuvé avec succès, votre nouveau solde des produit(s) {2}. ID de transfert est {0}.{3}
+222003={0}:{1}: {3}
+222004={0}:{1}
+7901=mclass^2&pid^61:7901:Aucun tel utilisateur n’existe, MSISDN est invalide.
+6020=mclass^2&pid^61:6020: Champ de montant est vide.
+1010=mclass^2&pid^61:1010: Champ de montant est vide dans le demande.
+
+17020_S=mclass^2&pid^61:17020: Veuillez composer 123 pour activer vous-même, puis essayer transfert de crédit.
+17020_R=mclass^2&pid^61:17020: Transfert de crédit ne peut pas être effectué car le bénéficiaire n'a pas composé 123.
+6166=mclass^2&pid^61:6166:Transfert FOC a été effectué pour produit(s) {0}, votre nouveau solde du produit(s) {1} ID de transfert est {2}.
+6167=mclass^2&pid^61:6167:Transfert FOC a été effectué pour produit(s) {0}, votre nouveau solde du produit(s) {1} ID de transfert est {2}.
+
+
+##############################################################################################################
+		###################### Messages created in 5.3.1 ############################
+##############################################################################################################
+
+242=mclass^2&pid^61:242: Cher client, votre demande pour {4} INR de {3} est réussi, ID de transaction est {0}. Veuillez vérifier votre solde.
+242_SMSC=mclass^2&pid^61:242:Cher client, votre demande pour {4} INR de {3} est réussi, ID de transaction est {0}. Veuillez vérifier votre solde.
+4329=mclass^2&pid^61:4329:Votre nouveau PIN réinitialisé expiré le {0}. Veuillez contacter le service clientèls.
+5101=mclass^2&pid^61:5101:Numéro de notification de récepteur est invalide
+5102=mclass^2&pid^61:5102:Le numéro de mobile {0} est incorrect, il doit contenir {1} octets au minimum
+5103=mclass^2&pid^61:5103:Le numéro de mobile vous avez entré est incorrect, il doit être de {1} octets.
+5104=mclass^2&pid^61:5104:ID de Transaction {0} pour recharger {3} INR pour le récepteur {7} est en cours.
+5105=mclass^2&pid^61:5105:ID de Transaction {1} pour recharger {2} INR pour {0} est réussi. Votre nouveau solde est {3} INR.
+5106=mclass^2&pid^61:5106:ID de Transaction {0} du récepteur {15} pour recharger {1} INR de {3} est réussi. Votre nouveau solde est {1} INR, nouveau validité jusqu’à {2} & frais d’accès est {5}.
+5107=mclass^2&pid^61:5107:ID de Transaction {0} du récepteur {15} pour recharger {1} INR de {3} est réussi. Votre nouveau solde est {1} INR, nouveau validité jusqu’à {2} & frais d’accès est {5}.
+5108=mclass^2&pid^61:5108:ID de Transaction {0} du récepteur {18} pour recharger {1} INR de {4} est réussi. Votre nouveau solde est {3} INR, nouveau validité jusqu’à {6} & nouveau grâce jusqu’à {5}.
+5109=mclass^2&pid^61:5109:ID de Transaction {0} du récepteur {18} pour recharger {1} INR de {4} est réussi. Votre nouveau solde est {3} INR, nouveau validité jusqu’à {6} & nouveau grâce jusqu’à {5}.
+5110=mclass^2&pid^61:5110:ID de Transaction {0} du récepteur {14} pour recharger {1} INR de {2} est réussi. Veuiller vérifier votre solde.
+5111=mclass^2&pid^61:5111:ID de Transaction {0} du récepteur {14} pour recharger {1} INR de {2} est réussi. Veuiller vérifier votre solde.
+5112=mclass^2&pid^61:5112:ID de Transaction {1} pour recharger {2} INR au {0} est en cours. Votre nouveau solde est {4} INR.
+5113=mclass^2&pid^61:5113:Votre demande de recharger {2} INR au {0} sera traité dans peu de temps. ID de transaction {1}.
+5114=mclass^2&pid^61:5114:Veuillez confirmer votre statut de transaction de la service clientèle, transaction de {2} au récepteur {4}, ID de transaction {0}, montant {1}.
+5115=mclass^2&pid^61:5115:Votre demande de transfert de {2} au récepteur {4} pour ID de transaction {0} de montant {1} ne peut pas être traité
+5116=mclass^2&pid^61:5116:Le numéro de mobile vous avez entré est incorrecte. Il doit être un maximum de {1} octets.
+5601=mclass^2&pid^61:5601:Le numéro de notification de récepteur est invalide
+5602=mclass^2&pid^61:5602:Le numéro de mobile {0} est incorrecte. Il doit contenir de {1} octets au minimum.
+5603=mclass^2&pid^61:5603:Le numéro de mobile vous avez entré est incorrecte. Il doit être de {1} octets.
+5604=mclass^2&pid^61:5604:Le numéro de mobile vous avez entré est incorrecte. Il doit être un maximum de {1} octets
+5610=mclass^2&pid^61:5610:ID de transaction {0} de récepteur {7} de recharger {3} INR est en cours.
+5611=mclass^2&pid^61:5611:ID de transaction {1} de recharger {2} INR pour {0} est réussi. Votre nouveau solde est {3} INR.
+5612=mclass^2&pid^61:5612:ID de transaction {0} de récepteur {15} de recharger {1} INR de {3} est réussi. Votre nouveau solde est {1} INR, nouveau validité jusqu’à {2} & frais d’accès est {5}.
+5613=mclass^2&pid^61:5613:ID de transaction {0} de récepteur {15} de recharger {1} INR de {3} est réussi. Votre nouveau solde est {1} INR, nouveau validité jusqu’à {2} & frais d’accès est {5}.
+5614=mclass^2&pid^61:5614:ID de transaction {0} de récepteur {18} de recharger {1} INR de {4} est réussi. Votre nouveau solde est {3} INR, nouveau validité jusqu’à {6} & nouveau grâce jusqu’à {5}.
+5615=mclass^2&pid^61:5615:ID de transaction {0} de récepteur {18} de recharger {1} INR de {4} est réussi. Votre nouveau solde est {3} INR, nouveau validité jusqu’à {6} & nouveau grâce jusqu’à {5}.
+5616=mclass^2&pid^61:5616:ID de Transaction {0} de récepteur {14} de recharger {1} INR de {2} est réussi, veuillez vérifier votre solde.
+5617=mclass^2&pid^61:5617:ID de Transaction {0} de récepteur {14} de recharger {1} INR de {2} est réussi, veuillez vérifier votre solde.
+5618=mclass^2&pid^61:5618:ID de Transaction {1} de recharger {2} INR au {0} est en cours. Votre nouveau solde est {4} INR.
+5619=mclass^2&pid^61:5619:Votre demande de recharger {2} INR au {0} sera traité dans peu de temps. Id de transaction est {1}.
+5620=mclass^2&pid^61:5620:Veuillez confirmer votre statut de transaction du service clientèle, transaction de {2} au récepteur {4}, ID de transaction{0},montant {1}.
+5621=mclass^2&pid^61:5621:Votre demande de transfert de{2} au récepteur {4} pour ID de transaction {0} de montant {1} ne peut pas être traité.
+5701=mclass^2&pid^61:5701:Le MSISDN {0} a ordonné des cartes SIM de {1} lignes mobiles et {2} lignes fixes.
+5702=mclass^2&pid^61:5702:Votre demande pour cartes SIM de {0} lignes mobiles et {1} lignes fixes a été envoyé à votre utilisateur parentale.
+5703=mclass^2&pid^61:5703:Utilisateur parentale non trouvé dans le système
+5704=mclass^2&pid^61:5704:Lignes de l’ordre n’est pas numérique
+5705=mclass^2&pid^61:5705:Longueur des quantité des lignes d’ordre est invalide, il doit être entre{0} et {1}.
+5706=mclass^2&pid^61:5706:Quantité des lignes de l’ordre pour les lignes fixes et mobile ne peut pas être zéro
+5707=mclass^2&pid^61:5707:Vous n’est pas autorisé de demander des lignes car vous êtes en haut de l’hiérarchie
+5708=mclass^2&pid^61:5708:Parent n’est pas active
+5709=mclass^2&pid^61:5709:Parent est suspendu
+5710=mclass^2&pid^61:5710:Quantité des lignes de l’ordre n’est pas numérique
+5711=mclass^2&pid^61:5711:Longueur de crédit ordonné est invalide, il doit être entre {0} et {1}.
+5712=mclass^2&pid^61:5712:Crédit ordonné ne peut pas être zéro.
+5713=mclass^2&pid^61:5713:Vous n’est pas autorisé de demander le crédit comme vous êtes au haut niveau de l’hiérarchie
+5714=mclass^2&pid^61:5714:Parent non trouvé dans le système
+5715=mclass^2&pid^61:5715:Parent est suspendu
+5716=mclass^2&pid^61:5716:Parent n’est pas active
+5717=mclass^2&pid^61:5717:Votre demande pour {0} INR a été envoyé à votre MSISDN parentale {1}.
+5718=mclass^2&pid^61:5718:Détaillant {0} a demandé {1}, demande pour transférer le même.
+5719=mclass^2&pid^61:2008:Format de message invalide, veuillez contacter le service clientèle.
+5720=mclass^2&pid^61:5004:Pour produit {0}, code doit être numérique.
+5721=mclass^2&pid^61:5721:Vous n’est pas barré avec succès par le système.
+5722=mclass^2&pid^61:5722:Vous avez barré avec succès par le système.
+5723=mclass^2&pid^61:5723:Vous avez barré par le système.
+7065=mclass^2&pid^61:7065:Avant de faire aucun transaction, veuillez changer d’abord, votre nouveau PIN réinitialisé.
+7066=mclass^2&pid^61:7066:Votre PIN enregistré a expiré, veuillez contacter le service clientèle.
+
+
+########################### 5.4 MESSAGES ENTRIES ########################################3
+##CRBT Messages
+7207=mclass^2&pid^61:7207:Numéro de transaction {0} pour des services de SVA est réussi, veuillez vérifier votre solde.
+7210=mclass^2&pid^61:7210:Numéro de transaction {1} pour fournit de service SVA pour {2} INR au {0} est réussi, votre nouveau solde est {3} INR.
+7208=mclass^2&pid^61:7208:Numéro de transaction {0} pour fournit de service SVA pour {3} INR est en cours
+7230=mclass^2&pid^61:7230:Veuillez confirmer votre statut de transaction de la service clientèle, transaction de {2}, ID de transaction est {0}, montant est {1}.
+7231=mclass^2&pid^61:7231:Votre demande de transfert de  {2} pour ID de transaction {0} de montant {1} ne peut pas être traité.
+7221=mclass^2&pid^61:7221:Votre compte à été re-crédité pour numéro de transaction échoué {2} pour transférer {1} INR au {0}, votre solde courant est {3} INR.
+7222=mclass^2&pid^61:7222:Nom de sous service invalide, veuillez indiquer un nom de sous service valide.
+
+##Activation bonus
+6903=mclass^2&pid^61:6903:Vous avez reçu {0} INR comme prime d’activation, ID de rédemption est {1}
+
+##For REQ VIA SMS
+5731=mclass^2&pid^61:5731:L’abonné {1} a demandé de {0} INR, veuillez traiter.
+5732=mclass^2&pid^61:5732:Votre demande {1} INR ne peut pas être traité en ce moment.
+5733=mclass^2&pid^61:5733:Votre demande pour {0} INR a été envoyé au MSISDN de détaillant {1}.
+5735=mclass^2&pid^61:5735:Vous êtes restreint de tout recharge.
+5736=mclass^2&pid^61:5736:L’utilisateur de canal n’existe pas, Veuillez essayer à l’autre utilisateur.
+5737=mclass^2&pid^61:5737:L’abonné {1} a demandé de {0} INR, veuillez traiter.
+5738=mclass^2&pid^61:5738:Votre demande {1} INR ne peut pas être traité en ce moment.
+5739=mclass^2&pid^61:5739:Votre demande pour {0} INR a été envoyé au MSISDN de détaillant {1}
+5741=mclass^2&pid^61:5741:Vous êtes restreint de tout crédit.
+5742=mclass^2&pid^61:5742:L’abonné est restreint de donner crédit.
+5743=mclass^2&pid^61:5743:Le montant préféré par l’abonné n’est pas défini.
+5744=mclass^2&pid^61:5744:L’utilisateur de canal n’est pas permis de fournir le crédit
+5745=mclass^2&pid^61:5745:Désolé, le numéro de mobile de destinataire n’est pas permis pour ce service.
+
+##Entries for CP2P through web
+55555=mclass^2&pid^61:55555:Votre enregistrement est réussi, mot de passe pour ID de connexion {0} est {1}.
+55551=mclass^2&pid^61:55551:Votre nouveau mot de passe pour ID de connexion {0} est {1}.
+
+## for pin and password auto generation
+12000=mclass^2&pid^61:12000:Vous avez activé avec succès en PreTUPS, votre ID de connexion de web est {0}, veuillez obtenir votre mot de passe de web de service clientèle.
+12001=mclass^2&pid^61:12001:Vous avez activé avec succès en PreTUPS, votre numéro de mobile de transaction primaire est {0}, veuillez obtenir votre PIN de service clientèle.
+12002=mclass^2&pid^61:12002:Vous avez activé avec succès en PreTUPS, votre ID de connexion de web est  {0} et le numéro de mobile de transaction primaire est {1}, veuillez obtenir votre mot de passe web et PIN de service clientèle.
+12003=mclass^2&pid^61:12003:Vous avez modifié avec succès en PreTUPS, votre ID de connexion de web est {0}, et votre mot de passe est {1}.
+12004=mclass^2&pid^61:12004:Vous avez modifié avec succès en PreTUPS, votre ID de connexion de web est {0}.
+12005=mclass^2&pid^61:12005:Vous avez modifié avec succès en PreTUPS, votre mot de passe de connexion est {1}.
+12006=mclass^2&pid^61:12006:Vous êtes désenregistrés en PreTUPS.
+12007=mclass^2&pid^61:12007:Vous êtes modifié avec succès en PreTUPS, votre ID de connexion de web {0}, et votre mot de passe est {1}.
+12008=mclass^2&pid^61:12008:Vous êtes modifié avec succès en PreTUPS, votre ID de connexion de web est {0}.
+12009=mclass^2&pid^61:12009:Vous êtes modifié avec succès en PreTUPS, votre mot de passe de connexion de web est {0}.
+12010=mclass^2&pid^61:12010:Vous êtes modifié avec succès en PreTUPS, votre ID de connexion de web est {0} et votre PIN est {1}.
+12011=mclass^2&pid^61:12011:Vous êtes modifié avec succès en PreTUPS, votre mot de passe de connexion de web est {0} et votre PIN est {1}.
+12012=mclass^2&pid^61:12012:Vous êtes modifié avec succès en PreTUPS, votre ID de connexion de web est {0}, votre mot de passe est {1} et PIN est {2}.
+12013=mclass^2&pid^61:12013:Vous êtes modifié avec succès en PreTUPS, votre PIN est {0}.
+12014=mclass^2&pid^61:12014:Vous êtes désenregistrés {0}  l’utilisateur de canal en PreTUPS 
+211=mclass^2&pid^61:211: Commission additionnelle de {2} pour ID de transfert{1} a été crédité pour le client {4}. Votre nouveau solde est {3} et ID d'ajustement est {0}
+
+########################### 5.4.1 MESSAGES ENTRIES ########################################
+
+## IAT Controller messages
+25001=mclass^2&pid^61:25001:Numéro de récepteur {0} n’est pas permis pour ce service, code pays invalide.
+25002=mclass^2&pid^61:25002:Erreur s’est produite en traitant votre demande, veuillez essayer plus tard.
+25003=mclass^2&pid^61:25003:Service est suspend temporairement pour le pays de récepteur {2} 
+25004=mclass^2&pid^61:25004:Code de pays de l’expéditeur et le récepteur ne peuvent pas être le même pour ce service.
+25005=mclass^2&pid^61:25005:Longueur de numéro de mobile doit être entre {1} et {2}
+25006=mclass^2&pid^61:25006:Numéro de mobile est numérique.
+25007=mclass^2&pid^61:25007:Numéro de récepteur {0} n’est pas permis pour ce service.
+25008=mclass^2&pid^61:25008:Ce service n’est pas disponible pour {4} réseau de pays {3}.
+25009=mclass^2&pid^61:25009:Erreur s’est produite en traitant votre demande, veuillez essayer plus tard.
+25010=mclass^2&pid^61:25010:Votre demande pour le transfert de {2} INR à MSISDN {0} est réussi. ID de transfert est {1}
+25011=mclass^2&pid^61:25011:Votre demande pour le transfert de {2} INR à MSISDN {0} a échoué. ID de transfert est {1}  
+25012=mclass^2&pid^61:25012:Statut de votre demande pour le transfert de {2} INR au MSISDN {0} est inconnu, ID de transfert est {1}. Veuillez vérifier le statut final du service clientèle.
+25013=mclass^2&pid^61:25013:Numéro de récepteur {0} n’est pas permis pour ce service. 
+25014=mclass^2&pid^61:25014:ID de transfert {1} pour recharger {0} de {2} INR est sous traitement. Votre nouveau solde est {4} INR.
+25015=mclass^2&pid^61:25015:A cause d’une erreur, processus de IAT DWH ne peut pas continuer.
+25016=mclass^2&pid^61:25016:Processus de IAT DWH a été exécuté jusqu’à ce jour.
+25017=mclass^2&pid^61:25017:Transaction de IAT ambigu ou sous-traitement trouvé dans le base de données.
+25018=mclass^2&pid^61:25018:IAT non-trouvé.
+25019=mclass^2&pid^61:25019: Date jusqu’à laquelle le processus ambigu de IAT a été exécuté, ne trouve pas dans le base de données.
+25020=mclass^2&pid^61:25020:ID de transfert {1} pour recharger {0} de {2} INR est réussi. Votre nouvau solde est {3} INR.
+25021=mclass^2&pid^61:25021:Votre compte a été crédité en arrière pour ID de transaction échoué {2} pour transférér {1} INR au {0}. Votre solde courant est {3} INR.
+25022=mclass^2&pid^61:25022:Votre demande de recharger {2} INR à {0} sera traité dans peu de temps ID de transfert est {1}.
+25023=mclass^2&pid^61:25023:Donnée non trouvé dans le dossier Constant pour processus ambigu de IAT.
+25024=mclass^2&pid^61:25024:Numéro de notification n’est pas numérique.
+25025=mclass^2&pid^61:25025:A cause d’une erreur, processus ambigu de IAT ne peut pas continuer.
+25026=mclass^2&pid^61:25026: Réseau {2} est suspendu pour pays {0}.
+
+
+
+####################user migration tool#######
+## New messages for user migration
+191919=mclass^2&pid^61:191919:Vous avez été attaché au numéro {0} du partenaire {1}
+191920=mclass^2&pid^61:191920:Le numéro {0} a éte attaché à votre sim

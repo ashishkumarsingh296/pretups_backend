@@ -1,0 +1,218 @@
+
+
+
+
+_includeOnce("../../../../utility/ImportPackage.sah");
+
+var $l_naCsv = _readCSVFile("../../../GUI/testdata/NA_Login.csv");
+
+var $g_interfaceCategory;
+var $g_interfaceType;
+var $g_interfaceName;
+var $g_externalID;
+var $g_validityExpiry;
+var $g_topUpExpiry;
+var $g_language1;
+var $g_language2;
+var $g_status;
+var $g_assertion;
+
+var $temp_interfaceName;
+
+var $g_serviceClassCode;
+var $g_serviceClassName;
+var $g_status;
+var $g_P2PSenderAllowed;
+var $g_P2PSenderDenied;
+var $g_P2PReceiverAllowed;
+var $g_P2PReceiverDenied;
+var $g_C2SReceiverAllowed;
+var $g_C2SReceiverDenied;
+var $g_assertion;
+
+
+
+
+
+function commonVaribleToAddInterface($a_row, $a_column) {
+	
+	$g_interfaceType = $g_interfaceDetails[$a_row][$a_column++];
+	$g_interfaceName = $g_interfaceDetails[$a_row][$a_column++];
+	$g_externalID = $g_interfaceDetails[$a_row][$a_column++];
+	$g_validityExpiry = $g_interfaceDetails[$a_row][$a_column++];
+	$g_topUpExpiry = $g_interfaceDetails[$a_row][$a_column++];
+	$g_language1 = $g_interfaceDetails[$a_row][$a_column++];
+	$g_language2 = $g_interfaceDetails[$a_row][$a_column++];
+	$g_status = $g_interfaceDetails[$a_row][$a_column++];
+	$g_assertion = $g_interfaceDetails[$a_row][$a_column++];
+
+	if($g_validityExpiry == "10000" || $g_topUpExpiry == "10000" ){
+		if($g_validityExpiry == "10000") $g_validityExpiry = "+10000";
+		if($g_topUpExpiry == "10000") $g_topUpExpiry = "+10000";
+		}
+	
+}
+
+
+
+function addInterface() {
+	
+	selectInterfaceCategory();
+	_assertExists(_div("Interface list"));
+	_click(_submit($g_BtnAdd));
+	_setSelected(_select("interfaceTypeId"), $g_interfaceType);
+	_setValue(_textbox("interfaceDescription"), $g_interfaceName);
+	_setValue(_textbox("externalId"), $g_externalID);
+	_setValue(_textbox("valExpiryTime"), $g_validityExpiry);
+	_setValue(_textbox("topUpExpiryTime"), $g_topUpExpiry);
+	_setValue(_textarea("language1Message"), $g_language1);
+	_setValue(_textarea("language2Message"), $g_language2);
+	_setSelected(_select("statusCode"), $g_status);
+	_click(_submit($g_BtnSubmit));
+	
+	_assertExists(_listItem($g_assertion));
+	if(_exists(_listItem($g_assertion)) == false)
+		_log("Test case failed");
+	
+}
+
+
+
+
+function selectInterfaceCategory() {
+	
+	$g_interfaceCategory = $l_naCsv[13][1];
+	_click(_link("Masters"));
+	_click(_link("Interface management"));
+	_assertExists(_div("Select interface category"));
+	_setSelected(_select("interfaceCategoryCode"), $g_interfaceCategory);
+	_click(_submit($g_BtnSubmit));
+}
+
+// =======================================Nagative cases to modify interface ======================================= //
+
+
+
+function commonVaribleToModifyInterface($a_row, $a_column) {
+	
+	$g_interfaceName = $g_interfaceDetails[$a_row][$a_column++];
+	$g_externalID = $g_interfaceDetails[$a_row][$a_column++];
+	$g_validityExpiry = $g_interfaceDetails[$a_row][$a_column++];
+	$g_topUpExpiry = $g_interfaceDetails[$a_row][$a_column++];
+	$g_language1 = $g_interfaceDetails[$a_row][$a_column++];
+	$g_language2 = $g_interfaceDetails[$a_row][$a_column++];
+	$g_status = $g_interfaceDetails[$a_row][$a_column++];
+	$g_assertion = $g_interfaceDetails[$a_row][$a_column++];
+
+	if($g_validityExpiry == "10000" || $g_topUpExpiry == "10000" ){
+		if($g_validityExpiry == "10000") $g_validityExpiry = "+10000";
+		if($g_topUpExpiry == "10000") $g_topUpExpiry = "+10000";
+		}
+}
+
+
+function modifyInterface() {
+	
+	$temp_interfaceName = $l_naCsv[13][1];
+	selectInterfaceCategory();
+	
+	_assertExists(_div("Interface list"));
+	_click(_radio("radioIndex", _near(_cell($temp_interfaceName))));
+	_click(_submit($g_BtnModify));
+	_setValue(_textbox("interfaceDescription"), $g_interfaceName);
+	_setValue(_textbox("externalId"), $g_externalID);
+	_setValue(_textbox("valExpiryTime"), $g_validityExpiry);
+	_setValue(_textbox("topUpExpiryTime"), $g_topUpExpiry);
+	_setValue(_textarea("language1Message"), $g_language1);
+	_setValue(_textarea("language2Message"), $g_language2);
+	_setSelected(_select("statusCode"), $g_status);
+	_click(_submit($g_BtnSubmit));
+	
+	_assertExists(_listItem($g_assertion));
+	if(_exists(_listItem($g_assertion)) == false)
+		_log("Test case failed");
+	
+}
+
+ // ========================= Negative Cases of Service Class ========================== //
+
+function commonVaribleToAddServiceClass($a_row, $a_column){
+	
+	$g_interfaceCategory = $l_naCsv[13][1];
+	$g_interfaceType = $l_naCsv[13][2];
+	$g_interfaceName = $l_naCsv[13][3];
+	
+	$g_serviceClassCode = $g_serviceClassDetails[$a_row][$a_column++];
+	$g_serviceClassName  = $g_serviceClassDetails[$a_row][$a_column++];
+	$g_status  = $g_serviceClassDetails[$a_row][$a_column++];
+	$g_P2PSenderAllowed  = $g_serviceClassDetails[$a_row][$a_column++];
+	$g_P2PSenderDenied = $g_serviceClassDetails[$a_row][$a_column++];
+	$g_P2PReceiverAllowed = $g_serviceClassDetails[$a_row][$a_column++];
+	$g_P2PReceiverDenied = $g_serviceClassDetails[$a_row][$a_column++];
+	$g_C2SReceiverAllowed = $g_serviceClassDetails[$a_row][$a_column++];
+	$g_C2SReceiverDenied = $g_serviceClassDetails[$a_row][$a_column++];
+	$g_assertion = $g_serviceClassDetails[$a_row][$a_column++];
+}
+
+
+function addServiceClass() {
+	
+	
+	_click(_link("Masters"));
+	_click(_link("Service class management"));
+	_assertExists(_div("Select interface"));
+	_setSelected(_select("interfaceCategory"), $g_interfaceCategory);
+	_setSelected(_select("interfaceType"), $g_interfaceType);
+	_setSelected(_select("interfaceCode"), $g_interfaceName);
+	_click(_submit("Submit"));
+	_click(_submit("Add"));
+
+	_setValue(_textbox("serviceClassCode"), $g_serviceClassCode);
+	_setValue(_textbox("serviceClassName"), $g_serviceClassName);
+	_setSelected(_select("status"), $g_status);
+	_click(_checkbox("p2pSenderSuspend"));
+	_click(_checkbox("p2pReceiverSuspend"));
+	_setValue(_textbox("p2pSenderAllowedStatus"),$g_P2PSenderAllowed );
+	_setValue(_textbox("p2pSenderDeniedStatus"), $g_P2PSenderDenied);
+	_setValue(_textbox("p2pReceiverAllowedStatus"), $g_P2PReceiverAllowed);
+	_setValue(_textbox("p2pReceiverDeniedStatus"), $g_P2PReceiverDenied);
+	
+	_setValue(_textbox("c2sReceiverAllowedStatus"), $g_C2SReceiverAllowed);
+	_setValue(_textbox("c2sReceiverDeniedStatus"), $g_C2SReceiverDenied);
+	_click(_checkbox("c2sReceiverSuspend"));
+	_click(_submit($g_BtnAdd));
+	
+	_assertExists(_listItem("/" + $g_assertion+ ".*/"));
+	
+	if(_exists(_listItem("/" +$g_assertion+ ".*/"))){
+		return;
+	} else{
+		_log("Assertion failed ");
+		return;
+	}
+	
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

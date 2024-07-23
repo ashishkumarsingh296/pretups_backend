@@ -1,0 +1,3 @@
+TestcaseId,TestcaseType,Module,Description
+TUNG12761,Negative,Bar user through Restful API,"To verify user who is barred already can not be barred again.
+Note: User can get barred only if barredType is different and not avaiable in DB"

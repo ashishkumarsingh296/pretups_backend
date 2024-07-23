@@ -1,0 +1,76 @@
+//###############################################
+//#Company Name: Mahindra Comviva Technologies Ltd.
+//#Application Name: Pretups
+//#Objective:Pin captcha test case:Common function for initiate bulk Commission payout .
+//#Author Name: Shashi
+//#Created Date: 12/06/2015
+//###############################################
+
+_includeOnce("../../../../utility/ImportPackage.sah");	//For importing common files
+var $l_PinCaptchaBulkCommissionPayout = _readCSVFile("../../testdata/PinCaptchaBulkCommissionPayout.csv");
+
+
+var $g_btachName;
+var $g_languageOne;
+var $g_languageTwo;
+var $g_remarks;
+var $g_PIN;
+var $g_assert;
+
+
+var $l_row;
+var $l_col;
+
+
+function initiateBulkCommissionPayout() {
+	
+	var $l_row = 13;
+	var $l_col = 0;
+	
+	var $t1 = _testcase($l_PinCaptchaBulkCommissionPayout[$l_row][$l_col++], $l_PinCaptchaBulkCommissionPayout[$l_row][$l_col++]);
+
+	$t1.start();
+	
+	
+	initiateBulkCommissionPayoutVariables($l_row,$l_col);
+	
+	initiateBulkCommPayout();
+
+	$t1.end();
+	
+	
+	
+	
+}
+
+function initiateBulkCommissionPayoutVariables($l_row,$l_col) {
+	
+	$g_btachName = $l_PinCaptchaBulkCommissionPayout[$l_row][$l_col++];
+	$g_languageOne = $l_PinCaptchaBulkCommissionPayout[$l_row][$l_col++];
+	$g_languageTwo = $l_PinCaptchaBulkCommissionPayout[$l_row][$l_col++];
+	$g_remarks = $l_PinCaptchaBulkCommissionPayout[$l_row][$l_col++];
+	$g_PIN  = $l_PinCaptchaBulkCommissionPayout[$l_row][$l_col++];
+	$g_assert = $l_PinCaptchaBulkCommissionPayout[$l_row][$l_col++];
+
+}
+
+function initiateBulkCommPayout() {
+
+		_click(_link($g_LeftMenuBar_O2C));
+		_click(_link($g_LeftMenuBar_InitaiteBulkCommPayout));
+		_setSelected(_select("domainCode"), "Dist1");
+		_setSelected(_select("categoryCode"), "Super Distributor");
+		_setSelected(_select("productCode"), "eTopUP");
+		_setValue(_textbox("batchName"), $g_btachName);
+		_assertExists(_link("Initiate bulk commission payout"));
+		_setFile2(_file("file"), "C:\\Users\\shashi.singh\\Downloads\\userList2.xls");
+		_click(_submit("Submit"));
+		_assertExists(_div("Upload bulk commission payout transfer file"));
+		_setValue(_textarea("defaultLang"), $g_languageOne);
+		_setValue(_textarea("secondLang"), $g_languageTwo);
+		_setValue(_password("smsPin"), $g_PIN);
+		_click(_submit("Confirm"));
+		_assertExists(_listItem("/"+$g_assert+ ".*/"));
+			
+}
+

@@ -1,0 +1,57 @@
+//################################################
+//#Company Name: Mahindra Comviva Technologies Ltd.
+//#Application Name: PretupsTA
+//#Objective: To delete the domains and categories under it.
+//#Author Name: Nidhi Singh
+//#Created Date: 27/01/2014
+//###############################################
+
+//====Import Scripts====
+_includeOnce("../../../../utility/ImportPackage.sah");
+
+//====Login into Application====
+login($g_appURL, $g_LangEnglish, $g_superAdmin, $g_password, $g_assertWelcome); //calls the Login function in Login.sah with the parameters(url, language, username, password, assertion) read from Login.csv file.
+
+//====Read domain details from csv====
+var $g_i = 1;
+var $g_DomainCSV = _readCSVFile("../../../GUI/testdata/ChannelDomain_Details.csv");
+var $l_naCsv = _readCSVFile("../../../GUI/testdata/NA_Login.csv");
+$a_domainName = $l_naCsv[4][$g_i++];
+_writeCSVFile($l_naCsv, "../../../GUI/testdata/NA_Login.csv", 1);
+
+//====First delete all the categories under the Domain==== 
+_click(_link($g_LeftMenuBar_ChannelDomain));
+_click(_link($g_LeftMenuBar_AddChannelCat));
+_setSelected(_select("domainCodeforCategory"), "Head Quarter1250");
+_click(_submit("Submit"));
+_set($rowCount,_table(3, _near(_div("View channel category details"))).rows.length); // Getting No. of Rows
+$rowCount=$rowCount-3;
+
+
+	for (var $i=$rowCount;$i>=0;$i--){
+		_click(_radio("radioIndex[" + $i + "]"));
+		_click(_button("Delete"));
+		//_assertExists(_listItem("Category successfully deleted"));
+		_setSelected(_select("domainCodeforCategory"), "Head Quarter1250");
+		_click(_submit("Submit"));
+		//_assertExists(_cell("Domain :", _near(_cell("No categories found"))));
+		}
+	_log("Categories del successfully");
+	if(_exists(_cell("Domain :", _near(_cell("No categories found"))))==true){
+		deldomain();
+	}
+//====delete domain====
+function deldomain(){
+_click(_link($g_LeftMenuBar_ChannelDomain));
+_click(_link($g_LeftMenuBar_AddChannelCat));
+_setSelected(_select("domainCodeforCategory"), "Shop Manager Partner1753");
+_click(_submit("Submit"));
+_assertExists(_cell("No categories found"));
+_click(_link("Channel Domain Mgmt."));
+_click(_radio("radioIndex", _near(_cell("Shop Manager Partner1753"))));
+_click(_button("Delete"));
+_log("Domain deleted successfully");
+}
+
+
+

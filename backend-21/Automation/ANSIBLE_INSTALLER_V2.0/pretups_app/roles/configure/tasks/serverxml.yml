@@ -1,0 +1,29 @@
+---
+ - name: "let's make it work: server.xml: replace the existing SHUTDOWN PORT with the provided port SHUTDOWN_PORT"
+   lineinfile: dest="{{ Tomcat_Path }}/conf/server.xml" regexp='(.*)shutdown="SHUTDOWN"(.*)' line='<Server port="{{ SHUTDOWN_PORT }}" shutdown="SHUTDOWN">'
+   tags: sadhan
+
+ - name: "let's make it work: server.xml: replace the existing CONNECTOR PORT with the provided port CONNECTOR_PORT"
+   lineinfile: dest="{{ Tomcat_Path }}/conf/server.xml" regexp='(.*)<Connector port="8080" URIEncoding="UTF-8" useBodyEncodingForURI="true"(.*)' line='<Connector port="{{ CONNECTOR_PORT }}" URIEncoding="UTF-8" useBodyEncodingForURI="true"'
+
+ - name: "let's make it work: server.xml: replace the existing  maxHttpHeaderSize with the provided port maxHttpHeaderSize"
+   lineinfile: dest="{{ Tomcat_Path }}/conf/server.xml" regexp='(.*)maxHttpHeaderSize="(.*)' line='maxHttpHeaderSize="{{ maxHttpHeaderSize }}"'
+
+ - name: "let's make it work: server.xml: replace the existing maxThreads,minSpareThreads with the provided port maxThreads,minSpareThreads"
+   lineinfile: dest="{{ Tomcat_Path }}/conf/server.xml" regexp='(.*)minSpareThreads="(.*)' line='maxThreads="{{ maxThreads }}" minSpareThreads="{{ minSpareThreads }}"'
+
+ - name: "let's make it work: server.xml: replace the existing enableLookups,redirectPort with the provided port enableLookups,redirectPort"
+   lineinfile: dest="{{ Tomcat_Path }}/conf/server.xml" regexp='(.*)acceptCount="(.*)' line='enableLookups="{{ enableLookups }}" redirectPort="{{ redirectPort }}" acceptCount="{{ acceptCount }}"'
+
+ - name: "let's make it work: server.xml: replace the existing disableUploadTimeout with the provided port disableUploadTimeout"
+   lineinfile: dest="{{ Tomcat_Path }}/conf/server.xml" regexp='(.*)connectionTimeout="(.*)disableUploadTimeout=(.*)' line='connectionTimeout="{{ connectionTimeout }}" disableUploadTimeout="{{ disableUploadTimeout }}" />'
+
+# - name: "let's make it work: server.xml: replace the existing connectionTimeout with the provided connectionTimeout value"
+#   lineinfile: dest="{{ Tomcat_Path }}/conf/server.xml" regexp='(.*)connectionTimeout="20000"(.*)' line='connectionTimeout="{{ connectionTimeout }}" maxThreads="{{ maxThreads }}" minSpareThreads="{{ minSpareThreads }}" maxSpareThreads="{{ maxSpareThreads }}" enableLookups="{{ enableLookups }}" '
+
+# - name: "let's make it work: server.xml: replace the existing redirectPort and other params"
+#   lineinfile: dest="{{ Tomcat_Path }}/conf/server.xml" regexp='(.*)               redirectPort="8443" />(>*)' 	line='maxHttpHeaderSize="{{ maxHttpHeaderSize }}" acceptCount="{{ acceptCount }}"  disableUploadTimeout="{{ disableUploadTimeout }}" redirectPort="{{ redirectPort }}" />'
+
+ - name: "let's make it work: server.xml: replace the existing AJP CONNECTOR PORT with the provided AJP_CONNECTOR_PORT"
+   lineinfile: dest="{{ Tomcat_Path }}/conf/server.xml" regexp='(.*)Connector port="(.*)protocol="AJP(.*)' line='  <Connector port="{{ AJP_CONNECTOR_PORT }}" protocol="AJP/1.3" enableLookups="{{ enableLookups_AJP }}" redirectPort="{{ redirectPort_AJP }}" />'
+

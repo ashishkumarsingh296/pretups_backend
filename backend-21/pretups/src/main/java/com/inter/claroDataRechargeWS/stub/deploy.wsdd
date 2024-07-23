@@ -1,0 +1,151 @@
+<!-- Use this file to deploy some handlers/chains and services      -->
+<!-- Two ways to do this:                                           -->
+<!--   java org.apache.axis.client.AdminClient deploy.wsdd          -->
+<!--      after the axis server is running                          -->
+<!-- or                                                             -->
+<!--   java org.apache.axis.utils.Admin client|server deploy.wsdd   -->
+<!--      from the same directory that the Axis engine runs         -->
+
+<deployment
+    xmlns="http://xml.apache.org/axis/wsdd/"
+    xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
+  <!-- Services from ebsRecargaPaqueteDatosService WSDL service -->
+
+  <service name="ebsRecargaPaqueteDatosSoapPort11" provider="java:RPC" style="document" use="literal">
+      <parameter name="wsdlTargetNamespace" value="http://claro.com.pe/eai/postventa/ebsRecargaPaqueteDatos"/>
+      <parameter name="wsdlServiceElement" value="ebsRecargaPaqueteDatosService"/>
+      <parameter name="schemaQualified" value="http://claro.com.pe/eai/postventa/ebsRecargaPaqueteDatos"/>
+      <parameter name="wsdlServicePort" value="ebsRecargaPaqueteDatosSoapPort11"/>
+      <parameter name="className" value="com.inter.claroDataRechargeWS.stub.EbsRecargaPaqueteDatosSOAP11BindingImpl"/>
+      <parameter name="wsdlPortType" value="ebsRecargaPaqueteDatos"/>
+      <parameter name="typeMappingVersion" value="1.2"/>
+      <operation name="consultarPaquetesPorTipoLinea" qname="consultarPaquetesPorTipoLinea" returnQName="retNS:consultarPaquetesPorTipoLineaResponse" xmlns:retNS="http://claro.com.pe/eai/postventa/ebsRecargaPaqueteDatos" returnType="rtns:>consultarPaquetesPorTipoLineaResponse" xmlns:rtns="http://claro.com.pe/eai/postventa/ebsRecargaPaqueteDatos" soapAction="http://claro.com.pe/eai/postventa/ebsRecargaPaqueteDatos/consultarPaquetesPorTipoLinea" >
+        <parameter qname="pns:consultarPaquetesPorTipoLineaRequest" xmlns:pns="http://claro.com.pe/eai/postventa/ebsRecargaPaqueteDatos" type="tns:>consultarPaquetesPorTipoLineaRequest" xmlns:tns="http://claro.com.pe/eai/postventa/ebsRecargaPaqueteDatos"/>
+      </operation>
+      <operation name="ejecutarRecargaDatos" qname="ejecutarRecargaDatos" returnQName="retNS:ejecutarRecargaDatosResponse" xmlns:retNS="http://claro.com.pe/eai/postventa/ebsRecargaPaqueteDatos" returnType="rtns:>ejecutarRecargaDatosResponse" xmlns:rtns="http://claro.com.pe/eai/postventa/ebsRecargaPaqueteDatos" soapAction="http://claro.com.pe/eai/postventa/ebsRecargaPaqueteDatos/ejecutarRecargaDatos" >
+        <parameter qname="pns:ejecutarRecargaDatosRequest" xmlns:pns="http://claro.com.pe/eai/postventa/ebsRecargaPaqueteDatos" type="tns:>ejecutarRecargaDatosRequest" xmlns:tns="http://claro.com.pe/eai/postventa/ebsRecargaPaqueteDatos"/>
+      </operation>
+      <operation name="ejecutarAnulacionRecarga" qname="ejecutarAnulacionRecarga" returnQName="retNS:ejecutarAnulacionRecargaResponse" xmlns:retNS="http://claro.com.pe/eai/postventa/ebsRecargaPaqueteDatos" returnType="rtns:>ejecutarAnulacionRecargaResponse" xmlns:rtns="http://claro.com.pe/eai/postventa/ebsRecargaPaqueteDatos" soapAction="http://claro.com.pe/eai/postventa/ebsRecargaPaqueteDatos/ejecutarAnulacionRecarga" >
+        <parameter qname="pns:ejecutarAnulacionRecargaRequest" xmlns:pns="http://claro.com.pe/eai/postventa/ebsRecargaPaqueteDatos" type="tns:>ejecutarAnulacionRecargaRequest" xmlns:tns="http://claro.com.pe/eai/postventa/ebsRecargaPaqueteDatos"/>
+      </operation>
+      <parameter name="allowedMethods" value="ejecutarRecargaDatos consultarPaquetesPorTipoLinea ejecutarAnulacionRecarga"/>
+
+      <typeMapping
+        xmlns:ns="http://claro.com.pe/eai/postventa/ebsRecargaPaqueteDatos"
+        qname="ns:>ejecutarAnulacionRecargaResponse"
+        type="java:com.inter.claroDataRechargeWS.stub.EjecutarAnulacionRecargaResponse"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://claro.com.pe/eai/postventa/ebsRecargaPaqueteDatos"
+        qname="ns:>ejecutarRecargaDatosRequest"
+        type="java:com.inter.claroDataRechargeWS.stub.EjecutarRecargaDatosRequest"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://claro.com.pe/eai/postventa/ebsRecargaPaqueteDatos"
+        qname="ns:>consultarPaquetesPorTipoLineaResponse"
+        type="java:com.inter.claroDataRechargeWS.stub.ConsultarPaquetesPorTipoLineaResponse"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://claro.com.pe/eai/postventa/ebsRecargaPaqueteDatos"
+        qname="ns:>ejecutarRecargaDatosResponse"
+        type="java:com.inter.claroDataRechargeWS.stub.EjecutarRecargaDatosResponse"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://claro.com.pe/eai/postventa/ebsRecargaPaqueteDatos"
+        qname="ns:>ejecutarAnulacionRecargaRequest"
+        type="java:com.inter.claroDataRechargeWS.stub.EjecutarAnulacionRecargaRequest"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://claro.com.pe/eai/postventa/ebsRecargaPaqueteDatos"
+        qname="ns:>consultarPaquetesPorTipoLineaRequest"
+        type="java:com.inter.claroDataRechargeWS.stub.ConsultarPaquetesPorTipoLineaRequest"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+  </service>
+  <service name="ebsRecargaPaqueteDatosSoapPort12" provider="java:RPC" style="document" use="literal">
+      <parameter name="wsdlTargetNamespace" value="http://claro.com.pe/eai/postventa/ebsRecargaPaqueteDatos"/>
+      <parameter name="wsdlServiceElement" value="ebsRecargaPaqueteDatosService"/>
+      <parameter name="schemaQualified" value="http://claro.com.pe/eai/postventa/ebsRecargaPaqueteDatos"/>
+      <parameter name="wsdlServicePort" value="ebsRecargaPaqueteDatosSoapPort12"/>
+      <parameter name="className" value="com.inter.claroDataRechargeWS.stub.EbsRecargaPaqueteDatosSOAP12BindingImpl"/>
+      <parameter name="wsdlPortType" value="ebsRecargaPaqueteDatos"/>
+      <parameter name="typeMappingVersion" value="1.2"/>
+      <operation name="consultarPaquetesPorTipoLinea" qname="consultarPaquetesPorTipoLinea" returnQName="retNS:consultarPaquetesPorTipoLineaResponse" xmlns:retNS="http://claro.com.pe/eai/postventa/ebsRecargaPaqueteDatos" returnType="rtns:>consultarPaquetesPorTipoLineaResponse" xmlns:rtns="http://claro.com.pe/eai/postventa/ebsRecargaPaqueteDatos" soapAction="http://claro.com.pe/eai/postventa/ebsRecargaPaqueteDatos/consultarPaquetesPorTipoLinea" >
+        <parameter qname="pns:consultarPaquetesPorTipoLineaRequest" xmlns:pns="http://claro.com.pe/eai/postventa/ebsRecargaPaqueteDatos" type="tns:>consultarPaquetesPorTipoLineaRequest" xmlns:tns="http://claro.com.pe/eai/postventa/ebsRecargaPaqueteDatos"/>
+      </operation>
+      <operation name="ejecutarRecargaDatos" qname="ejecutarRecargaDatos" returnQName="retNS:ejecutarRecargaDatosResponse" xmlns:retNS="http://claro.com.pe/eai/postventa/ebsRecargaPaqueteDatos" returnType="rtns:>ejecutarRecargaDatosResponse" xmlns:rtns="http://claro.com.pe/eai/postventa/ebsRecargaPaqueteDatos" soapAction="http://claro.com.pe/eai/postventa/ebsRecargaPaqueteDatos/ejecutarRecargaDatos" >
+        <parameter qname="pns:ejecutarRecargaDatosRequest" xmlns:pns="http://claro.com.pe/eai/postventa/ebsRecargaPaqueteDatos" type="tns:>ejecutarRecargaDatosRequest" xmlns:tns="http://claro.com.pe/eai/postventa/ebsRecargaPaqueteDatos"/>
+      </operation>
+      <operation name="ejecutarAnulacionRecarga" qname="ejecutarAnulacionRecarga" returnQName="retNS:ejecutarAnulacionRecargaResponse" xmlns:retNS="http://claro.com.pe/eai/postventa/ebsRecargaPaqueteDatos" returnType="rtns:>ejecutarAnulacionRecargaResponse" xmlns:rtns="http://claro.com.pe/eai/postventa/ebsRecargaPaqueteDatos" soapAction="http://claro.com.pe/eai/postventa/ebsRecargaPaqueteDatos/ejecutarAnulacionRecarga" >
+        <parameter qname="pns:ejecutarAnulacionRecargaRequest" xmlns:pns="http://claro.com.pe/eai/postventa/ebsRecargaPaqueteDatos" type="tns:>ejecutarAnulacionRecargaRequest" xmlns:tns="http://claro.com.pe/eai/postventa/ebsRecargaPaqueteDatos"/>
+      </operation>
+      <parameter name="allowedMethods" value="ejecutarRecargaDatos consultarPaquetesPorTipoLinea ejecutarAnulacionRecarga"/>
+
+      <typeMapping
+        xmlns:ns="http://claro.com.pe/eai/postventa/ebsRecargaPaqueteDatos"
+        qname="ns:>ejecutarAnulacionRecargaResponse"
+        type="java:com.inter.claroDataRechargeWS.stub.EjecutarAnulacionRecargaResponse"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://claro.com.pe/eai/postventa/ebsRecargaPaqueteDatos"
+        qname="ns:>ejecutarRecargaDatosRequest"
+        type="java:com.inter.claroDataRechargeWS.stub.EjecutarRecargaDatosRequest"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://claro.com.pe/eai/postventa/ebsRecargaPaqueteDatos"
+        qname="ns:>consultarPaquetesPorTipoLineaResponse"
+        type="java:com.inter.claroDataRechargeWS.stub.ConsultarPaquetesPorTipoLineaResponse"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://claro.com.pe/eai/postventa/ebsRecargaPaqueteDatos"
+        qname="ns:>ejecutarRecargaDatosResponse"
+        type="java:com.inter.claroDataRechargeWS.stub.EjecutarRecargaDatosResponse"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://claro.com.pe/eai/postventa/ebsRecargaPaqueteDatos"
+        qname="ns:>ejecutarAnulacionRecargaRequest"
+        type="java:com.inter.claroDataRechargeWS.stub.EjecutarAnulacionRecargaRequest"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://claro.com.pe/eai/postventa/ebsRecargaPaqueteDatos"
+        qname="ns:>consultarPaquetesPorTipoLineaRequest"
+        type="java:com.inter.claroDataRechargeWS.stub.ConsultarPaquetesPorTipoLineaRequest"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+  </service>
+</deployment>

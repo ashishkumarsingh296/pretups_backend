@@ -1,0 +1,67 @@
+//######################################
+//
+// This script to manage category in the system  
+//
+//#######################################
+
+
+//===== import scripts ===//
+_includeOnce("../../../../utility/ImportPackage.sah");
+_includeOnce("../../../GUI/testscripts/ProgramCategory/ProgramCategoryUpdate_Common.sah"); //to view barred channel user in the system 
+
+
+
+//If NA deos not exist, first create it and then create the Card Group
+var $l_naCsv = _readCSVFile("../../../GUI/testdata/NA_Login.csv"); //Reads the network admin credentials 
+var $g_networkAdmin1 = $l_naCsv[1][1];
+if($g_networkAdmin1 == "null"){
+	createNA(); // UserManagement_Common.sah
+	var $l_naCsv1 = _readCSVFile("../../../GUI/testdata/NA_Login.csv");
+	$g_networkAdmin1 = $l_naCsv1[1][1];
+	login($g_appURL,  $g_LangEnglish, $g_networkAdmin1, $g_commonPassword, $g_assertWelcome);
+}else{	 
+	login($g_appURL,  $g_LangEnglish, $g_networkAdmin1, $g_commonPassword, $g_assertWelcome);
+}
+
+ 
+
+// ....................... Test cases to manage channel User PIN in the system    ............. //
+
+var $g_programCategoryDetails = _readCSVFile("../../../GUI/testdata/ProgramCategory_Details_Update.csv"); // Read Channel channel user detials which needs to be set
+
+
+
+	for(var $g_row = 1; $g_programCategoryDetails[$g_row] != null; $g_row++){
+		
+				var $g_col = 0;
+				var $number =   testCaseNumber($g_programCategoryDetails[$g_row][$g_col]);
+			
+				var $t = _testcase($g_programCategoryDetails[$g_row][$g_col++], $g_programCategoryDetails[$g_row][$g_col++]);
+				
+				$t.start();
+				
+				commonVaribleToUpdateProgamCategoryRules($g_row, $g_col);
+				
+				
+				
+				if($number == 1 ){ invalidMinPeriod(); }
+				else if($number ==2 ){ invalidMaxPeriod(); }
+				else if($number ==3 ){ MaxPeriodRequired(); }
+				else if ($number == 4 ) { MinPeriodRequired(); }
+				else if ($number == 5 ) { MaxPeriodMore(); }
+				else if ($number == 6 ) { DefineSuccessful(); }
+				$t.end();
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+

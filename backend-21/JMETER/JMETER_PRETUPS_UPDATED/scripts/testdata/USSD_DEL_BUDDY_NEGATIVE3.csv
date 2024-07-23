@@ -1,0 +1,2 @@
+TestcaseId,TestcaseType,Module,Description
+4,Negative,P2P delete buddy,To verify that Delete Buddy request is not successful if  PIN is empty.

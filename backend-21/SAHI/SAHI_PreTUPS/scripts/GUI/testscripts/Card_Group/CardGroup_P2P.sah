@@ -1,0 +1,69 @@
+//#######################################
+//
+// To add a P2P card group
+//
+//#######################################
+
+_includeOnce("../../../../utility/ImportPackage.sah");
+_includeOnce("../../../GUI/testscripts/Card_Group/CardGroup_Common.sah"); //For adding C2P card group	
+
+//======================Pre-requisite check============================
+_log("Setup", "custom4");
+
+//If NA deos not exist, first create it and then create the Card Group
+var $l_naCsv = _readCSVFile("../../../GUI/testdata/NA_Login.csv"); //Reads the network admin credentials 
+var $g_networkAdmin1 = $l_naCsv[1][1];
+if($g_networkAdmin1 == "null"){
+	createNA(); // UserManagement_Common.sah
+	var $l_naCsv1 = _readCSVFile("../../../GUI/testdata/NA_Login.csv");
+	$g_networkAdmin1 = $l_naCsv1[1][1];
+	login($g_appURL,  $g_LangEnglish, $g_networkAdmin1, $g_commonPassword, $g_assertWelcome);
+}else{	 
+	login($g_appURL,  $g_LangEnglish, $g_networkAdmin1, $g_commonPassword, $g_assertWelcome);
+}
+
+//==================== Create a peer to peer card group ==================//
+
+var $g_P2PCardDetails = _readCSVFile("../../../GUI/testdata/P2PCardGroup_Details.csv"); //Reads the Card group details
+
+var $g_row = 1;
+var $g_col = 0;
+var $t = _testcase($g_P2PCardDetails[$g_row][$g_col++], $g_P2PCardDetails[$g_row][$g_col++]);
+$t.start();
+variableForP2PCardGroup($g_row, $g_col); //defind in CardGroup_Common.sah
+
+var $ifRuleExists = addP2PCardGruop(); //defind in CardGroup_Common.sah
+$t.end();
+
+if($ifRuleExists == false){
+	_assertExists(_listItem("Card group details successfully added"));
+	
+	var $g_cardGroupName = _readCSVFile("../../../GUI/testdata/P2PTransferRules_Details.csv");
+	$g_cardGroupName[1][7] = $g_cardGroupSetName;
+	_writeCSVFile($g_cardGroupName, "../../../GUI/testdata/P2PTransferRules_Details.csv", 1);
+	
+		_log("P2P Card group is added successfully.");
+}
+else{
+	_log("P2P Card gropu is already exists");
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

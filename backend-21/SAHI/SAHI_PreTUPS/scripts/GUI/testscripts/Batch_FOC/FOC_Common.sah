@@ -1,0 +1,559 @@
+//###############################################
+//#Company Name: Mahindra Comviva Technologies Ltd.
+//#Application Name: Pretups
+//#Objective:Common function for FOC approval level one for approve, reject and process file.
+//#Author Name: Akanksha
+//#Created Date: 03/02/2014
+//###############################################
+
+_includeOnce("../../../../utility/ImportPackage.sah");	//For importing common files
+var $l_FOCDetails = _readCSVFile("../../testdata/FOC_Details.csv");
+
+
+var $g_btachName;
+var $g_languageOne;
+var $g_languageTwo;
+var $g_remarks;
+var $g_PIN;
+var $g_assert;
+
+
+var $l_row;
+var $l_col;
+
+
+function approveBatchFOC() {
+	
+	var $l_row = 1;
+	var $l_col = 0;
+	
+	var $t1 = _testcase($l_FOCDetails[$l_row][$l_col++], $l_FOCDetails[$l_row][$l_col++]);
+
+	$t1.start();
+	
+	
+	initiateBatchFOCVariables($l_row,$l_col);
+	
+	approveBatchFOCApprovalLevelOne();
+	
+
+	$t1.end();
+	
+	
+	
+	
+}
+
+function initiateBatchFOCVariables($l_row,$l_col) {
+	
+	$g_btachName = $l_FOCDetails[$l_row][$l_col++];
+	$g_languageOne = $l_FOCDetails[$l_row][$l_col++];
+	$g_languageTwo = $l_FOCDetails[$l_row][$l_col++];
+	$g_remarks = $l_FOCDetails[$l_row][$l_col++];
+	$g_PIN  = $l_FOCDetails[$l_row][$l_col++];
+	$g_assert = $l_FOCDetails[$l_row][$l_col++];
+
+}
+
+function approveBatchFOCApprovalLevelOne() {
+	
+
+
+		_click(_link($g_LeftMenuBar_O2C));
+		
+		_click(_link($g_LeftMenuBar_ApproveBatchFOCLevelOne));
+		
+		_assertExists(_div("Level 1 Batch FOC transfer approval"));
+		
+		_click(_radio("selectedIndex", _near(_cell($g_btachName))));
+		
+		_click(_submit("Submit"));
+		
+		_assertExists(_cell("Batch name :", _near(_cell($g_btachName))));
+		
+		_click(_submit("Batch approve"));
+		_setValue(_textarea("defaultLang"), $g_languageOne);
+		_setValue(_textarea("secondLang"), $g_languageTwo);
+		_setValue(_textarea("firstApproverRemarks"), $g_remarks);
+		_setValue(_password("smsPin"), $g_PIN);
+		
+		_click(_button("Approve"));
+		_assertExists(_listItem("Batch is processed successfully, 1 records approved. Next level of approval is required for approved records."));
+		
+}
+
+function rejectBatchFOClevel1() {
+	
+	var $l_row = 2;
+	var $l_col = 0;
+	
+	var $t1 = _testcase($l_FOCDetails[$l_row][$l_col++], $l_FOCDetails[$l_row][$l_col++]);
+
+	$t1.start();
+	
+	
+	initiateBatchFOCVariables($l_row,$l_col);
+	
+	rejectBatchFOCApprovalLevelOne();
+	
+
+	$t1.end();
+	_closeBrowser();
+		
+}
+
+function rejectBatchFOCApprovalLevelOne($l_row,$l_col) {
+	
+		    _click(_link("Operator to channel"));
+			_click(_link("Batch FOC approval level 1"));
+			_click(_radio("selectedIndex", _near(_cell($g_btachName))));
+			_click(_submit("Submit"));
+			_click(_submit("Batch reject"));
+			_setValue(_textarea("defaultLang"), $g_languageOne);
+			_setValue(_textarea("secondLang"), $g_languageTwo);
+			_setValue(_textarea("firstApproverRemarks"), $g_remarks);
+			_setValue(_password("smsPin"), $g_PIN);
+			_click(_button("Reject"));
+			_assertExists(_listItem($g_assert));
+						
+}
+
+function n_approve_empty_pin1() {
+	
+	var $l_row = 3;
+	var $l_col = 0;
+	
+	var $t1 = _testcase($l_FOCDetails[$l_row][$l_col++], $l_FOCDetails[$l_row][$l_col++]);
+
+	$t1.start();
+	
+	
+	initiateBatchFOCVariables($l_row,$l_col);
+	
+	n_approve_empty_pin();
+	
+
+	$t1.end();
+	
+		
+}
+
+function n_approve_empty_pin(){
+	_click(_link("Operator to channel"));
+	_click(_link("Batch FOC approval level 1"));
+	_click(_radio("selectedIndex", _near(_cell($g_btachName))));
+	_click(_submit("Submit"));
+	_click(_submit("Batch approve"));
+	_setValue(_textarea("defaultLang"), $g_languageOne);
+	_setValue(_textarea("secondLang"), $g_languageTwo);
+	_setValue(_textarea("firstApproverRemarks"), $g_remarks);
+	_setValue(_password("smsPin"), $g_PIN);
+	_click(_button("Approve"));
+	_assertExists(_listItem($g_assert));
+	
+	
+}
+
+
+function n_approve_invalid_pin_apr1() {
+	
+	var $l_row = 4;
+	var $l_col = 0;
+	
+	var $t1 = _testcase($l_FOCDetails[$l_row][$l_col++], $l_FOCDetails[$l_row][$l_col++]);
+
+	$t1.start();
+	
+	
+	initiateBatchFOCVariables($l_row,$l_col);
+	
+	n_approve_invalid_pin_apr_one();
+	
+
+	$t1.end();
+
+		
+}
+
+function n_approve_invalid_pin_apr_one(){
+	_click(_link("Operator to channel"));
+	_click(_link("Batch FOC approval level 1"));
+	_click(_radio("selectedIndex", _near(_cell($g_btachName))));
+	_click(_submit("Submit"));
+	_click(_submit("Batch approve"));
+	_setValue(_textarea("defaultLang"), $g_languageOne);
+	_setValue(_textarea("secondLang"), $g_languageTwo);
+	_setValue(_textarea("firstApproverRemarks"), $g_remarks);
+	_setValue(_password("smsPin"), $g_PIN);
+	_click(_button("Approve"));
+	_assertExists(_listItem($g_assert));
+}
+
+
+
+// function to reject batch leaving pin field empty
+function n_reject_empty_pin_apr1(){
+	
+	var $l_row = 5;
+	var $l_col = 0;
+	
+	var $t1 = _testcase($l_FOCDetails[$l_row][$l_col++], $l_FOCDetails[$l_row][$l_col++]);
+
+	$t1.start();
+	
+	
+	initiateBatchFOCVariables($l_row,$l_col);
+	
+	n_reject_empty_pin_apr_one();
+	
+
+	$t1.end();
+	
+}
+
+function n_reject_empty_pin_apr_one(){
+	_click(_link("Operator to channel"));
+	_click(_link("Batch FOC approval level 1"));
+	_click(_radio("selectedIndex", _near(_cell($g_btachName))));
+	_click(_submit("Submit"));
+	_click(_submit("Batch reject"));
+	_setValue(_textarea("defaultLang"), $g_languageOne);
+	_setValue(_textarea("secondLang"), $g_languageTwo);
+	_setValue(_textarea("firstApproverRemarks"), $g_remarks);
+	_setValue(_password("smsPin"), $g_PIN);
+	_click(_button("Reject"));
+	_assertExists(_listItem($g_assert));
+}
+
+
+
+// function to reject batch leaving providing invalid pin
+
+function n_reject_invalid_pin_apr1(){
+	
+	var $l_row = 6;
+	var $l_col = 0;
+	
+	var $t1 = _testcase($l_FOCDetails[$l_row][$l_col++], $l_FOCDetails[$l_row][$l_col++]);
+
+	$t1.start();
+	
+	
+	initiateBatchFOCVariables($l_row,$l_col);
+	
+	n_reject_invalid_pin_apr_one();
+	
+
+	$t1.end();
+	
+}
+
+function n_reject_invalid_pin_apr_one(){
+	_click(_link("Operator to channel"));
+	_click(_link("Batch FOC approval level 1"));
+	_click(_radio("selectedIndex", _near(_cell($g_btachName))));
+	_click(_submit("Submit"));
+	_click(_submit("Batch reject"));
+	_setValue(_textarea("defaultLang"), $g_languageOne);
+	_setValue(_textarea("secondLang"), $g_languageTwo);
+	_setValue(_textarea("firstApproverRemarks"), $g_remarks);
+	_setValue(_password("smsPin"), $g_PIN);
+	_click(_button("Reject"));
+	_assertExists(_listItem($g_assert));
+}
+
+function approveBatchFOC_backtest() {
+	
+	var $l_row = 1;
+	var $l_col = 0;
+	
+	var $t1 = _testcase($l_FOCDetails[$l_row][$l_col++], $l_FOCDetails[$l_row][$l_col++]);
+
+	$t1.start();
+	
+	
+	initiateBatchFOCVariables($l_row,$l_col);
+	
+	approveBatchFOCApprovalLevelOne_back();
+	
+
+	$t1.end();
+	
+	
+	
+	
+}
+function approveBatchFOCApprovalLevelOne_back() {
+	
+
+
+	_click(_link($g_LeftMenuBar_O2C));
+	
+	_click(_link($g_LeftMenuBar_ApproveBatchFOCLevelOne));
+	
+	_assertExists(_div("Level 1 Batch FOC transfer approval"));
+	
+	_click(_radio("selectedIndex", _near(_cell($g_btachName))));
+	
+	_click(_submit("Submit"));
+	
+	_assertExists(_cell("Batch name :", _near(_cell($g_btachName))));
+	
+	_click(_submit("Batch approve"));
+	_assertExists(_div("Level 1 Batch FOC transfer approval"));
+	_click(_submit("Back"));
+	_assertExists(_submit("Batch approve"));
+	
+}
+
+//process file
+function processBatchFOC() {
+	
+	var $l_row = 7;
+	var $l_col = 0;
+	
+	var $t1 = _testcase($l_FOCDetails[$l_row][$l_col++], $l_FOCDetails[$l_row][$l_col++]);
+
+	$t1.start();
+	
+	
+	initiateBatchFOCVariables($l_row,$l_col);
+	
+	processBatchFOCApprovalLevelOne();
+	
+
+	$t1.end();
+	
+	
+	
+	
+}
+
+
+function processBatchFOCApprovalLevelOne() {
+	
+
+
+		_click(_link($g_LeftMenuBar_O2C));
+		
+		_click(_link($g_LeftMenuBar_ApproveBatchFOCLevelOne));
+		
+		_assertExists(_div("Level 1 Batch FOC transfer approval"));
+		
+		_click(_radio("selectedIndex", _near(_cell($g_btachName))));
+		
+		_click(_submit("Submit"));
+		
+		_setFile2(_file("file"),$g_remarks);
+		
+		_assertExists(_cell("Batch name :", _near(_cell($g_btachName))));
+		
+		_click(_submit("Process file"));
+		_setValue(_textarea("defaultLang"), $g_languageOne);
+		_setValue(_textarea("secondLang"), $g_languageTwo);
+		_setValue(_password("smsPin"), $g_PIN);
+		
+		_click(_submit("Process file"));
+		_assertExists(_listItem("/"+$g_assert+ ".*/"));
+		
+}
+
+function n_processBatchFOClev1_invalidpin() {
+	
+	var $l_row = 8;
+	var $l_col = 0;
+	
+	var $t1 = _testcase($l_FOCDetails[$l_row][$l_col++], $l_FOCDetails[$l_row][$l_col++]);
+
+	$t1.start();
+	
+	
+	initiateBatchFOCVariables($l_row,$l_col);
+	
+	n_processBatchFOC_invalidpin();
+	
+
+	$t1.end();
+	
+	
+	
+	
+}
+
+
+function n_processBatchFOC_invalidpin() {
+	
+
+
+		_click(_link($g_LeftMenuBar_O2C));
+		
+		_click(_link($g_LeftMenuBar_ApproveBatchFOCLevelOne));
+		
+		_assertExists(_div("Level 1 Batch FOC transfer approval"));
+		
+		_click(_radio("selectedIndex", _near(_cell($g_btachName))));
+		
+		_click(_submit("Submit"));
+		
+		_setFile2(_file("file"),$g_remarks);
+		
+		_assertExists(_cell("Batch name :", _near(_cell($g_btachName))));
+		
+		_click(_submit("Process file"));
+		_setValue(_textarea("defaultLang"), $g_languageOne);
+		_setValue(_textarea("secondLang"), $g_languageTwo);
+		_setValue(_password("smsPin"), $g_PIN);
+		
+		_click(_submit("Process file"));
+		_assertExists(_listItem($g_assert));
+		
+}
+function n_processBatchFOClev1_emptypin() {
+	
+	var $l_row = 9;
+	var $l_col = 0;
+	
+	var $t1 = _testcase($l_FOCDetails[$l_row][$l_col++], $l_FOCDetails[$l_row][$l_col++]);
+
+	$t1.start();
+	
+	
+	initiateBatchFOCVariables($l_row,$l_col);
+	
+	n_processBatchFOCApprovalLevelOne_emptypin();
+	
+
+	$t1.end();
+	
+	
+	
+	
+}
+
+
+function n_processBatchFOCApprovalLevelOne_emptypin() {
+	
+
+
+		_click(_link($g_LeftMenuBar_O2C));
+		
+		_click(_link($g_LeftMenuBar_ApproveBatchFOCLevelOne));
+		
+		_assertExists(_div("Level 1 Batch FOC transfer approval"));
+		
+		_click(_radio("selectedIndex", _near(_cell($g_btachName))));
+		
+		_click(_submit("Submit"));
+		
+		_setFile2(_file("file"),$g_remarks);
+		
+		_assertExists(_cell("Batch name :", _near(_cell($g_btachName))));
+		
+		_click(_submit("Process file"));
+		_setValue(_textarea("defaultLang"), $g_languageOne);
+		_setValue(_textarea("secondLang"), $g_languageTwo);
+		_setValue(_password("smsPin"), $g_PIN);
+		
+		_click(_submit("Process file"));
+		_assertExists(_listItem($g_assert));
+		
+}
+
+function processBatchFOC_cancle() {
+	
+	var $l_row = 7;
+	var $l_col = 0;
+	
+	var $t1 = _testcase($l_FOCDetails[$l_row][$l_col++], $l_FOCDetails[$l_row][$l_col++]);
+
+	$t1.start();
+	
+	
+	initiateBatchFOCVariables($l_row,$l_col);
+	
+	processBatchFOCApprovalLevelOne_cancle();
+	
+
+	$t1.end();
+	
+	
+	
+	
+}
+
+
+function processBatchFOCApprovalLevelOne_cancle() {
+	
+
+
+		_click(_link($g_LeftMenuBar_O2C));
+		
+		_click(_link($g_LeftMenuBar_ApproveBatchFOCLevelOne));
+		
+		_assertExists(_div("Level 1 Batch FOC transfer approval"));
+		
+		_click(_radio("selectedIndex", _near(_cell($g_btachName))));
+		
+		_click(_submit("Submit"));
+		
+		_setFile2(_file("file"),$g_remarks);
+		
+		_assertExists(_cell("Batch name :", _near(_cell($g_btachName))));
+		
+		_click(_submit("Process file"));
+		_setValue(_textarea("defaultLang"), $g_languageOne);
+		_setValue(_textarea("secondLang"), $g_languageTwo);
+		_setValue(_password("smsPin"), $g_PIN);
+		_click(_submit("Cancel"));
+		_assertExists(_div("Level 1 Batch FOC transfer approval"));
+		
+}
+
+function processBatchFOC_back() {
+	
+	var $l_row = 7;
+	var $l_col = 0;
+	
+	var $t1 = _testcase($l_FOCDetails[$l_row][$l_col++], $l_FOCDetails[$l_row][$l_col++]);
+
+	$t1.start();
+	
+	
+	initiateBatchFOCVariables($l_row,$l_col);
+	
+	processBatchFOCApprovalLevelOne_back();
+	
+
+	$t1.end();
+	
+	
+	
+	
+}
+
+
+function processBatchFOCApprovalLevelOne_back() {
+	
+
+
+		_click(_link($g_LeftMenuBar_O2C));
+		
+		_click(_link($g_LeftMenuBar_ApproveBatchFOCLevelOne));
+		
+		_assertExists(_div("Level 1 Batch FOC transfer approval"));
+		
+		_click(_radio("selectedIndex", _near(_cell($g_btachName))));
+		
+		_click(_submit("Submit"));
+		
+		_setFile2(_file("file"),$g_remarks);
+		
+		_assertExists(_cell("Batch name :", _near(_cell($g_btachName))));
+		
+		_click(_submit("Process file"));
+		_setValue(_textarea("defaultLang"), $g_languageOne);
+		_setValue(_textarea("secondLang"), $g_languageTwo);
+		_setValue(_password("smsPin"), $g_PIN);
+		_click(_submit("Back"));
+		_assertExists(_div("Level 1 Batch FOC transfer approval"));		
+}

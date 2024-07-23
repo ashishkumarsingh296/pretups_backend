@@ -1,0 +1,247 @@
+
+
+// This scripts contains all method to manage channel User PIN in the system
+
+_includeOnce("../../../../utility/ImportPackage.sah");
+
+var $l_naCsv = _readCSVFile("../../../GUI/testdata/NA_Login.csv");
+
+
+	var $g_msisdn;
+	var $g_remarks;
+	var $g_oldPIN;
+	var $g_newPIN;
+	var $g_cnfPIN;
+	var $g_assertion;
+	
+	var $a_Prefix;
+	
+	
+	
+	
+	function commonVaribleToChangeUserPIN($g_row, $g_col) {
+		
+		$g_msisdn = $g_changeUserPIN[$g_row][$g_col++];
+		$g_remarks = $g_changeUserPIN[$g_row][$g_col++];
+		$g_oldPIN = $g_changeUserPIN[$g_row][$g_col++];
+		$g_newPIN = $g_changeUserPIN[$g_row][$g_col++];
+		$g_cnfPIN = $g_changeUserPIN[$g_row][$g_col++];
+		$g_assertion = $g_changeUserPIN[$g_row][$g_col++];
+		
+	}
+	
+	
+	
+	
+	
+		
+	// Common methods to manage user PIN in the system ......... 
+	
+	
+	function test() {
+		
+		_click(_link("Channel user"));
+		_click(_link("Change PIN"));
+		_assertExists(_div("Change PIN"));
+		_setValue(_textbox("searchMsisdn"), "7233333333");
+		_setValue(_textarea("eventRemarks"), "adasda");
+		_click(_submit("Submit"));
+		_click(_checkbox("msisdnListIndexed[0].multiBox", _near(_cell("Select"))));
+		_setValue(_password("msisdnListIndexed[0].oldSmsPin", _near(_cell("Select"))), "1357");
+		_setValue(_password("msisdnListIndexed[0].showSmsPin", _near(_cell("Select"))), "2468");
+		_setValue(_password("msisdnListIndexed[0].confirmSmsPin", _near(_cell("Select"))), "2468");
+		_click(_submit("Submit"));
+		_setValue(_password("msisdnListIndexed[0].oldSmsPin"), "2468");
+		_setValue(_password("msisdnListIndexed[0].showSmsPin"), "1357");
+		_setValue(_password("msisdnListIndexed[0].confirmSmsPin"), "1357");
+		_click(_submit("Submit"));
+		_assertExists(_div("Confirm change PIN"));
+
+		
+	}
+	
+	
+		function commonMethodToChangePIN() {
+			_click(_link("Channel user"));
+			_click(_link("Change PIN"));
+			_assertExists(_div("Change PIN"));
+			_setValue(_textbox("searchMsisdn"), $g_msisdn);
+			_setValue(_textarea("eventRemarks"), $g_remarks);
+			_click(_submit("Submit"));
+		}
+		
+		function commonMethodToChangePINOne() {
+			_click(_checkbox("msisdnListIndexed[0].multiBox", _near(_cell("Select"))));
+			_setValue(_password("msisdnListIndexed[0].oldSmsPin", _near(_cell("Select"))), $g_oldPIN);
+			_setValue(_password("msisdnListIndexed[0].showSmsPin", _near(_cell("Select"))), $g_newPIN);
+			_setValue(_password("msisdnListIndexed[0].confirmSmsPin", _near(_cell("Select"))), $g_cnfPIN );
+		}
+
+	//  .................. Methods for given test cases ..................... //
+		
+		
+		
+		function checkSubmitButtonChangePINPage() {
+			_click(_link("Channel user"));
+			_click(_link("Change PIN"));
+			_assertExists(_div("Change PIN"));
+			_assertExists(_submit("Submit"));
+		}
+		
+		function changePINWithInvalidDetails() {
+			commonMethodToChangePIN();
+			 _assertExists(_listItem("/"+ $g_assertion +".*/"));
+		}
+		
+		function checkBackButtonOnChaangePINPage() {
+			commonMethodToChangePIN();
+			back();
+			if(_getValue(_textbox("searchMsisdn")) == $g_msisdn) {_log("Successful")}
+			else {_log("Failed back Check");}
+		}
+		
+		function checkResetButtonOnChaangePINPage() {
+			commonMethodToChangePIN();
+			commonMethodToChangePINOne();
+			reset();
+			
+			var $temp = _getValue(_password("msisdnListIndexed[0].oldSmsPin"));
+			if($temp == "" ){_log("Successful")}
+			else {_log("Failed back Check");}
+	    }
+			
+		function changePINWithoutSelectingUser() {
+			commonMethodToChangePIN();
+			_setValue(_password("msisdnListIndexed[0].oldSmsPin", _near(_cell("Select"))), "1357");
+			_setValue(_password("msisdnListIndexed[0].showSmsPin", _near(_cell("Select"))), "2468");
+			_setValue(_password("msisdnListIndexed[0].confirmSmsPin", _near(_cell("Select"))), "2468");
+			_click(_submit("Submit"));
+			_assertExists(_listItem("/"+ $g_assertion +".*/"));
+		}
+		
+		function changePINWithInvalidDetailsTwo() {
+			commonMethodToChangePIN();
+			commonMethodToChangePINOne();
+			submit();
+			_assertExists(_listItem("/"+ $g_assertion +".*/"));
+		}
+		
+		function backCheckOnUserPINChangeCnfPage() {
+			commonMethodToChangePIN();
+			commonMethodToChangePINOne();
+			submit();
+			_assertExists(_div("Confirm change PIN"));
+			back();
+			_assertExists(_div("Change PIN"));
+		}
+		
+		function changeChannelUserPIN() {
+			commonMethodToChangePIN();
+			commonMethodToChangePINOne();
+			submit();
+			_assertExists(_div("Confirm change PIN"));
+			confirm();
+			_assertExists(_listItem("/"+ $g_assertion +".*/"));
+		}
+		
+		
+		
+		
+		
+	// ..................... Mehthods For changing self PIN of channel admin in the system   ........................ //
+		
+		function test() {
+			
+			_click(_link("Channel user"));
+			_click(_link("Change self PIN"));
+			_assertExists(_div("Change PIN"));
+			_click(_checkbox("msisdnListIndexed[0].multiBox", _near(_cell("Select"))));
+			_setValue(_password("msisdnListIndexed[0].oldSmsPin", _near(_cell("Select"))), "1357");
+			_setValue(_password("msisdnListIndexed[0].showSmsPin", _near(_cell("Select"))), "2468");
+			_setValue(_password("msisdnListIndexed[0].confirmSmsPin", _near(_cell("Select"))), "2468");
+			_click(_submit("Submit"));
+			_assertExists(_div("Confirm change PIN"));
+			
+			_assertExists(_submit("Submit", _near(_reset("Reset"))));
+
+			
+		}
+		
+		
+		function commonVaribleToChangeSelfPIN() {
+			$g_oldPIN = $g_changeSelfPIN[$g_row][$g_col++];
+			$g_newPIN = $g_changeSelfPIN[$g_row][$g_col++];
+			$g_cnfPIN = $g_changeSelfPIN[$g_row][$g_col++];
+			$g_assertion = $g_changeSelfPIN[$g_row][$g_col++];
+		}
+		
+		function commonMethodToChangeSelfPIN() {
+			_click(_link("Channel user"));
+			_click(_link("Change self PIN"));
+			_assertExists(_div("Change PIN"));
+			_click(_checkbox("msisdnListIndexed[0].multiBox", _near(_cell("Select"))));
+			_setValue(_password("msisdnListIndexed[0].oldSmsPin"), $g_oldPIN);
+			_setValue(_password("msisdnListIndexed[0].showSmsPin"), $g_newPIN);
+			_setValue(_password("msisdnListIndexed[0].confirmSmsPin"), $g_cnfPIN);
+		}
+		
+		
+		function checkSubmitButtonChangeSelfPINPage() {
+			commonMethodToChangeSelfPIN();
+			_assertExists(_submit("Submit", _near(_reset("Reset"))));
+		}
+		
+		function changePINWithoutSelectingUser() {
+			_click(_link("Channel user"));
+			_click(_link("Change self PIN"));
+			_assertExists(_div("Change PIN"));
+			_setValue(_password("msisdnListIndexed[0].oldSmsPin"), $g_oldPIN);
+			_setValue(_password("msisdnListIndexed[0].showSmsPin"), $g_newPIN);
+			_setValue(_password("msisdnListIndexed[0].confirmSmsPin"), $g_cnfPIN);
+			submit();
+			_assertExists(_listItem("/"+ $g_assertion +".*/"));
+			
+		}
+		
+		function checkResetButtonChangeSelfPINPage() {
+			commonMethodToChangeSelfPIN();
+			reset();
+			var $temp = _getValue(_password("msisdnListIndexed[0].oldSmsPin"));
+			if($temp == "" ){_log("Successful")}
+			else {_log("Failed back Check");}
+		}
+		
+		function changeSelfPINWithInvalidDetails() {
+			commonMethodToChangeSelfPIN();
+			submit();
+			_assertExists(_listItem("/"+ $g_assertion +".*/"));
+		}
+		
+		function backCheckOnCnfSelfPINChange() {
+			commonMethodToChangeSelfPIN();
+			submit();
+			_assertExists(_div("Confirm change PIN"));
+			back();
+			_assertExists(_div("Change PIN"));
+		}
+	
+		function changeSelfPIN() {
+			commonMethodToChangeSelfPIN();
+			submit();
+			_assertExists(_div("Confirm change PIN"));
+			confirm();
+			_assertExists(_listItem("/"+ $g_assertion +".*/"));
+			_wait(2000);
+		}
+		
+		
+		
+		
+		
+		
+		
+		
+		
+
+    
+    

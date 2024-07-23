@@ -1,0 +1,197 @@
+<!-- Use this file to deploy some handlers/chains and services      -->
+<!-- Two ways to do this:                                           -->
+<!--   java org.apache.axis.client.AdminClient deploy.wsdd          -->
+<!--      after the axis server is running                          -->
+<!-- or                                                             -->
+<!--   java org.apache.axis.utils.Admin client|server deploy.wsdd   -->
+<!--      from the same directory that the Axis engine runs         -->
+
+<deployment
+    xmlns="http://xml.apache.org/axis/wsdd/"
+    xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
+  <!-- Services from EbsRecargaVirtualWSService WSDL service -->
+
+  <service name="EbsRecargaVirtualWSPortSB11" provider="java:RPC" style="document" use="literal">
+      <parameter name="wsdlTargetNamespace" value="http://services.eai.claro.com.pe/ebsRecargaVirtualWS"/>
+      <parameter name="wsdlServiceElement" value="EbsRecargaVirtualWSService"/>
+      <parameter name="schemaQualified" value="http://services.eai.claro.com.pe/ebsRecargaVirtualWS"/>
+      <parameter name="wsdlServicePort" value="EbsRecargaVirtualWSPortSB11"/>
+      <parameter name="className" value="com.inter.claroRechargeWS.stub.EbsRecargaVirtualWSPortTypeSOAP11BindingImpl"/>
+      <parameter name="wsdlPortType" value="ebsRecargaVirtualPortType"/>
+      <parameter name="typeMappingVersion" value="1.2"/>
+      <operation name="ejecutarRecarga" qname="ejecutarRecarga" returnQName="retNS:ejecutarRecargaResponse" xmlns:retNS="http://services.eai.claro.com.pe/ebsRecargaVirtualWS" returnType="rtns:>ejecutarRecargaResponse" xmlns:rtns="http://services.eai.claro.com.pe/ebsRecargaVirtualWS" soapAction="http://services.eai.claro.com.pe/EbsRecargaVirtualWS/ejecutarRecarga" >
+        <parameter qname="pns:ejecutarRecargaRequest" xmlns:pns="http://services.eai.claro.com.pe/ebsRecargaVirtualWS" type="tns:>ejecutarRecargaRequest" xmlns:tns="http://services.eai.claro.com.pe/ebsRecargaVirtualWS"/>
+      </operation>
+      <parameter name="allowedMethods" value="ejecutarRecarga"/>
+
+      <typeMapping
+        xmlns:ns="http://services.eai.claro.com.pe/ebsRecargaVirtualWS"
+        qname="ns:audiTypeRequest"
+        type="java:com.inter.claroRechargeWS.stub.AudiTypeRequest"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://services.eai.claro.com.pe/ebsRecargaVirtualWS"
+        qname="ns:RequestOpcionalComplexType"
+        type="java:com.inter.claroRechargeWS.stub.RequestOpcionalComplexType"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <arrayMapping
+        xmlns:ns="http://services.eai.claro.com.pe/ebsRecargaVirtualWS"
+        qname="ns:ListaRequestOpcional"
+        type="java:com.inter.claroRechargeWS.stub.RequestOpcionalComplexType[]"
+        innerType="cmp-ns:RequestOpcionalComplexType" xmlns:cmp-ns="http://services.eai.claro.com.pe/ebsRecargaVirtualWS"
+        encodingStyle=""
+      />
+      <arrayMapping
+        xmlns:ns="http://services.eai.claro.com.pe/ebsRecargaVirtualWS"
+        qname="ns:ListaDatosCliente"
+        type="java:com.inter.claroRechargeWS.stub.DatosClienteComplexType[]"
+        innerType="cmp-ns:DatosClienteComplexType" xmlns:cmp-ns="http://services.eai.claro.com.pe/ebsRecargaVirtualWS"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://services.eai.claro.com.pe/ebsRecargaVirtualWS"
+        qname="ns:DatosClienteComplexType"
+        type="java:com.inter.claroRechargeWS.stub.DatosClienteComplexType"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <arrayMapping
+        xmlns:ns="http://services.eai.claro.com.pe/ebsRecargaVirtualWS"
+        qname="ns:ListaResponseOpcional"
+        type="java:com.inter.claroRechargeWS.stub.ResponseOpcionalComplexType[]"
+        innerType="cmp-ns:ResponseOpcionalComplexType" xmlns:cmp-ns="http://services.eai.claro.com.pe/ebsRecargaVirtualWS"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://services.eai.claro.com.pe/ebsRecargaVirtualWS"
+        qname="ns:audiTypeRespose"
+        type="java:com.inter.claroRechargeWS.stub.AudiTypeRespose"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://services.eai.claro.com.pe/ebsRecargaVirtualWS"
+        qname="ns:>ejecutarRecargaResponse"
+        type="java:com.inter.claroRechargeWS.stub.EjecutarRecargaResponse"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://services.eai.claro.com.pe/ebsRecargaVirtualWS"
+        qname="ns:>ejecutarRecargaRequest"
+        type="java:com.inter.claroRechargeWS.stub.EjecutarRecargaRequest"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://services.eai.claro.com.pe/ebsRecargaVirtualWS"
+        qname="ns:ResponseOpcionalComplexType"
+        type="java:com.inter.claroRechargeWS.stub.ResponseOpcionalComplexType"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+  </service>
+  <service name="EbsRecargaVirtualWSPortSB12" provider="java:RPC" style="document" use="literal">
+      <parameter name="wsdlTargetNamespace" value="http://services.eai.claro.com.pe/ebsRecargaVirtualWS"/>
+      <parameter name="wsdlServiceElement" value="EbsRecargaVirtualWSService"/>
+      <parameter name="schemaQualified" value="http://services.eai.claro.com.pe/ebsRecargaVirtualWS"/>
+      <parameter name="wsdlServicePort" value="EbsRecargaVirtualWSPortSB12"/>
+      <parameter name="className" value="com.inter.claroRechargeWS.stub.EbsRecargaVirtualWSPortTypeSOAP12BindingImpl"/>
+      <parameter name="wsdlPortType" value="ebsRecargaVirtualPortType"/>
+      <parameter name="typeMappingVersion" value="1.2"/>
+      <operation name="ejecutarRecarga" qname="ejecutarRecarga" returnQName="retNS:ejecutarRecargaResponse" xmlns:retNS="http://services.eai.claro.com.pe/ebsRecargaVirtualWS" returnType="rtns:>ejecutarRecargaResponse" xmlns:rtns="http://services.eai.claro.com.pe/ebsRecargaVirtualWS" soapAction="http://services.eai.claro.com.pe/EbsRecargaVirtualWS/ejecutarRecarga" >
+        <parameter qname="pns:ejecutarRecargaRequest" xmlns:pns="http://services.eai.claro.com.pe/ebsRecargaVirtualWS" type="tns:>ejecutarRecargaRequest" xmlns:tns="http://services.eai.claro.com.pe/ebsRecargaVirtualWS"/>
+      </operation>
+      <parameter name="allowedMethods" value="ejecutarRecarga"/>
+
+      <typeMapping
+        xmlns:ns="http://services.eai.claro.com.pe/ebsRecargaVirtualWS"
+        qname="ns:audiTypeRequest"
+        type="java:com.inter.claroRechargeWS.stub.AudiTypeRequest"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://services.eai.claro.com.pe/ebsRecargaVirtualWS"
+        qname="ns:RequestOpcionalComplexType"
+        type="java:com.inter.claroRechargeWS.stub.RequestOpcionalComplexType"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <arrayMapping
+        xmlns:ns="http://services.eai.claro.com.pe/ebsRecargaVirtualWS"
+        qname="ns:ListaRequestOpcional"
+        type="java:com.inter.claroRechargeWS.stub.RequestOpcionalComplexType[]"
+        innerType="cmp-ns:RequestOpcionalComplexType" xmlns:cmp-ns="http://services.eai.claro.com.pe/ebsRecargaVirtualWS"
+        encodingStyle=""
+      />
+      <arrayMapping
+        xmlns:ns="http://services.eai.claro.com.pe/ebsRecargaVirtualWS"
+        qname="ns:ListaDatosCliente"
+        type="java:com.inter.claroRechargeWS.stub.DatosClienteComplexType[]"
+        innerType="cmp-ns:DatosClienteComplexType" xmlns:cmp-ns="http://services.eai.claro.com.pe/ebsRecargaVirtualWS"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://services.eai.claro.com.pe/ebsRecargaVirtualWS"
+        qname="ns:DatosClienteComplexType"
+        type="java:com.inter.claroRechargeWS.stub.DatosClienteComplexType"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <arrayMapping
+        xmlns:ns="http://services.eai.claro.com.pe/ebsRecargaVirtualWS"
+        qname="ns:ListaResponseOpcional"
+        type="java:com.inter.claroRechargeWS.stub.ResponseOpcionalComplexType[]"
+        innerType="cmp-ns:ResponseOpcionalComplexType" xmlns:cmp-ns="http://services.eai.claro.com.pe/ebsRecargaVirtualWS"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://services.eai.claro.com.pe/ebsRecargaVirtualWS"
+        qname="ns:audiTypeRespose"
+        type="java:com.inter.claroRechargeWS.stub.AudiTypeRespose"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://services.eai.claro.com.pe/ebsRecargaVirtualWS"
+        qname="ns:>ejecutarRecargaResponse"
+        type="java:com.inter.claroRechargeWS.stub.EjecutarRecargaResponse"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://services.eai.claro.com.pe/ebsRecargaVirtualWS"
+        qname="ns:>ejecutarRecargaRequest"
+        type="java:com.inter.claroRechargeWS.stub.EjecutarRecargaRequest"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://services.eai.claro.com.pe/ebsRecargaVirtualWS"
+        qname="ns:ResponseOpcionalComplexType"
+        type="java:com.inter.claroRechargeWS.stub.ResponseOpcionalComplexType"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+  </service>
+</deployment>

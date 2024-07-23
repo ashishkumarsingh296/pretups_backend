@@ -1,0 +1,75 @@
+//################################################
+//#Company Name: Mahindra Comviva Technologies Ltd.
+//#Application Name: PretupsTA
+//#Objective: To login into the application
+//#Author Name: Nidhi Singh
+//#Created Date: 15/01/2014
+//###############################################
+
+//====Import Scripts====
+_includeOnce("../../../../utility/ImportPackage.sah");
+_includeOnce("../../../GUI/testscripts/Two factor Authentication/TwoFactorAuthentication_Common.sah"); 
+//==================
+_log("Set up","custom4");
+/***************************/
+//DB connection
+
+  
+
+/******************************/
+var $g_loginDetails = _readCSVFile("../../../GUI/testdata/twoFA_login.csv"); //Reads  details 
+	/*for loop to iterate over test cases*/
+	for(var $g_row = 1; $g_loginDetails[$g_row] != null; $g_row++){
+
+				var $g_col = 0;
+				var $number =   testCaseNumber($g_loginDetails[$g_row][$g_col]);
+				var $t = _testcase($g_loginDetails[$g_row][$g_col++], $g_loginDetails[$g_row][$g_col++]);//1st Parameter:Test Case No.; 2nd Parameter:Test Case Description
+				$t.start();
+				commonVaribleForLogin($g_row, $g_col);
+     if($number == 1)
+				EnableTwoFactorAuthenticationAndUpdateCache($g_appURL,$g_LangEnglish,$g_loginId,$g_password);
+     else if($number == 2)
+               maxTryforResend($g_appURL, $g_LangEnglish, $g_loginId, $g_password, $g_assertMessage);
+	 else if($number == 3)
+				loginwithOtp($g_appURL, $g_LangEnglish, $g_loginId, $g_password, $g_DecryptURL,$g_assertMessage);
+     else if($number == 4)
+				categoryPreferenceschangesanduserabletologin($g_appURL, $g_LangEnglish, $g_loginId, $g_password, $g_DecryptURL,$g_assertMessage);
+      else if($number == 5)
+                 loginwithoutOtp($g_appURL, $g_LangEnglish, $g_loginId, $g_password, $g_assertMessage);
+	else if($number == 6)
+				EnableTwoFactorAuthenticationforGrade($g_appURL,$g_LangEnglish, $g_loginId, $g_password, $g_assertMessage,$g_Domain, $g_category,$g_grade);
+    else if($number == 7)
+      			AssignGradeAndLoginwithuser($g_appURL, $g_LangEnglish, $g_loginId, $g_password, $g_DecryptURL,$g_assertMessage,$g_grade,$g_commission_profile,$g_transferProfile,$g_userloginID);
+//login with user having OTP enabled grade
+	else if($number == 8)
+				loginwithOtp($g_appURL, $g_LangEnglish, $g_loginId, $g_password, $g_DecryptURL,$g_assertMessage);
+//Disable Two Factor Authentication for a grade
+	else if($number == 9)
+			DisableTwoFactorAuthenticationforGrade($g_appURL,$g_LangEnglish, $g_loginId, $g_password, $g_assertMessage,$g_Domain, $g_category,$g_grade);
+//login with user having OTP Disabled grade
+	else if($number == 10)
+				loginwithoutOtp($g_appURL, $g_LangEnglish, $g_loginId, $g_password, $g_assertMessage);
+//Disable Two factor authentication in System
+       else if($number ==11)
+				DisableTwoFactorAuthenticationAndUpdateCache($g_appURL,$g_LangEnglish,$g_loginId,$g_password);
+ //Login with network admin to verify OTP IS disabled
+     else if ($number == 12)
+               loginwithoutOtp($g_appURL, $g_LangEnglish, $g_loginId, $g_password, $g_assertMessage);
+     
+      
+				$t.end();  
+
+    }
+
+
+$t.end(); // Above test case ends.
+//====Post Condition Check====
+_log("Tear Down","custom4");
+//_closeBrowser();
+
+
+
+
+
+
+

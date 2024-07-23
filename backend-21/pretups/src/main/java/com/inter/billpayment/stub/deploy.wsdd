@@ -1,0 +1,47 @@
+<!-- Use this file to deploy some handlers/chains and services      -->
+<!-- Two ways to do this:                                           -->
+<!--   java org.apache.axis.client.AdminClient deploy.wsdd          -->
+<!--      after the axis server is running                          -->
+<!-- or                                                             -->
+<!--   java org.apache.axis.utils.Admin client|server deploy.wsdd   -->
+<!--      from the same directory that the Axis engine runs         -->
+
+<deployment
+    xmlns="http://xml.apache.org/axis/wsdd/"
+    xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
+  <!-- Services from PayBillService WSDL service -->
+
+  <service name="PayBillPort" provider="java:RPC" style="wrapped" use="literal">
+      <parameter name="wsdlTargetNamespace" value="http://pay.bill.payments.pbtl.java.ushacomm.com/"/>
+      <parameter name="wsdlServiceElement" value="PayBillService"/>
+      <parameter name="schemaUnqualified" value="http://pay.bill.payments.pbtl.java.ushacomm.com/"/>
+      <parameter name="wsdlServicePort" value="PayBillPort"/>
+      <parameter name="className" value="com.btsl.pretups.inter.billpayment.stub.PayBillPortBindingImpl"/>
+      <parameter name="wsdlPortType" value="PayBill"/>
+      <parameter name="typeMappingVersion" value="1.2"/>
+      <operation name="payBill" qname="operNS:payBill" xmlns:operNS="http://pay.bill.payments.pbtl.java.ushacomm.com/" returnQName="return" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="infoXML" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="rollBackPayment" qname="operNS:rollBackPayment" xmlns:operNS="http://pay.bill.payments.pbtl.java.ushacomm.com/" returnQName="return" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="infoXML" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="retryPayment" qname="operNS:retryPayment" xmlns:operNS="http://pay.bill.payments.pbtl.java.ushacomm.com/" returnQName="return" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="infoXML" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="depositBill" qname="operNS:depositBill" xmlns:operNS="http://pay.bill.payments.pbtl.java.ushacomm.com/" returnQName="return" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="infoXML" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="debitAdjustment" qname="operNS:debitAdjustment" xmlns:operNS="http://pay.bill.payments.pbtl.java.ushacomm.com/" returnQName="return" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="infoXML" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="creditAdjustment" qname="operNS:creditAdjustment" xmlns:operNS="http://pay.bill.payments.pbtl.java.ushacomm.com/" returnQName="return" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="infoXML" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="subInfo" qname="operNS:subInfo" xmlns:operNS="http://pay.bill.payments.pbtl.java.ushacomm.com/" returnQName="return" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="infoXML" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <parameter name="allowedMethods" value="payBill subInfo creditAdjustment depositBill rollBackPayment retryPayment debitAdjustment"/>
+
+  </service>
+</deployment>

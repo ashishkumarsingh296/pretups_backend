@@ -1,0 +1,11 @@
+#DBIP: 172.16.1.156
+#DBIP: mfsdemo.cff72bfe4kyk.eu-west-1.rds.amazonaws.com
+#DBPORT: 1521
+
+#SID: prtp
+#SID: orcl
+#DB_Name: pretups_live
+#DBNAME: 42f8b1df22eaaa781c8f31c7884b6c04
+#DBPWD: 42f8b1df22eaaa781c8f31c7884b6c04
+Tomcat_Path: "{{ tomcat_path.stdout}}" 
+

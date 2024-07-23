@@ -1,0 +1,126 @@
+
+
+// This scripts contains all the common methods for c2sreversal through cce and bcu.
+
+_includeOnce("../../../../utility/ImportPackage.sah");
+
+var $l_naCsv = _readCSVFile("../../../GUI/testdata/NA_Login.csv");
+
+	var $g_module;
+	var $g_servicename;
+	var $g_sendermsisdn;
+	var $g_subscribermsisdn;
+	var $g_assertion;
+	
+	function commonVaribleForC2SReversal($g_row, $col) {
+			$g_module = $g_C2SReversalDetails[$g_row][$col++];
+			$g_servicename = $g_C2SReversalDetails[$g_row][$col++];
+			$g_sendermsisdn	= $g_C2SReversalDetails[$g_row][$col++];
+			$g_subscribermsisdn = $g_C2SReversalDetails[$g_row][$col++];
+			$g_transaction_id = $g_C2SReversalDetails[$g_row][$col++];
+			$g_assertion = $g_C2SReversalDetails[$g_row][$col++];
+			
+		}
+	
+	
+	function toCheckIfSenderMSISDNNotEntered(){
+		
+	_click(_link("C2S transfer"));
+	_click(_link("C2S reversal"));
+	_setValue(_textbox("subscriberMsisdn"), $g_subscribermsisdn);
+	_click(_submit("Submit"));
+	_assertExists(_listItem("/" + $g_assertion + ".*/"));
+	
+	
+	}
+		
+	function toCheckIfMSISDNNotEntered() {
+	_click(_link("C2S transfer"));
+	_click(_link("C2S reversal"));
+	_setValue(_textbox("senderMsisdn"), $g_sendermsisdn);
+	_click(_submit("Submit"));
+	_assertExists(_listItem("/" + $g_assertion + ".*/"));
+	}
+
+
+	function toCheckIfTXNIDEntered(){
+	_click(_link("C2S transfer"));
+	_click(_link("C2S reversal"));
+	_setValue(_textbox("txID"), $g_transaction_id);
+	_click(_submit("Submit"));
+	_assertExists(_listItem("/" + $g_assertion + ".*/"));
+	
+	}
+	
+	function reversalSuccessfullWithMSISDN(){
+	_click(_link("C2S transfer"));
+	_click(_link("C2S reversal"));
+	_setValue(_textbox("senderMsisdn"), $g_sendermsisdn	);
+	_setValue(_textbox("subscriberMsisdn"), $g_subscribermsisdn);
+	_click(_submit("Submit"));
+	_click(_submit("Submit"));
+	_assertExists(_listItem("/" + $g_assertion + ".*/"));
+	
+	
+
+	}
+	
+	function reversalSuccessfullWithTXNID(){
+	
+	_click(_link("C2S transfer"));
+	_click(_link("C2S reversal"));
+	_setValue(_textbox("senderMsisdn"), $g_sendermsisdn);
+	_setValue(_textbox("txID"), $g_transaction_id);
+	_click(_submit("Submit"));
+	_assertExists(_listItem("/" + $g_assertion + ".*/"));
+	
+	}
+	
+	function reversalFailsWithMSISDN(){
+	
+	_click(_link("C2S transfer"));
+	_click(_link("C2S reversal"));
+	_setValue(_textbox("senderMsisdn"), $g_sendermsisdn);
+	_setValue(_textbox("subscriberMsisdn"), $g_subscribermsisdn);
+	_click(_submit("Submit"));
+	_click(_submit("Submit"));
+	_assertExists(_listItem("/" + $g_assertion + ".*/"));
+	
+	}
+	
+	function reversalFailsWithTXNID(){
+	
+	_click(_link("C2S transfer"));
+	_click(_link("C2S reversal"));
+	_setValue(_textbox("senderMsisdn"), $g_sendermsisdn);
+	_setValue(_textbox("txID"), $g_transaction_id);
+	_click(_submit("Submit"));
+	_click(_submit("Submit"));
+	_assertExists(_listItem("/" + $g_assertion + ".*/"));
+	
+	}
+	
+	function reversalAmbiguousWithMSISDN(){
+	
+	_click(_link("C2S transfer"));
+	_click(_link("C2S reversal"));
+	_setValue(_textbox("senderMsisdn"), $g_sendermsisdn);
+	_setValue(_textbox("subscriberMsisdn"), $g_subscribermsisdn);
+	_click(_submit("Submit"));
+	_click(_submit("Submit"));
+	_assertExists(_listItem("/" + $g_assertion + ".*/"));
+	
+	}
+	
+	function reversalAmbiguousWithTXNID(){
+	
+	_click(_link("C2S transfer"));
+	_click(_link("C2S reversal"));
+	_setValue(_textbox("senderMsisdn"), $g_sendermsisdn);
+	_setValue(_textbox("txID"), $g_transaction_id);
+	_click(_submit("Submit"));
+	_click(_submit("Submit"));
+	_assertExists(_listItem("/" + $g_assertion + ".*/"));
+	
+	}
+		

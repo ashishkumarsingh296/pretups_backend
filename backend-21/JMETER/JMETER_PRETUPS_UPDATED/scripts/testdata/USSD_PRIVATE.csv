@@ -1,0 +1,34 @@
+TestcaseId,TestcaseType,Module,Description
+,Positive,USSD Private Recharge Registration,To verify private recharge registration is successful with all valid details
+,Positive,USSD Private Recharge Registration,To verify private recharge registration is successful without language code
+,Positive,USSD Private Recharge Registration,To verify private recharge registration is successful if SID is blank in this case PreTUPS generate unique SID
+,N,USSD Private Recharge Registration,To verify private recharge registration is not successful if SID length exceeds maximum value
+,N,USSD Private Recharge Registration,To verify private recharge registration is not successful if SID prefix is invalid
+,N,USSD Private Recharge Registration,To verify private recharge registration is not successful if SID entered is not unique
+,Positive,USSD Private Recharge Modification,To verify that private recharge modification is successful with all valid details
+,Positive,USSD Private Recharge Modification,To verify that private recharge modification is successful without language code
+,N,USSD Private Recharge Modification,To verify that private recharge modification is not successful if NEWSID is same as the previous SID
+,N,USSD Private Recharge Modification,To verify that private recharge modification is not successful if NEWSID and SID both are blank
+,N,USSD Private Recharge Modification,To verify that private recharge modification is not successful if NEWSID prefix is invalid
+,N,USSD Private Recharge Modification,To verify that private recharge modification is not successful if NEWSID length exceeds maximum
+,N,USSD Private Recharge Modification,To verify that private recharge modification is not successful if only NEWSID is blank
+,Positive,USSD Private Recharge Deactivation,To verify that private recharge deactivation is successful with all valid details
+,N,USSD Private Recharge Deactivation,To verify that private recharge deactivation is not successful when MSISDN is invalid or not exist in system
+,N,USSD Private Recharge Deactivation,To verify that private recharge deactivation is not successful when SID is blank
+,N,USSD Private Recharge Deactivation,To verify that private recharge deactivation is not successful when MSISDN is blank
+,N,USSD Private Recharge Deactivation,To verify that private recharge deactivation is not successful with invalid SID
+,Positive,USSD SID Enquiry,To verify SID enquiry is successful with valid details
+,N,USSD SID Enquiry,To verify SID enquiry is not successful if MSISDN is invalid
+,Positive,USSD Private Recharge,To verify that customer recharge is successful via SID
+,Positive,USSD Private Recharge,To verfiy that Customer Recharge is successful via SID if channel user is barred as Receiver.
+,Positive,USSD Private Recharge,To verify Customer Recharge is successful via SID if channel user is insuspended.
+,Negative,USSD Private Recharge,To verify Customer Recharge is not successful via SID if channel user is outsuspended.
+,Negative,USSD Private Recharge,To verify Customer Recharge is not successful via SID if TCP of channel user is suspended.
+,Negative,USSD Private Recharge,To verify Customer Recharge is not successful via SID if channel user is suspended.
+,Negative,USSD Private Recharge,To verify Customer Recharge is not successful via SID if channel user is barred as sender.
+,Negative,USSD Private Recharge,To verify Customer Recharge not successful via SID if PIN is missing.
+,Negative,USSD Private Recharge,To verify Customer Recharge not successful via SID if PIN is invalid.
+,Negative,USSD Private Recharge,To verify Customer Recharge not successful via SID if MSISDN2 is missing.
+,Negative,USSD Private Recharge,To verify Customer Recharge not successful via SID if Amount is not present.
+,Negative,USSD Private Recharge,To verify Customer Recharge not successful via SID if Selector is missing.
+,Negative,USSD Private Recharge,To verify Customer Recharge not successful via SID if Amount is negative.

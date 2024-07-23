@@ -1,0 +1,2 @@
+TestcaseId,TestcaseType,Module,Description
+TUNG2863,Positive,P2P list buddy,To verify that List Buddy request is successful if all mandatory fields are filled valid values

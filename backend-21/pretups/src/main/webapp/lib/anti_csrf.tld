@@ -1,0 +1,44 @@
+<taglib
+        xmlns="http://java.sun.com/xml/ns/j2ee"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="
+                http://java.sun.com/xml/ns/j2ee
+                http://java.sun.com/xml/ns/j2ee/web-jsptaglibrary_2_0.xsd"
+        version="2.0">
+        <description>
+                Library used for generating and checking Anti-CSRF
+                tokens
+        </description>
+        <display-name>Anti CSRF Tags</display-name>
+        <tlib-version>2.0</tlib-version>
+        <short-name>csrf</short-name>
+        <uri>
+                http://labs.securitycompass.com/code/anti_csrf
+        </uri>
+
+ 		
+        <tag>
+        		<name>csrftoken</name>
+                <tag-class>com.btsl.security.csrf.AntiCSRFTokenTag</tag-class>
+                <body-content>empty</body-content>
+        </tag>
+        
+         <tag>
+                <description>
+                       Checks the csrf token in the session against
+                       the one in the request. If the two 
+                       don't match then generates a JspTag exception
+                </description>
+                <display-name>Anti CSRF Token Check</display-name>
+                <name>csrfcheck</name>
+                <tag-class>com.btsl.security.csrf.AntiCSRFTokenTagCheck</tag-class>
+                <body-content>empty</body-content>
+        </tag>
+        
+        <tag>
+        		<name>csrfget</name>
+                <tag-class>com.btsl.security.csrf.AntiCsrfUrlGet</tag-class>
+                <body-content>empty</body-content>
+        </tag>
+
+</taglib>

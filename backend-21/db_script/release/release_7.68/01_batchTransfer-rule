@@ -1,0 +1,15 @@
+INSERT INTO page_ui_roles
+(role_code, page_code)
+VALUES('BC2SRTRULES', 'P_NW_TRF_RULES_C2S');
+
+INSERT INTO role_ui_mapping
+(role_ui_parent_id, role_ui_id, rule_code)
+VALUES('networkAdmin', 'Batch_C2S_Transfer', 'BC2SRTRULES');
+
+UPDATE roles
+SET role_name='Batch C2S transfer rule', group_name='Transfer Rules', status='Y', role_type='A', from_hour=NULL, to_hour=NULL, group_role='N', application_id='1', gateway_types='WEB', role_for='B', is_default='N', is_default_grouprole='N', access_type='B', sub_group_name='Sub_Group', sub_group_role='N', view_roles='Y'
+WHERE role_code='BC2SRTRULES' AND domain_type='OPERATOR';
+
+INSERT INTO role_ui_mapping
+(role_ui_parent_id, role_ui_id, rule_code)
+VALUES('networkAdmin', 'View_C2S_Transfer', 'VIEWC2STRFRULES');

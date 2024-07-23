@@ -1,0 +1,2 @@
+TestcaseId,TestcaseType,Module,Description
+TUNG12343,Negative,Lite Recharge through EXTGW,To verify that invalid pin should show error for LRC

@@ -1,0 +1,14 @@
+Masters,White list subscribers,P2P subscriber,Channel user,Card group,ICCID/IMSI key management,P2P enquiry,Access control Mgmt.,Channel enquiry,Voucher enquiry,Reconciliation,C2S transfer,Subscriber retailer mapping,Private Recharge,Transaction Reverse,LMB Reports,LMB Enquiries,Loyalty Points Redemption,LMS Enquiries
+Bar user,White list enquiry,P2P PIN Mgmt.,Channel user PIN Mgmt.,Calculate P2P transfer value,ICCID/IMSI MSISDN enquiry,Registered subscriber,User password Mgmt.,C2S transfers Enquiry,Voucher enquiry,Reconcilation interface wise,C2S reversal,Correct mapping,Private Recharge Registration,Reverse C2C Transaction,LMB Bad Debit Report,LMB Transfers Enquiry,Loyalty Points Redemption,Profile Enquiry
+Un-bar user,,Activate postpaid subscriber,View user hierarchy,Calculate C2S transfer value,ICCID/IMSI MSISDN history,Subscriber transfers,PIN/Password history report,Bonus Point Enquiry,PIN enquiry,C2S reconciliation,,,Private Recharge Modification,Reverse O2C Transaction,LMB transaction summary report,,,Item Enquiry
+View barred list,,De-register subscriber,,,,Receiver transfers,,C2C transfer enquiry,,C2S reconciliation report,,,Private Recharge Enquiry,,LMB Daily sub report,,,
+Change language,,Suspend service,,,,Subscriber history,,View channel user,,C2S reconciled case report,,,Private Recharge Deactivation,,,,,
+Bar user in bulk,,Resume service,,,,,,O2C transfers,,,,,,,,,,
+Un-bar user in bulk,,De-register subscriber -batch,,,,,,Batch FOC transfer ,,,,,,,,,,
+,,,,,,,,Bulk commission payout transfer,,,,,,,,,,
+,,,,,,,,User profile thresholds,,,,,,,,,,
+,,,,,,,,Redemption enquiry,,,,,,,,,,
+,,,,,,,,IAT transfers,,,,,,,,,,
+,,,,,,,,Staff C2S transfers,,,,,,,,,,
+,,,,,,,,Staff C2C transfer enquiry,,,,,,,,,,
+,,,,,,,,Batch O2C Withdraw ,,,,,,,,,,

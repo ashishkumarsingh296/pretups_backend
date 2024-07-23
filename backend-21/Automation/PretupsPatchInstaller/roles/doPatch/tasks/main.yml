@@ -1,0 +1,36 @@
+---
+########################################################
+# Author           Date        Remarks
+#------------    -----------  ---------
+#Sadhan Kumar K  25-07-2016    Initial Creation
+#
+# This file takes care of Patch.
+#########################################################
+ - name: Copy ansible.log
+   connection: local
+   command: mv logs/ansible.log ./logs/ansibleInstallPatch.{{ lookup('pipe', 'date +%d-%m-%Y-%H:%M:%S') }}.log
+   run_once: true
+
+ - include: ../../validate/tasks/validateUserEntry.yml
+
+ - include: warPatch.yml
+   when: isWarPatch == true
+
+ - include: filePatch.yml
+   when: isfilePatch == true
+
+ - debug: msg="Patching is done Successfully."
+   when: applyPropModifyPatch|success and applyPropRemovePatch|success and applyPropNewLinePatch |success and applyPatch|success and applyPatchWar|success and applyPatchSync|success
+   tags:
+     - applyPropModifyPatch
+
+ - include: javaTask.yml
+   when: isJAVAPatch == true
+
+ - include: ComPatch.yml
+   when: isComPatch == true
+
+ - include: LinkBasedPatch.yml
+   when: isLinkBasedPatch == true
+
+ - include: PropPatch.yml

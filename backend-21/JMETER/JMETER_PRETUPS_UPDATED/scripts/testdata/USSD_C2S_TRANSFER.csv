@@ -1,0 +1,94 @@
+CELLID,MSISDN1,PIN,MSISDN2,AMOUNT,LANGUAGE1,LANGUAGE2,SELECTOR,TestcaseId,TestcaseType,Module,Description
+,7255555555,1357,7200005544,100,0,0,1,TUNG12976,Positive,Recharge from Main Distributor to Subscriber ,To verify that A Channel User would be able to recharge a customer’s account by transferring Credit from its own account to the Customer’s account
+,7255555555,,7200005544,100,0,0,1,TUNG12977,Negative,Recharge from Main Distributor to Subscriber ,To verify that When MSISDN is available in request then PIN is mandatory for the request
+,7255555555,1357,7200005544,100,0,0,1,TUNG12978,Positive,Recharge from Main Distributor to Subscriber ,To validate the tags of the request XML
+,7255555555,1357,7200005544,100,0,0,1,TUNG12982,Negative,Recharge from Main Distributor to Subscriber ,To validate the response XMl of the C2S transfer
+,7255555555,1357,8100005544,100,0,0,1,TUNG9967,Positive,Roam Recharge Penalty,Check Roam Daily Threshold is configured as control preference for retailer
+,7255555555,1357,8100005544,100,0,0,1,TUNG9968,Positive,Roam Recharge Penalty,Check Roam Daily Threshold is configured as control preference for retailer network wise
+,7255555555,1357,8100005544,100,0,0,1,TUNG9969,Positive,Roam Recharge Penalty,Check Roam Daily Threshold is configured as control preference for retailer is updated with updating preference cache(refer Test case no. 5)
+,7255555555,1357,8100005544,100,0,0,1,TUNG9970,Positive,Roam Recharge Penalty,Check that default system preference is picked if category control preference is not defined.
+,7255555555,1357,8100005544,100,0,0,1,TUNG9971,Positive,Roam Recharge Penalty,Check Roam Penalty Percentage is configured as control preference for retailer
+,7255555555,1357,8100005544,100,0,0,1,TUNG9972,Positive,Roam Recharge Penalty,Check Roam Penalty Percentage is configured as control preference for retailer network wise
+,7255555555,1357,8100005544,100,0,0,1,TUNG9973,Positive,Roam Recharge Penalty,Check Roam Penalty Percentage is configured as control preference for retailer is updated with updating preference cache
+,7255555555,1357,8100005544,100,0,0,1,TUNG9975,Positive,Roam Recharge Penalty,"Check that default system for the below 'ROAM_RECHARGE_DAILY_THRESHOLD ', 'ROAM_RECHARGE_PENALTY_PERCENTAGE', 'ROAM_PENALTY_OWNER_PERCENTAGE'  preference is picked if category control preference is not defined."
+,7255555555,1357,8100005544,100,0,0,1,TUNG9976,Positive,Roam Recharge Penalty,Check Roam Penalty OwnerPercentage is configured as control preference for retailer's owner
+,7255555555,1357,8100005544,100,0,0,1,TUNG9977,Positive,Roam Recharge Penalty,Check Roam Penalty Owner Percentage is configured as control preference for retailer network wise
+,7255555555,1357,8100005544,100,0,0,1,TUNG9978,Positive,Roam Recharge Penalty,Check Roam Penalty  OwnerPercentage is configured as control preference for retailer is updated with updating preference cache
+,7255555555,1357,8100005544,100,0,0,1,TUNG9979,Positive,Roam Recharge Penalty,Check that penalty is being charged and additional commission is not given if user crosses the daily roam threshold
+,7255555555,1357,8100005544,100,0,0,1,TUNG9980,Positive,Roam Recharge Penalty,Check that penalty is not being charged and additional commission is  given if user does not cross the daily roam threshold
+,7255555555,1357,8100005544,100,0,0,1,TUNG9981,Positive,Roam Recharge Penalty,Check that user's owner is charged penalty if user crosses daily roam threshold
+,7255555555,1357,8100005544,100,0,0,1,TUNG9982,Positive,Roam Recharge Penalty,Check that penalty is calculated correctly for user
+,7255555555,1357,8100005544,100,0,0,1,TUNG9983,Positive,Roam Recharge Penalty,Check that correct minimum commssion slab is picked for user from Commission Profile Minimum Cache
+,7255555555,1357,8100005544,100,0,0,1,TUNG9984,Positive,Roam Recharge Penalty,Check that Commission Profile minimum cache is updated successfully from superadmin
+,7255555555,1357,8100005544,100,0,0,1,TUNG9985,Positive,Roam Recharge Penalty,Check that penalty is calculated correctly for user's owner
+,7255555555,1357,8100005544,100,0,0,1,TUNG9986,Positive,Roam Recharge Penalty,Check minimum percenatge slab is picked when all percentage slabs are present in commission profile
+,7255555555,1357,8100005544,100,0,0,1,TUNG9987,Positive,Roam Recharge Penalty,Check minimum amount slab is picked when all amount slabs are present in commission profile
+,7255555555,1357,8100005544,100,0,0,1,TUNG9988,Positive,Roam Recharge Penalty,Check minimum percentage slab is picked when both amount and commission slabs are present in commission profile
+,7255555555,1357,8100005544,100,0,0,1,TUNG9989,Positive,Roam Recharge Penalty,Check minimum percentage slab is picked when single amount and multiple percenatge commission slabs are present in commission profile
+,7255555555,1357,8100005544,100,0,0,1,TUNG9990,Positive,Roam Recharge Penalty,Check percentage slab is picked when multiple amount and single percenatge commission slabs are present in commission profile
+,7255555555,1357,8100005544,100,0,0,1,TUNG9991,Positive,Roam Recharge Penalty,Check that user should not get additional commission if he/she has crossed daily roam threshold but penalty calculated comes out to be 0 (base commission is 0%)
+,7255555555,1357,8100005544,100,0,0,1,TUNG9992,Positive,Roam Recharge Penalty,Check that user should not get additional commission if he/she has crossed daily roam threshold but penalty calculated comes out to be 0 (penalty percenatge is 0%)
+,7255555555,1357,8100005544,100,0,0,1,TUNG9993,Positive,Roam Recharge Penalty,Check that message is sent to user or owner if roam penalty is deducted for user  or owner respectively
+,7255555555,1357,8100005544,100,0,0,1,TUNG9994,Positive,Roam Recharge Penalty,"Check if user balance is sufficient so that tranaction amount+penalty can be deducted , otherwise reject the transaction"
+,7255555555,1357,8100005544,100,0,0,1,TUNG9995,Positive,Roam Recharge Penalty,"Check if user's owner balance is sufficient so that penalty can be deducted, otherwise reject the transaction."
+,7255555555,1357,8100005544,100,0,0,1,TUNG9996,Positive,Roam Recharge Penalty,Check that user's roam daily roam amount  is increasing on successful transaction
+,7255555555,1357,8100005544,100,0,0,1,TUNG9997,Positive,Roam Recharge Penalty,Check that user's roam daily roam amount  is not increase on ambiguous transaction if system pref for on the transaction credit back is true for ambiguous
+,7255555555,1357,8100005544,100,0,0,1,TUNG9998,Positive,Roam Recharge Penalty,Check that roam daily amount is set to 0 on first transaction of the day.
+,7255555555,1357,8100005544,100,0,0,1,TUNG9999,Positive,Roam Recharge Penalty,Check that user's daily roam amount  is not increased on failed transaction
+,7255555555,1357,8100005544,100,0,0,1,TUNG10000,Positive,Roam Recharge Penalty,Check that entry for penalty goes into adjustments  if recharge is made successful on reconciliation
+,7255555555,1357,8100005544,100,0,0,1,TUNG10001,Positive,Roam Recharge Penalty,Check that correct entry for penalty goes into adjustments  if recharge is made successful on reconciliation. All calculations are correct as penalty has to be recalculated at this time.
+,7255555555,1357,8100005544,100,0,0,1,TUNG10002,Positive,Roam Recharge Penalty,Check that penalty is credited back with transaction amount if recharge is marked as  'fail' on reconciliation
+,7255555555,1357,8100005544,100,0,0,1,TUNG10003,Positive,Roam Recharge Penalty,Check that roam amount is decreased in user_transfer_counts  if recharge is marked as  'fail' on reconciliation
+,7255555555,1357,8100005544,100,0,0,1,TUNG10004,Positive,Roam Recharge Penalty,Check that penalty is debited along with transaction amount and  entry for penalty goes into adjustments  if recharge is made successful on reconciliation
+,7255555555,1357,8100005544,100,0,0,1,TUNG10005,Positive,Roam Recharge Penalty,Check that correct entry for penalty goes into adjustments  if recharge is made successful on reconciliation. All calculations are correct as penalty has to be recalculated at this time.
+,7255555555,1357,8100005544,100,0,0,1,TUNG10006,Positive,Roam Recharge Penalty,Check that nothing happens if recharge is marked as  'fail' on reconciliation
+,7255555555,1357,8100005544,100,0,0,1,TUNG10007,Positive,Roam Recharge Penalty,Check that roam amount is increased  in user_transfer_counts  if recharge is marked as  'success' on reconciliation
+,7255555555,1357,8100005544,100,0,0,1,TUNG10008,Positive,Roam Recharge Penalty,Check that message is sent to user and owner(if applicable) everytime the ambiguous transaction is marked 'success' that penalty is debited.
+,7255555555,1357,8100005544,100,0,0,1,TUNG10009,Positive,Roam Recharge Penalty,Check that message is sent to user and owner(if applicable) everytime the ambiguous transaction is marked 'fail' that penalty is credited back
+,7255555555,1357,8100005544,100,0,0,1,TUNG10010,Positive,Roam Recharge Penalty,"Check that if the balance goes to the user, when the transaction amount is credited, the balance should be updated with penalty amount too."
+,7255555555,1357,8100005544,100,0,0,1,TUNG10011,Positive,Roam Recharge Penalty,"Check that if the balance goes to the user, when the transaction amount is debited the balance should be updated with penalty amount too."
+,7255555555,1357,8100005544,100,0,0,1,TUNG10012,Positive,Roam Recharge Penalty,"Check that in case negative additional commission is applicable in system, and penalty is charged then user should not be notified that his/her balance is not sufficient for negative additional comm."
+,7255555555,1357,8100005544,100,0,0,1,TUNG10013,Positive,Roam Recharge Penalty,Check that penalty is credited back with transaction amount if recharge is marked as  'fail' on reconciliation
+,7255555555,1357,8100005544,100,0,0,1,TUNG10014,Positive,Roam Recharge Penalty,Check that  Additional commission Deduction process will credit penalty amount (retailer +owner)to network stock
+,7255555555,1357,8100005544,100,0,0,1,TUNG10015,Positive,Roam Recharge Penalty,Check that Roam recharge is working through EXTGW and penalty is applicable
+,7255555555,1357,8100005544,100,0,0,1,TUNG10016,Positive,Roam Recharge Penalty,Check that Roam recharge is working through USSD and penalty is applicable
+,7255555555,1357,8100005544,100,0,0,1,TUNG10017,Positive,Roam Recharge Penalty,Check that penalty is being charged and additional commission is not given if user crosses the daily roam threshold
+,7255555555,1357,8100005544,100,0,0,1,TUNG10018,Positive,Roam Recharge Penalty,Check that penalty is not being charged and additional commission is  given if user does not cross the daily roam threshold
+,7255555555,1357,8100005544,100,0,0,1,TUNG10019,Positive,Roam Recharge Penalty,Check that user's owner is charged penalty if user crosses daily roam threshold
+,7255555555,1357,8100005544,100,0,0,1,TUNG10020,Positive,Roam Recharge Penalty,Check that penalty is calculated correctly for user
+,7255555555,1357,8100005544,100,0,0,1,TUNG10021,Positive,Roam Recharge Penalty,Check that correct minimum commssion slab is picked for user from Commission Profile Minimum Cache
+,7255555555,1357,8100005544,100,0,0,1,TUNG10022,Positive,Roam Recharge Penalty,Check that penalty is calculated correctly for user's owner
+,7255555555,1357,8100005544,100,0,0,1,TUNG10023,Positive,Roam Recharge Penalty,Check minimum percenatge slab is picked when all percentage slabs are present in commission profile
+,7255555555,1357,8100005544,100,0,0,1,TUNG10024,Positive,Roam Recharge Penalty,Check minimum amount slab is picked when all amount slabs are present in commission profile
+,7255555555,1357,8100005544,100,0,0,1,TUNG10025,Positive,Roam Recharge Penalty,Check minimum percentage slab is picked when both amount and commission slabs are present in commission profile
+,7255555555,1357,8100005544,100,0,0,1,TUNG10026,Positive,Roam Recharge Penalty,Check minimum percentage slab is picked when single amount and multiple percenatge commission slabs are present in commission profile
+,7255555555,1357,8100005544,100,0,0,1,TUNG10027,Positive,Roam Recharge Penalty,Check percentage slab is picked when multiple amount and single percenatge commission slabs are present in commission profile
+,7255555555,1357,8100005544,100,0,0,1,TUNG10028,Positive,Roam Recharge Penalty,Check that user should not get additional commission if he/she has crossed daily roam threshold but penalty calculated comes out to be 0 (base commission is 0%)
+,7255555555,1357,8100005544,100,0,0,1,TUNG10029,Positive,Roam Recharge Penalty,Check that user should not get additional commission if he/she has crossed daily roam threshold but penalty calculated comes out to be 0 (penalty percenatge is 0%)
+,7255555555,1357,8100005544,100,0,0,1,TUNG10030,Positive,Roam Recharge Penalty,Check that message is sent to user or owner if roam penalty is deducted for user  or owner respectively
+,7255555555,1357,8100005544,100,0,0,1,TUNG10031,Positive,Roam Recharge Penalty,"Check if user balance is sufficient so that tranaction amount+penalty can be deducted , otherwise reject the transaction"
+,7255555555,1357,8100005544,100,0,0,1,TUNG10032,Positive,Roam Recharge Penalty,"Check if user's owner balance is sufficient so that penalty can be deducted, otherwise reject the transaction."
+,7255555555,1357,8100005544,100,0,0,1,TUNG10033,Positive,Roam Recharge Penalty,Check that user's roam daily roam amount  is increasing on successful transaction
+,7255555555,1357,8100005544,100,0,0,1,TUNG10034,Positive,Roam Recharge Penalty,Check that user's roam daily roam amount  is not increase on ambiguous transaction if system pref for on the transaction credit back is true for ambiguous
+,7255555555,1357,8100005544,100,0,0,1,TUNG10035,Positive,Roam Recharge Penalty,Check that roam daily counter is set to 0 on first transaction of the day.
+,7255555555,1357,8100005544,100,0,0,1,TUNG10036,Positive,Roam Recharge Penalty,Check that user's daily roam amount  is not increased on failed transaction
+,7255555555,1357,8100005544,100,0,0,1,TUNG10037,Positive,Roam Recharge Penalty,Check that penalty is being charged and additional commission is not given if user crosses the daily roam threshold
+,7255555555,1357,8100005544,100,0,0,1,TUNG10038,Positive,Roam Recharge Penalty,Check that penalty is not being charged and additional commission is  given if user does not cross the daily roam threshold
+,7255555555,1357,8100005544,100,0,0,1,TUNG10039,Positive,Roam Recharge Penalty,Check that user's owner is charged penalty if user crosses daily roam threshold
+,7255555555,1357,8100005544,100,0,0,1,TUNG10040,Positive,Roam Recharge Penalty,Check that penalty is calculated correctly for user
+,7255555555,1357,8100005544,100,0,0,1,TUNG10041,Positive,Roam Recharge Penalty,Check that correct minimum commssion slab is picked for user from Commission Profile Minimum Cache
+,7255555555,1357,8100005544,100,0,0,1,TUNG10042,Positive,Roam Recharge Penalty,Check that penalty is calculated correctly for user's owner
+,7255555555,1357,8100005544,100,0,0,1,TUNG10043,Positive,Roam Recharge Penalty,Check minimum percenatge slab is picked when all percentage slabs are present in commission profile
+,7255555555,1357,8100005544,100,0,0,1,TUNG10044,Positive,Roam Recharge Penalty,Check minimum amount slab is picked when all amount slabs are present in commission profile
+,7255555555,1357,8100005544,100,0,0,1,TUNG10045,Positive,Roam Recharge Penalty,Check minimum percentage slab is picked when both amount and commission slabs are present in commission profile
+,7255555555,1357,8100005544,100,0,0,1,TUNG10046,Positive,Roam Recharge Penalty,Check minimum percentage slab is picked when single amount and multiple percenatge commission slabs are present in commission profile
+,7255555555,1357,8100005544,100,0,0,1,TUNG10047,Positive,Roam Recharge Penalty,Check percentage slab is picked when multiple amount and single percenatge commission slabs are present in commission profile
+,7255555555,1357,8100005544,100,0,0,1,TUNG10048,Positive,Roam Recharge Penalty,Check that user should not get additional commission if he/she has crossed daily roam threshold but penalty calculated comes out to be 0 (base commission is 0%)
+,7255555555,1357,8100005544,100,0,0,1,TUNG10049,Positive,Roam Recharge Penalty,Check that user should not get additional commission if he/she has crossed daily roam threshold but penalty calculated comes out to be 0 (penalty percenatge is 0%)
+,7255555555,1357,8100005544,100,0,0,1,TUNG10050,Positive,Roam Recharge Penalty,Check that message is sent to user or owner if roam penalty is deducted for user  or owner respectively
+,7255555555,1357,8100005544,100,0,0,1,TUNG10051,Positive,Roam Recharge Penalty,"Check if user balance is sufficient so that tranaction amount+penalty can be deducted , otherwise reject the transaction"
+,7255555555,1357,8100005544,100,0,0,1,TUNG10052,Positive,Roam Recharge Penalty,"Check if user's owner balance is sufficient so that penalty can be deducted, otherwise reject the transaction."
+,7255555555,1357,8100005544,100,0,0,1,TUNG10053,Positive,Roam Recharge Penalty,Check that user's roam daily roam amount  is increasing on successful transaction
+,7255555555,1357,8100005544,100,0,0,1,TUNG10054,Positive,Roam Recharge Penalty,Check that user's roam daily roam amount  is not increase on ambiguous transaction if system pref for on the transaction credit back is true for ambiguous
+,7255555555,1357,8100005544,100,0,0,1,TUNG10055,Positive,Roam Recharge Penalty,Check that roam daily counter is set to 0 on first transaction of the day.
+,7255555555,1357,8100005544,100,0,0,1,TUNG10056,Positive,Roam Recharge Penalty,Check that user's daily roam amount  is not increased on failed transaction

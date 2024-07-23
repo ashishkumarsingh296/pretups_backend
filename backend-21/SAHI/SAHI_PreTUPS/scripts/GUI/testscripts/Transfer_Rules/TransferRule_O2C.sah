@@ -1,0 +1,49 @@
+//################################################
+//#Company Name: Mahindra Comviva Technologies Ltd.
+//#Application Name: Pretups
+//#Objective:To add Transfer Rule from Operator to Channel
+//#Author Name: Nidhi Singh
+//#Created Date: 12/02/2014
+//###############################################
+
+
+//===========================Import Scripts============================	 
+_includeOnce("../../../../utility/ImportPackage.sah");
+_includeOnce("../../../GUI/testscripts/Transfer_Rules/TransferRule_Common.sah"); //For adding O2C Transfer Rules
+_includeOnce("../../../GUI/testscripts/User_Management/UserManagement_Common.sah"); //For creating NA
+//======================Pre-requisite check============================
+_log("Setup", "custom4");
+
+//If NA deos not exist, first create it and then create the Transfer Rules
+var $l_naCsv = _readCSVFile("../../../GUI/testdata/NA_Login.csv"); //Reads the network admin credentials 
+var $g_row = 4;
+var $g_col = 1;
+var $g_networkAdmin1 = $l_naCsv[1][1];
+if ($g_networkAdmin1 == "null") {
+	createNA(); // UserManagement_Common.sah
+	var $l_naCsv1 = _readCSVFile("../../../GUI/testdata/NA_Login.csv");
+	$g_networkAdmin1 = $l_naCsv1[1][1];
+	login($g_appURL, $g_LangEnglish, $g_networkAdmin1, $g_commonPassword, $g_assertWelcome);
+} else {
+	login($g_appURL, $g_LangEnglish, $g_networkAdmin1, $g_commonPassword, $g_assertWelcome);
+}
+
+//============Create a Operator-2-Channel Transfer Rule==============
+var $g_O2CTRDetails = _readCSVFile("../../../GUI/testdata/O2CTransferRules_Details.csv"); //Reads the Transfer Rules details
+var $g_row1 = 1;
+var $g_col1 = 0;
+var $t =  _testcase($g_O2CTRDetails[$g_row1][$g_col1++], $g_O2CTRDetails[$g_row1][$g_col1++]);
+$t.start();
+variableForTransferRules($g_row, $g_col);	//(TransferRule_Common.sah)
+variableFor02CTransferRule($g_row1, $g_col1);	//(TransferRule_Common.sah)
+var $ifRuleExists = common_O2C(); //(TransferRule_Common.sah)
+if ($ifRuleExists == false) {
+	_assertExists(_listItem($g_assertTransferRuleAddedSuccessfully));
+	_log("Operator-to-Channel Transfer rule is added successfully.");
+} else {
+	_log("Operator-to-Channel Transfer rule already exists.");
+}
+$t.end();
+//==================================================
+_log("Tear Down", "custom4");
+

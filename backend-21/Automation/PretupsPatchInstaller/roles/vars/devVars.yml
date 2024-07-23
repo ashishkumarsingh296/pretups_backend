@@ -1,0 +1,21 @@
+---
+##########################################################################################
+# Development Variables goes here.This file is for Authorised Users Only.
+# ---------------------------------------------------------------------------------------
+# Author: Sadhan Kumar K.
+# Date: 25/07/2016
+###########################################################################################
+
+#Enter the tomcat start filename.
+TOMCAT_START_FILE_NAME: mconnectStart.sh
+
+#Enter the tomcat stop filename
+TOMCAT_STOP_FILE_NAME: mconnectStop.sh
+
+PATCH_TYPES: [ 'WAR','JAR','JSP','CLASSFILE','JAVA', 'TXT', 'XML','PROP-NEWLINE','PROP-MODIFY','PROP-REMOVE','FILE-SYNC','DB-SCRIPTS' ]
+
+PROP_PATCH_TYPES: ['PROP-NEWLINE','PROP-MODIFY','PROP-REMOVE']
+
+FILE_EXTNS: ['class','txt','java','war','jar','xml','property','props','properties','jsp','sql']
+
+

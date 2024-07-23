@@ -1,0 +1,30 @@
+---
+ - name: Copying assign_table_space.sql file to host machine
+   template: src=assign_table_space.sql  dest="{{ BASE_DIR }}/{{ Temp_Dir }}" owner={{ db_user }} group={{ db_group }}  mode=0755
+
+ - name: Dynamic query creation for assign table space
+   lineinfile:
+    dest: "{{ BASE_DIR }}/{{ Temp_Dir }}/assign_table_space.sql"
+    insertbefore: 'spool off;'
+    line: "QUOTA UNLIMITED ON {{ item.Table_Space_Name }}"
+   with_items:
+            - "{{ Table_space_entries }}"
+   tags:
+     - db_assign_table_space_tags
+
+ - shell: pwd chdir={{ BASE_DIR }}/{{ Temp_Dir }}
+   register: path1
+
+ - name: " debug: path of the scripts to run"
+   debug: msg=" path is {{ path1.stdout }}"
+
+
+ - name: "DB: assign table space to pretups schema user"
+   shell: "{{ item }} chdir={{ BASE_DIR }}/{{ Temp_Dir }}"
+   with_items:
+   - sqlplus / as sysdba <<EOT @assign_table_space.sql exit; EOT 
+   ignore_errors: yes
+   register: db_assign_table_space
+   failed_when: '"ERROR" in db_assign_table_space.stdout'
+   tags:
+     - db_assign_table_space_tags

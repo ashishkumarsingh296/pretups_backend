@@ -1,0 +1,96 @@
+# for understandin: open the pretupsStart.sh from the Final folder of PreTUPS #
+---
+ - name: "pretupsStart.sh: setting the opening Message"
+   lineinfile: dest="{{ Tomcat_Path }}/bin/pretupsStart.sh" regexp='(.*)Your are restarting the(.*)' line='echo " Your are restarting the PreTUPS {{ VERSION_NO }} {{ CLIENT_NAME }} Server"'
+
+ - name: "pretupsStart.sh: replace the variable with the concrete value: TOMCAT_PATH"
+  # shell: sed -i 's%<Tomcat-Path>%{{ SED_VARIABLE }}/g' pretupsStart.sh chdir={{ Tomcat_Path }}/bin
+   #lineinfile: dest="{{ Tomcat_Path }}/bin/pretupsStart.sh" regexp='(.*)source <Tomcat-Path>/conf/pretups/commonLoadClassPath.sh(.*)' line='source {{ Tomcat_Path }}/conf/pretups/commonLoadClassPath.sh'
+   replace: dest="{{ Tomcat_Path }}/bin/pretupsStart.sh"  regexp='^(.*)<Tomcat-Path>(.*)$' replace='\1{{ Tomcat_Path }}\2'
+   tags: pretupsStart
+
+# - name: "pretupsStart.sh: setting pretups user HOME directory"
+##   shell: sed -i 's/<HOME_DIR>/{{ PROJECT_ROOT }}/g' "{{ Tomcat_Path }}"/bin/pretupsStart.sh
+#   lineinfile: dest="{{ Tomcat_Path }}"/bin/pretupsStart.sh regexp='(.*)<HOME_DIR>(.*)' line="HOME={{ PROJECT_ROOT }}; export HOME"
+
+# - name: "pretupsStart.sh: setting Soft link of jdk path"
+#   shell: sed -i 's/<JAVA_INSTALLED_LINK>/{{ JDK_SOFT_LINK }}/g' "{{ Tomcat_Path }}"/bin/pretupsStart.sh
+
+# - name: "pretupsStart.sh: setting Tomcat installation directory path" 
+##   shell: sed -i 's/$HOME\/<TOMCAT_INSTALLED_DIR>/{{ Tomcat_Path }}/g' "{{ Tomcat_Path }}"/bin/pretupsStart.sh
+#   replace: dest="{{ Tomcat_Path }}"/bin/pretupsStart.sh regexp='(.*)\$HOME\/<TOMCAT_INSTALLED_DIR>(.*)' replace='\1{{ Tomcat_Path }}\2' 
+
+ - name: "pretupsStart.sh: setting the PATH variable of the REMOTE HOST"
+   debug: msg="ansbile variable is= {{ ansible_env.PATH }}"
+
+# - name: "pretupsStart.sh: setting the PATH variable of the REMOTE HOST"
+#   debug: msg="ansbile variable is= {{ ansible_env.PATH }}"
+#   replace: dest="{{ Tomcat_Path }}"/bin/pretupsStart.sh regexp='(.*):$PATH:(.*)' replace='\1:$PATH:/usr/local/sbin:/usr/local/bin:{{ ansible_env.PATH }}:\2'
+#   shell:  sed -i 's/\:\$PATH\:/\:\$PATH\:\/usr\/local\/sbin\:\/usr\/local\/bin\:\/usr\/lib64\/qt-3.3\/bin\:/g' "{{ Tomcat_Path }}"/bin/pretupsStart.sh
+
+ - name: "pretupsStart.sh: setting memory parameter -Xss"
+   shell: sed -i 's/-Xss40m//g' "{{ Tomcat_Path }}"/bin/pretupsStart.sh
+
+ - name: "pretupsStart.sh: setting memory parameter -Xms"
+   shell: sed -i 's/-Xms256m/-Xms{{ Xms }}m/g' "{{ Tomcat_Path }}"/bin/pretupsStart.sh
+
+ - name: "pretupsStart.sh: setting memory parameter -Xmx"
+   shell: sed -i 's/-Xmx256m/-Xmx{{ Xmx }}m/g' "{{ Tomcat_Path }}"/bin/pretupsStart.sh
+
+ - name: "pretupsStart.sh: setting memory parameter -Xmn"
+   shell: sed -i 's/-Xmn128m/-Xmn{{ Xmn }}m/g' "{{ Tomcat_Path }}"/bin/pretupsStart.sh
+
+# - name: "pretupsStart.sh: putting new CLASSPATH in place of the old CLASSPATH"
+#   lineinfile: dest="{{ Tomcat_Path }}"/bin/pretupsStart.sh regexp='^CLASSPATH=(.*)$' line={{ CLASSPATH }}
+
+# - name: "pretupsStart.sh: hash the unused script"
+#   shell: sed -i 's/^.\/pretupsStop.sh/#.\/pretupsStop.sh/g' "{{ Tomcat_Path }}"/bin/pretupsStart.sh
+
+ - name: "pretupsStart.sh: putting proper Tomcat name for killing "
+   lineinfile: dest="{{ Tomcat_Path }}/bin/pretupsStart.sh" regexp='(.*)abc=`ps -aef| grep -a(.*)' line="abc=`ps -aef| grep -a {{ Tomcat_Path }} |awk  '{ print $2 }'|cut -f1`"
+
+# - name: "pretupsStart.sh: kill -15 should be used instead of kill -9"
+#   shell: sed -i 's/-9/-15/g' "{{ Tomcat_Path }}"/bin/pretupsStart.sh
+ 
+ - name: "pretupsStart.sh: setting the Restarting Message"
+   lineinfile: dest="{{ Tomcat_Path }}/bin/pretupsStart.sh" regexp='(.*)echo " Starting the(.*)' line='echo " Starting the PreTUPS {{ VERSION_NO }} {{ CLIENT_NAME }} Server, Please wait ..........."'
+
+ - name: "pretupsStart.sh: hash the startup.sh script. we shall use the catalina.sh start for remotely starting the tomcat"
+#   shell: sed -i 's/startup.sh/#catalina.sh start/g' "{{ Tomcat_Path }}"/bin/pretupsStart.sh
+   lineinfile: dest="{{ Tomcat_Path }}/bin/pretupsStart.sh" regexp='(.*)startup.sh(.*)' line='#./startup.sh'
+
+ - name: "pretupsStart.sh: setting the informtion of the PORT on which the server started"
+   lineinfile: dest="{{ Tomcat_Path }}/bin/pretupsStart.sh" regexp='(.*)echo " PreTUPS(.*)' line='echo " PreTUPS {{ VERSION_NO }} {{ CLIENT_NAME }} Server is started on port {{ CONNECTOR_PORT }} ..........."'
+
+ - name: "pretupsStart.sh: Finally, Phew! changing the BrandName: from: Comviva # To: Mahindra Comviva"
+   shell: sed -i 's/Powered by Comviva/Powered by Mahindra Comviva/g' "{{ Tomcat_Path }}"/bin/pretupsStart.sh
+
+ - name: "pretupsStart.sh: trying to get the PATH variable"
+   shell: echo $PATH
+   register: pretups_path
+
+ - name: "pretupsStart.sh: display the path variable"
+   debug: msg="pretups_path variable is {{ pretups_path }}"
+
+ - name: "add the task of configuration related with the pretupsStop.sh"
+   include: pretupsStop.yml
+
+ - name: "creating pretups directory for inflating file"
+   file: path={{ Tomcat_Path }}/webapps/pretups state=directory owner={{ USER_NAME }} group={{ GROUP_NAME }} mode=0775
+
+ - name: "copying the pretups.war in pretups folder for inflating"
+   shell: cp -r {{ Tomcat_Path }}/webapps/pretups.war {{ Tomcat_Path }}/webapps/pretups/ 
+
+ - name: "Starting PreTUPS application"
+   unarchive: src={{ Tomcat_Path }}/webapps/pretups/pretups.war dest={{ Tomcat_Path }}/webapps/pretups/ copy=no
+
+# - name: "Starting PreTUPS application"
+#   shell: unzip -o pretups.war chdir={{ Tomcat_Path }}/webapps/pretups/
+#   command: nohup {{ Tomcat_Path }}/bin/catalina.sh start
+#
+ - name: "removing the temp pretups.war"
+   shell: rm -rf pretups.war chdir={{ Tomcat_Path }}/webapps/pretups/
+
+ - name: "pretupsStart.sh: unhash the startup.sh script for future restart"
+   lineinfile: dest="{{ Tomcat_Path }}/bin/pretupsStart.sh" regexp='(.*)startup.sh(.*)' line='./startup.sh'
+

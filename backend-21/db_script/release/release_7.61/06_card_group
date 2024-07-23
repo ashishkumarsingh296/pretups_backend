@@ -1,0 +1,73 @@
+--card group role insertion
+
+INSERT INTO page_ui_roles
+(role_code, page_code)
+VALUES('SUSC2SCARDGRP', 'P_NW_CRDGRP_MAIN');
+
+INSERT INTO page_ui_roles
+(role_code, page_code)
+VALUES('SUSC2SCARDGRP', 'P_NW_CHNL_TO_SUB');
+
+INSERT INTO page_ui_roles
+(role_code, page_code)
+VALUES('ADDC2SCARDGRP', 'P_NW_CRDGRP_MAIN');
+
+INSERT INTO page_ui_roles
+(role_code, page_code)
+VALUES('ADDC2SCARDGRP', 'P_NW_CHNL_TO_SUB');
+
+INSERT INTO page_ui_roles
+(role_code, page_code)
+VALUES('VIEWC2SCARDGRP', 'P_NW_CRDGRP_MAIN');
+
+INSERT INTO page_ui_roles
+(role_code, page_code)
+VALUES('VIEWC2SCARDGRP', 'P_NW_CHNL_TO_SUB');
+
+INSERT INTO page_ui_roles
+(role_code, page_code)
+VALUES('EDITC2SCARDGRP', 'P_NW_CRDGRP_MAIN');
+
+INSERT INTO page_ui_roles
+(role_code, page_code)
+VALUES('EDITC2SCARDGRP', 'P_NW_CHNL_TO_SUB');
+
+INSERT INTO page_ui_roles
+(role_code, page_code)
+VALUES('DFLTC2SCARDGRP', 'P_NW_CRDGRP_MAIN');
+
+INSERT INTO page_ui_roles
+(role_code, page_code)
+VALUES('DFLTC2SCARDGRP', 'P_NW_CHNL_TO_SUB');
+
+INSERT INTO page_ui_roles
+(role_code, page_code)
+VALUES('VIEWC2STRANSRULE', 'P_NW_CRDGRP_MAIN');
+
+INSERT INTO page_ui_roles
+(role_code, page_code)
+VALUES('VIEWC2STRANSRULE', 'P_NW_CHNL_TO_SUB');
+
+INSERT INTO role_ui_mapping
+(role_ui_parent_id, role_ui_id, rule_code)
+VALUES('networkAdmin', 'Suspend_C2S_Card_Group', 'SUSC2SCARDGRP');
+
+INSERT INTO role_ui_mapping
+(role_ui_parent_id, role_ui_id, rule_code)
+VALUES('networkAdmin', 'Add_C2S_Card_Group', 'ADDC2SCARDGRP');
+
+INSERT INTO role_ui_mapping
+(role_ui_parent_id, role_ui_id, rule_code)
+VALUES('networkAdmin', 'View_C2S_Card_Group', 'VIEWC2SCARDGRP');
+
+INSERT INTO role_ui_mapping
+(role_ui_parent_id, role_ui_id, rule_code)
+VALUES('networkAdmin', 'Modify_C2S_Card_Group', 'EDITC2SCARDGRP');
+
+INSERT INTO role_ui_mapping
+(role_ui_parent_id, role_ui_id, rule_code)
+VALUES('networkAdmin', 'Default_C2S_Card_Group', 'DFLTC2SCARDGRP');
+
+INSERT INTO role_ui_mapping
+(role_ui_parent_id, role_ui_id, rule_code)
+VALUES('networkAdmin', 'Calculate_C2S_Card_Group', 'VIEWC2STRANSRULE');

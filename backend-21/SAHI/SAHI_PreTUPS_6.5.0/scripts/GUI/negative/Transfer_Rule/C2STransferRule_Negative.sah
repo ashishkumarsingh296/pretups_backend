@@ -1,0 +1,104 @@
+//######################################
+//
+//This script to add negative test caes for C2S transfer rule
+//
+//#######################################
+
+
+//===== import scripts ===//
+_includeOnce("../../../../utility/ImportPackage.sah");
+
+// ===== Pre-Condition check ==== //
+
+//If Network Admin doesn't exist create it first then create network stock deduction
+
+var $l_naCsv = _readCSVFile("../../../GUI/testdata/NA_Login.csv"); //Reads the network admin credentials 
+var $g_row = 4;
+var $g_col = 1;
+var $g_networkAdmin1 = $l_naCsv[1][1];
+if($g_networkAdmin1 == "null"){  
+	createNA();  // UserManagement_Common.sah
+	var $l_naCsv1 = _readCSVFile("../../../GUI/testdata/NA_Login.csv");
+	$g_networkAdmin1 = $l_naCsv1[1][1];
+	login($g_appURL, $g_LangEnglish, $g_networkAdmin1, $g_commonPassword, $g_assertWelcome);
+}else	 
+	login($g_appURL,  $g_LangEnglish, $g_networkAdmin1, $g_commonPassword, $g_assertWelcome);
+
+
+
+var $g_domain = $l_naCsv[4][1]; //changed by fiza for testing on pretups633
+//var $g_domain = "Administrator1810";
+
+// =============== Add Negative test cases of network stock initiation ================== // 
+	var $t1 = _testcase("TEST001", "Given a network admin try to create a C2S transfer rule without any domain and receiver details");
+	$t1.start();
+	addC2STransferRule("","","");
+	_assertExists(_listItem("/"+"Select data for at least one transfer rule."+".*/"));
+	$t1.end();
+
+
+	// =============== Add Negative test cases of network stock initiation ================== // 
+	
+	var $t1 = _testcase("TEST002", "Given a network admin try to create C2S transfer rule only with channel domain ");
+	$t1.start();
+	addC2STransferRule($g_domain,"", "");
+	_assertExists(_listItem("/"+"Receiver type is required for row 1."+".*/"));
+	$t1.end();
+
+	// =============== Add Negative test cases of network stock initiation ================== // 
+	
+	var $t1 = _testcase("TEST003", "Given a network admin try to create C2S transfer rule only with domain and receiver type ");
+	$t1.start();
+	addC2STransferRule($g_domain,"Prepaid Subscriber", "");
+	_assertExists(_listItem("/"+"Service type is required for row 1"+".*/"));
+	$t1.end();
+
+// =============== Add Negative test cases of network stock initiation ================== // 
+	
+	var $t1 = _testcase("TEST004", "Given a network admin try to create C2S transfer rule only with receiver type and service type");
+	$t1.start();
+	addC2STransferRule("", "Prepaid Subscriber", "Customer Recharge");
+	_assertExists(_listItem("/"+"Channel domain is required for row 1."+".*/"));
+	$t1.end();
+
+// =============== Add Negative test cases of network stock initiation ================== // 
+	
+	var $t1 = _testcase("TEST005", "Given a network admin try to create C2S transfer rule only with domain and service type ");
+	$t1.start();
+	addC2STransferRule($g_domain, "", "Customer Recharge");
+	_assertExists(_listItem("/"+"Receiver type is required for row 1."+".*/"));
+	$t1.end();
+
+
+	
+// ============================ function for initiation & deduction for network stock ===================== //
+
+var $g_receiverType;
+var $g_serviceType;
+
+function addC2STransferRule($g_domain, $g_receiverType, $g_serviceType) {
+	
+	
+	_click(_link("Transfer rules"));
+	_click(_link("Add C2S transfer rules"));
+	_assertExists(_div("Add C2S transfer rules"));
+	_setSelected(_select("c2STransferRulesIndexed[0].senderSubscriberType"), $g_domain);
+	_setSelected(_select("c2STransferRulesIndexed[0].receiverSubscriberType"), $g_receiverType );
+	_setSelected(_select("c2STransferRulesIndexed[0].serviceType"), $g_serviceType );
+	_click(_submit($g_BtnAdd));
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

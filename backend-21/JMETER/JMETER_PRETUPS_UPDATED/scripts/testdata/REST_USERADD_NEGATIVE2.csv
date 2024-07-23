@@ -1,0 +1,2 @@
+TestcaseId,TestcaseType,Module,Description
+TUNG12809,Negative,Add user API through REST,TO verify that when  MSISDN is enter then pin is mandatory .

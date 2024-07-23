@@ -1,0 +1,62 @@
+//######################################
+//
+//This script to add negative test caes for Bonus Bund
+//
+//#######################################
+
+
+//===== import scripts ===//
+_includeOnce("../../../../utility/ImportPackage.sah");
+_includeOnce("../../../GUI/testscripts/View_Details/ViewDetails_Common.sah"); //For adding C2S card group	
+
+
+//====Login into Application====
+//If NA deos not exist, first create it and then create the Card Group
+var $l_naCsv = _readCSVFile("../../../GUI/testdata/NA_Login.csv"); //Reads the network admin credentials 
+var $g_channelAdmin = $l_naCsv[2][1];
+if($g_channelAdmin == "null"){
+	createCA(); // UserManagement_Common.sah
+	var $l_naCsv1 = _readCSVFile("../../../GUI/testdata/NA_Login.csv");
+	$g_channelAdmin = $l_naCsv1[2][1];
+	login($g_appURL,  $g_LangEnglish, $g_channelAdmin, $g_commonPassword, $g_assertWelcome);
+}else{	 
+	login($g_appURL,  $g_LangEnglish, $g_channelAdmin, $g_commonPassword, $g_assertWelcome);
+}
+
+
+
+// ....................... Test cases for bonus bundle managament ............. //
+
+var $g_viewDetailsByNA = _readCSVFile("../../../GUI/testdata/ViewDetailsByChannelkAdmin.csv"); //Reads the Card group details
+
+
+
+	for(var $g_row = 1; $g_viewDetailsByNA[$g_row] != null; $g_row++){
+		
+				var $g_col = 0;
+				var $temp_testCaseNo = $g_viewDetailsByNA[$g_row][$g_col++];
+				var $t = _testcase($temp_testCaseNo, $g_viewDetailsByNA[$g_row][$g_col++]);
+				
+				$t.start();
+				
+				if($temp_testCaseNo == "TEST001"){
+					viewSelfDetailsOfCA();
+				}
+				
+				
+				
+				$t.end();
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+

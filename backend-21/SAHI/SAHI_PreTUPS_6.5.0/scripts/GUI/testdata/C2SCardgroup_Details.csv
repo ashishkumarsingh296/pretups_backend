@@ -1,0 +1,2 @@
+Test Case No.,Discription,Service Type,Sub -service,Date,Card group set type,Card Name,Start Range,End Range,Validity Type,Validity Days ,Grace Period,Mul. Of,Tax Type,Rate1,Rate 2,Processing Rate,Min Amt.,Max Amt,Con. Fac,Bonus value,Bonus Validity
+TEST001,Given a network admin logs into application and successfully added card group,Customer Recharge,CVG,calendar-icon.gif,Normal,AUTCRDNAME,1,1000,Highest,7,7,1,Amt,0.5,0.5,0.5,1,100,1,100,7

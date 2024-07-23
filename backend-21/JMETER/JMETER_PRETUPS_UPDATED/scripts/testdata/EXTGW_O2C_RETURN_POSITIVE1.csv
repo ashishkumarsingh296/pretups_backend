@@ -1,0 +1,2 @@
+PRODUCTCODE,QTY,REMARKS,TestcaseId,TestcaseType,Module,Description
+101,10,O2C Withdraw,TUNG13041,Positive,O2C return through EXTGW,To verify that Channel Users can Return TopUp Credits to their Operators by entering msisdn and pin

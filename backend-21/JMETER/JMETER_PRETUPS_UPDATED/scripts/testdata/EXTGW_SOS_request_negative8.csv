@@ -1,0 +1,13 @@
+TestcaseId,TestcaseType,Module,Description
+TUNG12845,Negative,SOS request through EXTGW,To verify that channel user cannot hit SOS request through EXTGW with SOS wallet as owner if SOS is not allowed for the user.
+,Negative,SOS request through EXTGW,To verify that channel user's SOS request is not processed for owner wallet if channel user is not allowed as receiver as per user life cycle.
+,Negative,SOS request through EXTGW,To verify that channel user's SOS request is not processed for owner wallet if channel user's previous SOS request is pending for settlement.
+,Negative,SOS request through EXTGW,To verify that channel user's SOS request is not processed if invalid product code is entered in the request.
+,Negative,SOS request through EXTGW,To verify that channel user's SOS request is not processed if invalid external code is entered in the request.
+,Negative,SOS request through EXTGW,To verify that channel user's SOS request is not processed if  product code is not entered in the request.
+,Negative,SOS request through EXTGW,To verify that channel user's SOS request is not processed if  external code is not entered in the request.
+,Negative,SOS request through EXTGW,To verify that  SOS request is not processed through EXTGW with SOS wallet as owner if owner is not allowed as sender as per user life cycle.
+,Negative,SOS request through EXTGW,To verify that  SOS request is not processed through EXTGW with SOS wallet as owner if owner doesn't have sufficient balance in the defined product wallet.
+,Negative,SOS request through EXTGW,To verify that SOS request is not processed through wallet as owner if initiator channel user is in top level hierarchy.
+,Negative,SOS request through EXTGW,To verify that channel user cannot hit SOS request through EXTGW with SOS wallet as owner if user's balance is more than SOS threshold amount.
+,Negative,SOS request through EXTGW,To verify that channel user's SOS request is not processed if invalid language code is entered in the request.

@@ -1,0 +1,3 @@
+TestcaseId,TestcaseType,Module,Description
+,Negative,O2C Withdraw through EXTGW,To check  that o2c Withdraw is not successful if amount is negative
+,Positive,O2C Withdraw through EXTGW,To check  that O2C Withdraw is  successful if entered amount is in decimal

@@ -1,0 +1,75 @@
+//###############################################
+//#Company Name: Mahindra Comviva Technologies Ltd.
+//#Application Name: Pretups
+//#Objective:Common function for FOC approval level one for approve, reject and process file.
+//#Author Name: Shashi
+//#Created Date: 18/06/2015
+//###############################################
+
+// This is script to approve batch foc level 3.
+
+
+
+
+//===========================Import Scripts============================	 
+_includeOnce("../../../../utility/ImportPackage.sah");	//For importing common files
+
+_includeOnce("../../../GUI/testscripts/Batch_FOC/FOC_level3_Common.sah"); //For adding batch name for File 	
+
+//======================Pre-requisite check============================
+_log("Setup", "custom4");
+
+// Login with channel admin to Approve batch FOC
+
+var $l_naCsv = _readCSVFile("../../../GUI/testdata/NA_Login.csv"); //Reads Channel Admin login ID from csv file
+var $g_channelAdmin = $l_naCsv[2][1];
+	if($g_channelAdmin == "null"){ //If Channel Admin is not present then create it 
+	createCA(); //Function defined in UserManagement_Common.sah
+	var $l_naCsv = _readCSVFile("../../../GUI/testdata/NA_Login.csv"); //Reads Channel Admin login ID from csv file
+	 $g_channelAdminn = $l_naCsv[2][1];
+	login($g_appURL, $g_LangEnglish, $g_channelAdminn, $g_commonPassword, $g_assertWelcome); //Login as Channel Admin
+}
+else{	 
+	login($g_appURL, $g_LangEnglish, $g_channelAdmin, $g_commonPassword, $g_assertWelcome); //Login as Channel Admin(Login_Common.sah)
+}
+
+
+// ............... Function to approve batch Foc
+
+
+
+//approveBatchFOC_level3();
+
+
+
+// ............... Function to reject batch// 
+
+
+//rejectBatchFOClevel3();
+
+//n_approve_empty_pin_appr3();
+
+//n_approve_invalid_pin_apr3();
+
+//n_reject_empty_pin_apr3();
+
+//n_reject_invalid_pin_apr3();
+
+//approveBatchFOC_backtest();
+
+processBatchFOC_LEVEL3();
+//n_processBatchFOClev3_invalidpin();
+//n_processBatchFOClev3_emptypin();
+//processBatchFOC_level3_cancle();
+//processBatchFOC_level3_back();
+
+
+
+
+
+
+
+
+
+
+

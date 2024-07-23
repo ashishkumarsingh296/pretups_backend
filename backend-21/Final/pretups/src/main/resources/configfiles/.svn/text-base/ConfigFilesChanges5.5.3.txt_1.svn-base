@@ -1,0 +1,105 @@
+####################################New entries for PreTUPS5.5.3########################################################################
+
+#######################Start here for Constants.props ###########################################################
+
+########### Alert MSISDN Variables ########
+MAX_CSV_FILE_SIZE_FOR_ALERTMSISDN=102400000
+DownloadFileTemplateWithUserData=USERLISTINGTEMPLATE
+DownloadFileBlankTemplate=SAMPLETEMPLATE
+DownloadUserListingTemplatePath=/pretupshome/pretups552_dev/tomcat5_web/logs/AlertMSISDNTemp/
+UploadAlertMsisdnFilePath=/pretupshome/pretups552_dev/tomcat5_web/logs/AlertMsisdn_FinalList/
+############################################
+#Entry by Babu Kunwar For C2STransactionData VFE
+TRANSACTION_FILE_LABEL=USER ID,TRANS DATE,CATEGORY CODE,SENDER DOMAIN CODE,ROAM C2S TRANSFER OUT AMOUNT,OPENING BALANCE,CLOSING BALANCE,C2S TRANSFER OUT COUNT,C2S TRANSFER OUT AMOUNT,O2C TRANSFER IN COUNT,O2C TRANSFER IN AMOUNT,O2C RETURN OUT COUNT,O2C RETURN OUT AMOUNT,O2C WITHDRAW OUT COUNT,O2C WITHDRAW OUT AMOUNT,C2C TRANSFER IN COUNT,C2C TRANSFER IN AMOUNT,C2C TRANSFER OUT COUNT,C2C TRANSFER OUT AMOUNT,C2C RETURN IN COUNT,C2C RETURN IN AMOUNT,C2C RETURN OUT COUNT,C2C RETURN OUT AMOUNT,C2C WITHDRAW IN COUNT,C2C WITHDRAW IN AMOUNT,C2C WITHDRAW OUT COUNT,C2C WITHDRAW OUT AMOUNT,DIFFERENTIAL,ADJUSTMENT IN,ADJUSTMENT OUT,CREATED ON,GRPH DOMAIN CODE,
+CHANNEL_TRANSACTION_FILE_NAME=ChannelTransactionDataFile
+TRANSACTION_DATA_DIRECTORY=/pretupshome/pretups_vfe/MasterFile
+FINAL_TRANSACTION_DATA_DIRECTORY=/pretupshome/pretups_vfe/MasterFile/Transaction/
+RP2P_FILE_EXTENSION=.csv
+RP2P_MAX_FILE_LENGTH=50000
+ADD_HEADER_FOOTER_IN_FILE=Y
+## For monitor server timeout feature
+##value should be 'timeout' in case we are specifying idle time or 'refresh' in case it is to be auto refreshed.
+MONITOR_TIMEOUT_OR_REFRESH=timeout
+##define the time after which the session will timeout (in seconds)
+TIMEOUT_TIME=600
+##Following entry modified by Amit Raheja to add new fields in DWH
+DWH_TRANSACTION_FILE_LABEL=TRANSFER ID;REQUEST SOURCE;TRANSFER DATE;TRANSFER DATE TIME;NETORK CODE;TRANSACTION TYPE;TRANSACTION SUB TYPE;TRANSITION CATEGORY;CHANNEL TYPE;FROM USER ID;TO USER ID;SENDER MSISDN;RECEIVER MSISDN;SENDER CATEGORY;RECEIVER CATEGORY;SENDER DEBIT AMOUNT;RECEIVER CREDIT AMOUNT;TRANSFER AMOUNT;MRP;PAYABLE AMOUNT; NET PAYABLE AMOUNT;RECEIVER PROCESSING FEE;RECEIVER TAX1 AMOUNT;RECEIVER TAX2 AMOUNT;RECEIVER TAX3 AMOUNT;COMMISION;DIFFERENTIAL APPLICABLE;DIFFERENTIAL GIVEN;EXERNAL INVOICE NUMBER;EXTERNAL INVOICE DATE;EXTERNAL USER ID;PRODUCT;CREDIT BACK STATUS;TRANSFER STATUS;RECEIVER_BONUS;RECEIVER_VALIDITY;RECEIVER_BONUS_VALIDITY;SERVICE CLASS CODE;INTERFACE ID;CARD GROUP;ERROR REASON;SERIAL NUMBER;SEND PRE BAL;SEND POST BAL;RCVR PRE BAL; RCVR POST BAL; TXN WALLET ;ACTIVE USER ID;TRANSFER INITIATED BY;FIRST APPROVED BY;SECOND APPROVED BY;THIRD APPROVED BY; BONUS ACCOUNT DETAILS
+##Modification ends
+#######################Ends here for Constants.props#############################################################
+
+#----------------------------------------------------------------------------------------------------------------
+
+
+#######################Start here for LogConfig.props ###########################################################
+
+
+
+#######################Ends here for LogConfig.props#############################################################
+
+#----------------------------------------------------------------------------------------------------------------
+
+
+#######################Start here for struts-config.xml##########################################################
+
+/WEB-INF/classes/configfiles/alertmsisdn/validation-alertmsisdn.xml
+
+
+#########Added for private recharge############
+/WEB-INF/classes/configfiles/privaterecharge/validation-privaterecharge.xml
+
+#######################Ends here for struts-config.xml###########################################################
+
+#----------------------------------------------------------------------------------------------------------------
+
+
+#######################Start here for validator-rules.xml########################################################
+
+
+
+#######################Ends here for validator-rules.xml#########################################################
+
+#----------------------------------------------------------------------------------------------------------------
+
+
+#######################Start here for web.xml####################################################################
+
+/WEB-INF/classes/configfiles/alertmsisdn/struts-config-alertmsisdn.xml
+
+
+######Added for CS3 Bangladesh IN(NodeServlet entry and Simulator entry and their corresponding mapping)
+
+<servlet>
+    <servlet-name>NodeServlet</servlet-name>
+    <servlet-class>com.btsl.pretups.inter.cs3bangladesh.cs3bangladeshscheduler.NodeServlet</servlet-class>
+    <load-on-startup>2</load-on-startup>
+</servlet>
+
+<servlet-mapping>
+    <servlet-name>NodeServlet</servlet-name>
+    <url-pattern>/NodeServlet</url-pattern>
+ </servlet-mapping>
+
+
+<servlet>
+    <servlet-name>CS3BangladeshTestServer1</servlet-name>
+    <servlet-class>com.btsl.pretups.inter.cs3bangladesh.CS3BangladeshTestServer1</servlet-class>
+    <init-param>
+    <param-name>cs3bangladeshxmlfilepath</param-name>
+    <param-value>/WEB-INF/classes/configfiles/INFiles/CS3BangladeshRequestResponse1.props</param-value>
+    </init-param>
+    <load-on-startup>5</load-on-startup>
+  </servlet>
+
+<servlet-mapping>
+	    <servlet-name>CS3BangladeshTestServer1</servlet-name>
+	    <url-pattern>/CS3BangladeshTestServer1</url-pattern>
+</servlet-mapping>
+
+
+
+################Added for private recharge#################
+/WEB-INF/classes/configfiles/privaterecharge/struts-config-privaterecharge.xml
+
+#######################Ends here for web.xml#####################################################################
+
+####################################PreTUPS5.5.3 Entries ends ######################################################################

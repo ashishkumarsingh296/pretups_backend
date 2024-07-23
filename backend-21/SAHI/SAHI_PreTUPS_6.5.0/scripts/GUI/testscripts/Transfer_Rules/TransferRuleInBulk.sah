@@ -1,0 +1,53 @@
+//===========================Import Scripts============================	 
+_includeOnce("../../../../utility/ImportPackage.sah");
+_includeOnce("../../../GUI/testscripts/Transfer_Rules/TransferRule_Common.sah"); //For adding O2C Transfer Rules	
+_includeOnce("../../../GUI/testscripts/User_Management/UserManagement_Common.sah"); //For creating NA	
+_includeOnce("../../../DB/Pretups_GUI_Queries.sah");
+//======================Pre-requisite check============================
+_log("Setup", "custom4");
+
+//If NA deos not exist, first create it and then create the Transfer Rules
+var $l_naCsv = _readCSVFile("../../../GUI/testdata/NA_Login.csv"); //Reads the network admin credentials 
+var $g_row = 4;
+var $g_col = 1;
+var $g_networkAdmin1 = $l_naCsv[1][1];
+if($g_networkAdmin1 == "null"){
+	createNA(); // UserManagement_Common.sah
+	var $l_naCsv1 = _readCSVFile("../../../GUI/testdata/NA_Login.csv");
+	$g_networkAdmin1 = $l_naCsv1[1][1];
+	login($g_appURL,  $g_LangEnglish, $g_networkAdmin1, $g_password, $g_assertWelcome);
+}else{	 
+	login($g_appURL,  $g_LangEnglish, $g_networkAdmin1, $g_password, $g_assertWelcome);
+}
+
+
+var $g_C2STRDetailsInBulk = _readCSVFile("../../../GUI/testdata/TransferRuleInBulk.csv"); 
+
+for(var $g_row = 1; $g_C2STRDetailsInBulk[$g_row] != null; $g_row++){
+  
+  _log("loo-p");
+		
+				var $g_col = 0;
+				var $number =   testCaseNumber($g_C2STRDetailsInBulk[$g_row][$g_col]);
+							
+				var $t = _testcase($g_C2STRDetailsInBulk[$g_row][$g_col++], $g_C2STRDetailsInBulk[$g_row][$g_col++]);
+			
+				$t.start();
+				
+				commonVaribleForTransferRulesInBulk($g_row, $g_col);
+				
+				if($number == 1)
+					addC2STRInBatch();
+  				else
+  				if($number == 2)
+					dupFileC2STRInBatch();
+ 				 else if($number==3)
+    				emptyC2STRInBatch();
+  				 else if($number==4)
+    				modifyC2STRInBatch();
+				
+				$t.end();
+	}
+
+
+

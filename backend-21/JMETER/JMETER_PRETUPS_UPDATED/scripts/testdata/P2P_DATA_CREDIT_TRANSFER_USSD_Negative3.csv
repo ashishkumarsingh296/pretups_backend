@@ -1,0 +1,2 @@
+TestcaseId,TestcaseType,Module,Description
+,Negative,DATA Credit Transfer,To validate  credit transfer fails when PIN is missing

@@ -1,0 +1,28 @@
+ TestCase No.,TestCase Description,Profile Name,Short Code,Applicable From Date,Applicable From Time,Product,MultipleOf,minTransferValue,maxTransferValue,startRange,endRange,commRate,tax1Rate,tax2Rate,tax3Rate,Assertion
+TEST001,Submit without giving any details,,,,,,,,,,,,,,,Multiple of is required.
+TEST002, Submit without profile name,,SHASHI01,calendar-icon.gif,21:00,eTopUP,1,1,10000,1,1000,1,1,1,1,Profile name is required.
+TEST003, submit without short code,TEST,,calendar-icon.gif,10:00,eTopUP,1,1,10000,1,1000,1,1,1,1,Short code is required.
+TEST004, Try to submit without applicable time,TEST,COMM01,calendar-icon.gif,,eTopUP,1,1,10000,1,1000,1,1,1,1,Applicable time is required.
+TEST005,Submit without giving commision profile name and short code,,,calendar-icon.gif,21:00,eTopUP,1,1,10000,1,1000,1,1,1,1,Profile name is required.
+TEST006,Submit without having  profile name and applicable from date,,COMM01,calendar-icon.gif,21:00,eTopUP,1,1,10000,1,1000,1,1,1,1,Profile name is required.
+TEST007,Submit without having  profile name and applicable from time,,COMM01,calendar-icon.gif,,eTopUP,1,1,10000,1,1000,1,1,1,1,Profile name is required.
+TEST008,Submit without having short code and pllicable from date,TEST,,calendar-icon.gif,21:00,eTopUP,1,1,10000,1,1000,1,1,1,1,Short code is required.
+TEST009,Submit without having short code and pllicable from time,TEST,,calendar-icon.gif,,eTopUP,1,1,10000,1,1000,1,1,1,1,Short code is required.
+TEST010,Submit without having applicable time ,TEST,COMM01,calendar-icon.gif,,eTopUP,1,1,10000,1,1000,1,1,1,1,Applicable time is required.
+TEST011, Submit applicable time in invalid format ,TEST,COMM01,calendar-icon.gif,^%$%^$%^$,eTopUP,1,1,10000,1,1000,1,1,1,1,Applicable time is not a valid time
+TEST012,Submit without giving any commision slab details,TEST,COMM01,calendar-icon.gif,23:59,eTopUP,,1,10000,1,1000,1,1,1,1,Multiple of is required.
+TEST013,Try to submit without minTransfer field,TEST,COMM01,calendar-icon.gif,23:59,eTopUP,1,,10000,1,1000,1,1,1,1,Min. transfer value is required.
+TEST014,Try to submit without maxtransfer of field,TEST,COMM01,calendar-icon.gif,23:59,eTopUP,1,1,,1,1000,1,1,1,1,Max. transfer value is required.
+TEST015,Try to submit without multiple of and min transfer value,TEST,COMM01,calendar-icon.gif,23:59,eTopUP,,,10000,1,1000,1,1,1,1,Multiple of is required.
+TEST016,Try to submit without multiple of and max transfer value,TEST,COMM01,calendar-icon.gif,23:59,eTopUP,,1,,1,1000,1,1,1,1,Multiple of is required.
+TEST017,Try to submit without min and max trasnfer value,TEST,COMM01,calendar-icon.gif,23:59,eTopUP,1,,,1,1000,1,1,1,1,Min. transfer value is required.
+TEST018,Try multiple of a special charactor ,TEST,COMM01,calendar-icon.gif,23:59,eTopUP,&^%&^%&,1,10000,1,1000,1,1,1,1,Multiple of must be a decimal value.
+TEST019,Try multipleof  as a special charactor ,TEST,COMM01,calendar-icon.gif,23:59,eTopUP,jasd,1,10000,1,1000,1,1,1,1,Multiple of must be a decimal value.
+TEST020,Try min transfer as a special charactor,TEST,COMM01,calendar-icon.gif,23:59,eTopUP,1,%$%^$,10000,1,1000,1,1,1,1,Min. transfer value must be a numeric.
+TEST021,Try min transfer as a charactor,TEST,COMM01,calendar-icon.gif,23:59,eTopUP,1,ABC,10000,1,1000,1,1,1,1,Min. transfer value must be a numeric.
+TEST022,Submit a -ve start range,TEST,COMM01,calendar-icon.gif,23:59,eTopUP,1,1,-100,1,1000,1,1,1,1,Max. transfer value should be greater than 0
+TEST023,Submit charactor as start range,TEST,COMM01,calendar-icon.gif,23:59,eTopUP,1,1,ABC,1,1000,1,1,1,1,Max. transfer value must be a numeric.
+TEST024,Submit special charactor as start range,TEST,COMM01,calendar-icon.gif,23:59,eTopUP,1,1,%^^$,1,1000,1,1,1,1,Max. transfer value must be a numeric.
+TEST025,submit complete blank commision slab,TEST,COMM01,calendar-icon.gif,23:59,eTopUP,1,1,10000,,,,,,,At least one slab entry is required
+TEST026,Submit empty from range,TEST,COMM01,calendar-icon.gif,23:59,eTopUP,1,1,10000,,1000,1,1,1,1,At least one slab entry is required
+TEST027,Submit empty to range,TEST,COMM01,calendar-icon.gif,23:59,eTopUP,1,1,10000,1,,1,1,1,1,To range is required of slab 1

@@ -1,0 +1,57 @@
+echo "<%@ page import='com.btsl.util.*' %>" > space.html
+echo "<html><head> " >> space.html
+echo "<%@ <jsp:include page="/monitorserver/common/topband.jsp"> %>" >>space.html
+echo "<meta http-equiv=Content-Type content=text/html; charset=UTF-8>" >>space.html
+echo "<link href='/monitorserver/common/main.css' rel=stylesheet type=text/css>" >> space.html
+#echo "<title>PreTUPS eRecharge Server Disk Usage</title></head> " >>space.html
+echo "<body leftmargin=0 topmargin=0 marginwidth=0 marginheight=0> ">>space.html
+echo "<div class=heading><center><strong>PreTUPS eRecharge Server Disk Usage:</strong></center></div>" >> space.html
+echo "<br/>" >> space.html
+echo "<table height="44" width="327" border=1 cellspacing=0 cellpadding=0  align=center>" >>space.html
+echo "<tr><td>" >>space.html
+echo "<font color=#808080 style=Verdana, Arial, Helvetica, sans-serif SIZE=3><b>" >> space.html
+echo "Server Disk </font> </td><td><font color=#808080 style=Verdana, Arial, Helvetica, sans-serif SIZE=2><b> Total Disk</b></font>  </td><td><font color=#808080 style=Verdana, Arial, Helvetica, sans-serif SIZE=2><b> Used percent</b></font> </td><td><font color=#808080 style=Verdana, Arial, Helvetica, sans-serif SIZE=2><b> Available</b></font>" >>space.html
+echo "</BR></td></tr>" >> space.html
+
+a1="/dev/cciss/c0d0p2"
+a2="/dev/cciss/c0d0p1"
+a3="/dev/cciss/c0d0p5"
+a4="/dev/cciss/c0d0p3"
+a5="/dev/cciss/c0d1p1"
+a6="/dev/cciss/c1d0p3"
+
+declare -i count
+count=1
+until [ $count -gt 6 ]
+do
+case $count in
+        1)a1=$a1;;
+        2)a1=$a2;;
+        3)a1=$a3;;
+        4)a1=$a4;;
+        5)a1=$a5;;
+        6)a1=$a6;;
+esac
+a=$a1
+############### Fetching information about the partitioning###############
+
+used=`df -kh | grep "$a" | awk '{ print $5  }' | cut -f1 -d'%'`
+ava=`df -kh | grep "$a" | awk '{ print $4  }'`
+toa=`df -kh | grep "$a" | awk '{ print $2  }'`
+fsa=`df -kh | grep "$a" | awk '{ print $6  }'`
+echo "<tr><td>" >>space.html
+a1="/dev/cciss/c0d0p2"
+a2="/dev/cciss/c0d0p1"
+a3="/dev/cciss/c0d0p5"
+a4="/dev/cciss/c0d0p3"
+a5="/dev/cciss/c0d1p1"
+a6="/dev/cciss/c1d0p3"
+echo "<font color=#808080 style=Verdana, Arial, Helvetica, sans-serif SIZE=2><b>" >> space.html
+echo "$fsa</b></font></td><td align=center><font color=#808080 style=Verdana, Arial, Helvetica, sans-serif SIZE=2>  $toa</font></td><td align=center><font color=#808080 style=Verdana, Arial, Helvetica, sans-serif SIZE=2>  $used %</font></td><td align=center><font color=#808080 style=Verdana, Arial, Helvetica, sans-serif SIZE=2> $ava</font>">>space.html
+echo "</BR></td></tr>" >> space.html
+count=$count+1
+done
+echo "</table>" >>space.html
+echo "<%@<jsp:include page=/monitorserver/common/bottomband.jsp/>%>">>space.html
+echo "</body></html>" >>space.html
+

@@ -1,0 +1,3 @@
+MSISDN,TestcaseId,TestcaseType,Module,Description
+7299000257,TUNG13185,Positive,P2P registration through SMSC,To verify that the subscriber is registered successfully.
+,TUNG13186,Negative,P2P registration through SMSC,To verify that error is displayed if MSISDN is left blank.

@@ -1,0 +1,11 @@
+DATE,EXTNWCODE,MSISDN,PIN,LOGINID,PASSWORD,EXTCODE,EXTREFNUM,MSISDN2,AMOUNT,LANGUAGE1,LANGUAGE2,SELECTOR,NOTIFICATIONMSISDN,TestcaseId,TestcaseType,Module,Description
+,NG,7277777776,2468,,,,,7.21E+09,100,,,1,7277777772,TUNG12860 ,P,Internet Recharge,To check that a successful recharge happens when only msisdn and pin are entered along with other mandatory fields
+,NG,,,del,com@1234,,,7.21E+09,100,,,1,7277777772,TUNG12861 ,P,Internet Recharge,To check that a successful recharge happens when only loginid and password are entered along with other mandatory fields
+,NG,,,,,5231,,7.21E+09,100,,,1,7277777772,TUNG12862,P,Internet Recharge,To check that a successful recharge happens when only extcode is entered along with other mandatory fields
+,NG,7277777776,2468,,,,,7.21E+09,,,,1,7277777772,TUNG12863 ,N,Internet Recharge,To check that an unsucessful recharge happens when amount is not enterd
+,NG,,,,,5231,,7.21E+09,100,,,,7277777772,TUNG12864,N,Internet Recharge,To check that an unsucessful recharge happens when selector is not enterd
+,,7277777776,2468,,,,,7.21E+09,100,,,1,7277777772,TUNG12865 ,N,Internet Recharge,To check that an unsucessful recharge happens when extnetwork code is not enterd
+,NG,7277777776,,,,,,7.21E+09,100,,,1,7277777772,TUNG12866 ,P,Internet Recharge,To check that if MSISDN is filled then PIN is also manadatory
+,NG,,,del,,,,7.21E+09,100,,,1,7277777772,TUNG12867,P,Internet Recharge,To check that if login id is filled then passowrd is also manadatory
+,NG,,,,,5231,,,100,,,1,7277777772,TUNG12868,N,Internet Recharge,To check that if subscriber msisdn is not entered recharge does not happen
+,NG,,,,,5231,,7.25E+09,100,,,1,,TUNG12869,N,Internet Recharge,To check that an unsucessful recharge happens when notification msisdn is not enterd

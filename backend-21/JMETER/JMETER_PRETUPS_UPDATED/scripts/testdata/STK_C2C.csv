@@ -1,0 +1,8 @@
+TestcaseId,TestcaseType,Module,Description
+,Positive,STK,To verfiy that C2C  is successful via STK
+,Positive,STK,To verfiy that C2C  withdraw is successful via STK
+,Positive,STK,To verfiy that EVD is successful via STK
+,Positive,STK,To verfiy that EVR is successful via STK
+,Positive,STK,To verfiy that Other Balance is successful via STK
+,Positive,STK,To verfiy that Daily Status report is successful via STK
+,Positive,STK,To verfiy that Change PIN is successful via STK

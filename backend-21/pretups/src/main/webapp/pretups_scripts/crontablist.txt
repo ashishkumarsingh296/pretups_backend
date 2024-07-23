@@ -1,0 +1,61 @@
+#################################
+#        Scheduled Jobs         #
+#        By Bharti Telesoft     #
+#                               #
+#################################
+#Apps server Crontablis
+##Script to run the C2SMisProcess populate summary tables from transactions data
+0 3 * * * /pretupshome/tomcat5_web/webapps/pretups/pretups_scripts/C2SMisProcessing.sh >>/pretupsvar/pretups_cronLogs/C2SMisProcessing.out
+
+##Script to run the P2PMisProcessing populate summary tables from transaction data
+30 0 * * * /pretupshome/tomcat5_web/webapps/pretups/pretups_scripts/P2PMisProcessing.sh >>/pretupsvar/pretups_cronLogs/P2PMisProcessing.out
+
+##Script to run the userDailyClosingBalance, maintains channel users daily closing balance
+5 0 * * * /pretupshome/tomcat5_web/webapps/pretups/pretups_scripts/userDailyClosingBalance.sh >>/pretupsvar/pretups_cronLogs/userDailyClosingBalance.out
+
+##Script to run the networkDailyClosingBalance, maintains networks daily cclosing balance
+30 0 * * * /pretupshome/tomcat5_web/webapps/pretups/pretups_scripts/networkDailyClosingBalance.sh >>/pretupsvar/pretups_cronLogs/networkDailyClosingBalance.out
+
+##Script to run the lowBalanceAlertSender, send alert to users who has the lower balnace than the alerting threshold
+30 7 * * * /pretupshome/tomcat5_web/webapps/pretups/pretups_scripts/lowBalanceAlertSender.sh >>/pretupsvar/pretups_cronLogs/lowBalanceAlertSender.out
+
+##Script to run the pinPasswordAlertC2sPin, send remainder to channel user to change it PIN
+45 7 * * * /pretupshome/tomcat5_web/webapps/pretups/pretups_scripts/pinPasswordAlertC2sPin.sh >>/pretupsvar/pretups_cronLogs/pinPasswordAlertC2sPin.out
+
+##Script to run the pinPasswordAlertP2pPin, send remainder to P2P subscriber to change PIN
+00 8 * * * /pretupshome/tomcat5_web/webapps/pretups/pretups_scripts/pinPasswordAlertP2pPin.sh >>/pretupsvar/pretups_cronLogs/pinPasswordAlertP2pPin.out
+
+##Script to run the pinPasswordAlertChnlPwd, send remainder to Channel User to Change Web Password
+15 8 * * * /pretupshome/tomcat5_web/webapps/pretups/pretups_scripts/pinPasswordAlertChnlPwd.sh >>/pretupsvar/pretups_cronLogs/pinPasswordAlertChnlPwd.out
+
+##Script to run the pinPasswordAlertOptPwd, send remainder to PreTUPS Operations User to Change web Password
+00 9 * * * /pretupshome/tomcat5_web/webapps/pretups/pretups_scripts/pinPasswordAlertOptPwd.sh >>/pretupsvar/pretups_cronLogs/pinPasswordAlertOptPwd.out
+
+
+##Script to Genrates Disk Space JSP
+0 1,5,10,14,16,22 * * * /pretupshome/tomcat5_web/webapps/pretups/pretups_scripts/Space.sh 
+
+##Script to run the truncateGatewayLogs, backup and truncate the SMSC Gateway logs on daily basis
+30 23 * * * /pretupshome/tomcat5_web/webapps/pretups/pretups_scripts/truncateSMSCGateLogs.sh >>/pretupsvar/pretups_cronLogs/truncateSMSCGatewayLogs.out
+
+##Script to run the truncateCronLogs, backup and truncate cron job logs
+40 23 * * * /pretupshome/tomcat5_web/webapps/pretups/pretups_scripts/truncateCronLogs.sh >>/pretupsvar/pretups_cronLogs/truncateCronLogs.out
+
+##Script to run the rotatelogWEB, backup and truncate PreTUPS Web logs
+50 23 * * * /pretupshome/tomcat5_web/webapps/pretups/pretups_scripts/rotatelogWEB.sh >>/pretupsvar/pretups_cronLogs/rotatelogWEB.out
+
+##Script to run the rotatelogSMS, backup and truncate PreTUPS SMS logs
+55 23 * * * /pretupshome/tomcat5_web/webapps/pretups/pretups_scripts/rotatelogSMS.sh >>/pretupsvar/pretups_cronLogs/rotatelogSMS.out
+
+##Script to Genrates log for Ping INs and SMSC
+#1,10,20,30,40,50,59 * * * * /pretupshome/tomcat5_web/webapps/pretups/pretups_scripts/pingFerma1.sh 
+
+#1,10,20,30,40,50,59 * * * * /pretupshome/tomcat5_web/webapps/pretups/pretups_scripts/pingFerma2.sh 
+
+#1,10,20,30,40,50,59 * * * * /pretupshome/tomcat5_web/webapps/pretups/pretups_scripts/pingAlcatel.sh 
+
+#1,10,20,30,40,50,59 * * * * /pretupshome/tomcat5_web/webapps/pretups/pretups_scripts/pingSMSC.sh 
+
+#1,10,20,30,40,50,59 * * * * /pretupshome/tomcat5_web/webapps/pretups/pretups_scripts/pingWEB1.sh 
+
+#1,10,20,30,40,50,59 * * * * /pretupshome/tomcat5_web/webapps/pretups/pretups_scripts/pingWEB2.sh 

@@ -1,0 +1,29 @@
+---
+ - name: Running whole postgres dump in SQL format 
+   shell: "{{ item }} chdir={{ BASE_DIR }}/{{ Temp_Dir }}/"
+   with_items:
+   - pg_restore -c -v -Fc -d {{ PRETUPS_POSTGRES_DB_NAME }} {{ PRETUPS_POSTGRES_DUMP }}.sql;
+   ignore_errors: yes
+   register: Pretups_DUMP_import
+#   failed_when: Pretups_DUMP_import.stderr !=""
+   when: (DUMP_FORMAT == "sql") and (ISDUMP == true)
+   tags:
+    - Pretups_DUMP_import
+
+ - name: Running whole postgres dump in DMP format 
+   shell: "{{ item }} chdir={{ BASE_DIR }}/{{ Temp_Dir }}/"
+   with_items:
+   - pg_restore -c -v -Fc -d {{ PRETUPS_POSTGRES_DB_NAME }} {{ PRETUPS_POSTGRES_DUMP }}.dmp;
+   ignore_errors: yes
+   register: Pretups_DUMP_import
+#   failed_when: Pretups_DUMP_import.stderr !=""
+   when: (DUMP_FORMAT == "dmp") and (ISDUMP == true)
+   tags:
+    - Pretups_DUMP_import
+
+ - name: path of the directory to ship scripts
+   shell: "pwd chdir={{ BASE_DIR }}/{{ Temp_Dir }}/"
+   register: PATH
+   tags:
+     - DbDirectory
+

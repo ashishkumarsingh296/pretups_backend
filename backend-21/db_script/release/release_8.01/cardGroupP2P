@@ -1,0 +1,9 @@
+UPDATE pages_ui
+SET page_url='/cardGroupP2p'
+WHERE page_code='P_NW_P2P';
+
+----
+
+UPDATE page_ui_roles
+SET role_code='ADDCARDGRP'
+WHERE page_code='P_NW_P2P';

@@ -1,0 +1,85 @@
+####################################################################
+#                Script to Send Disk Space Alert - via SMS         #
+#                Bharti Telesoft LTD.                              #
+#                Dated :03/02/2006                                 #
+#                By Rajeev Gosain                                  #
+####################################################################
+HOME=/pretupshome/webapps/pretups/pretups_scripts
+nodename=`uname -n`
+# check for Services On which node Services are running
+curl 'http://127.0.0.1:5555/pretups/test.html'
+ret=`echo $?`
+clear
+if [ $ret = 0 ] ; then
+echo "`uname -n` is active"
+echo
+############# The Numbers on which the alert will be sent###############
+
+alertnumber1=20123297336
+alertnumber2=20123297388
+alertnumber3=20123942594
+
+############## Disk Partitioning    ##########################
+
+a1="/dev/cciss/c0d0p2"
+a2="/dev/cciss/c0d0p1"
+a3="/dev/cciss/c0d0p5"
+a4="/dev/cciss/c0d0p3"
+a5="/dev/cciss/c0d1p1"
+a6="/dev/cciss/c1d0p3"
+
+declare -i count
+count=1
+until [ $count -gt 6 ]
+do
+case $count in
+        1)a1=$a1;;
+        2)a1=$a2;;
+        3)a1=$a3;;
+        4)a1=$a4;;
+        5)a1=$a5;;
+        6)a1=$a6;;
+esac
+a=$a1
+############### Fetching information about the partitioning###############
+
+used=`df -kh | grep "$a" | awk '{ print $5  }' | cut -f1 -d'%'`
+ava=`df -kh | grep "$a" | awk '{ print $4  }'`
+toa=`df -kh | grep "$a" | awk '{ print $2  }'`
+fsa=`df -kh | grep "$a" | awk '{ print $6  }'`
+
+echo
+echo "      Mobinil PreTups Server Disk of ""$fsa" :    Total Disk ="$toa"  Used percent = $used % of Available="$ava"
+if [ $used -gt 75 ] ;then
+echo "Sending alarm for ""$fsa"
+
+declare -i cnt
+cnt=1
+until [ $cnt -gt 3 ]
+do 
+case $cnt in
+	1)alertnumber1=$alertnumber1;;
+        2)alertnumber1=$alertnumber2;;
+        3)alertnumber1=$alertnumber3;;
+esac
+alertnumber=$alertnumber1
+
+################# Sending Alert ##############################
+ curl http://127.0.0.1:13014/cgi-bin/sendsms?user=test\&pass=test\&to=$alertnumber\&text=Mobinil+eTopUp+Server+"$nodename"+Diskspace.+"$fsa":+Total="$toa"+Used+percent=$used+Available=+"$ava".\&smsc=Smsc7682\&from=7682;
+
+cnt=$cnt+1
+done
+fi
+count=$count+1
+
+done
+echo
+echo "--------------DONE-------------------------------------------------"
+echo "[`date`]: Diskspace.sh from Node [`uname -n`]" >> /pretupsvar/pretups_cronLogs/scripts.log
+
+###########end of Script
+else
+echo "`uname -n` is not active"
+fi
+
+

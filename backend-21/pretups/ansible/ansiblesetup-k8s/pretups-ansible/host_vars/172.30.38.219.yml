@@ -1,0 +1,38 @@
+
+USER_NAME: pretupsRev_demo
+ansible_ssh_user: ansibleuser
+ansible_ssh_pass: ansibleuser
+
+#specify group name to create or existing group name to use
+GROUP_NAME: pretupsRev_demo
+
+#specify home directory partition name to create or existing
+#Home directory of user will be this directory only
+HOME_DIR_NAME: home/pretupsRev_demo
+
+
+#HA Proxy IP will be replaced
+LOGIN_MODULE_IP: 172.30.38.18
+PRETUPS_IP: 172.30.38.18
+PRETUPS_UI_IP: 172.30.38.18
+REDIS_IP: 172.30.38.18
+NODE_IP: 172.30.38.18
+
+#NodePort Ports
+LOGIN_MODULE_NODEPORT: 31298
+PRETUPS_NODEPORT: 31299
+PRETUPS_UI_NODEPORT: 31300
+REDIS_NODEPORT: 31303
+NODE_MODULE_NODEPORT: 31304
+
+REGISTRY_IP: 172.30.38.52
+REGISTRY_PORT: 5000
+
+
+#Container Ports
+LOGIN_MODULE_CONTAINER_PORT: 9879
+PRETUPS_CONTAINER_PORT: 9879
+PRETUPS_UI_CONTAINER_PORT: 9879
+PRETUPS_SHUTDOWN_PORT: 8052
+PRETUPS_UI_SHUTDOWN_PORT: 8052
+NODE_MODULE_CONTAINER_PORT: 5000

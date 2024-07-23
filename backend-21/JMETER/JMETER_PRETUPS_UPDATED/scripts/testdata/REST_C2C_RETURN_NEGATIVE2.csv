@@ -1,0 +1,2 @@
+PIN,PRODUCTCODE,LANGUAGE1,TestcaseId,TestcaseType,Module,Description
+1111,101,,TUNG23140,Negative,REST - C2C return,TO verify that when  MSISDN is enter then pin is mandatory .

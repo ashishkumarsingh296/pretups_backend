@@ -1,0 +1,36 @@
+---
+########################################################
+# Author           Date        Remarks
+#------------    -----------  ---------
+#Sadhan Kumar K  25-07-2016    Initial Creation
+#
+# This file takes care of War patch.
+#########################################################
+
+ - include: ../../validate/tasks/validatePathCheckWarPatch.yml
+
+ - name: Taking Backup of War Instance for Patch Type WAR, if Applicable
+   shell: rsync --remove-source-files -rzh {{ item.path}}/{{ item.oldWarName.split('.war')|first}}* {{ BackupWarInstancePath }} && rm -rf {{ item.path}}/{{ item.oldWarName.split('.war')|first }}
+   with_items:
+     - "{{ PatchConfigfiles }}"
+   when: item.patchType =='WAR'
+   tags:
+     - warBkp
+
+ - name: Copying War file Patch to remote server, for patch types:['WAR'] if Applicable
+   copy: src="files/{{ item.fileName }}" dest="{{ item.path }}/" 
+   with_items:
+     - "{{ PatchConfigfiles }}"
+   when: item.patchType =='WAR'
+   register: copyWar
+   tags:
+     - copyWar
+
+ - name: Applying Patch for patch types:['WAR'] if Applicable
+   shell: unzip {{ item.path}}/{{ item.fileName }} -d {{ item.path}}/{{ item.fileName.split('.war')|first }} chdir={{ item.path }}
+   with_items:
+     - "{{ PatchConfigfiles }}"
+   when: item.patchType =='WAR'
+   register: applyPatchWar
+   tags:
+     - applyPatchWar

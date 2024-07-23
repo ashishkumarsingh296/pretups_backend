@@ -1,0 +1,23 @@
+TestcaseId,TestcaseType,Module,Description
+,Positive,Add user API through EXTGW,Add user through EXTGW by adding the required fields
+,Positive,Add user API through EXTGW,To verfiy that User Creation API execute successfully with WEB password blank
+,Positive,Add user API through EXTGW,To verfiy that User Creation API execute successfully with WEB loginID and WEB password blank
+,Positive,Add user API through EXTGW,To verfiy that User Creation API execute successfully with EmailID blank
+,Negative,Add user API through EXTGW,To verfiy that User Creation API not execute successfully if Date is blank
+,Negative,Add user API through EXTGW,To verfiy that User Creation API not execute successfully if Network code is blank
+,Negative,Add user API through EXTGW,To verfiy that User Creation API not execute successfully if External reference number is blank
+,Negative,Add user API through EXTGW,To verfiy that User Creation API not execute successfully if User Category code is blank
+,Negative,Add user API through EXTGW,To verfiy that User Creation API not execute successfully if User Name is blank
+,Negative,Add user API through EXTGW,To verfiy that User Creation API not execute successfully if User Name prefix is blank
+,Negative,Add user API through EXTGW,To verfiy that User Creation API not execute successfully if External Code is blank
+,Negative,Add user API through EXTGW,To verfiy that User Creation API not execute successfully if MSISDN1 is blank
+,Negative,Add user API through EXTGW,To verfiy that User Creation API not execute successfully if External Code is not unique
+,Negative,Add user API through EXTGW,To verfiy that User Creation API not execute successfully if Email ID is invalid
+,Negative,Add user API through EXTGW,To verfiy that User Creation API not execute successfully if Network Code is invalid
+,Negative,Add user API through EXTGW,To verfiy that User Creation API not execute successfully if Employee Code of initiator is invalid
+,Negative,Add user API through EXTGW,To verfiy that User Creation API not execute successfully if Password of initiator is invalid
+,Negative,Add user API through EXTGW,To verfiy that User Creation API not execute successfully if employee code LoginID and MSISDN of initiator are blank
+,Negative,Add user API through EXTGW,To verfiy that User Creation API not execute successfully if User name prefix is other than M/S Mr Miss Mrs
+,Negative,Add user API through EXTGW,To verfiy that User Creation API not execute successfully if Contact number is alphabetic
+,Negative,Add user API through EXTGW,To verfiy that User Creation API not execute successfully if MSISDN1 is alphabetic
+,Negative,Add user API through EXTGW,To verfiy that User Creation API not execute successfully if Geogrpahy Code is invalid 

@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 123
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/config/enDeCryptionConvertor
+END
+runEncrypt.sh
+K 25
+svn:wc:ra_dav:version-url
+V 137
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/config/enDeCryptionConvertor/runEncrypt.sh
+END
+EncryptionLogicConverter.java
+K 25
+svn:wc:ra_dav:version-url
+V 153
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/config/enDeCryptionConvertor/EncryptionLogicConverter.java
+END
+enDeCryptionLogicLog.props
+K 25
+svn:wc:ra_dav:version-url
+V 150
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/config/enDeCryptionConvertor/enDeCryptionLogicLog.props
+END

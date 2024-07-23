@@ -1,0 +1,2 @@
+TestcaseId,TestcaseType,Module,Description
+TUNG12348,Negative,Lite Recharge through EXTGW,To verify that user is not able to Lite Recharge via EXTGW if user has only User ID and Incorrect Password

@@ -1,0 +1,9 @@
+Test Case No,Test Case Decsription,ProductName,Product Code,Status,Assertion
+TEST001,Given that a network admin loggin into application and add cell group in the system,,,Active,Cell group added successfully.
+TEST002,Given that a network admin loggin into application and add cell group in the system without group name,,CODE,Active,Group name required
+TEST003,Given that a network admin loggin into application and add cell group in the system group Code,NAME,,Active,Group code required
+TEST004,Given that a network admin loggin into application and add cell group in the system status ,NAME,CODE,,Status required
+TEST005,Given that network admin loggin into application and try to add cell ID with existing group Name,,CODE,Active,Group name already exist.
+TEST006,Given that network admin loggin into application and try to add cell ID with existing group Name,NAME,,Active,Group code already exist.
+TEST007,Given that network admin loggin into application and try to modify cell ID with existing group Name,,,,Cell group modified successfully.
+TEST008,Given that network admin can loggin into application and delete the cell group defined in the system,,,,

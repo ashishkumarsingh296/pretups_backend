@@ -1,0 +1,2 @@
+TestcaseId,TestcaseType,Module,Description
+TUNG13157,Positive,Voucher Consumption through EXTGW,To verify  that user will be validated on the basis External Code

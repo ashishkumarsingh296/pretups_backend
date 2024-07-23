@@ -1,0 +1,63 @@
+//######################################
+//
+//This script to add negative cases for category level Transfer Control Profile.
+//
+//#######################################
+
+
+//===== import scripts ===//
+_includeOnce("../../../../utility/ImportPackage.sah");
+_includeOnce("ProfileManagement_Common_Negative.sah");
+_includeOnce("../Channel_Domain/CreateDomain_Common_Negative.sah");
+
+
+	
+	//===============Add Category Level TCP===============================//
+	
+	//added by fiza for TCP negative by network admin
+	
+	
+// If Network Admin doesn't exist create it first for TCP by network admin. 
+
+var $l_naCsv = _readCSVFile("../../../GUI/testdata/NA_Login.csv"); //Reads the network admin credentials 
+var $g_row = 4;
+var $g_col = 1;
+var $g_networkAdmin1 = $l_naCsv[1][1];
+if($g_networkAdmin1 == "null"){  
+	createNA();  // UserManagement_Common.sah
+	var $l_naCsv1 = _readCSVFile("../../../GUI/testdata/NA_Login.csv");
+	$g_networkAdmin1 = $l_naCsv1[1][1];
+	login($g_appURL, $g_LangEnglish, $g_networkAdmin1, $g_commonPassword, $g_assertWelcome);
+}else	 
+	login($g_appURL,  $g_LangEnglish, $g_networkAdmin1, $g_commonPassword, $g_assertWelcome);
+
+
+// login($g_appURL, $g_LangEnglish, "btnadm" , $g_password, $g_assertMessage);
+	
+
+
+ // .............. Add negative cases for TCP by network admin  ........ // 
+
+	var $g_categoryLevelTCPCsv = _readCSVFile("../../negative_testdata/CategoryLevelTCP_NegativeCases.csv");
+	var $g_TCPPreference = _readCSVFile("../../negative_testdata/TCP_PreferenceNegativeCases.csv");
+	
+	
+	
+	for(var $g_row = 1; $g_categoryLevelTCPCsv[$g_row] != null; $g_row++){
+	//for(var $g_row = 94; $g_row != 96; $g_row++){
+		var $g_col = 0;
+		var $t = _testcase($g_categoryLevelTCPCsv[$g_row][$g_col++], $g_categoryLevelTCPCsv[$g_row][$g_col++]);
+		$t.start();
+		commonVaribleForCatLevelTCP($g_row, $g_col);
+		
+	
+	
+		addCategoryLevelTCP1();
+		_assertExists(_listItem("/"+$g_assertion+".*/"));
+		
+	if(_exists(_listItem("/"+$g_assertion+".*/")) == false)
+		_log("Test Case failed");
+		
+		
+		$t.end();
+	}

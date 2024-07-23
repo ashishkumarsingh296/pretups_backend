@@ -1,0 +1,9 @@
+EXTNWCODE,MSISDN,OLDPIN,NEWPIN,CONFIRMPIN,LANGUAGE1,TestcaseId,TestcaseType,Module,Description
+NG,7891786398,0,1357,1357,0,TUNG13212,Positive,Change Pin,To verify Change Pin is Working With MSISDN 
+NG,,1357,1358,1358,,TUNG13213,Negative,Change Pin,To Verify Change Pin is Not working when No Msisdn is present
+NG,7891786398,2467,2467,2467,,TUNG13214,Negative,Change Pin,To Verfiy Change Pin is not Working With incorrect value of Pin
+NG,7891786398,1357,1357,1357,0,TUNG13215,Negative,Change Pin,To Verfiy Change Pin is not Working when Old Pin and New Pin are Same
+NG,7891786398,1357,1357,1358,0,TUNG13216,Negative,Change Pin,To Verfiy Change Pin is not Working when Confirm Pin and New Pin are Different
+NG,7891786398, ,1357,1357,0,TUNG13217,Negative,Change Pin,To Verfiy Change Pin is not Working when  OLD Pin left Blank
+NG,7891786398,1357,,1358,0,TUNG13218,Negative,Change Pin,To Verfiy Change Pin is not Working when  NEW Pin left Blank
+NG,7891786398,1357,1358,,0,TUNG13219,Negative,Change Pin,To Verfiy Change Pin is not Working when  Confirm  Pin left Blank

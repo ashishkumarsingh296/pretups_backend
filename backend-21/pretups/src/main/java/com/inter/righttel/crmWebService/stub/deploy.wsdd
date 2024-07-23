@@ -1,0 +1,186 @@
+<!-- Use this file to deploy some handlers/chains and services      -->
+<!-- Two ways to do this:                                           -->
+<!--   java org.apache.axis.client.AdminClient deploy.wsdd          -->
+<!--      after the axis server is running                          -->
+<!-- or                                                             -->
+<!--   java org.apache.axis.utils.Admin client|server deploy.wsdd   -->
+<!--      from the same directory that the Axis engine runs         -->
+
+<deployment
+    xmlns="http://xml.apache.org/axis/wsdd/"
+    xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
+  <!-- Services from ServicePortal WSDL service -->
+
+  <service name="webservice" provider="java:RPC" style="wrapped" use="literal">
+      <parameter name="wsdlTargetNamespace" value="http://osb.rightel.ir"/>
+      <parameter name="wsdlServiceElement" value="ServicePortal"/>
+      <parameter name="schemaQualified" value="http://osb.rightel.ir"/>
+      <parameter name="wsdlServicePort" value="webservice"/>
+      <parameter name="className" value="com.inter.righttel.crmWebService.stub.ServicePortalBindingImpl"/>
+      <parameter name="wsdlPortType" value="ServicePortalPortType"/>
+      <parameter name="typeMappingVersion" value="1.2"/>
+      <operation name="setSupService" qname="operNS:SetSupService" xmlns:operNS="http://osb.rightel.ir" soapAction="urn:SetSupService" >
+        <parameter qname="pns:MSISDN" xmlns:pns="http://osb.rightel.ir" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:ServiceCode" xmlns:pns="http://osb.rightel.ir" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:Action" xmlns:pns="http://osb.rightel.ir" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="checkRightelSubscriber" qname="operNS:CheckRightelSubscriber" xmlns:operNS="http://osb.rightel.ir" soapAction="urn:CheckRightelSubscriber" >
+        <parameter qname="pns:MSISDN" xmlns:pns="http://osb.rightel.ir" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="updateLanguage" qname="operNS:UpdateLanguage" xmlns:operNS="http://osb.rightel.ir" soapAction="urn:UpdateLanguage" >
+        <parameter qname="pns:MSISDN" xmlns:pns="http://osb.rightel.ir" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:DefLang" xmlns:pns="http://osb.rightel.ir" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="MCAQuery" qname="operNS:MCAQuery" xmlns:operNS="http://osb.rightel.ir" soapAction="urn:MCAQuery" >
+        <parameter qname="pns:MSISDN" xmlns:pns="http://osb.rightel.ir" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="authenticationWithMSISDN" qname="operNS:AuthenticationWithMSISDN" xmlns:operNS="http://osb.rightel.ir" soapAction="urn:AuthenticationWithMSISDN" >
+        <parameter qname="pns:MSISDN" xmlns:pns="http://osb.rightel.ir" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:UserPwd" xmlns:pns="http://osb.rightel.ir" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:PwdType" xmlns:pns="http://osb.rightel.ir" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="resetUserPassword" qname="operNS:ResetUserPassword" xmlns:operNS="http://osb.rightel.ir" soapAction="urn:ResetUserPassword" >
+        <parameter qname="pns:MSISDN" xmlns:pns="http://osb.rightel.ir" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:NewPassword" xmlns:pns="http://osb.rightel.ir" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:PwdType" xmlns:pns="http://osb.rightel.ir" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="newQueryProfile2" qname="operNS:NewQueryProfile2" xmlns:operNS="http://osb.rightel.ir" soapAction="urn:NewQueryProfile2" >
+        <parameter qname="pns:MSISDN" xmlns:pns="http://osb.rightel.ir" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema" mode="INOUT"/>
+        <parameter qname="pns:BrandName" xmlns:pns="http://osb.rightel.ir" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema" mode="OUT"/>
+        <parameter qname="pns:SIMStatus" xmlns:pns="http://osb.rightel.ir" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema" mode="OUT"/>
+        <parameter qname="pns:DefLang" xmlns:pns="http://osb.rightel.ir" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema" mode="OUT"/>
+        <parameter qname="pns:SIMSubStatus" xmlns:pns="http://osb.rightel.ir" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema" mode="OUT"/>
+        <parameter qname="pns:CustGrade" xmlns:pns="http://osb.rightel.ir" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema" mode="OUT"/>
+        <parameter qname="pns:FixContact" xmlns:pns="http://osb.rightel.ir" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema" mode="OUT"/>
+        <parameter qname="pns:DocNum" xmlns:pns="http://osb.rightel.ir" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema" mode="OUT"/>
+        <parameter qname="pns:DocType" xmlns:pns="http://osb.rightel.ir" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema" mode="OUT"/>
+        <parameter qname="pns:CustomerName" xmlns:pns="http://osb.rightel.ir" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema" mode="OUT"/>
+        <parameter qname="pns:ISPREPAID" xmlns:pns="http://osb.rightel.ir" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema" mode="OUT"/>
+        <parameter qname="pns:BrandCode" xmlns:pns="http://osb.rightel.ir" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema" mode="OUT"/>
+        <parameter qname="pns:CustType" xmlns:pns="http://osb.rightel.ir" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema" mode="OUT"/>
+        <parameter qname="pns:VCBlackList" xmlns:pns="http://osb.rightel.ir" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema" mode="OUT"/>
+      </operation>
+      <operation name="querySubsAvailableOfferList" qname="operNS:QuerySubsAvailableOfferList" xmlns:operNS="http://osb.rightel.ir" soapAction="urn:QuerySubsAvailableOfferList" >
+        <parameter qname="pns:MSISDN" xmlns:pns="http://osb.rightel.ir" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:ChannelID" xmlns:pns="http://osb.rightel.ir" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:OfferPrice" xmlns:pns="http://osb.rightel.ir" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:SpeedValue" xmlns:pns="http://osb.rightel.ir" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:Duration" xmlns:pns="http://osb.rightel.ir" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:Volume" xmlns:pns="http://osb.rightel.ir" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:SmsNum" xmlns:pns="http://osb.rightel.ir" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:PageIndex" xmlns:pns="http://osb.rightel.ir" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:RowPerPage" xmlns:pns="http://osb.rightel.ir" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:OfferDtoList" xmlns:pns="http://osb.rightel.ir" type="tns:OfferDtoListimpl" xmlns:tns="http://osb.rightel.ir" mode="OUT"/>
+        <parameter qname="pns:BrandName" xmlns:pns="http://osb.rightel.ir" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema" mode="OUT"/>
+      </operation>
+      <operation name="queryPricePlanOfferChargeFee" qname="operNS:QueryPricePlanOfferChargeFee" xmlns:operNS="http://osb.rightel.ir" soapAction="urn:QueryPricePlanOfferChargeFee" >
+        <parameter qname="pns:MSISDN" xmlns:pns="http://osb.rightel.ir" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:ChannelID" xmlns:pns="http://osb.rightel.ir" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:OfferCode" xmlns:pns="http://osb.rightel.ir" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:PayFlag" xmlns:pns="http://osb.rightel.ir" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:OfferFee" xmlns:pns="http://osb.rightel.ir" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema" mode="OUT"/>
+        <parameter qname="pns:Tax" xmlns:pns="http://osb.rightel.ir" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema" mode="OUT"/>
+        <parameter qname="pns:MaximumDiscount" xmlns:pns="http://osb.rightel.ir" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema" mode="OUT"/>
+      </operation>
+      <operation name="queryAllBalance" qname="operNS:QueryAllBalance" xmlns:operNS="http://osb.rightel.ir" returnQName="retNS:AllBalanceDtoList" xmlns:retNS="http://osb.rightel.ir" returnType="rtns:AllBalanceDto" xmlns:rtns="http://osb.rightel.ir" returnItemQName="tns:AllBalanceDto" xmlns:tns="http://osb.rightel.ir" soapAction="urn:QueryAllBalance" >
+        <parameter qname="pns:MSISDN" xmlns:pns="http://osb.rightel.ir" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="queryRechargeResult" qname="operNS:QueryRechargeResult" xmlns:operNS="http://osb.rightel.ir" soapAction="urn:QueryRechargeResult" >
+        <parameter qname="pns:MSISDN" xmlns:pns="http://osb.rightel.ir" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:RequestID" xmlns:pns="http://osb.rightel.ir" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:Result" xmlns:pns="http://osb.rightel.ir" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema" mode="OUT"/>
+        <parameter qname="pns:ExceptionCode" xmlns:pns="http://osb.rightel.ir" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema" mode="OUT"/>
+      </operation>
+      <operation name="orderPricePlanOffer" qname="operNS:OrderPricePlanOffer" xmlns:operNS="http://osb.rightel.ir" returnQName="retNS:OrderNbr" xmlns:retNS="http://osb.rightel.ir" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="urn:OrderPricePlanOffer" >
+        <parameter qname="pns:MSISDN" xmlns:pns="http://osb.rightel.ir" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:OfferCode" xmlns:pns="http://osb.rightel.ir" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:ChannelID" xmlns:pns="http://osb.rightel.ir" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:PayFlag" xmlns:pns="http://osb.rightel.ir" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:AU" xmlns:pns="http://osb.rightel.ir" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:Amount" xmlns:pns="http://osb.rightel.ir" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:DiscountFee" xmlns:pns="http://osb.rightel.ir" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:BankID" xmlns:pns="http://osb.rightel.ir" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:CallerID" xmlns:pns="http://osb.rightel.ir" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="rechargePPSNew" qname="operNS:RechargePPSNew" xmlns:operNS="http://osb.rightel.ir" soapAction="urn:RechargePPSNew" >
+        <parameter qname="pns:REQUEST_ID" xmlns:pns="http://osb.rightel.ir" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:MSISDN" xmlns:pns="http://osb.rightel.ir" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:Amount" xmlns:pns="http://osb.rightel.ir" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:BankId" xmlns:pns="http://osb.rightel.ir" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:AU" xmlns:pns="http://osb.rightel.ir" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:PaymentType" xmlns:pns="http://osb.rightel.ir" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:FaceValueDtoList" xmlns:pns="http://osb.rightel.ir" type="tns:FaceValueDtoListimpl" xmlns:tns="http://osb.rightel.ir" itemQName="itns:FaceValueDto" xmlns:itns="http://osb.rightel.ir"/>
+        <parameter qname="pns:CallerID" xmlns:pns="http://osb.rightel.ir" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:PaymentMethod" xmlns:pns="http://osb.rightel.ir" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:Balance" xmlns:pns="http://osb.rightel.ir" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema" mode="OUT"/>
+        <parameter qname="pns:ExpDate" xmlns:pns="http://osb.rightel.ir" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema" mode="OUT"/>
+        <parameter qname="pns:AddBalance" xmlns:pns="http://osb.rightel.ir" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema" mode="OUT"/>
+        <parameter qname="pns:BenefitBalDtoList" xmlns:pns="http://osb.rightel.ir" type="tns:BenefitBalDtoListimpl" xmlns:tns="http://osb.rightel.ir" mode="OUT"/>
+      </operation>
+      <operation name="checkCreditLimit" qname="operNS:CheckCreditLimit" xmlns:operNS="http://osb.rightel.ir" soapAction="urn:CheckCreditLimit" >
+        <parameter qname="pns:MSISDN" xmlns:pns="http://osb.rightel.ir" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:Balance" xmlns:pns="http://osb.rightel.ir" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema" mode="OUT"/>
+        <parameter qname="pns:CreditLimit" xmlns:pns="http://osb.rightel.ir" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema" mode="OUT"/>
+        <parameter qname="pns:DefaultCL" xmlns:pns="http://osb.rightel.ir" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema" mode="OUT"/>
+        <parameter qname="pns:NonDefaultCL" xmlns:pns="http://osb.rightel.ir" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema" mode="OUT"/>
+        <parameter qname="pns:CreditUsed" xmlns:pns="http://osb.rightel.ir" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema" mode="OUT"/>
+        <parameter qname="pns:CreditAvailable" xmlns:pns="http://osb.rightel.ir" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema" mode="OUT"/>
+      </operation>
+      <parameter name="allowedMethods" value="setSupService authenticationWithMSISDN queryAllBalance resetUserPassword querySubsAvailableOfferList orderPricePlanOffer checkCreditLimit rechargePPSNew MCAQuery newQueryProfile2 updateLanguage queryPricePlanOfferChargeFee queryRechargeResult checkRightelSubscriber"/>
+
+      <typeMapping
+        xmlns:ns="http://osb.rightel.ir"
+        qname="ns:FaceValueDtoimpl"
+        type="java:com.inter.righttel.crmWebService.stub.FaceValueDtoimpl"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <arrayMapping
+        xmlns:ns="http://osb.rightel.ir"
+        qname="ns:AllBalanceDto"
+        type="java:com.inter.righttel.crmWebService.stub.AllBalanceDtoListimpl[]"
+        innerType="cmp-ns:AllBalanceDtoListimpl" xmlns:cmp-ns="http://osb.rightel.ir"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://osb.rightel.ir"
+        qname="ns:AllBalanceDtoListimpl"
+        type="java:com.inter.righttel.crmWebService.stub.AllBalanceDtoListimpl"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <arrayMapping
+        xmlns:ns="http://osb.rightel.ir"
+        qname="ns:FaceValueDtoListimpl"
+        type="java:com.inter.righttel.crmWebService.stub.FaceValueDtoimpl[]"
+        innerType="cmp-ns:FaceValueDtoimpl" xmlns:cmp-ns="http://osb.rightel.ir"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://osb.rightel.ir"
+        qname="ns:BenefitBalDtoimpl"
+        type="java:com.inter.righttel.crmWebService.stub.BenefitBalDtoimpl"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://osb.rightel.ir"
+        qname="ns:OfferDtoListimpl"
+        type="java:com.inter.righttel.crmWebService.stub.OfferDtoListimpl"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <arrayMapping
+        xmlns:ns="http://osb.rightel.ir"
+        qname="ns:BenefitBalDtoListimpl"
+        type="java:com.inter.righttel.crmWebService.stub.BenefitBalDtoimpl[]"
+        innerType="cmp-ns:BenefitBalDtoimpl" xmlns:cmp-ns="http://osb.rightel.ir"
+        encodingStyle=""
+      />
+  </service>
+</deployment>

@@ -1,0 +1,17 @@
+TestcaseId,TestcaseType,Module,Description
+,N,Channel to Channel Transfer,To verify C2C not successful when TCP of sender is suspended
+,N,Channel to Channel Transfer,To verify C2C not successful when TCP of Receiver is suspended
+,N,Channel to Channel Transfer,To verify C2C not successful when transfer rule for C2C is suspended
+,N,Channel to Channel Transfer,To verify C2C not successful when reference number is greater than 20 characters
+,N,Channel to Channel Transfer,To verify C2C not successful when amount is negative
+,N,Channel to Channel Transfer,To verify C2C not successful when Receiver is insuspended
+,N,Channel to Channel Transfer,To verify C2C not successful when Sender  is outsuspended
+,N,Channel to Channel Transfer,C2C not successful with valid LoginID2 MSISDN2 and invalid External Code 2
+,N,Channel to Channel Transfer,C2C not successful with valid LoginID2 EXTCODE2 and invalid MSISDN2
+,N,Channel to Channel Transfer,C2C not successful with valid MSISDN2 EXTCODE2 and invalid LoginID2
+,N,Channel to Channel Transfer,C2C not successful with MSISDN without PIN
+,N,Channel to Channel Transfer,C2C not successful when product code is blank
+,N,Channel to Channel Transfer,C2C not successful when Quantity is blank
+,N,Channel to Channel Transfer,C2C not successful with MSISDN1 PIN LoginID PASSWORD EXTCODE all blank
+,P,Channel to Channel Transfer,C2C is successful with invalid language code
+,N,Channel to Channel Transfer,C2C not successful with valid LoginID MSISDN and invalid External Code

@@ -1,0 +1,2 @@
+TestCase Details,TestCase Description,CompanyName,HeaderName,Address1,Address2,city,state,Zip Code,country,Remark,Language 1,Language 2,Tax 1,Tax 2,CountryCode,ServiceSetId
+TEST001,Given a super admin is going to create a new network in the system,Comviva,NW,Gurgaon,Gurgaon,Gurgaon,Harayan,122001,India,LOL,English-1,English-2,1,1,91,English -French

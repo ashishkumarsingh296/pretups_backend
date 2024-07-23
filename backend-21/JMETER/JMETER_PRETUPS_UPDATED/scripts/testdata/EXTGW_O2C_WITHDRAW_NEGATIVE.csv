@@ -1,0 +1,7 @@
+TestcaseId,TestcaseType,Module,Description
+TUNG12842,Negative,O2C withdraw through EXTGW,To check if neither of user (MSISDN -pin  extcode )is not present in the request then o2c withdraw is not successful
+TUNG13051,Negative,O2C withdraw through EXTGW,To check if  product code is not present in the request then o2c is not successful
+TUNG13052,Negative,O2C withdraw through EXTGW,To check if  amount is not present in the request then o2c withdraw is not successful
+TUNG13053,Negative,O2C withdraw through EXTGW,To check if  txn date is not present in the request then o2c withdraw is not successful
+TUNG13054,Negative,O2C withdraw through EXTGW,To check if  txn number is not present in the request then o2c withdraw is not successful
+TUNG12843 ,Negative,O2C withdraw through EXTGW,To check  that an unsuccessful o2c withdraw occurs when wrong ext code is present

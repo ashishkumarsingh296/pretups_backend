@@ -1,0 +1,46 @@
+//######################################
+//
+//This script to add negative cases while going to modify new network
+//
+//#######################################
+
+
+//===== import scripts ===//
+_includeOnce("../../../../utility/ImportPackage.sah");
+_includeOnce("NetworkManagement_Common_Negative.sah");
+
+
+// ===== Pre-Condition check ==== //
+
+
+//====== Login into the application ====== //
+var $multipleNet="Y";
+login($g_appURL, $g_LangEnglish, $g_superAdmin, $g_password, $g_assertMessage);
+
+
+	
+	
+//===============Add New network ===============================//
+var $l_naCsv1 = _readCSVFile("../../../GUI/testdata/NA_Login.csv");
+var $g_network = $l_naCsv1[11][1];
+
+_log("shashi " + $g_networkName);
+
+
+	var $g_modifyNetworkDetails = _readCSVFile("../../negative_testdata/ModifyNetwork_NegativeCases.csv");
+	for(var $g_row = 1; $g_modifyNetworkDetails[$g_row] != null; $g_row++){
+	//for(var $g_row = 94; $g_row != 96; $g_row++){
+		var $g_col = 0;
+		var $t = _testcase($g_modifyNetworkDetails[$g_row][$g_col++], $g_modifyNetworkDetails[$g_row][$g_col++]);
+		$t.start();
+		commonVaribleToModifyNetwork($g_row, $g_col);
+		modifyNetwork($g_network);
+		_assertExists(_listItem("/"+$g_assertion+".*/"));
+		
+		if(_exists(_listItem("/"+$g_assertion+".*/")) == false)
+			_log("Test Case failed");
+		$t.end();
+	}
+
+	
+	

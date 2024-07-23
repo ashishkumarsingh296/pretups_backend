@@ -1,0 +1,2 @@
+PRODUCTCODE,LANGUAGE1,TestcaseId,TestcaseType,Module,Description
+101,,TUNG1816,Negative,Channel to Channel Withdraw,with Login Id but no  Password is present

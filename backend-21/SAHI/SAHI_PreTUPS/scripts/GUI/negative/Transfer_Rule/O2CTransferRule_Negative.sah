@@ -1,0 +1,54 @@
+//######################################
+//
+//This script to add negative test caes for O2C transfer rule
+//
+//#######################################
+
+
+//===== import scripts ===//
+_includeOnce("../../../../utility/ImportPackage.sah");
+_includeOnce("TransferRule_Common_Negative.sah");
+
+
+
+// ===== Pre-Condition check ==== //
+
+//If Network Admin doesn't exist create it first then create O2C TransferRule
+
+var $l_naCsv = _readCSVFile("../../../GUI/testdata/NA_Login.csv"); //Reads the network admin credentials 
+var $g_row = 4;
+var $g_col = 1;
+var $g_networkAdmin1 = $l_naCsv[1][1];
+if($g_networkAdmin1 == "null"){  
+	createNA();  // UserManagement_Common.sah
+	var $l_naCsv1 = _readCSVFile("../../../GUI/testdata/NA_Login.csv");
+	$g_networkAdmin1 = $l_naCsv1[1][1];
+	login($g_appURL, $g_LangEnglish, $g_networkAdmin1, $g_commonPassword, $g_assertWelcome);
+}else	 
+	login($g_appURL,  $g_LangEnglish, $g_networkAdmin1, $g_commonPassword, $g_assertWelcome);
+
+
+_log("The domain and category should be created already to run this script successfully")
+
+
+var $g_domain = $l_naCsv[4][1];
+//var $g_domain = "Administrator1810";
+
+
+//=============== Add Negative test cases for O2C Card Group ================== // 
+
+var $g_O2CTransferRule = _readCSVFile("../../negative_testdata/O2CTransferRule_NegativeCases.csv");
+
+	
+	for(var $g_row = 1; $g_O2CTransferRule[$g_row] != null; $g_row++ ){
+		var $g_col = 0;
+		var $t = _testcase($g_O2CTransferRule[$g_row][$g_col++], $g_O2CTransferRule[$g_row][$g_col++]);
+		$t.start();
+		
+		commonVariableForO2CTransferRule($g_row, $g_col);
+		
+		addO2CTransferRule();
+		
+		$t.end();
+		
+	}

@@ -1,0 +1,82 @@
+//######################################
+//
+//This script to add negative test cases of C2S card Groups.
+//
+//#######################################
+
+
+//===== import scripts ===//
+_includeOnce("../../../../utility/ImportPackage.sah");
+_includeOnce("CardGroup_Common_Negative.sah");
+
+
+// ===== Pre-Condition check ==== //
+
+//If Network Admin doesn't exist create it first then create C2S card group
+
+var $l_naCsv = _readCSVFile("../../../GUI/testdata/NA_Login.csv"); //Reads the network admin credentials 
+var $g_row = 4;
+var $g_col = 1;
+var $g_networkAdmin1 = $l_naCsv[1][1];
+if($g_networkAdmin1 == "null"){  
+	createNA();  // UserManagement_Common.sah
+	var $l_naCsv1 = _readCSVFile("../../../GUI/testdata/NA_Login.csv");
+	$g_networkAdmin1 = $l_naCsv1[1][1];
+	login($g_appURL, $g_LangEnglish, $g_networkAdmin1, $g_commonPassword, $g_assertWelcome);
+}else	 
+	login($g_appURL,  $g_LangEnglish, $g_networkAdmin1, $g_commonPassword, $g_assertWelcome);
+
+ 
+// =============== Add Negative test cases for C2S Card Group ================== // 
+
+var $g_C2SCardGroup = _readCSVFile("../../negative_testdata/C2SCardGroup_NegativeCases.csv");
+
+	
+	for(var $g_row = 1; $g_C2SCardGroup[$g_row] != null; $g_row++ ){
+		//for(var $g_row = 32; $g_row < 34; $g_row++ ){	
+		var $g_col = 0;
+		var $t = _testcase($g_C2SCardGroup[$g_row][$g_col++], $g_C2SCardGroup[$g_row][$g_col++]);
+		$t.start();
+		
+		commonVariableForC2SCardGroup($g_row, $g_col);
+		
+		var $l_error = addC2SCardGroup();
+		if($l_error == false){
+			_assertExists(_listItem("/" +$g_assertion + ".*/"));
+		}
+		
+		$t.end();
+		
+	}
+
+
+
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

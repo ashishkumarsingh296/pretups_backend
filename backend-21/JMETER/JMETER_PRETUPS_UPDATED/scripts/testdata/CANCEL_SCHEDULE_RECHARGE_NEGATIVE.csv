@@ -1,0 +1,3 @@
+BATCHID,MOBILENUMBER,TestcaseId,TestcaseType,Module,Description
+,450000000,,Negative,CANCEL SINGLE SCHEDULE RECHARGE,To verify that Corporate User is not able to Cancel Recharge if Batch ID is not present
+SBIN170328.0004,,,Negative,CANCEL SINGLE SCHEDULE RECHARGE,To verify that Corporate User is not able to Cancel Recharge if Msisdn is not present

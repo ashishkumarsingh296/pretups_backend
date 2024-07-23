@@ -1,0 +1,210 @@
+###########################################################################################################
+#       Alcatel 462 IN file
+#       If IN interface of Alcatel462 is added in PreTUPS from superadmin
+#       then.
+#       File with this content and name of the IN ID.txt should be created at
+#       the
+#       path of the INFiles (defined in Constants.props).
+#
+#       Values of the variables in this file should be updated with the values
+#       provided by the
+#       Mobile Operator IN team
+#
+############################################################################################################
+
+MAX_ALWD_NO=1
+
+##Defines the maximum number node supported by IN
+MAX_NODE=1
+
+##Defines the retry attempt to get the scheduled node,in the case of
+connection error.
+RETRY_NUM=3
+
+##Currently not used
+HEADER_HOST_NAME=air/1.1/1.0
+
+
+##Currently not used
+HOST_NAME=21
+
+##Currently not used.
+USER_AGENT=AMD/1.1
+
+##Defines the type of node set by opertor.
+NODE_TYPE=
+
+#Alcatel 432 CP_ID for C2S module, will be provided by Mobile operator IN team
+CP_ID_C2S=BHARTI
+
+#Alcatel 432 CP_ID for P2P module, will be provided by Mobile operator IN team
+CP_ID_P2P=BHARTI
+
+#Prefix to be removed from the mobile number, leave blank if nothing is to be
+removed
+MSISDN_REMOVE_PREFIX=
+
+#Prefix to be added to the mobile number as prefix, leave blank if nothing is
+to be added as prefix
+MSISDN_ADD_PREFIX=
+
+#Application to be trigered (the OSP.For E-top up), value will be provieded by
+Mobile operator IN team, Fixed value 1
+APPLICATION=1
+
+#Transaction Currency to be send to the IN Interface, value will be provieded
+by Mobile operator IN team
+TRANS_CURRENCY=1
+
+#These are the values of the allowed service types (check for LDDC), values
+should be comma seperated, values will be provieded by Mobile operator IN team
+ALLOWED_SERVICE_TYPE=0
+
+#Mapping of IN language with system language (IN Langauge1:PreTUPS
+Langauge1,IN Langauge2:PreTUPS Langauge2)
+LANGUAGE_MAPPING=2:1,0:1,1:0
+
+#Whether to send the Bonus in separate account or combined with main credit
+and validity,Currently not used
+SEPERATE_SUB_ACCOUNT=Y
+
+#Multiplication factor for to get the system amount.
+MULTIPLICATION_FACTOR=.01
+
+##Used to Round the amount
+ROUND_FLAG=Y
+
+##This is used to define whether the lock info from response would be check or
+not.
+LOCK_FLAG=N
+
+
+####################### DETAILS OF INDIVIDUAL NODES #######################
+
+URL=http://172.16.1.121:5540/pretups/Alcatel462SimulatorServlet
+
+# Connection timeout for the node url
+CONNECT_TIMEOUT=4000
+
+#Maximum connection can be made to the node
+MAX_CON_NODE=5
+
+#Read timeout for the validate stage
+READ_TIMEOUT_VAL=50000
+
+#Read timeout for the TopUp stage
+READ_TIMEOUT_TOP=60000
+
+#In the case when connection is not established for the node, it will blocked
+forthis duration.
+EXPIRY_TIME=40000
+
+#keep alive falg for node
+KEEP_ALIVE=N
+
+#Read warning time for node, should be less than the validate read timeout, if
+IN takes more than this time alarm will be raised.
+WARN_TIMEOUT=5000
+
+
+MAIN=Compte-principal
+periodic_SMS=Compte-sms
+bundle_Money=Compte-intra
+
+ADD_MAIN_AND_BUNUS_VALIDITY=Y
+ADD_DULICATE_BONUS_BUNDLE=N
+
+
+
+#Indicates whether Cancel request supported by IN or not.(Possible values are
+Y/N)
+CANCEL_TXN_ALLOWED=N
+
+##If any ambiguous response is received from IN, then retry/cancel command is
+sent to IN. Then response of retry/cancel is matched in the IN file and mapped
+error code (250/206/200) is picked and sent to Controller.
+##SYSTEM_STATUS_MAPPING=INErrCode1,INErrCode2,INErrCode3,INErrCode4:system_err_code1|INErrCode5,INErrCode6:system_err_code2
+##system_err_code1 and system_err_code2 will be sent to system and written in
+recon log file.
+#SYSTEM_STATUS_MAPPING=250:250
+##If receiver credit is AMBIGUOS, then in SYSTEM_PREFERENCE,
+CREDIT_BACK_ALLOWED should be N.
+
+#If an ambiguous case occurs while credit, mapped error code can be set to one
+of the codes(SUCCESS, FAIL and AMBIGUOUS)
+SYSTEM_STATUS_MAPPING_CREDIT=250:250
+
+#If an ambiguous case occurs while credit, mapped error code can be set to one
+of the codes(SUCCESS, FAIL and AMBIGUOUS)
+SYSTEM_STATUS_MAPPING_CREDIT_ADJ=250:250
+
+#If an ambiguous case occurs while debitAdjust, mapped error code cannot be
+SUCCESS. It can only be FAIL or AMBIGUOUS
+SYSTEM_STATUS_MAPPING_DEBIT_ADJ=250:250
+
+#If an ambiguous case occurs while credit Back, mapped error code can not be
+fail, it can only be SUCCESS or AMBIGOUOS
+SYSTEM_STATUS_MAPPING_CREDIT_BCK=250:250
+
+
+##If any ambiguous response is received from IN, check if cancel txn allowed
+or not in the system. if not, pick mapped error code against NA otherwise pick
+mapped error code (206/250) against received response code of Cancellation
+from IN.
+##CANCEL_COMMAND_STATUS_MAPPING=INErrCode1,INErrCode2,INErrCode3,INErrCode4:cancel_err_code1|INErrCode5,INErrCode6:cancel_err_code2
+##cancel_err_code1, cancel_err_code2 will be written in recon log file.
+CANCEL_COMMAND_STATUS_MAPPING=NA:450
+
+#Defines the cancel command status when cancel not supported by IN.
+CANCEL_NA=NA
+
+
+#maximum number of ambiguous transactions allowed till threshold time.
+NO_ALLWD_AMB_TXN=5
+
+##time duration in which maximum number of ambiguous transactions is defined
+THRESHOLD_TIME=240000
+
+##Time duration after which interface suspension expires.
+EXPIRY_TIME=60000
+
+##Auto Resumption supported by IN or not.
+AUTO_RESUME_SUPPORT=N
+
+##Number of retry attempts while validation (Currently Retry is not supported
+by Alcatel44)
+VAL_RETRY_CNT=0
+
+##Number of retry attempts while recharge request (Currently Retry is not
+supported by Alcatel44)
+CREDIT_RETRY_CNT=0
+
+##Number of retry attempts while sending Adjustment request (Currently Retry
+is not supported by Alcatel44)
+ADJ_RETRY_CNT=0
+
+##Number of retry attempts while sending Cancel request (Currently Cancel
+Request is not supported by Alcatel44)
+CNCL_RETRY_CNT=0
+
+##Sleep time between two retries (Currently Retry is not supported by
+Alcatel44)
+RETRY_SLEEP_TIME=0
+
+##Error Codes when retry has to be made  (Currently Retry is not supported by
+Alcatel44)
+RETRY_CASES=
+
+##Remark1 in Reconcialiationlog
+REMARK1=
+
+##Remark1 in Reconcialiationlog
+REMARK2=
+
+MULT_FACTOR=.01
+
+INTFCE_CLSR_SUPPORT=N
+
+1=Voice
+2=SMS_Bonus
+3=Data

@@ -1,0 +1,94 @@
+//##########################################
+//
+//
+//Objective: - Objeective of this script to add commom method for O2C transaction.
+//
+//
+//###########################################
+
+
+var $g_msisdn;
+var $g_referenceNumber;
+var $g_quantity;
+var $g_remark;
+
+
+
+
+
+
+
+function C2CTransferAndWithdrawal() {
+	
+	
+	var $t1 = _testcase("TEST032", "Given a channel user logs into the application and initiate C2C Transfer");
+	$t1.start();
+	variableForC2CTransfer();
+	C2CTransfer();
+	$t1.end();
+	
+	// =========================== C2C Withdrawal =========================== //
+	
+	
+	var $t2 = _testcase("TEST033", "Given a channel user logs into the application and initiate C2C Withdrawal");
+	$t2.start();
+	variableForC2CTransfer();
+	C2CWithDrawal();
+	$t2.end();
+	
+	
+	
+}
+
+
+
+function variableForC2CTransfer() {
+	$g_referenceNumber = randomNumber();
+	$g_quantity = "50";
+	$g_remark = "C2C Transfer";
+}
+
+function C2CTransfer() {
+		
+		_click(_link("Channel to channel"));
+		_click(_link("C2C transfer"));
+		_setValue(_textbox("userCode"), $g_msisdn);
+		_click(_submit($g_BtnSubmit));
+		_assertExists(_div("Transfer details"));
+		_setValue(_textbox("refrenceNum"), $g_referenceNumber);
+		_setValue(_textbox("dataListIndexed[0].requestedQuantity"), $g_quantity);
+		_setValue(_textarea("remarks"), $g_remark);
+		_setValue(_password("smsPin"), $g_commonPIN);
+		_click(_submit($g_BtnSubmit));
+		_assertExists(_div("Transfer details confirm"));
+		_click(_submit($g_BtnConfirm));
+		_assertExists(_listItem("/" + "Transfer is successful with transaction ID" + ".*/"));
+	
+		if(_exists(_listItem("/" + "Transfer is successful with transaction ID" + ".*/")))
+			_log("C2C Transfer has been done")
+}
+
+
+
+function C2CWithDrawal() {
+	
+	_click(_link("Channel to channel"));
+	_click(_link("Withdrawal"));
+	_click(_link("Withdraw"));
+	_setValue(_textbox("userCode"), $g_msisdn);
+	_click(_submit($g_BtnSubmit));
+	_assertExists(_cell("Products details"));
+	_setValue(_textbox("productListIndexed[0].requestedQuantity"), $g_quantity);
+	_setValue(_textarea("remarks"), "C2C Withdraw");
+	_setValue(_password("smsPin"), $g_commonPIN);
+	_click(_submit($g_BtnSubmit));
+	_assertExists(_div("Product details confirm"));
+	_click(_submit($g_BtnConfirm));
+	_assertExists(_listItem("/"+ "Product has been withdrawn successfully."+".*/"));
+
+	
+	if(_exists(_listItem("/"+ "Product has been withdrawn successfully."+".*/")))
+		_log("C2C withdrawal has been done")
+
+}
+

@@ -1,0 +1,16 @@
+// Framework files
+
+// File to execute any Query on Oracle DB
+_includeOnce("ODBC.sah");
+
+// File that read a new MSISDN from a MSISDNConf.csv
+_includeOnce("../../utility/ReadMSISDN.sah");
+
+//Include PRETUPS Configuration Info like the URL, DB credentials etc.
+_includeOnce("../../conf/Configuration.sah");
+
+// Include other Useful Data, like functional specific Methods Test Data, Base Set
+_includeOnce("../Entity/AllEntity.sah");
+
+//Utility Methods
+_includeOnce("../Asset/Util.sah");

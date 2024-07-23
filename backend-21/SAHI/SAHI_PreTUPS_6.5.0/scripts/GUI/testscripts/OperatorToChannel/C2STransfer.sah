@@ -1,0 +1,63 @@
+//#######################################
+//
+// This Sscript to add C2S Transfer  	 
+//
+//
+//#######################################
+
+
+_includeOnce("../../../../utility/ImportPackage.sah");
+_includeOnce("../../../GUI/testscripts/OperatorToChannel/OperatorToChannel_Common.sah"); //For initiate and approve O2C transaction 
+_includeOnce("../../../GUI/testscripts/Channel_User/ChannelUser_Common.sah"); //For creating channel user
+_includeOnce("../../../GUI/testscripts/Profile_Management/ProfileManagement_Common.sah");//For importing CommProfile functions
+_includeOnce("../../../GUI/testscripts/User_Management/UserManagement_Common.sah"); //For creating CA	
+
+//======================Pre-requisite check============================
+_log("Setup", "custom4");
+
+//If CU deos not exist, 
+var $l_naCsv = _readCSVFile("../../../GUI/testdata/NA_Login.csv"); //Reads the network admin credentials 
+var $g_channelUser = $l_naCsv[3][1];
+	if($g_channelUser == "null"){
+		createCU(); // UserManagement_Common.sah
+	login($g_appURL,  $g_LangEnglish, $g_username, $g_commonPassword, $g_assertWelcome);
+	}else{	 
+		login($g_appURL,  $g_LangEnglish, $g_channelUser, $g_commonPassword, $g_assertWelcome);
+}
+	
+	
+	// O2C should be done before this C2S Transfer 
+	// C2S card group should be created 
+	
+//========================= Initiate a C2S transfer ==============//	
+	
+var $g_C2STransferDetails = _readCSVFile("../../../GUI/testdata/C2STransferDetails.csv"); //Reads the Card group details
+																
+		initiateC2Stransfer();
+		
+		
+		
+		
+				
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+	

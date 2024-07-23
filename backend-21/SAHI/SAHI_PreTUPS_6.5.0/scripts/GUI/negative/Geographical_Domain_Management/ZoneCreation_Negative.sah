@@ -1,0 +1,81 @@
+//######################################
+//
+//Negative test cases of Gepgraphical_Domain_Management for Zone
+//
+//#######################################
+
+
+//===== import scripts ===//
+_includeOnce("../../../../utility/ImportPackage.sah");
+_includeOnce("GeoDomain_Common_Negative.sah");
+
+
+// ===== Pre-Condition check ==== //
+
+//If Network Admin doesn't exist create it first then create P2P card group
+
+var $l_naCsv = _readCSVFile("../../../GUI/testdata/NA_Login.csv"); //Reads the network admin credentials 
+var $g_row = 4;
+var $g_col = 1;
+var $g_networkAdmin1 = $l_naCsv[1][1];
+if($g_networkAdmin1 == "null"){  
+	createNA();  // UserManagement_Common.sah
+	var $l_naCsv1 = _readCSVFile("../../../GUI/testdata/NA_Login.csv");
+	$g_networkAdmin1 = $l_naCsv1[1][1];
+	login($g_appURL, $g_LangEnglish, $g_networkAdmin1, $g_commonPassword, $g_assertWelcome);
+}else	 
+	login($g_appURL,  $g_LangEnglish, $g_networkAdmin1, $g_commonPassword, $g_assertWelcome);
+
+ 
+// =============== Add Negative test cases for zone addition ================== // 
+
+var $g_GeoMgmtZone = _readCSVFile("../../negative_testdata/ZoneManagement_NegativeCases.csv");
+
+	for(var $g_row = 1; $g_GeoMgmtZone[$g_row] != null; $g_row++ ){
+		
+		var $g_col = 0;
+		var $t = _testcase($g_GeoMgmtZone[$g_row][$g_col++], $g_GeoMgmtZone[$g_row][$g_col++]);
+		$t.start();
+		
+		commonVariableForZoneMgmt($g_row, $g_col);
+		
+		var $l_error = addGeoDoaminZone();
+		if($l_error == false){
+			_assertExists(_listItem("/" +$g_assertion + ".*/"));
+		}
+		
+		$t.end();
+		
+	}
+
+
+
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

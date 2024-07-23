@@ -1,0 +1,109 @@
+//######################################
+//
+//This script to add negative cases for category level Transfer Control Profile.
+//
+//#######################################
+
+
+//===== import scripts ===//
+_includeOnce("../../../../utility/ImportPackage.sah");
+_includeOnce("ProfileManagement_Common_Negative.sah");
+_includeOnce("../Channel_Domain/CreateDomain_Common_Negative.sah");
+
+// ===== Pre-Condition check ==== //
+
+
+	
+
+
+// ====== Login into the application ====== //
+login($g_appURL, $g_LangEnglish, $g_superAdmin, $g_password, $g_assertMessage);
+		
+	commonVaribaleForDomainAndCategory(); // It is defind in CreateDomain_Common_Negative.sah
+	var $l_error = addChannelDomain();
+	if($l_error) {
+		_assertExists(_div($g_assertAddOwnerCategoryDetails));
+		addChannelDomainAndCategory(); // It is defind in CreateDomain_Common_Negative.sah
+		_click(_submit($g_BtnConfirm));
+	}
+	else {
+		_log("create domain one's again");
+	}
+	
+	
+	
+	//===============Add Category Level TCP===============================//
+	
+	var $g_categoryLevelTCPCsv = _readCSVFile("../../negative_testdata/CategoryLevelTCP_NegativeCases.csv");
+	var $g_TCPPreference = _readCSVFile("../../negative_testdata/TCP_PreferenceNegativeCases.csv");
+	
+	
+	for(var $g_row = 1; $g_categoryLevelTCPCsv[$g_row] != null; $g_row++){
+	//for(var $g_row = 94; $g_row != 96; $g_row++){
+		var $g_col = 0;
+		var $t = _testcase($g_categoryLevelTCPCsv[$g_row][$g_col++], $g_categoryLevelTCPCsv[$g_row][$g_col++]);
+		$t.start();
+		commonVaribleForCatLevelTCP($g_row, $g_col);
+		
+	
+	
+	addCategoryLevelTCP();
+		_assertExists(_listItem("/"+$g_assertion+".*/"));
+		
+	if(_exists(_listItem("/"+$g_assertion+".*/")) == false)
+		_log("Test Case failed");
+		
+		
+		$t.end();
+	}
+
+	
+	
+/*	
+	
+	var $l_categoryTransCsv = _readCSVFile("../../../GUI/testdata/CategoryLevelTranferProfile_Details.csv");
+	var $row = 1;
+	var $col = 0;
+		var $t2 = _testcase($l_categoryTransCsv[$row][$col++], $l_categoryTransCsv[$row][$col++]);
+		$t2.start();
+		readVariablesForAddingCategoryLevelTransferProfile($row, $col); // Function defined in ProfileManagement_Common.sah
+		var $1_error = addCategoryLevelTransferProfile($g_domCode, $g_catCode); // Add Transfer Control Profile(function defined in ProfileManagement_Common.sah)
+		if($1_error == false)
+		_log("Category Level Profile already exists");
+		else
+		{
+		_assertExists(_listItem($g_assertTransProf));
+		_click(_link($g_LinkLogout));
+		_log("Category Level Transfer Profile added Successfully");
+		}
+		$t2.end();
+		
+		_closeBrowser();
+		_openBrowser();
+		_wait(2000);
+		
+
+		function addCategoryLevelTransferProfile($a_domCode, $a_catCode){
+			$g_categoryTransferProfileUserName = variableForCategoryLevelTransProf($g_autoPrefix);
+			$g_shortName = variableForShortName($g_autoPrefix);
+			_click(_link($g_LeftMenuBar_ProfileMgmt));
+			_click(_link($g_LeftMenuBar_CategoryLevelProfileMgmt));
+			_setSelected(_select("domainTypeCode"), $a_domCode);
+			_click(_submit($g_BtnSubmit));
+			
+			_log("shashi " + _isVisible(_div($g_transferControlProfileDetails)));
+			if(_isVisible(_div($g_transferControlProfileDetails)))
+			return false;
+			
+			_setValue(_textbox("profileName"), $g_categoryTransferProfileUserName);
+			_setValue(_textbox("shortName"), $g_shortName);
+			_setValue(_textbox("description"), $g_description);
+			productBalancePreference();
+			dailyTCP($g_daily);
+			weeklyTCP($g_weekly);
+			monthlyTCP($g_monthly);
+			_click(_submit("Save"));
+			confirmButton();
+			return true;
+		}
+*/

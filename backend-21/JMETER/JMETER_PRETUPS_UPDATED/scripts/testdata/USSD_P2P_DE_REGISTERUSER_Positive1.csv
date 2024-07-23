@@ -1,0 +1,2 @@
+TestcaseType,TestcaseId,Module,Description
+Positive,DEREG01,De-Register user API through USSD,De-Register user through USSD by adding the required fields

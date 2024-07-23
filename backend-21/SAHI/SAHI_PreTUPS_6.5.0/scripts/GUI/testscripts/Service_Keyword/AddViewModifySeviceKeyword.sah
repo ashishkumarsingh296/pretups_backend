@@ -1,0 +1,63 @@
+//#######################################
+//
+// This script to add new service keyword 
+//
+//
+//#######################################
+
+
+
+_includeOnce("../../../../utility/ImportPackage.sah");
+_includeOnce("../../../GUI/testscripts/Service_Keyword/ServiceKeyword_Common.sah"); //For adding C2S card group	
+
+
+//======================Pre-requisite check============================
+_log("Setup", "custom4");
+
+//====Login into Application====
+login($g_appURL, $g_LangEnglish, $g_superAdmin, $g_password, $g_assertMessage); //calls the Login function in Login.sah with the parameters(url, language, username, password, assertion)
+
+
+//==================== To add new service keyword by super admin ==================//
+var $g_ServiceKeywordsDetails = _readCSVFile("../../../GUI/testdata/ServiceKeyword_Details.csv"); //Reads the network details
+
+addViewModifySeriveKeyword();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

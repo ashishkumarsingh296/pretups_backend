@@ -1,0 +1,29 @@
+EXTNWCODE,MSISDN1,PIN,MSISDN2,LOGINID,PASSWORD,AMOUNT,LANGUAGE1,LANGUAGE2,SELECTOR,SERVICECLASS,TestcaseId,TestcaseType,Module,Description
+NG,7255555555,5690,7233665522,,,100,1,1,1,ALL,TUNG12339,Positive,Lite Recharge through EXTGW,Validate Lite Recharge request (LRC) with all correct details.
+NG,7255555555,,7233665522,,,100,1,1,1,ALL,TUNG12340,Negative,Lite Recharge through EXTGW,Validate Lite Recharge request (LRC) mandatory parameters.
+NG,7255555555,5690,7233665522,,,100,1,1,1,ALL,TUNG12341,Positive,Lite Recharge through EXTGW,Validate that only a single IN hit happens during recharge for topup i.e no validation IN hit.
+NG,1212121,5690,7233665522,,,100,1,1,1,ALL,TUNG12342,Negative,Lite Recharge through EXTGW,To Verify that invalid sender msisdn should show error for LRC
+NG,7255555555,3312,7233665522,,,100,1,1,1,ALL,TUNG12343,Negative,Lite Recharge through EXTGW,To verify that invalid pin should show error for LRC
+NG,7233333333,2468,2323232,,,100,1,1,1,ALL,TUNG12344,Negative,Lite Recharge through EXTGW,To Verify that  invalid receiver  should show error for LRC
+NG,7255555555,5690,7233665522,,,100000000,1,1,1,ALL,TUNG12345,Negative,Lite Recharge through EXTGW,To Verify that  invalid amount  should show error for LRC
+NG,7255555555,5690,7233665522,,,100,1,1,1,CO,TUNG12346,Negative,Lite Recharge through EXTGW,To Verify that  invalid service class should show error for LRC
+NG,7255555555,5690,7233665522,,,100,1,1,32,ALL,TUNG12347,Negative,Lite Recharge through EXTGW,To Verify that  invalid sub service selector should show error for LRC
+NG,,,7233665522,dist1,abz,100,1,1,1,ALL,TUNG12348,Negative,Lite Recharge through EXTGW,To verify that user is not able to Lite Recharge via EXTGW if user has only User ID and Incorrect Password
+NG,,5690,7233665522,,,100,1,1,1,CO,TUNG12349,Negative,Lite Recharge through EXTGW,"Validate Lite Recharge request
+(LRC) mandatory parameters.
+Mandatory parameters are:
+MSISDN1"
+NG,7255555555,5690,7233665522,,,100,,1,1,ALL,TUNG12350,Positive,Lite Recharge through EXTGW,"Validate Lite Recharge request
+(LRC) optional parameters.
+Language1"
+NG,7255555555,5690,7233665522,dist1,com@123,100,1,,1,ALL,TUNG12351,Positive,Lite Recharge through EXTGW,"Validate Lite Recharge request
+(LRC) optional parameters.
+Language2"
+NG,,,7233665522,dist1,com@123,100,1,1,1,ALL,TUNG12352,Positive,Lite Recharge through EXTGW,"Validate Lite Recharge request
+with login Id and password"
+NG,7255555555,5690,7233665522,,,19.5,1,1,1,ALL,TUNG12721 ,Positive,Lite Recharge through EXTGW,perform recharge with decimal amount
+NG,7255555577,5690,7233665522,,,19.5,1,1,1,ALL,TUNG12722 ,Negative,Lite Recharge through EXTGW,User is barred as sender and performing the txn
+NG,7255232355,5690,7233665522,,,19.5,1,1,1,ALL,TUNG12723 ,Negative,Lite Recharge through EXTGW,Suspended user should try to initiate the lite recharge request.
+NG,7255555333,5690,7233665522,,,19.5,1,1,1,ALL,TUNG12726 ,Negative,Lite Recharge through EXTGW,Delete initiated user should try to initiate the lite recharge request.
+NG,7255555555,5690,7233665522,,,19.5,1,1,1,ALL,TUNG12727 ,Negative,Lite Recharge through EXTGW,User with insufficient balance should try to initiate the lite recharge request.
+NG,7255555555,5690,7233665522,,,19.5,1,1,1,ALL,TUNG12728 ,Negative,Lite Recharge through EXTGW,User with low threshold  count should try to initiate the lite recharge request.

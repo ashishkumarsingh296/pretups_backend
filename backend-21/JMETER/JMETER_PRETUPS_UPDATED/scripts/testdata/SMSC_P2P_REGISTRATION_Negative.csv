@@ -1,0 +1,2 @@
+TestcaseId,TestcaseType,Module,Description
+TUNG13186,Negative,P2P registration through SMSC,To verify that error is displayed if MSISDN is left blank.

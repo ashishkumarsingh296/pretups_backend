@@ -1,0 +1,16 @@
+---
+########################################################
+# Author           Date        Remarks
+#------------    -----------  ---------
+#Sadhan Kumar K  25-07-2016    Initial Creation
+#
+# This file takes care of Patch.
+#########################################################
+- include: tomcatStart.yml
+  when: isTomcatStartStopRequired == true
+
+- include: SMSCStart.yml
+  when: isSMSCStartStopRequired == true
+
+- include: OAMStart.yml
+  when: isOAMStartStopRequired == true

@@ -1,0 +1,2 @@
+TestcaseId,TestcaseType,Module,Description
+TUNG13033,Negative,Daily status report through USSD,"To verify that channel user is unable to initiate the ""Daily Status Report"" request through USSD if all the mandatory fields are left blank."

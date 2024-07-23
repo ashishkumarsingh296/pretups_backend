@@ -1,0 +1,104 @@
+//#######################################
+//
+// This script to add new service class for an Interface.
+//
+//#######################################
+
+
+
+_includeOnce("../../../../utility/ImportPackage.sah");
+_includeOnce("../../../GUI/testscripts/Interface_Management/ServiceClass_Common.sah"); //For adding new inteface
+
+
+//======================Pre-requisite check============================
+_log("Setup", "custom4");
+
+//====Login into Application====
+login($g_appURL, $g_LangEnglish, $g_superAdmin, $g_password, $g_assertMessage); //calls the Login function in Login.sah with the parameters(url, language, username, password, assertion)
+
+
+//==================== To add service class by super admin ==================//
+
+
+var $g_SeriviceClassDetails = _readCSVFile("../../../GUI/testdata/ServiceClassDetails.csv"); //Reads the network details
+
+
+
+for(var $g_row = 1; $g_SeriviceClassDetails[$g_row] != null; $g_row++){
+
+		var $g_col = 0;
+		var $temp_testCaseNo = $g_SeriviceClassDetails[$g_row][$g_col++];
+		var $t = _testcase($temp_testCaseNo, $g_SeriviceClassDetails[$g_row][$g_col++]);
+		
+		$t.start();
+		
+		if($temp_testCaseNo == "TEST001"){
+			commonVaribleForSeviceClass($g_row, $g_col);
+			addServiceClass();
+		}
+		
+		else if($temp_testCaseNo == "TEST002"){
+			commonVaribleForSeviceClass($g_row, $g_col);
+			addInterfaceWithoutDetails();
+		}
+		else if($temp_testCaseNo == "TEST003"){
+			commonVaribleForSeviceClass($g_row, $g_col);
+			addInterfaceWithoutDetails();
+		}
+		else if($temp_testCaseNo == "TEST004"){
+			commonVaribleForSeviceClass($g_row, $g_col);
+			modifyStatusOfServiceClass();
+		}
+		else if($temp_testCaseNo == "TEST005"){
+			commonVaribleForSeviceClass($g_row, $g_col);
+			deleteServiceClass();
+		}
+		else if($temp_testCaseNo == "TEST006"){
+			viewNetworks();
+		}
+		
+		
+		
+		$t.end();
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

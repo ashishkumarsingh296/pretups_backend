@@ -1,0 +1,2 @@
+TestcaseId,TestcaseType,Module,Description
+TUNG13036,Negative,Daily status report through USSD,"To verify that channel user is unable to initiate the ""Daily Status Report"" request if the entered value in the PIN field is having invalid value"

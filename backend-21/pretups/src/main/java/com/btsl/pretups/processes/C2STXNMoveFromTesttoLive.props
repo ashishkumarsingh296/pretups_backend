@@ -1,0 +1,9 @@
+from_url=jdbc:oracle:thin:@172.16.1.109:1521:PRTP
+from_userid=pretups_oca
+from_passwd=pretups_oca
+to_url=jdbc:oracle:thin:@172.16.1.109:1521:PRTP
+to_userid=pretups55_db
+to_passwd=pretups_55testing
+#comma seperated transaction id
+C2S_TRANSACTION_IDS=R100916.1039.10001,R100913.1153.10002
+ERROR_FILE_PATH=c:\\test\\

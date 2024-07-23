@@ -1,0 +1,2 @@
+TestcaseId,TestcaseType,Module,Description
+ P2PGMBBAR3,Negative,Give Me Balance,GMB BAR should Not  be Successful from USSD when  user is already barred for GMB by the Reciever Msisdn

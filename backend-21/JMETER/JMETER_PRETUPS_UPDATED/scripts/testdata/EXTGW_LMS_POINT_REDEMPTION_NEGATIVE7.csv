@@ -1,0 +1,2 @@
+TestcaseId,TestcaseType,Module,Description
+TUNG13030,Negative,LMS Point Redemption through EXTGW,To verify that Channel User can not redeem their Loyalty Points through EXTGW if Channel User is barred

@@ -1,0 +1,19 @@
+Test Case No,Test Case Decsription,Gateway,USerType,Domain ,Category,Assertion
+TEST001,Verify the values in the gateway drop down got populated in the system ,SMSC,,,,
+TEST002,Verify the functionality of back button while adding user status in the system ,SMSC,Channel User,Dist1,Super Distributor,
+TEST003,"Verify that after submittng all details, it goes to confirm page having back and confirm button ",SMSC,Channel User,Dist1,Super Distributor,
+TEST004,Given that super admin loggin into application and added user status in the system ,SMSC,Channel User,Dist1,Super Distributor,User status added Successfully.
+TEST005,Verify the functionality of back button on second page while modifying user status in the system ,SMSC,Channel User,Dist1,Super Distributor,
+TEST006,"To Modify , erify that after submittng all details, it goes to confirm page having back and confirm button ",SMSC,Channel User,Dist1,Super Distributor,
+TEST007,Given that super admin loggin into application and modify the  user status in the system ,SMSC,Channel User,Dist1,Super Distributor,User status modified Successfully.
+TEST008,Verify the functionality of back button while viewing user status in the system ,SMSC,Channel User,Dist1,Super Distributor,
+TEST009,Given that super admin loggin into application and view the user status which is configured in the system,SMSC,Channel User,Dist1,Super Distributor,
+TEST010,Verify that super admin login into application and try to re-configure the user status of existing combination ,SMSC,Channel User,Dist1,Super Distributor,"User with this combination already exists , Try modify."
+TEST011,Given that super admin loggin into application and try modify the combination which is not existing in the system ,XMLGW,Channel User,Dist1,Super Distributor,"No user with such combination exists , Try making a new entry."
+TEST012,Given that super admin loggin into application and try view the combination which is not existing in the system ,XMLGW,Channel User,Dist1,Super Distributor,"No user with such combination exists , Try making a new entry."
+TEST013,Given that super admin loggin into application try add user status without giving domain name in the system,SMSC,Channel User,,,Domain Type is required
+TEST014,Given that super admin loggin into application try add user status without giving  user type in the system,SMSC,,Dist1,Super Distributor,User type is required
+TEST015,Given that super admin loggin into application try add user status without giving gateway name in the system,,Channel User,Dist1,Super Distributor,Gateway is required
+TEST016,Given that super admin loggin into application try add user status without giving category name in the system,SMSC,Channel User,,,Category Code is required
+TEST017,Given that super admin try to add user status wihtout selecting any status,XMLGW,Channel User,Dist1,Super Distributor,Choose a Status for User Sender Allowed
+TEST018,Given that super admin try to modify user status wihtout selecting any status,SMSC,Channel User,Dist1,Super Distributor,Choose a Status for User Sender Allowed

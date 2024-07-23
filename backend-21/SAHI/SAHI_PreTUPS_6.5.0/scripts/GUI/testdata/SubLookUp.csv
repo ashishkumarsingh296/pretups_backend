@@ -1,0 +1,5 @@
+Look Up Name,
+Bonus Commission  Type,
+TEST101,Given that super admin logs into the application and add a sublookup
+TEST102,Given that super admin logs into the application and view newly added sublookup
+TEST103,Given that super admin logs into the application and modify newly added sublookup

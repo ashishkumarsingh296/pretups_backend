@@ -1,0 +1,9 @@
+Test Case No,Test Case Decsription,Category,Operator User,,,,,
+TEST001,Given that network admin loggin into application and to add chhanel admin without category,,,,,,,
+TEST002,Given that  network admin login into application and and view self details,Network Admin,,,,,,
+TEST003,Given that  network admin login into application and and view Channel Admin,Channel Admin,btchadm(btchadm),,,,,
+TEST004,Given that a network admin loggin into application and try to view network in the system,,,,,,,
+TEST005,Given that a network admin loggin into application and try to modify network interface Mapping,CS4 PostPaid IN,Interface network mapping successfully updated,,,,,
+TEST006,Given that a network admin loggin into application and try to view network prefix in the system,,,,,,,
+TEST007,Given that a network admin loggin into  application and try to activate & deactivate network status,,,,,,,
+TEST008,Given that a network admin loggin into  application and able to map interface define in the system,Roam Recharge,Roam Recharge,10,4000,5000,2000,Interface network mapping successfully added

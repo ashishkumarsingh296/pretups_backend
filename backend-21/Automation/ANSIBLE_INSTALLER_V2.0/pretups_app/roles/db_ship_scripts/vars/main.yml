@@ -1,0 +1,3 @@
+BASE_DIR: "{{ Base_DIR.stdout }}"
+#Temp_Dir: root_folder_scripts
+#Dump_name: pretups_640_V 

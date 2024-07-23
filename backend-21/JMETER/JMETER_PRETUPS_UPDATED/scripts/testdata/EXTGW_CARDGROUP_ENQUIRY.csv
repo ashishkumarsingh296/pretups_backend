@@ -1,0 +1,10 @@
+MSISDN1,PIN,EXTNWCODE,EXTCODE,LOGINID,PASSWORD,MSISDN2,SERVICETYPE,SUBSERVICE,AMOUNT,TestcaseId,TestcaseType,Module,Description
+7255555555,5690,NG,,,,7233665522,RC,1,100,TUNG12220,Positive,Card group enquiry EXTGW,To verify that valid user is able to perform card enquiry via EXTGW.
+7255555555,,NG,,,,7233665522,RC,1,100,TUNG12222,Negative,Card group enquiry EXTGW,To verify that valid user is  able to perform card enquiry via EXTGW when user entered only msisdn but not pin
+7255555555,5690,NG,,,,7233665522,RC,1,10022,TUNG12223,Negative,Card group enquiry EXTGW,To verify that valid user is not  able to perform card enquiry via EXTGW when user entered amount which is not present in an slab
+7255555555,5690,NG,,,,7233665522,,1,100,TUNG12224,Negative,Card group enquiry EXTGW,To verify that valid user is not  able to perform card enquiry via EXTGW when user has not entered service type.
+7255555555,5690,NG,,,,7233665522,WEB,1,100,TUNG12225,Negative,Card group enquiry EXTGW,To verify that valid user is not  able to perform card enquiry via EXTGW when user has entered invalid  service type.
+7255555555,5690,NG,,,,7233665522,PPB,1,100,TUNG12228,Negative,Card group enquiry EXTGW,To verify that valid user is not  able to perform card enquiry via EXTGW when user has entered service type AS ppb.
+7222334455,5690,NG,,,,7233665522,RC,1,100,TUNG12716,Negative,Card group enquiry EXTGW,To verify that suspended user is not able to perform card group enquiry via EXTGW.
+7212445445,5690,NG,,,,7233665522,RC,1,100,TUNG12718,Negative,Card group enquiry EXTGW,To verify that barred user is not able to perform card group enquiry via EXTGW.
+7255555500,5690,NG,,,,7233665522,RC,1,100,TUNG12720,Negative,Card group enquiry EXTGW,To verify that delete initiated user is not able to perform card group enquiry via EXTGW.

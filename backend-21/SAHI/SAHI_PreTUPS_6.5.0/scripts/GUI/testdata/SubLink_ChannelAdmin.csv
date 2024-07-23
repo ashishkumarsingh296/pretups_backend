@@ -1,0 +1,38 @@
+Operator to channel,Masters,Withdrawal,P2P subscriber,Restricted list Mgmt.,P2P reports,Channel user,Operator users,Channel user transfer,ICCID/IMSI key management,Channel reports-user,Access control Mgmt.,Channel reports-O2C,Download reports,Channel reports-C2C,Channel reports-C2S,Channel enquiry,Voucher reports,C2S transfer,Subscriber retailer mapping,Channel reports - Summary,Voucher Download,User Movement,IAT restricted list Mgmt.,IAT batch recharge Mgmt.,Forceful LMB Settlement,Transaction Reverse,LMB Reports,LMB Enquiries,Loyalty Management,LMS Reports
+Initiate transfer,Bar user,Withdraw,De-register subscriber -batch,Upload restricted list,Barred users,Add channel user,View/Edit user,Suspend user hierarchy ,ICCID/IMSI MSISDN association,Channel web barred,User password Mgmt.,O2C Transfer Acknowledgement,C2S download reports,C2C slab wise,C2S transfer analysis,C2S transfers Enquiry,Voucher availability,C2S reversal,Correct mapping,C2C transfer summary geography wise,Create batch for Voucher Download,User Template download,Approve IAT restricted list,View IAT Schedule Rchrg,Forceful LMB Settlement,Reverse C2C Transaction,LMB Bad Debit Report,LMB Transfers Enquiry,Associate Loyalty Profile,LMS Bonus Points
+Approve level 1,Un-bar user,Batch O2C withdraw,,Approve restricted list,Monthly transfer summary,Modify channel user,View self details,Resume user hierarchy ,,Operator web barred,PIN/Password history report,Batch FOC details,User daily balance reports,Channel transfer details,C2S transfer,C2C transfer enquiry,,,Delete mapping,Operation summary report,Voms Voucher Download,,Associated IAT Reports,View IAT Schedule Batch,,Reverse O2C Transaction,LMB transaction summary report,,,LMS Redemption Reports
+Approve level 2,View barred list,Batch O2C withdraw approval 1,,Delete restricted MSISDN,Registered subscribers,Channel user PIN Mgmt.,,Transfer channel user,,Barred mobile numbers,,Network daily stock details,P2P download reports,C2C transfer summary,Number of transaction per active Chnl. user,View channel user,,,Add mapping,O2C transfer summary geography wise,,,Restricted IAT Reports,IAT Shedule Status Rpt.,,,LMB Daily sub report,,,LMS Profilewise Summary Reports
+Approve level 3,Service management,Batch O2C withdraw approval 2,,Black list subscribers,Subscriber transfer summary,Level one user approval,,Transferred channel user report,,User balance,,Batch FOC summary,Download file,Staff C2C transfer details,Number of transaction per Reg. Chnl. user,O2C transfers,,,,C2S transfer summary geography wise,,,IAT BatchID Reports,,,,LMB Transaction Details,,,LMS Opt-In/Opt-Out Reports
+Initiate FOC transfer,Bar user in bulk,,,View restricted subscriber,Subscriber transfer details,Level two user approval,,,,Internal user roles report,,Bulk commission payout summary,,,Number of recharges slab-wise,Batch user enquiry,,,,Transaction summary report,,,Delete IAT restricted list,,,,,,,LMS Program Associated report
+Level one FOC approval,Un-bar user in bulk,,,Un-black list subscribers,Service class wise transfer summary,Associate profile,,,,Internal user list,,O2C transfer summary,,,C2S denomination wise,Batch FOC transfer ,,,,C2C or C2S summary batch report,,,,,,,,,,
+Level two FOC approval,Auto C2C Credit Limit,,,Restricted MSISDN report,TXN wise subscriber list,Delete channel user,,,,External user roles report,,O2C transfer details,,,Number and % of failed transaction,Bulk commission payout transfer,,,,,,,,,,,,,,
+Initiate batch FOC transfer,Change User Status,,,,Deleted subscribers list,User's other profile,,,,External user list,,User wise daily O2C transfer summary,,,Number and % of fail transaction error code,User balance,,,,,,,,,,,,,,
+Level three FOC approval,,,,,Failed TXN per error code,View user hierarchy,,,,Channel user balance,,User wise monthly O2C transfer summary,,,Users more than N TXN,User profile thresholds,,,,,,,,,,,,,,
+Batch FOC approval level 1,,,,,View P2P transfer rules,Suspend channel user,,,,New registered Chnl. user list,,Network stock details,,,Total top up transaction amount,Redemption enquiry,,,,,,,,,,,,,,
+Batch FOC approval level 2,,,,,Number and % of failed transaction,Approval delete channel user,,,,Parent Suspended active users,,Redemption transaction details,,,C2S processing fee,Staff C2S transfers,,,,,,,,,,,,,,
+Batch FOC approval level 3,,,,,Number of transaction wise user list,Approval suspend channel user,,,,Deleted/rejected Chnl. user list,,Batch O2C transfer detail ,,,C2S service class wise,Staff C2C transfer enquiry,,,,,,,,,,,,,,
+Initiate batch O2C transfer,,,,,Processing fee per customer,Change role channel user,,,,Active channel user summary,,Batch O2C transfer Summary,,,C2S transfer summary,Batch O2C Withdraw ,,,,,,,,,,,,,,
+O2C batch approval level 1,,,,,Monthly transaction per user,Resume channel user,,,,Active Chnl. user list,,,,,Non transacting retailers,,,,,,,,,,,,,,,
+Initiate bulk commission payout,,,,,P2P monthly active user summary,De-register/suspend/resume -batch,,,,Users below Min. thresholds,,,,,Roam recharge details,,,,,,,,,,,,,,,
+Bulk commission payout approval level 1,,,,,,Batch user initiate,,,,User balance movement summary,,,,,Roam recharge summary,,,,,,,,,,,,,,,
+Bulk commission payout approval level 2,,,,,,Batch user approve,,,,User Closing Balance,,,,,Subscriber count report,,,,,,,,,,,,,,,
+Bulk commission payout approval level 3,,,,,,MSISDN Association/Deassociation,,,,User zero balance counter detail,,,,,Additional commission detail,,,,,,,,,,,,,,,
+O2C batch approval level 2,,,,,,View MSISDN Association,,,,User zero balance counter summary,,,,,Additional commission summary,,,,,,,,,,,,,,,
+Bulk commission payout upload,,,,,,Batch user modify,,,,Activated subscriber mapping summary,,,,,C2S transfer schedule report,,,,,,,,,,,,,,,
+Initiate auto O2C,,,,,,Change PIN,,,,User event remarks,,,,,IAT C2S transfer report,,,,,,,,,,,,,,,
+Auto O2C Approve Level 1,,,,,,Change self PIN,,,,Inactive User Report,,,,,IAT C2S transfer summary report,,,,,,,,,,,,,,,
+Auto O2C Approve Level 2,,,,,,Batch associate profile,,,,,,,,,Staff C2S transfer report,,,,,,,,,,,,,,,
+Auto O2C Approve Level 3,,,,,,Suspend staff user,,,,,,,,,Time based C2S transfers report,,,,,,,,,,,,,,,
+,,,,,,Resume staff user,,,,,,,,,C2S Bonus Report,,,,,,,,,,,,,,,
+,,,,,,Add staff user,,,,,,,,,Geo - fencing report,,,,,,,,,,,,,,,
+,,,,,,Modify staff user,,,,,,,,,C2S transfer without COS,,,,,,,,,,,,,,,
+,,,,,,View staff user,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,Associate Alert MSISDN,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,Barred for deletion,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,Approval Barred for deletion Level 1,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,Approval Barred for deletion Level 2,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,Batch Barred for deletion,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,Approval Batch Bar for del Level 1,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,Approval Batch Bar for del Level 2,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,Level one staff user approval,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,Level two staff user approval,,,,,,,,,,,,,,,,,,,,,,,,

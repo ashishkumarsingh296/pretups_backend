@@ -1,0 +1,2 @@
+TestcaseId,TestcaseType,Module,Description
+TUNG12769,Negative,Bar user through Restful API,To verify msisdn is valid or not

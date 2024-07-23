@@ -1,0 +1,38 @@
+
+
+
+var $userName;
+var $password;
+var $assertion;
+
+
+
+
+
+function variableForNegativeLogin($a_row, $a_col) {
+	
+	$userName = $g_NegativeLogin[$g_row][$g_col++];
+	$password = $g_NegativeLogin[$g_row][$g_col++];
+	$assertion = $g_NegativeLogin[$g_row][$g_col++];
+	
+}
+
+function negativeLogin(){
+	
+	_navigateTo($g_appURL);
+	_assertExists(_cell("The system is available for authorized users only."));
+	_setSelected(_select("language"),$g_LangEnglish);
+	_setValue(_textbox("loginID"), $userName);
+	_setValue(_password("password"), $password);
+	_click(_submit($g_BtnLogin));
+	
+	
+	if(_exists(_span("/" + $g_assertWelcome + ".*/"))){
+		return true;
+		}
+	else{
+		_assertExists(_listItem("/" + $assertion + ".*/"));
+		return false;
+	}
+	
+}

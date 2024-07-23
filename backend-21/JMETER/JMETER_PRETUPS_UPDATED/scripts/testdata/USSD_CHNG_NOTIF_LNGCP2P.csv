@@ -1,0 +1,7 @@
+TestcaseId,TestcaseType,Module,Description
+TUNG12824,Positive,USSD Change notification language CP2P,To verfy that user is able to change the notification language by entering all mandatory fields.
+TUNG12825,Positive,USSD Change notification language CP2P,To verfify that error is not dispalyed when PIN is blank
+TUNG12826,Negative,USSD Change notification language CP2P,To verify that error is displayed when invalid language code is added
+TUNG12827,Negative,USSD Change notification language CP2P,To verify that error is displayed when MSISDN is blank
+TUNG12828,Negative,USSD Change notification language CP2P,To verify that error is displayed when invalid MSISDN is added
+TUNG12829,Positive,USSD Change notification language CP2P,To verify that no error is displayed when invalid PIN is added

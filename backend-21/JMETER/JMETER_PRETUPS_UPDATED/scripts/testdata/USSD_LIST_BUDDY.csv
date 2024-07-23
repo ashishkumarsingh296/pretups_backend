@@ -1,0 +1,4 @@
+MSISDN1,PIN,TestcaseId,TestcaseType,Module,Description
+7891000006,2468,TUNG2863,Positive,P2P list buddy,To verify that List Buddy request is successful if all mandatory fields are filled valid values
+,2468,TUNG2862,Negative,P2P list buddy,To verify that List Buddy request is unsuccessful if MSISDN1 is invalid
+7891000005,,TUNG2862,Negative,P2P list buddy,To verify that List Buddy request is unsuccessful if PIN is empty

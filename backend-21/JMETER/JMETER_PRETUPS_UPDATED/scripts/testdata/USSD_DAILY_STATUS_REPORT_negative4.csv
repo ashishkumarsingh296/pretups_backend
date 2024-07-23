@@ -1,0 +1,2 @@
+TestcaseId,TestcaseType,Module,Description
+TUNG13040,Negative,Daily status report through USSD,"To verify that channel user is unable to initiate the ""Daily Status Report"" request if MSISDN1 field contain value of the deleted user."

@@ -1,0 +1,5 @@
+TestCase Details,TestCase Description,Interface Category,Interface Type,Nodes,Validity Expiry time,TopUp Expiry Time,Language-1,Language-2,Status,Uri,Status1,Assertion
+TEST001,Given a super admin login into the application and adding new interface,Postpaid Interface,CS4 Ericssion Post,2,20000,10000,English -1,English-2,Active,pretups/ComverseTestServer,Active,added successfully
+TEST002,Given a super admin login into the application and try to add interface without giving any details,Postpaid Interface,CS4 Ericssion Post,,,,,,,,,is Required
+TEST003,Given a super admin login into the application and try to modify interface without mandatory field,Postpaid Interface,,,,,,,,,,is Required
+TEST004,Given super admin login into application and try to delete an interface,Postpaid Interface,,,,,,,,,,Interface deleted successfully.

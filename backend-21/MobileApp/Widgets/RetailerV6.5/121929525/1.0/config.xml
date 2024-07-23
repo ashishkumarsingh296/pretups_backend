@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<!DOCTYPE webaxn SYSTEM "i18n.dtd">
+<widget version="1.0">
+	<name>PRETUPS BILLPAYMENT</name>
+	<description>Bill Payment</description>
+	<author>Comviva</author>
+	<license>Comviva Technologies</license>
+	<identifier>121929525</identifier>
+	<type>2</type>
+	<icon src="pretups.png" />
+	<content src="billpay.html" />
+	<content bearer="2" src="billpayUSSD.html" />
+	<x-title background="#788593" color="white" fontstyle="bold"
+		fontsize="14" />
+	<x-scrollbar background="grey" color="#788593" />
+	<x-softkeystyle background="#788593" color="white"
+		fontstyle="bold" fontsize="14" />
+	<x-menustyle background="white" color="black" onfocuscolor="white" />
+	<x-selection onfocusbackground="#778899" />
+	<x-userdata-access>179878594</x-userdata-access>
+	<x-menugroup id="Bill_Payment">
+		<!-- <x-menu caption="&pre.lsk.submit;" x-softkey="left"
+			href="javascript:sendbillpayreq($mobilenu,$amount,$password);" /> -->
+		<x-menu caption="&pre.rsk.back;" x-softkey="right"
+			href="#" />
+	</x-menugroup>
+	<x-menugroup id="billpayReq">
+		<!-- <x-menu caption="&pre.lsk.ok;" x-softkey="left"
+			href="javascript:sendbillpayreq();" /> -->
+		<x-menu caption="&pre.rsk.cancel;" x-softkey="right"
+			href="#" />
+	</x-menugroup>
+	<x-menugroup id="post">
+		<x-menu caption="&pre.lsk.ok;" x-softkey="right"
+			href="#" />
+	</x-menugroup>
+	<x-menugroup id="post1">
+		<x-menu caption="&pre.lsk.ok;" x-softkey="right"
+			href="#" />
+	</x-menugroup>
+	<x-menugroup id="post2">
+		<x-menu caption="&pre.lsk.ok;" x-softkey="right"
+			href="#" />
+	</x-menugroup>
+	<x-menugroup id="Menu">
+		<x-menu caption="&pre.lsk.select;" x-softkey="left" href="#" />
+		<x-menu caption="&pre.rsk.exit;" x-softkey="right" href="exit:" />
+	</x-menugroup>
+
+</widget>
+

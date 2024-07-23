@@ -1,0 +1,11 @@
+EXTNWCODE,MSISDN,PIN,EXTCODE,EXTNUMBER,EXTTXNDATE,PRODUCTCODE,QTY,TRFCATEGORY,REFNUMBER,PAYMENTTYPE,PAYMENTINSTNUMBER,PAYMENTDATE,NETPAYABLEAMOUNT,REMARKS,TestcaseId,TestcaseType,Module,Description
+NG,7277777772,1357,,1891,05-06-16,101,10,SALE,968,CHQ,4578585,05-06-16,,O2C Direct Transfer,TUNG13043,Positive,O2C transfer through EXTGW,To check  that a successful o2c occurs when msisdn and pin are present
+NG,,,,1782,02-09-16,101,10,SALE,,CHQ,4578585,02-09-16,,,TUNG12844 ,Negative,O2C transfer through EXTGW,"To check if neither of user (MSISDN -pin  , extcode )is not present in the request then o2c is not successful"
+NG,7277777772,1357,,1783,02-09-16,,10,SALE,,CHQ,4578585,02-09-16,,,TUNG13044,Negative,O2C transfer through EXTGW,To check if  product code is not present in the request then o2c is not successful
+NG,7277777772,1357,,1784,02-09-16,101,,SALE,,CHQ,4578585,02-09-16,,,TUNG13045,Negative,O2C transfer through EXTGW,To check if  amount is not present in the request then o2c is not successful
+NG,7277777772,1357,,1786,02-09-16,101,10,SALE,,CHQ,457,02-09-16,,,TUNG13046,Negative,O2C transfer through EXTGW,To check if  txn date is not present in the request then o2c is not successful
+NG,7277777772,1357,,,02-09-16,101,10,SALE,,CHQ,451,02-09-16,,,TUNG13047,Negative,O2C transfer through EXTGW,To check if  txn number is not present in the request then o2c is not successful
+NG,7277777772,,,1788,02-09-16,101,10,SALE,,CHQ,741,02-09-16,,,TUNG13048,Negative,O2C transfer through EXTGW,To check if  msisdn is present but pin  is not present in the request then o2c is not successful
+NG,,,435,1789,02-09-16,101,10,SALE,,CHQ,963,02-09-16,,,TUNG12845,Positive,O2C transfer through EXTGW,To check  that a successful o2c occurs when only ext code is present
+NG,,,852,1787,02-09-16,101,10,SALE,,CHQ,8745,02-09-16,,,TUNG12846,Negative,O2C transfer through EXTGW,To check  that an unsuccessful o2c occurs when wrong ext code is present
+NG,,,435,1790,02-09-16,101,10,FOC,,CASH,98,02-09-16,,,TUNG13049,Positive,O2C transfer through EXTGW,"To Verify operator user can initiate ""FOC"" Operator to Channel Transfer"

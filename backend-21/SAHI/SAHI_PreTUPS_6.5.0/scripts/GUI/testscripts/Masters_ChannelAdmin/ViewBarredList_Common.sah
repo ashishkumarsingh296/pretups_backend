@@ -1,0 +1,129 @@
+
+
+// This scripts contains all method to view barred list in the system
+
+_includeOnce("../../../../utility/ImportPackage.sah");
+
+var $l_naCsv = _readCSVFile("../../../GUI/testdata/NA_Login.csv");
+
+
+	var $g_msisdn;
+	var $g_module;
+	var $g_userType;
+	var $g_barringType;
+	var $g_assertion;
+	var $a_Prefix;
+	
+	var $g_name;
+	
+	
+	function commonVaribleToViewBarredList($g_row, $g_col) {
+		
+		$g_msisdn = $g_viewBarredList[$g_row][$g_col++];
+		$g_module = $g_viewBarredList[$g_row][$g_col++];
+		$g_userType = $g_viewBarredList[$g_row][$g_col++];
+		$g_barringType = $g_viewBarredList[$g_row][$g_col++];
+		$g_assertion = $g_viewBarredList[$g_row][$g_col++];
+	}
+	
+	
+	
+	
+	
+		
+	// Common methods to view barred list in the system ......... 
+	
+		
+
+	function  commonMethodsToViewUserListOne() {
+		_click(_link("Masters"));
+		_click(_link("View barred list"));
+		_assertExists(_div("View barred list"));
+		_setValue(_textbox("msisdn"), $g_msisdn);
+		
+	}
+
+	function commonMethodsToViewUserListTwo() {
+		commonMethodsToViewUserListOne();
+		_setSelected(_select("module"), $g_module );
+		_setSelected(_select("userType"), $g_userType);
+		_setSelected(_select("barredType"), $g_barringType);
+	}
+	
+
+   // ............ Methods For Test cases .............. //   
+     
+	
+	function toVerifySubmitButtonOnViewPage() {
+		commonMethodsToViewUserListOne();
+		_assertExists(_submit("Submit", _near(_reset("Reset"))));
+	}
+	
+	
+	
+     
+    
+    
+     function toCheckPopulatedValueInModule() {
+    	 commonMethodsToViewUserListOne();
+    	 _setSelected(_select("module"), 2);
+			var $temp = _getSelectedText(_select("module"));
+			if($temp == $g_module ) {_log("Successful");}
+			else { _log("Failed");}
+	}
+     
+     function toCheckPopulatedValueInUserType() {
+    	 commonMethodsToViewUserListOne();
+    	 _setSelected(_select("userType"), 2);
+			var $temp = _getSelectedText(_select("userType"));
+			if($temp == $g_userType ) {_log("Successful");}
+			else { _log("Failed");}
+	}
+     
+     function toCheckPopulatedValueInBarringType() {
+    	 
+    	 commonMethodsToViewUserListOne();
+    	 _setSelected(_select("module"), $g_module);
+    	 _setSelected(_select("barredType"), 2);
+			var $temp = _getSelectedText(_select("barredType"));
+			if($temp == $g_barringType ) {_log("Successful");}
+			else { _log("Failed");}
+	}
+    
+    function viewBarredMSISDWithInvalidDetails() {
+    	commonMethodsToViewUserListOne();
+    	submit();
+    	 _assertExists(_listItem("/"+ $g_assertion +".*/"));
+    }
+    
+    function toChecKResetButtonOnViewBarredListPage() {
+    	commonMethodsToViewUserListOne();
+    	reset();
+    	if(_getValue(_textbox("msisdn")) == "") {_log("Successful")}
+		else {_log("Failed Reset Check");}
+    }
+    
+    function toChecKBackButtonOnViewBarredMSISDNPage() {
+    	commonMethodsToViewUserListOne();
+    	submit();
+    	_assertExists(_div("View barred MSISDN"));
+    	back();
+    	_assertExists(_div("View barred list"));
+    }
+    
+    function viewBarredChannelUser() {
+    	$g_name = $l_naCsv[28][1];
+    	commonMethodsToViewUserListOne();
+    	submit();
+    	_assertExists(_div("View barred MSISDN"));
+    	_assertExists(_cell($g_name, _near(_cell("Name"))));
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    

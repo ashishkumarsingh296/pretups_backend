@@ -1,0 +1,177 @@
+
+################################################## CBOSS DB Related parameters
+
+#Contains the Name with full path of DBUtility class that would handle calling of stored procedure Billing System.
+CBOSS_DBUTILITY_HANDLER_CLASS=com.btsl.pretups.inter.cboss.CbossDBUtility
+
+#Defines the Connection url of DB system.
+CBOSS_DB_CONN_URL=jdbc:oracle:thin:@192.168.5.52:1531:test
+
+#Defines the user name of Database.
+CBOSS_DB_USERNAME=etopup
+
+#Defines the Password of Database.
+CBOSS_DB_PASS=etopuptest
+#Defines the minimum size of db connection pool.
+CBOSS_DB_MINPOOLSIZE=2
+
+#Defines the maximum size of db connection pool.
+CBOSS_DB_MAXPOOLSIZE=5
+
+#This is optional parameter
+CBOSS_DB_POOL_LOG_FILE=
+
+################################################## COMMON UTILITY DB Related parameters
+
+#Contains the Name with full path of DBUtility class that would handle calling of stored procedure Billing System.
+COMMON_HANDLER_UTILITY_CLASS=com.btsl.pretups.inter.module.HandlerCommonUtility
+
+#Defines the Connection url of DB system.
+COMMON_DB_CONN_URL=jdbc:oracle:thin:@192.168.4.120:1521:TEST2
+
+#Defines the user name of Database.
+COMMON_DB_USERNAME=bharti
+
+#Defines the Password of Database.
+COMMON_DB_PASS=bharti
+
+#Defines the minimum size of db connection pool.
+COMMON_DB_MINPOOLSIZE=2
+
+#Defines the maximum size of db connection pool.
+COMMON_DB_MAXPOOLSIZE=5
+
+#This is optional parameter
+COMMON_DB_POOL_LOG_FILE=
+
+####################################################
+
+#This factor would be used to conver the system amount to IN amount and INAmount to System amount(This would be integer).
+MULTIPLICATION_FACTOR=1.0
+
+#This is used to set language mapping between Pretups and IN system.
+#We have to map lang code returned (2) from Huawei IN.
+LANGUAGE_MAPPING=2:1,3:2
+
+##Prefix to be removed from the mobile number, leave blank if nothing is to be removed
+MSISDN_REMOVE_PREFIX=
+
+##Prefix to be added to the mobile number as prefix, leave blank if nothing is to be added as prefix
+MSISDN_ADD_PREFIX=373
+
+WARN_TIMEOUT=20000
+
+## Conversion rate required or not
+CONVERSION_REQUIRED=Y
+
+##conversion rate received from IN should be multiplied by CONV_MULT_FACTOR
+CONV_MULT_FACTOR=0.01
+
+## conversion currency IN code to be sent to IN
+CONVERSION_CURRENCY=USD
+
+## time duration after which retry has to be done (in milli seconds)
+CONV_RETRY_SLEEP_TIME=60000
+ 
+
+##maximum no of retries for fetching vonversion factor
+CONV_MAX_RETRY=100
+
+## describes if amount should be rounded or not
+ROUND_FLAG=Y
+
+##IN currency code to be sent to Cboss IN
+IN_CURRENCY=0
+
+##Defines that the validation of subscriber(senders) is required for PRC
+PRC_S=Y
+
+##Defines that the validation of subscriber(Receiver) is required for PRC
+PRC_R=Y
+
+##Defines that the validation of subscriber(Receiver) is required for RC
+RC_R=Y
+
+##Defines that the validation of subscriber(senders) is required for ACCINFO
+ACCINFO_S=Y
+
+##Defines that the validation of subscriber(senders) is required for PREG
+PREG_S=Y
+
+##Defines that the validation of subscriber(Receiver) is required for EVD
+EVD_R=Y
+
+##Defines that the validation of subscriber(Receiver) is required for EVR
+EVR_R=Y
+
+#Indicates whether Cancel request supported by IN or not.(Possible values are Y/N)
+CANCEL_TXN_ALLOWED=N
+
+##If any ambiguous response is received from IN, then retry/cancel command is sent to IN. Then response of retry/cancel is matched in the IN file and mapped error code (250/206/200) is picked and sent to Controller.
+##SYSTEM_STATUS_MAPPING=INErrCode1,INErrCode2,INErrCode3,INErrCode4:system_err_code1|INErrCode5,INErrCode6:system_err_code2
+##system_err_code1 and system_err_code2 will be sent to system and written in recon log file.
+#SYSTEM_STATUS_MAPPING=250:250
+##If receiver credit is AMBIGUOS, then in SYSTEM_PREFERENCE, CREDIT_BACK_ALLOWED should be N.
+
+#If an ambiguous case occurs while credit, mapped error code can be set to one of the codes(SUCCESS, FAIL and AMBIGUOUS)
+SYSTEM_STATUS_MAPPING_CREDIT=250:250
+
+#If an ambiguous case occurs while credit, mapped error code can be set to one of the codes(SUCCESS, FAIL and AMBIGUOUS)
+SYSTEM_STATUS_MAPPING_CREDIT_ADJ=250:250
+
+#If an ambiguous case occurs while debitAdjust, mapped error code cannot be SUCCESS. It can only be FAIL or AMBIGUOUS
+SYSTEM_STATUS_MAPPING_DEBIT_ADJ=250:250
+
+#If an ambiguous case occurs while credit Back, mapped error code can not be fail, it can only be SUCCESS or AMBIGOUOS
+SYSTEM_STATUS_MAPPING_CREDIT_BCK=250:250
+
+##If any ambiguous response is received from IN, check if cancel txn allowed or not in the system. if not, pick mapped error code against NA otherwise pick mapped error code (206/250) against received response code of Cancellation from IN. 
+##CANCEL_COMMAND_STATUS_MAPPING=INErrCode1,INErrCode2,INErrCode3,INErrCode4:cancel_err_code1|INErrCode5,INErrCode6:cancel_err_code2
+##cancel_err_code1, cancel_err_code2 will be written in recon log file.
+CANCEL_COMMAND_STATUS_MAPPING=NA:450
+
+#Defines the cancel command status when cancel not supported by IN. 
+CANCEL_NA=NA
+
+##This flag should be Y if interface closure feature is to be provided to client
+INTFCE_CLSR_SUPPORT=N
+
+#maximum number of ambiguous transactions allowed till threshold time.
+NO_ALLWD_AMB_TXN=5
+
+##time duration in which maximum number of ambiguous transactions is defined
+THRESHOLD_TIME=240000
+
+##Time duration after which interface suspension expires.
+EXPIRY_TIME=60000
+
+##Auto Resumption supported by IN or not.
+AUTO_RESUME_SUPPORT=N
+
+##Number of retry attempts while validation (Currently Retry is not supported by Cboss)
+VAL_RETRY_CNT=0
+
+##Number of retry attempts while recharge request (Currently Retry is not supported by Cboss)
+CREDIT_RETRY_CNT=0
+
+##Number of retry attempts while sending Adjustment request (Currently Retry is not supported by Cboss)
+ADJ_RETRY_CNT=0
+
+##Number of retry attempts while sending Cancel request (Currently Cancel Request is not supported by Cboss)
+CNCL_RETRY_CNT=0
+
+##Sleep time between two retries (Currently Retry is not supported by Cboss)
+RETRY_SLEEP_TIME=0
+
+##Error Codes when retry has to be made  (Currently Retry is not supported by Cboss)
+RETRY_CASES=
+
+##Remark1 in Reconcialiationlog
+REMARK1=
+
+##Remark1 in Reconcialiationlog
+REMARK2=
+
+
+
+

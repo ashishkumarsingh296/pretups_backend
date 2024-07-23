@@ -1,0 +1,1330 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="DEBUG" monitorInterval="5">
+        <!-- Logging Properties -->
+        <Properties>
+                <Property name="ROOTLOGLEVEL">DEBUG</Property>
+                <Property name="SYSHOSTIP">172.16.10.239</Property>
+                <Property name="SYSHOSTPORT">5054</Property>
+                <!--Please do not change from below this lines for syslog on single port-->
+                <Property name="LOGPATTERN">RFC5424</Property>
+                <Property name="LOGROTATIONDAILY">%d{yyyy-MM-dd}</Property>
+				<Property name="LOGROTATIONHOUR">%d{yyyy-MM-dd-hh}</Property>
+                <Property name="LOGGERLEVEL">DEBUG</Property>
+                <Property name="MANDATORYLOGGERLEVEL">DEBUG</Property>
+                <Property name="LOGGERLP">[%t] %-5level %c{1}</Property>
+                <Property name="APPLOGLOCAL">/server_path/pretups_backend/logs/</Property>
+                <Property name="APPLOGONLINETDR">/server_path/pretups_backend/logs/</Property>
+        </Properties>
+        <Loggers>
+                <Root level="${ROOTLOGLEVEL}">
+                        <!--  <AppenderRef ref="Console" /> -->
+                        <AppenderRef ref="PreTUPsOut" />
+                        <AppenderRef ref="Async"/>
+                </Root>
+                <Logger name="com.btsl.pretups.channel.logging.ChannelGatewayRequestLog" additivity="false" level="${LOGGERLEVEL}">
+                        <AppenderRef ref="ChannelGatewayRequestLog" />
+                </Logger>
+                <Logger name="com.btsl.pretups.p2p.logging.P2PGatewayRequestLog" additivity="false" level="${LOGGERLEVEL}">
+                        <AppenderRef ref="P2PGatewayRequestLog" />
+                </Logger>
+                <Logger name="com.btsl.pretups.channel.logging.BalanceLogger" additivity="false" level="${LOGGERLEVEL}">
+                        <AppenderRef ref="BalanceLogger" />
+                </Logger>
+                <Logger name="com.btsl.pretups.logging.TransactionLog" additivity="false" level="${LOGGERLEVEL}">
+                        <AppenderRef ref="TransactionLog" />
+                </Logger>
+                <Logger name="com.btsl.pretups.logging.UnauthorizedAccessLog" additivity="false" level="${LOGGERLEVEL}">
+                        <AppenderRef ref="UnauthorizedAccessLog" />
+                </Logger>
+                <Logger name="com.btsl.pretups.channel.logging.DiffCreditLog" additivity="false" level="${LOGGERLEVEL}">
+                        <AppenderRef ref="DiffCreditLog" />
+                </Logger>
+                <Logger name="com.btsl.pretups.logging.OrderCreditLog" additivity="false" level="${LOGGERLEVEL}">
+                        <AppenderRef ref="OrderCreditLog" />
+                </Logger>
+                <Logger name="com.btsl.pretups.logging.BarredMsisdnLog" additivity="false" level="${LOGGERLEVEL}">
+                        <AppenderRef ref="BarredMsisdnLog" />
+                </Logger>
+                <Logger name="com.btsl.pretups.logging.MessageSentLog" additivity="false" level="${LOGGERLEVEL}">
+                        <AppenderRef ref="MessageSentLog" />
+                </Logger>
+                <Logger name="com.btsl.pretups.logging.SMSChargingLog" additivity="false" level="${LOGGERLEVEL}">
+                        <AppenderRef ref="SMSChargingLog" />
+                </Logger>
+                <Logger name="com.btsl.common.IccFileProcessLog" additivity="false" level="${LOGGERLEVEL}">
+                        <AppenderRef ref="IccFileProcessLog" />
+                </Logger>
+                <Logger name="com.btsl.login.LoginLogger" additivity="false" level="${LOGGERLEVEL}">
+                        <AppenderRef ref="LoginLogger" />
+                </Logger>
+                <Logger name="com.btsl.pretups.logging.AdminOperationLog" additivity="false" level="${LOGGERLEVEL}">
+                        <AppenderRef ref="AdminOperationLog" />
+                </Logger>
+                <Logger name="com.btsl.pretups.logging.ChannelUserLog" additivity="false" level="${LOGGERLEVEL}">
+                        <AppenderRef ref="ChannelUserLog" />
+                </Logger>
+
+                <Logger name="com.btsl.pretups.logging.BatchO2CFileProcessLog" additivity="false" level="${LOGGERLEVEL}">
+                        <AppenderRef ref="BatchO2CFileProcessLog" />
+                </Logger>
+
+                <Logger name="com.btsl.pretups.logging.NetworkStockLog" additivity="false" level="${LOGGERLEVEL}">
+                        <AppenderRef ref="NetworkStockLog" />
+                </Logger>
+
+
+                <Logger name="com.btsl.pretups.logging.CacheOperationLog" additivity="false" level="${LOGGERLEVEL}">
+                        <AppenderRef ref="CacheOperationLog" />
+                </Logger>
+                <Logger name="com.btsl.pretups.logging.BarFileProccesingLog" additivity="false" level="${LOGGERLEVEL}">
+                        <AppenderRef ref="BarFileProccesingLog" />
+                </Logger>
+                <Logger name="com.btsl.pretups.p2p.logging.UnregisterSubscribersFileProcessLog" additivity="false" level="${LOGGERLEVEL}">
+                        <AppenderRef ref="UnregisterSubscribersFileProcessLog" />
+                </Logger>
+                <Logger name="com.btsl.pretups.logging.ProcessesLog" additivity="false" level="${LOGGERLEVEL}">
+                        <AppenderRef ref="ProcessesLog" />
+                </Logger>
+                <Logger name="com.btsl.event.EventLogger" additivity="false" level="${MANDATORYLOGGERLEVEL}">
+                        <AppenderRef ref="EventLog" />
+                </Logger>
+                <Logger name="com.btsl.pretups.channel.logging.WebRechargeLogger" additivity="false" level="${LOGGERLEVEL}">
+                        <AppenderRef ref="WebRechargeLogger" />
+                </Logger>
+                <Logger name="com.btsl.pretups.logging.AssociateMsisdnFileProcessLog" additivity="false" level="${LOGGERLEVEL}">
+                        <AppenderRef ref="AssociateMsisdnFileProcessLog" />
+                </Logger>
+                <Logger name="com.btsl.pretups.logging.ChannelUserLog" additivity="false" level="${LOGGERLEVEL}">
+                        <AppenderRef ref="ChannelUserLog" />
+                </Logger>
+                <Logger name="com.btsl.pretups.logging.OperatorUserLog" additivity="false" level="${LOGGERLEVEL}">
+                        <AppenderRef ref="OperatorUserLog" />
+                </Logger>
+                <Logger name="com.btsl.pretups.logging.BatchFocFileProcessLog" additivity="false" level="${LOGGERLEVEL}">
+                        <AppenderRef ref="BatchFocFileProcessLog" />
+                </Logger>
+                <Logger name="com.btsl.pretups.logging.DirectPayOutSuccessLog" additivity="false" level="${LOGGERLEVEL}">
+                        <AppenderRef ref="DirectPayOutSuccessLog" />
+                </Logger>
+                <Logger name="com.btsl.pretups.logging.BatchesLog" additivity="false" level="${LOGGERLEVEL}">
+                        <AppenderRef ref="BatchesLog" />
+                </Logger>
+                <Logger name="com.btsl.alarm.AlarmSender" additivity="false" level="${MANDATORYLOGGERLEVEL}">
+                        <AppenderRef ref="AlarmSender" />
+                </Logger>
+                <Logger name="com.btsl.voms.vomslogging.VomsBatchInfoLog" additivity="false" level="${LOGGERLEVEL}">
+                        <AppenderRef ref="VomsBatchInfoLog" />
+                </Logger>
+                <Logger name="com.btsl.voms.vomslogging.VomsVoucherChangeStatusLog" additivity="false" level="${LOGGERLEVEL}">
+                        <AppenderRef ref="VomsVoucherChangeStatusLog" />
+                </Logger>
+                <Logger name="com.btsl.pretups.logging.OneLineTXNLogC2S" additivity="false" level="${LOGGERLEVEL}">
+                        <AppenderRef ref="OneLineTXNLogC2S" />
+                </Logger>
+                <Logger name="com.btsl.pretups.logging.OneLineTXNLogP2P" additivity="false" level="${LOGGERLEVEL}">
+                        <AppenderRef ref="OneLineTXNLogP2P" />
+                </Logger>
+                <Logger name="com.btsl.pretups.logging.OneLineTXNLogCHNL" additivity="false" level="${LOGGERLEVEL}">
+                        <AppenderRef ref="OneLineTXNLogCHNL" />
+                </Logger>
+                <Logger name="com.btsl.pretups.logging.ChannelRequestDailyLog" additivity="false" level="${LOGGERLEVEL}">
+                        <AppenderRef ref="ChannelRequestDailyLog" />
+                </Logger>
+                <Logger name="com.btsl.loadtest.loadgenerator.LMBForceSettleLog" additivity="false" level="${LOGGERLEVEL}">
+                        <AppenderRef ref="LMBForceSettleLog" />
+                </Logger>
+                <Logger name="com.btsl.loadtest.loadgenerator.GiveMeBalanceRequestResponseLog" additivity="false" level="${LOGGERLEVEL}">
+                        <AppenderRef ref="GiveMeBalanceRequestResponseLog" />
+                </Logger>
+                <Logger name="com.btsl.pretups.channel.logging.QueueLogger" additivity="false" level="${LOGGERLEVEL}">
+                        <AppenderRef ref="QueueLogger" />
+                </Logger>
+                <Logger name="com.btsl.pretups.channel.logging.ScheduledTopUpLogger" additivity="false" level="${LOGGERLEVEL}">
+                        <AppenderRef ref="ScheduledTopUpLogger" />
+                </Logger>
+                <Logger name="com.btsl.pretups.logging.FileProcessLogger" additivity="false" level="${LOGGERLEVEL}">
+                        <AppenderRef ref="FileProcessLogger" />
+                </Logger>
+                <Logger name="com.btsl.pretups.logging.SOSSettlementRequestLog" additivity="false" level="${LOGGERLEVEL}">
+                        <AppenderRef ref="SOSSettlementRequestLog" />
+                </Logger>
+                <Logger name="com.btsl.pretups.logging.AmbigousSettlementErrorLog" additivity="false" level="${LOGGERLEVEL}">
+                        <AppenderRef ref="AmbigousSettlementErrorLog" />
+                </Logger>
+                <Logger name="com.btsl.pretups.logging.ActivityLog" additivity="false" level="${LOGGERLEVEL}">
+                        <AppenderRef ref="ActivityLog" />
+                </Logger>
+                <Logger name="com.btsl.pretups.channel.logging.AutoO2CLogger" additivity="false" level="${LOGGERLEVEL}">
+                        <AppenderRef ref="AutoO2CLogger" />
+                </Logger>
+                <Logger name="com.btsl.pretups.channel.logging.AutoC2CLogger" additivity="false" level="${LOGGERLEVEL}">
+                        <AppenderRef ref="AutoC2CLogger" />
+                </Logger>
+                <Logger name="com.btsl.pretups.logging.P2PRequestDailyLog" additivity="false" level="${LOGGERLEVEL}">
+                        <AppenderRef ref="P2PRequestDailyLog" />
+                </Logger>
+                <Logger name="com.btsl.pretups.logging.VoucherUploadErrorLog" additivity="false" level="${LOGGERLEVEL}">
+                        <AppenderRef ref="VoucherUploadErrorLog" />
+                </Logger>
+                <Logger name="com.btsl.logging.DBConActivityLog" additivity="false" level="${LOGGERLEVEL}">
+                        <AppenderRef ref="DBConActivityLog" />
+                </Logger>
+                <Logger name="com.btsl.pretups.logging.OneLineTXNLogVMS" additivity="false" level="${LOGGERLEVEL}">
+                        <AppenderRef ref="OneLineTXNLogVMS" />
+                </Logger>
+                <Logger name="com.btsl.pretups.logging.InterfaceTransactionLog" additivity="false" level="${LOGGERLEVEL}">
+                        <AppenderRef ref="InterfaceTransactionLog" />
+                </Logger>
+                <Logger name="com.btsl.pretups.logging.APITransactionLog" additivity="false" level="${LOGGERLEVEL}">
+                        <AppenderRef ref="APITransactionLog" />
+                </Logger>
+                <Logger name="com.btsl.pretups.logging.INNodeLog" additivity="false" level="${LOGGERLEVEL}">
+                        <AppenderRef ref="INNodeLog" />
+                </Logger>
+                <Logger name="com.btsl.pretups.logging.C2S205AutoSettlementSchedulerlog" additivity="false" level="${LOGGERLEVEL}">
+                        <AppenderRef ref="C2S205AutoSettlementSchedulerlog" />
+                </Logger>
+                <Logger name="com.btsl.pretups.logging.EmailSentLog" additivity="false" level="${LOGGERLEVEL}">
+                        <AppenderRef ref="EmailSentLog" />
+                </Logger>
+                <Logger name="com.btsl.pretups.logging.UnregisterChUsersFileProcessLog" additivity="false" level="debug">
+                        <AppenderRef ref="UnregisterChUsersFileProcessLog" />
+                </Logger>
+                <Logger name="com.btsl.pretups.logging.SOSRequestDailyLog" additivity="false" level="debug">
+                        <AppenderRef ref="SOSRequestDailyLog" />
+                </Logger>
+                <Logger name="com.btsl.pretups.logging.SOSSettlementLog" additivity="false" level="debug">
+                        <AppenderRef ref="SOSSettlementLog" />
+                </Logger>
+				<Logger name="com.btsl.pretups.logging.WebAPIRequestLog" additivity="false" level="debug">
+                        <AppenderRef ref="WebAPIRequestLog" />
+                </Logger>
+        </Loggers>
+        <Appenders>
+                <!-- Console Appender -->
+                <Console name="Console" target="SYSTEM_OUT" follow="true">
+                        <PatternLayout pattern="${LOGPATTERN}" />
+                </Console>
+                <!-- <Syslog name="PreTUPsOut" format="${LOGPATTERN}" host="${SYSHOSTIP}" port="${SYSHOSTPORT}" protocol="UDP" newLine="true" facility="LOCAL3" charset="UTF-8" appName="PreTUPs_out">
+                        <LoggerFields>
+                                <KeyValuePair key="" value="${LOGGERLP}" />
+                        </LoggerFields>
+                </Syslog> -->
+                <!-- <File name="MyFile" fileName="${APPLOGLOCAL}/PreTUPsOut.log">
+                        <PatternLayout>
+                                <Pattern>%d %p %c{1.} [%t] %m%n</Pattern>
+                        </PatternLayout>
+                </File> -->
+                <!-- <Async name="Async">
+                        <AppenderRef ref="MyFile"/>
+                </Async> -->
+                <!-- <Syslog name="AdminOperationLog1" format="${LOGPATTERN}" host="${SYSHOSTIP}" port="${SYSHOSTPORT}" protocol="UDP" newLine="true" facility="LOCAL6" charset="UTF-8" appName="AdminOperationLog">
+                        <LoggerFields>
+                                <KeyValuePair key="" value="${LOGGERLP}" />
+                        </LoggerFields>
+                </Syslog> -->
+                <File name="AdminOperationLogFile" fileName="${APPLOGLOCAL}/AdminOperationLog.log">
+                        <PatternLayout>
+                                <Pattern>%d %p %c{1.} [%t] %m%n</Pattern>
+                        </PatternLayout>
+                </File>
+                <Async name="AdminOperationLog">
+                        <AppenderRef ref="AdminOperationLogFile"/>
+                </Async>
+
+                <!-- <Syslog name="ChannelUserLog1" format="${LOGPATTERN}" host="${SYSHOSTIP}" port="${SYSHOSTPORT}" protocol="UDP" newLine="true" facility="LOCAL6" charset="UTF-8" appName="ChannelUserLog">
+                        <LoggerFields>
+                                <KeyValuePair key="" value="${LOGGERLP}" />
+                        </LoggerFields>
+                </Syslog> -->
+                <File name="ChannelUserLogFile" fileName="${APPLOGLOCAL}/ChannelUserLog.log">
+                        <PatternLayout>
+                                <Pattern>%d %p %c{1.} [%t] %m%n</Pattern>
+                        </PatternLayout>
+                </File>
+                <Async name="ChannelUserLog">
+                        <AppenderRef ref="ChannelUserLogFile"/>
+                </Async>
+
+
+
+<!-- <Syslog name="BatchO2CFileProcessLog1" format="${LOGPATTERN}" host="${SYSHOSTIP}" port="${SYSHOSTPORT}" protocol="UDP" newLine="true" facility="LOCAL6" charset="UTF-8" appName="BatchO2CFileProcessLog">
+                        <LoggerFields>
+                                <KeyValuePair key="" value="${LOGGERLP}" />
+                        </LoggerFields>
+                </Syslog> -->
+                <File name="BatchO2CFileProcessLogFile" fileName="${APPLOGLOCAL}/BatchO2CFileProcessLog.log">
+                        <PatternLayout>
+                                <Pattern>%d %p %c{1.} [%t] %m%n</Pattern>
+                        </PatternLayout>
+                </File>
+                <Async name="BatchO2CFileProcessLog">
+                        <AppenderRef ref="BatchO2CFileProcessLogFile"/>
+                </Async>
+
+                <!-- <Syslog name="NetworkStockLog1" format="${LOGPATTERN}" host="${SYSHOSTIP}" port="${SYSHOSTPORT}" protocol="UDP" newLine="true" facility="LOCAL6" charset="UTF-8" appName="NetworkStockLog">
+                        <LoggerFields>
+                                <KeyValuePair key="" value="${LOGGERLP}" />
+                        </LoggerFields>
+                </Syslog> -->
+                <File name="NetworkStockLogFile" fileName="${APPLOGLOCAL}/NetworkStockLog.log">
+                        <PatternLayout>
+                                <Pattern>%d %p %c{1.} [%t] %m%n</Pattern>
+                        </PatternLayout>
+                </File>
+                <Async name="NetworkStockLog">
+                        <AppenderRef ref="NetworkStockLogFile"/>
+                </Async>
+
+
+                <File name="OperatorUserLogFile" fileName="${APPLOGLOCAL}/OperatorUserLog.log">
+                        <PatternLayout>
+                                <Pattern>%d %p %c{1.} [%t] %m%n</Pattern>
+                        </PatternLayout>
+                </File>
+                <Async name="OperatorUserLog">
+                        <AppenderRef ref="OperatorUserLogFile"/>
+                </Async>
+                <!-- <Syslog name="AlarmSender1" format="${LOGPATTERN}" host="${SYSHOSTIP}" port="${SYSHOSTPORT}" protocol="UDP" newLine="true" facility="LOCAL4" charset="UTF-8" appName="AlarmSender">
+                        <LoggerFields>
+                                <KeyValuePair key="" value="${LOGGERLP}" />
+                        </LoggerFields>
+                </Syslog> -->
+                <File name="AlarmSenderFile" fileName="${APPLOGLOCAL}/AlarmSender.log">
+                        <PatternLayout>
+                                <Pattern>%d %p %c{1.} [%t] %m%n</Pattern>
+                        </PatternLayout>
+                </File>
+                <Async name="AlarmSender">
+                        <AppenderRef ref="AlarmSenderFile"/>
+                </Async>
+                <!-- <Syslog name="ChannelGatewayRequestLog" format="${LOGPATTERN}" host="${SYSHOSTIP}" port="${SYSHOSTPORT}" protocol="UDP" newLine="true" facility="LOCAL7" charset="UTF-8" appName="ChannelGatewayRequestLog">
+                        <LoggerFields>
+                                <KeyValuePair key="" value="${LOGGERLP}" />
+                        </LoggerFields>
+                </Syslog> -->
+                <File name="ChannelGatewayRequestLogFile" fileName="${APPLOGLOCAL}/ChannelGatewayRequestLog.log">
+                        <PatternLayout>
+                                <Pattern>%d %p %c{1.} [%t] %m%n</Pattern>
+                        </PatternLayout>
+                </File>
+                <Async name="ChannelGatewayRequestLog">
+                        <AppenderRef ref="ChannelGatewayRequestLogFile"/>
+                </Async>
+                <!-- <Syslog name="EventLog" format="${LOGPATTERN}" host="${SYSHOSTIP}" port="${SYSHOSTPORT}" protocol="UDP" newLine="true" facility="LOCAL5" charset="UTF-8" appName="EventLog">
+                        <LoggerFields>
+                                <KeyValuePair key="" value="${LOGGERLP}" />
+                        </LoggerFields>
+                </Syslog> -->
+                <!-- <Syslog name="TransactionLog" format="${LOGPATTERN}" host="${SYSHOSTIP}" port="${SYSHOSTPORT}" protocol="UDP" newLine="true" facility="LOCAL7" charset="UTF-8" appName="TransactionLog">
+                        <LoggerFields>
+                                <KeyValuePair key="" value="${LOGGERLP}" />
+                        </LoggerFields>
+                </Syslog> -->
+                <File name="TransactionLogFile" fileName="${APPLOGLOCAL}/TransactionLog.log">
+                        <PatternLayout>
+                                <Pattern>%d %p %c{1.} [%t] %m%n</Pattern>
+                        </PatternLayout>
+                </File>
+                <Async name="TransactionLog">
+                        <AppenderRef ref="TransactionLogFile"/>
+                </Async>
+                <!-- <Syslog name="SMSChargingLog" format="${LOGPATTERN}" host="${SYSHOSTIP}" port="${SYSHOSTPORT}" protocol="UDP" newLine="true" facility="LOCAL7" charset="UTF-8" appName="SMSChargingLog">
+                        <LoggerFields>
+                                <KeyValuePair key="" value="${LOGGERLP}" />
+                        </LoggerFields>
+                </Syslog> -->
+                <File name="SMSChargingLogFile" fileName="${APPLOGLOCAL}/SMSChargingLog.log">
+                        <PatternLayout>
+                                <Pattern>%d %p %c{1.} [%t] %m%n</Pattern>
+                        </PatternLayout>
+                </File>
+                <Async name="SMSChargingLog">
+                        <AppenderRef ref="SMSChargingLogFile"/>
+                </Async>
+                <!-- <Syslog name="MessageSentLog" format="${LOGPATTERN}" host="${SYSHOSTIP}" port="${SYSHOSTPORT}" protocol="UDP" newLine="true" facility="LOCAL7" charset="UTF-8" appName="MessageSentLog">
+                        <LoggerFields>
+                                <KeyValuePair key="" value="${LOGGERLP}" />
+                        </LoggerFields>
+                </Syslog> -->
+                <File name="MessageSentLogFile" fileName="${APPLOGLOCAL}/messageSentLog.log">
+                        <PatternLayout>
+                                <Pattern>%d %p %c{1.} [%t] %m%n</Pattern>
+                        </PatternLayout>
+                </File>
+                <Async name="MessageSentLog">
+                        <AppenderRef ref="MessageSentLogFile"/>
+                </Async>
+                <!-- <Syslog name="ChannelRequestDailyLog" format="${LOGPATTERN}" host="${SYSHOSTIP}" port="${SYSHOSTPORT}" protocol="UDP" newLine="true" facility="LOCAL7" charset="UTF-8" appName="ChannelRequestDailyLog">
+                        <LoggerFields>
+                                <KeyValuePair key="" value="${LOGGERLP}" />
+                        </LoggerFields>
+                </Syslog> -->
+                <File name="ChannelRequestDailyLogFile" fileName="${APPLOGLOCAL}/ChannelRequestDailyLog.log">
+                        <PatternLayout>
+                                <Pattern>%d %p %c{1.} [%t] %m%n</Pattern>
+                        </PatternLayout>
+                </File>
+                <Async name="ChannelRequestDailyLog">
+                        <AppenderRef ref="ChannelRequestDailyLogFile"/>
+                </Async>
+                <!-- <Syslog name="BalanceLogger" format="${LOGPATTERN}" host="${SYSHOSTIP}" port="${SYSHOSTPORT}" protocol="UDP" newLine="true" facility="LOCAL6" charset="UTF-8" appName="BalanceLogger">
+                        <LoggerFields>
+                                <KeyValuePair key="" value="${LOGGERLP}" />
+                        </LoggerFields>
+                </Syslog> -->
+                <File name="BalanceLoggerFile" fileName="${APPLOGLOCAL}/BalanceLogger.log">
+                        <PatternLayout>
+                                <Pattern>%d %p %c{1.} [%t] %m%n</Pattern>
+                        </PatternLayout>
+                </File>
+                <Async name="BalanceLogger">
+                        <AppenderRef ref="BalanceLoggerFile"/>
+                </Async>
+                <!-- <Syslog name="DiffCreditLog" format="${LOGPATTERN}" host="${SYSHOSTIP}" port="${SYSHOSTPORT}" protocol="UDP" newLine="true" facility="LOCAL6" charset="UTF-8" appName="DiffCreditLog">
+                        <LoggerFields>
+                                <KeyValuePair key="" value="${LOGGERLP}" />
+                        </LoggerFields>
+                </Syslog> -->
+                <File name="DiffCreditLogFile" fileName="${APPLOGLOCAL}/DiffCreditLog.log">
+                        <PatternLayout>
+                                <Pattern>%d %p %c{1.} [%t] %m%n</Pattern>
+                        </PatternLayout>
+                </File>
+                <Async name="DiffCreditLog">
+                        <AppenderRef ref="DiffCreditLogFile"/>
+                </Async>
+                <!-- <Syslog name="CacheOperationLog111" format="${LOGPATTERN}" host="${SYSHOSTIP}" port="${SYSHOSTPORT}" protocol="UDP" newLine="true" facility="LOCAL6" charset="UTF-8" appName="CacheOperationLog">
+                        <LoggerFields>
+                                <KeyValuePair key="" value="${LOGGERLP}" />
+                        </LoggerFields>
+                </Syslog> -->
+                <File name="CacheOperationLogFile" fileName="${APPLOGLOCAL}/CacheOperationLogFile.log">
+                        <PatternLayout>
+                                <Pattern>%d %p %c{1.} [%t] %m%n</Pattern>
+                        </PatternLayout>
+                </File>
+                <Async name="CacheOperationLog">
+                        <AppenderRef ref="CacheOperationLogFile"/>
+                </Async>
+                <!-- <Syslog name="ActivityLog" format="${LOGPATTERN}" host="${SYSHOSTIP}" port="${SYSHOSTPORT}" protocol="UDP" newLine="true" facility="LOCAL6" charset="UTF-8" appName="ActivityLog">
+                        <LoggerFields>
+                                <KeyValuePair key="" value="${LOGGERLP}" />
+                        </LoggerFields>
+                </Syslog>
+                <Syslog name="LoginLogger" format="${LOGPATTERN}" host="${SYSHOSTIP}" port="${SYSHOSTPORT}" protocol="UDP" newLine="true" facility="LOCAL6" charset="UTF-8" appName="LoginLogger">
+                        <LoggerFields>
+                                <KeyValuePair key="" value="${LOGGERLP}" />
+                        </LoggerFields>
+                </Syslog>
+                <Syslog name="OperatorUserLog1" format="${LOGPATTERN}" host="${SYSHOSTIP}" port="${SYSHOSTPORT}" protocol="UDP" newLine="true" facility="LOCAL6" charset="UTF-8" appName="OperatorUserLog">
+                        <LoggerFields>
+                                <KeyValuePair key="" value="${LOGGERLP}" />
+                        </LoggerFields>
+                </Syslog>
+                <Syslog name="WebRechargeLogger" format="${LOGPATTERN}" host="${SYSHOSTIP}" port="${SYSHOSTPORT}" protocol="UDP" newLine="true" facility="LOCAL6" charset="UTF-8" appName="WebRechargeLogger">
+                        <LoggerFields>
+                                <KeyValuePair key="" value="${LOGGERLP}" />
+                        </LoggerFields>
+                </Syslog>
+                <Syslog name="ChannelUserLog" format="${LOGPATTERN}" host="${SYSHOSTIP}" port="${SYSHOSTPORT}" protocol="UDP" newLine="true" facility="LOCAL6" charset="UTF-8" appName="ChannelUserLog">
+                        <LoggerFields>
+                                <KeyValuePair key="" value="${LOGGERLP}" />
+                        </LoggerFields>
+                </Syslog>
+                <Syslog name="EmailSentLog" format="${LOGPATTERN}" host="${SYSHOSTIP}" port="${SYSHOSTPORT}" protocol="UDP" newLine="true" facility="LOCAL6" charset="UTF-8" appName="EmailSentLog">
+                        <LoggerFields>
+                                <KeyValuePair key="" value="${LOGGERLP}" />
+                        </LoggerFields>
+                </Syslog>
+                <Syslog name="UnregisterChUsersFileProcessLog" format="${LOGPATTERN}" host="${SYSHOSTIP}" port="${SYSHOSTPORT}" protocol="UDP" newLine="true" facility="LOCAL6" charset="UTF-8" appName="UnregisterChUsersFileProcessLog">
+                        <LoggerFields>
+                                <KeyValuePair key="" value="${LOGGERLP}" />
+                        </LoggerFields>
+                </Syslog>
+                <Syslog name="BatchFocFileProcessLog1" format="${LOGPATTERN}" host="${SYSHOSTIP}" port="${SYSHOSTPORT}" protocol="UDP" newLine="true" facility="LOCAL6" charset="UTF-8" appName="BatchFocFileProcessLog">
+                        <LoggerFields>
+                                <KeyValuePair key="" value="${LOGGERLP}" />
+                        </LoggerFields>
+                </Syslog> -->
+                <File name="BatchFocFileProcessLogFile" fileName="${APPLOGLOCAL}/BatchFocFileProcessLog.log">
+                        <PatternLayout>
+                                <Pattern>%d %p %c{1.} [%t] %m%n</Pattern>
+                        </PatternLayout>
+                </File>
+                <Async name="BatchFocFileProcessLog">
+                        <AppenderRef ref="BatchFocFileProcessLogFile"/>
+                </Async>
+                <!-- <Syslog name="DirectPayOutSuccessLog1" format="${LOGPATTERN}" host="${SYSHOSTIP}" port="${SYSHOSTPORT}" protocol="UDP" newLine="true" facility="LOCAL6" charset="UTF-8" appName="DirectPayOutSuccessLog">
+                        <LoggerFields>
+                                <KeyValuePair key="" value="${LOGGERLP}" />
+                        </LoggerFields>
+                </Syslog> -->
+                <File name="DirectPayOutSuccessLogFile" fileName="${APPLOGLOCAL}/DirectPayOutSuccessLog.log">
+                        <PatternLayout>
+                                <Pattern>%d %p %c{1.} [%t] %m%n</Pattern>
+                        </PatternLayout>
+                </File>
+                <Async name="DirectPayOutSuccessLog">
+                        <AppenderRef ref="DirectPayOutSuccessLogFile"/>
+                </Async>
+                <!-- <Syslog name="SOSRequestDailyLog" format="${LOGPATTERN}" host="${SYSHOSTIP}" port="${SYSHOSTPORT}" protocol="UDP" newLine="true" facility="LOCAL6" charset="UTF-8" appName="SOSRequestDailyLog">
+                        <LoggerFields>
+                                <KeyValuePair key="" value="${LOGGERLP}" />
+                        </LoggerFields>
+                </Syslog>
+                <Syslog name="SOSSettlementRequestLog" format="${LOGPATTERN}" host="${SYSHOSTIP}" port="${SYSHOSTPORT}" protocol="UDP" newLine="true" facility="LOCAL6" charset="UTF-8" appName="SOSSettlementRequestLog">
+                        <LoggerFields>
+                                <KeyValuePair key="" value="${LOGGERLP}" />
+                        </LoggerFields>
+                </Syslog>
+                <Syslog name="SOSSettlementLog" format="${LOGPATTERN}" host="${SYSHOSTIP}" port="${SYSHOSTPORT}" protocol="UDP" newLine="true" facility="LOCAL6" charset="UTF-8" appName="SOSSettlementLog">
+                        <LoggerFields>
+                                <KeyValuePair key="" value="${LOGGERLP}" />
+                        </LoggerFields>
+                </Syslog> -->
+
+
+
+<File name="P2PGatewayRequestLogFile" fileName="${APPLOGLOCAL}/P2PGatewayRequestLog.log">
+                        <PatternLayout>
+                                <Pattern>%d %p %c{1.} [%t] %m%n</Pattern>
+                        </PatternLayout>
+                </File>
+                <Async name="P2PGatewayRequestLog">
+                        <AppenderRef ref="P2PGatewayRequestLogFile"/>
+                </Async>
+
+<File name="UnauthorizedAccessLogFile" fileName="${APPLOGLOCAL}/UnauthorizedAccessLog.log">
+                        <PatternLayout>
+                                <Pattern>%d %p %c{1.} [%t] %m%n</Pattern>
+                        </PatternLayout>
+                </File>
+                <Async name="UnauthorizedAccessLog">
+                        <AppenderRef ref="UnauthorizedAccessLogFile"/>
+                </Async>
+
+
+
+<File name="OrderCreditLogFile" fileName="${APPLOGLOCAL}/OrderCreditLog.log">
+                        <PatternLayout>
+                                <Pattern>%d %p %c{1.} [%t] %m%n</Pattern>
+                        </PatternLayout>
+                </File>
+                <Async name="OrderCreditLog">
+                        <AppenderRef ref="OrderCreditLogFile"/>
+                </Async>
+
+
+
+<File name="BarredMsisdnLogFile" fileName="${APPLOGLOCAL}/BarredMsisdnLog.log">
+                        <PatternLayout>
+                                <Pattern>%d %p %c{1.} [%t] %m%n</Pattern>
+                        </PatternLayout>
+                </File>
+                <Async name="BarredMsisdnLog">
+                        <AppenderRef ref="BarredMsisdnLogFile"/>
+                </Async>
+
+
+
+<File name="IccFileProcessLogFile" fileName="${APPLOGLOCAL}/IccFileProcessLog.log">
+                        <PatternLayout>
+                                <Pattern>%d %p %c{1.} [%t] %m%n</Pattern>
+                        </PatternLayout>
+                </File>
+                <Async name="IccFileProcessLog">
+                        <AppenderRef ref="IccFileProcessLogFile"/>
+                </Async>
+
+
+
+<File name="LoginLoggerFile" fileName="${APPLOGLOCAL}/LoginLogger.log">
+                        <PatternLayout>
+                                <Pattern>%d %p %c{1.} [%t] %m%n</Pattern>
+                        </PatternLayout>
+                </File>
+                <Async name="LoginLogger">
+                        <AppenderRef ref="LoginLoggerFile"/>
+                </Async>
+
+
+
+<File name="BarFileProccesingLogFile" fileName="${APPLOGLOCAL}/BarFileProccesingLog.log">
+                        <PatternLayout>
+                                <Pattern>%d %p %c{1.} [%t] %m%n</Pattern>
+                        </PatternLayout>
+                </File>
+                <Async name="BarFileProccesingLog">
+                        <AppenderRef ref="BarFileProccesingLogFile"/>
+                </Async>
+
+
+
+<File name="UnregisterSubscribersFileProcessLog" fileName="${APPLOGLOCAL}/UnregisterSubscribersFileProcessLogLog.log">
+                        <PatternLayout>
+                                <Pattern>%d %p %c{1.} [%t] %m%n</Pattern>
+                        </PatternLayout>
+                </File>
+                <Async name="BatchFocFileProcessLog">
+                        <AppenderRef ref="UnregisterSubscribersFileProcessLog"/>
+                </Async>
+
+
+
+<File name="ProcessesLogFile" fileName="${APPLOGLOCAL}/ProcessesLog.log">
+                        <PatternLayout>
+                                <Pattern>%d %p %c{1.} [%t] %m%n</Pattern>
+                        </PatternLayout>
+                </File>
+                <Async name="ProcessesLog">
+                        <AppenderRef ref="ProcessesLogFile"/>
+                </Async>
+
+
+
+<File name="EventLoggerFile" fileName="${APPLOGLOCAL}/EventLogger.log">
+                        <PatternLayout>
+                                <Pattern>%d %p %c{1.} [%t] %m%n</Pattern>
+                        </PatternLayout>
+                </File>
+                <Async name="EventLogger">
+                        <AppenderRef ref="EventLoggerFile"/>
+                </Async>
+
+
+
+<File name="WebRechargeLoggerFile" fileName="${APPLOGLOCAL}/WebRechargeLogger.log">
+                        <PatternLayout>
+                                <Pattern>%d %p %c{1.} [%t] %m%n</Pattern>
+                        </PatternLayout>
+                </File>
+                <Async name="WebRechargeLogger">
+                        <AppenderRef ref="WebRechargeLoggerFile"/>
+                </Async>
+
+
+
+<File name="AssociateMsisdnFileProcessLogFile" fileName="${APPLOGLOCAL}/AssociateMsisdnFileProcessLog.log">
+                        <PatternLayout>
+                                <Pattern>%d %p %c{1.} [%t] %m%n</Pattern>
+                        </PatternLayout>
+                </File>
+                <Async name="AssociateMsisdnFileProcessLog">
+                        <AppenderRef ref="AssociateMsisdnFileProcessLogFile"/>
+                </Async>
+
+
+
+<File name="BatchesLogFile" fileName="${APPLOGLOCAL}/BatchesLog.log">
+                        <PatternLayout>
+                                <Pattern>%d %p %c{1.} [%t] %m%n</Pattern>
+                        </PatternLayout>
+                </File>
+                <Async name="BatchesLog">
+                        <AppenderRef ref="BatchesLogFile"/>
+                </Async>
+
+
+
+<File name="VomsBatchInfoLogFile" fileName="${APPLOGLOCAL}/VomsBatchInfoLog.log">
+                        <PatternLayout>
+                                <Pattern>%d %p %c{1.} [%t] %m%n</Pattern>
+                        </PatternLayout>
+                </File>
+                <Async name="VomsBatchInfoLog">
+                        <AppenderRef ref="VomsBatchInfoLogFile"/>
+                </Async>
+
+
+
+<File name="VomsVoucherChangeStatusLogFile" fileName="${APPLOGLOCAL}/VomsVoucherChangeStatusLog.log">
+                        <PatternLayout>
+                                <Pattern>%d %p %c{1.} [%t] %m%n</Pattern>
+                        </PatternLayout>
+                </File>
+                <Async name="VomsVoucherChangeStatusLog">
+                        <AppenderRef ref="VomsVoucherChangeStatusLogFile"/>
+                </Async>
+
+
+
+<File name="LMBForceSettleLogFile" fileName="${APPLOGLOCAL}/LMBForceSettleLog.log">
+                        <PatternLayout>
+                                <Pattern>%d %p %c{1.} [%t] %m%n</Pattern>
+                        </PatternLayout>
+                </File>
+                <Async name="LMBForceSettleLog">
+                        <AppenderRef ref="LMBForceSettleLogFile"/>
+                </Async>
+
+
+
+<File name="GiveMeBalanceRequestResponseLogFile" fileName="${APPLOGLOCAL}/GiveMeBalanceRequestResponseLog.log">
+                        <PatternLayout>
+                                <Pattern>%d %p %c{1.} [%t] %m%n</Pattern>
+                        </PatternLayout>
+                </File>
+                <Async name="GiveMeBalanceRequestResponseLog">
+                        <AppenderRef ref="GiveMeBalanceRequestResponseLogFile"/>
+                </Async>
+
+<File name="QueueLoggerFile" fileName="${APPLOGLOCAL}/QueueLogger.log">
+                        <PatternLayout>
+                                <Pattern>%d %p %c{1.} [%t] %m%n</Pattern>
+                        </PatternLayout>
+                </File>
+                <Async name="QueueLogger">
+                        <AppenderRef ref="QueueLoggerFile"/>
+                </Async>
+<File name="ScheduledTopUpLoggerFile" fileName="${APPLOGLOCAL}/ScheduledTopUpLogger.log">
+                        <PatternLayout>
+                                <Pattern>%d %p %c{1.} [%t] %m%n</Pattern>
+                        </PatternLayout>
+                </File>
+                <Async name="ScheduledTopUpLogger">
+                        <AppenderRef ref="ScheduledTopUpLoggerFile"/>
+                </Async>
+<File name="FileProcessLoggerFile" fileName="${APPLOGLOCAL}/FileProcessLogger.log">
+                        <PatternLayout>
+                                <Pattern>%d %p %c{1.} [%t] %m%n</Pattern>
+                        </PatternLayout>
+                </File>
+                <Async name="FileProcessLogger">
+                        <AppenderRef ref="FileProcessLoggerFile"/>
+                </Async>
+<File name="SOSSettlementRequestLogFile" fileName="${APPLOGLOCAL}/SOSSettlementRequestLogLog.log">
+                        <PatternLayout>
+                                <Pattern>%d %p %c{1.} [%t] %m%n</Pattern>
+                        </PatternLayout>
+                </File>
+                <Async name="SOSSettlementRequestLog">
+                        <AppenderRef ref="SOSSettlementRequestLogFile"/>
+                </Async>
+<File name="AmbigousSettlementErrorLogFile" fileName="${APPLOGLOCAL}/AmbigousSettlementErrorLog.log">
+                        <PatternLayout>
+                                <Pattern>%d %p %c{1.} [%t] %m%n</Pattern>
+                        </PatternLayout>
+                </File>
+                <Async name="AmbigousSettlementErrorLog">
+                        <AppenderRef ref="AmbigousSettlementErrorLogFile"/>
+                </Async>
+<File name="ActivityLogFile" fileName="${APPLOGLOCAL}/ActivityLog.log">
+                        <PatternLayout>
+                                <Pattern>%d %p %c{1.} [%t] %m%n</Pattern>
+                        </PatternLayout>
+                </File>
+                <Async name="ActivityLog">
+                        <AppenderRef ref="ActivityLogFile"/>
+                </Async>
+<File name="AutoO2CLoggerFile" fileName="${APPLOGLOCAL}/AutoO2CLogger.log">
+                        <PatternLayout>
+                                <Pattern>%d %p %c{1.} [%t] %m%n</Pattern>
+                        </PatternLayout>
+                </File>
+                <Async name="AutoO2CLogger">
+                        <AppenderRef ref="AutoO2CLoggerFile"/>
+                </Async>
+<File name="AutoC2CLoggerFile" fileName="${APPLOGLOCAL}/AutoC2CLogger.log">
+                        <PatternLayout>
+                                <Pattern>%d %p %c{1.} [%t] %m%n</Pattern>
+                        </PatternLayout>
+                </File>
+                <Async name="AutoC2CLogger">
+                        <AppenderRef ref="AutoC2CLoggerFile"/>
+                </Async>
+<File name="P2PRequestDailyLogFile" fileName="${APPLOGLOCAL}/P2PRequestDailyLog.log">
+                        <PatternLayout>
+                                <Pattern>%d %p %c{1.} [%t] %m%n</Pattern>
+                        </PatternLayout>
+                </File>
+                <Async name="P2PRequestDailyLog">
+                        <AppenderRef ref="P2PRequestDailyLogFile"/>
+                </Async>
+<File name="VoucherUploadErrorLogFile" fileName="${APPLOGLOCAL}/VoucherUploadErrorLog.log">
+                        <PatternLayout>
+                                <Pattern>%d %p %c{1.} [%t] %m%n</Pattern>
+                        </PatternLayout>
+                </File>
+                <Async name="VoucherUploadErrorLog">
+                        <AppenderRef ref="VoucherUploadErrorLogFile"/>
+                </Async>
+<File name="DBConActivityLogFile" fileName="${APPLOGLOCAL}/DBConActivityLog.log">
+                        <PatternLayout>
+                                <Pattern>%d %p %c{1.} [%t] %m%n</Pattern>
+                        </PatternLayout>
+                </File>
+                <Async name="DBConActivityLog">
+                        <AppenderRef ref="DBConActivityLogFile"/>
+                </Async>
+<File name="InterfaceTransactionLogFile" fileName="${APPLOGLOCAL}/InterfaceTransactionLog.log">
+                        <PatternLayout>
+                                <Pattern>%d %p %c{1.} [%t] %m%n</Pattern>
+                        </PatternLayout>
+                </File>
+                <Async name="InterfaceTransactionLog">
+                        <AppenderRef ref="InterfaceTransactionLogFile"/>
+                </Async>
+<File name="APITransactionLogFile" fileName="${APPLOGLOCAL}/APITransactionLog.log">
+                        <PatternLayout>
+                                <Pattern>%d %p %c{1.} [%t] %m%n</Pattern>
+                        </PatternLayout>
+                </File>
+                <Async name="APITransactionLog">
+                        <AppenderRef ref="APITransactionLogFile"/>
+                </Async>
+
+<File name="INNodeLogFile" fileName="${APPLOGLOCAL}/INNodeLog.log">
+                        <PatternLayout>
+                                <Pattern>%d %p %c{1.} [%t] %m%n</Pattern>
+                        </PatternLayout>
+                </File>
+                <Async name="INNodeLog">
+                        <AppenderRef ref="INNodeLogFile"/>
+                </Async>
+
+<File name="C2S205AutoSettlementSchedulerlogFile" fileName="${APPLOGLOCAL}/C2S205AutoSettlementSchedulerlog.log">
+                        <PatternLayout>
+                                <Pattern>%d %p %c{1.} [%t] %m%n</Pattern>
+                        </PatternLayout>
+                </File>
+                <Async name="C2S205AutoSettlementSchedulerlog">
+                        <AppenderRef ref="C2S205AutoSettlementSchedulerlogFile"/>
+                </Async>
+
+<File name="EmailSentLogFile" fileName="${APPLOGLOCAL}/EmailSentLog.log">
+                        <PatternLayout>
+                                <Pattern>%d %p %c{1.} [%t] %m%n</Pattern>
+                        </PatternLayout>
+                </File>
+                <Async name="EmailSentLog">
+                        <AppenderRef ref="EmailSentLogFile"/>
+                </Async>
+
+<File name="UnregisterChUsersFileProcessLogFile" fileName="${APPLOGLOCAL}/UnregisterChUsersFileProcessLog.log">
+                        <PatternLayout>
+                                <Pattern>%d %p %c{1.} [%t] %m%n</Pattern>
+                        </PatternLayout>
+                </File>
+                <Async name="UnregisterChUsersFileProcessLog">
+                        <AppenderRef ref="UnregisterChUsersFileProcessLogFile"/>
+                </Async>
+
+<File name="SOSRequestDailyLogFile" fileName="${APPLOGLOCAL}/SOSRequestDailyLog.log">
+                        <PatternLayout>
+                                <Pattern>%d %p %c{1.} [%t] %m%n</Pattern>
+                        </PatternLayout>
+                </File>
+                <Async name="SOSRequestDailyLog">
+                        <AppenderRef ref="SOSRequestDailyLogFile"/>
+                </Async>
+
+<File name="SOSSettlementLogFile" fileName="${APPLOGLOCAL}/SOSSettlementLog.log">
+                        <PatternLayout>
+                                <Pattern>%d %p %c{1.} [%t] %m%n</Pattern>
+                        </PatternLayout>
+                </File>
+                <Async name="SOSSettlementLog">
+                        <AppenderRef ref="SOSSettlementLogFile"/>
+                </Async>
+<File name="WebAPIRequestLogFile" fileName="${APPLOGLOCAL}/WebAPIRequestLog.log">
+                        <PatternLayout>
+                                <Pattern>%d %p %c{1.} [%t] %m%n</Pattern>
+                        </PatternLayout>
+                </File>
+                <Async name="WebAPIRequestLog">
+                        <AppenderRef ref="WebAPIRequestLogFile"/>
+                </Async>
+
+
+
+
+
+
+                <!--Enable in case of OneLine logging is required on syslog server on single port -->
+                <!--
+          <Syslog name="OneLineTXNLogC2S" format="${LOGPATTERN}" host="${SYSHOSTIP}" port="${SYSHOSTPORT}" protocol="UDP" newLine="true" facility="LOCAL6" charset="UTF-8" appName="OneLineTXNLogC2S"><LoggerFields><KeyValuePair key="" value="${LOGGERLP}" /></LoggerFields></Syslog><Syslog name="OneLineTXNLogP2P" format="${LOGPATTERN}" host="${SYSHOSTIP}" port="${SYSHOSTPORT}" protocol="UDP" newLine="true" facility="LOCAL6" charset="UTF-8" appName="OneLineTXNLogP2P"><LoggerFields><KeyValuePair key="" value="${LOGGERLP}" /></LoggerFields></Syslog><Syslog name="OneLineTXNLogCHNL" format="${LOGPATTERN}" host="${SYSHOSTIP}" port="${SYSHOSTPORT}" protocol="UDP" newLine="true" facility="LOCAL6" charset="UTF-8" appName="OneLineTXNLogCHNL"><LoggerFields><KeyValuePair key="" value="${LOGGERLP}" /></LoggerFields></Syslog><Syslog name="OneLineTXNLogVMS" format="${LOGPATTERN}" host="${SYSHOSTIP}" port="${SYSHOSTPORT}" protocol="UDP" newLine="true" facility="LOCAL6" charset="UTF-8" appName="OneLineTXNLogVMS"><LoggerFields><KeyValuePair key="" value="${LOGGERLP}" /></LoggerFields></Syslog>
+          -->
+                <!--Enable in case of OneLine logging is required on local NFS mount point server on single port -->
+                <RollingFile name="OneLineTXNLogC2S" fileName="${APPLOGONLINETDR}/OneLineTXNLogC2S.log" filePattern="${APPLOGONLINETDR}/OneLineTXNLogC2S.${LOGROTATIONDAILY}.log.gz" ignoreExceptions="false">
+                        <PatternLayout>
+                                <Pattern>${LOGGERLP}</Pattern>
+                        </PatternLayout>
+                        <Policies>
+                                <TimeBasedTriggeringPolicy interval="1" />
+                        </Policies>
+                </RollingFile>
+                <RollingFile name="OneLineTXNLogP2P" fileName="${APPLOGONLINETDR}/OneLineTXNLogP2P.log" filePattern="${APPLOGONLINETDR}/OneLineTXNLogP2P.${LOGROTATIONDAILY}.log.gz" ignoreExceptions="false">
+                        <PatternLayout>
+                                <Pattern>${LOGGERLP}</Pattern>
+                        </PatternLayout>
+                        <Policies>
+                                <TimeBasedTriggeringPolicy interval="1" />
+                        </Policies>
+                </RollingFile>
+                <RollingFile name="OneLineTXNLogCHNL" fileName="${APPLOGONLINETDR}/OneLineTXNLogCHNL.log" filePattern="${APPLOGONLINETDR}/OneLineTXNLogCHNL.${LOGROTATIONDAILY}.log.gz" ignoreExceptions="false">
+                        <PatternLayout>
+                                <Pattern>${LOGGERLP}</Pattern>
+                        </PatternLayout>
+                        <Policies>
+                                <TimeBasedTriggeringPolicy interval="1" />
+                        </Policies>
+                </RollingFile>
+                <RollingFile name="OneLineTXNLogVMS" fileName="${APPLOGONLINETDR}/OneLineTXNLogVMS.log" filePattern="${APPLOGONLINETDR}/OneLineTXNLogVMS.${LOGROTATIONDAILY}.log.gz" ignoreExceptions="false">
+                        <PatternLayout>
+                                <Pattern>${LOGGERLP}</Pattern>
+                        </PatternLayout>
+                        <Policies>
+                                <TimeBasedTriggeringPolicy interval="1" />
+                        </Policies>
+                </RollingFile>
+				<RollingFile name="OneLineTXNLogCHNL" fileName="${APPLOGONLINETDR}/OneLineTXNLogCHNL.log" filePattern="${APPLOGONLINETDR}/OneLineTXNLogCHNL.${LOGROTATIONDAILY}.log.gz" ignoreExceptions="false">
+                        <PatternLayout>
+                                <Pattern>${LOGGERLP}</Pattern>
+                        </PatternLayout>
+                        <Policies>
+                                <TimeBasedTriggeringPolicy interval="1" />
+                        </Policies>
+                </RollingFile>
+
+				<RollingFile name="WebAPIRequestLog" fileName="${APPLOGONLINETDR}/WebAPIRequestLog.log" filePattern="${APPLOGONLINETDR}/WebAPIRequestLog.${LOGROTATIONDAILY}.log.gz" ignoreExceptions="false">
+                        <PatternLayout>
+                                <Pattern>${LOGGERLP}</Pattern>
+                        </PatternLayout>
+                        <Policies>
+                                <TimeBasedTriggeringPolicy interval="1" />
+                        </Policies>
+                </RollingFile>
+
+				<RollingFile name="ChannelGatewayRequestLog" fileName="${APPLOGONLINETDR}/ChannelGatewayRequestLog.log" filePattern="${APPLOGONLINETDR}/ChannelGatewayRequestLog.${LOGROTATIONDAILY}.log.gz" ignoreExceptions="false">
+	<PatternLayout>
+		<Pattern>${LOGGERLP}</Pattern>
+	</PatternLayout>
+	<Policies>
+		<TimeBasedTriggeringPolicy interval="1" />
+	</Policies>
+</RollingFile>
+<RollingFile name="P2PGatewayRequestLog" fileName="${APPLOGONLINETDR}/P2PGatewayRequestLog.log" filePattern="${APPLOGONLINETDR}/P2PGatewayRequestLog.${LOGROTATIONDAILY}.log.gz" ignoreExceptions="false">
+	<PatternLayout>
+		<Pattern>${LOGGERLP}</Pattern>
+	</PatternLayout>
+	<Policies>
+		<TimeBasedTriggeringPolicy interval="1" />
+	</Policies>
+</RollingFile>
+<RollingFile name="BalanceLogger" fileName="${APPLOGONLINETDR}/BalanceLogger.log" filePattern="${APPLOGONLINETDR}/BalanceLogger.${LOGROTATIONDAILY}.log.gz" ignoreExceptions="false">
+	<PatternLayout>
+		<Pattern>${LOGGERLP}</Pattern>
+	</PatternLayout>
+	<Policies>
+		<TimeBasedTriggeringPolicy interval="1" />
+	</Policies>
+</RollingFile>
+
+<RollingFile name="TransactionLog" fileName="${APPLOGONLINETDR}/TransactionLog.log" filePattern="${APPLOGONLINETDR}/TransactionLog.${LOGROTATIONHOUR}.log.gz" ignoreExceptions="false">
+	<PatternLayout>
+		<Pattern>${LOGGERLP}</Pattern>
+	</PatternLayout>
+	<Policies>
+		<TimeBasedTriggeringPolicy interval="1" />
+	</Policies>
+</RollingFile>
+
+<RollingFile name="UnauthorizedAccessLog" fileName="${APPLOGONLINETDR}/UnauthorizedAccessLog.log" filePattern="${APPLOGONLINETDR}/UnauthorizedAccessLog.${LOGROTATIONDAILY}.log.gz" ignoreExceptions="false">
+	<PatternLayout>
+		<Pattern>${LOGGERLP}</Pattern>
+	</PatternLayout>
+	<Policies>
+		<TimeBasedTriggeringPolicy interval="1" />
+	</Policies>
+</RollingFile>
+
+<RollingFile name="DiffCreditLog" fileName="${APPLOGONLINETDR}/DiffCreditLog.log" filePattern="${APPLOGONLINETDR}/DiffCreditLog.${LOGROTATIONDAILY}.log.gz" ignoreExceptions="false">
+	<PatternLayout>
+		<Pattern>${LOGGERLP}</Pattern>
+	</PatternLayout>
+	<Policies>
+		<TimeBasedTriggeringPolicy interval="1" />
+	</Policies>
+</RollingFile>
+<RollingFile name="OrderCreditLog" fileName="${APPLOGONLINETDR}/OrderCreditLog.log" filePattern="${APPLOGONLINETDR}/OrderCreditLog.${LOGROTATIONDAILY}.log.gz" ignoreExceptions="false">
+	<PatternLayout>
+		<Pattern>${LOGGERLP}</Pattern>
+	</PatternLayout>
+	<Policies>
+		<TimeBasedTriggeringPolicy interval="1" />
+	</Policies>
+</RollingFile>
+<RollingFile name="BarredMsisdnLog" fileName="${APPLOGONLINETDR}/BarredMsisdnLog.log" filePattern="${APPLOGONLINETDR}/BarredMsisdnLog.${LOGROTATIONDAILY}.log.gz" ignoreExceptions="false">
+	<PatternLayout>
+		<Pattern>${LOGGERLP}</Pattern>
+	</PatternLayout>
+	<Policies>
+		<TimeBasedTriggeringPolicy interval="1" />
+	</Policies>
+</RollingFile>
+<RollingFile name="MessageSentLog" fileName="${APPLOGONLINETDR}/MessageSentLog.log" filePattern="${APPLOGONLINETDR}/MessageSentLog.${LOGROTATIONDAILY}.log.gz" ignoreExceptions="false">
+	<PatternLayout>
+		<Pattern>${LOGGERLP}</Pattern>
+	</PatternLayout>
+	<Policies>
+		<TimeBasedTriggeringPolicy interval="1" />
+	</Policies>
+</RollingFile>
+
+<RollingFile name="SMSChargingLog" fileName="${APPLOGONLINETDR}/SMSChargingLog.log" filePattern="${APPLOGONLINETDR}/SMSChargingLog.${LOGROTATIONDAILY}.log.gz" ignoreExceptions="false">
+	<PatternLayout>
+		<Pattern>${LOGGERLP}</Pattern>
+	</PatternLayout>
+	<Policies>
+		<TimeBasedTriggeringPolicy interval="1" />
+	</Policies>
+</RollingFile>
+<RollingFile name="IccFileProcessLog" fileName="${APPLOGONLINETDR}/IccFileProcessLog.log" filePattern="${APPLOGONLINETDR}/IccFileProcessLog.${LOGROTATIONDAILY}.log.gz" ignoreExceptions="false">
+	<PatternLayout>
+		<Pattern>${LOGGERLP}</Pattern>
+	</PatternLayout>
+	<Policies>
+		<TimeBasedTriggeringPolicy interval="1" />
+	</Policies>
+</RollingFile>
+<RollingFile name="LoginLogger" fileName="${APPLOGONLINETDR}/LoginLogger.log" filePattern="${APPLOGONLINETDR}/LoginLogger.${LOGROTATIONDAILY}.log.gz" ignoreExceptions="false">
+	<PatternLayout>
+		<Pattern>${LOGGERLP}</Pattern>
+	</PatternLayout>
+	<Policies>
+		<TimeBasedTriggeringPolicy interval="1" />
+	</Policies>
+</RollingFile>
+<RollingFile name="AdminOperationLog" fileName="${APPLOGONLINETDR}/AdminOperationLog.log" filePattern="${APPLOGONLINETDR}/AdminOperationLog.${LOGROTATIONDAILY}.log.gz" ignoreExceptions="false">
+	<PatternLayout>
+		<Pattern>${LOGGERLP}</Pattern>
+	</PatternLayout>
+	<Policies>
+		<TimeBasedTriggeringPolicy interval="1" />
+	</Policies>
+</RollingFile>
+<RollingFile name="ChannelUserLog" fileName="${APPLOGONLINETDR}/ChannelUserLog.log" filePattern="${APPLOGONLINETDR}/ChannelUserLog.${LOGROTATIONDAILY}.log.gz" ignoreExceptions="false">
+	<PatternLayout>
+		<Pattern>${LOGGERLP}</Pattern>
+	</PatternLayout>
+	<Policies>
+		<TimeBasedTriggeringPolicy interval="1" />
+	</Policies>
+</RollingFile>
+<RollingFile name="BatchO2CFileProcessLog" fileName="${APPLOGONLINETDR}/BatchO2CFileProcessLog.log" filePattern="${APPLOGONLINETDR}/BatchO2CFileProcessLog.${LOGROTATIONDAILY}.log.gz" ignoreExceptions="false">
+	<PatternLayout>
+		<Pattern>${LOGGERLP}</Pattern>
+	</PatternLayout>
+	<Policies>
+		<TimeBasedTriggeringPolicy interval="1" />
+	</Policies>
+</RollingFile>
+<RollingFile name="NetworkStockLog" fileName="${APPLOGONLINETDR}/NetworkStockLog.log" filePattern="${APPLOGONLINETDR}/NetworkStockLog.${LOGROTATIONDAILY}.log.gz" ignoreExceptions="false">
+	<PatternLayout>
+		<Pattern>${LOGGERLP}</Pattern>
+	</PatternLayout>
+	<Policies>
+		<TimeBasedTriggeringPolicy interval="1" />
+	</Policies>
+</RollingFile>
+<RollingFile name="CacheOperationLog" fileName="${APPLOGONLINETDR}/CacheOperationLog.log" filePattern="${APPLOGONLINETDR}/CacheOperationLog.${LOGROTATIONDAILY}.log.gz" ignoreExceptions="false">
+	<PatternLayout>
+		<Pattern>${LOGGERLP}</Pattern>
+	</PatternLayout>
+	<Policies>
+		<TimeBasedTriggeringPolicy interval="1" />
+	</Policies>
+</RollingFile>
+<RollingFile name="BarFileProccesingLog" fileName="${APPLOGONLINETDR}/BarFileProccesingLog.log" filePattern="${APPLOGONLINETDR}/BarFileProccesingLog.${LOGROTATIONDAILY}.log.gz" ignoreExceptions="false">
+	<PatternLayout>
+		<Pattern>${LOGGERLP}</Pattern>
+	</PatternLayout>
+	<Policies>
+		<TimeBasedTriggeringPolicy interval="1" />
+	</Policies>
+</RollingFile>
+<RollingFile name="UnregisterSubscribersFileProcessLog" fileName="${APPLOGONLINETDR}/UnregisterSubscribersFileProcessLog.log" filePattern="${APPLOGONLINETDR}/UnregisterSubscribersFileProcessLog.${LOGROTATIONDAILY}.log.gz" ignoreExceptions="false">
+	<PatternLayout>
+		<Pattern>${LOGGERLP}</Pattern>
+	</PatternLayout>
+	<Policies>
+		<TimeBasedTriggeringPolicy interval="1" />
+	</Policies>
+</RollingFile>
+<RollingFile name="ProcessesLog" fileName="${APPLOGONLINETDR}/ProcessesLog.log" filePattern="${APPLOGONLINETDR}/ProcessesLog.${LOGROTATIONDAILY}.log.gz" ignoreExceptions="false">
+	<PatternLayout>
+		<Pattern>${LOGGERLP}</Pattern>
+	</PatternLayout>
+	<Policies>
+		<TimeBasedTriggeringPolicy interval="1" />
+	</Policies>
+</RollingFile>
+<RollingFile name="EventLogger" fileName="${APPLOGONLINETDR}/EventLogger.log" filePattern="${APPLOGONLINETDR}/EventLogger.${LOGROTATIONDAILY}.log.gz" ignoreExceptions="false">
+	<PatternLayout>
+		<Pattern>${LOGGERLP}</Pattern>
+	</PatternLayout>
+	<Policies>
+		<TimeBasedTriggeringPolicy interval="1" />
+	</Policies>
+</RollingFile>
+<RollingFile name="WebRechargeLogger" fileName="${APPLOGONLINETDR}/WebRechargeLogger.log" filePattern="${APPLOGONLINETDR}/WebRechargeLogger.${LOGROTATIONDAILY}.log.gz" ignoreExceptions="false">
+	<PatternLayout>
+		<Pattern>${LOGGERLP}</Pattern>
+	</PatternLayout>
+	<Policies>
+		<TimeBasedTriggeringPolicy interval="1" />
+	</Policies>
+</RollingFile>
+<RollingFile name="AssociateMsisdnFileProcessLog" fileName="${APPLOGONLINETDR}/AssociateMsisdnFileProcessLog.log" filePattern="${APPLOGONLINETDR}/AssociateMsisdnFileProcessLog.${LOGROTATIONDAILY}.log.gz" ignoreExceptions="false">
+	<PatternLayout>
+		<Pattern>${LOGGERLP}</Pattern>
+	</PatternLayout>
+	<Policies>
+		<TimeBasedTriggeringPolicy interval="1" />
+	</Policies>
+</RollingFile>
+<RollingFile name="OperatorUserLog" fileName="${APPLOGONLINETDR}/OperatorUserLog.log" filePattern="${APPLOGONLINETDR}/OperatorUserLog.${LOGROTATIONDAILY}.log.gz" ignoreExceptions="false">
+	<PatternLayout>
+		<Pattern>${LOGGERLP}</Pattern>
+	</PatternLayout>
+	<Policies>
+		<TimeBasedTriggeringPolicy interval="1" />
+	</Policies>
+</RollingFile>
+<RollingFile name="BatchFocFileProcessLog" fileName="${APPLOGONLINETDR}/BatchFocFileProcessLog.log" filePattern="${APPLOGONLINETDR}/BatchFocFileProcessLog.${LOGROTATIONDAILY}.log.gz" ignoreExceptions="false">
+	<PatternLayout>
+		<Pattern>${LOGGERLP}</Pattern>
+	</PatternLayout>
+	<Policies>
+		<TimeBasedTriggeringPolicy interval="1" />
+	</Policies>
+</RollingFile>
+<RollingFile name="DirectPayOutSuccessLog" fileName="${APPLOGONLINETDR}/DirectPayOutSuccessLog.log" filePattern="${APPLOGONLINETDR}/DirectPayOutSuccessLog.${LOGROTATIONDAILY}.log.gz" ignoreExceptions="false">
+	<PatternLayout>
+		<Pattern>${LOGGERLP}</Pattern>
+	</PatternLayout>
+	<Policies>
+		<TimeBasedTriggeringPolicy interval="1" />
+	</Policies>
+</RollingFile>
+<RollingFile name="BatchesLog" fileName="${APPLOGONLINETDR}/BatchesLog.log" filePattern="${APPLOGONLINETDR}/BatchesLog.${LOGROTATIONDAILY}.log.gz" ignoreExceptions="false">
+	<PatternLayout>
+		<Pattern>${LOGGERLP}</Pattern>
+	</PatternLayout>
+	<Policies>
+		<TimeBasedTriggeringPolicy interval="1" />
+	</Policies>
+</RollingFile>
+
+<RollingFile name="AlarmSender" fileName="${APPLOGONLINETDR}/AlarmSender.log" filePattern="${APPLOGONLINETDR}/AlarmSender.${LOGROTATIONDAILY}.log.gz" ignoreExceptions="false">
+	<PatternLayout>
+		<Pattern>${LOGGERLP}</Pattern>
+	</PatternLayout>
+	<Policies>
+		<TimeBasedTriggeringPolicy interval="1" />
+	</Policies>
+</RollingFile>
+<RollingFile name="VomsBatchInfoLog" fileName="${APPLOGONLINETDR}/VomsBatchInfoLog.log" filePattern="${APPLOGONLINETDR}/VomsBatchInfoLog.${LOGROTATIONDAILY}.log.gz" ignoreExceptions="false">
+	<PatternLayout>
+		<Pattern>${LOGGERLP}</Pattern>
+	</PatternLayout>
+	<Policies>
+		<TimeBasedTriggeringPolicy interval="1" />
+	</Policies>
+</RollingFile>
+<RollingFile name="VomsVoucherChangeStatusLog" fileName="${APPLOGONLINETDR}/VomsVoucherChangeStatusLog.log" filePattern="${APPLOGONLINETDR}/VomsVoucherChangeStatusLog.${LOGROTATIONDAILY}.log.gz" ignoreExceptions="false">
+	<PatternLayout>
+		<Pattern>${LOGGERLP}</Pattern>
+	</PatternLayout>
+	<Policies>
+		<TimeBasedTriggeringPolicy interval="1" />
+	</Policies>
+</RollingFile>
+<RollingFile name="ChannelRequestDailyLog" fileName="${APPLOGONLINETDR}/ChannelRequestDailyLog.log" filePattern="${APPLOGONLINETDR}/ChannelRequestDailyLog.${LOGROTATIONDAILY}.log.gz" ignoreExceptions="false">
+	<PatternLayout>
+		<Pattern>${LOGGERLP}</Pattern>
+	</PatternLayout>
+	<Policies>
+		<TimeBasedTriggeringPolicy interval="1" />
+	</Policies>
+</RollingFile>
+<RollingFile name="LMBForceSettleLog" fileName="${APPLOGONLINETDR}/LMBForceSettleLog.log" filePattern="${APPLOGONLINETDR}/LMBForceSettleLog.${LOGROTATIONDAILY}.log.gz" ignoreExceptions="false">
+	<PatternLayout>
+		<Pattern>${LOGGERLP}</Pattern>
+	</PatternLayout>
+	<Policies>
+		<TimeBasedTriggeringPolicy interval="1" />
+	</Policies>
+</RollingFile>
+<RollingFile name="GiveMeBalanceRequestResponseLog" fileName="${APPLOGONLINETDR}/GiveMeBalanceRequestResponseLog.log" filePattern="${APPLOGONLINETDR}/GiveMeBalanceRequestResponseLog.${LOGROTATIONDAILY}.log.gz" ignoreExceptions="false">
+	<PatternLayout>
+		<Pattern>${LOGGERLP}</Pattern>
+	</PatternLayout>
+	<Policies>
+		<TimeBasedTriggeringPolicy interval="1" />
+	</Policies>
+</RollingFile>
+<RollingFile name="QueueLogger" fileName="${APPLOGONLINETDR}/QueueLogger.log" filePattern="${APPLOGONLINETDR}/QueueLogger.${LOGROTATIONDAILY}.log.gz" ignoreExceptions="false">
+	<PatternLayout>
+		<Pattern>${LOGGERLP}</Pattern>
+	</PatternLayout>
+	<Policies>
+		<TimeBasedTriggeringPolicy interval="1" />
+	</Policies>
+</RollingFile>
+<RollingFile name="ScheduledTopUpLogger" fileName="${APPLOGONLINETDR}/ScheduledTopUpLogger.log" filePattern="${APPLOGONLINETDR}/ScheduledTopUpLogger.${LOGROTATIONDAILY}.log.gz" ignoreExceptions="false">
+	<PatternLayout>
+		<Pattern>${LOGGERLP}</Pattern>
+	</PatternLayout>
+	<Policies>
+		<TimeBasedTriggeringPolicy interval="1" />
+	</Policies>
+</RollingFile>
+<RollingFile name="FileProcessLogger" fileName="${APPLOGONLINETDR}/FileProcessLogger.log" filePattern="${APPLOGONLINETDR}/FileProcessLogger.${LOGROTATIONDAILY}.log.gz" ignoreExceptions="false">
+	<PatternLayout>
+		<Pattern>${LOGGERLP}</Pattern>
+	</PatternLayout>
+	<Policies>
+		<TimeBasedTriggeringPolicy interval="1" />
+	</Policies>
+</RollingFile>
+<RollingFile name="SOSSettlementRequestLog" fileName="${APPLOGONLINETDR}/SOSSettlementRequestLog.log" filePattern="${APPLOGONLINETDR}/SOSSettlementRequestLog.${LOGROTATIONDAILY}.log.gz" ignoreExceptions="false">
+	<PatternLayout>
+		<Pattern>${LOGGERLP}</Pattern>
+	</PatternLayout>
+	<Policies>
+		<TimeBasedTriggeringPolicy interval="1" />
+	</Policies>
+</RollingFile>
+<RollingFile name="AmbigousSettlementErrorLog" fileName="${APPLOGONLINETDR}/AmbigousSettlementErrorLog.log" filePattern="${APPLOGONLINETDR}/AmbigousSettlementErrorLog.${LOGROTATIONDAILY}.log.gz" ignoreExceptions="false">
+	<PatternLayout>
+		<Pattern>${LOGGERLP}</Pattern>
+	</PatternLayout>
+	<Policies>
+		<TimeBasedTriggeringPolicy interval="1" />
+	</Policies>
+</RollingFile>
+<RollingFile name="ActivityLog" fileName="${APPLOGONLINETDR}/ActivityLog.log" filePattern="${APPLOGONLINETDR}/ActivityLog.${LOGROTATIONDAILY}.log.gz" ignoreExceptions="false">
+	<PatternLayout>
+		<Pattern>${LOGGERLP}</Pattern>
+	</PatternLayout>
+	<Policies>
+		<TimeBasedTriggeringPolicy interval="1" />
+	</Policies>
+</RollingFile>
+<RollingFile name="AutoO2CLogger" fileName="${APPLOGONLINETDR}/AutoO2CLogger.log" filePattern="${APPLOGONLINETDR}/AutoO2CLogger.${LOGROTATIONDAILY}.log.gz" ignoreExceptions="false">
+	<PatternLayout>
+		<Pattern>${LOGGERLP}</Pattern>
+	</PatternLayout>
+	<Policies>
+		<TimeBasedTriggeringPolicy interval="1" />
+	</Policies>
+</RollingFile>
+<RollingFile name="AutoC2CLogger" fileName="${APPLOGONLINETDR}/AutoC2CLogger.log" filePattern="${APPLOGONLINETDR}/AutoC2CLogger.${LOGROTATIONDAILY}.log.gz" ignoreExceptions="false">
+	<PatternLayout>
+		<Pattern>${LOGGERLP}</Pattern>
+	</PatternLayout>
+	<Policies>
+		<TimeBasedTriggeringPolicy interval="1" />
+	</Policies>
+</RollingFile>
+<RollingFile name="P2PRequestDailyLog" fileName="${APPLOGONLINETDR}/P2PRequestDailyLog.log" filePattern="${APPLOGONLINETDR}/P2PRequestDailyLog.${LOGROTATIONDAILY}.log.gz" ignoreExceptions="false">
+	<PatternLayout>
+		<Pattern>${LOGGERLP}</Pattern>
+	</PatternLayout>
+	<Policies>
+		<TimeBasedTriggeringPolicy interval="1" />
+	</Policies>
+</RollingFile>
+<RollingFile name="VoucherUploadErrorLog" fileName="${APPLOGONLINETDR}/VoucherUploadErrorLog.log" filePattern="${APPLOGONLINETDR}/VoucherUploadErrorLog.${LOGROTATIONDAILY}.log.gz" ignoreExceptions="false">
+	<PatternLayout>
+		<Pattern>${LOGGERLP}</Pattern>
+	</PatternLayout>
+	<Policies>
+		<TimeBasedTriggeringPolicy interval="1" />
+	</Policies>
+</RollingFile>
+<RollingFile name="DBConActivityLog" fileName="${APPLOGONLINETDR}/DBConActivityLog.log" filePattern="${APPLOGONLINETDR}/DBConActivityLog.${LOGROTATIONDAILY}.log.gz" ignoreExceptions="false">
+	<PatternLayout>
+		<Pattern>${LOGGERLP}</Pattern>
+	</PatternLayout>
+	<Policies>
+		<TimeBasedTriggeringPolicy interval="1" />
+	</Policies>
+</RollingFile>
+<RollingFile name="InterfaceTransactionLog" fileName="${APPLOGONLINETDR}/InterfaceTransactionLog.log" filePattern="${APPLOGONLINETDR}/InterfaceTransactionLog.${LOGROTATIONDAILY}.log.gz" ignoreExceptions="false">
+	<PatternLayout>
+		<Pattern>${LOGGERLP}</Pattern>
+	</PatternLayout>
+	<Policies>
+		<TimeBasedTriggeringPolicy interval="1" />
+	</Policies>
+</RollingFile>
+<RollingFile name="APITransactionLog" fileName="${APPLOGONLINETDR}/APITransactionLog.log" filePattern="${APPLOGONLINETDR}/APITransactionLog.${LOGROTATIONDAILY}.log.gz" ignoreExceptions="false">
+	<PatternLayout>
+		<Pattern>${LOGGERLP}</Pattern>
+	</PatternLayout>
+	<Policies>
+		<TimeBasedTriggeringPolicy interval="1" />
+	</Policies>
+</RollingFile>
+<RollingFile name="INNodeLog" fileName="${APPLOGONLINETDR}/INNodeLog.log" filePattern="${APPLOGONLINETDR}/INNodeLog.${LOGROTATIONDAILY}.log.gz" ignoreExceptions="false">
+	<PatternLayout>
+		<Pattern>${LOGGERLP}</Pattern>
+	</PatternLayout>
+	<Policies>
+		<TimeBasedTriggeringPolicy interval="1" />
+	</Policies>
+</RollingFile>
+<RollingFile name="C2S205AutoSettlementSchedulerlog" fileName="${APPLOGONLINETDR}/C2S205AutoSettlementSchedulerlog.log" filePattern="${APPLOGONLINETDR}/C2S205AutoSettlementSchedulerlog.${LOGROTATIONDAILY}.log.gz" ignoreExceptions="false">
+	<PatternLayout>
+		<Pattern>${LOGGERLP}</Pattern>
+	</PatternLayout>
+	<Policies>
+		<TimeBasedTriggeringPolicy interval="1" />
+	</Policies>
+</RollingFile>
+<RollingFile name="EmailSentLog" fileName="${APPLOGONLINETDR}/EmailSentLog.log" filePattern="${APPLOGONLINETDR}/EmailSentLog.${LOGROTATIONDAILY}.log.gz" ignoreExceptions="false">
+	<PatternLayout>
+		<Pattern>${LOGGERLP}</Pattern>
+	</PatternLayout>
+	<Policies>
+		<TimeBasedTriggeringPolicy interval="1" />
+	</Policies>
+</RollingFile>
+<RollingFile name="UnregisterChUsersFileProcessLog" fileName="${APPLOGONLINETDR}/UnregisterChUsersFileProcessLog.log" filePattern="${APPLOGONLINETDR}/UnregisterChUsersFileProcessLog.${LOGROTATIONDAILY}.log.gz" ignoreExceptions="false">
+	<PatternLayout>
+		<Pattern>${LOGGERLP}</Pattern>
+	</PatternLayout>
+	<Policies>
+		<TimeBasedTriggeringPolicy interval="1" />
+	</Policies>
+</RollingFile>
+<RollingFile name="SOSRequestDailyLog" fileName="${APPLOGONLINETDR}/SOSRequestDailyLog.log" filePattern="${APPLOGONLINETDR}/SOSRequestDailyLog.${LOGROTATIONDAILY}.log.gz" ignoreExceptions="false">
+	<PatternLayout>
+		<Pattern>${LOGGERLP}</Pattern>
+	</PatternLayout>
+	<Policies>
+		<TimeBasedTriggeringPolicy interval="1" />
+	</Policies>
+</RollingFile>
+<RollingFile name="SOSSettlementLog" fileName="${APPLOGONLINETDR}/SOSSettlementLog.log" filePattern="${APPLOGONLINETDR}/SOSSettlementLog.${LOGROTATIONDAILY}.log.gz" ignoreExceptions="false">
+	<PatternLayout>
+		<Pattern>${LOGGERLP}</Pattern>
+	</PatternLayout>
+	<Policies>
+		<TimeBasedTriggeringPolicy interval="1" />
+	</Policies>
+</RollingFile>
+<RollingFile name="PreTUPsOut" fileName="${APPLOGONLINETDR}/PreTUPsOut.log" filePattern="${APPLOGONLINETDR}/PreTUPsOut.${LOGROTATIONHOUR}.log.gz" ignoreExceptions="false">
+	<PatternLayout>
+		<Pattern>${LOGGERLP}</Pattern>
+	</PatternLayout>
+	<Policies>
+		<TimeBasedTriggeringPolicy interval="1" />
+	</Policies>
+</RollingFile>
+        </Appenders>
+</Configuration>
+

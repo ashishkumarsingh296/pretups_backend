@@ -1,0 +1,21 @@
+---
+# - name: "Running the dbConf.yml for standalone Database"
+#   hosts: dbservers
+# - include: dbconf.yml
+
+# - name: "Running the dbconfRAC.yml for RAC Database"
+#   hosts: dbservers
+# - include: dbconfRAC.yml
+
+# - name: "Running Manual Scripts Only and No Dump"
+#   hosts: dbservers
+#   user: "{{ ansible_ssh_user }}"
+#   gather_facts: no
+#   hosts: dbservers
+#   serial: 1
+#   roles:
+#   - db_task
+
+ - name: "Running dbConfPostgres for postgres database"
+   hosts: dbservers
+ - include: dbconfPostgres.yml

@@ -1,0 +1,39 @@
+---
+########################################################
+# Author           Date        Remarks
+#------------    -----------  ---------
+#Sadhan Kumar K  25-07-2016    Initial Creation
+#
+# This file takes care of War patch.
+#########################################################
+
+ - name: Creating new pretups Package
+   command: cp -rf {{ LinkDirectoryPath }}/{{ OldPackageName }} {{ LinkDirectoryPath }}/{{ NewPackageName }}
+   tags:
+     - PackageBkp
+
+ - name: Copying pretups to a remote
+   copy: src="files/pretups" dest="{{ BackupPretupsInstancePath }}/Ansible"
+   tags:
+      - PreTUPSBkp
+
+ - name: Copying pretups Patch to remote server
+   shell: rsync -arzh {{ BackupPretupsInstancePath }}/Ansible/pretups/ {{ LinkDirectoryPath }}/{{ NewPackageName }}/ --exclude WEB-INF/classes/configfiles
+   register: copyPreTUPS
+   tags:
+     - copyPreTUPS
+
+ - name: unlink soft link of the old pretups 
+   file: path="{{item.TomcatHomePath }}/webapps/{{ PRETUPS_SOFT_LINK }}" state=absent
+   with_items:
+     - "{{ CatalinaConfig }}"
+
+ - name: making soft link of the pretups package created above 
+   file: src="{{ LinkDirectoryPath }}/{{ NewPackageName }}" dest="{{item.TomcatHomePath }}/webapps/{{ PRETUPS_SOFT_LINK }}" state=link force=yes
+   with_items:
+     - "{{ CatalinaConfig }}"
+
+ - name: removing pretups from a remote
+   command: rm -rf {{ BackupPretupsInstancePath }}/Ansible
+   tags:
+      - PreTUPSBkp

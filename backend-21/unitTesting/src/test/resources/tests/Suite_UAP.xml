@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="PreTUPS Automation Suite" parallel="none">
+ 
+  <test name="UAP" preserve-order="true">
+    <classes>
+      <class name="com.testscripts.uap.UAP_NetworkStock"/>
+      <class name="com.testscripts.uap.UAP_O2CTransferRule"/>
+      <class name="com.testscripts.uap.UAP_C2CTransferRuleCreation"/>
+      <class name="com.testscripts.uap.UAP_GradeCreation"/>
+      <class name="com.testscripts.uap.UAP_AddC2STransferRule"/>
+      <class name="com.testscripts.uap.UAP_ModifyC2STransferRule"/>
+      <class name="com.testscripts.uap.UAP_ViewC2STransferRule"/>
+      <class name="com.testscripts.uap.UAP_FOCTransfer"/>
+      <class name="com.testscripts.uap.UAP_OperatorToChannel"/>
+      <class name="com.testscripts.uap.UAP_O2CReturn"/>
+      <class name="com.testscripts.uap.UAP_UpdateCache"/>
+      <class name="com.testscripts.uap.UAP_P2PCardGroup"/>
+      <class name="com.testscripts.uap.UAP_AddP2PTransferRule"/>
+      <class name="com.testscripts.uap.UAP_ModifyP2PTransferRule"/>
+      <class name="com.testscripts.uap.UAP_ViewP2PTransferRule"/>
+      <class name="com.testscripts.uap.UAP_CommissionProfile"/>
+      <class name="com.testscripts.uap.UAP_TCP"/>
+      <class name="com.testscripts.uap.UAP_CardGroup"/>
+      <class name="com.testscripts.uap.UAP_OperatorUserCreation"/>
+      <class name="com.testscripts.uap.UAP_ViewSelfDetailsOperator"/>
+      <class name="com.testscripts.uap.UAP_ChannelUserCreation"/>
+      <class name="com.testscripts.uap.UAP_NetworkPrefix"/>
+      <class name="com.testscripts.uap.UAP_DeleteChannelUser"/>
+      <class name="com.testscripts.uap.UAP_NetworkService"/>
+      <class name="com.testscripts.uap.UAP_Channel2ChannelTransfer"/>
+      <class name="com.testscripts.uap.UAP_Channel2ChannelWithdraw"/>
+      <class name="com.testscripts.uap.UAP_Channel2ChannelReturn"/>
+      <class name="com.testscripts.uap.UAP_C2STransfer"/>
+      <class name="com.testscripts.uap.UAP_SuspendResumeChannelUser"/>
+      <class name="com.testscripts.uap.UAP_ChannelUserPinMgmt"/>
+      <class name="com.testscripts.uap.UAP_ChangeSelfPin"/>
+      <class name="com.testscripts.uap.UAP_UserPasswordManagement"/>
+    </classes>
+    </test>
+	
+</suite>

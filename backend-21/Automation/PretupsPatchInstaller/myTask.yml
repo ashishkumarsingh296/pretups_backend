@@ -1,0 +1,18 @@
+---
+########################################################
+# Author           Date        Remarks
+#------------    -----------  ---------
+#Pankaj Rawat  09-10-2018    Initial Creation
+#
+# This file Runs the role of Patch.
+#########################################################
+
+- name: PROMPT MESSAGE
+  hosts: webservers
+  vars:
+    prompt_message: |
+      Hello There
+
+  tasks:
+    - name: display prompt message
+      debug: msg={{ prompt_message.split('\n') }}

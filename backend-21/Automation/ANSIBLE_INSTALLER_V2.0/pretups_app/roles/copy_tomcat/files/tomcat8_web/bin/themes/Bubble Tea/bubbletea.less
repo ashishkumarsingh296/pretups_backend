@@ -1,0 +1,71 @@
+// Color Scheme
+@base-color: #316300;
+@primary-color: #5cb85c;
+@success-color: #5cb85c;
+@warning-color: #f0ad4e;
+@danger-color: #d9534f;
+@selection-color: #fdf5c1;
+
+// Font
+@font-color: #111111;
+@font-size: 12px;
+@font-family-base: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+
+.btn-categories, .module {
+    text-shadow: 1px 1px lighten(@text-color, 80%);
+    background: linear-gradient(to bottom, lighten(@base-color, 85%) 0%, lighten(@base-color, 65%) 100%) !important; /* W3C */
+    border: solid 1px lighten(@base-border, 10%) !important;
+    margin: 8px !important;
+
+    box-shadow: inset 0px -15px 10px darken(@body-bg, 10%);
+
+    transition: box-shadow 0.25s ease-in-out;
+    transition: border 0.25s ease-in-out;
+}
+
+.module {
+    border-radius: 80px !important;
+    padding-top: 20px !important;
+    height: 160px;
+    width: 160px;
+}
+
+.btn-categories {
+    padding-top: 30px !important;
+    border-radius: 80px !important;
+    height: 130px;
+    width: 130px;
+}
+
+.btn-categories:hover, .module:hover {
+    border: solid 1px darken(@selection-color, 60%) !important;
+    background: linear-gradient(to bottom, lighten(@selection-color, 10%) 0%, lighten(@selection-color, 0%) 100%) !important; /* W3C */
+    box-shadow: inset 0px -10px 7px darken(@selection-color, 10%);
+    transition: box-shadow 0.25s ease-in-out;
+    transition: border 0.25s ease-in-out;
+}
+
+.configgroup {
+    border: none;
+    background-color: transparent;
+    border-radius: 0px;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+}
+
+.panel-heading {
+    border: none;
+    border-bottom: solid @font-color 1px !important;
+    background-color: @body-bg !important;
+    border-radius: 0px;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    font-size: 120%;
+    padding: 0px;
+}
+
+.panel, .panel-default{
+    border: 0px;
+}

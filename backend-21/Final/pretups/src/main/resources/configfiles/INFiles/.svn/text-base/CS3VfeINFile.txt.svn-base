@@ -1,0 +1,205 @@
+############################################################################################################
+# CS4 IN file
+#       If IN interface of CS4is added in PreTUPS from superadmin then.
+#       File with this content and name of the IN ID.txt should be created at
+#       the
+#       path of the INFiles (defined in Constants.props).
+#
+#       Values of the variables in this file should be updated with the values
+#       provided by the
+#       Mobile Operator IN team
+#
+#       Define the interface id as value of SCH_IN_IDS in the Constants.props
+#       to initialize the
+#       details of all node exist in this interface
+#
+############################################################################################################
+
+#######################Common detail of interface for ALL Nodes-Start############################################
+
+##Defines the max number by which the next node would be checked for scheduling
+MAX_ALWD_NO=1
+
+##Defines the maximum number node supported by IN
+MAX_NODE=1
+
+##Defines the retry attempt to get the scheduled node,in the case of
+connection error.
+RETRY_NUM=2
+
+##Used for the request header for the authentication of request and would be
+set by the operator
+HEADER_HOST_NAME=air5:10010
+
+##Used in the request xml string and would be set by operator.
+#HOST_NAME=VXMLIVR1
+HOST_NAME=ERCH
+
+##Used for authentication if the host name is not present.
+USER_AGENT=Minsat/3.1/5.6
+
+##Defines the type of node set by opertor.
+NODE_TYPE=ERCH
+
+##This flag is used to define whether rounding of amount should be or not.
+ROUND_FLAG=Y
+
+WARN_TIMEOUT=10000
+## The content type with which request is send to IN
+CONTENT_TYPE=text/xml
+
+## The Factor by which the transaction amout to be multiplied before sending
+to IN.
+MULT_FACTOR=1
+
+## Prefix to be removed from the mobile number, leave blank if nothing is to
+be removed
+MSISDN_REMOVE_PREFIX=
+
+## Prefix to be added to the mobile number, leave blank if nothing is to be
+added as prefix
+MSISDN_ADD_PREFIX=91
+
+##Defines the mapping of Interface language with the pretups language( format-
+IN_LANG1:PTUPS_LANG1,IN_LANG2:PTUPS_LANG2)
+LANGUAGE_MAPPING=1:0,0:1
+
+#Transaction date time format
+TRANS_DATE_TIME=yyyyMMdd'T'HH:mm:ss+SSSS
+
+
+RC_R=Y
+
+PRC_S=Y
+
+PRC_R=Y
+
+PCR_R=Y
+
+PCR_S=Y
+
+
+## The Factor by which the transaction amout to be multiplied before sending to IN.
+MULT_FACTOR=100
+
+##This flag is used to define whether rounding of amount should be or not.
+ROUND_FLAG=Y
+
+## The content type with which request is send to IN
+CONTENT_TYPE=text/xml
+
+
+##Defines the mapping of Interface language with the pretups language( format-IN_LANG1:PTUPS_LANG1,IN_LANG2:PTUPS_LANG2)
+LANGUAGE_MAPPING=1:1,2:0
+
+ACCOUNT_AFTER_FLAG=1
+
+ACCOUNT_BEFORE_FLAG=0
+
+CR_EXTERNAL_DATA1=cr_ex1
+
+CR_EXTERNAL_DATA2=cr_ex2
+
+CR_EXTERNAL_DATA3=cr_ex3
+
+CR_EXTERNAL_DATA4=cr_ex4
+
+CURRENCY=INR
+
+NAI=2
+
+SRVC_OFFER_APPLICABLE=N
+
+SRVC_OFFER_CLASSES=VFE1
+
+MIN_AMT_SRVC_OFFER_CLASSES=35
+
+SRVC_OFFER_BITS=1,14,25
+
+CREDIT_RETRY_CNT=2
+
+
+########################Details for individual Nodes-Start############################################
+###CS3 NODE 1 detail###
+#CS3 Node HTTP URL, this url will be provided by the operator to establish the Http connection with pretups.
+#URL_1=http://10.48.0.65:10010/Air
+URL_1=http://172.17.183.120:9898/pretups/CS3CP6TestServer1
+
+# Connection timeout for the node url
+CONN_TIMEOUT_1=5000
+
+#Maximum connection can be made to the node
+MAX_CON_NODE_1=50
+
+#Read timeout for the validate stage
+VAL_READ_TIMEOUT_1=5000
+
+#Read timeout for the TopUp stage
+TOP_READ_TIMEOUT_1=10000
+
+#In the case when connection is not established for the node, it will blocked
+forthis duration.
+EXPIRY_TIME_1=5
+
+#keep alive falg for node
+KEEP_ALIVE_1=N
+
+#user name for node
+USERNAME_1=aircelucip
+
+#password for node
+PASSWORD_1=picu123aircel
+
+#Read warning time for node, should be less than the validate read timeout, if
+IN takes more than this time alarm will be raised.
+WARN_TIME_1=4000
+
+NO_ALLWD_AMB_TXN_1=500
+
+THRESHOLD_TIME_1=5000
+
+###NODE 2 Detail###
+#CS3 Node HTTP URL, this url will be provided by the operator to establish the
+Http connection with pretups.
+URL_2=http://10.48.0.61:10010/Air
+
+# Connection timeout for the node url
+CONN_TIMEOUT_2=50002
+
+#Maximum connection can be made to the node
+MAX_CON_NODE_2=50
+
+
+#Read timeout for the validate stage
+VAL_READ_TIMEOUT_2=3000
+
+#Read timeout for the TopUp stage
+TOP_READ_TIMEOUT_2=4000
+
+#In the case when connection is not established for the node, it will blocked
+forthis duration.
+EXPIRY_TIME_2=5
+
+
+#keep alive falg for node
+KEEP_ALIVE_2=N
+
+#user name for node
+USERNAME_2=aircelucip
+
+#password for node
+PASSWORD_2=picu123aircel
+
+
+#Read warning time for node, should be less than the validate read timeout, ifM IN takes more than this time alarm will be raised.
+WARN_TIME_2=4000
+
+NO_ALLWD_AMB_TXN_2=500
+
+THRESHOLD_TIME_2=5000
+
+
+########################Details for individual Nodes-END############################################
+
+
+

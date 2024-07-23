@@ -1,0 +1,49 @@
+---
+
+ - name: Create an node_image directory
+   file:
+     path: "/{{ REG_DIR }}/node_image"
+     state: directory
+     owner: "{{ PRIVATE_REG_USER_NAME }}"
+     group: "{{ PRIVATE_REG_GROUP_NAME }}"
+
+
+ - name: Copying private reg - DockerFile, node_modules etc
+   become: true
+   remote_user: "{{ PRIVATE_REG_USER_NAME }}"
+   ansible.builtin.copy:
+     src: .
+     dest: "/{{ REG_DIR }}/node_image"
+     owner: "{{ PRIVATE_REG_USER_NAME }}"
+     group: "{{ PRIVATE_REG_GROUP_NAME }}"
+     mode: '0777'
+
+ - name: "Replace the configured parameters - index.js"
+   replace: dest="/{{ REG_DIR }}/node_image/index.js" regexp='REDIS_IP' replace='{{ REDIS_IP }}' encoding='cp1252'
+
+ - name: "Replace the configured parameters - index.js"
+   replace: dest="/{{ REG_DIR }}/node_image/index.js" regexp='REDIS_NODEPORT' replace='{{ REDIS_NODEPORT }}' encoding='cp1252'
+
+
+
+ - name: Build an Image
+   become: true
+   remote_user: "{{ PRIVATE_REG_USER_NAME }}"
+   command: chdir="/{{ REG_DIR }}/node_image"  docker build -t pretups-node:1.0 .
+
+ - name: Tag an Image
+   become: true
+   remote_user: "{{ PRIVATE_REG_USER_NAME }}"
+   command: docker image tag pretups-node:1.0 localhost:5000/pretups-node:1.0
+
+
+ - name: Push the Image changes
+   become: true
+   remote_user: "{{ PRIVATE_REG_USER_NAME }}"
+   command: docker image push localhost:5000/pretups-node:1.0
+
+#docker run  -e ENV_DOCKER_REGISTRY_HOST=172.30.38.52 -e ENV_DOCKER_REGISTRY_PORT=5000 -p 8080:80 konradkleine/docker-registry-frontend
+
+
+
+

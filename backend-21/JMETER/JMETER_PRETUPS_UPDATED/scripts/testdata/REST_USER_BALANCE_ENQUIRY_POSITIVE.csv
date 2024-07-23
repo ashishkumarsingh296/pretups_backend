@@ -1,0 +1,5 @@
+TestcaseId,TestcaseType,Module,Description
+,Positive,User Balance Enquiry,To check that a user is able to enquire its balance by entering MSISDN and PIN
+,Positive,User Balance Enquiry,To check that a user is able to enquire its balance by entering LoginId and Password
+,Positive,User Balance Enquiry,To check that a user is able to enquire its balance by entering External Code
+,Positive,User Balance Enquiry,To check that a user is able to enquire its balance by entering MSISDN_PIN LoginId_Password and ExternalCode

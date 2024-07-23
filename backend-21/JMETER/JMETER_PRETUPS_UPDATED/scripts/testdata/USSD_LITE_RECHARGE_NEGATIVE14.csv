@@ -1,0 +1,2 @@
+TestcaseId,TestcaseType,Module,Description
+TUNG12744,Negative,Lite Recharge through USSD,User with low threshold  count should try to initiate the lite recharge request.

@@ -1,0 +1,5 @@
+DATE,EXTNWCODE,MSISDN,PIN,LOGINID,PASSWORD,EXTCODE,EXTREFNUM,MSISDN2,AMOUNT,LANGUAGE1,LANGUAGE2,SELECTOR,TestcaseId,TestcaseType,Module,Description
+,NG,7200009910,1357,,,,,7200002030,10,0,0,1,c2sRecharge_EXTGW,Positive,Recharge from Main Distributor to Subscriber ,Using MSISDN and PIN
+,NG,7200009910,1357,,,,,7200002030,50,0,0,1,c2sRecharge_EXTGW,Positive,Recharge from Main Distributor to Subscriber ,Using MSISDN and PIN and amount more than minimum amount
+,NG,7200009910,1357,,,,,7200002030,50,0,0,1,c2sRecharge_EXTGW,Positive,Recharge from Main Distributor to Subscriber ,Using MSISDN and PIN and total amount less than maximum limit
+,NG,7200009910,1357,,,,,7200002030,50,0,0,1,c2sRecharge_EXTGW,Positive,Recharge from Main Distributor to Subscriber ,Using MSISDN and PIN and total amount more than maximum limit

@@ -1,0 +1,174 @@
+##########################################################################
+##	KPIConfig.props														##
+##  This is the main configuration file of the KPI Reports				##
+## -------------------------------------------------------------------- ##
+##  Author                		Date                History				##
+## -------------------------------------------------------------------- ##
+## ved.sharma                  Nov 23, 2009			Initial creation	##
+## -------------------------------------------------------------------- ##
+##########################################################################
+
+#multiple email ids put in comma separated
+
+##KPI_REPORT_MAIL_TO_<Network Code>
+KPI_REPORT_MAIL_TO_SA=ved.sharma@comviva.com
+KPI_REPORT_MAIL_TO=ved.sharma@comviva.com
+KPI_REPORT_MAIL_FROM=support@comviva.com
+KPI_REPORT_MAIL_BCC=
+KPI_REPORT_MAIL_CC=
+
+KPI_REPORT_MAIL_SUBJECT=KPI Report
+KPI_REPORT_MAIL_MESSAGE=This is Auto generated KPI Reports
+
+#If its value is Y the mail will sent.
+KPI_MAIL_SEND_REQUIRED=N
+
+#frequency would be DAILY,MONTHLY,WEEKLY. 
+#if you want to multiple frequency then enter with comma separate. 
+#if you not assign any value the default is MONTHLY
+REPORT_FREQUENCY=MONTHLY,WEEKLY
+
+#if more than 1 last month the put the value as comma seperated, value should be positive integer and between 1 to 12.
+#Number of active retailers in last 3 months
+#Number of active retailers in last 6 months
+NO_OF_ACTIVE_CHNL_USER_LAST_DURATION=3,6
+
+
+#Concentration of distribution to measure the concentration of air time distribution per country
+#Distribution 60% KPI : number of active RP2P users which contributes to 60% on the RP2P amount per month
+#Distribution 80% KPI : number of active RP2P users which contributes to 80% on the RP2P amount per month
+#If more than one please enter comma seperate, its value should be integer and between 1 to 100.
+DISTRIBUTION_PCT=60,80
+
+#below path will configure in Constants.props
+#DOWNLOAD_KPI_REPORT_PATH=/pretupshome/tomcat5_web/logs/KPI/
+KPI_FILE_NAME_PREFIX=KPI
+
+##This is the KPI Secquence number
+## KPI ID) type of KPI 
+##      1) Number of retailers -ok
+##	    2) Number of new retailers in last month -ok
+##	    3) Number of end customers -ok
+##	    4) Number of new customers in last month -ok
+##	    5) Average balance per retailer in last month -ok
+
+##	    6) 	Average C2C - Transfer amount in last month -ok
+##	     	Average C2C - Return amount in last month -ok
+##	     	Average C2C - withdraw amount in last month -ok
+##	     	Total number of C2C - Transfer in last month -ok
+##	    	Total number of C2C - Return in last month -ok
+##	    	Total number of C2C - Withdraw in last month -ok
+
+##	    7) 	Total number of O2C - Transfer in last month -ok
+##	    	Total number of O2C - Withdraw in last month -ok
+##	    	Total number of O2C - Return in last month -ok
+##	    8) Average number of C2S per retailer in last month -ok
+##	    9) Average number of C2C per retailer in last month -ok
+##	    10) Concentration of distribution to measure the concentration of air time distribution per country -ok
+##		    #Distribution 60% KPI : number of active RP2P users which contributes to 60% on the RP2P amount per month
+##		    #Distribution 80% KPI : number of active RP2P users which contributes to 80% on the RP2P amount per month
+##      11) If more than 1 last month the put the value as comma seperated, value should be positive integer -ok
+##	    	#Number of active retailers in last 3 months
+##	    	#Number of active retailers in last 6 months
+##	    12) Average commission per retailer (O2C et C2C) in last month -ok
+##	    13) Average bonus per C2S transaction in last month -ok
+##	    14) Average bonus per P2P transaction in last month -ok
+##	    15) % of active end-customers in last month          -(Under contruction)
+##	    16) Average number of P2P per customer in last month -(Under contruction)
+##		17) The total air-time concretely transferred to end-users C2S (with generated bonus). -ok
+##		18) The sum of the revenues collected on the Head of Channels O2C (PAYABLE AMOUNT = RP2P REVENUE for the Orange affiliate)-ok
+##		19) The commissions generated within all the domains through O2C and C2C (b)-ok
+
+#if no value assign then all KPI will execute, value will assign above KPI ID
+KPI_GENERATE_SEQUENCE_NO=
+
+#################################################################################
+########   Labels
+ 		
+IN_AMOUNT=In amount
+OUT_AMOUNT=Out amount
+AVERAGE=Average
+TOTAL=Total
+C2C_TEANSACTION=C2C Transaction
+O2C_TEANSACTION=O2C Transaction
+TRANSFER=Transfer
+WITHDRAW=Withdraw
+RETURN=Return
+REPORT_HEADER=KPI summary reports
+REPORT_HEADER_FROM_DATE=From date
+REPORT_HEADER_TO_DATE=To Date
+NO_CHNL_USERS=Number of channel users
+NO_END_CUSTOMERS=Number of Registered P2P sender subscriber
+
+#Number of new retailers in last month
+NO_OF_NEW_CHNL_USERS_DURATION=Number of new channel users
+#Number of new customers in last month
+NO_OF_NEW_CUSTOMERS_DURATION=Number of new registered P2P sender subscriber
+
+#Average balance per retailer in last month
+SHEET_NAME_AVG_BAL_PER_CHNLUSR=AVG_BAL_PER_CHNLUSR
+AVG_BAL_PER_CHNLUSR=Average balance per channel user in duration
+
+#Average number of C2C per retailer in last month
+SHEET_NAME_AVG_NO_C2C_PER_CHNLUSR=AVG_NO_C2C_PER_CHNLUSR
+AVG_NO_C2C_PER_CHNL_USERS=Average number of C2C per channel user in duration
+
+#Average number of C2S per retailer in last month
+SHEET_NAME_AVG_NO_C2S_PER_CHNL_USERS=AVG_NO_C2S_PER_CHNLUSR
+AVG_NO_C2S_PER_CHNL_USERS=Average number of C2S per channel user in duration
+
+SHEET_NAME_AVG_COMM_PER_CHNL_USERS=AVG_COMMISSION
+AVG_COMM_PER_CHNL_USERS=Average commission of C2C/O2C per channel user in duration
+
+SHEET_NAME_AVG_BONUS_PER_CHNL_USERS=AVG_BONUS
+AVG_BONUS_PER_CHNL_USERS=Average bonus (C2S Transaction) per channel user in duration
+
+#Average number of C2S per retailer in last month
+SHEET_NAME_DISTRIBUTION_PCT=C2S_DISTRIBUTION_PCT
+C2S_DISTRIBUTION_PCT=Distribution : number of active channel users which contributes in duration 
+
+P2P_AVG_BONUS=Average P2P bonus amount
+
+DATA_NOT_AVILABLE=Date not avilable
+USER_NAME=User name
+USER_LOGIN_ID=Login id
+USER_MSISDN=MSISDN
+AVERAGE_BAL=Average balance
+SERIAL_NO=S. No.
+AVERAGE_C2C=Average C2C
+AVERAGE_C2S=Average C2S
+AVERAGE_COMMISSION=Average Commission
+AVERAGE_C2S_TXN_BONUS=Average C2S transaction bonus
+AMOUNT=Amount
+USER_PCT=User %
+TOTAL_RECHARGE_AMOUNT=Total Recharge Amount
+PCT_AMOUNT=% of total Amount 
+NO_OF_ACTIVE_CHNL_USER=Number of active channel users 
+PRODUCT=Product
+LAST=last
+MONTHLY=Months
+DAILY=Days
+WEEKLY=Weeks
+
+SHEET_NAME_TOTAL_C2S_TXT_DATE_WISE=TOTAL_C2S_TXN
+TOTAL_C2S_TXT_DATE_WISE=The total air-time concretely transferred to end-users C2S with generated bonus.
+TXN_DATE=Transaction Date
+REQUEST_COUNT=Request count
+REQUESTED_AMOUNT=Requested amount
+SENDER_TRF_AMOUNT=Sender transfer amount
+RECEIVER_CREDIT_AMOUNT=Receiver credit amount
+RECEIVER_BONUS=Receiver bonus
+
+#The sum of the revenues collected on the Head of Channels O2C (PAYABLE AMOUNT = RP2P REVENUE for the Orange affiliate)-ok
+TOTAL_REVENUES=Total revenues domain wise (O2C transfer domain wise)
+DOMAIN_NAME=Domain name
+TOTAL_O2C_TRANSFER=Total O2C transfer
+
+#The commissions generated within all the domains through O2C and C2C (b)-ok
+SUM_COMM_DOMAIN_WISE=The commissions generated within all the domains through O2C and C2C
+TOTAL_COMMISSION=Total commission
+
+
+
+
+

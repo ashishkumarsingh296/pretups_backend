@@ -1,0 +1,45 @@
+---
+- name: Add the OS specific variables
+  include_vars: "{{ item }}"
+  with_first_found:
+    - "{{ ansible_distribution }}{{ ansible_distribution_major_version }}.yml"
+    - "{{ ansible_os_family }}.yml"
+
+- include_tasks: "tomcat-setup-{{ ansible_os_family }}.yml"
+
+
+
+
+- name: Create a pretups-ui directory................
+  file:
+    path: /usr/share/tomcat/webapps/pretups-ui
+    state: directory
+    owner: tomcat
+    group: tomcat
+
+#- name: Move directory contents
+  #command: cp -r /data2/PreTUPS_v7.27.0_Major_30_03_2021/Release/pretups_ansible/ansiblesetup/code/pretups-ui/. /usr/share/tomcat/webapps/pretups-ui/
+  #ansible.builtin.copy:
+  #  src: /data2/PreTUPS_v7.27.0_Major_30_03_2021/Release/pretups_ansible/ansiblesetup/code/pretups-ui/.
+  #  dest: /usr/share/tomcat/webapps/
+  #  owner: tomcat
+  #  group: tomcat
+
+
+- name: Create a pretups-login directory
+  file:
+    path: /usr/share/pretups-login/
+    state: directory
+    owner: tomcat
+    group: tomcat
+
+- name: Move directory contents
+  #command: cp -r /data2/PreTUPS_v7.27.0_Major_30_03_2021/Release/pretups_ansible/ansiblesetup/code/pretups-ui/. /usr/share/tomcat/webapps/pretups-ui/
+  ansible.builtin.copy:
+    src: /data2/PreTUPS_v7.27.0_Major_30_03_2021/Release/pretups_ansible/ansiblesetup/code/pretups-login/.
+    dest: /usr/share/pretups-login/
+    owner: tomcat
+    group: tomcat
+
+#- name: Execute the script
+#  command: sh /usr/share/pretups-login/pretups-login/loginstart.sh

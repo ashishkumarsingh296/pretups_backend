@@ -1,0 +1,35 @@
+---
+########################################################
+# Author           Date        Remarks
+#------------    -----------  ---------
+#Sadhan Kumar K  25-07-2016    Initial Creation
+#
+# This file takes care of Validating the Path entered 
+# by user for WAR patch exists in Remote Server or not 
+# for Patch
+#########################################################
+
+ - name: Checking the Old War files exists or not in the remote server.
+   stat: path={{ item.path }}/{{ item.oldWarName.split('.war')|first }}
+   with_items:
+     - "{{ PatchConfigfiles }}"
+   register: pathCheckWar
+   when: item.patchType == "WAR"
+   ignore_errors: yes
+   tags:
+     - patchPathCheckWar
+
+ - name: Validating the Patch files exists or not in the remote server  for Patch Types other than WAR.
+   fail: msg="The old War Instance path {{ item.item.path }}{{ item.item.oldWarName.split('.war')|first }} doesnot exist wrong." 
+   when: item.item.patchType == "WAR"
+   failed_when: item.stat.exists == false
+   with_items: "{{pathCheckWar.results}}"
+   ignore_errors: yes
+   tags:
+     - patchPathCheckWar
+
+ - debug: msg="Old War Instance exists - correct ."
+   when: pathCheckWar|success
+   ignore_errors: yes
+   tags:
+     - patchPathCheckWar

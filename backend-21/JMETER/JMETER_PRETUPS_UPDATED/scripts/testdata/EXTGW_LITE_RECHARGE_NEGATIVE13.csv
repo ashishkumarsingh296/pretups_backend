@@ -1,0 +1,2 @@
+TestcaseId,TestcaseType,Module,Description
+TUNG12727 ,Negative,Lite Recharge through EXTGW,User with insufficient balance should try to initiate the lite recharge request.

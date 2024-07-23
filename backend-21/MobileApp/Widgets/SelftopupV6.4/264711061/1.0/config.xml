@@ -1,0 +1,135 @@
+<?xml version="1.0"?>
+<!DOCTYPE webaxn SYSTEM "i18n.dtd">
+<widget version="1.0">
+	<name>PreTUPS Recharge</name>
+	<description>PreTUPS Home Recharge</description>
+	<author>Comviva</author>
+	<license>Comviva Technologies</license>
+	<identifier>264711061</identifier>
+	<icon src="pretups.png"/>
+	<content src="recharge.html" />
+	<x-title background="#788593" color="white" fontstyle="bold" fontsize="14"/>
+	<x-scrollbar background="grey" color="#788593"/>
+	<x-softkeystyle background="#788593" color="white" fontstyle="bold" fontsize="14"/>
+	<x-menustyle background="white" color="black" onfocuscolor="white"/>	
+	<x-selection onfocusbackground="#778899"/>
+	<x-userdata-access>950181717</x-userdata-access>
+	<x-userdata-access>214807648</x-userdata-access>
+	<x-userdata-access>913980753</x-userdata-access>
+	<x-userdata-access>251238406</x-userdata-access>
+	<x-userdata-access>252267641</x-userdata-access>
+
+	<x-menugroup id="pretupsHome"> 
+		 <!-- <x-menu caption="&pre.rsk.back;" x-softkey="right"  href="wgt:264711061/1.0:closeApp();"  /> -->
+		 <x-menu caption="&pre.rsk.back;" x-softkey="right"  href="exit:"/>
+	</x-menugroup>
+	<x-menugroup id="buddyPinPopUp"> 
+			 <x-menu caption="&pre.rsk.back;" x-softkey="right"  href="close:"  />
+	</x-menugroup>
+	<x-menugroup id="cardPinPopUp"> 
+			 <x-menu caption="&pre.rsk.back;" x-softkey="right"  href="close:"  />
+	</x-menugroup>
+	<x-menugroup id="popuppage"> 
+			 <x-menu caption="&pre.rsk.back;" x-softkey="right"  href="close:"  />
+	</x-menugroup>
+	<x-menugroup id="closeApp"> 
+		 <x-menu caption="&pre.rsk.no;" x-softkey="right"  href="close:"  />
+		 <x-menu caption="&pre.rsk.yes;" x-softkey="right"  href="close:"  />
+	</x-menugroup>
+	<x-menugroup id="payOption"> 
+			 <x-menu caption="&pre.rsk.back;" x-softkey="right"  href="wgt:264711061/1.0:pretupsHome();"  />
+	</x-menugroup>
+	<x-menugroup id="backBuddy"> 
+		 <x-menu caption="&pre.rsk.back;" x-softkey="right"  href="wgt:264711061/1.0:buddies();"  />
+	</x-menugroup>
+	<x-menugroup id="p2pPopUp"> 
+			 <x-menu caption="&pre.rsk.back;" x-softkey="right"  href="close:"  />
+	</x-menugroup>
+	<x-menugroup id="cvvpopup"> 
+			 <x-menu caption="&pre.rsk.back;" x-softkey="right"  href="close:"  />
+	</x-menugroup>
+	<x-menugroup id="addbuddy"> 
+		 <x-menu caption="&pre.rsk.ok;" x-softkey="right"  href="close:"  />
+	</x-menugroup>
+	<x-menugroup id="addbuddpopup"> 
+		 <x-menu caption="&pre.rsk.ok;" x-softkey="right"  href="close:"  />
+	</x-menugroup>
+	
+	<x-menugroup id="buddiespage"> 
+		 <x-menu caption="&pre.rsk.back;" x-softkey="right"  href="#pretupsHome"  />
+	</x-menugroup>
+	
+	<x-menugroup id="confBuddyRech"> 
+			 <x-menu caption="&pre.rsk.back;" x-softkey="right"  href="close:"  />
+	</x-menugroup>
+	
+	<x-menugroup id="delbuddypage"> 
+		 <x-menu caption="&pre.rsk.back;" x-softkey="right"  href="#buddiespage"  />
+	</x-menugroup>
+	
+	<x-menugroup id="editBuddy"> 
+		 <x-menu caption="&pre.rsk.back;" x-softkey="right"  href="close:"  />
+	</x-menugroup>
+	<x-menugroup id="buddyDetails"> 
+		 <x-menu caption="&pre.rsk.back;" x-softkey="right"  href="#buddiespage"  />
+	</x-menugroup>
+	
+	<x-menugroup id="delbuddy"> 
+			 <x-menu caption="&pre.rsk.back;" x-softkey="right"  href="close://action=c3ltoggle:$$delInActive;$$delActive"  />
+	</x-menugroup>
+	<x-menugroup id="confdelbuddy"> 
+			 <x-menu caption="&pre.rsk.back;" x-softkey="right"  href="close://action=c3ltoggle:$$delInActive;$$delActive"  />
+	</x-menugroup>
+	
+	
+	<x-menugroup id="paySelf"> 
+		 <x-menu caption="&pre.rsk.back;" x-softkey="right"  href="#pretupsHome"  />
+	</x-menugroup>
+	<x-menugroup id="payOption"> 
+		 <x-menu caption="&pre.rsk.back;" x-softkey="right"  href="#pretupsHome"  />
+	</x-menugroup>
+	<x-menugroup id="sosPage"> 
+		 <x-menu caption="&pre.rsk.back;" x-softkey="right"  href="close:"/>
+	</x-menugroup>
+	<x-menugroup id="accountPage"> 
+		 <x-menu caption="&pre.rsk.back;" x-softkey="right"  href="close:"/>
+	</x-menugroup>
+	<x-menugroup id="adhocpage"> 
+		 <x-menu caption="&pre.rsk.back;" x-softkey="right"  href="close:"/>
+	</x-menugroup>
+	<x-menugroup id="voucherqr"> 
+		 <x-menu caption="&pre.rsk.back;" x-softkey="right"  href="pretupsHome()"/>
+	</x-menugroup>
+	<x-menugroup id="qrcode"> 
+		 <x-menu caption="&pre.rsk.back;" x-softkey="right"  href="close:"/>
+	</x-menugroup>
+	
+	<x-menugroup id="menulist"> 
+		 <x-menu caption="&pre.rsk.back;" x-softkey="right"  href="close:"/>
+	</x-menugroup>
+	<x-menugroup id="faqPage"> 
+		 <x-menu caption="&pre.rsk.back;" x-softkey="right"  href="close:"/>
+	</x-menugroup>
+	
+	<!--  
+	
+	
+	<x-menugroup id="payStatus"> 
+		 <x-menu caption="&pre.rsk.back;" x-softkey="right"  href="wgt:264711061/1.0:pretupsHome(1);"  />
+	</x-menugroup>
+	<x-menugroup id="sosPage"> 
+		 <x-menu caption="&pre.rsk.back;" x-softkey="right"  href="wgt:264711061/1.0:pretupsHome(1);"  />
+	</x-menugroup>
+	<x-menugroup id="buddiespage"> 
+		 <x-menu caption="&pre.rsk.back;" x-softkey="right"  href="wgt:264711061/1.0:pretupsHome(1);"  />
+	</x-menugroup>
+	
+	<x-menugroup id="alert1"> 
+		 <x-menu caption="&pre.rsk.ok;" x-softkey="right"  href="wgt:264711061/1.0:pretupsHome(3);"  />
+	</x-menugroup>
+	<x-menugroup id="addbuddy"> 
+		 <x-menu caption="&pre.rsk.ok;" x-softkey="right"  href="javascript:buddies();"  />
+	</x-menugroup> -->
+ 
+</widget>
+

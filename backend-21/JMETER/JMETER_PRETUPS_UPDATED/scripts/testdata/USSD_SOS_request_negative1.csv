@@ -1,0 +1,14 @@
+TestcaseId,TestcaseType,Module,Description
+,Negative,SOS request through USSD,To verify that channel user's SOS request is not processed for parent wallet if channel user is not allowed as receiver as per user life cycle.
+,Negative,SOS request through USSD,To verify that channel user cannot hit SOS request through USSD with SOS wallet as parent if SOS is not allowed for the user.
+,Negative,SOS request through USSD,To verify that channel user cannot hit SOS request through USSD with SOS wallet as parent if user's balance is more than SOS threshold amount.
+,Negative,SOS request through USSD,To verify that SOS request is not processed through wallet as parent if initiator channel user is in top level hierarchy.
+,Negative,SOS request through USSD,To verify that  SOS request is not processed through USSD with SOS wallet as parent if parent doesn't have sufficient balance in the defined product wallet.
+,Negative,SOS request through USSD,To verify that  SOS request is not processed through USSD with SOS wallet as parent if parent is not allowed as sender as per user life cycle.
+,Negative,SOS request through USSD,To verify that channel user's SOS request is not processed if  PIN is not entered in the request.
+,Negative,SOS request through USSD,To verify that channel user's SOS request is not processed if  MSISDN is not entered in the request.
+,Negative,SOS request through USSD,To verify that channel user's SOS request is not processed if  product code is not entered in the request.
+,Negative,SOS request through USSD,To verify that channel user's SOS request is not processed if invalid PIN is entered in the request.
+,Negative,SOS request through USSD,To verify that channel user's SOS request is not processed if invalid product code is entered in the request.
+,Negative,SOS request through USSD,To verify that channel user's SOS request is not processed for parent wallet if channel user's previous SOS request is pending for settlement.
+,Negative,SOS request through USSD,To verify that channel user's SOS request is not processed if invalid language code is entered in the request.

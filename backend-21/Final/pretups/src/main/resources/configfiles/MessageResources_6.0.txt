@@ -1,0 +1,884 @@
+## Start New messagesResources entries for PreTUPS5.6.2 ####################
+
+############# added by nilesh : bug fixing for 5.7 ################
+master.addslabdetails.error.startgreatertoendrange=from range should not be greater than end range in the same slab
+profile.addcommissionprofile.error.invalidendrange=To range should be greater than or equal to from range of slab {0}
+profile.commissionprofilelist.message.note=Un-check the checkbox to deactivate commission profile, also specify the message to be shown to the users. Also, default commission profile can not be deactivated.
+profile.activationprofiledetail.error.invalidendrange=To range should be greater than or equal to from range of slab {0}
+profile.activationprofiledetail.count.error.invalidendrange=To range should be greater than or equal to from range for slab {0} in total count slabs
+profile.activationprofiledetail.amount.error.invalidendrange=To range should be greater than or equal to from range for slab {0} in total amount slabs
+
+
+channeltrfrule.deletetrfrule.msg.user.fromCategoryExist=User exist under from category. Transfer rule cannot be deleted.
+channeltrfrule.deletetrfrule.msg.deletesuccess.request=Transfer rule deletion request successful.Approval is required.
+channeltrfrule.msg.approved.delete=Transfer rule successfully deleted.
+channeltrfrule.deletetrfrule.msg.deletesuccess.notpossible=deletion is possible only in case of Active/Suspended state.
+channeltrfrule.deletetrfrule.msg.user.toCategoryExist=User exist under to category. Transfer rule cannot be deleted.
+
+##chadm->>ChannelUser->>AutoFoc user-association->>autoFocUserAssociation.jsp   ->>AUTFOCUSR001
+AUTFOC00A=Auto FOC User-Association
+AUTFOC001=Auto FOC User-Association
+AUTFOC002=Auto FOC User-Association
+AUTFOCDMM=Auto FOC User-Association
+channeluser.autofocuserassociation.heading=Auto FOC User-Association
+channeluser.confirmautofocuserassociation.heading=Confirm Auto FOC User-Association
+channeluser.autofocuserassociation.label.subsmsisdn=Channel User's MSISDN
+channeluser.autofocuserassociation.label.commaseperated=(More than one MSISDN must be seperated by comma)
+channeluser.autofocuserassociation.error.nomsisdnsubmit= Channel User's MSISDN required before submit
+channeluser.autofocuserassociation.error.updatedandinvalidmsisdn =Status of MSISDN(s) - {0} updated(set/unset) successfully, MSISDN(s) - {1} either have status already set or not exists in the required network/domain 
+channeluser.autofocuserassociation.error.invalidmsisdncount =MSISDN(s)- {0} either not of required length(MinLength:{1}  MaxLength:{2}) or having non-numeric characters
+channeluser.autofocuserassociation.limitexceedmessage = Maximum {0} MSISDN are allowed
+channeluser.autofocuserassociation.msisdnupdated= Status of MSISDN(s) - {0} updated(set/unset) successfully
+channeluser.autofocuserassociation.error.invalidmsisdn=MSISDN(s) - {0} either have status already set or not exists in the required network/domain   
+channeluser.autofocuserassociation.error.duplicate= MSISDN(s)- {0} duplicated 
+msg.textarea.nochange = MSISDN(s) cannot be modified here. Go back to the previous screen to modify the content
+##chadm->>ChannelUser->>AutoFoc user-association->> end here
+
+######### bug fixing tunisia ########
+messages.xlsheading.label.msg=Message {0}
+
+############added by nilesh: user profile updation based on longitude and latitude
+
+user.addchanneluser.label.longitude=Longitude
+user.addchanneluser.label.latitude=Latitude
+user.addchanneluserview.label.longitude=Longitude
+user.addchanneluserview.label.latitude=Latitude
+bulkuser.xlsfile.details.longitude=Longitude
+bulkuser.xlsfile.details.latitude=Latitude
+bulkuser.xlsfile.details.longitude.comment=Longitude to be assigned with channel user.It can be negative,special character or alphanumeric.
+bulkuser.xlsfile.details.latitude.comment=Latitude to be assigned with channel user.It can be negative,special character or alphanumeric.
+bulkuser.modify.xlsfile.details.longitude=Longitude
+bulkuser.modify.xlsfile.details.latitude=Latitude
+
+######## end #####
+
+
+#####################################Reach alerting Counter Report changes##############################
+ZBALDET001=Reach alerting counters detail
+ZBALDET01A=Reach alerting counters detail
+ZBALDETDMM=Reach alerting counters detail
+zerobalancecounter.detail.reports.heading=Reach alerting counters report
+
+
+ZBALSUM001=Reach alerting counters summary
+ZBALSUM01A=Reach alerting counters summary
+ZBALSUMDMM=Reach alerting counters summary
+zerobalancecounter.summary.reports.heading=Reach alerting counters report
+
+###########################END#########################################################
+
+
+
+
+
+########################LMB changes by Ankuj start here################################
+#######################################################################################
+############ LMB  Forced #####################
+lmb.resettlement.headingf=Forceful LMB Settlement
+LMBREST001=Forceful LMB Settlement
+LMBRESTDMM=Forceful LMB Settlement
+LMBREST=Forceful LMB Settlement
+lmb.resettlement.label.uploadfile=Uploaded File Path
+lmb.resettlement.error.nostart=[START] tag not found in the file.
+lmb.resettlement.error.noend=[END] tag not found in the file.
+lmb.resettlement.error.invalidsize=Number of records is not matching with the actual number of records in file.
+lmb.resettlement.noofrecords.greaterthanzero=Number of records must be greater than zero.
+lmb.resettlement.noofrecords.mustbenumeric=Number of records must be numeric.
+lmb.resettlement.file.required=Upload file path is required.
+lmb.resettlement.error.otherfilesizemissing=Other file size is missing in Constant property file
+lmb.resettlement.error.reqcannotprocessed=Your request cannot be processed at this time. Please contact System Admin
+lmb.resettlement.error.dupmsisdn=Duplicate MSISDN
+lmb.resettlement.error.invlidmsisdn=Invalid MSISDN
+
+lmb.resettlement.error.invliddate=Invalid Date
+lmb.resettlement.error.prenotfound=Network prefix not found
+lmb.resettlement.error.unsuportednw=Unsupported Network
+lmb.resettlement.error.alreadyexist=Mobile number already exists under the owner user
+lmb.resettlement.error.cannotreg=Cannot Register the subscriber
+lmb.resettlement.error.maxsizereached=The number of records in the file exceeds the maximum limit "{0}".
+lmb.resettlement.error.errors.exceeded=Uploaded File contains more then the permissible number of errors, try re-uploading with correct information.
+lmb.resettlement.message.settlement.success=Transaction Settled Successfully.
+lmb.resettlement.success.message=Success
+lmb.resettlement.message.success=All Mobile numbers specified in the file have been uploaded successfully.
+lmb.resettlement.message.success2=Valid records specified in the file have been uploaded successfully.
+lmb.resettlement.error.norecords=File does not have any required records in it.
+lmb.resettlement.error.invalidrecord=Data in the File is not in proper format, Please try re-uploading with correct format.
+
+
+##jsp/restrictedsubs/resultOfBulkReg.jsp
+lmb.resettlement.viewerrorinfo=<font color="red"><b>[ View error log ]</b></font>
+lmb.resettlement.msg0= [
+lmb.resettlement.msg1= ] Out of [
+lmb.resettlement.msg2= ] records processed successfully.
+lmb.resettlement.viewerrorinfodetails=View error log
+
+##jsp/restrictedsubs/viewBlkRegErrLog.jsp
+lmb.resettlement.heading=Error log
+lmb.resettlement.label.linenumber=Line number
+lmb.resettlement.label.msisdn=Mobile number
+lmb.resettlement.label.reason=Failure reason
+
+lmb.resettlement.error.filenomove=Resettlement MSISDN list uploaded successfully, but the file could not be archived. Please contact System Admin.
+lmb.resettlement.error.filepathmissingincons=Upload file path is missing in Constant property file.
+lmb.resettlement.error.otherfilesizemissing=Other file size is missing in Constant property file
+lmb.resettlement.error.filenotuploaded=File could not be uploaded on the server. Please contact System Admin.
+lmb.resettlement.error.filecopyerror=Msisdn processed successfully but unable to upload file to the server.
+lmb.resettlement.label.uploadfilename=File name
+lmb.resettlement.label.viewerrorinfo=View error log
+lmb.resettlement.label.processednot=File connot be processed at this moment.
+lmb.resettlement.heading=LMB Force Settlement
+lmb.resettlementerrlog.heading=LMB Force Settlement Error log
+lmb.resettlement.label.reason=Reason
+lmb.resettlement.label.linenumber=Line Number
+lmb.resettlement.label.fileprocessedsuccess=File processed successfully
+
+##### for LMB #####
+RPTRERC001=Lend Me Balance Recharge Reconciled Cases
+RPTRERCDMM=Lend Me Balance Recharge Reconciled Cases
+SOSRECON01=Lend Me Balance Recharge Reconciliation
+SOSRECONDM=Lend Me Balance Recharge Reconciliation
+RPTREST001=Lend Me Balance Settlement Cases
+RPTREST01A=Lend Me Balance Settlement Cases
+STLRECON01=Lend Me Balance Settlement Reconciliation
+STLRECONDM=Lend Me Balance Settlement Reconciliation
+
+# Added on 14th Jan 2010 for SOS Reconciliation from WEB
+SOSRECONDM=LMB Recharge Reconciliation
+SOSRECON01=LMB Recharge Reconciliation
+sos.selectrechargedates.reconciliation.heading=Select LMB Recharge Dates
+sos.transaction.reconciliation.heading=Select LMB Transaction
+sos.recharge.reconciliation.heading=LMB Recharge Reconciliation
+sos.recharge.reconciliation.label.fromdate=From Date
+sos.recharge.reconciliation.label.todate=To Date
+sos.recharge.reconciliation.displayreconlist.label.transactionid=Transaction ID
+sos.recharge.reconciliation.displayreconlist.label.transferdatetime=Transaction Date & Time
+sos.recharge.reconciliation.displayreconlist.label.product=Product Name
+sos.recharge.reconciliation.displayreconlist.label.networkcode=Network Code
+sos.recharge.reconciliation.displayreconlist.label.subscriberrmsisdn=Subscriber MSISDN
+sos.recharge.reconciliation.displayreconlist.label.rechargeamount=Recharge Amount
+sos.recharge.reconciliation.displayreconlist.label.creditamount=Credit Amount
+sos.recharge.reconciliation.displayreconlist.label.txnstatus=Transaction Status
+sos.recharge.reconciliation.displayreconlist.label.errormessage=Message
+sos.recharge.reconciliation.displayreconlist.msg.nodata = No sos transaction found for the input values
+sos.recharge.reconciliation.displaydetail.msg.fail=Are you sure you want to fail the transaction? Transaction cannot be reverted.
+sos.recharge.reconciliation.displaydetail.msg.success=Are you sure you want to success the transaction? Transaction cannot be reverted.
+sos.recharge.reconciliation.displaydetail.msg.warning=Note : Reconciliation cannot be reverted. Please ensure your transaction status from interface.
+sos.recharge.reconciliation.displaydetail.label.transactionid=Transaction ID
+sos.recharge.reconciliation.displaydetail.label.rechargeamount=Recharge Amount
+sos.recharge.reconciliation.displaydetail.label.creditamount=Credit Amount
+sos.recharge.reconciliation.displaydetail.label.transdatetime=Transaction Date & Time
+sos.recharge.reconciliation.displaydetail.label.gatewaytype=Gateway Type
+sos.recharge.reconciliation.displaydetail.label.cardgroupsetid=Card groupset ID
+sos.recharge.reconciliation.displaydetail.label.cardgroupid=Card group ID
+sos.recharge.reconciliation.displaydetail.label.version=Card group version
+sos.recharge.reconciliation.displaydetail.label.subscriberrmsisdn=Subscriber MSISDN
+sos.recharge.reconciliation.displaydetail.label.prebalance=Previous balance
+sos.recharge.reconciliation.displaydetail.label.postbalance=Post balance
+sos.recharge.reconciliation.displaydetail.label.servcieclasscode=Service class code
+sos.recharge.reconciliation.displaydetail.label.intrescode=Interface response code
+sos.recharge.reconciliation.displaydetail.label.transstatus=Transaction status
+sos.recharge.reconciliation.displaydetail.label.accountstatus=Account status
+sos.recharge.reconciliation.displaydetail.updatemsg.success=LMB Recharge Reconciliation is done successfully.
+sos.recharge.reconciliation.displaydetail.updatemsg.unsuccess=LMB Recharge Reconciliation can't be done at this time. Please try after some time.
+
+STLRECONDM=LMB Settlement Reconciliation
+STLRECON01=LMB Settlement Reconciliation
+sos.settlement.reconciliation.heading=LMB Settlement Reconciliation
+sos.settlement.reconciliation.label.fromdate=From Date
+sos.settlement.reconciliation.label.todate=To Date
+sos.settlement.reconciliation.displayreconlist.label.transactionid=Transaction ID
+sos.settlement.reconciliation.displayreconlist.label.transferdatetime=Transaction Date & Time
+sos.settlement.reconciliation.displayreconlist.label.settlementdatetime=Settlement Date & Time
+sos.settlement.reconciliation.displayreconlist.label.product=Product Name
+sos.settlement.reconciliation.displayreconlist.label.networkcode=Network Code
+sos.settlement.reconciliation.displayreconlist.label.subscriberrmsisdn=Subscriber MSISDN
+sos.settlement.reconciliation.displayreconlist.label.rechargeamount=Recharge Amount
+sos.settlement.reconciliation.displayreconlist.label.debitamount=Debit Amount
+sos.settlement.reconciliation.displayreconlist.label.settlementstatus=Settlement Status
+sos.settlement.reconciliation.displayreconlist.label.errormessage=Message
+sos.settlement.reconciliation.displayreconlist.msg.nodata = No sos Settlement transaction found for the input values
+sos.settlement.reconciliation.displaydetail.msg.fail=Are you sure you want to fail the transaction? Transaction cannot be reverted.
+sos.settlement.reconciliation.displaydetail.msg.success=Are you sure you want to success the transaction? Transaction cannot be reverted.
+sos.settlement.reconciliation.displaydetail.msg.warning=Note : Reconciliation cannot be reverted. Please ensure your transaction status from interface.
+sos.settlement.reconciliation.displaydetail.label.transactionid=Transaction ID
+sos.settlement.reconciliation.displaydetail.label.rechargeamount=Recharge Amount
+sos.settlement.reconciliation.displaydetail.label.debitamount=Debit Amount
+sos.settlement.reconciliation.displaydetail.label.transdatetime=Transaction Date & Time
+sos.settlement.reconciliation.displaydetail.label.settlementdatetime=Settlement Date & Time
+sos.settlement.reconciliation.displaydetail.label.gatewaytype=Gateway Type
+sos.settlement.reconciliation.displaydetail.label.cardgroupsetid=Card groupset ID
+sos.settlement.reconciliation.displaydetail.label.cardgroupid=Card group ID
+sos.settlement.reconciliation.displaydetail.label.version=Card group version
+sos.settlement.reconciliation.displaydetail.label.subscriberrmsisdn=Subscriber MSISDN
+sos.settlement.reconciliation.displaydetail.label.prebalance=Previous balance
+sos.settlement.reconciliation.displaydetail.label.postbalance=Post balance
+sos.settlement.reconciliation.displaydetail.label.servcieclasscode=Service class code
+sos.settlement.reconciliation.displaydetail.label.intrescode=Interface response code
+sos.settlement.reconciliation.displaydetail.label.settlementstatus=Settlement Transaction status
+sos.settlement.reconciliation.displaydetail.label.accountstatus=Account status
+sos.settlement.reconciliation.displaydetail.updatemsg.success=LMB Settlement Reconciliation is done successfully.
+sos.settlement.reconciliation.displaydetail.updatemsg.unsuccess=LMB Settlement Reconciliation can't be done at this time. Please try after some time.
+
+RPTRERC001 = LMB Recharge Reconciled Cases
+RPTRERCDMM = LMB Recharge Reconciled Cases
+RPTREST001 = LMB Settlement Cases
+RPTRESTDMM = LMB Settlement Cases
+SOSTRDT001 = LMB Transaction Details
+SOSTRDTDMM = LMB Transaction Details
+sos.reports.reconciledcases.label.heading=LMB Recharge Reconcilled Cases
+sos.recharge.reconciliation.label.date=Date
+sos.reports.transdetails.label.heading=LMB Transaction Details
+sos.reports.transdetails.label.msisdn=Msisdn
+sos.reports.transdetails.label.transactionid=Transaction Id
+sos.reports.settlementcases.label.heading=LMB Settlement Cases
+sos.recharge.reconciliation.label.fromdate=From Date
+##########Enquiry LMB
+SOSENQ001 = LMB Transfers Enquiry
+SOSENQDMM = LMB Transfers Enquiry 
+sos.transenquiry.label.heading=LMB Transaction Enquiry
+sos.transenquiry.label.transactionid=Transaction Id
+sos.transenquiry.label.transactiondatetime=Transaction Date
+sos.transenquiry.label.transactionstatus=Transaction Status
+sos.transenquiry.label.rechargeamount=Recharge Amount
+sos.transenquiry.label.networkcode=Network Code
+sos.transenquiry.label.subscribertype=Subscriber Type
+sos.transenquiry.label.previousbalance=Previous Balance
+sos.transenquiry.label.postbalance=Post Balanace
+sos.transenquiry.label.settlementdatetime=Settlement Date
+sos.transenquiry.label.settlementstatus=Settlement Status
+sos.transenquiry.label.settlementamount=Settlement Amount
+sos.transenquiry.label.settled=Settled
+sos.transenquiry.error.invalidmsisdn=Entered MSISDN is invalid 
+sos.transenquiry.label.errormessage=Error Message
+
+###Added by Ankuj for new development for LMB Credit Bulk Upload
+
+LMBUPL001=Bulk LMB Upload
+LMBUPLDMM=Bulk LMB Upload
+LMBMGMT=LMB Management
+
+
+
+
+##############################LMB changes by Ankuj end here####################
+###############################################################################
+
+
+############ Added by nilesh : SMS PIN module #########
+channeltransfer.chnltochnlconfirmproduct.label.smspin=PIN
+channeltransfer.transferdetails.label.smspin=PIN
+channeltransfer.transferdetails.label.leftbraces=(
+channeltransfer.transferdetails.label.rightbraces=)
+channeltransfer.transferdetails.label.of=Of
+channeltransfer.userProductsConfirm.msg.smspinnull=PIN is required.
+channeltransfer.userProductsConfirm.msg.smspininvalid=Invalid PIN
+batchc2c.uploadc2cbatchorder.label.smspin=PIN
+batchc2c.uploadc2cbatchorder.leftbraces=(
+batchc2c.uploadc2cbatchorder.label.of=Of
+batchc2c.uploadc2cbatchorder.label.rightbraces=)
+channeltransfer.chnltochnlviewproduct.label.enteryourpin=PIN
+channeltransfer.chnltochnlconfirmproduct.label.pin=PIN
+batchc2c.uploadc2cbatchorder.label.pin=PIN
+channeltransfer.transferdetails.label.pin=PIN
+
+
+####################Added by Ashish Todia####################
+#############################################################
+
+roles.addgrouprole.label.default=Default
+
+user.addchanneluser.label.registdate=Registration date
+
+RPTRES001=Associated MSISDN report
+RPTRES01A=Associated MSISDN report
+RPTRESDMM=Associated MSISDN report
+
+misfromdatetodatenote.label.note=NOTE: From date should be greater or equal to {0} and to date should be less than or equal to {1}.
+userreturn.returnproductlist.error.remarksrequired=Remarks should not be blank.
+batcho2c.selectcategoryforbatcho2c.heading=Initiate batch O2C withdraw
+
+
+########## Added by Amit Raheja for transaction reverse
+
+################### O2C Reversal ################################################
+
+TXNREVSE= Transaction Reverse
+RVO2C001= Reverse O2C Transaction
+RVO2CDMM= Reverse O2C Transaction
+RVO2C001A= Reverse O2C Transaction
+RVO2C002= Reverse O2C Transaction
+RVO2C003= Reverse O2C Transaction
+RVO2C004= Reverse O2C Transaction
+RVO2C005= Reverse O2C Transaction
+
+
+o2cchannelreversetrx.reverse.enter.data=Enter values in one of the following blocks. Either enter transfer number OR mobile number, transfer category, from date, to date OR geographical domain, domain, product type, user category, transfer category, from date, to date
+
+o2cchannelreversetrx.reverse.fromdate.lt.minlimit=From date should be greater than or equal to {0}.
+o2cchannelreversetrx.reverse.insuffbalance=Transaction cannot be completed as the channel user has insufficient balance.
+
+o2cchannelreversetrx.reverse.viewtransferlist.heading=View Operator to Channel Transfers
+
+o2cchannelreversetrx.reverse.viewtransferdetails.heading=Operator to channel transfer details
+
+o2cchannelreversetrx.remarks.error.required=Remarks is required
+o2cchannelreversetr.enquirytransferlist.label.nodataindaterange=No transfer transaction found within date range.
+
+o2cchannelreversetrx.reverse.msg.success=Reversal transaction has been done successfully for transaction ID {1}.
+o2cchannelreversetrx.transferlist.heading=O2C Transfer List
+o2cchannelreversetrx.transferview.heading=Transfer Details for Reversal
+o2cchannelreversetrx.reverse.msg.unsuccess=Reversal transaction is failed for Transaction ID {0}
+reversetrx.o2cchannelreversetrx.label.channeltransferqty=Reversal Qty.
+
+
+######################## C2C Reversal ###########################################
+
+TXNREVSE= Transaction Reverse
+REVTRX001= Reverse C2C Transaction
+REVTRXDMM= Reverse C2C Transaction
+REVTRX001A= Reverse C2C Transaction
+REVTRX002= Reverse C2C Transaction
+REVTRX003= Reverse C2C Transaction
+REVTRX004= Reverse C2C Transaction
+REVTRX005= Reverse C2C Transaction
+
+REVAPP001= Approve C2C Reverse Txn
+REVAPP001= Approve C2C Reverse Txn
+REVAPPDMM= Approve C2C Reverse Txn
+REVAPP001A= Approve C2C Reverse Txn
+REVAPP002= Approve C2C Reverse Txn
+REVAPP003= Approve C2C Reverse Txn
+REVAPP004= Approve C2C Reverse Txn
+REVAPP005= Approve C2C Reverse Txn
+
+
+list.label.reverse=reversal
+
+channelreversetrx.trxtype.heading=Select transaction type
+channelreversetrx.trxtype.label.trx=Transaction type
+channelreversetrx.trxtype.error.trxlookup=No Transaction type configured yet. Atleast one transaction type configured required.
+channelreversetrx.searchchanneluser.label.loginid=Sender loginID
+channelreversetrx.searchchanneluser.label.trxtype=Transaction type
+channelreversetrx.trxtype.error.required=Transaction Type is required
+channelreversetrx.trxtype.error.username.required=User name is required
+channelreversetrx.trxtype.error.username.morethanone=More than one user found by this name, please use the search option
+ channelreversetrx.trxtype.error.nousername=No user exist.
+channelreversetrx.c2ctransferlist.label.fromloginid=From user loginID
+channelreversetrx.c2ctransferlist.label.tologinid=To user loginID
+channelreversetrx.c2ctransferlist.label.fromcategoty=From caregory name
+channelreversetrx.c2ctransferlist.label.tocategoty=To caregory name
+channelreversetrx.button.submit=Reverse transaction
+channelreversetrx.remarks.error.required=Remarks is required
+channelreversetrx.c2ctransferlist.label.touserbalance=Reciever balance
+channelreversetrx.c2ctransferlist.label.fromuserbalance=Sender balance
+channelreversetrx.reverse.msg.success=Reversal transaction has been done successfully for transaction ID {1} from user {3} to user {2}.
+channelreversetrx.reverse.msg.initiate.success=Reversal transaction has been initiated for transaction ID {1} from user {3} to user {2}.
+channelreversetrx.reverse.msg.unsuccess=Reversal transaction is failed for Transaction ID {0}
+channelreversetrx.searchchanneluser.label.touserCode=Reciever mobile number
+channelreversetrx.searchchanneluser.label.fromuserCode=Sender mobile number
+channelreversetrx.msg.alert.lessamount=Reciever current balance {0}KSH,which is less than transfer amount {1}KSH
+channelreversetrx.msg.alert.douwant=Do you want to reverse amount {0} KSH Amount ?
+channelreversetrx.channeltochannelrevsearchuser.label.fromuser=Sender user name
+channelreversetrx.channeltochannelrevsearchuser.label.fromcategory=Sender category name
+channelreversetrx.channeltochannelrevsearchuser.label.fromdomain=Sender domain name
+channelreversetrx.channeltochanneltrndetails.label.revtrnid=Reverse TransactionID
+channelreversetrx.channeltochanneltrndetails.label.txnrevfor=Reversed for transaction
+channelreversetrx.channeltochanneltrndetails.label.status=Status
+channelreversetrx.channeltochanneltrndetails.error.notpossible.0=Requested reverse quantity for product {0}, should be less than or equal to transaction value {1}
+channelreversetrx.channeltochanneltrndetails.error.notpossible.1=Requested reverse quantity for product {0}, should be less than or equal to transaction value {1}
+channelreversetrx.channeltochanneltrndetails.error.notpossible.2=Requested reverse quantity for product {0}, should be less than or equal to transaction value {1}
+reversetrx.channelreversetrx.error.qtynumeric.0=Requested reversal quantity for product {0}, should be numeric
+reversetrx.channelreversetrx.error.qtynumeric.1=Requested reversal quantity for product {0}, should be numeric
+reversetrx.channelreversetrx.error.qtynumeric.2=Requested reversal quantity for product {0}, should be numeric
+reversetrx.channelreversetrx.error.qtygtzero.0=Requested reversal quantity for product {0}, should be greater than zero.
+reversetrx.channelreversetrx.error.qtygtzero.1=Requested reversal quantity for product {0}, should be greater than zero.
+reversetrx.channelreversetrx.error.qtygtzero.2=Requested reversal quantity for product {0}, should be greater than zero.
+userreturn.withdrawreturn.error.qtymorenbalance.0=Requested reversal quantity for product {0}, should be less than or equal to current balance of the reciever
+userreturn.withdrawreturn.error.qtymorenbalance.1=Requested reversal quantity for product {0}, should be less than or equal to current balance of the reciever
+userreturn.withdrawreturn.error.qtymorenbalance.2=Requested reversal quantity for product {0}, should be less than or equal to current balance of the reciever
+userreturn.withdrawreturn.error.qtynumeric.0=Requested reversal quantity for product {0}, should be numeric
+userreturn.withdrawreturn.error.qtynumeric.1=Requested quantity for product {0}, should be numeric
+userreturn.withdrawreturn.error.qtynumeric.2=Requested quantity for product {0}, should be numeric
+reversetrx.channelreversetrx.label.channeltransferqty=Reversal Qty.
+c2sreversetrx.c2ctransferlist.label.nodata=No data found for Reverse transaction.
+c2sreversetrx.c2ctransferlist.error.nodata.alreadyreversed=Reverse transaction already done for transfer ID {0}
+
+########## Addition ends #############################################
+
+###Added by Ankuj for new development for LMB Credit Bulk Upload
+
+LMBUPL001=Bulk LMB Upload
+LMBUPLDMM=Bulk LMB Upload
+LMBMGMT=LMB Management
+lmb.blkupload.heading=LMB Bulk Upload
+lmb.blkuploaderrorlog.heading=LMB Bulk Upload Error Log
+lmb.blkupload.message.upload.invalidamt=invalid amount
+lmb.blkupload.message.upload.invalidrec=invalid record
+lmb.blkupload.message.upload.dupmsisdn=duplicate MSISDN
+lmb.blkupload.message.upload.dupmsisdnDB=duplicate MSISDN present in the DB
+
+##############################LMB changes by Ankuj end here####################
+
+#####################LMB reports######################################
+
+lmb.recharge.reconciliation.label.frmdate=From date
+lmb.recharge.reconciliation.label.todate=To date
+lmb.recharge.reconciliation.label.trnxtype=Transaction type
+LMBRCN001=LMB Reconcilliation Report
+LMBRCNDMM=LMB Reconcilliation Report
+LMBSBDL001=LMB Daily sub report
+LMBSBDLDMM=LMB Daily sub report
+LMBBDBDMM=LMB Bad Debit Report
+LMBBDB001=LMB Bad Debit Report
+lmb.reports.recondetails.label.heading=Lend me balance Reconcilliation report
+lmb.reports.subs.msisdn.label=Msisdn 
+lmb.recharge.reconciliation.label.currentrptdate=Current date report
+lmb.recharge.reconciliation.label.currentdate=Current date is
+lmb.reports.dailysubs.label.heading=LMB Daily Subscriber Report
+lmb.reports.baddebit.label.heading=LMB Bad Debit Details
+
+lmb.reports.trans.summary.label.heading=LMB transaction summary report
+lmb.reports.trans.summary.label.fromdate=From date
+lmb.reports.trans.summary.label.todate=To date
+LMBSUM001=LMB transaction summary report
+LMBSUMDMM=LMB transaction summary report
+lmb.reports.trans.summary.label.currentrptdate=Current date report
+LMBREPORTS= LMB Reports
+LMBENQ=LMB Enquiries
+
+###############################end of LMB reports ################################
+
+############## added for removal of buigs in LMB force settlement module #######################
+
+lmb.resettlement.error.filenotuploaded=File could not be uploaded on the server. Please contact System Admin.
+lmb.resettlement.error.reqcannotprocessed=Your request cannot be processed at this time. Please contact System Admin
+lmb.resettlement.error.norecordfound=No record found in the file.
+lmb.resettlement.error.invalidstatus=Invalid Status, should be 200, 206 or blank
+lmb.resettlement.error.maxsizereached=The file contents size exceeds the limit.
+lmb.resettlement.error.filesizemissingincons=Contents size is missing in the constant property file, please contact System Admin.
+lmb.resettlement.error.fileerrorsizemissingincons=Permissible number of errors is missing in ConstantProperty file. Please contact System Admin. 
+lmb.resettlement.error.filepathmissingincons=Upload file path is missing in Constant property file. Please contact System Admin.
+lmb.resettlement.error.otherfilesizemissing=Other file size is missing in Constant property file. Please contact System Admin.
+
+###################   changes end here   ###################################
+
+
+#####added by gaurav pandey for batch modify commission profile
+
+BMDCMPF01= Batch modify commission profile
+BMDCMPF1MM= Batch modify commission profile
+batchModify.commissionProfile.massege.domian= select domain name
+batchModify.commissionProfile.massege.category=select category name
+batchModifyCommProfile.mastersheet.heading= master data for {0} domian and {1} category
+batchModifyCommProfile.mastersheet.product.heading= Product
+batchModifyCommProfile.mastersheet.product.note=The product to which the commission is to be associated
+batchModifyCommProfile.mastersheet.productCode=Product code
+batchusercreation.mastersheet.productName=Product name
+batchModifyCommProfile.mastersheet.domain.heading= Domain code
+batchModifyCommProfile.mastersheet.domain.note=This is the listing of available Doamin code 
+batchModifyCommProfile.mastersheet.domainCode=Domain code
+batchusercreation.mastersheet.domainName=domain name
+batchModifyCommProfile.mastersheet.category.heading=Category code
+batchModifyCommProfile.mastersheet.category.note=Category code is used to get commission profile set version from data base
+batchModifyCommProfile.mastersheet.categoryCode= Category code
+batchusercreation.mastersheet.categoryName=Category name
+batchModifyCommProfile.mastersheet.commission.heading=Commission
+batchModifyCommProfile.mastersheet.commission.note=Incentive given to the request initiator
+batchModifyCommProfile.mastersheet.tax.type=Tax type
+batchusercreation.mastersheet.tax.description=description
+batchModifyCommProfile.mastersheet.amt=Amt
+batchusercreation.mastersheet.amount=Amount
+batchModifyCommProfile.mastersheet.pct=Pct
+batchusercreation.mastersheet.percentage=Percentage
+batchModifyCommProfile.mastersheet.tax.on.foc=Tax Calculation on FOC
+batchModifyCommProfile.mastersheet.tax.value=Y/N
+batchModifyCommProfile.mastersheet.tax.on.c2c=Tax calculated on channel to channel transfer
+batchModifyCommProfile.commission.profile.template=Batch Add Commission Profile Template
+batchModifyCommProfile.commission.profile.network=Network
+batchModifyCommProfile.commission.profile.downloadedby=Downloaded by 
+batchModifyCommProfile.commission.profile.star=All fields marked with * are mandatory 
+batchModifyCommProfile.commission.profile.commission.slab= Assign Commission Slabs
+batchModifyCommProfile.commission.profile.name= Profile Name*
+batchModifyCommProfile.commission.profile.name.comment=Profile name should be similar as commission profile sheet
+batchModifyCommProfile.commission.profile.Short.code=Short Code*
+batchModifyCommProfile.commission.profile.Short.code.comment=short code is not editable
+batchModifyCommProfile.commission.profile.setID=SetID
+batchModifyCommProfile.commission.profile.setID.comment=Set ID is not editable
+batchModifyCommProfile.commission.profile.applicable.from=Applicable From*
+batchModifyCommProfile.commission.profile.applicable.time=Applicable Time*
+batchModifyCommProfile.commission.profile.taxon.foc=Tax calculation on FOC
+batchModifyCommProfile.commission.profile.taxon.c2c=Tax calculation on C2C
+batchModifyCommProfile.commission.profile.multiple.of=Multiple of*
+batchModifyCommProfile.commission.profile.min.transfer=Min Transfer Value*
+batchModifyCommProfile.commission.profile.max.transfer=Max Transfer Value*
+batchModifyCommProfile.commission.profile.from.range=From Range
+batchModifyCommProfile.commission.profile.to.range=To Range
+batchModifyCommProfile.commission.profile.commission.type=Type
+batchModifyCommProfile.commission.profile.commisison.rate=Rate
+batchModifyCommProfile.commission.profile.tax1.type=Tax1 Type
+batchModifyCommProfile.commission.profile.tax1.rate=Tax1 Rate
+batchModifyCommProfile.commission.profile.tax2.type=Tax2 Type
+batchModifyCommProfile.commission.profile.tax2.rate=Tax2 Rate
+batchModifyCommProfile.commission.profile.tax3.type=Tax3 Type
+batchModifyCommProfile.commission.profile.tax3.rate= Tax3 Rate
+batchModifyCommProfile.commission.profile.additional.commission.slab= Assign Additional Commission Slabs
+batchModifyCommProfile.commission.profile.additional.commission.status=status
+batchModifyCommProfile.commission.profile.additional.commission.differential.factor=differential factor
+batchModifyCommProfile.commission.profile.additional.commission.service=service
+
+batchModifyCommProfile.commission.profile.commission=Commission;
+batchModifyCommProfile.commission.profile.roam.commission=Roam commission
+batchModifyCommProfile.commission.profile.version=Version
+batchModifyCommProfile.commission.profile.version.comment=version is not editable
+
+batchModifyCommProfile.commission.profile.invalid.time= applicable date-time should be greter then or equal to current date-time
+batchModifyCommProfile.commission.profile.product.ID=Product ID
+batchModifyCommProfile.commission.profile.product.ID.comment=Product ID is not editable
+batchModifyCommProfile.commission.profile.product.service.ID.comment=service ID is not editable
+
+### added by gaurav pandey batch add commission profile
+BADCMPF01=Batch Add Comm Profile
+BADCMPFDMM=Batch Add Comm Profile
+BADCMPF01A=Batch Add Comm Profile
+batchAddCommProfile.heading=Add commission Profile
+batch.add.comm.profile.batch.name=batch name
+BADCMPF01=Batch Add Commission Profile
+BADCMPFDMM=Batch Add Commission Profile
+profile.batchcommissionprofile.view.heading=Batch Add Commission Profile Template
+download.commission.profile.template=Download Commission Profile Template
+commission.profile.fileUploadLink.path=Commission Profile File Upload Path
+batch.add.commission.profile.template=Batch Add Commission Profile Template
+batch.add.comm.profile.batch.name=Batch name
+batch.add.comm.profile.ViewErrLog.heading=View error log
+commissionProfile.downloading.uploading.profile=commission Profile downloading uploading profile
+commissionProfile.downloadin.uploading.shortCode= short code
+batch.add.comm.profile.master.heading=Master data for {0} domain and {1} Category
+batch.add.comm.profile.network=Network
+batch.add.comm.profile.network.name=Network name
+batch.add.comm.profile.category=Category
+batch.add.comm.profile.categorycode=Category code*
+batch.add.comm.profile.categoryname=Category name
+batch.add.comm.profile.product.heading=Product
+batch.add.comm.profile.product.heading.note=The product to which the commission is to be associated
+batch.add.comm.profile.productcode=Product code*
+batch.add.comm.profile.productname=Product name
+batch.add.comm.profile.domain=Domain
+batch.add.comm.profile.domaincode=Domain code*
+batch.add.comm.profile.domainname=Domain name
+batch.add.comm.profile.profile.name=Profile name*
+batch.add.comm.profile.short.code=Short code*
+batch.add.comm.profile.service.code=Service code*
+batch.add.comm.profile.diffrential.factor=Diffrential factor
+batch.add.comm.profile.multiple.of=Multiple of*
+batch.add.comm.profile.min.transfer.value=Min transfer value
+batch.add.comm.profile.max.transfer.value=Max transfer value
+batch.add.comm.profile.commission=Commission
+batch.add.comm.profile.amt=Amt
+batch.add.comm.profile.amount=Amount
+batch.add.comm.profile.pct=Pct
+batch.add.comm.profile.percentage=Percentage
+batch.add.comm.profile.commission.note=Incentive given to the request initiator
+batch.add.comm.profile.tax.cal.c2c.transfer=Tax calculated on channel to channel transfer
+batch.add.comm.profile.tax.cal.c2c.transfer.description=Tax will be calculated on channel to channel transfer.
+batch.add.comm.profile.tax.cal.c2c.transfer.note=Y/N
+batch.add.comm.profile.tax.cal.FOC=Tax calculation on FOC
+batch.add.comm.profile.tax.cal.FOC.description= Tax will be calculated on FOC.
+batch.add.comm.profile.tax.cal.FOC.note=Y/N
+batch.add.comm.profile.tax.type=Tax type
+batch.add.comm.profile.taxes=Taxes
+batch.add.comm.profile.tax1.type=Tax1 type
+batch.add.comm.profile.tax2.type=Tax2 type
+batch.add.comm.profile.tax3.type=Tax3 type
+batch.add.comm.profile.tax1.rate=Tax1 rate
+batch.add.comm.profile.tax2.rate=Tax2 rate
+batch.add.comm.profile.tax3.rate=Tax3 rate
+batch.add.comm.profile.type=Type
+batch.add.comm.profile.rate=Rate
+batch.add.comm.profile.tax.description=Description
+batch.add.comm.profile.domain.category.heading=Domain  and corresponding Categories
+batch.add.comm.profile.domain.category.heading.note=This is the listing of available Doamin code,Domain Name and their correponding Category Code and Category Name.
+batch.add.comm.profile.comm.template.heading=Batch Commission Profile Template
+batch.add.comm.profile.Additional.comm.template.heading=Batch Additional Commission Profile Template
+batch.add.comm.profile.assign.additional.commission.slabs=Assign Additional Commission Slabs
+batch.add.comm.profile.applicable.from=Applicable from*
+batch.add.comm.profile.applicable.time=Applicable time*
+batch.add.comm.profile.downloaded.by=Downloaded by
+batch.add.comm.profile.version=Version
+batch.add.comm.profile.fields.mendatory.warning=All fields marked with * are mandatory 
+batch.add.comm.profile.fields.mendatory.comment=This field is mendatory.
+batch.add.comm.profile.assign.commission.slabs=Assign commission slabs
+batch.add.comm.profile.from.range=From range
+batch.add.comm.profile.to.range=To range
+batch.add.comm.profile.confirm=Confirm Batch Add Commission Profile
+batch.add.comm.profile.batchid.required=BatchId required
+batch.add.comm.profile.service.type.heading=SERVICE TYPE
+batch.add.comm.profile.msg.processalreadyrunning=Please try later since batch add commission process is already running.
+batch.add.comm.profile.waitingprocess.heading=Batch Add Commission Process [Waiting ...]
+batch.add.comm.profile.error.filenamelength=Bulk Add Commission upload file name should be less than or equal to 30 characters.
+batch.add.comm.profile.error.pathnotdefined=Bulk Add Commission upload file path is not defined in Constants file
+bulkcommProfile.processuploadedfile.error.domainCodeMissing = domain code missing
+bulkcommProfile.processuploadedfile.error.invalidDomainCode=invalid domain code please refer master sheet
+bulkcommProfile.processuploadedfile.error.categoryCodeMissing = category code missing
+bulkcommProfile.processuploadedfile.error.invalidCategoryCode=invalid category code please refer master sheet
+bulkcommProfile.processuploadedfile.error.profileNameMissing =profile name missing
+bulkcommProfile.processuploadedfile.error.invalidProfileName=profile name already exists
+bulkcommProfile.processuploadedfile.error.shortCodeMissing =short code missing
+bulkcommProfile.processuploadedfile.error.invalidShortCode=short Code already exists
+bulkcommProfile.processuploadedfile.error.applicableTimeMissing=applicable time missing
+bulkcommProfile.processuploadedfile.error.applicabledateMissing=applicable date missing
+bulkcommProfile.processuploadedfile.error.invalidApplicbleTime=applicable date time should be greater than current date time  
+bulkcommProfile.processuploadedfile.error.invalidproductName= product name is not valid please refer master data sheet
+bulkcommProfile.processuploadedfile.error.multipleOff=multiple Off is missing
+bulkcommProfile.processuploadedfile.error.startRange= start range missing at least one slab entry required
+bulkcommProfile.processuploadedfile.error.endRange=end range missing at least one slab entry required
+bulkcommProfile.processuploadedfile.fileformat.error= invalid file format
+bulkcommProfile.processuploadedfile.fileinvalid.error=invalid file 
+bulkcommProfile.processuploadedfile.profilename.invalid=profile name is not valid plese enter valid profile name according to commission profile sheat
+bulkcommProfile.processuploadedfile.shortCode.invalid=invalid short code please enter valid short code according to commission profile sheet
+bulkcommProfile.processuploadedfile.error.serviceTypeMissing=service type missing
+bulkcommProfile.processuploadedfile.error.serviceTypeInvalid=service type is not valid please refer master data sheet
+bulkcommProfile.processuploadedfile.uploaded.succssfuly=batch commission profile added successfuly
+bulkcommProfile.processuploadedfile.error.minTransfer.value= Max transfer value can't be less than or equal to max tarnsfer value
+bulkcommProfile.processuploadedfile.error.startRange.value= To range can't be less than equal to From range 
+bulkcommProfile.processuploadedfile.error.startRange.invalid= Start range value  should be in between min tansfer value and max transfer value
+bulkcommProfile.processuploadedfile.error.endRange.invalid=End range value  should be in between min tansfer value and max transfer value
+batch.modify.processUploadedFileForCommProfile.error.setName=Commision profile set name is missing
+batch.modify.processUploadedFileForCommProfile.error.shortCode=short code missing
+batch.modify.processUploadedFileForCommProfile.error.multipleOff=multiple off missing or it cant't be zero
+batch.modify.processUploadedFileForCommProfile.error.min/maxTransferValues= Max transfer value should be greater then min transfer value
+batch.modify.processUploadedFileForCommProfile.error.startRange/endRange=end range should be greater then start range
+batch.modify.processUploadedFileForCommProfile.error.startRange=Start range should be in between min tarnsfer value and max transfer value
+batch.modify.processUploadedFileForCommProfile.error.endRange=end range should be in between min transfer and max tarnsfer values
+batchModifyCommProfile.commission.profile.serviceID=ServiceID  
+batchModifyCommProfile.process.running= please try later batch modify commission profile process is already running
+batchAddCommProfile.process.running= please try later batch add commission profile process is already running
+batchModifyCommProfile.error.filenotuploaded=File cannot be uploaded now. Please try later.
+batchModifyCommProfile.processuploadedfile.error.norecordinfile=No record were found in the file for processing.
+batchModifyCommProfile.processuploadedfile.error.maxlimitofrecsreached=The maximum limit ({0}) of records in the file has reached.
+batchModifyCommProfile.processuploadedfile.error.invalidfileformat=Uploaded file is not in valid format.
+batchModifyCommProfile.processuploadedfile.error.invalidfile=uploaded file is not valid 
+batchModifyCommProfile.processuploadedfile.error.invalidfile=Uploaded file contains invalid number of columns.
+batchModifyCommProfile.processuploadedfile.msg.success=Batch commission  have been modified successfully.
+batchModifyCommProfile.processuploadedfile.batchnotcreted=The Batch could not be created as of now. Please try later.
+batchModifyCommProfile.date.formate.invalid=Date formate is invalid.It should be "dd/mm/yy" 
+batch.add.comm.profile.batchname.missing=please enter batch name
+bulkcommProfile.processuploadedfile.error.NoRecord=No record were found in the file for processing.
+bulkcommProfile.processuploadedfile.error.MaxLimitReached=The maximum limit ({0}) of records in the file has reached.
+bulkcommProfile.processuploadedfile.error.invalidFile= uploaded file is not valid 
+
+############### Added by Amit Raheja for Low Balance Alert Email #####################
+user.addchanneluser.label.lowbalalertallowforself=Allow Low Balance Alert For Self
+user.addchanneluser.label.lowbalalertallowforparent=Allow Parent Low Balance Alert
+user.addchanneluser.label.lowbalalertallowforother=Allow Low Balance Alert to Other
+user.addchanneluser.label.alternateemail=Other EmailID(for alerts)
+#################added for VOMS on 28/05/12 by rahul#####################
+VOMSIDmm=Voms order initiate
+VOMSI001=Voms order initiate
+VOMSI01A=Voms order initiate
+VOMSGEN=Voucher Generation
+VOMSA1DMM=Voms Order Approve 1
+VOMSA1001=Voms Order Approve 1
+VOMSA2DMM=Voms Order Approve 2
+VOMSA2001=Voms Order Approve 2
+VOMSA3DMM=Voms Order Approve 3
+VOMSA3001=Voms Order Approve 3
+VOMSD001=Voms Voucher Download
+VOMSDDmm=Voms Voucher Download
+VOMSDWN=Voucher Download
+voms.initiateorder.heading=Voms Order initiate
+voms.orderinitiate.quantity=Quantity
+voms.orderinitiate.remarks=Remarks
+voms.orderinitiate.product=Product
+voms.orderinitiate.activedenomination=Active Mrp
+voms.orderinitiate.error.numericone={0} must be numerical for slab {1}
+voms.orderinitiate.error.required={0} is required for slab {1}
+voms.orderinitiate.error.quantlesszero=Quantity should be greater than 0 in slab {0}
+voms.orderinitiate.error.denomzero=Entered Denomination(Mrp) should be greater than 0 in slab {0}
+voms.orderinitiate.error.invalidenom=invalid denom in slab {0}
+voms.orderinitiate.error.invalidquantity=invalid quantity in slab {0}
+vomsproduct.addnewproduct.label.expiryperiod=Expiry period
+vomsproduct.addnewproduct.err.msg.expirysnumber=Expiry period should be numeric
+voms.initiateorderApp1.heading=Voms Order Approval level 1
+voms.orderinitiate.error.nobatchforproduct=No batch found for selected product.
+voms.orderinitiate.totalnoofvouchers=Total number of vouchers
+voms.orderapprove.error.notupdated=Batch not updated.please try later.
+voms.orderapprove.error.batchapprvdsuccess=Batch {0} approved level {1} successfully
+voms.orderapprove.error.noactiveproduct=No active product found
+voms.orderapprove.error.nobatchesfound=No Batches found for approval of selected product
+voms.orderapprove.error.invalidquantity=Voms order quantity is invalid.Valid range between {0} and {1}
+voms.orderapprove.error.quantityrequired=Quantity is required
+voms.initiateorderApp2.heading=Voms Order Approval level 2
+voms.initiateorderApp3.heading=Voms Order Approval level 3
+voms.orderapprove.label.batchinitiatesuccess=Batch {0} inititiated successfully
+voms.orderinitiate.error.denomnumericone=Denomination should be numeric in slab {0}
+voms.orderinitiate.error.quantumericone=Quantity should be numeric in slab {0}
+voms.orderinitiate.error.enterdata=Enter data in atleast one slab
+voms.download.error.general=Your request cannot be processed at this moment.Please try later.
+voms.download.heading=Voms Voucher Download
+voucher.download.label.printbatchno=Printer Batch No.
+voms.download.label.startserial=Start serial no.
+voms.download.label.endserial=End serial no.
+voms.download.error.nobatchforproduct=No Batches found for Priniting
+voms.download.label.downloadvouchers=Download Vouchers
+voms.download.label.key=Decrypt Key
+voms.download.label.firstline=Total Vouchers={0},From Serial No={1},To Serial No={2}
+voms.download.label.downloadutil=Download voms decrypt util
+voms.orderapprove.error.invalidquantitys=Voms order quantity is invalid in slab {2}.Valid range between {0} and {1}
+
+################### bug removal LMB module #######################
+
+lmb.resettlement.error.prenotfound=Network prefix not found
+lmb.resettlement.error.unsuportednw=Unsupported Network
+
+#### added by gaurav for voms
+voms.voucherBatch.heading= Batch creation
+voms.orderinitiate.genratedMrp=Genrated Mrp
+voms.voucherEnable.error.invalidproduct=product not found
+voms.voucher.Batchcreated.success =Batch ID={0} created successfuly 
+voms.voucherEnable.Invalid.quantity= invalid quentity in slab {0}  total available vouchers={1}
+ENBVODmm=Create batch for Voucher Download
+ENBVO001=Create batch for Voucher Download
+ENBVO0A1=Create batch for Voucher Download
+
+
+
+#####################    CHANGES STARTS FOR VMS IN O2C/C2C MODULE     ##############################
+channeltransfer.transferdetails.label.activedenomination=Active Denominations
+channeltransfer.transferdetails.label.srno=S.No.
+channeltransfer.transferdetails.label.denomination=Denom
+channeltransfer.transferdetails.label.quantity=Qty
+channeltransfer.transferdetails.label.product=Product
+channeltransfer.transferdetails.label.mrp=Mrp(deno*qty)
+channeltransfer.transferdetails.label.fromserialnumber=From Sr.No.
+channeltransfer.transferdetails.label.toserialnumber=To Sr.No.
+
+channeltransfer.transferdetails.error.enterdata=At least one slab entry is required.
+channeltransfer.transferdetails.error.denomnumericone=Denomination should be numeric in slab {0}
+channeltransfer.transferdetails.error.quantumericone=Quantity should be numeric in slab {0}
+channeltransfer.transferdetails.error.denomzero=Entered Denomination(Mrp) should be greater than 0 in slab {0}
+channeltransfer.transferdetails.error.quantlesszero=Quantity should be greater than 0 in slab {0}
+channeltransfer.transferdetails.error.invalidenom=Invalid Denomination in slab {0}
+channeltransfer.transferdetails.error.denominationreq=Denomination is required in slab {0}
+channeltransfer.transferdetails.error.quantityreq=Quantity is required in slab {0}
+channeltransfer.transferdetails.error.header=<h3><font color="red">Validation Error</font></h3>You must correct the following error(s) before proceeding :<br><br>
+channeltransfer.transferdetails.error.invalidquantity1=Quantity should less than or equal to {1} for denomination {3} for the product {2} in slab {0}.
+channeltransfer.transferdetails.error.invalidquantity2=No Voucher is available for product {1} for denomination {2} in slab {0}.
+channeltransfer.transferdetails.error.invalidcommissionslab={0} in slab {1} should not be equal to {0} in slab {2}.
+
+channeltransfer.vouchertransferdetailssuccess.msg.success=Transfer request has been successfully initiated with transaction ID {0}.
+channeltransfer.transferdetails.label.editvoucherimage=Edit voucher details
+
+#####################    CHANGES end FOR VMS IN O2C/C2C MODULE     ##############################
+
+
+channel.processUploadedFile.error.incorrectformat=File format is incorrect.
+
+
+
+bulkcommProfile.processuploadedfile.error.productNameMissing= product code is missing 
+batch.modify.processUploadedFileForCommProfile.error.multipleOff=multiple off missing or it can't be zero or can't be negative
+batch.modify.processUploadedFileForCommProfile.error.commRate=invalid comm rate it should not be greater then 100 or should not be negative
+batch.modify.processUploadedFileForCommProfile.error.Tax1Rate=invalid Tax1 rate  it should not be greater then 100 or should not be negative
+batch.modify.processUploadedFileForCommProfile.error.Tax2Rate=invalid Tax2 rate  it should not be greater then 100 or should not be negative
+batch.modify.processUploadedFileForCommProfile.error.Tax3Rate=invalid Tax3 rate  it should not be greater then 100 or should not be negative
+batch.modify.processUploadedFileForCommProfile.error.AddCommRate= invalid comm rate in additional comm seat it should not be greater then 100 or should not be negative
+batch.modify.processUploadedFileForCommProfile.error.AddTax1Rate=invalid Tax1 rate in additional comm seat it should not be greater then 100 or should not be negative
+batch.modify.processUploadedFileForCommProfile.error.AddTax2Rate=invalid Tax2 rate in additional comm seat it should not be greater then 100 or should not be negative
+batch.modify.processUploadedFileForCommProfile.error.RoamCommRate=invalid Roam comm rate in additional comm seat it should not be greater then 100 or should not be negative
+batch.modify.processUploadedFileForCommProfile.error.AddCommAmount=invalid comm amount in additional comm seat it should be less then from range value
+batch.modify.processUploadedFileForCommProfile.error.Roam.AddCommAmount= invalid Roam comm amount in additional comm seat it should be less then from range value
+batch.modify.processUploadedFileForCommProfile.error.AddTax1Amount=invalid Tax1 amount in additional comm seat it should be less then from range
+batch.modify.processUploadedFileForCommProfile.error.AddTax2Amount=invalid Tax2 amount in additional comm seat it should be less then from range
+batch.modify.processUploadedFileForCommProfile.error.commAmount=invalid comm amount it should be less then from range
+batch.modify.processUploadedFileForCommProfile.error.Tax1Amount=invalid Tax1 amount  it should be less then from range
+batch.modify.processUploadedFileForCommProfile.error.Tax2Amount=invalid Tax2 amount  it should be less then from range
+batch.modify.processUploadedFileForCommProfile.error.Tax3Amount=invalid Tax3 amount  it should be less then from range
+voms.orderapprove.error.invalidquantity.initiate=Voms order quantity is invalid.Valid range between {0} and {1} in slab {2}
+O2C.approval.error.invalidDomain= Domain is suspended please try after some time 
+channeltransfer.transferdetails.label.Srno=Sr No
+channeltransfer.transferdetails.label.batchNO=Batch ID
+channeltransfer.transferdetails.label.FromSrNo=From Sr NO
+channeltransfer.transferdetails.label.toSerialNO=To sr NO
+channeltransfer.transferdetails.label.totalVouchers=Total Vouchers
+batch.add.comm.profile.min.transfer.value=Min transfer value*
+batch.add.comm.profile.max.transfer.value=Max transfer value*
+
+########### added for bug removal during voucher profile addtion #################
+vomsproduct.modifyactiveproduct.err.msg.minqtygreaterthanmaxqty=Minimum reorder quantity should be less than performance indicator quantity.
+
+### added new for voms by gaurav
+
+channeltransfer.transferdetails.label.unavailableVouchers=unavailable Vouchers
+channeltransfer.voucherunavialable.heading = unavailable Vouchers
+channeltransfer.transferdetails.label.unavailable.Vouchers =  unavailable Vouchers
+
+errors.double={0} must be a decimal value.
+bulkcommProfile.processuploadedfile.error.multipleOff.numeric = multiple of should be numeric
+bulkcommProfile.processuploadedfile.error.startRange.numeric = start Range of should be numeric
+bulkcommProfile.processuploadedfile.error.endRange.numeric = end range Should be numeric
+bulkcommProfile.processuploadedfile.error.comRate.numeric =Commission rate should be numeric
+bulkcommProfile.processuploadedfile.error.Tax1Rate.numeric= Tax1 rate should be numeric
+bulkcommProfile.processuploadedfile.error.Tax2Rate.numeric= Tax2 rate should be numeric
+bulkcommProfile.processuploadedfile.error.Tax3Rate.numeric= Tax3 rate should be numeric
+batch.modify.processUploadedFileForCommProfile.error.differential.numeric= differential should be numeric
+batch.modify.processUploadedFileForCommProfile.error.RoamCommRate.numeric = Roam commision Rate Should be numeric
+batch.modify.processUploadedFileForCommProfile.error.AddCommRate.numeric =Additional com rate should be numeric
+bulkcommProfile.processuploadedfile.error.StartRange.numeric = Start range should be numeric
+bulkcommProfile.processuploadedfile.error.EndRange.numeric = End range should be numeric
+bulkcommProfile.processuploadedfile.error.CommRate.numeric = Commission Rate Should be numeric
+voms.orderapprove.error.batchRejected=Batch {0} approved level {1} rejected
+bulkcommProfile.processuploadedfile.error.mintranfer.missing=Min transfer value missing in Additional commission sheet
+bulkcommProfile.processuploadedfile.error.maxtransfer.missing=Max transfer value missing in Additional commission sheet
+bulkcommProfile.processuploadedfile.error.mintrsfr.com.missing=Min transfer value missing in Commission profile sheet
+bulkcommProfile.processuploadedfile.error.maxtrsfr.com.missing=Max transfer value missing in Commission profile sheet
+bulkcommProfile.processuploadedfile.error.add.domainCodeMissing = domain code missing in Additional commission sheet
+bulkcommProfile.processuploadedfile.error.add.invalidDomainCode=Invalid Domain code in Additional Comm sheet please refer master data sheet
+bulkcommProfile.processuploadedfile.error.add.categoryCodeMissing= Category code missing in Additional commission sheet
+bulkcommProfile.processuploadedfile.add.error.invalidCategoryCode=Invalid Category code in Additional Comm sheet please refer master data sheet
+bulkcommProfile.processuploadedfile.error.add.profileNameMissing=Profile name missing in Additional comm sheet 
+bulkcommProfile.processuploadedfile.error.add.shortCodeMissing=Short code is  missing in Additionasl comm sheet
+bulkcommProfile.processuploadedfile.error.add.mintranfer.missing=Min transfer value missing in Additional comm Sheet
+bulkcommProfile.processuploadedfile.error.add.maxtransfer.missing=Max transfer value missing in additional Comm Sheet
+batch.add.comm.profile.applicable.from.comment=Date should be in format {0}
+batch.add.comm.profile.applicable.time.comment=Time should be in format HH24:MM
+batch.add.comm.profile.sync.comment=should remain in sync with Commission Profile sheet
+userreturn.withdrawreturn.msg.smspininvalid=Invalid PIN
+userreturn.withdrawreturn.error.smspinnull=PIN is required.
+userreturn.channeltochannelwithdrawviewproduct.label.smspin=PIN
+userreturn.withdrawreturn.error.sessiondatanotfound=Your request cannot be processed at this time, please contact System Admin.
+7035=You are required to change the pin before doing this transaction.
+7065=You are required to change the pin before doing this transaction.
+7015=Invalid PIN
+7042=PIN is blocked
+userreturn.returnproductlist.label.smspin=PIN
+userreturn.returnproductlist.label.leftbraces=(
+userreturn.returnproductlist.label.of=Of
+userreturn.returnproductlist.label.rightbraces=)
+userreturn.returnproductlist.error.sessiondatanotfound=Your request cannot be processed at this time, please contact System Admin.
+userreturn.returnproductlist.error.smspinnull=PIN is required.
+userreturn.returnproductlist.error.remarksrequired=Remarks are required.
+
+######## added for bug removal in batch recharge management #############
+restrictedsubs.commonjsp.error.msg.nocategory = For this menu option, no category exis
+
+
+
+#########added by gaurav for batch add/modify commission profile
+
+
+bulkcommProfile.processuploadedfile.error.MinTransfer.numeric=Min transfer value should be numeric
+bulkcommProfile.processuploadedfile.error.MaxTransfer.numeric=Max transfer value should be numeric
+batchModifyCommProfile.time.formate.invalid=Time formate is invalid.It should be  HH24:MM
+
+##########################to enable voucher enquiry links################################
+VMPNEQDMM=PIN enquiry
+VMPNEQ001=PIN enquiry
+BVPINREDDM=Bulk Voucher Pin Resend
+BVPINRED01=Bulk Voucher Pin Resend
+bulkuser.processuploadedfile.error.longitudelengthexceed=Max. length of longitude should be 15.
+bulkuser.processuploadedfile.error.latitudelengthexceed=Max. length of latitude should be 15.
+
+// added by gaurav
+channeltransfer.transferdetails.label.unavailable = unavailable vouchers
+batcho2c.selectbatchforo2capproval.wallet.type = Wallet Type
+batcho2c.initiateBatchO2CWithdraw.label.walletType = wallet Type

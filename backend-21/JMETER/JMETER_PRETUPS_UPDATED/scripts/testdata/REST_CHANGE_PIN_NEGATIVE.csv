@@ -1,0 +1,5 @@
+TestcaseId,TestcaseType,Module,Description
+TUNG23097,Negative,REST - Change Pin,TO verify that when  LOGinid is enter then password is mandatory .
+TUNG23099,Negative,REST - Change Pin,To verify that Json request sholud fail when mandatory tags are not filled in json request
+TUNG23100,Negative,REST - Change Pin,To verify that Json request sholud fail when Old pin is invalid in json request
+TUNG23101,Negative,REST - Change Pin,To verify that Json request sholud fail when new pin and confirm pin is different in json request

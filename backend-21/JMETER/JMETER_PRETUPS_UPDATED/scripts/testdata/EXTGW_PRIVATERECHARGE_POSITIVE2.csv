@@ -1,0 +1,2 @@
+TestcaseId,TestcaseType,Module,Description
+TUNG12871,,Private Recharge,To check that a successful recharge happens when only loginid and password are entered along with other mandatory fields

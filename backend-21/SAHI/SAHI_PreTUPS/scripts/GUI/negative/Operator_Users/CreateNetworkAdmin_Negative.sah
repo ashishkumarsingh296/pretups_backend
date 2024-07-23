@@ -1,0 +1,39 @@
+//######################################
+//
+//This script to add negative cases for category level Transfer Control Profile.
+//
+//#######################################
+
+
+
+//===== import scripts ===//
+_includeOnce("../../../../utility/ImportPackage.sah");
+_includeOnce("../Operator_Users/OperatorUsers_Common_Negative.sah");
+
+// ===== Pre-Condition check ==== //
+
+//====== Login into the application ====== //
+login($g_appURL, $g_LangEnglish, $g_superAdmin, $g_password, $g_assertMessage);
+
+
+
+//===============Add Network Admin===============================//
+
+var $g_networkAdminDetails = _readCSVFile("../../negative_testdata/NetworkAdmin_NegativeCases.csv");
+
+
+
+for(var $g_row = 1; $g_networkAdminDetails[$g_row] != null; $g_row++){
+
+//for(var $g_row = 38; $g_row != 48; $g_row++){
+	var $g_col = 0;
+	var $t = _testcase($g_networkAdminDetails[$g_row][$g_col++], $g_networkAdminDetails[$g_row][$g_col++]);
+	$t.start();
+	commonVaribleForOperatorUsers($g_row, $g_col);
+	addNetworkAdmin();
+	_assertExists(_listItem("/" + $g_assertion +".*/"));
+	
+	$t.end();
+}
+
+

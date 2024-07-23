@@ -1,0 +1,9 @@
+TestcaseId,TestcaseType,Module,Description
+,Negative,C2C Return,To verify C2C Return is not successful if receiver channel user is barred as receiver
+,Negative,C2C Return,To verify C2C Return is not successful if sender channel user is barred as sender
+,Negative,C2C Return,To verify C2C Return is not successful if TCP of sender is suspended.
+,Negative,C2C Return,To verify C2C Return is not successful if TCP of receiver is suspended.
+,Negative,C2C Return,To verify C2C Return is not successful if receiver is insuspended.
+,Negative,C2C Return,To verify C2C Return is not successful if product code is blank
+,Negative,C2C Return,To verify C2C Return is not successful if Quantity is blank
+,Negative,C2C Return,To verify C2C Return is not successful if reference number length is greater than 20

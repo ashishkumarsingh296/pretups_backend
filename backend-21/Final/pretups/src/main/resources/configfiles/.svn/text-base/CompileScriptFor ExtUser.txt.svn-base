@@ -1,0 +1,20 @@
+################################Compile Script for Ext User Creation/Sus/Resume/Modification Request##############
+javac -d $PRETUPS_HOME/WEB-INF/classes/ com/btsl/pretups/gateway/parsers/ExtAPIParsers.java
+javac -d $PRETUPS_HOME/WEB-INF/classes/ com/btsl/pretups/receiver/RequestVO.java
+javac -d $PRETUPS_HOME/WEB-INF/classes/ com/btsl/pretups/common/PretupsErrorCodesI.java
+javac -d $PRETUPS_HOME/WEB-INF/classes/ com/btsl/pretups/user/requesthandler/ChanneluserModifyReqHandler.java
+javac -d $PRETUPS_HOME/WEB-INF/classes/ com/btsl/pretups/user/requesthandler/ChannelUserRegistrationRequestHandler.java
+javac -d $PRETUPS_HOME/WEB-INF/classes/ com/btsl/pretups/user/requesthandler/ChannelUserDeleteSuspendResumeRequestHandler.java
+
+
+javac -d $PRETUPS_HOME/WEB-INF/classes/ com/btsl/pretups/gateway/util/XMLStringParser.java
+javac -d $PRETUPS_HOME/WEB-INF/classes/ com/btsl/pretups/gateway/util/XMLStringValidation.java
+javac -d $PRETUPS_HOME/WEB-INF/classes/ com/btsl/pretups/user/businesslogic/ChannelUserDAO.java
+javac -d $PRETUPS_HOME/WEB-INF/classes/ com/btsl/pretups/user/businesslogic/ExtUserDAO.java
+javac -d $PRETUPS_HOME/WEB-INF/classes/ com/btsl/pretups/common/PretupsI.java
+javac -d $PRETUPS_HOME/WEB-INF/classes/ com/btsl/pretups/gateway/util/ParserUtility.java
+
+
+
+
+

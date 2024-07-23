@@ -1,0 +1,31 @@
+---
+########################################################
+# Author           Date        Remarks
+#------------    -----------  ---------
+#Pankaj Rawat  09-10-2018    Initial Creation
+#
+# This file Runs the role of Patch.
+#########################################################
+
+  
+- name: Copying JAVA files to a folder(JAVA)
+  hosts: localhost
+  copy: src="{{item.path}}/{{ item.fileName }}" dest="{{Local_TOMCAT_PATH}}/webapps/pretups/JAVA/"
+  when: isWarPatch == false and item.patchType == 'JAVA'
+  with_items:
+    - "{{ PatchConfigfiles }}"
+  tags:
+     - JAVA_PATCH
+	 
+- name: Compiling the java files
+  hosts: localhost
+  shell: sh {{Local_TOMCAT_PATH}}/webapps/pretups/tempCompile.sh 
+  tags:
+     - JAVA_PATCH
+#- name: Creating directory structure
+ # hosts: webservers
+  
+  #dir: {{TOMCAT_PATH}}/webapps/pretups/WEB_INF/classes/{{item.path}}
+  #copy: src="{{item.path}}/{{ item.fileName }}" dest="{{TOMCAT_PATH}}/webapps/pretups/WEB_INF/classes/{{ item.fileName }}"
+  #with_items:
+   # - "{{PatchConfigfiles}}

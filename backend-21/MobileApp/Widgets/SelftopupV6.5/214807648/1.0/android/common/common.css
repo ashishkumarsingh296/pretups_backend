@@ -1,0 +1,559 @@
+body
+{
+	font-size:12px;
+}
+hr
+{
+	 color:rgb(227,45,55);
+	
+}
+a
+{
+	text-decoration:none;color:black;
+}
+
+.welcome
+{
+	color:rgb(227,45,55);
+	font-size:10px;
+	font-weight:bold;
+	
+
+}
+.rechMargin
+{
+	/*margin:5% 0% 0% 15%;*/
+        padding:4% 0% 0% 5%;
+}
+.gray
+{
+	color:rgb(230,230,230);
+}
+.bgColor
+{
+	background-color:rgb(242,242,242);
+}
+.bgTextAjaxResEmpty
+{
+	font-size:6px;
+	color:rgb(242,242,242);
+}
+
+.topText
+{
+	font-size:14px;
+	color:rgb(94,94,96);
+	font-weight:bold;
+	
+}
+.progressBar
+{
+	padding-bottom:15%;
+}
+.checkboxMargin
+{
+	margin:20% 0% 0% 20%;
+}
+.marginNav
+{
+	padding:5% 0% 5% 0%;
+
+}
+.payoption
+{
+	background-color:rgb(227,24,55);
+	 padding: 20% 15% 20% 15%;
+}
+.sosmargin
+{
+	margin:200% 0% 0% 0%;
+}
+.nocardMargin
+{
+	margin:140% 0% 0% 0%;
+
+}
+.sosYes
+{
+	/*background-image:url("wgt:214807648/1.0/android/high/icon_arrowright.9.png");*/
+	padding:50% 50% 50% 30%;
+	font-weight:bold;
+	color:rgb(227,45,55);
+}
+.sosNo
+{
+	/*background-image:url("wgt:214807648/1.0/android/high/icon_arrowleft.9.png");*/
+	padding:50% 30% 50% 50%;
+	margin-right:10%;
+	font-weight:bold;
+	color:rgb(227,45,55);
+}
+.navBgImage
+{
+	height:50px;
+	width:50px;
+	margin-top:6%;
+}
+.sosbottomMargin
+{
+	margin:0 30 40 30;
+	font-size:14px;
+	font-weight:bold;
+}
+
+.sosTopMargin
+{
+	margin:40 40 0 40;
+	font-size:14px;
+	font-weight:bold;
+}
+.textColor
+{
+	color:rgb(94,94,96);
+}
+.newcardMargin
+{
+	padding:15% 0% 15% 0%;
+}
+.buttonText
+{
+	font-size:15px;
+	font-weight:bold;
+	color:rgb(227,45,55);
+}
+.navConfTitle
+{
+	color:rgb(94,94,96);
+	font-weight:bold;
+	font-size:14px;
+	margin:0% 0% 15% 20%;
+}
+.navConfPadding
+{
+	margin:15% 0% 15% 0%;
+}
+.newCardText
+{
+	margin:20% 0% 0% 20%;
+	color:rgb(227,45,55);
+	font-weight:bold;
+	font-size:14px;
+}
+
+.buttonBg
+{
+	/* 
+	background-image:url("wgt:214807648/1.0/asserts/medium/butn_bg.9.png"); */
+	background-color:white;
+	padding:4% 0% 7% 0%;
+	font-weight:bold;
+	color:rgb(227,45,55);
+	margin:2% 4% 0% 4%;
+
+}
+.buttonBg1
+{
+	/* 
+	background-image:url("wgt:214807648/1.0/asserts/medium/butn_bg.9.png"); */
+	background-color:white;
+	padding:18% 0% 18% 0%;
+	font-weight:bold;
+	color:rgb(227,45,55);
+}
+
+
+
+.buttonBgLeft
+{
+	/* 
+	background-image:url("wgt:214807648/1.0/asserts/medium/butn_bg.9.png"); */
+	background-color:white;	
+	width:32%;
+	padding:18% 20% 18% 20%;
+	color:rgb(227,45,55);
+	font-weight:bold;
+       margin:6% 0% 0% 10%;
+}
+
+.buttonBgRight
+{
+	/* 
+	background-image:url("wgt:214807648/1.0/asserts/medium/butn_bg.9.png"); */
+	background-color:white;	
+	width:32%;
+	padding:18% 20% 18% 20%;
+	color:rgb(227,45,55);
+	font-weight:bold;
+        margin:6% 5% 0% 8%;
+}
+.navButtonBgLeft
+{
+	/* background-color:white;
+	 
+		background-image:url("wgt:214807648/1.0/android/high/confirmbutton.9.png");
+	*/	
+	width:40%;
+	padding:16% 0% 16% 0%;
+	margin:20% 7% 0% 20%;
+}
+.navButtonBgRight
+{
+	/* background-color:white;
+	 
+		background-image:url("wgt:214807648/1.0/android/high/confirmbutton.9.png");
+	*/	
+	width:46%;
+	padding:16% 0% 16% 0%;
+	margin:20% 10% 0% 0%;
+}
+.editButton
+{
+	background-color:white;	
+	width:46%;
+	padding:15% 0% 15% 0%;
+	margin:0% 7% 0% 20%;
+
+}
+.deleteButton
+{
+	background-color:white;	
+	width:46%;
+	padding:15% 0% 15% 0%;
+	margin:0% 10% 0% 0%;
+
+}
+.navButtonLeft
+{
+	
+	padding:15% 15% 15% 15%;
+
+}
+.navButtonRight
+{
+	
+ 	padding:15% 15% 15% 15%;
+	
+
+}
+.editDelWidth
+{
+	width:15%;	
+	
+}
+.cardTypeWidth
+{
+	 width:25%;
+}
+.blackBgText
+{
+	font-size:10px;
+	color:white;
+}
+.blackBgCardType
+{
+	font-weight:bold;
+	font-size:14px;
+	color:white;
+}
+.blackBgGap
+{
+	margin-top:30%;
+}
+.topSize
+{
+	font-size:14px;
+	color:rgb(94,94,96);
+	font-weight:bold;
+	padding:10% 0% 10% 0%;
+	
+	
+}
+.inputBg
+{
+	background-color:rgb(230,230,230);
+	height:50px;
+	/*margin:6% 17% 0% 20%;*/
+       /*padding:6% 50% 0% 10%;*/
+
+	
+}
+.inputBg1
+{
+	background-color:rgb(230,230,230);
+	margin-top:1%;
+	height:50px;	
+       
+}
+.inputMobile
+{
+	width 	:81%; 
+	/* margin-right:17%;*/
+	
+}
+.buddypipeMargin
+{
+	margin:10% 5% 0% 0%;
+	color:rgb(230,230,230);
+	font-size:20px;
+}
+.contactPicker
+{
+	width:19%;
+	background-color:rgb(230,230,230);
+	margin:1% 0% 0% 2%;
+
+	height:50px;
+}
+.rechGap
+{
+	/*margin:0% 7% 0% 0%;*/
+       padding:4% 7% 5% 7%;
+
+}
+.redColor
+{
+	
+	color:rgb(227,45,55);
+}
+.termsub
+{
+	font-size:11px;
+	color:rgb(94,94,96);
+	margin:10% 10% 10% 15%;
+	
+}
+.termsubtitle
+{
+	margin-top:5%;
+	font-size:14px;
+	color:rgb(94,94,96);
+}
+.recTypeText
+{
+	padding:4% 0% 4% 5%;
+	font-weight:bold;
+	color:rgb(94,94,96);
+}
+.navTextSize
+{
+	font-size:11px;
+	
+	color:rgb(94,94,96);
+
+}
+.backNav
+{	
+	width:8%;
+
+}
+.showbalance{
+	background-color: rgb(227,24,55);
+	 padding: 20% 0% 20% 0%;
+	
+}
+.showbalanceText
+{
+	 color: white;
+	font-weight:bold;
+	 padding-left: 15%;
+}
+.paycardText
+{
+	background-color:rgb(235,235,235);
+	font-size: 10px; 
+	font-style:italic; 
+	padding: 10% 0% 10% 0%;
+}
+
+.paymentStatus
+{
+	background-color: rgb(227, 24, 55); 
+	color: rgb(255, 255, 255); 
+	padding: 20% 20% 20% 20%;
+}
+.paystatustext
+{
+	font-size:20px;
+	margin:0% 0% 0% 15%;
+}
+.paystatusinfo
+{
+	font-size:12px;
+	margin-left:15%;
+}
+.blackBg
+{
+	/*background-image:url("wgt:214807648/1.0/android/high/card_half.9.png"); */
+	padding:15% 15% 15% 15%;
+	margin: 10% 18% 0% 20%;
+}
+.blackBgfull
+{
+	/*background-image:url("wgt:214807648/1.0/android/high/card_full.9.png"); */
+	padding:20% 20% 20% 20%;
+	margin: 10% 18% 0% 20%;
+
+}
+
+.backImage
+{
+	width:15%;
+	
+}
+.navInput
+{
+	width:50%;
+	height:50px;
+}
+.navAddcard
+{
+	margin-right:10%;
+	 width:8%;
+}
+.navAddBuddy
+{
+
+	 width:15%;
+
+}
+.cvvdim
+{
+	width :40%;
+}
+.expirydim
+{
+	width :30%;
+	margin-left:5%;
+	margin-right:3%;
+}
+.expirydimNewcard
+{
+	width:81%;
+}
+.countryCode
+{
+	width:19%; 
+}
+.marginTop20
+{
+	margin-top:20%;
+
+}
+.marginLeft20
+{
+	margin-left:20%;
+}
+.marginRight10
+{
+	margin-right:10%;
+}
+.marginBottom20
+{
+	margin-bottom:20%;
+}
+.marginBottom10
+{
+	margin-bottom:10%;
+}
+.marginTop15
+{
+	margin-top:5%;
+}
+.buddyMargin
+{
+	padding:0% 10% 0% 10%;
+}
+.eachbuddyMargin
+{
+	margin:10% 20% 10% 20%;
+}
+.delBuddy
+{
+	margin:12% 20% 0% 0%;
+	width:8%;
+}
+.rechBuddy
+{
+	margin:8% 0% 0% 0%;
+	width:10%;
+}
+.buddy
+{
+	font-size:16px;
+	color:rgb(227,24,55);
+}
+.cardlist
+{
+	padding:10px 5px 10px 15px;
+	background-color:white;
+}
+.menuText
+{
+	margin-left:5%;
+	color:rgb(94,94,96);
+}
+.eachMenu
+{
+	 margin:2% 2% 2% 2%;
+	padding:15% 2% 2% 5%;
+}
+.gplustext
+{
+	background-color:rgb(232,118,94);
+	color:white;
+	margin-bottom:5%;
+}
+.fbtext
+{
+	background-color:rgb(88,123,182);
+	color:white;
+ margin-bottom:10%;
+
+}
+/* Added by tribhuwan */
+
+
+.buttonRec
+{
+	/* background-image:url("white_button.png"); */
+	 background-color:white;
+	margin:2% 0% 2% 0%;
+	padding:6% 0% 5% 0%;
+	font-weight:bold;
+	color:rgb(227,45,55);
+
+
+}
+.marginCheckBox
+{
+	margin-left:0%;
+}
+
+.buttonQr{
+       background-color:white;
+       margin:2% 0% 2% 0%;
+	padding:6% 5% 5% 5%;
+	font-weight:bold;
+	color:rgb(227,45,55);
+
+}
+.account
+{
+	font-size:10px;
+	color:rgb(94,94,96);
+	font-weight:bold;
+       margin:0% 0% 0% 20%;
+
+	/*padding:0% 40% 0% 0%;*/
+	
+	
+}
+.usrAcc{
+   color:rgb(230,230,230);
+
+}
+.breakLine{
+  padding:0% 0% 0% 0%;
+
+}
+/* Added by tribhuwan */

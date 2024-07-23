@@ -1,0 +1,2 @@
+TestcaseId,TestcaseType,Module,Description
+  ,Negative,C2S Last X Transfer Request,To verfiy that Last X Transaction report is unsuccesful if MSISDN is invalid 

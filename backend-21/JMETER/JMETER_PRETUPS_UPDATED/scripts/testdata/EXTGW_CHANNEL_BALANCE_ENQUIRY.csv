@@ -1,0 +1,11 @@
+PRODUCTCODE,TestcaseId,TestcaseType,Module,Description
+101,,Positive,Channel User/Self Balance Enquiry EXTGW,To check  that Channel user balance enquiry is successful via EXTGW when  MSISDN and PIN are present.
+101,,Positive,Channel User/Self Balance Enquiry EXTGW,To check  that Channel user balance enquiry is successful via EXTGW when only External code is present
+101,,Positive,Channel User/Self Balance Enquiry EXTGW,To check  that Channel user balance enquiry is successful via EXTGW when all MSISDN PIN and External code is present
+101,,Positive,Channel User/Self Balance Enquiry EXTGW,To check  that Channel user balance enquiry is successful via EXTGW when all MSISDN External code Loginid is present
+101,,Positive,Channel User/Self Balance Enquiry EXTGW,To check  that Channel user balance enquiry is successful via EXTGW when only LoginID and Password is present
+101,,Negative,Channel User/Self Balance Enquiry EXTGW,To check  that Channel user balance enquiry is not successful if PIN not present
+101,,Negative,Channel User/Self Balance Enquiry EXTGW,To check  that Channel user balance enquiry is not successful if PIN entered is invalid
+101,,Negative,Channel User/Self Balance Enquiry EXTGW,To check  that Channel user balance enquiry is not successful if only PIN is present without MSISDN
+101,,Negative,Channel User/Self Balance Enquiry EXTGW,To check  that Channel user balance enquiry is not successful if Login id is entered without password
+101,,Negative,Channel User/Self Balance Enquiry EXTGW,To check  that Channel user balance enquiry is not successful if none of the MSISDN EXTCODE and Login ID is present

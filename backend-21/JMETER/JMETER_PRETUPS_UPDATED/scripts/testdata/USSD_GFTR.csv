@@ -1,0 +1,15 @@
+TestcaseId,TestcaseType,Module,Description
+,Positive,Gift Recharge,To verfiy that Gift Recharge is successful with only MSISDN and PIN.
+,Positive,Gift Recharge,To verify Gift Recharge is successful if channel user is barred as receiver.
+,Positive,Gift Recharge,To verify Gift Recharge is successful if user is insuspended
+,Negative,Gift Recharge,To verify Gift Recharge is not successful if user is outsuspended
+,Negative,Gift Recharge,To verify Gift Recharge is not successful if TCP is suspended
+,Negative,Gift Recharge,To verify Gift Recharge is not successful if channel user is suspended
+,Negative,Gift Recharge,To verify Gift Recharge is not successful if channel user barred as sender
+,Negative,Gift Recharge,To verify Gift Recharge not successful if MSISDN2 is missing
+,Negative,Gift Recharge,To verify Gift Recharge not successful if Amount is not present
+,Negative,Gift Recharge,To verify Gift Recharge not successful if Selector is missing
+,Negative,Gift Recharge,To verify Gift Recharge not successful if Amount present is negative
+,Negative,Gift Recharge,To verify Gift Recharge not successful if Gifter MSISDN is blank
+,Negative,Gift Recharge,To verify Gift Recharge not successful if Gifter  Name is blank
+,Negative,Gift Recharge,To verify Gift Recharge not successful if Gifter MSISDN Name and Language blank

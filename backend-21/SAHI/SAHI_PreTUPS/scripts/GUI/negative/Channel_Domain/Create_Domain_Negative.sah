@@ -1,0 +1,39 @@
+//######################################
+//
+//This script to add negative cases for channel domain creation 
+//
+//#######################################
+
+
+//===== import scripts ===//
+_includeOnce("../../../../utility/ImportPackage.sah");
+_includeOnce("CreateDomain_Common_Negative.sah");
+
+// ===== Pre-Condition check ==== //
+// Not applicable 
+
+// ====== Login into the application ====== //
+login($g_appURL, $g_LangEnglish, $g_superAdmin, $g_password, $g_assertMessage);
+
+
+var $g_ChannelDomain = _readCSVFile("../../negative_testdata/ChannelDomainNegativeCases.csv");
+
+var $g_row;
+var $g_col;
+
+for($g_row = 1; $g_ChannelDomain[$g_row] != null; $g_row++){
+	$g_col = 0;
+	var $t = _testcase($g_ChannelDomain[$g_row][$g_col++], $g_ChannelDomain[$g_row][$g_col++]);
+	$t.start();
+	variableForChannelDomain($g_row, $g_col);
+	
+	var $l_error = addChannelDomain();
+	_assertExists(_listItem($assertion));
+	
+	if($l_error == true){
+		_log("Try to execute another test case");
+	}
+	
+	$t.end();
+}
+

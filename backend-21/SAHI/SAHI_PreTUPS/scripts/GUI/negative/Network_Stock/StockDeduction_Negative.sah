@@ -1,0 +1,98 @@
+//######################################
+//
+//This script to add negative test cases of Stock deduction
+//
+//#######################################
+
+
+//===== import scripts ===//
+_includeOnce("../../../../utility/ImportPackage.sah");
+
+// ===== Pre-Condition check ==== //
+
+//If Network Admin doesn't exist create it first then create network stock deduction
+
+var $l_naCsv = _readCSVFile("../../../GUI/testdata/NA_Login.csv"); //Reads the network admin credentials 
+var $g_row = 4;
+var $g_col = 1;
+var $g_networkAdmin1 = $l_naCsv[1][1];
+if($g_networkAdmin1 == "null"){  
+	createNA();  // UserManagement_Common.sah
+	var $l_naCsv1 = _readCSVFile("../../../GUI/testdata/NA_Login.csv");
+	$g_networkAdmin1 = $l_naCsv1[1][1];
+	login($g_appURL, $g_LangEnglish, $g_networkAdmin1, $g_commonPassword, $g_assertWelcome);
+}else	 
+	login($g_appURL,  $g_LangEnglish, $g_networkAdmin1, $g_commonPassword, $g_assertWelcome);
+
+ 
+// =============== Add Negative test cases of network stock initiation ================== // 
+
+	var $t1 = _testcase("TEST001", "Given a network admin try to deduction stock without giving any requested queantity");
+	$t1.start();
+	
+	initiatekStockDeduction("");
+	
+	_assertExists(_listItem("/"+"Required quantity greater than zero for at least one product should be specified."+".*/"));
+	$t1.end();
+
+	
+	// =============== Add Negative test cases of network stock initiation ================== // 
+	
+	var $t1 = _testcase("TEST002", "Given a network admin try to submit string as requested quantity for deduction");
+	$t1.start();
+	initiatekStockDeduction("ABCD");
+	_assertExists(_listItem("/"+"Requested quantity must contain only numeric values for product eTopUP"+".*/"));
+	$t1.end();
+
+	// =============== Add Negative test cases of network stock initiation ================== // 
+	
+	var $t1 = _testcase("TEST003", "Given a network admin try to submit negative requested quantity for deduction");
+	$t1.start();
+	initiatekStockDeduction("-100");
+	_assertExists(_listItem("/"+"Requested quantity should be non negative numeric value"+".*/"));
+	$t1.end();
+
+
+// =============== Add Negative test cases of network stock initiation ================== // 
+	
+	var $t1 = _testcase("TEST004", "Given a network admin try to submit requested quantity as invalid format like Rs. 10");
+	$t1.start();
+	initiatekStockDeduction("RS. 10");
+	_assertExists(_listItem("/"+"Requested quantity must contain only numeric values for product eTopUP"+".*/"));
+	$t1.end();
+
+// =============== Add Negative test cases of network stock initiation ================== // 
+	
+	var $t1 = _testcase("TEST005", "Given a network admin try to submit requested quantity as invalid format for deduction");
+	$t1.start();
+	initiatekStockDeduction("1..0");
+	_assertExists(_listItem("/"+"Requested quantity must contain only numeric values for product eTopUP"+".*/"));
+	$t1.end();
+
+
+// ============================ function for initiation & deduction for network stock ===================== //
+
+var $g_quantity;
+
+function initiatekStockDeduction($g_quantity) {
+	
+	_click(_link("Network stock"));
+	_click(_link("Initiate stock deduction"));
+	_setValue(_textbox("stockProductIndexed[0].requestedQuantity"), $g_quantity);
+	_click(_submit($g_BtnSubmit));
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

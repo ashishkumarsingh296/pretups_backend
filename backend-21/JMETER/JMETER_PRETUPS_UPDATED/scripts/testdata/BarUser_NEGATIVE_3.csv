@@ -1,0 +1,5 @@
+TestcaseId,TestcaseType,Module,Description
+TUNG12757,Negative,Bar user through Restful API,To verify only numeric character allowed for msisdn
+,,,
+,,,
+,,,

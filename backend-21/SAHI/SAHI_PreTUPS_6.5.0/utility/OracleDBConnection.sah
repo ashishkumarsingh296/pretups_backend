@@ -1,0 +1,35 @@
+//################################################
+//#Company Name: Comviva Technologies Ltd.
+//#Application Name: PretupsTA
+//#Objective:To connect to the Pretups Oracle database.
+//#Author Name: Anantha Sakthi
+//#Created Date: 21/02/2014
+//###############################################
+
+/**
+ *  This function establishes Oracle DB connection
+ *	@param[in] - query		sql query to fetch data from DB
+ *	@return - data		output of the query
+ */
+
+_includeOnce("Datastructure.sah");
+
+//var $g_length;
+function dbConnection($a_query){
+	var $l_dbURL =  "jdbc:oracle:thin:@" + $g_dbIP + ":" + $g_dbPort + ":" + $g_dbSid;
+	var $l_db = _getDB("oracle.jdbc.driver.OracleDriver", $l_dbURL, $g_dbUserName, $g_dbPassword);
+	var $l_data = $l_db.select($a_query);
+	return ($l_data);
+}
+
+/**
+ * Method to execute an Oracle DB query
+ * @param $a_query 
+ * @returns
+ */
+function executeQuery($a_query){
+	var $l_dbURL =  "jdbc:oracle:thin:@" + $CONFIG.DB_URL + ":" + $CONFIG.DB_PORT + ":" + $CONFIG.DB_SID;
+	var $l_db = _getDB("oracle.jdbc.driver.OracleDriver", $l_dbURL, $CONFIG.DB_USERNAME, $CONFIG.DB_PASSWORD);
+	var $l_data = $l_db.select($a_query);
+	return ($l_data);
+}

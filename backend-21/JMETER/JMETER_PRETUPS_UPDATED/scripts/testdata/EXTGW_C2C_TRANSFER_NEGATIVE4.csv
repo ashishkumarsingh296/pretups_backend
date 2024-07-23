@@ -1,0 +1,2 @@
+PASSWORD,PRODUCTCODE,QTY,LANGUAGE1,TestcaseId,TestcaseType,Module,Description
+1111,101,90,,TUNG12839,Negative,Channel to Channel Transfer,with invalid Login Id and Password

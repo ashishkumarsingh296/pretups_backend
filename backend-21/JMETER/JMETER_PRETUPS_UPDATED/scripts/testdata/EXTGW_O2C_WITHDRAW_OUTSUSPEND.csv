@@ -1,0 +1,2 @@
+TestcaseId,TestcaseType,Module,Description
+,Positive,O2C Withdraw through EXTGW,To check  that  O2C Withdraw is successful when Channel user is OUTSUSPENDED

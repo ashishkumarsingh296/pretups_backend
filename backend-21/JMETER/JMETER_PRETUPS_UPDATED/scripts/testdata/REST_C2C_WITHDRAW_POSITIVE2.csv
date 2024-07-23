@@ -1,0 +1,2 @@
+PRODUCTCODE,LANGUAGE1,TestcaseId,TestcaseType,Module,Description
+101,1,TUNG23128,Positive,REST -  C2C withdraw,To verify that In case of LoginID and Password Request should be successful

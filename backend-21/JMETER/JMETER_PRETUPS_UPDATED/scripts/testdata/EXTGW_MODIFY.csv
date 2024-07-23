@@ -1,0 +1,11 @@
+TestcaseId,TestcaseType,Module,Description
+,Positive,Modify user API through EXTGW,To verfiy that User Modification API execute successfully with MSISDN and PIN
+,Negative,Modify user API through EXTGW,To verfiy that User Modification API does not execute successfully with PIN blank
+,Positive,Modify user API through EXTGW,To verfiy that User Creation API execute successfully with WEB loginID and WEB password 
+,Negative,Modify user API through EXTGW,To verfiy that User Creation API not execute successfully if Network code is blank
+,Negative,Modify user API through EXTGW,To verfiy that User Creation API not execute successfully if User Primary Number is blank
+,Negative,Modify user API through EXTGW,To verfiy that User Creation API not execute successfully if User Name  is blank
+,Negative,Modify user API through EXTGW,To verfiy that User Creation API not execute successfully if User Name Prefix is blank
+,Negative,Modify user API through EXTGW,To verfiy that User Creation API not execute successfully if employee code LoginID and MSISDN of initiator are blank
+,Negative,Modify user API through EXTGW,To verfiy that User Creation API not execute successfully if Network Code is invalid
+,Negative,Modify user API through EXTGW,To verfiy that User Creation API not execute successfully if User Name Prefix is other then Mr/Miss/Mrs 

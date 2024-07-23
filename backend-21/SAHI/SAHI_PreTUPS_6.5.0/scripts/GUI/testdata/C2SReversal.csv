@@ -1,0 +1,10 @@
+TestCaseNo.,Discription,Module,ServiceName,pin,subscriber msisdn,transaction_id,Assertion
+TEST001,To check if pin is not entered,C2S reverse Transaction,Customer Recharge Reversal,,7212345678,,PIN is required
+TEST002,To check if MSISDN field is not entered,C2S reverse Transaction,Customer Recharge Reversal,1357,,,MSISDN or Transaction ID is required.
+TEST003,To check if only transaction ID is entered,C2S reverse Transaction,Customer Recharge Reversal,,,R160219.0825.120002,PIN is required
+TEST004,To check if pin and subscriber msisdn both are entered and reversal is successful,C2S reverse Transaction,Customer Recharge Reversal,1357,7212345678,,accepted for processing
+TEST005,To check if pin and transaction id both are entered and reversal is successful,c2S reverse Transaction,Customer Recharge Reversal,1357,,R160219.0825.120002,accepted for processing
+TEST006,To check if pin and subscriber msisdn both are entered and reversal fails,c2S reverse Transaction,Customer Recharge Reversal,1357,7212345678,,1041049:Reversal failed.Kindly retry.
+TEST007,To check if pin and transaction id both are entered and reversal fails,C2S reverse Transaction,Customer Recharge Reversal,1357,,R160219.0825.120002,1041049:Reversal failed.Kindly retry.
+TEST008,"To check what appears on screen if reversal is ambiguous when pin , subscriber's msisdn are entered ",C2S reverse Transaction,Customer Recharge Reversal,1357,7212345678,,"616:Your request cannot be processed at this time, please try again later."
+TEST009,"To check what appears on screen if reversal is ambiguous when pin , transcation id are entered ",C2S reverse Transaction,Customer Recharge Reversal,1357,,R160219.0825.120002,"616:Your request cannot be processed at this time, please try again later."

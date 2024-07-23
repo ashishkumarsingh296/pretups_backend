@@ -1,0 +1,3 @@
+EXTNWCODE,PRODUCTCODE,QTY,REMARKS,TestcaseId,TestcaseType,Module,Description
+NG,,10,,TUNG12848 ,Negative,O2C return through EXTGW,To check if  product code is not present in the request then o2c retrun is not successful
+NG,101,,,TUNG12849,Negative,O2C return through EXTGW,To check if  amount is not present in the request then o2c return is not successful

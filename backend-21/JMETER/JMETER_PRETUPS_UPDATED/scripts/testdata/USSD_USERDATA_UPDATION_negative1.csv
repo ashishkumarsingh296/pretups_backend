@@ -1,0 +1,2 @@
+TestcaseId,TestcaseType,Module,Description
+TUNG10201,Negative,User Data update through USSD,To verify that the User Data Updation request is not processed if invalid MSISDN is entered in the request.

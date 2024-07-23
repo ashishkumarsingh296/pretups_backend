@@ -1,0 +1,2 @@
+TestcaseId,TestcaseType,Module,Description
+TUNG12223,Negative,Card group enquiry EXTGW,To verify that valid user is not  able to perform card enquiry via EXTGW when user entered amount which is not present in an slab

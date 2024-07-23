@@ -1,0 +1,13 @@
+insert
+	into
+		page_ui_roles (role_code,
+		page_code)
+	values('NWLEVL2APPROVAL',
+	'P_NW_APP_L2_NW_STK');
+-----------------------------------------------
+insert
+	into
+		page_ui_roles (role_code,
+		page_code)
+	values('ININWSTOCK',
+	'P_NW_NW_STOCK_MAIN');

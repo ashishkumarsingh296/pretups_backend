@@ -1,0 +1,82 @@
+//#######################################
+//
+// To initiate C2C transfer 	 
+//
+//
+//#######################################
+
+
+_includeOnce("../../../../utility/ImportPackage.sah");
+_includeOnce("../../../GUI/testscripts/Transaction/Transaction_Common.sah"); //For initiate and approve O2C transaction 
+_includeOnce("../../../GUI/testscripts/Transaction/ChannelUserForC2C_Common.sah"); //For initiate and approve O2C transaction
+//_includeOnce("../../../GUI/testscripts/Channel_User/ChannelUser_Common.sah"); //For creating channel user
+_includeOnce("../../../GUI/testscripts/Profile_Management/ProfileManagement_Common.sah");//For importing CommProfile functions
+_includeOnce("../../../GUI/testscripts/User_Management/UserManagement_Common.sah"); //For creating CA	
+
+	
+//======================Pre-requisite check============================ //
+_log("Setup", "custom4");
+
+
+	// ============ Create Channel Uer for For C2C Transaction ======= //
+var $l_naCsv = _readCSVFile("../../../GUI/testdata/NA_Login.csv"); //Reads the network admin credentials	
+var $g_hiercEXL = _readExcelFile("../../../GUI/testdata/Hierarchy.xlsx", "Transfer Rules");
+	
+	$g_domCode = $l_naCsv[4][2];
+	$g_catCode = $g_hiercEXL[5][11];
+	$g_parentCategory = $g_hiercEXL[5][10];
+	$g_ownerUser = $l_naCsv[3][1]; 
+	
+	createCUForC2C();
+	
+	
+	
+	//  ========= If CU deos not exists =================== //
+	
+	 
+	var $g_channelUser = $l_naCsv[3][1];
+		if($g_channelUser == "null"){
+			createCU(); // UserManagement_Common.sah
+		login($g_appURL,  $g_LangEnglish, $g_username, $g_commonPassword, $g_assertWelcome);
+		}else{	 
+			login($g_appURL,  $g_LangEnglish, $g_channelUser, $g_commonPassword, $g_assertWelcome);
+		}
+
+		// ============================ C2C Transfer ============================ // 
+		
+		var $g_C2CTransferDetails = _readCSVFile("../../../GUI/testdata/C2CTransferDetails.csv");	
+		
+		$g_msisdn = $l_naCsv[14][2];
+		C2CTransferAndWithdrawal();
+		
+	
+	
+	
+	
+	
+	
+	
+		
+				
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+	

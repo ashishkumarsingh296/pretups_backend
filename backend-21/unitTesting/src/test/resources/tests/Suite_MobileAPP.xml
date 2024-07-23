@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="PreTUPS Automation Suite" verbose="2" parallel="tests">
+
+  <test name="Smoke" parallel="none" preserve-order="true">
+    <classes>
+  	  <class name="restassuredapi.test.SelfRegistration"/>
+  	 <class name="restassuredapi.test.O2CInitiate"/> 
+  	 <class name="restassuredapi.test.O2CDirectApproval"/> 
+	  </classes>
+  </test>
+
+</suite>

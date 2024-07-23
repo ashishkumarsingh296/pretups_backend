@@ -1,0 +1,16 @@
+TestCaseNo. ,Discription,Module,User Type,MSISDN ,Barred Reason,Assertion
+TEST001,"Verify that while channel admin loggin into apllication and to unbar the user, submit button should be there",,,,,
+TEST002,Verify that values in the module drop down are getting populated while going to un bar channel user,Channel to Subscriber,,,,
+TEST003,Verify that values in the user type drop down are getting populated while going to un bar channel user,,Sender,,,
+TEST004,Verify that module is required while un barring user in the system ,,Sender,7233333333,Un barr the User,Module is required.
+TEST005,Verify that channel amdin cant unbarr the user without giving user type in the system ,Channel to Subscriber,,7233333333,Un barr the User,User type is required.
+TEST006,Verify that MSISDN should be required while un barring user in the system ,Channel to Subscriber,Sender,,Un barr the User,Mobile number is required.
+TEST007,Given that channel admin try to un bar user in the system with a invalid mobile number,Channel to Subscriber,Sender,72,Un barr the User,Mobile number is not a valid mobile
+TESt008,"Verify that channel admin cant unbaar the user, which is is not barred, if it does, then it ll display error msg",Channel to Subscriber,Sender,7233333333,Un barr the User,Mobile number does not exist in the barred list
+TEST009,"Channel admin cant unbarred the channel user, which is not supported by netowrk ",Channel to Subscriber,Sender,1000000000,Un barr the User,Entered mobile number is from unsupported network
+TEST010,Verify the functionality of reset button on un bar channel user page,Channel to Subscriber,Sender,7233333333,Un barr the User,
+TEST011,Verify the functionality of back button on un barred channel user list page,Channel to Subscriber,Sender,7233333333,Un barr the User,
+TEST012,Verify that channel admin try to unbar channel user without selecting any channel user ,Channel to Subscriber,Sender,7233333333,Un barr the User,Select at least one record.
+TEST013,Verify the functionality of back button from the confirm page of un barr channel user list page,Channel to Subscriber,Sender,7233333333,Un barr the User,
+TEST014,Verify the functionality of cancel button from the confirm page of un barr channel user list page,Channel to Subscriber,Sender,7233333333,Un barr the User,
+TEST015,Verify that channel user can unbar the channel user ,Channel to Subscriber,Sender,7233333333,Un barr the User,is successfully unbarred.

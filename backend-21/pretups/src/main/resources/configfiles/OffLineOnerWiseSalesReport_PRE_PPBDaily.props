@@ -1,0 +1,11 @@
+PROCESS_ID=OF_OWPPR
+MAX_ROWS=65000
+FILE_SUBSTR_DATE_FORMAT=_ddMMyy_hhmmss
+DATE_FORMAT=dd/MM/yyyy
+DATE_TIME_FORMAT=dd/MM/yy hh:mm:ss
+
+OF_OWPPR_DIR=<Report-Generation-Path>
+OF_OWPPR_HEADER=Owner Name,Geography,Total Prepaid Amount,Total PostPaid Amount,Transfer_date
+OF_OWPPR_QRY=Select Rownum,(USER_NAME ||','||GRPH_DOMAIN_NAME ||','||case When instr(rec,'RC') >0  then   substr(rec,instr(rec,'RC:')+3,instr(rec,',')-4)   else  '0' end ||','|| case  When instr(rec,'PPB') >0   then  substr(rec,instr(rec,'PPB:')+4,instr(rec,',')-4)   else    '0'  end  ||','||  Transfer_date  ) AS DATA from ( select USER_NAME,GRPH_DOMAIN_NAME,transfer_date,LISTAGG(TV, ',') WITHIN GROUP (ORDER BY TV DESC) AS REC  from ( select o.user_id,o.user_name,c.service_type|| ':'|| sum(c.TRANSFER_VALUE ) TV,c.TRANSFER_DATE,UG.GRPH_DOMAIN_CODE,gd.GRPH_DOMAIN_NAME  from users u ,users o,c2s_transfers c,USER_GEOGRAPHIES UG,GEOGRAPHICAL_DOMAINS GD  where c.TRANSFER_DATE_TIME >? and c.TRANSFER_DATE_TIME <= ?  and  c.SENDER_ID=u.USER_ID   AND u.owner_ID=o.user_ID      AND O.USER_ID=UG.USER_ID  and gd.GRPH_DOMAIN_CODE=ug.GRPH_DOMAIN_CODE  group by o.user_id,o.user_name,c.service_type,ug.GRPH_DOMAIN_CODE,c.TRANSFER_DATE,UG.GRPH_DOMAIN_CODE,gd.GRPH_DOMAIN_NAME ) group by USER_NAME,GRPH_DOMAIN_NAME,transfer_date  ) order by Transfer_date,USER_NAME
+OF_OWPPR_EXT=.csv
+OF_OWPPR_PREFIX_NAME=OFFLINE_OWNER_PRE_POST

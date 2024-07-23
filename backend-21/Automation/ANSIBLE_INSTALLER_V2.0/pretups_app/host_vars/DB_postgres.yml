@@ -1,0 +1,114 @@
+#ansible user credentials for oracle user. It shall be used to configure DB, ship files and install dump
+ansible_ssh_user: pgdb
+ansible_ssh_pass: pgdb
+
+# DB User name and its Group name 
+db_user: pgdb
+db_group: pgdb
+
+
+#****** POSTGRES DB RELATED CONFIGURATION***********
+
+#The BASEDIR will be present inside the home directory of postgres user(if not present postgres user will try to create these directories)
+#Temp_Dir should be inside BASEDIR(Please Donot Change this variable)
+
+BASEDIR: PreTUPS
+Temp_Dir: root_folder_scripts
+
+DEFAULT_POSTGRES_DB: postgres  #give the default postgres DB name.
+
+
+###Note: Use Of Capital Cases is Strictly Prohibited for below fields##########
+
+TABLESPACE_CREATION_OWNER_DB: pgdb #enter the postgres db name which will be the owner for our tablespace creation.
+
+PRETUPS_POSTGRES_DB_NAME:  # Enter the db name which you want to create.
+
+PRETUPS_POSTGRES_DB_USER: pgdb # Enter the Db user(ROLE)  you have to create.
+
+PRETUPS_POSTGRES_DB_PASS: pgdb # Enter the Db user(ROLE) password for the same.
+
+
+ISDUMP: true # Provide input for whether Dump is available(true/false)
+
+# If dump is available
+# Provide input for type of Dump available(sql/dmp) in small cases only
+### !!!!NOTE!!!!: Dump should be exported only using command: 'pg_dump -v -C { SOURCE DATABASE } -Fc -f { DUMP NAME }'
+
+DUMP_FORMAT: sql
+
+
+PRETUPS_POSTGRES_DUMP:  # Enter the Dump name without extension(For egs: if dumpname is master.sql, then write master only)
+
+# if dump is not available 
+
+#********SCHEMA NAME RELATED CONFIGURATION************
+
+PRETUPS_POSTGRES_Schema: pretupsdatabase # Enter the schema name
+
+# For multiple schema scripts file provide the name in the sequence of their execution in following format.
+# For example if input is [pretups_schema1, pretups_schema2, pretups_schema3] then the order of execution will be pretups_schema1 -> pretups_schema2 -> pretups_schema3
+
+PRETUPS_POSTGRES_SchemaFile: [pretups7_ansibletest]
+
+#Incase additional scripts are need to be executed set IsManualScripts as true.
+#Provide the name of manual scripts in following set without extension "sql" e.g. gt_pretups_live.sql
+#In case of multiple scripts to be executed then write scripts names in square braces according to their execution order like [SQLScripts1,SQLScripts2,SQLScripts3]. It will execute following same order
+#Scripts are to be appended inside pretups_app/roles/db_ship_scripts_postgress/files/Postgress
+IsManualScripts: false
+ManualScriptsName: [ManualScripts1,ManualScripts2]
+
+##Please Provide Input For table Space Name, respective Data file name(With Full path location) and size of data file in below format
+##(For multiple Table Spaces copy and paste whole set for different table spaces)
+Table_space_entries:
+ - Table_Space_Name: PRTP_DATA
+   Data_file_location: /srv/oradata/oradata2/datafiles
+   Data_file_size: 300M
+ - Table_Space_Name: P_C2SINDX
+   Data_file_location: /srv/oradata/index/datafiles
+   Data_file_size: 300M
+ - Table_Space_Name: P_C2SDATA
+   Data_file_location: /srv/oradata/oradata3/datafiles
+   Data_file_size: 300M
+ - Table_Space_Name: MISP_DATA
+   Data_file_location: /srv/oradata/oradata3/datafiles
+   Data_file_size: 300M
+ - Table_Space_Name: PRTPUSERS   
+   Data_file_location: /srv/oradata/oradata4/datafiles
+   Data_file_size: 300M
+ - Table_Space_Name: P_C2SINDX1
+   Data_file_location: /srv/oradata/index/datafiles
+   Data_file_size: 300M
+ - Table_Space_Name: PRTPUSERBAL_HIST
+   Data_file_location: /srv/oradata/oradata4/datafiles
+   Data_file_size: 300M
+ - Table_Space_Name: PRTPINDX_1
+   Data_file_location: /srv/oradata/index/datafiles
+   Data_file_size: 300M
+ - Table_Space_Name: P_C2SDATA1
+   Data_file_location: /srv/oradata/oradata4/datafiles
+   Data_file_size: 300M
+ - Table_Space_Name: P2P_INDX
+   Data_file_location: /srv/oradata/index/datafiles
+   Data_file_size: 300M
+ - Table_Space_Name: PRTPMIS
+   Data_file_location: /srv/oradata/oradata4/datafiles
+   Data_file_size: 300M
+ - Table_Space_Name: P2P_DATA
+   Data_file_location: /srv/oradata/oradata3/datafiles
+   Data_file_size: 300M
+ - Table_Space_Name: IN_INDX
+   Data_file_location: /srv/oradata/index/datafiles
+   Data_file_size: 300M
+ - Table_Space_Name: PRTPDATA
+   Data_file_location: /srv/oradata/oradata3/datafiles
+   Data_file_size: 300M
+ - Table_Space_Name: PRTP_INDX
+   Data_file_location: /srv/oradata/index/datafiles
+   Data_file_size: 300M
+ - Table_Space_Name: IN_DATA
+   Data_file_location: /srv/oradata/oradata3/datafiles
+   Data_file_size: 300M
+
+#Name of the Log File for (Instance Load and Network Load and Transaction Load) table entries. It will be used for printing logs for each script output. Final name of file will be customization_Log_Name
+Log_Name: Load

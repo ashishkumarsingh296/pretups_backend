@@ -1,0 +1,2 @@
+TestcaseId,TestcaseType,Module,Description
+TUNG13056,Positive,O2C withdraw through EXTGW,To verify that Channel admin can withdraw amount from his channel users by extcode only

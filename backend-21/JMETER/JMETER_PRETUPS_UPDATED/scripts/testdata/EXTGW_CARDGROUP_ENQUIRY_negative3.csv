@@ -1,0 +1,2 @@
+TestcaseId,TestcaseType,Module,Description
+TUNG12225,Negative,Card group enquiry EXTGW,To verify that valid user is not  able to perform card enquiry via EXTGW when user has entered invalid  service type.

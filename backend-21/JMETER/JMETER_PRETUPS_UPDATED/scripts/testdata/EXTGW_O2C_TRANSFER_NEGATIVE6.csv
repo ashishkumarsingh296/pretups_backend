@@ -1,0 +1,2 @@
+TRFCATEGORY,PAYMENTTYPE,TestcaseId,TestcaseType,Module,Description
+SALE,CHQ,TUNG12846,Negative,O2C transfer through EXTGW,To check  that an unsuccessful o2c occurs when wrong ext code is present

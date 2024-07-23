@@ -1,0 +1,90 @@
+---
+ - name: "DB: create OS directory & ship Scripts for the database"
+   user: "{{ ansible_ssh_user }}"
+   gather_facts: no
+   ##become: true
+   hosts: dbservers
+   ##become_user: "{{ ansible_ssh_user }}"
+   vars_files:
+   - roles/db_ship_scripts/vars/main.yml
+   - roles/db_create_table_space/vars/main.yml
+   - roles/db_user_profile/vars/main.yml
+   - roles/db_schema_create/vars/main.yml
+   roles:
+   - {role: db_ship_scripts_rac, tags: db_ship_script}
+
+ - name: "DB: creating the DB user profile"
+   #become: true
+   gather_facts: no
+   hosts: dbservers
+   serial: 1
+   user: "{{ ansible_ssh_user }}"
+   #become_user: "{{ ansible_ssh_user }}"
+   vars_files:
+   - roles/db_user_profile/vars/main.yml
+   - roles/db_create_table_space/vars/main.yml
+   - roles/db_ship_scripts/vars/main.yml
+   - roles/db_ship_scripts/vars/main.yml
+   roles:
+   - {role: db_user_profile, tags: db_user_profile,dup}
+
+ - name: "DB: create schema, assign user profile & grant the permission"
+   #become: true
+   gather_facts: no
+   hosts: dbservers
+   serial: 1
+   #become_user: "{{ ansible_ssh_user }}"
+   user: "{{ ansible_ssh_user }}"
+   vars_files:
+   - roles/db_schema_create/vars/main.yml
+   - roles/db_ship_scripts/vars/main.yml
+   - roles/db_create_table_space/vars/main.yml
+   - roles/db_ship_scripts/vars/main.yml
+   roles:
+   - {role: db_schema_create, tags: db_schema_create,dsc}
+
+ - name: "DB: run DDL, DML & insert master data"
+   #become: true
+   gather_facts: no
+   hosts: dbservers
+   serial: 1
+   user: "{{ ansible_ssh_user }}"
+   #become_user: "{{ ansible_ssh_user }}"
+   vars_files:
+   - roles/db_master_data/vars/main.yml
+   - roles/db_ship_scripts/vars/main.yml
+   - roles/db_create_table_space/vars/main.yml
+   - roles/db_ship_scripts/vars/main.yml
+   - roles/db_schema_create/vars/main.yml
+   roles:
+   - {role: db_master_data, tags: db_master_data,dmd}
+
+ - name: "DB: insert query in db"
+   user: "{{ ansible_ssh_user }}"
+   gather_facts: no
+   ##become: true
+   hosts: dbservers
+   ##become_user: "{{ ansible_ssh_user }}"
+   roles:
+   - {role: db_task, tags: db_task}
+
+# - name: "DB: customize data as per application"
+#   #become: true
+#   gather_facts: yes
+#   hosts: dbservers
+#   serial: 1
+#   user: "{{ ansible_ssh_user }}"
+#   #become_user: "{{ ansible_ssh_user }}"
+#   vars_files:
+#   - roles/db_customization/vars/main.yml
+#   roles:
+#   - {role: db_customization, tags: db_customization,dc}
+
+
+
+
+# - name: "DB: testing"
+#   hosts: dbservers
+#   user: "{{ ansible_ssh_user }}"
+#   roles:
+#   - {role: testing, tags: test}

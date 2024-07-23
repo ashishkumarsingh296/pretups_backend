@@ -1,0 +1,2 @@
+TestcaseId,TestcaseType,Module,Description
+TUNG12723 ,Negative,Lite Recharge through EXTGW,Suspended user should try to initiate the lite recharge request.

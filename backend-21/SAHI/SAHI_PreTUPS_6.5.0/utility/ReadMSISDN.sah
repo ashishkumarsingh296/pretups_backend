@@ -1,0 +1,63 @@
+//################################################
+//#Company Name: Mahindra Comviva Technologies Ltd.
+//#Application Name: Pretups
+//#Objective:To Read & write MSISDN from the csv file.
+//#Author Name: Nidhi Singh
+//#Created Date: 15/01/2014
+//###############################################
+
+/**
+ * This function is used to fetch the MSISDN number from csv and increament +1 in that and write back to the csv.
+ * @param - null
+ * @returns - msisdn
+ */
+
+function readMSISDNFromCSV(){
+	//================Read the MSISDN from MSISDNConf file====================
+
+	var $l_msisdnCsv = _readCSVFile("../../../../conf/MSISDNConf.csv");
+
+	//====Increment MSISDN to get unique number for automation====
+
+	var $l_msisdn = $l_msisdnCsv[1][0];		// this variable contains current MSISDN
+	var $l_temp = $l_msisdn; 
+	
+	$l_msisdn = parseInt($l_msisdn);
+	
+	$l_msisdn = $l_msisdn + 1;					//incrementing MSISDN value by 1
+	$l_msisdn = $l_msisdn.toString();
+	$l_msisdnCsv[1][0] = $l_msisdn;
+
+	//var $g_msisdn = $l_msisdn;					// this variable contains current MSISDN to be used in the application
+
+	//====Write the MSISDN into MSISDNConf file====
+
+	_writeCSVFile($l_msisdnCsv, "../../../../Conf/MSISDNConf.csv", 1); //writing back used MSISDN in the file
+	_log("shashi " + $l_temp );
+	return $l_temp; //Return the MSISDN
+	
+}
+
+
+
+function readMSISDNForO2C() {
+	
+	var $l_msisdnCsv = _readCSVFile("../../../../conf/MSISDNConf.csv");
+
+	// Read MSISDN for initiate O2C 
+
+	_log("shashi ");
+	
+	var $l_msisdn = $l_msisdnCsv[1][0];			// this variable contains current MSISDN
+
+	_log("shashi  without increament " +  $l_msisdn );
+	
+	return $l_msisdn;
+
+}
+
+
+
+
+
+

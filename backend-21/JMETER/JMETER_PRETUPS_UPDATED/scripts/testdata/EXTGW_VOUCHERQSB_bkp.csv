@@ -1,0 +1,34 @@
+TestcaseId,TestcaseType,Module,Description
+,Positive,Voucher Query Request,To verify that Voucher Query Request is successful with all valid details.
+,Positive,Voucher Query Request,To verify that Voucher Query Request is successful with PIN blank
+,Positive,Voucher Query Request,To verify that Voucher Query Request is successful with PIN present and Serial number blank
+,Positive,Voucher Query Request,To verify that Voucher Query Request is successful with voucher type blank
+,Positive,Voucher Query Request,To verify that Voucher Query Request is successful with network code blank
+,Positive,Voucher Query Request,To verify that Voucher Query Request is successful with external code blank
+,Positive,Voucher Query Request,To verify that Voucher Query Request is successful with login id and password blank
+,Positive,Voucher Query Request,To verify that Voucher Query Request is successful with only serial number present
+,Positive,Voucher Query Request,To verify that Voucher Query Request is successful with only PIN present
+,Negative,Voucher Query Request,To verify that Voucher Query Request is not successful with serial number invalid
+,Negative,Voucher Query Request,To verify that Voucher Query Request is not successful with all blank
+,Positive,Voucher Query Request,To verify that Voucher Query Request is successful with network code invalid
+,Positive,Voucher Status Change request,To verify that Voucher Status change  Request is successful for generated to stolen
+,Positive,Voucher Status Change request,To verify that Voucher Status change  Request is successful for enable to stolen
+,Positive,Voucher Status Change request,To verify that Voucher Status change  Request is successful for print enabled to stolen
+,Positive,Voucher Status Change request,To verify that Voucher Status change  Request is successful for preactive to stolen
+,Positive,Voucher Status Change request,To verify that Voucher Status change  Request is successful for onhold to stolen
+,Positive,Voucher Status Change request,To verify that Voucher Status change  Request is successful for enabled to onhold
+,Positive,Voucher Status Change request,To verify that Voucher Status change  Request is successful for onhold to enabled
+,Positive,Voucher Status Change request,To verify that Voucher Status change  Request is successful for enable to consume
+,Positive,Voucher Status Change request,To verify that Voucher Status change  Request is successful for preactive to enabled
+,Negative,Voucher Status Change request,To verify that Voucher Status change  Request is not successful for generated to enabled
+,Negative,Voucher Status Change request,To verify that Voucher Status change  Request is not successful for stolen to enabled
+,Positive,Voucher Roll back request,To verify that Voucher Roll back  Request is successful with valid details
+,Positive,Voucher Roll back request,To verify that Voucher Roll back  Request is successful if network code not present
+,Positive,Voucher Roll back request,To verify that Voucher Roll back  Request is successful with all optional tags blank
+,Negative,Voucher Roll back request,To verify that Voucher Roll back  Request is not successful with serial number invalid
+,Negative,Voucher Roll back request,To verify that Voucher Roll back  Request is not successful with network code invalid
+,Negative,Voucher Roll back request,To verify that Voucher Roll back  Request is not successful with serial number not having status CU or UP
+,Negative,Voucher Roll back request,To verify that Voucher Roll back  Request is not successful with serial number having status ST
+,Negative,Voucher Roll back request,To verify that Voucher Roll back  Request is not successful with serial number having status EN
+,Negative,Voucher Roll back request,To verify that Voucher Roll back  Request is not successful with serial number having status OH
+,Negative,Voucher Roll back request,To verify that Voucher Roll back  Request is not successful with serial number having status GE

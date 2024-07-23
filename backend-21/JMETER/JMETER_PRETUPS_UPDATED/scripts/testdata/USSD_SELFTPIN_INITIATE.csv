@@ -1,0 +1,5 @@
+MSISDN,TestcaseId,TestcaseType,Module,Description
+7255555555,TUNG10184,Positive,Self TPIN iniitiate through USSD,To check if the user is able to initiate the request for Self PIN Reset through USSD according to the Security Question field defined.
+7255555555,TUNG10185,Positive,Self TPIN iniitiate through USSD,To verify that the OTP is generated according to the length defined  for Initiate PIN Reset request.
+,TUNG10186 ,Negative,Self TPIN iniitiate through USSD,To verify that the Initiate PIN Reset request is not processed if MSISDN is not entered in the request.
+34567270009,TUNG10187,Negative,Self TPIN iniitiate through USSD,To verify that the Initiate PIN Reset request is not processed if invalid msisdn is entered in the request.

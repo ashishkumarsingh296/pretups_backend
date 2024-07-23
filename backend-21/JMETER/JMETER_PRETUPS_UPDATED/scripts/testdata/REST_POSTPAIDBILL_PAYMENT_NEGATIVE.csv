@@ -1,0 +1,4 @@
+TestcaseId,TestcaseType,Module,Description
+,Negative,Post Paid Bill Payment,To check that a user is not able to perform Post Paid Bill Payment by entering MSISDN only
+,Negative,Post Paid Bill Payment,To check that a user is not able to perform Post Paid Bill Payment by entering LoginId only
+,Negative,Post Paid Bill Payment,To check that a user is not able to perform Post Paid Bill Payment by not entering MSISDN_PIN LoginId_Password and ExternalCode

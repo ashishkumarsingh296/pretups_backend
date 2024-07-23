@@ -1,0 +1,2 @@
+TestcaseId,TestcaseType,Module,Description
+TUNG12991,Positive,Postpaid Bill Payment through USSD,"To verify that success ""PPB"" response field contain all the  fields values in the character limit"

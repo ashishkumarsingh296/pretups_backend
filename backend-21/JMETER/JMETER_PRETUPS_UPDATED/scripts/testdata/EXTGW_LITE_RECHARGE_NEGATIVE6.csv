@@ -1,0 +1,2 @@
+TestcaseId,TestcaseType,Module,Description
+TUNG12346,Negative,Lite Recharge through EXTGW,To Verify that  invalid service class should show error for LRC

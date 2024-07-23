@@ -1,0 +1,693 @@
+/*
+ * Created on Jun 21, 2006
+ *
+ * TODO To change the template for this generated file go to
+ * Window - Preferences - Java - Code Style - Code Templates
+ */
+package com.btsl.voms.voucher.businesslogic;
+
+/**
+ * @author vikas.yadav
+ *
+ * TODO To change the template for this generated type comment go to
+ * Window - Preferences - Java - Code Style - Code Templates
+ */
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+
+import com.btsl.common.BTSLBaseException;
+import com.btsl.event.EventComponentI;
+import com.btsl.event.EventHandler;
+import com.btsl.event.EventIDI;
+import com.btsl.event.EventLevelI;
+import com.btsl.event.EventStatusI;
+import com.btsl.logging.Log;
+import com.btsl.logging.LogFactory;
+import com.btsl.pretups.common.PretupsErrorCodesI;
+import com.btsl.pretups.transfer.businesslogic.TransferVO;
+import com.btsl.util.BTSLUtil;
+import com.btsl.voms.vomscommon.VOMSI;
+import com.btsl.voms.vomsprocesses.util.VoucherFileUploaderUtil;
+
+
+public class VomsVoucherDAO {
+	private Log _log = LogFactory.getLog(this.getClass().getName());
+	public VomsVoucherDAO() 
+	{
+		super();
+	}
+	
+	
+/**
+	* This method will  load the batch log information
+	* @param con of Connection type
+	* @param p_batchNo of String type
+	* @return returns the ArrayList
+	* @exception SQLException
+	* @exception Exception
+	*/
+	public ArrayList loadBatchLogList(Connection p_con, String p_batchNo) throws BTSLBaseException
+	{
+		if (_log.isDebugEnabled())
+		_log.debug("loadBatchLogList"," Entered.. p_batchNo="+p_batchNo);
+		PreparedStatement dbPs = null;
+		ResultSet rs = null;
+		ArrayList batchList=null;
+		VomsVoucherVO voucherVO=null;
+		try
+		{
+			StringBuffer sqlSelectBuf = new StringBuffer(" select va.serial_no SERIALNO, va.current_status CURRENTSTAT,  va.previous_status PREVSTAT,  US.user_name MODIFIEDBY, ");
+			sqlSelectBuf.append("va.modified_on MODIFIEDON,");
+			sqlSelectBuf.append(" va.status_change_source STATCHSRC, va.batch_no, nvl( va.message,'') MESSAGE, ");
+			sqlSelectBuf.append(" v.expiry_date EXPDATE ");
+			sqlSelectBuf.append(" FROM voms_voucher_audit va,voms_vouchers v,users US WHERE va.batch_no=? ");
+			sqlSelectBuf.append(" AND va.modified_by=US.user_id AND va.SERIAL_NO=v.SERIAL_NO AND va.process_status =? order by va.serial_no");
+			if (_log.isDebugEnabled())
+			_log.debug("loadBatchLogList","Select Query="+sqlSelectBuf.toString());
+			dbPs=p_con.prepareStatement(sqlSelectBuf.toString());
+			dbPs.setString(1,p_batchNo);
+			dbPs.setString(2,VOMSI.VA_PROCESS_ERROR_STAT);
+			rs=dbPs.executeQuery();
+			batchList=new ArrayList();
+			while(rs.next())
+			{
+				voucherVO=new VomsVoucherVO();
+				voucherVO.setSerialNo(rs.getString("SERIALNO"));
+				voucherVO.setPreviousStatus(rs.getString("PREVSTAT"));
+				voucherVO.setPrevStatusModifiedBy(rs.getString("MODIFIEDBY"));
+				voucherVO.setPrevStatusModifiedOn(BTSLUtil.getDateTimeStringFromDate(rs.getTimestamp("MODIFIEDON")));
+				voucherVO.setVoucherStatus(rs.getString("CURRENTSTAT"));
+				voucherVO.setStatusChangeSource(rs.getString("STATCHSRC"));
+				voucherVO.setExpiryDateStr(BTSLUtil.getDateTimeStringFromDate(rs.getTimestamp("EXPDATE"))); 
+				voucherVO.setLastErrorMessage(rs.getString("MESSAGE"));
+				batchList.add(voucherVO);
+			}
+			if (_log.isDebugEnabled())
+			_log.debug("loadBatchLogList","After executing the query loadBatchLogList method batchList="+batchList.size());
+			return batchList;
+		}
+		catch (SQLException sqle)
+		{
+	   	    _log.error("loadBatchLogList","SQLException "+sqle.getMessage());
+			sqle.printStackTrace();
+			EventHandler.handle(EventIDI.SYSTEM_ERROR,EventComponentI.SYSTEM,EventStatusI.RAISED,EventLevelI.FATAL,"VomsVoucherDAO[loadBatchLogList]","","","","Exception:"+sqle.getMessage());
+			throw new BTSLBaseException(this, "loadBatchLogList", "error.general.sql.processing");
+		}//end of catch
+		catch (Exception e)
+		{
+		_log.error("loadBatchLogList","Exception "+e.getMessage());
+		e.printStackTrace();
+		EventHandler.handle(EventIDI.SYSTEM_ERROR,EventComponentI.SYSTEM,EventStatusI.RAISED,EventLevelI.FATAL,"VomsVoucherDAO[loadBatchLogList]","","","","Exception:"+e.getMessage());
+		throw new BTSLBaseException(this, "loadBatchLogList", "error.general.processing");
+		}//end of catch
+		finally
+		{
+			try{if(rs!=null) rs.close(); }catch(Exception ex){_log.error("loadBatchLogList"," Exception while closing rs ex="+ex);}
+			try{ if(dbPs !=null)dbPs.close();}catch(Exception ex){_log.error("loadBatchLogList"," Exception while closing prepared statement ex="+ex);}
+			try {_log.debug("loadBatchLogList"," Exiting..batchList size="+batchList.size());}catch(Exception e) {_log.error("loadBatchLogList"," Exception while closing rs ex="+e);} ;
+		}
+	}   		   
+	 
+	/**
+	 * This method is called after the vouchers have been inserted into the voms_voucher to update the 
+	 * vom_batch_summary
+	 * @param p_con
+	 * @param p_batchVO
+	 * @return int
+	 * @throws BTSLBaseException
+	 * @throws Exception
+	 */
+	public int updateSummaryTable(Connection p_con, VomsBatchVO p_vomsBatchVO,boolean p_directVoucherEnable)throws BTSLBaseException
+	{
+		if(_log.isDebugEnabled())_log.debug("updateSummaryTable() "," Entered for Batch No="+p_vomsBatchVO.getBatchNo()+" p_directVoucherEnable="+p_directVoucherEnable);
+		String query;
+		PreparedStatement psmt = null;
+		int addCount = 0;
+		ResultSet rsVoSummary = null;
+		StringBuffer strbuff=new StringBuffer();
+		try 
+		{
+			strbuff.append("INSERT INTO voms_voucher_batch_summary (batch_no,total_generated ");
+			if(p_directVoucherEnable)
+				strbuff.append(" ,total_enabled)  VALUES(?,?,?)");
+			else
+				strbuff.append(" )  VALUES(?,?)");
+			//query = "INSERT INTO voms_voucher_batch_summary (batch_no,total_generated)VALUES(?,?)";
+			psmt = p_con.prepareStatement(strbuff.toString());
+			psmt.setString(1, p_vomsBatchVO.getBatchNo());
+			psmt.setInt(2, (int) p_vomsBatchVO.getNoOfVoucher());
+			if(p_directVoucherEnable)
+				psmt.setInt(3, (int) p_vomsBatchVO.getNoOfVoucher());
+			addCount = psmt.executeUpdate();
+			if (addCount <= 0)
+			{
+				_log.error(" updateSummaryTable"," Not able to insert in Summary table for Batch No="+p_vomsBatchVO.getBatchNo());
+				EventHandler.handle(EventIDI.SYSTEM_ERROR,EventComponentI.SYSTEM,EventStatusI.RAISED,EventLevelI.MAJOR,"VomsVoucherDAO[updateSummaryTable]","","","","Not able to insert in Summary table for Batch No="+p_vomsBatchVO.getBatchNo());
+				throw new BTSLBaseException(this,"updateSummaryTable",PretupsErrorCodesI.VOUCHER_UPLOAD_PROCESS_GENERAL_ERROR);
+			}
+			addCount = 0;
+			query = "";
+			psmt.close();
+
+			if(_log.isDebugEnabled())_log.debug("updateSummaryTable() ","  Values inserted in Voucher Batch Summary");
+
+			query = "SELECT total_generated,total_enabled FROM voms_voucher_summary WHERE summary_date = ? AND product_id=? AND production_network_code=? AND user_network_code=? FOR UPDATE";
+			psmt = p_con.prepareStatement(query);
+			psmt.setDate(1, BTSLUtil.getSQLDateFromUtilDate(p_vomsBatchVO.getCreatedOn()));
+			psmt.setString(2,p_vomsBatchVO.getProductID()); //sidd
+			psmt.setString(3, p_vomsBatchVO.getLocationCode());
+			psmt.setString(4, p_vomsBatchVO.getLocationCode());
+			rsVoSummary = psmt.executeQuery();
+			query = "";
+
+			// If the record exist add the total generated in the previous value
+			// present in data base
+			int i=1;
+			if (rsVoSummary.next()) 
+			{
+				if(p_directVoucherEnable)
+					query = "UPDATE voms_voucher_summary SET total_generated=?,total_enabled=? WHERE summary_date=? AND product_id=? AND production_network_code=? AND user_network_code=?";
+				else
+					query = "UPDATE voms_voucher_summary SET total_generated=? WHERE summary_date=? AND product_id=? AND production_network_code=? AND user_network_code=?";
+				psmt = p_con.prepareStatement(query);
+				psmt.setInt(i++,(rsVoSummary.getInt("total_generated")+(int) p_vomsBatchVO.getNoOfVoucher()));
+				if(p_directVoucherEnable)
+					psmt.setInt(i++,(rsVoSummary.getInt("total_enabled")+(int) p_vomsBatchVO.getNoOfVoucher()));
+				psmt.setDate(i++, BTSLUtil.getSQLDateFromUtilDate(p_vomsBatchVO.getCreatedOn()));
+				psmt.setString(i++,p_vomsBatchVO.getProductID());
+				psmt.setString(i++, p_vomsBatchVO.getLocationCode());
+				psmt.setString(i++, p_vomsBatchVO.getLocationCode());
+				addCount = psmt.executeUpdate();
+				if (addCount <= 0)
+				{
+					_log.error(" updateSummaryTable"," Not able to update in Summary table for Batch No="+p_vomsBatchVO.getBatchNo());
+					EventHandler.handle(EventIDI.SYSTEM_ERROR,EventComponentI.SYSTEM,EventStatusI.RAISED,EventLevelI.MAJOR,"VomsVoucherDAO[updateSummaryTable]","","","","Not able to update in Summary table for Batch No="+p_vomsBatchVO.getBatchNo());
+					throw new BTSLBaseException(this,"updateSummaryTable",PretupsErrorCodesI.VOUCHER_UPLOAD_PROCESS_GENERAL_ERROR);
+				}
+
+				if(_log.isDebugEnabled())_log.debug("updateSummaryTable() "," Values updated in Voucher Summary");
+			}
+			else 
+			{
+				if(p_directVoucherEnable)
+					query = "INSERT INTO voms_voucher_summary(summary_date,product_id,production_network_code,user_network_code,total_generated,total_enabled)VALUES(?,?,?,?,?,?)";
+				else
+					query = "INSERT INTO voms_voucher_summary(summary_date,product_id,production_network_code,user_network_code,total_generated)VALUES(?,?,?,?,?)";
+				psmt = p_con.prepareStatement(query);
+				psmt.setDate(i++, BTSLUtil.getSQLDateFromUtilDate(p_vomsBatchVO.getCreatedOn()));
+				psmt.setString(i++,p_vomsBatchVO.getProductID());
+				psmt.setString(i++, p_vomsBatchVO.getLocationCode());
+				psmt.setString(i++, p_vomsBatchVO.getLocationCode());
+				psmt.setInt(i++, (int) p_vomsBatchVO.getNoOfVoucher());
+
+				if(p_directVoucherEnable)
+					psmt.setInt(i++, (int) p_vomsBatchVO.getNoOfVoucher());
+				addCount = psmt.executeUpdate();
+				if (addCount <= 0)
+				{
+					_log.error(" updateSummaryTable"," Not able to insert in Summary table for Batch No="+p_vomsBatchVO.getBatchNo());
+					EventHandler.handle(EventIDI.SYSTEM_ERROR,EventComponentI.SYSTEM,EventStatusI.RAISED,EventLevelI.MAJOR,"VomsVoucherDAO[updateSummaryTable]","","","","Not able to insert in Summary table for Batch No="+p_vomsBatchVO.getBatchNo());
+					throw new BTSLBaseException(this,"updateSummaryTable",PretupsErrorCodesI.VOUCHER_UPLOAD_PROCESS_GENERAL_ERROR);
+				}
+				if(_log.isDebugEnabled())_log.debug("updateSummaryTable() "," Values added in Voucher Summary");
+			}
+		} 
+		catch(BTSLBaseException be)
+		{
+			throw be;
+		}
+		catch (SQLException sql)
+		{
+			_log.error(" updateSummaryTable() "," SQLException sql=" + sql);
+			sql.printStackTrace();
+			EventHandler.handle(EventIDI.SYSTEM_ERROR,EventComponentI.SYSTEM,EventStatusI.RAISED,EventLevelI.FATAL,"VomsVoucherDAO[updateSummaryTable]","","","","Not able to insert in Summary table for Batch No="+p_vomsBatchVO.getBatchNo()+" Getting Exception="+sql.getMessage());
+			throw new BTSLBaseException(this,"updateSummaryTable",PretupsErrorCodesI.VOUCHER_UPLOAD_PROCESS_GENERAL_ERROR);
+		} 
+		catch (Exception e) 
+		{
+			_log.error(" updateSummaryTable() ","  Exception e=" + e);
+			e.printStackTrace();
+			EventHandler.handle(EventIDI.SYSTEM_ERROR,EventComponentI.SYSTEM,EventStatusI.RAISED,EventLevelI.FATAL,"VomsVoucherDAO[updateSummaryTable]","","","","Not able to insert in Summary table for Batch No="+p_vomsBatchVO.getBatchNo()+" Getting Exception="+e.getMessage());
+			throw new BTSLBaseException(this,"updateSummaryTable",PretupsErrorCodesI.VOUCHER_UPLOAD_PROCESS_GENERAL_ERROR);
+		} 
+		finally 
+		{
+			try {if (rsVoSummary != null)rsVoSummary.close();} catch (Exception e) {}
+			try {if (psmt != null)psmt.close();} catch (Exception e) {}
+			if(_log.isDebugEnabled())_log.debug("updateSummaryTable() "," Exiting .............addCount "+ addCount);
+		}
+		return addCount;
+
+	}
+
+	/**
+	 * This method inserts vouchers in VOMS_VOUCHERS Table
+	 * @param p_con
+	 * @param p_batchVO
+	 * @param p_voucherArray
+	 * @return int
+	 * @throws BTSLBaseException
+	 */
+	public int insertVouchers(Connection p_con, VomsBatchVO p_vomsBatchVO,ArrayList p_voucherArray,boolean p_isDirectEnable) throws BTSLBaseException 
+	{
+		if(_log.isDebugEnabled())_log.debug("insertVouchers ", "  Entered p_voucherArray ="+ p_voucherArray.size() + " " + p_vomsBatchVO.getProductID()+" p_isDirectEnable="+p_isDirectEnable);
+		int addCount = 0;
+		String query;
+		int counter = 0;
+		ResultSet rsBatches = null;
+		PreparedStatement psmt = null;
+		String queryPin = null;
+		PreparedStatement psmtPin = null;
+		ResultSet rsPin = null;
+		PreparedStatement psmtSerial = null;
+		ResultSet rsSerial = null;
+		String querySerial = null;
+		long sequenceNumber = 0;
+		int insertCounter = 0;
+		int updateCount=0;
+		VomsVoucherVO vomsVoucherVO=null;
+
+		try 
+		{				
+			sequenceNumber = VoucherFileUploaderUtil.loadNextSeqNumber(p_con,Integer.parseInt(BTSLUtil.getFinancialYear()),VOMSI.SEQNUM,VOMSI.ALL);
+
+			_log.info("insertVouchers() "," For Batch"+ p_vomsBatchVO.getBatchNo() + " No of pins required "+ p_vomsBatchVO.getNoOfVoucher());
+
+			querySerial = " SELECT serial_no FROM voms_vouchers WHERE SERIAL_NO =?";
+			psmtSerial = p_con.prepareStatement(querySerial);
+
+			queryPin = "SELECT pin_no FROM voms_vouchers WHERE pin_no=?";
+			psmtPin = p_con.prepareStatement(queryPin);
+
+			if(p_isDirectEnable)
+				query="INSERT INTO voms_vouchers(serial_no,pin_no,product_id,production_network_code,generation_batch_no,current_status,expiry_date,created_on,status,seq_no,modified_on,modified_by,ONE_TIME_USAGE,last_batch_no,enable_batch_no,previous_status)VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+			else
+				query="INSERT INTO voms_vouchers(serial_no,pin_no,product_id,production_network_code,generation_batch_no,current_status,expiry_date,created_on,status,seq_no,modified_on,modified_by,ONE_TIME_USAGE)VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?)";
+			psmt = p_con.prepareStatement(query);
+		
+			insertCounter = 0;
+			int s=p_voucherArray.size();
+			int insertQueryCounter=1;
+			for (counter = 0; counter < s ; counter++)					
+			{
+				addCount=0;
+				insertQueryCounter=1;
+				vomsVoucherVO=(VomsVoucherVO)p_voucherArray.get(counter);
+				psmtPin.setString(1, vomsVoucherVO.getPinNo());
+				rsPin = psmtPin.executeQuery();
+				psmtPin.clearParameters();
+				if (rsPin.next()) 
+				{
+					_log.error("insertVouchers() "," Duplicate pin encountered::Same pin no returned in resultset.counter=="+ counter+" For serial No="+vomsVoucherVO.getSerialNo());
+					EventHandler.handle(EventIDI.SYSTEM_INFO,EventComponentI.SYSTEM,EventStatusI.RAISED,EventLevelI.FATAL,"VomsVoucherDAO[insertVouchers]","","","","Duplicate pin number encountered For serial No="+vomsVoucherVO.getSerialNo());
+					throw new BTSLBaseException(this,"insertVouchers",PretupsErrorCodesI.VOUCHER_PIN_ALREADY_EXIST_IN_DB);
+				} 
+				
+				// verifying for Serail Number start
+				psmtSerial.setString(1, vomsVoucherVO.getSerialNo());
+				rsSerial = psmtSerial.executeQuery();
+				psmtSerial.clearParameters();
+				if (rsSerial.next()) 
+				{
+					_log.error("insertVouchers() "," Duplicate Serial Number encountered::Same Serial no returned in resultset.counter=="	+ counter + "  " + vomsVoucherVO.getSerialNo());
+					EventHandler.handle(EventIDI.SYSTEM_INFO,EventComponentI.SYSTEM,EventStatusI.RAISED,EventLevelI.FATAL,"VomsVoucherDAO[insertVouchers]","","","","Duplicate Serial Number encountered For "+vomsVoucherVO.getSerialNo());
+					throw new BTSLBaseException(this,"insertVouchers",PretupsErrorCodesI.VOUCHER_SERIAL_NO_ALREADY_EXIST_IN_DB);
+				}
+				
+				// verifying for PIN ends
+				psmt.clearParameters();
+				psmt.setString(insertQueryCounter++, vomsVoucherVO.getSerialNo());
+				psmt.setString(insertQueryCounter++, vomsVoucherVO.getPinNo());
+				psmt.setString(insertQueryCounter++, vomsVoucherVO.getProductID());
+				psmt.setString(insertQueryCounter++, vomsVoucherVO.getProductionLocationCode());
+				psmt.setString(insertQueryCounter++, p_vomsBatchVO.getBatchNo());
+				psmt.setString(insertQueryCounter++, vomsVoucherVO.getCurrentStatus());
+				psmt.setDate(insertQueryCounter++, BTSLUtil.getSQLDateFromUtilDate(vomsVoucherVO.getExpiryDate()));
+				psmt.setTimestamp(insertQueryCounter++, BTSLUtil.getTimestampFromUtilDate(vomsVoucherVO.getCreatedOn()));
+				psmt.setString(insertQueryCounter++, vomsVoucherVO.getStatus());
+				psmt.setLong(insertQueryCounter++,sequenceNumber);
+				psmt.setTimestamp(insertQueryCounter++, BTSLUtil.getTimestampFromUtilDate(vomsVoucherVO.getModifiedOn()));
+				psmt.setString(insertQueryCounter++, vomsVoucherVO.getModifiedBy());
+				psmt.setString(insertQueryCounter++, vomsVoucherVO.getOneTimeUsage());
+				if(p_isDirectEnable)
+				{
+					psmt.setString(insertQueryCounter++, vomsVoucherVO.getEnableBatchNo());
+					psmt.setString(insertQueryCounter++, vomsVoucherVO.getEnableBatchNo());
+					psmt.setString(insertQueryCounter++, vomsVoucherVO.getPreviousStatus());
+				}
+				addCount = psmt.executeUpdate();
+				psmt.clearParameters();
+				if(addCount<=0)
+				{
+					_log.error("insertVouchers() "," Not able to insert record for Serial No"+vomsVoucherVO.getSerialNo());
+					EventHandler.handle(EventIDI.SYSTEM_INFO,EventComponentI.SYSTEM,EventStatusI.RAISED,EventLevelI.FATAL,"VomsVoucherDAO[insertVouchers]","","","","Not able to insert record for Serial No"+vomsVoucherVO.getSerialNo());
+					throw new BTSLBaseException(this,"insertVouchers",PretupsErrorCodesI.VOUCHER_UPLOAD_PROCESS_GENERAL_ERROR);
+				}
+				insertCounter = insertCounter + 1;
+				sequenceNumber = sequenceNumber + 1;
+			}
+			
+			if (insertCounter != p_vomsBatchVO.getNoOfVoucher()) 
+			{
+				_log.error("VomsVoucherDAO[insertVoucher]"," The number of records inserted is not equal to the total number specified by the user");
+				EventHandler.handle(EventIDI.SYSTEM_INFO,EventComponentI.SYSTEM,EventStatusI.RAISED,EventLevelI.MINOR,"VomsVoucherDAO[insertVouchers]","","","","The number of vouchers inserted ("+insertCounter+") is not equal to the number of total records entered ("+p_vomsBatchVO.getNoOfVoucher()+")");
+				throw new BTSLBaseException(this,"insertVouchers",PretupsErrorCodesI.VOUCHER_UPLOAD_PROCESS_RECORDS_MISMATCH);
+			} 
+			_log.info("insertVouchers() "," Vouchers generated for "+ p_vomsBatchVO.getBatchNo());
+
+			updateCount=VoucherFileUploaderUtil.updateFinalSeqNumber(p_con,Integer.parseInt(BTSLUtil.getFinancialYear()),VOMSI.SEQNUM,VOMSI.ALL,sequenceNumber);
+			
+		} 
+		catch (BTSLBaseException be) 
+		{
+			try{p_con.rollback();}catch(Exception e){e.printStackTrace();}
+			_log.error("insertVouchers() "," Getting BaseException :" + be);
+			throw be;
+		}
+		catch (Exception ex) 
+		{
+			try{p_con.rollback();}catch(Exception e){e.printStackTrace();}
+			_log.debug("insertVouchers()"," Getting Exception :" + ex);
+			EventHandler.handle(EventIDI.SYSTEM_INFO,EventComponentI.SYSTEM,EventStatusI.RAISED,EventLevelI.MAJOR,"VomsVoucherDAO[insertVouchers]","","","","Exception while executing the insertVoucher");
+			ex.printStackTrace();
+			throw new BTSLBaseException(this,"insertVouchers",PretupsErrorCodesI.VOUCHER_UPLOAD_PROCESS_GENERAL_ERROR);
+		} 
+		finally 
+		{
+			try 
+			{
+				try {if (rsBatches != null)rsBatches.close();} catch (Exception e) {}
+				try {if (rsPin != null)rsPin.close();} catch (Exception e) {}
+				try {if (rsSerial != null)rsSerial.close();} catch (Exception e) {}
+				try {if (psmtPin != null)psmtPin.close();} catch (Exception e) {}
+				try {if (psmtSerial != null)psmtSerial.close();} catch (Exception e) {}
+				try {if (psmt != null)psmt.close();} catch (Exception e) {}
+								
+			}
+			catch (Exception _ex) 
+			{
+				_log.debug("insertVouchers() "," exception while closing statement");
+				EventHandler.handle(EventIDI.SYSTEM_INFO,EventComponentI.SYSTEM,EventStatusI.RAISED,EventLevelI.MAJOR,"VomsVoucherDAO[insertVouchers]","","","","Exception while closing prepared statements in finally of insertVoucher");
+				throw new BTSLBaseException(this,"insertVouchers",PretupsErrorCodesI.VOUCHER_UPLOAD_PROCESS_GENERAL_ERROR);
+			}
+		}
+		return updateCount;
+	}
+
+	/**
+	 * This method is called at the time of reconciliation to change status of voucher 
+	 * vom_batch_summary
+	 * @param p_con
+	 * @param p_Operation
+	 * @return int
+	 * @throws BTSLBaseException
+	 * @throws Exception
+	 */
+	public int updateVoucherStatus(Connection p_con,String p_Operation, TransferVO p_transferVO,VomsVoucherVO p_vomsVoucherVO)throws BTSLBaseException
+	{
+		if(_log.isDebugEnabled())_log.debug("updateVoucherStatus() "," Entered for voucher serial no.="+p_vomsVoucherVO.getSerialNo()+" p_Operation="+p_Operation);
+		PreparedStatement pstmtUpdate=null;
+		int updateCount=0;
+		try 
+		{
+			int i=1;
+			StringBuffer updateQueryBuff =new StringBuffer(" UPDATE voms_vouchers SET   "); 
+			updateQueryBuff.append(" current_status=?, previous_status=?, status=?, "); 
+			updateQueryBuff.append(" modified_by=?, modified_on=?, last_consumed_on=? "); 
+			updateQueryBuff.append(" WHERE serial_no=? "); 
+			String updateQuery=updateQueryBuff.toString();
+			if(_log.isDebugEnabled())_log.debug("updateVoucherStatus","Insert query:"+updateQuery );
+			pstmtUpdate = p_con.prepareStatement(updateQuery);
+			
+			if("Success".equals(p_Operation))
+			{
+				if(VOMSI.VOUCHER_UNPROCESS.equals(p_vomsVoucherVO.getCurrentStatus()) || VOMSI.VOUCHER_REP_ENABLE.equals(p_vomsVoucherVO.getCurrentStatus()))
+				{
+					pstmtUpdate.setString(i++,VOMSI.VOUCHER_USED);
+					pstmtUpdate.setString(i++,p_vomsVoucherVO.getCurrentStatus());
+					pstmtUpdate.setString(i++,VOMSI.VOUCHER_USED);
+				}
+				else
+				{
+					throw new BTSLBaseException(this, "updateVoucherStatus", PretupsErrorCodesI.VOMS_RECON_INVALID_VOUCHER_STATUS);
+				}
+			}
+			else if("Fail".equals(p_Operation))
+			{
+				if(VOMSI.VOUCHER_UNPROCESS.equals(p_vomsVoucherVO.getCurrentStatus()) || VOMSI.VOUCHER_REP_ENABLE.equals(p_vomsVoucherVO.getCurrentStatus()))
+				{
+					pstmtUpdate.setString(i++,VOMSI.VOUCHER_REP_ENABLE);
+					pstmtUpdate.setString(i++,p_vomsVoucherVO.getCurrentStatus());
+					pstmtUpdate.setString(i++,VOMSI.VOUCHER_REP_ENABLE);
+				}
+				else
+				{
+					throw new BTSLBaseException(this, "updateVoucherStatus", PretupsErrorCodesI.VOMS_RECON_INVALID_VOUCHER_STATUS);
+				}
+			}
+			pstmtUpdate.setString(i++,p_transferVO.getModifiedBy());
+			pstmtUpdate.setTimestamp(i++,BTSLUtil.getTimestampFromUtilDate(p_transferVO.getModifiedOn()));
+			pstmtUpdate.setTimestamp(i++,BTSLUtil.getTimestampFromUtilDate(p_transferVO.getModifiedOn()));
+			pstmtUpdate.setString(i++,p_transferVO.getSerialNumber());
+			updateCount = pstmtUpdate.executeUpdate();
+			if (updateCount > 0)
+            {
+               updateCount = 0;
+               updateCount = updateVoucherAuditStatus(p_con,p_Operation,p_transferVO,p_vomsVoucherVO);
+            }
+			return updateCount;
+		}
+		catch (SQLException sqle)
+		{
+			_log.error("updateVoucherStatus","SQLException "+sqle.getMessage());
+			updateCount=0;
+			sqle.printStackTrace();
+			//EventHandler.handle(EventIDI.SYSTEM_ERROR,EventComponentI.SYSTEM,EventStatusI.RAISED,EventLevelI.FATAL,"VomsVoucherDAO[updateTransferDetails]",p_transferVO.getTransferID(),senderVO.getMsisdn(),senderVO.getNetworkCode(),"Exception:"+sqle.getMessage());
+			throw new BTSLBaseException(this, "updateVoucherStatus", "error.general.sql.processing");
+		}//end of catch
+		catch (Exception e)
+		{
+			_log.error("updateVoucherStatus","Exception "+e.getMessage());
+			updateCount=0;
+			e.printStackTrace();
+			//EventHandler.handle(EventIDI.SYSTEM_ERROR,EventComponentI.SYSTEM,EventStatusI.RAISED,EventLevelI.FATAL,"TransferDAO[updateTransferDetails]",p_transferVO.getTransferID(),senderVO.getMsisdn(),senderVO.getNetworkCode(),"Exception:"+e.getMessage());
+			throw new BTSLBaseException(this, "updateVoucherStatus", "error.general.processing");
+		}//end of catch
+		finally
+		{
+			try{if(pstmtUpdate!=null) pstmtUpdate.close();}catch(Exception e){}
+			if(_log.isDebugEnabled())_log.debug("updateVoucherStatus","Exiting updateCount="+updateCount);
+		 }//end of finally
+	}
+	
+	/**
+	 * 
+	 * @param p_con
+	 * @param p_Operation
+	 * @param p_transferVO
+	 * @param p_vomsVoucherVO
+	 * @return
+	 * @throws BTSLBaseException
+	 */
+	public int updateVoucherAuditStatus(Connection p_con,String p_Operation, TransferVO p_transferVO,VomsVoucherVO p_vomsVoucherVO)throws BTSLBaseException
+	{
+		if(_log.isDebugEnabled())_log.debug("updateVoucherAuditStatus() "," Entered for voucher serial no.="+p_vomsVoucherVO.getSerialNo()+" p_Operation="+p_Operation);
+		PreparedStatement pstmtUpdate=null;
+		int updateCount=0;
+		try 
+		{
+			int i=1;
+			StringBuffer updateQueryBuff =new StringBuffer(" UPDATE voms_voucher_audit SET   "); 
+			updateQueryBuff.append(" current_status=?, previous_status=?, "); 
+			updateQueryBuff.append(" modified_by=?, modified_on=? "); 
+			updateQueryBuff.append(" WHERE serial_no=? "); 
+			String updateQuery=updateQueryBuff.toString();
+			if(_log.isDebugEnabled())_log.debug("updateVoucherStatus","Insert query:"+updateQuery );
+			pstmtUpdate = p_con.prepareStatement(updateQuery);
+			
+			if("Success".equals(p_Operation))
+			{
+				if(VOMSI.VOUCHER_UNPROCESS.equals(p_vomsVoucherVO.getCurrentStatus()) || VOMSI.VOUCHER_REP_ENABLE.equals(p_vomsVoucherVO.getCurrentStatus()))
+				{
+					pstmtUpdate.setString(i++,VOMSI.VOUCHER_USED);
+					pstmtUpdate.setString(i++,p_vomsVoucherVO.getCurrentStatus());
+				}
+				else
+				{
+					throw new BTSLBaseException(this, "updateVoucherStatus", PretupsErrorCodesI.VOMS_RECON_INVALID_VOUCHER_STATUS);
+				}
+			}
+			else if("Fail".equals(p_Operation))
+			{
+				if(VOMSI.VOUCHER_UNPROCESS.equals(p_vomsVoucherVO.getCurrentStatus()) || VOMSI.VOUCHER_REP_ENABLE.equals(p_vomsVoucherVO.getCurrentStatus()))
+				{
+					pstmtUpdate.setString(i++,VOMSI.VOUCHER_REP_ENABLE);
+					pstmtUpdate.setString(i++,p_vomsVoucherVO.getCurrentStatus());
+				}
+				else
+				{
+					throw new BTSLBaseException(this, "updateVoucherStatus", PretupsErrorCodesI.VOMS_RECON_INVALID_VOUCHER_STATUS);
+				}
+			}
+			pstmtUpdate.setString(i++,p_transferVO.getModifiedBy());
+			pstmtUpdate.setTimestamp(i++,BTSLUtil.getTimestampFromUtilDate(p_transferVO.getModifiedOn()));
+			pstmtUpdate.setString(i++,p_transferVO.getSerialNumber());
+			updateCount = pstmtUpdate.executeUpdate();
+			return updateCount;
+		}
+		catch (SQLException sqle)
+		{
+			_log.error("updateVoucherAuditStatus","SQLException "+sqle.getMessage());
+			updateCount=0;
+			sqle.printStackTrace();
+			//EventHandler.handle(EventIDI.SYSTEM_ERROR,EventComponentI.SYSTEM,EventStatusI.RAISED,EventLevelI.FATAL,"TransferDAO[updateTransferDetails]",p_transferVO.getTransferID(),senderVO.getMsisdn(),senderVO.getNetworkCode(),"Exception:"+sqle.getMessage());
+			throw new BTSLBaseException(this, "updateVoucherAuditStatus", "error.general.sql.processing");
+		}//end of catch
+		catch (Exception e)
+		{
+			_log.error("updateVoucherAuditStatus","Exception "+e.getMessage());
+			updateCount=0;
+			e.printStackTrace();
+			//EventHandler.handle(EventIDI.SYSTEM_ERROR,EventComponentI.SYSTEM,EventStatusI.RAISED,EventLevelI.FATAL,"TransferDAO[updateTransferDetails]",p_transferVO.getTransferID(),senderVO.getMsisdn(),senderVO.getNetworkCode(),"Exception:"+e.getMessage());
+			throw new BTSLBaseException(this, "updateVoucherAuditStatus", "error.general.processing");
+		}//end of catch
+		finally
+		{
+			try{if(pstmtUpdate!=null) pstmtUpdate.close();}catch(Exception e){}
+			if(_log.isDebugEnabled())_log.debug("updateVoucherAuditStatus","Exiting updateCount="+updateCount);
+		 }//end of finally
+	}
+    /**
+     * 
+     * @param p_con
+     * @param p_c2sTransferVO
+     * @return
+     * @throws BTSLBaseException
+     */
+	public VomsVoucherVO loadVomsVoucherVO(Connection p_con,TransferVO p_c2sTransferVO) throws BTSLBaseException
+	{ 
+		if (_log.isDebugEnabled())
+			_log.debug("loadVomsVoucherVO"," Entered voucher serial no.="+p_c2sTransferVO.getSerialNumber());
+			PreparedStatement dbPs = null;
+			ResultSet rs = null;
+			VomsVoucherVO voucherVO=null;
+			try
+			{
+				StringBuffer sqlSelectBuf = new StringBuffer(" select v.serial_no SERIALNO, v.current_status CURRENTSTAT,  v.previous_status PREVSTAT, v.status  STAT ,PIN_NO ");
+				sqlSelectBuf.append(" FROM voms_vouchers v WHERE v.SERIAL_NO=? ");
+				
+				if (_log.isDebugEnabled())
+				_log.debug("loadVomsVoucherVO","Select Query="+sqlSelectBuf.toString());
+				dbPs=p_con.prepareStatement(sqlSelectBuf.toString());
+				dbPs.setString(1,p_c2sTransferVO.getSerialNumber());
+				rs=dbPs.executeQuery();
+				
+				while(rs.next())
+				{
+					voucherVO=new VomsVoucherVO();
+					voucherVO.setSerialNo(rs.getString("SERIALNO"));
+					voucherVO.setPreviousStatus(rs.getString("PREVSTAT"));
+					voucherVO.setCurrentStatus(rs.getString("CURRENTSTAT"));
+					voucherVO.setVoucherStatus(rs.getString("STAT"));
+					voucherVO.setPinNo(rs.getString("PIN_NO"));
+				}
+				if (_log.isDebugEnabled())
+				_log.debug("loadVomsVoucherVO","After executing the query loadVomsVoucherVO method VomsVoucherVO="+voucherVO);
+				return voucherVO;
+			}
+			catch (SQLException sqle)
+			{
+		   	    _log.error("loadVomsVoucherVO","SQLException "+sqle.getMessage());
+				sqle.printStackTrace();
+				EventHandler.handle(EventIDI.SYSTEM_ERROR,EventComponentI.SYSTEM,EventStatusI.RAISED,EventLevelI.FATAL,"VomsVoucherDAO[loadVomsVoucherVO]","","","","Exception:"+sqle.getMessage());
+				throw new BTSLBaseException(this, "loadVomsVoucherVO", "error.general.sql.processing");
+			}//end of catch
+			catch (Exception e)
+			{
+			_log.error("loadVomsVoucherVO","Exception "+e.getMessage());
+			e.printStackTrace();
+			EventHandler.handle(EventIDI.SYSTEM_ERROR,EventComponentI.SYSTEM,EventStatusI.RAISED,EventLevelI.FATAL,"VomsVoucherDAO[loadVomsVoucherVO]","","","","Exception:"+e.getMessage());
+			throw new BTSLBaseException(this, "loadVomsVoucherVO", "error.general.processing");
+			}//end of catch
+			finally
+			{
+				try{if(rs!=null) rs.close(); }catch(Exception ex){_log.error("loadVomsVoucherVO"," Exception while closing rs ex="+ex);}
+				try{ if(dbPs !=null)dbPs.close();}catch(Exception ex){_log.error("loadVomsVoucherVO"," Exception while closing prepared statement ex="+ex);}
+				try {_log.debug("loadVomsVoucherVO"," Exiting.. VomsVoucherVO="+voucherVO);}catch(Exception e) {_log.error("loadVomsVoucherVO"," Exception while closing rs ex="+e);} ;
+			}
+	}
+	
+	/**
+	* This method will select the productID based on the MRP, because in system there is only 
+	* one productID for one MRP.
+	* @param p_con of Connection type
+	* @param faceValue of int type
+	* @return returns String  productID
+	* @exception SQLException
+	* @exception BTSLBaseException
+	*/
+	
+	public String loadProductIDFromMRP(Connection p_con, int faceValue) throws BTSLBaseException
+	{
+		if (_log.isDebugEnabled()) _log.debug("loadProductIDFromMRP"," Entered.. p_mrp="+faceValue );
+		PreparedStatement dbPs = null;
+		ResultSet rs = null;
+		String productID = null;
+		try
+		{
+			String sqlSelect = ("select PRODUCT_ID from VOMS_PRODUCTS where MRP = ? and status=? ");
+			
+			if (_log.isDebugEnabled()) _log.debug("loadProductIDFromMRP","Select Query="+sqlSelect);
+			dbPs=p_con.prepareStatement(sqlSelect);
+			dbPs.setInt(1,faceValue);
+			dbPs.setString(2,VOMSI.VOMS_STATUS_ACTIVE);
+			rs=dbPs.executeQuery();
+			while(rs.next())
+			{
+				productID=rs.getString("product_id");
+			}
+			if (_log.isDebugEnabled()) _log.debug("loadProductIDFromMRP","After executing the query loadProductIDFromMRP method productID="+productID);
+			
+			return productID;
+		}
+		catch (SQLException sqle)
+		{
+	   	    _log.error("loadProductIDFromMRP","SQLException "+sqle.getMessage());
+			sqle.printStackTrace();
+			EventHandler.handle(EventIDI.SYSTEM_ERROR,EventComponentI.SYSTEM,EventStatusI.RAISED,EventLevelI.FATAL,"VomsVoucherDAO[loadActiveProfiles]","","","","Exception:"+sqle.getMessage());
+			throw new BTSLBaseException(this, "loadProductIDFromMRP", "error.general.sql.processing");
+		}//end of catch
+		catch (Exception e)
+		{
+			_log.error("loadProductIDFromMRP","Exception "+e.getMessage());
+			e.printStackTrace();
+			EventHandler.handle(EventIDI.SYSTEM_ERROR,EventComponentI.SYSTEM,EventStatusI.RAISED,EventLevelI.FATAL,"VomsVoucherDAO[loadActiveProfiles]","","","","Exception:"+e.getMessage());
+			throw new BTSLBaseException(this, "loadProductIDFromMRP", "error.general.sql.processing");
+		}//end of catch
+		finally
+		{
+			try{
+				if(rs!=null) 
+					rs.close(); 
+				}
+			catch(Exception ex)
+			{
+				_log.error("loadProductIDFromMRP"," Exception while closing rs ex="+ex);
+			}
+			
+			try
+			{
+				if(dbPs !=null)
+					dbPs.close();
+			}
+			catch(Exception ex)
+			{
+				_log.error("loadProductIDFromMRP"," Exception while closing prepared statement ex="+ex);
+			}
+		}
+	}
+}
+

@@ -1,0 +1,3 @@
+TRFCATEGORY,PAYMENTTYPE,TestcaseId,TestcaseType,Module,Description
+SALE,CHQ,,Negative,O2C transfer through EXTGW,To check  that o2c is not successful if Payment Date format is invalid
+FOC,CHQ,,Negative,O2C transfer through EXTGW,To check  that FOC is not successful if Payment Date format is invalid

@@ -1,0 +1,1157 @@
+package com.btsl.ota.util;
+import java.util.ArrayList;
+import org.apache.log4j.Logger;
+import com.btsl.ota.services.ServicesVO;
+import com.btsl.ota.services.SimVO;
+import com.btsl.ota.services.SmsVO;
+import com.btsl.ota.services.UserServicesVO;
+import com.btsl.util.BTSLUtil;
+import com.btsl.util.Constants;
+
+/*
+ * Created on Oct 31, 2003
+ *
+ * To change the template for this generated file go to
+ * Window>Preferences>Java>Code Generation>Code and Comments
+ */
+
+/**
+ * @author abhijit.chauhan
+ *
+ * To change the template for this generated type comment go to
+ * Window>Preferences>Java>Code Generation>Code and Comments
+ */
+public class SIMServicesUtil {
+	static Logger _logger = Logger.getLogger(SIMServicesUtil.class.getName());
+	public static String ADD="ADD";
+	public static String DELETE="DELETE";
+	public static String ACTIVATE="ACTIVATE";
+	public static String DEACTIVATE="DEACTIVATE";
+	public static String CHANGE_TITLE="CHANGE_TITLE";
+	public static String UPDATE_PARAMETERS="UPDATE_PARAMETERS";
+	public static String UPDATE_PARAMETER_PIN="UPDATE_PARAMETER_PIN";
+	public static String UPDATE_PARAMETER_PRODUCT="UPDATE_PARAMETER_PRODUCT";
+	public static String UPDATE_PARAMETER_TID="UPDATE_PARAMETER_TID";
+	public static String VALIDITY_PERIOD="VALIDITY_PERIOD";
+	public static String UPDATE_SMSC="UPDATE_SMSC";
+	public static String UPDATE_SHORTCODE="UPDATE_SHORTCODE";
+	public static String UPDATE_TID="UPDATE_TID";
+	public static String SIM_ENQUIRY="SIM_ENQUIRY";
+	public static String UPDATE_LANG_FILE="UPDATE_LANG_FILE";
+	public static int LANGUAGEMENU_REQUIRED_FLAG=5;
+	public static int DELIVERYRECIEPT_REQUIRED_FLAG=6;
+	public static int PIN_REQUIRED_FLAG=4;
+	public static int PRODUCT_REQUIRED_FLAG=3;
+	public static int TID_REQUIRED_FLAG=2;
+	public static int TID_LENGTH=9;
+	public static int SMS_ADM=10;
+	/*
+	 * Flags/parameters(10), SMS Settings1(20), SMS-2(20), SMS-3(20)   
+	 * e.g: ADM F0101 C 10Bytes(flags) 20Bytes(SMS1) 20Bytes(SMS2) 20Bytes(SMS3)
+	 */
+	/**
+	 * This method is used interprate infomation for sim enquiry C  
+	 * @param byteStr String (infomation to be interpret)
+	 * @param simVO SimVO
+	 * @param smsVO SmsVO
+	 * @throws Exception
+	 */
+	public  void interpretSimEnquiryC(String byteStr,SimVO simVO,SmsVO smsVO) throws Exception
+	{
+		_logger.debug("interpretSimEnquiryC() Entered");
+		try
+		{
+			String flags=null;
+			String SMSSetting1=null;
+			String SMSSetting2=null;
+			String SMSSetting3=null;
+			flags=byteStr.substring(0,20);
+			String data = null;
+			int caseValue=0;
+			int i = 0;
+			for(i=0 , caseValue=0 ;i<flags.length();i=i+2,caseValue++)
+			{
+				if(flags.substring(i,i+2).equalsIgnoreCase("00"))
+					data ="N";
+				else if(flags.substring(i,i+2).equalsIgnoreCase("01"))
+					data ="Y";
+				else
+					data=flags.substring(i+1,i+2);
+				
+				setDataSimValue(21+caseValue,data,simVO);		
+/*				switch(i)
+				{
+					case 0:
+						simVO.setParam1(data);
+					break;
+					case 2:
+						simVO.setParam2(data);
+					break;
+					case 4:
+						simVO.setParam3(data);
+					break;
+					case 6:
+						simVO.setParam4(data);
+					break;
+					case 8:
+						simVO.setParam5(data);
+					break;
+					case 10:
+						simVO.setParam6(data);
+					break;
+					case 12:
+						simVO.setParam7(data);
+					break;
+					case 14:
+						simVO.setParam8(data);
+					break;
+					case 16:
+						simVO.setParam9(data);
+					break;
+					case 18:
+						simVO.setParam10(data);
+					break;
+				}*/
+			}
+			smsVO.setLocation(simVO.getLocationCode());
+			SMSSetting1=byteStr.substring(22,62);
+			SMSSetting2=byteStr.substring(64,104);
+			SMSSetting3=byteStr.substring(106,146);
+			_logger.info("flags="+flags);
+			_logger.info("SMSSetting1="+SMSSetting1);
+			_logger.info("SMSSetting2="+SMSSetting2);
+			_logger.info("SMSSetting3="+SMSSetting3);
+			String smscPortVP = ByteCodeGeneratorUtil.smscPortVPHandle(SMSSetting1);
+			
+			smsVO.setSmsc1(smscPortVP.substring(0,smscPortVP.indexOf("|")));	
+			smsVO.setPort1(smscPortVP.substring(smscPortVP.indexOf("|")+1,smscPortVP.lastIndexOf("|")));
+			smsVO.setVp1(Integer.parseInt(smscPortVP.substring(smscPortVP.lastIndexOf("|")+1)));
+			
+			smscPortVP = ByteCodeGeneratorUtil.smscPortVPHandle(SMSSetting2);
+			smsVO.setSmsc2(smscPortVP.substring(0,smscPortVP.indexOf("|")));	
+			smsVO.setPort2(smscPortVP.substring(smscPortVP.indexOf("|")+1,smscPortVP.lastIndexOf("|")));
+			smsVO.setVp2(Integer.parseInt(smscPortVP.substring(smscPortVP.lastIndexOf("|")+1)));
+			
+			smscPortVP = ByteCodeGeneratorUtil.smscPortVPHandle(SMSSetting3);
+			smsVO.setSmsc3(smscPortVP.substring(0,smscPortVP.indexOf("|")));	
+			smsVO.setPort3(smscPortVP.substring(smscPortVP.indexOf("|")+1,smscPortVP.lastIndexOf("|")));
+			smsVO.setVp3(Integer.parseInt(smscPortVP.substring(smscPortVP.lastIndexOf("|")+1)));
+		}
+		catch(Exception e)
+		{
+			_logger.error("interpretSimEnquiryC() Exception e="+e);
+			throw e;
+		}
+		finally
+		{
+			_logger.debug("interpretSimEnquiryC() Exiting");
+		}
+	}
+	/**
+	 * This method is used for setting the service information in SimVO(used in simEnquiryA and Reg time)  
+	 * @param byteStr String (infomation to be interpret)
+	 * @param simVO SimVO
+	 * @return ArrayList
+	 * @throws Exception
+	 */
+	public  ArrayList constructArrayListFromEnquiry(String smsStr,SimVO simVO) throws Exception
+	{
+		_logger.debug("constructArrayListFromEnquiry() Entered");
+		try
+		{
+			String byteStr=smsStr;
+			String serviceStr=null;
+			ServicesVO servicesVO=null;
+			String status=null;//1 byte
+			String serviceID=null;//1 byte
+			String majorVersion=null;//1 byte
+			String minorVersion=null;//1 byte
+			ArrayList servicesList=new ArrayList();
+			int totalByteLength=0;
+			try
+			{
+				totalByteLength=Integer.parseInt(Constants.getProperty("byteLength"));
+			}
+			catch(Exception e)
+			{
+				totalByteLength=128;
+			}
+			_logger.info("constructArrayListFromEnquiry() totalByteLength="+totalByteLength);
+			int j=0;
+			String data = null;
+			for(int i=0;i<totalByteLength;i=i+8)
+			{
+				++j;
+				servicesVO=new ServicesVO();
+				serviceStr=byteStr.substring(i,i+8);
+				status=serviceStr.substring(0,2);
+				if(status.equals("00")||status.equals("01"))
+				{   
+					serviceID=serviceStr.substring(2,4);
+					majorVersion=serviceStr.substring(4,6);
+					minorVersion=serviceStr.substring(6,8);
+					servicesVO.setPosition(j);
+					data = serviceID+majorVersion+minorVersion+status;
+					servicesVO.setStatus(Integer.parseInt(status,16)==0?"N":"Y");
+					servicesVO.setServiceID(""+Integer.parseInt(serviceID,16));
+					servicesVO.setMajorVersion(""+Integer.parseInt(majorVersion,16));
+					servicesVO.setMinorVersion(""+Integer.parseInt(minorVersion,16));
+					servicesList.add(servicesVO);
+					_logger.info("constructArrayListFromEnquiry() :: Position:"+(j)+"   serviceID:"+servicesVO.getServiceID()+" majorVersion:"+servicesVO.getMajorVersion()+" minorVersion:"+servicesVO.getMinorVersion()+" status="+(status.equals("01")?"Activated":"Deactivated"));
+				}
+				else
+					data="FFFFFFFF";
+				
+				setDataSimValue(j,data,simVO);//This is the subtitute of the below code and on testing the below code should be removed	
+			/*	switch(j)
+				{
+					case 1:
+							
+							simVO.setService1(data);					
+					break ;	
+					case 2:
+							simVO.setService2(data);					
+					break ;	
+					case 3:
+							simVO.setService3(data);					
+					break ;	
+					case 4:
+							simVO.setService4(data);					
+					break ;	
+					case 5:
+							simVO.setService5(data);					
+					break ;	
+					case 6:
+							simVO.setService6(data);					
+					break ;
+					case 7:
+							simVO.setService7(data);					
+					break ;	
+					case 8:
+							simVO.setService8(data);					
+					break ;	
+					case 9:
+							simVO.setService9(data);					
+					break ;	
+					case 10:
+							simVO.setService10(data);					
+					break ;	
+					case 11:
+							simVO.setService11(data);					
+					break ;	
+					case 12:
+							simVO.setService12(data);					
+					break ;	
+					case 13:
+							simVO.setService13(data);					
+					break ;	
+					case 14:
+							simVO.setService14(data);					
+					break ;	
+					case 15:
+							simVO.setService15(data);					
+					break ;	
+					case 16:
+							simVO.setService16(data);					
+					break ;	
+				}*/
+			}
+			return servicesList;
+		}
+		catch(Exception e)
+		{
+			_logger.error("constructArrayListFromEnquiry() Exception e="+e);
+			throw e;
+		}
+		finally
+		{
+			_logger.debug("constructArrayListFromEnquiry() Entered");
+		}
+	}
+	/**
+	 * This method compares the list from the sim and from the service and creates an list for updation
+	 * @param simList ArrayList
+	 * @param serverList ArrayList
+	 * @return ArrayList
+	 * @throws Exception
+	 */
+	public static ArrayList getUpdatedSIMServicesList(ArrayList simList,ArrayList serverList) throws Exception
+	{
+		_logger.debug("getUpdatedSIMServicesList() Entered");
+		try
+		{
+			ServicesVO simServicesVO=null;
+			UserServicesVO serverServicesVO=null;
+			ArrayList list=new ArrayList();
+			boolean isAdd=true;
+			boolean isDelete=true;
+			String deactivatePositions=null;
+			String activatePositions=null;
+			for(int i=0;i<serverList.size();i++)
+			{
+				isAdd=true;
+				serverServicesVO=(UserServicesVO)serverList.get(i);
+				for(int j=0;j<simList.size();j++)
+				{
+					simServicesVO=(ServicesVO)simList.get(j);
+					if((serverServicesVO.getPosition()==simServicesVO.getPosition())
+					&&serverServicesVO.getServiceID().equals(simServicesVO.getServiceID())
+					&&serverServicesVO.getMajorVersion().equals(simServicesVO.getMajorVersion())
+					&&(serverServicesVO.getMinorVersion().equals(simServicesVO.getMinorVersion()))
+					&&(serverServicesVO.getStatus().equals(simServicesVO.getStatus())))
+					{
+						_logger.info("Equal service ID="+simServicesVO.getServiceID());
+						isAdd=false;
+					}
+					else if((serverServicesVO.getPosition()==simServicesVO.getPosition())
+					&&serverServicesVO.getServiceID().equals(simServicesVO.getServiceID())
+					&&serverServicesVO.getMajorVersion().equals(simServicesVO.getMajorVersion())
+					&&serverServicesVO.getMinorVersion().equals(simServicesVO.getMinorVersion())
+					&&(!serverServicesVO.getStatus().equals(simServicesVO.getStatus())))
+					{
+						//Status Change
+						_logger.info("status change service ID="+simServicesVO.getServiceID());
+						if(serverServicesVO.getStatus().equals("N"))
+						{
+							if(deactivatePositions==null)
+							deactivatePositions=""+simServicesVO.getPosition();
+							else
+							deactivatePositions=deactivatePositions+","+simServicesVO.getPosition();
+						}
+						else
+						{
+							if(activatePositions==null)
+							activatePositions=""+simServicesVO.getPosition();
+							else
+							activatePositions=activatePositions+","+simServicesVO.getPosition();
+						}
+						isAdd=false;
+						break;
+					}
+					else if((serverServicesVO.getPosition()==simServicesVO.getPosition())
+					&&serverServicesVO.getServiceID().equals(simServicesVO.getServiceID())
+					&&serverServicesVO.getMajorVersion().equals(simServicesVO.getMajorVersion())
+					&&(!serverServicesVO.getMinorVersion().equals(simServicesVO.getMinorVersion()))
+					&&serverServicesVO.getStatus().equals(simServicesVO.getStatus()))
+					{
+						//Menu Title Change
+						_logger.info("menu title change service ID="+simServicesVO.getServiceID());
+						simServicesVO.setOperation(CHANGE_TITLE);
+						simServicesVO.setLabel1(serverServicesVO.getLabel1());
+						simServicesVO.setLabel2(serverServicesVO.getLabel2());
+						simServicesVO.setStatus(serverServicesVO.getStatus());
+						simServicesVO.setOffSet(serverServicesVO.getOffset());
+						simServicesVO.setLength(serverServicesVO.getLength());
+						list.add(simServicesVO);
+						isAdd=false;
+						break;
+					}
+					else if((serverServicesVO.getPosition()==simServicesVO.getPosition())
+					&&serverServicesVO.getServiceID().equals(simServicesVO.getServiceID())
+					&&serverServicesVO.getMajorVersion().equals(simServicesVO.getMajorVersion())
+					&&(!serverServicesVO.getMinorVersion().equals(simServicesVO.getMinorVersion()))
+					&&(!serverServicesVO.getStatus().equals(simServicesVO.getStatus())))
+					{
+						_logger.info("both change service ID="+simServicesVO.getServiceID());
+						//Menu Title Change and Status Change
+						simServicesVO.setLabel1(serverServicesVO.getLabel1());
+						simServicesVO.setLabel2(serverServicesVO.getLabel2());
+						simServicesVO.setStatus(serverServicesVO.getStatus());
+						simServicesVO.setOffSet(serverServicesVO.getOffset());
+						simServicesVO.setLength(serverServicesVO.getLength());
+						if(serverServicesVO.getStatus().equals("N"))
+						{
+							if(deactivatePositions==null)
+							deactivatePositions=""+simServicesVO.getPosition();
+							else
+							deactivatePositions=deactivatePositions+","+simServicesVO.getPosition();
+						}
+						else
+						{
+							if(activatePositions==null)
+							activatePositions=""+simServicesVO.getPosition();
+							else
+							activatePositions=activatePositions+","+simServicesVO.getPosition();
+						}
+						simServicesVO.setOperation(CHANGE_TITLE);
+						list.add(simServicesVO);
+						isAdd=false;
+						break;
+					}
+					
+				}
+				if(isAdd)
+				{
+					_logger.info("add service ID="+serverServicesVO.getServiceID());
+					simServicesVO=new ServicesVO();
+					simServicesVO.setPosition(serverServicesVO.getPosition());
+					if(serverServicesVO.getStatus()==null)
+						simServicesVO.setStatus("N");
+					else
+						simServicesVO.setStatus(serverServicesVO.getStatus());
+					simServicesVO.setServiceID(serverServicesVO.getServiceID());
+					simServicesVO.setMajorVersion(serverServicesVO.getMajorVersion());
+					simServicesVO.setMinorVersion(serverServicesVO.getMinorVersion());
+					simServicesVO.setOffSet(serverServicesVO.getOffset());
+					simServicesVO.setLength(serverServicesVO.getLength());
+					simServicesVO.setLabel1(serverServicesVO.getLabel1());
+					simServicesVO.setLabel2(serverServicesVO.getLabel2());
+					simServicesVO.setByteCode(serverServicesVO.getByteCode());
+					simServicesVO.setOperation(ADD);
+					list.add(simServicesVO);
+					//Add Server VO
+				}
+			}
+			for(int i=0;i<simList.size();i++)
+			{
+				simServicesVO=(ServicesVO)simList.get(i);
+				isDelete=true;
+				for(int j=0;j<serverList.size();j++)
+				{
+					serverServicesVO=(UserServicesVO)serverList.get(j);
+					if((serverServicesVO.getPosition()==simServicesVO.getPosition())
+					&&serverServicesVO.getServiceID().equals(simServicesVO.getServiceID())
+					&&serverServicesVO.getMajorVersion().equals(simServicesVO.getMajorVersion()))
+					{
+						isDelete=false;
+						break;
+					}
+				}
+				if(isDelete)
+				{
+					//simServicesVO.setOperation(DELETE);
+					//st.add(simServicesVO);
+					//Delete SIM VO
+					if(deactivatePositions==null)
+					deactivatePositions=""+simServicesVO.getPosition();
+					else
+					deactivatePositions=deactivatePositions+","+simServicesVO.getPosition();
+				}
+			}
+			if(!BTSLUtil.isNullString(deactivatePositions))
+			{
+				_logger.info("deactivatePositions="+deactivatePositions);
+				simServicesVO=new ServicesVO();
+				simServicesVO.setPositionList(deactivatePositions);
+				simServicesVO.setOperation(DEACTIVATE);
+				simServicesVO.setStatus("N");
+				list.add(simServicesVO);
+			}
+			if(!BTSLUtil.isNullString(activatePositions))
+			{
+				_logger.info("activatePositions="+activatePositions);
+				simServicesVO=new ServicesVO();
+				simServicesVO.setPositionList(activatePositions);
+				simServicesVO.setOperation(ACTIVATE);
+				simServicesVO.setStatus("Y");
+				list.add(simServicesVO);
+			}
+			return 	list;
+		}
+		catch(Exception e)
+		{
+			_logger.error("getUpdatedSIMServicesList Exception e="+e);
+			throw e;	
+		}
+		finally
+		{
+			_logger.debug("getUpdatedSIMServicesList() Exiting");
+		
+		}
+	}
+	/**
+	 * This Method is used for Inserting those details in the SimVO that are left empty
+	 * @param simVO SimVO
+	 * @exception Exception
+	 */
+	public void insertDetailsInSimVO(SimVO simVO) throws Exception
+	{
+		_logger.debug("insertDetailsInSimVO() Entered ..................");
+		if(BTSLUtil.isNullString(simVO.getService1()))
+			simVO.setService1("ALL");
+		if(BTSLUtil.isNullString(simVO.getService2()))
+			simVO.setService2("ALL");
+		if(BTSLUtil.isNullString(simVO.getService3()))
+			simVO.setService3("ALL");
+		if(BTSLUtil.isNullString(simVO.getService4()))
+			simVO.setService4("ALL");
+		if(BTSLUtil.isNullString(simVO.getService5()))
+			simVO.setService5("ALL");
+		if(BTSLUtil.isNullString(simVO.getService6()))
+			simVO.setService6("ALL");
+		if(BTSLUtil.isNullString(simVO.getService7()))
+			simVO.setService7("ALL");
+		if(BTSLUtil.isNullString(simVO.getService8()))
+			simVO.setService8("ALL");
+		if(BTSLUtil.isNullString(simVO.getService9()))
+			simVO.setService9("ALL");
+		if(BTSLUtil.isNullString(simVO.getService10()))
+			simVO.setService10("ALL");
+		if(BTSLUtil.isNullString(simVO.getService11()))
+			simVO.setService11("ALL");
+		if(BTSLUtil.isNullString(simVO.getService12()))
+			simVO.setService12("ALL");
+		if(BTSLUtil.isNullString(simVO.getService13()))
+			simVO.setService13("ALL");
+		if(BTSLUtil.isNullString(simVO.getService14()))
+			simVO.setService14("ALL");
+		if(BTSLUtil.isNullString(simVO.getService15()))
+			simVO.setService15("ALL");
+		if(BTSLUtil.isNullString(simVO.getService16()))
+			simVO.setService16("ALL");
+		if(BTSLUtil.isNullString(simVO.getService17()))
+			simVO.setService17("ALL");
+		if(BTSLUtil.isNullString(simVO.getService18()))
+			simVO.setService18("ALL");
+		if(BTSLUtil.isNullString(simVO.getService19()))
+			simVO.setService19("ALL");
+		if(BTSLUtil.isNullString(simVO.getService20()))
+			simVO.setService20("ALL");
+			
+		if(BTSLUtil.isNullString(simVO.getParam1()))
+			simVO.setParam1("ALL");
+		if(BTSLUtil.isNullString(simVO.getParam2()))
+			simVO.setParam2("ALL");
+		if(BTSLUtil.isNullString(simVO.getParam3()))
+			simVO.setParam3("ALL");
+		if(BTSLUtil.isNullString(simVO.getParam4()))
+			simVO.setParam4("ALL");
+		if(BTSLUtil.isNullString(simVO.getParam5()))
+			simVO.setParam5("ALL");
+		if(BTSLUtil.isNullString(simVO.getParam6()))
+			simVO.setParam6("ALL");
+		if(BTSLUtil.isNullString(simVO.getParam7()))
+			simVO.setParam7("ALL");
+		if(BTSLUtil.isNullString(simVO.getParam8()))
+			simVO.setParam8("ALL");
+		if(BTSLUtil.isNullString(simVO.getParam9()))
+			simVO.setParam9("ALL");
+		if(BTSLUtil.isNullString(simVO.getParam10()))
+			simVO.setParam10("ALL");
+			
+		if(BTSLUtil.isNullString(simVO.getLangRef()))
+			simVO.setLangRef("ALL");
+		if(BTSLUtil.isNullString(simVO.getSmsRef()))
+			simVO.setSmsRef("ALL");
+		if(BTSLUtil.isNullString(simVO.getSimEnquiryRes()))
+			simVO.setSimEnquiryRes("ALL");
+		if(BTSLUtil.isNullString(simVO.getStatus()))
+			simVO.setStatus("ALL");
+
+		_logger.debug("insertDetailsInSimVO() Existing ..................");	
+	}
+
+/**
+ * This method is to set data for the SIM VO 
+ * @param caseValue int(case value is used to set different data items of  the Sim VO)
+ * @param data String (data is the actual value that  is set in that item )
+ * @param simVO SimVO
+ */
+public void setDataSimValue(int caseValue,String data, SimVO simVO)
+{
+	switch(caseValue)
+	{
+		case 1:
+			simVO.setService1(data);
+			break;
+		case 2:
+			simVO.setService2(data);
+			break;
+		case 3:
+			simVO.setService3(data);
+			break;
+		case 4:
+			simVO.setService4(data);
+			break;
+		case 5:
+			simVO.setService5(data);
+			break;
+		case 6:
+			simVO.setService6(data);
+			break;
+		case 7:
+			simVO.setService7(data);		
+			break;
+		case 8:
+			simVO.setService8(data);
+			break;
+		case 9:
+			simVO.setService9(data);
+			break;
+		case 10:
+			simVO.setService10(data);
+			break;
+		case 11:
+			simVO.setService11(data);
+			break;
+		case 12:
+			simVO.setService12(data);
+			break;
+		case 13:
+			simVO.setService13(data);
+			break;
+		case 14:
+			simVO.setService14(data);
+			break;
+		case 15:
+			simVO.setService15(data);
+			break;
+		case 16:
+			simVO.setService16(data);
+			break;
+		case 17:
+			simVO.setService17(data);
+			break;
+		case 18:
+			simVO.setService18(data);
+			break;
+		case 19:
+			simVO.setService19(data);
+			break;
+		case 20:
+			simVO.setService20(data);
+			break;
+		case 21:
+			simVO.setParam1(data);
+			break;
+		case 22:
+			simVO.setParam2(data);
+			break;
+		case 23:
+			simVO.setParam3(data);
+			break;
+		case 24:
+			simVO.setParam4(data);		
+			break;
+		case 25:
+			simVO.setParam5(data);
+			break;
+		case 26:
+			simVO.setParam6(data);
+			break;
+		case 27:
+			simVO.setParam7(data);
+			break;
+		case 28:
+			simVO.setParam8(data);
+			break;
+		case 29:
+			simVO.setParam9(data);
+			break;
+		case 66:
+			simVO.setSmsRef(data);
+			break;
+		case 68:
+			simVO.setLangRef(data);
+			break;
+			
+
+			
+		default :
+				
+	}
+	
+	
+}
+/**
+ * This method is to get data for the SIM VO 
+ * @param caseValue int(case value is used to set different data items of  the Sim VO)
+ * @param data String (data is the actual value that  is set in that item )
+ * @param simVO SimVO
+ */
+public String getDataSimValue(int caseValue,SimVO simVO)
+{
+	switch(caseValue)
+	{
+		case 1:
+			return simVO.getService1();
+		case 2:
+			return simVO.getService2();
+		case 3:
+			return simVO.getService3();
+		case 4:
+			return simVO.getService4();
+		case 5:
+			return simVO.getService5();
+		case 6:
+			return simVO.getService6();
+		case 7:
+			return simVO.getService7();		
+		case 8:
+			return simVO.getService8();
+		case 9:
+			return simVO.getService9();
+		case 10:
+			return simVO.getService10();
+		case 11:
+			return simVO.getService11();
+		case 12:
+			return simVO.getService12();
+		case 13:
+			return simVO.getService13();
+		case 14:
+			return simVO.getService14();
+		case 15:
+			return simVO.getService15();
+		case 16:
+			return simVO.getService16();
+		case 17:
+			return simVO.getService17();
+		case 18:
+			return simVO.getService18();
+		case 19:
+			return simVO.getService19();
+		case 20:
+			return simVO.getService20();
+		case 21:
+			return simVO.getParam1();
+		case 22:
+			return simVO.getParam2();
+		case 23:
+			return simVO.getParam3();
+		case 24:
+			return simVO.getParam4();		
+		case 25:
+			return simVO.getParam5();
+		case 26:
+			return simVO.getParam6();
+		case 27:
+			return simVO.getParam7();
+		case 28:
+			return simVO.getParam8();
+		case 29:
+			return simVO.getParam9();
+		case 66:
+			return simVO.getSmsRef();
+		case 68:
+			return simVO.getLangRef();
+		default :
+			 return null;
+				
+	}
+}
+
+/**
+ * This method check whether of not Mobile entry exists in the SIM Image table or not if exists then Ok other wise create a entry
+ * @param wholeSMSInfo String 
+ * @return String 
+ * @throws Exception
+ */
+public static String getTID(String wholeSMSInfo) throws Exception
+{
+	String tid =null;
+	int indexOfTX = wholeSMSInfo.indexOf("205458");
+	if(indexOfTX==-1)//not found
+	{
+		_logger.error("getTID:: No TID Found Returning Null");
+		return null;	
+	}
+	else
+		tid = wholeSMSInfo.substring(indexOfTX+6,indexOfTX+14);
+	_logger.info("getTID :: Transaction = "+ wholeSMSInfo.substring(indexOfTX,indexOfTX+2)+" Value is ="+tid);	
+	return tid;	
+			
+}
+/**
+ * This method gives the response bytecode from the sim (means the operations that are performed by the sim are successfull or not and what were they)
+ * @param wholeSMSInfo String 
+ * @return String 
+ * @throws Exception
+ */
+public static String getResponse(String wholeSMSInfo) throws Exception
+{
+	String response =null;
+	int startingIndex = 20;//First 10 Bytes are fixed data
+	int indexOfTX = wholeSMSInfo.indexOf("205458");
+	if(indexOfTX==-1)//not found
+	{
+		_logger.error("getResponse:: Response not found");
+		return null;	
+	}
+	else
+	{
+		if(startingIndex > indexOfTX)
+		{
+			_logger.error("getResponse:: Wrong Response String Starting Index = "+startingIndex +" End Index "+indexOfTX);
+			return null;
+		}
+		else
+			response = wholeSMSInfo.substring(startingIndex,indexOfTX+2);//+2 is done as to include 20 from it
+	}
+	_logger.info("getResponse :: Response is = "+ wholeSMSInfo.substring(startingIndex,indexOfTX+2));	
+	return response;	
+}
+/**
+ * This method is used to set information related with all the services in the ServiceVO means conversion of inforamtion from Hex to understandable form  
+ * @param listOfServiceVO ArrayList
+ * @return String
+ */
+public static String servicesInfoForQueryA(ArrayList listOfServiceVO) 
+{
+	StringBuffer serviceIDBuf = new StringBuffer();
+	try
+	{
+		ServicesVO servicesVO = null;
+		int size = listOfServiceVO.size();
+		if(size==0 ||listOfServiceVO.isEmpty())
+		{
+			_logger.debug("servicesInfoForQueryA :: listOfServiceVO empty or size 0 ");
+			return null;
+		}
+		for(int i = 0 ;i<size ; i++)
+		{
+			servicesVO = (ServicesVO)listOfServiceVO.get(i);
+			if(BTSLUtil.isNullString(servicesVO.getCompareHexString()))
+				servicesVO.setServiceID("FF");
+			else if(servicesVO.getCompareHexString().equalsIgnoreCase("FFFFFFFF"))
+				servicesVO.setServiceID("FF");
+			else
+			{
+				servicesVO.setServiceID(""+ByteCodeGeneratorUtil.hexToDec(servicesVO.getCompareHexString().substring(0,2)));
+				servicesVO.setMajorVersion(""+ByteCodeGeneratorUtil.hexToDec(servicesVO.getCompareHexString().substring(2,4)));
+				servicesVO.setMinorVersion(""+ByteCodeGeneratorUtil.hexToDec(servicesVO.getCompareHexString().substring(4,6)));
+				servicesVO.setStatus(servicesVO.getCompareHexString().substring(6,8).equalsIgnoreCase("00")?"N":"Y");
+				serviceIDBuf.append("'"+servicesVO.getServiceID()+"',");
+			}
+		}
+		if(!BTSLUtil.isNullString(serviceIDBuf.toString()))
+			return serviceIDBuf.toString().substring(0,serviceIDBuf.toString().lastIndexOf(','));	
+	}
+	catch(Exception e)
+	{
+		_logger.error("servicesInfoForQueryA :: "+e);
+		return null;	
+	}
+	return serviceIDBuf.toString().substring(0,serviceIDBuf.toString().lastIndexOf(','));
+}
+/**
+ * This method is used interprate infomation for sim enquiry B or D  
+ * @param hexCode String (infomation to be interprete)
+ * @param typeOfEnquiry (B or D)
+ * @return ArrayList
+ * @throws Exception
+ */
+public static ArrayList servicesInfoForQueryBD(String hexCode,String typeOfEnquiry) throws Exception 
+{
+	ArrayList serviceInfoForQueryBD = null;	
+	try
+	{
+		String menuPosition=null;
+		String byteCodeOffset=null;
+		String status=null;//1 byte
+		String serviceID=null;//1 byte
+		String majorVersion=null;//1 byte
+		String menuTitle=null;//1 byte
+		String minorVersion=null;//1 byte
+		String byteCodeLength=null;
+		String enquiry = null;
+		int offset=0;
+		int length=0;
+		
+		if(BTSLUtil.isNullString(hexCode) || BTSLUtil.isNullString(typeOfEnquiry))
+			throw new Exception("Either Info part is null or type of enquiry is null");
+		if(typeOfEnquiry.equalsIgnoreCase("B")||typeOfEnquiry.equalsIgnoreCase("D"))
+			enquiry =  typeOfEnquiry.toUpperCase();
+		else	
+			throw new Exception("Type of Enquiry should be B or D");
+		if(!enquiry.equalsIgnoreCase(ByteCodeGeneratorUtil.byteToStringConverter(hexCode.substring(16,18))))
+			throw new Exception("Type of Enquiry("+enquiry+") from request doesn't match with database("+ByteCodeGeneratorUtil.byteToStringConverter(hexCode.substring(16,18)) +")");
+		String response = SIMServicesUtil.getResponse(hexCode);	
+		if(BTSLUtil.isNullString(response))
+			throw new Exception("Response String is NULL");
+		else
+			_logger.debug("servicesInfoForQueryBD::Response :: "+response);
+		serviceInfoForQueryBD = new ArrayList();
+		ServicesVO sVO = null;
+		if(enquiry.equalsIgnoreCase("B"))
+		{
+			sVO = new ServicesVO();
+			int j=0;
+			menuPosition=""+Integer.parseInt(response.substring(0,2),16);
+			sVO.setPosition(Integer.parseInt(response.substring(0,2),16));
+			//System.out.println("menuPosition="+menuPosition);
+			status=response.substring(2,4);
+			if(status.equalsIgnoreCase("FF"))
+				sVO.setStatus("deleted");
+			else	
+			{
+				//System.out.println("status="+(status.equals("01")?"Activated":"Deactivated"));
+				sVO.setStatus(status.equals("01")?"Activated":"Deactivated");
+				serviceID=""+Integer.parseInt(response.substring(4,6),16);
+				sVO.setServiceID(serviceID);
+				//System.out.println("serviceID="+serviceID);
+				majorVersion=""+Integer.parseInt(response.substring(6,8),16);
+				sVO.setMajorVersion(majorVersion);
+				//System.out.println("majorVersion="+majorVersion);
+				minorVersion=""+Integer.parseInt(response.substring(8,10),16);
+				sVO.setMinorVersion(minorVersion);
+				//System.out.println("minorVersion="+minorVersion);
+				byteCodeOffset=""+Integer.parseInt(response.substring(10,14),16);
+				sVO.setOffSet(Integer.parseInt(response.substring(10,14),16));
+				//System.out.println("byteCodeOffset="+byteCodeOffset);
+				byteCodeLength=""+Integer.parseInt(response.substring(14,18),16);
+				sVO.setLength(Integer.parseInt(response.substring(14,18),16));
+				//System.out.println("byteCodeLength="+byteCodeLength);
+				menuTitle=response.substring(18,98);
+				length = Integer.parseInt(menuTitle.substring(offset+2,offset+4),16);
+				sVO.setLabel1(ByteCodeGeneratorUtil.byteToStringConverter(menuTitle.substring(offset+4,offset+4+length*2)));
+				//System.out.println("Label1 ="+sVO.getLabel1());
+				offset = 4 +length*2; 
+				length = Integer.parseInt(menuTitle.substring(offset+2,offset+4),16);
+				sVO.setLabel2(menuTitle.substring(offset+4,offset+4+length*2));
+				//System.out.println("Label2 ="+sVO.getLabel2());
+				//System.out.println("menuTitle="+menuTitle);
+			}
+			serviceInfoForQueryBD.add(sVO);
+			j=98;
+			if(response.length()>150)
+			{
+				sVO = new ServicesVO();
+				menuPosition=""+Integer.parseInt(response.substring(j+0,j+2),16);
+				sVO.setPosition(Integer.parseInt(response.substring(j+0,j+2),16));
+				//System.out.println("menuPosition="+menuPosition);
+				status=response.substring(j+2,j+4);
+				if(status.equalsIgnoreCase("FF"))
+					sVO.setStatus("deleted");
+				else	
+				{
+				//	System.out.println("status="+(status.equals("01")?"Activated":"Deactivated"));
+					sVO.setStatus(status.equals("01")?"Activated":"Deactivated");
+					serviceID=""+Integer.parseInt(response.substring(j+4,j+6),16);
+					sVO.setServiceID(serviceID);
+					//System.out.println("serviceID="+serviceID);
+					majorVersion=""+Integer.parseInt(response.substring(j+6,j+8),16);
+					sVO.setMajorVersion(majorVersion);
+					//System.out.println("majorVersion="+majorVersion);
+					minorVersion=""+Integer.parseInt(response.substring(j+8,j+10),16);
+					sVO.setMinorVersion(minorVersion);
+					//System.out.println("minorVersion="+minorVersion);
+					byteCodeOffset=""+Integer.parseInt(response.substring(j+10,j+14),16);
+					sVO.setOffSet(Integer.parseInt(response.substring(j+10,j+14),16));
+					//System.out.println("byteCodeOffset="+byteCodeOffset);
+					byteCodeLength=""+Integer.parseInt(response.substring(j+14,j+18),16);
+					sVO.setLength(Integer.parseInt(response.substring(14,18),16));
+					//System.out.println("byteCodeLength="+byteCodeLength);
+					offset = 0;
+					length = 0;
+					menuTitle=response.substring(j+18,j+98);
+					length = Integer.parseInt(menuTitle.substring(offset+2,offset+4),16);
+					sVO.setLabel1(ByteCodeGeneratorUtil.byteToStringConverter(menuTitle.substring(offset+4,offset+4+length*2)));
+					//System.out.println("Label1 ="+sVO.getLabel1());
+					offset = 4 +length*2; 
+					length = Integer.parseInt(menuTitle.substring(offset+2,offset+4),16);
+					sVO.setLabel2(menuTitle.substring(offset+4,offset+4+length*2));
+					//System.out.println("Label2 ="+sVO.getLabel2());
+					//System.out.println("menuTitle="+menuTitle);
+				}
+				serviceInfoForQueryBD.add(sVO);
+			}
+		}
+		else
+		{
+			int totalByteLength=0;
+			try
+			{
+				totalByteLength=Integer.parseInt(Constants.getProperty("byteLength"));
+			}
+			catch(Exception e)
+			{
+				totalByteLength=128;
+			}
+			_logger.info("servicesInfoForQueryBD() totalByteLength="+totalByteLength);
+			int i=0;
+			for(i=0;i<totalByteLength;i=i+8)
+			{
+				sVO = new ServicesVO();
+				offset=Integer.parseInt(response.substring(i,i+4),16);
+				length=Integer.parseInt(response.substring(i+4,i+8),16);
+				System.out.println(" offset="+offset+"    length="+length);
+				sVO.setOffSet(offset);
+				sVO.setLength(length);
+				serviceInfoForQueryBD.add(sVO);
+			}
+
+		}
+	}
+	catch(Exception e)
+	{
+		_logger.error("servicesInfoForQueryBD :: "+e);
+		throw e;	
+	}
+	return serviceInfoForQueryBD;
+
+}
+//Can be used in future
+  /*
+   *Menu Position(1),Activation Status(1),Service ID(1),Version No(2),Bytecode Offset(2),
+   *Bytecode Len(2),Menu Title(40)
+  */
+  /*	public static void interpretSimEnquiryB(String byteStr) throws Exception//
+	  {
+		  _logger.debug("interpretSimEnquiryB() Entered "+byteStr);
+		  try
+		  {
+			  String menuPosition=null;
+			  String byteCodeOffset=null;
+			  String status=null;//1 byte
+			  String serviceID=null;//1 byte
+			  String majorVersion=null;//1 byte
+			  String menuTitle=null;//1 byte
+			  String minorVersion=null;//1 byte
+			  String byteCodeLength=null;
+			  int j=0;
+			  menuPosition=""+Integer.parseInt(byteStr.substring(0,2),16);
+			  System.out.println("menuPosition="+menuPosition);
+			  status=byteStr.substring(2,4);
+			  System.out.println("status="+(status.equals("01")?"Activated":"Deactivated"));
+			  serviceID=""+Integer.parseInt(byteStr.substring(4,6),16);
+			  System.out.println("serviceID="+serviceID);
+			  majorVersion=""+Integer.parseInt(byteStr.substring(6,8),16);
+			  System.out.println("majorVersion="+majorVersion);
+			  minorVersion=""+Integer.parseInt(byteStr.substring(8,10),16);
+			  System.out.println("minorVersion="+minorVersion);
+			  byteCodeOffset=""+Integer.parseInt(byteStr.substring(10,14),16);
+			  System.out.println("byteCodeOffset="+byteCodeOffset);
+			  byteCodeLength=""+Integer.parseInt(byteStr.substring(14,18),16);
+			  System.out.println("byteCodeLength="+byteCodeLength);
+			  menuTitle=byteStr.substring(18,98);
+			  System.out.println("menuTitle="+menuTitle);
+			  j=98;
+			  if(byteStr.length()>150)
+			  {
+				  menuPosition=""+Integer.parseInt(byteStr.substring(j+0,j+2),16);
+				  System.out.println("menuPosition="+menuPosition);
+				  status=byteStr.substring(j+2,j+4);
+				  System.out.println("status="+(status.equals("01")?"Activated":"Deactivated"));
+				  serviceID=""+Integer.parseInt(byteStr.substring(j+4,j+6),16);
+				  System.out.println("serviceID="+serviceID);
+				  majorVersion=""+Integer.parseInt(byteStr.substring(j+6,j+8),16);
+				  System.out.println("majorVersion="+majorVersion);
+				  minorVersion=""+Integer.parseInt(byteStr.substring(j+8,j+10),16);
+				  System.out.println("minorVersion="+minorVersion);
+				  byteCodeOffset=""+Integer.parseInt(byteStr.substring(j+10,j+14),16);
+				  System.out.println("byteCodeOffset="+byteCodeOffset);
+				  byteCodeLength=""+Integer.parseInt(byteStr.substring(j+14,j+18),16);
+				  System.out.println("byteCodeLength="+byteCodeLength);
+				  menuTitle=byteStr.substring(j+18,j+98);
+				  System.out.println("menuTitle="+menuTitle);
+			  }
+		  }
+		  catch(Exception e)
+		  {
+			  _logger.error("interpretSimEnquiryB() Exception e="+e);
+			  throw e;
+		  }
+		  finally
+		  {
+			  _logger.debug("interpretSimEnquiryB() Exiting");
+		  }
+	  }
+	  public static void interpretSimEnquiryD(String smsStr) throws Exception//
+	  {
+		  _logger.debug("interpretSimEnquiryD() Entered");
+		  try
+		  {
+			  String byteStr=smsStr;
+			  String offset=null;
+			  ServicesVO servicesVO=null;
+			  String length=null;//1 byte
+			  String transactionID=null;//1 byte
+			  ArrayList servicesList=new ArrayList();
+			  int j=0;
+			  int totalByteLength=0;
+			  try
+			  {
+				  totalByteLength=Integer.parseInt(Constants.getProperty("byteLength"));
+			  }
+			  catch(Exception e)
+			  {
+				  totalByteLength=128;
+			  }
+			  _logger.info("interpretSimEnquiryD() totalByteLength="+totalByteLength);
+			  int i=0;
+			  for(i=0;i<totalByteLength;i=i+8)
+			  {
+				  offset="";
+				  length="";
+				  servicesVO=new ServicesVO();
+				  offset=byteStr.substring(i,i+4);
+				  length=byteStr.substring(i+4,i+8);
+				  System.out.println(" offset="+Integer.parseInt(offset,16)+"    length="+Integer.parseInt(length,16));
+			  }
+			  System.out.println("i="+i);
+			  transactionID=byteStr.substring(i);
+			  System.out.println("transactionID="+transactionID);
+		  }
+		  catch(Exception e)
+		  {
+			  _logger.error("interpretSimEnquiryD() Exception e="+e);
+			  throw e;
+		  }
+		  finally
+		  {
+			  _logger.debug("interpretSimEnquiryD() Entered");
+		  }
+	  }*/
+	  
+	  /**
+	   * Method for updating parameters.
+	   * Creation date: (6/24/03 9:22:48 AM)
+	   * @return java.util.ArrayList 
+	   * @param p_locationCode String
+	   * @param msisdn String
+	   * @exception com.btsl.common.BaseException
+	   */
+	  /*public boolean updateParametersAndSendSMS(String locationCode,String msisdn,String parameter,String value,String key) throws Exception{
+		  _logger.debug("updateParametersAndSendSMS() Entered locationCode="+locationCode+"   msisdn="+msisdn+"  parameter="+parameter+"  value="+value+"  key="+key);
+		  boolean send=false;
+		  java.util.ArrayList updatedParametersList = new ArrayList();
+		  try
+		  {
+			  ServicesVO servicesVO=new ServicesVO();
+			  if(parameter.equals(SIMServicesUtil.UPDATE_PARAMETER_PIN))
+			  {
+				  servicesVO.setPosition(SIMServicesUtil.PIN_REQUIRED_FLAG);
+				  servicesVO.setStatus(value);
+				  servicesVO.setOperation(SIMServicesUtil.UPDATE_PARAMETERS);
+				  updatedParametersList.add(servicesVO);
+			  }
+			  //product required
+			  if(parameter.equals(SIMServicesUtil.UPDATE_PARAMETER_PRODUCT))
+			  {
+				  servicesVO=new ServicesVO();
+				  servicesVO.setPosition(SIMServicesUtil.PRODUCT_REQUIRED_FLAG);
+				  servicesVO.setStatus(value);
+				  servicesVO.setOperation(SIMServicesUtil.UPDATE_PARAMETERS);
+				  updatedParametersList.add(servicesVO);
+			  }
+			  //transaction id required
+			  if(parameter.equals(SIMServicesUtil.UPDATE_PARAMETER_TID))
+			  {
+				  servicesVO=new ServicesVO();
+				  servicesVO.setPosition(SIMServicesUtil.TID_REQUIRED_FLAG);
+				  servicesVO.setStatus(value);
+				  servicesVO.setOperation(SIMServicesUtil.UPDATE_PARAMETERS);
+				  updatedParametersList.add(servicesVO);
+			  }
+			  send=new OtaMessage().OtaMessageSender(updatedParametersList,msisdn,key);
+		  }	
+		  catch(Exception e)
+		  {
+			  _logger.error("updateParametersAndSendSMS() Exception e="+e);
+			  throw e;
+		  }
+		  finally
+		  {
+			  _logger.debug("updateParametersAndSendSMS() Exiting send="+send);
+		  }
+		  return send;
+	  }*/
+
+
+
+
+	
+	
+	
+}

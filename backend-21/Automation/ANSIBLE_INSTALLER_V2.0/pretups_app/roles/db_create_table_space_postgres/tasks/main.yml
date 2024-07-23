@@ -1,0 +1,32 @@
+---
+ - name: Creating User and DATABASE
+   shell: "{{ item }} chdir={{ BASE_DIR }}/{{ Temp_Dir }}/"
+   with_items:
+   - psql -d {{ DEFAULT_POSTGRES_DB }} -c "CREATE USER {{ PRETUPS_POSTGRES_DB_USER }} with PASSWORD '{{ PRETUPS_POSTGRES_DB_PASS }}';"
+   - psql -d {{ DEFAULT_POSTGRES_DB }} -c "CREATE DATABASE {{ PRETUPS_POSTGRES_DB_NAME }} with OWNER {{ PRETUPS_POSTGRES_DB_USER }};"
+   - psql -d {{ DEFAULT_POSTGRES_DB }} -c "GRANT ALL PRIVILEGES ON DATABASE {{ PRETUPS_POSTGRES_DB_NAME }} to {{ PRETUPS_POSTGRES_DB_USER }};"
+   ignore_errors: yes
+   register: Pretups_User_and_DB_Creation
+   failed_when: Pretups_User_and_DB_Creation.stderr !=""
+   tags:
+    - postgres_USER_Creation
+
+ - name: Dynamic query creation for Table Space
+   lineinfile:
+    dest: "{{ BASE_DIR }}/{{ Temp_Dir }}/createtablespace.sql"
+    insertbefore: 'COMMIT;'
+    line: "create tablespace {{ item.Table_Space_Name }} owner {{ TABLESPACE_CREATION_OWNER_DB }} location '{{ item.Data_file_location }}';"
+   with_items:
+            - "{{ Table_space_entries }}"
+   tags:
+    - createTableSpace_postgres
+
+ - name: Creating TableSpace
+   shell: "{{ item }} chdir={{ BASE_DIR }}/{{ Temp_Dir }}/"
+   with_items:
+   - psql -d {{ PRETUPS_POSTGRES_DB_NAME }} -f createtablespace.sql
+   ignore_errors: yes
+   register: Pretups_Tablespace_Creation
+   failed_when: Pretups_Tablespace_Creation.stderr !=""
+   tags:
+     - Pretups_Tablespace_Creation

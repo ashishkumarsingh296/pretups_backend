@@ -1,0 +1,2 @@
+TestcaseId,TestcaseType,Module,Description
+TUNG22422,Negative,SOS Settlement EXTGW,To verify that parent or owner will get proper response if there is no pending transaction for settlement.

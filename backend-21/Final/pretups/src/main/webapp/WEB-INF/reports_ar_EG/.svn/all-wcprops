@@ -1,0 +1,2405 @@
+K 25
+svn:wc:ra_dav:version-url
+V 123
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG
+END
+c2stransfersummarymonthly.qry
+K 25
+svn:wc:ra_dav:version-url
+V 153
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/c2stransfersummarymonthly.qry
+END
+c2sNoOfTxnPerActiveUserDaily.rpt
+K 25
+svn:wc:ra_dav:version-url
+V 156
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/c2sNoOfTxnPerActiveUserDaily.rpt
+END
+categoryuserhierarchylisting.qry
+K 25
+svn:wc:ra_dav:version-url
+V 156
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/categoryuserhierarchylisting.qry
+END
+c2snopercnfailedtxnsummary.qry
+K 25
+svn:wc:ra_dav:version-url
+V 154
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/c2snopercnfailedtxnsummary.qry
+END
+c2sMinimumaAtivityThresholds.rpt
+K 25
+svn:wc:ra_dav:version-url
+V 156
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/c2sMinimumaAtivityThresholds.rpt
+END
+c2sUsersMoreThanNTxnDaily.rpt
+K 25
+svn:wc:ra_dav:version-url
+V 153
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/c2sUsersMoreThanNTxnDaily.rpt
+END
+c2cretwidtransferunionstaff.qry
+K 25
+svn:wc:ra_dav:version-url
+V 155
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/c2cretwidtransferunionstaff.qry
+END
+dailySubsCount.rpt
+K 25
+svn:wc:ra_dav:version-url
+V 142
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/dailySubsCount.rpt
+END
+c2cSlabWiseReport.rpt
+K 25
+svn:wc:ra_dav:version-url
+V 145
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/c2cSlabWiseReport.rpt
+END
+p2pMonthWiseActiveUser.rpt
+K 25
+svn:wc:ra_dav:version-url
+V 150
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/p2pMonthWiseActiveUser.rpt
+END
+c2cTransferSummary.rpt
+K 25
+svn:wc:ra_dav:version-url
+V 146
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/c2cTransferSummary.rpt
+END
+voucheravailability.qry
+K 25
+svn:wc:ra_dav:version-url
+V 147
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/voucheravailability.qry
+END
+c2slistofactiveusers.qry
+K 25
+svn:wc:ra_dav:version-url
+V 148
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/c2slistofactiveusers.qry
+END
+scheduledtrfexestatus.qry
+K 25
+svn:wc:ra_dav:version-url
+V 149
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/scheduledtrfexestatus.qry
+END
+networkstockfocinc.qry
+K 25
+svn:wc:ra_dav:version-url
+V 146
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/networkstockfocinc.qry
+END
+transferreconciliation.qry
+K 25
+svn:wc:ra_dav:version-url
+V 150
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/transferreconciliation.qry
+END
+zeroBalanceCounterChnlUserSummary.rpt
+K 25
+svn:wc:ra_dav:version-url
+V 161
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/zeroBalanceCounterChnlUserSummary.rpt
+END
+c2sListOfActiveUsersDaily.rpt
+K 25
+svn:wc:ra_dav:version-url
+V 153
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/c2sListOfActiveUsersDaily.rpt
+END
+transactionSummReportDailyUser.rpt
+K 25
+svn:wc:ra_dav:version-url
+V 158
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/transactionSummReportDailyUser.rpt
+END
+c2stransfer.qry
+K 25
+svn:wc:ra_dav:version-url
+V 139
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/c2stransfer.qry
+END
+iatTransferServiceWise.rpt
+K 25
+svn:wc:ra_dav:version-url
+V 150
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/iatTransferServiceWise.rpt
+END
+o2cTransferDetails.rpt
+K 25
+svn:wc:ra_dav:version-url
+V 146
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/o2cTransferDetails.rpt
+END
+barredmsisdnlist.qry
+K 25
+svn:wc:ra_dav:version-url
+V 144
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/barredmsisdnlist.qry
+END
+topChannelUserListAccordingRefillAmount.rpt
+K 25
+svn:wc:ra_dav:version-url
+V 167
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/topChannelUserListAccordingRefillAmount.rpt
+END
+o2ctransferdetailschanneluser.qry
+K 25
+svn:wc:ra_dav:version-url
+V 157
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/o2ctransferdetailschanneluser.qry
+END
+operationsummarymain.qry
+K 25
+svn:wc:ra_dav:version-url
+V 148
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/operationsummarymain.qry
+END
+channelusebalanceprevdate.qry
+K 25
+svn:wc:ra_dav:version-url
+V 153
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/channelusebalanceprevdate.qry
+END
+eventremarks.qry
+K 25
+svn:wc:ra_dav:version-url
+V 140
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/eventremarks.qry
+END
+c2sReconciledCasereport.rpt
+K 25
+svn:wc:ra_dav:version-url
+V 151
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/c2sReconciledCasereport.rpt
+END
+o2cuserwisemonthlytrfsummary.qry
+K 25
+svn:wc:ra_dav:version-url
+V 156
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/o2cuserwisemonthlytrfsummary.qry
+END
+c2sserviceclasswisereport.qry
+K 25
+svn:wc:ra_dav:version-url
+V 153
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/c2sserviceclasswisereport.qry
+END
+c2sMonthlyReportGeographicalWise.rpt
+K 25
+svn:wc:ra_dav:version-url
+V 160
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/c2sMonthlyReportGeographicalWise.rpt
+END
+dailybalancemovementopt.qry
+K 25
+svn:wc:ra_dav:version-url
+V 151
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/dailybalancemovementopt.qry
+END
+staffC2sTransfers.rpt
+K 25
+svn:wc:ra_dav:version-url
+V 145
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/staffC2sTransfers.rpt
+END
+activatedsubssummary.qry
+K 25
+svn:wc:ra_dav:version-url
+V 148
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/activatedsubssummary.qry
+END
+c2cslabwisereport.qry
+K 25
+svn:wc:ra_dav:version-url
+V 145
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/c2cslabwisereport.qry
+END
+p2pNoOfTxnWiseUsersCurrMonth.rpt
+K 25
+svn:wc:ra_dav:version-url
+V 156
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/p2pNoOfTxnWiseUsersCurrMonth.rpt
+END
+c2sDailyReportGeographicalWise.rpt
+K 25
+svn:wc:ra_dav:version-url
+V 158
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/c2sDailyReportGeographicalWise.rpt
+END
+roamerSummary.rpt
+K 25
+svn:wc:ra_dav:version-url
+V 141
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/roamerSummary.rpt
+END
+C2cRetWidTransferStaff.rpt
+K 25
+svn:wc:ra_dav:version-url
+V 150
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/C2cRetWidTransferStaff.rpt
+END
+topchanneluserlistaccordingrefillcount.qry
+K 25
+svn:wc:ra_dav:version-url
+V 166
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/topchanneluserlistaccordingrefillcount.qry
+END
+c2stopupamttrfperdaydaily.qry
+K 25
+svn:wc:ra_dav:version-url
+V 153
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/c2stopupamttrfperdaydaily.qry
+END
+C2cRetWidTransferChannelUserUnion.rpt
+K 25
+svn:wc:ra_dav:version-url
+V 161
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/C2cRetWidTransferChannelUserUnion.rpt
+END
+scheduledtranferreport.qry
+K 25
+svn:wc:ra_dav:version-url
+V 150
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/scheduledtranferreport.qry
+END
+topchnluserlistaccordingrefillamount.qry
+K 25
+svn:wc:ra_dav:version-url
+V 164
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/topchnluserlistaccordingrefillamount.qry
+END
+c2slistofactiveusersdaily.qry
+K 25
+svn:wc:ra_dav:version-url
+V 153
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/c2slistofactiveusersdaily.qry
+END
+c2cMonthlyReportGeographicalWise.rpt
+K 25
+svn:wc:ra_dav:version-url
+V 160
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/c2cMonthlyReportGeographicalWise.rpt
+END
+channelusersdetailsreport.qry
+K 25
+svn:wc:ra_dav:version-url
+V 153
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/channelusersdetailsreport.qry
+END
+c2ctransfersummarydaily.qry
+K 25
+svn:wc:ra_dav:version-url
+V 151
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/c2ctransfersummarydaily.qry
+END
+transactionSummReportMonthlyAdmin.rpt
+K 25
+svn:wc:ra_dav:version-url
+V 161
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/transactionSummReportMonthlyAdmin.rpt
+END
+viewP2PTrfRules.rpt
+K 25
+svn:wc:ra_dav:version-url
+V 143
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/viewP2PTrfRules.rpt
+END
+c2susersmorethanntxnmonthly.qry
+K 25
+svn:wc:ra_dav:version-url
+V 155
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/c2susersmorethanntxnmonthly.qry
+END
+channelusebalance.qry
+K 25
+svn:wc:ra_dav:version-url
+V 145
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/channelusebalance.qry
+END
+o2ctransfersummary.qry
+K 25
+svn:wc:ra_dav:version-url
+V 146
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/o2ctransfersummary.qry
+END
+zeroBalanceCounterSummary.rpt
+K 25
+svn:wc:ra_dav:version-url
+V 153
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/zeroBalanceCounterSummary.rpt
+END
+c2cDailyReportGeographicalWise.rpt
+K 25
+svn:wc:ra_dav:version-url
+V 158
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/c2cDailyReportGeographicalWise.rpt
+END
+c2cretwidtransferchanneluser.qry
+K 25
+svn:wc:ra_dav:version-url
+V 156
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/c2cretwidtransferchanneluser.qry
+END
+p2pNoOfTxnWiseUsersPrevDate.rpt
+K 25
+svn:wc:ra_dav:version-url
+V 155
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/p2pNoOfTxnWiseUsersPrevDate.rpt
+END
+scheServiceClassWiseP2PTransactionSummary.rpt
+K 25
+svn:wc:ra_dav:version-url
+V 169
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/scheServiceClassWiseP2PTransactionSummary.rpt
+END
+c2sTopUpAmtTrfPerDayMonthly.rpt
+K 25
+svn:wc:ra_dav:version-url
+V 155
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/c2sTopUpAmtTrfPerDayMonthly.rpt
+END
+c2sListOfActiveUsersMonthly.rpt
+K 25
+svn:wc:ra_dav:version-url
+V 155
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/c2sListOfActiveUsersMonthly.rpt
+END
+batchexecutiontopupstatus.qry
+K 25
+svn:wc:ra_dav:version-url
+V 153
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/batchexecutiontopupstatus.qry
+END
+pinhistorychannel.qry
+K 25
+svn:wc:ra_dav:version-url
+V 145
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/pinhistorychannel.qry
+END
+c2stransactioncountcurrent.qry
+K 25
+svn:wc:ra_dav:version-url
+V 154
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/c2stransactioncountcurrent.qry
+END
+p2pmonthwiseactiveuser.qry
+K 25
+svn:wc:ra_dav:version-url
+V 150
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/p2pmonthwiseactiveuser.qry
+END
+c2stransactioncountprev.qry
+K 25
+svn:wc:ra_dav:version-url
+V 151
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/c2stransactioncountprev.qry
+END
+batchexecutionTopUpstatusNormal.rpt
+K 25
+svn:wc:ra_dav:version-url
+V 159
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/batchexecutionTopUpstatusNormal.rpt
+END
+operationsumusrmain.qry
+K 25
+svn:wc:ra_dav:version-url
+V 147
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/operationsumusrmain.qry
+END
+channelusebalanceprevdatechannel.qry
+K 25
+svn:wc:ra_dav:version-url
+V 160
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/channelusebalanceprevdatechannel.qry
+END
+c2sNoOfTxnPerRegsteredUserMonthly.rpt
+K 25
+svn:wc:ra_dav:version-url
+V 161
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/c2sNoOfTxnPerRegsteredUserMonthly.rpt
+END
+p2pNoAndPercentageOfFailedTxnSummary.rpt
+K 25
+svn:wc:ra_dav:version-url
+V 164
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/p2pNoAndPercentageOfFailedTxnSummary.rpt
+END
+p2pSubscriberTransactionSummaryReport.rpt
+K 25
+svn:wc:ra_dav:version-url
+V 165
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/p2pSubscriberTransactionSummaryReport.rpt
+END
+monthwisep2ptransactionsummary.qry
+K 25
+svn:wc:ra_dav:version-url
+V 158
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/monthwisep2ptransactionsummary.qry
+END
+O2CTransferSummaryUnion.rpt
+K 25
+svn:wc:ra_dav:version-url
+V 151
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/O2CTransferSummaryUnion.rpt
+END
+ChannelUsersDetailsRport.rpt
+K 25
+svn:wc:ra_dav:version-url
+V 152
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/ChannelUsersDetailsRport.rpt
+END
+c2sDeletedRejectedChannelUsers.rpt
+K 25
+svn:wc:ra_dav:version-url
+V 158
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/c2sDeletedRejectedChannelUsers.rpt
+END
+staffSelfC2CReport.rpt
+K 25
+svn:wc:ra_dav:version-url
+V 146
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/staffSelfC2CReport.rpt
+END
+webloginbarreduserlistmaximuminex.qry
+K 25
+svn:wc:ra_dav:version-url
+V 161
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/webloginbarreduserlistmaximuminex.qry
+END
+o2cc2cretwidtransferunion.qry
+K 25
+svn:wc:ra_dav:version-url
+V 153
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/o2cc2cretwidtransferunion.qry
+END
+c2stransfertimewisestaff.qry
+K 25
+svn:wc:ra_dav:version-url
+V 152
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/c2stransfertimewisestaff.qry
+END
+p2pnooftxnwiseusersprevdate.qry
+K 25
+svn:wc:ra_dav:version-url
+V 155
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/p2pnooftxnwiseusersprevdate.qry
+END
+p2psubscribertransferdetails.qry
+K 25
+svn:wc:ra_dav:version-url
+V 156
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/p2psubscribertransferdetails.qry
+END
+c2cretwidtransferchanneluserstaff.qry
+K 25
+svn:wc:ra_dav:version-url
+V 161
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/c2cretwidtransferchanneluserstaff.qry
+END
+c2slistofactiveusersmonthly.qry
+K 25
+svn:wc:ra_dav:version-url
+V 155
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/c2slistofactiveusersmonthly.qry
+END
+externaluserroles.qry
+K 25
+svn:wc:ra_dav:version-url
+V 145
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/externaluserroles.qry
+END
+schec2sDenoWiseTrfCategory.rpt
+K 25
+svn:wc:ra_dav:version-url
+V 154
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/schec2sDenoWiseTrfCategory.rpt
+END
+channelUserBalanceCurrentDateChannel.rpt
+K 25
+svn:wc:ra_dav:version-url
+V 164
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/channelUserBalanceCurrentDateChannel.rpt
+END
+c2snopercnfailedtxn.qry
+K 25
+svn:wc:ra_dav:version-url
+V 147
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/c2snopercnfailedtxn.qry
+END
+externaluserchrole.rpt
+K 25
+svn:wc:ra_dav:version-url
+V 146
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/externaluserchrole.rpt
+END
+c2sTransferStaff.rpt
+K 25
+svn:wc:ra_dav:version-url
+V 144
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/c2sTransferStaff.rpt
+END
+p2pmonthwisetransactionperuserprev.qry
+K 25
+svn:wc:ra_dav:version-url
+V 162
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/p2pmonthwisetransactionperuserprev.qry
+END
+C2CTransferSummaryUnionStaff.rpt
+K 25
+svn:wc:ra_dav:version-url
+V 156
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/C2CTransferSummaryUnionStaff.rpt
+END
+transactionsummreportmonthlyadmin.qry
+K 25
+svn:wc:ra_dav:version-url
+V 161
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/transactionsummreportmonthlyadmin.qry
+END
+c2sNoOfTxnPerRegsteredUser.rpt
+K 25
+svn:wc:ra_dav:version-url
+V 154
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/c2sNoOfTxnPerRegsteredUser.rpt
+END
+p2psubscribertransactionsummaryrep.qry
+K 25
+svn:wc:ra_dav:version-url
+V 162
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/p2psubscribertransactionsummaryrep.qry
+END
+C2cRetWidTransferChnlUserStaff.rpt
+K 25
+svn:wc:ra_dav:version-url
+V 158
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/C2cRetWidTransferChnlUserStaff.rpt
+END
+batchFOCsummary.rpt
+K 25
+svn:wc:ra_dav:version-url
+V 143
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/batchFOCsummary.rpt
+END
+eventRemarksReports.rpt
+K 25
+svn:wc:ra_dav:version-url
+V 147
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/eventRemarksReports.rpt
+END
+p2pprocessingfeeperday.qry
+K 25
+svn:wc:ra_dav:version-url
+V 150
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/p2pprocessingfeeperday.qry
+END
+p2pNoPctOfFailTxnPerErrCodeMntly.rpt
+K 25
+svn:wc:ra_dav:version-url
+V 160
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/p2pNoPctOfFailTxnPerErrCodeMntly.rpt
+END
+networkStock.rpt
+K 25
+svn:wc:ra_dav:version-url
+V 140
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/networkStock.rpt
+END
+scheserviceclasswisep2ptransactionsumm.qry
+K 25
+svn:wc:ra_dav:version-url
+V 166
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/scheserviceclasswisep2ptransactionsumm.qry
+END
+schec2sDenoWiseTrfCustProfile.rpt
+K 25
+svn:wc:ra_dav:version-url
+V 157
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/schec2sDenoWiseTrfCustProfile.rpt
+END
+p2pNoAndPercentageOfFailedTransactionsDaily.rpt
+K 25
+svn:wc:ra_dav:version-url
+V 171
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/p2pNoAndPercentageOfFailedTransactionsDaily.rpt
+END
+c2sMinimumaAtivityThresholdsMonthly.rpt
+K 25
+svn:wc:ra_dav:version-url
+V 163
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/c2sMinimumaAtivityThresholdsMonthly.rpt
+END
+redemptionTransactionDetails.rpt
+K 25
+svn:wc:ra_dav:version-url
+V 156
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/redemptionTransactionDetails.rpt
+END
+c2sprocessingfeeperday.qry
+K 25
+svn:wc:ra_dav:version-url
+V 150
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/c2sprocessingfeeperday.qry
+END
+C2cRetWidTransfer.rpt
+K 25
+svn:wc:ra_dav:version-url
+V 145
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/C2cRetWidTransfer.rpt
+END
+c2stransferchannelusertimewisestaff.qry
+K 25
+svn:wc:ra_dav:version-url
+V 163
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/c2stransferchannelusertimewisestaff.qry
+END
+staffselftranferreport.qry
+K 25
+svn:wc:ra_dav:version-url
+V 150
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/staffselftranferreport.qry
+END
+operationSumUSRTotal.rpt
+K 25
+svn:wc:ra_dav:version-url
+V 148
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/operationSumUSRTotal.rpt
+END
+statusWiseChannelUserList.rpt
+K 25
+svn:wc:ra_dav:version-url
+V 153
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/statusWiseChannelUserList.rpt
+END
+additionalcommissionsummary.qry
+K 25
+svn:wc:ra_dav:version-url
+V 155
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/additionalcommissionsummary.qry
+END
+additionalCommisionDetails.rpt
+K 25
+svn:wc:ra_dav:version-url
+V 154
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/additionalCommisionDetails.rpt
+END
+p2pNoPctOfFailedTxnPerErrCodeDly.rpt
+K 25
+svn:wc:ra_dav:version-url
+V 160
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/p2pNoPctOfFailedTxnPerErrCodeDly.rpt
+END
+topchanneluserlistaccordingrefillamount.qry
+K 25
+svn:wc:ra_dav:version-url
+V 167
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/topchanneluserlistaccordingrefillamount.qry
+END
+p2pMonthWiseActiveUserPrevious.rpt
+K 25
+svn:wc:ra_dav:version-url
+V 158
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/p2pMonthWiseActiveUserPrevious.rpt
+END
+C2cRetWidTransferUnion.rpt
+K 25
+svn:wc:ra_dav:version-url
+V 150
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/C2cRetWidTransferUnion.rpt
+END
+batchDPsummary.rpt
+K 25
+svn:wc:ra_dav:version-url
+V 142
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/batchDPsummary.rpt
+END
+noofnontraxlessretailers.qry
+K 25
+svn:wc:ra_dav:version-url
+V 152
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/noofnontraxlessretailers.qry
+END
+c2sNewChannelUsersRegistered.rpt
+K 25
+svn:wc:ra_dav:version-url
+V 156
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/c2sNewChannelUsersRegistered.rpt
+END
+dailybalancemovechnluser.qry
+K 25
+svn:wc:ra_dav:version-url
+V 152
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/dailybalancemovechnluser.qry
+END
+staffc2stransfers.qry
+K 25
+svn:wc:ra_dav:version-url
+V 145
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/staffc2stransfers.qry
+END
+p2pnoandpercentageoffailedtxndaily.qry
+K 25
+svn:wc:ra_dav:version-url
+V 162
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/p2pnoandpercentageoffailedtxndaily.qry
+END
+o2cMonthlyReportGeographicalWise.rpt
+K 25
+svn:wc:ra_dav:version-url
+V 160
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/o2cMonthlyReportGeographicalWise.rpt
+END
+p2pActiveUserSummary.rpt
+K 25
+svn:wc:ra_dav:version-url
+V 148
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/p2pActiveUserSummary.rpt
+END
+p2pProcessingFeePerMonth.rpt
+K 25
+svn:wc:ra_dav:version-url
+V 152
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/p2pProcessingFeePerMonth.rpt
+END
+c2sNoPercnFailedTxnErrCode.rpt
+K 25
+svn:wc:ra_dav:version-url
+V 154
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/c2sNoPercnFailedTxnErrCode.rpt
+END
+transactionSummReportDailyAdmin.rpt
+K 25
+svn:wc:ra_dav:version-url
+V 159
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/transactionSummReportDailyAdmin.rpt
+END
+c2cdailyquerygeographicawise.qry
+K 25
+svn:wc:ra_dav:version-url
+V 156
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/c2cdailyquerygeographicawise.qry
+END
+batchexecutiontopupstatusnormal.qry
+K 25
+svn:wc:ra_dav:version-url
+V 159
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/batchexecutiontopupstatusnormal.qry
+END
+c2snooftxnperregsteredusermonthly.qry
+K 25
+svn:wc:ra_dav:version-url
+V 161
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/c2snooftxnperregsteredusermonthly.qry
+END
+p2pnoandpercentageoffailedtxnsummary.qry
+K 25
+svn:wc:ra_dav:version-url
+V 164
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/p2pnoandpercentageoffailedtxnsummary.qry
+END
+iattransferservicewise.qry
+K 25
+svn:wc:ra_dav:version-url
+V 150
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/iattransferservicewise.qry
+END
+passwordHistoryChannelUser.rpt
+K 25
+svn:wc:ra_dav:version-url
+V 154
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/passwordHistoryChannelUser.rpt
+END
+channelusebalancecurrentdatechannel.qry
+K 25
+svn:wc:ra_dav:version-url
+V 163
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/channelusebalancecurrentdatechannel.qry
+END
+scheduledTrfExeStatusStaff.rpt
+K 25
+svn:wc:ra_dav:version-url
+V 154
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/scheduledTrfExeStatusStaff.rpt
+END
+c2sDenoWiseTrfCustProfile.rpt
+K 25
+svn:wc:ra_dav:version-url
+V 153
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/c2sDenoWiseTrfCustProfile.rpt
+END
+c2stransfersummary.qry
+K 25
+svn:wc:ra_dav:version-url
+V 146
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/c2stransfersummary.qry
+END
+associatedRestrictedMsisdn.rpt
+K 25
+svn:wc:ra_dav:version-url
+V 154
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/associatedRestrictedMsisdn.rpt
+END
+p2pnopctoffailedtxnpererrcodesmry.qry
+K 25
+svn:wc:ra_dav:version-url
+V 161
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/p2pnopctoffailedtxnpererrcodesmry.qry
+END
+p2pmonthwiseactiveuserprevious.qry
+K 25
+svn:wc:ra_dav:version-url
+V 158
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/p2pmonthwiseactiveuserprevious.qry
+END
+statuswiseexternaluserlistmcom.qry
+K 25
+svn:wc:ra_dav:version-url
+V 158
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/statuswiseexternaluserlistmcom.qry
+END
+dailyBalanceMovementChnlUser.rpt
+K 25
+svn:wc:ra_dav:version-url
+V 156
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/dailyBalanceMovementChnlUser.rpt
+END
+c2sTransferServiceWiseChannelUser.rpt
+K 25
+svn:wc:ra_dav:version-url
+V 161
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/c2sTransferServiceWiseChannelUser.rpt
+END
+domainOwnerWiseChannelUsersBalance.rpt
+K 25
+svn:wc:ra_dav:version-url
+V 162
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/domainOwnerWiseChannelUsersBalance.rpt
+END
+dailysubscount.qry
+K 25
+svn:wc:ra_dav:version-url
+V 142
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/dailysubscount.qry
+END
+pinHistoryC2S.rpt
+K 25
+svn:wc:ra_dav:version-url
+V 141
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/pinHistoryC2S.rpt
+END
+c2susersmorethanntxndaily.qry
+K 25
+svn:wc:ra_dav:version-url
+V 153
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/c2susersmorethanntxndaily.qry
+END
+operationSummaryTotal.rpt
+K 25
+svn:wc:ra_dav:version-url
+V 149
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/operationSummaryTotal.rpt
+END
+c2ctransfersummary.qry
+K 25
+svn:wc:ra_dav:version-url
+V 146
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/c2ctransfersummary.qry
+END
+networkDailyStock.rpt
+K 25
+svn:wc:ra_dav:version-url
+V 145
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/networkDailyStock.rpt
+END
+c2sTopUpAmtTrfPerDay.rpt
+K 25
+svn:wc:ra_dav:version-url
+V 148
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/c2sTopUpAmtTrfPerDay.rpt
+END
+roamerDetails.rpt
+K 25
+svn:wc:ra_dav:version-url
+V 141
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/roamerDetails.rpt
+END
+activeUserListWhoseUpperTierIsSuspended.rpt
+K 25
+svn:wc:ra_dav:version-url
+V 167
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/activeUserListWhoseUpperTierIsSuspended.rpt
+END
+pinHistoryp2p.rpt
+K 25
+svn:wc:ra_dav:version-url
+V 141
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/pinHistoryp2p.rpt
+END
+roamersummary.qry
+K 25
+svn:wc:ra_dav:version-url
+V 141
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/roamersummary.qry
+END
+transactionsummreportdailyuser.qry
+K 25
+svn:wc:ra_dav:version-url
+V 158
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/transactionsummreportdailyuser.qry
+END
+c2cretwidtransferstaff.qry
+K 25
+svn:wc:ra_dav:version-url
+V 150
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/c2cretwidtransferstaff.qry
+END
+iatTransferSummaryReport.rpt
+K 25
+svn:wc:ra_dav:version-url
+V 152
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/iatTransferSummaryReport.rpt
+END
+c2cretwidtransferchanneluserunion.qry
+K 25
+svn:wc:ra_dav:version-url
+V 161
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/c2cretwidtransferchanneluserunion.qry
+END
+channelUserBalancePrevDateChannel.rpt
+K 25
+svn:wc:ra_dav:version-url
+V 161
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/channelUserBalancePrevDateChannel.rpt
+END
+c2snopercnfailedtxn_old.qry
+K 25
+svn:wc:ra_dav:version-url
+V 151
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/c2snopercnfailedtxn_old.qry
+END
+voucherstatusreport.qry
+K 25
+svn:wc:ra_dav:version-url
+V 147
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/voucherstatusreport.qry
+END
+c2sgeoraphywisetransfersummaryquery.qry
+K 25
+svn:wc:ra_dav:version-url
+V 163
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/c2sgeoraphywisetransfersummaryquery.qry
+END
+o2ctransferdetails.qry
+K 25
+svn:wc:ra_dav:version-url
+V 146
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/o2ctransferdetails.qry
+END
+channelUserBalanceCurrentDate.rpt
+K 25
+svn:wc:ra_dav:version-url
+V 157
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/channelUserBalanceCurrentDate.rpt
+END
+c2sMinimumaAtivityThresholdsDaily.rpt
+K 25
+svn:wc:ra_dav:version-url
+V 161
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/c2sMinimumaAtivityThresholdsDaily.rpt
+END
+c2sdeletedrejectedchannelusers.qry
+K 25
+svn:wc:ra_dav:version-url
+V 158
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/c2sdeletedrejectedchannelusers.qry
+END
+o2cC2cRetWidTransferChannelUser.rpt
+K 25
+svn:wc:ra_dav:version-url
+V 159
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/o2cC2cRetWidTransferChannelUser.rpt
+END
+c2sNoPercnFailedTxnErrCodeSummary.rpt
+K 25
+svn:wc:ra_dav:version-url
+V 161
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/c2sNoPercnFailedTxnErrCodeSummary.rpt
+END
+statusWiseExternalUserListMcom.rpt
+K 25
+svn:wc:ra_dav:version-url
+V 158
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/statusWiseExternalUserListMcom.rpt
+END
+zerobalancecountersummary.qry
+K 25
+svn:wc:ra_dav:version-url
+V 153
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/zerobalancecountersummary.qry
+END
+c2sTransferChannelUserStaff.rpt
+K 25
+svn:wc:ra_dav:version-url
+V 155
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/c2sTransferChannelUserStaff.rpt
+END
+vomsVoucherStatus.rpt
+K 25
+svn:wc:ra_dav:version-url
+V 145
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/vomsVoucherStatus.rpt
+END
+restrictedSubscriberList.rpt
+K 25
+svn:wc:ra_dav:version-url
+V 152
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/restrictedSubscriberList.rpt
+END
+c2stopupamttrfperdaymonthly.qry
+K 25
+svn:wc:ra_dav:version-url
+V 155
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/c2stopupamttrfperdaymonthly.qry
+END
+webLoginBarredUserListMaximumInvalidPwdCount.rpt
+K 25
+svn:wc:ra_dav:version-url
+V 172
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/webLoginBarredUserListMaximumInvalidPwdCount.rpt
+END
+batchfocsummary.qry
+K 25
+svn:wc:ra_dav:version-url
+V 143
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/batchfocsummary.qry
+END
+c2sActiveUserSummaryDaily.rpt
+K 25
+svn:wc:ra_dav:version-url
+V 153
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/c2sActiveUserSummaryDaily.rpt
+END
+o2cuserwisedailytrfsummary.rpt
+K 25
+svn:wc:ra_dav:version-url
+V 154
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/o2cuserwisedailytrfsummary.rpt
+END
+transactionsummreportdailyadmin.qry
+K 25
+svn:wc:ra_dav:version-url
+V 159
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/transactionsummreportdailyadmin.qry
+END
+additionalCommisionDetailsChannel.rpt
+K 25
+svn:wc:ra_dav:version-url
+V 161
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/additionalCommisionDetailsChannel.rpt
+END
+schep2psubscriberTransferDetails.rpt
+K 25
+svn:wc:ra_dav:version-url
+V 160
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/schep2psubscriberTransferDetails.rpt
+END
+c2sTransferChannelUserTimeWise.rpt
+K 25
+svn:wc:ra_dav:version-url
+V 158
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/c2sTransferChannelUserTimeWise.rpt
+END
+c2sNoOfRechargeCustProfileSlabWise.rpt
+K 25
+svn:wc:ra_dav:version-url
+V 162
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/c2sNoOfRechargeCustProfileSlabWise.rpt
+END
+channelusebalancecurrentdate.qry
+K 25
+svn:wc:ra_dav:version-url
+V 156
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/channelusebalancecurrentdate.qry
+END
+zerobalancecounterchnlusersummary.qry
+K 25
+svn:wc:ra_dav:version-url
+V 161
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/zerobalancecounterchnlusersummary.qry
+END
+externaluserchrole.qry
+K 25
+svn:wc:ra_dav:version-url
+V 146
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/externaluserchrole.qry
+END
+o2ctransfersummaryunion.qry
+K 25
+svn:wc:ra_dav:version-url
+V 151
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/o2ctransfersummaryunion.qry
+END
+p2pMonthwiseTransactionperUserPrevious.rpt
+K 25
+svn:wc:ra_dav:version-url
+V 166
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/p2pMonthwiseTransactionperUserPrevious.rpt
+END
+webLoginBarredUserListMaximumInvalidPwdCountEx.rpt
+K 25
+svn:wc:ra_dav:version-url
+V 174
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/webLoginBarredUserListMaximumInvalidPwdCountEx.rpt
+END
+viewp2ptrfrules.qry
+K 25
+svn:wc:ra_dav:version-url
+V 143
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/viewp2ptrfrules.qry
+END
+c2ctransfersummaryunionstaff.qry
+K 25
+svn:wc:ra_dav:version-url
+V 156
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/c2ctransfersummaryunionstaff.qry
+END
+serviceclasswisep2ptransactionsumm.qry
+K 25
+svn:wc:ra_dav:version-url
+V 162
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/serviceclasswisep2ptransactionsumm.qry
+END
+transactionWiseSubList.rpt
+K 25
+svn:wc:ra_dav:version-url
+V 150
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/transactionWiseSubList.rpt
+END
+associatedrestrictedmsisdn.qry
+K 25
+svn:wc:ra_dav:version-url
+V 154
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/associatedrestrictedmsisdn.qry
+END
+statusWiseChannelExternalUserList.rpt
+K 25
+svn:wc:ra_dav:version-url
+V 161
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/statusWiseChannelExternalUserList.rpt
+END
+transactionSummReportMonthlyUser.rpt
+K 25
+svn:wc:ra_dav:version-url
+V 160
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/transactionSummReportMonthlyUser.rpt
+END
+additionalComSumChanlMonthly.rpt
+K 25
+svn:wc:ra_dav:version-url
+V 156
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/additionalComSumChanlMonthly.rpt
+END
+c2sListOfActiveUsers.rpt
+K 25
+svn:wc:ra_dav:version-url
+V 148
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/c2sListOfActiveUsers.rpt
+END
+c2snooftxnperactiveusermonthly.qry
+K 25
+svn:wc:ra_dav:version-url
+V 158
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/c2snooftxnperactiveusermonthly.qry
+END
+pwdhistoryc2s.qry
+K 25
+svn:wc:ra_dav:version-url
+V 141
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/pwdhistoryc2s.qry
+END
+additionalCommissionSummaryChannel.rpt
+K 25
+svn:wc:ra_dav:version-url
+V 162
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/additionalCommissionSummaryChannel.rpt
+END
+serviceClassWiseP2PTransactionSummary.rpt
+K 25
+svn:wc:ra_dav:version-url
+V 165
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/serviceClassWiseP2PTransactionSummary.rpt
+END
+p2pnooftxnwiseuserscurrmonth.qry
+K 25
+svn:wc:ra_dav:version-url
+V 156
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/p2pnooftxnwiseuserscurrmonth.qry
+END
+redemptiontransactiondetails.qry
+K 25
+svn:wc:ra_dav:version-url
+V 156
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/redemptiontransactiondetails.qry
+END
+c2cretwidtransfer.qry
+K 25
+svn:wc:ra_dav:version-url
+V 145
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/c2cretwidtransfer.qry
+END
+iccidMsisdnAssociationDetailsReport.rpt
+K 25
+svn:wc:ra_dav:version-url
+V 163
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/iccidMsisdnAssociationDetailsReport.rpt
+END
+o2cmonthlyquerygeographicawise.qry
+K 25
+svn:wc:ra_dav:version-url
+V 158
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/o2cmonthlyquerygeographicawise.qry
+END
+passwordhistorychanneluser.qry
+K 25
+svn:wc:ra_dav:version-url
+V 154
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/passwordhistorychanneluser.qry
+END
+nonTransactingRetailers.rpt
+K 25
+svn:wc:ra_dav:version-url
+V 151
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/nonTransactingRetailers.rpt
+END
+statuswisechanneluserlist.qry
+K 25
+svn:wc:ra_dav:version-url
+V 153
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/statuswisechanneluserlist.qry
+END
+c2cTransferSummaryStaff.rpt
+K 25
+svn:wc:ra_dav:version-url
+V 151
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/c2cTransferSummaryStaff.rpt
+END
+additionalCommissionSummaryMonthly.rpt
+K 25
+svn:wc:ra_dav:version-url
+V 162
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/additionalCommissionSummaryMonthly.rpt
+END
+c2sdenowisetrfcustprofile.qry
+K 25
+svn:wc:ra_dav:version-url
+V 153
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/c2sdenowisetrfcustprofile.qry
+END
+c2snooftxnperactiveuserdaily.qry
+K 25
+svn:wc:ra_dav:version-url
+V 156
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/c2snooftxnperactiveuserdaily.qry
+END
+c2sActiveUserSummaryMonthly.rpt
+K 25
+svn:wc:ra_dav:version-url
+V 155
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/c2sActiveUserSummaryMonthly.rpt
+END
+c2sNoOfTxnPerRegsteredUserDaily.rpt
+K 25
+svn:wc:ra_dav:version-url
+V 159
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/c2sNoOfTxnPerRegsteredUserDaily.rpt
+END
+deletedSubscriberList.rpt
+K 25
+svn:wc:ra_dav:version-url
+V 149
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/deletedSubscriberList.rpt
+END
+o2cdailyquerygeographicawise.qry
+K 25
+svn:wc:ra_dav:version-url
+V 156
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/o2cdailyquerygeographicawise.qry
+END
+batchFOCdetails.rpt
+K 25
+svn:wc:ra_dav:version-url
+V 143
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/batchFOCdetails.rpt
+END
+batchdpsummary.qry
+K 25
+svn:wc:ra_dav:version-url
+V 142
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/batchdpsummary.qry
+END
+statusWiseOperatorUserList.rpt
+K 25
+svn:wc:ra_dav:version-url
+V 154
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/statusWiseOperatorUserList.rpt
+END
+noofnontranxgreaterretailers.qry
+K 25
+svn:wc:ra_dav:version-url
+V 156
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/noofnontranxgreaterretailers.qry
+END
+restrictedsubscriberlist.qry
+K 25
+svn:wc:ra_dav:version-url
+V 152
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/restrictedsubscriberlist.qry
+END
+c2snewchannelusersregistered.qry
+K 25
+svn:wc:ra_dav:version-url
+V 156
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/c2snewchannelusersregistered.qry
+END
+statuswiseoperatoruserlist.qry
+K 25
+svn:wc:ra_dav:version-url
+V 154
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/statuswiseoperatoruserlist.qry
+END
+c2stransferservicewisechanneluser.qry
+K 25
+svn:wc:ra_dav:version-url
+V 161
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/c2stransferservicewisechanneluser.qry
+END
+webloginbarreduserlistmaximuminvalidpwdcount.qry
+K 25
+svn:wc:ra_dav:version-url
+V 172
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/webloginbarreduserlistmaximuminvalidpwdcount.qry
+END
+zeroBalanceCounterChnlUserDetail.rpt
+K 25
+svn:wc:ra_dav:version-url
+V 160
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/zeroBalanceCounterChnlUserDetail.rpt
+END
+c2sTransferSummaryStaff.rpt
+K 25
+svn:wc:ra_dav:version-url
+V 151
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/c2sTransferSummaryStaff.rpt
+END
+c2snopercnfailedtxnerrcode.qry
+K 25
+svn:wc:ra_dav:version-url
+V 154
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/c2snopercnfailedtxnerrcode.qry
+END
+networkstock.qry
+K 25
+svn:wc:ra_dav:version-url
+V 140
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/networkstock.qry
+END
+c2sactiveusersummarydaily.qry
+K 25
+svn:wc:ra_dav:version-url
+V 153
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/c2sactiveusersummarydaily.qry
+END
+p2pnopctoffailtxnpererrcodemntly.qry
+K 25
+svn:wc:ra_dav:version-url
+V 160
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/p2pnopctoffailtxnpererrcodemntly.qry
+END
+schec2sdenowisetrfcategory.qry
+K 25
+svn:wc:ra_dav:version-url
+V 154
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/schec2sdenowisetrfcategory.qry
+END
+C2cRetWidTransferChannelUserUnionStaff.rpt
+K 25
+svn:wc:ra_dav:version-url
+V 166
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/C2cRetWidTransferChannelUserUnionStaff.rpt
+END
+o2cC2cRetWidTransferUnionChannelUser.rpt
+K 25
+svn:wc:ra_dav:version-url
+V 164
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/o2cC2cRetWidTransferUnionChannelUser.rpt
+END
+C2CTransferSummaryUnionDaily.rpt
+K 25
+svn:wc:ra_dav:version-url
+V 156
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/C2CTransferSummaryUnionDaily.rpt
+END
+pinhistoryp2p.qry
+K 25
+svn:wc:ra_dav:version-url
+V 141
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/pinhistoryp2p.qry
+END
+additionalcommissiondetails.qry
+K 25
+svn:wc:ra_dav:version-url
+V 155
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/additionalcommissiondetails.qry
+END
+schedulevoucherAvailability.rpt
+K 25
+svn:wc:ra_dav:version-url
+V 155
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/schedulevoucherAvailability.rpt
+END
+NoOfNonTranxLessRetailers.rpt
+K 25
+svn:wc:ra_dav:version-url
+V 153
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/NoOfNonTranxLessRetailers.rpt
+END
+c2stransferstaff.qry
+K 25
+svn:wc:ra_dav:version-url
+V 144
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/c2stransferstaff.qry
+END
+operationsumusrtotal.qry
+K 25
+svn:wc:ra_dav:version-url
+V 148
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/operationsumusrtotal.qry
+END
+c2sUsersMoreThanNTxn.rpt
+K 25
+svn:wc:ra_dav:version-url
+V 148
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/c2sUsersMoreThanNTxn.rpt
+END
+zeroBalanceCounterDetail.rpt
+K 25
+svn:wc:ra_dav:version-url
+V 152
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/zeroBalanceCounterDetail.rpt
+END
+p2pnopctoffailedtxnpererrcodedly.qry
+K 25
+svn:wc:ra_dav:version-url
+V 160
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/p2pnopctoffailedtxnpererrcodedly.qry
+END
+batchDPdetails.rpt
+K 25
+svn:wc:ra_dav:version-url
+V 142
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/batchDPdetails.rpt
+END
+p2pTransferReconciliation.rpt
+K 25
+svn:wc:ra_dav:version-url
+V 153
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/p2pTransferReconciliation.rpt
+END
+O2CTransferStatus.rpt
+K 25
+svn:wc:ra_dav:version-url
+V 145
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/O2CTransferStatus.rpt
+END
+c2sTransferChannelUser.rpt
+K 25
+svn:wc:ra_dav:version-url
+V 150
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/c2sTransferChannelUser.rpt
+END
+c2snooftxnperregstereduser.qry
+K 25
+svn:wc:ra_dav:version-url
+V 154
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/c2snooftxnperregstereduser.qry
+END
+p2pNoOfTxnWiseUsersCurrDate.rpt
+K 25
+svn:wc:ra_dav:version-url
+V 155
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/p2pNoOfTxnWiseUsersCurrDate.rpt
+END
+c2cretwidtransferunion.qry
+K 25
+svn:wc:ra_dav:version-url
+V 150
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/c2cretwidtransferunion.qry
+END
+p2pNoAndPercentageOfFailedTransactionsMonthly.rpt
+K 25
+svn:wc:ra_dav:version-url
+V 173
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/p2pNoAndPercentageOfFailedTransactionsMonthly.rpt
+END
+operationsummarytotal.qry
+K 25
+svn:wc:ra_dav:version-url
+V 149
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/operationsummarytotal.qry
+END
+C2CTransferSummaryUnion.rpt
+K 25
+svn:wc:ra_dav:version-url
+V 151
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/C2CTransferSummaryUnion.rpt
+END
+registeredSubscriberList.rpt
+K 25
+svn:wc:ra_dav:version-url
+V 152
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/registeredSubscriberList.rpt
+END
+zerobalancecounterchnluserdetail.qry
+K 25
+svn:wc:ra_dav:version-url
+V 160
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/zerobalancecounterchnluserdetail.qry
+END
+c2sTransferServiceWise.rpt
+K 25
+svn:wc:ra_dav:version-url
+V 150
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/c2sTransferServiceWise.rpt
+END
+passwordHistoryC2S.rpt
+K 25
+svn:wc:ra_dav:version-url
+V 146
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/passwordHistoryC2S.rpt
+END
+c2stopupamttrfperday.qry
+K 25
+svn:wc:ra_dav:version-url
+V 148
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/c2stopupamttrfperday.qry
+END
+p2pNoPctOfFailedTxnPerErrCodeSummary.rpt
+K 25
+svn:wc:ra_dav:version-url
+V 164
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/p2pNoPctOfFailedTxnPerErrCodeSummary.rpt
+END
+networkdailystock.qry
+K 25
+svn:wc:ra_dav:version-url
+V 145
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/networkdailystock.qry
+END
+c2stransferchannelusertimewise.qry
+K 25
+svn:wc:ra_dav:version-url
+V 158
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/c2stransferchannelusertimewise.qry
+END
+Internaluserrolereport.rpt
+K 25
+svn:wc:ra_dav:version-url
+V 150
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/Internaluserrolereport.rpt
+END
+p2pReconciliationCaseReport.rpt
+K 25
+svn:wc:ra_dav:version-url
+V 155
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/p2pReconciliationCaseReport.rpt
+END
+additionalcommissiondetailschannel.qry
+K 25
+svn:wc:ra_dav:version-url
+V 162
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/additionalcommissiondetailschannel.qry
+END
+iccidmsisdnassociationdetailsreport.qry
+K 25
+svn:wc:ra_dav:version-url
+V 163
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/iccidmsisdnassociationdetailsreport.qry
+END
+c2sNoPercnFailedTxnSummary.rpt
+K 25
+svn:wc:ra_dav:version-url
+V 154
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/c2sNoPercnFailedTxnSummary.rpt
+END
+p2pNoOfTxnWiseUsersPreMonth.rpt
+K 25
+svn:wc:ra_dav:version-url
+V 155
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/p2pNoOfTxnWiseUsersPreMonth.rpt
+END
+c2sactiveusersummarymonthly.qry
+K 25
+svn:wc:ra_dav:version-url
+V 155
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/c2sactiveusersummarymonthly.qry
+END
+c2sTransferTimeWise.rpt
+K 25
+svn:wc:ra_dav:version-url
+V 147
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/c2sTransferTimeWise.rpt
+END
+c2sTransferTimeWiseStaff.rpt
+K 25
+svn:wc:ra_dav:version-url
+V 152
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/c2sTransferTimeWiseStaff.rpt
+END
+o2cc2cretwidtransferchanneluser.qry
+K 25
+svn:wc:ra_dav:version-url
+V 159
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/o2cc2cretwidtransferchanneluser.qry
+END
+p2pMonthwiseTransactionperUser.rpt
+K 25
+svn:wc:ra_dav:version-url
+V 158
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/p2pMonthwiseTransactionperUser.rpt
+END
+c2sreconciledcasequery.qry
+K 25
+svn:wc:ra_dav:version-url
+V 150
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/c2sreconciledcasequery.qry
+END
+deletedsubscriberlist.qry
+K 25
+svn:wc:ra_dav:version-url
+V 149
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/deletedsubscriberlist.qry
+END
+activatedSubsSummary.rpt
+K 25
+svn:wc:ra_dav:version-url
+V 148
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/activatedSubsSummary.rpt
+END
+p2pnooftxnwiseuserscurrdate.qry
+K 25
+svn:wc:ra_dav:version-url
+V 155
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/p2pnooftxnwiseuserscurrdate.qry
+END
+statuswisechannelexternaluserlist.qry
+K 25
+svn:wc:ra_dav:version-url
+V 161
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/statuswisechannelexternaluserlist.qry
+END
+c2stransferchanneluserstaff.qry
+K 25
+svn:wc:ra_dav:version-url
+V 155
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/c2stransferchanneluserstaff.qry
+END
+c2cretwidtransferchnluserstaff.qry
+K 25
+svn:wc:ra_dav:version-url
+V 158
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/c2cretwidtransferchnluserstaff.qry
+END
+staffselfc2crpt1.qry
+K 25
+svn:wc:ra_dav:version-url
+V 144
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/staffselfc2crpt1.qry
+END
+domainownerwisechannelusersbalance.qry
+K 25
+svn:wc:ra_dav:version-url
+V 162
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/domainownerwisechannelusersbalance.qry
+END
+pinhistoryc2s.qry
+K 25
+svn:wc:ra_dav:version-url
+V 141
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/pinhistoryc2s.qry
+END
+p2pprocessingfeepermonth.qry
+K 25
+svn:wc:ra_dav:version-url
+V 152
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/p2pprocessingfeepermonth.qry
+END
+o2cuserwisedailytrfsummary.qry
+K 25
+svn:wc:ra_dav:version-url
+V 154
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/o2cuserwisedailytrfsummary.qry
+END
+networkStockfocinc.rpt
+K 25
+svn:wc:ra_dav:version-url
+V 146
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/networkStockfocinc.rpt
+END
+roamerdetails.qry
+K 25
+svn:wc:ra_dav:version-url
+V 141
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/roamerdetails.qry
+END
+networkDailyStockfocinc.rpt
+K 25
+svn:wc:ra_dav:version-url
+V 151
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/networkDailyStockfocinc.rpt
+END
+o2cC2cRetWidTransfer.rpt
+K 25
+svn:wc:ra_dav:version-url
+V 148
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/o2cC2cRetWidTransfer.rpt
+END
+additionalcommissionsummarychannel.qry
+K 25
+svn:wc:ra_dav:version-url
+V 162
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/additionalcommissionsummarychannel.qry
+END
+monthWiseP2PTransactionSummary.rpt
+K 25
+svn:wc:ra_dav:version-url
+V 158
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/monthWiseP2PTransactionSummary.rpt
+END
+o2cTransferAcknowledgementDetails.rpt
+K 25
+svn:wc:ra_dav:version-url
+V 161
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/o2cTransferAcknowledgementDetails.rpt
+END
+iattransfersummaryreport.qry
+K 25
+svn:wc:ra_dav:version-url
+V 152
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/iattransfersummaryreport.qry
+END
+c2sUsersMoreThanNTxnMonthly.rpt
+K 25
+svn:wc:ra_dav:version-url
+V 155
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/c2sUsersMoreThanNTxnMonthly.rpt
+END
+scheduledtrfexestatusstaff.qry
+K 25
+svn:wc:ra_dav:version-url
+V 154
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/scheduledtrfexestatusstaff.qry
+END
+SenderServiceClassWiseTrfSummary.rpt
+K 25
+svn:wc:ra_dav:version-url
+V 160
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/SenderServiceClassWiseTrfSummary.rpt
+END
+additionalcommissionsummarymonthly.qry
+K 25
+svn:wc:ra_dav:version-url
+V 162
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/additionalcommissionsummarymonthly.qry
+END
+c2ctransfersummarystaff.qry
+K 25
+svn:wc:ra_dav:version-url
+V 151
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/c2ctransfersummarystaff.qry
+END
+o2cTransferSummary.rpt
+K 25
+svn:wc:ra_dav:version-url
+V 146
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/o2cTransferSummary.rpt
+END
+p2pmonthwiseactiveuserprev.qry
+K 25
+svn:wc:ra_dav:version-url
+V 154
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/p2pmonthwiseactiveuserprev.qry
+END
+c2snooftxnperregstereduserdaily.qry
+K 25
+svn:wc:ra_dav:version-url
+V 159
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/c2snooftxnperregstereduserdaily.qry
+END
+p2ptransferreconciliation.qry
+K 25
+svn:wc:ra_dav:version-url
+V 153
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/p2ptransferreconciliation.qry
+END
+c2sNoOfTxnPerActiveUser.rpt
+K 25
+svn:wc:ra_dav:version-url
+V 151
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/c2sNoOfTxnPerActiveUser.rpt
+END
+c2snopercnfailedtxnerrcodesummary.qry
+K 25
+svn:wc:ra_dav:version-url
+V 161
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/c2snopercnfailedtxnerrcodesummary.qry
+END
+dailyBalanceMovementOpt.rpt
+K 25
+svn:wc:ra_dav:version-url
+V 151
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/dailyBalanceMovementOpt.rpt
+END
+C2cRetWidTransferUnionStaff.rpt
+K 25
+svn:wc:ra_dav:version-url
+V 155
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/C2cRetWidTransferUnionStaff.rpt
+END
+p2pnoandpercentageoffailedtxnmnt.qry
+K 25
+svn:wc:ra_dav:version-url
+V 160
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/p2pnoandpercentageoffailedtxnmnt.qry
+END
+c2stransfertimewise.qry
+K 25
+svn:wc:ra_dav:version-url
+V 147
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/c2stransfertimewise.qry
+END
+c2snooftxnperactiveuser.qry
+K 25
+svn:wc:ra_dav:version-url
+V 151
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/c2snooftxnperactiveuser.qry
+END
+batchfocdetails.qry
+K 25
+svn:wc:ra_dav:version-url
+V 143
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/batchfocdetails.qry
+END
+additionalcomsumchanlmonthly.qry
+K 25
+svn:wc:ra_dav:version-url
+V 156
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/additionalcomsumchanlmonthly.qry
+END
+p2pactiveusersummary.qry
+K 25
+svn:wc:ra_dav:version-url
+V 148
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/p2pactiveusersummary.qry
+END
+registeredsubscriberlist.qry
+K 25
+svn:wc:ra_dav:version-url
+V 152
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/registeredsubscriberlist.qry
+END
+c2stransfersummarystaff.qry
+K 25
+svn:wc:ra_dav:version-url
+V 151
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/c2stransfersummarystaff.qry
+END
+c2cReturnWithdraw.rpt
+K 25
+svn:wc:ra_dav:version-url
+V 145
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/c2cReturnWithdraw.rpt
+END
+c2sTopUpAmtTrfPerDayDaily.rpt
+K 25
+svn:wc:ra_dav:version-url
+V 153
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/c2sTopUpAmtTrfPerDayDaily.rpt
+END
+channelUserBalance.rpt
+K 25
+svn:wc:ra_dav:version-url
+V 146
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/channelUserBalance.rpt
+END
+o2cc2cretwidtransferunionchanneluser.qry
+K 25
+svn:wc:ra_dav:version-url
+V 164
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/o2cc2cretwidtransferunionchanneluser.qry
+END
+schedulevoucheravailability.qry
+K 25
+svn:wc:ra_dav:version-url
+V 155
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/schedulevoucheravailability.qry
+END
+c2sTransferSummaryMonthly.rpt
+K 25
+svn:wc:ra_dav:version-url
+V 153
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/c2sTransferSummaryMonthly.rpt
+END
+c2susersmorethanntxn.qry
+K 25
+svn:wc:ra_dav:version-url
+V 148
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/c2susersmorethanntxn.qry
+END
+operationSummaryMain.rpt
+K 25
+svn:wc:ra_dav:version-url
+V 148
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/operationSummaryMain.rpt
+END
+categoryUserHierarchyListing.rpt
+K 25
+svn:wc:ra_dav:version-url
+V 156
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/categoryUserHierarchyListing.rpt
+END
+nontransactingretailers.qry
+K 25
+svn:wc:ra_dav:version-url
+V 151
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/nontransactingretailers.qry
+END
+c2sminimumactivitythresholdsdaily.qry
+K 25
+svn:wc:ra_dav:version-url
+V 161
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/c2sminimumactivitythresholdsdaily.qry
+END
+zerobalancecounterdetail.qry
+K 25
+svn:wc:ra_dav:version-url
+V 152
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/zerobalancecounterdetail.qry
+END
+o2cuserwisemonthlytrfsummary.rpt
+K 25
+svn:wc:ra_dav:version-url
+V 156
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/o2cuserwisemonthlytrfsummary.rpt
+END
+barredUserReport.rpt
+K 25
+svn:wc:ra_dav:version-url
+V 144
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/barredUserReport.rpt
+END
+cp2ptransfersservicewise.qry
+K 25
+svn:wc:ra_dav:version-url
+V 152
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/cp2ptransfersservicewise.qry
+END
+transactionwisesublist.qry
+K 25
+svn:wc:ra_dav:version-url
+V 150
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/transactionwisesublist.qry
+END
+c2cmonthlyquerygeographicawise.qry
+K 25
+svn:wc:ra_dav:version-url
+V 158
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/c2cmonthlyquerygeographicawise.qry
+END
+p2psubscriberTransferDetails.rpt
+K 25
+svn:wc:ra_dav:version-url
+V 156
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/p2psubscriberTransferDetails.rpt
+END
+c2sminimumactivitythresholds.qry
+K 25
+svn:wc:ra_dav:version-url
+V 156
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/c2sminimumactivitythresholds.qry
+END
+c2sTransactionCountCurrent.rpt
+K 25
+svn:wc:ra_dav:version-url
+V 154
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/c2sTransactionCountCurrent.rpt
+END
+scheduledTrfExeStatus.rpt
+K 25
+svn:wc:ra_dav:version-url
+V 149
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/scheduledTrfExeStatus.rpt
+END
+voucherAvailability.rpt
+K 25
+svn:wc:ra_dav:version-url
+V 147
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/voucherAvailability.rpt
+END
+inactiveUserReport.rpt
+K 25
+svn:wc:ra_dav:version-url
+V 146
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/inactiveUserReport.rpt
+END
+topChannelUserListAccordingRefillCount.rpt
+K 25
+svn:wc:ra_dav:version-url
+V 166
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/topChannelUserListAccordingRefillCount.rpt
+END
+transferReconciliation.rpt
+K 25
+svn:wc:ra_dav:version-url
+V 150
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/transferReconciliation.rpt
+END
+channelUserBalancePrevDate.rpt
+K 25
+svn:wc:ra_dav:version-url
+V 154
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/channelUserBalancePrevDate.rpt
+END
+c2sTransfer.rpt
+K 25
+svn:wc:ra_dav:version-url
+V 139
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/c2sTransfer.rpt
+END
+scheduledTranferReport.rpt
+K 25
+svn:wc:ra_dav:version-url
+V 150
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/scheduledTranferReport.rpt
+END
+schep2psubscribertransferdetails.qry
+K 25
+svn:wc:ra_dav:version-url
+V 160
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/schep2psubscribertransferdetails.qry
+END
+c2cretwidtransferchanneluserunionstaff.qry
+K 25
+svn:wc:ra_dav:version-url
+V 166
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/c2cretwidtransferchanneluserunionstaff.qry
+END
+NoOfNonTranxGreateRetailers.rpt
+K 25
+svn:wc:ra_dav:version-url
+V 155
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/NoOfNonTranxGreateRetailers.rpt
+END
+c2ctransfersummaryuniondaily.qry
+K 25
+svn:wc:ra_dav:version-url
+V 156
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/c2ctransfersummaryuniondaily.qry
+END
+o2cDailyReportGeographicalWise.rpt
+K 25
+svn:wc:ra_dav:version-url
+V 158
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/o2cDailyReportGeographicalWise.rpt
+END
+internaluserrolereport.qry
+K 25
+svn:wc:ra_dav:version-url
+V 150
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/internaluserrolereport.qry
+END
+barredMSISDNList.rpt
+K 25
+svn:wc:ra_dav:version-url
+V 144
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/barredMSISDNList.rpt
+END
+senderserviceclasswisetrfsummary.qry
+K 25
+svn:wc:ra_dav:version-url
+V 160
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/senderserviceclasswisetrfsummary.qry
+END
+statusWiseInternalUserList.rpt
+K 25
+svn:wc:ra_dav:version-url
+V 154
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/statusWiseInternalUserList.rpt
+END
+statuswiseinternaluserlist.qry
+K 25
+svn:wc:ra_dav:version-url
+V 154
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/statuswiseinternaluserlist.qry
+END
+batchdpdetails.qry
+K 25
+svn:wc:ra_dav:version-url
+V 142
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/batchdpdetails.qry
+END
+C2cRetWidTransferChannelUser.rpt
+K 25
+svn:wc:ra_dav:version-url
+V 156
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/C2cRetWidTransferChannelUser.rpt
+END
+Scheduledc2sNoOfRechargeCustProfileSlabWise.rpt
+K 25
+svn:wc:ra_dav:version-url
+V 171
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/Scheduledc2sNoOfRechargeCustProfileSlabWise.rpt
+END
+p2pnooftxnwiseuserspremonth.qry
+K 25
+svn:wc:ra_dav:version-url
+V 155
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/p2pnooftxnwiseuserspremonth.qry
+END
+O2CTransferStatus.qry
+K 25
+svn:wc:ra_dav:version-url
+V 145
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/O2CTransferStatus.qry
+END
+o2cC2cRetWidTransferUnion.rpt
+K 25
+svn:wc:ra_dav:version-url
+V 153
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/o2cC2cRetWidTransferUnion.rpt
+END
+C2cRetWidTransferChannelUserStaff.rpt
+K 25
+svn:wc:ra_dav:version-url
+V 161
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/C2cRetWidTransferChannelUserStaff.rpt
+END
+p2pmonthwisetransactionperuser.qry
+K 25
+svn:wc:ra_dav:version-url
+V 158
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/p2pmonthwisetransactionperuser.qry
+END
+pinHistoryChannel.rpt
+K 25
+svn:wc:ra_dav:version-url
+V 145
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/pinHistoryChannel.rpt
+END
+p2pProcessingFeePerDay.rpt
+K 25
+svn:wc:ra_dav:version-url
+V 150
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/p2pProcessingFeePerDay.rpt
+END
+batchexecutionTopUpstatus.rpt
+K 25
+svn:wc:ra_dav:version-url
+V 153
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/batchexecutionTopUpstatus.rpt
+END
+transactionsummreportmonthlyuser.qry
+K 25
+svn:wc:ra_dav:version-url
+V 160
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/transactionsummreportmonthlyuser.qry
+END
+statusWiseExternalUserList.rpt
+K 25
+svn:wc:ra_dav:version-url
+V 154
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/statusWiseExternalUserList.rpt
+END
+statuswiseexternaluserlist.qry
+K 25
+svn:wc:ra_dav:version-url
+V 154
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/statuswiseexternaluserlist.qry
+END
+c2sProcessingFeePerDay.rpt
+K 25
+svn:wc:ra_dav:version-url
+V 150
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/c2sProcessingFeePerDay.rpt
+END
+c2sminimumactivitythresholdsmonthly.qry
+K 25
+svn:wc:ra_dav:version-url
+V 163
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/c2sminimumactivitythresholdsmonthly.qry
+END
+c2sTransferChannelUserTimeWiseStaff.rpt
+K 25
+svn:wc:ra_dav:version-url
+V 163
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/c2sTransferChannelUserTimeWiseStaff.rpt
+END
+c2cTransferSummaryDaily.rpt
+K 25
+svn:wc:ra_dav:version-url
+V 151
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/c2cTransferSummaryDaily.rpt
+END
+c2snoofrechargecustprofileslabwise.qry
+K 25
+svn:wc:ra_dav:version-url
+V 162
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/c2snoofrechargecustprofileslabwise.qry
+END
+additionalCommissionSummary.rpt
+K 25
+svn:wc:ra_dav:version-url
+V 155
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/additionalCommissionSummary.rpt
+END
+o2ctransferacknowledgementdetails.qry
+K 25
+svn:wc:ra_dav:version-url
+V 161
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/o2ctransferacknowledgementdetails.qry
+END
+o2cTransferDetailsChannelUser.rpt
+K 25
+svn:wc:ra_dav:version-url
+V 157
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/o2cTransferDetailsChannelUser.rpt
+END
+sqlnet.log
+K 25
+svn:wc:ra_dav:version-url
+V 134
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/sqlnet.log
+END
+barreduserreport.qry
+K 25
+svn:wc:ra_dav:version-url
+V 144
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/barreduserreport.qry
+END
+c2sServiceClassWiseReport.rpt
+K 25
+svn:wc:ra_dav:version-url
+V 153
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/c2sServiceClassWiseReport.rpt
+END
+c2stransferchanneluser.qry
+K 25
+svn:wc:ra_dav:version-url
+V 150
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/c2stransferchanneluser.qry
+END
+schedulec2sdenowisetrfcustprofile.qry
+K 25
+svn:wc:ra_dav:version-url
+V 161
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/schedulec2sdenowisetrfcustprofile.qry
+END
+cp2pTransferServiceWise.rpt
+K 25
+svn:wc:ra_dav:version-url
+V 151
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/cp2pTransferServiceWise.rpt
+END
+externaluserroles.rpt
+K 25
+svn:wc:ra_dav:version-url
+V 145
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/externaluserroles.rpt
+END
+c2sTransactionCountPrev.rpt
+K 25
+svn:wc:ra_dav:version-url
+V 151
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/c2sTransactionCountPrev.rpt
+END
+operationSumUSRMain.rpt
+K 25
+svn:wc:ra_dav:version-url
+V 147
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/operationSumUSRMain.rpt
+END
+p2preconcilationcasequery.qry
+K 25
+svn:wc:ra_dav:version-url
+V 153
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/p2preconcilationcasequery.qry
+END
+c2sNoPercnFailedTxn.rpt
+K 25
+svn:wc:ra_dav:version-url
+V 147
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/c2sNoPercnFailedTxn.rpt
+END
+c2ctransfersummaryunion.qry
+K 25
+svn:wc:ra_dav:version-url
+V 151
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/c2ctransfersummaryunion.qry
+END
+schc2snoofrechargecustprofileslabwise.qry
+K 25
+svn:wc:ra_dav:version-url
+V 165
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/schc2snoofrechargecustprofileslabwise.qry
+END
+staffSelfTransferReport.rpt
+K 25
+svn:wc:ra_dav:version-url
+V 151
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/staffSelfTransferReport.rpt
+END
+inactiveuserreport.qry
+K 25
+svn:wc:ra_dav:version-url
+V 146
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/inactiveuserreport.qry
+END
+c2stransferservicewise.qry
+K 25
+svn:wc:ra_dav:version-url
+V 150
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/c2stransferservicewise.qry
+END
+c2sNoOfTxnPerActiveUserMonthly.rpt
+K 25
+svn:wc:ra_dav:version-url
+V 158
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/c2sNoOfTxnPerActiveUserMonthly.rpt
+END
+activeuserlistwhoseuppertierissuspended.qry
+K 25
+svn:wc:ra_dav:version-url
+V 167
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/activeuserlistwhoseuppertierissuspended.qry
+END
+networkdailystockfocinc.qry
+K 25
+svn:wc:ra_dav:version-url
+V 151
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/networkdailystockfocinc.qry
+END
+o2cc2cretwidtransfer.qry
+K 25
+svn:wc:ra_dav:version-url
+V 148
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/o2cc2cretwidtransfer.qry
+END
+c2sTransferSummary.rpt
+K 25
+svn:wc:ra_dav:version-url
+V 146
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/WEB-INF/reports_ar_EG/c2sTransferSummary.rpt
+END

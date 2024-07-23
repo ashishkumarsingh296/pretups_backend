@@ -1,0 +1,3 @@
+TRFCATEGORY,PAYMENTTYPE,TestcaseId,TestcaseType,Module,Description
+SALE,CHQ,,Positive,O2C transfer through EXTGW,To check  that o2c is successful if Remarks are not present
+FOC,CHQ,,Positive,O2C transfer through EXTGW,To check  that FOC is successful if Remarks are not present

@@ -1,0 +1,149 @@
+INSERT INTO page_ui_roles (role_code, page_code) VALUES('ININWSTOCK', 'P_NWINITSTOCK');
+INSERT INTO page_ui_roles (role_code, page_code) VALUES('VIEWSTOCKTXNS', 'P_NW_VW_STOCK');
+INSERT INTO page_ui_roles (role_code, page_code) VALUES('VIEWSTOCKTXNS', 'P_NW_NW_STOCK_MAIN');
+INSERT INTO page_ui_roles (role_code, page_code) VALUES('VIEWCURRENTSTOCK', 'P_NW_NW_STOCK_MAIN');
+INSERT INTO page_ui_roles (role_code, page_code) VALUES('NWLEVL2APPROVAL', 'P_NW_APP_L2_NW_STK');
+INSERT INTO page_ui_roles (role_code, page_code) VALUES('ININWSTOCK', 'P_NW_NW_STOCK_MAIN');
+INSERT INTO page_ui_roles (role_code, page_code) VALUES('NWSTKDDUCAVL', 'P_NWSTKAPPRL');
+INSERT INTO page_ui_roles (role_code, page_code) VALUES('NWLEVL1APPROVAL', 'P_NWSTKAPPRL');
+
+----------------------------
+
+INSERT
+	INTO
+		pages_ui (page_code,
+		module_code,
+		page_url,
+		menu_name,
+		show_menu,
+		sequence_no,
+		menu_level,
+		parent_page_code,
+		image,
+		role_code,
+		domain_type,
+		category_code,
+		page_type,
+		app_name)
+	VALUES('P_NWINITSTOCK',
+	'COMMON',
+	'/network-stock/initiate-transaction',
+	'Initiate Stock',
+	'Y',
+	12.1,
+	'2',
+	'P_NW_NW_STOCK_MAIN',
+	NULL,
+	NULL,
+	'OPERATOR',
+	'NWADM',
+	NULL,
+	'eTopup');
+	
+	
+-----------------------------
+
+INSERT
+	INTO
+		pages_ui (page_code,
+		module_code,
+		page_url,
+		menu_name,
+		show_menu,
+		sequence_no,
+		menu_level,
+		parent_page_code,
+		image,
+		role_code,
+		domain_type,
+		category_code,
+		page_type,
+		app_name)
+	VALUES('P_NW_VW_STOCK',
+	'COMMON',
+	'/network-stock/view-stock',
+	'View stock transactions',
+	'Y',
+	12.2,
+	'2',
+	'P_NW_NW_STOCK_MAIN',
+	NULL,
+	NULL,
+	'OPERATOR',
+	'NWADM',
+	NULL,
+	'eTopup');
+	
+	
+--------------------------
+
+
+INSERT
+	INTO
+		pages_ui (page_code,
+		module_code,
+		page_url,
+		menu_name,
+		show_menu,
+		sequence_no,
+		menu_level,
+		parent_page_code,
+		image,
+		role_code,
+		domain_type,
+		category_code,
+		page_type,
+		app_name)
+	VALUES('P_VIEWNWSTK',
+	'COMMON',
+	'/changeIt',
+	'View current stock',
+	'Y',
+	12.3,
+	'2',
+	'P_NW_NW_STOCK_MAIN',
+	NULL,
+	NULL,
+	'OPERATOR',
+	'NWADM',
+	NULL,
+	'eTopup');
+	
+	
+---------------------------
+
+INSERT
+	INTO
+		pages_ui (page_code,
+		module_code,
+		page_url,
+		menu_name,
+		show_menu,
+		sequence_no,
+		menu_level,
+		parent_page_code,
+		image,
+		role_code,
+		domain_type,
+		category_code,
+		page_type,
+		app_name)
+	VALUES('P_NWSTKAPPRL',
+	'COMMON',
+	'/network-stock/app-stock_level1',
+	'Network Stock',
+	'Y',
+	7.2,
+	'2',
+	'P_NW_APP_L1_MAIN',
+	NULL,
+	NULL,
+	'OPERATOR',
+	'NWADM',
+	NULL,
+	'eTopup');
+	
+	
+	
+	--------the below query is to be run on both servers-------------------
+	INSERT INTO page_ui_roles (role_code, page_code) VALUES('NWLEVL1APPROVAL', 'P_NWSTKAPPRL');

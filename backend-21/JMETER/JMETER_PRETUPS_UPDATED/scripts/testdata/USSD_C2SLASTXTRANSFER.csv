@@ -1,0 +1,6 @@
+TestcaseId,TestcaseType,Module,Description
+,Positive,USSD C2S Last X Transfer Status,To verify that C2S Last X Transfer request is successful when all mandatory details are provided
+,Negative,USSD C2S Last X Transfer Status,To verify that C2S Last X Transfer request is not successful when PIN is blank
+,Negative,USSD C2S Last X Transfer Status,To verify that C2S Last X Transfer request is not successful when value 0000 is provided in PIN Tag
+,Negative,USSD C2S Last X Transfer Status,To verify that C2S Last X Transfer request is not successful when MSISDN is blank
+,Negative,USSD C2S Last X Transfer Status,To verify that C2S Last X Transfer request is not successful when PIN is invalid

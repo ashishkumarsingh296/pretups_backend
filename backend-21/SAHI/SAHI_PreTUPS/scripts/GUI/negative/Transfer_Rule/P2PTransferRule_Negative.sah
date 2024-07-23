@@ -1,0 +1,94 @@
+//######################################
+//
+//This script to add negative test caes for P2P transfer rule
+//
+//#######################################
+
+
+//===== import scripts ===//
+_includeOnce("../../../../utility/ImportPackage.sah");
+
+// ===== Pre-Condition check ==== //
+
+//If Network Admin doesn't exist create it first then create network stock deduction
+
+var $l_naCsv = _readCSVFile("../../../GUI/testdata/NA_Login.csv"); //Reads the network admin credentials 
+var $g_row = 4;
+var $g_col = 1;
+var $g_networkAdmin1 = $l_naCsv[1][1];
+if($g_networkAdmin1 == "null"){  
+	createNA();  // UserManagement_Common.sah
+	var $l_naCsv1 = _readCSVFile("../../../GUI/testdata/NA_Login.csv");
+	$g_networkAdmin1 = $l_naCsv1[1][1];
+	login($g_appURL, $g_LangEnglish, $g_networkAdmin1, $g_commonPassword, $g_assertWelcome);
+}else	 
+	login($g_appURL,  $g_LangEnglish, $g_networkAdmin1, $g_commonPassword, $g_assertWelcome);
+
+ 
+// =============== Add Negative test cases of network stock initiation ================== // 
+
+	var $t1 = _testcase("TEST001", "Given a network admin try to create a P2P transfer rule without any sender, receiver and Service type details");
+	$t1.start();
+	
+	addP2PTransferRule("","","");
+	
+	_assertExists(_listItem("/"+"Select data for at least one transfer rule."+".*/"));
+	$t1.end();
+
+
+	// =============== Add Negative test cases of network stock initiation ================== // 
+	
+	var $t1 = _testcase("TEST002", "Given a network admin try to submit with only sender type for P2P Transfer Rule");
+	$t1.start();
+	addP2PTransferRule("Prepaid Subscriber", "", "");
+	_assertExists(_listItem("/"+"Receiver type is required for row 1."+".*/"));
+	$t1.end();
+
+	// =============== Add Negative test cases of network stock initiation ================== // 
+	
+	var $t1 = _testcase("TEST003", "Given a network admin try to create transfer rule only with sender type and receiver type");
+	$t1.start();
+	addP2PTransferRule("Prepaid Subscriber", "Postpaid Subscriber", "");
+	_assertExists(_listItem("/"+"Service type is required for row 1"+".*/"));
+	$t1.end();
+
+
+// =============== Add Negative test cases of network stock initiation ================== // 
+	
+	var $t1 = _testcase("TEST004", "Given a network admin try to create P2P Transfer rule without sub service or card group");
+	$t1.start();
+	addP2PTransferRule("Prepaid Subscriber", "Postpaid Subscriber", "Self Topup");
+	_assertExists(_listItem("/"+"Sub service is required for row 1."+".*/"));
+	$t1.end();
+
+// ============================ function for initiation & deduction for network stock ===================== //
+
+var $g_senderType;
+var $g_receiverType;
+var $g_serviceType;
+
+function addP2PTransferRule($g_senderType, $g_receiverType, $g_serviceType) {
+	
+	
+	_click(_link("Transfer rules"));
+	_click(_link("Add P2P transfer rules"));
+	_assertExists(_div("Add P2P transfer rules"));
+	_setSelected(_select("transferRulesIndexed[0].senderSubscriberType"), $g_senderType);
+	_setSelected(_select("transferRulesIndexed[0].receiverSubscriberType"), $g_receiverType);
+	_setSelected(_select("transferRulesIndexed[0].serviceType"), $g_serviceType);
+	_click(_submit($g_BtnAdd));
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+

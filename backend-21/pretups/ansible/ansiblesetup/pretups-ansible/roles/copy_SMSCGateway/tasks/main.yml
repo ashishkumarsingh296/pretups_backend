@@ -1,0 +1,70 @@
+---
+ - name: copying SMSCGateway
+   remote_user: "{{ USER_NAME }}"
+   become: true
+   unarchive: src={{ SMSCGateway_name }}.tar.gz dest=~/ creates=no mode=0755 owner="{{ USER_NAME }}" group="{{ GROUP_NAME }}"
+   when: SMSC_NEEDED
+
+ - name: registering a variable with the SMSC Gateway directory
+   remote_user: "{{ USER_NAME }}"
+   become: yes
+   shell: pwd chdir=~/SMSCGateway
+   register: SMSCGateway_path
+   when: SMSC_NEEDED
+
+ - name: SMSCGateway_path
+   debug: msg="SMSCGateway_path is {{ SMSCGateway_path.stdout }}" 
+   when: SMSC_NEEDED
+
+ - name: "Copying kannel.conf inside SMSCGateway_path"
+   remote_user: "{{ USER_NAME }}"
+   become: true
+   copy:
+        src: kannel.conf
+        dest: "{{ SMSCGateway_path.stdout }}/"
+        force: yes
+        backup: yes
+   when: SMSC_NEEDED
+
+ - name: Creating Directory for SMSCGatewayLogs
+   remote_user: "{{ USER_NAME }}"
+   shell: mkdir -p {{ LOG_DIR_NAME }}/{{ SMSCGatewayslogs }}
+   when: SMSC_NEEDED
+
+ - name: Configuring Kannel.conf url
+   replace: dest="{{ SMSCGateway_path.stdout }}/kannel.conf" regexp='^(.*)<SMSC-Path>(.*)$' replace='\1{{ LOG_DIR_NAME }}\2'  
+   when: SMSC_NEEDED
+
+ - name: "Copying kannelStart.sh inside SMSCGateway_path"
+   remote_user: "{{ USER_NAME }}"
+   become: true
+   copy:
+        src: kannelStart.sh
+        dest: "{{ SMSCGateway_path.stdout }}/"
+        force: yes
+        backup: yes
+   when: SMSC_NEEDED
+
+ - name: "Copying kannelStop.sh inside SMSCGateway_path"
+   remote_user: "{{ USER_NAME }}"
+   become: true
+   copy:
+        src: kannelStop.sh
+        dest: "{{ SMSCGateway_path.stdout }}/"
+        force: yes
+        backup: yes
+   when: SMSC_NEEDED
+
+ - name: Configuring KannelStart.sh parameters
+   replace: dest="{{ SMSCGateway_path.stdout }}/kannelStart.sh" regexp='^(.*)<SMSC-Path>(.*)$' replace='\1/{{ SMSCGateway_name }}/\2'
+   when: SMSC_NEEDED
+
+ - name: Configuring KannelStop.sh parameters
+   replace: dest="{{ SMSCGateway_path.stdout }}/kannelStop.sh" regexp='^(.*)<SMSC-Path>(.*)$' replace='\1/{{ SMSCGateway_name }}/\2'
+   when: SMSC_NEEDED
+
+ - name: "starting the SMSCGateway"
+   remote_user: "{{ USER_NAME }}"
+   become: true
+   shell: sh kannelStart.sh chdir={{ SMSCGateway_path.stdout }}
+   when: SMSC_NEEDED

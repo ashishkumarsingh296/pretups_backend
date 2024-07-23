@@ -1,0 +1,7 @@
+MSISDN1,MSISDN2,BUDDYNAME,PRFAMT,PIN,TestcaseId,TestcaseType,Module,Description
+7891000006,7891786311,sadhankumark,,2468,TUNG2859,Positive,P2P Add Buddy,To verify that Add Buddy request is successful if all mandatory fields are filled valid values
+7891000006,7891786311,sadhankumark,100,2468,2,Negative,P2P Add Buddy,To Verify that Buddy is getting duplicated or not.
+,7891786311,sadhankumar,100,2468,TUNG2860,Negative,P2P Add Buddy,To verify that Add Buddy request is not successful if MSISDN1 field is invalid.
+7891786311,,sadhankumar,100,2468,TUNG2860,Negative,P2P Add Buddy,To verify that Add Buddy request is not successful if MSISDN2 field is invalid.
+7891000100,7891786311,,100,2468,5,Negative,P2P Add Buddy,To Verify that Buddy Req fails if we give null buddyname
+7891000100,7891786311,sadhankumar,100,,6,Negative,P2P Add Buddy,To Verify that Buddy Req fails if we give null pin

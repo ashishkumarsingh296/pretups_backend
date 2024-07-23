@@ -1,0 +1,106 @@
+//######################################
+//
+//This script has common variable and method for card group. 
+//
+//#######################################
+
+var $g_fromCategory;
+var $g_tocategory;
+var $g_transferType;
+var $g_controlTrasnferLevel;
+var $g_controlWithdrawLevel;
+var $g_controlReturnLevel;
+var $g_productAssosiation;
+var $g_assertion;
+
+
+function commonVariableForC2CTransferRule($a_row, $a_col) {
+		$g_fromCategory = $g_C2CTransferRule[$a_row][$a_col++];
+		$g_tocategory = $g_C2CTransferRule[$a_row][$a_col++];
+		$g_transferType = $g_C2CTransferRule[$a_row][$a_col++];
+		$g_controlTrasnferLevel = $g_C2CTransferRule[$a_row][$a_col++];
+		$g_controlWithdrawLevel = $g_C2CTransferRule[$a_row][$a_col++];
+		$g_controlReturnLevel = $g_C2CTransferRule[$a_row][$a_col++];
+		$g_productAssosiation = $g_C2CTransferRule[$a_row][$a_col++];
+		$g_assertion = $g_C2CTransferRule[$a_row][$a_col++];
+}
+
+
+function commonVariableForO2CTransferRule($a_row, $a_col) {
+	
+	$g_tocategory = $g_O2CTransferRule[$a_row][$a_col++];
+	$g_firstApprovalLimit = $g_O2CTransferRule[$a_row][$a_col++];
+	$g_secondApprovalLimit = $g_O2CTransferRule[$a_row][$a_col++];
+	$g_productAssosiation = $g_O2CTransferRule[$a_row][$a_col++];
+	$g_assertion = $g_O2CTransferRule[$a_row][$a_col++];
+}
+
+
+
+
+function addC2CTransferRule() {
+	
+
+	_click(_link("Transfer rules"));
+	_click(_link("Associate C2C transfer rule"));
+	_setSelected(_select("domainCode"), $g_domain);
+	_setSelected(_select("toDomainCode"), $g_domain);
+	_click(_submit("Submit"));
+	_click(_submit("Add"));
+	_setSelected(_select("fromCategory"), $g_fromCategory);
+	_setSelected(_select("toCategory"), $g_tocategory);
+	_setSelected(_select("transferType"), $g_transferType);
+	_setSelected(_select("cntrlTransferLevel"), $g_controlTrasnferLevel);
+	_setSelected(_select("cntrlWithdrawLevel"), $g_controlWithdrawLevel);
+	_setSelected(_select("cntrlReturnLevel"), $g_controlReturnLevel);
+	if($g_productAssosiation != "")
+	_click(_checkbox("productArray"));
+	_click(_submit("Add"));
+	
+	_assertExists(_listItem("/" +$g_assertion + ".*/"));
+	
+	if(_exists(_listItem("/" +$g_assertion + ".*/"))){
+		_log("Assertion passes successfully")
+	}
+	
+}
+
+
+function addO2CTransferRule() {
+	
+	_click(_link("Transfer rules"));
+	_click(_link("Associate O2C transfer rule"));
+	_setSelected(_select("domainCode"), $g_domain);
+	_click(_submit("Submit"));
+	_click(_submit("Add"));
+	_setSelected(_select("toCategory"),$g_tocategory );
+	_setValue(_textbox("firstApprovalLimit"), $g_firstApprovalLimit);
+	_setValue(_textbox("secondApprovalLimit"), $g_secondApprovalLimit);
+	
+	if($g_productAssosiation != "")
+	_click(_checkbox("productArray"));
+	
+	_click(_submit("Add"));
+	_click(_listItem("/"+$g_assertion+".*/"));
+
+
+		
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

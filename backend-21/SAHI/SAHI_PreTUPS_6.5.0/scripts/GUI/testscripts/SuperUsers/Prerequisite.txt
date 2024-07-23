@@ -1,0 +1,2 @@
+For user level approval test case: value system prefernce "USER_APPROVAL_LEVEL" should be set to 1 .
+For Bulk creation proper file path should be given in SuperUserInBulk.csv

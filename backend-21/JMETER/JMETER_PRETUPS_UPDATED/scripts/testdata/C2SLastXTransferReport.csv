@@ -1,0 +1,2 @@
+TestcaseId,TestcaseType,Module,Description
+  ,Positive,C2S Last X Transfer Request,To verfiy that Last X Transaction report is successfully generated

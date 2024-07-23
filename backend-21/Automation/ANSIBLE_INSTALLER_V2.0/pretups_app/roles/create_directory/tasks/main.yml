@@ -1,0 +1,13 @@
+--- 
+ - name: "creating the Directory structure as pretupshome"
+   file: path=/{{ HOME_DIR_NAME }} state=directory owner={{ USER_NAME }} group={{ GROUP_NAME }} mode=0755
+
+ - name: "Changing permission of pretupshome to 0755 "
+   file:
+     path: /{{ HOME_DIR_NAME }}
+     owner: "{{ USER_NAME }}"
+     group: "{{ GROUP_NAME }}"
+     mode: 0755
+     recurse: yes
+   tags: permission_web
+

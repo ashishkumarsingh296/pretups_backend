@@ -1,0 +1,11 @@
+TestCaseNo.,Discription,Domain Code,Domain Name,Domain ShortName,Assertion
+TEST001,Try to create new grographical zone without any thing,,,,Geographical domain code is required.
+TEST002,Try to create zone without zone code,,ZoneName,ZN,Geographical domain code is required.
+TEST003,Try to create zone without zone name,Zone,,ZN,Geographical domain name is required.
+TEST004,Try to create zone without zone short name,Zone,ZoneName,,Geographical domain short name is required.
+TEST005,Try to submit zone code of two Strinng,Zone Code,ZoneName,ZN,Geographical domain code should contain alphanumeric single word.
+TEST006,Try to submit zone code consist of special charactor,!@#!$!#$,ZoneName,ZN,Geographical domain code should contain alphanumeric single word.
+TEST007,Try to submit zone code conataing  one special charactor,Zone@##,ZoneName,ZN,Geographical domain code should contain alphanumeric single word.
+TEST008,Try to submit zone code as negative number,-100,ZoneName,ZN,Geographical domain code should contain alphanumeric single word.
+TEST009,Try to create zone only with zone code,Zone,,,Geographical domain name is required.
+TEST010,Try to create zone only with zone short name,,,ZN,Geographical domain code is required.

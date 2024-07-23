@@ -1,0 +1,5 @@
+// Include
+_includeOnce("../Asset/Framework.sah");
+
+
+var $channelAdmin = new User($CONFIG.CHADMIN, $CONFIG.COMMON_PASSWORD); //TODO, it should be base set user like SAH_CHADMIN

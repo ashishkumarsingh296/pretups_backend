@@ -1,0 +1,174 @@
+###########################################################################################################
+#	Kenan IN file
+#	If IN interface of KENAN is added in PreTUPS from superadmin then.
+#	File with this content and name of the IN ID.txt should be created at the 
+#	path of the INFiles (defined in Constants.props).
+#	
+#	Values of the variables in this file should be updated with the values provided by the 
+#	Operator IN team
+#
+#	Define the interface id as value of SCH_IN_IDS in the Constants.props to initialize the
+#	details of all node exist in this interface
+#	
+############################################################################################################
+
+
+########################Common detail of interface for ALL Nodes- Start############################################
+
+##Defines the max number by which the next node would be checked for scheduling
+MAX_ALWD_NO=1
+
+##Defines the maximum number node supported by IN
+MAX_NODE=1
+
+##Defines the retry attempt to get the scheduled node,in the case of connection error.
+RETRY_NUM=3
+
+
+##user id is used to authentication for each request by IN 
+USER_ID=pretups
+
+##password is used as authentication for each request by IN 
+PASSWORD=test
+
+##This flag is used to define whether rounding of amount should be or not.
+ROUND_FLAG=N
+
+
+
+## The content type with which request is send to IN 
+CONTENT_TYPE=text/html
+
+## The Factor by which the transaction amout to be multiplied before sending to IN.
+MULTIPLICATION_FACTOR=1
+
+## Prefix to be removed from the mobile number, leave blank if nothing is to be removed
+MSISDN_REMOVE_PREFIX=699
+
+## Prefix to be added to the mobile number, leave blank if nothing is to be added as prefix
+MSISDN_ADD_PREFIX=888
+
+##IF Bonus flag=Y,then bonus would be sent to IN as separatly,if not defined or its value not Y then amount includes the bonus
+BONUS_FLAG=N
+
+
+
+##CURRENTLY NOT IN USED
+HOST_NAME=test
+
+##CURRENTLY NOT IN USED
+USER_AGENT=test
+
+##Used for the request header for the authentication of request and would be set by the operator
+##CURRENTLY NOT IN USED
+HEADER_HOST_NAME=air/1.1/1.0
+
+##Currency for the interface.
+##CURRENTLY NOT IN USED
+CURRENCY=INR
+
+########################Common detail of interface for ALL Nodes- END############################################
+
+########################Details for individual Nodes- Start############################################
+###KENAN NODE 1 detail###
+#KENAN Node HTTP URL, this url will be provided by the operator to establish the Http connection with pretups.
+URL_1=http://172.16.1.121:7002/pretups/KenanTestServer
+# Connection timeout for the node url
+CONN_TIMEOUT_1=6000
+
+#Maximum connection can be made to the node
+MAX_CON_NODE_1=5
+
+#Read timeout for the TopUp stage
+TOP_READ_TIMEOUT_1=5000
+
+####Read time out for the validation request
+##Currently not in used, just provide any integer value.
+VAL_READ_TIMEOUT_1=123
+
+#In the case when connection is not established for the node, it will blocked forthis duration.
+EXPIRY_TIME_1=40000
+
+#keep alive falg for node
+KEEP_ALIVE_1=Y
+
+#Read warning time for node, should be less than the validate read timeout, if IN takes more than this time alarm will be raised.
+WARN_TIME_1=3000
+
+########################Details for individual Nodes- END############################################
+
+
+
+#Indicates whether Cancel request supported by IN or not.(Possible values are Y/N)
+CANCEL_TXN_ALLOWED=N
+
+##If any ambiguous response is received from IN, then retry/cancel command is sent to IN. Then response of retry/cancel is matched in the IN file and mapped error code (250/206/200) is picked and sent to Controller.
+##SYSTEM_STATUS_MAPPING=INErrCode1,INErrCode2,INErrCode3,INErrCode4:system_err_code1|INErrCode5,INErrCode6:system_err_code2
+##system_err_code1 and system_err_code2 will be sent to system and written in recon log file.
+#SYSTEM_STATUS_MAPPING=250:250
+##If receiver credit is AMBIGUOS, then in SYSTEM_PREFERENCE, CREDIT_BACK_ALLOWED should be N.
+
+#If an ambiguous case occurs while credit, mapped error code can be set to one of the codes(SUCCESS, FAIL and AMBIGUOUS)
+SYSTEM_STATUS_MAPPING_CREDIT=250:250
+
+#If an ambiguous case occurs while credit, mapped error code can be set to one of the codes(SUCCESS, FAIL and AMBIGUOUS)
+SYSTEM_STATUS_MAPPING_CREDIT_ADJ=250:250
+
+#If an ambiguous case occurs while debitAdjust, mapped error code cannot be SUCCESS. It can only be FAIL or AMBIGUOUS
+SYSTEM_STATUS_MAPPING_DEBIT_ADJ=250:250
+
+#If an ambiguous case occurs while credit Back, mapped error code can not be fail, it can only be SUCCESS or AMBIGOUOS
+SYSTEM_STATUS_MAPPING_CREDIT_BCK=250:250
+
+
+##If any ambiguous response is received from IN, check if cancel txn allowed or not in the system. if not, pick mapped error code against NA otherwise pick mapped error code (206/250) against received response code of Cancellation from IN. 
+##CANCEL_COMMAND_STATUS_MAPPING=INErrCode1,INErrCode2,INErrCode3,INErrCode4:cancel_err_code1|INErrCode5,INErrCode6:cancel_err_code2
+##cancel_err_code1, cancel_err_code2 will be written in recon log file.
+CANCEL_COMMAND_STATUS_MAPPING=NA:450
+
+#Defines the cancel command status when cancel not supported by IN. 
+CANCEL_NA=NA
+
+##This flag should be Y if interface closure feature is to be provided to client
+INTFCE_CLSR_SUPPORT=N
+
+#maximum number of ambiguous transactions allowed till threshold time.
+NO_ALLWD_AMB_TXN=5
+
+##time duration in which maximum number of ambiguous transactions is defined
+THRESHOLD_TIME=240000
+
+##Time duration after which interface suspension expires.
+EXPIRY_TIME=60000
+
+##Auto Resumption supported by IN or not.
+AUTO_RESUME_SUPPORT=N
+
+##Number of retry attempts while validation (Currently Retry is not supported by Kenan )
+VAL_RETRY_CNT=0
+
+##Number of retry attempts while recharge request (Currently Retry is not supported by Kenan )
+CREDIT_RETRY_CNT=0
+
+##Number of retry attempts while sending Adjustment request (Currently Retry is not supported by Kenan )
+ADJ_RETRY_CNT=0
+
+##Number of retry attempts while sending Cancel request (Currently Cancel Request is not supported by Kenan )
+CNCL_RETRY_CNT=0
+
+##Sleep time between two retries (Currently Retry is not supported by Kenan )
+RETRY_SLEEP_TIME=0
+
+##Error Codes when retry has to be made  (Currently Retry is not supported by Kenan )
+RETRY_CASES=
+
+##Remark1 in Reconcialiationlog
+REMARK1=
+
+##Remark1 in Reconcialiationlog
+REMARK2=
+
+
+
+
+

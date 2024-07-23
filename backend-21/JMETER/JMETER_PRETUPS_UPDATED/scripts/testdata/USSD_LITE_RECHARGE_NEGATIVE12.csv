@@ -1,0 +1,2 @@
+TestcaseId,TestcaseType,Module,Description
+TUNG12742,Negative,Lite Recharge through USSD,Delete initiated user should try to initiate the lite recharge request.

@@ -1,0 +1,77 @@
+##########################################################################################################
+#	
+#	If IN interface of Huawei IN file is added in PreTUPS from superadmin then.
+#	File with this content and name of the IN ID.txt should be created at the 
+#	path of the INFiles (defined in Constants.props).
+#
+#	Values of the variables in this file should be updated with the values provided by the 
+#	Mobile Operator IN team
+#
+############################################################################################################
+#########################################################
+
+#NODE_SIZE
+MAX_NODE=2
+RETRY_NUM=1
+MAX_ALWD_NO=2
+
+
+URL_1=http://172.16.11.91:3535/pretups/ComverseTestServer
+#URL_1=http://172.16.7.229:9045/ClaroWebService/services/EbsRecargaVirtualServiceSoapBindingImpl
+#URL_2=http://172.16.7.229:9045/ClaroWebService/services/EbsRecargaVirtualServiceSoapBindingImpl
+
+
+READ_TIMEOUT_1=10000
+READ_TIMEOUT_2=10000
+
+#USER Name
+USER_NAME_1=COMVIVA_1
+USER_NAME_2=COMVIVA_2
+
+#password
+PASSWORD_1=93f3b1c3239a9dae59c6d08885549d3f
+PASSWORD_2=93f3b1c3239a9dae59c6d08885549d3f
+
+WARN_TIME_1=1000
+WARN_TIME_2=1000
+
+EXPIRY_TIME_1=120000
+EXPIRY_TIME_2=120000
+
+
+MAX_BARRED_COUNT_1=2
+MAX_BARRED_COUNT_2=2
+
+RPB_R=N
+RPB_CR_REQ_TYPE=4
+RPB_TIME_OUT=10000
+
+DC_R=N
+DC_CR_REQ_TYPE=4
+DC_TIME_OUT=10000
+
+##This flag should be Y if interface closure feature is to be provided to client
+
+MULT_FACTOR=100
+MSISDN_REMOVE_PREFIX=
+MSISDN_ADD_PREFIX=
+ROUND_FLAG=N
+
+LANGUAGE_MAPPING=Spanish:1,English:0
+
+
+ACCOUNT_STATUS=Active
+INTERFACE_PREV_BALANCE=0
+OLD_EXPIRY_DATE=01112090
+SERVICE_CLASS=ALL
+
+
+NOMBRE_APLICATION=ST
+PRODUCTO=0
+BIN_ADQUIRIENTE=622900
+FORWARD_INSTITUCTION=622900
+NEW_EXPIRY_DATE=31122090
+NO_ALLWD_AMB_TXN=99999
+THRESHOLD_TIME=1000
+MULTIPLICATION_FACTOR=1
+EXPIRY_TIME=1000

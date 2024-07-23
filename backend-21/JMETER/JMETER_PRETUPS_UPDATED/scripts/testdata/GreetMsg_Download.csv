@@ -1,0 +1,7 @@
+loginId,password,zoneCode,userCat,domainCode,loginUserID,externalCode,type,TestCaseID,TestCaseType,Module,Description
+chadm,1357,BL1,DIST,DISTDOM,BLBC0000000002,,GREETUSRDNLD,,positive,Confirm UserList Download based on Domain Category and Zone through Restful API,To verify user List Download Successfully
+chadm,1357,,DIST,DISTDOM,BLBC0000000002,,GREETUSRDNLD,,negative,Confirm UserList Download based on Domain Category and Zone through Restful API,To verify zoneCode is mendatory
+chadm,1357,BL1,,DISTDOM,BLBC0000000002,,GREETUSRDNLD,,negative,Confirm UserList Download based on Domain Category and Zone through Restful API,To verify userCat is mendatory
+chadm,1357,BL1,DIST,,BLBC0000000002,,GREETUSRDNLD,,negative,Confirm UserList Download based on Domain Category and Zone through Restful API,To verify zoneCode is mendatory
+chadm,1357,BL1,DIST,DISTDOM,,,GREETUSRDNLD,,negative,Confirm UserList Download based on Domain Category and Zone through Restful API,To verify loginUserID is mendatory
+chadm,1357,BL1,DIST_TEST,DISTDOM,BLBC0000000002,,GREETUSRDNLD,,negative,Confirm UserList Download based on Domain Category and Zone through Restful API,To verify no operation should perform if provides incorrect data

@@ -1,0 +1,27 @@
+---
+ - name: "DB: create pretups schema user"
+   shell: " {{item }} chdir={{ BASE_DIR }}/{{ Temp_Dir }}"
+   with_items:
+   - sqlplus / as sysdba << EOT @create_pretups_schema.sql exit; EOT
+   ignore_errors: yes
+   register: db_schema_creation
+   failed_when: '"ERROR" in db_schema_creation.stdout'
+   tags:
+     - db_schema_creation_tags
+
+# - name: "DB: script:create_pretups_schema.sh"
+#   shell: /bin/sh create_pretups_schema.sh chdir={{ BASE_DIR }}/{{ Temp_Dir }}
+
+ - name: "DB: granting permission to schema user"
+   shell: "{{ item }} chdir={{ BASE_DIR }}/{{ Temp_Dir }}"
+   with_items:
+   - sqlplus / as sysdba << EOT @grant_perm_schema_user.sql exit; EOT
+   ignore_errors: yes
+   register: db_grant_perm
+   failed_when: '"ERROR" in db_grant_perm.stdout'
+   tags:
+     - db_grant_perm_tags
+
+# - name: "DB: script:grant_perm_schema_user.sh"
+#   shell: /bin/sh grant_perm_schema_user.sh chdir={{ BASE_DIR }}/{{ Temp_Dir }}
+

@@ -1,0 +1,3 @@
+TestcaseId,TestcaseType,Module,Description
+TUNG13120,Negative,Channel to Channel Transfer through USSD,"To verify that channel user is unable to initiate the ""transfer"" through USSD if ""TOPUPVALUE"" field is having value more than channel user balance."
+

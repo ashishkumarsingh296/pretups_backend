@@ -1,0 +1,2 @@
+TestcaseId,TestcaseType,Module,Description
+,Negative,Electronic Voucher Recharge through USSD,To verfiy that EVD request is not  successful if Amount present is negative.

@@ -1,0 +1,52 @@
+//################################################
+//#Company Name: Mahindra Comviva Technologies Ltd.
+//#Application Name: Pretups
+//#Objective: It includes common functions for Login.
+//#Author Name: Nidhi Singh
+//#Created Date: 16/01/2014
+//###############################################
+
+/**
+ * This function is used to login into Pretups Application by any user 
+ * @param [in] -
+ *            a_appURL URL of application
+ * @param [in] -
+ *            a_language Language selected by the user
+ * @param [in] -
+ *            a_username Name of the user who wants to login into the application
+ * @param [in] -
+ *            a_password Password of the user who wants to login into the application
+ * @returns - null
+ */
+
+function login($a_appURL, $a_language, $a_username, $a_password, $a_assertion){
+	_navigateTo($a_appURL);
+	_setSelected(_select("language"), $a_language);
+	_setValue(_textbox("loginID"), $a_username);
+    _setValue(_password("password"), $a_password);
+	_click(_submit($g_BtnLogin));
+	
+   /*( if(($a_username == "superadmin") && ($multipleNet="Y")){
+		_click(_submit($g_BtnSubmit));
+	}*/
+	 if($a_username=="superadmin") {
+		
+		 _assertExists(_div("Select network"));
+		 if(_exists(_div("Select network"))){
+			 _click(_radio("code", _near(_cell("NG"))));
+				_click(_submit("Submit"));
+				_log("Fiza ");
+		}
+	}
+	 
+	 
+	
+	 
+	 
+	//if($a_username == "superadmin"){
+	//	_click(_submit($g_BtnSubmit));
+	//	_assertExists(_listItem("/" + $a_assertion + "/"));
+	//	}
+	//else	
+	//	_assertExists(_span("/" + $a_assertion + ".*/")); 
+}

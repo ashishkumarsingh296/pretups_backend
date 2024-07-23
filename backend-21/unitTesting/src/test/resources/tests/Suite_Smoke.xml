@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="PreTUPS Automation Suite" verbose="2" parallel="tests">
+
+  <test name="Smoke" parallel="none" preserve-order="true">
+    <classes>
+      <class name="com.testscripts.smoke.Smoke_DivisionManagment"/>
+      <class name="com.testscripts.smoke.Smoke_OperatorUserCreation"/> 
+      <class name="com.testscripts.smoke.Smoke_AddGeographicalDomain"/>
+      <class name="com.testscripts.smoke.Smoke_GradeCreation"/>
+      <class name="com.testscripts.smoke.Smoke_TransferControlProfile"/> 
+      <class name="com.testscripts.smoke.Smoke_CommissionProfile"/>
+   	  <class name="com.testscripts.smoke.Smoke_C2SCardGroup"/>
+      <class name="com.testscripts.smoke.Smoke_O2CTransferRuleCreation"/>
+      <class name="com.testscripts.smoke.Smoke_C2CTransferRuleCreation"/>
+      <class name="com.testscripts.smoke.Smoke_AddC2STransferRule"/>
+      <class name="com.testscripts.smoke.Smoke_ModifyC2STransferRule"/>
+      <class name="com.testscripts.smoke.Smoke_ChannelUserCreation"/>
+      <class name="com.testscripts.smoke.Smoke_NetworkStockCreation"/>
+      <class name="com.testscripts.smoke.Smoke_O2CTransfer"/>
+      <class name="com.testscripts.smoke.Smoke_O2CWithdraw"/>
+      <class name="com.testscripts.smoke.Smoke_Channel2ChannelTransfer"/>
+      <class name="com.testscripts.smoke.Smoke_Channel2ChannelWithdraw"/>
+      <class name="com.testscripts.smoke.Smoke_C2STransfer"/>
+      <class name="com.testscripts.smoke.Smoke_ChannelDomainManagment"/> 
+      <class name="com.testscripts.smoke.Smoke_NetworkStatus"/>
+      <class name="com.testscripts.smoke.Smoke_P2PCardGroup"/>
+    </classes>
+  </test>
+
+</suite>

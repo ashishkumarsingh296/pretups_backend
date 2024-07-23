@@ -1,0 +1,2 @@
+TestcaseId,TestcaseType,Module,Description
+TUNG13055,Negative,O2C withdraw through EXTGW,To check if  msisdn is present but pin  is not present in the request then o2c withdraw is not successful

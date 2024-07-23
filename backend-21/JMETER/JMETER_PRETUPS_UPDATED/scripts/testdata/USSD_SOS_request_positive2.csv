@@ -1,0 +1,3 @@
+TestcaseId,TestcaseType,Module,Description
+TUNG12845,Positive,SOS request through USSD,To verify that channel user can hit SOS request through EXTGW with SOS wallet as parent.
+,Positive,SOS request through USSD,To verify that channel user can hit SOS request through EXTGW with SOS wallet as parent with different products.

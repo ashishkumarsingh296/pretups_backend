@@ -1,0 +1,12 @@
+PROCESS_ID=OF_O2CR
+MAX_ROWS=65000
+FILE_SUBSTR_DATE_FORMAT=_ddMMyy_hhmmss
+DATE_FORMAT=dd/MM/yyyy
+DATE_TIME_FORMAT=dd/MM/yy hh:mm:ss
+
+OF_O2CR_DIR=<Report-Generation-Path>
+OF_O2CR_QRY=select Rownum,( ct.MSISDN||','||u.USER_NAME||','||ct.TRANSFER_DATE||','||(select user_name from users where user_id =COALESCE(ct.FIRST_APPROVED_by,ct.SECOND_APPROVED_by,ct.THIRD_APPROVED_by) )||','|| COALESCE(ct.FIRST_APPROVED_ON,ct.SECOND_APPROVED_ON,ct.THIRD_APPROVED_ON) ||','|| ct.TRANSFER_ID  ||','|| decode(ct.TRANSFER_TYPE,'FOC','Yes','NO') ||','||                   (ct.REQUESTED_QUANTITY - tax2_value) ||','|| ct.status ||','|| ct.REQUESTED_QUANTITY ||','||  cti.COMMISSION_VALUE ||','||  tax2_value ||','|| cti.PAYABLE_AMOUNT                   ) as data         from channel_transfers ct,channel_transfers_items cti,users u          where ct.TRANSFER_ID=cti.TRANSFER_ID(+) and ct.FROM_USER_ID=u.USER_ID(+) and cti.TRANSFER_DATE >? and cti.TRANSFER_DATE <= ? and ct.MSISDN is not null 
+OF_O2CR_HEADER=MSISDN,USER_NAME,TRANSFER_DATE,Approved by,Approved on,Order Number, FOC,Payment without AIT,status,Issued Amount (Face value),gUpfront Commission,AIT on Commission,With AIT User payment 
+
+OF_O2CR_EXT=.csv
+OF_O2CR_PREFIX_NAME=OFFLINE_O2C

@@ -1,0 +1,249 @@
+
+
+// This scripts contains all the common methods for bonus bundle management.
+
+_includeOnce("../../../../utility/ImportPackage.sah");
+
+var $l_naCsv = _readCSVFile("../../../GUI/testdata/NA_Login.csv");
+
+	var $g_bundleName;
+	var $g_bundleCode;
+	var $g_bundleType;
+	var $g_bundleStatus;
+	var $g_responseFromIN;
+	var $assertion;
+	
+	var $l_modifyBonusbundleName;
+	
+	var $a_Prefix;
+	
+	
+	function commonVaribleToAddBonusBundle($g_row, $g_col) {
+		
+		$g_bundleName = $g_bonusBundleDetails[$g_row][$g_col++];
+		$g_bundleCode = $g_bonusBundleDetails[$g_row][$g_col++];
+		$g_bundleType = $g_bonusBundleDetails[$g_row][$g_col++];
+		$g_bundleStatus = $g_bonusBundleDetails[$g_row][$g_col++];
+		$g_responseFromIN = $g_bonusBundleDetails[$g_row][$g_col++];
+		$assertion = $g_bonusBundleDetails[$g_row][$g_col++];
+		
+	}
+	
+	function commonVaribleToAddBonusBundleModification($g_row, $g_col) {
+		$g_bundleName = $g_bonusBundleDetails[$g_row][$g_col++];
+		$l_modifyBonusbundleName = $g_bonusBundleDetails[$g_row][$g_col++];
+	
+		$g_col = $g_col+3;
+		
+		$assertion = $g_bonusBundleDetails[$g_row][$g_col++];
+		
+		
+	}
+	
+	
+	function ViewBonusBundle() {
+		
+		$g_bundleName = $l_naCsv[19][1];
+		
+		_click(_link("Bonus bundle management"));
+		_assertExists(_cell("Active", _near(_cell($g_bundleName))));
+		_assertExists(_submit($g_BtnAdd));
+	}
+	
+	
+	function addNewBonusBundle() {
+		
+		$g_bundleName = bonusBundleCode();
+		$g_bundleCode = bonusBundleName($g_autoPrefix);
+		addBonusBundleCommon();
+		confirm();
+		_click(_submit($g_BtnSave));
+		_assertExists(_listItem("/" +$assertion + ".*/"));
+		
+		if(_exists(_listItem("/"+$assertion+".*/"))){
+			$l_naCsv[19][1] = $g_bundleName;
+			$l_naCsv[19][2] = $g_bundleCode;
+			_writeCSVFile($l_naCsv, "../../../GUI/testdata/NA_Login.csv", 1); // Writes the newly created Channel User in a csv file.
+			_log("Bonus bundle is added successfully");
+		}
+		else {
+			_log("Bonus bundle is not added successfully ");
+		}
+		
+		
+	}
+	
+	
+	
+	function addBonusBundle() {
+		addBonusBundleCommon();
+		confirm();
+		
+		_assertExists(_listItem("/" +$assertion + ".*/"));
+		if(_exists(_listItem("/"+$assertion+".*/"))){
+			$l_naCsv[19][1] = $g_bundleName;
+			$l_naCsv[19][2] = $g_bundleCode;
+			_writeCSVFile($l_naCsv, "../../../GUI/testdata/NA_Login.csv", 1); // Writes the newly created Channel User in a csv file.
+			_log("Bonus bundle is added successfully");
+		}
+		else {
+			_log("Bonus bundle is not added successfully ");
+		}
+		
+		
+	}
+	
+	
+	function addNewBonusBundleWithoutMandoryField() {
+		addBonusBundleCommon();
+		confirm();
+		_assertExists(_listItem($assertion));
+	}
+	
+
+	
+	function ModifyBonusBundleWithoutMandoryField() {
+		
+		$g_bundleName = $l_naCsv[19][1];
+		
+		addBonusBundleCommon();
+		confirm();
+		_assertExists(_listItem($assertion));
+	}
+		
+	
+	function ModifyBonusBundle() {
+		
+		var $temp_name;
+		$g_bundleName = $l_naCsv[19][1];
+		$temp_name = $g_bundleName + "M"; 
+		
+		_click(_link("Bonus bundle management"));
+		_click(_radio("radioBox", _near(_cell($g_bundleName))));
+		_click(_submit($g_BtnModify));
+		_setValue(_textbox("bundleName"), $temp_name);
+		_click(_submit($g_BtnConfirm));
+		_click(_submit($g_BtnSave));
+		_assertExists(_listItem($assertion));
+		
+		if(_exists(_listItem("/"+$assertion+".*/"))){
+			$l_naCsv[19][1] = $g_bundleName;
+			_writeCSVFile($l_naCsv, "../../../GUI/testdata/NA_Login.csv", 1); // Writes the newly created Channel User in a csv file.
+			_log("Bonus bundle is modified successfully");
+		}
+		else {
+			_log("Bonus bundle is not modified successfully ");
+		}
+		
+	}	
+	
+	
+	
+	function populateTypeStatus() {
+		_click(_link("Bonus bundle management"));
+		_click(_submit($g_BtnAdd));
+		
+		_setSelected(_select("bundleType"), 1);
+		var $tt = _getSelectedText(_select("bundleType"));
+
+		if($tt == "Amount")
+			_log("Successful");
+		else
+			_log("Failed");
+	}
+	
+	
+	function bonusBundleCode(){
+		 
+		var $l_time = new Date();
+		var $keyword = "BON"+ $l_time.getHours()+$l_time.getMinutes(); //AUTONAcurrentTime
+		 return $keyword;
+	 }
+
+
+	
+	function checkFunctionalityOfReset() {
+		addBonusBundleCommon();
+		_click(_reset("Reset"));
+		
+		if(_getValue(_textbox("bundleName")) == "" &&  _getValue(_textbox("bundleName")) == "")
+			_log("Successfult")
+		else 
+			_log("Failed Reset Check");
+	}
+
+	function checkFunctionalityOfBackFormConfirmPage() {
+		addBonusBundleCommon();
+		confirm();
+		_click(_submit("Back"));
+		_assertExists(_submit("Confirm"));
+	}
+	
+	function deleteMappedBonusBundle() {
+		
+		_click(_link("Bonus bundle management"));
+		_click(_radio("radioBox", _near(_cell($g_bundleName))));
+		_click(_submit("Delete"));
+		_assertExists(_listItem($assertion));
+		_assertExists(_listItem("Bundle is mapped with sub service. So it cannot be deleted."));
+}
+	
+	function addBonusBundleWithExistingName() {
+		addBonusBundleCommon();
+		confirm();
+		_assertExists(_listItem($assertion));
+	}
+	
+	
+	function addBonusBundleCommon() {
+		_click(_link("Bonus bundle management"));
+		_click(_submit($g_BtnAdd));
+		_setValue(_textbox("bundleName"), $g_bundleName);
+		_setValue(_textbox("bundleCode"), $g_bundleCode);
+		_setSelected(_select("bundleType"), $g_bundleType);
+		_setSelected(_select("bundleStatus"), $g_bundleStatus);
+		_setSelected(_select("responseFrmIN"), $g_responseFromIN);
+	}
+	
+	
+	function bonusBundleName($a_Prefix){
+		 $l_time = currentTime(); // fetch current time(CurretnTime)
+		 var  $l_name = $a_Prefix + "BON" + $l_time; //AUTONAcurrentTime
+		 return $l_name;
+	}
+
+	
+	function confirm() {
+		_click(_submit($g_BtnConfirm));
+	}
+	
+	
+	function verifyFunctionalityOfResetWhileModifying() {
+		_click(_link("Bonus bundle management"));
+		_click(_radio("radioBox", _near(_cell($g_bundleName))));
+		_click(_submit("Modify"));
+		_setValue(_textbox("bundleName"), "ajsdjh");
+		_click(_reset("Reset"));
+		
+		if(_getValue(_textbox("bundleName")) == $g_bundleName)
+			_log("Successful");
+		else
+			_log("Failed");
+	}
+	
+	
+	function functionalityOfBackButtonFromCnfPage() {
+		_click(_link("Bonus bundle management"));
+		_click(_radio("radioBox", _near(_cell($g_bundleName))));
+		_click(_submit($g_BtnModify));
+		_setValue(_textbox("bundleName"), "TESTINGMKH");
+		confirm();
+		_click(_submit("Back"));
+		_assertExists(_submit("Confirm"));
+		
+	}
+	
+	
+		
+	
+	

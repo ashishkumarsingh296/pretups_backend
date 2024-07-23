@@ -1,0 +1,2 @@
+TestcaseId,TestcaseType,Module,Description
+,POSITIVE,VIEW SCHEDULE RECHARGE SINGLE,To verify that a user is able to view batch details based on MSISDN

@@ -1,0 +1,99 @@
+//################################################
+//#Company Name: Mahindra Comviva Technologies Ltd.
+//#Application Name: PretupsTA
+//#Objective: To login as Super Admin and create Channel Domains
+//#Author Name: Nidhi Singh
+//#Created Date: 22/01/2014
+//###############################################
+
+//====Import Scripts====
+_includeOnce("../../../../utility/ImportPackage.sah");
+_includeOnce("../../../GUI/testscripts/Profile_Management/ProfileManagement_Common.sah");//For importing CommProfile functions
+
+//====Login into Application====
+login($g_appURL, $g_LangEnglish, $g_superAdmin, $g_password, $g_assertMessage); //calls the Login function in Login.sah with the parameters(url, language, username, password, assertion)
+
+var $g_DomainCSV = _readCSVFile("../../../GUI/testdata/ChannelDomain_Details.csv"); //Reads the Channel Domain Details from ChannelDomain_Details.csv
+var $rowLength=$g_DomainCSV.length; // Get the number of rows in a csv file.
+$rowLength = parseInt($rowLength)-1;
+var $l_rowValue;
+var $l_rowValueNull;
+var $count = 1;
+var $l_rowOutTemp;
+var $l_colOutTemp;
+var $l_error;
+
+//====Create Channel Domains====
+var $t1 = _testcase("CEGTA0005", "Given an application when superadmin tries to create domains and categories then it should be successfully created");
+$t1.start();	// Test Case Starts
+		for(var $l_rowOut = 1; $l_rowOut <= $rowLength;){ 
+			var $g_domainCode = genChannelDomainCode($g_autoPrefix); //Automatically generate Domain Code
+			var $g_categoryCode = genChannelCategoryCode($g_autoPrefix); //Automatically generate Category Code
+	 
+			variableForCreateDomain($l_rowOut); //Fetch all the Domain details
+	
+			$l_error = addDomain($g_domainType,$g_domainCode,$g_domainName); // Call addDomain() function defined in ChannelDomains_Common.sah
+		
+			$g_NOC = parseInt($g_NOC); //Parse the no. of categories.
+	
+			if($l_error != 0){//If the limit of adding Domains exceeds then start from here else GOTO *
+			
+				if($l_error ==1){	
+					var $int_rowOut = parseInt($l_rowOut);
+					var $int_noc = parseInt($g_DomainCSV[$l_rowOut][2]);
+					$l_rowOut = $int_rowOut + $g_NOC;  
+				} else if($l_error == 2){
+					_log("Domain code is already exists");
+					break;
+				}else{
+					_log("Domain name is already exists");
+					break;
+				}
+    		}else{ // *
+				variableForCreateCategory($l_rowOut);
+				$l_error = addCategory($g_categoryName, $g_geoDomain, $g_roleType, $g_domainName);
+			
+				if($l_error != 0){
+					
+					if($l_error ==1){	
+						_log("User PrefixId is alreday exists");
+						break;
+					} else if($l_error == 2){
+						_log("Category code is already exists");
+						break;
+					}else{
+						_log("Category name is already exists");
+						break;
+					}
+				}
+				else if(_exists(_listItem($g_assertDomainAddedSuccessfully))){
+				$g_domainName = $g_domainName ;
+				$g_categoryName = $g_categoryName;
+			
+				var $l_naCsv = _readCSVFile("../../../GUI/testdata/NA_Login.csv");
+				$l_naCsv[4][$g_i++] = $g_domainName;
+				_writeCSVFile($l_naCsv, "../../../GUI/testdata/NA_Login.csv", 1);
+				
+				// For creation of Channel User write the domain name and category name to a csv
+				
+				var $l_ChUser = _readCSVFile("../../testdata/ChUser_Details.csv");
+				$l_ChUser[1][2] = $g_domainName;
+				$l_ChUser[1][3] = $g_categoryName;
+				_writeCSVFile($l_ChUser, "../../testdata/ChUser_Details.csv", 1);
+				
+		
+				for(var $innerLoop = 1; $innerLoop <= ($g_NOC - 1); $innerLoop++){ //For creating child categories under Owner one.
+					$l_rowOut++;
+					$l_colOutTemp = 3;
+			   		addCategoryFromLeftPanel($g_domainName, $l_rowOut, $l_colOutTemp); // Call addCategoryFromLeftPanel function defined in ChannelDomains_Common.sah
+			   		_assertExists(_listItem($g_assertCategoryAddedSuccessfully));
+				}
+				$l_rowOut++;
+			}
+	}
+	
+	$t1.end();
+}
+
+//====Post Condition Check====
+_log("Tear Down","custom4");

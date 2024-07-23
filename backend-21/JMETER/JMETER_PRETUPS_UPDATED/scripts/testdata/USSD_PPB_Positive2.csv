@@ -1,0 +1,2 @@
+TestcaseId,TestcaseType,Module,Description
+TUNG12988,Positive,Postpaid Bill Payment through USSD,"To verify that response is initiated successfully with all the mandatory fields(TYPE,TXNID and TXNSTATUS)and valid values."

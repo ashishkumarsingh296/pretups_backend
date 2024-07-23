@@ -1,0 +1,151 @@
+<!-- Use this file to deploy some handlers/chains and services      -->
+<!-- Two ways to do this:                                           -->
+<!--   java org.apache.axis.client.AdminClient deploy.wsdd          -->
+<!--      after the axis server is running                          -->
+<!-- or                                                             -->
+<!--   java org.apache.axis.utils.Admin client|server deploy.wsdd   -->
+<!--      from the same directory that the Axis engine runs         -->
+
+<deployment
+    xmlns="http://xml.apache.org/axis/wsdd/"
+    xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
+  <!-- Services from ebsEvaluaPedidoSaldo WSDL service -->
+
+  <service name="ebsEvaluaPedidoSaldoSB11" provider="java:RPC" style="document" use="literal">
+      <parameter name="wsdlTargetNamespace" value="http://claro.com.pe/eai/ebs/ws/evalua/EvaluaPedidoSaldo/"/>
+      <parameter name="wsdlServiceElement" value="ebsEvaluaPedidoSaldo"/>
+      <parameter name="schemaQualified" value="http://claro.com.pe/eai/ebs/ws/evalua/EvaluaPedidoSaldo/"/>
+      <parameter name="wsdlServicePort" value="ebsEvaluaPedidoSaldoSB11"/>
+      <parameter name="className" value="com.inter.claroChannelUserValWS.stub.EbsEvaluaPedidoSaldoPortTypeSOAP11BindingImpl"/>
+      <parameter name="wsdlPortType" value="ebsEvaluaPedidoSaldoPortType"/>
+      <parameter name="typeMappingVersion" value="1.2"/>
+      <operation name="evaluarPedidoSaldo" qname="evaluarPedidoSaldo" returnQName="retNS:evaluaPedidoResponse" xmlns:retNS="http://claro.com.pe/eai/ebs/ws/evalua/EvaluaPedidoSaldo/" returnType="rtns:>evaluaPedidoResponse" xmlns:rtns="http://claro.com.pe/eai/ebs/ws/evalua/EvaluaPedidoSaldo/" soapAction="http://claro.com.pe/eai/ebs/ws/evalua/EvaluaPedidoSaldo/evaluarPedidoSaldo" >
+        <parameter qname="pns:evaluaPedidoRequest" xmlns:pns="http://claro.com.pe/eai/ebs/ws/evalua/EvaluaPedidoSaldo/" type="tns:>evaluaPedidoRequest" xmlns:tns="http://claro.com.pe/eai/ebs/ws/evalua/EvaluaPedidoSaldo/"/>
+      </operation>
+      <parameter name="allowedMethods" value="evaluarPedidoSaldo"/>
+
+      <typeMapping
+        xmlns:ns="http://claro.com.pe/eai/ebs/ws/evalua/EvaluaPedidoSaldo/"
+        qname="ns:>evaluaPedidoResponse"
+        type="java:com.inter.claroChannelUserValWS.stub.EvaluaPedidoResponse"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://claro.com.pe/eai/ebs/ws/evalua/EvaluaPedidoSaldo/"
+        qname="ns:ResponseOpcionalComplexType"
+        type="java:com.inter.claroChannelUserValWS.stub.ResponseOpcionalComplexType"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <arrayMapping
+        xmlns:ns="http://claro.com.pe/eai/ebs/ws/evalua/EvaluaPedidoSaldo/"
+        qname="ns:ListaResponseOpcional"
+        type="java:com.inter.claroChannelUserValWS.stub.ResponseOpcionalComplexType[]"
+        innerType="cmp-ns:ResponseOpcionalComplexType" xmlns:cmp-ns="http://claro.com.pe/eai/ebs/ws/evalua/EvaluaPedidoSaldo/"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://claro.com.pe/eai/ebs/ws/evalua/EvaluaPedidoSaldo/"
+        qname="ns:RequestOpcionalComplexType"
+        type="java:com.inter.claroChannelUserValWS.stub.RequestOpcionalComplexType"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://claro.com.pe/eai/ebs/ws/evalua/EvaluaPedidoSaldo/"
+        qname="ns:audiTypeRequest"
+        type="java:com.inter.claroChannelUserValWS.stub.AudiTypeRequest"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <arrayMapping
+        xmlns:ns="http://claro.com.pe/eai/ebs/ws/evalua/EvaluaPedidoSaldo/"
+        qname="ns:ListaRequestOpcional"
+        type="java:com.inter.claroChannelUserValWS.stub.RequestOpcionalComplexType[]"
+        innerType="cmp-ns:RequestOpcionalComplexType" xmlns:cmp-ns="http://claro.com.pe/eai/ebs/ws/evalua/EvaluaPedidoSaldo/"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://claro.com.pe/eai/ebs/ws/evalua/EvaluaPedidoSaldo/"
+        qname="ns:>evaluaPedidoRequest"
+        type="java:com.inter.claroChannelUserValWS.stub.EvaluaPedidoRequest"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+  </service>
+  <service name="ebsEvaluaPedidoSaldoSB12" provider="java:RPC" style="document" use="literal">
+      <parameter name="wsdlTargetNamespace" value="http://claro.com.pe/eai/ebs/ws/evalua/EvaluaPedidoSaldo/"/>
+      <parameter name="wsdlServiceElement" value="ebsEvaluaPedidoSaldo"/>
+      <parameter name="schemaQualified" value="http://claro.com.pe/eai/ebs/ws/evalua/EvaluaPedidoSaldo/"/>
+      <parameter name="wsdlServicePort" value="ebsEvaluaPedidoSaldoSB12"/>
+      <parameter name="className" value="com.inter.claroChannelUserValWS.stub.EbsEvaluaPedidoSaldoPortTypeSOAP12BindingImpl"/>
+      <parameter name="wsdlPortType" value="ebsEvaluaPedidoSaldoPortType"/>
+      <parameter name="typeMappingVersion" value="1.2"/>
+      <operation name="evaluarPedidoSaldo" qname="evaluarPedidoSaldo" returnQName="retNS:evaluaPedidoResponse" xmlns:retNS="http://claro.com.pe/eai/ebs/ws/evalua/EvaluaPedidoSaldo/" returnType="rtns:>evaluaPedidoResponse" xmlns:rtns="http://claro.com.pe/eai/ebs/ws/evalua/EvaluaPedidoSaldo/" soapAction="http://claro.com.pe/eai/ebs/ws/evalua/EvaluaPedidoSaldo/evaluarPedidoSaldo" >
+        <parameter qname="pns:evaluaPedidoRequest" xmlns:pns="http://claro.com.pe/eai/ebs/ws/evalua/EvaluaPedidoSaldo/" type="tns:>evaluaPedidoRequest" xmlns:tns="http://claro.com.pe/eai/ebs/ws/evalua/EvaluaPedidoSaldo/"/>
+      </operation>
+      <parameter name="allowedMethods" value="evaluarPedidoSaldo"/>
+
+      <typeMapping
+        xmlns:ns="http://claro.com.pe/eai/ebs/ws/evalua/EvaluaPedidoSaldo/"
+        qname="ns:>evaluaPedidoResponse"
+        type="java:com.inter.claroChannelUserValWS.stub.EvaluaPedidoResponse"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://claro.com.pe/eai/ebs/ws/evalua/EvaluaPedidoSaldo/"
+        qname="ns:ResponseOpcionalComplexType"
+        type="java:com.inter.claroChannelUserValWS.stub.ResponseOpcionalComplexType"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <arrayMapping
+        xmlns:ns="http://claro.com.pe/eai/ebs/ws/evalua/EvaluaPedidoSaldo/"
+        qname="ns:ListaResponseOpcional"
+        type="java:com.inter.claroChannelUserValWS.stub.ResponseOpcionalComplexType[]"
+        innerType="cmp-ns:ResponseOpcionalComplexType" xmlns:cmp-ns="http://claro.com.pe/eai/ebs/ws/evalua/EvaluaPedidoSaldo/"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://claro.com.pe/eai/ebs/ws/evalua/EvaluaPedidoSaldo/"
+        qname="ns:RequestOpcionalComplexType"
+        type="java:com.inter.claroChannelUserValWS.stub.RequestOpcionalComplexType"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://claro.com.pe/eai/ebs/ws/evalua/EvaluaPedidoSaldo/"
+        qname="ns:audiTypeRequest"
+        type="java:com.inter.claroChannelUserValWS.stub.AudiTypeRequest"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <arrayMapping
+        xmlns:ns="http://claro.com.pe/eai/ebs/ws/evalua/EvaluaPedidoSaldo/"
+        qname="ns:ListaRequestOpcional"
+        type="java:com.inter.claroChannelUserValWS.stub.RequestOpcionalComplexType[]"
+        innerType="cmp-ns:RequestOpcionalComplexType" xmlns:cmp-ns="http://claro.com.pe/eai/ebs/ws/evalua/EvaluaPedidoSaldo/"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://claro.com.pe/eai/ebs/ws/evalua/EvaluaPedidoSaldo/"
+        qname="ns:>evaluaPedidoRequest"
+        type="java:com.inter.claroChannelUserValWS.stub.EvaluaPedidoRequest"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+  </service>
+</deployment>

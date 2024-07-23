@@ -1,0 +1,78 @@
+//#######################################
+//
+// This script to add geographical domain 
+//
+//
+//#######################################
+
+
+
+_includeOnce("../../../../utility/ImportPackage.sah");
+_includeOnce("../../../GUI/testscripts/Geographical_Domain/GeographicalDomain_Common.sah"); //For adding C2S card group	
+
+
+//======================Pre-requisite check============================
+_log("Setup", "custom4");
+
+
+// Zone should be created before geographical domain Area creation 
+//If NA deos not exist, first create it and then create the Card Group
+var $l_naCsv = _readCSVFile("../../../GUI/testdata/NA_Login.csv"); //Reads the network admin credentials 
+var $g_networkAdmin1 = $l_naCsv[1][1];
+if($g_networkAdmin1 == "null"){
+	createNA(); // UserManagement_Common.sah
+	var $l_naCsv1 = _readCSVFile("../../../GUI/testdata/NA_Login.csv");
+	$g_networkAdmin1 = $l_naCsv1[1][1];
+	login($g_appURL,  $g_LangEnglish, $g_networkAdmin1, $g_commonPassword, $g_assertWelcome);
+}else{	 
+	login($g_appURL,  $g_LangEnglish, $g_networkAdmin1, $g_commonPassword, $g_assertWelcome);
+}
+
+//==================== Create a channel to subscriber card group ==================//
+
+_log("Setup", "custom4");
+
+
+var $l_naCsv = _readCSVFile("../../../GUI/testdata/NA_Login.csv");
+var $g_zoneName = $l_naCsv[10][1];
+createGeographicalDomainArea(); //Calls the createGeographicalDomainZone() from the GeographicalDomain_Common.sah
+
+//==================================================
+_log("Tear Down", "custom4");
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

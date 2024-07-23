@@ -1,0 +1,7 @@
+
+_navigateTo("http://172.16.5.83:8080/Pretups630");
+_setValue(_textbox("loginID"), "btnadm");
+_setValue(_password("password"), "1357");
+_click(_submit("Login"));
+_click(_link("Card group"));
+_click(_image("Add card group"));

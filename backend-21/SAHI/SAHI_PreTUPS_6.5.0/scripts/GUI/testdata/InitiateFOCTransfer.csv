@@ -1,0 +1,20 @@
+TestCaseNo. ,Discription,MSISDN,Product Type,Quantity,PIN ,Assertion 
+TEST001,Given that channel admin loggin into application and try to initiate FOC transfer wihtout giving MSISDN,,Prepaid Product,100,1357,Mobile number is required.
+TEST002,Given that channel admin loggin into application and try to initiate FOC transfer wihtout giving product type,7233333333,,100,1357,Product type is required.
+TEST003,"Verify that channel admin cant intiate the FOC transfer, it channel user is not existing ",7200000001,Prepaid Product,,,not found.
+TEST004,Verify that when you enter the invalid msisdn for FOC like small lengthm it will display error msg,72,Prepaid Product,,,MSISDN is incorrect.
+TEST005,Verify that values in product dropdown got populated while going to initiate O2C transfer ,,Prepaid Product,,,
+TEST006,Verify the functionality of reset button on search channel user for FOC transfer,7233333333,Prepaid Product,,,
+TEST007,verify the functionality of back button on FOC tranfer details page ,7233333333,Prepaid Product,,,
+TEST008,verify the functionality of reset button on FOC tranfer details page ,7233333333,Prepaid Product,100,1357,
+TEST009,Given that channel admin try to initiate FOC transfer without giving Quantity,7233333333,Prepaid Product,,1357,Please enter quantity for at least one product
+TEST010,Given that channel admin try to initiate FOC transfer without giving giving PIN ,7233333333,Prepaid Product,100,,PIN is required.
+TEST011,Given tha channel admin enter quantity which is less than minimum amount  for FOC transfer,7233333333,Prepaid Product,0,1357,"Requested quantity for product eTopUP, should be greater than zero."
+TEST012,Given tha channel admin try to initiate the FOC trasnfer  wihtout with an amount more than maximum amount,7233333333,Prepaid Product,10000,1357,"Requested quantity for product eTopUP, should lie"
+TEST013,"Given that channel admin try to initiate the FOC transfer, by entering wrong PIN ",7233333333,Prepaid Product,100,1569,Invalid PIN 
+TEST014,"verify that quantity entered, should be numeric only, if it is not then it should display error msg",7233333333,Prepaid Product,10 0,1357,"Requested quantity for product eTopUP, should be numeric"
+TESt015,Verify that you cant intiated FOC transfer with negative amount it the system ,7233333333,Prepaid Product,-100,1357,"Requested quantity for product eTopUP, should be greater than zero."
+TEST016,"Verify that after submit all correct details on transfer details page, it should go to confirm page ",7233333333,Prepaid Product,100,1357,
+TEST017,Verify that functionality of back button on confirm page in the system ,7233333333,Prepaid Product,100,1357,
+TEST018,"Verify the functionality of cancel button on FOC confirm page, it'll take you to the initial page",7233333333,Prepaid Product,100,1357,
+TEST019,Given than channel admin successfully iniated the FOC transfer in the system,7233333333,Prepaid Product,100,1357,Transfer request has been successfully initiated with transaction ID

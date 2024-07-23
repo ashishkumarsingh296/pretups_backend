@@ -1,0 +1,2 @@
+TestcaseId,TestcaseType,Module,Description
+TUNG2862,Negative,P2P delete buddy,To verify that Delete Buddy request is not successful if MSISDN1  field is invalid.

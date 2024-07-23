@@ -1,0 +1,490 @@
+//###############################################
+//#Company Name: Mahindra Comviva Technologies Ltd.
+//#Application Name: Pretups
+//#Objective:Common function for User Management module
+//#Author Name: Nidhi Singh
+//#Created Date: 15/01/2014
+//###############################################
+
+//===========================Import Scripts============================
+	 
+_includeOnce("../../../../utility/ImportPackage.sah");	//For importing common files
+
+var $l_umCsv = _readCSVFile("../../../GUI/testdata/UserManagement_CreateNA.csv"); //Reads all the informataion required to create admin
+
+$g_msisdnUM = readMSISDNFromCSV(); //Reads the MSISDN(Mobile No) from a csv file.
+$g_currentDate = ddmmyy(); //Get the current time in format dd/mm/yy
+var $g_shortName;
+var $g_usernamePrefixCode;
+var $g_externalCode;
+var $g_subscriberCode;
+var $g_ssn;
+var $g_status;
+var $g_designation;
+var $g_divisionCode;
+var $g_departmentCode;
+var $g_address1;
+var $g_address2;
+var $g_city;
+var $g_state;
+var $g_country;
+var $g_email;
+var $g_calendarImg;
+var $g_webPassword;
+var $g_confirmPassword;
+var $g_allowedTimeFrom;
+var $g_allowedTimeTo;
+var $g_geography;
+var $g_roleType;
+var $g_newPassword;
+var $g_ip = "";
+var $g_networkAdmin;
+var $g_channelAdminUsername;
+var $g_smsPin;
+var $g_desc;
+
+
+
+
+/**
+ * This function is used to fetch variable from a csv
+ * @param [in] -
+ *            $a_row Row No of csv
+ * @param [in] -
+ *            $a_column Column No of csv
+ * @returns - null
+ */
+
+function defineVariableToCreateNA($a_row, $a_column){
+	$g_shortName = $l_umCsv[$a_row][$a_column++];
+	$g_usernamePrefixCode = $l_umCsv[$a_row][$a_column++];
+	$g_externalCode = $l_umCsv[$a_row][$a_column++];
+	$g_subscriberCode = $l_umCsv[$a_row][$a_column++];
+	$g_ssn = $l_umCsv[$a_row][$a_column++];
+	$g_status =  $l_umCsv[$a_row][$a_column++];
+	$g_designation =  $l_umCsv[$a_row][$a_column++];
+	$g_divisionCode	=  $l_umCsv[$a_row][$a_column++];
+	$g_departmentCode =  $l_umCsv[$a_row][$a_column++];
+	$g_address1 =  $l_umCsv[$a_row][$a_column++];
+	$g_address2 =  $l_umCsv[$a_row][$a_column++];
+	$g_city =  $l_umCsv[$a_row][$a_column++];
+	$g_state =  $l_umCsv[$a_row][$a_column++];
+	$g_country =  $l_umCsv[$a_row][$a_column++];
+	$g_email =  $l_umCsv[$a_row][$a_column++];
+	$g_calendarImg =  $l_umCsv[$a_row][$a_column++];
+	$g_webPassword = $l_umCsv[$a_row][$a_column++];
+	$g_confirmPassword =  $l_umCsv[$a_row][$a_column++];
+	$g_allowedTimeFrom = $l_umCsv[$a_row][$a_column++];
+	$g_allowedTimeTo =  $l_umCsv[$a_row][$a_column++];
+	$g_allowedTimeFrom = "00:00";
+	$g_allowedTimeTo =  "23:59";
+	$g_geography =  $l_umCsv[$a_row][$a_column++];
+	$g_roleType =  $l_umCsv[$a_row][$a_column++];
+	$g_newPassword =  $l_umCsv[$a_row][$a_column++];
+	$g_ip = "";
+	$g_networkAdmin = variableForNA($g_autoPrefix); //Automatically generated Network Admin
+	$g_channelAdminUsername = variableForChannelAdmin($g_autoPrefix); //Automatically generated Channel Admin
+	
+	var $l_ChUser = _readCSVFile("../../testdata/ChUser_Details.csv");
+	$g_smsPin = $l_ChUser[1][25]; 
+	$g_desc = $l_ChUser[1][26]; 
+	
+}
+
+
+/**
+ *  This function will login into Pretups application and create a network admin
+ *	@return - null		
+ */
+
+function createNetworkAdmin() {                    // Function called from UserManagement_CreateNA.sah
+	_click(_link($g_leftMenuBar_OperatorUser));
+	_click(_link($g_leftMenuBar_AddOperatorUser));
+	_setSelected(_select("categoryCode"), $g_CategoryNA); // Selects NA option from drop-down.
+	_click(_submit($g_BtnSubmit));
+	_assertExists(_div($g_assertOp));
+	_assertExists(_row($g_assertAddNA));
+	commonDetailsForCreatingUsers($g_networkAdmin); // Function defined in UserManagement_Common.sah for common details of NA  and CA.
+	_click(_link($g_LinkAssignGeo));
+	_popup("eRecharge")._assertExists(_div($g_assertGeo), _lastAlert());
+	_popup("eRecharge")._click(_radio("geographicalCode", _submit("Add")));
+	_popup("eRecharge")._click(_submit($g_BtnAdd));
+	//_click(_radio("roleType"));
+	_click(_link($g_LinkAssignRoles));
+	_popup("eRecharge")._assertExists(_div($g_assertRole), _lastAlert());
+	_popup("eRecharge")._click(_checkbox($g_roleType));
+	_popup("eRecharge")._click(_submit($g_BtnAdd));
+	_click(_submit($g_BtnSave));
+	confirmCreationOfUser(); // Function defined in UserManagement_Common.sah for Button_Confirm
+	var $l_naCsv = _readCSVFile("../../../GUI/testdata/NA_Login.csv");
+	$l_naCsv[1][1] = $g_networkAdmin;
+	_writeCSVFile($l_naCsv, "../../../GUI/testdata/NA_Login.csv", 1); // Writes the newly created NA in a csv file.
+}
+
+/**
+ * This is common function for creating Admin
+ * @param [in] - 
+ * 			  a_operatorUsername Username of NA or CA
+ * @returns - null
+ */ 
+
+function commonDetailsForCreatingUsers($a_operatorUsername){
+	_setValue(_textbox("firstName"), $a_operatorUsername); // Automatically gen it
+	_setValue(_textbox("shortName"), $g_shortName); // Automatically gen it
+	_setSelected(_select("userNamePrefixCode"), $g_usernamePrefixCode);
+	_setValue(_textbox("externalCode"), $g_externalCode);
+	_setValue(_textbox("empCode"), $g_subscriberCode);
+	_setValue(_textbox("msisdn"), $g_msisdnUM); //automatically gen it
+	_setValue(_textbox("ssn"), $g_ssn);
+	_setValue(_textbox("contactNo"), $g_msisdnUM); //automatically gen it
+	_setSelected(_select("status"), $g_status);
+	_setValue(_textbox("designation"), $g_designation);
+	_setSelected(_select("divisionCode"), $g_divisionCode);
+	_setSelected(_select("departmentCode"), $g_departmentCode);
+	_setValue(_textbox("address1"), $g_address1);
+	_setValue(_textbox("address2"), $g_address2);
+	_setValue(_textbox("city"), $g_city);
+	//_setValue(_textbox("state"), $g_state);
+	_setValue(_textbox("country"), $g_country);
+	_setValue(_textbox("email"), $g_email);
+	_click(_image($g_calendarImg));
+	_setValue(_textbox("appointmentDate"), $g_currentDate);
+	_setValue(_textbox("webLoginID"), $a_operatorUsername); //automatically gen it
+	_setValue(_password("showPassword"), $g_webPassword);
+	_setValue(_password("confirmPassword"), $g_webPassword);
+	_setValue(_textarea("allowedIPs"), $g_ip);
+	for(var $i=0; $i<7; $i++){
+		_click(_checkbox("allowedDays[" + $i + "]"));
+	}
+	_setValue(_textbox("allowedFormTime"), $g_allowedTimeFrom);
+	_setValue(_textbox("allowedToTime"), $g_allowedTimeTo);
+}
+	
+function commonDetailsForCreatingChannelAdmin($a_operatorUsername){
+	_setValue(_textbox("firstName"), $a_operatorUsername); // Automatically gen it
+	_setValue(_textbox("shortName"), $g_shortName); // Automatically gen it
+	_setSelected(_select("userNamePrefixCode"), $g_usernamePrefixCode);
+	_setValue(_textbox("externalCode"), $g_externalCode);
+	_setValue(_textbox("empCode"), $g_subscriberCode);
+	_setValue(_textbox("ssn"), $g_ssn);
+	_setValue(_textbox("contactNo"), $g_msisdnUM); //automatically gen it
+	_setSelected(_select("status"), $g_status);
+	_setValue(_textbox("designation"), $g_designation);
+	_setSelected(_select("divisionCode"), $g_divisionCode);
+	_setSelected(_select("departmentCode"), $g_departmentCode);
+	_setValue(_textbox("address1"), $g_address1);
+	_setValue(_textbox("address2"), $g_address2);
+	_setValue(_textbox("city"), $g_city);
+	_setValue(_textbox("state"), $g_state);
+	_setValue(_textbox("country"), $g_country);
+	_setValue(_textbox("email"), $g_email);
+	_click(_image($g_calendarImg));
+	_setValue(_textbox("appointmentDate"), $g_currentDate);
+	_setValue(_textbox("webLoginID"), $a_operatorUsername); //automatically gen it
+	_setValue(_password("showPassword"), $g_webPassword);
+	_setValue(_password("confirmPassword"), $g_webPassword);
+	_setValue(_textarea("allowedIPs"), $g_ip);
+	for(var $i=0; $i<7; $i++){
+		_click(_checkbox("allowedDays[" + $i + "]"));
+	}
+	_setValue(_textbox("allowedFormTime"), $g_allowedTimeFrom);
+	_setValue(_textbox("allowedToTime"), $g_allowedTimeTo);
+}
+
+
+	
+	
+/**
+ *  This function will automatically generate username for NA
+ *	@return - null		
+ */
+	
+function variableForNA($a_Prefix){
+	 $l_time = currentTime(); // fetch current time(CurretnTime)
+	 $l_username = $a_Prefix + "NA" + $l_time; //AUTONAcurrentTime
+	 return $l_username;
+}
+
+/**
+ *  This function will check if NA got created or not
+ *	@return - null		
+ */
+
+function checkForNACreation(){
+	_click(_link($g_leftMenuBar_ViewOperatorUser));
+	_setSelected(_select("categoryCode"), $g_CategoryNA);
+	_setValue(_textbox("userName"), $g_networkAdmin);
+	_click(_submit($g_BtnSubmit));
+	_assertExists(_cell("User name :", _near(_cell($g_networkAdmin))));
+	_click(_link($g_LinkLogout));
+}
+
+/**
+ *  This function will login into application and change the old password to new password
+ *	@return - null		
+ */
+
+function changeOldPasswordToNew($a_operatorUsername){
+	_log("shashi in change password");
+	 login($g_appURL, $g_LangEnglish, $a_operatorUsername, $g_webPassword, $g_assertChangePass);
+	 _log("shashi in change password");
+	_setValue(_password("oldPassword"), $g_webPassword);
+	_setValue(_password("newPassword"), $g_commonPassword);
+	_setValue(_password("confirmNewPassword"), $g_commonPassword);
+	_click(_submit($g_BtnSubmit));
+	_assertExists(_listItem($g_assertSuccess));
+	_click(_link($g_LinkLogout));
+}
+
+
+
+
+
+function changePINToNew($a_operatorUsername){
+	
+	 login($g_appURL, $g_LangEnglish, $a_operatorUsername, $g_commonPassword, $g_assertWelcome);
+	
+	_click(_link("Channel user"));
+	_click(_link("Change self PIN"));
+	_click(_checkbox("msisdnListIndexed[0].multiBox"));
+	_setValue(_password("msisdnListIndexed[0].oldSmsPin"), $g_smsPin );
+	_setValue(_password("msisdnListIndexed[0].showSmsPin"), $g_commonPIN);
+	_setValue(_password("msisdnListIndexed[0].confirmSmsPin"), $g_commonPIN );
+	_setValue(_textarea("eventRemarks"), "Change PIN");
+	_click(_submit("Submit"));
+	_click(_submit("Confirm"));
+	_assertExists(_listItem("PIN has been updated successfully."));
+	_assert(_isVisible(_listItem("PIN has been updated successfully.")));
+	_click(_link($g_LinkLogout));
+	
+}
+
+
+
+
+
+
+
+/**
+ *  This function will login into application and create a channel admin
+ *	@return - null		
+ */
+
+function createChannelAdmin(){
+	_click(_link($g_leftMenuBar_OperatorUser));
+	_click(_link($g_LeftMenuBar_AddChannelAdmin));
+	_assertExists(_div("Add operator user details"));
+	_assertExists(_cell("Channel Admin", _near(_cell("Category :"))));
+	commonDetailsForCreatingChannelAdmin($g_channelAdminUsername); // Function defined in UserManagement_Common.sah for common details of NA  and CA.
+	_click(_link($g_LinkAssignGeo));
+	_popup("eRecharge")._assertExists(_div($g_assertGeo), _lastAlert());
+	_popup("eRecharge")._click(_checkbox("checkNetwork", _in(_cell("Associated geographies (Zone)"))));
+	//_popup("eRecharge")._click(_checkbox("geographicalCodeArray", _near(_checkbox("checkNetwork"))));
+	_popup("eRecharge")._click(_submit($g_BtnAdd));
+	_click(_link($g_LinkAssignRoles));
+	_popup("eRecharge")._assertExists(_div($g_assertRole), _lastAlert());
+	_popup("eRecharge")._click(_checkbox($g_roleType));
+	_popup("eRecharge")._click(_submit($g_BtnAdd));
+	
+	_click(_link($g_LinkAssignDomains));
+	_popup("eRecharge")._assertExists(_div($g_assertDomains), _lastAlert());
+	_popup("eRecharge")._click(_checkbox($g_roleType));
+	_popup("eRecharge")._click(_submit($g_BtnAdd));
+	
+	
+	// shashi added 
+	
+	_click(_link($g_LinkAssignServices));
+	_popup("eRecharge")._assertExists(_div($g_assertServices), _lastAlert());
+	_popup("eRecharge")._click(_checkbox($g_roleType));
+	_popup("eRecharge")._click(_submit($g_BtnAdd));
+	
+	_click(_link($g_LinkAssignPhoneNumbers));
+	_popup("eRecharge")._assertExists(_div($g_assertPhoneNumbers), _lastAlert());
+	
+	_popup("eRecharge")._setValue(_textbox("msisdnListIndexed[0].msisdn"), $g_msisdnUM);
+	_popup("eRecharge")._setValue(_password("msisdnListIndexed[0].showSmsPin"), $g_smsPin);
+	_popup("eRecharge")._setValue(_password("msisdnListIndexed[0].confirmSmsPin"), $g_smsPin);
+	_popup("eRecharge")._setSelected(_select("msisdnListIndexed[0].phoneProfile"), "Channel Admin");
+	_popup("eRecharge")._setValue(_textbox("msisdnListIndexed[0].description"), $g_desc);
+	_popup("eRecharge")._click(_submit($g_BtnAdd));
+	
+	
+	
+	_click(_link($g_LinkAssignProducts));
+	_popup("eRecharge")._assertExists(_div($g_assertProducts), _lastAlert());
+	_popup("eRecharge")._click(_checkbox($g_roleType));
+	_popup("eRecharge")._click(_submit($g_BtnAdd));
+
+	_click(_submit($g_BtnSave));
+	confirmCreationOfUser(); // Function defined in UserManagement_Common.sah for Button_Confirm
+	var $l_naCsv = _readCSVFile("../../../GUI/testdata/NA_Login.csv");
+	$l_naCsv[2][1] = $g_channelAdminUsername;
+	$g_channelAdmin = $g_channelAdminUsername;
+	_writeCSVFile($l_naCsv, "../../../GUI/testdata/NA_Login.csv", 1); // Writes the newly created CA in a csv file.
+}
+	
+/**
+ *  This function is used to click on Button Confirm
+ *	@return - null		
+ */
+
+function confirmCreationOfUser(){
+	_click(_submit($g_BtnConfirm));	
+}	
+
+/**
+ *  This function will automatically generate username for CA
+ *	@return - null		
+ */
+
+function variableForChannelAdmin($a_Prefix){
+	 $l_time = currentTime(); // fetch current time(CurretnTime)
+	 $l_username = $a_Prefix + "CA" + $l_time; //AUTONAcurrentTime
+	 return $l_username;
+}
+
+/**
+ *  This function will create Channel Admin if NA exists and if not then first create NA and then come back and create CA
+ *	@return - null		
+ */
+
+function createCA(){
+	var $l_column = 1;
+	var $l_row = 1;
+	var $l_naCsv = _readCSVFile("../../../GUI/testdata/NA_Login.csv");
+	var $g_networkAdmin1 = $l_naCsv[1][1];
+	if($g_networkAdmin1 == "null"){
+		createNA();
+		var $l_naCsv1 = _readCSVFile("../../../GUI/testdata/NA_Login.csv");
+		$g_networkAdmin1 = $l_naCsv1[1][1];
+		login($g_appURL,  $g_LangEnglish, $g_networkAdmin1, $g_commonPassword, $g_assertWelcome);
+	}else{	 
+		login($g_appURL,  $g_LangEnglish, $g_networkAdmin1, $g_commonPassword, $g_assertWelcome);
+	}
+	
+	//======================Channel Admin Creation============================
+	var $row=4;
+	var $col=0;
+	var $t1 = _testcase($l_umCsv[$row][$col++], $l_umCsv[$row][$col++]);
+	$t1.start();
+	
+	defineVariableToCreateNA($row, $col);
+	createChannelAdmin(); //Calls the function in UserManagement_Common.sah to create Channel Admin
+	$t1.end();	
+	_log("Channel Admin Created Successfully");
+	
+	//=====Change Password of Channel admin created=======		
+	$col=0;
+	var $t2 = _testcase($l_umCsv[++$row][$col++], $l_umCsv[$row][$col++]);
+	$t2.start();		
+	changeOldPasswordToNew($g_channelAdminUsername);
+	$t2.end();
+	
+	_log("Thus the password of the Channel Admin created is changed successfully");
+
+	_closeBrowser();
+	_openBrowser();
+	
+	//=====Change PIN of Channel admin created=======		
+	$col=0;
+	var $t3 = _testcase("TEST005", "Login into application to change  self PIN");
+	$t3.start();		
+	changePINToNew($g_channelAdminUsername);
+	$t3.end();
+	
+	_log("Thus the PIN of the Channel Admin created is changed successfully");
+
+	_closeBrowser();
+	_openBrowser();
+}
+
+/**
+ *  This function will create Network Admin 
+ *  @return - null		
+ */
+
+function createNA(){
+	var $l_column = 1;
+	var $l_row = 1;
+
+	var $l_umCsv = _readCSVFile("../../../GUI/testdata/UserManagement_CreateNA.csv"); //Reads all the informataion required to create a network admin
+
+	login($g_appURL,  $g_LangEnglish, $g_superAdmin, $g_password, $g_assertMessage); //calls the Login function in Login.sah with the parameters for super admin 
+
+	//======================Network Admin Creation============================
+	    
+	    //=====Add Network Admin=======
+	    var $row=1;
+	    var $col=0;
+	    var $t1 = _testcase($l_umCsv[$row][$col++], $l_umCsv[$row][$col++]);
+		$t1.start();
+		defineVariableToCreateNA($l_row, $col);
+		createNetworkAdmin(); //Calls the function in UserManagement_Common.sah to create Network Admin
+		$t1.end();	
+		_log("Network Admin Created Successfully");
+			
+		//=====Check If Network admin got created=======	
+		$col=0;
+		var $t2 = _testcase($l_umCsv[++$row][$col++], $l_umCsv[$row][$col++]);
+		$t2.start();		
+		checkForNACreation();
+		$t2.end();
+		
+		//=====Change Password of Network admin created=======		
+		$col=0;
+		var $t3 = _testcase($l_umCsv[++$row][$col++], $l_umCsv[$row][$col++]);
+		$t3.start();		
+		changeOldPasswordToNew($g_networkAdmin);
+		$t3.end();
+		
+		_log("Thus the password of the Network Admin created is changed successfully");
+}
+
+
+var $g_loginId;
+var $g_userName;
+
+function viewSelfDetails($g_loginId) {
+	
+	$g_userName = fetchUserName($g_loginId);
+	_click(_link("Operator users"));
+	_click(_link("View self details"));
+	_assertExists(_cell($g_userName[0], _near(_cell("User name :"))));
+	_click(_div("View operator user details"));
+	_assertExists(_div("View operator user details"));
+	
+	if(_exists(_div("View operator user details")))
+		_log("Successful");
+
+	
+	
+	
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

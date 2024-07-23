@@ -1,0 +1,2 @@
+LOGIN_ID,PASSWORD,USER_ID,SERVICE_CODE,DOMAIN_CODE,CATEGORY_CODE,FREQUENCY,ITERATIONS,TestcaseId,TestcaseType,Module,Description
+satcorp,1357,NGCO0000011490,RC,CORP,CORPE,DAILY,1,1,POSITIVE,Reschedule batch Recharge,To validate complete positive flow of Batch Recharge Reschedule

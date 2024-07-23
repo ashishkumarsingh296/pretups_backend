@@ -1,0 +1,2 @@
+TestcaseId,TestcaseType,Module,Description
+TUNG12344,Negative,Lite Recharge through EXTGW,To Verify that  invalid receiver  should show error for LRC

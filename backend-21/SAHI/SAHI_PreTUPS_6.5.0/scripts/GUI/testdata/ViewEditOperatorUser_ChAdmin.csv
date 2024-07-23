@@ -1,0 +1,15 @@
+TestCaseNo. ,Discription,UserType,Domain,Category,User,Assertion
+TEST001,Verify that channel admin can view the operator user in the system ,Operator User,Not Applicable,Customer Care,btcce,
+TEST002,Verify that channel admin can view channel user in the system ,Channel user,Dist1,Super Distributor,dist1,
+TEST003,Verify the value in the user type dropdown while going to view operator user in the system,Operator User,,,,
+TEST004,Verify the value in the domain dropdown while going to view operator user in the system,Operator User,Not Applicable,,,
+TEST005,Verify the value in the category dropdown while going to view operator user in the system,Operator User,Not Applicable,Customer Care,,
+TEST006,Verify the value in the user type dropdown while going to view channel user in the system,Channel user,,,,
+TESt007,Verify the value in the domain dropdown while going to view channel user in the system,Channel user,Dist1,,,
+TEST008,Verify the value in the category dropdown while going to view channel user in the system,Channel user,Dist1,Super Distributor,,
+TEST009,Verify that user type is required while going to view the channel/operator user in the system,,,,,Please select user type.
+TEST010,Verify that domain is required while going to view the channel/operator user in the system,Operator User,,,,Please select domain.
+TEST011,Verify that category is required while going to view the channel/operator user in the system,Operator User,Not Applicable,,,Please select category.
+TEST012,Verify that submit button in over there while going to verify the channel/operator user in the system,,,,,
+TEST013,Verify the functionality of back button on channel user list page ,Operator User,Not Applicable,Customer Care,,
+TEST014,Verify that channel admin can view the self details in the system ,,,,,

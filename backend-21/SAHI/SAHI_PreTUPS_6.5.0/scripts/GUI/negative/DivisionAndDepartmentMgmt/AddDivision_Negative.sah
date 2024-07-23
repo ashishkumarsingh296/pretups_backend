@@ -1,0 +1,70 @@
+//######################################
+//
+//Negative test cases of Division Management
+//
+//#######################################
+
+
+//===== import scripts ===//
+_includeOnce("../../../../utility/ImportPackage.sah");
+_includeOnce("DivisionAndDepartment_Common_Negative.sah");
+
+
+// ===== Pre-Condition check ==== //
+
+//====Login into Application====
+login($g_appURL, $g_LangEnglish, $g_superAdmin, $g_password, $g_assertMessage); //calls the Login function in Login.sah with the parameters(url, language, username, password, assertion)
+
+
+// =============== Add Negative test cases for division================== // 
+
+var $g_divisionDetails = _readCSVFile("../../negative_testdata/DivisionManagement_Negative.csv");
+
+	for(var $g_row = 1; $g_GeoMgmtZone[$g_row] != null; $g_row++ ){
+		
+		var $g_col = 0;
+		var $t = _testcase($g_GeoMgmtZone[$g_row][$g_col++], $g_GeoMgmtZone[$g_row][$g_col++]);
+		$t.start();
+		
+		commonVariableForZoneMgmt($g_row, $g_col);
+		
+		var $l_error = addGeoDoaminZone();
+		if($l_error == false){
+			_assertExists(_listItem("/" +$g_assertion + ".*/"));
+		}
+		
+		$t.end();
+		
+	}
+
+
+
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

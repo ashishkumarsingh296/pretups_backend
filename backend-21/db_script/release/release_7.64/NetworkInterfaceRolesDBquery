@@ -1,0 +1,19 @@
+UPDATE pages_ui
+SET module_code='COMMON', page_url='/networkInterface', menu_name='Network Interfaces', show_menu='Y', sequence_no=1, menu_level='1', parent_page_code='ROOT', image='assets/images/updateCache/svg/updateCache.svg', role_code=NULL, domain_type='OPERATOR', category_code='NWADM', page_type='home_configuration', app_name=NULL, is_default=NULL
+WHERE page_code='P_NW_INT_MAIN';
+
+-----------
+UPDATE page_ui_roles
+SET role_code='INTNTMAP', page_code='P_NW_INT_MAIN'
+WHERE role_code='INTNTMAP' AND page_code='P_NW_INT_MAIN';
+
+
+-------
+DELETE FROM pages_ui
+WHERE page_code='P_NW_INT_MGMT_MAIN';
+
+
+---------------------
+UPDATE page_ui_roles
+SET role_code='INTNTMAP', page_code='P_NW_INT_MAIN'
+WHERE role_code='INTNTMAP' AND page_code='P_NW_INT_MAIN';

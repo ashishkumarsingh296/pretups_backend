@@ -1,0 +1,2 @@
+TestcaseId,TestcaseType,Module,Description
+TUNG22419,Positive,SOS Settlement USSD,To verify that parent or owner can hit SOS settlement request through USSD by entering all the mandatory and optional parameters.

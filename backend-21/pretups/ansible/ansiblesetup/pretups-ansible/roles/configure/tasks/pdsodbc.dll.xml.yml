@@ -1,0 +1,21 @@
+ - name: "pdsodbc.dll.xml: changing the ip, port and sid"
+   lineinfile: dest="{{ Tomcat_Path }}/webapps/pretups/WEB-INF/classes/com/inet/pdsodbc.dll.xml" regexp='(.*)name="url"(.*)' line='<property name="url" value="jdbc:inetora::{{ odbc_report_IP }}:{{ odbc_report_PORT }}:{{ odbc_report_SID }}"/>'
+
+ - name: "pdsodbc.dll.xml: changing the name property"
+   lineinfile: dest="{{ Tomcat_Path }}/webapps/pretups/WEB-INF/classes/com/inet/pdsodbc.dll.xml" regexp='(.*)name="user"(.*)' line='<property name="user" value="{{ db_user_name }}"/>'
+
+ - name: "pdsodbc.dll.xml: changing the password property"
+   lineinfile: dest="{{ Tomcat_Path }}/webapps/pretups/WEB-INF/classes/com/inet/pdsodbc.dll.xml" regexp='(.*)name="password"(.*)' line='<property name="password" value="{{ db_password }}"/>'
+ 
+ - name: "pdsora7.dll.xml: changing the ip, port and sid"
+   lineinfile: dest="{{ Tomcat_Path }}/webapps/pretups/WEB-INF/classes/com/inet/pdsora7.dll.xml" regexp='(.*)name="url"(.*)' line='<property name="url" value="jdbc:inetora::{{ odbc_report_IP }}:{{ odbc_report_PORT }}:{{ odbc_report_SID }}"/>'
+
+ - name: "pdsora7.dll.xml: changing the name property"
+   lineinfile: dest="{{ Tomcat_Path }}/webapps/pretups/WEB-INF/classes/com/inet/pdsora7.dll.xml" regexp='(.*)name="user"(.*)' line='<property name="user" value="{{ db_user_name }}"/>'
+
+ - name: "pdsora7.dll.xml: changing the password property"
+   lineinfile: dest="{{ Tomcat_Path }}/webapps/pretups/WEB-INF/classes/com/inet/pdsora7.dll.xml" regexp='(.*)name="password"(.*)' line='<property name="password" value="{{ db_password }}"/>'
+
+
+
+

@@ -1,0 +1,2 @@
+TestcaseId,TestcaseType,Module,Description
+TUNG12987,Negative,Postpaid Bill Payment through USSD,"To verify that channel user is unable to initiate the ""PPB"" request if the entered value in the PIN field is having invalid value(Pin value of other channel,other than numeric,more than character limit)."

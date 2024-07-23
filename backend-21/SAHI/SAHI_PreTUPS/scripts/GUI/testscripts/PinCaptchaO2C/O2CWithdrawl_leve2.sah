@@ -1,0 +1,64 @@
+
+
+// This is script to approve batch o2c withdrawal.
+
+
+//===========================Import Scripts============================	 
+_includeOnce("../../../../utility/ImportPackage.sah");	//For importing common files
+
+_includeOnce("../../../GUI/testscripts/PinCaptchaO2C/O2CWithdrawl_Common_leve2.sah"); //For adding batch name for File 	
+
+//======================Pre-requisite check============================
+_log("Setup", "custom4");
+
+// Login with channel admin to Approve batch O2C
+
+var $l_naCsv = _readCSVFile("../../../GUI/testdata/NA_Login.csv"); //Reads Channel Admin login ID from csv file
+var $g_channelAdmin = $l_naCsv[2][1];
+	if($g_channelAdmin == "null"){ //If Channel Admin is not present then create it 
+	createCA(); //Function defined in UserManagement_Common.sah
+	var $l_naCsv = _readCSVFile("../../../GUI/testdata/NA_Login.csv"); //Reads Channel Admin login ID from csv file
+	 $g_channelAdminn = $l_naCsv[2][1];
+	login($g_appURL, $g_LangEnglish, $g_channelAdminn, $g_commonPassword, $g_assertWelcome); //Login as Channel Admin
+}
+else{	 
+	login($g_appURL, $g_LangEnglish, $g_channelAdmin, $g_commonPassword, $g_assertWelcome); //Login as Channel Admin(Login_Common.sah)
+}
+//.......Function to test pin captach on approval page
+//approveBatchO2CWithdraw2();
+
+// ............... Function to approve Batch O2C withdraw level1
+
+//approveBatchO2CWithdrawApprovalTwo();
+
+
+//n_approveBatchO2CWithdrawApproval2_invalidpin();
+
+//n_approveBatchO2CWithdrawApproval2_emptypin();
+
+//rejectBatchO2CWithdrawApprovalTwo();
+
+//n_rejectBatchO2CWithdrawApproval2_invalidpin();
+
+//n_rejectBatchO2CWithdrawApproval2_emptypin();
+
+//processBatchO2CWithdrawApprovalTwo();
+
+//n_processBatchO2CWithdrawApproval2_invalidpin();
+	
+//n_processBatchO2CWithdrawApproval2_emptypin();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

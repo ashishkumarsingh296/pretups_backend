@@ -1,0 +1,136 @@
+
+
+// This scripts contains all method to un bar channel users in the system 
+
+_includeOnce("../../../../utility/ImportPackage.sah");
+
+var $l_naCsv = _readCSVFile("../../../GUI/testdata/NA_Login.csv");
+
+
+	var $g_module;
+	var $g_userType;
+	var $g_msisdn;
+	var $g_name;
+	var $g_barredReason;
+	var $g_assertion;
+	var $a_Prefix;
+	
+	
+	function commonVaribleToUnBarChannelUser($g_row, $g_col) {
+		
+		$g_module = $g_unBarChannelUser[$g_row][$g_col++];
+		$g_userType = $g_unBarChannelUser[$g_row][$g_col++];
+		$g_msisdn = $g_unBarChannelUser[$g_row][$g_col++];
+		$g_barredReason = $g_unBarChannelUser[$g_row][$g_col++];
+		$g_assertion = $g_unBarChannelUser[$g_row][$g_col++];
+	}
+	
+	// $g_name = name(); .......... For futher use 
+	
+	
+	function name(){
+		 $l_time = currentTime(); // fetch current time(CurretnTime)
+		 var  $l_name = "AUT" + $l_time; //AUTONAcurrentTime
+		 return $l_name;
+	}
+		
+	// Common methods user for barring channel user in the system  ...... 
+	
+
+
+   function commonMethodToUnbarUserOne() {
+	   _click(_link("Masters"));
+		_click(_link("Un-bar user"));
+		_assertExists(_div("Un-barred user"));
+		_setSelected(_select("module"), $g_module);
+		_setSelected(_select("userType"), $g_userType);
+		_setValue(_textbox("msisdn"), $g_msisdn);
+		_setValue(_textarea("barredReason"), $g_barredReason);
+   }
+
+	// ................. Methods for test cases ................. //
+   
+   function toViewSubmitButtonOnUnbarrPage() {
+	   commonMethodToUnbarUserOne();
+	   _assertExists(_submit("Submit", _near(_reset("Reset"))));
+   }
+   
+   function toCheckPopulatedValueInModule() {
+	   commonMethodToUnbarUserOne();
+  	 _setSelected(_select("module"), 2);
+			var $temp = _getSelectedText(_select("module"));
+			if($temp == $g_module ) {_log("Successful");}
+			else { _log("Failed");}
+	}
+   
+   function toCheckPopulatedValueInUserType() {
+	   commonMethodToUnbarUserOne();
+  	 _setSelected(_select("userType"), 2);
+			var $temp = _getSelectedText(_select("userType"));
+			if($temp == $g_userType ) {_log("Successful");}
+			else { _log("Failed");}
+	}
+   
+   
+   function unBarChannelUserWithInvalidDetails() {
+	   commonMethodToUnbarUserOne();
+	   submit();
+	   _assertExists(_listItem("/"+ $g_assertion +".*/"));
+	}
+   
+   function toChecKResetButtonOnUnBarChannelUserPage() {
+	   commonMethodToUnbarUserOne();
+	   _wait(1000); reset();
+	   if(_getValue(_textbox("msisdn")) == "") {_log("Successful")}
+		else {_log("Failed Reset Check");}
+   }
+   function toChecKBackButtonOnUnBarChannelUserPage() {
+	   commonMethodToUnbarUserOne();
+	   submit();back();
+	   _assertExists(_submit("Submit", _near(_reset("Reset"))));
+   }
+   
+   function unBarWithoutSelectingUser() {
+	   commonMethodToUnbarUserOne();
+	   submit(); submit();
+	   _assertExists(_listItem("/"+ $g_assertion +".*/"));
+   }
+   
+   function toCheckBackButtonOnCnfPage() {
+	   commonMethodToUnbarUserOne();
+	   submit(); 
+	   _click(_checkbox("unbarAll", _near(_cell("Barred reason"))));
+	   submit();
+	   _click(_submit("Back", _near(_submit("Confirm"))));
+	   _assertExists(_submit("Submit", _near(_submit("Back"))));
+	}
+   
+   function toCheckCancelButtonOnCnfPage() {
+	   commonMethodToUnbarUserOne();
+	   submit(); 
+	   _click(_checkbox("unbarAll", _near(_cell("Barred reason"))));
+	   submit();
+	   _click(_submit("Cancel", _near(_submit("Confirm"))));
+	   _assertExists(_submit("Submit", _near(_reset("Reset"))));
+	}
+   
+   function unBarrChannelUser() {
+	   commonMethodToUnbarUserOne();
+	   submit(); 
+	   _click(_checkbox("unbarAll", _near(_cell("Barred reason"))));
+	   submit();
+	   confirm();
+	}
+   
+   
+   
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    

@@ -1,0 +1,7 @@
+Test Case No.,Discription,Service Type,Sub -service,Date,Card group set type,Start Range,End Range,Validity Type,Validity Days ,Grace Period,Mul. Of,Tax Type,Rate1,Rate 2,Processing Rate,Min Amt.,Max Amt,Con. Fac,Bonus value,Bonus Validity,assert
+TEST001,Given a network admin logs into application and successfully added card group for sub service 1 of certain range ,Customer Recharge,CVG,calendar-icon.gif,Normal,1,1000,Highest,7,7,1,Amt,0.5,0.5,0.5,1,100,1,100,7,added
+TEST002,Test case to set system preference for choice recharge as true,,,,,,,,,,,,,,,,,,,,
+TEST003,Given a network admin tries to  add card group for sub service 2 of same range  as of sub service 1,Customer Recharge,VG,calendar-icon.gif,Normal,1,1000,Highest,7,7,1,Amt,0.5,0.5,0.5,1,100,1,100,7, be added
+TEST004,Given a network admin successfully adds card group for sub service 2 of certain range different from sub service 1,Customer Recharge,VG,calendar-icon.gif,Normal,999999,1000000,Highest,7,7,1,Amt,0.5,0.5,0.5,1,100,1,100,7,added
+TEST005,Given a network admin  tries to modify card group for sub service 2 of same range  as of sub service 1,Customer Recharge,VG,calendar-icon.gif,Normal,1,1000,Highest,7,7,1,Amt,0.5,0.5,0.5,1,100,1,100,7,be added
+TEST006,Test case to set system preference for choice recharge as false,,,,,,,,,,,,,,,,,,,,

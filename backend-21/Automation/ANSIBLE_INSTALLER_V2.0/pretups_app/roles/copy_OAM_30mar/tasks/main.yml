@@ -1,0 +1,6 @@
+---
+ - name: copying OAM_30mar
+   remote_user: "{{ pretups_user }}"
+   become: true
+   unarchive: src=OAM_30mar.tar.gz dest=~/ creates=no mode=0755 owner={{ pretups_user }} group={{ pretups_user }}
+

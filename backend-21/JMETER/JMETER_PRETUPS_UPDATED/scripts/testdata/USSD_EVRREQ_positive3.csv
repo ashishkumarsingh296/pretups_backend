@@ -1,0 +1,2 @@
+TestcaseId,TestcaseType,Module,Description
+,Positive,Electronic Voucher Recharge through USSD,To verfiy that EVR request is successful if channel user is insuspended

@@ -1,0 +1,82 @@
+//######################################
+//
+// This script to view operator/channel user by the channel admin in the system  
+//
+//#######################################
+
+
+//===== import scripts ===//
+_includeOnce("../../../../utility/ImportPackage.sah");
+_includeOnce("../../../GUI/testscripts/ChannelAdmin_OperatorUser/ViewEditUser_Common.sah"); //to view barred channel user in the system 
+
+
+
+//If CA deos not exist, first create it and then initiate O2C transfer inthe system ..... 
+var $l_naCsv = _readCSVFile("../../../GUI/testdata/NA_Login.csv"); //Reads the network admin credentials 
+var $g_channelAdmin = $l_naCsv[2][1];
+if($g_channelAdmin == "null"){
+	createCA(); // UserManagement_Common.sah
+	var $l_naCsv1 = _readCSVFile("../../../GUI/testdata/NA_Login.csv");
+	$g_channelAdmin = $l_naCsv1[2][1];
+	login($g_appURL,  $g_LangEnglish, $g_channelAdmin, $g_commonPassword, $g_assertWelcome);
+}else{	 
+	login($g_appURL,  $g_LangEnglish, $g_channelAdmin, $g_commonPassword, $g_assertWelcome);
+}
+	
+
+ 
+
+// ....................... Test cases to view operator/channel user by the channel admin in the system    ............. //
+
+var $g_viewEditUsers = _readCSVFile("../../../GUI/testdata/ChannelUserPasswordMgmt.csv"); // Read Channel channel user detials which needs to be set
+
+
+
+	for(var $g_row = 1; $g_viewEditUsers[$g_row] != null; $g_row++){
+		 
+		
+				var $g_col = 0;
+				var $number =   testCaseNumber($g_viewEditUsers[$g_row][$g_col]);
+				var $t = _testcase($g_viewEditUsers[$g_row][$g_col++], $g_viewEditUsers[$g_row][$g_col++]);
+				
+				$t.start();
+				commonVaribleToViewAndEditUser($g_row, $g_col);
+				
+				
+				
+				if($number  == 1 || $number  == 2  ){ viewOperatorUser(); }
+				
+				
+				
+				else if($number == 3 || $number == 6 ){ valuesInUserTypeDropDown(); }
+				
+				else if($number == 4 || $number == 7 ){ valueInDoaminDropDown(); }
+				
+				else if($number == 5 || $number == 8 ){ valueInCategoryDropDown(); }
+				
+				
+				else if($number > 8 && $number < 12 ) { resetOrResendPasswordWithInvalidDetails(); }
+				
+				
+				else if ($number == 12 ) { checKSubmitButtonOnViewOperatorPage(); }
+				else if ($number == 13 ) { backButtonCheckOnUserListPage(); }
+				else if ($number == 14 ) { viewChannelAdminSelfDetails(); }
+				$t.end();
+	}
+
+
+
+	var $g_userMSISDN = $l_naCsv1[3][2];
+	
+	
+	
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,2 @@
+TestcaseId,TestcaseType,Module,Description
+TUNG13029,Positive,LMS Point Redemption through EXTGW,To verify that Channel User can redeem the loyality points if only MSISDN and PIN of the user is entered

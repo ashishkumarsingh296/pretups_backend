@@ -1,0 +1,11 @@
+TestCaseNo. ,Discription,MSISDN ,Module,User Type,Barring Type,Assertion
+TEST001,Verify that submit button is there while going to view the user barred list,,,,,
+TEST002,Verify that values in the module drop down are getting populated while going to view barred list,,Channel to Subscriber,,,
+TEST003,Verify that values in the user type drop down are getting populated while going to baar channel user,,,Sender,,
+TEST004,Verify that values in the barring type drop down are getting populated while going to baar channel user,,Channel to Subscriber,,Bar_test,
+TEST005,Verify that MSISDN is required to view barred channel user list in the system,,,,,Mobile number is required.
+TEST006,Given that channel admin try to bar user in the system with a invalid mobile number,72,,,,MSISDN is incorrect.
+TESt007,"Given that channel admin try to view the user in the system, which is not existing in the system",7200000000,,,,No user exists in barred list
+TEST008,Verify the functionality of reset button on view barred list page,7233333333,,,,
+TEST009,Verify the functionality of back button on View Barred MSISDN page,7233333333,,,,
+TEST010,Verify that Channel admin can view the barred channel user in the system ,7233333333,,,,

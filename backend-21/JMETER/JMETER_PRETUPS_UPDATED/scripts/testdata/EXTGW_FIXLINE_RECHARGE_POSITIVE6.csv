@@ -1,0 +1,3 @@
+TestcaseId,TestcaseType,Module,Description
+TUNG13143,Positive,Fix line Recharge through EXTGW,"To verify that C2S Transfer (Fix Recharge)  should be sucessfull  if between MSISDN, LOGINID and EXTCODE value, Only EXTCODE is present other two are  left blank"
+

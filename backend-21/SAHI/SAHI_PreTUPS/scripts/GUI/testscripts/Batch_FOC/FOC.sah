@@ -1,0 +1,58 @@
+
+
+// This is script to approve batch foc transfer of approval level one.
+//Positive test cases
+
+
+
+
+//===========================Import Scripts============================	 
+	_includeOnce("../../../../utility/ImportPackage.sah");	//For importing common files
+	
+	_includeOnce("../../../GUI/testscripts/Batch_FOC/FOC_Common.sah"); //For adding batch name for File 	
+
+//======================Pre-requisite check============================
+_log("Setup", "custom4");
+
+// Login with channel admin to Approve batch FOC
+
+var $l_naCsv = _readCSVFile("../../../GUI/testdata/NA_Login.csv"); //Reads Channel Admin login ID from csv file
+var $g_channelAdmin = $l_naCsv[2][1];
+	if($g_channelAdmin == "null"){ //If Channel Admin is not present then create it 
+		createCA(); //Function defined in UserManagement_Common.sah
+		var $l_naCsv = _readCSVFile("../../../GUI/testdata/NA_Login.csv"); //Reads Channel Admin login ID from csv file
+		 $g_channelAdminn = $l_naCsv[2][1];
+		login($g_appURL, $g_LangEnglish, $g_channelAdminn, $g_commonPassword, $g_assertWelcome); //Login as Channel Admin
+	}
+	else{	 
+		login($g_appURL, $g_LangEnglish, $g_channelAdmin, $g_commonPassword, $g_assertWelcome); //Login as Channel Admin(Login_Common.sah)
+	}
+
+
+// ............... Function to approve batch Foc
+
+	
+approveBatchFOC();
+	
+	
+	
+// ............... Function to reject batch// 
+//rejectBatchFOClevel1();
+
+//approveBatchFOC_backtest();
+//processBatchFOC();
+//n_processBatchFOClev1_invalidpin();
+//n_processBatchFOClev1_emptypin();
+//processBatchFOC_cancle();
+//processBatchFOC_back();
+
+
+
+
+
+	
+	
+	
+
+
+

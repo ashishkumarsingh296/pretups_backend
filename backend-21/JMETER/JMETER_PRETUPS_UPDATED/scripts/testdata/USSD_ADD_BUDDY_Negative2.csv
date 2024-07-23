@@ -1,0 +1,2 @@
+TestcaseId,TestcaseType,Module,Description
+TUNG2860,Negative,P2P Add Buddy,To verify that Add Buddy request is not successful if MSISDN1 field is invalid.

@@ -1,0 +1,9 @@
+---
+ - name: setting home directory variable
+   remote_user: "{{ USER_NAME }}"
+   sudo: true
+   shell: /bin/pwd chdir=~/
+   register: Project_Root
+
+ - name: print the HOME directory
+   debug: msg="Project_Root is {{ Project_Root.stdout }}"

@@ -1,0 +1,64 @@
+##	date : 09/03/2010
+
+	
+##	O2cWdhConstants.props
+##
+##	This is the main configuration file of the PreTUPS system. Operator specific configuration 
+##	changes will be done in this file. after making any change in this file update server cache
+##	need to run from the superadmin or network admin web interface
+##
+##	In some case we have to restart the application server (Database connection related changes)
+##
+##      Changes in this file should be done very carefully as any change in this file will have major
+##	impact on the PreTUPS functioning
+##
+##########################################################################################################
+
+## Database Server URL details, consisting of Database(Oracle) Driver, Database server IP adderess,
+## Port on which databse is running,Database service ID
+datasourceurl=jdbc:oracle:thin:@172.16.1.156:1521:PRTP
+
+## Database user id and password, it is encypted. database user id and password should encrypted by
+## a utility program. for encryption of login id and password send your login id and passward to
+## Bharti, Bharti will provide the encrypted login id and password.
+
+#pretups552_dev
+userid=88623088d9647fa839683d91748b1608
+passwd=88623088d9647fa839683d91748b1608
+
+#pretups_botswana
+#userid=42f8b1df22eaaa78dc37eee86d1e0c6c21c0943b80a2ba5a
+#passwd=42f8b1df22eaaa78dc37eee86d1e0c6c21c0943b80a2ba5a
+
+## Database connection POOL details, minimum pool size and maximum pool size, 
+## Minimum pool size should be more that maximum connection connection required by PreTUPS
+## in peak hours. maximum pool size should be higher than the minimum pool size.
+minpoolsize=2
+poolsize=5
+
+
+## Seperator used for separating the values in the cache, no need to change this parameter
+cachestartseparator=::
+cachemiddleseparator=:
+## Sequence of the cache message format
+cachemessageformat={0} {1}  {2}
+
+BATCH_PADDING_LENGTH=5
+
+#This field determined whether application server data source is to be used or application itself has to create and manage its db pool
+applicationpool=Y
+
+#Following field would be valid if applicationpool=N
+datasourcename= jdbc/pretupsdatasource
+
+#Following fields would be valid if applicationpool=Y
+poolmanagerclass=com.btsl.db.pool.OJDBC14PoolManager
+
+#This field would be used to determine helper class to be used(setFormOfUSe implementation currently)
+databasehelperclass= com.btsl.util.DatabaseHelperClass
+
+#after the withdarw, if want to delete channel users then its value should be Y else N
+USER_DELETE_REQUIRED=N
+
+#This is added for the multiple wallet feature its value should be (SAL/INC/FOC). if value is blank or wrong then its value would be SAL.
+WALLET_TYPE=FOC

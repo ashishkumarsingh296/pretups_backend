@@ -1,0 +1,23 @@
+TestCaseNo. ,Discription,MSISDN,Remarks,Old PIN,New PIN,Cnf PIN,Assertion
+TEST001,Verify that submit button in over there while going to change PIN of channel user,,,,,,
+TEST002,Verify that MSISDN is required while going to change PIN of channel user,,Change PIN,,,,Enter search value
+TEST003,Verify that remarks is required while going to change PIN of channel user,7233333333,,,,,Remarks Required
+TEST004,Verify that MSISDN should be valid while going to change Pin of channel user in the system ,XX,Change PIN,,,,MSISDN is incorrect.
+TEST005,Verify that Channel admin cant change the PIN of user which is not available in the system ,7200000099,Change PIN,,,,No user exists with this mobile number
+TEST006,"Verify that, to change the PIN of channel user, MSISDN must be in the network ",1000000000,Change PIN,,,,Mobile number does not belong to Network
+TEST007,Verify the functionality of back button from change USER PIN page in the system ,7233333333,Change PIN,,,,
+TEST008,Verify the functionality of reset button from change USER PIN page in the system ,7233333333,Change PIN,1357,2468,2468,
+TEST009,"Verify that without selecting any user, channe admin try to change PIN then it should display error msg ",7233333333,Change PIN,1357,2468,2468,Select at least one MSISDN 
+TEST010,"Verify that system should display error msg, when try to change PIN without OLD PIN",7233333333,Change PIN,,2468,2468,Old PIN required
+TEST011,"Verify that application will display error msg, while confirm PIN won't be given while changing PIN",7233333333,Change PIN,1357,,,Confirm PIN required for
+TEST012,"Verify that application will display error msg, when you give the wrong old PIN",7233333333,Change PIN,4595,2468,2468,Old PIN is not valid for
+TEST013,"Error msg should be displayed while, new Pin and cnf PIN are not same.",7233333333,Change PIN,1357,2468,2589,New PIN and confirm PIN should be same for
+TEST014,"Verify that, while changing PIN in the system, old PIN and new PIN cant be same ",7233333333,Change PIN,1357,1357,1357,Old PIN and New PIN should not be same
+TEST015,"Verify that new PIN can't be given as character, if ir does then it should display error msg",7233333333,Change PIN,1357,adgj,adgj,New PIN should be numerical
+TEST016,Verify that repeating number can't be allowed as same repeating number,7233333333,Change PIN,1357,1111,1111,PIN cannot contain repeating characters
+TEST017,Verify that sequential  no. can't be accepted as PIN in the system ,7233333333,Change PIN,1357,1234,1234,PIN cannot contain sequential charcters
+TEST018,Verify that PIN of two digits can't be accepted in the system,7233333333,Change PIN,1357,13,13,PIN length should be between 4 and 4 characters at row
+TEST019,Verify that PIN of three digits can't be accepted in the system,7233333333,Change PIN,1357,246,246,PIN length should be between 4 and 4 characters at row
+TEST020,Verify the functionality of back button form change PIN confirm page,7233333333,Change PIN,1357,2468,2468,
+TEST021,Verify that channel admin can change the PIN of channel user in the system,7233333333,Change PIN,1357,2468,2468,PIN has been updated successfully.
+TEST022,Change PIN back to 1357,7233333333,Change PIN,2468,1357,1357,PIN has been updated successfully.

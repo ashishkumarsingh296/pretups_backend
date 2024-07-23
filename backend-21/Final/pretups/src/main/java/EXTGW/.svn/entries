@@ -1,0 +1,44 @@
+8
+
+dir
+79946
+http://172.16.10.134/CRM/MFS/PreTUPS5x_NG/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/java/EXTGW
+http://172.16.10.134/CRM/MFS/PreTUPS5x_NG
+
+
+
+2014-06-05T06:20:16.541833Z
+15111
+surendra.singh
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+0aa4c133-250a-8f41-a234-3171e8533c1b
+
+EXTGWTestProgram.java
+file
+
+
+
+
+2023-01-24T05:53:35.781000Z
+f5f6e50e701670e04feb377a2ba255eb
+2014-05-14T11:17:19.905389Z
+14476
+surendra.singh
+has-props
+
+
+svn:needs-lock
+

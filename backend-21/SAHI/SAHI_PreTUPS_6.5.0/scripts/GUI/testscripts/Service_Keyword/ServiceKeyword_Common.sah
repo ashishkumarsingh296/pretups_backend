@@ -1,0 +1,174 @@
+
+
+
+
+_includeOnce("../../../../utility/ImportPackage.sah");
+
+var $g_serviceType;
+var $g_keyword;
+var $g_gatewayType;
+var $g_receivingPort;
+var $g_name;
+var $g_status;
+var $g_menu;
+var $g_subMenu;
+var $g_allwedVersion;
+
+
+function commonVariableForServiceKeyword($a_row, $a_column) {
+	
+	$g_serviceType = $g_ServiceKeywordsDetails[$a_row][$a_column++];
+	$g_keyword = varriableServiceKeyword();
+	$g_gatewayType = $g_ServiceKeywordsDetails[$a_row][$a_column++];
+	$g_receivingPort = $g_ServiceKeywordsDetails[$a_row][$a_column++];
+	$g_name = $g_ServiceKeywordsDetails[$a_row][$a_column++];
+	$g_status = $g_ServiceKeywordsDetails[$a_row][$a_column++];
+	$g_menu = $g_ServiceKeywordsDetails[$a_row][$a_column++];
+	$g_subMenu = $g_ServiceKeywordsDetails[$a_row][$a_column++];
+	$g_allwedVersion = $g_ServiceKeywordsDetails[$a_row][$a_column++];
+}
+
+
+
+function addViewModifySeriveKeyword() {
+	var $l_row = 1;
+	var $l_col = 0;
+	var $t1 = _testcase($g_ServiceKeywordsDetails[$l_row][$l_col++], $g_ServiceKeywordsDetails[$l_row][$l_col++]);
+	$t1.start();
+	commonVariableForServiceKeyword($l_row,$l_col);
+	var $l_error = addServiceKeyword();
+	
+	if($l_error == true){
+		var $l_naCsv = _readCSVFile("../../../GUI/testdata/NA_Login.csv");
+		$l_naCsv[12][1] = $g_serviceType;
+		$l_naCsv[12][2] = $g_keyword;
+		_writeCSVFile($l_naCsv, "../../../GUI/testdata/NA_Login.csv", 1); // Writes the newly created Channel User in a csv file.
+		_click(_link($g_LinkLogout));
+		_log("Service keyword is added successfully");
+	}
+	
+	
+	$t1.end();
+	_closeBrowser();
+	_wait(1000);
+	_openBrowser();
+	
+	
+	// ================= Try to view the newly added service keyword ================== //
+	
+	login($g_appURL, $g_LangEnglish, $g_superAdmin, $g_password, $g_assertMessage); // Login into the application with super Admin 
+	var $t2 = _testcase("TEST002", "Given super admin login into application and try to view newly added service keyword");
+	$t2.start();
+	var $error = viewServiceKeyword($g_serviceType, $g_keyword);
+	if($error == true)
+		_log("Successfully view the newly added service keyword");
+	
+	$t2.end();
+	_closeBrowser();
+	_wait(1000);
+	_openBrowser();
+	
+	
+	// ================= Try to modify the newly added service keyword ================== //
+	
+	login($g_appURL, $g_LangEnglish, $g_superAdmin, $g_password, $g_assertMessage); // Login into the application with super Admin 
+	var $t3 = _testcase("TEST003", "Given super admin login into application and try to modify company name of newly added service keyword");
+	$t3.start();
+	var $error = modifyServiceKeyword($g_serviceType, $g_keyword);
+	if($error == true)
+		_log("Successfully modified the newly added service keyword");
+	
+	$t3.end();
+	_closeBrowser();
+	
+}
+
+
+
+function addServiceKeyword() {
+	
+	_click(_link("Masters"));
+	_click(_link("Add service keyword"));
+	_assertExists(_div($g_assertServiceKeyword));
+	_setSelected(_select("serviceType"), $g_serviceType);
+	_setValue(_textbox("keyword"), $g_keyword);
+	_setSelected(_select("interface"), $g_gatewayType);
+	_setValue(_textbox("receivePort"), $g_receivingPort);
+	_setValue(_textbox("name"), $g_name);
+	_setSelected(_select("status"), $g_status);
+	_setValue(_textbox("menu"), $g_menu);
+	_setValue(_textbox("subMenu"), $g_subMenu);
+	_setValue(_textbox("allowedVersion"), $g_allwedVersion);
+	_click(_submit($g_BtnSubmit));
+	_click(_submit($g_BtnConfirm));
+	_assertExists(_listItem("/"+$g_assertServiceKeywordAddedSuccessfully+".*/"));
+	
+	if(_exists(_listItem("/"+$g_assertServiceKeywordAddedSuccessfully+".*/"))){
+		return true;
+	}	
+	else{
+		_log("Service keyword has not been added successfully");
+		return false;
+	}
+}
+
+
+
+function viewServiceKeyword($g_serviceType, $g_keyword) {
+	_click(_link("Masters"));
+	_click(_link("Modify service keyword"));
+	_assertExists(_div("Select Service type"));
+	_setSelected(_select("serviceType"), $g_serviceType);
+	_click(_submit("Submit"));
+	_assertExists(_cell($g_keyword, _near(_cell("Keyword"))));
+	if(_exists(_cell($g_keyword, _near(_cell("Keyword"))))){
+		_click(_submit("Back")); //changed by Fiza for Back button 
+		return true;
+	}
+}
+
+function modifyServiceKeyword($g_serviceType, $g_keyword) {
+	
+	_click(_link("Masters"));
+	_click(_link("Modify service keyword"));
+	_setSelected(_select("serviceType"), $g_serviceType);
+	_click(_submit("Submit"));
+	_click(_radio("serviceKeywordID", _near(_cell($g_keyword, _near(_cell("Keyword"))))));
+	_click(_submit($g_BtnSubmit));
+	_assertExists(_div("Modify service keyword"));
+	_setValue(_textbox("name"), "Recharge New");
+	_click(_submit($g_BtnSubmit));
+	_click(_submit($g_BtnConfirm));
+	_assertExists(_listItem("/"+$g_assertKeywordUpdatedSuccessfully+".*/"));
+	if(_exists(_listItem("/"+$g_assertKeywordUpdatedSuccessfully+".*/"))){
+		return true;
+	}
+	
+}
+
+
+
+function varriableServiceKeyword(){
+	 
+	var $l_time = new Date();
+	var $keyword = "SERV"+ $l_time.getHours()+$l_time.getMinutes(); //AUTONAcurrentTime
+	 return $keyword;
+ }
+
+
+
+function networkShortName($a_Prefix){
+	 $l_time = currentTime(); // fetch current time(CurretnTime)
+	 $l_networkName = $a_Prefix + "N" + $l_time; //AUTONAcurrentTime
+	 return $l_networkName;
+}
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,27 @@
+---
+########################################################
+# Author           Date        Remarks
+#------------    -----------  ---------
+#Sadhan Kumar K  25-07-2016    Initial Creation
+#
+# This file takes care of Starting the Tomcat.
+#########################################################
+
+ - name: Start Tomcat
+   shell: nohup sh {{ item.StartFileName }} chdir={{item.TomcatHomePath}}/bin
+   ignore_errors: yes
+   register: tomcatStart
+   with_items:
+       - "{{CatalinaConfig}}"
+   tags:
+     - startTomcat1
+
+ - name: wait for tomcat to Start
+   wait_for: timeout=20
+   tags:
+     - startTomcat
+
+ - debug: msg="All Tomcat instance in a Server is  Started!"
+   when: tomcatStart|success
+   tags:
+     - startTomcat

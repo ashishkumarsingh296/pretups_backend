@@ -1,0 +1,5 @@
+MSISDN1,PIN,MSISDN2,AMOUNT,LANGUAGE1,LANGUAGE2,SELECTOR,TestcaseId,TestcaseType,Module,Description
+7201010121,0,7200001050,1,1,1,1,TUNG13220,Positive,Credit Recharge,P2P Credit Recharge
+,0,7200001050,1,1,1,1,TUNG13220,Negative,Credit Recharge,P2P Credit Recharge
+7201010121,,7200001050,1,1,1,1,TUNG13220,Positive,Credit Recharge,P2P Credit Recharge
+7201010121,0,,1,1,1,1,TUNG13220,Negative,Credit Recharge,P2P Credit Recharge

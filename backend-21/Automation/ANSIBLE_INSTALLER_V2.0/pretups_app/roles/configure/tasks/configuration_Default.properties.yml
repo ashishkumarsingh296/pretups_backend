@@ -1,0 +1,80 @@
+ - name: "configuration_Default.properties: changing the License key"
+   lineinfile:  dest="{{ Tomcat_Path }}/webapps/pretups/WEB-INF/classes/com/inet/report/configuration_Default.properties" regexp='(.*)licensekey=(.*)' line='licensekey={{ report_licensekey }}'
+
+ - name: "configuration_Default.properties: changing the cache.db.url"
+   lineinfile: dest="{{ Tomcat_Path }}/webapps/pretups/WEB-INF/classes/com/inet/report/configuration_Default.properties" regexp='(.*)cache.db.url=(.*)' line='cache.db.url=jdbc:inetora:{{ cache_report_IP }}:{{ cache_report_PORT }}:{{ cache_report_SID }}'
+   when: DBType != "postgres"
+
+ - name: "configuration_Default.properties: changing the cache.db.password"
+   lineinfile: dest="{{ Tomcat_Path }}/webapps/pretups/WEB-INF/classes/com/inet/report/configuration_Default.properties" regexp='(.*)cache.db.password=(.*)' line='cache.db.password={{ cache_report_db_password }}'
+
+ - name: "configuration_Default.properties: changing the cache.db.username"
+   lineinfile: dest="{{ Tomcat_Path }}/webapps/pretups/WEB-INF/classes/com/inet/report/configuration_Default.properties" regexp='(.*)cache.db.username=(.*)' line='cache.db.username={{ cache_report_db_username }}'
+
+ - name: "configuration_Default.properties: changing the cache.db.driverclass for oracle"
+   lineinfile: dest="{{ Tomcat_Path }}/webapps/pretups/WEB-INF/classes/com/inet/report/configuration_Default.properties" regexp='(.*)cache.db.driverclass=com.inet.report.DatabaseOracle(.*)' line='#cache.db.driverclass=com.inet.report.DatabaseOracle'
+   when: DBType == "postgres"
+
+ - name: "configuration_Default.properties: changing the cache.db.driverclass for postgres"
+   lineinfile: dest="{{ Tomcat_Path }}/webapps/pretups/WEB-INF/classes/com/inet/report/configuration_Default.properties" regexp='(.*)#cache.db.driverclass=org.postgressql.Driver(.*)' line='cache.db.driverclass=org.postgressql.Driver'
+   when: DBType == "postgres"
+
+ - name: "configuration_Default.properties: changing the cache.db.ccrepository.pathlist"
+   lineinfile: dest="{{ Tomcat_Path }}/webapps/pretups/WEB-INF/classes/com/inet/report/configuration_Default.properties" regexp='(.*)#ccrepository.pathlist=(.*)' line='ccrepository.pathlist=jdbc\:postgresql\://[{{ DBIP }}]\:{{ DBPORT }}/{{ DB_Name }};{{ cache_report_db_username }};{{ cache_report_db_password }};org.postgresql.Driver;true'
+   when: DBType == "postgres"
+
+ - name: "configuration_Default.properties: changing the cache.hd.root_directory"
+   lineinfile: dest="{{ Tomcat_Path }}/webapps/pretups/WEB-INF/classes/com/inet/report/configuration_Default.properties" regexp='(.*)cache.hd.root_directory=(.*)' line='cache.hd.root_directory={{ Tomcat_Path }}/logs/cache_report/' 
+
+ - name: "configuration_Default.properties: changing the log.file"
+   lineinfile: dest="{{ Tomcat_Path }}/webapps/pretups/WEB-INF/classes/com/inet/report/configuration_Default.properties" regexp='(.*)log.file=(.*)' line='log.file={{ Tomcat_Path }}/logs/reports.log'
+
+ - name: "configuration_Default.properties: changing the libDirectory"
+   lineinfile: dest="{{ Tomcat_Path }}/webapps/pretups/WEB-INF/classes/com/inet/report/configuration_Default.properties" regexp='(.*)libDirectory=(.*)' line='libDirectory={{ Tomcat_Path }}/webapps/pretups/WEB-INF/lib'
+
+ - name: "configuration_Default.properties: changing the coreFile"
+   lineinfile: dest="{{ Tomcat_Path }}/webapps/pretups/WEB-INF/classes/com/inet/report/configuration_Default.properties" regexp='(.*)coreFile=(.*)' line='coreFile={{ Tomcat_Path }}/logs/CC/CCcore'
+
+ - name: "configuration_Default.properties: changing the odbc_sun.url"
+   lineinfile: dest="{{ Tomcat_Path }}/webapps/pretups/WEB-INF/classes/com/inet/report/configuration_Default.properties" regexp='(.*)odbc_sun.url=(.*)' line='odbc_sun.url=jdbc:inetora:{{ odbc_report_IP }}:{{ odbc_report_PORT }}:{{ odbc_report_SID }}'
+   when: DBType != "postgres"
+
+ - name: "configuration_Default.properties: changing the odbc_sun.user"
+   lineinfile: dest="{{ Tomcat_Path }}/webapps/pretups/WEB-INF/classes/com/inet/report/configuration_Default.properties" regexp='(.*)odbc_sun.user=(.*)' line='odbc_sun.user={{ odbc_user }}&password={{ odbc_password }}'
+   when: DBType != "postgres"
+
+ - name: "configuration_Default.properties: changing the odbc_sun.properties"
+   lineinfile: dest="{{ Tomcat_Path }}/webapps/pretups/WEB-INF/classes/com/inet/report/configuration_Default.properties" regexp='(.*)odbc_sun.properties=(.*)' line='odbc_sun.properties=user={{ odbc_user }}&password={{ odbc_password }}'
+   when: DBType != "postgres"
+
+ - name: "configuration_Default.properties: changing the oracle_inet.url"
+   lineinfile: dest="{{ Tomcat_Path }}/webapps/pretups/WEB-INF/classes/com/inet/report/configuration_Default.properties" regexp='(.*)oracle_inet.url=(.*)' line='oracle_inet.url=jdbc:inetora:{{ oracle_report_IP }}:{{ oracle_report_PORT }}:{{ oracle_report_SID }}'
+   when: DBType != "postgres"
+
+ - name: "configuration_Default.properties: changing the oracle_inet.class"
+   lineinfile: dest="{{ Tomcat_Path }}/webapps/pretups/WEB-INF/classes/com/inet/report/configuration_Default.properties" regexp='(.*)oracle_inet.class=(.*)' line='oracle_inet.class={{ oracle_inet_class }}'
+   when: DBType != "postgres"
+
+ - name: "configuration_Default.properties: changing the oracle_inet.properties"
+   lineinfile: dest="{{ Tomcat_Path }}/webapps/pretups/WEB-INF/classes/com/inet/report/configuration_Default.properties" regexp='(.*)oracle_inet.properties=(.*)' line='oracle_inet.properties=user={{ oracle_user }}&password={{ oracle_password }}'
+   when: DBType != "postgres"
+
+ - name: "configuration_Default.properties: changing the oracle_inet.user"
+   lineinfile: dest="{{ Tomcat_Path }}/webapps/pretups/WEB-INF/classes/com/inet/report/configuration_Default.properties" regexp='(.*)oracle_inet.user=(.*)' line='oracle_inet.user=user={{ oracle_user }}&password={{ oracle_password }}'
+   when: DBType != "postgres"
+
+ - name: "configuration_Default.properties: changing the oracle_inet.password"
+   lineinfile: dest="{{ Tomcat_Path }}/webapps/pretups/WEB-INF/classes/com/inet/report/configuration_Default.properties" regexp='(.*)oracle_inet.password=(.*)' line='oracle_inet.password={{ oracle_password }}'
+   when: DBType != "postgres"
+
+ - name: "configuration_Default.properties: changing the oracle.url"
+   lineinfile: dest="{{ Tomcat_Path }}/webapps/pretups/WEB-INF/classes/com/inet/report/configuration_Default.properties" regexp='(.*)oracle.url=(.*)' line='oracle.url=jdbc:oracle:thin:@{{ oracle_report_IP }}:{{ oracle_report_PORT }}'
+   when: DBType != "postgres"
+
+ - name: "configuration_Default.properties: changing the oracle.properties"
+   lineinfile: dest="{{ Tomcat_Path }}/webapps/pretups/WEB-INF/classes/com/inet/report/configuration_Default.properties" regexp='(.*)oracle.properties=(.*)' line='oracle.properties=user={{ oracle_user }}&password={{ oracle_password }}'
+   when: DBType != "postgres"
+
+ - name: "pretupsStart.sh: delete the unnecessary files in home folder"
+   shell: rm -rf ~/*log chdir=~/
+

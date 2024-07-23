@@ -1,0 +1,2 @@
+PRODUCTCODE,LANGUAGE1,TestcaseId,TestcaseType,Module,Description
+101,,TUNG23071,Positive,REST - Channel to Channel Transfer,To verify that Channel to Channel request is sucessfully using EXTCODE in Rest API request

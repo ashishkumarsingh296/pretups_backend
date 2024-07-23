@@ -1,0 +1,2 @@
+TestcaseId,TestcaseType,Module,Description
+TUNG22415,Positive,SOS Settlement EXTGW,To verify that parent or owner can hit SOS settlement request through EXTGW using external code with all the mandatory and optional parameters.

@@ -1,0 +1,58 @@
+2016-08-01 08:17:11,379 p=2578 u=root |  PLAY [PATCH ROLLBACK ROLE] *****************************************************
+2016-08-01 08:17:11,398 p=2578 u=root |  TASK [setup] *******************************************************************
+2016-08-01 08:17:12,772 p=2578 u=root |  ok: [172.19.2.48]
+2016-08-01 08:17:12,778 p=2578 u=root |  TASK [patchRollback : Copy ansible.log] ****************************************
+2016-08-01 08:17:12,865 p=2578 u=root |  changed: [172.19.2.48]
+2016-08-01 08:17:12,870 p=2578 u=root |  TASK [patchRollback : include] *************************************************
+2016-08-01 08:17:12,898 p=2578 u=root |  TASK [patchRollback : include] *************************************************
+2016-08-01 08:17:12,943 p=2578 u=root |  included: /root/Desktop/PretupsPatchInstaller/roles/patchRollback/tasks/../../validate/tasks/validateUserEntry.yml for 172.19.2.48
+2016-08-01 08:17:12,959 p=2578 u=root |  TASK [patchRollback : Checking listed Patch Type is Supported or Not] **********
+2016-08-01 08:17:13,173 p=2578 u=root |  TASK [patchRollback : debug] ***************************************************
+2016-08-01 08:17:13,222 p=2578 u=root |  ok: [172.19.2.48] => {
+    "msg": "All Patch Types listed is supported."
+}
+2016-08-01 08:17:13,228 p=2578 u=root |  TASK [patchRollback : Extracting the Extns of FileName Specified.] *************
+2016-08-01 08:17:13,554 p=2578 u=root |  ok: [172.19.2.48] => (item={u'oldWarName': u'Connect-1.1.0.war', u'path': u'/root/Desktop/TestPatch/Coretomcat/webapps/', u'patchType': u'WAR', u'fileName': u'Connect-1.2.0.war'})
+2016-08-01 08:17:13,560 p=2578 u=root |  ok: [172.19.2.48] => (item={u'oldWarName': u'EIG-1.1.war', u'path': u'/root/Desktop/TestPatch/Coretomcat/webapps/', u'patchType': u'WAR', u'fileName': u'EIG-1.1.02.war'})
+2016-08-01 08:17:13,566 p=2578 u=root |  ok: [172.19.2.48] => (item={u'path': u'/root/Desktop/TestPatch/Coretomcat/webapps/Connect-1.2.0/WEB-INF/classes/configfiles/', u'patchType': u'FILE-SYNC', u'backupFilePath': u'/root/Desktop/TestPatch/Backup/Connect-1.1.0/WEB-INF/classes/configfiles/', u'fileName': u'mconnect.properties'})
+2016-08-01 08:17:13,572 p=2578 u=root |  ok: [172.19.2.48] => (item={u'path': u'/root/Desktop/TestPatch/Coretomcat/webapps/Connect-1.2.0/WEB-INF/classes/com/comviva/mconnect/webservices/', u'patchType': u'CLASSFILE', u'fileName': u'IMConnectWebUiServices.class'})
+2016-08-01 08:17:13,578 p=2578 u=root |  ok: [172.19.2.48] => (item={u'path': u'/root/Desktop/TestPatch/Coretomcat/webapps/Connect-1.2.0/WEB-INF/classes/configfiles/', u'line': u'key=value\nkey2=value3\nline=removed', u'patchType': u'PROP-NEWLINE', u'fileName': u'mconnect.properties'})
+2016-08-01 08:17:13,583 p=2578 u=root |  ok: [172.19.2.48] => (item={u'path': u'/root/Desktop/TestPatch/Coretomcat/webapps/Connect-1.2.0/WEB-INF/classes/configfiles/', u'patchType': u'PROP-MODIFY', u'value': True, u'key': u'EMAILVAL=', u'fileName': u'mconnect.properties'})
+2016-08-01 08:17:13,589 p=2578 u=root |  ok: [172.19.2.48] => (item={u'path': u'/root/Desktop/TestPatch/Coretomcat/webapps/Connect-1.2.0/WEB-INF/classes/configfiles/', u'line': u'line=removed', u'patchType': u'PROP-REMOVE', u'fileName': u'mconnect.properties'})
+2016-08-01 08:17:13,596 p=2578 u=root |  ok: [172.19.2.48] => (item={u'path': u'/root/Desktop/TestPatch/Coretomcat/webapps/EIG-1.1.02/WEB-INF/classes/configfiles', u'line': u'MasterGuruji= Krishna', u'patchType': u'PROP-NEWLINE', u'fileName': u'messages.properties'})
+2016-08-01 08:17:13,601 p=2578 u=root |  ok: [172.19.2.48] => (item={u'path': u'/root/Desktop/TestPatch/Coretomcat/webapps/EIG-1.1.02/WEB-INF/classes/configfiles/', u'patchType': u'FILE-SYNC', u'backupFilePath': u'/root/Desktop/TestPatch/Backup/EIG-1.1/WEB-INF/classes/configfiles/', u'fileName': u'messages.properties'})
+2016-08-01 08:17:13,607 p=2578 u=root |  TASK [patchRollback : Extracting the Extns of FileName Specified and Making list out of Extns] ***
+2016-08-01 08:17:13,664 p=2578 u=root |  ok: [172.19.2.48]
+2016-08-01 08:17:13,669 p=2578 u=root |  TASK [patchRollback : Validating given File Extension is Supported or Not] *****
+2016-08-01 08:17:13,765 p=2578 u=root |  TASK [patchRollback : debug] ***************************************************
+2016-08-01 08:17:13,818 p=2578 u=root |  ok: [172.19.2.48] => {
+    "msg": "All Filename with File Extension listed is supported."
+}
+2016-08-01 08:17:13,825 p=2578 u=root |  TASK [patchRollback : include] *************************************************
+2016-08-01 08:17:13,880 p=2578 u=root |  included: /root/Desktop/PretupsPatchInstaller/roles/patchRollback/tasks/rollbackWar.yml for 172.19.2.48
+2016-08-01 08:17:13,904 p=2578 u=root |  TASK [patchRollback : include] *************************************************
+2016-08-01 08:17:13,980 p=2578 u=root |  included: /root/Desktop/PretupsPatchInstaller/roles/validate/tasks/validatePathCheckWarRollback.yml for 172.19.2.48
+2016-08-01 08:17:13,999 p=2578 u=root |  TASK [patchRollback : Checking the Backup Original War instance  exists or not in the remote server.] ***
+2016-08-01 08:17:15,091 p=2578 u=root |  ok: [172.19.2.48] => (item={u'oldWarName': u'Connect-1.1.0.war', u'path': u'/root/Desktop/TestPatch/Coretomcat/webapps/', u'patchType': u'WAR', u'fileName': u'Connect-1.2.0.war'})
+2016-08-01 08:17:15,104 p=2578 u=root |  ok: [172.19.2.48] => (item={u'oldWarName': u'EIG-1.1.war', u'path': u'/root/Desktop/TestPatch/Coretomcat/webapps/', u'patchType': u'WAR', u'fileName': u'EIG-1.1.02.war'})
+2016-08-01 08:17:15,196 p=2578 u=root |  TASK [patchRollback : Validating the Backup War instance exists or not in the remote server.] ***
+2016-08-01 08:17:15,737 p=2578 u=root |  ok: [172.19.2.48] => (item={'invocation': {'module_name': u'stat', u'module_args': {u'checksum_algorithm': u'sha1', u'get_md5': True, u'follow': False, u'get_checksum': True, u'path': u'/root/Desktop/TestPatch/Backup/Connect-1.1.0'}}, 'item': {u'oldWarName': u'Connect-1.1.0.war', u'path': u'/root/Desktop/TestPatch/Coretomcat/webapps/', u'patchType': u'WAR', u'fileName': u'Connect-1.2.0.war'}, u'stat': {u'uid': 0, u'exists': True, u'woth': False, u'mtime': 1469712254.600944, u'inode': 802610, u'isgid': False, u'size': 4096, u'roth': True, u'isuid': False, u'isreg': False, u'pw_name': u'root', u'gid': 0, u'ischr': False, u'wusr': True, u'xoth': True, u'rusr': True, u'nlink': 4, u'issock': False, u'rgrp': True, u'gr_name': u'root', u'path': u'/root/Desktop/TestPatch/Backup/Connect-1.1.0', u'xusr': True, u'atime': 1470064142.1092126, u'isdir': True, u'ctime': 1469712254.600944, u'isblk': False, u'xgrp': True, u'dev': 2050, u'wgrp': False, u'isfifo': False, u'mode': u'0755', u'islnk': False}, u'changed': False, '_ansible_no_log': False})
+2016-08-01 08:17:15,750 p=2578 u=root |  ok: [172.19.2.48] => (item={'invocation': {'module_name': u'stat', u'module_args': {u'checksum_algorithm': u'sha1', u'get_md5': True, u'follow': False, u'get_checksum': True, u'path': u'/root/Desktop/TestPatch/Backup/EIG-1.1'}}, 'item': {u'oldWarName': u'EIG-1.1.war', u'path': u'/root/Desktop/TestPatch/Coretomcat/webapps/', u'patchType': u'WAR', u'fileName': u'EIG-1.1.02.war'}, u'stat': {u'uid': 0, u'exists': True, u'woth': False, u'mtime': 1469791728.7761805, u'inode': 671536, u'isgid': False, u'size': 4096, u'roth': True, u'isuid': False, u'isreg': False, u'pw_name': u'root', u'gid': 0, u'ischr': False, u'wusr': True, u'xoth': True, u'rusr': True, u'nlink': 4, u'issock': False, u'rgrp': True, u'gr_name': u'root', u'path': u'/root/Desktop/TestPatch/Backup/EIG-1.1', u'xusr': True, u'atime': 1470064143.8528972, u'isdir': True, u'ctime': 1469791728.7761805, u'isblk': False, u'xgrp': True, u'dev': 2050, u'wgrp': False, u'isfifo': False, u'mode': u'0755', u'islnk': False}, u'changed': False, '_ansible_no_log': False})
+2016-08-01 08:17:15,843 p=2578 u=root |  TASK [patchRollback : debug] ***************************************************
+2016-08-01 08:17:15,918 p=2578 u=root |  ok: [172.19.2.48] => {
+    "msg": "All the  Backup War instance exists - correct."
+}
+2016-08-01 08:17:15,924 p=2578 u=root |  TASK [patchRollback : Rolling back the patch for Patch Type 'WAR'] *************
+2016-08-01 08:17:16,847 p=2578 u=root |  changed: [172.19.2.48] => (item={u'oldWarName': u'Connect-1.1.0.war', u'path': u'/root/Desktop/TestPatch/Coretomcat/webapps/', u'patchType': u'WAR', u'fileName': u'Connect-1.2.0.war'})
+2016-08-01 08:17:16,852 p=2578 u=root |  changed: [172.19.2.48] => (item={u'oldWarName': u'EIG-1.1.war', u'path': u'/root/Desktop/TestPatch/Coretomcat/webapps/', u'patchType': u'WAR', u'fileName': u'EIG-1.1.02.war'})
+2016-08-01 08:17:16,894 p=2578 u=root |  TASK [patchRollback : Replacing the Backup Original WAR Instance, if Applicable] ***
+2016-08-01 08:17:20,019 p=2578 u=root |  changed: [172.19.2.48] => (item={u'oldWarName': u'Connect-1.1.0.war', u'path': u'/root/Desktop/TestPatch/Coretomcat/webapps/', u'patchType': u'WAR', u'fileName': u'Connect-1.2.0.war'})
+2016-08-01 08:17:20,024 p=2578 u=root |  changed: [172.19.2.48] => (item={u'oldWarName': u'EIG-1.1.war', u'path': u'/root/Desktop/TestPatch/Coretomcat/webapps/', u'patchType': u'WAR', u'fileName': u'EIG-1.1.02.war'})
+2016-08-01 08:17:20,065 p=2578 u=root |  TASK [patchRollback : include] *************************************************
+2016-08-01 08:17:20,095 p=2578 u=root |  TASK [patchRollback : debug] ***************************************************
+2016-08-01 08:17:20,147 p=2578 u=root |  ok: [172.19.2.48] => {
+    "msg": "Patch is Rolled Back Successfully."
+}
+2016-08-01 08:17:20,154 p=2578 u=root |  TASK [patchRollback : include] *************************************************
+2016-08-01 08:17:20,180 p=2578 u=root |  PLAY RECAP *********************************************************************
+2016-08-01 08:17:20,181 p=2578 u=root |  172.19.2.48                : ok=15   changed=3    unreachable=0    failed=0   

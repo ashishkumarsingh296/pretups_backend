@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE webaxn SYSTEM "i18n.dtd">
+<widget version="1.0">
+	<name>PreTUPS Accounts</name>
+	<description>PreTUPS Accounts</description>
+	<author>Comviva</author>
+	<license>Comviva Technologies</license>
+	<identifier>252267641</identifier>
+	<icon src="accounts.png"/>
+	<content src="accounts.html" />
+	<x-title background="#788593" color="white" fontstyle="bold" fontsize="14"/>
+	<x-scrollbar background="grey" color="#788593"/>
+	<x-softkeystyle background="#788593" color="white" fontstyle="bold" fontsize="14"/>
+	<x-menustyle background="white" color="black" onfocuscolor="white"/>	
+	<x-selection onfocusbackground="#778899"/>
+	<x-userdata-access perm="3">214807648</x-userdata-access>
+	<x-userdata-access perm="3">264711061</x-userdata-access>
+	
+	<x-menugroup id="accountPage"> 
+		 <x-menu caption="&pre.rsk.back;" x-softkey="right"  href="wgt:264711061/1.0"  />
+	</x-menugroup>
+	
+</widget>
+

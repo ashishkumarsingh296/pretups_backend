@@ -1,0 +1,30 @@
+#######################New messages entries for PreTUPS5.6.1##########################################################
+
+#Messages for multiple dedicated account recharge by VINAY on 07-OCT-2011
+11001=mclass^2&pid^61:11001:Dear Customer, transactions to {0} dial(s) out of {1} has been done successfully.
+11002=mclass^2&pid^61:11002:Dear Customer, failed transaction dial(s) are {0}.
+11003=mclass^2&pid^61:11003:Transaction {0}: Dear plus customer you have received {1} Minutes.
+11004=mclass^2&pid^61:11004:Transaction {0}: Dear plus customer you have received {1} L.E.
+##Channel User Suspend/Resume service through USSD
+1001104=mclass^2&pid^61:6677:User {1} is suspended succesfully by {0}
+1001103=mclass^2&pid^61:6677:User {1} is suspended successfully.
+1001102=mclass^2&pid^61:6677:User {1} is resumed succesfully by {0}
+1001101=mclass^2&pid^61:6677:User {1} is resumed successfully.
+
+
+
+######################New Message entries for PreTUPS5.6.1 ends here##################################################
+
+###########For sending the second encrypted message during privater recharge request###########
+67052=mclass^2&pid^61:67052:Serial Number for voucher of  MRP {1} is {4}, PIN is {3} Expiry Date is {5} Trasaction ID is {0}
+lowalert.voucher.sheet.name=Low Voucher Alert
+lowalert.voucher.sheet.header.name=Details of Low voucher availability
+lowalert.voucher.sheet.header1.name=Vouchers available against following profiles are below the defined limit. Please take corrective action
+lowalert.voucher.sheet.sno.name=S.No.
+lowalert.voucher.sheet.denomination.name=Denomination
+lowalert.voucher.sheet.voucherprofile.name=Voucher Profile
+lowalert.voucher.sheet.numbervouvheravailable.name=No of Voucher Available
+lowalert.voucher.sheet.minimumvoucherreq.name=Minimum Vouchers req.
+
+
+

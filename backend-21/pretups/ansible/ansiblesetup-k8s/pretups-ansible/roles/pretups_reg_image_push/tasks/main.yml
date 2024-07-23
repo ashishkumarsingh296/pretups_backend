@@ -1,0 +1,44 @@
+---
+
+ - name: Create an pretups_image directory
+   file:
+     path: "/{{ REG_DIR }}/pretups_image"
+     state: directory
+     owner: "{{ PRIVATE_REG_USER_NAME }}"
+     group: "{{ PRIVATE_REG_GROUP_NAME }}"
+
+
+ - name: Copying private reg - DockerFile, apachae Tomcat and pretups.war to the destination
+   become: true
+   remote_user: "{{ PRIVATE_REG_USER_NAME }}"
+   ansible.builtin.copy:
+     src: private_reg/.
+     dest: "/{{ REG_DIR }}/pretups_image"
+     owner: "{{ PRIVATE_REG_USER_NAME }}"
+     group: "{{ PRIVATE_REG_GROUP_NAME }}"
+     mode: '0777'
+
+
+
+ - name: Build an Image
+   become: true
+   remote_user: "{{ PRIVATE_REG_USER_NAME }}"
+   command: chdir="/{{ REG_DIR }}/pretups_image"  docker build --build-arg MYJAVAOPTS="-server -Xms2048m -Xmx2048m -Xmn1024m -Dcom.sun.management.jmxremote.ssl=false -Dcom.sun.management.jmxremote.authenticate=false -XX:ParallelGCThreads=16 -XX:+PrintGCDetails -XX:+UseParallelOldGC -Xloggc:gc_ptups_txn.log -Djava.library.path=$CATALINA_HOME/lib -Dpretups.shutdown.port={{ PRETUPS_SHUTDOWN_PORT }} -Dpretups.startup.port={{ PRETUPS_CONTAINER_PORT }} -Dpretups.http.port={{ PRETUPS_CONTAINER_PORT }} -Dpretups.instance.type=WEB -Dpretups.instance.module=C2S" -t pretups:v1 -f DockerFile .
+
+
+ - name: Tag an Image
+   become: true
+   remote_user: "{{ PRIVATE_REG_USER_NAME }}"
+   command: docker image tag pretups:v1 localhost:5000/pretups:v1
+
+
+ - name: Push the Image changes
+   become: true
+   remote_user: "{{ PRIVATE_REG_USER_NAME }}"
+   command: docker image push localhost:5000/pretups:v1
+
+#docker run  -e ENV_DOCKER_REGISTRY_HOST=172.30.38.52 -e ENV_DOCKER_REGISTRY_PORT=5000 -p 8080:80 konradkleine/docker-registry-frontend
+
+
+
+

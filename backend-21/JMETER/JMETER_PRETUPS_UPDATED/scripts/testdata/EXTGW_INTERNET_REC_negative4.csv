@@ -1,0 +1,2 @@
+TestcaseId,TestcaseType,Module,Description
+TUNG12865 ,N,Internet Recharge,To check that an unsucessful recharge happens when extnetwork code is not enterd

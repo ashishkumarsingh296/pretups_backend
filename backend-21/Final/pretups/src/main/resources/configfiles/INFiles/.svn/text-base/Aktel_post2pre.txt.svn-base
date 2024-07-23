@@ -1,0 +1,454 @@
+##########################################################################################################
+#	
+#	If IN POST PAID interface IN file is added in PreTUPS from superadmin then.
+#	File with this content and name of the IN ID.txt should be created at the 
+#	path of the INFiles (defined in Constants.props).
+#
+#	Values of the variables in this file should be updated with the values provided by the 
+#	Mobile Operator IN team and IN id would be defined in the Constants.props under key DB_POOL_IN_IDS
+#
+############################################################################################################
+
+#######POOL Related parameters
+#Defines the Pool size
+MAX_POOL_SIZE=5
+
+##Defines the interval between the creation of two successive object creation.
+POOL_SLEEP=100
+
+#This defines the way of communication.VAL_REQ_TYPE=1 means online and VAL_REQ_TYPE=2 means QTable,VAL_REQ_TYPE=3 means FTP.
+VAL_REQ_TYPE=2
+
+#This factor would be used to conver the system amount to IN amount and INAmount to System amount(This would be integer).
+MULTIPLICATION_FACTOR=1
+
+##Prefix to be removed from the mobile number, leave blank if nothing is to be removed
+MSISDN_REMOVE_PREFIX=
+
+##Prefix to be added to the mobile number as prefix, leave blank if nothing is to be added as prefix
+MSISDN_ADD_PREFIX=
+
+#This flag is used to round the request amount.
+ROUND_FLAG=Y
+
+#It would be used to define the format(sequence of record)of PIH file.It would contains the key present in the request map.
+PIH_FILE_FORMAT=$RECTYPE;ACCOUNT_ID;MSISDN;transfer_amount;PAYMENT_DATE;$DOCUMENT_REF;TRANSACTION_ID;PAYMENT_REF2;$PAYMENT_REF3;$PAYMENT_REF4;$PAYMENT_REF5;$CURRENCY;$COMMENT
+
+
+#Defines the Currency that would be used for the interface.
+CURRENCY=INR
+
+#Mapping of IN language with system language (IN Langauge1:PreTUPS Langauge1,IN Langauge2:PreTUPS 
+LANGUAGE_MAPPING=0:1,1:0
+
+##### Value of Default parameters for the PIH file.
+$RECTYPE=CE2IN-X1
+$PAYMENT_REF3=P
+$PAYMENT_REF4=
+$PAYMENT_REF5=
+$CURRENCY=BDT
+$DOCUMENT_REF=
+$COMMENT=BILLPMT
+##### 
+
+##This defines the sleep time before creation of new connection if older is invalidated(Socket exception).
+SLEEP_FTP_SOCK_EXP=180000
+
+##This defines the sleep time before creation of new connection if older is invalidated(FTP Exception).
+SLEEP_FTP_EXP=10000
+
+
+################################################## DB Related parameters
+
+#Contains the Name with full path of DBUtility class that would handle calling of stored procedure Billing System.
+DBUTILITY_HANDLER_CLASS=com.btsl.pretups.inter.postonline.DBUtility
+
+#Defines the Connection url of DB system.
+DB_CONN_URL=jdbc:oracle:thin:@172.16.1.109:1521:PRTP
+
+#Defines the user name of Database.
+DB_USERNAME=pretups5003
+
+#Defines the Password of Database.
+DB_PASS=pretups5003
+#Defines the minimum size of db connection pool.
+DB_MINPOOLSIZE=2
+
+#Defines the maximum size of db connection pool.
+DB_MAXPOOLSIZE=5
+
+#This is optional parameter
+DB_POOL_LOG_FILE=
+
+################################# FTP Related parameters.
+#Defines the IP for remote machine.
+FTP_IP=172.16.1.109
+
+#Defines the FTP port for remote machine.
+FTP_PORT=22
+
+#Defines the FTP time out for remote machine.
+FTP_TIME_OUT=300000
+
+#FTP User name for authentication
+FTP_USER_NAME=oracle
+
+#FTP User password for authentication
+FTP_PASSWD=oracle123
+
+#Defines the maximum size of FTPClient pool.
+MAX_POOL_SIZE=2
+
+#Defines the wait time between creation of two successive FTPClient for a pool.
+POOL_SLEEP=2
+
+
+#C2S module request would wait upto the number of times,if there is no client object is free to process the request.
+C2S_RETRY_ATTEMPT=2
+
+#P2P module request would wait upto the number of times,if there is no client object is free to process the request.
+P2P_RETRY_ATTEMPT=3
+
+
+#If there is no client object in the freeList then,request would sleep for the given time, it would be comman for C2S &P2P.
+SLEEP_TIME=1000
+
+#This is used to define the Client class path, it should be full qualified path of the Client Class
+CLIENT_HANDLER_CLASS=com.btsl.pretups.inter.postonline.FtpClient
+
+
+#While uploading the file to the FTP server if any error occurs, copy of that file would be stored into this location.
+FAILED_TXN_FILE_LOC=/home/pretups_aktel/tomcat5/logs/FAILED_TXN
+
+#Defines the local file location where each file would be stored locally before sending to the remote directory.
+LOCAL_FILE=/home/pretups_aktel/tomcat5/logs/LOCAL_LOC
+
+#Defines the Destination location where each file would be sent to the remote directory.
+DEST_FILE=testdir
+
+#Defines the record seprator of PIH file.
+RECORD_SEP=;
+
+#Contains the PREFIX of File Name.
+PREFIX_FILE=EVD
+
+#Represent the extention of file(includes the dot '.'also).
+SUFFIX_FILE=.tx
+
+#If Interface would take more time than this time for response,an alarm would be raised.
+WARN_TIMEOUT=3000
+##Defines the date transaction date format for the PIH file.
+TXN_DATE_FORMAT=dd.MM.yyyy
+
+
+##File permission of FTP'd Aktel PIH CDR files (on remote ftp server)
+FTP_PIH_FILE_PERMISSION=555
+
+------------------------------------------------------------------------------------------------
+Added by Gurjeet on 26/04/07
+##
+RC_VAL_REQ_TYPE=1
+##
+RC_CR_REQ_TYPE=2
+##
+RC_CRADJ_REQ_TYPE=2
+##
+RC_DR_REQ_TYPE=2
+
+##
+PRC_VAL_REQ_TYPE=1
+##
+PRC_CR_REQ_TYPE=3
+##
+PRC_CRADJ_REQ_TYPE=2
+##
+PRC_DR_REQ_TYPE=3
+
+
+##
+PPB_VAL_REQ_TYPE=1
+##
+PPB_CR_REQ_TYPE=3
+##
+PPB_CRADJ_REQ_TYPE=2
+##
+PPB_DR_REQ_TYPE=3
+
+
+##Defines that the validation of subscriber(senders) is required for PRC
+PRC_S=N
+
+##Defines that the validation of subscriber(Receiver) is required for PRC
+PRC_R=N
+
+##Defines that the validation of subscriber(Receiver) is required for RC
+RC_R=N
+
+##Defines that the validation of subscriber(senders) is required for ACCINFO
+ACCINFO_S=Y
+
+##Defines that the validation of subscriber(senders) is required for PREG
+PREG_S=Y
+
+##Defines that the validation of subscriber(Receiver) is required for EVD
+EVD_R=N
+
+##Defines that the validation of subscriber(Receiver) is required for EVR
+EVR_R=N
+
+------------------------------------------------------------------------------------------------
+
+
+###################################################Queue Table and White list entries.
+
+## SIZE_CHECK_REQUIRED represents that the size check on records of POSTPIAD_CUST_PAY_MASTER on the diffrent services.
+## The services on which this check is applicable will be defined in the PreTUPS System. 
+## The name of service which is mentioned here only on those services this check will be applicable. 
+## To represent more than one service value will be seperated by comma. for e.g. BILLPMT,PRE-POST.
+SIZE_CHECK_REQUIRED=BILLPMT,PRE-POST
+
+## <SERVICE_TYPE>_SERVICE_TYPE. It represents the service types allowed for the defined service type. 
+## if there is more than one allowed service types, then allowed service types will be defined as comma seperated, 
+## for e.g. BILLPMT,PRE-POST.
+## The syntax of entry will be as mentione below
+## <SERVICE_TYPE>_SERVICE_TYPE. <SERVICE_TYPE> it will be replaced by service type name. 
+##  service type name will be Service types defined in the system.
+## if it requires to define more service types for which different services are allowed, then there will be more entry of such type. 
+## for e.g. 
+## 1.) BILLPMT_SERVICE_TYPE=BILLPMT ----- for Bill payment service
+## 2.) PRE-POST_SERVICE_TYPE=BILLPMT,PRE-POST ----- for Prepaid to Postpaid service
+## apart from above mentioned value the value of service type can be blank or ALL.
+BILLPMT_SERVICE_TYPE=BILLPMT
+
+## <SERVICE_TYPE>_ALLOWED_QUEUE_SIZE. It represents the queue size for defined service type.
+## if more than one service type is defined as comma separated then it will be applicale for the both service type 
+## The syntax of entry will be as mentione below
+## <SERVICE_TYPE>_ALLOWED_QUEUE_SIZE. <SERVICE_TYPE> it will be replaced by service type name. 
+##  service type name will be Service types defined in the system.
+## if it require to define queue size for more service type, then there will be more entry of such type. 
+## for e.g. 
+## 1.) BILLPMT_ALLOWED_QUEUE_SIZE=6 ----- for Bill payment service
+## 2.) PRE-POST_ALLOWED_QUEUE_SIZE=6 ----- for Prepaid to Postpaid service
+BILLPMT_ALLOWED_QUEUE_SIZE=6
+
+## Default queue size, if no size is defined for any service.
+ALLOWED_QUEUE_SIZE=7
+
+#Whether Post Balance needs to be given in response or not (Y/N)
+POST_BALANCE_ENQ_SUCCESS=N
+
+####################################################################################################################
+#	
+#
+#	wHITE LIST ENTRIES
+#	These Entries are added in  POST PAID interface	to support the 
+#	White list management.
+#
+####################################################################################################################
+
+## Parser class is defined to parse the white list data,This parser class may be different for the different type of ## whitelist files, class name is defined with fully qualified path.
+PARSER_CLASS_PATH_NAME=com.btsl.pretups.whitelist.businesslogic.DefaultParser
+
+## Movement code is associate with each record in white list, we define MCODE_INSERT for CR
+MCODE_INSERT=CR
+
+## Movement code is associate with each record in white list, we define MCODE_DLETE for SUP
+MCODE_DELETE=SUP
+
+## Movement code is associate with each record in white list, we define MCODE_UPDATE for UP
+MCODE_UPDATE=UP
+
+## Required length of IMSI for validation, provided by the operator. imsi of each record is validated against this length. 
+IMSI_LENGTH=10
+
+## Records in the file will be separated by this delimiter, provided by the operator
+DELIMITER=;
+
+## Amount of each record is multiplied by this multiplication factor, provided by the operator
+MUL_FACTOR=10
+
+## The number of column will be present in the white list file, provided by the operator
+COLUMN_NUMBERS=7
+
+## Format of each record of white list file. Sequence of columns in white list file will be same as defined by this format.
+FORMAT=MSISDN,ACCOUNT_STATUS,CREDIT_LIMIT,IMSI,ACCOUNT_ID,SERVICE_CLASS,MOVEMENT_CODE
+
+
+###########################################################################################################################
+##				Entries for CDR generation Process			 
+##											 
+###########################################################################################################################
+
+## INTERFACE_CLASS represent Fully qualified name of CDR Record generation class. This Class will 
+# be different for the different postapaid interfaces.
+INTERFACE_CLASS=com.btsl.pretups.inter.post.cdr.AktelCDRRecordGeneration
+
+## RECORD_SIZE represent the size of single record in the CDR file. it is in bytes i.e. number of characters in a record. 
+RECORD_SIZE=256
+
+## SERVICE_TYPE represent, that this Process is applicable for which services. Services are defined in PreTUPS system. 
+## if there is more than one srvice then value will be comma seperated. for e.g. 
+## if there are two service like BILLPMT and PRE_POST, then expected value will be BILLPMT,PRE_POST.
+SERVICE_TYPE=PRE-POST
+
+## TIME_CONSTRAINT fields represent, that whether the time slot of process can be initialize to 00:00 hrs or not.
+## The expected value for this is 'Y' or 'N'. If it is N then the process will not initialize at 00:00 hrs. 
+## If it is Y then the process will be initialize at 00:00 hrs. deafult value of this will be Y
+## for e.g. The file interval is 4 hrs. While CDR file processing, the time slot generated are,   
+## 1.) 17/05/06 7:00 P.M to 17/05/06 11:00 P.M
+## 2.) 17/05/06 11:01 P.M to 18/05/06 00:00 A.M --------- initialized at 00:00 hrs
+## 3.) 18/05/06 00:01 A.M to 18/05/06 04:00 A.M
+## as above mentioned time slot, the time slot is initialized at 00:00 hrs. only if TIME_CONSTRTAINT is Y. 
+## other wise the slot will be like as mentoined below
+## 1.) 17/05/06 7:00 P.M to 17/05/06 11:00 P.M
+## 2.) 17/05/06 11:01 P.M to 18/05/06 03:00 A.M --------- not initialized at 00:00 hrs
+## 3.) 18/05/06 03:01 A.M to 18/05/06 04:00 A.M
+TIME_CONSTRAINT=Y
+
+## FILE_INTERVAL represent the duration of file generation while processing CDR Records.
+## possible value of FILE_INTERVAL will be only one among 1,2,3,4,6,8,12,24 and so on..(value in hours)
+FILE_INTERVAL=3
+
+## FILE_SIZE_RECORD represent that whether the file size will depend upon no of records in the file or size of file in bytes 
+## possible value can be are 'Y' and 'N'.
+## If value is Y: the size of file will depend upon number of records. 
+## If it is N then size will depend upon size of file like MB.
+FILE_SIZE_RECORD=Y
+
+## FILE_SIZE represent the isze of file. if FILE_SIZE_RECORD is Y then it is number of record. 
+## If FILE_SIZE_RECORD is N the it is number of bytes in file. the size is in MB.
+FILE_SIZE=100
+
+## Initial name of file which will be generated by process.
+INITIAL_FILE_NAME=POST2PRE_
+
+## Extension of generated file.
+FILE_EXTENTION=txt
+
+## Path where file will be generated
+FILE_PATH=/home/pretups_aktel/tomcat5/CDRFILE/
+
+##Comment to be written as last record in CDR
+COMMENTS=POST2PRE
+
+##Date format in cdr file name
+DATE_FORMAT_FILE_NAME=yyMMddHHmm
+
+##DATE-TIME in cdr record 
+CDR_REC_DATE_FRMT=dd.MM.yyyy.HH.mm.ss
+
+##CDR number in file
+SEQUENCE_NUMBER=1
+
+##delimeter USED IN cdr
+REC_DELIMETER=;
+
+##After CDR File generaion, file hould be FTP'd or not
+FILE_POST2PRE_FTP_REQUIRED=Y
+
+##Retry attempts when FTP connect fails
+FTP_CONNECT_POST2PRE_RETRY_ATTEMPT=2
+
+##Retry attempts when FTP transfer fails
+FTP_TRANSFER_POST2PRE_RETRY_ATTEMPT=2
+
+##sleep time between connect retries
+FTP_CONNECT_POST2PRE_RETRY_SLEEP_TIME=200
+
+##sleep time between transfer retries
+FTP_TRANSFER_POST2PRE_RETRY_SLEEP_TIME=200
+
+
+##Source location of files to be FTP'd
+FTP_POST2PRE_SRC_DIR=/home/pretups_aktel/tomcat5/CDRFILE/
+
+##location of files at Remote server after ftp 
+FTP_POST2PRE_DEST_DIR=/home/pretups_aktel/tomcat5/logs/CDRFILE/
+
+##After successful FTP, files should be moved to following directory
+LOCAL_POST2PRE_SUCCESS_DIR=/home/pretups_aktel/tomcat5/success/CDRFILE/
+
+##After failed FTP, files should be moved to following directory
+LOCAL_POST2PRE_FAILED_DIR=/home/pretups_aktel/tomcat5/fail/CDRFILE/
+
+
+#Defines the IP for remote machine.
+FTP_POST2PRE_IP=172.16.1.121
+
+#Defines the FTP port for remote machine.
+FTP_POST2PRE_PORT=22
+
+#Defines the FTP time out for remote machine.
+FTP_POST2PRE_TIME_OUT=300000
+
+#FTP User name for authentication
+FTP_POST2PRE_USER_NAME=pretups_aktel
+
+#FTP User password for authentication
+FTP_POST2PRE_PASSWD=pretups_aktel
+
+##File permission of FTP'd Aktel POST2PRE CDR files (on remote ftp server)
+FTP_POST2PRE_FILE_PERMISSION=555
+
+#This parameter defines the time when pool was reinitialized because of the
+NULL value of PoolContainer.
+POOL_INIT_TIME=300
+
+
+#Indicates whether Cancel request supported by IN or not.(Possible values are Y/N)
+CANCEL_TXN_ALLOWED=N
+
+##If any ambiguous response is received from IN, pick mapped error code (206/250) against received response code FROM IN and pass it (250/206) to Controller.
+##SYSTEM_STATUS_MAPPING=INErrCode1,INErrCode2,INErrCode3,INErrCode4:system_err_code1|INErrCode5,INErrCode6:system_err_code2
+##system_err_code1 and system_err_code2 will be sent to system and written in recon log file.
+SYSTEM_STATUS_MAPPING=250:250
+
+##If any ambiguous response is received from IN, check if cancel txn allowed or not in the system. if not, pick mapped error code against NA otherwise pick mapped error code (206/250) against received response code of Cancellation from IN. 
+##CANCEL_COMMAND_STATUS_MAPPING=INErrCode1,INErrCode2,INErrCode3,INErrCode4:cancel_err_code1|INErrCode5,INErrCode6:cancel_err_code2
+##cancel_err_code1, cancel_err_code2 will be written in recon log file.
+CANCEL_COMMAND_STATUS_MAPPING=NA:450
+
+#Defines the cancel command status when cancel not supported by IN. 
+CANCEL_NA=NA
+
+
+#maximum number of ambiguous transactions allowed till threshold time.
+NO_ALLWD_AMB_TXN=5
+
+##time duration in which maximum number of ambiguous transactions is defined
+THRESHOLD_TIME=240000
+
+##Time duration after which interface suspension expires.
+EXPIRY_TIME=60000
+
+##Auto Resumption supported by IN or not.
+AUTO_RESUME_SUPPORT=Y
+
+##Number of retry attempts while validation (Currently Retry is not supported by PostpaidINHandler)
+VAL_RETRY_CNT=0
+
+##Number of retry attempts while recharge request (Currently Retry is not supported by PostpaidINHandler)
+CREDIT_RETRY_CNT=0
+
+##Number of retry attempts while sending Adjustment request (Currently Retry is not supported by PostpaidINHandler)
+ADJ_RETRY_CNT=0
+
+##Number of retry attempts while sending Cancel request (Currently Cancel Request is not supported by PostpaidINHandler)
+CNCL_RETRY_CNT=0
+
+##Sleep time between two retries (Currently Retry is not supported by PostpaidINHandler)
+RETRY_SLEEP_TIME=0
+
+##Error Codes when retry has to be made  (Currently Retry is not supported by PostpaidINHandler)
+RETRY_CASES=
+
+##Remark1 in Reconcialiationlog
+REMARK1=
+
+##Remark1 in Reconcialiationlog
+REMARK2=
+
+
+
+
+

@@ -1,0 +1,2 @@
+TestcaseId,TestcaseType,Module,Description
+,Negative,Electronic Voucher Recharge through USSD,To verfiy that EVR request is not  successful if PIN is not present and all other details of channel user are present.

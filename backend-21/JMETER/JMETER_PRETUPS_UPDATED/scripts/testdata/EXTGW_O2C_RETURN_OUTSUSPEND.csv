@@ -1,0 +1,2 @@
+TestcaseId,TestcaseType,Module,Description
+,Negative,O2C RETURN through EXTGW,To check  that  O2C RETURN is not successful when Channel user is OUTSUSPENDED

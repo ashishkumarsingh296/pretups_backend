@@ -1,0 +1,48 @@
+initial_Data_File_size: 100M
+PRTP_DATA_TS_NAME: PRTP_DATA_1
+PRTP_DATA_TS_FILE: /srv/oradata/oradata2/datafiles/1_PRTP_DATA0112_TEST_1.dbf
+
+P_C2SINDX_TS_NAME: P_C2SINDX
+P_C2SINDX_TS_FILE: /srv/oradata/index/datafiles/1_P_C2SINDX0112_TEST.dbf
+
+P_C2SDATA_TS_NAME: P_C2SDATA
+P_C2SDATA_TS_FILE: /srv/oradata/oradata3/datafiles/1_P_C2SDATA0112_TEST.dbf
+
+MISP_DATA_TS_NAME: MISP_DATA
+MISP_DATA_TS_FILE: /srv/oradata/oradata3/datafiles/1_MISP_DATA0112_TEST.dbf
+
+PRTPUSERS_TS_NAME: PRTPUSERS
+PRTPUSERS_TS_FILE: /srv/oradata/oradata4/datafiles/1_PRTPUSERS0112_TEST.dbf 
+
+P_C2SINDX1_TS_NAME: P_C2SINDX1
+P_C2SINDX1_TS_FILE: /srv/oradata/index/datafiles/1_P_C2SINDX10112_TEST.dbf
+
+PRTPUSERBAL_HIST_TS_NAME: PRTPUSERBAL_HIST
+PRTPUSERBAL_HIST_TS_FILE: /srv/oradata/oradata4/datafiles/1_PRTPUSERBAL_HIST0112_TEST.dbf
+
+PRTPINDX_1_TS_NAME: PRTPINDX_1
+PRTPINDX_1_TS_FILE: /srv/oradata/index/datafiles/1_PRTPINDX_10112_TEST.dbf
+
+P_C2SDATA1_TS_NAME: P_C2SDATA1
+P_C2SDATA1_TS_FILE: /srv/oradata/oradata4/datafiles/1_P_C2SDATA10112_TEST.dbf
+
+P2P_INDX_TS_NAME: P2P_INDX
+P2P_INDX_TS_FILE: /srv/oradata/index/datafiles/1_P2P_INDX0112_TEST.dbf
+
+PRTPMIS_TS_NAME: PRTPMIS
+PRTPMIS_TS_FILE: /srv/oradata/oradata4/datafiles/1_PRTPMIS0112_TEST.dbf
+
+P2P_DATA_TS_NAME: P2P_DATA
+P2P_DATA_TS_FILE: /srv/oradata/oradata3/datafiles/1_P2P_DATA0112_TEST.dbf
+
+IN_INDX_TS_NAME: IN_INDX
+IN_INDX_TS_FILE: /srv/oradata/index/datafiles/1_IN_INDX0112_TEST.dbf
+
+PRTPDATA_TS_NAME: PRTPDATA
+PRTPDATA_TS_FILE: /srv/oradata/oradata3/datafiles/1_PRTPDATA0112_TEST.dbf
+
+PRTP_INDX_TS_NAME: PRTP_INDX
+PRTP_INDX_TS_FILE: /srv/oradata/index/datafiles/1_PRTP_INDX0112_TEST.dbf
+
+IN_DATA_TS_NAME: IN_DATA
+IN_DATA_TS_FILE: /srv/oradata/oradata3/datafiles/1_in_data0112_TEST.dbf

@@ -1,0 +1,14 @@
+ - name: "DB: send the template for the DB configuration" 
+   template: src=customize.sql  dest=~/ owner={{ db_user }} group={{ db_group }}  mode=0755
+ 
+ - name: "DB: insert Load table entry"
+   shell: sqlplus / as sysdba << EOT @customize.sql exit; EOT chdir=~/
+   ignore_errors: yes
+   register: customize
+   failed_when: '"ERROR" in customize.stdout'
+   tags:
+    - customize_tags
+
+ - name: "DB: deleting the customization file"
+   shell: rm -rf customize.sql  chdir=~/
+

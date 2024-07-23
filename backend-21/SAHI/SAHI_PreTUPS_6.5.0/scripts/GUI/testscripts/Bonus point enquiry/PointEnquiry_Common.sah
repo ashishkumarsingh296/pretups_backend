@@ -1,0 +1,133 @@
+// This scripts contains all the common methods for bonus point enquiry.
+
+_includeOnce("../../../../utility/ImportPackage.sah");
+
+var $l_naCsv = _readCSVFile("../../../GUI/testdata/NA_Login.csv");
+
+	//akanksha
+	var $msisdn;
+	var $geography;
+	var $domain;
+	var $category;
+	var $user;
+	var $assertion;
+	
+	
+	var $l_modifyBonusbundleName;
+	
+	var $a_Prefix;
+	
+	
+	function commonVaribleToEnquireBonusPoint($g_row, $g_col) {
+		
+		$msisdn = $g_bonusPointEnquiryDetails[$g_row][$g_col++];
+		$geography = $g_bonusPointEnquiryDetails[$g_row][$g_col++];
+		$domain = $g_bonusPointEnquiryDetails[$g_row][$g_col++];
+		$category = $g_bonusPointEnquiryDetails[$g_row][$g_col++];
+		$user = $g_bonusPointEnquiryDetails[$g_row][$g_col++];
+		$assertion = $g_bonusPointEnquiryDetails[$g_row][$g_col++];
+		
+	}
+	
+	
+	
+	function commonMethodForBonusPointEnquiry() {
+		_click(_link("Channel enquiry"));
+		_click(_link("Bonus Point Enquiry"));
+		_assertExists(_heading4("Bonus Point Enquiry"));
+	}
+	
+	
+	function viewSubmitButton() {
+		commonMethodForBonusPointEnquiry();
+		_assertExists(_submit("Submit"));
+		_assertExists(_label("Geography :"));
+		_assertExists(_label("MSISDN:"));
+
+	}
+
+	function negativecommonmethod(){
+		commonMethodForBonusPointEnquiry();
+		_assertExists(_label("MSISDN:"));
+		_setValue(_textbox("msisdn"), $msisdn);
+		_click(_submit("Submit"));
+		_assertExists(_span("/" +$assertion + ".*/"));
+	}
+	
+	
+	function successmsisdetails9(){
+		commonMethodForBonusPointEnquiry();
+		_assertExists(_label("MSISDN:"));
+		_setValue(_textbox("msisdn"), $msisdn);
+		_click(_submit("Submit"));
+		_assertExists(_submit("Back"));
+		_assertExists(_label("Domain :"));
+		_assertExists(_label("Profile Type :"));
+		_assertExists(_label("Accumulated Points :"));
+	}
+	
+	function successpopcat10(){
+		commonMethodForBonusPointEnquiry();
+		_assertExists(_label("Geography :"));
+		_setSelected(_select("domain"), $domain);
+		_assertEqual("/" +$assertion + ".*/", _getSelectedText(_select("category")));
+	}
+	
+	function successpopuser12(){
+		commonMethodForBonusPointEnquiry();
+	_setSelected(_select("geography"), $geography);
+	_setSelected(_select("domain"), "--- Select ---");
+	_setSelected(_select("domain"), $domain);
+	//_assertEqual($category, _getSelectedText(_select("category")));
+	_setSelected(_select("category"), $category);
+	_click(_submit("Submit"));
+	_assertExists(_label("Network :"));
+	_assertExists(_label("User :"));
+	_assertExists(_submit("Submit"))
+
+	}
+	
+	function validationeroronnouserexists13(){
+		commonMethodForBonusPointEnquiry();
+	_setSelected(_select("geography"), $geography);
+	_setSelected(_select("domain"), "--- Select ---");
+	_setSelected(_select("domain"), $domain);
+	_setSelected(_select("category"), $category);
+	_click(_submit("Submit"));
+	_assertExists(_span("/" +$assertion + ".*/"));
+
+	}
+	
+	
+	function allorselecteduserssuccess16(){
+		successpopuser12();
+		//_click(_submit("Submit"));
+		_setSelected(_select("userID"),$user);
+		_click(_submit("Submit"));
+		_assertExists(_cell("Domain :"));
+		_assertExists(_label("MSISDN :"));
+		_assertExists(_label("MSISDN :", _near(_label("Accumulated Points :"))));
+		_assertExists(_label("Profile Type :", _near(_label("Accumulated Points :"))));
+		_click(_submit("Back"));
+
+	}
+	
+	
+	function userhasnopoints18(){
+		commonMethodForBonusPointEnquiry();
+		successpopuser12();
+		_setSelected(_select("userID"),$user);
+		_click(_submit("Submit"));
+		_assertExists(_span("/" +$assertion + ".*/"));
+
+	}
+	
+	
+	function nofieldsselected22(){
+		commonMethodForBonusPointEnquiry();
+		_setSelected(_select("domain"), "--- Select ---");
+		_setSelected(_select("geography"), "--- Select ---");
+		_click(_submit("Submit"));
+		_assertExists(_span("/" +$assertion + ".*/"));
+		}
+	

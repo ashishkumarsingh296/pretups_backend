@@ -1,0 +1,180 @@
+
+
+
+_includeOnce("../../../../utility/ImportPackage.sah");
+
+
+var $g_itemName;
+var $g_itemCode;
+var $g_currentStock;
+var $g_loyalityPoints;
+var $g_assertion;
+
+var $a_Prefix;
+
+
+function varriableToAddLoyalityItem($g_row, $g_col) {
+	$g_itemName = $g_loyalityItemDetails[$g_row][$g_col++];
+	$g_itemCode = $g_loyalityItemDetails[$g_row][$g_col++];
+	$g_currentStock = $g_loyalityItemDetails[$g_row][$g_col++];
+	$g_loyalityPoints = $g_loyalityItemDetails[$g_row][$g_col++];
+	$g_assertion = $g_loyalityItemDetails[$g_row][$g_col++];
+}
+
+
+
+function addLoyalityItem() {
+	
+	$g_itemName = varriableLoylityitem();
+	$g_itemCode = varriableLoylityCode($g_autoPrefix);
+	
+	
+	addLoyalityItemOne();
+	_click(_submit("Confirm"));
+	_assertExists(_listItem("/" + $g_assertion + ".*/"));
+
+	
+	if(_exists(_listItem("/"+$g_assertion+".*/"))){
+		
+		var $l_naCsv = _readCSVFile("../../../GUI/testdata/NA_Login.csv");
+		$l_naCsv[21][1] = $g_itemName;
+		$l_naCsv[21][2] = $g_itemCode;
+		_writeCSVFile($l_naCsv, "../../../GUI/testdata/NA_Login.csv", 1); // Writes the newly created Channel User in a csv file.
+		_log("Loyality Items is added successfully");
+	} else
+		{
+		_log("Loyality Items is not added");
+		}
+	
+}
+
+
+function addLoyalityItemOne() {
+	_click(_link("Loyalty Administration"));
+	_click(_link("ADD Items"));
+	_assertExists(_div("ADD ITEMS"));
+	_setValue(_textbox("itemName"), $g_itemName);
+	_setValue(_textbox("itemCode"),$g_itemCode );
+	_setValue(_textbox("itemQuantityAsString"), $g_currentStock);
+	_setValue(_textbox("itemPointsAsString"),$g_loyalityPoints );
+	_click(_submit("Save"));
+}
+
+
+function viewLoyalityItem() {
+	
+	var $l_naCsv = _readCSVFile("../../../GUI/testdata/NA_Login.csv");
+	$g_itemName = $l_naCsv[21][1];
+	$g_itemCode = $l_naCsv[21][2];
+	
+	_log("shashi " + $g_itemName );
+	
+	_click(_link("Loyalty Administration"));
+	_click(_link("View Items"));
+	_assertExists(_div("View Items"));
+	_wait(1000);
+	_assertExists(_cell($g_itemName, _near(_cell($g_itemCode))));
+}
+
+
+
+
+function modifyLoyalityItem() {
+
+	var $l_naCsv = _readCSVFile("../../../GUI/testdata/NA_Login.csv");
+	$g_itemName = $l_naCsv[21][1];
+	
+	_click(_link("Loyalty Administration"));
+	_click(_link("Modify/Delete Items"));
+	_click(_radio("selectedPromotion", _near(_cell($g_itemName))));
+	_click(_submit("Modify"));
+	_setValue(_textbox("itemQuantityAsString"), $g_currentStock);
+	_click(_submit("Submit"));
+	_click(_submit("Confirm"));
+	_assertExists(_listItem("/" + $g_assertion + ".*/"));
+
+}
+
+
+
+function resetCheckLoyalityItem(){
+	
+	_click(_link("Loyalty Administration"));
+	_click(_link("ADD Items"));
+	_assertExists(_div("ADD ITEMS"));
+	_setValue(_textbox("itemName"), $g_itemName);
+	_setValue(_textbox("itemCode"),$g_itemCode );
+	_setValue(_textbox("itemQuantityAsString"), $g_currentStock);
+	_setValue(_textbox("itemPointsAsString"),$g_loyalityPoints );
+	
+	
+	_click(_reset("Reset"));
+	if(_getValue(_textbox("itemName")) == ""){
+		_log("test case is successful");
+	}
+	
+	
+}
+
+
+
+
+function modifyLoyalityItemWithoutDetails() {
+	
+	var $l_naCsv = _readCSVFile("../../../GUI/testdata/NA_Login.csv");
+	$g_itemName = $l_naCsv[21][1];
+	
+	_click(_link("Loyalty Administration"));
+	_click(_link("Modify/Delete Items"));
+	_click(_radio("selectedPromotion", _near(_cell($g_itemName))));
+	_click(_submit("Modify"));
+	_setValue(_textbox("itemName"), $g_itemName);
+	_setValue(_textbox("itemQuantityAsString"), $g_currentStock);
+	_setValue(_textbox("itemPointsAsString"),$g_loyalityPoints );
+	_click(_submit("Submit"));
+	_assertExists(_listItem("/" + $g_assertion + ".*/"));
+	
+}
+
+
+function addLoyalityItemWithoutDetails() {
+	addLoyalityItemOne();
+	_assertExists(_listItem("/" + $g_assertion + ".*/"));
+}
+
+
+
+
+function varriableLoylityitem(){
+	 
+	var $l_time = new Date();
+	var $keyword = "LMS"+ $l_time.getHours()+$l_time.getMinutes(); //AUTONAcurrentTime
+	 return $keyword;
+ }
+
+
+
+function varriableLoylityCode($a_Prefix){
+	 $l_time = currentTime(); // fetch current time(CurretnTime)
+	 $l_networkName = $a_Prefix + "IN" + $l_time; //AUTONAcurrentTime
+	 return $l_networkName;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

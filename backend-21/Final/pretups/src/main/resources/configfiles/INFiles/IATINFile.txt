@@ -1,0 +1,46 @@
+##########################################################################################################
+#	
+#	If IN interface of IAT Interface file is added in PreTUPS from superadmin then.
+#	File with this content and name of the IN ID.txt should be created at the 
+#	path of the INFiles (defined in Constants.props).
+#
+#	Values of the variables in this file should be updated with the values provided by the 
+#	IAT HUB Team
+#
+############################################################################################################
+
+
+IP_LOCAL_HOSTNAME=http://172.16.1.121:9084/axis2/services/IATHUB_pretupsService
+
+IS_HTTPS_ENABLE=N
+
+SERVICE_TYPE_MAPPING=1:RoamingRecharge,2:International recharge
+
+RECHARGE_TYPE_MAPPING=1:R2P,2:P2P
+
+FAILED_AT_LOCATION_MAPPING=
+
+WARN_TIMEOUT=1000
+
+MULTIPLICATION_FACTOR=100
+
+CHECK_STATUS_RETRY_COUNT=3
+
+REQ_SLEEP_TIME_1=1000
+
+REQ_SLEEP_TIME_2=500
+
+REQ_SLEEP_TIME_3=500
+
+## For HTTPS
+KEY_STORE=
+KEY_STORE_PASSWORD=
+TRUST_STORE=
+TRUST_STORE_PASSWORD=
+
+##Operator, banks ATM i.e. PreTUPSRP2P etc.
+SENDIND_NW_TYPE=PreTUPSRP2P
+
+##PRETUPSSSN for PreTUPS Senegal
+DEVICE_ID=PRETUPSSSN
+

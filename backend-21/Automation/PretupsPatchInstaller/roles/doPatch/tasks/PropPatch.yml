@@ -1,0 +1,111 @@
+---
+########################################################
+# Author           Date        Remarks
+#------------    -----------  ---------
+#Sadhan Kumar K  25-07-2016    Initial Creation
+#
+# This file takes care of file Patch.
+#########################################################
+
+ - name: Taking TomcatHomePath in a register
+   set_fact: TomcatHome="{{ item.TomcatHomePath }}"
+   with_items: "{{ CatalinaConfig }}"
+
+ - name: Taking Backup of Constants.props.
+   shell: cp {{ TomcatHome }}/conf/pretups/Constants.props {{ TomcatHome }}/conf/pretups/Constants.props{{ BackupExtn }}
+   when: isConstant_Props == true
+   tags:
+     - BkpConstants_props
+
+ - name: Taking Backup of LogConfig.props.
+   shell: cp {{ TomcatHome }}/conf/pretups/LogConfig.props {{ TomcatHome }}/conf/pretups/LogConfig.props{{ BackupExtn }}
+   when: isLog_Config == true
+   tags:
+     - BkpLogConfig_props
+
+ - name: Insert/Modify the props files
+   lineinfile: dest="{{ TomcatHome }}/conf/pretups/Constants.props" regexp="^{{item.split('=')|first}}" line="{{ item }}"
+   with_lines: cat {{ Ansible_Path }}/PretupsPatchInstaller/files/pretups/WEB-INF/classes/configfiles/Constants.props
+   when: isConstant_Props == true
+   ignore_errors: yes
+
+ - name: Insert/Modify the props files
+   lineinfile: dest="{{ TomcatHome }}/conf/pretups/LogConfig.props" regexp="^{{item.split('=')|first}}" line="{{ item }}"
+   with_lines: cat {{ Ansible_Path }}/PretupsPatchInstaller/files/pretups/WEB-INF/classes/configfiles/LogConfig.props
+   when: isLog_Config == true
+   ignore_errors: yes
+
+ - name: Insert/Modify the props files
+   lineinfile: dest="{{ TomcatHome }}/webapps/pretups/WEB-INF/classes/configfiles/{{ propFileName1 }}" regexp="^{{item.split('=')|first}}" line="{{ item }}"
+   with_lines: cat {{ Ansible_Path }}/PretupsPatchInstaller/files/pretups/WEB-INF/classes/configfiles/{{ propFileName1 }}
+   ignore_errors: yes
+
+ - name: Insert/Modify the props files
+   lineinfile: dest="{{ TomcatHome }}/webapps/pretups/WEB-INF/classes/configfiles/{{ propFileName2 }}" regexp="^{{item.split('=')|first}}" line="{{ item }}"
+   with_lines: cat {{ Ansible_Path }}/PretupsPatchInstaller/files/pretups/WEB-INF/classes/configfiles/{{ propFileName2 }}
+   ignore_errors: yes
+
+ - name: Insert/Modify the props files
+   lineinfile: dest="{{ TomcatHome }}/webapps/pretups/WEB-INF/classes/configfiles/{{ propFileName3 }}" regexp="^{{item.split('=')|first}}" line="{{ item }}"
+   with_lines: cat {{ Ansible_Path }}/PretupsPatchInstaller/files/pretups/WEB-INF/classes/configfiles/{{ propFileName3 }}
+   ignore_errors: yes
+
+ - name: Insert/Modify the props files
+   lineinfile: dest="{{ TomcatHome }}/webapps/pretups/WEB-INF/classes/configfiles/{{ propFileName4 }}" regexp="^{{item.split('=')|first}}" line="{{ item }}"
+   with_lines: cat {{ Ansible_Path }}/PretupsPatchInstaller/files/pretups/WEB-INF/classes/configfiles/{{ propFileName4 }}
+   ignore_errors: yes
+
+ - name: Insert/Modify the props files
+   lineinfile: dest="{{ TomcatHome }}/webapps/pretups/WEB-INF/classes/configfiles/{{ propFileName5 }}" regexp="^{{item.split('=')|first}}" line="{{ item }}"
+   with_lines: cat {{ Ansible_Path }}/PretupsPatchInstaller/files/pretups/WEB-INF/classes/configfiles/{{ propFileName5 }}
+   ignore_errors: yes
+
+ - name: Insert/Modify the props files
+   lineinfile: dest="{{ TomcatHome }}/webapps/pretups/WEB-INF/classes/configfiles/{{ propFileName6 }}" regexp="^{{item.split('=')|first}}" line="{{ item }}"
+   with_lines: cat {{ Ansible_Path }}/PretupsPatchInstaller/files/pretups/WEB-INF/classes/configfiles/{{ propFileName6 }}
+   ignore_errors: yes
+
+ - name: Insert/Modify the props files
+   lineinfile: dest="{{ TomcatHome }}/webapps/pretups/WEB-INF/classes/configfiles/{{ propFileName7 }}" regexp="^{{item.split('=')|first}}" line="{{ item }}"
+   with_lines: cat {{ Ansible_Path }}/PretupsPatchInstaller/files/pretups/WEB-INF/classes/configfiles/{{ propFileName7 }}
+   ignore_errors: yes
+
+ - name: Insert/Modify the props files
+   lineinfile: dest="{{ TomcatHome }}/webapps/pretups/WEB-INF/classes/configfiles/{{ propFileName8 }}" regexp="^{{item.split('=')|first}}" line="{{ item }}"
+   with_lines: cat {{ Ansible_Path }}/PretupsPatchInstaller/files/pretups/WEB-INF/classes/configfiles/{{ propFileName8 }}
+   ignore_errors: yes
+
+ - name: Insert/Modify the props files
+   lineinfile: dest="{{ TomcatHome }}/webapps/pretups/WEB-INF/classes/configfiles/{{ propFileName9 }}" regexp="^{{item.split('=')|first}}" line="{{ item }}"
+   with_lines: cat {{ Ansible_Path }}/PretupsPatchInstaller/files/pretups/WEB-INF/classes/configfiles/{{ propFileName9 }}
+   ignore_errors: yes
+
+ - name: Insert/Modify the props files
+   lineinfile: dest="{{ TomcatHome }}/webapps/pretups/WEB-INF/classes/configfiles/{{ propFileName10 }}" regexp="^{{item.split('=')|first}}" line="{{ item }}"
+   with_lines: cat {{ Ansible_Path }}/PretupsPatchInstaller/files/pretups/WEB-INF/classes/configfiles/{{ propFileName10 }}
+   ignore_errors: yes
+
+ - name: Insert/Modify the props files
+   lineinfile: dest="{{ TomcatHome }}/webapps/pretups/WEB-INF/classes/configfiles/{{ propFileName11 }}" regexp="^{{item.split('=')|first}}" line="{{ item }}"
+   with_lines: cat {{ Ansible_Path }}/PretupsPatchInstaller/files/pretups/WEB-INF/classes/configfiles/{{ propFileName11 }}
+   ignore_errors: yes
+
+ - name: Insert/Modify the props files
+   lineinfile: dest="{{ TomcatHome }}/webapps/pretups/WEB-INF/classes/configfiles/{{ propFileName12 }}" regexp="^{{item.split('=')|first}}" line="{{ item }}"
+   with_lines: cat {{ Ansible_Path }}/PretupsPatchInstaller/files/pretups/WEB-INF/classes/configfiles/{{ propFileName12 }}
+   ignore_errors: yes
+
+ - name: Insert/Modify the props files
+   lineinfile: dest="{{ TomcatHome }}/webapps/pretups/WEB-INF/classes/configfiles/{{ propFileName13 }}" regexp="^{{item.split('=')|first}}" line="{{ item }}"
+   with_lines: cat {{ Ansible_Path }}/PretupsPatchInstaller/files/pretups/WEB-INF/classes/configfiles/{{ propFileName13 }}
+   ignore_errors: yes
+
+ - name: Insert/Modify the props files
+   lineinfile: dest="{{ TomcatHome }}/webapps/pretups/WEB-INF/classes/configfiles/{{ propFileName14 }}" regexp="^{{item.split('=')|first}}" line="{{ item }}"
+   with_lines: cat {{ Ansible_Path }}/PretupsPatchInstaller/files/pretups/WEB-INF/classes/configfiles/{{ propFileName14 }}
+   ignore_errors: yes
+
+ - name: Insert/Modify the props files
+   lineinfile: dest="{{ TomcatHome }}/webapps/pretups/WEB-INF/classes/configfiles/{{ propFileName15 }}" regexp="^{{item.split('=')|first}}" line="{{ item }}"
+   with_lines: cat {{ Ansible_Path }}/PretupsPatchInstaller/files/pretups/WEB-INF/classes/configfiles/{{ propFileName15 }}
+   ignore_errors: yes

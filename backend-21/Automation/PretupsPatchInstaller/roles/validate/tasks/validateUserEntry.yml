@@ -1,0 +1,48 @@
+---
+####################################################
+# Author           Date        Remarks
+#------------    -----------  ---------
+#Sadhan Kumar K  25-07-2016    Initial Creation
+#
+#This file takes care of Validating the input entered 
+#  by user in USER_ENTRY.yml
+#####################################################
+ 
+ - name: "Checking listed Patch Type is Supported or Not"
+   fail: msg="Unsupported Patch Type {{ item.patchType}}"
+   with_items:
+     - "{{ PatchConfigfiles }}"
+   when: item.patchType not in PATCH_TYPES
+   register: patchTypeCheck
+   ignore_errors: yes
+   tags: patchTypeCheck
+
+ - debug: msg="All Patch Types listed is supported."
+   when: patchTypeCheck|success 
+
+ - name: Extracting the Extns of FileName Specified.
+   set_fact: listedExtns={{item.fileName.split('.')|last}}
+   with_items: 
+        - "{{PatchConfigfiles }}"
+   register: extnResult
+   ignore_errors: yes
+   tags:
+     - extnResult
+
+ - name: Extracting the Extns of FileName Specified and Making list out of Extns
+   set_fact: extractedListExtns={{ extnResult.results | map(attribute='ansible_facts.listedExtns')|list|unique }}
+   ignore_errors: yes
+
+ - name: "Validating given File Extension is Supported or Not"
+   fail: msg="Unsupported Filename with File Extension {{ item }}"
+   with_items:
+      - "{{extractedListExtns}}"
+   when: item not in FILE_EXTNS
+   register: extnsCheck
+   ignore_errors: yes
+   tags: 
+      - extnCheck
+
+ - debug: msg="All Filename with File Extension listed is supported."
+   when: extnsCheck|success
+   ignore_errors: yes

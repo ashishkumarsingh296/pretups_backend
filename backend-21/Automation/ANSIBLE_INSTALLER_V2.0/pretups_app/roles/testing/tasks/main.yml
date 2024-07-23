@@ -1,0 +1,9 @@
+---
+ - name: "testing: ship the test.sql"
+   copy: src=test.sql dest=~/ owner={{ db_user }}
+
+ - name: "testing"
+   shell: "{{ item }} chdir=~/"
+   with_items:
+   - sqlplus / as sysdba<<EOT @test.sql exit; EOT
+

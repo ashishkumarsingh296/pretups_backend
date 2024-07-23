@@ -1,0 +1,2 @@
+TestcaseId,TestcaseType,Module,Description
+TUNG12365,Positive,Lite Recharge through USSD,"Validate Lite Recharge request (LRC) optional parameters. Optional  parameters are: language2"

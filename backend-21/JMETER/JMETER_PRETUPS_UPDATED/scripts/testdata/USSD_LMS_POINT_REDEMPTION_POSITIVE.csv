@@ -1,0 +1,2 @@
+TestcaseId,TestcaseType,Module,Description
+TUNG13013,Positive,LMS Point Redemption through EXTGW,To verify that channel User can redeem the Loyalty Points through USSD

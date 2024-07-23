@@ -1,0 +1,2 @@
+TestcaseId,TestcaseType,Module,Description
+,Negative,Network Status,"To verify validation message appears ""network.networkStatus.errors.loginId"" when do not provide dataLoginID"

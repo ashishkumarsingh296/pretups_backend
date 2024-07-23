@@ -1,0 +1,201 @@
+// Color Scheme
+@base-color: #FFFFFF;
+@primary-color: #2e456d;
+@success-color: #56b15c;
+@warning-color: #eea742;
+@danger-color: #d9534f;
+@selection-color: #e8f0fb;
+
+// Font
+@font-color: #111111;
+@font-size: 12px;
+
+
+// Custom
+@body-bg: #eeeeee;
+//@font-family-sans-serif:  "Trebuchet MS", Tahoma, Arial, Arial, sans-serif;
+@font-family-sans-serif: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+@base-border: #FFFFFF;
+@btn-default-bg: @base-color;
+@navbar-inverse-bg: #3564a4;
+@modal-content-bg: #ffffff;
+@modal-header-bg: #ffffff;
+@border-radius-base: 0px;
+@border-radius-large: 0px;
+@border-radius-small: 0px;
+@input-border-color: darken(@gray-lighter, 10%);
+
+.modal-lg {
+    max-width: 600px;
+}
+
+.modal-content {
+    background-color: @modal-content-bg;
+}
+.modal-header {
+    background-color: @modal-header-bg;
+    box-shadow: 0px 1px 1px @gray-light;
+    border-width: 0px;
+}
+.modal-title {
+    color: @text-color;
+    font-weight: 300;
+    font-size: 18px;
+}
+.modal-footer {
+    background-color: @gray-lighter;
+}
+
+.propertygroup-label {
+    font-weight: normal;
+    font-size: 16px;
+    margin-top: 40px;
+    border-color: @input-border-color;
+}
+
+.btn {
+    text-transform: uppercase;
+    font-weight: bold;
+    padding: 7px 12px;
+    border-width: 0px !important;
+}
+
+.btn-categories {
+    font-weight: normal;
+    text-transform: none;
+}
+
+.btn.checkbox-button {
+    text-transform: none;
+}
+
+.btn:hover {
+    border-width: 0px !important;
+}
+
+.navigation {
+    box-shadow: 0px 2px 2px @gray-light;
+}
+
+.panel {
+    box-shadow: 0px 1px 1px @gray-light;
+}
+
+.btn-categories,
+.input-group-addon,
+.input-group-btn .btn,
+.btn-link {
+    box-shadow: none;
+    background: none;
+}
+
+.btn.dropdown-toggle.form-control {
+    border-width: 0px !important;
+    border-bottom: 1px solid @input-border-color !important;
+    box-shadow: none;
+    background: none;
+    text-transform: none !important;
+    font-weight: normal;
+}
+
+.btn.dropdown-toggle.form-control:focus {
+    background: none !important;
+}
+
+.panel-heading {
+    border-bottom: 1px solid @input-border-color !important;
+    //border-width: 0px !important;
+    font-size: 125%;
+    color: @brand-primary !important;
+    background: none !important;
+    text-transform: none !important;
+    font-weight: normal;
+    font-size: 16px;
+}
+
+input,
+textarea {
+    border-width: 0px !important;
+    border-bottom: 1px solid @input-border-color !important;
+    box-shadow: none !important;
+    background: none !important;
+}
+
+input,
+textarea,
+.dropdown-toggle.form-control {
+    padding-left: 0px !important;
+}
+
+input:focus,
+textarea:focus,
+.btn.dropdown-toggle.form-control:focus {
+    border-color: @brand-primary !important;
+}
+
+
+div.modulecolorexpanded .modulecolormarker {
+    width: 10px;
+}
+div.modulecolorexpanded:hover .modulecolormarker {
+    width: 60px;
+}
+
+.searchfield {
+    background-color: lighten(@navbar-inverse-bg, 5%) !important;
+    border-width: 0px !important;
+    color: #ffffff;
+    padding-left: 10px !important;
+}
+
+.btn-link.action-close .icon-closewindow{
+    display: none;
+}
+
+form.form-horizontal .form-group {
+    margin-bottom: 20px;
+}
+
+.form-group > label,
+renderer > label {
+    width: 100% !important;
+    font-size: 90%;
+    color: @text-muted;
+    text-align: left !important;
+}
+.form-group > .controls,
+.form-group > div > .checkbox-button
+renderer > div,
+renderer > .controls,
+renderer > div > .checkbox-button {
+    width: 100% !important;
+}
+
+.form-group > .controls[class*="-offset-"] {
+    margin-left: 0px;
+}
+
+.form-group > div > .checkbox-button,
+renderer > div > .checkbox-button {
+    padding-left: 5px;
+    padding-right: 0px;
+    width:  100%;
+}
+
+.form-group > div > .checkbox-button > div > div > div,
+renderer > div > .checkbox-button > div > div > div {
+    display: inline !important;
+}
+
+.form-group > div > .checkbox-button > div > div > div,
+renderer > div > .checkbox-button > div > div > div {
+    float: left;
+    width: 90%;
+    text-align: left;
+}
+.form-group > div > .checkbox-button > div > div > div:first-child,
+renderer > div > .checkbox-button > div > div > div:first-child {
+    float: right;
+    width: 10%;
+    text-align: right;
+}

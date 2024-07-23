@@ -1,0 +1,2 @@
+TestcaseId,TestcaseType,Module,Description
+,POSITIVE,VIEW SCHEDULE RECHARGE BATCH,"To verify that user is able to view the list of  batches based on selected status, from and to date "

@@ -1,0 +1,2 @@
+TestcaseId,TestcaseType,Module,Description
+TUNG12993,Negative,Postpaid Bill Payment through USSD,"To verify that channel user is unable to initiate the ""PPB"" request if entered value in the amount field is more than the channel user balance."

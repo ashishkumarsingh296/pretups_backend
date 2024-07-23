@@ -1,0 +1,27 @@
+INSERT INTO role_ui_mapping
+(role_ui_parent_id, role_ui_id, rule_code)
+VALUES('networkAdmin', 'User_Deafult_Config', 'USERDEFCONFIGMGT');
+
+
+UPDATE page_ui_roles
+SET role_code='USERDEFCONFIGMGT', page_code='P_NW_BULK_CAT_PROF'
+WHERE role_code='USERDEFCONFIGMGT' AND page_code='P_NW_BULK_CAT_PROF';
+
+
+
+UPDATE roles
+SET role_name='User Default Configuration Management', group_name='Profile Management', status='Y', role_type='A', from_hour=NULL, to_hour=NULL, group_role='N', application_id='1', gateway_types='WEB', role_for='B', is_default='N', is_default_grouprole='N', access_type='B', sub_group_name='Sub_Group', sub_group_role='N', view_roles='Y'
+WHERE role_code='USERDEFCONFIGMGT' AND domain_type='OPERATOR';
+
+
+INSERT INTO page_ui_roles
+(role_code, page_code)
+VALUES('USERDEFCONFIGMGT', 'P_NW_PROF_MGMT_MAIN');
+
+insert
+	into
+	page_ui_roles
+(role_code,
+	page_code)
+values('USERDEFCONFIGMGT',
+'P_NW_BULK_CAT_PROF');

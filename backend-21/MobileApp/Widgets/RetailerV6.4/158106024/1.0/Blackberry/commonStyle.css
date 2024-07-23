@@ -1,0 +1,109 @@
+a
+{
+text-decoration : none ;
+color:black;
+}
+
+hr
+{
+	color:blue;
+	font-size:8px;
+}
+
+.titlebar
+{
+	
+font-size:35px;
+color:white;
+text-align:center;
+background-image:url("header_bg.9.png");
+}
+.inputBG
+{
+	background-image:url("inputbg.9.png") ;
+	margin-top : 10px;
+	
+}
+.inputTitle
+{
+	font-size: 10px;
+	margin-bottom:5px;
+	
+}
+.buttonBgBlue
+{
+	background-image:url("buttonnew.png") ;
+	font-weight:bold;
+	color:white;
+}
+.options
+{
+background-image:url("options.9.png");
+margin-top:2px;
+margin-bottom:2px;
+margin-left :4px;
+margin-right :4px;
+padding :2px 2px 2px 2px; 
+}
+.textalign
+{
+padding-bottom:5px;
+padding-top:5px;
+color:black;
+text-align:left;
+padding-left:10px;
+font-weight:bold;
+margin-left:10px;
+margin-top:5px;
+}
+.topMessage
+{
+	
+	background-image:url("header_bg.9.png");
+	font-size : 14px;
+	padding-top:3px;
+	padding-bottom:3px;
+	margin-bottom:5px;
+	padding-left:4px;
+	color:white;
+	display :block;
+}
+.title1
+{
+color:black;
+font-size:15px;	
+font:bold;
+}
+
+.bgImage
+{	
+	background-image : url("bg.png");
+}
+
+
+.submit
+{	
+background-image:url("button2-selected.png");
+font-size:15px;
+}
+
+.heading
+{
+background-image:url("btn_bg.9.png") ;
+}
+
+.topCls
+{
+	background-color:RGB(57,89,148) ;
+}
+
+.noselCls
+{
+	background-color:RGB(222, 223, 239) ;	
+	color:white;
+}
+
+.selCls
+{
+	color:white ;
+}

@@ -1,0 +1,251 @@
+##Define IP address for a socket.
+SOCKET_IP=195.0.0.110
+
+##Define listening port
+SOCKET_PORT=4021
+
+##Define Socket time out
+SOCKET_TIMEOUT=5000
+
+##Define maximum size of pool of connections
+MAX_POOL_SIZE=2
+
+##This parameters defined for sleep time to get connection from the Free Bucket
+SLEEP_TIME=200
+
+#Valid msisdn length
+MSISDNLength=10
+
+#Transaction Currency to be send to the IN Interface, value will be provieded by  operator IN team
+TransCurrency=INR
+
+#This code is used to identify the source of payment for credit and would be provided be operator IN team.
+TransProcCodeCredit=229000
+
+#This code is used to identify the source of payment for debit and would be provided be operator IN team.
+TransProcCodeDebit==020090
+
+#This is used to define the type of Adjustment and would be provided by operator
+AdjType=MIS
+
+#Code of the adjustment type for the credit request.
+AdjCode_C=BUDDY_RC
+
+#Code of the adjustment type for the debit request.
+AdjCode_D=BUDDY_RC
+
+##Maximum Number of times response is checked for validation stage and will be provided by operator,IN team
+RETRY_COUNT_VAL=10
+
+##After sending the request, response is checked after this interval for validation stage,value in milliseconds.
+SLEEP_TIME_VAL=1000
+
+##After sending the request, response is checked after this interval for top up stage,value in milliseconds.
+SLEEP_TIME_TOP=600
+
+##Decide whether PPIVRFirstCall command is supported by IN or not.
+FIRST_FLAG=Y
+
+##Prefix to be removed from the mobile number, leave blank if nothing is to be removed
+MSISDN_REMOVE_PREFIX=
+
+##Prefix to be added to the mobile number as prefix, leave blank if nothing is to be added as prefix
+MSISDN_ADD_PREFIX=
+
+##Multiplication factor for to get the system amount.????????
+MULTIPLICATION_FACTOR=1
+
+##Decides whether to send the service removal command to check the expiry,provided by operator
+SERVICE_REMOVAL=N
+
+##Mapping of IN language with system language (IN Langauge1:PreTUPS Langauge1,IN Langauge2:PreTUPS Langauge2)
+LANGUAGE_MAPPING=EN:0,SN:1
+
+
+##Ambiguous cases(error codes) provided by the operator,that are separated by comma.
+AMBIGUOUS_CASES=504,505
+
+##Dest describes the destination and defined by the operator.
+DEST=1
+
+##Origin describes the Origin and defined by the operator.
+ORIGIN=10
+
+##In case of connection failure while sending the request,request would be send after this duration,value in milliseconds.
+IN_EXP_RETRY_SLEEP=75
+
+##Sleep time If there are no request to send the IN,value in milliseconds.
+IN_SLEEP_NO_DATA=75
+
+##Sleep time after sending one request,value in milliseconds.
+IN_SLEEP_B4_SEND=75
+
+##Lenght of INTransaction id(This length exludes the length of minute,2).
+IN_TXN_LENGTH=4
+
+##Sleep time, used to wait for the first time before fetching the response for validation stage,value in milliseconds.
+FIRST_SLEEP_TIME_VAL=30000
+
+##Sleep time, used to wait for the first time before fetching the response for top up stage,value in milliseconds.
+FIRST_SLEEP_TIME_TOP=30000
+
+#Optional ID provided by operator
+OP_ID=ERECH
+
+#Request is sent to the number of times,if it fails during the request sending.
+IN_MAX_RETRY_COUNT=10
+
+#Warning time for reading content from the IN interface, if IN interface takes time more than this, O&M alarm will be raised
+WARN_TIMEOUT=30000
+
+#This delemeter is used to define the end of request as well as the end of response.
+RESP_DEL=.
+
+## Time out for connection to connect, value in milliseconds
+CONNECT_TIMEOUT=5000
+
+##This parameter shows number of retry attempt to send request to IN
+RETRY_CON_INVAL=3
+
+##sleep time , which is used to sleep the thread when connection is failed while sending a request
+SLEEP_CON_INVAL=500
+
+## Warning time for reading content from the IN interface, if IN interface takes time more than this, O&M alarm will be raised, value should be less than the READ_TIMEOUT_VAL variable
+WARN_TIMEOUT=1500
+
+##This parameter defined for sleep time to add new connection in Pool
+POOL_SLEEP=300
+
+C2S_RETRY_ATTEMPT=3
+
+P2P_RETRY_ATTEMPT=4
+
+#Prefix to be removed from the mobile number, leave blank if nothing is to be removed
+MSISDN_REMOVE_PREFIX=
+
+#Prefix to be added to the mobile number as prefix, leave blank if nothing is to be added as prefix
+MSISDN_ADD_PREFIX=
+
+##This flag shows whether the subscriber would be validated on actual IN or Not.
+VALIDATION=N
+
+##After sending the request, response is read after waiting this time.
+SLEEP_RESP_READ=100
+
+##Defines that the validation of subscriber(senders) is required for PRC
+PRC_S=Y
+
+##Defines that the validation of subscriber(Receiver) is required for PRC
+PRC_R=Y
+
+##Defines that the validation of subscriber(Receiver) is required for RC
+RC_R=Y
+
+##Defines that the validation of subscriber(senders) is required for ACCINFO
+ACCINFO_S=Y
+
+##Defines that the validation of subscriber(senders) is required for PREG
+PREG_S=Y
+
+##Defines that the validation of subscriber(Receiver) is required for EVD
+EVD_R=N
+
+##Defines that the validation of subscriber(Receiver) is required for EVR
+EVR_R=N
+
+
+
+#This parameter defines if Accept loc is required or not
+ACCEPT_LOC_IS_HARDCODED=Y
+
+#Defines the hardcoded value of Accept loc if ACCEPT_LOC is Y.
+ACCEPT_LOC_HARD_CODE_VALUE=ACCEPT_LOC_HARD_CODE_VALUE
+
+#Defines the value of Accept loc if ACCEPT_LOC is Y. keys should be seperated by ','.
+ACCEPT_LOC_VAR_KEYS=TRANSACTION_ID,SENDER_MSISDN
+
+#Defines seperator between values of above mentioned keys
+ACCEPT_LOC_MIDDLE_SEPRATOR=.
+
+#Defines last seperator
+ACCEPT_LOC_LAST_SEPRATOR=\\
+
+#Card Type. If this parametre is defined then only it will sends with therequest
+CARD_TYPE=C
+
+#This time interval(in Seconds) would be used to define the pool initialization in case of PoolContainer is null
+POOL_INIT_TIME=300
+
+#Indicates whether Cancel request supported by IN or not.(Possible values are Y/N)
+CANCEL_TXN_ALLOWED=N
+
+##If any ambiguous response is received from IN, then retry/cancel command is sent to IN. Then response of retry/cancel is matched in the IN file and mapped error code (250/206/200) is picked and sent to Controller.
+##SYSTEM_STATUS_MAPPING=INErrCode1,INErrCode2,INErrCode3,INErrCode4:system_err_code1|INErrCode5,INErrCode6:system_err_code2
+##system_err_code1 and system_err_code2 will be sent to system and written in recon log file.
+#SYSTEM_STATUS_MAPPING=250:250
+##If receiver credit is AMBIGUOS, then in SYSTEM_PREFERENCE, CREDIT_BACK_ALLOWED should be N.
+
+#If an ambiguous case occurs while credit, mapped error code can be set to one of the codes(SUCCESS, FAIL and AMBIGUOUS)
+SYSTEM_STATUS_MAPPING_CREDIT=250:250
+
+#If an ambiguous case occurs while credit, mapped error code can be set to one of the codes(SUCCESS, FAIL and AMBIGUOUS)
+SYSTEM_STATUS_MAPPING_CREDIT_ADJ=250:250
+
+#If an ambiguous case occurs while debitAdjust, mapped error code cannot be SUCCESS. It can only be FAIL or AMBIGUOUS
+SYSTEM_STATUS_MAPPING_DEBIT_ADJ=250:250
+
+#If an ambiguous case occurs while credit Back, mapped error code can not be fail, it can only be SUCCESS or AMBIGOUOS
+SYSTEM_STATUS_MAPPING_CREDIT_BCK=250:250
+
+
+##If any ambiguous response is received from IN, check if cancel txn allowed or not in the system. if not, pick mapped error code against NA otherwise pick mapped error code (206/250) against received response code of Cancellation from IN. 
+##CANCEL_COMMAND_STATUS_MAPPING=INErrCode1,INErrCode2,INErrCode3,INErrCode4:cancel_err_code1|INErrCode5,INErrCode6:cancel_err_code2
+##cancel_err_code1, cancel_err_code2 will be written in recon log file.
+CANCEL_COMMAND_STATUS_MAPPING=NA:450
+
+#Defines the cancel command status when cancel not supported by IN. 
+CANCEL_NA=NA
+
+##This flag should be Y if interface closure feature is to be provided to client
+INTFCE_CLSR_SUPPORT=N
+
+#maximum number of ambiguous transactions allowed till threshold time.
+NO_ALLWD_AMB_TXN=5
+
+##time duration in which maximum number of ambiguous transactions is defined
+THRESHOLD_TIME=240000
+
+##Time duration after which interface suspension expires.
+EXPIRY_TIME=60000
+
+##Auto Resumption supported by IN or not.
+AUTO_RESUME_SUPPORT=N
+
+##Number of retry attempts while validation (Currently Retry is not supported by Ericssion)
+VAL_RETRY_CNT=0
+
+##Number of retry attempts while recharge request (Currently Retry is not supported by Ericssion)
+CREDIT_RETRY_CNT=0
+
+##Number of retry attempts while sending Adjustment request (Currently Retry is not supported by Ericssion)
+ADJ_RETRY_CNT=0
+
+##Number of retry attempts while sending Cancel request (Currently Cancel Request is not supported by Ericssion)
+CNCL_RETRY_CNT=0
+
+##Sleep time between two retries (Currently Retry is not supported by Ericssion)
+RETRY_SLEEP_TIME=0
+
+##Error Codes when retry has to be made  (Currently Retry is not supported by Ericssion)
+RETRY_CASES=
+
+##Remark1 in Reconcialiationlog
+REMARK1=
+
+##Remark1 in Reconcialiationlog
+REMARK2=
+
+## IN response codes which are treated as SUCCESS.
+SUCCESS_CASES=200,201,210,211,212,213,214
+#added for Bonus
+INTFCE_BONUS_REQUIRED=Y

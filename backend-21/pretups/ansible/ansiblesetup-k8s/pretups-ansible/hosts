@@ -1,0 +1,14 @@
+[appservers-pretups]
+#172.30.24.107 ansible_user=ansibleuser ansible_become_pass=ansibleuser ansible_ssh_pass=ansibleuser
+172.30.38.219 ansible_user=ansibleuser ansible_become_pass=ansibleuser ansible_ssh_pass=ansibleuser
+
+[appservers-pretupsui]
+#172.30.24.107 ansible_user=ansibleuser ansible_become_pass=ansibleuser ansible_ssh_pass=ansibleuser
+172.30.38.219 ansible_user=ansibleuser ansible_become_pass=ansibleuser ansible_ssh_pass=ansibleuser
+
+
+
+[private_registry]
+#172.30.24.138 ansible_user=ansibleuser ansible_become_pass=ansibleuser ansible_ssh_pass=ansibleuser
+172.30.38.52 ansible_user=ansibleuser ansible_become_pass=ansibleuser ansible_ssh_pass=ansibleuser
+

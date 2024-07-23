@@ -1,0 +1,3 @@
+TRFCATEGORY,PAYMENTTYPE,TestcaseId,TestcaseType,Module,Description
+SALE,CHQ,,Negative,O2C transfer through EXTGW,To check  that o2c is not successful if Reference number is greater than 10characters
+FOC,CHQ,,Negative,O2C transfer through EXTGW,To check  that FOC is not successful if Reference number is greater than 10characters

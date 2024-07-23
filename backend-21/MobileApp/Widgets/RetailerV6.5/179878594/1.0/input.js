@@ -1,0 +1,2 @@
+testMSISDN = "9867045847";
+testPIN = "1357";

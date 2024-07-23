@@ -1,0 +1,125 @@
+package common_features;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.util.Properties;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.PageFactory;
+import org.testng.Assert;
+import org.testng.annotations.Test;
+
+import common_util_script.Launchdriver;
+
+public class Login_Common {
+
+ 	
+ 	
+ 	public static void loginanyuser (String loginid, String password) throws Exception {
+	
+ 	try {
+	 System.out.println("Scenario : Login to PreTUPS application with Valid credentials");
+ 	//valid input parameters for login
+	 
+		// Create FileInputStream Object to read the credentials
+		FileInputStream fileInput = new FileInputStream(new File("dataFile.properties"));
+		// Create Properties object to read the credentials
+		Properties prop = new Properties();
+		// load properties file to read the credentials
+		prop.load(fileInput);	
+		
+	 String url = "http://172.16.10.43:8597/pretups";   
+	 
+	 url=prop.getProperty("url");
+	
+		
+	System.out.println("Enter a valid LoginID and Password");
+	String language = "English";   //English or Arabic specific to Jordan
+	
+	//launching the browser
+	Launchdriver.driver = Launchdriver.browser("chrome");
+	
+	//launching the URL
+	common_util_script.Launch_Browser.launch(url);
+	
+	//Creating the instance of the LOGIN page
+	Login loginpage = PageFactory.initElements(Launchdriver.driver, Login.class);
+	
+	//Select language
+	try{
+	System.out.println("Selecting the language: ");
+	common_features.Languageselection.arabicorenglish(language);
+	System.out.println("You have selected the language: " + language );
+	}catch(Exception e){}
+	
+	//Enter the valid credentials
+	Assert.assertTrue(loginpage.login_page(loginid,password));
+
+	//Launchdriver.driver.switchTo().frame(0);
+	//WebElement logout = Launchdriver.driver.findElement(By.cssSelector("a[href*='logout']"));
+	//Assert.assertTrue(logout.isDisplayed(), "Login is not successfull");
+
+	
+	//Assert.assertEquals(Launchdriver.driver.getTitle(), "eRecharge" , "Login is not successfull. Enter the valid credentials");
+	System.out.println("Login is successfull. Welcome to PreTUPS");
+	common_util_script.Get_screenshot.success("login\\success\\","success");
+		
+}catch (Exception e) {
+	
+	Launchdriver.driver.findElement(By.name("relogin")).click();
+	WebElement logout = Launchdriver.driver.findElement(By.cssSelector("a[href*='logout']"));
+	Assert.assertTrue(logout.isDisplayed(), "Login is not successfull");
+	Launchdriver.driver.switchTo().defaultContent();
+	
+}
+ 
+ 	}
+ 	
+ 	
+ 	
+ 	public static void loginuser (String loginid, String password) throws Exception {
+ 		
+ 	try {
+	 System.out.println("Scenario : Login to PreTUPS application with Valid credentials");
+ 	//valid input parameters for login
+	 String url = "http://172.16.10.43:7979/pretups";   //valid URL for Jordan
+		
+	System.out.println("Enter a valid LoginID and Password");
+	String language = "English";   //English or Arabic specific to Jordan
+	
+	
+	//launching the URL
+	common_util_script.Launch_Browser.launch(url);
+	
+	//Creating the instance of the LOGIN page
+	Login loginpage = PageFactory.initElements(Launchdriver.driver, Login.class);
+	
+	//Select language
+	System.out.println("Selecting the language: ");
+	common_features.Languageselection.arabicorenglish(language);
+	System.out.println("You have selected the language: " + language );
+	
+	//Enter the valid credentials
+	Assert.assertTrue(loginpage.login_page(loginid,password));
+
+	Launchdriver.driver.switchTo().frame(0);
+	WebElement logout = Launchdriver.driver.findElement(By.cssSelector("a[href*='logout']"));
+	Assert.assertTrue(logout.isDisplayed(), "Login is not successfull");
+
+	
+	//Assert.assertEquals(Launchdriver.driver.getTitle(), "eRecharge" , "Login is not successfull. Enter the valid credentials");
+	System.out.println("Login is successfull. Welcome to PreTUPS");
+	common_util_script.Get_screenshot.success("login\\success\\","success");
+		
+}catch (Exception e) {
+	
+	Launchdriver.driver.findElement(By.name("relogin")).click();
+	WebElement logout = Launchdriver.driver.findElement(By.cssSelector("a[href*='logout']"));
+	Assert.assertTrue(logout.isDisplayed(), "Login is not successfull");
+	Launchdriver.driver.switchTo().defaultContent();
+	
+}
+ 
+ 	}
+}

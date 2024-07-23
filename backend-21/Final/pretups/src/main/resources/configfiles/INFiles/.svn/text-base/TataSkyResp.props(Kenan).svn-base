@@ -1,0 +1,4 @@
+ACCOUNT_CREDIT=<?xml version="1.0" encoding="UTF-8"?><tatasky><e-voucher-topup-response><sub-id>293847399231</sub-id><pretup-trans-id>I343D456</pretup-trans-id><sub-ph>9810316420</sub-ph><end-date>11/20/2006</end-date><status>success</status><error-code>17300</error-code><error-desc>succeess</error-desc><amount>xxxxxx</amount><new-balance>1000</new-balance><date-time>09-20-2006 10:13:25</date-time></e-voucher-topup-response></tatasky>
+userid=pretups
+passwd=test
+MULTIPLICATION_FACTOR=1

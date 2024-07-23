@@ -1,0 +1,5 @@
+Channel User should be created before running these scripts.
+Channel users login id should be stored in NA_Login.csv
+Recharge should be carried out first before doing any reversal
+customer recharge reversal service should be assigned to channel user , only then he can perform reversal.
+Accordingly update the C2SReversal.csv file for the columns : pin, subscriber msisdn , transaction id.

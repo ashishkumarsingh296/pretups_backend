@@ -1,0 +1,2 @@
+PRODUCTCODE,LANGUAGE1,TestcaseId,TestcaseType,Module,Description
+101,,TUNG23134,Positive,REST -  C2C withdraw,"To verify that request is sucessfully when  EXTCODE ,login id & password, and msisdn pin is present in Rest API request"

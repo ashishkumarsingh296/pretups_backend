@@ -1,0 +1,14 @@
+URL=http://10.56.56.84:10010/Air
+#URL=http://10.56.56.88:10010/Air
+#URL=http://10.56.56.92:10010/Air
+
+
+HOST=air01
+####USER_AGENT=IVR/2.2.02/1.0
+USER_AGENT=etopup/3.1/1.0
+
+UIDPWD=etopup:etopup
+#UIDPWD=user:user
+
+
+DATA=<?xml version="1.0"?><methodCall><methodName>Refill</methodName><params><param><value><struct><member><name>originNodeType</name><value><string>etopup</string></value></member><member><name>originHostName</name><value><string>testserver</string></value></member><member><name>originTransactionID</name><value><string>808073010321218</string></value></member><member><name>originTimeStamp</name><value><dateTime.iso8601>20080803T12:21:00+0330</dateTime.iso8601></value></member><member><name>subscriberNumberNAI</name><value><int>2</int></value></member><member><name>subscriberNumber</name><value><string>175000100</string></value></member><member><name>transactionAmount</name><value><string>3000</string></value></member><member><name>transactionCurrency</name><value><string>EGP</string></value></member><member><name>refillProfileID</name><value><string>25</string></value></member><member><name>ExternalData1</name><value><string>ExternalData1</string></value></member><member><name>ExternalData2</name><value><string>ExternalData2</string></value></member> <member><name>requestRefillAccountAfterFlag</name><value><boolean>1</boolean></value></member></struct></value></param></params></methodCall>

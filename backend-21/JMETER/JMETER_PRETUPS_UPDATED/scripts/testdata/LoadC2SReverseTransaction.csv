@@ -1,0 +1,8 @@
+loginId,password,moduleType,serviceType,currentBalance,pin,subscriberMsisdn,type,externalCode,TestcaseId,TestcaseType,Module,Description
+btdist,1357,,,,,,C2SLOADTXN,,TUNG12895,Negative,Load C2S Reversal transactions,To verify mandatory fieds are required
+btdist,1357,C2S,,,,,C2SLOADTXN,,TUNG12896,Negative,Load C2S Reversal transactions,To verify mandatory fieds are required
+btdist,1357,,RCREV:Y:PRE,,,,C2SLOADTXN,,TUNG12897,Negative,Load C2S Reversal transactions,To verify mandatory fieds are required
+btdist,1357,C2S,RCREV:Y:PRE,,,,C2SLOADTXN,,TUNG12898,Negative,Load C2S Reversal transactions,To verify mandatory fieds are required
+btdist,1357,C2S,RCREV:Y:PRE,49500,,,C2SLOADTXN,,TUNG12899,Negative,Load C2S Reversal transactions,To verify mandatory fieds are required
+btdist,1357,C2S,RCREV:Y:PRE,49500,2468,,C2SLOADTXN,,TUNG12900,Negative,Load C2S Reversal transactions,To verify mandatory fieds are required
+btdist,1357,C2S,RCREV:Y:PRE,49500,1357,7259789634,C2SLOADTXN,,TUNG12901,Positive,Load C2S Reversal transactions,To load list of c2s reversal transactions

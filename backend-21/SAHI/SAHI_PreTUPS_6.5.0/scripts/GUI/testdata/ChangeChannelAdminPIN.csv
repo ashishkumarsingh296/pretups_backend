@@ -1,0 +1,17 @@
+TestCaseNo. ,Discription,Old PIN,New PIN,Cnf PIN,Assertion
+TEST001,Verify that submit button is over there while channel admin going to change self PIN in the system,,,,
+TEST002,Verify the functionality of reset button from change self PIN page in the system ,1357,2468,2468,
+TEST003,"Verify that without selecting any user, channe admin try to change PIN then it should display error msg ",1357,2468,2468,Select at least one MSISDN 
+TEST004,"Verify that system should display error msg, when try to change PIN without OLD PIN",,2468,2468,Old PIN required
+TEST005,"Verify that application will display error msg, while confirm PIN won't be given while changing PIN",1357,,,Confirm PIN required for
+TEST006,"Verify that application will display error msg, when you give the wrong old PIN",4595,2468,2468,Old PIN is not valid for
+TEST007,"Error msg should be displayed while, new Pin and cnf PIN are not same.",1357,2468,2589,New PIN and confirm PIN should be same for
+TEST008,"Verify that, while changing PIN in the system, old PIN and new PIN cant be same ",1357,1357,1357,Old PIN and New PIN should not be same
+TEST009,"Verify that new PIN can't be given as character, if it does then it should display error msg",1357,adgj,adgj,New PIN should be numerical
+TEST010,Verify that repeating number can't be allowed as same repeating number,1357,1111,1111,PIN cannot contain repeating characters
+TEST011,Verify that sequential  no. can't be accepted as PIN in the system ,1357,1234,1234,PIN cannot contain sequential charcters
+TEST012,Verify that PIN of two digits can't be accepted in the system,1357,13,13,PIN length should be between 4 and 4 characters at row
+TEST013,Verify that PIN of three digits can't be accepted in the system,1357,246,246,PIN length should be between 4 and 4 characters at row
+TEST014,Verify the functionality of back button form change PIN confirm page,1357,2468,2468,
+TEST015,Verify that channel admin can change the PIN of channel user in the system,1357,2468,2468,PIN has been updated successfully.
+TEST016,Change PIN back to 1357,2468,1357,1357,PIN has been updated successfully.

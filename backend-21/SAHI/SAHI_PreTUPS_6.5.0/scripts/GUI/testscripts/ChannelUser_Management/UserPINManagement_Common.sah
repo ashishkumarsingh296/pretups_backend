@@ -1,0 +1,87 @@
+
+
+// This scripts contains all method to manage channel User PIN in the system
+
+_includeOnce("../../../../utility/ImportPackage.sah");
+
+var $l_naCsv = _readCSVFile("../../../GUI/testdata/NA_Login.csv");
+
+
+	var $g_msisdn;
+	var $g_remarks;
+	var $g_assertion;
+	var $a_Prefix;
+	
+	
+	
+	
+	function commonVaribleToResetResendUserPIN($g_row, $g_col) {
+		
+		$g_msisdn = $g_resetUserPIN[$g_row][$g_col++];
+		$g_remarks = $g_resetUserPIN[$g_row][$g_col++];
+		$g_assertion = $g_resetUserPIN[$g_row][$g_col++];
+	}
+	
+	
+	
+	
+	
+		
+	// Common methods to manage user PIN in the system ......... 
+	
+	
+		
+		function commonMethodForResetOrResendPIN() {
+			_click(_link("Channel user"));
+			_click(_link("Channel user PIN Mgmt."));
+			_assertExists(_div("User PIN management"));
+			_setValue(_textbox("msisdn"), $g_msisdn);
+			_setValue(_textarea("remarks"), $g_remarks);
+			submit();
+		}
+		
+
+	//  .................. Methods for given test cases ..................... //
+		
+		
+    function resetPINOfUser() {
+		commonMethodForResetOrResendPIN();
+		_click(_button("Reset PIN"));
+		 _assertExists(_listItem("/"+ $g_assertion +".*/"));
+	}
+    
+    function resendPINOfUser() {
+		commonMethodForResetOrResendPIN();
+		_click(_button("Send PIN"));
+		 _assertExists(_listItem("/"+ $g_assertion +".*/"));
+	}
+    
+    function toCheckSubmitButtonOnPINMgmt() {
+		_click(_link("Channel user"));
+		_click(_link("Channel user PIN Mgmt."));
+		_assertExists(_div("User PIN management"));
+		_assertExists(_submit("Submit"));
+	}
+    
+    function resetOrResendWithInvalidDetails() {
+    	commonMethodForResetOrResendPIN();
+		 _assertExists(_listItem("/"+ $g_assertion +".*/"));
+	}
+    
+    function toChecKBackButtonOnPINMgmtCnfPage() {
+    	commonMethodForResetOrResendPIN();
+    	back();
+    	if(_getValue(_textbox("msisdn")) == $g_msisdn) {_log("Successful")}
+		else {_log("Failed back Check");}
+    }
+    
+    function toChecKCancelButtonOnPINMgmtCnfPage() {
+    	commonMethodForResetOrResendPIN();
+    	cancel();
+    	if(_getValue(_textbox("msisdn")) == " ") {_log("Successful")}
+		else {_log("Failed cancel Check");}
+    }
+    
+    
+    
+    

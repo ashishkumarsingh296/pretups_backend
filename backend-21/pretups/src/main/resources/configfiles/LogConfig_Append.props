@@ -1,0 +1,28 @@
+#Entries for ChannelUserTxnLog Logger
+log4j.logger.com.btsl.pretups.logging.ChannelUserTxnLog=Debug,ChannelUserTxnLog
+log4j.additivity.com.btsl.pretups.logging.ChannelUserTxnLog=false
+log4j.appender.ChannelUserTxnLog=org.apache.log4j.DailyRollingFileAppender
+log4j.appender.ChannelUserTxnLog.File=/data1/claro/pretupsvar/pretups_weblogs/channel_user_transaction.csv
+log4j.appender.ChannelUserTxnLog.DatePattern='_'yyyy-MM-dd-HH-mm
+log4j.appender.ChannelUserTxnLog.layout=org.apache.log4j.PatternLayou
+
+#Entries for Axis Logger
+##### Axis Start ####################################
+log4j.logger.org.apache.log4j=OFF
+org.apache.axis.AxisEngine=OFF
+org.apache.axis.transport.http.AxisServlet=OFF
+log4j.logger.org.apache.axis=off
+log4j.logger.org.apache.axis.encoding=fatal
+log4j.logger.org.apache.axis.utils=fatal
+log4j.logger.org.apache.axis.message=fatal
+log4j.category.org.apache.axis=fatal
+log4j.category.org.apache.client.Call=fatal
+log4j.category.org.globus.axis.axis.transport=fatal
+log4j.category.org.apache.axis.transport.http.HTTPSender=DEBUG,HTTPSender
+log4j.appender.HTTPSender=org.apache.log4j.DailyRollingFileAppender
+log4j.appender.HTTPSender.File=/data1/claro/pretupsvar/pretups_weblogs/soapAxis.log
+log4j.appender.HTTPSender.DatePattern='.'yyyy-MM-dd
+log4j.appender.HTTPSender.layout=org.apache.log4j.PatternLayout
+log4j.appender.HTTPSender.layout.ConversionPattern=%d   %m%n  
+log4j.appender.HTTPSender.MaxFileSize=10000KB
+##### Axis End ####################################

@@ -1,0 +1,2 @@
+PRODUCTCODE,QTY,LANGUAGE1,TestcaseId,TestcaseType,Module,Description
+101,90,,TUNG23074,Negative,REST - Channel to Channel Transfer,To verify that when  MSISDN is enter then pin is mandatory .

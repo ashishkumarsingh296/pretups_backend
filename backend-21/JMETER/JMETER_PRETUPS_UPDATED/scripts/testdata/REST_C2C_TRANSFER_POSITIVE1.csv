@@ -1,0 +1,2 @@
+PRODUCTCODE,LANGUAGE1,TestcaseId,TestcaseType,Module,Description
+101,1,TUNG23072,Positive,REST - Channel to Channel Transfer,To verify that Channel to Channel request is sucessfully using MSISDN and PIN in Rest API request

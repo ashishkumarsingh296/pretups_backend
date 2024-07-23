@@ -1,0 +1,3 @@
+PRODUCTCODE,QTY,LANGUAGE1,TestcaseId,TestcaseType,Module,Description
+101,90,,TUNG13099,Negative,Channel to Channel Transfer,To Verify C2C is not Working when  Blank Value in NETWORK Code
+151,90,,TUNG12838,Negative,Channel to Channel Transfer,Different Product Id

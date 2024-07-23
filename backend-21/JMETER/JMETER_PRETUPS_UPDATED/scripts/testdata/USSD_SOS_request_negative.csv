@@ -1,0 +1,12 @@
+TestcaseId,TestcaseType,Module,Description
+,Negative,SOS request through USSD,To verify that channel user's SOS request is not processed for network wallet if channel user is not allowed as receiver as per user life cycle.
+,Negative,SOS request through USSD,To verify that channel user cannot hit SOS request through USSD with SOS wallet as network if SOS is not allowed for the user.
+,Negative,SOS request through USSD,To verify that channel user's SOS request is not processed if operator does not have sufficient network stock.
+,Negative,SOS request through USSD,To verify that channel user's SOS request is not processed for network wallet if channel user's previous SOS request is pending for settlement.
+,Negative,SOS request through USSD,To verify that channel user's SOS request is not processed if invalid product code is entered in the request.
+,Negative,SOS request through USSD,To verify that channel user's SOS request is not processed if invalid PIN is entered in the request.
+,Negative,SOS request through USSD,To verify that channel user's SOS request is not processed if  product code is not entered in the request.
+,Negative,SOS request through USSD,To verify that channel user's SOS request is not processed if  MSISDN is not entered in the request.
+,Negative,SOS request through USSD,To verify that channel user's SOS request is not processed if  PIN is not entered in the request.
+,Negative,SOS request through USSD,To verify that channel user's SOS request is not processed if invalid language code is entered in the request.
+,Negative,SOS request through USSD,To verify that channel user cannot hit SOS request through USSD with SOS wallet as network if user's balance is more than SOS threshold amount.

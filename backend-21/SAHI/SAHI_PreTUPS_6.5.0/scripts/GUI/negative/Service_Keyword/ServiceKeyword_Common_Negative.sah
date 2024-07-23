@@ -1,0 +1,109 @@
+
+
+
+
+_includeOnce("../../../../utility/ImportPackage.sah");
+
+var $l_naCsv = _readCSVFile("../../../GUI/testdata/NA_Login.csv");
+
+var $g_serviceType;
+var $g_keyword;
+var $g_gatewayType;
+var $g_receivingPort;
+var $g_name;
+var $g_status;
+var $g_menu;
+var $g_subMenu;
+var $g_allwedVersion;
+var $g_assertion;
+
+
+var $g_tempKeyword;
+
+function commonVaribleToAddServiceKeyword($a_row, $a_column) {
+	
+	$g_serviceType = $g_keywordDetails[$a_row][$a_column++];
+	$g_keyword = $g_keywordDetails[$a_row][$a_column++];
+	$g_gatewayType = $g_keywordDetails[$a_row][$a_column++];
+	$g_receivingPort = $g_keywordDetails[$a_row][$a_column++];
+	$g_name = $g_keywordDetails[$a_row][$a_column++];
+	$g_status = $g_keywordDetails[$a_row][$a_column++];
+	$g_menu = $g_keywordDetails[$a_row][$a_column++];
+	$g_subMenu = $g_keywordDetails[$a_row][$a_column++];
+	$g_allwedVersion = $g_keywordDetails[$a_row][$a_column++];
+	$g_assertion = $g_keywordDetails[$a_row][$a_column++];
+	
+	if($g_keyword == "1111" || $g_menu == "1111" || $g_subMenu == "1111"){
+		if($g_keyword == "1111") $g_keyword = "+1111";
+		if($g_menu == "1111") $g_menu = "+1111";
+		if($g_subMenu == "1111") $g_subMenu = "+1111";
+	}
+}
+
+
+
+function addServiceKeyword() {
+	_click(_link("Masters"));
+	_click(_link("Add service keyword"));
+	_assertExists(_div($g_assertServiceKeyword));
+	_setSelected(_select("serviceType"), $g_serviceType);
+	_setValue(_textbox("keyword"), $g_keyword);
+	_setSelected(_select("interface"), $g_gatewayType);
+	_setValue(_textbox("receivePort"), $g_receivingPort);
+	_setValue(_textbox("name"), $g_name);
+	_setSelected(_select("status"), $g_status);
+	_setValue(_textbox("menu"), $g_menu);
+	_setValue(_textbox("subMenu"), $g_subMenu);
+	_setValue(_textbox("allowedVersion"), $g_allwedVersion);
+	_click(_submit($g_BtnSubmit));
+	
+}
+
+
+
+function commonVaribleToModifyServiceKeyword($a_row, $a_column) {
+	
+	$g_serviceType = $l_naCsv[12][1];
+	$g_tempKeyword = $l_naCsv[12][2];
+	
+	$g_keyword = $g_keywordDetails[$a_row][$a_column++];
+	$g_gatewayType = $g_keywordDetails[$a_row][$a_column++];
+	$g_receivingPort = $g_keywordDetails[$a_row][$a_column++];
+	$g_name = $g_keywordDetails[$a_row][$a_column++];
+	$g_status = $g_keywordDetails[$a_row][$a_column++];
+	$g_menu = $g_keywordDetails[$a_row][$a_column++];
+	$g_subMenu = $g_keywordDetails[$a_row][$a_column++];
+	$g_allwedVersion = $g_keywordDetails[$a_row][$a_column++];
+	$g_assertion = $g_keywordDetails[$a_row][$a_column++];
+	if($g_keyword == "1111" || $g_menu == "1111" || $g_subMenu == "1111"){
+		if($g_keyword == "1111") $g_keyword = "+1111";
+		if($g_menu == "1111") $g_menu = "+1111";
+		if($g_subMenu == "1111") $g_subMenu = "+1111";
+	}
+}
+
+
+
+function modifyServiceKeyword() {
+	
+	_click(_link("Masters"));
+	_click(_link("Modify service keyword"));
+	_setSelected(_select("serviceType"), $g_serviceType);
+	_click(_submit($g_BtnSubmit));
+	_click(_radio("serviceKeywordID", _near(_cell($g_tempKeyword))));
+	_click(_submit($g_BtnSubmit));
+	_setValue(_textbox("keyword"), $g_keyword);
+	_setSelected(_select("interface"), $g_gatewayType);
+	_setValue(_textbox("receivePort"), $g_receivingPort);
+	_setValue(_textbox("name"), $g_name);
+	_setSelected(_select("status"), $g_status);
+	_setValue(_textbox("menu"), $g_menu);
+	_setValue(_textbox("subMenu"), $g_subMenu);
+	_setValue(_textbox("allowedVersion"), $g_allwedVersion);
+	_click(_submit($g_BtnSubmit));
+}
+
+
+
+
+

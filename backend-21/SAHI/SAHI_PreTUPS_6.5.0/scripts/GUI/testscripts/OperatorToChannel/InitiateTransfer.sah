@@ -1,0 +1,72 @@
+//######################################
+//
+// This script to initiate O2C Transfer in the system  ..... 
+//
+//#######################################
+
+
+//===== import scripts ===//
+_includeOnce("../../../../utility/ImportPackage.sah");
+_includeOnce("../../../GUI/testscripts/OperatorToChannel/InitiateTransfer_Common.sah"); //To initiate o2C transfer in the system 
+
+
+
+//If CA deos not exist, first create it and then initiate O2C transfer inthe system ..... 
+var $l_naCsv = _readCSVFile("../../../GUI/testdata/NA_Login.csv"); //Reads the network admin credentials 
+var $g_channelAdmin = $l_naCsv[2][1];
+if($g_channelAdmin == "null"){
+	createCA(); // UserManagement_Common.sah
+	var $l_naCsv1 = _readCSVFile("../../../GUI/testdata/NA_Login.csv");
+	$g_channelAdmin = $l_naCsv1[2][1];
+	login($g_appURL,  $g_LangEnglish, $g_channelAdmin, $g_commonPassword, $g_assertWelcome);
+}else{	 
+	login($g_appURL,  $g_LangEnglish, $g_channelAdmin, $g_commonPassword, $g_assertWelcome);
+}
+	
+
+ 
+
+// ....................... Test cases to initiate the O2C transfer in the system  ............. //
+
+var $g_O2CTransfer = _readCSVFile("../../../GUI/testdata/InitiateO2CTransfer.csv"); //Reads the O2C transfer details 
+
+
+
+	for(var $g_row = 1; $g_O2CTransfer[$g_row] != null; $g_row++){
+		
+				var $g_col = 0;
+				var $number =   testCaseNumber($g_O2CTransfer[$g_row][$g_col]);
+				var $t = _testcase($g_O2CTransfer[$g_row][$g_col++], $g_O2CTransfer[$g_row][$g_col++]);
+				
+				$t.start();
+				commonVaribleToInitiateO2C($g_row, $g_col);
+				
+				if($number > 0 && $number < 5 ) { initiateO2CTransferCommonTwo(); }
+				else if ($number == 5 ) { toCheckPopulatedValueInProductType(); }
+				else if ($number == 6 ) { toCheckResetFunctionalityOnSearchChannelUserPage(); }
+				else if ($number == 7 ) { toCheckBackFunctionalityOnO2CTransferDetailspage(); }
+				else if ($number == 8 ) { toCheckResetFunctionalityOnO2CTransferDetailspage(); }
+				if($number > 8 && $number < 18 ) { initiateO2CTransferCommonThree(); }
+				else if ($number == 18 ) { toCheckResetFunctionalityOnO2CTransferDetailspage(); }
+				//else if ($number == 18 ) { toCheckSubmitFunctionalityOnO2CTransferDetailspage(); }
+				else if ($number == 19 ) { toCheckBackFunctionalityOnConfirmPage(); }
+				else if ($number == 20 ) { toCheckvaluesInInstructionType(); }
+				else if ($number == 21 ) { initiateO2CTransfer(); }
+				
+				
+				
+				$t.end();
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+

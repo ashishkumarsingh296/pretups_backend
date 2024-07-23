@@ -1,0 +1,2 @@
+BASE_DIR: "{{ Base_DIR.stdout }}"
+SCRIPTS_DB_FOLDER_NAME: Postgress  # the name of the folder where postgres scripts will be present

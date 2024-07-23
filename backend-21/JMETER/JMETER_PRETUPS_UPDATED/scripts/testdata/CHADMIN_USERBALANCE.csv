@@ -1,0 +1,19 @@
+TestcaseId,TestcaseType,Module,Description
+,Positive,User Balance,To verify that channel user balance request is successful when all valid details are filled in the API.
+,Positive,User Balance,To verify that channel user balance request is successful if only MSISDN is present in Data subtags.
+,Positive,User Balance,To verify that channel user balance request is successful if only USERLOGINID is present in Data subtags.
+,Positive,User Balance,To verify that channel user balance request is successful if only USEREXTCODE is present in Data subtags.
+,Positive,User Balance,To verify that channel user balance request is successful if Date is blank.
+,Positive,User Balance,To verify that channel user balance request is successful if EXTREFNUM is blank.
+,Negative,User Balance,To verify that channel user balance request is not successful if Network code is blank.
+,Negative,User Balance,To verify that channel user balance request is not successful if Category code is blank.
+,Negative,User Balance,To verify that channel user balance request is not successful if Employee code is blank.
+,Negative,User Balance,To verify that channel user balance request is not successful if Login ID of operator user is blank.
+,Negative,User Balance,To verify that channel user balance request is not successful if there is no data in DATA subtags.
+,Negative,User Balance,To verify that channel user balance request is not successful if Network code is invalid.
+,Negative,User Balance,To verify that channel user balance request is not successful if Category code is invalid.
+,Negative,User Balance,To verify that channel user balance request is not successful if Employee code is invalid.
+,Negative,User Balance,To verify that channel user balance request is not successful if operator user LoginID is invalid.
+,Negative,User Balance,To verify that channel user balance request is not successful if Password is invalid.
+,Negative,User Balance,To verify that channel user balance request is not successful if Reference number is greater than 20.
+,Negative,User Balance,To verify that channel user balance request is not successful if channel user is new and no transaction is done to channel user.

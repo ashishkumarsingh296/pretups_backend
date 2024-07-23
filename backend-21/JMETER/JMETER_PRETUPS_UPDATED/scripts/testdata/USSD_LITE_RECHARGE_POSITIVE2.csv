@@ -1,0 +1,2 @@
+TestcaseId,TestcaseType,Module,Description
+TUNG12355 ,Positive,Lite Recharge through USSD,Validate that only a single IN hit happens during recharge for topup i.e no validation IN hit.

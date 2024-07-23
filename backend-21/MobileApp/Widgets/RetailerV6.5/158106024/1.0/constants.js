@@ -1,0 +1,1 @@
+var subscriberId 			= widget.fetchSubscriberID();

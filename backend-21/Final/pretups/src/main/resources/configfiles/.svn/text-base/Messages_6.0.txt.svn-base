@@ -1,0 +1,127 @@
+#######################New messages entries for PreTUPS5.6.2###############################
+
+## DrCr Channel User Through External Gateway
+1007005=mclass^2&pid^61:1007005:Invalid Transactin Type, Transaction Type has to be either Dr or Cr.
+1007101=mclass^2&pid^61:1007101:Account Credit request of product(s) {0} to {4} is successfull, net credited amount is {3}. Transaction Id is {2}.
+1007102=mclass^2&pid^61:1007102:Account Debit request of product(s) {0} from {4} is successfull, net debited amount is {3}. Transaction Id is {2}.
+1007103=mclass^2&pid^61:1007103:Account Credit request of product(s) {0} has been done by {4}. Your new balance of product(s) {1}. Transaction ID is {2}
+1007104=mclass^2&pid^61:1007104:Account Debit request of product(s) {0} has been done by {4}. Your new balance of product(s) {1}. Transaction ID is {2}
+
+
+
+###################### New message entry for 5.8 version ########################
+#### added by nilesh: for MRP block time
+3006201=mclass^2&pid^61:3006201:The mobile number {0} cannot use the same recharge service within {1} minutes of last successful transaction as last transfer amount is same as current requested amount.
+3006202=mclass^2&pid^61:3006202:The mobile number {0} cannot use the any recharge service within {1} minutes of last successful transaction as last transfer amount is same as current requested amount.
+##################EXt User Request#######################################33
+4558=mclass^2&pid^61:4558:New user registered successfully in the pretups system.
+4559=mclass^2&pid^61:4559:User modified successfully through EXT system.
+4560=mclass^2&pid^61:4560:User deleted successfully through EXT system.
+4575=mclass^2&pid^61:4575:The EXT channel user actual network code is null.
+4576=mclass^2&pid^61:4576:The EXT channel user network code is null. 
+4577=mclass^2&pid^61:4577:The EXT channel user actual network code is invalid or not exist.
+1001001=mclass^2&pid^61:1001001:Default User Grade Info Not Found.
+1001002=mclass^2&pid^61:1001002:Default Commission Profile Info Not Found.
+1001003=mclass^2&pid^61:1001003:Default Transfer Profile Info Not Found.
+1001004=mclass^2&pid^61:1001004:Default Activation Profile Info Not Found.
+1001005=mclass^2&pid^61:1001005:Default Service Info Not Found.
+1001006=mclass^2&pid^61:1001006:Default Roles Info Not Found.
+U=mclass^2&pid^61:U:Success
+4=mclass^2&pid^61:New password should be different from previous {0} used passwords.
+#################suspend resume channel user######################################
+1008101=mclass^2&pid^61:6677:User {1}  suspend request accepted approval required.
+1008102=mclass^2&pid^61:6677:User {1}  suspend request accepted from {0} approval required.
+1008003=mclass^2&pid^61:6677:suspend request approval is pending.
+
+
+
+#####################Added by ankuj for LMB process####################
+
+
+1011001=mclass^2&pid^61:1011001:SOS Process already executed till today
+1011002=mclass^2&pid^61:1011002:process could not update the max done date
+1011003=mclass^2&pid^61:1011003:process executed upto date not found
+1011004=mclass^2&pid^61:1011004:SOS SOS error exception
+1011005=mclass^2&pid^61:1011005:Could not find the data in the constants file
+1011006=mclass^2&pid^61:1011006:SOS settlement process failed
+1011007=mclass^2&pid^61:1011007:SOS Process already executed till today
+1011008=mclass^2&pid^61:1011008:SOS Less validity days 
+1011009=mclass^2&pid^61:1011009:SOS Less gap between two transactions
+1011011=mclass^2&pid^61:1011011:Subscriber is not active
+1011112=mclass^2&pid^61:1011112:SOS success
+1011113=mclass^2&pid^61:1011113:SOS success without post balance
+1011014=mclass^2&pid^61:1011014:SOSDWH: Could not find data in the constants file
+1011015=mclass^2&pid^61:1011015:Executed upto date could not be found
+1011016=mclass^2&pid^61:1011016:SOSDWH: Ambiguous or under process transactions found
+1011017=mclass^2&pid^61:1011017:SOSDWH: Process already executed till today
+1011018=mclass^2&pid^61:1011018:SOSDWH: Could not update max till done date
+1011019=mclass^2&pid^61:1011019:SOSDWH: Error Exception
+1011020=mclass^2&pid^61:1011020:SOS service class not allowed
+1011021=mclass^2&pid^61:1011021:Last success LMB unsettled
+1011022=mclass^2&pid^61:1011022:LMB:Less age on network days
+1011023=mclass^2&pid^61:1011023:LMB: previous balance negative
+1011024=mclass^2&pid^61:1011024:LMB flag is zero
+1011025=mclass^2&pid^61:1011025:LMB requested amount is more than the permissable limit
+1011026=mclass^2&pid^61:1011026:LMB previous balance is less
+1011027=mclass^2&pid^61:1011027:CellID is blank
+1011028=mclass^2&pid^61:1011028:Switch ID is blank
+1011029=mclass^2&pid^61:1011029:LMB request is already processed
+1011130=mclass^2&pid^61:1011130:LMB force settlement success for operator call
+1011031=mclass^2&pid^61:1011031:LMB force settlement failure for operator call
+1011032=mclass^2&pid^61:1011032:No success LMB found for forceful settlement
+1011033=mclass^2&pid^61:1011033:Multiple records exist
+1011034=mclass^2&pid^61:1011034:Other unsettled transactions exist
+1011035=mclass^2&pid^61:1011035:Invalid data
+1011036=mclass^2&pid^61:1011036:LMB settle status same
+1011037=mclass^2&pid^61:1011037:Latest fail transaction is not latest LMB transaction for subscriber MSISDN
+1011138=mclass^2&pid^61:1011138:LMB force settlement success
+1011039=mclass^2&pid^61:1011039:LMB USER_PHONES table not updated
+1011040=mclass^2&pid^61:1011040:LMB language code general exception
+1011041=mclass^2&pid^61:1011041:LMB interface handler exception
+1011042=mclass^2&pid^61:1011042:LMB interface request not sent
+1011043=mclass^2&pid^61:1011043:LMB error bad request
+1011044=mclass^2&pid^61:1011044:LMB ambiguous response
+1011045=mclass^2&pid^61:1011045:LMB error response
+1011046=mclass^2&pid^61:1011046:LMB interface MSISDN not found
+1011047=mclass^2&pid^61:1011047:LMB interface MSISDN barred
+1011048=mclass^2&pid^61:1011048:LMB invalid MSISDN
+1011049=mclass^2&pid^61:1011049:LMB duplicate MSISDN
+1011150=mclass^2&pid^61:1011150:LMB bulk upload success
+1011051=mclass^2&pid^61:1011051:LMB bulk upload: duplicate MSISDN in the database
+1011052=mclass^2&pid^61:1011052:LMB validity has expired; subscriber must be bulk uploaded again
+1011153=mclass^2&pid^61:1011153:SOS settlement process success
+1011054=mclass^2&pid^61:1011154:LMB invalid date
+1011055=mclass^2&pid^61:1011055:LMB request MSISDN filed is blank.
+1011056=mclass^2&pid^61:1011056:LMB amount is not numeric.
+1011057=mclass^2&pid^61:1011057:LMB request type field is blank.
+1011058=mclass^2&pid^61:1011058:Invalid Status, it should be 200, 206 or blank.
+1011059=mclass^2&pid^61:1011059:Network prefix not found.
+1011060=mclass^2&pid^61:1011060:Msisdn is from unsupported network.
+
+#####################LMB changes end#############################33
+
+##### Entries start for Give Me Balance handler #####
+2010201=mclass^2&pid^61:2010201:Invalid message format, please contact customer care.
+2010202=mclass^2&pid^61:2010202:Your request for GMB has failed due to invalid amount request.
+2010203=mclass^2&pid^61:2010203:Your request for GMB has failed due to invalid initiator msisdn.
+2010204=mclass^2&pid^61:2010204:Your request for GMB has failed due to invalid donor msisdn.
+2010205=mclass^2&pid^61:2010205:Your request for GMB has failed as initiator msisdn is from un-supported network.
+2010206=mclass^2&pid^61:2010206:Your request for GMB has failed as donor msisdn is from un-supported network.
+2010207=mclass^2&pid^61:2010207:Your request for GMB cannot be processed due to time out.
+2010208=mclass^2&pid^61:2010208:Cellid is blank in the request.
+2010209=mclass^2&pid^61:2010209:switchid is blank in the request.
+
+2010210=mclass^2&pid^61:2010210:Type field is blank in the request.
+2010211=mclass^2&pid^61:2010211:MSISDN1 feild is blank in the request.
+2010212=mclass^2&pid^61:2010212:MSISDN2 feild is blank in the request.
+2010213=mclass^2&pid^61:2010213:MSISDN1 and MSISDN2 cannot be equal.
+
+##### Entries end for Give Me Balance handler #####
+
+######### Added by Amit Raheja ###############################
+1012102=mclass^2&pid^61:7784:Amount has been reversed for products {4} with transaction ID {1} successfully .Total amount {2} KSH Debit from your account and new balance is {3} KSH. 
+1012101=mclass^2&pid^61:7785:Amount has been reversed for products {4} with transaction ID {1} successfully .Total amount {2} KSH Credite to your account and new balance is {3} KSH. 
+1013101=mclass^2&pid^61:7784:Amount has been reversed  with Transaction ID {0} successfully .Requested Amount {3} KSH Debit from your account and new balance is {2} KSH. 
+###############VOMS#############################
+voms.download.label.firstline=Total Vouchers={0},From Serial No={1},To Serial No={2}
+############# Addition ends ###################################

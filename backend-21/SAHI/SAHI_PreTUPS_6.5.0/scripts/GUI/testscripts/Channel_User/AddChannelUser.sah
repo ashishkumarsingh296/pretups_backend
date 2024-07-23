@@ -1,0 +1,30 @@
+//################################################
+//#Company Name: Mahindra Comviva Technologies Ltd.
+//#Application Name: Pretups
+//#Objective: It will add Channel User
+//#Author Name: Nidhi Singh
+//#Created Date: 03/02/2014
+//###############################################
+
+
+//===========================Import Scripts============================	 
+	_includeOnce("../../../../utility/ImportPackage.sah");	//For importing common files
+	_includeOnce("../../../GUI/testscripts/Channel_User/ChannelUser_Common.sah"); //For creating channel user
+	_includeOnce("../../../GUI/testscripts/Profile_Management/ProfileManagement_Common.sah");//For importing CommProfile functions
+	_includeOnce("../../../GUI/testscripts/User_Management/UserManagement_Common.sah"); //For creating CA	
+
+//======================Pre-requisite check============================
+_log("Setup", "custom4");
+/*addStatusAndService();
+
+var $t = addStatusAndService();
+_log("CategoryCode"+$t);
+addStatus($t);
+_closeBrowser();*/
+
+createCU(); //(ChannelUser_Common.sah)
+	
+	
+
+
+

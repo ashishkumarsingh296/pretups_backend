@@ -1,0 +1,24 @@
+# use the STDOUT appender. set the level to INFO.
+#log4j.category.com.devdaily.log4jdemo.Log4JDemo=INFO, STDOUT
+# STDOUT appender
+#log4j.appender.STDOUT=org.apache.log4j.ConsoleAppender
+#log4j.appender.VomsBatchInfoLog.File=/pretupsvar/pretups_weblogs/VomsBatchInfoLog_output.log
+#log4j.appender.STDOUT.layoutDatePattern='.'yyyy-MM-dd
+#log4j.appender.STDOUT.layout=org.apache.log4j.PatternLayout
+#log4j.appender.STDOUT.layout.ConversionPattern=%5p [%t] (%F:%L) - %m%n 
+
+
+# initialise root logger with level DEBUG and call it BLAH
+log4j.rootLogger=DEBUG, MYFILE
+#log4j.rootLogger=ERROR, MYFILE
+
+# add a ConsoleAppender to the logger BLAH
+log4j.appender.MYFILE=org.apache.log4j.DailyRollingFileAppender
+
+log4j.appender.MYFILE.File=/home/pretups_ocitz/tomcat5_web/logs/enDeCryptionLogicLog.log
+#log4j.appender.MYFILE.MaxFileSize=1000KB
+log4j.appender.MYFILE.layoutDatePattern='.'yyyy-MM-dd
+log4j.appender.MYFILE.DatePattern='.'yyyy-MM-dd
+# set set that layout to be SimpleLayout
+log4j.appender.MYFILE.layout=org.apache.log4j.PatternLayout
+log4j.appender.MYFILE.layout.ConversionPattern=%5p [%t] (%F:%L) - %m%n

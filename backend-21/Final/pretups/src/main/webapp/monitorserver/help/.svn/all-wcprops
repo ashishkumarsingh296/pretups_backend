@@ -1,0 +1,77 @@
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/monitorserver/help
+END
+pretupsInterfaceCounters.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 149
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/monitorserver/help/pretupsInterfaceCounters.jsp
+END
+oam.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 128
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/monitorserver/help/oam.jsp
+END
+pretupsTransactionCounters.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 151
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/monitorserver/help/pretupsTransactionCounters.jsp
+END
+pretupsNetworkCounters.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 147
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/monitorserver/help/pretupsNetworkCounters.jsp
+END
+serverMemory_sms.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 141
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/monitorserver/help/serverMemory_sms.jsp
+END
+pretupsRequestCounters.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 147
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/monitorserver/help/pretupsRequestCounters.jsp
+END
+sessionUsers.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 137
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/monitorserver/help/sessionUsers.jsp
+END
+SMSCGatewayHlp.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 139
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/monitorserver/help/SMSCGatewayHlp.jsp
+END
+clickFromTheFollowing.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 146
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/monitorserver/help/clickFromTheFollowing.jsp
+END
+pretupsInstanceCounters.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 148
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/monitorserver/help/pretupsInstanceCounters.jsp
+END
+activeSessions.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 139
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/monitorserver/help/activeSessions.jsp
+END
+serverMemory.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 137
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/webapp/monitorserver/help/serverMemory.jsp
+END

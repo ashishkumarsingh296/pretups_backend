@@ -1,0 +1,217 @@
+pipeline {
+
+    agent any
+    parameters {
+        choice(name: 'ENVIRONMENT', choices: ['AWS','PVG_HTTP_POSTGRES','PVG_HTTP_ORACLE','PVG_HTTP_DQA','ORACLE','POSTGRESS','FINALITIX'], description: "Choose environment for the build")
+        choice(name: 'RESTART_SERVER', choices: ['NO','YES'], description: "Restart tomcat required")
+        string(name: 'V_JAVA_HOME', defaultValue: 'DEFAULT', description: "Modify path if needed, 'DEFAULT' means set via jenkins configuration")
+        string(name: 'V_MAVEN_HOME', defaultValue: 'DEFAULT', description: "Modify path if needed, 'DEFAULT' means set via jenkins configuration")
+        string(name: 'V_ANSIBLE_HOME', defaultValue: 'DEFAULT', description: "Modify path if needed, 'DEFAULT' means set via jenkins configuration")
+        }
+
+    environment {
+        //Default pointing to AWS
+        TARGET_SERVER_HOST = "35.155.189.215"
+        TARGET_SERVER_TOMCAT_HOME = "/data1/tomcat_pretups"
+        PRETUPS_HOME_DIR = "${env.WORKSPACE}/pretups"
+        }
+
+    stages {
+        // this stage is for loading and setting the enviorment variables
+        stage('init') {
+            steps {
+                script {
+                    gv = load "${env.PRETUPS_HOME_DIR}/pipelineConfig.groovy"
+                    gv.setJenkinsEnvVariables()
+                    //gv.setTargetDeploymentVariables()
+                }
+            }
+        }
+
+        stage('Build') {
+            steps {
+                echo "${params.ENVIRONMENT} build started"
+                sh "${env.PRETUPS_HOME_DIR}/jenkins_build_scripts/build_script_${params.ENVIRONMENT}.sh"
+                echo "${params.ENVIRONMENT} build completed"
+                //archiveArtifacts artifacts: "pretups/target/pretups.war", fingerprint: true
+           }
+        }
+
+        stage('Copy & Place Binary-AWS') {
+            environment {
+                TARGET_SERVER_HOST = "35.155.189.215"
+                TARGET_SERVER_TOMCAT_HOME = "/data1/tomcat_pretups"
+            }
+            when {
+                expression {
+                    params.ENVIRONMENT == 'AWS'
+                }
+            }
+            steps {
+                echo "${params.ENVIRONMENT} deployment started"
+                withCredentials([sshUserPrivateKey(credentialsId: 'core_aws', keyFileVariable: 'key', usernameVariable: 'username')]) {
+                    sh "scp -i ${key} pretups/target/pretups.war ${username}@$TARGET_SERVER_HOST:/data1/dump"
+                    sh "ssh -t -i ${key} ${username}@$TARGET_SERVER_HOST 'rm -rf $TARGET_SERVER_TOMCAT_HOME/webapps/pretups.war && rm -rf $TARGET_SERVER_TOMCAT_HOME/webapps/pretups && cp /data1/dump/pretups.war $TARGET_SERVER_TOMCAT_HOME/webapps'"
+                }
+                echo "${params.ENVIRONMENT} deployment completed"
+           }
+        }
+
+        stage('DEPLOYMENT AWS') {
+            environment {
+                TARGET_SERVER_HOST = "35.155.189.215"
+                TARGET_SERVER_TOMCAT_HOME = "/data1/tomcat_pretups"
+            }
+            when {
+                expression {
+                    params.ENVIRONMENT == 'AWS' && params.RESTART_SERVER == 'YES'
+                }
+            }
+            steps {
+                echo "${params.ENVIRONMENT} Restarting"
+                withCredentials([sshUserPrivateKey(credentialsId: 'core_aws', keyFileVariable: 'key', usernameVariable: 'username')]) {
+                    sh "ssh -t -i ${key} ${username}@$TARGET_SERVER_HOST 'cd $TARGET_SERVER_TOMCAT_HOME/bin && sh pretupsStart.sh'"
+                }
+                echo "${params.ENVIRONMENT} Restarted"
+           }
+        }
+
+
+        stage('DEPLOYMENT PVG PG') {
+            environment {
+                TARGET_SERVER_HOST = "172.30.40.143"
+                TARGET_SERVER_TOMCAT_HOME = "/home/rmp7_51pvgB3/tomcat9_unsecured"
+            }
+            when {
+                expression {
+                    params.ENVIRONMENT == 'PVG_HTTP_POSTGRES'
+                }
+            }
+            steps {
+                echo "${params.ENVIRONMENT} deployment started"
+                script{
+
+                    //delete intermediate build binaries
+                    deleteintermediatedir='''
+                        rm -rf /home/rmp7_51pvgB3/latest_build_files/*
+                        date
+                        cat /etc/os-release
+                    '''
+                    sshPublisher(publishers: [sshPublisherDesc(configName: 'pvg_http_server_pg',
+                        transfers: [ sshTransfer(execCommand: deleteintermediatedir    )])])
+
+
+                    sshPublisher(publishers: [sshPublisherDesc(configName: 'pvg_http_server_pg',
+                        transfers: [ sshTransfer(flatten: false,
+                                 remoteDirectory: 'latest_build_files/',
+                                 removePrefix: 'pretups/target',
+                                 sourceFiles: 'pretups/target/pretups.war'
+                        )])
+                    ])
+
+                    deploynewwar='''
+                        rm -rf /home/rmp7_51pvgB3/tomcat9_unsecured/webapps/pretups.war
+                        rm -rf /home/rmp7_51pvgB3/tomcat9_unsecured/webapps/pretups
+                        cp /home/rmp7_51pvgB3/latest_build_files/pretups.war /home/rmp7_51pvgB3/tomcat9_unsecured/webapps/
+                    '''
+
+                    sshPublisher(publishers: [sshPublisherDesc(configName: 'pvg_http_server_pg',
+                        transfers: [ sshTransfer(execCommand: deploynewwar    )])])
+
+               }
+               echo "${params.ENVIRONMENT} deployment completed"
+           }
+        }
+
+        stage('DEPLOYMENT PVG DQA') {
+            environment {
+                TARGET_SERVER_HOST = "172.30.40.143"
+                TARGET_SERVER_TOMCAT_HOME = "/data2/rmp7_64pg/tomcat9"
+            }
+            when {
+                expression {
+                    params.ENVIRONMENT == 'PVG_HTTP_DQA'
+                }
+            }
+            steps {
+                echo "${params.ENVIRONMENT} deployment started"
+                script{
+
+                    //delete intermediate build binaries
+                    deleteintermediatedir='''
+                        rm -rf /data2/rmp7_64pg/latest_build_files/*
+                    '''
+                    sshPublisher(publishers: [sshPublisherDesc(configName: 'pvg_http_server_dqa',
+                        transfers: [ sshTransfer(execCommand: deleteintermediatedir    )])])
+
+
+                    sshPublisher(publishers: [sshPublisherDesc(configName: 'pvg_http_server_dqa',
+                        transfers: [ sshTransfer(flatten: false,
+                                 remoteDirectory: 'latest_build_files/',
+                                 removePrefix: 'pretups/target',
+                                 sourceFiles: 'pretups/target/pretups.war'
+                        )])
+                    ])
+
+                    deploynewwar='''
+                        rm -rf /data2/rmp7_64pg/tomcat9/webapps/pretups.war
+                        rm -rf /data2/rmp7_64pg/tomcat9/webapps/pretups
+                        cp /data2/rmp7_64pg/latest_build_files/pretups.war /data2/rmp7_64pg/tomcat9/webapps/
+                    '''
+
+                    sshPublisher(publishers: [sshPublisherDesc(configName: 'pvg_http_server_dqa',
+                        transfers: [ sshTransfer(execCommand: deploynewwar    )])])
+
+               }
+               echo "${params.ENVIRONMENT} deployment completed"
+           }
+        }
+
+
+        stage('DEPLOYMENT PVG ORACLE') {
+            environment {
+                TARGET_SERVER_HOST = "172.30.40.143"
+                TARGET_SERVER_TOMCAT_HOME = "/home/rmp7_51revampB2/tomcat9/"
+            }
+            when {
+                expression {
+                    params.ENVIRONMENT == 'PVG_HTTP_ORACLE'
+                }
+            }
+            steps {
+                echo "${params.ENVIRONMENT} deployment started"
+                script{
+
+                    //delete intermediate build binaries
+                    deleteintermediatedir='''
+                        rm -rf /home/rmp7_51revampB2/latest_build_files/*
+                        date
+                        cat /etc/os-release
+                    '''
+                    sshPublisher(publishers: [sshPublisherDesc(configName: 'pvg_http_server_oracle',
+                        transfers: [ sshTransfer(execCommand: deleteintermediatedir    )])])
+
+
+                    sshPublisher(publishers: [sshPublisherDesc(configName: 'pvg_http_server_oracle',
+                        transfers: [ sshTransfer(flatten: false,
+                                 remoteDirectory: 'latest_build_files/',
+                                 removePrefix: 'pretups/target',
+                                 sourceFiles: 'pretups/target/pretups.war'
+                        )])
+                    ])
+
+                    deploynewwar='''
+                        rm -rf /home/rmp7_51revampB2/tomcat9/webapps/pretups.war
+                        rm -rf /home/rmp7_51revampB2/tomcat9/webapps/pretups
+                        cp /home/rmp7_51revampB2/latest_build_files/pretups.war /home/rmp7_51revampB2/tomcat9/webapps/
+                    '''
+
+                    sshPublisher(publishers: [sshPublisherDesc(configName: 'pvg_http_server_oracle',
+                        transfers: [ sshTransfer(execCommand: deploynewwar    )])])
+
+               }
+               echo "${params.ENVIRONMENT} deployment completed"
+           }
+        }
+    }
+}

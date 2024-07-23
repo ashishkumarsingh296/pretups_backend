@@ -1,0 +1,5 @@
+TestCaseNo. ,Discription,Domain,Category,Role Code,Role Name,GroupName,FormHr,ToHr,Assertion
+TEST001,Given super admin logs into the application and try to add a new group role. ,Dist1,Super Distributor,AUTGROUP,Aut GroupRole,Aut Group Name,1,23,Group role successfully added
+TEST002,Given super admin logs into the application and try to add a new group role without any details,,,,,,,,Domain is required.
+TEST003,Given super admin logs into the application and try to add a new group role without entering role code and role name,Dist1,Super Distributor,,,,,,Role code is required.
+TEST004,Given super admin logs into the application and try to modify existing group role code,Dist1,Super Distributor,AUTGROUPM,Aut GroupRole,,,,Group role successfully updated

@@ -1,0 +1,35 @@
+---
+########################################################
+# Author           Date        Remarks
+#------------    -----------  ---------
+#Sadhan Kumar K  25-07-2016    Initial Creation
+#
+# This file takes care of Validating the Path entered 
+# by user for file patch exists in Remote Server or not 
+# for patch
+#########################################################
+
+ - name: Checking the Patch files exists or not in the remote server  for Patch Types other than WAR.
+   stat: path={{ item.path }}/{{ item.fileName }}
+   with_items:
+     - "{{ PatchConfigfiles }}"
+   when: item.patchType !='WAR' and item.patchType !='JAVA'
+   register: pathCheck
+   ignore_errors: yes
+   tags:
+     - patchPathCheck
+
+ - name: Validating the Patch files exists or not in the remote server  for Patch Types other than WAR.
+   fail: msg="The patch file path {{ item.item.path }}{{ item.item.fileName }} doesnot exist wrong."  
+   failed_when: item.stat.exists == false
+   when: item.item.patchType !='WAR' and item.item.patchType !='JAVA'
+   with_items: "{{pathCheck.results}}"
+   ignore_errors: yes
+   tags:
+     - patchPathCheck
+
+ - debug: msg="All the patch file path exists - correct  for Patch Types other than WAR."
+   when: pathCheck|success
+   ignore_errors: yes
+   tags:
+     - patchPathCheck

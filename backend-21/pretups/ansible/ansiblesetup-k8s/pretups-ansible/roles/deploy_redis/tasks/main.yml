@@ -1,0 +1,49 @@
+---
+ - name: Create a deployment directory
+   file:
+     path: "/{{ HOME_DIR_NAME }}/redis"
+     state: directory
+     owner: "{{ USER_NAME }}"
+     group: "{{ GROUP_NAME }}"
+
+
+ - name: Copying deployment.yml to the destination
+   become: true
+   remote_user: "{{ USER_NAME }}"
+   ansible.builtin.copy:
+     src: .
+     dest: "/{{ HOME_DIR_NAME }}/redis"
+     owner: "{{ USER_NAME }}"
+     group: "{{ GROUP_NAME }}"
+
+
+
+   
+ - name: kubectl apply -f create-service.yaml
+   become: true
+   remote_user: "{{ USER_NAME }}"
+   command: kubectl apply -f /{{ HOME_DIR_NAME }}/redis/create-service.yaml
+
+ - name: kubectl apply -f create-service2.yaml
+   become: true
+   remote_user: "{{ USER_NAME }}"
+   command: kubectl apply -f /{{ HOME_DIR_NAME }}/redis/create-service2.yaml
+
+
+ - name: kubectl apply -f create-master-deployment.yaml
+   become: true
+   remote_user: "{{ USER_NAME }}"
+   command: kubectl apply -f /{{ HOME_DIR_NAME }}/redis/create-master-deployment.yaml
+
+
+ - name: kubectl apply -f create-sentinel-deployment.yaml
+   become: true
+   remote_user: "{{ USER_NAME }}"
+   command: kubectl apply -f /{{ HOME_DIR_NAME }}/redis/create-sentinel-deployment.yaml
+
+ - name: kubectl apply -f create-slave-deployment.yaml
+   become: true
+   remote_user: "{{ USER_NAME }}"
+   command: kubectl apply -f /{{ HOME_DIR_NAME }}/redis/create-slave-deployment.yaml
+
+

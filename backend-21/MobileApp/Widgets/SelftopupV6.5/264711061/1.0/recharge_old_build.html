@@ -1,0 +1,139 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+ "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<script type="text/javascript" src="wgt:214807648/1.0/checkDevice.js" />
+<link rel="stylesheet" type="text/css"	href="wgt:214807648/1.0/common.css" />
+<script type="text/javascript" 	src="wgt:913980753/1.0/configuration.js"></script>
+<script type="text/javascript" 	src="wgt:913980753/1.0/util.js"></script>
+<script type="text/javascript" 	src="wgt:950181717/1.0/xmlRequest.js"></script>
+<script type="text/javascript" 	src="wgt:252267641/1.0/accounts.js"></script>
+<script type="text/javascript" 	src="wgt:251238406/1.0/cards.js"></script>
+<script type="text/javascript" src="wgt:913980753/1.0/strings.js"></script>
+<script type="text/javascript" src="recharge.js"></script>
+<script type="text/javascript" src="buddies.js"></script>
+<script type="text/javascript" src="qrCodeGen.js"></script>
+</head>
+
+<body onload="javascript:pretupsHome();">
+<div title="" id="toast" type='toast' style="display: none"	class="c3lMenu"></div>
+<div title="" id="alert" type='info' style="display: none"	class="c3lMenu"></div>
+<!-- pretups Home screen start -->
+<div title="" id="pretupsHome" style="display: none" class="c3lMenu bgColor"></div>
+<div title="" id="closeApp" type='confirm' style="display: none" class="c3lMenu bgColor"></div>
+<div title="" id="buddyPinPopUp" type='popup' valign='bottom' style="display:none"  transition='3'	class="c3lMenu">
+<script>
+document.write("<setvar name='bpin' value='' /><div  style='background-color:white'><div class='c3lMenuGroup navConfPadding'><span id='confpaytext1'  class='navConfTitle'>" + STR_CONF + "</span><hr /><div class='c3lMenuGroup marginTop15' align='center'><a class='c3lMenuGroup navBgImage' href=\"close://action=keypad://clearall?name=$pin$\"><img id='cvvcancel'  align='center' resimg='button_cancel.9.png'  src='" + imagePath + "button_cancel.9.png' /></a><input class='inputBg1 navInput'  align='center' id='bpin' name='bpin' maxLength='" + PIN_LENGTH + "' type='numpassword' title= '" + STR_PIN + "'  emptyok='false' encrypt='true'/><a class='c3lMenuGroup navBgImage' href=\"wgt:950181717/1.0:sendviewBuddyReq($bpin,1)\"><img id='cvvaccept'  align='center' resimg='button_accept.9.png' src='" + imagePath + "button_accept.9.png' /></a></div></div></div>");
+</script>
+</div>
+<div title="" id="cardPinPopUp" type='popup' valign='bottom' style="display:none"  transition='3'	class="c3lMenu">
+<script>
+document.write("<setvar name='cpin' value='' /><div  style='background-color:white'><hr class='gray' /><div class='c3lMenuGroup navConfPadding'><span id='confpaytext1'  class='navConfTitle'>" + STR_CONF + "</span><hr /><div class='c3lMenuGroup marginTop15' align='center'><a class='c3lMenuGroup navBgImage' href=\"close://action=keypad://clearall?name=$pin$\"><img id='cvvcancel'  align='center' resimg='button_cancel.9.png'  src='" + imagePath + "button_cancel.9.png' /></a><input class='inputBg1 navInput'  align='center' id='cpin' name='cpin' maxLength='" + PIN_LENGTH + "' type='numpassword' title= '" + STR_PIN + "'  emptyok='false' encrypt='true'/><a class='c3lMenuGroup navBgImage' href=\"wgt:950181717/1.0:sendviewCardReq($cpin,1);\"><img id='cvvaccept'  align='center' resimg='button_accept.9.png' src='" + imagePath + "button_accept.9.png' /></a></div></div></div>");
+</script>
+</div>
+<!--pretups Home screen end  -->
+
+<!-- pretups paymentOption screen start -->
+<div title="" id="paySelf" style="display: none"	class="c3lMenu bgColor"></div>
+<div title="" id="payOption" style="display: none"	class="c3lMenu bgColor"></div>
+<div title="" id="adhocpage" type='popup'  height='100%' valign='top' transition='8' style="display: none"	class="c3lMenu bgColor"></div>
+<div title="" id="backBuddy" style="display: none"	class="c3lMenu bgColor"></div>
+<div title="" id="p2pPopUp" type='popup' valign='bottom' style="display: none"  transition='3'	class="c3lMenu">
+<script>
+document.write("<div id='confpay'  style='background-color:white'><div class='c3lMenuGroup navConfPadding'><span id='confpaytext' align='left' class='navConfTitle'>" + STR_MAKEPAY_HEADING + "</span><hr /><a  class='c3lMenuGroup navButtonBgLeft' style='background-image:url("+imagePath+"confirmbutton.9.png)' resimg='confirmbutton.png' href=\"close:\" ><span id='cancelpaytext' align='center' class='buttonText'>" + STR_CANCEL + "</span></a><a id='acceptpaytext'  class='c3lMenuGroup navButtonBgRight' style='background-image:url("+imagePath+"confirmbutton.9.png)' resimg='confirmbutton.png' href='wgt:950181717/1.0:sendP2PRechargeReq($msisdn,$amount,$pin);'><span id='acceptpaytext' align='center' class='buttonText'>" + STR_ACCEPT + "</span></a></div></div>");
+</script>
+</div>
+<div title="" id="cvvpopup" type='popup' valign='bottom' style="display: none"  transition='3'	class="c3lMenu">
+	<script>
+	document.write("<div id='cvvpayment' style='background-color:white'><div  class='c3lMenuGroup navConfPadding'><span class='navConfTitle'>" + STR_CONFIRM_HEADING + "</span><hr/><div class='c3lMenuGroup marginTop15' align='center'><a class='c3lMenuGroup navBgImage' href=\"close://action=keypad://clearall?name=$cvvNo$\"><img   align='center' resimg='button_cancel.9.png' src='" + imagePath + "button_cancel.9.png' /></a><input class='inputBg1 navInput'  align='center' id='cvvNo' name='cvvNo' maxLength='" + CVV_LENGTH + "' type='numpassword' title= '"+STR_CVV_TEXT+"'   emptyok='false' encrypt='true' alt='"+CVV_TT+"'/><a class='c3lMenuGroup navBgImage' href=\"wgt:950181717/1.0:sendSubsCardRechReq($cvvNo,$cardNickName,$msisdn,$amount,$pin);\"><img   align='center'  resimg='button_accept.9.png' src='" + imagePath + "button_accept.9.png' /></a></div></div></div>");
+	</script>
+</div>
+<!-- pretups paymentOption screen end  -->
+<!-- payment status screen start -->
+<div title="" id="payStatus" style='display: none'
+	class="c3lMenu bgColor">
+	<script>
+	document.write("<div width = '100%' class='c3lTitle bgColor'><span id='confirmtext' valign='middle' align='center' class='c3lMenuGroup topSize'>"+STR_CONFIRM+"</span><a href='javascript:pretupsHome();'><img   width='50' align='right' resimg='icon_home.9.png' src='"+imagePath+"icon_home.9.png'/></a><hr/></div>");
+	</script>
+	<div class='paymentStatus'><span id='paystatus' class='paystatustext'></span><br /> <span	id='payinfo' class='paystatusinfo'></span>
+	</div>
+	<div class='c3lMenuGroup' style='margin-top:10%;font-style:italic' align='center'><span>please <a href='#pretupsHome' class='redColor'>Click here</a> to Home</span></div>
+	<div id='tryagainnav' class='c3lNavigation bgColor marginNav'	align='center'>	<a href='javascript:pretupsHome(1)'><img id='tryagain' resimg='icon_tryagain.9.png'		width='25%' title='' /></a><br /><span id='tryagaintext'	class='topSize'>Try Again</span></div>
+</div>
+
+<!-- payment status screen end -->
+		
+		<!-- sos page start-->
+<div title=""  id="sosPage"  type='popup' width='100%' height='100%' valign='top' transition='8' style="display: none" class="c3lMenu bgColor">
+	<script>
+	document.write("<div class='c3lTitle sosTopMargin'><span id='sostoptext' align='center' class='textColor'>"+STR_TOP_TEXT+"</span></div>");
+	var height= widget.fetchScreenHeight();
+	if("" != nullorUndefCheck(height))
+	{
+		height = Number(height)/2-150;
+	}
+	//document.write("<div class='c3lMenuGroup' style='margin-top:"+height+"'><a href='javascript:pretupsHome(1)' resimg='sos_arrowleft.9.png' style='background-image:url("+imagePath+"icon_arrowleft.9.png)' class='sosNo'><span id='sosnotext' valign='center' align='center'></span></a><a href=\"javascript:payStatus('200','SUCCESS')\" resimg='icon_arrowright.9.png' style='background-image:url("+imagePath+"icon_arrowright.9.png);' class='sosYes'><span id='sosyestext' align='center' valign='center'></span></a></div>");
+	document.write("<div width='100%' class='c3lMenuGroup' style='margin:"+height+" 0% 0% 20%'><a align='center' class='c3lMenuGroup' width='30%'  href='close:'><img   resimg='sos_arrowleft.png' src='sos_arrowleft.9.png'/></a><a align='center' class='c3lMenuGroup' style='margin-left:10%' width='31%'  href=\"javascript:payStatus('200','"+STR_RESPONSE_MSG_TEXT+"')\" ><img  resimg='sos_arrowright.png' src='sos_arrowright.9.png'/></a></div>");
+	document.write("<div class='c3lNavigation sosbottomMargin'><span id='sosbottomtext' align='center' class=' textColor'>"+STR_BOTTOM_TEXT+"</span></div>");
+	</script>
+	<!-- <span align='center'>Drag to Decide<span> -->
+</div>
+<!-- sos page end -->
+<div title=""  id="accountPage" type='popup' height='100%'   valign='top'  transition='8' style="display: none" class="c3lMenu bgColor"></div>
+<!--buddies page start  -->
+<div title="" id="buddiespage"  style="display: none" class="c3lMenu bgColor"></div> 
+
+<div title="" id="delbuddypage" style="display: none" class="c3lMenu bgColor"></div>
+<div title="" id="delpinpopup" type='popup' valign='bottom' style="display: none"  transition='3'	class="c3lMenu">
+<script>
+	document.write("<div id='confpay'  style='background-color:white'><div class='c3lMenuGroup navConfPadding'><span id='confpaytext' align='left' class='navConfTitle'>make Pay</span><hr /><a  class='c3lMenuGroup navButtonBgLeft' style='background-image:url("+imagePath+"confirmbutton.9.png)' resimg='confirmbutton.png' href=\"close://action=c3ltoggle:delActive0;delInActive0\" ><span id='cancelpaytext' align='center' class='buttonText'>CANCEL</span></a><a id='acceptpaytext'  class='c3lMenuGroup navButtonBgRight' style='background-image:url("+imagePath+"confirmbutton.9.png)' resimg='confirmbutton.png' href='wgt:950181717/1.0:sendP2PRechargeReq();'><span id='acceptpaytext' align='center' class='buttonText'>ACCEPT</span></a></div></div>");
+</script>	
+</div>
+	<div title="" id="buddyDetails" style="display: none"	class="c3lMenu bgColor"></div>
+	<div title="" id="toasttest" type='toast' style="display: none"	class="c3lMenu"></div>
+	<div title="" id="addBuddy" type='popup' height='100%'   valign='top' transition='8' style="display: none" class='c3lMenu bgColor'></div>
+	<div title="" id="deletepage" style="display: none"	class="c3lMenu bgColor"></div>
+	<div title="" id="editBuddy" type='popup' height='100%'   valign='top' transition='8' style="display: none"	class="c3lMenu bgColor"></div>
+	<div title="" id="popuppage" type='popup' valign='bottom' style="display:none"  transition='3'	class="c3lMenu"></div>
+	<div title="" id="confBuddyRech" type='popup' valign='bottom' style="display:none"  transition='3'	class="c3lMenu"></div>
+	
+	<div title="" id="addbuddpopup" type='popup' valign='bottom' transition='3' style="display:none"  	class="c3lMenu">
+	<script>
+	document.write("<div style='background-color:white;'><div class='c3lMenuGroup navConfPadding'><span id='confpaytext1'  class='navConfTitle'>"+STR_CONF+"</span><hr /><div class='c3lMenuGroup marginTop15' align='center'><a class='c3lMenuGroup navBgImage' href='close://action=keypad://clearall?target=$pin$'><img id='cvvcancel'  align='center' resimg='button_cancel.png'  src='"+imagePath+"button_cancel.9.png' /></a><input class='inputBg1 navInput'  align='center' id='pin' name='pin' maxLength='"+PIN_LENGTH+"' type='numpassword' title= '"+STR_PIN+"'  emptyok='false' encrypt='true'/><a class='c3lMenuGroup navBgImage' href=\"wgt:950181717/1.0:sendaddBuddyReq($buddyName,$buddyNo,$buddyAmount,$pin);\"><img id='cvvaccept'  align='center' resimg='button_accept.png' src='"+imagePath+"button_accept.9.png' /></a></div></div></div>");
+	</script>
+	</div>
+	
+	<div title="" id="delbuddy" type='popup' valign='bottom' style="display:none"  transition='3'	class="c3lMenu"></div>
+	<div title="" id="confdelbuddy" type='popup' valign='bottom' style="display:none"  transition='3'	class="c3lMenu"></div>
+	<div title="" id="qrcode" type='popup' height='100%'   valign='top' transition='8' style="display: none" class='c3lMenu bgColor'></div>
+	<div title="" id="voucherqr" type='popup' height='100%'   valign='top' transition='8' style="display: none" class='c3lMenu bgColor'></div>
+	<div title="" id="rechReqs" style="display: none"	class="c3lMenu bgColor"></div>
+ 	
+ 	
+ 	<div id='menulist' type='popup'  transition='2' class='c3lMenu' style='background-color:rgb(238,238,238)' valign='top'  align='left'  height='100%'   width='70%'><parent name='categoryparent'  href='close://' />
+
+ 	<script>
+ 	document.write("<div class='c3lTitle'><a  class='c3lMenuGroup' valign='middle' href='close:'><img width='20%' align='left' resimg='icon_back.9.png' src='icon_back.9.png'/></a><img width='72%' src='"+imagePath+"pretups_logo.png' resimg='pretups_logo.png'/><hr/></div>");
+ 	document.write("<a href='#buddiespage' class ='c3lMenuGroup eachMenu'  width='100%'><span align='left' valign='middle'  class='menuText'>"+STR_BUDDYTEXT+"</span><img width='15%' align='right' resimg='arrow_right.png'  src='"+imagePath+"arrow_right.png'/></a><hr class='gray'/>");
+ 	document.write("<a href='close://action=Menulist:sosPage' class ='c3lMenuGroup eachMenu'  width='100%'><span align='left' valign='middle'  class='menuText'>"+STR_SOSTEXT+"</span><img width='15%' align='right' resimg='arrow_right.png'  src='"+imagePath+"arrow_right.png'/></a><hr class='gray'/>");
+ 	document.write("<a href='wgt:251238406/1.0:cards()' class ='c3lMenuGroup eachMenu'  width='100%'><span align='left' valign='middle'  class='menuText'>"+STR_CARDSTEXT+"</span><img width='15%' align='right' resimg='arrow_right.png' src='"+imagePath+"arrow_right.png'/></a><hr class='gray'/>");
+ 	//document.write("<a href='rechargeRequests()' class ='c3lMenuGroup eachMenu'  width='100%'><span align='left'  valign='middle'  class='menuText'>"+STR_RECH_REQUESTS+"</span><img width='15%' align='right' resimg='arrow_right.png' src='"+imagePath+"arrow_right.png'/></a><hr class='gray'/>");
+ 	document.write("<a href='voucherQRCode()' class ='c3lMenuGroup eachMenu'  width='100%'><span align='left' valign='middle'  class='menuText'>"+STR_QRVOUCHER_RECH+"</span><img width='15%' align='right' resimg='arrow_right.png'  src='"+imagePath+"arrow_right.png'/></a><hr class='gray'/>");
+ 	document.write("<a href='close://action=Menulist:accountPage' class ='c3lMenuGroup eachMenu'  width='100%'><span align='left' valign='middle'  class='menuText'>"+STR_ACCOUNTTEXT+"</span><img width='15%' align='right' resimg='arrow_right.png' src='"+imagePath+"arrow_right.png'/></a><hr class='gray'/>");
+ 	document.write("<a href='share://text=share' class ='c3lMenuGroup eachMenu'  width='100%'><span align='left' valign='middle'  class='menuText'>"+STR_SHARE+"</span><img width='15%' align='right' resimg='arrow_right.png' src='"+imagePath+"arrow_right.png'/></a><hr class='gray'/>");
+ 	document.write("<a href='close://action=Menulist:faqPage' class ='c3lMenuGroup eachMenu'  width='100%'><span align='left' valign='middle'  class='menuText'>"+STR_FAQ+"</span><img width='15%' align='right' resimg='arrow_right.png' src='"+imagePath+"arrow_right.png'/></a><hr class='gray'/>");
+ 	document.write("<a href='logOut()' class ='c3lMenuGroup eachMenu'  width='100%'><span align='left' valign='middle'  class='menuText'>"+STR_LOGOUT+"</span><img width='15%' align='right' resimg='arrow_right.png' src='"+imagePath+"arrow_right.png'/></a><hr class='gray'/>");
+ 	</script>
+  	</div>
+	
+	<div id='faqPage' type='popup'  transition='8' class='c3lMenu bgColor' valign='top' height='100%'>
+	<script>
+	document.write("<div class='c3lTitle'><a  class='c3lMenuGroup' valign='middle' href='close:'><img width='15%' align='left' resimg='icon_back.9.png' src='"+imagePath+"icon_back.9.png'/></a><span class='topSize'  id='pretitle' align='center' style='margin-left:-"+backImgWidth+"px'>"+STR_FAQ+"</span><hr/></div>");
+	</script>
+	</div>
+	
+</body>
+</html>
+
+
+

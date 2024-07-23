@@ -1,0 +1,2 @@
+PRODUCTCODE,LANGUAGE1,TestcaseId,TestcaseType,Module,Description
+101,1,TUNG1808,Positive,Channel to Channel Transfer,To Verify C2C is Working  with MSISDN and PIN

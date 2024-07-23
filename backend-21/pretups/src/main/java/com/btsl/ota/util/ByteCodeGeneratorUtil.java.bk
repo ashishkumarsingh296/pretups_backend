@@ -1,0 +1,1923 @@
+/**
+* @(#)ByteCodeGeneratorUtil.java
+* Copyright(c) 2003, Bharti Telesoft Ltd.
+* All Rights Reserved
+* This Class provides basic methods to support ByteCodeGenerator Class
+*-------------------------------------------------------------------------------------------------
+* Author                		Date            History
+*-------------------------------------------------------------------------------------------------
+
+* Gaurav Garg                 05/11/2003        Initial Creation
+*-------------------------------------------------------------------------------------------------
+*/
+package com.btsl.ota.util;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
+
+import org.apache.log4j.Logger;
+
+
+import com.btsl.common.BaseException;
+import com.btsl.ota.generator.ByteCodeGeneratorI;
+import com.btsl.ota.services.ServicesVO;
+import com.btsl.ota.services.SimProfileVO;
+import com.btsl.util.BTSLUtil;
+//import com.btsl.util.Constants;
+public class ByteCodeGeneratorUtil {
+static Logger logger = Logger.getLogger(ByteCodeGeneratorUtil.class.getName());	
+public ByteCodeGeneratorUtil()
+{
+	super();
+}
+public static void main(String[] args) throws Exception 
+{
+	org.apache.log4j.PropertyConfigurator.configure(ByteCodeGeneratorI.FILE_PATH);
+	logger=Logger.getLogger(ByteCodeGeneratorUtil.class.getName());
+	
+		ByteCodeGeneratorUtil bcgu = new ByteCodeGeneratorUtil();
+		ArrayList test = new ArrayList ();
+		ServicesVO sVO1 = new ServicesVO();
+		//String benquiry ="41444d204601002042200a010c00000f280090ff0b5265742042616c616e6365ff0f810c12b0bf9fc7b2b020ac95beafbeffffffffffffffffffff0b010e00000fd20059ff0c4461696c79205265706f7274ff12810f12b0cb9cbea8be20b0bfaacbb0cd9fb8ffffffffffff2054581f0c0d0f2000000000";
+	//	String benquiry ="41444d204601002042200effffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff0fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff2054581f0c170b2000000000";
+	String denquiry ="41444d204601002044200014017e01a401750334021e058c018907300123086602390abe02550d5c01570ec400580f2800900fd20059103600cb0000000effffffffffffffff0000000e2054581f0c091920000000000000";
+		String typeofEnquiry ="D";
+		//test= servicesInfoForQueryBD(denquiry,typeofEnquiry);
+			 test = new ArrayList();
+	/*		 sVO1 = new ServicesVO();
+			 sVO1.setPosition(59);
+			 sVO1.setStatus("N");
+			 sVO1.setPosition(3);
+			 sVO1.setSmscGatewayNo("9868116977");
+			 sVO1.setPositionList("5,7,9");
+			 sVO1.setDescription("660");
+			 sVO1.setServiceID("25");
+			 sVO1.setMajorVersion("25");
+			 sVO1.setMinorVersion("100");
+			 sVO1.setLabel1("auuuuuuuuuuuua");
+			 sVO1.setLabel2("0909");
+			 sVO1.setLength(100);
+			 sVO1.setOffSet(100);
+			 sVO1.setValidityPeriod(100);
+			 sVO1.setOperation(SIMServicesUtil.ADD);
+			 sVO1.setTypeOfEnquiry("60");
+			 test.add(sVO1);*/
+			sVO1 = new ServicesVO();
+				 sVO1.setPosition(59);
+				 sVO1.setStatus("N");
+				 sVO1.setPosition(3);//smscGatewayNoRev
+				 sVO1.setSmscGatewayNo("986811698720");
+				 sVO1.setPositionList("5,7,9");
+				 sVO1.setDescription("111111111");
+				 sVO1.setServiceID("25");
+				 sVO1.setMajorVersion("25");
+				 sVO1.setMinorVersion("100");
+				 sVO1.setLabel1("auuuuuuuuuuuua");
+				 sVO1.setLabel2("0909");
+				 sVO1.setLength(100);
+				 sVO1.setOffSet(100);
+				 sVO1.setValidityPeriod(100);
+				 sVO1.setOperation(SIMServicesUtil.UPDATE_LANG_FILE);
+				 sVO1.setTypeOfEnquiry("60");
+				 test.add(sVO1);
+/*Boolean a = new Boolean(false);
+System.out.println("pph"+a);*/
+	//		String updateTId = ByteCodeGeneratorUtil.returnOperationByteCode(test);
+		//	logger.info("-->"+updateTId);
+	  		ByteCodeGeneratorUtil byteCodeGeneratorUtil = new ByteCodeGeneratorUtil(); 
+			//byteCodeGeneratorUtil.returnOperationByteCodeDesc("510503191964005204031919645304010507095304000507096905031919640065022200660C0103090DA1898611967802F9660B0203080CA189861196780266030303136709313131313131313131680103");
+			//compareServerRequestListWithSIMResponseList("510503191964005204031919645304010507095304000507096905031919640065022200660C0103090DA1898611967802F9660B0203080CA189861196780266030303136709313131313131313131680103","5103191964002052031919640020530020530020690020650020660020660020660020670020680020");
+			
+			 
+			//compareServerRequestListWithSIMResponseList("5302000169050206000000","530020690020",);
+			//System.out.println("-->"+stringToByteConverter("asAS61734153"));
+			//System.out.println("-->"+byteToStringConverter("61734153"));
+	
+		//	int a = bcgu.hexToDec("FF");
+		//	logger.info("value is "+a);
+		//	bcgu.returnOperationByteCodeDescTest(updateTId);
+		//bcgu.returnOperationByteCodeDescTest("510503191964006608010398681169872");*/
+	//	 compareServerRequestListWithSIMResponseList("510503191964005204031919645304010507095304000507096905031919640065022200660C0103090DA1898611967802F9660B0203080CA189861196780266030303136709313131313131313131680103","510319196477520319196477537753776977657766776677667767776877");
+/*	String str = "080c911989020045440404b07698ffffffffff01";
+	System.out.println(""+smscPortVPHandle(str));*/
+/*	System.out.println(" "+new Date());
+	ArrayList a = new ArrayList();
+	a.add("pp");
+	a.add("pp");a.add("pp");a.add("pp");a.add("pp");
+	for(int i=0;i<a.size();i++)
+	{
+		System.out.println(i+" "+a.get(i));
+	}
+*/
+Date lockDate =  new Date();
+	int lockTime = 5;
+	GregorianCalendar k1 = (GregorianCalendar)Calendar.getInstance();
+	GregorianCalendar k = (GregorianCalendar)Calendar.getInstance();
+	k.setTime(lockDate);
+	k.set(Calendar.MINUTE,k.get(Calendar.MINUTE)+lockTime);
+//	System.out.println(" = "+k.after(k1));
+	//boolean a = isValid2Lang("14800D12AACDB0C0AAC7A12ff0C0ABBFB21234567F");
+	StringBuffer ak = new StringBuffer();
+	boolean kgh = false;
+	Boolean a = new Boolean("false");
+	System.out.println("pph"+kgh);
+		test(kgh);
+	System.out.println("pph"+kgh);
+	
+}
+static void test(boolean kgh)
+{
+	kgh  = true;
+	System.out.println(" Inside Mehod "+kgh);
+	
+}
+/**
+ * This method is gives u the smsc no , port no and vp | separated used in SIM Enquiry3 
+ * @param smscGatewayNoRev String (has tone NPI and length included in it)
+ * @return String
+ * @throws  Exception
+ */
+public static String smscPortVPHandle(String smscPortVPstring)throws  Exception
+{
+try
+{
+	int length = smscPortVPstring.length();
+	int offsetact = 0;
+	int actualLength =  Integer.parseInt(smscPortVPstring.substring(0,2),16);
+	int phoneNoLength= Integer.parseInt(smscPortVPstring.substring(2,4),16);
+	String phoneNo   = byteSwapper(smscPortVPstring.substring(6));
+	offsetact = actualLength*2+2;
+	String buf = ""+phoneNo.substring(0,phoneNoLength)+"|";
+	actualLength =  Integer.parseInt(smscPortVPstring.substring(offsetact,offsetact+2),16);
+	phoneNoLength= Integer.parseInt(smscPortVPstring.substring(offsetact+2,offsetact+4),16);
+	phoneNo   = byteSwapper(smscPortVPstring.substring(offsetact+6));
+	buf += phoneNo.substring(0,phoneNoLength)+"|"+smscPortVPstring.substring(length-2);
+		
+	return buf;
+	
+}
+catch(Exception e)
+{
+	logger.error("smscGatewayNoRev :: Exception "+e);
+	throw e;	
+}
+
+} 
+ 
+
+/**
+ * This method validates Menu Position List 
+ * @param menulist String(i.e 2,3,4,8)
+ * @param simProfileVO SimProfileVO
+ * @return String
+ * @throws  Exception
+ */
+public static String menuPositionList(String menuList,SimProfileVO simProfileVO)throws  Exception
+{
+	StringBuffer menuPositionListBuf = new StringBuffer();
+	try
+	{
+		java.util.StringTokenizer str = new java.util.StringTokenizer(menuList,",");
+		int count = str.countTokens();
+		ArrayList buffer = new ArrayList();
+		Integer[] scratch = new Integer[count];
+		//Set buffer ;
+		
+		if(!(count > 0 && count<= simProfileVO.getNoOfmenus()))
+			throw new Exception("ota.util.error.menusizeexceeds");	
+		//throw new Exception(ByteCodeGeneratorI.EXP_MENUSIXELIMIT+ByteCodeGeneratorI.MENUSIZELIMIT);
+		int	check = 0;
+		int j =0;
+		for(int i=0;i<count;i++)
+		{
+			check=Integer.parseInt(str.nextToken().trim());
+			if(check<1 || check >simProfileVO.getNoOfmenus())
+				throw new Exception("ota.util.error.menusizeexceeds");
+			//throw new Exception(ByteCodeGeneratorI.EXP_MENUOPTIONNOTVALID);
+			scratch[i] = new Integer(check);
+			for(j=0 ; j< i ;j++)
+			{	
+				if(check==scratch[j].intValue())
+					throw new Exception("ota.util.error.optionrepeated");
+					//throw new Exception(ByteCodeGeneratorI.EXP_OPTIONREPEATED);
+			}
+			menuPositionListBuf.append(lengthConverter(check));
+		}
+	}
+	catch(Exception e)
+	{
+		logger.error("menuPositionList :: Exception "+e);
+		throw e;	
+	}
+	
+		return menuPositionListBuf.toString();	
+}
+/**
+ * This method validates Menu Position 
+ * @param menuOption int (i.e 3)
+ * @return String
+ * @throws  Exception
+ */
+public static String menuPosition(int menuOption,SimProfileVO simProfileVO)throws  Exception
+{
+	String menuPosition =null;
+	try
+	{
+		if(!(menuOption > 0 && menuOption <= simProfileVO.getNoOfmenus()))
+			//throw new Exception(ByteCodeGeneratorI.EXP_MENUOPTIONNOTVALID);
+			throw new Exception("ota.util.error.menusizeexceeds");
+		menuPosition = hexValue(menuOption);
+	}
+	catch(Exception e)
+	{
+		logger.error("menuPosition :: Exception "+e);
+		throw e;	
+	}
+	return menuPosition;	
+}
+/**
+ * This method validates List for Sim Enquiry 
+ * @param simEnquiry String (i.e 2,3 or 5,10 at Max value of this can't be more that 2)
+ * @param simProfileVO SimProfileVO
+ * @return String
+ * @throws  Exception
+ */
+public static String simEnquiryList(String simEnquiry,SimProfileVO simProfileVO)throws  Exception
+{	
+	StringBuffer simEnquiryListBuf= new StringBuffer();
+	try
+	{
+		java.util.StringTokenizer str = new java.util.StringTokenizer(simEnquiry,",");
+		int count = str.countTokens();
+		ArrayList buffer = new ArrayList();
+		Integer[] scratch = new Integer[count];
+		int j=0;
+ 		if(count <1 || count >2 )
+			throw new Exception("ota.util.error.simquerylistsize");
+		int check=0;
+		int indexOf= 0;	
+		for(int i=0;i<count;i++)
+		{
+			check=Integer.parseInt(str.nextToken().trim());
+			if(check<1 || check >simProfileVO.getNoOfmenus())
+				throw new Exception("ota.util.error.simqueryvariable");
+			scratch[i] = new Integer(check);
+			for(j=0 ; j< i ;j++)
+			{	
+				if(check==scratch[j].intValue())
+					throw new Exception("ota.util.error.simqueryvariableoptionrepeated");	
+			}
+			simEnquiryListBuf.append(lengthConverter(check));
+		}
+	}
+	catch(Exception e)
+	{
+		logger.error("simEnquiryList :: Exception "+e);
+		throw e;	
+	}
+	return simEnquiryListBuf.toString();	
+}
+/**
+ * This method Converts decimal values to hex Values 
+ * @param value int
+ * @return String
+ * @throws Exception
+ */
+public static String hexValue(int value) throws  Exception
+{
+	String hexValue =null;
+	try
+	{
+		if(value<0)
+			throw new Exception("ota.util.error.lessthanzero");
+		if(value<16)
+			hexValue= "0"+Integer.toHexString(value);
+		else		
+			hexValue= Integer.toHexString(value);
+	}
+	catch(Exception e)
+	{
+		logger.error("hexValue :: Exception "+e);
+		throw e;	
+	}
+	return hexValue;	
+}
+/**
+ * This method validates Activation Status 
+ * @param value String
+ * @return String
+ * @throws  Exception
+ */
+public static String activationStatus(String value) throws Exception
+{
+	String activationStatus =null;
+	try
+	{
+		if(isNullString(value))
+			throw new Exception("ota.util.error.activationstatus");
+		if(value.equalsIgnoreCase("Y"))
+			activationStatus="01";
+		else if	(value.equalsIgnoreCase("N"))	
+			activationStatus="00";
+		else if	(value.equalsIgnoreCase("1")||value.equalsIgnoreCase("01"))	
+			activationStatus="01";
+		else if	(value.equalsIgnoreCase("2")||value.equalsIgnoreCase("02"))	
+			activationStatus="02";
+		else if	(value.equalsIgnoreCase("3")||value.equalsIgnoreCase("03"))	
+			activationStatus="03";
+		else
+			throw new Exception("ota.util.error.activationstatus");
+	}
+	catch(Exception e)
+	{
+		logger.error("activationStatus :: Exception "+e);
+		throw e;	
+	}
+		
+		return activationStatus;	
+}
+/**
+ * This method validates ServiceID 
+ * @param serviceId String
+ * @return String
+ * @throws  Exception
+ */
+public static String serviceID(String serviceId) throws  Exception
+{
+	try
+	{
+		if(isNullString(serviceId))
+			throw new Exception("ota.util.error.serviceidnull");
+		String serviceID =null;
+		int check;
+		try
+		{
+			check=Integer.parseInt(serviceId);
+		}
+		catch(Exception e)
+		{
+			throw new Exception("ota.uti.serviceidnumberformate");
+		}
+		if(check>255 || check<0)
+			throw new Exception("ota.uti.serviceidrange");
+		serviceID = hexValue(check);
+		return serviceID;
+	}
+	catch(Exception e)
+	{
+		logger.error("serviceID :: Exception "+e);
+		throw e;	
+	}
+	
+}
+//Uptil Now all has been done		
+/**
+ * This method validates Version 
+ * @param p_version String
+ * @return String
+ * @throws Exception
+ */
+public static String version(String p_version) throws  Exception
+{
+	try
+	{
+		if(isNullString(p_version))
+			throw new Exception("Version can't be Null ");
+		String version =null;
+		int check;
+		try
+		{
+			check=Integer.parseInt(p_version);
+		}
+		catch(Exception e)
+		{
+			throw new Exception(ByteCodeGeneratorI.EXP_VERSION);
+		}
+		if(check > 255 || check <0)
+	    	throw new Exception("Version "+ByteCodeGeneratorI.EXP_SIZE);
+		version = hexValue(check);
+		return version;
+	}
+	catch(Exception e)
+	{
+		logger.error("version :: Exception "+e);
+		throw e;	
+	}
+	
+}		
+/**
+ * This method Converts String To Byte 
+ * @param stringToConvert String (i.e Retailer Id , Label of the Service etc)
+ * @return String
+ * @throws  Exception
+ */
+public static String stringToByteConverter(String stringToConvert) throws  Exception 
+{
+try
+{
+	if(isNullString(stringToConvert))
+		throw new Exception("stringToConvert can't be Null ");
+	StringBuffer sbBuf = new StringBuffer();
+	char buffer[]= stringToConvert.toCharArray();
+	for(int i=0;i<buffer.length;i++)
+	{
+		sbBuf.append(Integer.toHexString((int)buffer[i]));
+	}
+	return sbBuf.toString().toUpperCase();
+}
+catch(Exception e)
+{
+	logger.error("stringToByteConverter :: Exception "+e);
+	throw e;
+}
+}
+/**
+ * This method Converts ByteArray To String  
+ * @param byteArrToConvert String (like 22566456)
+ * @return String
+ * @throws  Exception
+ */
+public static String byteToStringConverter(String byteArrToConvert) throws  Exception 
+{
+try
+{
+	if(isNullString(byteArrToConvert))
+		throw new Exception("byteToStringConverter::byteArrToConvert can't be Null ");
+	if(byteArrToConvert.length()%2!=0)
+		throw new Exception("byteToStringConverter::byteArrToConvert isn't multiple of 2");
+		
+	StringBuffer sbBuf = new StringBuffer();
+	char buffer[]= byteArrToConvert.toCharArray();
+	for(int i=0;i<buffer.length;i++)
+	{
+		sbBuf.append((char)Integer.parseInt(""+buffer[i]+buffer[++i],16));
+	}
+	return sbBuf.toString().toUpperCase();
+}
+catch(Exception e)
+{
+	logger.error("byteToStringConverter :: Exception "+e);
+	throw e;
+}
+}
+
+/**
+ * This method check for Null String 
+ * @param text String
+ * @return String
+ * @throws Exception
+ */
+public static boolean isNullString (String text) throws Exception
+{
+try
+{	
+	if (text != null)
+	{
+		if (text.trim().length()==0) return true;
+			return false;
+	}
+	else
+	{
+	   return true;
+	}
+}
+catch(Exception e)
+{
+	logger.error("stringToByteConverter :: Exception "+e);
+	throw e;
+}
+	
+}
+/**
+ * This method is used to find the lang option the user is opting 
+ * @param textToDisplay1 String
+ * @parma textToDisplay2 String 
+ * @return int
+ * @throws Exception
+ */
+public static int langFinder(String textToDisplay1,String textToDisplay2) throws Exception
+{
+try
+{	
+	int option = 0;
+	if(!isNullString(textToDisplay1)&&isNullString(textToDisplay2))
+		option = 0;
+	else if(!isNullString(textToDisplay1)&&!isNullString(textToDisplay2))
+		option = 1;
+	else	
+		throw new Exception(ByteCodeGeneratorI.EXP_LANG);
+	return option;
+}
+catch(Exception e)
+{
+	logger.error("langFinder :: Exception "+e);
+	throw e;
+}
+
+}
+/**
+ * This method is used to construct BER format Length 
+ * @param length int
+ * @return String
+ * @throws Exception
+ */
+
+public static  String lengthConverter(int length)throws Exception 
+{
+	
+	StringBuffer sbBuf = new StringBuffer();
+	try
+	{
+		if((length >= 0) && (length <= 127))
+		{
+		 	if(length < 16)
+		 	{
+		 		sbBuf.append("0");
+		 		sbBuf.append(Integer.toHexString(length));
+		 		return sbBuf.toString().toUpperCase();
+		 	}
+   		else
+   			return Integer.toHexString(length);
+   		}
+   		else if((length > 127) && (length < 256))
+   		{
+			sbBuf.append("81");
+			sbBuf.append(Integer.toHexString(length));
+			return sbBuf.toString().toUpperCase();
+   		}
+   		else if((length >= 256) && (length <= 65535))
+   		{
+			if(length < 4096)
+			{
+			 	sbBuf.append("82");
+	 			sbBuf.append("0");
+	 			sbBuf.append(Integer.toHexString(length));
+	 			return sbBuf.toString().toUpperCase();
+	   		}
+   	   		else
+   	   		{
+				sbBuf.append("82");
+				sbBuf.append(Integer.toHexString(length));
+				return sbBuf.toString().toUpperCase();
+   	   		}
+  		}
+	}
+	catch(Exception e)
+	{
+		logger.error("lengthConverter :: Exception "+e);
+		throw e ;	
+	}
+  	return sbBuf.toString().toUpperCase();
+}
+/**
+ * This method is used to construct BER format Length 
+ * @param strlength String
+ * @return String
+ * @throws Exception
+ */
+public static  String lengthConverter(String strlength) throws Exception
+{
+	
+StringBuffer sbBuf = new StringBuffer();
+int length = Integer.parseInt(strlength);
+try
+{
+	if((length >= 0) && (length <= 127))
+	{
+		if(length < 16)
+		{
+			sbBuf.append("0");
+			sbBuf.append(Integer.toHexString(length));
+			return sbBuf.toString().toUpperCase();
+		}
+	else
+		return Integer.toHexString(length);
+	}
+	else if((length > 127) && (length < 256))
+	{
+		sbBuf.append("81");
+		sbBuf.append(Integer.toHexString(length));
+		return sbBuf.toString().toUpperCase();
+	}
+	else if((length >= 256) && (length <= 65535))
+	{
+		if(length < 4096)
+		{
+			sbBuf.append("82");
+			sbBuf.append("0");
+			sbBuf.append(Integer.toHexString(length));
+			return sbBuf.toString().toUpperCase();
+		}
+		else
+		{
+			sbBuf.append("82");
+			sbBuf.append(Integer.toHexString(length));
+			return sbBuf.toString().toUpperCase();
+		}
+	}
+}
+catch(Exception e)
+{
+	logger.error("lengthConverter :: Exception "+e);
+	throw e ;	
+}
+return sbBuf.toString().toUpperCase();
+}
+/**
+ * This method finally check that no error should be in bytecode 
+ * @param stringToCheck String 
+ * @throws  Exception
+ */
+public static void finalCheck(String stringToCheck) throws  Exception
+{
+try
+{
+	char arr[] =stringToCheck.trim().toCharArray();
+	int length =arr.length;
+	for(int i=0;i<length;i++)
+	{
+		if((arr[i] >=(char)48&& arr[i]<=(char)57)||(arr[i] >=(char)65&& arr[i]<=(char)70)||(arr[i] >=(char)97&& arr[i]<=(char)102))
+			continue;
+		else
+		{
+			throw new Exception("finalCheck ::  Exception :: Invalid character position"+(i/2)+" value "+arr[i]+"String Value="+stringToCheck);
+		}
+	}
+	if(length%2 != 0)
+		throw new Exception(" finalCheck ::  Exception :: Size is not a multiple of two. Size  = "+length+" ByteCode is  = "+stringToCheck);
+}
+catch(Exception e)
+{
+	logger.error("finalCheck :: Exception "+e);
+	throw e;	
+}
+}
+/**
+ * This method is used to display the ByteCode 
+ * @param str String 
+ */
+public static void display(String str)
+{
+	int i=0;
+	char a[]=null;
+	try
+	{
+		a= str.toUpperCase().toCharArray();
+		int length =  a.length;
+		for(i =0; i<length;i++)
+		{
+			if(i%2==0)
+				System.out.print(" ");
+			System.out.print(a[i]);
+		}
+	}
+	catch(Exception e)
+	{
+		logger.error("Exception "+e);
+	}
+}
+//This method is used to generate Inline Tag
+/*Text String English: OA 02 31 31
+Text String Unicode: OA 03 08 09 20(Not supported) 
+Text String Both Lang: 0A 0A FF 02 31 31 FF 04 09 20 09 20
+*/
+/**
+ * This method is used to construct inline Tag(This tag is used for displaying direct Value) 
+ * @param lang1 String
+ * @param lang2 String
+ * @param type int 
+ * @return String
+ * @throws  Exception
+ */
+public static String inlineTagUniCode(String lang1,String lang2,int type)throws  Exception
+{
+	//In this method it is assumed that the lang1 and lang2 are coming in HexForms
+	StringBuffer inlineTagBuf  = new StringBuffer();
+try
+{	
+	int length = 0;
+	String hexlength =null;
+	inlineTagBuf.append(ByteCodeGeneratorI.MENU_NAME_TAG);
+	switch(type)
+	{
+		case 0:
+		//In case of English 
+			length = lang1.trim().length()/2;//because here hex values are coming
+			hexlength = lengthConverter(length);
+			inlineTagBuf.append(hexlength);
+			inlineTagBuf.append(lang1.trim());
+		break;
+		case 1 :
+	//			In case of both the languages
+	/*		if(lang1.length()/2>ByteCodeGeneratorI.MENUSIZELANG1)
+				throw new Exception(ByteCodeGeneratorI.EXP_LANGSIZELIMIT+ByteCodeGeneratorI.MENUSIZELANG1);
+			if(lang2.length()/2>ByteCodeGeneratorI.MENUSIZELANG2)
+				throw new Exception(ByteCodeGeneratorI.EXP_LANGSIZELIMIT+ByteCodeGeneratorI.MENUSIZELANG2);*/
+			String buffer=ByteCodeGeneratorUtil.lengthConverter(((lang1.length()/2)+(lang2.length()/2)+2+2));//"2 is included because each byte takes two characters to store	
+			String buffer2=ByteCodeGeneratorUtil.lengthConverter((lang1.length()/2));//"2 is included because each byte takes two characters to store
+			String buffer3=ByteCodeGeneratorUtil.lengthConverter((lang2.length()/2));//"2 is included because each byte takes two characters to store
+			inlineTagBuf.append(buffer);//whole length of the tag
+			inlineTagBuf.append(ByteCodeGeneratorI.MULTILANGTAG);
+			inlineTagBuf.append(buffer2);//length of lang1
+			inlineTagBuf.append(lang1);
+			inlineTagBuf.append(ByteCodeGeneratorI.MULTILANGTAG);
+			inlineTagBuf.append(buffer3);//length of lang1
+			inlineTagBuf.append(lang2);
+		break;
+	}
+	return inlineTagBuf.toString().toUpperCase();
+}
+catch(Exception e)
+{
+	logger.error("inlineTagUniCode :: Exception "+e);
+	throw e;	
+}
+
+}
+/**
+ * This method validates Menu Titles 
+ * @param lang1 String
+ * @param lang2 String
+ * @param type int 
+ * @param simProfileVO SimProfileVO
+ * @return String
+ * @throws Exception
+ */
+public static String menuTitleLang(String lang1,String lang2,int type,SimProfileVO simProfileVO )throws  Exception
+{
+try
+{	
+	//In this method it is assumed that the lang1 and lang2 are coming in HexForms
+	// The Maximum length of both the languages can't exceed 40 bytes 40*2
+	StringBuffer menuTitleLangBuf= new StringBuffer();
+	int length = 0;
+	String hexlength =null;
+	switch(type)
+		{
+			case 0:
+			//In case of English 
+				length = lang1.trim().length()/2;//because here hex values are coming
+				hexlength = lengthConverter(length);
+				//if(length>78)//1 byte is reserved for length
+				if(length>(simProfileVO.getMenuSize()-2))
+				{
+				//throw new Exception("Menu Title Length can't be greater 40 Bytes");
+					 throw new Exception("ota.util.error.menutitlelength");
+				}
+				menuTitleLangBuf.append(hexlength);
+				menuTitleLangBuf.append(lang1.trim());
+			break;
+			case 1 :
+			//			In case of both the languages
+/*				if(lang1.length()/2>ByteCodeGeneratorI.MENUSIZELANG1)
+					throw new Exception(ByteCodeGeneratorI.EXP_LANGSIZELIMIT+ByteCodeGeneratorI.MENUSIZELANG1);
+				if(lang2.length()/2>ByteCodeGeneratorI.MENUSIZELANG2)
+					throw new Exception(ByteCodeGeneratorI.EXP_LANGSIZELIMIT+ByteCodeGeneratorI.MENUSIZELANG2);*/
+				String buffer2=ByteCodeGeneratorUtil.lengthConverter((lang1.length()/2));//"2 is included because each byte takes two characters to store
+				String buffer3=ByteCodeGeneratorUtil.lengthConverter((lang2.length()/2));//"2 is included because each byte takes two characters to store
+				menuTitleLangBuf.append(ByteCodeGeneratorI.MULTILANGTAG);
+				menuTitleLangBuf.append(buffer2);//length of lang1
+				menuTitleLangBuf.append(lang1);
+				menuTitleLangBuf.append(ByteCodeGeneratorI.MULTILANGTAG);
+				menuTitleLangBuf.append(buffer3);//length of lang1
+				menuTitleLangBuf.append(lang2);
+			break;
+		}
+		//int padLength = 80 - menuTitleLangBuf.toString().length();
+		int padLength = simProfileVO.getMenuSize() - menuTitleLangBuf.toString().length();
+		for(int i=0;i<padLength;i++)
+			menuTitleLangBuf.append("F");
+		return menuTitleLangBuf.toString().toUpperCase();
+}
+catch(Exception e)
+{
+	logger.error("menuTitleLang :: Exception "+e);
+	throw e;	
+}
+		
+}
+/**
+ * This method converts int value to short 
+ * @param number long
+ * @return String
+ * @throws  Exception
+ */
+public static String intToShort(long number)throws Exception
+{
+try
+{	
+	String intToShort=null;
+	if(number>=0 && number <=15)
+		intToShort="000"+Long.toHexString(number);
+	else if(number>=16 && number <=255)
+		intToShort="00"+Long.toHexString(number);
+	else if(number>=256 && number <=4095)
+		intToShort="0"+Long.toHexString(number);
+	else if(number>=4096 && number <=65535)
+		intToShort=Long.toHexString(number);
+	else
+		throw new Exception(ByteCodeGeneratorI.EXP_SHORTLIMITEXCEEDS);		
+   return intToShort;
+}
+catch(Exception e)
+{
+	logger.error("intToShort :: Exception "+e);
+	throw e;	
+}
+
+}
+/**
+ * This method Checks the 2nd Lang Parameters 
+ * @param langString String
+ * @param simProfileVO SimProfileVO
+ * @return boolean
+ */
+public static boolean isValid2Lang(String langString,SimProfileVO simProfileVO)
+{
+boolean isValid = false;
+try
+{	
+	if(BTSLUtil.isNullString(langString))
+	{
+		logger.error("isValid2Lang :: String is NULL");
+		return isValid;
+	}
+	if(langString.trim().length()!=simProfileVO.getUniCodeFileSize())
+	{
+		logger.error("isValid2Lang :: String Length isn't "+simProfileVO.getUniCodeFileSize());
+		return isValid;
+	}
+	if(Integer.parseInt(langString.substring(0,2),16)<2)
+	{
+		logger.error("isValid2Lang :: Length should be greater than 2");
+		return isValid;
+	}
+	if(langString.substring(2,4).equalsIgnoreCase("80")||langString.substring(2,4).equalsIgnoreCase("81"))
+	{
+		StringBuffer buf = new StringBuffer();
+		buf.append(langString);
+		buf.reverse();
+		int counter = 0;
+		for(int i = 0 ; i<= simProfileVO.getUniCodeFileSize() ; i=i+2)
+		{
+			if(buf.substring(i,i+2).equalsIgnoreCase("FF"))
+				counter = counter +1;
+			else
+				break;
+		}
+		//if((20-counter)!=Integer.parseInt(langString.substring(0,2),16))
+		if((((simProfileVO.getUniCodeFileSize()-2)/2)-counter)!=Integer.parseInt(langString.substring(0,2),16))//Here length comes out to be double like 42 now 2 is subtracted as first two bytes are tag no and actual length is tag + data = 42 after that divide by 2 as to treat them as bytes 
+		{
+			logger.error("isValid2Lang :: Given Length doesn't match with data length "+(((simProfileVO.getUniCodeFileSize()-2)/2)-counter)+" "+Integer.parseInt(langString.substring(0,2),16));
+			return isValid;
+		}
+		else
+			return true;
+	}
+	else
+	{
+		logger.error("isValid2Lang :: Second Byte Should be 80 or 81 ");
+		return isValid;
+	}
+}
+catch(Exception e)
+{
+	logger.error("intToShort :: Exception "+e);
+	return false;	
+}
+}
+
+/**
+  * This function is used to check the update parameters as they have to lie inbetween 
+   20 to 29 (Mapping 1 to 10 mapped as 20 to 29) 
+  * @param number int
+  * @return String
+  * @throws  Exception
+  */
+public static String updateParameters(int number) throws Exception
+{
+try
+{	
+  String updateParameters=null;
+  if(number>=1 && number <=10)
+	updateParameters=""+(19+number);//20 to 29 Flags are reserved 
+  else
+	throw new Exception(ByteCodeGeneratorI.EXP_UPDATEFLAGLIMITEXCEED);		
+  return updateParameters;
+}
+catch(Exception e)
+{
+	logger.error("updateParameters :: Exception "+e);
+	throw e;	
+}
+
+}
+/**
+ * This method is used to check SMSC or Gateway Number and append Tone NPI and length of number 
+ * @param number String
+ * @return String
+ * @throws  Exception
+ */
+public static String smscGatewayNo(String smscGatewayNo)throws  Exception
+{
+try
+{
+  	StringBuffer smscGatewayNoBuf = new StringBuffer();
+  	String toneNPI =null;
+  	String length =  lengthConverter(smscGatewayNo.length());
+  	if(!isValidMobileNo(smscGatewayNo))
+		throw new Exception(ByteCodeGeneratorI.EXP_POSITIVENOSUPPORT);
+	if(smscGatewayNo.startsWith("9198"))
+		toneNPI = "91";
+	else if(smscGatewayNo.startsWith("98"))
+		toneNPI = "A1";
+	else
+		toneNPI ="B0";
+	smscGatewayNoBuf.append(length);
+	smscGatewayNoBuf.append(toneNPI);	
+	smscGatewayNoBuf.append(byteSwapper(smscGatewayNo));
+	smscGatewayNoBuf.insert(0,ByteCodeGeneratorUtil.lengthConverter(smscGatewayNoBuf.toString().trim().length()/2));
+	return smscGatewayNoBuf.toString();
+}
+catch(Exception e)
+{
+	logger.error("smscGatewayNo :: Exception "+e);
+	throw e;	
+}
+
+}
+/**
+ * This method is extract number from the given string which has tone NPI and length associted with it (just rev of smscGatewayNo method) 
+ * @param smscGatewayNoRev String (has tone NPI and length included in it)
+ * @return String
+ * @throws  Exception
+ */
+public static String smscGatewayNoRev(String smscGatewayNoRev)throws  Exception
+{
+try
+{
+	/* Structure of smscGatewayNoRev 09 0D A1 89 86 11 96 78 02 F9
+	 	09 Hex Total Length  
+	 	0D Length of phone No
+	 	A1 Tone NPI
+	 	89 86 11 96 78 02 F9 Phone No. Swapped
+	 
+	 */
+	int actualLength =  Integer.parseInt(smscGatewayNoRev.substring(0,2),16);
+	int phoneNoLength= Integer.parseInt(smscGatewayNoRev.substring(2,4),16);
+	String phoneNo   = byteSwapper(smscGatewayNoRev.substring(6));
+	return phoneNo.substring(0,phoneNoLength);
+	
+}
+catch(Exception e)
+{
+	logger.error("smscGatewayNoRev :: Exception "+e);
+	throw e;	
+}
+
+}
+/**
+ * This method is used to check Validity of Mobile No 
+ * @param mobileno String
+ * @return boolean
+ * @throws  Exception
+ */
+public static boolean isValidMobileNo(String mobileno) throws Exception
+{
+try
+{	
+	mobileno = mobileno.trim();
+	int strLength = mobileno.length();
+	for(int i = 0; i < strLength; i++)
+	{
+		if (!(Character.isDigit(mobileno.charAt(i))))
+	    	 return false;
+	}
+	return true;
+}
+catch(Exception e)
+{
+	logger.error("isValidMobileNo :: Exception "+e);
+	throw e;	
+}
+
+}
+/**
+ * This method is used Swap Bytes
+ * @param stringToSwapped String
+ * @return String
+ * @throws Exception
+ */
+public static  String byteSwapper(String stringToSwapped)throws Exception
+{
+	StringBuffer byteSwapperBuf  = new StringBuffer();
+	try
+	{
+		String buffer = new String();
+		int  length = stringToSwapped.length();
+		if(length%2!=0)
+		{
+			//stringSwapBuf.append("F");
+			stringToSwapped += "F";
+			length = length +1;
+		}
+		for(int i=0 ;i<length ; i=i+2)
+		{
+		
+			byteSwapperBuf.append(stringToSwapped.charAt(i+1));
+			byteSwapperBuf.append(stringToSwapped.charAt(i));
+		}
+	}
+	catch(Exception e)
+	{
+		logger.error("byteSwapper :: Exception "+e);
+		throw e;
+	}
+	return byteSwapperBuf.toString();
+}
+/**
+ * This method is used to convert length into 2 bytes (ex. 00 34) 
+ * @param intValue int 
+ * @return String
+ * @throws  Exception
+ */
+public static String convertTo2DigitLength(int intValue)throws  Exception
+{
+try
+{	
+  StringBuffer sbBuf = new StringBuffer();
+  if((intValue < 0) || (intValue > 65535) )
+     throw new Exception("Len in TLV should be in the range 0-65535");
+   else
+	 {
+	    sbBuf.append(Integer.toHexString(intValue));
+	    if(sbBuf.length() == 1)
+			sbBuf.insert(0,"000");
+	   else if(sbBuf.length() == 2)
+			sbBuf.insert(0,"00");
+	   else if(sbBuf.length() == 3)
+			sbBuf.insert(0,"0");
+	   else if(sbBuf.length() == 4);
+	   else
+		throw new Exception("convertTo2DigitLength :: Wrong Length");
+ 
+	  }
+  return sbBuf.toString();
+}
+catch(Exception e)
+{
+	logger.error("convertTo2DigitLength  :: Exception "+e);
+	throw e;	
+}
+
+}
+/**
+ * This method is used to convert into 2 bytes (ex. 00 34) 
+ * @param value String
+ * @return String
+ * @throws Exception
+ */
+public static String convertTo2DigitLength(String value)throws Exception
+{
+try
+{	
+  int intValue = Integer.parseInt(value);	
+  StringBuffer sbBuf = new StringBuffer();
+  if((intValue < 0) || (intValue > 65535) )
+	throw new Exception("Len in TLV should be in the range 0-65535");
+  else
+  {
+ 	 sbBuf.append(Integer.toHexString(intValue));
+	 if(sbBuf.length() == 1)
+		sbBuf.insert(0,"000");
+	 else if(sbBuf.length() == 2)
+		sbBuf.insert(0,"00");
+	 else if(sbBuf.length() == 3)
+		sbBuf.insert(0,"0");
+	 else if(sbBuf.length() == 4);
+	 else
+		throw new Exception("Wrong Length");
+  }
+return sbBuf.toString();
+}
+catch(Exception e)
+{
+	logger.error("convertTo2DigitLength :: Exception "+e);
+	throw e;	
+}
+
+}
+/**
+ * This method is used to convert ServiceId , Major Version , Minor Verison and Status to corrosponding Hex Values and return the combined Hex Code 
+ * @param serviceID String
+ * @param majorVersion String
+ * @param minorVersion String
+ * @param status String
+ * @return String
+ * @throws BaseException
+ */
+public static String convertServiceIDMVStatusHex(String serviceID,String majorVersion,String minorVersion,String status)throws BaseException
+{
+try
+{	
+   StringBuffer sbBuf = new StringBuffer();
+   sbBuf.append(serviceID(serviceID));
+   sbBuf.append(version(majorVersion));
+   sbBuf.append(version(minorVersion));
+   sbBuf.append(activationStatus(status));
+   return sbBuf.toString();
+}
+catch(Exception e)
+{
+	logger.error("convertServiceIDMVStatusHex :: Exception "+e);
+	throw new BaseException("common.csms.internalerror",new Exception());	
+}
+
+}
+
+/**
+ * This method is used to check Validity Period and convert min format into VP Sending format
+ * @param timeInMin int
+ * @return String
+ * @throws  Exception
+ */
+public static	String vP(int timeInMin) throws  Exception
+{
+try
+{	
+	String time=null;	
+ 	if(timeInMin>ByteCodeGeneratorI.MAXTIME || timeInMin<ByteCodeGeneratorI.MINTIME )
+	{
+	  throw new Exception(" VP  should range 0-720 Min");
+	}
+	else
+	{
+	  time=ByteCodeGeneratorUtil.lengthConverter((timeInMin/5)-1);
+	}	
+	return time;
+}
+catch(Exception e)
+{
+	logger.error("vp :: Exception "+e);
+	throw e;	
+}
+	
+}
+/**
+ * This method is used to convert VP sending format into VP min format(reverse of vP method) 
+ * @param timeInMin String
+ * @return int
+ * @throws  Exception
+ */
+public static	int vPRev(String time) throws  Exception
+{
+try
+{
+	int timeInMin = (Integer.parseInt(time,16)+1)*5;
+	return timeInMin;	
+}
+catch(Exception e)
+{
+	logger.error("vPRev :: Exception "+e);
+	throw e;	
+}
+	
+}
+/**
+ * This method is used to check Transaction Id 
+ * @param numberList String
+ * @return String
+ * @throws Exception
+ */
+public static String updateTID(String numberList)throws  Exception
+{
+try
+{	
+	StringBuffer listTOReturnBuf =new StringBuffer();
+	//logger.info("nu"+numberList);
+	char arr[]= numberList.trim().toCharArray();
+	int i=0;
+    if(isNullString(numberList))
+  	  throw new Exception("TID List Can't be Null");
+	if(numberList.length()!=9)
+	  throw new Exception("Update TID Size should be 9");
+	try
+	{
+		while(i<9)
+		{
+			Integer.parseInt(""+numberList.charAt(i));	
+			listTOReturnBuf.append(stringToByteConverter(""+numberList.charAt(i)));
+			i++;
+		}
+	}
+	catch(Exception e)
+	{
+		logger.error("updateTID:: Exception "+e);
+		throw e;
+	}
+	return listTOReturnBuf.toString() ;
+}
+catch(Exception e)
+{
+	logger.error("updateTID :: Exception "+e);
+	throw e;	
+}
+
+}
+/**
+ * This method is used to Generate Byte Code that represents various operations that are performed on the SIM 
+ * @param listOfServicesVO ArrayList
+ * @param simProfileVO SimProfileVO
+ * @return String
+ * @throws Exception
+ */
+public  String returnOperationByteCode(ArrayList  listOfServicesVO,SimProfileVO simProfileVO)throws  Exception
+{
+try
+{	
+  	final int ADD = 51 , DELETE = 52 , ACTDEACT = 53, UPDATEMENUFILE = 69 , UPDATEPARAM = 65 , UPDATESMSPARAM = 66, UPDATETID= 67 , UPDATEUNICODEFILE=68, SIMENQUIRY = 57;
+	StringBuffer returnOperationByteCodeBuf =new StringBuffer();
+	String value =null;
+	int length = listOfServicesVO.size();
+	int selectedCase = -1;
+	if(listOfServicesVO==null||length==0)
+	{
+		
+			logger.info("returnOperationByteCode :: No Element Found in the list "+length);
+			return null;
+	}
+	TLV tlv = null;
+	ServicesVO sVO = null;
+	for(int i=0 ;i<length ; i++ )
+	{
+		sVO = (ServicesVO)listOfServicesVO.get(i);
+		String operation = sVO.getOperation();
+		if(operation.equalsIgnoreCase(SIMServicesUtil.ADD))
+		{
+			tlv = new TLV();
+			tlv.setTag(""+ADD);
+			tlv.setData(ByteCodeGeneratorUtil.menuPosition(sVO.getPosition(),simProfileVO));
+			tlv.setData(ByteCodeGeneratorUtil.serviceID(sVO.getServiceID()));
+			tlv.setData(ByteCodeGeneratorUtil.version(sVO.getMajorVersion()));
+			tlv.setData(ByteCodeGeneratorUtil.version(sVO.getMinorVersion()));
+			tlv.setData(ByteCodeGeneratorUtil.activationStatus(sVO.getStatus()));
+			tlv.setLength();
+			returnOperationByteCodeBuf.append(tlv.getTLV()); 
+		}
+		else if(operation.equalsIgnoreCase(SIMServicesUtil.DELETE))
+		{
+			tlv = new TLV();
+			tlv.setTag(""+DELETE);
+			tlv.setData(ByteCodeGeneratorUtil.menuPosition(sVO.getPosition(),simProfileVO));
+			tlv.setData(ByteCodeGeneratorUtil.serviceID(sVO.getServiceID()));
+			tlv.setData(ByteCodeGeneratorUtil.version(sVO.getMajorVersion()));
+			tlv.setData(ByteCodeGeneratorUtil.version(sVO.getMinorVersion()));
+			tlv.setLength();
+			returnOperationByteCodeBuf.append(tlv.getTLV());
+		}
+		else if(operation.equalsIgnoreCase(SIMServicesUtil.ACTIVATE))
+		{
+			tlv = new TLV();
+			tlv.setTag(""+ACTDEACT);
+			tlv.setData("01");
+			tlv.setData(ByteCodeGeneratorUtil.menuPositionList(sVO.getPositionList(),simProfileVO));
+			tlv.setLength();
+			returnOperationByteCodeBuf.append(tlv.getTLV()); 
+		}
+		else if(operation.equalsIgnoreCase(SIMServicesUtil.DEACTIVATE))
+		{
+			tlv = new TLV();
+			tlv.setTag(""+ACTDEACT);
+			tlv.setData("00");
+			tlv.setData(ByteCodeGeneratorUtil.menuPositionList(sVO.getPositionList(),simProfileVO));
+			tlv.setLength();
+			returnOperationByteCodeBuf.append(tlv.getTLV()); 
+		}
+		else if(operation.equalsIgnoreCase(SIMServicesUtil.CHANGE_TITLE))
+		{
+			tlv = new TLV();
+			tlv.setTag(""+UPDATEMENUFILE);
+			tlv.setData(ByteCodeGeneratorUtil.menuPosition(sVO.getPosition(),simProfileVO));
+			tlv.setData(ByteCodeGeneratorUtil.serviceID(sVO.getServiceID()));
+			tlv.setData(ByteCodeGeneratorUtil.version(sVO.getMajorVersion()));
+			tlv.setData(ByteCodeGeneratorUtil.version(sVO.getMinorVersion()));
+			tlv.setData(ByteCodeGeneratorUtil.activationStatus(sVO.getStatus()));
+			tlv.setLength();
+			returnOperationByteCodeBuf.append(tlv.getTLV()); 
+		}
+		else if(operation.equalsIgnoreCase(SIMServicesUtil.UPDATE_PARAMETERS))
+		{
+			tlv = new TLV();
+			tlv.setTag(""+UPDATEPARAM);
+			tlv.setData(ByteCodeGeneratorUtil.updateParameters(sVO.getPosition()));
+			tlv.setData(ByteCodeGeneratorUtil.activationStatus(sVO.getStatus()));
+			tlv.setLength();
+			returnOperationByteCodeBuf.append(tlv.getTLV()); 
+		}
+		else if(operation.equalsIgnoreCase(SIMServicesUtil.UPDATE_SMSC))
+		{
+			if(sVO.getPosition()>3||sVO.getPosition()<1)
+				throw new Exception("returnOperationByteCode :: Position for"+ sVO.getOperation()+" should range 1-3");
+			tlv = new TLV();
+			tlv.setTag(""+UPDATESMSPARAM);
+			tlv.setData("01");
+			tlv.setData("0"+sVO.getPosition());
+			tlv.setData((ByteCodeGeneratorUtil.smscGatewayNo(sVO.getSmscGatewayNo())));
+			tlv.setLength();
+			returnOperationByteCodeBuf.append(tlv.getTLV()); 
+		}	
+		else if(operation.equalsIgnoreCase(SIMServicesUtil.UPDATE_SHORTCODE))
+		{
+			if(sVO.getPosition()>3||sVO.getPosition()<1)
+				throw new Exception("returnOperationByteCode :: Position for"+ sVO.getOperation()+" should range 1-3");
+			tlv = new TLV();
+			tlv.setTag(""+UPDATESMSPARAM);
+			tlv.setData("02");
+			tlv.setData("0"+sVO.getPosition());
+			tlv.setData((ByteCodeGeneratorUtil.smscGatewayNo(sVO.getSmscGatewayNo())));
+			tlv.setLength();
+			returnOperationByteCodeBuf.append(tlv.getTLV());			
+		}
+		else if(operation.equalsIgnoreCase(SIMServicesUtil.VALIDITY_PERIOD))
+		{
+			if(sVO.getPosition()>3||sVO.getPosition()<1)
+				throw new Exception("returnOperationByteCode :: Position for"+ sVO.getOperation()+" should range 1-3");
+			tlv = new TLV();
+			tlv.setTag(""+UPDATESMSPARAM);
+			tlv.setData("03");
+			tlv.setData("0"+sVO.getPosition());
+			tlv.setData(ByteCodeGeneratorUtil.vP(sVO.getValidityPeriod()));
+			tlv.setLength();
+			returnOperationByteCodeBuf.append(tlv.getTLV());
+		}
+		else if(operation.equalsIgnoreCase(SIMServicesUtil.UPDATE_TID))
+		{
+			tlv = new TLV();
+			tlv.setTag(""+UPDATETID);
+			tlv.setData(ByteCodeGeneratorUtil.updateTID(sVO.getDescription()));
+			tlv.setLength();
+			returnOperationByteCodeBuf.append(tlv.getTLV());
+		}
+		else if(operation.equalsIgnoreCase(SIMServicesUtil.SIM_ENQUIRY))
+		{
+			tlv = new TLV();
+			tlv.setTag(""+SIMENQUIRY);
+			tlv.setData(sVO.getTypeOfEnquiry());
+			tlv.setLength();
+			returnOperationByteCodeBuf.append(tlv.getTLV());
+		}
+		else if(operation.equalsIgnoreCase(SIMServicesUtil.UPDATE_LANG_FILE))
+		{
+			if(sVO.getPosition()<1 || sVO.getPosition()>5 || sVO.getPosition()==4)
+				throw new Exception("returnOperationByteCode :: This Option is not valid for updateLangFile (0-5) except 4"); 
+			tlv = new TLV();
+			tlv.setTag(""+UPDATEUNICODEFILE);
+			tlv.setData("0"+sVO.getPosition());
+			tlv.setLength();
+			returnOperationByteCodeBuf.append(tlv.getTLV());
+		}
+		else
+			throw new Exception(ByteCodeGeneratorI.EXP_OPERATIONNOTSUPPORTED+" "+operation);
+	}
+
+	
+	return returnOperationByteCodeBuf .toString() ;
+}
+catch(Exception e)
+{
+	logger.error("returnOperationByteCode :: Exception "+e);
+	throw e;	
+}
+}
+public void returnOperationByteCodeDesc(String  byteCode)throws  Exception
+{
+	
+try
+{	final int ADD = 51 , DELETE = 52 , ACTDEACT = 53, UPDATEMENUFILE = 69 , UPDATEPARAM = 65 , UPDATESMSPARAM = 66, UPDATETID= 67 , UPDATEUNICODEFILE=68, SIMENQUIRY = 57;
+	int offset  = 0;
+	int service = Integer.parseInt(byteCode.substring(0,2),16); 
+	int length  = Integer.parseInt(byteCode.substring(2,4),16);
+	int serviceByteInfo = offset + 4; 
+	int value;
+	logger.info("returnOperationByteCodeDesc :: Byte Code for Desc ::"+byteCode); 
+	do
+	{
+		if(byteCode.substring(offset,offset+2).equalsIgnoreCase("66"))
+		{
+		
+			int type = 	hexToDec(byteCode.substring(serviceByteInfo,serviceByteInfo+2));
+			if(type==1)
+			{
+				logger.info("returnOperationByteCodeDesc::SMSC Update   = "+hexToDec(byteCode.substring(serviceByteInfo+2,serviceByteInfo+4)));
+				logger.info("returnOperationByteCodeDesc:: Value         = "+smscGatewayNoRev((byteCode.substring(serviceByteInfo+4,serviceByteInfo+(length*2)))));
+			}
+			else if(type==2)
+			{
+				logger.info("returnOperationByteCodeDesc::Port Update   = "+hexToDec(byteCode.substring(serviceByteInfo+2,serviceByteInfo+4)));
+				logger.info("returnOperationByteCodeDesc:: Value         = "+smscGatewayNoRev((byteCode.substring(serviceByteInfo+4,serviceByteInfo+(length*2)))));
+			}
+			else if(type==3)
+			{
+				logger.info("returnOperationByteCodeDesc:: VP Update     = "+hexToDec(byteCode.substring(serviceByteInfo+2,serviceByteInfo+4)));
+				logger.info("returnOperationByteCodeDesc:: Value         = "+vPRev(byteCode.substring(serviceByteInfo+4,serviceByteInfo+(length*2))));
+			}
+			
+		}
+		else if(byteCode.substring(offset,offset+2).equalsIgnoreCase("51"))
+		{
+			logger.info("returnOperationByteCodeDesc:: Add Operation :: "); 	
+			logger.info("returnOperationByteCodeDesc:: Menu Positin   = "+hexToDec(byteCode.substring(serviceByteInfo,serviceByteInfo+2)));
+			logger.info("returnOperationByteCodeDesc:: Service Id     = "+hexToDec(byteCode.substring(serviceByteInfo+2,serviceByteInfo+4)));
+			logger.info("returnOperationByteCodeDesc:: MajorVersion   = "+hexToDec(byteCode.substring(serviceByteInfo+4,serviceByteInfo+6)));
+			logger.info("returnOperationByteCodeDesc:: MinorVersion   = "+hexToDec(byteCode.substring(serviceByteInfo+6,serviceByteInfo+8)));
+			logger.info("returnOperationByteCodeDesc:: Status         = "+hexToDec(byteCode.substring(serviceByteInfo+8,serviceByteInfo+10)));
+		}
+		else if(byteCode.substring(offset,offset+2).equalsIgnoreCase("52"))
+		{
+			logger.info("returnOperationByteCodeDesc:: Delete Operation :: "); 	
+			logger.info("returnOperationByteCodeDesc:: Menu Positin   = "+hexToDec(byteCode.substring(serviceByteInfo,serviceByteInfo+2)));
+			logger.info("returnOperationByteCodeDesc:: Service Id     = "+hexToDec(byteCode.substring(serviceByteInfo+2,serviceByteInfo+4)));
+			logger.info("returnOperationByteCodeDesc:: MajorVersion   = "+hexToDec(byteCode.substring(serviceByteInfo+4,serviceByteInfo+6)));
+			logger.info("returnOperationByteCodeDesc:: MinorVersion   = "+hexToDec(byteCode.substring(serviceByteInfo+6,serviceByteInfo+8)));
+		}
+		else if(byteCode.substring(offset,offset+2).equalsIgnoreCase("53"))
+		{
+			logger.info("returnOperationByteCodeDesc:: Activation Or Deactivation Operation :: "); 	
+			logger.info("returnOperationByteCodeDesc:: Status         = "+hexToDec(byteCode.substring(serviceByteInfo,serviceByteInfo+2)));
+			logger.info("returnOperationByteCodeDesc:: Menu Position  = "+separateValues(byteCode.substring(serviceByteInfo+2,serviceByteInfo+(length*2))));
+		}
+		else if(byteCode.substring(offset,offset+2).equalsIgnoreCase("69"))
+		{
+			logger.info("returnOperationByteCodeDesc:: Update Menu File (Change Menu Name) Operation :: "); 	
+			logger.info("returnOperationByteCodeDesc:: Menu Positin   = "+hexToDec(byteCode.substring(serviceByteInfo,serviceByteInfo+2)));
+			logger.info("returnOperationByteCodeDesc:: Service Id     = "+hexToDec(byteCode.substring(serviceByteInfo+2,serviceByteInfo+4)));
+			logger.info("returnOperationByteCodeDesc:: MajorVersion   = "+hexToDec(byteCode.substring(serviceByteInfo+4,serviceByteInfo+6)));
+			logger.info("returnOperationByteCodeDesc:: MinorVersion   = "+hexToDec(byteCode.substring(serviceByteInfo+6,serviceByteInfo+8)));
+			logger.info("returnOperationByteCodeDesc:: Status         = "+hexToDec(byteCode.substring(serviceByteInfo+8,serviceByteInfo+10)));
+		}
+		else if(byteCode.substring(offset,offset+2).equalsIgnoreCase("65"))
+		{
+			logger.info("returnOperationByteCodeDesc:: Update Parmatar Operation :: ");
+			value =  Integer.parseInt(byteCode.substring(serviceByteInfo,serviceByteInfo+2))-19;	
+			logger.info("returnOperationByteCodeDesc:: Paramter No    = "+value);
+			logger.info("returnOperationByteCodeDesc:: Status         = "+hexToDec(byteCode.substring(serviceByteInfo+2,serviceByteInfo+4)));
+		}
+		else if(byteCode.substring(offset,offset+2).equalsIgnoreCase("67"))
+		{
+			logger.info("returnOperationByteCodeDesc:: Update Transaction ID Operation :: "+byteToStringConverter(byteCode.substring(serviceByteInfo,serviceByteInfo+(length*2)))); 	
+		}
+		else if(byteCode.substring(offset,offset+2).equalsIgnoreCase("68"))
+		{
+			logger.info("returnOperationByteCodeDesc:: Update UniCode File Operation :: "); 	
+			logger.info("returnOperationByteCodeDesc:: Param Updated  = "+(byteCode.substring(serviceByteInfo,serviceByteInfo+2)));
+		}
+		else if(byteCode.substring(offset,offset+2).equalsIgnoreCase("57"))
+		{
+			logger.info("returnOperationByteCodeDesc::SIM Enquiry Operation :: ");
+			value =  Integer.parseInt(byteCode.substring(serviceByteInfo,serviceByteInfo+2));
+			if(value==58)	
+				logger.info("returnOperationByteCodeDesc:: Enquiry For Service Details   ");
+			else if(value==59)
+				logger.info("returnOperationByteCodeDesc:: Enquiry For Menu Details ");
+			else if(value==60)
+				logger.info("returnOperationByteCodeDesc:: Enquiry For Parameters  ");
+			else if(value==61)
+				logger.info("returnOperationByteCodeDesc:: Enquiry For Offset & Length ");
+		}
+		offset  =offset + 4+ (length*2) ;
+		if(offset<byteCode.length())
+		{
+			service = Integer.parseInt(byteCode.substring(offset,offset+2));
+			length  = Integer.parseInt(byteCode.substring(offset+2,offset+4),16);
+			serviceByteInfo = offset + 4;
+		}
+		
+	}while(offset<byteCode.length());
+}
+catch(Exception e)
+{
+	logger.error("returnOperationByteCodeDesc :: Exception "+e);
+	throw e;	
+}
+}
+
+/**
+ * This method is used to Convert Hex Value to Decimal Value 
+ * @param hexValue String
+ * @return int
+ * @throws  Exception
+ */
+public static int hexToDec(String hexValue) throws  Exception
+{
+try
+{	int decValue = Integer.parseInt(hexValue,16);
+	return decValue;
+}
+catch(Exception e)
+{
+	logger.error("hexToDec :: Exception "+e);
+	throw e;	
+}
+}
+/**
+ * This method is used to insert comma after two chars 
+ * @param formatString String
+ * @return formattedStringBuf String
+ * @throws  Exception
+ */
+
+public static String separateValues(String formatString)
+{
+	StringBuffer formattedStringBuf = new StringBuffer(); 
+	try
+	{
+		int decimalValue = -1;
+		for(int i =0; i<formatString.length();i+=2)
+		{
+			decimalValue = hexToDec(""+formatString.charAt(i)+formatString.charAt(i+1));
+			formattedStringBuf.append(decimalValue+",");
+			
+		}
+	}
+	catch(Exception e)
+	{
+		logger.error("addSpace :: Exception "+e);
+	}
+	return formattedStringBuf.toString().trim();
+}
+/**
+ * This method is used to give error message for a particular error code 
+ * @param number int
+ * @return String
+ */
+public static String errorCodes(int number)
+{
+	if(number == 77)
+		return ByteCodeGeneratorI.E77;
+	else if(number == 78)
+		return ByteCodeGeneratorI.E78;
+	else if(number == 79)
+		return ByteCodeGeneratorI.E79;
+	else if(number == 80)
+		return ByteCodeGeneratorI.E80;
+	else if(number == 81)
+		return ByteCodeGeneratorI.E81;
+	else if(number == 82)
+		return ByteCodeGeneratorI.E82;
+	else if(number == 89)
+		return ByteCodeGeneratorI.E89;
+	else if(number == 90)
+		return ByteCodeGeneratorI.E90;
+	else if(number == 85)
+		return ByteCodeGeneratorI.E85;
+	else if(number == 86)
+		return ByteCodeGeneratorI.E86;
+	else if(number == 87)
+		return ByteCodeGeneratorI.E87;
+	else if(number == 88)
+		return ByteCodeGeneratorI.E88;
+	else 	
+	return "unknow exception type";
+}
+/**
+ * This method is used to make a String Length even in length by appending space  
+ * @param makeEvenLengthStr String
+ * @return evenString String
+ */
+public static String evenStringAddSpace(String makeEvenLengthStr)
+{
+	if(makeEvenLengthStr.length()%2==0)
+		return makeEvenLengthStr;
+	else
+		return makeEvenLengthStr+" ";
+}
+
+/**
+ * This method is used to Comapare the Server Operation List Sent with the response from the SIM and constuct a final list of operations that updates the SIM Image 
+ * @param serverList String
+ * @param simList String
+ * @param isActDeactTagincluded StringBuffer (This variable is used to represent prensence of act/deact tag in final list true show it contains fails shows it doesn't contails) 
+ * @return ArrayList
+ */
+public static ArrayList compareServerRequestListWithSIMResponseList(String serverlist,String simlist,StringBuffer actDeactTagincluded)
+{
+	logger.info("compareServerRequestListWithSIMResponseList:: Server List"+serverlist+":: SIM List::"+simlist);
+	int serverOffSet = 0;
+	int simOffSet = 0;
+	int serverService = Integer.parseInt(serverlist.substring(0,2)); 
+	int serverLength  = Integer.parseInt(serverlist.substring(2,4),16);
+	int simService = Integer.parseInt(simlist.substring(0,2)); 
+	int simLength  = Integer.parseInt(simlist.substring(2,4),16);
+	int serviceByteInfo = serverOffSet+ 4;
+//	StringBuffer testBuf = new StringBuffer();
+	ArrayList simImageUpdateOperationList = new ArrayList();
+	ArrayList smsOperation = new ArrayList();
+	ArrayList langOperation = new ArrayList();
+	boolean isSMSOperationFailed = false ;//true in case it really fails
+	boolean isLangOperationFailed = false ;//true in case it really fails
+	int count = 0;
+	do
+	{
+		logger.info("count         "+(count++));
+		if(serverService==simService&&(serverService==51||serverService==52))     
+		{
+			logger.info(serverService+" "+simService+" "+serverOffSet +" "+simOffSet+" "+serverlist.substring(serverOffSet+4,serverOffSet+12)+" "+simlist.substring(simOffSet+2,simOffSet+10)+"** **"+simlist.substring(simOffSet+10,simOffSet+12));
+			if(serverlist.substring(serverOffSet+4,serverOffSet+12).equalsIgnoreCase(simlist.substring(simOffSet+2,simOffSet+10)))	
+			{
+				if(simlist.substring(simOffSet+10,simOffSet+12).equalsIgnoreCase("00"))
+				{
+					simImageUpdateOperationList.add(serverlist.substring(serverOffSet,serverOffSet+(serverLength*2)+4));
+					//testBuf.append(serverlist.substring(serverOffSet,serverOffSet+(serverLength*2)+4));
+					logger.info(returnTagName(serverService)+" "+serverlist.substring(serverOffSet,serverOffSet+(serverLength*2)+4));
+				}	
+				else		
+					logger.info("compareServerRequestListWithSIMResponseList::"+returnTagName(serverService)+"::"+errorCodes(Integer.parseInt(simlist.substring(simOffSet+10,simOffSet+12))));
+			}
+			simOffSet	 = simOffSet+14;
+			if(simOffSet>=simlist.length())
+				break;
+			else
+				simService =Integer.parseInt(simlist.substring(simOffSet,simOffSet+2));
+		}
+		else if(serverService==simService&&(serverService==69))     
+		{
+			logger.info(serverService+" "+simService+" "+serverOffSet +" "+simOffSet);
+			if(simlist.substring(simOffSet+2,simOffSet+4).equalsIgnoreCase("00"))
+			{
+				simImageUpdateOperationList.add(serverlist.substring(serverOffSet,serverOffSet+(serverLength*2)+4));
+				logger.info(returnTagName(serverService)+" "+serverlist.substring(serverOffSet,serverOffSet+(serverLength*2)+4));
+				//testBuf.append(serverlist.substring(serverOffSet,serverOffSet+(serverLength*2)+4));
+			}	
+			else		
+				logger.info("compareServerRequestListWithSIMResponseList ::"+returnTagName(serverService)+"::"+errorCodes(Integer.parseInt(simlist.substring(simOffSet+2,simOffSet+4))));
+			simOffSet = simOffSet+6;//6 because 20 is also included
+			if(simOffSet>=simlist.length())
+			{
+				break;
+			}
+			else
+				simService =Integer.parseInt(simlist.substring(simOffSet,simOffSet+2));
+				
+		}
+		else if(serverService==simService&&(serverService==53))
+		{
+			logger.info(serverService+" "+simService+" "+serverOffSet +" "+simOffSet);
+			if(simlist.substring(simOffSet+2,simOffSet+4).equalsIgnoreCase("00"))
+			{
+				simImageUpdateOperationList.add(serverlist.substring(serverOffSet,serverOffSet+(serverLength*2)+4));
+				logger.info("compareServerRequestListWithSIMResponseList*********"+actDeactTagincluded);
+				actDeactTagincluded.append("true");
+				logger.info("compareServerRequestListWithSIMResponseList*********"+actDeactTagincluded);
+				logger.info(returnTagName(serverService)+" "+serverlist.substring(serverOffSet,serverOffSet+(serverLength*2)+4));
+				//testBuf.append(serverlist.substring(serverOffSet,serverOffSet+(serverLength*2)+4));
+			}	
+			else		
+				logger.info("compareServerRequestListWithSIMResponseList ::"+returnTagName(serverService)+"::"+errorCodes(Integer.parseInt(simlist.substring(simOffSet+2,simOffSet+4))));
+			simOffSet = simOffSet+6;//6 because 20 is also included
+			if(simOffSet>=simlist.length())
+				break;
+			else
+				simService =Integer.parseInt(simlist.substring(simOffSet,simOffSet+2));
+		}
+		else if(serverService==simService&&(serverService==65))
+		{
+			logger.info(serverService+" "+simService+" "+serverOffSet +" "+simOffSet);
+			if(simlist.substring(simOffSet+2,simOffSet+4).equalsIgnoreCase("00"))
+			{
+				simImageUpdateOperationList.add(serverlist.substring(serverOffSet,serverOffSet+(serverLength*2)+4));
+				logger.info(returnTagName(serverService)+" "+serverlist.substring(serverOffSet,serverOffSet+(serverLength*2)+4));
+				//testBuf.append(serverlist.substring(serverOffSet,serverOffSet+(serverLength*2)+4));
+			}	
+			else		
+				logger.info("compareServerRequestListWithSIMResponseList ::"+returnTagName(serverService)+"::"+errorCodes(Integer.parseInt(simlist.substring(simOffSet+2,simOffSet+4))));
+			simOffSet = simOffSet+6;//6 because 20 is also included
+			if(simOffSet>=simlist.length())
+				break;
+			else
+				simService =Integer.parseInt(simlist.substring(simOffSet,simOffSet+2));
+		}
+		else if(serverService==simService&&(serverService==66))
+		{
+			logger.info(serverService+" "+simService+" "+serverOffSet +" "+simOffSet);
+			if(simlist.substring(simOffSet+2,simOffSet+4).equalsIgnoreCase("00"))
+			{
+				smsOperation.add(serverlist.substring(serverOffSet,serverOffSet+(serverLength*2)+4));
+				logger.info(returnTagName(serverService)+" "+serverlist.substring(serverOffSet,serverOffSet+(serverLength*2)+4));
+				//testBuf.append(serverlist.substring(serverOffSet,serverOffSet+(serverLength*2)+4));
+			}	
+			else		
+			{
+				isSMSOperationFailed = true;
+				logger.info("compareServerRequestListWithSIMResponseList ::"+returnTagName(serverService)+"::"+errorCodes(Integer.parseInt(simlist.substring(simOffSet+2,simOffSet+4))));
+			}
+			simOffSet = simOffSet+6;//6 because 20 is also included
+			if(simOffSet>=simlist.length())
+				break;
+			else
+				simService =Integer.parseInt(simlist.substring(simOffSet,simOffSet+2));
+		}
+		else if(serverService==simService&&(serverService==67))//Update TId in this case no updation of sim image takes place thats why it is not added in the list
+		{
+			logger.info(serverService+" "+simService+" "+serverOffSet +" "+simOffSet);
+			if(simlist.substring(simOffSet+2,simOffSet+4).equalsIgnoreCase("00"))
+			{
+				logger.info(returnTagName(serverService)+" "+serverlist.substring(serverOffSet,serverOffSet+(serverLength*2)+4));
+			}	
+			else		
+			{
+				logger.info("compareServerRequestListWithSIMResponseList ::"+returnTagName(serverService)+"::"+errorCodes(Integer.parseInt(simlist.substring(simOffSet+2,simOffSet+4))));
+			}
+			simOffSet = simOffSet+6;//6 because 20 is also included
+			if(simOffSet>=simlist.length())
+				break;
+			else
+				simService =Integer.parseInt(simlist.substring(simOffSet,simOffSet+2));
+		}
+		else if(serverService==simService&&(serverService==68))
+		{
+			logger.info(serverService+" "+simService+" "+serverOffSet +" "+simOffSet);
+			if(simlist.substring(simOffSet+2,simOffSet+4).equalsIgnoreCase("00"))
+			{
+				langOperation.add(serverlist.substring(serverOffSet,serverOffSet+(serverLength*2)+4));
+				logger.info(returnTagName(serverService)+" "+serverlist.substring(serverOffSet,serverOffSet+(serverLength*2)+4));
+				//testBuf.append(serverlist.substring(serverOffSet,serverOffSet+(serverLength*2)+4));
+			}	
+			else		
+			{
+				isSMSOperationFailed = true;
+				logger.info("compareServerRequestListWithSIMResponseList ::"+returnTagName(serverService)+"::"+errorCodes(Integer.parseInt(simlist.substring(simOffSet+2,simOffSet+4))));
+			}
+			simOffSet = simOffSet+6;//6 because 20 is also included
+			if(simOffSet>=simlist.length())
+				break;
+			else
+				simService =Integer.parseInt(simlist.substring(simOffSet,simOffSet+2));
+		}
+		else
+		{
+			logger.info("compareServerRequestListWithSIMResponseList::Request Not Match Server Request No="+serverService+" SIM Response ="+simService);
+			break;
+		}
+		serverOffSet  = serverOffSet + 4+ (serverLength*2) ;
+		if(serverOffSet<serverlist.length())
+		{
+			serverService = Integer.parseInt(serverlist.substring(serverOffSet,serverOffSet+2));
+			serverLength= Integer.parseInt(serverlist.substring(serverOffSet+2,serverOffSet+4),16);
+			serviceByteInfo = serverOffSet + 4;
+		}
+	
+	}
+	while(serverOffSet<serverlist.length()&&simOffSet<simlist.length());
+	if(!isLangOperationFailed && langOperation.size()!=0 && !langOperation.isEmpty())
+		simImageUpdateOperationList.add(langOperation.get(0));
+	if(!isSMSOperationFailed && smsOperation.size()!=0 && !smsOperation.isEmpty())
+		simImageUpdateOperationList.add(smsOperation.get(0));
+	return simImageUpdateOperationList;
+}
+/**
+ * This method is return Name corrosponding to Tag Value 
+ * @param noValue int
+ * @return tagName String
+ */
+public static String returnTagName(int noValue)
+{
+	switch(noValue)
+	{
+		case 51:
+		return "Add Tag : ";
+		case 52:
+		return "Delete Tag : ";
+		case 53:
+		return "Activation/Deactivation Tag : ";
+		case 69:
+		return "Update Menu File Tag : ";
+		case 65:
+		return "Update Parameters Tag : ";
+		case 66:
+		return "Update SMS Parameters Tag : ";
+		case 67:
+		return "Update TID Tag : ";
+		case 68:
+		return "Update Unicode File Tag : ";
+		case 57:
+		return "Sim Enquiry Tag : ";
+		default :
+		return "Unknow Tag : ";	
+	}
+	
+}
+
+/**
+ * This method is used in flat file generation its main aim is to provide some gap between two sms to a single mobile no. 
+ * @param buf1 StringBuffer
+ * @param buf2 StringBuffer
+ * @param buf3 StringBuffer
+ * @param buf4 StringBuffer
+ * @param buf5 StringBuffer
+ * @param buf6 StringBuffer
+ * @param buf7 StringBuffer
+ * @param mobileNo String
+ * @param consValue String
+ * @param separator String
+ * @param smsList ArrayList
+ * @throws Exception
+ */
+public void flatFileSmsSeparator(StringBuffer buf1,StringBuffer buf2,StringBuffer buf3,StringBuffer buf4,StringBuffer buf5,StringBuffer buf6,StringBuffer buf7,String mobileNo ,String consValue , String separator, ArrayList smsList) throws Exception
+{
+	try
+	{
+		int size = smsList.size();
+		if(size<=0 || size >7)
+			throw new Exception ("Size Exceeds 7 SMS");
+		switch(size)
+		{
+			case 1:
+					buf1.append(mobileNo+" "+(String)smsList.get(0)+" "+consValue+separator);
+					break;
+			case 2:
+					buf1.append(mobileNo+" "+(String)smsList.get(0)+" "+consValue+separator);
+					buf2.append(mobileNo+" "+(String)smsList.get(1)+" "+consValue+separator);
+					break;
+			case 3:
+					buf1.append(mobileNo+" "+(String)smsList.get(0)+" "+consValue+separator);
+					buf2.append(mobileNo+" "+(String)smsList.get(1)+" "+consValue+separator);
+					buf3.append(mobileNo+" "+(String)smsList.get(2)+" "+consValue+separator);
+					break;
+			case 4:
+					buf1.append(mobileNo+" "+(String)smsList.get(0)+" "+consValue+separator);
+					buf2.append(mobileNo+" "+(String)smsList.get(1)+" "+consValue+separator);
+					buf3.append(mobileNo+" "+(String)smsList.get(2)+" "+consValue+separator);
+					buf4.append(mobileNo+" "+(String)smsList.get(3)+" "+consValue+separator);
+					break;
+			case 5:
+					buf1.append(mobileNo+" "+(String)smsList.get(0)+" "+consValue+separator);
+					buf2.append(mobileNo+" "+(String)smsList.get(1)+" "+consValue+separator);
+					buf3.append(mobileNo+" "+(String)smsList.get(2)+" "+consValue+separator);
+					buf4.append(mobileNo+" "+(String)smsList.get(3)+" "+consValue+separator);
+					buf5.append(mobileNo+" "+(String)smsList.get(4)+" "+consValue+separator);
+					break;
+			case 6:
+					buf1.append(mobileNo+" "+(String)smsList.get(0)+" "+consValue+separator);
+					buf2.append(mobileNo+" "+(String)smsList.get(1)+" "+consValue+separator);
+					buf3.append(mobileNo+" "+(String)smsList.get(2)+" "+consValue+separator);
+					buf4.append(mobileNo+" "+(String)smsList.get(3)+" "+consValue+separator);
+					buf5.append(mobileNo+" "+(String)smsList.get(4)+" "+consValue+separator);
+					buf6.append(mobileNo+" "+(String)smsList.get(5)+" "+consValue+separator);
+					break;
+			case 7:
+					buf1.append(mobileNo+" "+(String)smsList.get(0)+" "+consValue+separator);
+					buf2.append(mobileNo+" "+(String)smsList.get(1)+" "+consValue+separator);
+					buf3.append(mobileNo+" "+(String)smsList.get(2)+" "+consValue+separator);
+					buf4.append(mobileNo+" "+(String)smsList.get(3)+" "+consValue+separator);
+					buf5.append(mobileNo+" "+(String)smsList.get(4)+" "+consValue+separator);
+					buf6.append(mobileNo+" "+(String)smsList.get(5)+" "+consValue+separator);
+					break;
+		}
+	}
+	catch(Exception e)
+	{
+		logger.error("flatFileSmsSeparator :: "+e);
+		throw e ;
+	}
+}
+	/*	Can be used in future
+ 
+	 public static String menuPositionList(String menuList)throws BaseException , Exception
+					{
+					
+						java.util.StringTokenizer str = new java.util.StringTokenizer(menuList,",");
+						int count = str.countTokens();
+						ArrayList buffer = new ArrayList();
+						//Set buffer ;
+						StringBuffer menuPositionList = new StringBuffer();
+						if(count > 0 && count<= ByteCodeGeneratorI.MENUSIZELIMIT);
+							else
+						throw new Exception(ByteCodeGeneratorI.EXP_MENUSIXELIMIT+ByteCodeGeneratorI.MENUSIZELIMIT);
+					 
+						for(int i=0;i<count;i++)
+						{
+						
+								int	check=Integer.parseInt(str.nextToken().trim());
+								if(check<1 || check >ByteCodeGeneratorI.MENUSIZELIMIT)
+									throw new Exception(ByteCodeGeneratorI.EXP_MENUOPTIONNOTVALID);
+								
+									 int indexOf = menuList.indexOf(""+check);
+									 if(menuList.indexOf(""+check,indexOf+1)!=-1)						
+											throw new Exception(ByteCodeGeneratorI.EXP_OPTIONREPEATED);
+							
+								
+								if(buffer.equals(""+check))
+									throw new Exception(ByteCodeGeneratorI.EXP_OPTIONREPEATED);	
+								else
+									menuPositionList.append(lengthConverter(check));
+						
+						}
+							return menuPositionList.toString();	
+					}
+	*/				
+	
+		
+
+}
+

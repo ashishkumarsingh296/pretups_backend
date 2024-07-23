@@ -1,0 +1,63 @@
+## PreTUPS common logger, these logs will be printed in the Application server default logger
+## these logs can also be diverted to the specifice file, if log diverted to a file then
+## ConsoleAppender should disbaled otherwise logs will be maintained in two log files.
+## Set root logger level to DEBUG and its only appender to A1.
+#log4j.rootLogger=DEBUG, A1
+log4j.rootLogger=ERROR, A1
+log4j.logger.org.apache.commons.digester.Digester=info
+log4j.logger.org.apache.catalina.startup.TldConfig=info
+log4j.logger.org.apache.struts.util.PropertyMessageResources=info
+log4j.logger.org.apache.catalina.session.ManagerBase=info
+log4j.logger.com.btsl.pretups.preference.businesslogic.PreferenceCache=info
+log4j.logger.org.apache.jasper.servlet.JspServlet=info
+log4j.logger.org.apache.struts.util.ModuleUtils=info
+log4j.logger.org.apache.struts.action.RequestProcessor=info
+log4j.logger.org.apache.commons.beanutils.BeanUtils=info
+log4j.logger.org.apache.commons.beanutils.ConvertUtils=info
+log4j.logger.com.btsl.menu.MenuBL=info
+log4j.logger.org.apache.catalina.core.StandardWrapper=info
+log4j.logger.org.apache.catalina.core.ApplicationDispatcher=info
+log4j.logger.org.apache.struts.util.RequestUtils=info
+# A1 is set to be a ConsoleAppender.
+log4j.appender.A1=org.apache.log4j.ConsoleAppender
+# A1 uses PatternLayout.
+log4j.appender.A1.layout=org.apache.log4j.PatternLayout
+log4j.appender.A1.layout.ConversionPattern=%d : %-4r [%t] %-5p %c %x - %m%n
+
+
+
+## Log file configuration entries for balance update log, Single line log entries
+## will be mainatiend if the balance of any channel user is updated (debited or
+## credited (Balance Logger)
+log4j.logger.com.btsl.pretups.channel.logging.BalanceLogger=INFO,BalanceLogger
+log4j.appender.BalanceLogger=org.apache.log4j.DailyRollingFileAppender
+log4j.appender.BalanceLogger.File=/pretupshome/tomcat5_web/webapps/pretups/pretups_scripts/O2CWithdrawDeleteProcess3/balanceLog.log
+#log4j.appender.BalanceLogger.MaxFileSize=100KB
+log4j.appender.BalanceLogger.DatePattern='.'yyyy-MM-dd
+log4j.appender.BalanceLogger.layout=org.apache.log4j.PatternLayout
+log4j.appender.BalanceLogger.layout.ConversionPattern=%d   %m%n
+
+## Log file configuration entries for network stock, an entry will be made in this log
+## whenever network stock will be debited or credited. This will be single line logger
+## Entries for Network Stock Operation Log
+log4j.logger.com.btsl.pretups.logging.NetworkStockLog=INFO,NetworkStockLog
+log4j.appender.NetworkStockLog=org.apache.log4j.DailyRollingFileAppender
+log4j.appender.NetworkStockLog.File=/pretupshome/tomcat5_web/webapps/pretups/pretups_scripts/O2CWithdrawDeleteProcess3/networkStockLog.log
+#log4j.appender.NetworkStockLog.MaxFileSize=100KB
+log4j.appender.NetworkStockLog.DatePattern='.'yyyy-MM-dd
+log4j.appender.NetworkStockLog.layout=org.apache.log4j.PatternLayout
+log4j.appender.NetworkStockLog.layout.ConversionPattern=%d   %m%n
+
+
+##  O2C WITHDRAW user delete process 
+## O2C Withdraw logger
+log4j.logger.O2CWdhUserDelProcessLog=INFO,O2CWdhUserDelProcessLog
+log4j.additivity.O2CWdhUserDelProcessLog=false
+log4j.appender.O2CWdhUserDelProcessLog=org.apache.log4j.DailyRollingFileAppender
+log4j.appender.O2CWdhUserDelProcessLog.File=/pretupshome/tomcat5_web/webapps/pretups/pretups_scripts/O2CWithdrawDeleteProcess3/O2CWdhUserDelProcessLog.log
+#log4j.appender.O2CWdhUserDelProcessLog.MaxFileSize=100KB
+log4j.appender.O2CWdhUserDelProcessLog.DatePattern='.'yyyy-MM-dd
+log4j.appender.O2CWdhUserDelProcessLog.layout=org.apache.log4j.PatternLayout
+log4j.appender.O2CWdhUserDelProcessLog.layout.ConversionPattern=%d   %m%n
+
+

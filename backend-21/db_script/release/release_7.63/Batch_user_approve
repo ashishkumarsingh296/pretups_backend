@@ -1,0 +1,27 @@
+INSERT INTO role_ui_mapping
+(role_ui_parent_id, role_ui_id, rule_code)
+VALUES('adminChannelUser', 'Batch_user_approve', 'BATCHUSRAPPROVE');
+
+----------------
+INSERT INTO page_ui_roles
+(role_code, page_code)
+VALUES('BATCHUSRAPPROVE', 'P_APPR_L1_CHNL_USR');
+---------------
+INSERT INTO page_ui_roles
+(role_code, page_code)
+VALUES('BATCHUSRAPPROVE', 'P_APPR_L1');
+-----------
+
+INSERT INTO role_ui_mapping
+(role_ui_parent_id, role_ui_id, rule_code)
+VALUES('adminChannelUser', 'Approval_user_level_one', 'APPROVALUSER');
+
+-------------
+UPDATE roles
+SET role_name='Batch user approve', group_name='Channel Users', status='Y', role_type='A', from_hour=NULL, to_hour=NULL, group_role='N', application_id='1', gateway_types='WEB', role_for='B', is_default='N', is_default_grouprole='N', access_type='B', sub_group_name='Sub_Group', sub_group_role='N', view_roles='Y'
+WHERE role_code='BATCHUSRAPPROVE' AND domain_type='OPERATOR';
+
+-----------
+UPDATE roles
+SET role_name='Approval User Level 1', group_name='Channel Users', status='Y', role_type='A', from_hour=NULL, to_hour=NULL, group_role='N', application_id='1', gateway_types='WEB', role_for='B', is_default='N', is_default_grouprole='N', access_type='B', sub_group_name='Sub_Group', sub_group_role='N', view_roles='Y'
+WHERE role_code='APPROVALUSER' AND domain_type='OPERATOR';

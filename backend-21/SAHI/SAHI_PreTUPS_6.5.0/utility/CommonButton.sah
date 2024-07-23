@@ -1,0 +1,55 @@
+
+
+// Created bt Shashi Ranjan 
+
+
+// ...... Common button ....... // 		
+	
+	function back() {
+		_click(_submit("Back"));
+	}
+	
+	function submit() {
+		_click(_submit("Submit"));
+	}
+	
+	function confirm() {
+		_click(_submit($g_BtnConfirm));
+	}
+	
+	function reset(){
+		_click(_reset("Reset"));
+	}
+	
+	function buttonReset() {
+		_click(_button("Reset"));
+	}
+	
+	function aprove() {
+		_click(_submit("Approve"));
+	}
+	
+	function reject() {
+		_click(_submit("Reject"));
+	}
+
+	function cancel() {
+		_click(_submit("Cancel"));
+	}
+	
+	function add() {
+		_click(_submit("Add"));
+	}
+
+	function save() {
+		_click(_submit("Save"));
+	}
+	
+	function delete1() {
+		_click(_button("Delete"));
+	}
+	
+	function modify() {
+		_click(_submit("Modify"));
+	}
+	

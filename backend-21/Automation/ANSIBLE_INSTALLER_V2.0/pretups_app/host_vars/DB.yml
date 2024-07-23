@@ -1,0 +1,150 @@
+#ansible user credentials for oracle user. It shall be used to configure DB, ship files and install dump
+ansible_ssh_user: ora12c
+ansible_ssh_pass: ora12c
+
+# DB User name and its Group name 
+db_user: ora12c
+db_group: oinstall
+
+#Provide input whether DB is RAC or not(true/false)
+isRACDB: false
+
+#Mention unique db_user_profile. It shall be attached to the schema user(In case of RAC provide whether DB_USER_PROFILE_NAME is needed or not)
+isDB_USER_PROFILENeeded: true
+DB_USER_PROFILE_NAME: ANSIBLE_SHOWCASE_DB
+DB_SESSION_PER_USER: 1200
+
+#The BASEDIR will be present inside the home directory of oracle user(if not present oracle user will try to create these directories)
+#Temp_Dir should be inside BASEDIR(Please Donot Change these variable)
+BASEDIR: PreTUPS
+Temp_Dir: root_folder_scripts
+
+#Dump_name should be without extension "dmp" e.g. gt_pretups_live.dmp
+#If there are multiple dumps to be imported then write dmp names in square braces according to their import order like #[MasterDmp,transactionDmp,OtherDatadmp]. It will import following same order
+#All the dumps mentioned here must be in /roles/db_ship_scripts/files
+Dump_name: PRETUPS_VTM690_20_04
+
+#Incase Manual scripts are to be executed instead of DUMP set IsManualScripts as true.
+#Provide the name of manual scripts in following set without extension "sql" e.g. gt_pretups_live.sql
+#In case of multiple scripts to be executed then write scripts names in square braces according to their execution order like [SQLScripts1,SQLScripts2,SQLScripts3]. It will execute following same order
+#Scripts are to be appended inside pretups_app/roles/db_task/templates folder
+IsManualScripts: false
+ManualScriptsName: [ManualScripts1,ManualScripts2]
+
+#db_create_table_space: Tables spaces and default size
+##In case of RAC DB provide Default Table space name already created
+PRETUPS_DEFAULT_TableSpace: PRTP_DATA_1
+
+##Provide Input For table Space Name, respective Data file name(With Full path location where they will be created) and size of data file in below format
+## The path location of data files can be kept inside home directory of oracle user
+##(For multiple Table Spaces copy and paste whole set for different table spaces)
+Table_space_entries:
+ - Table_Space_Name: PRTP_DATA
+   Data_file_name: /srv/oradata/oradata2/datafiles/PRTP_DATA0112_TEST.dbf
+   Data_file_size: 300M
+ - Table_Space_Name: P_C2SINDX
+   Data_file_name: /srv/oradata/index/datafiles/P_C2SINDX0112_TEST.dbf
+   Data_file_size: 300M
+ - Table_Space_Name: P_C2SDATA
+   Data_file_name: /srv/oradata/oradata3/datafiles/P_C2SDATA0112_TEST.dbf
+   Data_file_size: 300M
+ - Table_Space_Name: MISP_DATA
+   Data_file_name: /srv/oradata/oradata3/datafiles/MISP_DATA0112_TEST.dbf
+   Data_file_size: 300M
+ - Table_Space_Name: PRTPUSERS   
+   Data_file_name: /srv/oradata/oradata4/datafiles/PRTPUSERS0112_TEST.dbf
+   Data_file_size: 300M
+ - Table_Space_Name: P_C2SINDX1
+   Data_file_name: /srv/oradata/index/datafiles/P_C2SINDX10112_TEST.dbf
+   Data_file_size: 300M
+ - Table_Space_Name: PRTPUSERBAL_HIST
+   Data_file_name: /srv/oradata/oradata4/datafiles/PRTPUSERBAL_HIST0112_TEST.dbf
+   Data_file_size: 300M
+ - Table_Space_Name: PRTPINDX_1
+   Data_file_name: /srv/oradata/index/datafiles/PRTPINDX_10112_TEST.dbf
+   Data_file_size: 300M
+ - Table_Space_Name: P_C2SDATA1
+   Data_file_name: /srv/oradata/oradata4/datafiles/P_C2SDATA10112_TEST.dbf
+   Data_file_size: 300M
+ - Table_Space_Name: P2P_INDX
+   Data_file_name: /srv/oradata/index/datafiles/P2P_INDX0112_TEST.dbf
+   Data_file_size: 300M
+ - Table_Space_Name: PRTPMIS
+   Data_file_name: /srv/oradata/oradata4/datafiles/PRTPMIS0112_TEST.dbf
+   Data_file_size: 300M
+ - Table_Space_Name: P2P_DATA
+   Data_file_name: /srv/oradata/oradata3/datafiles/P2P_DATA0112_TEST.dbf
+   Data_file_size: 300M
+ - Table_Space_Name: IN_INDX
+   Data_file_name: /srv/oradata/index/datafiles/IN_INDX0112_TEST.dbf
+   Data_file_size: 300M
+ - Table_Space_Name: PRTPDATA
+   Data_file_name: /srv/oradata/oradata3/datafiles/PRTPDATA0112_TEST.dbf
+   Data_file_size: 300M
+ - Table_Space_Name: PRTP_INDX
+   Data_file_name: /srv/oradata/index/datafiles/PRTP_INDX0112_TEST.dbf
+   Data_file_size: 300M
+ - Table_Space_Name: IN_DATA
+   Data_file_name: /srv/oradata/oradata3/datafiles/in_data0112_TEST.dbf
+   Data_file_size: 300M
+
+#Name of the Log File for (Instance Load and Network Load and Transaction Load) table entries. It will be used for printing logs for each script output. Final name of file will be customization_Log_Name
+Log_Name: Load
+
+#Do you want to insert/update load table queries(true/false)
+LoadTableQueries: false
+
+#Provide Input for Instance Load and Network Load and Transaction Load table entries(For multiple serviceType copy and paste whole set for different service type)
+LoadTableEntries:
+ - InstanceId: 16
+   InstanceName: tomcat_server
+   InstanceType: Web
+   NetworkCode: ['NG','NO']
+   IP: "172.16.11.121"
+   Port: "8080"
+   loadbalancer: false
+   Module: "C2S"
+   P2P_INSTANCE_ID: 13
+   RST_INSTANCE_ID: 13
+   C2S_INSTANCE_ID: 13
+   INTERFACE_ID: "INTID00015"
+   ServiceType: "C2s"
+ - InstanceId: 17
+   InstanceName: smsr_server
+   InstanceType: smsr
+   NetworkCode: ['NG','PB']
+   IP: "172.16.11.120"
+   Port: "8087"
+   loadbalancer: false
+   Module: "P2P"
+   P2P_INSTANCE_ID: 14
+   RST_INSTANCE_ID: 14
+   C2S_INSTANCE_ID: 14
+   INTERFACE_ID: "INTID00015"
+   ServiceType: "P2P"
+ - InstanceId: 18
+   InstanceName: smsp_server
+   InstanceType: smsp
+   NetworkCode: ['NG','PB']
+   IP: "172.16.11.120"
+   Port: "8087"
+   loadbalancer: false
+   Module: "P2P"
+   P2P_INSTANCE_ID: 14
+   RST_INSTANCE_ID: 14
+   C2S_INSTANCE_ID: 14
+   INTERFACE_ID: "INTID00015"
+   ServiceType: "P2P"
+
+#Do you want to insert/update additional queries(true/false){Scripts are to be appended inside pretups_app/roles/db_task/files/SQLScripts.sql file }
+AdditionalQueries: false
+AdditionalScriptsName: SQLScripts 
+
+#db_schema_create
+PRETUPS_SCHEMA_USER_NAME: ANSIBLE_SHOWCASE_DB
+PRETUPS_SCHEMA_PASSWORD: ANSIBLE_SHOWCASE_DB
+
+PRETUPS_DEFAULT_TABLE_SPACE: PRTP_DATA_1
+
+#schema name from which this dump was exported
+SOURCE_PRETUPS_SCHEMA_NAME: PRETUPS_VTM690

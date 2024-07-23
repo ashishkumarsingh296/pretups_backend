@@ -1,0 +1,2 @@
+TestcaseId,TestcaseType,Module,Description
+TUNG10205,Negative,User Data update through USSD,To verify that the User Data Updation request is not processed if no data is entered for updation in the request.

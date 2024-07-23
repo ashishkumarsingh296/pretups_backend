@@ -1,0 +1,2 @@
+TestCase Details,TestCase Description,Service Type,Msg Getway,Receive Port,Name,Status,Menu,Sub Menu,Allowed version
+TEST001,Given a super admin login into application and adding new service keyword,Customer Recharge,SMSC,8888,Recharge,Active,Services,Sub Service,6.2

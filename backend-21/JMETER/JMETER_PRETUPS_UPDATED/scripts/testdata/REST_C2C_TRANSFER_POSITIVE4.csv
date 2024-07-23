@@ -1,0 +1,2 @@
+PRODUCTCODE,LANGUAGE1,TestcaseId,TestcaseType,Module,Description
+101,1,TUNG23076,Positive,REST - Channel to Channel Transfer,"To verify that channel to Channel request is sucessfully when  EXTCODE ,login id & password, and msisdn pin is present in Rest API request"

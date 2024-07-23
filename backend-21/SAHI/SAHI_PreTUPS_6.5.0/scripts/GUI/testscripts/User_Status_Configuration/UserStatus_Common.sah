@@ -1,0 +1,275 @@
+
+
+// This scripts contains all the common methods for bonus bundle management.
+
+_includeOnce("../../../../utility/ImportPackage.sah");
+
+var $l_naCsv = _readCSVFile("../../../GUI/testdata/NA_Login.csv");
+
+	var $g_gateWay;
+	var $g_userType;
+	var $g_domain;
+	var $g_category;
+	var $g_assertion;
+	
+	var $l_modifyBonusbundleName;
+	
+	var $a_Prefix;
+	
+	var $a_temp;
+	
+	var $g_userStatus;
+	var $g_msisdn;
+	var $g_remarks;
+	
+	
+	function commonVaribleForUSerStatus($g_row, $g_col) {
+		
+		$g_gateWay = $g_userStatusDetails[$g_row][$g_col++];
+		$g_userType = $g_userStatusDetails[$g_row][$g_col++];
+		$g_domain = $g_userStatusDetails[$g_row][$g_col++];
+		$g_category = $g_userStatusDetails[$g_row][$g_col++];
+		$g_assertion = $g_userStatusDetails[$g_row][$g_col++];
+		
+		_log($g_domain + $g_category + $g_assertion);
+	}
+	
+	
+	function viewGatewayInDropDown() {
+		userStatusCommon();
+		$a_temp = _getValue(_select("gatewayType"));
+		if($a_temp == $g_gateWay ) {_log("Successful");}
+		else{_log("Failed");}
+	}
+	
+	
+	function backButtonOnAddPage() {
+		userStatusCommon();
+		add();
+		_assertExists(_div("Change User Status Allowed"));
+		back();
+		$a_temp = _getValue(_select("gatewayType"));
+		if($a_temp == $g_gateWay ) {_log("Successful");}
+		else{_log("Failed");}
+	}
+	
+	function backButtonOnAddConfirmpage() {
+		userStatusCommon();
+		add();
+		_assertExists(_div("Change User Status Allowed"));
+		commonUserStatus();		
+		submit();
+		back();
+		if(_exists(_submit($g_BtnConfirm))){_log("Successful");}
+		else{_log("Failed");}
+	}
+	
+	
+	function addUserStatus() {
+		userStatusCommon();
+		add();
+		_assertExists(_div("Change User Status Allowed"));
+		commonUserStatus();	
+		submit();
+		confirm();
+		_assertExists(_listItem("/" +$g_assertion + ".*/"));
+	}
+	
+	
+	function backFormModifyPage() {
+		userStatusCommon();
+		modify();
+		_assertExists(_div("Change User Status Allowed"));
+		back();
+		$a_temp = _getValue(_select("gatewayType"));
+		if($a_temp == $g_gateWay ) {_log("Successful");}
+		else{_log("Failed");}
+	}
+	
+	
+	function backFormModifyComfirmPage() {
+		userStatusCommon();
+		modify();
+		_assertExists(_div("Change User Status Allowed"));
+		_click(_checkbox("userReceiverDeniedstatusFlag[2]"));	
+		submit();
+		back();
+		if(_exists(_submit($g_BtnConfirm))){_log("Successful");}
+		else{_log("Failed");}
+	}
+	
+	function modifyUserStaus() {
+		userStatusCommon();
+		modify();
+		_assertExists(_div("Change User Status Allowed"));
+		_click(_checkbox("userReceiverDeniedstatusFlag[2]"));	
+		submit();
+		confirm();
+		_assertExists(_listItem("/" +$g_assertion + ".*/"));
+	}
+	
+	
+	
+	function addUserStatusForExistingConfiguration() {
+		userStatusCommon();
+		add();
+		_assertExists(_listItem("/" +$g_assertion + ".*/"));
+	}
+	
+	
+	function backButtonOnViewPage() {
+		userStatusCommon();
+		view();
+		_assertExists(_div("Change User Status Allowed"));
+		back();
+		$a_temp = _getValue(_select("gatewayType"));
+		if($a_temp == $g_gateWay ) {_log("Successful");}
+		else{_log("Failed");}
+	}	
+	
+	function ViewTheUserStatus() {
+		userStatusCommon();
+		view();
+		_assertExists(_div("Change User Status Allowed"));
+	}
+	
+	function functionalityOfBackButtonFromCnfPage() {
+		userStatusCommon();
+		add();
+		_assertExists(_listItem("/" +$g_assertion + ".*/"));
+	}
+	
+	function modifyUserStatusForNonExistingConfiguration() {
+		userStatusCommon();
+		modify();
+		_assertExists(_listItem("/" +$g_assertion + ".*/"));
+	}
+	function viewUserStatusForNonExistingConfiguration() {
+		userStatusCommon();
+		view();
+		_assertExists(_listItem("/" +$g_assertion + ".*/"));
+	}
+	
+	function addUserStatusWithInvalidDetails() {
+		userStatusCommon();
+		add();
+		_assertExists(_listItem("/" +$g_assertion + ".*/"));
+	}
+	function addWithoutSelectingUserStatus() {
+		userStatusCommon();
+		add();
+		submit();
+		_assertExists(_listItem("/" +$g_assertion + ".*/"));
+	}
+	 function modifyWithoutSelectingUserStatus() {
+		 userStatusCommon();
+		 modify();
+		 _assertExists(_div("Change User Status Allowed"));
+		 commonUserStatus();
+	     _click(_checkbox("userReceiverDeniedstatusFlag[2]"));
+	     submit();
+	     _assertExists(_listItem("/" +$g_assertion + ".*/"));
+	}
+	
+	// ........... Common for User status operations 
+	
+	function userStatusCommon() {
+		_click(_link("Masters"));
+		_click(_link("User Status Configuration"));
+		_assertExists(_div("Change User Status Allowed"));
+		_setSelected(_select("gatewayType"), $g_gateWay);
+		_setSelected(_select("userType"), $g_userType);
+		_setSelected(_select("domainCode"), $g_domain);
+		_setSelected(_select("categoryCode"), $g_category);
+	}
+	
+	
+	function commonUserStatus() {
+		
+		_click(_checkbox("userSenderAllowedstatusFlag"));
+		_click(_checkbox("userSenderDeniedstatusFlag[1]"));
+		_click(_checkbox("userReceiverAllowedstatusFlag"));
+		_click(_checkbox("userReceiverDeniedstatusFlag[1]"));
+		_click(_checkbox("webLoginAllowedstatusFlag"));
+		_click(_checkbox("webLoginDeniedstatusFlag[1]"));
+	}
+	
+		
+	
+	function submit() {
+		_click(_submit("Submit"));
+	}
+	
+	function confirm() {
+		_click(_submit($g_BtnConfirm));
+	}
+	
+	
+	function add(){
+		_click(_submit("Add"));
+	}
+	
+	function modify(){
+		_click(_submit("Modify"));
+	}
+	
+	function view() {
+		_click(_submit("View"));
+	}
+	
+	
+	function back() {
+		_click(_submit("Back"));
+	}
+	
+	
+// .................. User Status configuration from channel admin .............................. // 
+	
+	
+	function commonVarriableForStatus() {
+		$g_userStatus = $g_userStatusDetails[$g_row][$g_col++];
+		$g_msisdn = $g_userStatusDetails[$g_row][$g_col++];
+		$g_remarks = $g_userStatusDetails[$g_row][$g_col++];
+		$g_assertion = $g_userStatusDetails[$g_row][$g_col++];
+	
+	}
+	
+	function commonUserStatusConfirguration() {
+		_click(_link("Masters"));
+		_click(_link("Change User Status"));
+		_assertExists(_div("Change User Status"));
+		_setSelected(_select("userStatusCode"), $g_userStatus);
+		_setValue(_textbox("msisdn"), $g_msisdn);
+		_setValue(_textarea("remarks"), $g_remarks);
+		submit();
+	}
+	
+	
+	function changeStatusOfNonexistingUser() {
+		commonUserStatusConfirguration();
+		 _assertExists(_listItem("/" +$g_assertion + ".*/"));
+	}
+	
+	
+	
+	//Change status administratively...... 
+	
+	function ChangeAndCheckStatus() {
+		
+		
+			commonUserStatusConfirguration();
+			confirm();
+		 _assertExists(_listItem("/" +$g_assertion + ".*/"));
+		
+		 _click(_link("Channel enquiry"));
+		 _click(_link("View channel user"));
+		 _setValue(_textbox("searchMsisdn"), $g_msisdn);
+		 _click(_submit("Submit"));
+		 _click(_cell($g_userStatus, _near(_cell("Status :"))));
+		 _assertExists(_cell($newStatus, _near(_cell("Status :"))));
+		 
+	}
+	
+	
+	
+		

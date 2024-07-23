@@ -1,0 +1,134 @@
+
+
+// This scripts contains all the common methods for cell ID management
+
+_includeOnce("../../../../utility/ImportPackage.sah");
+
+var $l_naCsv = _readCSVFile("../../../GUI/testdata/NA_Login.csv");
+
+	var $g_groupName;
+	var $g_groupCode;
+	var $g_status;
+	var $g_assertion;
+	
+	var $l_modifyProductName;
+	
+	var $a_Prefix;
+	
+	
+	function commonVaribleForCellGroup($g_row, $g_col) {
+		
+		$g_groupName = $g_cellGroupDetails[$g_row][$g_col++];
+		$g_groupCode = $g_cellGroupDetails[$g_row][$g_col++];
+		$g_status = $g_cellGroupDetails[$g_row][$g_col++];
+		$g_assertion = $g_cellGroupDetails[$g_row][$g_col++];
+		
+	}
+	
+	 function addCellGroup() {
+		 
+		 $g_groupName = groupName($g_autoPrefix);
+		 $g_groupCode = groupCode();
+		
+		 commonMethodToAddCellId();
+		 _click(_submit("Add"));
+		_assertExists(_div("Confirm cell groups"));
+		confirm();
+		_assertExists(_listItem("/" + $g_assertion+ ".*/"));
+
+		if(_exists(_listItem("/"+$g_assertion+".*/"))){
+				$l_naCsv[24][1] = $g_groupName;
+				$l_naCsv[24][2] = $g_groupCode;
+				_writeCSVFile($l_naCsv, "../../../GUI/testdata/NA_Login.csv", 1); // Writes the newly created Channel User in a csv file.
+				_log("Cell Group is added successfully");
+			}
+			else {
+				_log("Cell Group is not added successfully ");
+			}
+	}
+	 
+	 
+	 function addCellGroupWithInvalidDetails() {
+		 commonMethodToAddCellId();
+		 _click(_submit("Add"));
+		 _assertExists(_listItem("/" + $g_assertion+ ".*/"));
+	}
+	 
+	 function addCellGroupWithExistingName() {
+		 $g_groupName = $l_naCsv[24][1];
+		 addCellGroupWithInvalidDetails();
+	}
+	function addCellGroupWithExistingCode() {
+		$g_groupCode = $l_naCsv[24][2];
+		 addCellGroupWithInvalidDetails();		
+	}
+	 
+	function modifyCellGroup() {
+		$g_groupName = $l_naCsv[24][1];
+		
+		_click(_link("Cell Id Management"));
+		_click(_radio("radioIndex", _near(_cell($g_groupName))));
+		_click(_submit("Modify"));
+		_setValue(_textbox("groupName"), $g_groupName+"M");
+		_click(_submit("Modify"));
+		_click(_submit("Confirm"));
+		_assertExists(_listItem("Cell group modified successfully."));
+	}
+	
+	function deleteCellGroup() {
+		$g_groupCode = $l_naCsv[24][2];
+		_click(_link("Cell Id Management"));
+		_click(_radio("radioIndex", _near(_cell($g_groupCode))));
+		_click(_submit("Delete"));
+		_click(_submit("Confirm"));
+		_assertExists(_listItem("Cell group deleted successfully."));
+	}
+	
+	
+	// ..... Common Method for Cell ID Group
+	
+	
+	function commonMethodToAddCellId() {
+		
+		_click(_link("Cell Id Management"));
+		_assertExists(_div("View cell group"));
+		_click(_submit("Add"));
+		_setValue(_textbox("groupName"), $g_groupName);
+		_setValue(_textbox("groupCode"), $g_groupCode);
+		_setSelected(_select("status"), $g_status);
+	}
+	
+	function submit() {
+		_click(_submit("Submit"));
+	}
+	
+	function confirm() {
+		_click(_submit($g_BtnConfirm));
+	}
+	
+	
+	function reset(){
+		_click(_reset("Reset"));
+	}
+	
+	
+	
+	function groupName($a_Prefix){
+		 $l_time = currentTime(); // fetch current time(CurretnTime)
+		 var  $l_name = $a_Prefix + "CELL" + $l_time; //AUTONAcurrentTime
+		 return $l_name;
+	}
+
+
+	function groupCode(){
+		 
+		var $l_time = new Date();
+		var $keyword = "CELL"+ $l_time.getHours()+$l_time.getMinutes(); //AUTONAcurrentTime
+		 return $keyword;
+	 }
+
+	
+
+	// ..................................... // 
+	
+	

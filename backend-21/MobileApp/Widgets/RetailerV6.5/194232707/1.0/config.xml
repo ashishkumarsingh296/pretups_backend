@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<!DOCTYPE webaxn SYSTEM "i18n.dtd">
+<widget version="1.0">
+	<name>PRETUPS GIFTRECHARGE</name>
+	<description>Gift Recharge</description>
+	<author>Comviva</author>
+	<license>Comviva Technologies</license>
+	<identifier>194232707</identifier>
+	<type>2</type>
+	<icon src="giftrecharge.png"/>
+	<content src="giftrecharge.html" />
+	<content bearer="2" src="giftrechargeUSSD.html"/>
+	<x-title background="#191970" color="white" fontstyle="bold" fontsize="14"/>
+	<x-scrollbar background="grey" color="#191970"/>
+	<x-softkeystyle background="#191970" color="white" fontstyle="bold" fontsize="14"/>
+	<x-menustyle background="white" color="black" onfocuscolor="white"/>	
+	<x-selection onfocusbackground="#778899"/>
+	<x-userdata-access>179878594</x-userdata-access>
+	<x-menugroup id="MenuRechargegift">
+	<!-- 	<x-menu caption="&pre.lsk.submit;" x-softkey="left" href="javascript:sendGiftRechargeReq($payeemobilenu,$Giftermobilenu,$amount,$pin);"/>-->
+		<x-menu caption="&pre.rsk.back;" x-softkey="right" href="#"/>
+    </x-menugroup> 
+    <x-menugroup id="rechargeReq">			
+		<!-- <x-menu caption="&pre.lsk.ok;" x-softkey="left" href="javascript:sendGiftRechargeReq($payeemobilenu,$Giftermobilenu,$amount,$pin);"/> -->
+		<x-menu caption="&pre.rsk.cancel;" x-softkey="right" href="#"/>
+	</x-menugroup>
+    <x-menugroup id="post">			
+		<x-menu caption="&pre.lsk.ok;" x-softkey="right" href="#"/>
+	</x-menugroup>
+	
+	<x-menugroup id="post2">			
+		<x-menu caption="&pre.lsk.ok;" x-softkey="right" href="#"/>
+	</x-menugroup>
+	
+	
+</widget>
+

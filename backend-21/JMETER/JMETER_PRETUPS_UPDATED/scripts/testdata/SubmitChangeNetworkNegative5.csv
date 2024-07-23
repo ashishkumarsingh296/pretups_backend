@@ -1,0 +1,2 @@
+TestcaseId,TestcaseType,Module,Description
+ TUNG17829,Negative,Change Network,"To verify validation message appears ""Action type does not exists in the request"" when TYPE is not provided"

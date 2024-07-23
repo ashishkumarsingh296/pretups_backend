@@ -1,0 +1,28 @@
+- name: Validating Whether Class File exists at remote Location
+  stat:
+    path: "{{ item[0].TomcatHomePath }}/webapps/pretups/WEB-INF/classes/{{item[1].path}}{{ item[1].fileName.split('.java')|first }}.class{{ BackupExtn }}"
+  with_nested:
+    - "{{ CatalinaConfig }}"
+    - "{{ PatchConfigfiles }}"
+  register: Class_File_Exists  
+  when: isWarPatch == false and item[1].patchType == 'JAVA'
+  ignore_errors: yes
+
+- name: Deleting class files and restoring the latest backup
+  shell: "mv -f {{item[0].TomcatHomePath}}/webapps/pretups/WEB-INF/classes/{{item[1].item[1].path}}/{{ item[1].item[1].fileName.split('.java')|first }}.class{{ BackupExtn }}
+ {{item[0].TomcatHomePath}}/webapps/pretups/WEB-INF/classes/{{item[1].item[1].path}}/{{ item[1].item[1].fileName.split('.java')|first }}.class "
+  when: isWarPatch == false and item[1].item[1].patchType == 'JAVA' and item[1].stat.exists
+  with_nested:
+    - "{{ CatalinaConfig }}"
+    - "{{Class_File_Exists.results}}"
+  ignore_errors: true
+  tags: JAVA_PATCH
+
+- name: Deleting the class file if no backup is found (Case when a file is patched for the first time)
+  shell: "rm -f {{item[0].TomcatHomePath}}/webapps/pretups/WEB-INF/classes/{{item[1].item[1].path}}/{{ item[1].item[1].fileName.split('.java')|first }}.class"
+  when: isWarPatch == false and item[1].item[1].patchType == 'JAVA' and item[1].stat.exists == false
+  with_nested:
+    - "{{ CatalinaConfig }}"
+    - "{{Class_File_Exists.results}}"
+  ignore_errors: true
+  tags: JAVA_PATCH

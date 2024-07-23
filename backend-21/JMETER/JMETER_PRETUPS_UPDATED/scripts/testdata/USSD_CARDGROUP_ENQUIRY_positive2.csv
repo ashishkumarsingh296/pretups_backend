@@ -1,0 +1,2 @@
+TestcaseId,TestcaseType,Module,Description
+TUNG12222,Positive,Card group enquiry EXTGW,To verify that valid user is  able to perform card enquiry via EXTGW when user entered only msisdn but not pin

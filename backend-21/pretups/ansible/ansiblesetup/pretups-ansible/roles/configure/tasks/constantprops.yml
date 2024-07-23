@@ -1,0 +1,72 @@
+---
+ - name: "Constants.props: replace the variable with the concrete value: DB IP"
+   shell: sed -i 's/<DBIP>/{{ DBIP_CON_STRING }}/g' "{{ Tomcat_Path }}"/conf/pretups/Constants.props
+#   replace: dest="{{ Tomcat_Path }}"/conf/pretups/Constants.props regexp='^(.*)<DBIP>(.*)$' replace='\1{{ DBIP }}\2' backup=yes
+
+ - name: "Constants.props: replace the variable with the concrete value: DB PORT"
+   shell: sed -i 's/<DBPORT>/{{ DBPORT }}/g' "{{ Tomcat_Path }}"/conf/pretups/Constants.props
+
+ - name: "Constants.props: replace the variable with the concrete value: DB SID"
+   shell: sed -i 's/<SID>/{{ SID }}/g' "{{ Tomcat_Path }}"/conf/pretups/Constants.props
+
+ - name: "Constants.props: replace the variable with the concrete value: DB_name: it's written over the credentials: to identify the DB"
+   shell: sed -i 's/DB_Name/{{ DB_Name }}/g' "{{ Tomcat_Path }}"/conf/pretups/Constants.props
+
+ - name: "Constants.props: replace the variable with the concrete value: DB NAME"
+   shell: sed -i 's/<DBNAME>/{{ DBNAME }}/g' "{{ Tomcat_Path }}"/conf/pretups/Constants.props
+
+ - name: "Constants.props: replace the variable with the concrete value: DB PASSWD"
+   shell: sed -i 's/<DBPWD>/{{ DBPWD }}/g' "{{ Tomcat_Path }}"/conf/pretups/Constants.props
+
+ - name: "Constants.props: replace the variable with the concrete value: DB TOMCAT_PATH FOR WEB"
+   replace: dest={{ Tomcat_Path }}/conf/pretups/Constants.props regexp='^(.*)<Tomcat-Path>/logs(.*)$' replace='\1{{ CATALINA_OUT_LOG_PATH_WEB }}\2'
+   when: INSTANCE_TYPE == 'WEB'
+
+ - name: "Constants.props: replace the variable with the concrete value: DB TOMCAT_PATH FOR SMSR"
+   replace: dest={{ Tomcat_Path }}/conf/pretups/Constants.props regexp='^(.*)<Tomcat-Path>/logs(.*)$' replace='\1{{ CATALINA_OUT_LOG_PATH_SMSR }}\2'
+   when: INSTANCE_TYPE == 'SMSR'
+
+ - name: "Constants.props: replace the variable with the concrete value: DB TOMCAT_PATH FOR SMSP"
+   replace: dest={{ Tomcat_Path }}/conf/pretups/Constants.props regexp='^(.*)<Tomcat-Path>/logs(.*)$' replace='\1{{ CATALINA_OUT_LOG_PATH_SMSP }}\2'
+   when: INSTANCE_TYPE == 'SMSP'
+
+ - name: "Constants.props: replace the variable with the concrete value: DB TOMCAT_PATH"
+#   shell: sed -i 's/<Tomcat-Path>/{{ Tomcat_Path }}/g' "{{ Tomcat_Path }}"/conf/pretups/Constants.props
+   replace: dest={{ Tomcat_Path }}/conf/pretups/Constants.props regexp='^(.*)<Tomcat-Path>(.*)$' replace='\1{{ Tomcat_Path }}\2'
+#  backup=yes
+
+ - name: "Constants.props: replace the variable with the concrete value: INSTANCE_ID"
+   shell: sed -i 's/INSTANCE_ID=10/INSTANCE_ID={{ INSTANCE_ID }}/g' "{{ Tomcat_Path }}"/conf/pretups/Constants.props
+
+ - name: "Constants.props: replace the variable with the concrete value: reportdbdatasourceurl"
+   lineinfile: dest={{ Tomcat_Path }}/conf/pretups/Constants.props regexp='(.*)^reportdbdatasourceurl=(.*)' line='reportdbdatasourceurl=jdbc:oracle:thin:@{{ DBIP_CON_STRING }}:{{ DBPORT }}:{{ SID }}'
+  
+ - name: "Constants.props: replace the variable with the concrete value: reportdbuserid"
+   lineinfile: dest={{ Tomcat_Path }}/conf/pretups/Constants.props regexp='(.*)^reportdbuserid=(.*)' line='reportdbuserid={{ DBNAME }}' 
+
+ - name: "Constants.props: replace the variable with the concrete value: reportdbpasswd"
+   lineinfile: dest={{ Tomcat_Path }}/conf/pretups/Constants.props regexp='(.*)^reportdbpasswd=(.*)' line='reportdbpasswd={{ DBPWD }}'
+ 
+ - name: "Constants.props: replace the variable with the concrete value: currentDateRptDBDataSourceURL"
+   lineinfile: dest={{ Tomcat_Path }}/conf/pretups/Constants.props regexp='(.*)^currentDateRptDBDataSourceURL=(.*)' line='currentDateRptDBDataSourceURL=jdbc:oracle:thin:@{{ DBIP_CON_STRING }}:{{ DBPORT }}:{{ SID }}'
+
+ - name: "Constants.props: replace the variable with the concrete value: currentReportDBUserId"
+   lineinfile: dest={{ Tomcat_Path }}/conf/pretups/Constants.props regexp='(.*)^currentReportDBUserId=(.*)' line='currentReportDBUserId={{ DBNAME }}' 
+
+ - name: "Constants.props: replace the variable with the concrete value: currentReportDBPasswd"
+   lineinfile: dest={{ Tomcat_Path }}/conf/pretups/Constants.props regexp='(.*)^currentReportDBPasswd=(.*)' line='currentReportDBPasswd={{ DBPWD }}'
+
+ - name: "Constants.props: set the OAM IP "
+   lineinfile: dest={{ Tomcat_Path }}/conf/pretups/Constants.props regexp='(.*)^ONM_HOST_IP=(.*)' line='ONM_HOST_IP={{ OAM_HOST_IP }}'
+
+ - name: "Constants.props: set the minimum size of DB threads "
+   lineinfile: dest={{ Tomcat_Path }}/conf/pretups/Constants.props regexp='(.*)^minpoolsize=(.*)' line='minpoolsize={{ minpoolsize }}'
+
+ - name: "Constants.props: set the pool size of DB threads "
+   lineinfile: dest={{ Tomcat_Path }}/conf/pretups/Constants.props regexp='(.*)^poolsize=(.*)' line='poolsize={{ poolsize }}'
+
+ - name: "Constants.props: set the Country code "
+   lineinfile: dest={{ Tomcat_Path }}/conf/pretups/Constants.props regexp='(.*)^COUNTRY_CODE=(.*)' line='COUNTRY_CODE={{ COUNTRY_CODE }}'
+
+ - name: "Constants.props: set the Admin Mobile no "
+   lineinfile: dest={{ Tomcat_Path }}/conf/pretups/Constants.props regexp='(.*)^adminmobile=(.*)' line='adminmobile={{ ADMIN_MOBILE }}'

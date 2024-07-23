@@ -1,0 +1,2 @@
+sar -o sar.txt -i 10 >/dev/null 2>&1 &
+ 

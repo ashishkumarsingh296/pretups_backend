@@ -1,0 +1,233 @@
+#######################  Start New messagesResources entries for PreTUPS5.5.3##################################################
+#added by jasmine
+
+MODSER001=Modify service amount
+MODSER01A=Modify service amount
+MODSERDMM=Modify service amount
+master.otherpostpaid.label.services=Service Type
+master.Modifyservice.heading=Modify service amount
+master.confirm.Modifyservice.heading=Confirm Modify service amount
+selector.amount.lable.serial.number=Sr
+selector.amount.selector.lable.name=Selector Name
+selector.amount.lable=Amount
+selector.flexi.allowed.lable=Flexi Allowed
+
+selector.flexi.allowed.lable.msg.decimal=invalid amount in Sr.{0}.
+selector.updated.successfully=updated successfully
+selector.updated.unsuccessfully=Service Amount cannot be updated at this time.
+selector.service.notSelectedList=not selected service list.
+selector.allowed.lable.msg.null= amount field is empty in row {0}.
+
+#added by Vikas Jauhari
+
+################## Alert MSISDN Association Entries###########
+## Associate Alert MSISDN Form
+channelUser.associateAlertMsisdn.label.heading=Associate Alert MSISDN
+channelUser.associateAlertMsisdn.label.geography=Geographical Zone
+channelUser.associateAlertMsisdn.label.domain=Domain
+channelUser.associateAlertMsisdn.label.category=Category
+channelUser.associateAlertMsisdn.label.fileTemplate=User listing file template
+channelUser.associateAlertMsisdn.label.fileTemplate1=Sample Template
+channelUser.associateAlertMsisdn.label.path=Uploaded file path
+channel.alertDetail.msg.notreadable=File does not contain any readable data.
+channel.uploadandvalidatealertmsisdnfile.error.pathnotdefined=AlertMsisdn upload file path is not defined in Constants file
+
+#### File Lables #####
+channel.associateAlertMsisdn.file1.heading=Alert MSISDN User Listing Template
+channel.confirmAlertMsisdnFileDetails.heading=Confirm Associate Alert MSISDN File Details
+channel.confirmAlertMsisdnFileDetails.geography=Geography name
+channel.confirmAlertMsisdnFileDetails.domain=Domain name
+channel.confirmAlertMsisdnFileDetails.category=Category name
+channel.confirmAlertMsisdnFileDetails.fileName=File Name
+channel.associateAlertMsisdn.file1.usrCreatedBy=Downloaded by
+channel.associateAlertMsisdn.file1.domainName=Domain name
+channel.associateAlertMsisdn.file1.categoryName=Category name
+channel.associateAlertMsisdn.file1.GeographyName=Geography name
+channel.associateAlertMsisdn.file1.lable.serialno=SNO
+channel.associateAlertMsisdn.file1.lable.mobileNumber=Mobile Number
+channel.associateAlertMsisdn.file1.lable.loginId=Login Id
+channel.associateAlertMsisdn.file1.lable.category=Category
+channel.associateAlertMsisdn.file1.lable.alertMSISDN=Alert MSISDN
+channel.associateAlertMsisdn.file2.heading=Alert MSISDN Sample Template
+channel.associateAlertMsisdn.file2.lable.mobileNumber=Mobile Number
+channel.associateAlertMsisdn.file2.lable.alertMSISDN=Alert MSISDN
+channel.alertDetail.msg.filepathmissing=File path is not defined.
+channel.processUploadedFile.modify.msg.success=Records of {0} Alert MSISDN have been added successfully.
+
+#### Error Lables #####
+channel.processUploadedFile.error.updateusertable=Error while updating Alert MSISDN of User ID {0} in Channel User Table
+channel.processUploadedFile.error.useridnotexist=For {0} MSISDN, User Id is not exist
+channel.processUploadedFile.error.norecordinfile=No record were found in the file for processing
+channel.processUploadedFile.error.loginidIsNull=LoginId is Null
+channel.processUploadedFile.error.loginidUnmatched=LoginId has been changed
+channel.processUploadedFile.error.msisdnIsNull=MSISDN is Null
+channel.processUploadedFile.error.msisdnUnmatched=MSISDN has been changed
+channel.processUploadedFile.error.categoryNameIsNull=Category Name is Null
+channel.processUploadedFile.error.categoryNameUnmatched=Category Name has been changed
+channel.processUploadedFile.error.alertMsisdnIsNull=Alert MSISDN is Null
+channel.processUploadedFile.error.alertMsisdnIsValid=Alert MSISDN is not a Valid number
+channel.processUploadedFile.error.msisdnIsValid=MSISDN is not a Valid number
+channel.processUploadedFile.error.filenotuploaded=File cannot be uploaded now. Please try later.
+channel.processUploadedFile.error.msg.nodomainlist=Domain not found
+channel.processUploadedFile.error.msg.nogeodomain=Geographical domain not found
+channel.processUploadedFile.error.msg.nocategorylist=Category list not found
+channel.loadDownloadFile.error.downloadpathnotdefined=AlertMsisdn template file's download path is not defined in Constants file
+channel.processUploadedFile.error.msg.nodaodatalist= Data is not found in dataList
+channel.processUploadedFile.error.msg.nofile1name = DownloadFileTemplate1 is not defined in Constant file
+channel.processUploadedFile.error.msg.nofile2name = DownloadFileTemplate2 is not defined in Constant file
+channel.processUploadedFile.error.msg.filesizenotdefined=File Size is not defined in Constants file
+
+
+## Page Code Entry for Alert MSISDN ###
+ALRTMNO001=Assosiate Alert MSISDN
+ALRTMNO002=Assosiate Alert MSISDN
+ALRTMNO003=Assosiate Alert MSISDN
+ALRTMNO01A=Assosiate Alert MSISDN
+ALRTMNODMM=Assosiate Alert MSISDN
+
+
+#Added by Harpreet Kaur
+#C2STransactionCount 
+CUTCS001=Channel User Transaction Count Summary
+CUTCS001A=Channel User Transaction Count Summary
+CUTCS00DMM=Channel User Transaction Count Summary
+c2s.reports.c2sChannelTransactionCount.label.heading = C2SChannelTransactionCount
+c2s.reports.c2stransfersummary.label.geographicalDomain= Geographical Domain
+c2s.reports.c2sChannelTransactionCount.label.msisdn = User Msisdn
+c2s.reports.c2stranscount.error.msg.todate.equal=Both dates should be either equal to current date or less than current date
+c2s.reports.c2sChannelTransactionCount.error.msg.category=Category Required
+c2s.reports.c2sChannelTransactionCount.error.msg.notNull=Either Msisdn or Domain values are required.
+c2s.reports.web.userreportform.error.msg.required.geographicalDomain= Geographical Domain is Required
+
+
+
+####################### Modify messagesResources entries PreTUPS5.5.3##########################################################
+####added by jasmine
+cardgroup.rp2p.error.bonusvalue.percentage=Bonus {0} value should be in between 0 and {1}.
+##-------------------------------- No resource consider ---------------------------------
+
+
+#Added by Harpreet Kaur
+#C2STransactionCount 
+CUTCS001=Channel User Transaction Count Summary
+CUTCS001A=Channel User Transaction Count Summary
+CUTCS00DMM=Channel User Transaction Count Summary
+c2s.reports.c2sChannelTransactionCount.label.heading = C2SChannelTransactionCount
+c2s.reports.c2stransfersummary.label.geographicalDomain= Geographical Domain
+c2s.reports.c2sChannelTransactionCount.label.msisdn = User Msisdn
+c2s.reports.c2stranscount.error.msg.todate.equal=Both dates should be either equal to current date or less than current date
+c2s.reports.c2sChannelTransactionCount.error.msg.category=Category Required
+c2s.reports.c2sChannelTransactionCount.error.msg.notNull=Either Msisdn or Domain values are required.
+c2s.reports.web.userreportform.error.msg.required.geographicalDomain= Geographical Domain is Required
+
+## Added by Anu GArg for O2C History Report
+O2CTRHIS01=O2C Transfer History Report
+O2CTRHIS1A=O2C Transfer History Report
+O2CTRHISDM=O2C Transfer History Report
+c2s.reports.o2ctransferhistory.label.heading=O2C Transfer History
+c2s.reports.o2ctransferhistory.info.trf=Transfer
+
+##Added by ankuj
+common.topband.label.lastloginon=Last Login On
+
+## Added by Vikas Jauhari
+##Monitor server user
+login.index.error.userdeleted= User status is deleted
+
+#######################New messagesResources entries for PreTUPS5.5.3 For User Event Remarks##############
+user.event.label.remarks=Remarks
+user.addchanneluser.error.remarkrequired=Remarks Required
+USREV001=User event remarks
+USREV001MM=User event remarks
+c2s.reports.userEventReports.label.heading=User Event Remarks Reports
+c2s.reports.userEventReports.label.eventType=Event Type
+c2s.reports.userEventReports.label.fromDate=From Date
+c2s.reports.userEventReports.label.toDate=To Date
+c2s.reports.userEventReports.label.error.userMsisdn=User MSISDN Required.
+c2s.reports.userEventReports.label.error.zoneCode=Zone Code is Required.
+c2s.reports.userEventReports.label.error.domainCode=Domain Code is Required.
+c2s.reports.userEventReports.label.error.parentCategoryCode=ParentCategoryCode is Required.
+c2s.reports.userEventReports.label.error.userName=UserName is Required.
+c2s.reports.userEventReports.label.error.eventTypes=Event Type is Required.
+c2s.reports.showChuserStatusWise.label.heading=Search User
+c2s.reports.showChuserStatusWise.error.msg=Please provide either search value
+c2s.reports.userEventReports.label.error.fromDate=From Date is Required
+c2s.reports.userEventReports.label.error.toDate=To Date is Required
+c2s.reports.userEventReports.label.heading=User Event Remarks Summary
+c2s.reports.loadUserEventRptPage.msg.datanotfound=Data Not Found
+c2s.reports.userEventReports.label.error.date=Date range should not be more than 31.
+voms.voucherresendPin.eventRemarks=Remarks is Required.
+
+
+############# Added for private recharge #############
+
+#Added by Anu Garg
+#Private Recharge entries
+PVTREC=Private Recharge
+PVRCREG001=Private Recharge Registration
+PVRCREG01A=Private Recharge Registration
+PVRCREGDMM=Private Recharge Registration
+PVRCMOD001=Private Recharge Modification
+PVRCMOD01A=Private Recharge Modification
+PVRCENQ001=Private Recharge Enquiry
+PVRCENQ01A=Private Recharge Enquiry
+PVRCDEL001=Private Recharge Deactivation
+PVRCDEL01A=Private Recharge Deactivation
+
+privaterecharge.registration.heading=Private Recharge Registration
+privaterecharge.confirmRegistration.heading=Private Recharge Confirm Registration
+privaterecharge.modification.heading=Private Recharge Modification
+privaterecharge.loadModifyDetails.heading=Private Recharge Modification Details
+privaterecharge.confirmModification.heading=Private Recharge Confirm Modification
+privaterecharge.enquiry.heading=Private Recharge Enquiry
+privaterecharge.enquiryResult.heading=Private Recharge Enquiry Result
+privaterecharge.deactivation.heading=Private Recharge Deactivation
+privaterecharge.confirmDeactivation.heading=Private Recharge Confirm Deactivation
+
+privaterecharge.label.msisdn=Subscriber MSISDN
+privaterecharge.label.subscriberName=Subscriber name
+privaterecharge.label.sidGenerationType=Type of generation
+privaterecharge.label.sid=Subscriber identification number-SID
+privaterecharge.error.noinfo=MSISDN {0} and SID {1} does not exists.
+privaterecharge.error.nosid=The entered SID {1} doesn't match for the MSISDN {0}.
+privaterecharge.error.nonetworkprefix=MSISDN's prefix is not valid
+privaterecharge.privateRechargeEnquiryResult.send.success=Message for SID enquiry has been sent successfully.
+privaterecharge.error.invalidSid=SID is invalid.
+privaterecharge.privateRechargeConfirmDeactivation.delete.success=Sid deactivated successfully.
+privateracharge.error.invalidusername=Subscriber Name too long.
+privaterecharge.error.notuniquesid=SID already Exist. Please provide a new SID.
+privaterecharge.error.alreadyregistered=You are already registered. You cannot register again.
+privaterecharge.privateRechargeRegistration.register.success=Subscriber has been successfully registered.
+privaterecharge.privateRechargeModification.modify.success=Subscriber SID has been successfully modification.
+privaterecharge.privaterechargeregister.error.nosidentered=Subscriber identification number-SID is required.
+privaterecharge.error.invalidSidLength=Invalid SID length.It should be between {1} and {2}. 
+privaterecharge.error.SidNotNumeric=Invalid SID.sid should be numeric starting with country code {0}.It should be between {1} and {2}. 
+privaterecharge.error.sidNotAlphanumeric=Invalid SID.sid should be Alpha numeric starting with alphabets.It should be between {1} and {2}.
+privaterecharge.error.registeredMsisdn=SID already associated with this MSISDN.
+privaterecharge.error.registeredSid=SID already registered. Please provide another SID.
+
+##### Changes Done in Kenya #####
+user.addchanneluser.error.allowedipsrequired=Allowed IPs are required for internal user
+
+##Geography wise transaction summary Report
+GRTXSRPT01=Geography Wise Transaciton Summary
+GRTXSRPTDM=Geography Wise Transaciton Summary
+c2s.reports.geowisetxnsummreport.heading=Geography Wise Transaction Summary Report
+
+##Added For C2SBonus Reports By Babu Kunwar
+###################################	Entries For C2S Bonus Report #########################
+C2SBNS001=C2S Bonus Report
+C2SBNSDMM=C2S Bonus Report
+c2s.reports.c2sbonus.label.heading=C2S Bonus Reports
+c2s.reports.bonus.label.serviceType=Service Type
+c2s.reports.bonus.label.bonusBundleName=Bonus Bundle Name
+c2s.reports.bonus.label.bunusBundleType=Bonus Bundle Type
+c2s.reports.bonus.label.fromDate=From Date
+c2s.reports.bonus.label.toDate=To Date
+c2s.reports.c2sbonusreport.label.serviceType=Service type 
+c2s.reports.c2sbonusreport.label.bundlesName=Bundle name 
+c2s.reports.c2sbonusreport.label.bundleType=Bundle type 
+c2s.reports.c2sbonusreport.label.fromDate=From date 
+c2s.reports.c2sbonusreport.label.toDate=To date
+ 
+btsl.date.error.datecompare.c2s.bonus=Difference between to date and from date must be less than  11

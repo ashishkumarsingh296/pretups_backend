@@ -1,0 +1,35 @@
+---
+########################################################
+# Author           Date        Remarks
+#------------    -----------  ---------
+#Sadhan Kumar K  25-07-2016    Initial Creation
+#
+# This file takes care of Validating the Path entered 
+# by user for WAR patch exists in Remote Server or not 
+# for Rollback
+#########################################################
+
+ - name: Checking the Backup Original War instance  exists or not in the remote server.
+   stat: path={{ BackupWarInstancePath }}/{{ item.oldWarName.split('.war')|first }}
+   with_items:
+     - "{{ PatchConfigfiles }}"
+   register: pathCheckWarRollback
+   when:  isWarPatch==true and item.patchType =='WAR'
+   ignore_errors: yes
+   tags:
+     - OriginalFilesPathCheckWar
+
+ - name: Validating the Backup War instance exists or not in the remote server.
+   fail: msg="The patch file path {{ BackupWarInstancePath }}{{ item.item.oldWarName.split('.war')|first }} doesnot exist in the remote server."  
+   failed_when: item.stat.exists == false
+   when: isWarPatch==true and item.item.patchType =='WAR'
+   with_items: "{{pathCheckWarRollback.results}}"
+   ignore_errors: yes
+   tags:
+     - OriginalFilesPathCheckWar
+
+ - debug: msg="All the  Backup War instance exists - correct."
+   when: isWarPatch==true and pathCheckWarRollback|success
+   ignore_errors: yes
+   tags:
+     - OriginalFilesPathCheckWar

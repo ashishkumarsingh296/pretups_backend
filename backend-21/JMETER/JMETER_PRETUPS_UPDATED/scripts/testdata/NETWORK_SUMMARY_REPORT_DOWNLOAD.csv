@@ -1,0 +1,6 @@
+loginId,password,reporttype,fromDate,toDate,type,TestCaseID,TestCaseType,Module,Description
+chadm,1357,DAILY,10/7/2016,12/7/2016,NETSUMMDNLD,,positive,Confirm Network Summary Report Download through Restful API,To verify network Summary Report Download Successfully
+chadm,1357,,10/7/2016,12/7/2016,NETSUMMDNLD,,negative,Confirm Network Summary Report Download through Restful API,To verify reportType is mendatory
+chadm,1357,DAILY,,12/7/2016,NETSUMMDNLD,,negative,Confirm Network Summary Report Download through Restful API,To verify fromDate is mendatory
+chadm,1357,DAILY,10/7/2016,,NETSUMMDNLD,,negative,Confirm Network Summary Report Download through Restful API,To verify toDate is mendatory
+chadm,1357,DAILY,12/7/2016,10/7/2016,NETSUMMDNLD,,negative,Confirm Network Summary Report Download through Restful API,To verify no operation should perform if provides incorrect data

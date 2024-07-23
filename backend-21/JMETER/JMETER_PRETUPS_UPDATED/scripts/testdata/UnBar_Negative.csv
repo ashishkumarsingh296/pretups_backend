@@ -1,0 +1,13 @@
+TestcaseId,TestcaseType,Module,Description
+TUNG12780,Negative,UnBar user through Restful API,To verify module is required
+TUNG12781,Negative,UnBar user through Restful API,To verify user type is required
+TUNG12782,Negative,UnBar user through Restful API,To verify msisdn is required
+TUNG12783,Negative,UnBar user through Restful API,To verify barred reasonis required
+TUNG12784,Negative,UnBar user through Restful API,To verify all mandatory fields are required
+TUNG12786,Negative,UnBar user through Restful API,to verify user cant get barred user list when provide unsupported network msisdn
+TUNG12787,Negative,UnBar user through Restful API,To verify msisdn is not valid
+TUNG12788,Negative,UnBar user through Restful API,To verify msisdn is not valid
+TUNG12789,Negative,UnBar user through Restful API,To verfy request fails when msisdn is of special characters 
+TUNG12790,Negative,UnBar user through Restful API,To verfy barred reason length should not exceed more than 100 character
+TUNG12791,Negative,UnBar user through Restful API,To verify barred user does not exists
+TUNG12792,Negative,UnBar user through Restful API,To verify user is not active user

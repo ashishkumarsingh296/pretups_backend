@@ -1,0 +1,10 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="PreTUPS Automation Suite" parallel="none" preserve-order="true">
+
+<test name="DataBuilder" preserve-order="true">
+  <classes>
+    <class name="com.databuilder.DataBuilder"/>
+  </classes>
+</test>
+
+</suite>

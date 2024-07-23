@@ -1,0 +1,52 @@
+---
+ - name: "DB: create OS directory & ship Scripts for the database"
+   user: "{{ ansible_ssh_user }}"
+   gather_facts: no
+   ##become: true
+   hosts: dbservers
+   ##become_user: "{{ ansible_ssh_user }}"
+   vars_files:
+   - roles/db_ship_scripts_postgress/vars/main.yml
+   roles:
+   - {role: db_ship_scripts_postgress, tags: db_ship_scripts_postgress}
+
+ - name: "DB: create Table Spaces"
+   user: "{{ ansible_ssh_user }}"
+   gather_facts: no
+  #become: true
+   hosts: dbservers
+   serial: 1
+  #become_user: "{{ ansible_ssh_user }}"
+   vars_files:
+   - roles/db_create_table_space/vars/main.yml
+   - roles/db_ship_scripts/vars/main.yml
+   roles:
+   - {role: db_create_table_space_postgres, tags: db_create_table_space_postgres,cts}
+
+ - name: "DB: import Dump"
+   user: "{{ ansible_ssh_user }}"
+   gather_facts: no
+  #become: true
+   hosts: dbservers
+   serial: 1
+  #become_user: "{{ ansible_ssh_user }}"
+   vars_files:
+   - roles/db_create_table_space/vars/main.yml
+   - roles/db_ship_scripts/vars/main.yml
+   - roles/db_postgres_dump/vars/main.yml
+   - roles/db_ship_scripts_postgress/vars/main.yml
+   roles:
+   - {role: db_postgres_dump, tags: db_postgres_dump}
+
+ - name: "DB: create schema"
+   #become: true
+   gather_facts: no
+   hosts: dbservers
+   serial: 1
+   #become_user: "{{ ansible_ssh_user }}"
+   user: "{{ ansible_ssh_user }}"
+   vars_files:
+   - roles/db_postgres_dump/vars/main.yml
+   - roles/db_ship_scripts_postgress/vars/main.yml
+   roles:
+   - {role: db_createSchema_postgres, tags: PretupsSchema,dsc}

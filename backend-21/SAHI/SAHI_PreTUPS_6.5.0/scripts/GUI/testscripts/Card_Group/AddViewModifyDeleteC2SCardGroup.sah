@@ -1,0 +1,103 @@
+//#######################################
+//
+// To add card group from channel to subscriber 
+//
+//#######################################
+
+
+
+_includeOnce("../../../../utility/ImportPackage.sah");
+_includeOnce("../../../GUI/testscripts/Card_Group/ViewModifyCardGroup_Common.sah"); //For adding C2S card group	
+
+
+//======================Pre-requisite check============================
+_log("Setup", "custom4");
+
+
+//If NA deos not exist, first create it and then create the Card Group
+var $l_naCsv = _readCSVFile("../../../GUI/testdata/NA_Login.csv"); //Reads the network admin credentials 
+var $g_networkAdmin1 = $l_naCsv[1][1];
+if($g_networkAdmin1 == "null"){
+	createNA(); // UserManagement_Common.sah
+	var $l_naCsv1 = _readCSVFile("../../../GUI/testdata/NA_Login.csv");
+	$g_networkAdmin1 = $l_naCsv1[1][1];
+	login($g_appURL,  $g_LangEnglish, $g_networkAdmin1, $g_commonPassword, $g_assertWelcome);
+}else{	 
+	login($g_appURL,  $g_LangEnglish, $g_networkAdmin1, $g_commonPassword, $g_assertWelcome);
+}
+
+//==================== Create a channel to subscriber card group ==================//
+
+
+
+var $g_C2SCardDetails = _readCSVFile("../../../GUI/testdata/AddViewC2SCardgroup.csv"); //Reads the Card group details
+
+		for(var $g_row = 1; $g_C2SCardDetails[$g_row] != null; $g_row++){
+			
+			var $g_col = 0;
+			var $temp_testCaseNo = $g_C2SCardDetails[$g_row][$g_col++];
+			var $t = _testcase($temp_testCaseNo, $g_C2SCardDetails[$g_row][$g_col++]);
+			
+			$t.start();
+			
+			if($temp_testCaseNo == "TEST001"){
+				commonVarriableForC2SCardGroupDetails($g_row, $g_col);
+				addC2SCardGroup();
+			}
+			else if($temp_testCaseNo == "TEST002"){
+				commonVarriableToModifyCardGroup($g_row, $g_col);
+				modifyCardC2SCardGroup();
+			}
+			else if($temp_testCaseNo == "TEST003"){
+				commonVarriableToModifyCardGroup($g_row, $g_col);
+				ViewC2SCardGroup();
+			}
+			
+			else if($temp_testCaseNo == "TEST004"){
+				commonVarriableToAddC2STransferRule($g_row, $g_col);
+				addC2sTransferRuleWithoutRecieverType();
+			}
+			
+			
+			
+			$t.end();
+		}
+		
+		
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

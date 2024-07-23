@@ -1,0 +1,14 @@
+---
+ - name: "DB: import the dump"
+   command: impdp system/manager  directory=Dbdump_dir  dumpfile={{ item }}.dmp logfile={{ item }}.log remap_schema={{ SOURCE_PRETUPS_SCHEMA_NAME }}:{{ PRETUPS_SCHEMA_USER_NAME }} chdir="{{ BASE_DIR }}/{{ Temp_Dir }}"
+   ignore_errors: yes
+   register: Dump_import
+   failed_when: '"ERROR" in Dump_import.stdout'
+   with_items:
+            - "{{ Dump_name }}"
+   tags:
+    - Dump_import_tags
+
+# - name: "DB: run the customization as per the DB"
+#   shell: sh customize.sh chdir="{{ BASE_DIR }}/{{ Temp_Dir }}"
+

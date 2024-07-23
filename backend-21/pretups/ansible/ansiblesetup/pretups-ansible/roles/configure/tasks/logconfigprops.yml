@@ -1,0 +1,6 @@
+---
+ - name: "let's make it work: LogConfig.props: replace the variable with the concrete value: DB TOMCAT_PATH"
+#   shell: sed -i 's/<Tomcat-Path>/"{{ Tomcat_Path }}"/g' "{{ Tomcat_Path }}"/conf/pretups/LogConfig.props
+   replace: dest="{{ Tomcat_Path }}"/conf/pretups/LogConfig.props regexp='^(.*)<Tomcat-Path>(.*)$' replace='\1{{ Tomcat_Path }}\2'
+#  backup=yes
+

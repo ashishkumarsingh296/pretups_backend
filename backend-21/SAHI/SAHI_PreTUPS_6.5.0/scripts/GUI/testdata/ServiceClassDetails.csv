@@ -1,0 +1,7 @@
+TestCase Details,TestCase Description,Interface Category,Interface Type,Interface Name,ServiceClassCode,Service Name,Status,P2P Sender allowes Status,Denied Status,Reciever Allowed Status,Denied Status,C2S Reciever Allowed,C2S Denied,Assertion
+TEST001,Given a super admin login into the application and adding new interface ,Postpaid Interface,CS4 Ericssion Post,CS4 PostPaid IN,AUTSERV,Auto Service,Active,YES,NO,YES,NO,YES,NO,Service class added successfully
+TEST002,Given a super admin login into the application and try to add a new Service class without entring mandatory field,Postpaid Interface,CS4 Ericssion Post,CS4 PostPaid IN,,,,YES,NO,YES,NO,YES,NO,Service class code is Required.
+TEST003,Given a super admin login into the application and try to add a new Service class without entring mandatory field Service Name,Postpaid Interface,CS4 Ericssion Post,CS4 PostPaid IN,AUTSERV,,,YES,NO,YES,NO,YES,NO,Service class name is Required.
+TEST004,Given a super admin login into the application and try to modify newly added service class from active to suspended,Postpaid Interface,CS4 Ericssion Post,CS4 PostPaid IN,AUTSERV,,Suspended,YES,NO,YES,NO,YES,NO,Service class modified successfully
+TEST005,Given a super admin login into the application and try to delete the newly added service class,Postpaid Interface,CS4 Ericssion Post,CS4 PostPaid IN,AUTSERV,,,,,,,,,Successfully deleted service class.
+TEST006,Given that superadmin logs into application and try to view the network in system,,,,,,,,,,,,,

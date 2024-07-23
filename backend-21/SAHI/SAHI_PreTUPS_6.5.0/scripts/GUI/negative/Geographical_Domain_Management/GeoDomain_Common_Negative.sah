@@ -1,0 +1,66 @@
+//######################################
+//
+//This script has common variable and method Geographical Domain Management
+//
+//#######################################
+
+var $g_domainCode;
+var $g_domainName;
+var $g_domainShortName;
+var $g_assertion;
+
+
+
+function commonVariableForZoneMgmt($a_row, $a_col){
+	
+	$g_domainCode = $g_GeoMgmtZone[$a_row][$a_col++];
+	$g_domainName = $g_GeoMgmtZone[$a_row][$a_col++];
+	$g_domainShortName = $g_GeoMgmtZone[$a_row][$a_col++];
+	$g_assertion = $g_GeoMgmtZone[$a_row][$a_col++];
+}
+			
+				
+function addGeoDoaminZone() {
+		_click(_link("Masters"));
+		_assertExists(_div("Select geographical domain"));
+		_setSelected(_select("grphDomainType"), "Zone");
+		_click(_submit("Submit"));
+		_click(_submit("Add"));
+		_assertExists(_div("Add geographical domain"));
+		_setValue(_textbox("grphDomainCode"), $g_domainCode );
+		_setValue(_textbox("grphDomainName"), $g_domainName);
+		_setValue(_textbox("grphDomainShortName"),$g_domainShortName );
+		_click(_submit($g_BtnAdd));
+}
+
+function addGeoDoaminArea() {
+	_click(_link("Masters"));
+	_assertExists(_div("Select geographical domain"));
+	_setSelected(_select("grphDomainType"), "Sub Area");
+	_click(_submit("Submit"));
+	_setValue(_textbox("indexParentValue[0]"), $g_zoneName);
+	_log("AreaName= "+$g_areaName);
+	_setValue(_textbox("indexParentValue[1]"), $g_areaName);
+	_click(_submit("Submit"));
+	_click(_submit("Add"));
+	_assertExists(_div("Add geographical domain"));
+	_setValue(_textbox("grphDomainCode"), $g_domainCode );
+	_setValue(_textbox("grphDomainName"), $g_domainName);
+	_setValue(_textbox("grphDomainShortName"),$g_domainShortName );
+	_click(_submit($g_BtnAdd));
+}
+
+function addGeoDoaminSubArea() {
+	_click(_link("Masters"));
+	_assertExists(_div("Select geographical domain"));
+	_setSelected(_select("grphDomainType"), "Area");
+	_click(_submit("Submit"));
+	_setValue(_textbox("indexParentValue[0]"), $g_zoneName);
+	_click(_submit("Submit"));
+	_click(_submit("Add"));
+	_assertExists(_div("Add geographical domain"));
+	_setValue(_textbox("grphDomainCode"), $g_domainCode );
+	_setValue(_textbox("grphDomainName"), $g_domainName);
+	_setValue(_textbox("grphDomainShortName"),$g_domainShortName );
+	_click(_submit($g_BtnAdd));
+}

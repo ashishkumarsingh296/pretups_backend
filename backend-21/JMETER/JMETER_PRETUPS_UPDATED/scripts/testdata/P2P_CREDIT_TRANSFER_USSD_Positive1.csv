@@ -1,0 +1,2 @@
+TestcaseId,TestcaseType,Module,Description
+TUNG13187,Positive,Credit Transfer,To validate successful credit transfer with all the mandatory as well as optional parameters

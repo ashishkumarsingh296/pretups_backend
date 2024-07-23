@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DataSourceConfigurations>
+  <DataSourceConfiguration name="pdsodbc.dll">
+      <property name="supportsWhere" value="true"/>
+      <property name="url" value="jdbc:odbc:{0}"/>
+      <property name="escapeEverything" value="false"/>
+      <property name="quotesLowerCase" value="false"/>
+      <property name="savePassword" value="true"/>
+      <property name="driverClassName" value="sun.jdbc.odbc.JdbcOdbcDriver"/>
+      <property name="user" value=""/>
+      <property name="catalog" value=""/>
+      <property name="supportsParenthesesForJoin" value="true"/>
+      <property name="identifierQuoteString" value=""/>
+      <property name="driverLibrary" value=""/>
+      <property name="databaseClassName" value=""/>
+      <property name="aliasToken" value="AS"/>
+      <property name="password" value="00CC57A7DCE8EBCE039E64ED3DF23EDF7CCC578F12466670BCC5CF5B0B44B7A03B"/>
+      <property name="supportsOrderBy" value="true"/>
+      <property name="supportsSQL92" value="true"/>
+  </DataSourceConfiguration>
+</DataSourceConfigurations>

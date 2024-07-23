@@ -1,0 +1,33 @@
+---
+########################################################
+# Author           Date        Remarks
+#------------    -----------  ---------
+#Sadhan Kumar K  25-07-2016    Initial Creation
+#
+# This file takes care of War patch.
+#########################################################
+
+ - name: Taking Backup of Com directory
+   command: cp -rf {{ item.TomcatHomePath }}/webapps/pretups/ {{ BackupPretupsInstancePath }}/pretups{{BackupExtn}}
+   with_items:
+     - "{{ CatalinaConfig }}"
+   tags:
+     - PreTUPSBkp
+
+ - name: Copying pretups to a remote
+   copy: src="files/pretups" dest="{{ BackupPretupsInstancePath }}/Ansible"
+   tags:
+      - PreTUPSBkp
+
+ - name: Copying pretups Patch to remote server
+   shell: rsync -arzh {{ BackupPretupsInstancePath }}/Ansible/pretups/ {{ item.TomcatHomePath }}/webapps/pretups/ --exclude WEB-INF/classes/configfiles
+   with_items:
+     - "{{ CatalinaConfig }}"
+   register: copyPreTUPS
+   tags:
+     - copyPreTUPS
+
+ - name: removing pretups from a remote
+   command: rm -rf {{ BackupPretupsInstancePath }}/Ansible
+   tags:
+      - PreTUPSBkp

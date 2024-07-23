@@ -1,0 +1,156 @@
+
+
+
+_includeOnce("../../../../utility/ImportPackage.sah");	//For importing common files
+
+var $l_naCsv = _readCSVFile("../../../GUI/testdata/NA_Login.csv");
+
+var $g_domainCode;
+var $g_domainName;
+var $g_domainShortName;
+
+
+
+function variableForGeographicalDomain() {
+	
+	$g_domainCode = variableZoneCode($g_autoPrefix); //Automatically generated Network Admin
+	$g_domainName = variableForZoneName($g_autoPrefix); //Automatically generated Channel Admin
+	$g_domainShortName = randomString();	
+	
+	_log("shashi "  + $g_domainCode );
+}
+
+
+function createGeographicalDomainZone() {
+	
+	var $t1 = _testcase("TEST001", "Given network admin try to create new geographical domain zone");
+	$t1.start();
+	variableForGeographicalDomain();
+	var $error = createGeoDoaminZone();
+	if($error == true){
+		_log("Geographical domain created sucessfully");
+		
+		$l_naCsv[10][1] = $g_domainName;
+		_writeCSVFile($l_naCsv, "../../../GUI/testdata/NA_Login.csv", 1); // Writes the newly created NA in a csv file.
+	}
+	$t1.end();	
+	_log("Geographical domain zone created successfully");
+}
+
+
+
+function createGeographicalDomainArea() {
+	
+	var $t1 = _testcase("TEST001", "Given network admin try to create new geographical domain Area");
+	$t1.start();
+	variableForGeographicalDomain();
+	var $error = createGeoDoaminArea();
+	if($error == true){
+		_log("Geographical domain area created sucessfully");
+			$l_naCsv[10][2] = $g_domainName;
+		_writeCSVFile($l_naCsv, "../../../GUI/testdata/NA_Login.csv", 1); // Writes the newly created NA in a csv file.
+	}
+	$t1.end();	
+	_log("Geographical domain area created successfully");
+}
+
+function createGeographicalDomainSubArea() {
+	
+	var $t1 = _testcase("TEST001", "Given network admin try to create new geographical domain SubArea");
+	$t1.start();
+	variableForGeographicalDomain();
+	var $error = createGeoDoaminSubArea();
+	if($error == true){
+		_log("Geographical domain subarea created sucessfully");
+			$l_naCsv[10][3] = $g_domainName;
+		_writeCSVFile($l_naCsv, "../../../GUI/testdata/NA_Login.csv", 1); // Writes the newly created NA in a csv file.
+	}
+	$t1.end();	
+	_log("Geographical domain area created successfully");
+}
+
+
+
+
+
+function variableZoneCode($a_Prefix){
+	 $l_time = currentTime(); // fetch current time(CurretnTime)
+	 $l_username = $l_time; //AUTONAcurrentTime
+	 var $g_domainCode = $l_time.toString().substring(0, 9);
+	 $g_domainCode = $g_domainCode + "A";
+	 return $g_domainCode;
+}
+
+
+
+function variableForZoneName($a_Prefix){
+	 $l_time = currentTime(); // fetch current time(CurretnTime)
+	 $l_username = $a_Prefix + "ZN" + $l_time; //AUTONAcurrentTime
+	 return $l_username;
+}
+
+function createGeoDoaminZone() {
+	_click(_link("Masters"));
+	_assertExists(_div("Select geographical domain"));
+	_setSelected(_select("grphDomainType"), "Zone");
+	_click(_submit("Submit"));
+	_click(_submit("Add"));
+	_assertExists(_div("Add geographical domain"));
+	_setValue(_textbox("grphDomainCode"), $g_domainCode );
+	_setValue(_textbox("grphDomainName"), $g_domainName);
+	_setValue(_textbox("grphDomainShortName"), $g_domainShortName );
+	_click(_submit($g_BtnAdd));
+	_click(_submit($g_BtnConfirm));
+	
+	_assertExists(_listItem("/"+ "Geographical domain is added successfully."+".*/"));
+	
+	if(_exists(_listItem("Geographical domain is added successfully.")))
+		return true;
+}
+
+
+function createGeoDoaminArea() {
+	_click(_link("Masters"));
+	_assertExists(_div("Select geographical domain"));
+	_setSelected(_select("grphDomainType"), "Area");
+	_click(_submit("Submit"));
+	_setValue(_textbox("indexParentValue[0]"), $g_zoneName);
+	//_click(_image("search.gif"));
+	_click(_submit("Submit"));
+	_click(_submit("Add"));
+	_setValue(_textbox("grphDomainCode"), $g_domainCode );
+	_setValue(_textbox("grphDomainName"), $g_domainName);
+	_setValue(_textbox("grphDomainShortName"), $g_domainShortName );
+	_click(_submit($g_BtnAdd));
+	_click(_submit($g_BtnConfirm));
+	
+	_assertExists(_listItem("/"+ "Geographical domain is added successfully."+".*/"));
+	
+	if(_exists(_listItem("Geographical domain is added successfully.")))
+		return true;
+}
+
+function createGeoDoaminSubArea() {
+	_click(_link("Masters"));
+	_assertExists(_div("Select geographical domain"));
+	_setSelected(_select("grphDomainType"), "Sub Area");
+	_click(_submit("Submit"));
+	_setValue(_textbox("indexParentValue[0]"), $g_zoneName);
+	_setValue(_textbox("indexParentValue[1]"), $g_areaName);
+	_click(_submit("Submit"));
+	_click(_submit("Add"));
+	_setValue(_textbox("grphDomainCode"), $g_domainCode );
+	_setValue(_textbox("grphDomainName"), $g_domainName);
+	_setValue(_textbox("grphDomainShortName"), $g_domainShortName );
+	_click(_submit($g_BtnAdd));
+	_click(_submit($g_BtnConfirm));
+	
+	_assertExists(_listItem("/"+ "Geographical domain is added successfully."+".*/"));
+	
+	if(_exists(_listItem("Geographical domain is added successfully.")))
+		return true;
+}
+
+
+
+

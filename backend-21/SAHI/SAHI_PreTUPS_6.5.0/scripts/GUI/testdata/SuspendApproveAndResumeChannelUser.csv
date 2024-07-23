@@ -1,0 +1,30 @@
+TestCaseNo. ,Discription,MSISDN ,Remarks,Assertion
+TEST001,Verify that sumit button is over there while going to suspend channel user in the system,,,
+TEST002,Verify that functionality of back buttton on suspend channel user confirm page,7233333333,Remarks,
+TEST003,Verify that MSISDN is required while going to suspend channel user in the system,,Remarks,Enter search value
+TEST004,Verify that remarks is required while going to suspend channel user in the system,7233333333,,Remarks Required
+TEST005,Verify that application will throw an error message while you entered the invalid MSISDN in system,72,Remarks,MSISDN is incorrect.
+TEST006,"Suppose, you entered a number which is not registered as channel user, then it should display error msg ",7200000099,Resend PIN of channel user,No user exists with this mobile number
+TEST007,"Verify that channel admin cant suspend user, which is not supported by network",1000000000,Resend PIN of channel user,Mobile number does not belong to Network
+TEST008,Verify that channel admin can initiate process to suspend channel user ,7233333333,Remarks,"request for suspend is successfully accepted, required approval"
+TEST009,Verify that you cant raise request to suspend channel user again in the system,7233333333,Remarks,is already suspended or suspension approval is pending.
+TEST010,"Verify that channel admin cant approve the user, wihtout giving MSISDN of channel user",,Remarks is required ,Enter search value
+TEST011,"Verify that channel admin cant approve the user, wihtout giving remarks of channel user",7233333333,,Remarks Required
+TEST012,While going to approve it will throw an error message while you entered the invalid MSISDN in system,72,Remarks for Approval,MSISDN is incorrect.
+TEST013,"While going to approve it you entered a number which is not registered as channel user, then it should display error msg ",7200000099,Remarks for Approval,No user exists with this mobile number
+TEST014,"Verify that channel admin cant suspend user, which is not supported by network",1000000000,Remarks for Approval,Mobile number does not belong to Network
+TEST015,Verify that functionality of back button on suspend user confirm page ,7233333333,Remarks for Approval,
+TEST016,Verify that channel admin can discard the channel user suspension in the system ,7233333333,Remarks for Approval,No changes occurred
+TEST017,Verify the functionality of back button from approval confirm page,7233333333,Remarks for Approval,
+TEST018,Verify the functionality of cancel button from approval confirm page,7233333333,Remarks for Approval,
+TEST019,Verify that Channel admin can confirm the approval of suspension of channel user in the system,7233333333,Remarks for Approval,Users successfully suspended
+TEST020,Verify that MSISDN is required while going to resume channel user in the system,,Remarks for Resume,Enter search value
+TEST021,Verify that remarks is required while going to resume channel user in the system,7200000000,,Remarks Required
+TEST022,Verify that application will throw an error message while you entered the invalid MSISDN in system,XX,Remarks for Resume,MSISDN is incorrect.
+TEST023,"Suppose, you entered a number which is not registered as channel user, then it should display error msg ",7200000099,Remarks for Resume,No user exists with this mobile number
+TEST024,"Verify that channel admin cant resume suspended user, which does not belong to network",1000000000,Remarks for Resume,Mobile number does not belong to Network
+TEST025,Verify the functionality of back button from channel user resume page,7233333333,Remarks for Resume,
+TEST026,"Verify that channel admin try to resume user wihtout selecing, any user in the system",7233333333,Remarks for Resume,Please select at least one user to resume.
+TEST027,Verify the functionality of back button from channel user resume confirm page ,7233333333,Remarks for Resume,
+TEST028,Verify the functionality of cancel button from channel user resume confirm page ,7233333333,Remarks for Resume,
+TEST029,Verify that channel admin can resume channel user in the system ,7233333333,Remarks for Resume,Users successfully resumed

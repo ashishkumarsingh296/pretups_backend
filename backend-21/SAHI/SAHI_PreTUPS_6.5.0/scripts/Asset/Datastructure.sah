@@ -1,0 +1,194 @@
+//Include
+_includeOnce("Framework.sah");
+
+/**
+ * User Representations
+ * @param UserName
+ * @param Password
+ * @param FirstName
+ * @param LastName
+ * @param ExternalCode
+ * @param Outlet
+ * @param Language
+ * @returns
+ */
+var User = function(UserName, Password, FirstName, ShortName, EMail, Outlet, Language, ChannelUserType, Grade){
+	this.ChannelUserType  = ChannelUserType;
+	this.UserName  = UserName;
+	this.Password  = Password;	
+	this.PIN  = $CONFIG.PIN;
+	this.FirstName = FirstName;
+	this.ShortName  = ShortName;	
+	this.EMail = EMail;
+	this.Outlet  = Outlet;
+	this.Language  = Language;
+	this.ChannelUserType  = ChannelUserType;
+	this.Grade  = Grade;
+
+	// if the user is already available then fetch the MSISDN and set the flag ExistingUser
+	var $msisdn = undefined;
+
+	var $result = executeQuery("select MSISDN from USERS where LOGIN_ID = '" +this.UserName+ "'");	
+	if ($result == ""){
+		$msisdn = readMSISDNFromCSV();		
+		this.ExistingUser  = false;	
+	}else{		
+		$msisdn = $result[0][0];
+		this.ExistingUser  = true;
+	}
+
+	this.MSISDN  = $msisdn;
+	this.ExternalCode  = $msisdn + "ExtCode" ;
+
+	/**
+	 * get current Parent User Name
+	 */
+	this.getCurrentParentUserName = function(){
+		var $result = executeQuery("Select u1.LOGIN_ID from Users u1 , Users u2 where u2.LOGIN_ID ='"+ this.UserName +"' AND u1.USER_ID = u2.PARENT_ID");
+		if ($result){
+			_log($result[0][0]);
+			return $result[0][0];			
+		}		
+	};
+
+	/**
+	 * get current Owner User Name
+	 */
+	this.getCurrentOwnerUserName = function(){
+		var $result = executeQuery("Select u1.LOGIN_ID from Users u1 , Users u2 where u2.LOGIN_ID ='"+ this.UserName +"' AND u1.USER_ID = u2.OWNER_ID");
+		if ($result){
+			_log($result[0][0]);
+			return $result[0][0];			
+		}		
+	};
+
+	/**
+	 * Add Phone Number
+	 */
+	this.addPhoneNumbers = function(phoneNumbers){  //TODO
+		this.AssignedPhoneNumbers = phoneNumbers;
+	};
+
+	/**
+	 * Add Geography
+	 */
+	this.addGeography = function(Geography){  //TODO
+		this.AssignedGeography = Geography;
+	};
+
+	/**
+	 * Add Services
+	 */
+	this.addServices = function(Services){  //TODO
+		this.AssignedServices = Services;
+	};
+
+	/**
+	 * Add Roles
+	 */
+	this.addRoles = function(Roles){  //TODO
+		this.AssignedRoles = Roles;
+	};      
+};
+
+
+/**
+ * representation of a channel user Type - first selections
+ * @param Domain
+ * @param Category
+ * @param ParentCategory
+ * @param OwnerUser
+ * @returns 
+ */
+var ChannelUserType = function(GeographicalDomain, Domain, Category, ParentCategory, OwnerUser, ParentUser){
+	this.GeographicalDomain = GeographicalDomain;
+	this.Domain = Domain;
+	this.Category = Category;
+	this.ParentCategory = ParentCategory;
+	this.OwnerUser = OwnerUser;	
+	this.ParentUser = ParentUser;	
+};
+
+var $GEO_DOMAIN = {
+		DEPARTMENT 			  : "Department",
+		MUNICIPALITY		  : "Municipality"
+};
+
+//------------------------- CATEGORY ------------------------------------------------------
+var $CATEGORY = {
+		DISTRIBUTER 		   : "Distributor",
+		SUB_DISTRIBUTER 	   : "Sub Distributor",
+		DIS_POS    			   : "Dist POS",
+		IVR_POS				   : "IVR POS"
+};
+
+/**
+ * Representation of Parent categories under the category Sub Distributer
+ */
+var $SUB_DIST_PARENT_CATEGORY = {
+		DISTRIBUTER 		   : "Distributor",
+		DIS_POS    			   : "Dist POS",
+		IVR_POS				   : "IVR POS"
+};
+
+/**
+ * Representation of Parent categories under the category IVR POS
+ */
+var $IVR_POS_PARENT_CATEGORY = {
+		DISTRIBUTER 		   : "Distributor",
+		SUB_DISTRIBUTER 	   : "Sub Distributor",
+		DIST_POS			   : "Dist POS"
+};
+
+//------------------------- end - CATEGORY ------------------------------------------------------
+
+//------------------------- GRADE ------------------------------------------------------
+/**
+ * Distributer Grade
+ */
+var $DIST_GRADE = {
+		USER_GRADE			   : "Distributor",
+		COMMISION_PROFILE  	   : "Distributor_Comm_Profile",
+		TRANSFER_PROFILE	   : "Distributor_trf_profile"
+};
+
+/**
+ * Sub Distributer Grade
+ */
+var $SUB_DIST_GRADE = {
+		USER_GRADE			   : "SubDistGrade",
+		COMMISION_PROFILE  	   : "SubDistCommProfile",
+		TRANSFER_PROFILE	   : "SubDistTrfProfile01"
+};
+
+/**
+ * Distributer POS Grade
+ */
+var $DIST_POS_GRADE = {
+		USER_GRADE			   : "DISTPOS",
+		COMMISION_PROFILE  	   : "DistPOS_Commission_profile",
+		TRANSFER_PROFILE	   : "TCP_DISTPOS1"
+};
+
+/**
+ * IVR POS Grade
+ */
+var $IVR_POS_GRADE = {
+		USER_GRADE			   : "IVRPOS",
+		COMMISION_PROFILE  	   : "IVRPOS_Commission_profile",
+		TRANSFER_PROFILE	   : "TCP_IVRPOS1"
+};
+
+//------------------------- end - GRADE ------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+

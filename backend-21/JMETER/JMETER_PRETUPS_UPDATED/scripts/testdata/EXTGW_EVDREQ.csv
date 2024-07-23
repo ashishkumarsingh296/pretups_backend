@@ -1,0 +1,23 @@
+TestcaseId,TestcaseType,Module,Description
+,Positive,Voucher Pin Request through External System,To verfiy that EVD request is successful by all valid details
+,Positive,Voucher Pin Request through External System,To verfiy that EVD request is successful with only MSISDN and PIN
+,Positive,Voucher Pin Request through External System,To verfiy that EVD request is successful with only LoginID and Password
+,Positive,Voucher Pin Request through External System,To verfiy that EVD request is successful with only External code of channel user.
+,Positive,Voucher Pin Request through External System,To verfiy that EVD request is successful if channel user is barred as receiver.
+,Positive,Voucher Pin Request through External System,To verfiy that EVD request is successful if date is blank
+,Positive,Voucher Pin Request through External System,To verfiy that EVD request is successful if channel user is insuspended
+,Negative,Voucher Pin Request through External System,To verfiy that EVD request is not  successful if channel user is outsuspended
+,Negative,Voucher Pin Request through External System,To verfiy that EVD request is not  successful if TCP of channel user is suspended
+,Negative,Voucher Pin Request through External System,To verfiy that EVD request is not  successful if channel user is suspended
+,Negative,Voucher Pin Request through External System,To verfiy that EVD request is not  successful if channel user is barred as sender
+,Negative,Voucher Pin Request through External System,To verfiy that EVD request is not  successful if External Network  code is blank
+,Negative,Voucher Pin Request through External System,To verfiy that EVD request is not  successful if External Network  code is invalid
+,Negative,Voucher Pin Request through External System,To verfiy that EVD request is not  successful if PIN is not present and all other details of channel user are present.
+,Negative,Voucher Pin Request through External System,To verfiy that EVD request is not  successful if PIN is invalid.
+,Negative,Voucher Pin Request through External System,To verfiy that EVD request is not  successful if Password is invalid
+,Negative,Voucher Pin Request through External System,To verfiy that EVD request is not  successful if LoginID is present and  Password is missing 
+,Negative,Voucher Pin Request through External System,To verfiy that EVD request is not  successful if Extrernal Reference number is not unique.
+,Negative,Voucher Pin Request through External System,To verfiy that EVD request is not  successful if MSISDN2 is blank
+,Negative,Voucher Pin Request through External System,To verfiy that EVD request is not  successful if Amount is not present
+,Negative,Voucher Pin Request through External System,To verfiy that EVD request is not  successful if Selector is missing.
+,Negative,Voucher Pin Request through External System,To verfiy that EVD request is not  successful if Amount present is negative.

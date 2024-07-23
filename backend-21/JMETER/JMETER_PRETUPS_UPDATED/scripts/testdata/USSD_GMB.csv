@@ -1,0 +1,12 @@
+MSISDN1,MSISDN2,AMOUNT,LANGUAGE1,LANGUAGE2,TestcaseId,TestcaseType,Module,Description
+7200001044,7200001010,10,0,0,,Positive,Give Me Balance,GMB should be Successful from USSD
+7200004444,7200001010,10,0,0,,Positive,Give Me Balance,GMB should be Successful from USSD when subscriber who is not Registered is doing GMB
+7200004445,7200001011,10,0,0,,Negative,Give Me Balance,GMB should not be Successful from USSD when Maximum Daily Limit Reached
+7200004446,7200001012,10,0,0,,Negative,Give Me Balance,GMB should not be Successful from USSD when Maximum Weekly Limit Reached
+7200004447,7200001013,10,0,0,,Negative,Give Me Balance,GMB should not be Successful from USSD when Monthly  Limit Reached
+7200004448,7200001014,10,0,0,,Negative,Give Me Balance, GMB should not be Successful from USSD when Maximum daily Amount Reached
+7200004449,7200001015,10,0,0,,Negative,Give Me Balance,GMB should not be Successful from USSD when Weekly  Amount reached
+7200004450,7200001016,10,0,0,,Negative,Give Me Balance,GMB should not be Successful from USSD when maximum Monthly Amount reached
+7200004450,,10,0,0,,Negative,Give Me Balance,GMB should Not be Successful from USSD When we do not enter Mandatory parameters
+720,7200001016,10,0,0,,Negative,Give Me Balance,GMB should Not be Successful from USSD When MSISDN1 Length is not Between Specified SystemPreference MIN_MSISDN_LENGTH and MAX_MSISDN_LENGTH
+7200004450,720,10,0,0,,Negative,Give Me Balance,GMB should Not be Successful from USSD When MSISDN2 Length is not Between Specified SystemPreference MIN_MSISDN_LENGTH and MAX_MSISDN_LENGTH

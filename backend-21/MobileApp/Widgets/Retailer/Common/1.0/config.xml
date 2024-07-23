@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<!DOCTYPE webaxn SYSTEM "i18n.dtd">
+<widget version="1.0">
+	<name>pretups common</name>
+	<description>Common widget.</description>
+	<author>Comviva</author>
+	<license>Comviva Technologies</license>
+	<identifier>158106024</identifier>
+	<icon src="common.png"/>
+	<x-advertisement visible="false"/>	
+</widget>
+

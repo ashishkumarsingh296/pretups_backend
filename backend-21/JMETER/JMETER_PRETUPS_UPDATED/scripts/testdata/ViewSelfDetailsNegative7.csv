@@ -1,0 +1,2 @@
+TestcaseId,TestcaseType,Module,Description
+,Negative,View Self Details,"To verify validation message appears ""login.id.required"" when do not provide dataLoginID"

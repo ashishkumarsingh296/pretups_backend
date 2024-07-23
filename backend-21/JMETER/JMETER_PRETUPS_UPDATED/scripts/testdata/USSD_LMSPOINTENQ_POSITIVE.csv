@@ -1,0 +1,2 @@
+TestcaseId,TestcaseType,Module,Description
+TUNG13010,Positive,LMS Point enquiry through USSD,To verify that Channel User can enquire their Loyalty Points Enquiry through USSD

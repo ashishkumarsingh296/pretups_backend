@@ -1,0 +1,403 @@
+//##########################################
+//
+//
+//Objective: - Objeective of this script to add commom method for O2C transaction.
+//
+//
+//###########################################
+
+
+var $g_msisdn;
+var $g_referenceNumber;
+var $g_quantity;
+var $g_remark;
+var $g_paymentType;
+var $g_calendarImg;
+var $g_PIN;
+var $g_levelOneRemark;
+var $g_levelTwoRemark;
+var $1_error1 =0;
+
+var $g_externalTxnNumber;
+
+var $g_row ;
+var $g_col ;
+var $g_serviceName;
+var $g_SubService;
+var $g_amount;
+
+
+_log("shashi for common PIN " + $g_commonPIN);
+
+function variableForInitiateO2C($a_row, $a_col){
+
+		var $l_ChUser = _readCSVFile("../../testdata/ChUser_Details.csv");
+		
+		
+		$g_referenceNumber = randomNumber();
+		$g_quantity = $g_O2CTransferDetails[$a_row][$a_col++];
+		$g_remark = $g_O2CTransferDetails[$a_row][$a_col++];
+		$g_paymentType = $g_O2CTransferDetails[$a_row][$a_col++];
+		$g_calendarImg = $g_O2CTransferDetails[$a_row][$a_col++];
+		$g_levelOneRemark = $g_O2CTransferDetails[$a_row][$a_col++];
+		$g_levelTwoRemark = $g_O2CTransferDetails[$a_row][$a_col++];
+		
+	//	$g_PIN = $l_ChUser[1][25];
+		$g_externalTxnNumber = randomNumber();
+}
+		
+
+function O2CTransferDetails($g_msisdn){
+	
+		_click(_link($g_LeftMenuBar_O2C));
+		_click(_link($g_LeftMenuBar_O2CInitiation));
+		_setValue(_textbox("userCode"), $g_msisdn );
+		_click(_submit("Submit"));
+		_assertExists(_div($g_O2CTransferDetailsAssertion));
+}
+
+function initiateO2Ctransfer(){
+
+		variableForInitiateO2C($g_row, $g_col);
+		_setValue(_textbox("refrenceNum"), $g_referenceNumber);
+		_setValue(_textbox("dataListIndexed[0].requestedQuantity"), $g_quantity);
+		_setValue(_textarea("remarks"), $g_remark);
+		_setSelected(_select("paymentInstCode"), $g_paymentType);
+		_click(_image($g_calendarImg));
+		_setValue(_textbox("paymentInstDate"), $g_currentDate);
+		_setValue(_password("smsPin"), $g_commonPIN);
+		_click(_submit($g_BtnSubmit));
+		_assertExists(_div($g_O2CTransferDetailsConfirmation));
+
+		confirmButton();
+		if(_exists(_listItem("/"+ $g_O2CTransferInitiation +".*/")))
+		{
+			_log("O2C Transfer has been initiated successfully");
+		}
+		else{
+			_log("O2C Transfer has not initiated succesfully");
+		}
+		
+	// ============================  Level one Approval for O2C transfer ======================= //
+		
+		var $t2 = _testcase("TEST001", "Given a channel admin logs into application and approve level 1 O2C Transfer ");
+		$t2.start();
+		//var $g_channelAdmin = $l_naCsv[2][1];
+		//login($g_appURL, $g_LangEnglish, $g_channelAdmin, $g_commonPassword, $g_assertWelcome); //Login as Channel Admin
+		approveLevelOneForO2C($g_referenceNumber); // Function defined in ChannelUser_Common.sah for approving Channel User
+		$t2.end();
+		_log("O2C level one approval");
+	
+		
+// ============================  Level two Approval for O2C transfer ======================= //
+		if($1_error1 == 0){
+		var $t3 = _testcase("TEST003", "Given a channel admin logs into application and approve level 2 O2C Transfer ");
+		$t3.start();
+		//var $g_channelAdmin = $l_naCsv[2][1];
+		//login($g_appURL, $g_LangEnglish, $g_channelAdmin, $g_commonPassword, $g_assertWelcome); //Login as Channel Admin
+		approveLevelTwoForO2C($g_referenceNumber); // Function defined in ChannelUser_Common.sah for approving Channel User
+		$t3.end();
+		_log("O2C level two approval");
+			
+		}
+		
+		
+	// ===============================================================================//
+		
+}
+
+
+ 
+function approveLevelOneForO2C($g_referenceNumber){
+	_click(_link("Operator to channel"));
+	_click(_link("Approve level 1"));
+	_setValue(_textbox("userCode"), $g_msisdn);
+	_click(_submit($g_BtnSubmit));
+	_click(_radio("selectedTransfer", _near(_cell($g_referenceNumber))));
+	_click(_submit($g_BtnSubmit));
+	_assertExists(_div("Transfer approval level one"));//moved four lines down by Fiza for O2Ctransfer 
+	_setValue(_textbox("externalTxnNum"), $g_externalTxnNumber);
+
+	_click(_image($g_calendarImg));
+	_setValue(_textbox("externalTxnDate"), $g_currentDate);
+	
+	_setValue(_textbox("channelTransferIndexed[0].firstApprovedQuantity"),$g_quantity );
+	_setValue(_textarea("approve1Remark"), $g_levelOneRemark);
+	_click(_submit($g_BtnApprove));
+	
+	if(_exists(_bold($g_O2CTransferComplete)) == true){
+		$1_error1 = 1;
+	}
+	confirmButton();
+}
+
+
+
+function approveLevelTwoForO2C($g_referenceNumber){
+	_click(_link($g_LeftMenuBar_O2C));
+	_click(_link("Approve level 2"));
+	_setValue(_textbox("userCode"), $g_msisdn);
+	_click(_submit($g_BtnSubmit));
+	_click(_radio("selectedTransfer", _near(_cell($g_referenceNumber))));
+	_click(_submit($g_BtnSubmit));
+	_assertExists(_div("Transfer approval level two")); //moved four lines down by Fiza for O2CTransfer 
+	_setValue(_textbox("externalTxnNum"), $g_externalTxnNumber);
+
+	_click(_image($g_calendarImg));
+	_setValue(_textbox("externalTxnDate"), $g_currentDate);
+	
+	_setValue(_textbox("channelTransferIndexed[0].secondApprovedQuantity"),$g_quantity );
+	_setValue(_textarea("approve2Remark"), $g_levelTwoRemark);
+	_click(_submit($g_BtnApprove));
+	
+	if(_exists(_bold($g_O2CTransferComplete)) == true){
+		$1_error1 = 1;
+	}
+	confirmButton();
+}
+
+function confirmButton(){
+	_click(_submit($g_BtnConfirm));	
+}
+
+
+ // =================================== C2C Transfer Details ================================= //
+
+
+function initiateC2Stransfer() {
+	
+	$g_row = 1;
+	$g_col = 0;
+	var $t = _testcase($g_C2STransferDetails[$g_row][$g_col++], $g_C2STransferDetails[$g_row][$g_col++]);
+	$t.start();
+	varriableToInitiateC2S($g_row, $g_col);
+	C2Stransfer();
+	$t.end();
+	
+}
+
+function varriableToInitiateC2S($a_row, $a_col) {
+
+	$g_serviceName = $g_C2STransferDetails[$a_row][$a_col++];
+	$g_msisdn = $g_C2STransferDetails[$a_row][$a_col++];
+	$g_amount = $g_C2STransferDetails[$a_row][$a_col++];
+	$g_SubService = $g_C2STransferDetails[$a_row][$a_col++];
+}
+
+function C2Stransfer() {
+
+	_click(_link("C2S transfer"));
+	_assertExists(_div("C2S recharge"));
+	_click(_link("C2S recharge"));
+	_setSelected(_select("serviceType"), $g_serviceName);
+	_setValue(_textbox("subscriberMsisdn"), $g_msisdn);
+	_setValue(_textbox("amount"), $g_amount);
+	_setSelected(_select("subServiceType"), $g_SubService);
+	_setValue(_password("pin"), $g_commonPIN);
+	_click(_submit($g_BtnSubmit));
+	_click(_submit($g_BtnSubmit));
+	_assertExists(_cell("UNDER PROCESS", _near(_cell("Transfer status:"))));
+	
+	if(_exists(_cell("UNDER PROCESS", _near(_cell("Transfer status:"))))){
+		_log("C2S transfer has been successfully initiated ");
+	}
+}
+
+
+
+// ................ Shashi ..................................... //
+
+
+
+function commonVaribleForExistingNameOrCode($g_row, $g_col) {
+	commonVaribleToServiceProduct($g_row, $g_col);
+	$g_productName = $l_naCsv[23][1];
+	$g_productCode = $l_naCsv[23][2];
+}
+
+function addNewSeriviceProduct() {
+	
+	$g_productName = productName($g_autoPrefix);
+	$g_productCode = productCode();
+	
+	addSerivceProductCommon();
+	submit();
+	confirm();
+	
+	_assertExists(_listItem("/" +$g_assertion + ".*/"));
+	
+	if(_exists(_listItem("/"+$g_assertion+".*/"))){
+		$l_naCsv[23][1] = $g_productName;
+		$l_naCsv[23][2] = $g_productCode;
+		_writeCSVFile($l_naCsv, "../../../GUI/testdata/NA_Login.csv", 1); // Writes the newly created Channel User in a csv file.
+		_log("Serive Product is added successfully");
+	}
+	else {
+		_log("Service Product is not added successfully ");
+	}
+	
+	
+}
+
+
+function addServiceProductWithInvalidDetails() {
+	addSerivceProductCommon();
+	submit();
+	_assertExists(_listItem("/" +$g_assertion + ".*/"));
+}
+
+function toValidateValuesInDropDown() {
+	addSerivceProductCommon();
+	
+	_setSelected(_select("sendersubscriberType"), 1);
+	var $tt = _getSelectedText(_select("sendersubscriberType"));
+
+	if($tt == "Prepaid Subscriber")
+		_log("Successful");
+	else
+		_log("Failed");
+	
+}
+
+
+
+function checkResetButtonFunctionality() {
+	addSerivceProductCommon();
+	reset();
+	if(_getValue(_textbox("selectorName")) == "" &&  _getValue(_textbox("selectorCode")) == "")
+		_log("Successful")
+	else 
+		_log("Failed Reset Check");
+	
+}
+
+
+function checkForExistingProductCodeOrName() {
+	addSerivceProductCommon();
+	submit();
+	_assertExists(_listItem("/" +$g_assertion + ".*/"));
+}
+
+
+function viewServiceProduct() {
+	
+	
+	$g_serviceName = "Promo VAS Recharge";
+	$g_productName = $l_naCsv[23][1];
+			
+	_click(_link("Service type product mapping"));
+	_click(_link("View product"));
+	_setSelected(_select("serviceType"), $g_serviceName);
+	_click(_submit("Submit"));
+	_assertExists(_cell($g_productName, _near(_cell("Product name"))));
+	
+
+}
+
+function addServiceProductWithoutServiceName() {
+
+	_click(_link("Service type product mapping"));
+	_click(_link("Add product"));
+	_assertExists(_div("Select service type"));
+	_click(_submit("Submit"));
+	_assertExists(_listItem("Service name is required."));
+
+}
+
+function chekBackButtonOnModifucationPage() {
+	commonMethodForModification()
+	if($g_productName == _getValue(_textbox("selectorName")))
+		_log("Test Case Successful")
+	else 
+		_log("Failed");
+		
+	_click(_submit("Back"));
+	_assertExists(_div("Service product list"));
+}	
+
+function chekResetButtonOnModifucationPage() {
+	commonMethodForModification()
+	_setValue(_textbox("selectorName"), "TESTINGREST");
+	_click(_reset("Reset"));
+	if($g_productName == _getValue(_textbox("selectorName")))
+		_log("Test Case Successful")
+	else 
+		_log("Failed");
+}
+
+
+function chekBackButtonOnConfirmPage() {
+	commonMethodForModification();
+		_setValue(_textbox("selectorName"), $g_productName+"M");
+	_click(_submit("Submit"));
+	_assertExists(_submit("Confirm"));
+	_click(_submit("Back"));
+	_assertExists(_submit("Submit"));
+}
+
+function modifyServiceProduct() {
+	commonMethodForModification();
+	_setValue(_textbox("selectorName"), $g_productName+"M");
+	_click(_submit("Submit"));
+	_click(_submit("Confirm"));
+	_assertExists(_listItem("Service product mapping for service Promo VAS Recharge modified successfully"));
+}
+
+function deleteServiceProduct() {
+	
+	$g_productCode = $l_naCsv[23][2];
+	
+	_click(_link("Service type product mapping"));
+	_click(_link("Delete product"));
+	_setSelected(_select("serviceType"), "Promo VAS Recharge");
+	_click(_submit("Submit"));
+	_click(_radio("radioIndex", _near(_cell($g_productCode))));
+	_click(_submit("Delete"));
+	_click(_submit("Confirm"));
+	_assertExists(_listItem("/" + "delete successfully" + ".*/" ));
+
+	
+}
+
+// Common Function for Service Product ..... 
+
+function addSerivceProductCommon() {
+	
+	_click(_link("Service type product mapping"));
+	_click(_link("Add product"));
+	_setSelected(_select("serviceType"), $g_serviceName);
+	_click(_submit("Submit"));
+	_click(_submit("Add"));
+	_setValue(_textbox("selectorName"), $g_productName);
+	_setValue(_textbox("selectorCode"), $g_productCode);
+	_setSelected(_select("sendersubscriberType"), $g_subscriberType);
+	_setSelected(_select("receiversubscriberType"), $g_receiverType);
+	_setSelected(_select("status"), $g_status);
+}
+
+function commonMethodForModification() {
+	$g_productName = $l_naCsv[23][1];
+	
+	_click(_link("Service type product mapping"));
+	_click(_link("Modify product"));
+	_setSelected(_select("serviceType"), "Promo VAS Recharge");
+	_click(_submit("Submit"));
+	_click(_radio("radioIndex", _near(_cell($g_productName))));
+	_click(_submit("Modify"));
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

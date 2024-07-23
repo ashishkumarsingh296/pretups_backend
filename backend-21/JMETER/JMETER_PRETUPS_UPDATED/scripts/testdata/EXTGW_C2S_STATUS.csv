@@ -1,0 +1,16 @@
+TestcaseId,TestcaseType,Module,Description
+,Positive,C2S Status,To verfiy that C2S Status is successful with only MSISDN and PIN.
+,Positive,C2S Status,To verfiy that C2S Status is successful with only Login ID and Password.
+,Positive,C2S Status,To verfiy that C2S Status is successful with only EXTCODE
+,Positive,C2S Status,To verfiy that C2S Status is successful with ALL values entered
+,Positive,C2S Status,To verify C2S status is successful if Date is missing in Date tag.
+,Positive,C2S Status,To verify C2S status is successful if Language is missing.
+,Negative,C2S Status,To verify C2S request not successful if PIN is missing.
+,Negative,C2S Status,To verify C2S request not successful if PIN is invalid.
+,Negative,C2S Status,To verify C2S request not successful if Channel user is suspended.
+,Negative,C2S Status,To verify C2S request not successful if MSISDN is missing.
+,Negative,C2S Status,To verify C2S request not successful if MSISDN is incorrect.
+,Negative,C2S Status,To verify C2S request not successful if Network code is missing.
+,Negative,C2S Status,To verify C2S request not successful if Network code is invalid.
+,Positive,C2S Status,To verfiy C2S status is successful if EXTREFNUM is present but txnid id not present.
+,Negative,C2S Status,To verify C2S request not successful if recharge transaction is performed by another user.

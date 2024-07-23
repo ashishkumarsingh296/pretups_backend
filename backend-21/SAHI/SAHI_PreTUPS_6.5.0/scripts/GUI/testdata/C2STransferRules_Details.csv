@@ -1,0 +1,7 @@
+Test Case No.,TestCase Description,Domain,Category Code,Grade Code,Receiver SubscriberType,Receiver ServiceClassID,Service Type,Sub Service TypeId,Card Group SetID
+TEST001,Given a network admin when logs into the application then he/she can add Channel to Subscriber Transfer Rule,Dist1,Super Distributor,Evhw,Prepaid Subscriber,ALL,Customer Recharge,CVG,Test82
+TEST002,Given a network admin when logs into the application then he/she can add Channel to Subscriber Transfer Rule,Dist1,ALL,ALL,Prepaid Subscriber,ALL,Customer Recharge,CVG,Test82
+TEST003,Given a network admin when logs into the application then he/she can add Channel to Subscriber Transfer Rule,Dist1,ALL,DLR,Prepaid Subscriber,ALL,Customer Recharge,CVG,Test82
+TEST004,Given a network admin when logs into the application then he/she can add Channel to Subscriber Transfer Rule,Dist1,Agent,Agent,Prepaid Subscriber,ALL,Customer Recharge,CVG,newcg
+TEST005,Given a network admin when logs into the application then he/she can add Channel to Subscriber Transfer Rule,Dist1,Agent,ALL,Prepaid Subscriber,ALL,Customer Recharge,CVG,Test82
+TEST006,Given a network admin when logs into the application then he/she can add Channel to Subscriber Transfer Rule,Dist1,Retailer,nret,Prepaid Subscriber,ALL,Customer Recharge,CVG,Test82

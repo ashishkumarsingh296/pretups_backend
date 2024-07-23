@@ -1,0 +1,2 @@
+TestcaseId,TestcaseType,Module,Description
+TUNG12767,Negative,Bar user through Restful API,To verify barred reason is required to bar user

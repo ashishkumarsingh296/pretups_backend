@@ -1,0 +1,78 @@
+//######################################
+//
+// This script is to suspend and resume user hierarchy in the system   
+//
+//#######################################
+
+
+//===== import scripts ===//
+_includeOnce("../../../../utility/ImportPackage.sah");
+_includeOnce("../../../GUI/testscripts/SuspendResume_UserHierarchy/SuspendResumeUserHierarchy_Common.sah"); //to suspend, approve and resume channel user in the system 
+
+
+
+//If CA deos not exist, first create it and then initiate O2C transfer inthe system ..... 
+var $l_naCsv = _readCSVFile("../../../GUI/testdata/NA_Login.csv"); //Reads the network admin credentials 
+var $g_channelAdmin = $l_naCsv[2][1];
+if($g_channelAdmin == "null"){
+	createCA(); // UserManagement_Common.sah
+	var $l_naCsv1 = _readCSVFile("../../../GUI/testdata/NA_Login.csv");
+	$g_channelAdmin = $l_naCsv1[2][1];
+	login($g_appURL,  $g_LangEnglish, $g_channelAdmin, $g_commonPassword, $g_assertWelcome);
+}else{	 
+	login($g_appURL,  $g_LangEnglish, $g_channelAdmin, $g_commonPassword, $g_assertWelcome);
+}
+	
+
+ 
+
+// ....................... Test cases to suspend and resume user hierarchy in the system    ............. //
+
+var $g_suspendApproveUserHierarchy = _readCSVFile("../../../GUI/testdata/SuspendAndResumeUserHierarchy.csv"); // Read Channel channel user detials which needs to be set
+
+
+
+	for(var $g_row = 1; $g_suspendApproveUserHierarchy[$g_row] != null; $g_row++){
+		
+				var $g_col = 0;
+				var $number =   testCaseNumber($g_suspendApproveUserHierarchy[$g_row][$g_col]);
+				var $t = _testcase($g_suspendApproveUserHierarchy[$g_row][$g_col++], $g_suspendApproveUserHierarchy[$g_row][$g_col++]);
+				
+				$t.start();
+				commonVaribleToSuspendResumeUserHierarchy($g_row, $g_col);
+				
+				// to request for channel user suspension request 
+				
+				if($number ==1 ){ checkSubmitButtonOnSuspendUserHirarchyPage(); }
+				else if($number ==2 ){ verifyValuesInGeoDomainDropDown(); }
+				else if($number == 3 ){ verifyValuesInDomainDropDown(); }
+				else if($number > 3 && $number < 8 ) { suspendUserHierarchyWithInvalidDetails(); }
+				else if ($number == 8 ) { backButtonOnSuspendUserHierarchyCnfPage(); }
+				else if ($number == 9 ) { cancelButtonOnSuspendUserHierarchyCnfPage(); }
+				else if ($number == 10 ) { suspendUserHierarchy(); }
+				
+				// Test Cases to resume channel user hierarchy in the system 
+				
+				else if ($number == 11 ) { viewSuspendedUserHirarchy(); }
+				else if($number > 11 && $number < 16 ) { resumeUserHierarchyWithInvalidDetails(); }
+				else if ($number == 16 ) { checkSubmitButtonOnResumeUserHirarchyPage(); }
+				else if ($number == 17 ) { backButtonOnResumeUserHierarchyCnfPage(); }
+				else if ($number == 18 ) { cancelButtonOnResumeUserHierarchyCnfPage(); }
+				else if ($number == 19 ) { checkConfirmButtonOnResumeUserHirarchyCnfPage(); }
+				else if ($number == 20 ) { resumeUserHierarchy(); }
+				
+				$t.end();
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,3 @@
+MSISDN1,PIN,MSISDN2,AMOUNT,LANGUAGE1,LANGUAGE2,NOTIFICATION_MSISDN,SELECTOR,TestcaseId,TestcaseType,Module,Description
+,1357,,100,0,0,,1,TUNG13135,Negative,Fix Line Recharge through USSD,To verify that C2S Transfer (Fix Recharge)  request  sholud fail when mandatory tags are not filled in XML request
+7255555555,,7200005544,100,0,0,7255555555,1,TUNG13136,Negative,Fix Line Recharge through USSD,To verify that for C2S Transfer (Fix Recharge)  When MSISDN is available in request then PIN is mandatory for the request

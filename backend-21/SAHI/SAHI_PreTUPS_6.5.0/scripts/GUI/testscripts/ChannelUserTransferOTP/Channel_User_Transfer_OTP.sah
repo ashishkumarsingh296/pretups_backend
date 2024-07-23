@@ -1,0 +1,302 @@
+/**
+ * Script Name : Channel User Transfer using OTP
+ * 
+ * Author : Rahul Rana (rahu.rana@mahindracomviva.com)
+ * Date   : 06/09/2016
+ * 
+ */
+
+/**
+ * Include
+ */
+_includeOnce("../../../Asset/Framework.sah");
+_includeOnce("Channel_User_Transfer_OTP_Common.sah");
+
+
+/**
+ * Variables
+ */
+
+//Object Owner Type Distributer
+var $typeDIST = new ChannelUserType($CONFIG.GEO_DOMAIN, $CONFIG.DOMAIN
+		, $CATEGORY.DISTRIBUTER, null, null, null);
+
+//Object Distributor User
+var $userDIST_A   = new User("SAHUserDISTA", "Com@1357", "SAHFirstDISTA", 
+		"SAHDISTA", "sahuser@comviva.com", $CONFIG.OUTLET,
+		$CONFIG.LANGUAGE, $typeDIST	, $DIST_GRADE);
+
+//Object Owner Type for Sub Distributor
+var $typeSubDIST = new ChannelUserType($CONFIG.GEO_DOMAIN, $CONFIG.DOMAIN, $CATEGORY.SUB_DISTRIBUTER,
+		$SUB_DIST_PARENT_CATEGORY.DISTRIBUTER, $userDIST_A, null);
+
+//Object Distributor User
+var $userSubDIST_A   = new User("SAHUserSubDISTA", "Com@1357", "SAHFirstSubDISTA",
+		"SAHSubDISTA", "sahuser@comviva.com", $CONFIG.OUTLET,
+		$CONFIG.LANGUAGE, $typeSubDIST, $SUB_DIST_GRADE);
+
+//Object Owner Type Distributer POS
+var $typeDISTPOS = new ChannelUserType($CONFIG.GEO_DOMAIN, $CONFIG.DOMAIN, $CATEGORY.DIS_POS,
+		$IVR_POS_PARENT_CATEGORY.SUB_DISTRIBUTER, $userDIST_A, $userSubDIST_A);
+
+//Object Sub Distributor User
+var $userDISTPOS_A = new User("SAHUserDISTPOSA", "Com@1357", "SAHFirstDISTPOSA",
+		"SAHDISTPOSA", "sahuser@comviva.com", $CONFIG.OUTLET,
+		$CONFIG.LANGUAGE, $typeDISTPOS, $DIST_POS_GRADE);
+
+//Object Sub Distributor User
+var $userDISTPOS_B = new User("SAHUserDISTPOSB", "Com@1357", "SAHFirstDISTPOSB",
+		"SAHDISTPOSB", "sahuser@comviva.com", $CONFIG.OUTLET,
+		$CONFIG.LANGUAGE, $typeDISTPOS, $DIST_POS_GRADE);
+
+//Object Owner Type Distributer POS
+var $typeDISTIVR = new ChannelUserType($CONFIG.GEO_DOMAIN, $CONFIG.DOMAIN, $CATEGORY.IVR_POS,
+		$IVR_POS_PARENT_CATEGORY.DIST_POS, $userDIST_A, $userDISTPOS_A);
+
+//Object Sub Distributor User under Sub Distributer A
+var $userIVR_A = new User("SAHUserIVRPOSA", "Com@1357","SAHFirstIVRPOSA",
+		"SAHIVRPOSA","sahuser@comviva.com",$CONFIG.OUTLET,
+		$CONFIG.LANGUAGE, $typeDISTIVR, $IVR_POS_GRADE);
+
+//Object Sub Distributor User under Sub Distributer A
+var $userIVR_B = new User("SAHUserIVRPOSB", "Com@1357","SAHFirstIVRPOSB",
+		"SAHIVRPOSB"	,"sahuser@comviva.com", $CONFIG.OUTLET
+		, $CONFIG.LANGUAGE, $typeDISTIVR, $IVR_POS_GRADE);
+
+/**
+ * EXECUTION
+ */
+Setup();
+
+TC_USR_MIGRATION_08();
+TC_USR_MIGRATION_10();
+TC_USR_MIGRATION_19();
+TC_USR_MIGRATION_13_18();
+TC_USR_MIGRATION_14_18();
+TC_USR_MIGRATION_20();
+
+/**
+ * Setup required to run this test
+ * Create user only if it's required
+ */
+function Setup(){
+	var $t1 = _testcase("SETUP", "SETUP: Specific to run this Suite");
+	$t1.start();
+	// Create DIST User
+	createChannelUser($userDIST_A);	
+
+	// Create SDIST User
+	createChannelUser($userSubDIST_A);
+
+	// Create DIST POS users
+	createChannelUser($userDISTPOS_A);
+	createChannelUser($userDISTPOS_B); 
+
+	// Create IVR POS users
+	createChannelUser($userIVR_A);
+	createChannelUser($userIVR_B);
+
+	// Script Tear-down
+	ScriptTearDown();
+	$t1.end();
+}
+
+/**
+ * Script Tear-down
+ * Make sure that the user $userIVR_A and $userIVR_B are under $userDISTPOS_A
+ */
+function ScriptTearDown(){
+	try{
+		if($userIVR_A.getCurrentParentUserName() != $userDISTPOS_A.UserName){			
+			_log("Setup need to be corrected for "+ $userIVR_A.UserName, "CUSTOM1");
+			initiateUserMigration($userDISTPOS_A, $userIVR_A, false, "initiated");
+			if (_condition(_isVisible(_span(/expirado/))) || _isVisible(_span(/expired/))){
+				initiateUserMigration($userDISTPOS_A, $userIVR_A, false, "initiated");
+			}		
+			confirmUserMigration($userDISTPOS_A, $userIVR_A, true, true);
+		}
+		if($userIVR_B.getCurrentParentUserName() != $userDISTPOS_A.UserName){
+			_log("Setup need to be corrected for " + $userIVR_B.UserName, "CUSTOM1");
+			initiateUserMigration($userDISTPOS_A, $userIVR_B, false, "initiated");
+			if (_condition(_isVisible(_span(/expirado/))) || _isVisible(_span(/expired/))){
+				initiateUserMigration($userDISTPOS_A, $userIVR_B, false, "initiated");
+			}
+			confirmUserMigration($userDISTPOS_A, $userIVR_B, true, true);
+		}		
+	}catch(e){
+		_logException(e);
+		_log("Script teardown Failed", "error");
+	}	
+}
+
+/**
+ * To check validation  on User Transfer Using OTP -initiate
+ *
+ * TC_USR_MIGRATION_08
+ */
+function TC_USR_MIGRATION_08(){
+	var $t1 = _testcase("TC_USR_MIGRATION_08", "To check validation  on User Transfer Using OTP INITIATE");
+	$t1.start();
+	try{
+		
+		// initiate using details
+		initiateUserMigration($userDISTPOS_B, $userIVR_A, false, "initiated");
+
+	}catch (e) {
+		_logException(e);
+		_log("TESTCASE FAILED -- TC_USR_MIGRATION_08", "error");
+	}
+	$t1.end();
+}
+
+/**
+ * To check message on User Transfer Initiation using MSISDN
+ *
+ * TC_USR_MIGRATION_10
+ */
+function TC_USR_MIGRATION_10(){
+	var $t1 = _testcase("TC_USR_MIGRATION_10", "To check message on User Transfer Initiation using MSISDN");
+	$t1.start();
+	try{				
+		
+		// Initiate using MSISDN, should be initiated
+		initiateUserMigration($userDISTPOS_B, $userIVR_B, true, "initiated");
+		
+	}catch (e) {
+		_logException(e);
+		_log("TESTCASE FAILED -- TC_USR_MIGRATION_10", "error");
+	}
+	$t1.end();
+}
+
+/**
+ * Validate user transfer confirmation with already transferred user
+ *
+ * TC_USR_MIGRATION_19
+ */
+function TC_USR_MIGRATION_19(){
+	var $t1 = _testcase("TC_USR_MIGRATION_19", "Validate user transfer confirmation with already transferred user");
+	$t1.start();
+	try{
+		
+		// initiate using Details
+		initiateUserMigration($userDISTPOS_B, $userIVR_A, false, "already initiated");
+		initiateUserMigration($userDISTPOS_B, $userIVR_B, false, "already initiated");
+
+		// initiate using MSISDN
+		initiateUserMigration($userDISTPOS_B, $userIVR_A, true, "already initiated");
+		initiateUserMigration($userDISTPOS_B, $userIVR_B, true, "already initiated");
+		
+	}catch (e) {
+		_logException(e);
+		_log("TESTCASE FAILED -- TC_USR_MIGRATION_19", "error");
+	}
+	$t1.end();
+}
+
+/**
+ * user transfer confirmation with correct OTP
+ * &
+ * To check validation  on User Transfer Using OTP -confirm using MSISDM
+ *
+ * TC_USR_MIGRATION_13_18
+ */
+function TC_USR_MIGRATION_13_18(){
+	var $t1 = _testcase("TC_USR_MIGRATION_13_18", "User transfer confirmation with correct OTP via MSISDN");
+	$t1.start();
+	try{		
+		
+		/*
+		 * Initiate Migration via MSISDN
+		 * Verify migration fails when providing wrong OTP
+		 * Verify that migration is successful when providing correct OTP
+		 */
+		confirmUserMigration($userDISTPOS_B, $userIVR_A, true, true);// Correct OTP
+
+		/*
+		 * Verify User is successfully migrated
+		 * Re-initiate using same Parent and It must fail
+		 */
+		initiateUserMigration($userDISTPOS_B, $userIVR_A, true, "same domain");	
+
+	}catch (e) {
+		_logException(e);
+		_log("TESTCASE FAILED -- TC_USR_MIGRATION_13_18", "error");
+	}
+	$t1.end();
+}
+
+/**
+ * user transfer confirmation with correct OTP
+ * &
+ * To check validation  on User Transfer Using OTP -confirm using Details
+ *
+ * TC_USR_MIGRATION_14_18
+ */
+function TC_USR_MIGRATION_14_18(){
+	var $t1 = _testcase("TC_USR_MIGRATION_14_18", "User transfer confirmation with correct OTP via DETAILS");
+	$t1.start();
+	try{
+		
+		/*
+		 * Initiate Migration via DETAILS
+		 * Verify migration fails when providing wrong OTP
+		 * Verify that migration is successful when providing correct OTP
+		 */
+		confirmUserMigration($userDISTPOS_B, $userIVR_B, false, true);
+
+		/*
+		 * Verify User is successfully migrated
+		 * Re-initiate using same Parent and It must fail
+		 */
+		initiateUserMigration($userDISTPOS_B, $userIVR_B, true, "same domain");		
+
+	}catch (e) {
+		_logException(e);
+		_log("TESTCASE FAILED -- TC_USR_MIGRATION_14_18", "error");
+	}
+	$t1.end();
+}
+
+/**
+ * OTP timeout Validation with preference
+ *
+ * TC_USR_MIGRATION_20
+ * TODO - Partial Time out of password is failing
+ */
+function TC_USR_MIGRATION_20(){
+	var $t1 = _testcase("TC_USR_MIGRATION_20", "OTP timeout Validation with preference");
+	$t1.start();
+	try{
+		
+		/*
+		 * change the Timeout value to 120 second
+		 * try OTP for transfer after 120 second. shouldn't happen, verify error
+		 * after 120 second re initiate, should initiate
+		 */
+		var $result = executeQuery("select DEFAULT_VALUE from SYSTEM_PREFERENCES where PREFERENCE_CODE = 'OTP_TIMEOUT_INSEC'");
+		var $otpTimeOut = $result[0][0]; // in seconds
+		var $waitTime = parseInt($otpTimeOut * 1000);
+
+		if ($otpTimeOut > 180){
+			_log("Default password Time Out is set more than 3 Minutes - please adjust this for better script response", "FAILURE");
+		}
+
+		// initiate using details
+		initiateUserMigration($userDISTPOS_A, $userIVR_A, true, "initiated");
+
+		// * Verify OTP Expiration : Confirmation initiated via MSISDN		
+		confirmUserMigration($userDISTPOS_A, $userIVR_A, true, false, $waitTime);
+
+		// Initiate using MSISDN, should be initiated
+		initiateUserMigration($userDISTPOS_A, $userIVR_B, true, "initiated");
+
+		// * Verify OTP Expiration : Confirmation initiated via DETAILS	
+		confirmUserMigration($userDISTPOS_A, $userIVR_B, false, false, $waitTime);
+
+	}catch (e) {
+		_logException(e);
+		_log("TESTCASE FAILED -- TC_USR_MIGRATION_20", "error");
+	}
+	$t1.end();
+}

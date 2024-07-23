@@ -1,0 +1,16 @@
+TestcaseId,TestcaseType,Module,Description
+,Positive,USSD Channel to Channel Transfer,To Verify C2C is Working  with MSISDN and PIN
+,N,USSD Channel to Channel Transfer,To Verify C2C is not successful  without PIN
+,Positive,USSD Channel to Channel Transfer,To Verify C2C is Working  without Language
+,N,USSD Channel to Channel Transfer,To verify C2C not successful when TCP of sender is suspended
+,N,USSD Channel to Channel Transfer,To verify C2C not successful when TCP of Receiver is suspended
+,N,USSD Channel to Channel Transfer,To verify C2C not successful when sender user is barred as sender in system
+,N,USSD Channel to Channel Transfer,To verify C2C not successful when receiver user is barred as receiver in system
+,N,USSD Channel to Channel Transfer,To verify C2C not successful when transfer rule for C2C is suspended
+,N,USSD Channel to Channel Transfer,To verify C2C not successful when amount is negative
+,N,USSD Channel to Channel Transfer,To verify C2C not successful when Receiver is insuspended
+,N,USSD Channel to Channel Transfer,To verify C2C not successful when Sender  is outsuspended
+,P,USSD Channel to Channel Transfer,C2C is successful when product code is blank
+,N,USSD Channel to Channel Transfer,C2C not successful when Quantity is blank
+,P,USSD Channel to Channel Transfer,C2C not successful with invalid language code
+,N,USSD Channel to Channel Transfer,C2C not successful with invalid Product Code

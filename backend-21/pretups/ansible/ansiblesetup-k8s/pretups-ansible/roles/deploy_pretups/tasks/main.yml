@@ -1,0 +1,71 @@
+---
+ - name: Create a deployment directory
+   file:
+     path: "/{{ HOME_DIR_NAME }}/deployment"
+     state: directory
+     owner: "{{ USER_NAME }}"
+     group: "{{ GROUP_NAME }}"
+
+
+ - name: Copying deployment.yml to the destination
+   become: true
+   remote_user: "{{ USER_NAME }}"
+   ansible.builtin.copy:
+     src: pretups-deployment.yml
+     dest: "/{{ HOME_DIR_NAME }}/deployment"
+     owner: "{{ USER_NAME }}"
+     group: "{{ GROUP_NAME }}"
+
+   
+ - name: "Replace the configured parameters - pretups-deployment.yml"
+   replace: dest="/{{ HOME_DIR_NAME }}/deployment/pretups-deployment.yml" regexp='REGISTRY_IP:REGISTRY_PORT/pretups:v1' replace='{{ REGISTRY_IP }}:{{ REGISTRY_PORT }}/pretups:v1' encoding='cp1252'
+
+ - name: "Replace the configured parameters - pretups-deployment.yml"
+   replace: dest="/{{ HOME_DIR_NAME }}/deployment/pretups-deployment.yml" regexp='PRETUPS_CONTAINER_PORT' replace='{{ PRETUPS_CONTAINER_PORT }}' encoding='cp1252'
+
+
+
+
+ - name: Create/Update the deployment with new POD
+   become: true
+   remote_user: "{{ USER_NAME }}"
+   command: kubectl apply -f /{{ HOME_DIR_NAME }}/deployment/pretups-deployment.yml
+
+
+
+
+
+
+ - name: Create a service directory
+   file:
+     path: "/{{ HOME_DIR_NAME }}/service"
+     state: directory
+     owner: "{{ USER_NAME }}"
+     group: "{{ GROUP_NAME }}"
+
+
+ - name: Copying service.yml to the destination
+   become: true
+   remote_user: "{{ USER_NAME }}"
+   ansible.builtin.copy:
+     src: pretups-service.yml
+     dest: "/{{ HOME_DIR_NAME }}/service"
+     owner: "{{ USER_NAME }}"
+     group: "{{ GROUP_NAME }}"
+
+
+
+ - name: "Replace the configured parameters - pretups-service.yml"
+   replace: dest="/{{ HOME_DIR_NAME }}/service/pretups-service.yml" regexp='PRETUPS_CONTAINER_PORT' replace='{{ PRETUPS_CONTAINER_PORT }}' encoding='cp1252'
+
+ - name: "Replace the configured parameters - pretups-service.yml"
+   replace: dest="/{{ HOME_DIR_NAME }}/service/pretups-service.yml" regexp='PRETUPS_NODEPORT' replace='{{ PRETUPS_NODEPORT }}' encoding='cp1252'
+
+
+
+ - name: Create/Update the service
+   become: true
+   remote_user: "{{ USER_NAME }}"
+   command: kubectl apply -f /{{ HOME_DIR_NAME }}/service/pretups-service.yml
+
+

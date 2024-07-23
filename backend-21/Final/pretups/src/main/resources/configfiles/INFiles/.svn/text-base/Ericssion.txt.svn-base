@@ -1,0 +1,192 @@
+###########################################################################################################
+#	
+#	If IN interface of Ericsion IN file is added in PreTUPS from superadmin then.
+#	File with this content and name of the IN ID.txt should be created at the 
+#	path of the INFiles (defined in Constants.props).
+#
+#	Values of the variables in this file should be updated with the values provided by the 
+#	Mobile Operator IN team
+#
+############################################################################################################
+
+#IP for the SocketServer where the request will be send.
+IP=127.0.0.1
+
+#At this port server will listen to accept the socket connection.
+PORT=3000
+
+#Pool size to pool the number of socket connections.
+POOL_SIZE=1
+
+#Time out for the socket connection, value should be in milisecond.
+SOCKET_TIMEOUT=50000000
+
+#Valid msisdn length
+MSISDNLength=10
+
+#Transaction Currency to be send to the IN Interface, value will be provieded by  operator IN team 
+TransCurrency=INR
+
+#This code is used to identify the source of payment for credit and would be provided be operator IN team.
+TransProcCodeCredit=229000
+
+#This code is used to identify the source of payment for debit and would be provided be operator IN team.
+TransProcCodeDebit==020090
+
+#This is used to define the type of Adjustment and would be provided by operator
+AdjType=MIS
+
+#Code of the adjustment type for the credit request. 
+AdjCode_C=BUDDY_RC
+
+#Code of the adjustment type for the debit request.
+AdjCode_D=BUDDY_RC
+
+##Maximum Number of times response is checked for top up stage and will be provided by operator,IN team
+RETRY_COUNT_TOP=5
+##Maximum Number of times response is checked for validation stage and will be provided by operator,IN team
+RETRY_COUNT_VAL=4
+##After sending the request, response is checked after this interval for validation stage,value in milliseconds.
+SLEEP_TIME_VAL=500
+##After sending the request, response is checked after this interval for top up stage,value in milliseconds.
+SLEEP_TIME_TOP=600
+
+##Decide whether PPIVRFirstCall command is supported by IN or not.
+FIRST_FLAG=Y
+
+##Prefix to be removed from the mobile number, leave blank if nothing is to be removed
+MSISDN_REMOVE_PREFIX=
+
+##Prefix to be added to the mobile number as prefix, leave blank if nothing is to be added as prefix
+MSISDN_ADD_PREFIX=
+
+##Multiplication factor for to get the system amount.????????
+MULTIPLICATION_FACTOR=100
+
+##Decides whether to send the service removal command to check the expiry,provided by operator
+SERVICE_REMOVAL=N
+
+##Mapping of IN language with system language (IN Langauge1:PreTUPS Langauge1,IN Langauge2:PreTUPS Langauge2)
+LANGUAGE_MAPPING=EN:0,SN:1
+
+
+##Ambiguous cases(error codes) provided by the operator,that are separated by comma.
+AMBIGUOUS_CASES=504,505
+
+
+##Dest describes the destination and defined by the operator.
+DEST=1
+##Origin describes the Origin and defined by the operator.
+ORIGIN=1
+
+##In case of connection failure while sending the request,request would be send after this duration,value in milliseconds.
+IN_EXP_RETRY_SLEEP=75
+
+##Sleep time If there are no request to send the IN,value in milliseconds.
+IN_SLEEP_NO_DATA=75
+
+##Sleep time after sending one request,value in milliseconds.
+IN_SLEEP_B4_SEND=75
+
+##Sleep time between the retry attemp that is used to fetch the response from the IN,value in milliseconds.
+OUT_SLEEP=150
+
+##While reading the response from IN, if SocketTimeout occurs,Thread will wait for this duration and then read again,value in milliseconds.
+OUT_EXP_SLEEP=150
+
+##To fetch the response from IN if socket connection from pool is null,a new connection for that id would be established after this duration,value in milliseconds.
+OUT_CON_EXP_SLEEP=150
+
+##Maximum retry attemp that are used to fetch the resposne from IN for a request.
+OUT_MAX_RETRY_COUNT=5
+
+##Lenght of INTransaction id(This length exludes the length of minute,2).
+IN_TXN_LENGTH=4
+
+##Sleep time, used to wait for the first time before fetching the response for validation stage,value in milliseconds.
+FIRST_SLEEP_TIME_VAL=3000
+
+##Sleep time, used to wait for the first time before fetching the response for top up stage,value in milliseconds.
+FIRST_SLEEP_TIME_TOP=3000
+
+
+#Optional ID provided by operator
+OP_ID=ZEBRA
+
+#Request is sent to the number of times,if it fails during the request sending.
+IN_MAX_RETRY_COUNT=10
+
+#Warning time for reading content from the IN interface, if IN interface takes time more than this, O&M alarm will be raised 
+WARN_TIMEOUT=3000
+
+
+#Indicates whether Cancel request supported by IN or not.(Possible values are Y/N)
+CANCEL_TXN_ALLOWED=N
+
+##If any ambiguous response is received from IN, then retry/cancel command is sent to IN. Then response of retry/cancel is matched in the IN file and mapped error code (250/206/200) is picked and sent to Controller.
+##SYSTEM_STATUS_MAPPING=INErrCode1,INErrCode2,INErrCode3,INErrCode4:system_err_code1|INErrCode5,INErrCode6:system_err_code2
+##system_err_code1 and system_err_code2 will be sent to system and written in recon log file.
+#SYSTEM_STATUS_MAPPING=250:250
+##If receiver credit is AMBIGUOS, then in SYSTEM_PREFERENCE, CREDIT_BACK_ALLOWED should be N.
+
+#If an ambiguous case occurs while credit, mapped error code can be set to one of the codes(SUCCESS, FAIL and AMBIGUOUS)
+SYSTEM_STATUS_MAPPING_CREDIT=250:250
+
+#If an ambiguous case occurs while credit, mapped error code can be set to one of the codes(SUCCESS, FAIL and AMBIGUOUS)
+SYSTEM_STATUS_MAPPING_CREDIT_ADJ=250:250
+
+#If an ambiguous case occurs while debitAdjust, mapped error code cannot be SUCCESS. It can only be FAIL or AMBIGUOUS
+SYSTEM_STATUS_MAPPING_DEBIT_ADJ=250:250
+
+#If an ambiguous case occurs while credit Back, mapped error code can not be fail, it can only be SUCCESS or AMBIGOUOS
+SYSTEM_STATUS_MAPPING_CREDIT_BCK=250:250
+
+##If any ambiguous response is received from IN, check if cancel txn allowed or not in the system. if not, pick mapped error code against NA otherwise pick mapped error code (206/250) against received response code of Cancellation from IN. 
+##CANCEL_COMMAND_STATUS_MAPPING=INErrCode1,INErrCode2,INErrCode3,INErrCode4:cancel_err_code1|INErrCode5,INErrCode6:cancel_err_code2
+##cancel_err_code1, cancel_err_code2 will be written in recon log file.
+CANCEL_COMMAND_STATUS_MAPPING=NA:450
+
+#Defines the cancel command status when cancel not supported by IN. 
+CANCEL_NA=NA
+
+##This flag should be Y if interface closure feature is to be provided to client
+INTFCE_CLSR_SUPPORT=N
+
+#maximum number of ambiguous transactions allowed till threshold time.
+NO_ALLWD_AMB_TXN=5
+
+##time duration in which maximum number of ambiguous transactions is defined
+THRESHOLD_TIME=180000
+
+##Time duration after which interface suspension expires.
+EXPIRY_TIME=60000
+
+##Auto Resumption supported by IN or not.
+AUTO_RESUME_SUPPORT=N
+
+##Number of retry attempts while validation (Currently Retry Request is not supported by Ericssion)
+VAL_RETRY_CNT=0
+
+##Number of retry attempts while recharge request (Currently Retry  Request is not supported by Ericssion)
+CREDIT_RETRY_CNT=1
+
+##Number of retry attempts while sending Adjustment request (Currently Retry  Request is not supported by Ericssion)
+ADJ_RETRY_CNT=0
+
+##Number of retry attempts while sending Cancel request (Currently Cancel Request is not supported by Ericssion)
+CNCL_RETRY_CNT=0
+
+##Sleep time between two retries
+RETRY_SLEEP_TIME=200
+
+##Error Codes when retry has to be made 
+RETRY_CASES=30,3
+
+##Remark1 in Reconcialiationlog
+REMARK1=
+
+##Remark2 in Reconcialiationlog
+REMARK2=
+
+
+

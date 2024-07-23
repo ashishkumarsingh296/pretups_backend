@@ -1,0 +1,14 @@
+---
+ - name: copying java 
+   remote_user: "{{ USER_NAME }}"
+   become: yes
+   unarchive: src={{ JRE_NAME }}.tar.gz dest=~/ creates=no mode=0755 owner={{ USER_NAME }} group={{ GROUP_NAME }}
+   tags: copy_java
+
+ - name: making soft link of the java copied above 
+   remote_user: "{{ USER_NAME }}"
+   become: yes
+   file: src=~/{{ JRE_NAME }} dest=~/{{ JDK_SOFT_LINK }} state=link force=yes
+
+ - name: setting home directory variable
+   include: home_directory.yml

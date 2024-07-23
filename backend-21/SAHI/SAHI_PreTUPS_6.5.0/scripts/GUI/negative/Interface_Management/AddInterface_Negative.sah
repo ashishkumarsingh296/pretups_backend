@@ -1,0 +1,72 @@
+//#######################################
+//
+// This script is to add negative cases while try to add new Interface
+//
+//
+//#######################################
+
+
+
+_includeOnce("../../../../utility/ImportPackage.sah");
+_includeOnce("Interface_Common_Negative.sah"); //  Function for add modify interface
+
+
+//====Login into Application====
+login($g_appURL, $g_LangEnglish, $g_superAdmin, $g_password, $g_assertMessage); //calls the Login function in Login.sah with the parameters(url, language, username, password, assertion)
+
+
+
+//===============Add New Service Keyword ===============================//
+
+
+var $g_interfaceDetails = _readCSVFile("../../negative_testdata/AddInterface_NegativeCases.csv");
+
+
+			
+			for(var $g_row = 1; $g_interfaceDetails[$g_row] != null; $g_row++){
+			//for(var $g_row = 33; $g_row != 38; $g_row++){
+				var $g_col = 0;
+				var $t = _testcase($g_interfaceDetails[$g_row][$g_col++], $g_interfaceDetails[$g_row][$g_col++]);
+				$t.start();
+				commonVaribleToAddInterface($g_row, $g_col);
+				addInterface();
+				$t.end();
+			}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

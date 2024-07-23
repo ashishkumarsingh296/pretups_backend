@@ -1,0 +1,4 @@
+TestcaseId,TestcaseType,Module,Description
+TUNG12758,Negative,Bar user through Restful API,To verify channel admin will not be able to bar user form other network
+,,,
+,,,

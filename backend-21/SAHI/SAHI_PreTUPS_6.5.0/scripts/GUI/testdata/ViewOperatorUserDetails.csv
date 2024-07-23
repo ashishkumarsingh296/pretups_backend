@@ -1,0 +1,4 @@
+Test Case No.,Discription
+TEST045,Given a superadmin admin logs into apllication and try to view their details
+TEST046,Given a Network admin logs into apllication and try to view their details
+TEST047,Given a Channel Admin logs into apllication and try to view their details

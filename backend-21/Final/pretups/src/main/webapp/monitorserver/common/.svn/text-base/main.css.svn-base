@@ -1,0 +1,62 @@
+.topback { BACKGROUND-REPEAT: repeat; TEXT-ALIGN: left ; BACKGROUND-COLOR: #FFFFFF } 
+} .arrow { COLOR: #ffffff; FONT-FAMILY:Verdana,century gothic, Arial, Helvetica, sans-serif; 
+FONT-SIZE: 8pt } .toplink { COLOR:#FF6600; FONT-FAMILY: Verdana,century gothic, Arial, Helvetica, 
+sans-serif; FONT-SIZE: 8pt; FONT-WEIGHT: bold; TEXT-DECORATION: none } A:hover 
+{ COLOR:#FF6600; TEXT-DECORATION:underline } .heading { COLOR: #808080; FONT-FAMILY: 
+Verdana,century gothic, Arial, Helvetica, sans-serif; FONT-SIZE: 18px; } .heading2 
+{ COLOR: #808080; FONT-FAMILY:Verdana,century gothic,Arial, Helvetica, sans-serif; FONT-SIZE: 
+18px; FONT-WEIGHT: bold; TEXT-ALIGN: center } TD { COLOR: #808080; FONT-FAMILY: 
+Verdana,century gothic, Arial, Helvetica, sans-serif; FONT-SIZE: 7.5pt } .tabcol { COLOR: #808080; 
+background-color: #FFFFFF } .netinput { COLOR: #000000; FONT-FAMILY: Verdana,century gothic,courier, monospace; 
+FONT-SIZE: 12px; FONT-WEIGHT: bold } .tabhead { BACKGROUND-COLOR: #FFFFFF; COLOR: 
+#808080; FONT-SIZE: 11px; FONT-WEIGHT: bold } .tablink { COLOR: #000000; FONT-FAMILY: 
+Verdana,century gothic, Arial, Helvetica, sans-serif; FONT-SIZE: 8pt; TEXT-DECORATION: underline 
+} .secondcol { BACKGROUND-COLOR: #f5f7f7 } BODY { COLOR: #c0c0c0 } .mandatory 
+{ COLOR: #FF6600; FONT-FAMILY: Verdana,century gothic, Arial, Helvetica, sans-serif; FONT-SIZE: 
+10px; FONT-WEIGHT: normal } .errormsg { COLOR: #d53012; FONT-FAMILY: Verdana,century gothic, 
+Arial, Helvetica, sans-serif; FONT-SIZE: 8pt; FONT-WEIGHT: bold } .message { COLOR: 
+#FF6600; FONT-FAMILY: Verdana,century gothic, Arial, Helvetica, sans-serif; FONT-SIZE: 8pt; FONT-WEIGHT: 
+bold } .subthirdcol { BACKGROUND-COLOR: #fac0b6 } .topback1 { BACKGROUND-COLOR: 
+#414B56 } .errmsg { COLOR: #414B56; FONT-FAMILY: Verdana,century gothic, Arial, Helvetica, sans-serif; 
+FONT-SIZE: 8pt; FONT-WEIGHT: bold } .errordesc { COLOR: #d53012; FONT-FAMILY: 
+Verdana,century gothic, Arial, Helvetica, sans-serif; FONT-SIZE: 8pt; } .tablink1 { COLOR: #414B56; 
+FONT-FAMILY: Verdana,century gothic, Arial, Helvetica, sans-serif; FONT-SIZE: 8pt; TEXT-DECORATION: 
+underline } .toplink1 { COLOR: #21536a; FONT-FAMILY: Verdana,century gothic, Arial, Helvetica, 
+sans-serif; FONT-WEIGHT: bold; TEXT-DECORATION: none; TEXT-INDENT: 10pt } .mainhead 
+{ COLOR: #FF5D01; FONT-FAMILY: Verdana,century gothic, Arial, Helvetica, sans-serif; FONT-SIZE: 
+12pt; FONT-WEIGHT: bold; TEXT-ALIGN: center } .tborder { BORDER-BOTTOM: #e0261b 
+1px solid; BORDER-LEFT: #e0261b 1px solid; BORDER-RIGHT: #e0261b 1px solid; BORDER-TOP: 
+#e0261b 1px solid } .justtext { TEXT-ALIGN: justify } .level2 { COLOR:#808080; 
+FONT-FAMILY: Verdana,century gothic, Arial, Helvetica, sans-serif; FONT-SIZE: 10px; TEXT-DECORATION: none; TEXT-INDENT: 10px } .level1 { COLOR:#808080; FONT-FAMILY: 
+Verdana,century gothic;FONT-SIZE: 10px; TEXT-DECORATION: 
+none } .level1active { BACKGROUND-COLOR: #FFFFFF; COLOR:#FF6600; FONT-FAMILY: 
+Verdana,century gothic, Arial, Helvetica, sans-serif; FONT-SIZE: 10px; FONT-WEIGHT: bold; TEXT-DECORATION: 
+none } .leftbg { BACKGROUND-COLOR: #FFFFFF; } .line { BACKGROUND-COLOR: #999999 
+} .btn { BACKGROUND-COLOR: #ffffff; COLOR:#FFFFFF ;FONT-SIZE: 11px; background-image: url(/pretups/monitorserver/common/images/btnlogin.JPG);
+FONT-WEIGHT: bold; border: 0px} .level2active { COLOR:  #808080; 
+FONT-FAMILY: Verdana,century gothic, Arial, Helvetica, sans-serif; FONT-SIZE: 10px; FONT-WEIGHT: 
+bold; TEXT-DECORATION:none; TEXT-INDENT: 10px } .welcome { COLOR: #000000; FONT-FAMILY:Verdana,century gothic;
+FONT-SIZE: 18px; } .topbg { BACKGROUND-COLOR: #FF6600; COLOR: 
+#f9de05 } .norepeat { BACKGROUND-ATTACHMENT: fixed; BACKGROUND-REPEAT: no-repeat 
+} .labeldt { COLOR: #666666 } .topbackbg { BACKGROUND-COLOR: #FFFFFF } .topbackbg1 
+{ BACKGROUND-COLOR: #FFFFFF } .tabcolhead { BACKGROUND-COLOR: #f2f2e6; COLOR: #000000; 
+FONT-SIZE: 10px; FONT-WEIGHT: bold } .boldtext { FONT-FAMILY: Verdana,century gothic, Arial, 
+Helvetica, sans-serif; FONT-SIZE: 8pt; FONT-WEIGHT: bold } .back { BACKGROUND-COLOR: 
+#cccccc } .header { COLOR: #FFFFFF; TEXT-ALIGN: right } .header2 { COLOR: #FF5D01; 
+FONT-FAMILY: Verdana,century gothic, Arial, Helvetica, sans-serif; FONT-SIZE: 12pt; FONT-WEIGHT: 
+bold } .bannertop { COLOR: #414B56} .copyright { COLOR: #414B56}.tablabelcol { COLOR: #808080; 
+background-color: #FFFFFF; FONT-WEIGHT: bold}
+.btn1 { BACKGROUND-COLOR: #FF6600; COLOR:#FFFFFF ;FONT-SIZE: 11px; 
+FONT-WEIGHT: bold} 
+.loginheading{ COLOR:#FF6600; FONT-FAMILY: 
+Verdana,century gothic, Arial, Helvetica, sans-serif; FONT-SIZE: 25px; } 
+.sumtabcol { COLOR: #000000; 
+background-color: #f3f3f3 }
+
+.modulename { COLOR: #000000;
+background-color: #ff6600 }
+.successhead { BACKGROUND-COLOR: #ccffcc; COLOR: 
+#808080; FONT-SIZE: 11px; FONT-WEIGHT: bold } .failhead { BACKGROUND-COLOR: #FFcccc; COLOR: 
+#808080; FONT-SIZE: 11px; FONT-WEIGHT: bold }.successcol { COLOR: #808080; 
+background-color: #ccffcc } .failcol { COLOR: #808080; 
+background-color: #ffcccc }

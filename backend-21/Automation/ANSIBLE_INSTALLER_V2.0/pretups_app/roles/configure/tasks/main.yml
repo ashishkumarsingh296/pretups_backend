@@ -1,0 +1,50 @@
+---
+ - name: "add the task of configuration related with the Constants.props for oracle"
+   include: constantprops.yml
+   when: DBType == "oracle"
+   tags: constant_props
+
+ - name: "add the task of configuration related with the Constants.props for postgres"
+   include: constantprops_postgres.yml
+   when: DBType == "postgres"
+   tags: constant_props
+
+ - name: "add the task of configuration related with the server.xml"
+   include: serverxml.yml
+
+ - name: "add the task of configuration related with the pretupsStart.sh"
+   include: pretupsStart.yml
+
+ - name: "change the PATH of tomcat in process Scripts"
+   include: processScripts.yml
+
+ - name: "add the task of configuration of pdsodbc.dll.xml & pdsora7.dll.xml"
+   include: pdsodbc.dll.xml.yml
+
+ - name: "add the task of configuration related with the pretupsStart.sh"
+   include: configuration_Default.properties.yml
+
+#commednted by satakshi
+# - name: "add the task of customization of DB as per tomcat"
+#   include: customize.yml
+
+ - name: "change the processScripts commonLoadClasspath variables"
+   include: commonLoadClassPath.yml
+
+ - name: "Replace Tomcat path variable with actual path in csvConfigFileBurnRateIndicatorVMS_PG.props"
+#   lineinfile: dest="{{ Tomcat_Path }}/webapps/pretups/WEB-INF/classes/configfiles/csvConfigFileBurnRateIndicatorVMS_PG.props" regexp='(.*)<Tomcat-Path>(.*)' line="BURN_RATE_INDICATOR_DIR={{ Tomcat_Path }}/logs/csvreports"
+   replace: dest="{{ Tomcat_Path }}/webapps/pretups/WEB-INF/classes/configfiles/csvConfigFileBurnRateIndicatorVMS_PG.props" regexp='^(.*)<Tomcat-Path>/logs(.*)$' replace='\1{{ CATALINA_OUT_LOG_PATH_WEB }}\2'
+   tags: csvConfigFileBurnRateIndicatorVMS_PG.props_replace
+
+ - name: "Replace Tomcat path variable with actual path in csvConfigFileBurnRateIndicatorVMS.props"
+#   lineinfile: dest="{{ Tomcat_Path }}/webapps/pretups/WEB-INF/classes/configfiles/csvConfigFileBurnRateIndicatorVMS.props" regexp='(.*)<Tomcat-path>(.*)' line="BURN_RATE_INDICATOR_DIR={{ Tomcat_Path }}/logs/csvreports"
+   replace: dest="{{ Tomcat_Path }}/webapps/pretups/WEB-INF/classes/configfiles/csvConfigFileBurnRateIndicatorVMS.props" regexp='^(.*)<Tomcat-path>/logs(.*)$' replace='\1{{ CATALINA_OUT_LOG_PATH_WEB }}\2'
+   tags: csvConfigFileBurnRateIndicatorVMS.props_replace
+
+ - name: "Replace Tomcat path variable with actual path in runEXTGWGateway.sh"
+   lineinfile: dest="{{ Tomcat_Path }}/webapps/pretups/WEB-INF/pretups_scripts/runEXTGWGateway.sh" regexp='(.*)<Tomcat-Path>(.*)' line="source {{ Tomcat_Path }}/conf/pretups/commonLoadClassPath.sh"
+   tags: runEXTGWGatewaysh_replace
+
+ - name: "Replace Tomcat path variable with actual path in runUSSDGateway.sh"
+   lineinfile: dest="{{ Tomcat_Path }}/webapps/pretups/WEB-INF/pretups_scripts/runUSSDGateway.sh" regexp='(.*)<Tomcat-Path>(.*)' line="source {{ Tomcat_Path }}/conf/pretups/commonLoadClassPath.sh"
+   tags: runUSSDGatewaysh_replace

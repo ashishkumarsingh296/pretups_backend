@@ -1,0 +1,188 @@
+// This scripts contains all the common methods for bonus point enquiry.
+
+_includeOnce("../../../../utility/ImportPackage.sah");
+
+var $l_naCsv = _readCSVFile("../../../GUI/testdata/NA_Login.csv");
+
+	//akanksha
+	var $msisdn;
+	var $remarks;
+	var $assertion;
+	
+	
+	
+	//............................. /////////////////////// .....................................//
+	
+	
+	//.............................//////////////////////..........................................//
+	
+	function commonVaribleToEnquireDeletePoint($g_row, $g_col) {
+		
+		$msisdn = $g_DeleteTestID[$g_row][$g_col++];
+		$remarks = $g_DeleteTestID[$g_row][$g_col++];
+		$assertion1 = $g_DeleteTestID[$g_row][$g_col++];
+		$assertion2 = $g_DeleteTestID[$g_row][$g_col++];
+		
+	}
+	
+	
+	function checkTheIntialReqForDel(){
+		_click(_link("Channel user"));
+		_click(_link("Delete channel user"));
+		_assertExists(_div("Delete channel user"));
+		_assertExists(_cell("Mobile number :"));
+	}
+	
+	function moveForwardToDelete(){
+		checkTheIntialReqForDel();
+		_setValue(_textbox("searchMsisdn"), $msisdn);
+		_setValue(_textarea("eventRemarks"), $remarks);
+		_click(_submit("Submit"));
+		_assertExists(_submit("/" +$assertion1 + ".*/"));
+
+	}
+	
+	function dontEnterRemarks(){
+		_click(_link("Channel user"));
+		_click(_link("Delete channel user"));
+		_setValue(_textbox("searchMsisdn"), $msisdn);
+		_click(_submit("Submit"));
+		_assertExists(_listItem("Remarks Required"));
+	}
+	
+	
+	function dontEnterAnything(){
+		_click(_link("Channel user"));
+		_click(_link("Delete channel user"));
+		_click(_submit("Submit"));
+		_assertExists(_listItem("/" +$assertion1 + ".*/"));
+		_assertExists(_listItem("/" +$assertion2 + ".*/"));
+	}
+	
+	function deleteChanneluser() {
+		
+		
+		_click(_link("Channel user"));
+		_click(_link("Delete channel user"));
+		_setValue(_textbox("searchMsisdn"), $msisdn);
+		_setValue(_textarea("eventRemarks"), $remarks);
+		_click(_submit("Submit"));
+		_assertExists(_submit("/" +$assertion1 + ".*/"));
+		_click(_submit("Delete"));
+		_assertExists(_listItem("/" +$assertion2 + ".*/"));
+		
+	}
+	
+	
+	
+	function deleteRequestOnceMore(){
+		_click(_link("Channel user"));
+		_click(_link("Delete channel user"));
+		_doubleClick(_textbox("searchMsisdn"));
+		_setValue(_textbox("searchMsisdn"), $msisdn);
+		_setValue(_textarea("eventRemarks"), $remarks);
+		_click(_submit("Submit"));
+		_assertExists(_listItem("/" +$assertion1 + ".*/"));
+	}
+	
+	function tryToDelUserWhoHAsFocTxnPending(){
+		_click(_link("Channel user"));
+		_click(_link("Delete channel user"));
+		_setValue(_textbox("searchMsisdn"), $msisdn);
+		_setValue(_textarea("eventRemarks"), $remarks);
+		_click(_submit("Submit"));
+		_click(_submit("Delete"));
+		_assertExists(_listItem("User cannot be deleted, some transaction is pending for approval/cancel"));
+      
+
+	}
+	
+	function toCheckApprovalPage(){
+		_click(_link("Channel user"));
+		_click(_link("Approval delete channel user"));
+		_assertExists(_div("/" +$assertion1 + ".*/"));
+
+	}
+	
+	
+	function toNavigateThroughApprovalPage(){
+		_click(_link("Channel user"));
+		_click(_link("Approval delete channel user"));
+		_assertExists(_div("User approval for delete"));
+		
+		_setValue(_textbox("searchMsisdn"), $msisdn);
+		_setValue(_textarea("eventRemarks"), $remarks);
+		_click(_submit("Submit"));
+		
+		_assertExists(_div("/" +$assertion1 + ".*/"));
+		_assertExists(_cell("/" +$assertion2 + ".*/"));
+		_click(_radio("approvalArray[0]"));
+		_click(_submit("Submit"));
+
+	}
+	
+	function toRejectTheDeletion(){
+		_click(_link("Channel user"));
+		_click(_link("Approval delete channel user"));
+		_doubleClick(_textbox("searchMsisdn"));
+		_setValue(_textbox("searchMsisdn"), $msisdn);
+		_setValue(_textarea("eventRemarks"), $remarks);
+		_click(_submit("Submit"));
+		_assertExists(_cell("Reject"));
+		_click(_radio("approvalArray[0][1]"));
+		_click(_submit("Submit"));
+		_click(_submit("Confirm"));
+		_assertExists(_listItem("Users successfully rejected for deletion"));
+
+	}
+	
+	
+	function toApproveTheDeletion(){
+		_click(_link("Channel user"));
+		_click(_link("Approval delete channel user"));
+		_assertExists(_div("User approval for delete"));
+		
+		_setValue(_textbox("searchMsisdn"), $msisdn);
+		_setValue(_textarea("eventRemarks"), $remarks);
+		_click(_submit("Submit"));
+		_assertExists(_div("User approval list for delete"));
+		_assertExists(_cell("Approve"));
+		_click(_radio("approvalArray[0]"));
+		_click(_submit("Submit"));
+		_assertExists(_submit("/" +$assertion1 + ".*/"));
+		_click(_submit("Confirm"));
+		_assertExists(_listItem("Users successfully approved for deletion"));
+	}
+	
+	
+	
+	
+	function toDiscardTheDeletion(){
+		_click(_link("Channel user"));
+		_click(_link("Approval delete channel user"));
+		_doubleClick(_textbox("searchMsisdn"));
+		_setValue(_textbox("searchMsisdn"), $msisdn);
+		_setValue(_textarea("eventRemarks"), $remarks);
+		_click(_submit("Submit"));
+		_click(_radio("approvalArray[0][2]"));
+		_click(_submit("Submit"));
+		_assertExists(_submit("/" +$assertion1 + ".*/"));
+		_click(_submit("Confirm"));
+		_assertExists(_listItem("/" +$assertion2 + ".*/"));
+
+	}
+	
+	function toDeleteUserWhoIsNotLeaf(){
+		_click(_link("Channel user"));
+		_click(_link("Delete channel user"));
+		_setValue(_textbox("searchMsisdn"), $msisdn);
+		_setValue(_textarea("eventRemarks"), $remarks);
+		_click(_submit("Submit"));
+		_click(_submit("Delete"));
+		_assertExists(_listItem("/" +$assertion1 + ".*/"));
+		
+
+	}
+		
+	
+

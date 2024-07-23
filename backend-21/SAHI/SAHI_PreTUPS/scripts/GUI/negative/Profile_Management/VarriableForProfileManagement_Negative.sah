@@ -1,0 +1,161 @@
+
+
+var $g_profileName;
+var $g_shortName;
+var $g_discription;
+var $g_posteTopUpMin;
+var $g_posteTopUpMax;
+var $g_posteTopUpC2SMin;
+var $g_posteTopUpC2SMax;
+var $g_posteTopUpAltBalace;
+var $g_posteTopUpAldMaxPct;
+var $g_eTopUpMin;
+var $g_eTopUpMax;
+var $g_eTopUpC2SMin;
+var $g_eTopUpC2SMax;
+var $g_eTopUpAltBalace;
+var $g_eTopUpAldMaxPct;
+
+
+var $g_dailyInCount;
+var $g_dailyInAltCount;
+var $g_dailyInValue;
+var $g_dailyInAltValue;
+var $g_dailyOutCount;
+var $g_dailyOutAltCount;
+var $g_dailyOutValue;
+var $g_dailyOutAltValue;
+var $g_dailySubscriberOutCount;
+var $g_dailySubscriberOutAltCount;
+var $g_dailySubscriberOutValue;
+var $g_dailySubscriberOutAltValue;
+var $g_dailySubscriberInCount;
+var $g_dailySubscriberInAltCount;
+var $g_dailySubscriberInValue;
+var $g_dailySubscriberInAltValue;
+
+
+var $g_weeklyInCount;
+var $g_weeklyInAltCount;
+var $g_weeklyInValue;
+var $g_weeklyInAltValue;
+var $g_weeklyOutCount;
+var $g_weeklyOutAltCount;
+var $g_weeklyOutValue;
+var $g_weeklyOutAltValue;
+var $g_weeklySubscriberOutCount;
+var $g_weeklySubscriberOutAltCount;
+var $g_weeklySubscriberOutValue;
+var $g_weeklySubscriberOutAltValue;
+var $g_weeklySubscriberInCount;
+var $g_weeklySubscriberInAltCount;
+var $g_weeklySubscriberInValue;
+var $g_weeklySubscriberInAltValue;
+
+
+var $g_monthlyInCount;
+var $g_monthlyInAltCount;
+var $g_monthlyInValue;
+var $g_monthlyInAltValue;
+var $g_monthlyOutCount;
+var $g_monthlyOutAltCount;
+var $g_monthlyOutValue;
+var $g_monthlyOutAltValue;
+var $g_monthlySubscriberOutCount;
+var $g_monthlySubscriberOutAltCount;
+var $g_monthlySubscriberOutValue;
+var $g_monthlySubscriberOutAltValue;
+var $g_monthlySubscriberInCount;
+var $g_monthlySubscriberInAltCount;
+var $g_monthlySubscriberInValue;
+var $g_monthlySubscriberInAltValue;
+
+var $g_assertion;
+
+var $l_col = 1;
+
+function commonVaribleForCatLevelTCP(){
+	
+	
+	//_log("shashi + "  + $g_TCPPreference[1][1]);
+	
+	 $g_profileName = $g_categoryLevelTCPCsv[$g_row][$g_col++];
+	 $g_shortName = $g_categoryLevelTCPCsv[$g_row][$g_col++];
+	 $g_discription = $g_categoryLevelTCPCsv[$g_row][$g_col++];
+	 $g_posteTopUpMin = $g_categoryLevelTCPCsv[$g_row][$g_col++];
+	 $g_posteTopUpMax = $g_categoryLevelTCPCsv[$g_row][$g_col++];
+	 $g_posteTopUpC2SMin = $g_categoryLevelTCPCsv[$g_row][$g_col++];
+	 $g_posteTopUpC2SMax  = $g_categoryLevelTCPCsv[$g_row][$g_col++];
+	 $g_posteTopUpAltBalace  = $g_categoryLevelTCPCsv[$g_row][$g_col++];
+	 $g_posteTopUpAldMaxPct = $g_categoryLevelTCPCsv[$g_row][$g_col++];
+	 $g_eTopUpMin = $g_categoryLevelTCPCsv[$g_row][$g_col++];
+	 $g_eTopUpMax = $g_categoryLevelTCPCsv[$g_row][$g_col++];
+	 $g_eTopUpC2SMin = $g_categoryLevelTCPCsv[$g_row][$g_col++];
+	 $g_eTopUpC2SMax = $g_categoryLevelTCPCsv[$g_row][$g_col++];
+	 $g_eTopUpAltBalace = $g_categoryLevelTCPCsv[$g_row][$g_col++];
+	 $g_eTopUpAldMaxPct = $g_categoryLevelTCPCsv[$g_row][$g_col++];
+	 $g_assertion = $g_categoryLevelTCPCsv[$g_row][$g_col++];
+	 
+	 _log("shashi " + $g_assertion );
+		
+	 			
+	 
+	 $l_col = 1;
+			
+			 $g_dailyInCount = $g_TCPPreference[$g_row][$l_col++];
+			 $g_dailyInAltCount = $g_TCPPreference[$g_row][$l_col++];
+			 $g_dailyInValue = $g_TCPPreference[$g_row][$l_col++];
+			 $g_dailyInAltValue = $g_TCPPreference[$g_row][$l_col++];
+			 $g_dailyOutCount = $g_TCPPreference[$g_row][$l_col++];
+			 $g_dailyOutAltCount = $g_TCPPreference[$g_row][$l_col++];
+			 $g_dailyOutValue = $g_TCPPreference[$g_row][$l_col++];
+			 $g_dailyOutAltValue = $g_TCPPreference[$g_row][$l_col++];
+			 $g_dailySubscriberOutCount = $g_TCPPreference[$g_row][$l_col++];
+			 $g_dailySubscriberOutAltCount = $g_TCPPreference[$g_row][$l_col++];
+			 $g_dailySubscriberOutValue = $g_TCPPreference[$g_row][$l_col++];
+			 $g_dailySubscriberOutAltValue = $g_TCPPreference[$g_row][$l_col++];
+			 $g_dailySubscriberInCount = $g_TCPPreference[$g_row][$l_col++];
+			 $g_dailySubscriberInAltCount = $g_TCPPreference[$g_row][$l_col++];
+			 $g_dailySubscriberInValue = $g_TCPPreference[$g_row][$l_col++];
+			 $g_dailySubscriberInAltValue = $g_TCPPreference[$g_row][$l_col++];
+			 
+			 
+		
+			 $g_weeklyInCount = $g_TCPPreference[$g_row][$l_col++];
+			 $g_weeklyInAltCount = $g_TCPPreference[$g_row][$l_col++];
+			 $g_weeklyInValue = $g_TCPPreference[$g_row][$l_col++];
+			 $g_weeklyInAltValue = $g_TCPPreference[$g_row][$l_col++];
+			 $g_weeklyOutCount = $g_TCPPreference[$g_row][$l_col++];
+			 $g_weeklyOutAltCount = $g_TCPPreference[$g_row][$l_col++];
+			 $g_weeklyOutValue = $g_TCPPreference[$g_row][$l_col++];
+			 $g_weeklyOutAltValue = $g_TCPPreference[$g_row][$l_col++];
+			 $g_weeklySubscriberOutCount = $g_TCPPreference[$g_row][$l_col++];
+			 $g_weeklySubscriberOutAltCount = $g_TCPPreference[$g_row][$l_col++];
+			 $g_weeklySubscriberOutValue = $g_TCPPreference[$g_row][$l_col++];
+			 $g_weeklySubscriberOutAltValue = $g_TCPPreference[$g_row][$l_col++];
+			 $g_weeklySubscriberInCount = $g_TCPPreference[$g_row][$l_col++];
+			 $g_weeklySubscriberInAltCount = $g_TCPPreference[$g_row][$l_col++];
+			 $g_weeklySubscriberInValue = $g_TCPPreference[$g_row][$l_col++];
+			 $g_weeklySubscriberInAltValue = $g_TCPPreference[$g_row][$l_col++];
+		
+			 $g_monthlyInCount = $g_TCPPreference[$g_row][$l_col++];
+			 $g_monthlyInAltCount = $g_TCPPreference[$g_row][$l_col++];
+			 $g_monthlyInValue = $g_TCPPreference[$g_row][$l_col++];
+			 $g_monthlyInAltValue = $g_TCPPreference[$g_row][$l_col++];
+			 $g_monthlyOutCount = $g_TCPPreference[$g_row][$l_col++];
+			 $g_monthlyOutAltCount = $g_TCPPreference[$g_row][$l_col++];
+			 $g_monthlyOutValue = $g_TCPPreference[$g_row][$l_col++];
+			 $g_monthlyOutAltValue = $g_TCPPreference[$g_row][$l_col++];
+			 $g_monthlySubscriberOutCount = $g_TCPPreference[$g_row][$l_col++];
+			 $g_monthlySubscriberOutAltCount = $g_TCPPreference[$g_row][$l_col++];
+			 $g_monthlySubscriberOutValue = $g_TCPPreference[$g_row][$l_col++];
+			 $g_monthlySubscriberOutAltValue = $g_TCPPreference[$g_row][$l_col++];
+			 $g_monthlySubscriberInCount = $g_TCPPreference[$g_row][$l_col++];
+			 $g_monthlySubscriberInAltCount = $g_TCPPreference[$g_row][$l_col++];
+			 $g_monthlySubscriberInValue = $g_TCPPreference[$g_row][$l_col++];
+			 $g_monthlySubscriberInAltValue = $g_TCPPreference[$g_row][$l_col++];
+	
+		
+}
+
+

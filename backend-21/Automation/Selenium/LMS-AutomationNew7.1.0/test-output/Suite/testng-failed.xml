@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite guice-stage="DEVELOPMENT" name="Failed suite [Suite]">
+  <test name="Test(failed)">
+    <classes>
+      <class name="testcases.ViewLMSitems">
+        <methods>
+          <include name="tearDown"/>
+          <include name="startReport"/>
+          <include name="beforeClass"/>
+          <include name="getResult"/>
+          <include name="teardown"/>
+        </methods>
+      </class> <!-- testcases.ViewLMSitems -->
+      <class name="neg.DeleteLMSItems">
+        <methods>
+          <include name="beforeClass"/>
+          <include name="modifyItems" invocation-numbers="0 1"/>
+          <include name="teardown"/>
+          <include name="getResult"/>
+        </methods>
+      </class> <!-- neg.DeleteLMSItems -->
+    </classes>
+  </test> <!-- Test(failed) -->
+</suite> <!-- Failed suite [Suite] -->

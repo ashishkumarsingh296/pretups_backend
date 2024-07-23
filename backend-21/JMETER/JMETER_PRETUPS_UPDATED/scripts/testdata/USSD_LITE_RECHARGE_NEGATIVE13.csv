@@ -1,0 +1,2 @@
+TestcaseId,TestcaseType,Module,Description
+TUNG12743,Negative,Lite Recharge through USSD,User with insufficient balance should try to initiate the lite recharge request.

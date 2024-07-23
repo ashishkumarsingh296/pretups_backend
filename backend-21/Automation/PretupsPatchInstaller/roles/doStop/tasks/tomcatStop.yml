@@ -1,0 +1,29 @@
+---
+########################################################
+# Author           Date        Remarks
+#------------    -----------  ---------
+#Sadhan Kumar K  25-07-2016    Initial Creation
+#
+# This file takes care of Stopping the Tomcat.
+#########################################################
+
+ - debug: msg="Entered tomcatStop.yml.............."
+
+ - name: Stop Tomcat
+   shell: nohup sh {{ item.StopFileName }} chdir={{item.TomcatHomePath}}/bin
+   ignore_errors: yes
+   register: tomcatStop
+   with_items:
+       - "{{CatalinaConfig}}"
+   tags:
+     - stopTomcat
+
+ - name: wait for tomcat to stop
+   wait_for: timeout=10
+   tags:
+     - stopTomcat
+
+ - debug: msg="Tomcat Stopped!"
+   when: tomcatStop|success
+   tags:
+     - stopTomcat

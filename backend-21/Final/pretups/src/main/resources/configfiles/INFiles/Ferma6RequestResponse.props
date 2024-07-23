@@ -1,0 +1,25 @@
+ACCOUNT_INFO1=<?xml version='1.0' encoding='UTF-8'?><ser:PrepaidServiceResponse xmlns:ser="http://www.ferma.fr/ppg/logic/service"><ser:Status>0</ser:Status><ser:TransactionId>1111111A</ser:TransactionId><ser:InterfaceId>13d93f4:107fac669fc:-7aca</ser:InterfaceId><ser:AccessIdentifier>0123456000</ser:AccessIdentifier><ser:AccessType>1</ser:AccessType><ser:AccountId>0</ser:AccountId><ser:Profil>FERMA6</ser:Profil><ser:AccountLanguage>2</ser:AccountLanguage><ser:AccountStatus>N</ser:AccountStatus><ser:LockStatus>0</ser:LockStatus><ser:TariffPlan>0</ser:TariffPlan><ser:Balances><ser:Balance><ser:BalanceId>0</ser:BalanceId><ser:LifeCycle>1</ser:LifeCycle><ser:Option>1</ser:Option><ser:Amount>5000</ser:Amount><ser:UnitType>0</ser:UnitType><ser:ValidityDate>20071130</ser:ValidityDate><ser:GraceDate>20071230</ser:GraceDate><ser:State>N</ser:State></ser:Balance></ser:Balances></ser:PrepaidServiceResponse>
+ACCOUNT_INFO2=<?xml version='1.0' encoding='UTF-8'?><ser:PrepaidServiceResponse xmlns:ser="http://www.ferma.fr/ppg/logic/service"><ser:Status>0</ser:Status><ser:TransactionId>1111111A</ser:TransactionId><ser:InterfaceId>13d93f4:107fac669fc:-7aca</ser:InterfaceId><ser:AccessIdentifier>0123456000</ser:AccessIdentifier><ser:AccessType>1</ser:AccessType><ser:AccountId>0</ser:AccountId><ser:Profil>FERMA6</ser:Profil><ser:AccountLanguage>2</ser:AccountLanguage><ser:AccountStatus>Y</ser:AccountStatus><ser:LockStatus>0</ser:LockStatus><ser:TariffPlan>0</ser:TariffPlan><ser:Balances><ser:Balance><ser:BalanceId>0</ser:BalanceId><ser:LifeCycle>1</ser:LifeCycle><ser:Option>1</ser:Option><ser:Amount>5000</ser:Amount><ser:UnitType>0</ser:UnitType><ser:ValidityDate>20071130</ser:ValidityDate><ser:GraceDate>20071230</ser:GraceDate><ser:State>N</ser:State><ser:Icc>N</ser:Icc><ser:FirstCallDate>20071010</ser:FirstCallDate></ser:Balance></ser:Balances></ser:PrepaidServiceResponse>
+RECHARGE_BALANCE=<?xml version='1.0' encoding='UTF-8'?><ser:PrepaidServiceResponse xmlns:ser="http://www.ferma.fr/ppg/logic/service"><ser:Status>XXX</ser:Status><ser:TransactionId>1111111A</ser:TransactionId><ser:InterfaceId>13d93f4:107fac669fc:-7aca</ser:InterfaceId><ser:AccessIdentifier>0123456001</ser:AccessIdentifier><ser:AccessType>1</ser:AccessType><ser:AccountId>0</ser:AccountId><ser:Profil>1</ser:Profil><ser:AccountLanguage>2</ser:AccountLanguage><ser:AccountStatus>A</ser:AccountStatus><ser:LockStatus>0</ser:LockStatus><ser:TariffPlan>1</ser:TariffPlan><ser:Balances><ser:Balance><ser:BalanceId>0</ser:BalanceId><ser:LifeCycle>1</ser:LifeCycle><ser:Option>1</ser:Option><ser:Amount>2500</ser:Amount><ser:UnitType>0</ser:UnitType><ser:ValidityDate>20060104</ser:ValidityDate><ser:GraceDate>20060119</ser:GraceDate><ser:State>A</ser:State></ser:Balance></ser:Balances></ser:PrepaidServiceResponse>
+BALANCE_ADJUSTMENT=<?xml version='1.0' encoding='UTF-8'?><ser:PrepaidServiceResponse xmlns:ser="http://www.ferma.fr/ppg/logic/service"><ser:Status>0</ser:Status><ser:TransactionId>1111111A</ser:TransactionId><ser:InterfaceId>13d93f4:107fac669fc:-7aca</ser:InterfaceId><ser:AccessIdentifier>0123456001</ser:AccessIdentifier><ser:AccessType>1</ser:AccessType><ser:AccountId>0</ser:AccountId><ser:Profil>1</ser:Profil><ser:AccountLanguage>2</ser:AccountLanguage><ser:AccountStatus>A</ser:AccountStatus><ser:LockStatus>0</ser:LockStatus><ser:TariffPlan>1</ser:TariffPlan><ser:Balances><ser:Balance><ser:BalanceId>0</ser:BalanceId><ser:LifeCycle>1</ser:LifeCycle><ser:Option>1</ser:Option><ser:Amount>1700</ser:Amount><ser:UnitType>0</ser:UnitType><ser:ValidityDate>20060104</ser:ValidityDate><ser:GraceDate>20060119</ser:GraceDate><ser:State>A</ser:State></ser:Balance></ser:Balances></ser:PrepaidServiceResponse>
+FERMA_RESPONSE_CODE=<ser:Status>0</ser:Status>
+HTTP_RESPONSE_CODE=200
+FERMA_RETRY_RESPONSE_CODE=<ser:Status>0</ser:Status>
+AccessType=1
+AccountId=0
+BalanceId=0
+RechargeValue=10
+UnitType=0
+UserName=user1
+Password=user1
+ProtocolVersion=1.2
+URL1=http://172.16.1.121:5003/pretups/Ferma6TestServer
+MSISDN=234567890
+
+
+
+
+
+
+
+      <!-- Because this Realm is here, an instance will be shared globally -->

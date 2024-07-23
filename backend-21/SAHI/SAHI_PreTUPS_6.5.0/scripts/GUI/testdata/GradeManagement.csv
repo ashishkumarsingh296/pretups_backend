@@ -1,0 +1,5 @@
+Test Case No,Test Case Decsription,Domai Name,Category Name,Grade Code ,Grade Name,Assertion
+TEST001,Given that a super admin try to loggin into application and  add a new grade,Dist1,Super Distributor,AUTGRADE,Aut Grade,Grade successfully added
+TEST002,Given that a super admin login into application and try to add grade without giving domain name,,,,,Domain name is required.
+TEST003,Given that a super admin login into application and try to add grade without giving grade code and grade name,Dist1,Super Distributor,,,Grade code is required.
+TEST004,Given that a super admin login into application and try to modify grade code,Dist1,Super Distributor,AUTGRADE,Aut GradeM,Grade modified successfully

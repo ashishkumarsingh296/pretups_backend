@@ -1,0 +1,10 @@
+TestCaseNo.,Discription,From Category,To Category, Transfer Type,Crtl transfer lvl,Crtl withdraw lvl,Crtl return lvl,Product Assosiation,Assertion
+TEST001,Try to submit create C2C Transfer rule without giving any details,,,,,,,,From category is required.
+TEST002,Try to submit create C2C Transfer rule without giving from category details,,DSA-P,Transfer,Owner,Self,Self,chekall,From category is required.
+TEST003,Try to submit create C2C Transfer rule without giving to category details,Administrator,,Transfer,Owner,Self,Self,chekall,To category is required.
+TEST004,Try to submit create C2C Transfer rule without transfer type,Administrator,DSA-P,,Owner,Self,Self,chekall,Transfer type is required.
+TEST005,Try to submit create C2C Transfer rule without control transfer level,Administrator,DSA-P,Transfer,,Self,Self,chekall,Control transfer level is required.
+TEST006,Try to submit create C2C Transfer rule without control widhrow level,Administrator,DSA-P,Transfer,Owner,,Self,chekall,Control withdraw level is required.
+TEST007,Try to submit create C2C Transfer rule without control trreturn level,Administrator,DSA-P,Transfer,Owner,Self,,chekall,Control return level is required.
+TEST008,Try to submit create C2C transfer rule without product assosiation ,Administrator,DSA-P,Transfer,Owner,Self,Self,,Please select one of the products.
+TEST009,Try to submit create C2C transfer rule without giving any control level,Administrator,DSA-P,Transfer,,,,chekall,Control transfer level is required.

@@ -1,0 +1,24 @@
+---
+
+- name: Create a node_pretups directory
+  file:
+    path: "{{ Tomcat_Path }}/node_pretups"
+    state: directory
+    owner: "{{ USER_NAME }}"
+    group: "{{ GROUP_NAME }}"
+
+
+- name: Move directory contents, git clone
+  ansible.builtin.copy:
+    src: node_pretups/.
+    dest: "{{ Tomcat_Path }}/node_pretups/"
+    owner: "{{ USER_NAME }}"
+    group: "{{ GROUP_NAME }}"
+
+- name: "let's make it work: npmstart.sh: replace the cd dir"
+  lineinfile: dest="{{ Tomcat_Path }}/node_pretups/npmstart.sh" regexp='replace this' line='cd {{ Tomcat_Path }}/node_pretups/'
+
+
+
+#- name: Execute the script
+#  command: sh {{ Tomcat_Path }}/node_pretups/npmstart.sh

@@ -1,0 +1,7 @@
+loginId,password,txID,pin,type,TestcaseId,TestcaseType,Module,Description
+btdist,1357,R160907.1541.100001,1357,C2SDOREV,TUNG12902,Positive,DoC2S Reverse transaction,To check succesful c2s reversal transaction(Please enter proper transaction ID)
+btdist,1357,R160907.1541.100001,2468,C2SDOREV,TUNG12903,Negative,DoC2S Reverse transaction,To check unsuccesful transaction for Wrong/Empty transaction id 
+btdist,1357,R160802.1513.100001111,,C2SDOREV,TUNG12904,Negative,DoC2S Reverse transaction,"To check unsuccessful
+transaction for Empty PIN "
+btdist,1357,R160802.1513.100001111,1234,C2SDOREV,TUNG12905,Negative,DoC2S Reverse transaction,"To check unsuccessful
+transaction for wrong PIN "

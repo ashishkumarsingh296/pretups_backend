@@ -1,0 +1,5 @@
+TestcaseId,TestcaseType,Module,Description
+,Positive,O2C withdraw through MSISDN and PIN,To verify that Channel Users can withdraw TopUp Credits to their Operators by entering MSISDN and PIN 
+,Positive,O2C withdraw through  LoginID and Password,To verify that Channel Users can withdraw TopUp Credits to their Operators by entering LoginID and Password
+,Positive,O2C withdraw through with ExternalCode,To verify that Channel Users can withdraw TopUp Credits to their Operators by entering ExternalCode
+,Positive,O2C withdraw through With all mandatory fields,To verify that Channel Users can withdraw TopUp Credits to their Operators by entering all mandatory field

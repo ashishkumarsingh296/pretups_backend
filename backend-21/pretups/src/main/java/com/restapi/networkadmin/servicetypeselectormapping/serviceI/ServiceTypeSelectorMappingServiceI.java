@@ -1,0 +1,24 @@
+package com.restapi.networkadmin.servicetypeselectormapping.serviceI;
+
+import java.sql.Connection;
+import java.util.ArrayList;
+
+import org.springframework.stereotype.Service;
+
+import com.btsl.common.BTSLBaseException;
+import com.btsl.user.businesslogic.UserVO;
+import com.restapi.networkadmin.servicetypeselectormapping.requestVO.ModifyServiceTypeSelectorMappingRequestVO;
+import com.restapi.networkadmin.servicetypeselectormapping.requestVO.ServiceTypeSelectorMappingRequestVO;
+import com.restapi.networkadmin.servicetypeselectormapping.responseVO.SaveServiceTypeSelectorMappingResponseVO;
+import com.restapi.networkadmin.servicetypeselectormapping.responseVO.ServiceTypeSelectorMappingListResponseVO;
+import com.restapi.networkadmin.servicetypeselectormapping.responseVO.ViewServiceTypeSelectorMappingResponseVO;
+
+@Service
+public interface ServiceTypeSelectorMappingServiceI {
+ public ArrayList loadservicetypeList(Connection con, UserVO userVO)throws BTSLBaseException, Exception;
+ public ServiceTypeSelectorMappingListResponseVO loadServiceTypeSelectorMappingList(Connection con, UserVO userVO, String serviceType, ServiceTypeSelectorMappingListResponseVO responseVO)throws BTSLBaseException, Exception;
+ public SaveServiceTypeSelectorMappingResponseVO addServiceTypeSelectorMapping(Connection con, UserVO userVO, ServiceTypeSelectorMappingRequestVO requestVO, SaveServiceTypeSelectorMappingResponseVO response)throws BTSLBaseException, Exception;
+ public SaveServiceTypeSelectorMappingResponseVO modifyServiceTypeSelectorMapping(Connection con, UserVO userVO, ModifyServiceTypeSelectorMappingRequestVO requestVO, SaveServiceTypeSelectorMappingResponseVO response)throws BTSLBaseException, Exception;
+ public ViewServiceTypeSelectorMappingResponseVO viewServiceTypeSelectorMapping(Connection con, UserVO userVO, String sNO,ViewServiceTypeSelectorMappingResponseVO response)throws BTSLBaseException, Exception;
+ public SaveServiceTypeSelectorMappingResponseVO deleteServiceTypeSelectorMapping(Connection con, UserVO userVO, String sNO,SaveServiceTypeSelectorMappingResponseVO response)throws BTSLBaseException, Exception;
+}

@@ -1,0 +1,70 @@
+##########################################################################################################      ProcessLogConfig.props
+##      This is the properties file for the log configuration of the PreTUPS system
+##      To get the proper log of the PreTUPS, path of the log files should be set
+##      properly.
+##      PreTUPS log for the specific module/activity will be available at the specified path
+##
+##      All the logs are in the daily appender mode, means log files will be made
+##      on the daily basis
+##
+##########################################################################################################
+
+## PreTUPS common logger, these logs will be printed in the Application server default logger
+## these logs can also be diverted to the specifice file, if log diverted to a file then
+## ConsoleAppender should disbaled otherwise logs will be maintained in two log files.
+## Set root logger level to DEBUG and its only appender to A1.
+
+#log4j.rootLogger=ERROR, A1
+log4j.rootLogger=DEBUG, A1
+
+
+log4j.logger.org.apache.commons.digester.Digester=info
+log4j.logger.org.apache.catalina.startup.TldConfig=info
+log4j.logger.org.apache.struts.util.PropertyMessageResources=info
+log4j.logger.org.apache.catalina.session.ManagerBase=info
+log4j.logger.com.btsl.pretups.preference.businesslogic.PreferenceCache=info
+log4j.logger.org.apache.jasper.servlet.JspServlet=info
+log4j.logger.org.apache.catalina.core.ApplicationDispatcher=info
+log4j.logger.com.btsl.menu.MenuBL=info
+log4j.logger.org.apache.commons.beanutils.ConvertUtils=info
+log4j.logger.org.apache.commons.beanutils.BeanUtils=info
+log4j.logger.org.apache.jasper.compiler.SmapUtil$SDEInstaller=info
+log4j.logger.org.apache.catalina.core.StandardWrapper=info
+log4j.logger.org.apache.struts.action.RequestProcessor=info
+log4j.logger.org.apache.struts.util.RequestUtils=info
+log4j.logger.org.apache.struts.util.ModuleUtils=info
+# A1 is set to be a ConsoleAppender.
+log4j.appender.A1=org.apache.log4j.ConsoleAppender
+
+# A1 uses PatternLayout.
+log4j.appender.A1.layout=org.apache.log4j.PatternLayout
+log4j.appender.A1.layout.ConversionPattern=%d : %-4r [%t] %-5p %c %x - %m%n
+
+#log4j.appender.MYFILE=org.apache.log4j.DailyRollingFileAppender
+#log4j.appender.MYFILE.File=/pretupsvar/pretups_weblogs/PreTUPs_out.log
+##log4j.appender.MYFILE.MaxFileSize=1000KB
+#log4j.appender.ChannelGatewayRequestLog.DatePattern='.'yyyy-MM-dd
+#log4j.appender.MYFILE.layout=org.apache.log4j.PatternLayout
+#log4j.appender.MYFILE.layout.ConversionPattern=%5p [%t] (%F:%L) - %m%n
+
+#Entries for UserMigrRollbackLog Log
+log4j.logger.com.btsl.tool.userrollback.UserMigrRollbackLog=INFO,UserMigrRollbackLog
+log4j.additivity.com.btsl.tool.userrollback.UserMigrRollbackLog=false
+log4j.appender.UserMigrRollbackLog=org.apache.log4j.DailyRollingFileAppender
+log4j.appender.UserMigrRollbackLog.File=/home/pretups_ocm/tomcat5_web/webapps/pretups/pretups_scripts/userMigrationTool/logs/UserMigrRollbackLog.log
+#log4j.appender.UserMigrRollbackLog.File=/pretupsvar/pretups_weblogs/channelGatewayRequestLog.log
+##log4j.appender.ChannelGatewayRequestLog.MaxFileSize=100KB
+log4j.appender.UserMigrRollbackLog.DatePattern='.'yyyy-MM-dd
+log4j.appender.UserMigrRollbackLog.layout=org.apache.log4j.PatternLayout
+log4j.appender.UserMigrRollbackLog.layout.ConversionPattern=%d   %m%n  
+
+#Entries for UserMigrDetailLog Log
+log4j.logger.com.btsl.tool.usermigration.UserMigrDetailLog=INFO,UserMigrDetailLog
+log4j.additivity.com.btsl.tool.usermigration.UserMigrDetailLog=false
+log4j.appender.UserMigrDetailLog=org.apache.log4j.DailyRollingFileAppender
+log4j.appender.UserMigrDetailLog.File=/home/pretups_ocm/tomcat5_web/webapps/pretups/pretups_scripts/userMigrationTool/logs/UserMigrDetailLog.log
+##log4j.appender.UserMigrDetailLog.MaxFileSize=100KB
+log4j.appender.UserMigrDetailLog.DatePattern='.'yyyy-MM-dd
+log4j.appender.UserMigrDetailLog.layout=org.apache.log4j.PatternLayout
+log4j.appender.UserMigrDetailLog.layout.ConversionPattern=%d   %m%n  
+

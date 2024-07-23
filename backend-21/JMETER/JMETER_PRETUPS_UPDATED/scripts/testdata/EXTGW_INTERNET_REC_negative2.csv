@@ -1,0 +1,2 @@
+TestcaseId,TestcaseType,Module,Description
+TUNG12867,N,Internet Recharge,To check that if login id is filled then passowrd is also manadatory

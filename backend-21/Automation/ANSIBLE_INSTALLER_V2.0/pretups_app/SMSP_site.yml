@@ -1,0 +1,155 @@
+---
+ - name: "trying to create pretups user"
+   hosts: smsp_servers
+   serial: 1
+   sudo: true
+   user: "{{ ansible_ssh_user }}"
+   gather_facts: true
+   vars_files:
+   - roles/create_user/vars/main.yml
+   roles: 
+   - {role: create_user, tags: create_user_smsp}
+
+ - name: "create directory structure as per the Installation in pretupshome"
+   hosts: smsp_servers
+   gather_facts: true
+   serial: 1
+   sudo: true
+   user: "{{ ansible_ssh_user }}"
+   vars_files:
+   - roles/create_directory/vars/main.yml
+   - roles/create_user/vars/main.yml 
+   roles:
+   - {role: create_directory, tags: home_directory_smsp}
+
+ - name: "create directory structure as per the Installation in pretupsvar"
+   hosts: smsp_servers
+   gather_facts: true
+   serial: 1
+   sudo: true
+   user: "{{ ansible_ssh_user }}"
+   vars_files:
+   - roles/create_directory/vars/main.yml
+   - roles/create_user/vars/main.yml
+   roles:
+   - {role: create_pretupsvars, tags: log_directory_smsp}
+
+ - name: "create directory on the destination to keep java"
+   hosts: smsp_servers
+   gather_facts: true
+   serial: 1
+   sudo: true
+   sudo_user: "{{ USER_NAME }}"
+   vars_files:
+   - roles/copy_java/vars/main.yml
+   roles:
+   - {role: copy_java, tags: java_smsp}
+
+ - name: "copy tomcat inside pretups home directory"
+   hosts: smsp_servers
+   gather_facts: true
+   serial: 1
+   sudo: true
+   sudo_user: "{{ USER_NAME }}"
+   vars_files:
+   - roles/copy_tomcat/vars/main.yml
+   roles:
+   - {role: copy_tomcat, tags: tomcat_smsp}
+
+ - name: "copy pretups.war inside the tomcat/webapps directory"
+   hosts: smsp_servers
+   gather_facts: false
+   serial: 1
+   sudo: true
+   sudo_user: "{{ USER_NAME }}"
+   vars_files:
+   - roles/copy_war/vars/main.yml
+   roles:
+   - {role: copy_war, tags: pretups.war,war_smsp}
+
+ - name: "configure LogConfig.props"
+   hosts: smsp_servers
+   gather_facts: yes
+   serial: 1
+   sudo: true
+   sudo_user: "{{ USER_NAME }}"
+   vars_files:
+   - roles/copy_war/vars/main.yml
+   roles:
+   - {role: configure_LogConfig_SMSP, tags: configure_LogConfig_SMSP}
+
+
+ - name: "configure Constant.props, pretupsSTart.sh, pretupsStop.sh, configuration_default.props"
+   hosts: smsp_servers
+   gather_facts: yes
+   serial: 1
+   sudo: true
+   sudo_user: "{{ USER_NAME }}"
+   vars_files:
+   - roles/copy_war/vars/main.yml
+   - roles/configure/vars/main.yml
+   - roles/copy_java/vars/main.yml
+   - roles/create_user/vars/main.yml
+   - roles/db_schema_create/vars/main.yml
+   - roles/db_ship_scripts/vars/main.yml
+   roles:
+   - {role: configure, tags: configure_smsp,constant_smsp}
+
+
+
+# - name: "copying the customization files on the DB server "
+#   hosts: dbservers
+#   gather_facts: false
+#   serial: 1
+#   sudo: true
+#   sudo_user: oracle
+#   vars_files:
+#   - roles/copy_war/vars/main.yml
+#   - roles/db_schema_create/vars/main.yml
+#   - roles/db_ship_scripts/vars/main.yml
+#   - roles/copy_war/vars/main.yml
+#   roles:
+#   - {role: customize_db, tags: customize_db}
+
+ - name: "Starting the report jar at remote host"
+   hosts: smsp_servers
+   gather_facts: false
+   serial: 1
+   sudo: true
+   sudo_user: "{{ USER_NAME }}"
+   vars_files:
+   - roles/copy_war/vars/main.yml
+   - roles/report_jar/vars/main.yml
+   roles:
+   - {role: report_jar, tags: report_smsp}
+
+# - name: "shipping OAM"
+#   hosts: OAMservers
+#   gather_facts: false
+#   serial: 1
+#   sudo: true
+#   sudo_user: "{{ USER_NAME }}"
+#   roles:
+#   - {role: copy_OAM_30mar, tags: OAM}
+
+# - name: "shipping SMSCGateway"
+#   hosts: smsp_servers
+#   gather_facts: false
+#   serial: 1
+#   sudo: true
+#   sudo_user: "{{ USER_NAME }}"
+#   roles:
+#   - {role: copy_SMSCGateway, tags: SMSC}
+
+ - name: "Removing the jsp from the SMSP instance"
+   hosts: smsp_servers
+   gather_facts: false
+   serial: 1
+   sudo: true
+   sudo_user: "{{ USER_NAME }}"
+   vars_files:
+   - roles/copy_war/vars/main.yml
+   roles:
+   - {role: remove_jsp_smsp, tags: remove_JSP_SMSP}
+
+

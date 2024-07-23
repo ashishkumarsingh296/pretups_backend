@@ -1,0 +1,7 @@
+MSISDN1,MSISDN2,TOPUPVALUE,PRODUCTCODE,LANGUAGE1,PIN,TestcaseId,TestcaseType,Module,Description
+7200000113,7272777777,100,101,1,1357,TUNG13117,Positive,Channel to Channel Transfer through USSD,"To verify that channel user is able to initiate the ""transfer"" through USSD with all the mandatory fields."
+7200000113,7272777777,100,101,1,1357,TUNG13122,Positive,Channel to Channel Transfer through USSD,"To verify that channel user is unable to successfully initiate the ""transfer request"" through USSD if the type field is having value other than ""TRFREQ""."
+7200000113,7272777777,100,101,1,1357,TUNG13123,Positive,Channel to Channel Transfer through USSD,To verify that response is initiated successfully for C2C transfer with all the mandatory fields.
+7200000113,7272777777,100,101,1,1357,TUNG13124,Positive,Channel to Channel Transfer through USSD,"To verify that TXNSTATUS field contain 200 value if ""C2C transfer"" response is generated successfully else it display value other than 200"
+7200000113,7272777777,100,101,1,1357,TUNG13125,Positive,Channel to Channel Transfer through USSD,"To verify that success ""C2C Transfer"" response field contain all the  fields values in the character limit"
+7200000113,7272777777,100,101,1,1357,TUNG13126,Positive,Channel to Channel Transfer through USSD,"To verify that value in the Type field of ""C2C transfer"" success Reponse."

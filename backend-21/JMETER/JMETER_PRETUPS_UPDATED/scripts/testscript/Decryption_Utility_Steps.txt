@@ -1,0 +1,31 @@
+
+**********************Steps to be followed for Decryption Utility*************************************
+
+          1. Keep attached jar inside "Jmeter_folder/lib/ext"
+          
+          2. Edit " user.properties" which resides in bin folder inside jmeter and search for parameter "user.classpath". Uncomment it and enter value :                         
+
+	 Path_to_jmeter/jmeter_folder/lib/ext/ DecryptionUtility.jar
+               
+          3. Now open Jmeter and in any test plan add " BeanShell Sampler" 
+                
+           4. Inside BeanShell Sampler, write following code to store value of decrypted pin inside variable name A1 and use this value further :
+                                
+                                
+                                import simulator.decryptutility.BTSLUtil; //importing the package and class
+                                import java.util.*;
+                                import java.lang.*;
+                                import java.io.*;
+
+                                BTSLUtil jt = new BTSLUtil(); //Initiating an object
+                                String[]  pin  = new String[2];
+                                //PIN is a user defined variable which contains encrypted string
+                                pin[0] = vars.get("PIN");
+                                String dec;
+                                dec = jt.main(pin);
+                                vars.put("A1", dec); //Writing a value into Jmeter variable
+                                log.info("decrypted value is "+ dec);
+
+           
+          Note :- 3rd and 4th step has been already done in Vietnam JMX . So ignore in this case else applicable for other JMX that require decryption utility.
+

@@ -1,0 +1,17 @@
+Masters,Operator to channel,Preferences,White list subscribers,Change network,Channel domain,Profile management,Operator users,Message gateway,STK services,Subscriber routing,Voucher profile,Voucher denomination,Channel reports-user,Access control Mgmt.,IAT receiver country management,Voucher enquiry,Voucher reports,P2P eligible customer,Voucher Generation,Voucher upload
+Add service keyword,O2C batch approval level 2,System preferences,White list enquiry,Change network,Domain management,Category Trf. control profile,Add operator user,Add gateway,Add service,Upload & process file,Add profile details,Add denomination,Internal user roles report,User password Mgmt.,Add IAT receiver country,Voucher enquiry,Voucher reconciliation report,Add service subscriber,Voms order initiate,Upload voucher file
+Modify service keyword,,,Delete white list batch,,Category management,,Modify operator user,Modify message gateway,Assign services,Delete routing number,Modify profile details,Modify denomination,External user roles report,PIN/Password history report,Modify/Delete IAT receiver country,PIN enquiry,Vouchers status,Delete service subscriber,Voms Order Approve 1,
+Interface management,,,Add white list,,Grade management,,Batch operator user initiate,Modify gateway mapping,,Delete routing number batch,View profile details,View denomination,,,,,Voucher availability,Add service subscriber batch,Voms Order Approve 2,
+Add subLookUp,,,,,Channel Domain Mgmt.,,Operator user approval,,,Add routing mobile numbers,Add active profile details,Change generated status,,,,,,Delete service subscriber batch,Voms Order Approve 3,
+Modify subLookUp,,,,,Channel category Mgmt.,,View operator user,,,Mobile number portability,Modify active profile details,View batch list,,,,,,,,
+Network management,,,,,,,View self details,,,,View active profile details,Change other status,,,,,,,,
+Network status,,,,,,,,,,,Voucher type management,,,,,,,,,
+View network,,,,,,,,,,,,,,,,,,,,
+Service class management,,,,,,,,,,,,,,,,,,,,
+Division management,,,,,,,,,,,,,,,,,,,,
+Download report management,,,,,,,,,,,,,,,,,,,,
+Department management,,,,,,,,,,,,,,,,,,,,
+Group role management,,,,,,,,,,,,,,,,,,,,
+Update cache,,,,,,,,,,,,,,,,,,,,
+Schedule reports,,,,,,,,,,,,,,,,,,,,
+User Status Configuration,,,,,,,,,,,,,,,,,,,,

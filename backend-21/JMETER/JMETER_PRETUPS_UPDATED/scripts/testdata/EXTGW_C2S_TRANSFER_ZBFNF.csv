@@ -1,0 +1,4 @@
+DATE,EXTNWCODE,MSISDN,PIN,LOGINID,PASSWORD,EXTCODE,EXTREFNUM,MSISDN2,AMOUNT,LANGUAGE1,LANGUAGE2,SELECTOR,TestcaseId,TestcaseType,Module,Description
+,NG,7200009910,1357,,,,,7200002030,10,0,0,1,c2sRecharge_EXTGW,Positive,Recharge from Main Distributor to Subscriber ,Using MSISDN and PIN where MSISDN2 is ZeroBase Subscriber
+,NG,7200009910,1357,,,,,7200002030,10,0,0,1,c2sRecharge_EXTGW,Positive,Recharge from Main Distributor to Subscriber ,Using MSISDN and PIN where MSISDN2 is FnF Subscriber
+,NG,7200009910,1357,,,,,7200002000,10,0,0,1,c2sRecharge_EXTGW,Positive,Recharge from Main Distributor to Subscriber ,Using MSISDN and PIN where MSISDN2 is Not a  FnF Subscriber or ZeroBAse

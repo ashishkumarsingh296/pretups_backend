@@ -1,0 +1,2 @@
+TestcaseId,TestcaseType,Module,Description
+TUNG12354 ,Negative,Lite Recharge through USSD,Validate Lite Recharge request (LRC) mandatory parameters.

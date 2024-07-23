@@ -1,0 +1,28 @@
+ TestCase No.,TestCase Description,Interface Type,Interface Name,External ID,Validity Expiry time,TopUp Expiry Time,Language-1,Language-2,Status,Assertion
+TEST001,Super admin try to add new interface without giving any interface details,,,,,,,,,Interface type is required.
+TEST002,Super admin try to add new interface without interface type,,Comverse,COM001,20000,10000,English-1,English-2,Active,Interface type is required.
+TEST003,Super admin try to add new interface without interface name,CS4 Ericssion Post,,COM001,20000,10000,English-1,English-2,Active,Interface name is required.
+TEST004,Super admin try to add new interface without external ID,CS4 Ericssion Post,Comverse,,20000,10000,English-1,English-2,Active,External ID is required.
+TEST005,Super admin try to add new interface without validity expiry time,CS4 Ericssion Post,Comverse,COM001,,10000,English-1,English-2,Active,Validity expiry time (in milliseconds) is required.
+TEST006,Super admin try to add new interface without topup expiry time,CS4 Ericssion Post,Comverse,COM001,20000,,English-1,English-2,Active,TopUp expiry time (in milliseconds) is required.
+TEST007,Super admin try to add new interface without status of the interface,CS4 Ericssion Post,Comverse,COM001,20000,10000,English-1,English-2,,Status is required.
+TEST008,Try to submit validity validity expiry time as a string,CS4 Ericssion Post,Comverse,COM001,ABCD,10000,English-1,English-2,Active,Validity expiry time (in milliseconds) should be non negative numeric value
+TEST009,Try to submit validity validity expiry time having space,CS4 Ericssion Post,Comverse,COM001,100 00,10000,English-1,English-2,Active,Validity expiry time (in milliseconds) should be non negative numeric value
+TEST010,Try to submit validity validity expiry time as set of speical charactor,CS4 Ericssion Post,Comverse,COM001,#$$%#,10000,English-1,English-2,Active,Validity expiry time (in milliseconds) should be non negative numeric value
+TEST011,Try to submit validity validity expiry time in decimal form,CS4 Ericssion Post,Comverse,COM001,1000.1,10000,English-1,English-2,Active,Validity expiry time (in milliseconds) must be a numeric.
+TEST012,Try to submit validity validity expiry time as positive number,CS4 Ericssion Post,Comverse,COM001,10000,10000,English-1,English-2,Active,Validity expiry time (in milliseconds) must be a numeric.
+TEST013,Try to submit validity validity expiry time as negative number,CS4 Ericssion Post,Comverse,COM001,-10000,10000,English-1,English-2,Active,Validity expiry time (in milliseconds) should be non negative numeric value
+TEST014,Try to submit validity validity expiry time in fraction form,CS4 Ericssion Post,Comverse,COM001,10000/2,10000,English-1,English-2,Active,Validity expiry time (in milliseconds) should be non negative numeric value
+TEST015,Try to submit validity validity expiry time less than 1000 ms,CS4 Ericssion Post,Comverse,COM001,999,10000,English-1,English-2,Active,Validity expiry time (in milliseconds) is not in the range 1000 to 300000.
+TEST016,Try to submit validity validity expiry time more than 300000 ms,CS4 Ericssion Post,Comverse,COM001,300001,10000,English-1,English-2,Active,Validity expiry time (in milliseconds) is not in the range 1000 to 300000.
+TEST017,Try to submit validity TopUp expiry time as a string,CS4 Ericssion Post,Comverse,COM001,20000,ABCD,English-1,English-2,Active,TopUp expiry time (in milliseconds) should be non negative numeric value
+TEST018,Try to submit validity TopUp expiry time having space,CS4 Ericssion Post,Comverse,COM001,20000,100 00,English-1,English-2,Active,TopUp expiry time (in milliseconds) should be non negative numeric value
+TEST019,Try to submit validity TopUp expiry time as set of speical charactor,CS4 Ericssion Post,Comverse,COM001,20000,#$$%#,English-1,English-2,Active,TopUp expiry time (in milliseconds) should be non negative numeric value
+TEST020,Try to submit validity TopUp expiry time in decimal form,CS4 Ericssion Post,Comverse,COM001,20000,1000.1,English-1,English-2,Active,TopUp expiry time (in milliseconds) must be a numeric.
+TEST021,Try to submit validity TopUp expiry time as positive number,CS4 Ericssion Post,Comverse,COM001,20000,10000,English-1,English-2,Active,TopUp expiry time (in milliseconds) must be a numeric.
+TEST022,Try to submit validity TopUp expiry time as negative number,CS4 Ericssion Post,Comverse,COM001,20000,-10000,English-1,English-2,Active,TopUp expiry time (in milliseconds) should be non negative numeric value
+TEST023,Try to submit validity TopUp expiry time in fraction form,CS4 Ericssion Post,Comverse,COM001,20000,10000/2,English-1,English-2,Active,TopUp expiry time (in milliseconds) should be non negative numeric value
+TEST024,Try to submit validity TopUp expiry time less than 1000 ms,CS4 Ericssion Post,Comverse,COM001,20000,999,English-1,English-2,Active,TopUp expiry time (in milliseconds) is not in the range 1000 to 300000.
+TEST025,Try to submit validity TopUp expiry time more than 300000 ms,CS4 Ericssion Post,Comverse,COM001,20000,300001,English-1,English-2,Active,TopUp expiry time (in milliseconds) is not in the range 1000 to 300000.
+TEST026,Try to submit language message 1 less than 5 charactor,CS4 Ericssion Post,Comverse,COM001,20000,10000,Eng,English-2,Active,Language1 message cannot be less than 5 characters.
+TEST027,Try to submit validity TopUp expiry time more than 300000 ms,CS4 Ericssion Post,Comverse,COM001,20000,10000,English-1,Msg,Active,Language2 message cannot be less than 5 characters.

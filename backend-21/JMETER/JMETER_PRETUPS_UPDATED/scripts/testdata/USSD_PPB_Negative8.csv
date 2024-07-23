@@ -1,0 +1,2 @@
+TestcaseId,TestcaseType,Module,Description
+TUNG12995,Negative,Postpaid Bill Payment through USSD,"To verify that channel user is unable to initiate the ""PPB"" request if entered value in the ""SELECTOR"" field is other than numeric."

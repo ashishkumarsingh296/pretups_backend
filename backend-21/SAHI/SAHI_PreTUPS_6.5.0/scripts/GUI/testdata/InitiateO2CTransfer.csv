@@ -1,0 +1,22 @@
+TestCaseNo. ,Discription,MSISDN,Product Type,Ref No.,Quantity,Remarks ,Payment Type,Pmt. Date ,PIN ,Assertion 
+TEST001,Given that channel admin loggin into application and try to initiate o2C transfer wihtout giving MSISDN,,Prepaid Product,12345,100,O2C Transfer,Cash,calendar-icon.gif,1357,Mobile number is required.
+TEST002,Given that channel admin loggin into application and try to initiate o2C transfer wihtout giving product type,7233333333,,12345,100,O2C Transfer,Cash,calendar-icon.gif,1357,Product type is required.
+TEST003,"Verify that channel admin cant intiate the O2C transfer, it channel user is not existing ",7200000000,Prepaid Product,,,,,,,not found.
+TEST004,Verify that when you enter the invalid msisdn for o2C like small lengthm it will display error msg,72,Prepaid Product,,,,,,,MSISDN is incorrect.
+TEST005,Verify that values in product dropdown got populated while going to initiate O2C transfer ,,Prepaid Product,,,,,,,
+TEST006,Verify the functionality of reset button on search channel user page,7233333333,Prepaid Product,,,,,,,
+TEST007,verify the functionality of back button on O2C tranfer details page ,7233333333,Prepaid Product,,,,,,,
+TEST008,verify the functionality of reset button on O2C tranfer details page ,7233333333,Prepaid Product,12345,100,O2C Transfer,Cash,calendar-icon.gif,1357,
+TEST009,Given that channel admin try to initiate O2C transfer without giving Quantity,7233333333,Prepaid Product,12345,,O2C Transfer,Cash,calendar-icon.gif,1357,Please enter quantity for at least one product
+TEST010,Given that channel admin try to initiate O2C transfer without giving remarks ,7233333333,Prepaid Product,12345,100,,Cash,calendar-icon.gif,1357,Remarks Required
+TEST011,Given that channel admin try to initiate O2C transfer without giving instruction number in the system ,7233333333,Prepaid Product,12345,100,O2C Transfer,Demand Draft,calendar-icon.gif,1357,Payment instrument number is required.
+TEST012,Given that channel admin try to initiate O2C transfer without giving giving PIN ,7233333333,Prepaid Product,12345,100,O2C Transfer,Cash,calendar-icon.gif,,PIN is required.
+TEST013,Given tha channel admin enter quantity which is less than minimum amount  ,7233333333,Prepaid Product,12345,0,O2C Transfer,Cash,calendar-icon.gif,1357,"Requested quantity for product eTopUP, should be greater than zero."
+TEST014,Given tha channel admin try to initiate the O2C trasnfer  wihtout with an amount more than maximum amount,7233333333,Prepaid Product,12345,10000,O2C Transfer,Cash,calendar-icon.gif,1357,"Requested quantity for product eTopUP, should lie in between"
+TEST015,"Given that channel admin try to initiate the O2C transfer, by entering wrong PIN ",7233333333,Prepaid Product,12345,100,O2C Transfer,Cash,calendar-icon.gif,1569,Invalid PIN 
+TEST016,"verify that quantity entered, should be numeric only, if it is not then it should display error msg",7233333333,Prepaid Product,12345,10 0,O2C Transfer,Cash,calendar-icon.gif,1357,"Requested quantity for product eTopUP, should be numeric"
+TESt017,Verify that you cant intiated O2C transfer with negative amount it the system ,7233333333,Prepaid Product,12345,-100,O2C Transfer,Cash,calendar-icon.gif,1357,"Requested quantity for product eTopUP, should be greater than zero."
+TEST018,"Verify that after submit all correct details on transfer details page, it should go to confirm page ",7233333333,Prepaid Product,12345,100,O2C Transfer,Cash,calendar-icon.gif,1357,
+TEST019,Verify the functionality of back button on confirm page in the system ,7233333333,Prepaid Product,12345,100,O2C Transfer,Cash,calendar-icon.gif,1357,
+TEST020,Verify that values in product instrument type are getting populated while initating O2C transfer ,7233333333,Prepaid Product,,,,Cheque,,,
+TEST021,Given than channel admin successfully iniated the O2C transfer in the system,7233333333,Prepaid Product,12345,100,O2C Transfer,Cash,calendar-icon.gif,1357,Transfer request has been successfully initiated with transaction

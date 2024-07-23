@@ -1,0 +1,2 @@
+"TestCase Details","TestCase Description","Sender SubscriberType","Sender ServiceClassID","Receiver ServiceClassID","Service Type","Sub Service TypeId","cardGroupSetID"
+"CEGTA00018","Given a network admin when logs into the application then he/she can add Peer-to-Peer Transfer Rule","Prepaid Subscriber","All","All","Adhoc Recharge","Voice","AUTCG2306172224"

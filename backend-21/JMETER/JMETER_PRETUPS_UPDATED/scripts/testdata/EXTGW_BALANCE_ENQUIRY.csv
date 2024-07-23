@@ -1,0 +1,7 @@
+DATE,EXTNWCODE,MSISDN,PIN,LOGINID,PASSWORD,EXTREFNUM,EXTCODE,LANGUAGE1,TestcaseId,TestcaseType,Module,Description
+,NG,7277777776,2468,,,,,,TUNG12854 ,P,BALANCE,To check that a user is able to enquire its balance by entering msisdn and pin
+,NG,,,del,com@1234,,,,TUNG12855 ,P,BALANCE,To check that a user is able to enquire its balance by entering login id  and password
+,NG,,,,,,5321,,TUNG12856,P,BALANCE,To check that a user is able to enquire its balance by entering extcode
+,,,,,,,5321,,TUNG12857,N,BALANCE,To check that a user is unable to enquire its balance by not entering network code
+,NG,,,del,,,,,TUNG12858 ,N,BALANCE,To check that a user is unable to enquire its balance by  entering login id and not password
+,NG,7277777776,,,,,,,TUNG12859,N,BALANCE,To check that a user is unable to enquire its balance by  entering msisdn and not pin

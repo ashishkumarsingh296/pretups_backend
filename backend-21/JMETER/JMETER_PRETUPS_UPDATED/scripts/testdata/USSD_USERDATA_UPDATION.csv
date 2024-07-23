@@ -1,0 +1,7 @@
+MSISDN,PIN,SHORTNAME,CONTACTPERSON,SUBSCRIBERCODE,APPOINTMENTDATE,TestcaseId,TestcaseType,Module,Description
+7255555555,1357,Shaina,Shashi,2457639,02/09/16,TUNG10200 ,Positive,User Data update through USSD,To verify that the User Data Updation request is run successfully.
+7255gtdh55,1234,Shaina,Shashi,2457639,02/09/16,TUNG10201,Negative,User Data update through USSD,To verify that the User Data Updation request is not processed if invalid MSISDN is entered in the request.
+,1234,Shaina,Shashi,2457639,02/09/16,TUNG10202,Negative,User Data update through USSD,To verify that the User Data Updation request is not processed if  MSISDN is not entered in the request.
+7255555555,,Shaina,Shashi,2457639,02/09/16,TUNG10203,Negative,User Data update through USSD,To verify that the User Data Updation request is not processed if  PIN is not entered in the request.
+7255555555,#12*34,Shaina,Shashi,2457639,02/09/16,TUNG10204,Negative,User Data update through USSD,To verify that the User Data Updation request is not processed if invalid PIN is entered in the request.
+7255555555,1234,,,,,TUNG10205,Negative,User Data update through USSD,To verify that the User Data Updation request is not processed if no data is entered for updation in the request.

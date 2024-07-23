@@ -1,0 +1,7 @@
+MSISDN1,NETWORK,PIN,MSISDN2,ACTION,LANGUAGE1,TestcaseId,TestcaseType,Module,Description
+7200001040,NG,1357,7788667722,S,0,TUNG13113,Positive,User Suspend Resume ,by msisdn and pin
+7200001040,NG,1357,7788667722,R,0,TUNG13114,Positive,User Suspend Resume ,by msisdn and pin
+7200001040,NG,1357,7788667722,,0,TUNG13115,Negative,User Suspend Resume ,Blank value in Action
+,NG,1357,7788667722,S,0,TUNG13116,Negative,User Suspend Resume ,MSISDN kept empty
+7200001040,NG,,7788667722,S,0,TUNG12893 ,Negative,User Suspend Resume ,Pin left blank
+7200001040,NG,1357,7788667722,A,0,TUNG128934,Negative,User Suspend Resume ,Invalid Value in Action

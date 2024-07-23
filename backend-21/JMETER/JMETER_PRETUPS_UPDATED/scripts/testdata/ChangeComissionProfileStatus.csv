@@ -1,0 +1,3 @@
+loginId,password,domainCode,categoryCode,grphDomainCode,gradeCode,status,grphDomainCode,language1Message,language2Message,shortCode,categoryCode,commProfileSetId,combinedKey,gradeCode,commProfileSetName,code,oldCode,type,externalCode,TestcaseId,TestcaseType,Module,Description
+btnadm,1357,DIST,DIST,JAR,GR1,Y,ZAR,TEST,TEST,test123,DIST,336,336:null,GR1,test_Voucher,306,306,COMMPLSS,,TUNG12913,Positive,Change commission profile status,Successful request for commission profile status change
+btnadm,1357,DIST,DIST,JAR,GR1,Y,ZAR,TEST,TEST,test123,DIST,336,336:null,GR1,test_Voucher,306,306,COMMPLSS,,TUNG12914,Negative,Change commission profile status,Unsuccessful request for commission profile status change if language1 or language2 message is empty

@@ -1,0 +1,13 @@
+---
+ - name: "creating the Directory as pretupsvar  "
+   file: path=/{{ LOG_DIR_NAME }}/{{ LOG_DIRECTORY_FOLDER_NAME }} state=directory owner={{ USER_NAME }} group={{ GROUP_NAME }} mode=0755
+
+ - name: "Changing permission of pretupsvar to 0755 "
+   file:
+     path: /{{ LOG_DIR_NAME }}
+     owner: "{{ USER_NAME }}"
+     group: "{{ GROUP_NAME }}"
+     mode: 0755
+     recurse: yes
+   tags: permission
+

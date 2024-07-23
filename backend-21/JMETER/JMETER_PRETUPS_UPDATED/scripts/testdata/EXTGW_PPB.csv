@@ -1,0 +1,23 @@
+TestcaseId,TestcaseType,Module,Description
+,Positive,Postpaid bill payment,To verfiy that PPB is successful with only MSISDN and PIN.
+,Positive,Postpaid bill payment,To verfiy that PPB is successful with only Login ID and Password.
+,Positive,Postpaid bill payment,To verfiy that PPB is successful with only EXTCODE
+,Positive,Postpaid bill payment,To verfiy that PPB is successful with ALL
+,Positive,Postpaid bill payment,To verify PPB is successful if channel user is barred as receiver.
+,Positive,Postpaid bill payment,To verify PPB is successful if Date is not present
+,Positive,Postpaid bill payment,To verify PPB is successful if user is insuspended
+,Negative,Postpaid bill payment,To verify PPB is not successful if user is outsuspended
+,Negative,Postpaid bill payment,To verify PPB is not successful if TCP is suspended
+,Negative,Postpaid bill payment,To verify PPB is not successful if channel user is suspended
+,Negative,Postpaid bill payment,To verify PPB is not successful if channel user barred as sender
+,Negative,Postpaid bill payment,To verify PPB not successful if EXTNWCODE not present
+,Negative,Postpaid bill payment,To verify PPB not successful if  EXTNWCODE invalid
+,Negative,Postpaid bill payment,To verify PPB not successful if PIN not present with ALL
+,Negative,Postpaid bill payment,To verify PPB not successful if PIN is invalid
+,Negative,Postpaid bill payment,To verify PPB not successful if Password is invalid
+,Negative,Postpaid bill payment,To verify PPB not successful if Password is missing when Login ID present
+,Positive,Postpaid bill payment,To verify PPB  successful if external reference number is not unique
+,Negative,Postpaid bill payment,To verify PPB not successful if MSISDN2 is missing
+,Negative,Postpaid bill payment,To verify PPB not successful if Amount is not present
+,Negative,Postpaid bill payment,To verify PPB not successful if Selector is missing
+,Negative,Postpaid bill payment,To verify PPB not successful if Amount present is negative

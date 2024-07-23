@@ -1,0 +1,2 @@
+TestcaseId,TestcaseType,Module,Description
+TUNG2859,Positive,P2P Add Buddy,To verify that Add Buddy request is successful if all mandatory fields are filled valid values

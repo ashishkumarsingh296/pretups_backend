@@ -1,0 +1,5 @@
+IMEI,EXTNWCODE,DATE,MSISDN,PIN,LOGINID,PASSWORD,EXTCODE,LANGUAGE1,TestcaseId,TestcaseType,Module,Description
+,NG,06-09-2016,7255555555,1357,,,,,TUNG13006,Positive,LMS Point enquiry through EXTGW,To verify that Channel User can enquire their Loyalty Points Enquiry through EXTGW
+,NG,06-09-2016,7255555555,2468,,,,,TUNG13007,Negative,LMS Point enquiry through EXTGW,To verify that Channel User can not enquire their Loyalty Points Enquiry through EXTGW if Channel User PIN is incorrect
+,NG,06-09-2016,7255555555,1357,,,,,TUNG13008,Negative,LMS Point enquiry through EXTGW,To verify that Channel User can enquire their Loyalty Points Enquiry through EXTGW if Channel User do not have any loyality points
+,NG,06-09-2016,,,dist1,abc@123,,,TUNG13009,Negative,LMS Point enquiry through EXTGW,To verify that Channel User can not enquire their Loyalty Points Enquiry through EXTGW if Login ID is correct and Password is wrong of the user.

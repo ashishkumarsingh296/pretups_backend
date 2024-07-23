@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="PreTUPS Automation Suite" parallel="none" preserve-order="true">
+
+   <test name="Revamp Angular GUI" preserve-order="true">
+    <classes>
+      <class name="angular.testscripts.prereuisitesangular.PreRequisite_C2STransfer_Revamp"/>
+      <class name="angular.testscripts.prereuisitesangular.PreRequisite_GiftRecharge_Revamp"/>
+      <class name="angular.testscripts.prereuisitesangular.PreRequisite_PostpaidRecharge_Revamp"/>
+     <class name="angular.testscripts.prereuisitesangular.PreRequisite_Internet_Revamp"/>
+      <class name="angular.testscripts.prereuisitesangular.PreRequisite_C2CTransfer_Revamp"/>
+        <class name="angular.testscripts.prereuisitesangular.PreRequisite_CU_Home_Revamp"/>
+        <class name="angular.testscripts.prereuisitesangular.PreRequisite_ViewChannelUser_Revamp"/>
+    </classes>
+  </test>
+
+</suite>

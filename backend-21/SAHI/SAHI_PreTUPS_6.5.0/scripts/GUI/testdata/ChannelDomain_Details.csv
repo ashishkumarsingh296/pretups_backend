@@ -1,0 +1,11 @@
+Domain Type,Domain Name,No. Of Category,Category Name,Geographical domain,Role Type
+Distributor Channel,Administrator,5,Administrator ,Zone,Dynamic
+Distributor Channel,Administrator,,Shop Manager Partner,Area,Dynamic
+Distributor Channel,Administrator,,DSA-P,Sub Area,Dynamic
+Distributor Channel,Administrator,,Shop Att Partner,Sub Area,Fixed
+Distributor Channel,Administrator,,Point of Sale,Sub Area,Fixed
+Corporate Channel,Head Quarter,5,Head Quarter,Sub Area,Fixed
+Corporate Channel,Head Quarter,,Shop Manager,Sub Area,Fixed
+Corporate Channel,Head Quarter,,DSA,Sub Area,Fixed
+Corporate Channel,Head Quarter,,Shop Att,Sub Area,Fixed
+Corporate Channel,Head Quarter,,Retaile,Sub Area,Fixed

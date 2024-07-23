@@ -1,0 +1,13 @@
+spool on;
+spool pretups_user_profile.log;
+
+   CREATE PROFILE {{ DB_USER_PROFILE_NAME }}  LIMIT 
+   SESSIONS_PER_USER    {{ DB_SESSION_PER_USER }}     
+   CPU_PER_SESSION            UNLIMITED 
+   CPU_PER_CALL               UNLIMITED 
+   FAILED_LOGIN_ATTEMPTS      UNLIMITED ;
+
+
+spool off;
+
+

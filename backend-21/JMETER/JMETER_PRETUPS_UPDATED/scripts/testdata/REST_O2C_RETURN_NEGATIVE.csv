@@ -1,0 +1,5 @@
+TestcaseId,TestcaseType,Module,Description
+,Negative,O2C return through only MSISDN,To verify that Channel Users can not Return TopUp Credits to their Operators by entering only msisdn 
+,Negative,O2C return through only LoginID,To verify that Channel Users can not Return TopUp Credits to their Operators by entering only LoginID
+,Negative,O2C return through without ExternalCode,To verify that Channel Users can not Return TopUp Credits to their Operators without entering ExternalCode
+,Negative,O2C return through With all mandatory as balnk,To verify that Channel Users can not Return TopUp Credits to their Operators without entering any mandatory field

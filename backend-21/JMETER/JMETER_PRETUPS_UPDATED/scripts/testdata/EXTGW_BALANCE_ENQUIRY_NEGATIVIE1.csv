@@ -1,0 +1,2 @@
+TestcaseId,TestcaseType,Module,Description
+TUNG12857,N,BALANCE,To check that a user is unable to enquire its balance by not entering network code

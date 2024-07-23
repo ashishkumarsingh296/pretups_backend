@@ -1,0 +1,2 @@
+TestcaseId,TestcaseType,Module,Description
+TUNG12342,Negative,Lite Recharge through EXTGW,To Verify that invalid sender msisdn should show error for LRC

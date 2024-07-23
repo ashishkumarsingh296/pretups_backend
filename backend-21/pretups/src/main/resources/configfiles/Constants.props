@@ -1,0 +1,3668 @@
+##########################################################################################################
+##
+##      Constants.props
+##      Constants.props
+##
+##      This is the main configuration file of the PreTUPS system. Operator specific configuration
+##      changes will be done in this file. after making any change in this file update server cache
+##      need to run from the superadmin or network admin web interface
+##
+##      In some case we have to restart the application server (Database connection related changes)
+##
+##      Changes in this file should be done very carefully as any change in this file will have major
+##      impact on the PreTUPS functioning
+##
+##########################################################################################################
+
+#DB to be connected, value should be oracle or postgresql
+
+pretups.db=oracle
+#pretups.db=postgresql
+
+## Database Server URL details, consisting of Database(Oracle) Driver, Database server IP adderess,
+## Port on which databse is running,Database service ID
+
+datasourceurl=jdbc:oracle:thin:@<DBIP>:<DBPORT>:<SID>
+
+## Database user id and password, it is encypted. database user id and password should encrypted by
+## a utility program. for encryption of login id and password send your login id and passward to
+## Bharti, Bharti will provide the encrypted login id and password.
+
+#DB_Name
+userid=<DBNAME>
+passwd=<DBPWD>
+
+#Edition Flag for Zero Downtime upgrade
+EDITION_SUPPORT=N
+
+#Edition to be loaded for Zero Downtime upgrade
+EDITION_NAME=ora$base
+
+#For Oracle Following fields would depend on data source we are using
+poolmanagerclass=com.btsl.db.pool.OJDBCPoolManager
+reportdbpoolmanagerclass=com.btsl.db.pool.OJDBCPoolManager
+currentReportDBPoolManagerClass=com.btsl.db.pool.OJDBCPoolManager
+externaldbpoolmanagerclass=com.btsl.db.pool.OJDBCPoolManager
+
+#For Postgres
+#POSTGRES_DB_SUPPORT=Y
+#Following fields would depend on data source we are using
+#poolmanagerclass=com.btsl.db.pool.C3p0PoolManager
+#reportdbpoolmanagerclass=com.btsl.db.pool.C3p0PoolManager
+#currentReportDBPoolManagerClass=com.btsl.db.pool.C3p0PoolManager
+#externaldbpoolmanagerclass=com.btsl.db.pool.C3p0PoolManager
+#for reports 
+#reportdbdatasourceurl=jdbc:postgresql://[< DBIP >]:< DBPORT >/< DB_Name >
+#reportdbuserid=<reportdbuserid>
+#reportdbpasswd=<reportdbpasswd>
+#currentDateRptDBDataSourceURL=jdbc:postgresql://[< DBIP >]:< DBPORT >/< DB_Name >
+#currentReportDBUserId=<currentReportDBUserId>
+#currentReportDBPasswd=<currentReportDBPasswd>
+#####C3p0 additional Configuration###########
+#C3p0Path=<Tomcat-Path>/webapps/pretups/WEB-INF/classes/configfiles/C3p0.props
+#C3p0PathReport=<Tomcat-Path>/webapps/pretups/WEB-INF/classes/configfiles/C3p0_Report.props
+#C3p0PathExternalDB=<Tomcat-Path>/webapps/pretups/WEB-INF/classes/configfiles/C3p0_ExternalDB.props
+
+#This field determined whether application server data source is to be used or application itself has to create and manage its db pool
+applicationpool=Y
+
+#Following field would be valid if applicationpool=N
+datasourcename= jdbc/pretupsdatasource
+
+
+
+#This field would be used to determine helper class to be used(setFormOfUSe implementation currently)
+databasehelperclass= com.btsl.util.DatabaseHelperClass
+#Seprate Report DB
+reportdbapplicationpool=Y
+reportdbdatabasehelperclass=com.btsl.util.DatabaseHelperClass
+reportdbdatasourcename=jdbc/pretupsdatasource
+
+
+## Database connection POOL details, minimum pool size and maximum pool size,
+## Minimum pool size should be more that maximum connection connection required by PreTUPS
+## in peak hours. maximum pool size should be higher than the minimum pool size.
+minpoolsize=10
+poolsize=15
+
+
+## Seperator used for separating the values in the cache, no need to change this parameter
+cachestartseparator=::
+cachemiddleseparator=:
+## Sequence of the cache message format
+cachemessageformat={0} {1}  {2}
+
+
+## Country code used for sending message, This is the Mobile/Telephone country code of
+## the country where PreTUPS is installed
+COUNTRY_CODE=224
+
+
+## Internet Explorers from where PreTUPS Web interface is allowed to access,PreTUPS
+## can be best viewed in Microsoft Internet Explorer 5.0 or higher and JRE 1.5 or
+## higher ( JRE 1.5 or higher is mandatory to provide multilingual support)
+Allowed_Explorers=MSIE 5.0,MSIE 6.0,MSIE 7.0,MSIE 8.0,Mozilla/5.0,Firefox/3.0.6
+
+
+
+## UDH value of the binary message coming from STK, on the basis of this UDH PreTUPS
+## will decide whether the message binary or not (in case of the plain message UDH
+## will be blank.)
+BINARY_UDH_MSG_STRING_UDH=%02%70%00
+
+## PID need to be sent with each binary message
+BINARY_UDH_MSG_STRING_PID=127
+
+## coding value need to be send with each binary message.
+BINARY_UDH_MSG_STRING_CODING=2
+
+## ALTDCS value need to be send with each binary message
+BINARY_UDH_MSG_STRING_ALTDCS=1
+
+## MCLASS need to be send with each binary message
+BINARY_UDH_MSG_STRING_MCLASS=3
+
+
+## IN interface and Billing system configuration files path
+INTERFACE_DIRECTORY=<Tomcat-Path>/conf/pretups/
+
+## IN interface and Billing system configuration files Extension should .txt
+INTERFACE_FILE_EXTENSION=txt
+
+# Interface File Prefix, if keep it blank if not used
+INTERFACE_FILE_PREFIX=
+
+
+## Deafult passowrd shown on the web screen,no need to change this
+DISPLAY_USER_PASSWORD=00000
+
+
+## Number of TD to be displayed on the web screen assignGeography.jsp
+## (Dynamically define the number of TDs(column in the row))
+ASSIGN_GEOGRAPHY_TD_LENGTH=2
+
+## Number of TD to be displayed on the web screen assignRoles.jsp
+## (Dynamically define the number of TDs(column in the row))
+ASSIGN_ROLES_TD_LENGTH=3
+
+## Number of TD to be displayed on the web screen addGroupRoles.jsp
+## (Dynamically define the number of TDs(column in the row))
+ASSIGN_GROUP_ROLES_TD_LENGTH=3
+
+## Number of TD to be displayed on the web screen assignDomain.jsp
+## (Dynamically define the number of TDs(column in the row))
+ASSIGN_DOMAIN_TD_LENGTH=2
+
+## Number of TD to be displayed on the web screen assignServices.jsp
+## (Dynamically define the number of TDs(column in the row))
+ASSIGN_SERVICES_TD_LENGTH=3
+
+## Number of TD to be displayed on the web screen assignProducts.jsp
+## (Dynamically define the number of TDs(column in the row))
+ASSIGN_PRODUCTS_TD_LENGTH=3
+
+## Number of TD to be displayed on the web screen changeRoleChannelUser.jsp
+## (Dynamically define the number of TDs(column in the row))
+CHANGE_ROLE_TD_LENGTH=3
+
+
+## List of the session variables which are not to be removed from the session
+## at the time session clear, no need to change - will be manage by development team
+SESSION_EXCLUDE_LIST=user,urlCode,moduleCode,org.apache.struts.action.LOCALE,locale
+
+
+## Defined for right to left direction of the page (like language is arabic), no
+## need to change as RTL will be applicable only in case of Arabic
+LANGUAGES_RTL_DIRECTION=ar,fa
+
+
+## Defined for help files (commented becs arabic help files not designed)
+ALLOWED_LOCALES=fr_GN
+
+
+## Parameters related to ICCID key mapping file provided by SIM vendor, these are
+## the tags available in the ICCID key mapping file
+master.poskeyupload.label.applversion=Application Version
+master.poskeyupload.label.date=Date
+master.poskeyupload.label.simprofile=SIM Profile
+master.poskeyupload.label.startdata=START DATA
+master.poskeyupload.label.enddata=END DATA
+master.iccmsisdnmap.label.heading=
+
+
+## TON - Type of network and NPI - Numbering Plan Identifier Paramters used for
+## sending SMS parameters (Ton NPI)
+## TON - NPI value for ISDN
+TON_NPI_INT_ISDN  = 224
+
+## TON - NPI value for NATIONAL ISDN
+TON_NPI_NATIONAL_ISDN = 80
+
+## TON - NPI value for UNKNOWN
+TON_NPI_UNKNOWN = 80
+
+
+## Date and time format used in CardGroupP2PDetailsAction.java, CardGroupP2PDetailsForm.java,
+## CardGroupC2SDetailsAction.java, CardGroupC2SDetailsForm.java
+CARDGROUP_DATE_FORMAT=dd/MM/yy HH:mm
+
+
+## Date and time format used in used in CommissionProfileAction.java,CommissionProfileForm.java
+COMMISSION_DATE_FORMAT=dd/MM/yy HH:mm
+
+
+## Assign Popup window size
+ASSIGN_POPUP_WINDOW_SIZE=resizable=yes,status=no,scrollbars=yes,width=800,height=300,top=150,left=100
+
+## Search Popup window size
+SEARCH_POPUP_WINDOW_SIZE=resizable=yes,status=no,scrollbars=yes,width=500,height=300,top=150,left=100
+
+## Number of commission slabs,i.e. number of slab rows displayed on the jsp page
+ASSIGN_COMMISSION_SLABS_LENGTH=5
+
+## Number of additional commission slab, i.e. number of additional commission slab rows displayed
+## on the jsp page
+ASSIGN_ADDITIONAL_SLABS_LENGTH=5
+
+
+## Popup window size for Customer care enquiry
+CCEENQ_POPUP_WINDOW_SIZE=resizable=yes,status=no,scrollbars=yes,width=1000,height=600,top=150,left=10
+
+
+## Use HOME Stock for Roaming transaction - not in use
+USE_HOME_STOCK=YES
+
+
+## Is single roam location  Y or N  - not in use
+Single_Roam_Location=Y
+
+## Lock time for the registration request, if the registration request is received then next
+## registration request
+lockTimeForRegReq=15
+
+## XML DTD validation file name with path, this is used in add and modify services
+xmldtdfilepath=<Tomcat-Path>/webapps/pretups/WEB-INF/classes/configfiles/WMLValidator.dtd
+
+## Tme Delay sleep30 Time between two operations and speep05 time between two SMS, in milliseconds
+sleep30 = 30000
+sleep05 = 5000
+
+## If message is not sent then retry interval value in milliseconds
+retryinterval = 1000
+
+## No of retries, to send the OTA message to STK if message sending failed
+numberofretries = 5
+
+
+## Acivity lock time for OTA operations wait for response from STK, if OTA message is
+## sent to a number then OTA activity will be blcoked for this duration, Value in minutes
+lockTime = 3
+
+## PreTUPS OTA Job creation file path
+JobCreationFilePath=<Tomcat-Path>/logs/
+
+
+## First keyword received with each SMS request, used in old STK
+smsfirstkeyword=CSMS
+
+
+## Reports paramters
+## month year format for reports
+MONTH_YEAR_FORMAT =yyyy/MM
+
+## Crystal Scheduled Report -  Schedular detail
+## Scheduled reports schedular program path
+report.schedule.path=ReportScheduling?dll=pdsora7.dll&report=
+report.daily.schedule.path=ReportSchedulingDaily?dll=pdsora7.dll&report=
+report.sctedule.hour=23
+report.sctedule.minute=59
+report.schedule.store.dir=<Tomcat-Path>/logs/scheduledreports/
+report.schedule.file.type=XLS
+report.schedule.delete.file.difference=-7
+reportingdb.report.context=crystal
+
+
+
+## Crystal reports configuration details
+report.path=/Sample.jsp?dll=pdsora7.dll&report=
+report.path1=/Sample.jsp?dll=pdsora7.dll&
+report.path2=report=
+
+#report.actualpath value For Oracle /WEB-INF/reports/ And For Postgres /WEB-INF/reports_postgres
+report.actualpath=/WEB-INF/reports
+
+report.reports.label.properties.path=/WEB-INF/classes/configfiles/Reports_label
+report.reports.label.properties.extension=.properties
+#####report.context=crystal
+
+## Reports date format
+## format example
+## yyyy.MM.dd HH:mm:ss 2003.05.08 16:32
+## dddd d/M/yy hh:mm tt Monday 4/8/03 4:33 p.m.
+## ddd, MMM d, 'yy Mon, Aug 5 '03
+## yyMMddHHmmss 050804071245
+report.onlydateformat=yyyy/MM/dd
+
+##  Reports date & time format
+report.datetimeformat=yyyy/MM/dd HH24:MI:SS
+report.onlydatetimeformat=yyyy/MM/dd HH24:MI:SS
+##  Reports system date time format
+report.systemdatetime.format=yyyy/MM/dd HH:mm:ss
+report.systemdatetime.format24=yyyy/MM/dd HH24:mi:ss
+
+## P2P reports date and Month format
+p2p.report.monthwisep2ptransactionsummary.month.format=yyyy/MM
+p2p.report.monthwisep2ptransactionsummary.yearformat=yyyy
+
+
+#Maximum number of days for the date range
+MAX_DAYLIMIT_DATERANGE = 30
+
+## MNP key file upload path
+UploadMNPFilePath=<Tomcat-Path>/logs/MNPProcess/
+
+## ICCID key file upload path
+UploadPOSKeysFilePath=<Tomcat-Path>/logs/iccidfiles/
+
+## ICCID key file path after processing
+ICCArchiveFilePath=<Tomcat-Path>/logs/iccidafterfiles/
+
+## delimiter used in the ICCID MSISDN and key mapping file
+Delimiterforuploadiccid=,
+
+## Upload file size of ICCID key file in bytes (1024 - 1KB, 10240 - 10KB, 1048576 - 1MB,5242880 - 5 MB)
+ICCID_KEY_FILE_SIZE=5242880
+
+## Upload file size of ICCID MSISDN file in bytes (1024 - 1KB, 10240 - 10KB, 1048576 - 1MB,5242880 - 5 MB)
+ICCID_MSISDN_FILE_SIZE=5242880
+
+
+## Database routing file Deatils
+## Database routing file upload path
+UploadRoutingFilePath=<Tomcat-Path>/logs/routingfiles/
+
+## Database routing file delimiter ,
+DelimiterforuploadRouting=,
+
+## Database routing file - key for IN Name
+routing.routinguploadfile.inname=IN NAME
+
+## Database routing archive file path after processing
+RoutingArchiveFilePath=<Tomcat-Path>/logs/routingfiles/
+
+
+## Bar user in bulk file details, upload file path and delimeter
+UploadBarFilePath=<Tomcat-Path>/logs/barbulkfile/
+DelimiterforuploadBarFile=,
+
+
+## Unbar user in bulk file details, upload file path and delimeter
+UploadUnBarFilePath=<Tomcat-Path>/logs/unbarbulkfile/
+DelimiterforuploadUnBarFile=,
+
+
+## Monitor server user username and password for admin operations
+monitorServerUser=admin
+monitorServerPass=admin
+
+
+## Monitor server user username and password for viewing
+monitorServerUserView=view
+monitorServerPassView=view
+
+
+## Upload file details for Unregister Subscribers in bulk
+## Upload file path and delimeter for Unregister Subscribers in bulk
+UploadFileForUnRegPath=<Tomcat-Path>/logs/UnregisteredInBulk/
+DelimiterForUploadedFileForUnReg=,
+
+## Archive file path for Unregister Subscribers in bulk after processing
+ArchiveFilePathForUnReg=<Tomcat-Path>/logs/logs/UnregisteredInBulk/
+
+
+## Sleep time for low balance alert between the processing of two users in milliseconds
+ALERT_SLEEP_TIME=50
+
+
+## Second locale supported by PreTUPS (LOCALE OTHER THAN en_US), it should be langauge
+## underscore country code e.g. - ar_EG, ar_JO, fr_SN,
+SECOND_LOCALE=fr_GN
+
+
+## Default SMS/USSD Language, if not received in request then use this,
+## values will be 0 for English and 1 for second Language
+SMS_USSD_DEFAULT_LANGUAGE=0
+
+
+## Whether STK registration is required or not,
+STK_REGISTRATION_REQUIRED=N
+
+
+## File details for Unregister Channel Users
+## Upload file path and delimeter for Unregister Channel Users
+UploadFileForUnRegChnlUserPath=<Tomcat-Path>/logs/deregisterchnlusr/
+DelimiterForUploadedFileForUnRegChnlUser=,
+
+## Archive file path for Unregister Channel Users
+ArchiveFilePathForUnRegChnlUser=<Tomcat-Path>/logs/deregisterchnlusrarch/
+
+
+## Upload file size of other files in bytes (1024 - 1KB, 10240 - 10KB, 1048576 - 1MB,5242880 - 5 MB)
+OTHER_FILE_SIZE=5242880
+
+
+## Entry for no. of contents check in the file for Unregistered & Bar Unbar
+NO_OF_CONTENTS=5000
+
+
+## Entry for path of servlet being called in case of web There are two value only one is active at a time.
+## in url is to be constructed in action class then first one is used
+## if value are to be replaced then second is used.
+## so if here chenge is done then corresponding change in action class also reqired
+CHANNEL_WEB_RECHARGE_SERVLET=/pretups/C2SReceiver
+
+
+## O & M server IP Address, this is the IP address of the server where OAM module is running,
+## give the virtial IP is application server is in the cluster mode
+ONM_HOST_IP=127.0.0.1
+
+## Event Levels for which SNMP PDU would be sent FATAL=1,MAJOR=2,MINOR=3,TRIVIAL=4,INFO=5
+SNMP_EVENT_LEVELS=1,2,3,4,5
+
+
+## Sub Service UniCodes - for CVG, VG,C etc, it will be provided by STK development team
+## -- check Abhijit/Gurjeet   TBD ***********************************************************************
+CVG_UNICODE_AR=06270644062706480644
+VG_UNICODE_AR=06270644062b06270644062b
+C_UNICODE_AR=06270644062b062706460649
+
+
+## Selector code coming from STK in case of request in English
+CVG_ENGLISH_CODE=Option1
+VG_ENGLISH_CODE=Option3
+C_ENGLISH_CODE=Option2
+
+## Language 1 code coming from STK in case of the englsih language request
+English=0
+
+
+## Language 2 code coming from STK in case of the second language (french, arabic) request
+#Here 1 is the language code of arabic(in locale master table)
+06270644063906310628064a0629=1
+
+
+
+## Number of records to displayed on pages where pager is implemented
+NUMBER_OF_RECORDS_ON_PAGE=10
+
+## PreTUPS Administrator mobile number for Processes related SMS, multiple numbers
+## can be given comma separated
+#adminmobile=62393284
+adminmobile=62248142,62393284
+
+## PreTUPS system installation date dd/mm/yy, to be used, if no date is available in database
+## executed up field
+installation_date =23/03/09
+
+## for http conenction time out values  in Push message
+CONNECT_TIMEOUT=10000
+READ_TIMEOUT=10000
+
+
+## Number row on the slab management page for slab based reports
+numberofrowsinslabs=10
+
+## Number of previous months to be displayed
+previousMonths=2
+
+## Number of forward months to be displayed
+forwardMonths=5
+
+## Number of slabs for modify to be displayed
+numberofrowsinslabsformodify=3
+
+
+## SMSCGateway admin url will be used on the monitor server screen, if there is multiple
+## urls then use the comma in between the different admin urls
+SMSCGateway_URL=http://192.168.167.12:13000/status?
+
+
+## Entry to enable disable the entry in the P2P Receiver request and C2S reciver request table
+## If Y then entry will be made in these tables for analysis purpose, it is advised that this
+## parameter should be N in case of Production system
+LOAD_TEST=N
+
+## Setting for receiver fail message is required or not for general exceptions in case of
+## validation and TopUp, N for NO and Y for YES
+P2P_REC_GEN_FAIL_MSG_REQD_V=N
+P2P_REC_GEN_FAIL_MSG_REQD_T=N
+C2S_REC_GEN_FAIL_MSG_REQD_V=Y
+C2S_REC_GEN_FAIL_MSG_REQD_T=Y
+
+
+## This entry is used to display the number of rows at the time of adding the transfer rules.
+## This value must be numeric.
+NO_ROW_TRANSFER_RULE=10
+
+## Minimum residual balance for corporate, this is the minimum balance that a corporate should have
+CORP_MIN_RESIDUAL_BALANCE=100
+
+## Restricted MSISDN upload file details of Corporate Subscribers
+## Restricted MSISDN upload file path
+bulkRegistrationFilePath=<Tomcat-Path>/logs/BulkRegistration/
+
+## Restricted MSISDN archive file path after processing
+archiveFilePathForBulkRegistration=<Tomcat-Path>/logs/BulkRegistrationArch/
+
+## Restricted MSISDN upload file size
+MAX_RESTRICTED_LIST_SIZE=5000
+
+
+## Restricted MSISDN balck list upload file details of Corporate Subscribers
+## Restricted MSISDN balck list upload file path
+blackListFilePath=<Tomcat-Path>/logs/blacklist/
+#blackListErrFile=C:\\BlackList.txt     TBD RUWALI
+
+## Restricted MSISDN balck list archive file path after processing
+ArchiveblackListFilePath=<Tomcat-Path>/logs/blacklistArch/
+
+## Restricted MSISDN balck list upload file size and delimeter
+MAX_BLACK_LIST_SIZE=5000
+DelimiterForUnBlack=,
+
+
+############################### Deatils of Schedule/re-schedule topup transfers #########################
+## Path for uploading schedule /reschedule file
+UploadRestrictedMSISDNFilePath=<Tomcat-Path>/logs/schedule/
+
+## Archive file path for schedule/re-schedule topup transfers batch process
+ArchiveFilePathRestrictedMSISDNFilePath=<Tomcat-Path>/logs/archschedule/
+
+## File size in bytes (1024 - 1KB, 10240 - 10KB, 1048576 - 1MB, 5242880 - 5 MB)
+RESTRICTED_MSISDN_FILE_SIZE=1048576
+
+## File path of the download restricted MSISDN list for scheduling/rescheduling
+DownloadRestrictedMSISDNFilePath=<Tomcat-Path>/logs/downloadschedule/
+
+##File path of the download for User Movment
+DownloadUserMigrationPath=<Tomcat-Path>/logs/downloadschedule/
+
+
+## File name of the download restricted MSISDN list
+DownloadRestrictedMSISDNFileName=schedule
+
+## size of the maximum restricted MSISDN associated with as corporate
+RESTRICTED_MSISDN_LIST_SIZE=1000
+
+## Number of days that need to be considered for calculating total scheduled amount
+DATE_TILL_BATCH_TO_CONSIDER=3
+
+
+############################ Entries for the associate subscriber  #######################################
+## Downlaod file path for the Approved MSISDN List for associate
+DownloadApprovedRestrictedMSISDNFilePath=<Tomcat-Path>/logs/associatedownload/
+
+## Upload associate file path
+UploadResAssociateMSISDNFilePath=<Tomcat-Path>/logs/associatedupload/
+
+## Archive file path for the associated MSISDN list
+ArchiveFilePathApprovedRestrictedMSISDNFilePath=<Tomcat-Path>/logs/associatearchive/
+
+## Downlaod file name for Approved restricted MSISDN
+DownloadApprovedRestrictedMSISDNFileName=approvedlist
+
+## File size in bytes Approved restricted MSISDN List (1024 - 1KB, 10240 - 10KB, 1048576 - 1MB,5242880 - 5 MB)
+RESTRICTED_APP_MSISDN_FILE_SIZE=1048576
+
+## Maximum number of records in the association MSISDN list file
+RESTRICTED_APP_MSISDN_LIST_SIZE=1000
+
+
+
+## Message Gateway type for which sender push message is not required, in case of recharge and bill payment process
+#C2S_SEN_MSG_NOT_REQD_GW=WEB
+C2S_SEN_MSG_NOT_REQD_GW=
+
+## Delimeter for the MSISDN associate/de-associate
+DelimiterForDeAssociateSubs=,
+
+# Delimiter of MSISDN's for suspend/resume corporate subscriber
+DelimiterForSusResCorpSubs=,
+
+## Text area length for the MSISDN on the corporate module screens, where MSISDN is taken as
+## comma separated
+MSISDN_TEXTAREA_MAX_LENGTH=200
+
+
+## Size details for the error message popup window
+ERRORMSG_POPUP_WINDOW_SIZE=resizable=yes,status=no,scrollbars=yes,width=500,height=550,top=100,left=100
+
+
+
+################################## Entries for the schedule topup process processing######################
+## Sleep enquiry time (from database) in milliseconds after validation true for the final status
+RST_SLEEP_ENQUIRY_TIME=3000
+
+## Number of days upto which previous scheduled batches is to be considered for Processing/or rescheduling
+RST_MAX_DAYS_SCH_BATCH=31
+
+## Maximum Number of times the system will check in database for final status after validation
+RST_NO_SLEEP_ENQUIRY=5
+
+## Maximum number times consecutively connection is refused to stop the process
+RST_CON_REFUSE_COUNTER=20
+
+## PreTUPS sms server connect timeout in millilseconds
+SMS_SERVER_CONNECT_TIMEOUT=1000
+
+## PreTUPS SMS server read timeout in millilseconds, it should be 5 time more than the
+## normal time taken in recharge/ bill payment
+SMS_SERVER_READ_TIMEOUT=10000
+
+## PreTUPS SMS server url,ip and port should be taken from the Instance on the basis
+## of the network of the  mobile number
+SCHDULE_TOP_UP_URL=/pretups/C2SReceiver
+
+##Instance ID to load the LoadControllerCache
+RST_INSTANCE_ID=10
+
+## Value of supporting sub-services (Selector) in the system. All values must be comma seperated.
+## keep only as many entries here as many selector is supported for Mobile Operator -e.g.
+## an operator wants only one selector CVG - then only 1 be here.
+DEFINED_SUB_SERVICE_VALUE=01,02,03
+
+
+
+############################ Enrties related to the Whitelist processing  #############################
+## White list file path on the server
+WHITELIST_FILE_PATH = <Tomcat-Path>/logs/whitelist/
+
+## White list file prefix, this can be left blank if don't wants to check file prefix
+WHITELIST_FILE_PREFIX =
+
+## white list file extension
+WHITELIST_FILE_EXT=txt
+
+## If number invalid count is more than this percentange then file will not be processed
+WHITELIST_PERCENTAGE_VALID_COUNT=60
+
+## Whitelist header Start - not in use
+#WHITELIST_HEADER_START =[START]
+
+## Whitelist header end  - not in use
+#WHITELIST_HEADER_END=[END]
+
+## Whitelist process mode, DEL - Delete on the basis of the network code and external id then insert
+## BIN - batch insert , UPD - Delete/insert/update, DROP - droping the table and creating it again
+WHITELIST_ACTION =UPD
+
+## White list file move locatin after processing
+WHITELIST_MOVE_LOCATION=<Tomcat-Path>/webapps/whitelistarchive/
+
+## Network code key in file header - not in use
+WHITELIST_NETW_CODE=NETWORK_CODE
+
+## External interface id key in file header
+WHITELIST_EXT_INTERFACE_ID=EXT_INTERFACE_ID
+
+## Separater used to parsed the file name to get External code  and Network code
+WHITELIST_FILE_NAME_SEPARATOR=_
+
+
+## Default instance code for the SMS server For Load Controller, if there is Web and SMS then
+## WEB will be 1 and SMS will be 2, if one WEB and two SMS then WEB -1, SMS C2S- 2, SMS P2P -3
+## and so on:  (Value same as in Web.xml though it is not required)
+DEF_INSTANCE_ID=10
+
+
+#Entry used to display menu
+ROLE_TYPE=ALL
+
+
+############ IN interface ID for which pool is to be made on the server startup.If there are multiple
+## IN of the same IN type then IN should be be comma saperated.
+## Socket pool for Alactel old version
+SOCKET_CONN_POOL_IDS=INTID00001
+
+##Ferma Interface ID
+FERMA_CONN_POOL_IDS=
+
+##Ferma6 Interface ID
+FERMA6_CONN_POOL_IDS=INTID00015
+
+
+## Telnet pool size for Erricsion IN
+TELNET_CONN_POOL_IDS=
+
+
+## Maximum login count for a network, if there are multiple network then multiple
+## lines will be here, this should be numeric value
+MAX_LOGINS_LOCATION_GN = 50
+
+
+## #######################Entries related Database Purging###############################################
+## Database Archival process start time in hh24mm format e.g 12:30 AM 0030 or 1 AM will be 0100
+ARCHIVE_FTIME = 0000
+
+## Database Archival process end time in hh24mm format e.g 12:30 AM 0030 or 1 AM will be 0100
+ARCHIVE_TTIME = 0700
+
+## Labels of the Subscriber transfer (Credit Transfer) - P2P - transactions
+SUB_TRA_LABEL = TRANSFER_ID,TRANSFER_DATE,TRANSFER_DATE_TIME,NETWORK_CODE,SENDER_ID,PRODUCT_CODE,SENDER_MSISDN,RECEIVER_MSISDN,RECEIVER_NETWORK_CODE,TRANSFER_VALUE,ERROR_CODE,REQUEST_GATEWAY_TYPE,REQUEST_GATEWAY_CODE,REFERENCE_ID,PAYMENT_METHOD_TYPE,SERVICE_TYPE,PIN_SENT_TO_MSISDN,LANGUAGE,COUNTRY,SKEY,SKEY_GENERATION_TIME,SKEY_SENT_TO_MSISDN,REQUEST_THROUGH_QUEUE,CREDIT_BACK_STATUS,QUANTITY,RECONCILIATION_FLAG,RECONCILIATION_DATE,RECONCILIATION_BY,CREATED_ON,CREATED_BY,MODIFIED_ON,MODIFIED_BY,TRANSFER_STATUS,CARD_GROUP_SET_ID,VERSION,CARD_GROUP_ID,SENDER_ACCESS_FEE,SENDER_TAX1_TYPE,SENDER_TAX1_RATE,SENDER_TAX1_VALUE,SENDER_TAX2_TYPE,SENDER_TAX2_RATE,sENDER_TAX2_VALUE,SENDER_TRANSFER_VALUE,RECEIVER_ACCESS_FEE,RECEIVER_TAX1_TYPE,RECEIVER_TAX1_RATE,RECEIVER_TAX1_VALUE,RECEIVER_TAX2_TYPE,RECEIVER_TAX2_RATE,RECEIVER_TAX2_VALUE,RECEIVER_VALIDITY,RECEIVER_TRANSFER_VALUE,RECEIVER_BONUS_VALUE,RECEIVER_GRACE_PERIOD,RECEIVER_BONUS_VALIDITY,CARD_GROUP_CODE,RECEIIVER_VALPERIOD_TYPE,MSISDN,ENTRY_DATE,REQUEST_VALUE,PREVIOUS_BALANCE,POST_BALANCE,USER_TYPE,TRANSFER_TYPE,ENTRY_TYPE,VALIDATION_STATUS,UPDATE_STATUS,TRANSFER_VALUE,INTERFACE_TYPE,INTERFACE_ID,INTERFACE_RESPONSE_CODE,INTERFACE_REFERENCE_ID,SUBSCRIBER_TYPE,SERVICE_CLASS_CODE,MSISDN_PREVIOUS_EXPIRY,MSISDN_NEW_EXPIRY,TRANSFER_STATUS,TRANSFER_DATE,TRANSFER_DATE_TIME,ENTRY_DATE_TIME,FIRST_CALL,SNO,PREFIX_ID,PROTOCOL_STATUS,ACCOUNT_STATUS,SERVICE_CLASS_ID
+
+## Data purging/Archiveing file creation path
+DIR_PATH =<Tomcat-Path>/logs/dataarchive/
+
+## Data archival file extension
+FILEEXT = .csv
+
+## Maximum number of records in a file, if more records then next file will be created
+MAX_FILELENGTH = 50000
+
+## Archival process log file path
+ARCHIVAL_LOG_PATH = <Tomcat-Path>/logs
+
+## Database Purging process start time in hh24mm format e.g 12:30 AM 0030 or 1 AM will be 0100
+ARCHIVE_PURGE_FTIME = 0000
+
+## Database Purging process end time in hh24mm format e.g 12:30 AM 0030 or 1 AM will be 0100
+ARCHIVE_PURGE_TTIME = 0700
+
+## Date format to generate the date with out time
+SIMPLE_DATE_FORMAT=dd/MM/yy
+
+## Labels for Channel transfer transactions archival
+CHNL_TRA_LABEL = TRANSFER_ID, NETWORK_CODE, NETWORK_CODE_FOR, GRPH_DOMAIN_CODE, DOMAIN_CODE, SENDER_CATEGORY_CODE, SENDER_GRADE_CODE, RECEIVER_GRADE_CODE, FROM_USER_ID, TO_USER_ID, TRANSFER_DATE, REFERENCE_NO, EXT_TXN_NO, EXT_TXN_DATE, COMMISSION_PROFILE_SET_ID, COMMISSION_PROFILE_VER, REQUESTED_QUANTITY, CHANNEL_USER_REMARKS, FIRST_APPROVER_REMARKS, SECOND_APPROVER_REMARKS, THIRD_APPROVER_REMARKS, FIRST_APPROVED_BY, FIRST_APPROVED_ON, SECOND_APPROVED_BY, SECOND_APPROVED_ON, THIRD_APPROVED_BY, THIRD_APPROVED_ON, CANCELLED_BY, CANCELLED_ON, CREATED_ON, CREATED_BY, MODIFIED_BY, MODIFIED_ON, STATUS, TYPE, TRANSFER_INITIATED_BY, TRANSFER_MRP, FIRST_APPROVER_LIMIT, SECOND_APPROVER_LIMIT, PAYABLE_AMOUNT, NET_PAYABLE_AMOUNT, FOC_BONUS_BATCH_NO, FOC_BONUS_BATCH_DATE, PMT_INST_TYPE, PMT_INST_NO, PMT_INST_DATE, PMT_INST_AMOUNT, SENDER_TXN_PROFILE, RECEIVER_TXN_PROFILE, TOTAL_TAX1, TOTAL_TAX2, TOTAL_TAX3, SOURCE, RECEIVER_CATEGORY_CODE, REQUEST_GATEWAY_CODE, REQUEST_GATEWAY_TYPE, PMT_INST_SOURCE, PRODUCT_TYPE, TRANSFER_CATEGORY, TRANSFER_TYPE, TRANSFER_SUB_TYPE, CLOSE_DATE, APPROVED_QUANTITY, COMMISSION_PROFILE_DETAIL_ID, COMMISSION_RATE, COMMISSION_TYPE, COMMISSION_VALUE, MRP, NET_PAYABLE_AMOUNT, PAYABLE_AMOUNT, PRODUCT_CODE, RECEIVER_PREVIOUS_STOCK, REQUIRED_QUANTITY, S_NO, SENDER_PREVIOUS_STOCK, TAX1_RATE, TAX1_TYPE, TAX1_VALUE, TAX2_RATE, TAX2_TYPE, TAX2_VALUE, TAX3_RATE, TAX3_TYPE, TAX3_VALUE, TRANSFER_ID, USER_UNIT_PRICE
+
+## Labels for Network stock transactions archival
+NET_STK_TRA_LABEL=TXN_NO, NETWORK_CODE, NETWORK_CODE_FOR, STOCK_TYPE, REFERENCE_NO, TXN_DATE, REQUESTED_QUANTITY, APPROVED_QUANTITY, INITIATER_REMARKS, FIRST_APPROVED_REMARKS, SECOND_APPROVED_REMARKS, FIRST_APPROVED_BY, SECOND_APPROVED_BY, FIRST_APPROVED_ON, SECOND_APPROVED_ON, CANCELLED_BY, CANCELLED_ON, CREATED_BY, CREATED_ON, MODIFIED_ON, MODIFIED_BY, TXN_STATUS, ENTRY_TYPE, TXN_TYPE, INITIATED_BY, FIRST_APPROVER_LIMIT, USER_ID, TXN_MRP,S_NO, TXN_NO, PRODUCT_CODE, REQUIRED_QUANTITY, APPROVED_QUANTITY, STOCK, MRP, AMOUNT
+
+## Labels for C2S transaction archival
+C2S_TRA_LABEL=TRANSFER_ID, TRANSFER_DATE, TRANSFER_DATE_TIME, NETWORK_CODE, SENDER_ID, SENDER_CATEGORY, PRODUCT_CODE, SENDER_MSISDN, RECEIVER_MSISDN, RECEIVER_NETWORK_CODE, TRANSFER_VALUE, ERROR_CODE, REQUEST_GATEWAY_TYPE, REQUEST_GATEWAY_CODE, REFERENCE_ID, SERVICE_TYPE, DIFFERENTIAL_APPLICABLE, PIN_SENT_TO_MSISDN, LANGUAGE, COUNTRY, SKEY, SKEY_GENERATION_TIME, SKEY_SENT_TO_MSISDN, REQUEST_THROUGH_QUEUE, CREDIT_BACK_STATUS, QUANTITY, RECONCILIATION_FLAG, RECONCILIATION_DATE, RECONCILIATION_BY, CREATED_ON, CREATED_BY, MODIFIED_ON, MODIFIED_BY, TRANSFER_STATUS, CARD_GROUP_SET_ID, VERSION, CARD_GROUP_ID, SENDER_TRANSFER_VALUE, RECEIVER_ACCESS_FEE, RECEIVER_TAX1_TYPE, RECEIVER_TAX1_RATE, RECEIVER_TAX1_VALUE, RECEIVER_TAX2_TYPE, RECEIVER_TAX2_RATE, RECEIVER_TAX2_VALUE, RECEIVER_VALIDITY, RECEIVER_TRANSFER_VALUE, RECEIVER_BONUS_VALUE, RECEIVER_GRACE_PERIOD, RECEIVER_BONUS_VALIDITY, CARD_GROUP_CODE, RECEIVER_VALPERIOD_TYPE, TEMP_TRANSFER_ID, TRANSFER_PROFILE_ID, COMMISSION_PROFILE_ID, DIFFERENTIAL_GIVEN, GRPH_DOMAIN_CODE, SOURCE_TYPE, SUB_SERVICE,TRANSFER_ID, MSISDN, ENTRY_DATE, REQUEST_VALUE, PREVIOUS_BALANCE, POST_BALANCE, USER_TYPE, TRANSFER_TYPE, ENTRY_TYPE, VALIDATION_STATUS, UPDATE_STATUS, TRANSFER_VALUE, INTERFACE_TYPE, INTERFACE_ID, INTERFACE_RESPONSE_CODE, INTERFACE_REFERENCE_ID, SUBSCRIBER_TYPE, SERVICE_CLASS_CODE, MSISDN_PREVIOUS_EXPIRY, MSISDN_NEW_EXPIRY, TRANSFER_STATUS, TRANSFER_DATE, TRANSFER_DATE_TIME, ENTRY_DATE_TIME, FIRST_CALL, SNO, PREFIX_ID, SERVICE_CLASS_ID, PROTOCOL_STATUS, ACCOUNT_STATUS, ADJUST_DR_TXN_TYPE, ADJUST_DR_TXN_ID, ADJUST_DR_UPDATE_STATUS, ADJUST_CR_TXN_TYPE, ADJUST_CR_TXN_ID, ADJUST_CR_UPDATE_STATUS, ADJUST_VALUE
+
+
+
+## #################################Enrties related to the C2S Dataware House (DWH)###########################
+## C2S DWH transaction file labels
+DWH_TRANSACTION_FILE_LABEL=TRANSFER ID,REQUEST SOURCE,TRANSFER DATE,TRANSFER DATE TIME,NETORK CODE,TRANSACTION TYPE,TRANSACTION SUB TYPE,TRANSITION CATEGORY,CHANNEL TYPE,FROM USER ID,TO USER ID,SENDER MSISDN,RECEIVER MSISDN,SENDER CATEGORY,RECEIVER CATEGORY,SENDER DEBIT AMOUNT,RECEIVER CREDIT AMOUNT,TRANSFER AMOUNT,MRP,PAYABLE AMOUNT, NET PAYABLE AMOUNT,RECEIVER PROCESSING FEE,RECEIVER TAX1 AMOUNT,RECEIVER TAX2 AMOUNT,RECEIVER TAX3 AMOUNT,COMMISION,DIFFERENTIAL APPLICABLE,DIFFERENTIAL GIVEN,EXERNAL INVOICE NUMBER,EXTERNAL INVOICE DATE,EXTERNAL USER ID,PRODUCT,CREDIT BACK STATUS,TRANSFER STATUS,RECEIVER_BONUS,RECEIVER_VALIDITY,RECEIVER_BONUS_VALIDITY,SERVICE CLASS CODE,INTERFACE ID,CARD GROUP,ERROR REASON,SERIAL NUMBER,INITIATED BY,CELL ID,SENDER NEW BALANCE,SENDER PREVIOUS BALANCE,RECEIVER NEW BALANCE,RECEIVER PREVIOUS BALANCE,BUNDLE NAME,SELECTOR CODE
+
+
+
+## C2S DWH Master file labels
+#DWH_MASTER_FILE_LABEL=CHANNEL USER ID,PARENT USER ID,OWNER USER ID,USER TYPE,EXTERNAL CODE,PRIMARY MSISDN,USER STATUS,LOGIN ID,CATEGORY CODE,CATEGORY NAME,GEOGRAPHICAL DOMAIN CODE,GEOGRAPHICAL DOMAIN NAME,CHANNEL USER NAME,CITY,STATE,COUNTRY
+DWH_MASTER_FILE_LABEL=CHANNEL USER ID,PARENT USER ID,OWNER USER ID,USER TYPE,EXTERNAL CODE,PRIMARY MSISDN,USER STATUS,LOGIN ID,CATEGORY CODE,CATEGORY NAME,GEOGRAPHICAL DOMAIN CODE,GEOGRAPHICAL DOMAIN NAME,CHANNEL USER NAME,CITY,STATE,COUNTRY,LONGITUDE,LATITUDE
+
+## C2S DWH master file name
+DWH_MASTER_FILE_NAME=master
+
+## C2S DWH transaction file name
+DWH_TRANSACTION_FILE_NAME=channelTransaction
+
+## C2S DWH files path, files will stored here at the time of DWH processing and after
+## files will be moved at the final path
+DWH_MASTER_DIRECTORY=<Tomcat-Path>/logs/DWHData/
+
+## C2S DWH final files path, files will be moved in this directory after processing,
+## files will be maintained in this directory for 7 days. This directory path is being
+## used in DWHFileCreation also,if changing here, change there also
+DWH_FINAL_DIRECTORY=<Tomcat-Path>/logs/DWH_Final_Data/
+
+## C2S DWH files extension
+DWH_FILE_EXT=.csv
+
+## C2S DWH file length, maximum number of records in DWH file, if there are more records than this count
+## then next file will be created
+DWH_MAX_FILE_LENGTH=50000
+
+
+
+## ##########################Enrties related to the P2P Dataware House (DWH)##############################
+## Labels for P2P Txn DWH files
+P2PDWH_TRANSACTION_FILE_LABEL=TRANSFER ID,TRANSFER DATE,TRANSFER DATE TIME,SENDER MSISDN,RECEIVER MSISDN,TRANSFER VALUE,PRODUCT CODE,SENDER PREVIOUS BALANCE,RECEIVER PREVIOUS BALANCE,SENDER POST BALANCE,RECEIVER POST BALANCE,SENDER TRANSFER VALUE,RECEIVER TRANSFER VALUE,SENDER TR. STATUS,RECEIVER TR. STATUS,SENDER TYPE,RECEIVER TYPE,SENDER SERVICE CLASS ID,RECEIVER SERVICE CLASS ID,SENDER TAX1 VALUE,RECEIVER TAX1 VALUE,SENDER TAX2 VALUE,RECEIVER TAX2 VALUE,SENDER ACCESS FEE,RECEIVER ACCESS FEE,RECEIVER VALIDITY,RECEIVER BONUS VALUE,RECEIVER BONUS VALADITY,RECEIVER GRACE PERIOD,SUB SERVICE,TRANSFER_STATUS,INFO1,INFO2,INFO3,INFO4,INFO5
+
+## Labels for P2P DWH subscribers file
+P2PDWH_MASTER_FILE_LABEL=USER ID,MSISDN,SUBSCRIBER TYPE,STATUS,NETWORK CODE,LAST TRANSFER ON,LAST TRANSFER STATUS,TOTAL TRANSFERS,TOTAL TRANSFER AMOUNT,CREDIT LIMIT,REGISTERED ON,LAST TRANSFER ID,LAST TRANSFER MSISDN,LANGUAGE,COUNTRY,USER NAME
+
+## File name of the P2P subscriber DWH file
+P2PDWH_MASTER_FILE_NAME=p2psubscriber
+
+## File name of the P2P transaction file
+P2PDWH_TRANSACTION_FILE_NAME=P2PTransaction
+
+## Path of the P2P DWH files at the time of processing, files will be deleted from here and
+## moved to final directory after processing and files will be deleted from here
+P2PDWH_MASTER_DIRECTORY=<Tomcat-Path>/logs/P2PDWHData/
+
+## Final Path of the P2P DWH files, after processing files will be moved here and in this directory
+## files will be maintained for one week, This directory path is being used in P2PDWHFileCreation
+## also,if changing here, change there also
+P2PDWH_FINAL_DIRECTORY=<Tomcat-Path>/logs/P2PDWHDataFinal/
+
+## P2P DWH files extension
+P2PDWH_FILE_EXT=.csv
+
+## Maximum number of records in a P2P DWH files, if there are more records than this count
+## then next file will be created
+P2PDWH_MAX_FILE_LENGTH=1000
+
+
+##########################################Bill payment related entries###################################
+## General failure message requried to receiver in bill payment validation
+BILLPAY_REC_GEN_FAIL_MSG_REQD_V=Y
+
+## General failure message requried in bill payment Update (TopUp)
+BILLPAY_REC_GEN_FAIL_MSG_REQD_T=Y
+
+#Gateway type Code for which sender push message is not required in case of Bill payment
+BILLPAY_SEN_MSG_NOT_REQD_GW=
+
+
+
+## Common login API cooki file path
+COMMON_LOGIN_FILE_PATH=<Tomcat-Path>/logs/cookies/
+
+
+####################### Counters related storage/read entries - used on server startup#################
+## Values will be stored in these files on the shutdown of the application server band will be used
+## on the startup of the server to continue with the stored counter instead of strting with zero
+## counter storage file path
+FILE_PATH=<Tomcat-Path>/logs/couterstorage/
+
+## Network counter file name
+NETWORK_COUNTER_REPORT=NetworkCounters.ser
+
+## Instance counter file name
+INSTANCE_COUNTER_REPORT=InstanceCounters.ser
+
+## Network Request counter file name
+LOCATION_COUNTER_REPORT=LocationCounters.ser
+
+## transaction counter file name
+TRANSACTION_COUNTER_REPORT=TransactionCounters.ser
+
+## Interface counter file name
+INTERFACE_COUNTER_REPORT=InterfaceCounters.ser
+
+
+############################################# Entries for the Batch FOC Ennquiry
+## Batch FOC enquiry download file name prefix
+DownloadBatchFOCEnqFileName=ENQUIRY
+
+## Batch FOC enquiry download file path on the server
+DownloadBatchFOCEnqFilePath=<Tomcat-Path>/logs/BatchFOCEnq/
+
+
+#############################################Enrties for Batch FOC Approval
+## Download file path for Batch Foc approval files
+DownloadFilePathForFOCApproval=<Tomcat-Path>/logs/focApprovalDownloadFile/
+
+## Download file name for Batch Foc approval,
+DownloadFileNameForFOCApproval=FileForFocApproval
+
+## Max file size to be upload for Batch Foc approval (1024 - 1KB, 10240 - 10KB, 1048576 - 1MB,5242880 - 5 MB)
+FOC_BATCH_APPROVAL_FILE_SIZE=5242880
+
+## Upload file path for batch foc approval
+FOC_BATCH_APPROVAL_FILE_PATH=<Tomcat-Path>/logs/BatchFocApprovalUploadPath/
+
+
+############################################Entries for Initiate Batch FOC Transfer
+## Down load User list for batch FOC - file path
+DownloadBatchFOCUserListFilePath=<Tomcat-Path>/logs/BatchFOCDownload/
+
+## Down load User list for batch FOC - file name
+DownloadBatchFOCUserListFileName=userList
+
+## Upload file path for Batch FOC
+UploadBatchFOCUserListFilePath=<Tomcat-Path>/logs/BatchFOCUpload/
+
+## Max size of file in Bytes for the Initiate list, (1024 - 1KB, 10240 - 10KB, 1048576 - 1MB,5242880 - 5 MB)
+MAX_XLS_FILE_SIZE=10240000000
+
+
+############################################Entries for Initiate Batch User Status Change
+## Down load User list for batch Change Status - file path
+DownloadBatchChangeStatusFilePath=<Tomcat-Path>/logs/BatchStatusChangeDownload/
+
+## Down load User list for batch FOC - file name
+DownloadBatchChangeUserListFileName=userListchange
+
+## Upload file path for Batch FOC
+UploadBatchChangeStatusFilePath=<Tomcat-Path>/logs/BatchStatusChangeUpload/
+
+## Max size of file in Bytes for the Initiate list, (1024 - 1KB, 10240 - 10KB, 1048576 - 1MB,5242880 - 5 MB)
+MAX_XLS_FILE_SIZE=10240000000
+
+
+##############################################Entries for Batch User creation
+## Maximum file size can be upload for Bulk user creation (1024 - 1KB, 10240 - 10KB, 1048576 - 1MB,5242880 - 5 MB)
+MAX_XLS_FILE_SIZE_FOR_BULKUSER=102400000
+
+## Download Bulk user creation file path
+DownloadBulkUserPath=<Tomcat-Path>/logs/bulkuser/
+
+## Upload Bulk user creation file path
+UploadBatchUserFilePath=<Tomcat-Path>/logs/bulkuser/
+
+## Douload file name for bulk user creation
+DownloadBulkUserFileName=BULKUSR
+
+## Upload file path for Bulk user approval
+UploadBatchUserApproveFilePath=<Tomcat-Path>/logs/bulkuser/
+
+## Padding length for Batch generation
+BATCH_PADDING_LENGTH=5
+
+## Maximum records in Bulk user initiate file
+maxRecordsInBulkUserInitiate=65500
+
+## Maximum records in Bulk user approval file
+maxRecordsInBulkUserApproval=65500
+
+## Transaction will be commited after creation number of users
+BATCH_USER_COMMIT_NUMBER=1
+
+## Bulk user creation download file prefix
+DownloadBulkUserFileNamePrefix=BLKUSR
+
+## Download file path for Bulk user enquiry
+DownloadBulkUserPathPrefix=<Tomcat-Path>/logs/bulkuser/
+
+## Downlaod file name for Bulk user enquiry
+DownloadBulkUserFileNameForEnq=BULKUSRENQ
+
+
+#userID padding length
+USER_PADDING_LENGTH=10
+
+##Alarm Sender configuration parameters, related to the frequency of alarms over the OAM&SNMP
+#Alarm process sleep interval(in millis), interval to check the alarm from hashmap
+ALARM_SLEEP_TIME=50
+
+#Message to be appended in case alarm repeats with the given interval
+ALARM_COUNT_MESSAGE= ( {0} similar case(s) have occured in last {1} seconds )
+
+#Duration(in millis) for similar alarms ignoring, next alarm will send after this duration
+ALARM_MAX_HOLD_TIME=10000
+
+
+##Entry for Interface wsie Reconcilation Report for C2S and P2P Modules, these files will be csv files
+##Interface wsie reconciliation file path on the server
+CREATE_RECONCILATION_REPORT=<Tomcat-Path>/logs/
+
+## Prefix of the C2S module interface wsie reconciliation report
+C2S_RECONCILATION_REPORT_FILE_NAME=C2SRECON
+
+## Prefix of the P2P module interface wsie reconciliation report
+P2P_RECONCILATION_REPORT_FILE_NAME=P2PRECON
+
+## 06/09/2006 add by Ankit Singhal
+##Entry used to decide whether to include header and footer in the DWH process genereted files or not. If yes, header and footer are added else not
+ADD_HEADER_FOOTER=Y
+
+
+# 07/09/06 by sandeep goel
+# entry for the iccid pos key application version display on the help file
+POSKEYAPPVER=MobileComV4.0
+
+
+#14/09/06 Ved  Entry for Reconcilation Report interface wise
+#csv file show header flag its is value(Y or N)
+RECON_RPT_HEADER_SHOW=Y
+
+#csv file show footer flag its is value(Y or N)
+RECON_RPT_FOOTER_SHOW=Y
+
+
+##Assign the interface id's for CS3IN in constant props with key word as SCH_IN_IDS
+SCH_IN_IDS=INTID00001
+
+
+# Entry for daily report in xls
+DAILY_REPORT_FILE_PATH=<Tomcat-Path>/logs/daily_report/
+DAILY_REPORT_FILE_PRIFIX=DLYSERVSTATUS
+
+mailserver=
+mail_host=
+
+DAILY_REPORT_MAIL_SUBJECT=Daily Service Status Report
+DAILY_REPORT_MAIL_MESSAGE=Test
+
+#multiple email ids put in comma separated
+DAILY_REPORT_MAIL_FROM=
+DAILY_REPORT_MAIL_BCC=
+DAILY_REPORT_MAIL_CC=
+DAILY_REPORT_MAIL_DEFAULT=
+DAILY_REPORT_MAIL_ALL=
+DAILY_REPORT_MAIL_GN=
+
+#entries for the DailyReport.java ==== added by Nitin Rohilla
+DAILY_REPORT_PATH=<Tomcat-Path>/logs/daily_report/
+DAILY_REPORT=DAILYREPORT
+DAILY_REPORT_SUMMARY_PREFIX=DLSUMM
+DAILY_REPORT_SUMMARY_MAIL_SUBJECT=Daily Service Summary Report
+DAILY_REPORT_SUMMARY_MAIL_MESSAGE=Test
+
+#multiple email ids put in comma separated
+DAILY_REPORT_SUMMARY_MAIL_FROM=
+DAILY_REPORT_SUMMARY_MAIL_BCC=
+DAILY_REPORT_SUMMARY_MAIL_CC=
+DAILY_REPORT_SUMMARY_MAIL_DEFAULT=
+DAILY_REPORT_SUMMARY_MAIL_ALL=
+DAILY_REPORT_SUMMARY_MAIL_GN=
+
+
+
+## Language 2 code coming from STK in case of the second language (french, arabic) request
+#Here 2 is locale code for French
+004600720065006E00630068=2
+
+#for external date format  CCE XML API
+CCE_XML_EXTERNAL_DATE_FORMAT=dd-MM-yyyy
+
+#validation fail message has to be sent to receiver or not for utility bill
+C2S_REC_GEN_FAIL_MSG_REQD_V_UB=Y
+#topup fail message has to be sent to receiver or not for utility bill
+C2S_REC_GEN_FAIL_MSG_REQD_T_UB=Y
+#for which request gateway type message will not be sent to sender for utility bill
+C2S_SEN_MSG_NOT_REQD_GW_UB=
+#For MNP
+MNP_UPLOAD_FILE_DIR_PATH=<Tomcat-Path>/logs/MNPProcess/
+DelimiterforMNPFile=,
+MNPArchiveFilePath=<Tomcat-Path>/logs/MNPProcess/
+
+##Interface closer IN ids
+INTERFACE_CLOSER_IN_IDS=INTID00001,INTID00015
+
+#added for batch operator user creation.
+DownloadBatchOperatorUserPath=<Tomcat-Path>/logs/batchoptuser/
+UploadBatchOPTUserFilePath=<Tomcat-Path>/logs/batchoptuser/
+UploadDeleteBatchFilePath=<Tomcat-Path>/logs/batchoptuser/
+DownloadBatchOPTUserFileNamePrefix=OPTUSR
+MAX_XLS_FILE_SIZE_FOR_BATCH_OPT_USER=102400000
+maxRecordsInBatchOPTUserInitiate=1500
+
+#added for batch transfer rules creation.
+DownloadBatchTransferRulesPath=<Tomcat-Path>/logs/transferrules/
+DownloadBatchTransferRulesFileNamePrefix=TRFRULES
+MAX_XLS_FILE_SIZE_FOR_BATCH_TRF_RULES=102400000
+maxRecordsInBatchTransferRulesCreation=1500
+
+#added for view user hierarchy
+DownloadUserHierarchyPath=<Tomcat-Path>/logs/channeluser/
+DownloadUserHierarchyFileNamePrefix=UserHierarchy
+
+#Add for FAQ ALL,RP2P,CP2P
+FAQ_MODULE=ALL
+
+#Added for Batch Channel User Modification
+DOWNLOADMODIFYBULKUSERFILENAMEPREFIX=BLKUSRMOD
+DOWNLOADMODIFYBULKUSERPATH=<Tomcat-Path>/logs/user/modifybachuser/
+UPLOADMODIFYBATCHUSERFILEPATH=<Tomcat-Path>/logs/modifybachuser/
+MAXRECORDSINBULKUSERMODIFY=1500
+# End of Batch Channel User Modification
+
+DownloadBulkPromotionalTrfRulePath=<Tomcat-Path>/logs/
+UploadBatchPromotionalTrfFilePath=<Tomcat-Path>/logs/
+MAX_XLS_FILE_SIZE_FOR_BULKPROMOTRFRULE=262144
+MAX_RECORDS_IN_BULKPROMOTRFRULE=1500
+DOWNLOAD_BULK_PROMOTIONAL_TRFRULE_FILENAME_PREFIX=_promotionallevel
+PROMOTIONAL_TRANSFER_DATE_FORMAT=dd/MM/yy HH:mm
+
+## if reporting server is different then this flag will be Y
+IS_SEPERATE_REPORTING_WEBSERVER=N
+
+## if reporting server is different then given the http url of reporting server
+SEPERATE_REPORTING_IPPORT=172.16.1.174:8080
+
+## if reporting server is different then given the path of the reports folder contains rpt and qry files (which place reports folder is avilable on reporting server)
+SEPERATE_REPORTING_REOPRTFILEPATH=<Tomcat-Path>/webapps/pretups/
+
+## if reporting server is different then given the path of the report labels(which place report labels is avilable on reporting server)
+SEPERATE_REPORTING_REPORTLABEL_FILEPATH=<Tomcat-Path>/webapps/crystal/WEB-INF/classes/configfiles/Reports_label
+
+#VOMS entries start
+
+
+#Whether sms is required or not in case of general failure during validation
+EVD_REC_GEN_FAIL_MSG_REQD_V=Y
+
+#Whether sms is required or not in case of general failure during topup
+EVD_REC_GEN_FAIL_MSG_REQD_T=Y
+
+#URL of the servlet for delivery receipt
+VOMS_DELRCT_TRACK_URL=
+
+#Maximum time to wait for the delivery of the message, after that it will be marked as failed
+MESSAGE_VALIDITY_PERIOD=2
+
+#A process tracks delivery of the message if it is not delivered instantly. In that case, transactions before how much time (in seconds) than current date should be considered (todate)
+#If defined as 60 and current time is 12:04:02, then it will consider transactions before 12:03:02
+STATUS_CHECK_DELAY=60
+
+# A process tracks delivery of the message if it is not delivered instantly. In that case, from which date transaction should be considered (fromdate). To get this date, following no of days are subtracted from current date.
+#If defined as 5 and current date is 12 Jan it will consider transactions after 7 Jan
+DAYS_BFOR_CUR_DATE_DLVRY_CHK=2
+
+############################################ Entries for VOMS for Inventory report
+daily_inventory_report_path=<Tomcat-Path>/logs/InventoryRpt/
+
+#added for daily inventory report location wise to this name
+#Location Name and date will ne appended
+daily_inventory_report_name=batchesInfo
+
+#added for daily inventory report name for subject
+daily_inventory_report_subject=Inventory Report
+
+#added for daily inventory report name for email
+daily_inventory_report_name_mail=InventoryReport.xls
+
+from_email_address =
+toEmailAddresses =
+
+#The number of values in header
+NUMBER_OF_VALUES_IN_HEADER=4
+
+#the max. no of records a Vouucher file can have
+VOMS_MAX_FILE_LENGTH=150000
+
+#the length of the serial number in Voucher file
+VOMS_SERIAL_NUMBER_LENGTH=11
+
+#the length of the pin first part
+VOMS_FIRST_PART_PIN_LENGTH=10
+
+#the length of the pin field in Voucher file
+VOMS_PIN_LENGTH=14
+
+#the maximun number of errors in one go in the Voucher file
+VOMS_TOTAL_ALLOWED_ERRORS=0
+
+#value separator for the validator file
+VOMS_FILE_SEPARATOR=,
+
+#file path for the validator file
+VOMS_VOUCHER_FILE_PATH=<Tomcat-Path>/logs/voucherupload
+
+#move file path for the validator file
+VOMS_VOUCHER_FILE_MOVE_PATH=<Tomcat-Path>/logs/voucheruploadmove
+
+#Parser Implementing class
+VOUCHER_PARSER_CLASS=com.btsl.voms.vomsprocesses.businesslogic.VoucherFileCheckRM
+#VOUCHER_PARSER_CLASS=com.btsl.voms.vomsprocesses.businesslogic.VoucherFileChecksBLFormat
+
+#date format of date format
+VOMS_FILE_DATE_FORMAT=dd/MM/yy
+
+#Change in Constants.props, new key added for the format of expiry date of voucher in voucher upload process.
+VOUCHER_EXPIRY_DATE_FORMAT=yyyyMMdd
+
+#Voucher Pin Resend date diff
+VALID_DAY_DIFF=3
+
+#Entries for MVD
+#validation fail message is to be sent to receiver or not
+MVD_REC_GEN_FAIL_MSG_REQD_V=Y
+#topup fail message is to be sent to receiver or not
+MVD_REC_GEN_FAIL_MSG_REQD_T=Y
+#sender message gateway is allowed to sent message or not
+EVD_SEN_MSG_NOT_REQD_GW=WEB
+#this is interface wise preference, but as there is no IN in MVD, so taking from here
+TIME_STAMP_CHK=N
+
+
+## VOMS Entries End
+
+##INIDs that would be used to pool the DBUtility for the Billpayment.Used in aktel
+#DB_POOL_IN_IDS=
+
+##This would be used to load the pool manager for Huawei Interface.
+#HUAWEI_POOL_IN_IDS=INTID00003
+
+#This would be used to load the Common Pool manager.
+#POOL_IN_IDS=INTID00002
+
+#INIDs that would be used to pool the FTPClient for the Billpayment.
+#FTP_POOL_IN_IDS=INTID00006
+
+#For schedule reports
+SCHEDULED_REPORT_GENERATED_PATH=<Tomcat-Path>/logs/
+
+
+##Network Service file name
+NETWORK_SERVICE_COUNTER_REPORT=NetworkServiceCounters.ser
+
+# Add for ICCID Bulk Delete
+UploadDeleteICCIDFilePath=<Tomcat-Path>/logs/icciddeletefiles/
+UploadDeleteICCIDFileSize=5242880
+DelimiterforuploadICCIDDeleteFile=,
+IccidDeleteErrorFilePrefix=Error
+IccidDeleteErrorFileExtension=.csv
+# End of ICCID Bulk Delete
+
+# added for pager on card group screens
+NUMBER_OF_CARD_GROUP_ON_PAGE=1
+
+###################Added for Orange-Moldova####################
+
+##Describes interface id of Mobi IN. It is used at server start up to
+##create a connection pool used by MobiINHandler for different services (validate, credit, credit recharge...)
+MOBI_DB_POOL_IN_IDS=INTID00001
+
+##Describes interface id of Cboss IN. It is used at server start up to
+##create a connection pool used by CbossINHandler for different services (validate, credit, credit recharge...)
+CBOSS_DB_POOL_IN_IDS=INTID00002
+
+##Indicates that common pool would be used or not, by mobi and cboss IN handlers for services like subscriber identification
+COMMON_UTILITY=N
+
+##Describes interface ids which wiil be using common handler utility object.
+##if COMMON_UTILITY==N,It is used to create connection pools (used for service like subscriber identification) for mentioned interface ids
+##if COMMON_UTILITY==Y,It is used to create a common connection pool (used for service like subscriber identification) for mentioned interface ids (service like subscriber identification)
+COMMON_HANDLER_UTILITY_IDS=INTID00002
+# for OCI changes password validation, by sanjeew date 12/07/07
+SPECIAL_CHARACTER_PASSWORD_VALIDATION=~,!,@,#,$,%,^,&,|,\\,/,?
+#Added to handle Mobinil STK (Should be N for all other setups)
+STK_CONVERSION_REQD=N
+#Added for Mobinil
+0627064406270646062c0644064a0632064a0629=0
+Arabic=1
+
+##This instance code would be included in the transaction id(Put the value of INSTANCE_ID for corresponding interfaces.)
+INSTANCE_ID=10
+
+
+## These are the prefixes of different report files
+
+tech_report=<Tomcat-Path>/logs/downloadreport/tech/
+usr_bal_enq=<Tomcat-Path>/logs/downloadreport/user_bal/
+crystal_rep=<Tomcat-Path>/logs/crystal/
+
+######by ranjana ,if you want to send the msg to sender in case of C2C,put the required gateway code,otherwise it is blank.
+
+C2C_SEN_MSG_REQD_GW=EXTGW,USSD
+############################################ Entries for the Batch C2C Ennquiry#########
+## Batch C2C enquiry download file name prefix
+DownloadBatchC2CEnqFileName=ENQUIRY
+
+## Batch C2C enquiry download file path on the server
+DownloadBatchC2CEnqFilePath=<Tomcat-Path>/logs/BatchC2CEnq/
+
+
+Schedule batch recharge (Manisha 29/04/08)
+#number of msisdn can be sceduled in case of normal file type
+BATCH_MSISDN_LIST_SIZE=500
+#size of window for cancel scheduled batch
+BATCHDETAIL_POPUP_WINDOW_SIZE=resizable=yes,status=no,scrollbars=yes,width=600,height=750,top=100,left=100
+#number of days before current days are allowed to reschedule the batch
+RESCHEDULE_BATCH_BACK_DAYS=15
+
+#####  Hourly Transaction Count Details Process.
+#network wise Administrator's msisdn whome message will be sent.
+Admin_msisdn_for_hourly_count_trans_process=62903508,60000001,UM_7826100001,UM_7826100002,UM_7826100003,BH_9810000001
+#network wise service type whose hourly count transaction process.
+Service_type_for_hourly_count_trans_process=RC,UM_RC,UM_PPB,UM_PRC,BH_RC
+
+##scheduled report- O2c transaction data thru EXTGW
+O2CEXT_TRANSACTION_FILE_LABEL=SNO,FROM_USER_NAME,TO_USER_NAME,TRANSFER ID,TRANSFER_CATEGORY,TRANSFER_SUB_TYPE,TRANSFER_DATE,PRODUCT_CODE,EXTERNAL_TXN_NO,REQUEST_GATEWAY_CODE,TYPE,EXT_TRANSACTION_DATE,REQUESTED_QUANTITY,TAX1_TYPE,TAX2_VALUE,TAX2_TYPE,TAX2_VALUE,PAYABLE_AMOUNT,NET_PAYABLE_AMOUNT
+O2CEXT_TXN_FILE_GEN_DIR=<Tomcat-Path>/logs/Report/Transaction/
+O2CEXT_TXN_FINAL_DIR_PATH=<Tomcat-Path>/logs/Report/O2CTransaction/
+O2CEXT_TXN_CONFIGURE_PARAM=EXTGW:O2C
+
+##Assign the interface id's for CS3CP6IN in constant props with key word as CP6_SCH_IN_IDS
+CP6_SCH_IN_IDS=INID
+
+
+
+## 24/07/07 by Vinay for IMA External File
+##header flag its is value(Y or N)
+SHOW_HEADER_EXTERNAL_FILE=Y
+
+##footer flag its is value(Y or N)
+SHOW_FOOTER_EXTERNAL_FILE=Y
+
+##Entry for External File Report, these files will be csv files. External file path on the server
+EXTERNAL_FILE_PATH=<Tomcat-Path>/logs/ExternalReport/
+
+## Prefix of the External File report
+EXTERNAL_FILE_PREFIX=EXTERNLFILE
+
+## Date format of the External File report
+EXTERNAL_FILE_DATE_FORMAT=dd/MM/yyyy
+
+## SQL Date Time format of the External File report
+EXTERNAL_FILE_SQLDATETIME_FORMAT=dd/MM/yyyy HH24:MI:SS
+
+## Date Time format of the External File report
+EXTERNAL_FILE_DATETIME_FORMAT=dd/MM/yyyy HH:MM:SS
+
+CARD_GROUP_SET_COPY_OPTION=0
+
+CHECK_FOR_SERVICE_CLASSES=
+CHECK_FOR_SERVICE_TYPES=
+CHECK_FOR_USER_TYPES=
+
+##################added on 09/05/09 by sanjeew
+#GATEWAYTYPES_MIN_DENOMINATION_ALLOWED=EXTGW
+
+##Monitoring PreTUPS By SMS. SMS_EVENT_LEVELS: FATAL=1,MAJOR=2
+##DATABASE_CONECTION_PROBLEM= 1,SYSTEM_ERROR= 2,SYSTEM_INFO= 3,INTERFACE_INVALID_RESPONSE= 10,RETRY_ATTEMPT_FAILED= 11,INTERFACE_REQUEST_EXCEPTION= 12,INTERFACE_RESPONSE_EXCEPTION= 13,ADMIN_OPT = 14
+#ALARM_DEFAULT_LOCALE=en,US
+SMS_EVENT_LEVELS=1,2
+SMS_EVENT_IDS=1,2,3,10,11,12,13,14
+ALARM_DEFAULT_LOCALE=en,US
+
+##Added for voucher file upload. Maximum number of voucher records allowed for web
+VOMS_MAX_FILE_LENGTH_WEB=500
+
+##voucher file header separator
+VOMS_FILE_HEADER_SEPARATOR=,
+
+##Vouchar PIN Resend for resending more than one pin at a time. This value should be less than equl to the pager length.
+VOUCHAR_PIN_RESEND=5
+
+##Entry for CDR File generated for Cellplus. Blank file with header and trailer required
+BLANK_CDR_FILE_REQUIRED=Y
+
+##parameter added to validate client machine ip address for monitor server.
+monitorAllowedIps=127.*.*.*,193.*.*.*,10.*.*.*
+
+##Network services allowed for c2s enquiries.
+NETWORK_SERVICES_ALLOWED_FOR_C2S_ENQ=MD_RC,NG_RC,NG_PPB,NG_RCREV
+
+## if receiver status is inactive for PrepaidControllerWithValExt.
+VALIDIT_EXTENSION_FOR_STATUS=1
+
+#CRYSTAL_ADMIN_SCHEDULER_IPS=172.16.1.174:8080
+#reportingdb.report.context=crystal_report
+###report.context=crystal
+
+## changes done for seperate report db
+
+#reportdbdatasourceurl=jdbc:oracle:thin:@< DBIP >:< DBPORT >:< SID >
+#reportdbuserid=<reportdbuserid>
+#reportdbpasswd=<reportdbpasswd>
+
+reportdbdatasourceurl=<reportdbdatasourceurl>
+reportdbuserid=<reportdbuserid>
+reportdbpasswd=<reportdbpasswd>
+
+reportdbapplicationpool=Y
+reportdbdatabasehelperclass= com.btsl.util.DatabaseHelperClass
+reportdbdatasourcename= jdbc/pretupsdatasource
+reportdbminpoolsize=2
+reportdbpoolsize=5
+
+##Constant.props entry for Batch User Modify(Multiple Excel Sheet)
+NUMBER_OF_ROWS_PER_TEMPLATE_FILE_BATCHUSER=65500
+
+##Add this parameter in Constant.props for Mali setup only, this mapping is done for CP2P SMS Confirmation feature.
+##First sender sends request with PRC keyword.PreTUPS (ConfirmPrepaidController) will pick a keyword (CRF) against PRC to send confirmation message to sender.
+##PRC is keyword against PCNF service type and CRF is keyword against PRC service type
+#PRC=CRF
+
+##Entry for Daily Details User Balance Report
+##csv file show header flag its is value(Y or N)
+UBS_RPT_HEADER_SHOW=Y
+
+##Entry for Daily Details User Balance Report, these files will be csv files
+CREATE_DAILY_DETAILS_USER_BALANCE_UBSREPORT=<Tomcat-Path>/logs/userbalanceLog/
+
+## Prefix of the  Daily Details User Balance Report
+DAILY_DETAILS_USER_BALANCE_FILE_NAME=UBSREPORT
+
+##Type of encryption/decryption logic to be used either AES or DES, only one is supported at a time
+#If Admin wants to change this logic(AES-->DES or DES-->AES) then do following steps
+#1. Stop System.
+#2. Update database username & password
+#3. Update all users, ReqMessageGateway ,ResMessageGateway,VomsVouchers,P2PSubscribers password & pin according to new logic.
+#3. Start System
+ENDECRYPTION_TYPE=DES
+
+C2S_REC_MSG_NOT_REQD_GW=
+EVD_REC_MSG_NOT_REQD_GW=WEB
+MVD_REC_MSG_NOT_REQD_GW=WEB
+C2S_REC_MSG_NOT_REQD_GW_UB=WEB
+BILLPAY_REC_MSG_NOT_REQD_GW=
+
+##Entries for Initiate Batch C2C Transfer. Down load User list for batch C2C - file path
+DownloadBatchC2CUserListFilePath=<Tomcat-Path>/logs/BatchC2CDownload/
+
+## Down load User list for batch C2C - file name
+DownloadBatchC2CUserListFileName=userList
+
+## Upload file path for Batch C2C
+UploadBatchC2CUserListFilePath=<Tomcat-Path>/logs/BatchC2CUpload/
+
+##Enrties for Batch C2C Approval. Download file path for Batch C2c approval files
+DownloadFilePathForC2CApproval=<Tomcat-Path>/logs/c2cApprovalDownloadFile/
+
+## Download file name for Batch C2c approval,
+DownloadFileNameForC2CApproval=FileForC2cApproval
+
+## Max file size to be upload for Batch C2c approval (1024 - 1KB, 10240 - 10KB, 1048576 - 1MB,5242880 - 5 MB)
+C2C_BATCH_APPROVAL_FILE_SIZE=102400
+
+## Upload file path for batch c2c approval
+C2C_BATCH_APPROVAL_FILE_PATH=<Tomcat-Path>/logs/BatchC2cApprovalUploadPath/
+
+##Added for transferred channel user report
+DownloadTrnsfrdChnlUserReportPath=<Tomcat-Path>/logs/channeluser/
+DownloadTrnsfrdChnlUserReportFileNamePrefix=TransferredChannelUserReport
+
+## To show the "Copy Card Group Set" option set the value = 1 or to hide, set the value = 0
+CARD_GROUP_SET_COPY_OPTION=0
+
+##Mobile number to send the Low Network stock alert
+LOW_BAL_MSISDN=9818693279
+
+## Download Reports management
+DAILY_TECH_RPT=<Tomcat-Path>/logs/schedule_report/
+MAN_SUMM_RPT=<Tomcat-Path>/logs/schedule_report/
+VOM_AV_DET=<Tomcat-Path>/logs/schedule_report/
+RC_SLAB_WISE=<Tomcat-Path>/logs/schedule_report/
+P2P_SUB_TXN_DET=<Tomcat-Path>/logs/schedule_report/
+SRVWISE_P2P_SUM=<Tomcat-Path>/logs/schedule_report/
+USR_BAL_RPT=<Tomcat-Path>/logs/schedule_report/
+C2S_DENOM_WISE=<Tomcat-Path>/logs/schedule_report/
+
+##################################### 5.3.1 #########################################3
+
+## Fixed line recharge
+C2S_FIXLINE_RC_REC_GEN_FAIL_MSG_REQD_V
+C2S_FIXLINE_RC_REC_GEN_FAIL_MSG_REQD_T=Y
+C2S_FIXLINE_SEN_MSG_NOT_REQD_GW=WEB
+C2S_FIXLINE_REC_MSG_NOT_REQD_GW=
+
+## entries for vas module
+DownloadBatchVASItemPath=<Tomcat-Path>/logs/vas/
+ArchiveBatchVASItemPath=<Tomcat-Path>/logs/archive_vas/
+DownloadVASItemFileNamePrefix=VASITEM
+DownloadVASItemFileNameExtension=.txt
+VAS_ITEM_FILE_SIZE=102400000
+maxRecordsInVASItemInitiate=1500
+VAS_ITEM_FIELD_DELEMETER=|
+VAS_CIRCLE_DELEMETER=;
+VAS_START=[START]
+VAS_END=[END]
+
+##Fields delimiter in uploaded file
+DelimiterforuploadVASFile=|
+
+##network delimiter in uploadd file
+DelimiterforNetworkUploadVASFile=,
+
+##Uploaded file type
+ContentType=text/plain
+
+##categoryID padding length
+CAT_PADDING_LENGTH=6
+FIELDS_COUNT=11
+
+## added for Broadband Recharge
+C2S_BROADBAND_REC_GEN_FAIL_MSG_REQD_V=Y
+C2S_BROADBAND_REC_GEN_FAIL_MSG_REQD_T=Y
+C2S_BROADBAND_SEN_MSG_NOT_REQD_GW=Y
+C2S_BROADBAND_REC_MSG_NOT_REQD_GW=Y
+
+################### Added for Batch file parser....
+## put the service_type and interface_type_id i.e. RC:CS3 etc.. to get the GSM number associated with the IN.
+### make the entry for all type of C2S transaction service,like Fixline, internate Recharge...not make the entry for gift recharge
+####Parser Configuring Parameter,For BatchRecharge mgmt.,It is not implemented for Gift Recharge Service
+
+PARSER_CONFIGURE_PARAM=RC:RC;PSTNRC:FIXLINE;INTRRC:FIXLINE
+
+##Modify Card group in Batch C2S
+DOWNLOADMODIFYC2SCARDGROUPFILENAMEPREFIX=CARDGROUP
+DOWNLOADMODIFYC2SCARDGROUPPATH=<Tomcat-Path>/logs/batchCardgroup/
+UPLOADMODIFYBATCHC2SCARDGROUPFILEPATH=<Tomcat-Path>/logs/batchCardgroupr/
+MAXRECORDSINC2SCARDGROUPMODIFY=150
+NUMBER_OF_ROWS_PER_TEMPLATE_FILE_CARDGROUP=1500
+MAX_XLS_FILE_SIZE_FOR_CARDGROUP=262144
+MAXRECORDSINCRDGROUPMODIFY=1500
+CGR_MOD_COMMIT_NUMBER=50
+
+##for Schedule C2S Transfer Report
+C2S_TXN_REPORT_SCHEDULE=<Tomcat-Path>/logs/schedule_report/
+
+
+
+#####################################################################################
+#####################            HARPREET            ################################
+#####################################################################################
+
+
+##################################### 5.3.2 #########################################
+
+
+##entries for activation bonus
+ACTIVATION_BONUS_SLAB_LENGTH=5
+ACTIVATION_BONUS_DATE_FORMAT=dd/MM/yy HH:mm
+DownloadSubsRetMappEnqFilePath=<Tomcat-Path>/logs/SubscriberRetailerMapping/
+DownloadSubsRetMappEnqFileName=ENQUIRY
+
+## Entries added by Nand on 18th March 09 for Subscriber Retailer Activation Mapping.
+SOURCE_TYPE_FOR_ACTIVATION_PROCESS=FILE
+ACTIVATION_MAPPING_FILE_PATH=<Tomcat-Path>/logs/ActBonusMapping
+ACTIVATION_BACKUP_MAPPING_FILE_PATH=<Tomcat-Path>/logs/BackupActBonusMapping
+CRM_ACTIVATION_MAPPING_PAGING_SIZE=50000
+ACTIVATION_MAPPING_INITIAL_FILENAME=ActivationMapping
+ACTIVATION_MAPPING_FILENAME_LENGTH=33
+ACTIVATION_MAPPING_FILE_RECORDS_MAX_COUNT=55000
+MAX_ERROR_PERCENTAGE_ALLOWED_FOR_ACTIVATION_PROCESS=75
+
+## Entries for Batch associate activation profile
+## Download Batch associate profile file path
+DownloadBatchUserAssociatePath=<Tomcat-Path>/logs/batchassociateprofile/
+
+## Bulk user creation download file prefix
+DownloadBatchProfileFileNamePrefix=BASSPRF
+DownloadBatchProfileMasterFileNamePrefix=BASSMASPRF
+
+## CRM External user Data File Process
+## If more than one network is defined, then the value should be comma(",") separated.
+EXTERNAL_USRDATA_FILE_NETWORKS=KL,KA,AP,DL,UE,UW,MU
+EXTERNAL_USRDATA_FILE_PATH=<Tomcat-Path>/logs/externalUsrDataFile/
+EXTERNAL_USRDATA_FILE_NAME=DUMP
+EXTERNAL_USRDATA_FILE_HEADER=External User CRM Data File
+EXTERNAL_USRDATA_FILE_DATE_FORMAT=dd/MM/yy
+EXTERNAL_USRDATA_FILE_SQLDATETIME_FORMAT=dd/MM/yy HH24:MM:SS
+EXTERNAL_USRDATA_FILE_DATETIME_FORMAT=dd/MM/yy HH:MM:SS
+SHOW_HEADER_EXTERNAL_USRDATA_FILE=Y
+SHOW_FOOTER_EXTERNAL_USRDATA_FILE=Y
+EXTERNAL_USRDATA_FILE_LABEL=USER_ID,USER_NAME,CATEGORY_NAME,MSISDN,CREATED_ON,PARENT_ID,OWNER_ID,STATUS
+
+## Upload Batch associate profile file path
+UploadBatchAssociateFilePath=<Tomcat-Path>/logs/batchassociateprofile/
+
+## Maximum file size can be upload for Batch association profile(1024 - 1KB, 10240 - 10KB, 1048576 - 1MB,5242880 - 5 MB)
+MAX_XLS_FILE_SIZE_FOR_BATCH_ASSOCIATE=102400000
+
+## Maximum records in Batch associate profile file
+maxRecordsInBatchAssociateProfile=1500
+
+## Maximum records per template
+NUMBER_OF_ROWS_PER_TEMPLATE_FILE_BATCHUSER=65500
+
+##Activation bonus calculation periodicity for volume process
+##Allowed values are DAILY,WEEKLY,MONTHLY,UNLIMITED
+###More than 1 value should be comma separeted
+ACT_BONUS_CALC_PERIODICITY=DAILY
+
+## end of entries for activation bonus
+
+######### Promotional Transfer rule --- no. of maximum slab
+NO_OF_TIMESLAB_PROMOTIONAL_TRANSFER_RULE=3
+
+###########Entries for CP2P through Web(Constant.props)##############
+SESSION_EXCLUDE_LIST=cp2pwebmodule,cp2pSubscriber
+
+## Entry of the servlet which will be called while doing CP2P transfer/recharge through web
+CP2P_WEB_RECHARGE_SERVLET=/pretups/P2PReceiver
+
+##################################### 5.4.1_IAT #########################################
+## IAT DWH transaction file labels
+IAT_DWH_TRANSACTION_FILE_LABEL=TRANSFER ID,IAT_TRANSACTION_ID,REQUEST GATEWAY,TRANSFER DATE,TRANSFER DATE TIME,NETORK CODE,NETORK CODE_RECEIVER,RECEIVER_COUNTRY_CODE,SERVICE_TYPE,CHANNEL TYPE,FROM USER ID,SENDER MSISDN,RECEIVER MSISDN,NOTIFICATION_MSISDN,SENDER CATEGORY,SENDER DEBIT AMOUNT,RECEIVER CREDIT AMOUNT,TRANSFER AMOUNT,MRP,DIFFERENTIAL APPLICABLE,DIFFERENTIAL GIVEN,EXTERNAL USER ID,PRODUCT,CREDIT BACK STATUS,TRANSFER STATUS,CARD GROUP,PROV_RATIO,EXCHANGE_RATE,ERROR REASON
+
+## IAT DWH transaction file name
+IAT_DWH_TRANSACTION_FILE_NAME=IATTransaction
+
+## IAT DWH files path, files will stored here at the time of DWH processing and after
+## files will be moved at the final path
+IAT_DWH_MASTER_DIRECTORY=<Tomcat-Path>/logs/IATDWHData/
+
+## IAT DWH final files path, files will be moved in this directory after processing,
+## files will be maintained in this directory for 7 days. This directory path is being
+## used in IATDWHFileCreation also,if changing here, change there also
+IAT_DWH_FINAL_DIRECTORY=<Tomcat-Path>/logs/IATDWHDataFinal/
+
+## IAT DWH files extension
+IAT_DWH_FILE_EXT=.csv
+
+## IAT DWH file length, maximum number of records in DWH file, if there are more records than this count
+## then next file will be created
+IAT_DWH_MAX_FILE_LENGTH=50000
+
+
+IAT_REC_AMBIGUOUS_TRANSACTION_FILE_NAME=RecAbgFile
+IAT_REC_AMBIGUOUS_FILE_DIRECTORY=<Tomcat-Path>/logs/IATRECABG/
+
+IAT_C2S_SEN_MSG_NOT_REQD_GW=WEB
+
+
+RPT_REPORT_POPUP_WINDOW_SIZE=menubar=no,scrollbars=yes,width=400,height=400,resizable=yes
+
+DOWNLOAD_KPI_REPORT_PATH=<Tomcat-Path>/logs/KPIREPORT/
+
+
+################batch Direct Payout added by Lohit#####################
+## Download file path for Batch Direct Payout approval files
+DownloadFilePathForDirectPayoutApproval=<Tomcat-Path>/logs/BulkComissionPayout/DownloadApprove/
+
+## Download file name for Batch Direct Payout approval,
+DownloadFileNameForDirectPayoutApproval=FileForDPcApproval
+
+## Max file size to be upload for Batch Direct Payout approval (1024 - 1KB, 10240 - 10KB, 1048576 - 1MB,5242880 - 5 MB)
+DP_BATCH_APPROVAL_FILE_SIZE=102400
+
+## Upload file path for batch Direct Payout approval
+DP_BATCH_APPROVAL_FILE_PATH=<Tomcat-Path>/logs/BulkComissionPayout/UploadApprove/
+
+########################################################################
+
+#############Entries for Initiate Batch Direct Payout Transfer By Lohit #########
+
+## Down load User list for batch direct payout - file path
+DownloadBatchDirectPayoutUserListFilePath=<Tomcat-Path>/logs/BulkComissionPayout/Download/
+
+## Down load User list for batch direct payout - file name
+DownloadBatchDirectPayoutUserListFileName=userList
+
+## Upload file path for batch direct payout
+UploadBatchDirectPayoutUserListFilePath=<Tomcat-Path>/logs/BulkComissionPayout/Upload/
+
+## Maximum records in batch direct payout initiate file
+MAX_NO_RECORDS_BATCH_DIRECT_PAYOUT=1000
+#################################################################################
+
+############################################# Entries for the Batch DP Ennquiry
+## Batch DP enquiry download file name prefix
+DownloadBatchDPEnqFileName=DPENQUIRY
+
+## Batch DP enquiry download file path on the server
+DownloadBatchDPEnqFilePath=<Tomcat-Path>/logs/BatchDPEnq/
+#################################################################################
+
+## Bulk commission payout upload folder path
+DIRECT_PAY_OUT_DIR=<Tomcat-Path>/logs/BulkComissionPayoutUpload/
+DIRECT_PAY_OUT_TEMP_DIR=<Tomcat-Path>/logs/logs/DPTempLog/
+#Number of records in uploaded file
+DIRECT_PAY_OUT_FILE_SIZE=100
+################################################################################
+
+############################################# Entries for the Batch DP Ennquiry
+## Batch DP enquiry download file name prefix
+DownloadBatchDPEnqFileName=DPENQUIRY
+
+## Batch DP enquiry download file path on the server
+#DownloadBatchDPEnqFilePath=<Tomcat-Path>/logs/BatchDPEnq/
+DownloadBatchDPEnqFilePath=<Tomcat-Path>/logs/BatchDPEnq/
+################################################################################
+
+RC_DISPLAY_COUNTRY_CODE=
+
+TRUST_STORE=/home/pretups_Dec_roadmap/truststore
+TRUST_STORE_PASSWORD=PRETUPS
+
+##This preference is used to push SMS when request is coming from USSD over SMPP protocol (used for OTN)
+###At OTN value defined for below parameter is USSD:SMSCUSSD
+C2S_REC_MSG_REQD_BY_ALT_GW=
+###At OTN value defined for below parameter is USSD116:SMUSSD116
+P2P_REC_MSG_REQD_BY_ALT_GW=
+MSG_LENGTH_GW=999999
+
+########## Bulk voucher download #########
+
+## Download file path for Multiple voucher file download
+DownloadFilePathForMultipleVoucherDownload=<Tomcat-Path>/logs/mutipleVoucherDownloadFile
+
+## Multiple voucher download file prefix
+DownloadMultipleVoucherFileNamePrefix=MVD
+
+##Encryption-Decryption Key Length
+KEY_LENGTH=32
+#########################
+INSTANCE_RUNNING_ON=PR
+CAT_CODE_NEEDED_FOR_APPROVAL=Y
+reportingdb.report.context=pretups
+report.context=pretups
+#report.schedule.path=pretups/ReportScheduling?dll=pdsora7.dll&report=
+#report.daily.schedule.path=pretups/ReportSchedulingDaily?dll=pdsora7.dll&report=
+report.path=/jsp/crystal/Sample.jsp?dll=pdsora7.dll&report=
+report.path1=&dll=pdsora7.dll&
+report.path2=report=
+report.reports.label.properties.path=/WEB-INF/classes/configfiles/Reports_label
+
+
+#######################################################################
+################### Use for current date reporting ####################
+#######################################################################
+
+#currentDateRptDBDataSourceURL=jdbc:oracle:thin:@< DBIP >:< DBPORT >:< SID >
+
+#currentReportDBUserId=<currentReportDBUserId>
+#currentReportDBPasswd=<currentReportDBPasswd>
+
+currentDateRptDBDataSourceURL=<currentDateRptDBDataSourceURL>
+currentReportDBUserId=<currentReportDBUserId>
+currentReportDBPasswd=<currentReportDBPasswd>
+
+currentReportDBApplicationPool=Y
+currentReportDBDatabaseHelperClass=com.btsl.util.DatabaseHelperClass
+currentRDBDDataSourceName=jdbc/pretupsdatasource
+currentReportDBMinPoolSize=2
+currentReportDBPoolSize=5
+
+
+###### If Crystal is running within the pretups context then set this value Y
+RUN_RPT_IN_PRETUPS_CONTEXT=Y
+
+
+SESSION_EXCLUDE_LIST=user,urlCode,moduleCode,org.apache.struts.action.LOCALE,cRandom,decisionParam,loggedIn,locale
+
+########### Alert MSISDN Variables ########
+MAX_CSV_FILE_SIZE_FOR_ALERTMSISDN=102400000
+DownloadFileTemplateWithUserData=USERLISTINGTEMPLATE
+DownloadFileBlankTemplate=SAMPLETEMPLATE
+DownloadUserListingTemplatePath=<Tomcat-Path>/logs/AlertMSISDNTemp/
+UploadAlertMsisdnFilePath=<Tomcat-Path>/logs/AlertMsisdn_FinalList/
+
+
+UploadMigUserFilePath=<Tomcat-Path>/logs/USERMOVEMENT/
+
+MAX_XLS_FILE_SIZE_FOR_MIGUSER=1073741824
+
+
+maxRecordsInMigUserInitiate=12312
+DownloadUserMigrationFileNamePrefix=MIGUSR
+####added for error log file name in user migration
+UserMovementErLog=UserMovementErLog
+
+USER_DELETE_REQUIRED=Y
+
+############################
+
+## Upload file path and delimeter for SIM txn id updation in bulk
+UploadFileForBulkUpdationOfTempTxnIDPath=<Tomcat-Path>/logs/BulkTxnID/
+DelimiterForUploadedFileForBulkUpdationOfTempTxnID=,
+## Archive file path for temp txn id updation in bulk after processing
+ArchiveFilePathForBulkUpdationOfTempTxnID=<Tomcat-Path>/logs/UpdatedInBulk/
+NO_OF_FILE_CONTENTS_FOR_BULK_UPDATION_OF_TEMP_TXN_ID=5000
+OTHER_FILE_SIZE_FOR_BULK_UPDATION_OF_TEMP_TXN_ID=5242880
+
+
+
+
+## Down load Message - file path and Name
+DownloadMessageListFilePath=<Tomcat-Path>/logs/messages/
+
+DownloadMessageListFileName=messageList
+
+## Upload file path forMessage
+UploadMessageListFilePath=<Tomcat-Path>/logs/messages/
+
+
+
+##                      Entries For Corporate IAT Recharge              ##
+
+iatBulkRegFileUploadPath=<Tomcat-Path>/logs/iatFileUpload/
+iatArchiveDirectoryPath=<Tomcat-Path>/logs/iatFileUpload/iatArchive/
+MAX_IAT_RESTRICTED_LIST_SIZE=5000
+
+approvedIATListDownloadPath=<Tomcat-Path>/logs/iatFileUpload/approvedList/
+aprrovedIATList=approvedRestrictedIATList
+UploadIATResAssociateMSISDNFilePath=<Tomcat-Path>/logs/iatFileUpload/approvedList/uploadDir/
+## File size in bytes IAT Approved restricted MSISDN List (1024 - 1KB, 10240 - 10KB, 1048576 - 1MB,5242880 - 5 MB)
+IAT_RESTRICTED_APP_MSISDN_FILE_SIZE=1048576
+iatArchiveFilePathApprovedRestrictedMSISDNFilePath=<Tomcat-Path>/logs/iatFileUpload/iatArchive/
+uploadFilePathForScheduling=<Tomcat-Path>/logs/iatScheduleFileUpload/
+## Upload file size of other files in bytes (1024 - 1KB, 10240 - 10KB, 1048576 - 1MB,5242880 - 5 MB)
+IAT_OTHER_FILE_SIZE=5242880
+OPERATOR_SCHEDULE_BATCH_SIZE=10
+CORPORATE_IAT_TOPUP_LIST_SIZE=1000
+downloadFilePathForScheduling=<Tomcat-Path>/logs/iatScheduleFileDownload/
+downloadSchedulingFileName=iatscheduletopup
+IAT_RESCHEDULE_BATCH_BACK_DAYS=15
+
+
+
+
+HUAWEI_POOL_IN_IDS=INTID00011
+HUAWEIEVR_DB_POOL_IN_IDS=INTID00011
+bonusBundleDefaultValues=1
+BONUS_BUNDLE_DEFAULT_VAL=
+
+
+AUTH_NEEDED_SMTP_NOTIFICATION=N
+LOW_BALANCE_ALERT_NOTIFICATION_FROM=harpreet.kaur@comviva.com
+LOW_BALANCE_ALERT_NOTIFICATION_SUBJECT=Low balance alert
+LOW_BALANCE_ALERT_NOTIFICATION_CONTENT=Balance of a channel user is below alerting balance
+USER_NAME=harpreet.kaur@comviva.com
+PASSWORD=abac
+CHANNELUSER_MSISDN=Channel user Msisdn:
+CHANNELUSER_Name=Channel user name:
+
+
+DownloadBatchO2CListFilePath=<Tomcat-Path>/logs/BatchO2CDownload/
+
+DownloadBatchO2CFileName=O2CWithdrawList
+
+## Upload file path for Batch O2C
+UploadBatchO2CUserListFilePath=<Tomcat-Path>/logs/BatchO2CUpload/
+
+
+## Upload file path for batch o2c approval
+O2C_BATCH_APPROVAL_FILE_PATH=<Tomcat-Path>/logs/BatchO2CDownload/approveFilePath/
+O2C_BATCH_APPROVAL_FILE_SIZE=5242880
+
+DownloadFilePathForO2CApproval=<Tomcat-Path>/logs/BatchO2CDownload/
+
+## Download file name for Batch Foc approval,
+DownloadBatchO2CApproval=BatchO2CApproval
+
+
+########## Added by Anu Garg for C2S or C2C transaction spacific dial##############
+UploadFileForC2sC2cTransSummaryRptPath=<Tomcat-Path>/logs/c2sc2ctranssummary/
+DelimiterForUploadedFileForC2sC2cTransSummaryRpt=,
+## Archive file path for
+ArchiveFilePathForC2sC2cTransSummaryRpt=<Tomcat-Path>/logs/c2sc2ctranssummaryarch/
+## Upload file size of other files in bytes (1024 - 1KB, 10240 - 10KB, 1048576 - 1MB,5242880 - 5 MB)
+OTHER_FILE_SIZE_FOR_C2SC2CTRANSSUMMARY=5242880
+## Entry for no. of contents check in the file for c2c or c2s transaction summary
+NO_OF_CONTENTS_FOR_C2SC2CTRANSSUMMARY=5000
+
+#size of window
+C2SC2CTRANSSUMMARY_POPUP_WINDOW_SIZE=resizable=yes,status=no,scrollbars=yes,width=600,height=750,top=100,left=100
+
+## Size details for the error message popup window
+C2SC2CTRANSSUMMARY_ERRORMSG_POPUP_WINDOW_SIZE=resizable=yes,status=no,scrollbars=yes,width=500,height=550,top=100,left=100
+
+###Xls filename and filepath
+DownloadBatchC2STransSummaryFileNamePrefix=C2STransaction_
+DownloadBatchC2STransSummaryRptPath=<Tomcat-Path>/logs/userC2STransSummary
+DownloadBatchC2CTransSummaryFileNamePrefix=C2CTransaction_
+DownloadBatchC2CTransSummaryRptPath=<Tomcat-Path>/logs/userC2CTransSummary
+
+DownloadC2STransferEnqPath=<Tomcat-Path>/logs/
+DownloadC2STransferEnqtFileName=C2STrfEnq
+
+
+
+#entries for Hourly RP2P DWH process(all the directories must be exixt because script will not create directory automatically).
+#below are the source server parameter entries (db server where C2S DWH will be generated)
+HOURLYC2SDWH_HOSTIP=172.16.7.172
+HOURLYC2SDWH_USERNAME=oracle
+HOURLYC2SDWH_PASSWORD=oracle123
+HOURLYC2SDWH_SERVERDIR=/datadisk1/oracle/c2sdwh
+#below is the local server detail where cron script execute.
+HOURLYC2SDWH_LOCALDIR=/disk1/pretups3/c2sdwh
+#below are the destination server details, where hourly C2S DWH csv file need to put.
+HOURLYC2SDWH_DESTHOSTIP=172.16.7.172
+HOURLYC2SDWH_DESTUSERNAME=oracle
+HOURLYC2SDWH_DESTPASSWORD=oracle123
+HOURLYC2SDWH_DESTSERVERDIR=/datadisk1/oracle/c2sdwh1
+
+
+##############Lend Me balance Related change #####################
+
+SOS_FAIL_MESSAGE_REQ=Y
+#This paramenter is in milliseconds
+SLEEP_TIME_SOS_SETTLEMENT=1000
+# Define SOS Settlement for all networks
+SOS_SETTLE_GTW_CODE_DL=SMSC
+## SOS Amount Multiple Factor
+report.amountmultiplefactor=100
+## File name of the SOS transaction file
+SOSDWH_TRANSACTION_FILE_NAME=SOSTransaction
+
+//added by nilesh: For MRP block time
+##MRP_BLOCK_TIME_ALLOWED=N
+
+LMBSETTLEFILEPATH=<Tomcat-Path>/logs/LMB/
+## LMB Settlement archive file path after processing
+ARCHIVEFILEPATHLMBSETTLE=<Tomcat-Path>/logs/LMBArchive/
+OTHER_FILE_SIZE=1024
+MAX_RESTRICTED_LIST_SIZE=1000
+LMBSETTLEDATEFORMAT=dd/MM/yy
+## LMB max no records stored in the FILE
+maxNoOfRecords=500
+ALLOWEDPERERRLMB=10
+
+
+#Data base type DB2
+databasetype=
+
+##############Lend Me balance Related change #####################
+
+SOS_FAIL_MESSAGE_REQ=Y
+#This paramenter is in milliseconds
+SLEEP_TIME_SOS_SETTLEMENT=1000
+# Define SOS Settlement for all networks
+SOS_SETTLE_GTW_CODE_DL=SMSC
+## SOS Amount Multiple Factor
+report.amountmultiplefactor=100
+## File name of the SOS transaction file
+SOSDWH_TRANSACTION_FILE_NAME=SOSTransaction
+
+##############end of Lend Me balance Related change #####################
+
+
+##################GMB props ####################
+USERID=pretups_1357
+PASSWD=pretups_1357
+FLARES_UDP_IP=127.0.0.1
+FLARES_UDP_PORT=6004
+
+############3333LMB Force settlement #############3
+#lmbSettlementFilePath=C:\\Documents and Settings\\bharat.verma\\workspace\\rwanda\\
+LMB_FORCE_SETTLE_FILE_PATH=<Tomcat-Path>/logs/ForceSettleLMB/
+## LMB Settlement archive file path after processing
+LMB_FORCE_SETTLE_ARCHIVE_FILE_PATH=<Tomcat-Path>/logs/ForceSettleLMBArchive/
+####################################################
+
+
+############Added by ankuj for the process to  bulk upload recharge amounts for subscribers######
+LMB_BLKUPL_FILE_PATH=<Tomcat-Path>/logs/LMB/LMBPath/
+LMB_BLKUPL_ARCHIVE_FILE_PATH=<Tomcat-Path>/logs/LMB/LMBArchive/
+
+###################    LMB CHANGES     #######################################
+
+LMB_FORCE_SETTLE_FILE_PATH=<Tomcat-Path>/logs/ForceSettleLMB/
+
+LMB_FORCE_SETTLE_ARCHIVE_FILE_PATH=<Tomcat-Path>/logs/ForceSettleLMBArchive/
+
+OTHER_FILE_SIZE_LMB_FORCE_SETTLE=1024
+
+MAX_NO_RECORDS_IN_LMB_FILE=1000
+
+ALLOWED_PER_ERR_LMB=10
+
+LMB_SETTLE_DATE_FORMAT=dd/MM/yy
+###############################################
+######################voms########
+VOMS_ORDER_SLAB_LENGTH=5
+RAND_PIN_GEN=40
+
+
+
+################ LMB DWH Entries  ###################
+## LMB DWH transaction file labels
+#LMB_DWH_TRANSACTION_FILE_LABEL=TRANSACTION_ID,RECHARGE_DATE,RECHARGE_DATE_TIME,SUBSCRIBER_MSISDN,SOS_RECHARGE_AMOUNT,SOS_CREDIT_AMOUNT,SOS_DEBIT_AMOUNT,PRODUCT_CODE,SOS_RECHARGE_STATUS,SERVICE_TYPE,PREVIOUS_BALANCE,POST_BALANCE,SUBSCRIBER_TYPE,SUB_SERVICE,SERVICE_CLASS_CODE,VALIDITY,TAX1_VALUE,TAX2_VALUE,PROCESS_FEE_VALUE,BONUS_VALUE,GRACE_PERIOD,BONUS_VALIDITY,VALPERIOD_TYPE,KEY_VALUE
+
+LMB_DWH_TRANSACTION_FILE_LABEL=TRANSACTION_ID,SUBSCRIBER_MSISDN,RECHARGE_DATE, RECHARGE_DATE_TIME,SOS_RECHARGE_AMOUNT,SOS_CREDIT_AMOUNT,SOS_DEBIT_AMOUNT,SOS_RECHARGE_STATUS,ERROR_STATUS,INTERFACE_RESPONSE_CODE,NETWORK_CODE,PRODUCT_CODE,REQUEST_GATEWAY_TYPE,REQUEST_GATEWAY_CODE,SERVICE_TYPE,ACCOUNT_STATUS,SERVICE_CLASS_CODE,CARD_GROUP_CODE,TAX1_VALUE,TAX2_VALUE,PROCESS_FEE_VALUE,VALIDITY,BONUS_VALUE,GRACE_PERIOD,BONUS_VALIDITY,VALPERIOD_TYPE,PREVIOUS_BALANCE,POST_BALANCE,SETTLEMENT_STATUS,SETTLEMENT_DATE,SETTLEMENT_FLAG,SETTLEMENT_RECON_FLAG,SETTLEMENT_RECON_DATE,RECONCILIATION_FLAG,RECONCILIATION_DATE,LMB_AMTAT_IN,LMB_DEBIT_UPDATE_STATUS,LMB_CREDIT_UPDATE_STATUS,SETTLEMENT_ERROR_CODE,SETTLEMENT_PREVIOUS_BALANCE,CELL_ID,SWITCH_ID,KEY_VALUE
+
+## LMB  DWH transaction file name
+LMB_DWH_TRANSACTION_FILE_NAME=SOSTransactions
+
+## C2S DWH files path, files will stored here at the time of DWH processing and after
+## files will be moved at the final path
+LMB_DWH_MASTER_DIRECTORY=<Tomcat-Path>/logs/SOS_DWH_MASTERDATA/
+
+## LMB DWH final files path, files will be moved in this directory after processing,
+## files will be maintained in this directory for 7 days. This directory path is being
+## used in DWHFileCreation also,if changing here, change there also
+
+LMB_DWH_FINAL_DIRECTORY=<Tomcat-Path>/logs/SOS_DWH_FINALDATA/
+
+## LMB DWH files extension
+LMB_DWH_FILE_EXT=.csv
+
+## LMB DWH file length, maximum number of records in DWH file, if there are more records than this count then next file will be created
+LMB_DWH_MAX_FILE_LENGTH=50000
+
+#to make addition of header and footer
+LMB_DWH_ADD_HEADER_FOOTER=Y
+#########################end of LMB DWH ##############################
+ ##BATCH ADD/MODIFY COMMISSION PROFILE by gaurav pandey
+
+LOADDOWNLOADFILEFORCOMMISSIONPROFILE=batch_com_modify
+DOWNLOADCOMMISSIONPROFILEPATH=<Tomcat-Path>/logs/bcaddmod/
+
+DOWNLOADMODIFYCOMMISSSIONPROFILEPATH=<Tomcat-Path>/logs/bcaddmod/
+
+UploadBatchModifyCommProfileFilePath=<Tomcat-Path>/logs/bcaddmod/
+
+MAX_XLS_FILE_SIZE_FOR_MODIFY_COMM_PROFILE=102400000
+BATCH_MODIFY_COMM_DISCNT_TYPE=PCT
+BATCH_MODIFY_COMM_DISCNT_RATE=0
+DOWNLOADADDCOMMISSIONPROFILE=<Tomcat-Path>/logs/bcaddmod/
+
+DOWNLOADFILEFORCOMMISSIONPROFILE=bh_ad_cm_pr
+maxRecordsInBulkCommProfile=150
+## ends here
+
+############Entry for Transaction report by date and time
+report.onlytimeformat=hh12:mi:ss am
+report.dtformat=dd/MM/yy HH:mm
+report.onlytimeformat24=HH24:mi:ss
+
+
+######################voms########
+VOMS_ORDER_SLAB_LENGTH=5
+//RAND_PIN_GEN=40
+VOMS_DOWNLOAD_FILE_PATH=<Tomcat-Path>/logs/voms/
+VOMS_DOWNLOAD_FILE_NAME=Voms
+VOMS_DOWNLOAD_QUEUE_SIZE=5000
+VOMS_DOWNLOAD_FETCH_SIZE=5000
+########ADDED by Anu Garg for bug fixing #############
+
+CHECK_FOR_SERVICE_CLASSES=SERID00018,SERID00006
+DOWNLOADRELATIVEPATH=<Tomcat-Path>/logs/
+VOMS_DOWNLOAD_UTIL_NAME=VomsUtils.jar
+VOMS_DOWNLOAD_UTIL_PATH=<Tomcat-Path>/webapps/pretups/WEB-INF/classes/
+report.channel_user_details_report_daily=Y
+
+
+
+
+################VSS changes from 6.0############################
+NOTIFICATION_SUBJECT_APPROVER=Need approval
+TRANSACTION_FILE_LABEL=USER ID,TRANS DATE,CATEGORY CODE,SENDER DOMAIN CODE,ROAM C2S TRANSFER OUT AMOUNT,OPENING BALANCE,CLOSING BALANCE,C2S TRANSFER OUT COUNT,C2S TRANSFER OUT AMOUNT,O2C TRANSFER IN COUNT,O2C TRANSFER IN AMOUNT,O2C RETURN OUT COUNT,O2C RETURN OUT AMOUNT,O2C WITHDRAW OUT COUNT,O2C WITHDRAW OUT AMOUNT,C2C TRANSFER IN COUNT,C2C TRANSFER IN AMOUNT,C2C TRANSFER OUT COUNT,C2C TRANSFER OUT AMOUNT,C2C RETURN IN COUNT,C2C RETURN IN AMOUNT,C2C RETURN OUT COUNT,C2C RETURN OUT AMOUNT,C2C WITHDRAW IN COUNT,C2C WITHDRAW IN AMOUNT,C2C WITHDRAW OUT COUNT,C2C WITHDRAW OUT AMOUNT,DIFFERENTIAL,ADJUSTMENT IN,ADJUSTMENT OUT,CREATED ON,GRPH DOMAIN CODE,
+RP2P_MAX_FILE_LENGTH=50000
+DataSourceJNDIName=PretupsDB2
+VOUCHER_ALERT_MAIL_NOTIFICATION_REPORT_MAIL_CC=
+ReportDataSourceJNDIName=PretupsDB2
+VOUCHER_ALERT_MAIL_NOTIFICATION_REPORT_MAIL_BCC=
+datasourcedriver=com.ibm.db2.jcc.DB2Driver
+ADD_HEADER_FOOTER_IN_FILE=Y
+TRANSACTION_DATA_DIRECTORY=<Tomcat-Path>/logs/MasterFile/
+RP2P_FILE_EXTENSION=.csv
+VOUCHER_ALERT_MAIL_NOTIFICATION_REPORT_MAIL_SEND=Y
+MONITOR_TIMEOUT_OR_REFRESH=timeout
+FINAL_TRANSACTION_DATA_DIRECTORY=<Tomcat-Path>/logs/Transaction/
+CHANNEL_TRANSACTION_FILE_NAME=ChannelTransactionDataFile
+VOUCHER_ALERT_MAIL_NOTIFICATION_REPORT_FILE_PATH=<Tomcat-Path>/logs/
+DAILY_REPORT_MAIL_MO=ashishk@bhartitelesoft.com
+VOUCHER_ALERT_MAIL_NOTIFICATION_REPORT_MAIL_FROM=shamit.jain@comviva.com
+MAX_LOGINS_LOCATION_MO=50
+currentschema=PRETUPS561_DEV
+VOUCHER_ALERT_MAIL_NOTIFICATION_REPORT_FILE_PRIFIX=VOUCHERALERTSTATUS
+EXT_GROUP_ROLE=Y
+VOUCHER_ALERT_MAIL_NOTIFICATION_REPORT_MAIL_MESSAGE=Voucher Alert Status Report. Please find the attached sheet
+UploadMessageFilePath=<Tomcat-Path>
+EXT_USER_REG_GROUP_ROLE_REQ=Y
+VOUCHER_ALERT_MAIL_NOTIFICATION_REPORT_MAIL_DEFAULT=shamit.jain@comviva.com
+VOUCHER_ALERT_MAIL_NOTIFICATION_REPORT_MAIL_SUBJECT=Voucher Alert Status Report
+DAILY_REPORT_SUMMARY_MAIL_MO=gurjeet.bedi@bhartitelesoft.com
+TIMEOUT_TIME=600
+NOTIFICATION_SUBJECT_USER=Transfer Approved
+######################end###############################
+
+OLD_DATA_REQ_AFTR_TBLE_MERGE=Y
+MIGRATION_DATE=05/10/12
+AFTER_MIG_NO_OF_DAYS=5
+
+###############################ONS CONFIGURATION FOR OJDBCPOOLMANAGER##################################
+
+#ONS_CONFIG=nodes=ersdb01:6200,ersdb02:6200,ersdb03:6200,ersdb04:6200
+#ONS_EN=Y
+CACHE_ID=PRETUPS6
+
+#ONS_CONFIG_REPORT_DB=nodes=ersdb01:6200,ersdb02:6200,ersdb03:6200,ersdb04:6200
+#ONS_REPORT_DB_EN=N
+REPORT_CACHE_ID=RPT
+
+#ONS_CONFIG_CURRENT_REPORT_DB=nodes=ersdb01:6200,ersdb02:6200,ersdb03:6200,ersdb04:6200
+#ONS_CURRENT_REPORT_DB_EN=Y
+CURRENT_REPORT_CACHE_ID=CURR_RPT
+
+########################################    6.1.1 and LMS  ########################################
+#coma seperated role_code for those module which need to fetch from reporting database(including current day report).
+CurrentReportsFromRPTDB=UBALCLRPT
+
+#thread pool size, which will use for sending notification(SMS)
+THREADPOOLEXE_POLLSIZE=30
+
+
+## Loyalty Management System###########
+LMS_MULTIPLE_FACTOR=1
+LMS_PADDING_LENGTH=2
+
+#dateTime for loyality points expiry process (DD/MM/YYYY)
+LMS_EXPIRY_DATE_TIME=09/12/2013
+ maxRecordsAllowedForLoyaltyBonus=500
+
+LOYALTY_POINTS_PROCESS_DOWNLOADED_FILE_PATH=C://workspace2//Tomcat5//logs_lms//LMSPROCESSFILE//
+LOYALTY_POINTS_PROCESS_DOWNLOADED_FILE_NAME=LOYALTYPOINTS_PROCESS_FILE
+
+ ##########queue logic
+IS_QUEUE_LOGIC_TO_BE_IMPLEMENTED = N
+IS_QUEUE_LOGIC_FOR_ALL_REQUESTS = N
+QUEUE_MIN_WORKER_THREAD=20
+QUEUE_MAX_WORKER_THREAD=50
+QUEUE_POOL_SIZE=200
+QUEUE_THRESHOLD_POOL_SIZE=90
+####thread manager time out in mili seconds
+THREAD_MANAGER_SLEEP_TIME=50
+##### queue request time out in mili seconds
+QUEUE_REQUEST_TIMEOUT=3000
+
+# Date and time format used in used in CommissionProfileAction.java,CommissionProfileForm.java
+LMS_PROFILE_DATE_FORMAT=dd/MM/yy HH:mm
+LOYALTY_TARTGET_SLAB_LENGTH=3
+###LMS View items per page
+NUMBER_OF_RECORDS_ON_PAGE=10
+
+# for profile Name Length in POS categorisation for ROBI
+USER_CATEGORISATION_LENGTH=5
+
+### no of days till which the reference from date can be associated
+MAX_PREV_REF_RANGE_ALLOWED=90
+
+# By Narendra for profile Name Length for Robi
+USER_CATEGORISATION_LENGTH=5
+
+ALLOWED_CHARACTER_OCCURANCE = 1
+
+### Entries for user creation Through SAP
+CLARO_USR_CREA_INTERFACE_DOWN=Interface Down
+CLARO_USR_CREA_INTERFACE_USR_NOT_FOUND=User Not Found
+DWH_MASTER_CHANNELUSER_FILE_LABEL=PRIMARY MSISDN,CHANNEL USER NAME,EXTERNAL CODE,USER STATUS,CATEGORY NAME,GEOGRAPHICAL DOMAIN NAME,GEOGRAPHICAL DOMAIN TYPE
+DWH_MASTER_CHANNELUSER_FILE_NAME=channel_user_master
+#CHANNEL_USER_MASTER_ALLOWED=Y
+CLARO_WEBSERVICE_STYLE=WRAPPED
+
+
+CHANNEL_USER_TXN_FULL_TDR_ALLOWED=Y
+CHANNEL_USER_TXN_USR_SPEC_TDR_ALLOWED=Y
+ALLOWED_CHARACTER_OCCURANCE = 1
+CHANNELUSER_Balance=Channel user balance:
+
+
+report.schedule.path=ReportScheduling?datasource=pdsora7.dll&report=
+report.daily.schedule.path=ReportSchedulingDaily?datasource=pdsora7.dll&report=
+
+
+CHANNEL_VAL_CLARO_WEBSERVICE_STYLE=WRAPPED
+COLL_ENQ_CLARO_WEBSERVICE_STYLE=WRAPPED
+COLL_PAY_CLARO_WEBSERVICE_STYLE=WRAPPED
+DATA_CLARO_WEBSERVICE_STYLE=WRAPPED
+DTH_CLARO_WEBSERVICE_STYLE=WRAPPED
+PIN_CLARO_WEBSERVICE_STYLE=WRAPPED
+PROMO_CLARO_WEBSERVICE_STYLE=WRAPPED
+RECHARGE_CLARO_WEBSERVICE_STYLE=WRAPPED
+CHANNEL_INFO_CLARO_WEBSERVICE_STYLE=WRAPPED
+#Added By Diwakar on 20-MAY-2014 for DWH/P2PDWH/DAILY_USER_BALANCE Transcation stats summary
+DWH_TRANSCATION_STAT_SEPERATOR=;
+P2PDWH_TRANSCATION_STAT_SEPERATOR=;
+DAILY_USER_BALANCE_TRANSCATION_STAT_SEPERATOR=;
+#Ended Here
+SPECIAL_CHAR_MANNAGE_MESSAGE=%
+
+### added for schedule top up
+Fail_RETRY_COUNT=3
+## PG interface and Billing system configuration files path
+INTERFACE_DIRECTORY_PG=<Tomcat-Path>/webapps/pretups/WEB-INF/classes/configfiles/PGFiles/
+
+## PG interface and Billing system configuration files Extension should .txt
+INTERFACE_FILE_EXTENSION_PG=txt
+
+#  PG Interface File Prefix, if keep it blank if not used
+INTERFACE_FILE_PREFIX_PG=
+NO_OF_REPETATION_ALLOWDED_IN_PIN_VALIDATION=2
+SPECIAL_CHARACTER_PASSWORD_VALIDATION=~,!,@,#,$,%,^,&,|,\\,/,?
+
+## ##########################Enrties related to the SelfTopUp (Txn reversal/refund at Payment Gateway)##############################
+STU_TRANSACTION_FILE_LABEL=Merchant Code,Trace Number,Order Number,Approval Code,Transaction date,Refund amount,Settlement amount,Refund Indicator
+STU_TRANSACTION_FILE_NAME=SELFTOPUP.REFUND.001.
+STU_DIRECTORY=<Tomcat-Path>/logs/STUData/
+STU_FINAL_DIRECTORY=<Tomcat-Path>/logs/STUDataFinal/
+STU_FILE_EXT=.csv
+STU_MAX_FILE_LENGTH=1000
+Fail_RETRY_COUNT=3
+## ##########################Enrties related to the P2P Dataware House (DWH)##############################
+STUDWH_TRANSACTION_FILE_LABEL=TRANSFER ID,TRANSFER DATE,TRANSFER DATE TIME,SENDER MSISDN,RECEIVER MSISDN,TRANSFER VALUE,PRODUCT CODE,RECEIVER PREVIOUS BALANCE,RECEIVER POST BALANCE,SENDER TRANSFER VALUE,RECEIVER TRANSFER VALUE,SERNDER TR. STATUS,RECEIVER TR. STATUS,SENDER TYPE,RECEIVER TYPE,RECEIVER SERVICE CLASS ID,SENDER TAX1 VALUE,RECEIVER TAX1 VALUE,SENDER TAX2 VALUE,RECEIVER TAX2 VALUE,SENDER ACCESS FEE,RECEIVER ACCESS FEE,RECEIVER VALIDITY,RECEIVER BONUS VALUE,RECEIVER BONUS VALADITY,RECEIVER GRACE PERIOD,SUB SERVICE,CARD REFERENCE, TRANSACTION STATUS
+STUDWH_MASTER_FILE_LABEL=USER ID,MSISDN,SUBSCRIBER TYPE,STATUS,NETWORK CODE,LAST TRANSFER ON,LAST TRANSFER STATUS,TOTAL TRANSFERS,TOTAL TRANSFER AMOUNT,CREDIT LIMIT,REGISTERED ON,LAST TRANSFER ID,LAST TRANSFER MSISDN,LANGUAGE,COUNTRY,USER NAME
+STUDWH_MASTER_FILE_NAME=p2psubscriber
+STUDWH_TRANSACTION_FILE_NAME=STUTransaction
+STUDWH_MASTER_DIRECTORY=<Tomcat-Path>/logs/STUDWHData/
+STUDWH_FINAL_DIRECTORY=<Tomcat-Path>/logs/STUDWHDataFinal/
+STUDWH_FILE_EXT=.csv
+STUDWH_MAX_FILE_LENGTH=1000
+
+##For Adhoc Reports
+adhoc_report_url=http://172.16.1.121:4030/reporting?embedded=true
+
+
+### Vipan Start Here#######################################################################
+
+CLARO_DTH_IN_IDS=INTID00013
+CLARO_RCH_IN_IDS=INTID00011,INTID00011
+CLARO_PIN_IN_IDS=INTID00014,INTID00009
+CLARO_DATA_IN_IDS=INTID00015
+CLARO_CU_INFO_IN_IDS=INTID00018
+CLARO_CU_VAL_IN_IDS=INTID00016
+CLARO_CU_VAL_IN_IDS=INTID00016
+CLARO_COLLECTION_ENQ_IN_IDS=INTID00020
+CLARO_COLLECTION_PAYCAN_IN_IDS=INTID00019
+CLARO_PROMO_IN_IDS=PromoINTID
+### Vipan End Here #######################################################################
+
+### Abhilasha Start Here #######################################################################
+
+#### In Seconds
+OTP_VALIDATION_TIMEOUT=120
+OTP_PIN_GEN_ARG=1234567890
+###FOR two factor authentication 4<=OTP_PIN_LENGTH<=10
+OTP_PIN_LENGTH=6
+OTP_MAX_ATTEMPTS=5
+LDAP_AUTH_ID=ou=users,ou=system
+LDAP_DN=dc=example, dc=com
+LDAP_AUTH_PWD=abhilasha
+LDAP_minpoolsize=5
+LDAP_maxpoolsize=10
+LDAP_HOSTS=localhost,localhost
+LDAP_PORTS=10389,10389
+LDAP_CONNE_TIMEOUT=2000
+LDAP_RESP_TIMEOUT=2000
+
+### Abhilasha  End Here #######################################################################
+
+##################Used for Two factor Authentication ##############
+
+LOGIN_OTP_SUBJECT=Your OTP To login
+LOGIN_OTP_MESSAGE=Kindly use the following One time Password(OTP) to Login to System:
+###keep value between 1 to 5 Recommended is 3
+OTP_MAX_RESEND_ATTEMPTS=3
+################################################################################
+
+############added by praveen################
+DownloadAutoC2CFileName=AutoC2CSOSallowedList
+DownloadBulkAutoC2CListFilePath=<Tomcat-Path>/logs/BulkAutoC2CSOSDownload/
+###########Praveen##########################
+
+
+
+############added by akanksha ################
+
+
+CLARO_COLLECTION_ENQ_IN_IDS=INTID00020
+CLARO_COLLECTION_PAYCAN_IN_IDS=INTID00019
+
+###########akanksha##########################
+
+
+#########################################Collection  related entries###################################
+## General failure message requried to receiver in bill payment validation
+COLLECTION_REC_GEN_FAIL_MSG_REQD_V=Y
+
+## General failure message requried in bill payment Update (TopUp)
+COLLECTION_REC_GEN_FAIL_MSG_REQD_T=Y
+
+#Gateway type Code for which sender push message is not required in case of Bill payment
+COLLECTION_SEN_MSG_NOT_REQD_GW=
+COLLECTION_REC_MSG_NOT_REQD_GW=
+NO_OF_LIST_COLLECTIONENQUIRY_RECMSG=2
+
+### Entries for Sending mail for O2C pending for approval
+
+USER_NAME=abhilasha.dwivedi@mahindracomviva.com
+PASSWORD=xxxxxx
+mail_host=webmail.comviva.com
+AUTH_NEEDED_SMTP_NOTIFICATION=Y
+
+O2C_PENDING_MAIL_RECP=akanksha.gupta@comviva.com
+O2C_PENDING_MAIL_SUB=EtopUP O2C Pending for Approval.
+O2C_SENDMAIL_TRNSFR_ID=Transfer Id
+O2C_SENDMAIL_TO_USER_NAME=User Name
+O2C_SENDMAIL_TO_USER_MSISDN=User MSISDN
+O2C_SENDMAIL_TO_USER_EXTCODE=SAP CODE
+O2C_SENDMAIL_REQ_QTY=Requested Quantity
+O2C_SENDMAIL_CREATED_ON=Initiated On
+O2C_SENDMAIL_STATUS=Current Status
+O2C_SENDMAIL_INITIATION_RMRKS=Initiation Remarks
+O2C_SENDMAIL_FST_APPRV_BY=First Level Approved By
+O2C_SENDMAIL_FST_APPRV_ON=First Level Approved On
+O2C_SENDMAIL_FST_APPRV_RMRKS=First Level Approval Remarks
+O2C_SENDMAIL_SEC_APPRV_BY=Second Level Approved By
+O2C_SENDMAIL_SEC_APPRV_ON=Second Level Approved On
+O2C_SENDMAIL_SEC_APPRV_RMRKS=Second Level Approval Remarks
+O2C_SENDMAIL_THRD_APPRV_BY=Third Level Approved By
+O2C_SENDMAIL_THRD_APPRV_ON=Third Level Approved On
+O2C_SENDMAIL_THRD_APPRV_RMRKS=Third Level Approval Remarks
+O2C_SENDMAIL_FROM=abhilasha.dwivedi@mahindracomviva.com
+O2C_SENDMAIL_HEADER=Hi Team<br ><br >Please find the below O2C which are pending for approval as on
+O2C_SENDMAIL_REGRDS=<br >Regards,<br >EtopUP Team<br >
+O2C_SENDMAIL_FST_APPRV_STATUS=First Level Approved
+O2C_SENDMAIL_SEC_APPRV_STATUS=Second Level Approved
+O2C_SENDMAIL_THRD_APPRV_STATUS=Third Level Approved
+NETWORK_CODE=CP
+
+
+## General failure message requried in bill payment Update (TopUp)
+REVERSAL_REC_GEN_FAIL_MSG_REQD_V=Y
+REVERSAL_REC_GEN_FAIL_MSG_REQD_T=Y
+#Gateway type Code for which sender push message is not required in case of Post paid Reversal
+REVERSAL_SEN_MSG_NOT_REQD_GW=
+REVERSAL_REC_MSG_NOT_REQD_GW=
+
+## General failure message required in Prepaid TopUp reversal
+PRE_REVERSAL_REC_GEN_FAIL_MSG_REQD_V=Y
+PRE_REVERSAL_REC_GEN_FAIL_MSG_REQD_T=Y
+#Gateway type Code for which sender push message is not required in case of Prepaid TopUp reversal
+PRE_REVERSAL_SEN_MSG_NOT_REQD_GW=
+PRE_REVERSAL_REC_MSG_NOT_REQD_GW=
+
+
+### Entries for user creation Through SAP
+CLARO_USR_CREA_INTERFACE_DOWN=Interface Down
+CLARO_USR_CREA_INTERFACE_USR_NOT_FOUND=User Not Found
+
+
+#################added for MAPSIM#################
+DWH_MASTER_CHANNELUSER_FILE_LABEL=PRIMARY MSISDN,CHANNEL USER NAME,EXTERNAL CODE,USER STATUS,CATEGORY NAME,GEOGRAPHICAL DOMAIN NAME,GEOGRAPHICAL DOMAIN TYPE
+DWH_MASTER_CHANNELUSER_FILE_NAME=channel_user_master
+CHANNEL_USER_MASTER_ALLOWED=N
+CLARO_WEBSERVICE_STYLE=WRAPPED
+
+
+CHANNEL_USER_TXN_FULL_TDR_ALLOWED=Y
+CHANNEL_USER_TXN_USR_SPEC_TDR_ALLOWED=Y
+
+CHANNEL_VAL_CLARO_WEBSERVICE_STYLE=WRAPPED
+COLL_ENQ_CLARO_WEBSERVICE_STYLE=WRAPPED
+COLL_PAY_CLARO_WEBSERVICE_STYLE=WRAPPED
+DATA_CLARO_WEBSERVICE_STYLE=WRAPPED
+DTH_CLARO_WEBSERVICE_STYLE=WRAPPED
+PIN_CLARO_WEBSERVICE_STYLE=WRAPPED
+PROMO_CLARO_WEBSERVICE_STYLE=WRAPPED
+RECHARGE_CLARO_WEBSERVICE_STYLE=WRAPPED
+CHANNEL_INFO_CLARO_WEBSERVICE_STYLE=WRAPPED
+
+GLOBAL_PAGE_DEFAULT_LOCAL=Y
+
+
+PIN_GEN_ARG=123456789013579
+PIN_LENGTH_CodBanco=6
+PIN_LENGTH_Trace=6
+PIN_LENGTH_NroOperacion=12
+
+########added by gaurav for cell id management
+DownloadCellGroupPath=<Tomcat-Path>/logs/
+UploadCellIdFilePath=<Tomcat-Path>/logs/batchassociateprofile/
+
+########### VASTRIX Feature ########################
+NO_ROW_SERVICE_PRODUCT_INTERFACE_MAP=2
+SRV_PRD_INTERFACE_MAPPING_DATE_FORMAT=dd/MM/yy
+MAX_PRODUCTS_ALWD_PR_SERVICE=10
+
+##### c2s table merging ####
+OLD_DATA_REQ_AFTR_TBLE_MERGE=Y
+MIGRATION_DATE=05/10/12
+AFTER_MIG_NO_OF_DAYS=5
+
+##Optional PIN incase of O2C through External Gateway###
+
+BYPASS_PIN_VALIDATION_GATEWAYS=EXTGW,EXTGW1
+
+############## added by Sonali for Scheduled Credit Transfer #########
+####changed by brajesh for life cycle change status process
+SCHEDULED_MCLD_IP=172.16.1.121
+SCHEDULED_MCLD_PORT=8282
+SCHEDULED_MCLD_SERVICE_NAME=C2SReceiver
+SCHEDULED_MCLD_REQUEST_GATEWAY_CODE=EXTGW
+SCHEDULED_MCLD_REQUEST_GATEWAY_TYPE=EXTGW
+SCHEDULED_MCLD_LOGIN=pretups
+SCHEDULED_MCLD_PASSWORD=pretups123
+SCHEDULED_MCLD_SOURCE_TYPE=EXTGW
+SCHEDULED_MCLD_SERVICE_PORT=190
+SCHEDULED_MCLD_CONTEXT=pretups
+SC_P2P_SEN_MSG_REQD_T=Y
+
+
+#### Start of Entries for DMS############
+
+## Download user default config file path
+DownloadUserDefaultConfigPath =<Tomcat-Path>/userdefaultdownload/
+
+## Upload user default config file path
+UploadUserDefaultConfigPath =<Tomcat-Path>/userdefaultupload/
+
+###UploadUserDefaultConfigPath1=<Tomcat-Path>/uploaddelete/
+
+## Maximum file size can be upload for user default config (1024 - 1KB, 10240 - 10KB, 1048576 - 1MB,5242880 - 5 MB)
+MAX_XLS_FILE_SIZE_FOR_USERDEFCONFIG=102400
+
+## Maximum records in user default config file
+maxRecordsInUserDefualtConfig=102400
+
+## user defauult configuration download file prefix
+DownloadUsrDefConfigFileNamePrefix=USRCNF_
+
+## Transaction will be commited after this no. of records
+USER_DEFAULT_CONFIG_COMMIT_NUMBER=102400
+
+#### End of Entries for DMS############
+
+
+
+
+##### Start of Entries: Email For Pin & Password #####
+
+mail_from_admin=
+mail_host=
+
+##### End of Entries: Email For Pin & Password #####
+
+###########added forcell ID mangement################
+DownloadCellGroupPath=<Tomcat-Path>/logs/cellGroup/
+UploadCellIdFilePath=<Tomcat-Path>/logs/cellGroup/
+MaxFileSizeInByteForCellIdMgmt=1000000
+
+############added for servicegroup management####################
+DownloadServiceGroupPath=<Tomcat-Path>/logs/serviceGroup/
+UploadServiceIdFilePath=<Tomcat-Path>/logs/servicegroup/
+MaxFileSizeInByteForServiceMgmt=100000
+
+####################added for cos management###############
+MaxFileSizeInByteForCOSManagement=100000
+
+##### VASTRIX #########
+MAX_PRODUCTS_ALWD_PR_SERVICE=5
+###### END ##########
+
+########### DWH LABELS NEW -- including sub service #######
+#DWH_TRANSACTION_FILE_LABEL=TRANSFER ID,REQUEST SOURCE,TRANSFER DATE,TRANSFER DATE TIME,NETORK CODE,TRANSACTION TYPE,TRANSACTION SUB TYPE,TRANSITION CATEGORY,CHANNEL TYPE,FROM USER ID,TO USER ID,SENDER MSISDN,RECEIVER MSISDN,SENDER CATEGORY,RECEIVER CATEGORY,SENDER DEBIT AMOUNT,RECEIVER CREDIT AMOUNT,TRANSFER AMOUNT,MRP,PAYABLE AMOUNT, NET PAYABLE AMOUNT,RECEIVER PROCESSING FEE,RECEIVER TAX1 AMOUNT,RECEIVER TAX2 AMOUNT,RECEIVER TAX3 AMOUNT,COMMISION,DIFFERENTIAL APPLICABLE,DIFFERENTIAL GIVEN,EXERNAL INVOICE NUMBER,EXTERNAL INVOICE DATE,EXTERNAL USER ID,PRODUCT,CREDIT BACK STATUS,TRANSFER STATUS,RECEIVER_BONUS,RECEIVER_VALIDITY,RECEIVER_BONUS_VALIDITY,SERVICE CLASS CODE,INTERFACE ID,CARD GROUP,ERROR REASON,SERIAL NUMBER,INITIATED BY,FIRST APPROVED BY,SECOND APPROVED BY,THIRD APPROVED BY,SUB SERVICE NAME,SUB SERVICE,BONUS
+#Added new column SOS STATUS for DWH process
+DWH_TRANSACTION_FILE_LABEL=TRANSFER ID,REQUEST SOURCE,TRANSFER DATE,TRANSFER DATE TIME,NETORK CODE,TRANSACTION TYPE,TRANSACTION SUB TYPE,TRANSITION CATEGORY,CHANNEL TYPE,FROM USER ID,TO USER ID,SENDER MSISDN,RECEIVER MSISDN,SENDER CATEGORY,RECEIVER CATEGORY,SENDER DEBIT AMOUNT,RECEIVER CREDIT AMOUNT,TRANSFER AMOUNT,MRP,PAYABLE AMOUNT, NET PAYABLE AMOUNT,RECEIVER PROCESSING FEE,RECEIVER TAX1 AMOUNT,RECEIVER TAX2 AMOUNT,RECEIVER TAX3 AMOUNT,COMMISION,DIFFERENTIAL APPLICABLE,DIFFERENTIAL GIVEN,EXERNAL INVOICE NUMBER,EXTERNAL INVOICE DATE,EXTERNAL USER ID,PRODUCT,CREDIT BACK STATUS,TRANSFER STATUS,RECEIVER_BONUS,RECEIVER_VALIDITY,RECEIVER_BONUS_VALIDITY,SERVICE CLASS CODE,INTERFACE ID,CARD GROUP,ERROR REASON,SERIAL NUMBER,INITIATED BY,CELL ID,SENDER NEW BALANCE,SENDER PREVIOUS BALANCE,RECEIVER NEW BALANCE,RECEIVER PREVIOUS BALANCE,REVERSAL ID,SELECTOR CODE,SOS STATUS,SOS SETTLEMENT DATE,CBC TYPE,CBC RATE,CBC AMOUNT,INFO1,INFO2,INFO3,INFO4,INFO5,COMMISSION TYPE
+
+
+
+####END####
+
+################Added for Channel User authentication###########
+#External User response date format
+EXTERNAL_USER_DATETIME_FORMAT=dd/MM/yy HH:MM:SS
+#######################
+SIM_ACTIVATION_INTERFACE_ID=INTID00019
+SIM_ACTIVATION_HANDLER=com.btsl.pretups.inter.simactivationth.SIMACTINHandler
+
+### promotional Transfer rule
+NO_ROW_PROMOTIONAL_TRANSFER_RULE=3
+NO_OF_TIMESLAB_PROMOTIONAL_TRANSFER_RULE=3
+
+####################Entries for Batch grade Management##########################
+UploadUserGradeAssocFilePath=<Tomcat-Path>/logs/BatchGradeManagment/
+DownloadUserGradeAssocPath=<Tomcat-Path>/logs/BatchGradeManagment/
+MaxFileSizeInByteForBatchGradeMgmt=102400000
+MaxRecordsInBatchGradeMgmt=80000
+DownloadUserGradeAssocName=USRGDASSCFILES_
+
+##Constant.props entry for Batch User Modify(Multiple Excel Sheet)
+NUMBER_OF_ROWS_PER_TEMPLATE_FILE_BATCH_GRADE_MANAGEMENT=65500
+
+NUMBER_OF_ROWS_PER_TEMPLATE_FILE=65500
+
+
+
+####################User Hierarchy multiple sheet###############
+NUMBER_OF_ROWS_PER_TEMPLATE_FILE_USERHIERARCHY=65500
+
+
+## Batch O2C Withdraw enquiry download file path on the server
+DownloadBatchO2CWithdrawEnqFilePath=<Tomcat-Path>/logs/BatchO2CWithdrawEnquiry/
+
+## Batch O2C Withdraw enquiry download file name prefix
+DownloadBatchO2CWithdrawEnqFileName=ENQUIRY
+
+
+##Constant.props entry for Batch C2C MODULE(Multiple Excel Sheet)
+
+NUMBER_OF_ROWS_PER_TEMPLATE_FILE_BATCHC2C=65500
+
+
+##Constant.props entry for Batch DMS MODULE(Multiple Excel Sheet)
+
+NUMBER_OF_ROWS_PER_TEMPLATE_FILE_PROFILEMANAGEMENT=65500
+
+
+##Constant.props entry for Batch SERVICE GROUP MANAGEMENT MODULE(Multiple Excel Sheet)
+
+NUMBER_OF_ROWS_PER_TEMPLATE_FILE_SERVICEGROUPMANAGEMENT=65500
+#added for bar for deletion
+
+PER_DAY_LIMIT_BAR_FOR_DEL=10
+ROLES_FOR_BAR_USERS=IATTRSERPT,INITO2CTRF
+DEFAULT_GATEWAY_FOR_BAR=WEB
+
+DOWNLOAD_TEMPLATE_BAR_FOR_DEL=<Tomcat-Path>/logs/BatchBarForDel
+DOWNLOAD_FILE_FOR_BAR_FOR_DEL=BCHBARDEL
+UPLOAD_BAR_FOR_DEL_FILE_PATH=<Tomcat-Path>/logs/BatchBarForDel
+MAX_NUMBER_OF_INVALID_ROWS=10
+
+DOWNLOAD_FILE_FOR_APP_BAR_FOR_DEL=APPBCHBARDEL
+
+UPLOAD_APP_BAR_FOR_DEL_FILE_PATH=<Tomcat-Path>/logs/ApprovalBatchBarForDel
+
+
+######## Bar for delete
+NO_OF_DAYS_USER_REMAINS_BARRED=1
+
+#######################entry to be added for tigo guatemala DWH process########
+BONUS_BUNDLE_DEFAULT_VAL=
+
+SERVICEID_MAX_LENGTH=13
+
+
+##### Email For Pin & Password #####
+admin_password=
+#####  Email For Pin & Password- End #####
+
+#### added by akansksha for tigo guatemala CR for External reference number in PVAS recharge
+EXT_REF_NO_MAX_LEN=20
+
+##########BAS MERGING#####################
+
+UploadRecouncilationFilePath=<Tomcat-Path>/logs/pretups_files/
+
+
+DownloadBatchFOCUserTemplateListFileName=userTemplateList
+DownloadBatchC2CUserTemplateListFileName=userTemplateList
+
+DOWNLOADUSERCLOSINGBALANCEPATH=<Tomcat-Path>/logs/userclosingbalance/
+DOWNLOADUSERCLOSINGBALANCENAME=userList
+
+
+##### Changes For Configuring Seperate External DB ######
+
+externaldbdatasourceurl=jdbc:oracle:thin:@<DBIP>:<DBPORT>:prtp
+externaldbuserid=
+externaldbpasswd=
+###Either put Y or N forexternaldbapplicationpool
+externaldbapplicationpool=Y
+externaldbdatabasehelperclass= com.btsl.util.DatabaseHelperClass
+externaldbdatasourcename= jdbc/pretupsdatasource
+externaldbminpoolsize=2
+externaldbpoolsize=5
+### either put Y or N for ONS_EXTERNAL_DB_EN & ONS_CONFIG_EXTERNAL_DB
+ONS_EXTERNAL_DB_EN=N
+ONS_CONFIG_EXTERNAL_DB=N
+EXTERNAL_CACHE_ID=EXT
+ExternalDataSourceJNDIName=PretupsDB2
+
+
+### For OAM 4.3 Configurations
+ ## time is in minutes. it is the time for which the counters will be maintained
+COUNTER_TIME_LIMIT=5
+COUNTER_CONF_FILE=<Tomcat-Path>/webapps/pretups/WEB-INF/classes/configfiles/oam/OAM.props
+COUNTER_SYS_CONF_FILE=<Tomcat-Path>/webapps/pretups/WEB-INF/classes/configfiles/oam/OAMSNMP.properties
+NEW_OAM=N
+
+##### PreTUPS processing time threshold
+ALERT_REQ_THLD_PRTP_PRCSS_TIME=Y
+ALERT_STP_THLD_PRTP_PRCSS_TIME=RC,EVD,PPB
+
+########## Entries for validating filename on upload#######
+FILE_NAME_WHITE_LIST=^[a-zA-Z0-9()_\\-. ]{0,255}$
+
+#########################################Batch O2C########################
+#############################################Enrties for Batch O2C Approval
+## Download file path for Batch o2c approval files
+DownloadFilePathForO2CApproval=<Tomcat-Path>/logs/batcho2c/
+## Download file name for Batch o2c approval,
+DownloadFileNameForO2CApproval=FileForO2CApproval
+## Max file size to be upload for Batch o2c approval (1024 - 1KB, 10240 - 10KB, 1048576 - 1MB,5242880 - 5 MB)
+O2C_BATCH_APPROVAL_FILE_SIZE=102400
+## Upload file path for batch o2c approval
+#O2C_BATCH_APPROVAL_FILE_PATH=<Tomcat-Path>/logs/batcho2c/
+############################################Entries for Initiate Batch O2C Transfer
+## Down load User list for batch O2C - file path
+DownloadBatchO2CUserListFilePath=<Tomcat-Path>/logs/batcho2c/download/
+## Down load User list for batch O2C - file name
+DownloadBatchO2CUserListFileName=userList
+## Upload file path for Batch O2C
+UploadBatchO2CUserListFilePath=<Tomcat-Path>/logs/batcho2c/upload/
+## Max size of file in Bytes for the Initiate list, (1024 - 1KB, 10240 - 10KB, 1048576 - 1MB,5242880 - 5 MB)
+MAX_XLS_FILE_SIZE=10240000000
+
+
+LDAP_DN=@claro.com.pe
+## Aujas Defect Fixing for file content validation.
+FILE_CONTENT_WHITE_LIST= ^[a-zA-Z0-9!@#$%^&()\\[\\]_+\\-=,.~':?/ ]{0,255}$
+
+reportdbacquireincrement=5
+DWH_SUMMARY_FILE_REQUIRED=Y
+P2PDWH_SUMMARY_FILE_REQUIRED=Y
+
+########Added in 630
+oraclePoolLogFile=<Tomcat-Path>/logs/OraclePoolLog.out
+
+#################################################################################
+#####################  PreTUPS 6.3.1 ############################################
+#################################################################################
+
+
+##gateway td length for commission profile
+ASSIGN_GATEWAYS_TD_LENGTH = 3
+DWH_OPT_MASTER_FILE_LABEL=CHANNEL USER ID,PARENT USER ID,OWNER USER ID,USER TYPE,EXTERNAL CODE,PRIMARY MSISDN,USER STATUS,LOGIN ID,CATEGORY CODE,CATEGORY NAME,CHANNEL USER NAME,CITY,STATE,COUNTRY,DESIGNATION,EMPLOYEE CODE
+DWH_OPT_MASTER_FILE_NAME=optMaster
+
+###DMS Enhancement####
+
+DMS_OWNER_MSG_ALLOW=1
+DMS_PARENT_MSG_ALLOW=1
+
+#############BATCH OPERATIONS CONSTENTS ###############
+BATCH_FILE_NAME_2_6_1=2-6-1_
+BATCH_FILE_NAME_2_6_2=2-6-2_
+BATCH_DATE_TIME_FORMAT=YYYYMMddHHmmss
+BATCH_FILE_PATH=<Tomcat-Path>/logs/excell File/
+BATCH_ALLOWED_SERVICES_2_6_1=CS','CLA','CLF
+BATCH_ALLOWED_SERVICES_2_6_2=VOUCHER
+#############LIFE CYCLE MANAGEMENT ###############
+LCM_FILE_NAME=LCM
+LCM_FILE_PATH=<Tomcat-Path>/logs/etudesact/
+#############LIFE CYCLE MANAGEMENT CHANGE STATUS###############
+LCMCS_FILE_NAME=LCMCS
+LCMCS_FILE_PATH=<Tomcat-Path>/logs/tuchgst/
+######################################
+
+####################Customer Rechare File Creation######################
+ASSO_DISASSO_FILE_NAME=NNN_
+ASSO_DISASSO_FILE_PATH=<Tomcat-Path>/logs/CRecharge/
+ASSO_DISASSO_FILE_EXT=.etdr
+ASSO_DISASSO_EMPTY_FILE_GENERATE=y
+
+applicationPool=Y
+IS_CHARGING_APPLICABLE=Y
+CHANNEL_SMS_RECHARGE_SERVLET=/pretups/C2SReceiver
+CHANNEL_P2P_RECHARGE_SERVLET=/pretups/P2PReceiver
+
+############Warranty+advcance+caution###################
+FLATFILE_PATH_WARRANTY=<Tomcat-Path>/logs/FILESFOR_WARRANTY/
+FLATFILE_PATH_ADVANCE=<Tomcat-Path>/logs/FILESFOR_ADVANCE/
+FLATFILE_PATH_CAUTION=<Tomcat-Path>/logs/FILESFOR_CAUTION/
+FLATFILE_PATH_INVOICE=<Tomcat-Path>/logs/FILESFOR_INVOICE/
+FLATFILENAME=NNN_
+
+CHANGE_ACTIVE_TO_CHURN=30
+CHANGE_CHURN_TO_EX=45
+CHANGE_EX_TO_DE=13
+CHANGE_DE_TO_N=10
+
+###########VMS for Meditel############
+VOUCHER_ENQUIRE_REQUIRED=false
+C2S_ENQUIRY_SEPARATOR=*
+
+##Commission Profile Cache
+MAX_COMM_PROFILES=50
+MESAGE_REQUIRED=Y
+DOWNLOAD_FILE_NAME_WITHOUTDELETE=Voms_decrypt.zip
+
+#LMS
+MESAGE_REQURIED=Y
+
+VOMS_VOUCHER_FILE_PATH_CHANGE_STATUS=<Tomcat-Path>/logs/
+VOMS_VOUCHER_FILE_MOVE_PATH_CHANGE_STATUS=<Tomcat-Path>/logs/test
+
+MaxRecordsInCellIdAssociation=1000
+CP2P_ADJUST_REQUIRED=N
+
+FORGOT_PASSWORD_SUBJECT=Reset Your Password
+FORGOT_PASSWORD_MESSAGE=Kindly use the following One time Password(OTP) to Reset Your Password:
+
+
+
+
+MAX_LMS_PROFILES=10
+
+FORWARD_NAME_WHITE_LIST=^[a-zA-Z\\d_]*$
+DownloadBulkAssociateDeassociateUserPath=<Tomcat-Path>/logs/bulkuser/
+
+
+#For Service Management
+OTHER_SERVICES_ALLOWED=Y
+
+
+#For Self TPIN Reset
+SECURITY_QUESTION_FIELD=SHORT_NAME
+OTP_EXPIRY_MINUTES=5
+
+IS_USER_CAN_OPTIN_AFTER_OPTOUT=N
+LMSPROMO_MIS_CHECK_REQUIRED=N
+LMSOPTINOUTREFTGT_MIS_CHECK_REQUIRED=N
+LMSREFTGT_MIS_CHECK_REQUIRED=Y
+LMSPROGRESSIVE_MIS_CHECK_REQUIRED=N
+LMSBOUNS_MIS_CHECK_REQUIRED=N
+LMSOPTINOUT_MIS_CHECK_REQUIRED=N
+MAX_LMS_PROFILES=10000
+###Point Adjustment
+#############################################Enrties for Batch FOC Approval
+### Download file path for Batch Foc approval files
+DownloadFilePathForLPTApproval=<Tomcat-Path>/logs/focApprovalDownloadFile/
+### Download file name for Batch Foc approval,
+DownloadFileNameForLPTApproval=FileForLPTApproval
+### Max file size to be upload for Batch Foc approval (1024 - 1KB, 10240 - 10KB, 1048576 - 1MB,5242880 - 5 MB)
+LPT_BATCH_APPROVAL_FILE_SIZE=5242880
+
+### Upload file path for batch foc approval
+LPT_BATCH_APPROVAL_FILE_PATH=<Tomcat-Path>/logs/BatchFocApprovalUploadPath/
+#############################################Entries for Initiate Batch FOC Transfer
+### Down load User list for batch FOC - file path
+DownloadBatchLPTUserListFilePath=<Tomcat-Path>/logs/BatchFOCDownload/
+### Down load User list for batch FOC - file name
+DownloadBatchLPTUserListFileName=userListLPT
+### Upload file path for Batch FOC
+UploadBatchLPTUserListFilePath=<Tomcat-Path>/logs/BatchFOCUpload/
+### Down load User template for batch FOC - file name
+DownloadBatchLPTUserTemplateListFileName=userTemplateLPT
+#############Monthly Redemption Process ##########
+FinalMonthlyRedemptionFilePath=<Tomcat-Path>/logs/FINAL_LMS_MONTHLY_REDEMPTION_FILES/
+
+
+MONTHLY_REPORT_FILE_PATH=<Tomcat-Path>/logs/monthly_report/
+MONTHLY_REPORT_ROAM_RECHARGE_PREFIX=MLYROAMRCHG
+DAILY_REPORT_ROAM_RECHARGE_PREFIX=DLYROAMRCHG
+DAILY_ROAM_REPORT_FILE_PATH=<Tomcat-Path>/logs/daily_report/
+
+WALLET_TYPE_USER_DELETE=FOC
+
+####added for mobile app 2.1 OTP.
+OTP_EXPIRY_MINUTES_APP=100
+OTP_MAX_ATTEMPTS_APP=3
+
+###added for batch C2S transfer rule creation
+BATCH_C2S_TRFRULE_FILE_HEADER=Request gatewway code,Channel domain,Channel category,Channel grade,Receiver type,Receiver service class,Service type,Sub service,Card group set,Status,Error
+BATCH_C2S_TRFRULE_LOGPATH=<Tomcat-Path>/logs/batchTransferRuleLog/
+
+EMAIL_NOTI_FOR_O2C_FROM=System
+CHANNELUSER_DETAILS=Channel User Details:
+TRANS_ID=Transfer Id:
+TRANS_MRP=Transfer MRP:
+TRANSACTION_TYPE=Transfer Type:
+INITIATOR_NAME=Initiator Name:
+INITIATOR_MSISDN=Initiator MSISDN:
+
+ROLE_CODE_APP1=APV1O2CTRF
+NOTIFICATION_SUBJECT_APPROVER_LEVEL=Need Approval
+NOTIFICATION_CONTENT_LEVELAPP_COMMON=Approval Required
+NOTIFICATION_CONTENT_USER=Transfer Completed
+
+DownloadBatchFOCErrorListFileName=BatchFOCError
+DownloadBatchFOCErrorFilePath=<Tomcat-Path>/logs/BatchFOCDownloadError/
+
+
+NEGATIVE_AMOUNT_ALLOWED=N
+P2P_TXN_LOG_SEPARATOR=|
+C2S_TXN_LOG_SEPARATOR=|
+CHNL_TXN_LOG_SEPARATOR=|
+
+LMS_CONTROL_GROUP_REQUIRED=Y
+
+
+
+#Changes for Batch c2s reversal
+DownloadBatchC2SReversalPath=<Tomcat-Path>/logs/BatchC2SRev/
+DownloadBatchC2SREVNamePrefix= BatchC2SReversal
+DownloadBatchC2SReversal=<Tomcat-Path>/logs/BatchC2SRev/
+MAX_XLS_FILE_SIZE_FOR_BATCH_C2S_REV= 20000000
+BatchReversalErLog=BatchReversalErLog
+
+
+
+##added for Download Error Log File Link
+DownloadErLogFilePath=<Tomcat-Path>/logs/BatchErLogFiles/
+BatchUserAssociateErLog= BulkUsrAssErLog
+BatchCardGroupErLog= BulkCardGroupErLog
+BatchDirectPayoutErLog= BulkDirectPayoutErLog
+BatchCommProfAddModErLog= BulkCommProfErLog
+BatchUSerCreationErLog= BatchUSerCreationErLog
+ChannelSOSAssociationErLog= ChannelSOSAssociationErLog
+DownloadBatchTransferRuleErLog= BulkTransferRuleErLog
+ERROR_FILE_HEADER=Line NO, Message,
+ERROR_FILE_HEADER_PAYOUT=Line,MSISDN,Message
+
+##card group timeout###
+CARDGROUP_SYSTEM_TIMEOUT=30
+
+DownloadBatchDirectPayoutErrorListFilePath=<Tomcat-Path>/logs/BulkComissionPayout/Download/Error
+DownloadFileNameForBatchDirectPayoutErrorList=BatchPayoutErrLst
+
+##o2c emails
+CHANNELUSER_NAME=Channel User Name:
+##GreetingMsg Details##
+
+GREETING_UPLOAD_DIR_PATH=<Tomcat-Path>/logs/GreetingMsg/
+GREETING_FILE_EXTN=csv
+GREETING_PROCESSED_DIR_PATH=<Tomcat-Path>/logs/GreetingMoved/
+DownloadUserGreetingMsgFileNamePrefix=GREETMSG
+
+
+##user creation name validation white list###
+NAME_WHITE_LIST=^[A-Za-z]'?[a-zA-Z0-9\\s_-]+$
+
+INPUT_WHITE_LIST=^[a-zA-Z\\s\\d_]*$
+
+CHANNELUSER_PRODUCT=Product Code:
+MESSGAE_ALLOWED_TO_PARENT_FOR_USER_MOVE=Y
+MESSGAE_ALLOWED_TO_OWNER_FOR_USER_MOVE=Y
+
+######## Mask POS Key ###############
+ALLOW_SMS_PIN_MASK_POSKEY=N
+##Low Network Stock alert Properties 
+LOW_NETWORK_STOCK_NOTIFICATION_FROM=surabhi.singh@mahindracomviva.com
+LOW_NETWORK_STOCK_NOTIFICATION_SUBJECT=Low Network Stock Alert
+LOW_NETWORK_STOCK_NOTIFICATION_CC=zeeshan.aleem@mahindracomviva.com
+LOW_NETWORK_STOCK_NOTIFICATION_BCC=surabhi.singh@mahindracomviva.com
+LOW_NETWORK_STOCK_NOTIFICATION_HEADER=Low Network Stock Notification
+LOW_NETWORK_STOCK_NOTIFICATION_FOOTER=Genrated By System
+mail_host=172.16.1.23
+AUTH_NEEDED_SMTP_NOTIFICATION=N
+USER_NAME=harsh.dixit@mahindracomviva.com
+PASSWORD=
+LOW_BAL_EMAIL=zeeshan.aleem@mahindracomviva.com
+## End here
+###### Default Value allowed for User Name Prefix/Language in Batch Use Initiate/Update ####
+IS_DEFAULTVALUE_ALLOWED_IN_BATCHUSER_MODULES=Y
+
+THREADPOOLEXE_POLLSIZE_ZB=10
+THREADPOOLEXE_POLLSIZE_LB=12
+## Max file size to be upload for Schedule Now Recharge
+SCHEDULE_NOW_BATCH_RECHARGE_FILE_SIZE=200
+##Default geocode is applicable in case of blank or invalid geocode 
+GP_USERADDAPI_DEFAULT_GEOCODE=Y
+
+#ZB_FNF
+ZBFNF_FILE_PATH=<Tomcat-Path>/ZBFNFUpload/
+ZBFNF_FILE_EXT=csv
+ZBFNF_MOVE_LOCATION=<Tomcat-Path>/ZBFNFUpload/Moved
+ZBFNF_REJECTEDRECORDS_LOCATION=<Tomcat-Path>/ZBFNFUpload/Rejected
+ZBFNF_RULETYPES=ZB,FNF
+ZBFNF_MAX_MSISDNLENGTH=10
+ZBFNF_DateFormat=dd/MM/yyyy
+ZBFNF_MAX_No_Records=5
+ZBFNF_Header=MSISDN1,MSISDN2,RULE_TYPE,EXPIRY_DATE,OPERATION
+ZBFNF_File_Name=Zero_FNF_Balance_Recharge
+##LowBase
+LOW_BASE_DIR=<Tomcat-Path>/LowBaseUpload/
+LOW_BASE_MOVED=<Tomcat-Path>/LowBaseSuccessRecords/
+LOW_BASE_FAIL=<Tomcat-Path>/LowBaseFailRecords/
+LOW_BASE_FILENAME=Low_Base_Recharge
+
+
+LB_TXN_REPORT_SCHEDULE=<Tomcat-Path>/logs/schedule_report/
+FILE_HEADER_NAME_LOWBASED=Retailer MSISDN,Subscriber MSISDN,Transaction No,Recharge Date,Recharge Amount,Retail ID,Retailer Name,Distributor ID,Distributor Name,Source,Status Code,Message
+##LMS�Target Vs Achievement Report
+LMSTARGETVSACHIEVEMENT_PATH=<Tomcat-Path>/logs/LMSTARGETVSACHIEVEMENT/
+LMSTARGETVSACHIEVEMENT_FILENAMEPREFIX=LMSTargetVsAcheivement
+NUMBEROFROWS_PERTEMPLATEFILE_LMSTARGETVSACHIEVEMENTREPORT=10000
+LMSTARGETVSACHIEVEMENT_MAIL_SEND_REQUIRED=Y
+LMSTARGETVSACHIEVEMENT_REPORT_MAIL_TO=diwakar@mahindracomviva.com
+LMSTARGETVSACHIEVEMENT_REPORT_MAIL_TO_DEFAULT=diwakar@mahindracomviva.com
+LMSTARGETVSACHIEVEMENT_REPORT_MAIL_FROM=diwakar@mahindracomviva.com
+LMSTARGETVSACHIEVEMENT_REPORT_MAIL_SUBJECT=LMS-Target Vs Achievement Report
+LMSTARGETVSACHIEVEMENT_REPORT_MAIL_BCC=diwakar@mahindracomviva.com
+LMSTARGETVSACHIEVEMENT_REPORT_MAIL_CC=diwakar@mahindracomviva.com
+
+
+#Configuration parms for BL Voucher
+VOM_PIN_LENGHT=15
+BL_VOMS_FILE_SEPARATOR=,
+BL_VOMS_FIXED_CURRENCY_VALUE=BDT
+BL_VOUCHER_EXPIRY_DATE_FORMAT=yyyyMMdd
+BL_EVD_FILE_ENCRY_ALLOW=N
+BL_EVD_FILE_ENCRY_KEY=comviva1
+FILE_CONTENT_TYPE=CSV
+EVD_RECIVER_SEND_PIN_ALLOW=Y
+OAM_EVENT_PATH=<Tomcat-Path>/webapps/pretups/WEB-INF/classes/configfiles/oam/OAMEvent.properties
+
+######################## APPROVAL FOR SUSPEND / DELETE CHANNEL USER ##########
+APPROVE_SPND_DLT_DIR_PATH=<Tomcat-Path>/logs/approvalSuspendDeleteUser/
+APPROVE_SPND_DLT_DIR_PATH_MOVED=<Tomcat-Path>/logs/approvalSuspendDeleteUserMoved/
+APPROVE_SPND_DLT_FILE_SIZE=1048576
+REQ_AMT=REQ_AMT
+OWNER_COMMISSION_MESSAGE_ALLOWED=N
+
+##Added for card group Enquiry
+CARDGROUP_ENQUIRY_SEPARATOR=,-
+
+ALLOW_C2S_RECHARGE_OWNER_PENALTY_MESSAGE=Y
+
+#########Added for batch Geographical Domain Creation
+
+BATCH_GRPH_DMN_DIR_PATH=<Tomcat-Path>/logs/batchGeographicalDomainCreation/
+BATCH_GRPH_DMN_DIR_PATH_MOVED=<Tomcat-Path>/logs/batchGeographicalDomainCreationMoved/
+BATCH_GRPH_DMN_FILE_SIZE=1048576
+MAX_RECORDS_BATCH_GRPH_DOMAIN_CREATION=5000
+## Transaction will be commited after creation number of geographies
+BATCH_GRPH_DOMAIN_COMMIT_NUMBER=100
+
+
+## Upload file size of Greetmsg files in bytes (1024 - 1KB, 10240 - 10KB, 1048576 - 1MB,5242880 - 5 MB)
+GREETMSG_FILE_SIZE=5242880
+##Added for Daily Self/Child Transfer Status Enquiry Message
+DSR_SENDER_MESSAGE_REQ=Y
+
+#added for VAS service
+VASTRIX_IN_IDS=INTID00041
+
+#added for SAP service
+CLARO_COL_INFO_IN_IDS=INTID00042
+
+#For LDAP Authentication LIVE/SIT
+LDAP_SERVER=LIVE
+
+#For Daily Transfer Status Enquiry and User balance of Self/Child
+DSR_SENDER_MESSAGE_REQ=N
+USR_BAL_SENDER_MESSAGE_REQ=N
+
+
+## Scheduel Recharge Error Log File location
+SCHEDULE_TOPUP_ERROR_LOG_FILE_LOCATION=<Tomcat-Path>/logs/scheduletopuperror/
+
+## Schedule Error File downnload Name
+SCHEDULE_ERROR_LOG_FILE_NAME=scheduleTopupError
+RESCHEDULE_ERROR_LOG_FILE_NAME=recheduleTopupError
+
+##TO configure datatable
+DATATABLE_SHOWS_ENTRIES=[[10, 25, 50, 100, -1], [10, 25, 50, 100, "All"]]
+DATATABLE_SORTING_ALLOW=false
+NETPAYBALE_AMOUNT=Netpaybale Amount:
+DATATABLE_SEARCH_CONFIG=false
+
+## Batch assoc profile for download error log
+BatchActivationFileName=BatchActivationProfile
+
+## Flag if SecurityConstant common validation is required
+IS_SECURITY_COMMON_VALIDATION_REQUIRED=N
+
+## Down load user balance enquiry path
+DownloadUserBalEnqPath=<Tomcat-Path>/logs/
+## Download user balance enquiry  - file name
+DownloadUserBalEnqtFileName=UserBalEnq
+
+
+## Down load user threshold enquiry path
+DownloadUserThresholdEnqPath=<Tomcat-Path>/logs/
+## Download user Threshold enquiry  - file name
+DownloadUserThresholdEnqtFileName=UserThresholdEnq
+
+## Down load C2C transfer enquiry path
+DownloadC2CTransferEnqPath=<Tomcat-Path>/logs/
+## Download C2C transfer enquiry  - file name
+DownloadC2CTransferEnqtFileName=C2CTrfEnq
+
+## Down load voucher resend pin enquiry path
+DownloadVoucherResendPinEnqPath=<Tomcat-Path>/logs/
+## Download voucher resend pin enquiry  - file name
+DownloadVoucherResendPinEnqtFileName=VoucherResendPinEnq
+
+
+## Down load O2c transfer enquiry path
+DownloadO2CTransferEnqPath=<Tomcat-Path>/logs/
+## Download O2c transfer enquiry  - file name
+DownloadO2CTransferEnqtFileName=O2CTrfEnq
+VOMS_ENCRYPT_ALLOWED=N
+
+##Bulk resend pin
+BULK_VOUCHER_PINRESEND_FILEPATH=<Tomcat-Path>/logs/
+BULK_VOUCHER_RESENDPIN_FILE_SIZE=1048576
+isDelayRequiredForBulkResendPin=true
+delayTimeForBulkResendPin=1000
+DOCTYPE_COMMAND_IN_RESPONSE_REQUIRED=N
+PRODUCTCODE_IN_MESAGE_REQURIED=Y
+LOW_BALANCE_ALERT_EMAIL_SLEEP_TIME=60
+
+ERROR_FILE_HEADER_MOVEUSER=Line,Message
+##to check that user movement is allowed without geodomain
+ALLOW_MIGR_WITHOUT_GEODOMCODE=N
+
+NOTIFICATION_CONTENT=Need Approval
+PVAS_REC_GEN_FAIL_MSG_REQD_V=Y
+PVAS_REC_GEN_FAIL_MSG_REQD_T=Y
+PVAS_REC_MSG_REQD_BY_ALT_GW=
+
+
+#For voucher status change the maximum value to be kept for online processing is 15000, if no value is provided then 1000 will be #considered as default value
+VOMS_CHANGE_GEN_STATUS_ONLINE_COUNT=15000
+
+OracleQuerypath=<Tomcat-Path>/webapps/pretups/WEB-INF/classes/configfiles/queryConstants/oraclequeryconstants.props
+PostgresQuerypath=<Tomcat-Path>/webapps/pretups/WEB-INF/classes/configfiles/queryConstants/postgresqueryconstants.props
+
+
+##starting hashvalue for vouchers
+
+STARTING_VALUE=100
+
+## Relogin button enable/disable(Y/N)
+RELOGIN_BUTTON_ENABLE=
+## Right click enable/disbale(Y/N)
+RIGHT_CLICK_ENABLE=
+
+##AKANKSHA For voucher file upload file format should be either CSV or PLAIN_TEXT
+VOMS_FILE_UPLOAD_FILE_FORMAT=CSV
+
+
+
+REPORTS_DOWNLOAD_NAME=reportCSVformat
+
+REPORTS_DOWNLOAD_PATH=<Tomcat-Path>/logs/reports/
+
+MULTIPLICATION_FACTOR=1
+
+## Added for GP Code Merge for 3.10 Bulk User Suspension
+DelimiterForUploadedFileForOffileBulkChnlUserUserSuspension=,
+UploadFileForOffileBulkChnlUserUserSuspensionPath=<Tomcat-Path>/logs/offlineBulkChnlUserSuspension/
+MAX_RECORDS_IN_FILE=15000
+NO_OF_BULK_FILE_CONTENTS=100
+BULK_USER_SUSPEND_FILE_EXT=.txt
+PATH_BULK_USER_SUSPENSION_OUT_FOLDER=<Tomcat-Path>/logs/BulkUserSuspendOut/
+
+## Added for GP Code Merge for 3.5 Bulk Ambiguous Settlement
+BulkAmbiguousUploadPath=<tomcat-path>/logs/Ambigous/
+
+## Added for GP Code Merge for 3.1 AIR IP MANAGEMENT - ENHANCEMENT
+#FILE_CACHE_TYPE=DATABASE
+
+ONLINE_SETTLE_EXTUSRID_LIST=abcd 
+ONLINE_SETTLE_SERVICES_LIST=RC 
+ALLOWED_FORMAT=pdf,csv,xls,xlsx,rtf,htm,4html,xml,txt,ps,ps2,ps3,data,svg,jra,jar,png,gif,jpg,jpeg,bmp,java
+
+ALLOWED_USER_TYPE=2
+ALLOWD_USR_TYP_LENGTH=5
+
+##3.2 Instance wise Update Cache
+UPDATE_CACHE_ALL_PARAMETER=25
+
+UploadBatchO2CInitiationFilePath = <Tomcat-Path>/logs/BATCH/
+FinalUploadBatchO2CInitiationFilePath = <Tomcat-Path>/logs/BATCH_FINAL/
+
+##Batch c2c partial processing (Y means partial processing of file Allowed and N means not allowed)
+BATCH_C2C_PARTIAL_PROCESS_ALLOWED=N
+
+## ADDED FOR CP2P DATA
+P2P_OTHER_CONFIG_SERVICES=CDATA
+
+COMM_PROFILE_SUSPENDED=(Suspended)
+BLACKLISTED_P2P_PPB_SERVICE_CLASS_LIST=
+
+
+###### Geo Re-Assosciation #######
+GEOGRAPHY_REASSOC_DIR=<Tomcat-Path>/logs/ReAssociation/
+GEOGRAPHY_REASSOC_FILE_PATH=<Tomcat-Path>/logs/ReAssociation/UPLOAD/
+GEOGRAPHY_REASSOC_FILE_EXT=CSV
+GEO_REASSOC_MAX_RECORDS_IN_FILE=10000
+GEOGRAPHY_REASSOC_SEPRATOR=,
+GEOGRAPHY_UPLOAD_SEPRATOR=,
+
+## Bulkusersuspension error codes
+
+90001=Invalid file type
+90002=Invalid file date
+90003=Invalid file content
+90004=Max no of records per file exceeds
+90005=Invalid file content
+#Sender PIN bypass based on request type
+EXTGW_SENDER_OPTIONAL_PIN_ACTIONS=
+
+
+#for daily technical report process
+DAILY_TECHNICAL_REPORT_FILE_PATH=<Tomcat-Path>/logs/
+DAILY_TECHNICAL_REPORT_FILE_PRIFIX=DLYTECHRPT
+
+
+#BATCH COMMISSION PROFILE
+BATCH_PROF_NAME_MAX_LEN=40
+BATCH_SHORT_NAME_MAX_LEN=20
+
+ROLE_ACCESS_TYPE=B
+
+GRPH_DOMAIN_CODE_LEN=10
+GRPH_DOMAIN_NAME_LEN=50
+GRPH_DOMAIN_SHORT_NAME_LEN=10
+GRPH_DOMAIN_DESCRIPTION_LEN=400
+
+
+#Loyalty MGMT Bug FIX
+DownloadBatchLPTErrorFilePath=<Tomcat-Path>/logs/PointAdjustment/
+DownloadBatchLPTErrorListFileName=LPTErrorFile
+
+#Low Balance Alert Network Stock script
+LOW_BAL_MSISDN=
+LOW_BAL_EMAIL=
+
+
+##PIN_RESET API suppress OTP for AUP client
+AUP_SUPPRESS_OTP_PINRESET=Y
+
+##External FOC Transfer Process
+EXT_FOC_DATE_TIME_FORMAT=dd/MM/yy_HH:mm:ss
+EXT_FOC_DATE_ENTRY_TIME_FORMAT=MM/dd/yyyy HH:mm:ss
+EXT_FOC_DATE_DB_TIME_FORMAT=MM/DD/YYYY HH24:MI:SS
+#value of EXT_FOC_SMS_ALLOW should be either 'true' or 'false'
+EXT_FOC_SMS_ALLOW=false
+
+#Money Conversion Process
+MONEY_CONV_WEB_SERVICE_URL=http://webdisp3.claro.amx:8113/XISOAPAdapter/MessageServlet?channel=:WS_TIPO_CAMBIO:WS_TIPO_CAMBIO&version=3.0&Sender.Service=WS_TIPO_CAMBIO&Interface=http://claro.com/consultaCambio^os_tipo_cambio
+MONEY_CONV_TIMEOUT=20000
+
+##Set Y to enable the LDAP authentication for REST Operator Receiver Request
+ENABLE_LDAP_REST_API=N
+
+## TPS LOGGER 
+TPS_LOG_SAVE_TIME=2
+IS_TPS_LOGS_REQUIRED=Y
+
+##Vietnam STK ICCOD length in encrypted format.
+ICCID_LENGTH_FOR_STK=40
+##O2C Process from ERP
+ERP_DATA_SOURCE_URL=jdbc:oracle:thin:@172.16.10.239:1521:PRETUPS 
+ERP_USER_ID=PRETUPS_VNM690_2 
+ERP_PASSWORD=PRETUPS_VNM690_2 
+ERP_DRIVER_CLASS_NAME=oracle.jdbc.driver.OracleDriver 
+ERP_TABLE_NAME=ERPVIEW 
+ERP_ORDER_ITEM_TYPE=AIRTIME001,AIRTIME002 
+ERP_DATE_TIME_FORMAT=dd/MM/yy_HH:mm:ss 
+ERP_ORDER_DATE_ENTRY_TIME_FORMAT=MM/dd/yyyy HH:mm:ss 
+ERP_ORDER_DATE_DB_TIME_FORMAT=MM/DD/YYYY HH24:MI:SS 
+#value of ERP_O2C_SMS_ALLOW should be either 'true' or 'false' 
+ERP_O2C_SMS_ALLOW=true
+#value of ERP_DIRECT_TRANSFER_ALLOW should be either 'true' or 'false' 
+ERP_DIRECT_TRANSFER_ALLOW=true
+
+
+##This code provides backward compatibility between spring and struts module
+IS_SPRING_ENABLE=N
+
+ENQUIRY_BY_SUBSCRIBER_STATUS_CHECK_REQUIRED=Y
+C2S_SUMMARY_MAX_DIFF_ALLOWED=10
+C2S_SUMMARY_MAX_PAST_DAYS_LIMIT=30
+LAST_TXN_SUBSCRIBER_DURATION_ALLOWED=7
+
+
+##This is Data Table configuration for hiding table
+DATA_LIMIT_FOR_DATA_TABLE=5000
+
+
+##This is DATE_DIFFERENCE configuration for hiding table
+DATE_DIFFERENCE=20
+
+
+##For limit search chara.
+MIN_SEARCH_CHAR=3
+
+############ Added for Dual Wallet CR ##############
+UploadBatchO2CInitiationFilePath=<Tomcat-Path>/logs/O2C/
+FinalUploadBatchO2CInitiationFilePath=<Tomcat-Path>/logs/FINAL/
+DUAL_REMARKS=DUAL_WALLET_COMMISION THROUGH USERID
+DUAL_WALLET_FILE_NAME=DUAL_WALLET_
+DUAL_WALLET_PUSH_EMAIL=N
+DUAL_EMAIL_TO=<>
+DUAL_EMAIL_FROM=<>
+DUAL_EMAIL_SUBJECT=DUAL WALLET COMMISION
+DUAL_EMAIL_FILENAME_DISPLAY=Y
+DUAL_WALLET_FILE_ERR_PATH=<Tomcat-Path>/logs/ERR/
+DUAL_WALLET_FILE_ERR_NAME=DUAL_ERR_
+
+
+BURN_RATE_ALERT_EMAILIDS=shainasahni90@gmail.com
+BURN_RATE_ALERT_EMAIL_SUBJECT= Voucher burn rate update
+VMS_BURN_RATE_SUMMARY_REPORT_PATH=<Tomcat-Path>/logs/csvreports
+
+
+C2C_TRANSFER_DETAILS_REPORTS_DOWNLOAD_FILE_NAME=C2C_Transfer_Details
+
+ADDITIONAL_COMMISSION_DETAILS_REPORTS_DOWNLOAD_FILE_NAME=Additional_Commission_Details
+
+LMS_TRANSFER_DETAILS_REPORTS_DOWNLOAD_FILE_NAME=LMS_Redemption_Report
+O2C_TRANSFER_DETAILS_REPORTS_DOWNLOAD_FILE_NAME=O2CTransferDetails
+
+OPERATION_SUMMARY_REPORTS_DOWNLOAD_FILE_NAME=OperationSummaryReport
+
+#C2C message in case receiver parent is not sender 
+CHNL_TRANSFER_PARENT_MSG_ALLWD=N
+CHNL_TRANSFER_PARENT_MSG_DATE_FORMAT=DDMMM 
+PIN_VALIDATION_FOR_O2C=N
+CHNL_TRANSFER_PARENT_MSG_DATE_FORMAT=DDMMM
+
+
+## #################################Enrties related to the C2S Dataware House (RechargeRecord_FMS_Detail)###########################
+
+## C2S RechargeRecord_FMS_Detail file labels
+RechargeRecord_C2S_Detail_FILE_LABEL=Customer Name,Transaction Amount,tax amount,COMMISION AMOUNT,TAX ON COMMISION,transaction date,Transaction Type,Service type
+
+## C2S RechargeRecord_FMS_Detail file name
+RechargeRecord_C2S_Detail_FILE_NAME=E-TopUp_RechargeRecord_
+
+RechargeRecord_C2S_Detail_DATE_FORMAT=yyyyMMdd_HH
+
+## C2S RechargeRecord_FMS_Detail files path, files will stored here at the time of RechargeRecord_FMS_Detail processing and after
+## files will be moved at the final path
+RechargeRecord_C2S_Detail_DIRECTORY=<Tomcat-Path>/logs/RechargeRecord_FMS_Detail/
+
+## C2S RechargeRecord_FMS_Detail final files path, files will be moved in this directory after processing
+RechargeRecord_C2S_Detail_FINAL_DIRECTORY=<Tomcat-Path>/logs/RechargeRecord_FMS_Detail_Final_Data/
+
+## C2S RechargeRecord_FMS_Detail files extension
+RechargeRecord_C2S_Detail_FILE_EXT=.dat
+
+## C2S RechargeRecord_FMS_Detail file length, maximum number of records in RechargeRecord_FMS_Detail file, if there are more records than this count
+## then next file will be created
+RechargeRecord_C2S_Detail_MAX_FILE_LENGTH=50000
+
+##Entry used to decide whether to include header and footer in the RechargeRecord_FMS_Detail process genereted files or not. If yes, header and footer are added else not
+RECHARGE_RECORD_ADD_HEADER_FOOTER=Y
+C2S_RECORD_ADD_LABELS=Y
+C2S_RECORD_ADD_HEADER=N
+C2S_RECORD_ADD_FOOTER=N
+## the value is used for tax calculation inc C2S ERP detail process
+RechargeRecord_C2S_Detail_TAX_RATE=15
+
+FILE_ZIP_ALLOWED=N
+
+##Service Pack Thread Size and Sleep Time
+UPDATE_CACHE_THREAD_SLEEP_TIME=100
+UPDATE_CACHE_THREAD_POOL_SIZE=100
+DATA_LIMIT_FOR_DATA_TABLE=500
+#Added to implement datatable pager configurable [[10, 25, 50, 100, -1], [10, 25, 50, 100, "All"]]
+DATATABLE_DROPDOWN_ARRAY=[[10, 25, 50, 100], [10, 25, 50, 100]]
+ZERO_BALANCE_COUNTER_DETAIL_REPORTS_DOWNLOAD_FILE_NAME=zeroBalanceCounterDetails
+C2S_TRANSFER_REPORTS_DOWNLOAD_FILE_NAME=c2sTranfer
+
+##AdditionalCommissionSummaryCSVName
+ADDITIONAL_COMMISSION_SUMMARY_REPORTS_DOWNLOAD_FILE_NAME=Additional_Commission_Summary
+
+##DOWNLOAD USER BALANCE MOVEMENT SUMMARY REPORT
+USER_BALANCE_MOVEMENT_SUMMARY_REPORTS_DOWNLOAD_FILE_NAME=USER BALANCE MOVEMENT SUMMARY
+
+TPS_LOG_SAVE_TIME=200
+IS_TPS_LOGS_REQUIRED=N
+
+
+##Selenium testing Calendar Parameter
+#Set IS_DATE_FIELD_DISABLED parameter to 'n' to run the Selenium suite. Else, set it to 'y'
+IS_DATE_FIELD_DISABLED=y
+
+##For Query otimization
+IS_NEW_TABLE_TO_USE_PG10=n
+NEW_TABLE_PG10=_pg10
+
+SMSC_SIMULATOR_DELAY=1000
+
+VOUCHER_MAX_TD_LENGTH=3
+SEGMENT_MAX_TD_LENGTH=2
+
+ZTE_POOL_IN_IDS=INTID00025
+CRMSOAP_IN_IDS=INTID00015
+P2PReconn_ConfigureDate_From=20
+P2PReconn_ConfigureDate_TIME=10
+C2SReconn_ConfigureDate_From=20
+C2SReconn_ConfigureDate_TIME=10
+RECONN_MODULE_TYPE=RC
+
+VCDETAIL_REPORTS_TOP_HEADER_1=Report-Detail of VC
+VCDETAIL_REPORTS_TOP_HEADER_2=Persian Date
+VCDETAIL_REPORTS_COLUMN_HEADER=VC Number,MSISDN,Used Date,Denomination,Agent Name,State,Deliver Date,Sold Date,Branch Code,Payment ID,Transaction ID,Bank Card Number,Terminal Code,Terminal Type
+
+SOSReconn_ConfigureDate_From=20
+SOSReconn_ConfigureDate_TIME=10
+
+RECONN_MODULE_TYPE_C2S=CRMW
+RECONN_MODULE_TYPE_P2P=CRMW
+RECONN_MODULE_TYPE_SOS=CRMW
+
+RECONN_MODULE_OUTPUT_PATH=<Tomcat-Path>/logs/
+
+SOLD_REPORTS_TOP_HEADER_1=Report-Detail of Sold VC Card
+SOLD_REPORTS_COLUMN_HEADER=S.No.,VC Number,Denomination,Agent Name,State,Deliver Date,Sold Date,Branch Code,Payment ID,Transaction ID,Bank Card Number,Terminal Code,Terminal Type
+
+MAX_LOGINS_LOCATION_NG=50
+MAX_LOGINS_LOCATION_IR=50
+MAX_LOGINS_LOCATION_PB=50
+
+VOMS_DELIVERY_HISTORY_TOP_HEADER=Report - Delivery History of VC Card
+VoucherReport_VoucherDeliveryReportHeader= Delivery Date, Create Date, Bank Name, Denomination, Quantity, From Serial Number, To Serial Number
+VoucherDeliveryReport_ReportDate=Report Date
+VoucherDeliveryReport_FromDate=From Date
+VoucherDeliveryReport_EndDate=To Date
+
+VOMS_SOLD_SUMMARY_CITY_TOP_HEADER=Report - Summay of Sold VC card based on City
+VOMS_SOLD_SUMMARY_CITY_COLUMN_HEADER=City Name
+VOMS_SOLD_SUMMARY_SOLDDATE_TOP_HEADER=Report - Summay of Sold VC card per day
+VOMS_SOLD_SUMMARY_SOLDDATE_COLUMN_HEADER=Sold Date
+VOMS_SOLD_SUMMARY_BANK_TOP_HEADER=Report - Summay of Sold VC card Based on Bank
+VOMS_SOLD_SUMMARY_BANK_COLUMN_HEADER=Bank Name
+VOMS_SOLD_SUMMARY_CHANNEL_TOP_HEADER=Report - Summay of Sold VC card Based on channel
+VOMS_SOLD_SUMMARY_CHANNEL_COLUMN_HEADER=Bank Name,Channel
+
+## Rightel Sales Daily Report entries - Start
+#the max. no of records a Vouucher file can have
+DAILY_SALES_MAX_FILE_LENGTH=150000
+
+#file path for the validator file
+DAILY_SALES_FILE_PATH=/pretupshome/rightel/tomcat8_web/logs/salesreport/voucherupload
+
+#move file path for the validator file
+DAILY_SALES_FILE_MOVE_PATH=/pretupshome/rightel/tomcat8_web/logs/salesreport/voucheruploadmove
+
+#the maximun number of errors in one go in the Voucher file
+DAILY_SALES_ALLOWED_ERRORS=0
+
+#value separator for the validator file
+DAILY_SALES_SEPARATOR=,
+
+#sold voucher serial length
+DAILY_SALES_VOMS_SERIALNO_LENGTH=16
+
+NON_FINANCIAL_SERVICES_PIN_BYPASS=C2SBAL,LASTTRF,LASTXTRF,OTHERBALAN,C2SLASXTRF,C2SLASTTRF,RC,PPB,GRC,RCREVREQ,TRF,WD,RET
+
+#Mobile APP Simulator 
+MAPP_APPTYPE=MAPP
+MAPP_VERSION=1.0.1
+MAPP_PLATFORM=Android
+MAPP_UPDTYPE=M
+MAPP_UPDURL=http://IP:PORT/appurl
+
+#MAPP VAS SERVICE SEPARATOR
+MAPP_SERVICEINFO_RECORD_SEPARATOR=|
+MAPP_SERVICEINFO_RECORD_VALUE_SEPARATOR=#
+
+
+OTP_ALLOWED=Y
+RC_INTERFACEID=INTID00015
+SMS_EXTCHNLUSERBAL_RES_REQD=N
+
+MAX_FILE_SIZE_FOR_VMSSIGNED_DOC=102400000
+UploadVomsSignedDocFilePath=<Tomcat-Path>/logs/vomssigneddoc/
+GLOBAL_PAGE_DEFAULT_LOCAL=Y
+OLO_SEN_MSG_NOT_REQD_GW=
+HTTP_CONNECTION=TRUE
+OLO_REC_MSG_NOT_REQD_GW=
+PVAS_SEN_MSG_NOT_REQD_GW=
+PVAS_REC_MSG_NOT_REQD_GW=
+SEND_REQUEST_TO_IRIS=Y
+OTP_ALLOWED=N
+SMS_EXTCHNLUSERBAL_RES_REQD=N
+
+
+## Statistic recahrge
+
+STATRC_REPORTS_TOP_HEADER_1=Statistics of Recharge
+STATRC_REPORTS_TOP_HEADER_2=Persian Date
+STATRC_REPORTS_COLUMN_HEADER=Date,GateWay,Voucher Type,Generation Batch number,Network,Denomination,No. of Recharges,Total Recharge
+
+
+## Statistic Service
+
+STATSRV_REPORTS_TOP_HEADER_1=Statistics of Service
+STATSRV_REPORTS_TOP_HEADER_2=Persian Date
+STATSRV_REPORTS_COLUMN_HEADER=Date,Total number of Recharges,Total number of successful Recharges,Success Rate(%)
+
+
+## Etop Bundle
+
+ETOP_BUNDLE_REPORTS_TOP_HEADER_1=Statistics of Service
+ETOP_BUNDLE_REPORTS_TOP_HEADER_2=Persian Date
+ETOP_BUNDLE_REPORTS_COLUMN_HEADER=Date and time of transaction,Distributer Name,Kind of payment type associated with the distributer (Cash/Consignment),Requested amount,Paid amount,Applied Charge,Tax,Discount/Additional commission,Transaction ID,Distributer MSISDN,Subscriber MSISDN,Transaction status,Sub service,Card group code
+
+
+### Etop Increase Decrease
+
+ETOP_INCDRC_REPORTS_TOP_HEADER_1=Increase and Decrease Credit Transactions
+ETOP_INCDRC_REPORTS_TOP_HEADER_2=Persian Date
+ETOP_INCDRC_REPORTS_COLUMN_HEADER=Date and time of transaction,Distributer Name,Disributer MSISDN,Amount of transaction,Remaining balance,Transfer ID,payment type
+
+transaction.status=SUCCESS
+
+## Etop sales and voms statistics report
+VOMS_STATISTICS_TOP_HEADER=Report - Statistics of VC Cards
+VoucherReport_VoucherStatisticsReportHeader= Date, Voucher Type, Network, Denomination, Available Vouchers, On Hold Vouchers, Enabled/Active  Vouchers, Suspended Vouchers, Expired Vouchers, Stolen Vouchers, Damaged Vouchers
+VoucherStatisticsReport_ReportDate=Report Date
+VoucherStatisticsReport_FromDate=From Date
+VoucherStatisticsReport_EndDate=To Date
+
+TOTAL_SALES_TOP_HEADER=Report - Total Sales Details
+ETopUpReport_TotalSalesReportHeader= Date, Distributer Name, Distributer MSISDN, Bought amount, Amount used for Recharge, Amount used for Bundle, Amount used for other transactions, Remaining amount
+
+TOTAL_C2S_TOP_HEADER=Report - Total C2S Details
+ETopUpReport_TotalC2SReportHeader= Date, Amount used for Recharge, Amount used for Bundle
+
+
+ETOP_O2CPYMNT_REPORTS_TOP_HEADER_1=O2C Payment Type
+ETOP_O2CPYMNT_REPORTS_TOP_HEADER_2=Persian Date
+ETOP_O2CPYMNT_REPORTS_COLUMN_HEADER=Distributer Name,Distributer MSISDN,Bank Name,Payment type,Requested amount,Unit amount,Unit price,Total amount,Discount (Percent),Extra charge  (Percent),Discount amount,Extra charge amount,Amount after discount,Amount after extra charge,Tax,Amount paid,Payment date,Transaction Bank number,Bank status,Payment status,Transaction approval status,Approval level 1 Remarks,Approval level 2 Remarks,Approval level 3 Remarks
+RC_INTERFACEID=INTID00015
+P2P_USSD_PLAIN_ALLOWDED=Y
+CHNL_PLAIN_STK_SEPT_OTHER_THAN_DEFAULT=\\,_
+C2SSUBSCRIBER_DEFAULT_CONTENT_TYPE_GATEWAYTYPECODEWISE=USSD:USSD:text/plain
+
+YABX_SETTLEMENT_URL=http://172.30.24.164:1452/pretups/VASTestServer
+YABX_SETTLEMENT_USERNAME=pretups
+YABX_SETTLEMENT_PASSWORD=pretups
+YABX_SETTLEMENT_TIMEOUT=10000
+YABX_SETTLEMENT_READTIMEOUT=10000
+YABX_SETTLEMENT_KEEPALIVE=7000
+YABX_SETTLEMENT_HOSTNAME=pretups
+YABX_SETTLEMENT_AGENT=UGw Server/2.2/1.0
+
+
+SYSTEM_TYPE_CHANNEL_GATEWAY_CODES=
+
+##### VIL MERGING #######################################################
+SEGMENT_MAX_TD_LENGTH=2
+VoucherExpiryTemplateHeaderName=SERIAL_NUMBER*,NEW_EXPIRY_DATE*,REASON*
+
+VOMS_ORDER_SLAB_LENGTH=1
+JCEKS_FILEPATH=/pdisk2/vmsvil/tomcat8_web/conf/pretups
+PIN_VALIDATION_FOR_VOUCHER_O2C=N
+
+ENABLE_CPOS_STATUS=Y
+
+AUTORECONN_SCPDB_CHECK_MAX_DAY_LIMIT=8
+RECONN_MODULE_OUTPUT_PATH=/pretupsvar/
+
+DEFAULT_EMAILID_FOR_VOMS_GENERATION=test1@comviva.com; test2@comviva.com; test3@comviva.com
+DEFAULT_MSISDN_FOR_VOMS_GENERATION=9977660011, 9977660022
+
+VOMS_STATUS_CHANGE_DETAILS=/pdisk2/vmsvil/tomcat8_web/csvreport/
+VOMS_CONSMPTION_DETAILS=/pdisk2/vmsvil/tomcat8_web/csvreport/
+VOMS_SUMMARY=/pdisk2/vmsvil/tomcat8_web/csvreport/
+VOMS_MONTHLY_SUMMARY=/pdisk2/vmsvil/tomcat8_web/csvreport/
+
+IDEA_SCH_IN_IDS=INTID00104,INTID00105
+VOMS_CHANGE_GEN_STATUS_ONLINE_COUNT=50000
+
+ENABLE_CPOS_STATUS=Y
+SYSTEM_TYPE_CHANNEL_GATEWAY_CODES =EXTGW
+DownloadBatchVoucherExpiryFilePath=/pretupsvar/pretups_weblogs
+report.onlydateformat=dd/MM/yy
+report.datetimeformat=dd/MM/yy HH24:MI:SS
+report.onlydatetimeformat=dd/MM/yy HH24:MI:SS
+report.systemdatetime.format=dd/MM/yy HH:mm:ss
+report.systemdatetime.format24=dd/MM/yy HH24:mi:ss
+p2p.report.monthwisep2ptransactionsummary.month.format=MM/yy
+p2p.report.monthwisep2ptransactionsummary.yearformat=yy
+MONTH_YEAR_FORMAT =MM/yy
+scpdbdatasourceurl=jdbc:oracle:thin:@172.30.24.183:1521:ora12c
+scpdbuserid=4bff86b6bd3f8c9c41f60fcc63e696bf
+scpdbpasswd=4bff86b6bd3f8c9c41f60fcc63e696bf
+P2P_REC_GEN_FAIL_MSG_REQD_V=Y
+P2P_REC_GEN_FAIL_MSG_REQD_T=Y
+VMS_REC_MSG_NOT_REQD_GW=USSD
+VMS_REG_MSG_NOT_TO_BE_SENT=N
+INVALID_PIN_NOTIY_TO_IN=N
+VoucherExpiryTemplateHeaderName=SERIAL_NUMBER*,NEW_EXPIRY_DATE(dd/mm/yy)*,REASON*
+
+
+DownloadBatchVoucherExpiryTemplateListFileName=voucherTemplateList
+DownloadBatchVoucherExpiryFilePath=/pdisk2/vmsvil/tomcat8_web/logs/BatchExpiryDownload/
+UploadBatchVoucherExpiryFilePath=/pdisk2/vmsvil/tomcat8_web/logs/BatchExpiryUpload/
+
+
+
+#file path for the validator file
+VOMS_VOUCHER_FILE_PATH=/pdisk2/vmsvil/processfiles/PROVISIONSOURCEFILES
+#move file path for the validator file
+VOMS_VOUCHER_FILE_MOVE_PATH=/pdisk2/vmsvil/processfiles/PROVISIONEDFILES
+#Parser Implementing class
+VOUCHER_PARSER_CLASS=com.client.voms.vomsprocesses.clientprocess.vha.VoucherProvisionerBL
+
+VOM_PIN_LENGTH=12
+VOMS_FILE_SEPARATOR=,
+VOMS_FIXED_CURRENCY_VALUE=AUD
+VOUCHER_EXPIRY_DATE_FORMAT=dd/MM/yyyy
+FILE_ENCRY_ALLOW=Y
+## Max file size to be upload for Batch Schedule Now Recharge
+VOMS_TOTAL_ALLOWED_ERRORS=0
+
+#the max. no of records a Vouucher file can have
+VOMS_MIN_REQ_QUANTITY=1
+VOMS_MAX_REQ_QUANTITY=99999
+
+VOMS_VALIDITY=30
+VOMS_EXPIRY_PERIOD=99999
+VOMS_MAX_FILE_LENGTH=500000
+
+VOMS_VOUCHER_TYPE=VF
+VOMS_UPLOAD_FILE_EXTENSION=
+VOMS_ENCRYPTED_FILE_STARTING_CHAR=GND_PIN
+VOMS_PROVISIONING_FILE_ENCRYPTION=N
+
+VOMS_VOUCHER_PGP_KEY_PATH=/pdisk2/vmsvil/processfiles/KEYFILES/0xE0DEEDC7-sec.asc
+NUMBER_OF_VALUES_IN_HEADER_ACTIVATION=5
+VOMS_FILE_SEPARATOR_ACTIVATION=,
+VOMS_FILE_HEADER_SEPARATOR_ACTIVATION=,
+VOMS_MAX_FILE_LENGTH_ACTIVATION=500000
+VOMS_ACTIVATION_FILE_ENCRYPTION=N
+VOMS_ENCRYPTED_FILE_STARTING_CHAR_ACTIVATION=GND_RCC
+VOMS_MAX_FILE_LENGTH_ACTIVATION=500000
+VOMS_VOUCHER_FILE_PATH_ACTIVATION=/pdisk2/vmsvil/processfiles/ACTIVATIONSOURCEFILES
+VOMS_VOUCHER_FILE_MOVE_PATH_ACTIVATION=/pdisk2/vmsvil/processfiles/ACTIVATEDFILES
+
+DWH_FILE_LABEL_VMS=Voucher Serial Number|Recharge Class Name|Voucher Sub Status|Voucher Expiry Date|Voucher Status|Service Provider|Voucher Number|MSISDN|Voucher Activated Date|DTBOOK|Voucher Generated Date|Voucher Deleted Date|Voucher Delivered Date|Voucher Suspended Date|IDTRANS|RFBTCH|Voucher Used Flag|Voucher Used Date Time|Distributor Name
+DWH_FILE_NAME_VMS=DWH_VMSSNAPSHOT
+DWH_MASTER_DIRECTORY_VMS=/pdisk2/vmsvil/processfiles
+DWH_VALUE_SEPARATOR_VMS=|
+DWH_FILE_EXT_VMS=.dat
+DWH_FILE_EXT_VMS_CTRL=.ctrl
+DWH_CTRL_FILE_NAME_VMS=DWH_VMSSNAPSHOT
+DWH_MAX_FILE_LENGTH_VMS=100000000
+VOUCHER_PASSPHRASE_ENABLE=qwerty
+VOUCHER_PGPKEYPATH_ENABLE=/pdisk2/vmsvil/processfiles/KEYFILES/0xE0DEEDC7-sec.asc
+VOMS_ACTIVATION_PASSPHRASE=qwerty
+VOMS_VOUCHER_PGP_KEY_PATH_ACTIVATION=/pdisk2/vmsvil/processfiles/KEYFILES/0xE0DEEDC7-pub.asc
+##added after branch cut ###
+SEGMENT_MAX_TD_LENGTH=2
+
+DownloadBatchVoucherExpiryTemplateListFileName=voucherTemplateList
+DownloadBatchVoucherExpiryFilePath=<TOMCAT-PATH>/logs/BatchExpiryDownload/
+UploadBatchVoucherExpiryFilePath=<TOMCAT-PATH>/logs/BatchExpiryUpload/
+JCEKS_FILEPATH=<TOMCAT-PATH>/conf/pretups
+ENABLE_CPOS_STATUS=Y
+
+IDEA_SCH_IN_IDS=INTID00104,INTID00105
+
+
+report.onlydateformat=dd/MM/yy
+report.datetimeformat=dd/MM/yy HH24:MI:SS
+report.onlydatetimeformat=dd/MM/yy HH24:MI:SS
+report.systemdatetime.format=dd/MM/yyyy HH:mm:ss
+report.systemdatetime.format24=dd/MM/yyyy HH24:mi:ss
+p2p.report.monthwisep2ptransactionsummary.month.format=MM/yyyy
+p2p.report.monthwisep2ptransactionsummary.yearformat=yyyy
+
+DEFAULT_EMAILID_FOR_VOMS_GENERATION=ashish.gupta@mahindracomviva.com
+DEFAULT_MSISDN_FOR_VOMS_GENERATION=9889977889,9876543210
+
+
+VOMS_STATUS_CHANGE_DETAILS=<LOG-PATH>/csvreport/
+VOMS_CONSMPTION_DETAILS=<LOG-PATH>/csvreport/
+VOMS_SUMMARY=<LOG-PATH>/csvreport/
+VOMS_MONTHLY_SUMMARY=<LOG-PATH>/csvreport/
+
+SCHEDULED_REPORT_GENERATED_PATH=<LOG-PATH>/csvreport/
+
+AutoReconn_Cust_Prefix=91
+
+ <NETWORK_CODE>_CPOS_BATCH_ID=
+ BATCH_P2P_CG_SET_SELECTION_ALLOWED=Y
+
+ 
+ NUMBER_OF_ROWS=5
+ 
+VOUCHER_O2C_REPORTS_DOWNLOAD_NAME=Voucher Transaction Report-O2C
+VOUCHER_C2C_REPORTS_DOWNLOAD_NAME=Voucher Transaction Report-C2C
+VOUCHER_AVAILABILITY_REPORTS_DOWNLOAD_NAME=Voucher Availability Report
+VOUCHER_CONSUMPTION_REPORTS_DOWNLOAD_NAME=Voucher Consumption Report
+
+PAUSE_APPLICATION_TIME=30
+SLEEP_TIME=5000
+RESOURCE_UTIL_ONLINE_VOMS_GEN_THRESHOLD_LIMIT=15
+
+DB_USER_MONITORING=pretups70
+DB_HOSTNAME_MONITORING=172.30.24.113
+DB_PASSWORD_MONITORING=pretups123
+DB_COMMAND_MONITORING=top -b -n2 | grep 'Cpu(s)' | awk '{print $2 + $4}'|tail -1 \n
+VOMS_LOGGER_PATH=/data1/pretupsapp/tomcat_trunk_dev/logsvoms/
+MESSAGE_RESOURCE_CONFG_PATH=configfiles\\MessageResources
+VOMS_ALGO_PROP_DIR=/data1/pretupsapp/tomcat_trunk_dev/webapps/pretups/WEB-INF/classes/configfiles
+#Sender PIN bypass based on keyword for REST
+REST_SENDER_OPTIONAL_PIN_ACTIONS=OTPVDPINRST,OTPFORFORGOTPIN
+
+#Sender PASSWORD bypass based on keyword for REST
+REST_SENDER_OPTIONAL_PWD_ACTIONS=OTPVDPINRST,OTPFORFORGOTPIN
+
+#For Forgot Pin API
+FORGOT_PIN_OTP_SUBJECT=Your OTP To Change Pin
+FORGOT_PIN_OTP_MESSAGE=Kindly use the following One time Password(OTP) to Change your PIN:
+FORGOT_PASSWORD_OTP_MESSAGE=Kindly use the following One time Password(OTP) to Change your PASSWORD:
+
+KAFKA_ENABLE=N
+
+###SELF REGISTRATION API
+USERCATEGORY=DIST
+OUTLETCODE=TCOM
+SUBOUTLETCODE=SL026
+USERNAMEPREFIX=MR
+EXTERNALNWCODE=NG
+GEOGRAPHYCODE=GURGAON
+PAYMENTTYPE=DD,CHQ,OTH,CASH,ONLINE
+LOWBALALERTSELF=Y
+INSUSPEND=Y
+OUTSUSPEND=Y
+USERGRADE=AUT65804
+COMMISSIONPROFILEID=1192
+TRANSFERPROFILE=632
+TRANSFERRULETYPE=C2CTRFRUL1
+LMSPROFILEID=122
+CONTROLGROUP=N
+SERVICES=EVD,PPB,RC,GRC
+LANGUAGECODE=en_US
+PRODUCTCODE=ETOPUP,POSTETOPUP
+
+AUTO_NTWRK_INITIATE_NOTIFICATION_FROM=niharika.suthar@comviva.com
+AUTO_NTWRK_INITIATE_NOTIFICATION_CC=niharika.suthar@comviva.com
+AUTO_NTWRK_INITIATE_NOTIFICATION_BCC=akanksha.gupta@comviva.com
+AUTO_NTWRK_INITIATE_EMAIL=akanksha.gupta@comviva.com
+USSD_CONTENT_TYPE=text/plain
+currentReportDBacquireincrement=1
+## Upload file path for Error in C2C
+ErrorBatchC2CUserListFilePath=<Tomcat-Path>/logs/ErrorC2CUpload/
+FILE_SEPARATOR_C2C=,
+
+## Downlaod file name for MVD recharge
+DownloadMVDFile=<Tomcat-Path>/logs/mutipleVoucherDownloadFile
+
+## Upload file path for Error in O2C
+ErrorBatchO2CUserListFilePath=<Tomcat-Path>/logs/ErrorO2CUpload/
+FILE_SEPARATOR_O2C=,
+
+## Download O2C User List File Name
+DownloadO2CTransferUserListFileName=userList_transfer
+DownloadO2CWithdrawUserListFileName=userList_Withdraw
+
+##loan CR
+LOAN_MAX_FILE_LENGTH=150000
+USER_LOAN_FILE_PATH=<Tomcat-Path>/userloan
+USER_LOAN_FILE_MOVE_PATH=<Tomcat-Path>/userloanmove
+USER_LOAN_TOTAL_ALLOWED_ERRORS=0
+NUMBER_OF_VALUES_IN_HEADER=1
+USER_LOAN_FILE_SEPARATOR=,
+USER_LOAN_FILE_HEADER_SEPARATOR=,
+USER_LOAN_MAX_FILE_LENGTH=150000
+
+#Parser Implementing class
+USER_LOAN_PARSER_CLASS=com.btsl.pretups.processes.clientprocesses.UserLoanFileChecksRobi
+
+DWH_LOAN_FILE_LABEL=RECORD TYPE,LOAN TRANSACTION ID,GRAND PARENT MSISDN,GRAND PARENT NAME,PARENT MSISDN,PARENT NAME,RETAILER MSISDN,DISBURSEMENT DATE & TIME,ALERTING BALANCE,BALANCE BEFORE LOAN,LOAN AMOUNT,PREMIUM,TOTAL LOAN AMOUNT,SETTLEMENT DATE & TIME,SETTLEMENT TRANSACTION ID
+
+DWH_LOAN_FILE_NAME=loanData
+
+DWH_LOAN_DIRECTORY=<Tomcat-Path>/logsDWHData/
+
+
+MAPPGW_PIN_BYPASS=Y
+OTHERBALAN_EXTRA_RESTAGS=Y
+
+MSISDN_REGEX=^((\\+91-?)|0)?[0-9]{min,max}$
+AMOUNT_REGEX=^[0-9]+(\\.[0-9]{1,4})?$
+NAME_REGEX=[a-zA-Z ]*
+NAME_REGEX_ALPHANUMERIC=^[a-zA-Z0-9]+$
+PAYMENT_REGEX=^(?=.*[a-zA-Z])(?=.*[0-9])[A-Za-z0-9]+$
+SEARCH_MSISDN_REGEX=^((\\+91-?)|0)?[0-9]{0,max}$
+REFERENCE_NUMBER_REGEX=^[a-zA-Z0-9]{1,20}$
+PAYMENT_INST_NUM_REGEX=^[a-zA-Z0-9]{1,15}$
+FROM_SERIAL_NO_REGEX=^[0-9]{8,16}$
+TO_SERIAL_NO_REGEX=^[0-9]{8,16}$
+QUANTITY_REGEX=^(0|[1-9][0-9]*)$
+EMAIL_REGEX="^[a-zA-Z0-9_\\.-]+@([a-zA-Z0-9]+\\.)+[a-zA-Z]{2,6}$"
+IP4_REGEX=^([01]?\\d\\d?|2[0-4]\\d|25[0-5])\\."+"([01]?\\d\\d?|2[0-4]\\d|25[0-5])\\."+"([01]?\\d\\d?|2[0-4]\\d|25[0-5])\\."+"([01]?\\d\\d?|2[0-4]\\d|25[0-5])$
+IP6_REGEX=^(([0-9a-fA-F]{1,4}:){7,7}[0-9a-fA-F]{1,4}|([0-9a-fA-F]{1,4}:){1,7}:|([0-9a-fA-F]{1,4}:){1,6}:[0-9a-fA-F]{1,4}|([0-9a-fA-F]{1,4}:){1,5}(:[0-9a-fA-F]{1,4}){1,2}|([0-9a-fA-F]{1,4}:){1,4}(:[0-9a-fA-F]{1,4}){1,3}|([0-9a-fA-F]{1,4}:){1,3}(:[0-9a-fA-F]{1,4}){1,4}|([0-9a-fA-F]{1,4}:){1,2}(:[0-9a-fA-F]{1,4}){1,5}|[0-9a-fA-F]{1,4}:((:[0-9a-fA-F]{1,4}){1,6})|:((:[0-9a-fA-F]{1,4}){1,7}|:)|fe80:(:[0-9a-fA-F]{0,4}){0,4}%[0-9a-zA-Z]{1,}|::(ffff(:0{1,4}){0,1}:){0,1}((25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9])\.){3,3}(25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9])|([0-9a-fA-F]{1,4}:){1,4}:((25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9])\.){3,3}(25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9]))$
+IP4CS_REGEX=^(((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?),)*((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$
+IP6CS_REGEX=^(([0-9a-fA-F]{1,4}:){7,7}[0-9a-fA-F]{1,4}|([0-9a-fA-F]{1,4}:){1,7}:|([0-9a-fA-F]{1,4}:){1,6}:[0-9a-fA-F]{1,4}|([0-9a-fA-F]{1,4}:){1,5}(:[0-9a-fA-F]{1,4}){1,2}|([0-9a-fA-F]{1,4}:){1,4}(:[0-9a-fA-F]{1,4}){1,3}|([0-9a-fA-F]{1,4}:){1,3}(:[0-9a-fA-F]{1,4}){1,4}|([0-9a-fA-F]{1,4}:){1,2}(:[0-9a-fA-F]{1,4}){1,5}|[0-9a-fA-F]{1,4}:((:[0-9a-fA-F]{1,4}){1,6})|:((:[0-9a-fA-F]{1,4}){1,7}|:)|fe80:(:[0-9a-fA-F]{0,4}){0,4}%[0-9a-zA-Z]{1,}|::(ffff(:0{1,4}){0,1}:){0,1}((25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9])\\.){3,3}(25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9])|([0-9a-fA-F]{1,4}:){1,4}:((25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9])\\.){3,3}(25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9])(,\\n)?)*
+TEXT_ONLY_REGEX=^[a-zA-Z]*$
+LONGITUDE_LATITUDE_REGEX=^-?([1-8]?[1-9]|[1-9]0)\\.\{1\}\\d{1,6}
+PASSOWRD_REGEX=^(([a-zA-Z0-9])\\1\\1+|(abc|bcd|cde|def|efg|fgh|ghi|hij|ijk|jkl|klm|lmn|mno|nop|opq|pqr|qrs|rst|stu|tuv|uvw|vwx|wxy|xyz|012|123|234|345|456|567|678|789)+)
+NAME_REGEX=^[a-zA-Z0-9 ]*$
+ALPHABET_WITH_SPACE=^[a-zA-Z ]*$
+REGEX_NUMERIC_ONLY=^[0-9]*$
+CELL_ID_REGEX=^[^~!@#$%^&|\\\\/?]*$
+
+
+##Robi 
+
+LASTX_DATE_FORMAT=dd/MM/yy
+
+SCHEDULED_PATH_FOR_FILE=/u01/pretups_robi_721/LifeCycle/
+SCHEDULED_FILE_NAME=LifeCycleChangeStatus
+SCHEDULED_FILE_EXTENSION=txt
+SCHEDULED_FILE_HEADER=USER_ID,MSISDN,TXN_ID,TXN_STATUS,ERROR_CODE
+
+#to stop receiver msg
+EVD_REC_MSG_NOT_REQD_GW=WEB,EXTGW
+
+#file message for users with active children
+ACTIVE_CHLDN_MSG=Active Child users in hierarchy
+
+IS_SENDER_SMS_IN_USER_LANG=Y
+LOG_INTERMEDIATE=Y

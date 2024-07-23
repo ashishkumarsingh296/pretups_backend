@@ -1,0 +1,6 @@
+LOGIN_ID,PASSWORD,USER_ID,BATCH_ID,FILE_TYPE,SERVICE_CODE,TYPE,TestcaseId,TestcaseType,Module,Description
+corpuser,1357,,SBIN170328.0004,CORPORATE,RC,DWNLDBATCHFILE,1,NEGATIVE,Reschedule batch Recharge,To validate unsuccessful request for downloading batch file while user id is missing
+corpuser,1357,INCO0000000296,,CORPORATE,RC,DWNLDBATCHFILE,2,NEGATIVE,Reschedule batch Recharge,To validate unsuccessful request for downloading batch file while batch id is missing
+corpuser,1357,INCO0000000296,SBIN170328.0004,,RC,DWNLDBATCHFILE,3,NEGATIVE,Reschedule batch Recharge,To validate unsuccessful request for downloading batch file while file type is missing
+corpuser,1357,INCO0000000296,SBIN170328.0004,CORPORATE,,DWNLDBATCHFILE,4,NEGATIVE,Reschedule batch Recharge,To validate unsuccessful request for downloading batch file while service code is missing
+corpuser,1357,INCO0000000296,,,,DWNLDBATCHFILE,5,NEGATIVE,Reschedule batch Recharge,"To validate unsuccessful request for downloading batch file while batch id, file type,  service code is missing"

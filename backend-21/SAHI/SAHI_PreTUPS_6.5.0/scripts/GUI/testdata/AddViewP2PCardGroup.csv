@@ -1,0 +1,4 @@
+Test Case No.,Discription,Service Type,Sub service,P2P CardGroupName,Date,CardGroup Code,Card Name,Start Range,End Range,Validity Type,Validity Days,Grace Period,Mul. Of ,Tax Type,Sender Rate 1,Sender Rate 2,Processing Rate,Min. Amt,Max Amt.,Con. Fac,Bonus bundle type,Bonus Value,Bonus Validity,Assertion
+TEST001,Given a network admin logs into application and successfully add newP2P card group,Credit Recharge,CVG,AUT P2P Card Group,calendar-icon.gif,AUTP2PCARDGRP,AUTP2PCARDGRP,1,1000,Highest,7,7,1,Pct,0.5,0.5,0.5,10,100,1,Amt,100,7,Card group details successfully added
+TEST002,Given that a network admin login into application nad try to view P2P card group,Credit Recharge,CVG,AUT P2P Card Group,,,,,,,,,,,,,,,,,,,,
+TEST002,Given that a network admin login into application nad try to view P2P card group,Credit Recharge,CVG,AUT P2P Card Group,Card group details successfully updated,,,,,,,,,,,,,,,,,,,

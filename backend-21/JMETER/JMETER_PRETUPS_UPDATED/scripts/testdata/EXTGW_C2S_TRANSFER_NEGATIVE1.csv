@@ -1,0 +1,3 @@
+TestcaseId,TestcaseType,Module,Description
+TUNG12977,Negative,Customer Recharge EXTGW,To verify that When MSISDN is available in request then PIN is mandatory for the request
+,Negative,Customer Recharge EXTGW,To verify that request is not processed when invalid pin is entered.

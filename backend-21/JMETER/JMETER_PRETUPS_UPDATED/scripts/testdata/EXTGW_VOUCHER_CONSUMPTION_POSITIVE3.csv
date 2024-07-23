@@ -1,0 +1,2 @@
+TestcaseId,TestcaseType,Module,Description
+TUNG13153,Positive,Voucher Consumption through EXTGW,To verify that user is able to consume the voucher through EXTGW Api using Login ID and Password

@@ -1,0 +1,93 @@
+//#############################################################################
+//#Company Name: Mahindra Comviva Technologies Ltd.
+//#Application Name: Pretups
+//#Objective:To fire queries to Pretups database to fetch data for GUI cases
+//#Author Name: Nidhi Singh
+//#Created Date: 20/02/2014
+//#############################################################################
+
+//======================Import Scripts=====================
+_includeOnce("../../utility/OracleDBConnection.sah");
+
+/**
+ *This function fetches the Service Class from the Oracle DB
+ *@param [in] - null
+ *@returns - null
+ */
+
+function fetchServiceClass(){
+	var $g_serviceClassCSV = _readCSVFile("../../testdata/C2STransferRules_Details.csv");
+	var $l_query = "select SERVICE_CLASS_NAME from SERVICE_CLASSES";
+	var $l_serviceClassName = dbConnection($l_query);
+	var $count=0;
+	var $l_cnt=1;
+	while($l_serviceClassName[$count] != null){ // if($count <= $l_serviceTypeName.length)
+		var $l_serviceClass = $l_serviceClassName[$count];
+		if($count <= $l_serviceClassName.length){
+			$l_serviceClassString = $l_serviceClass[0];
+			$g_serviceClassCSV[$l_cnt++][3] = $l_serviceClassString;
+			_writeCSVFile($g_serviceClassCSV, "../../testdata/C2STransferRules_Details.csv", 1);
+			 $count++;
+		}
+	}
+}
+
+/**
+ *This function fetches the Receiver Service Class from the Oracle DB
+ *@param [in] - null
+ *@returns - null
+ */
+
+function fetchRecieverServiceClass(){
+	var $g_serviceClassCSV = _readCSVFile("../../testdata/P2PTransferRules_Details.csv");
+	var $l_query = "select SERVICE_CLASS_NAME from SERVICE_CLASSES";
+	var $l_serviceClassName = dbConnection($l_query);
+	var $count=0;
+	var $l_cnt=1;
+	while($l_serviceClassName[$count] != null){ // if($count <= $l_serviceTypeName.length)
+	var $l_serviceClass = $l_serviceClassName[$count];
+	if($count <= $l_serviceClassName.length){
+		$l_serviceClassString = $l_serviceClass[0];
+		$g_serviceClassCSV[$l_cnt][3] = $l_serviceClassString;
+		$g_serviceClassCSV[$l_cnt++][4] = $l_serviceClassString;
+		_writeCSVFile($g_serviceClassCSV, "../../testdata/P2PTransferRules_Details.csv", 1);
+		 $count++;
+	}
+	}
+}
+
+
+function dbFetchDoaminName($a_domain, $a_category) { 
+	
+	var $l_query = "Select D.DOMAIN_NAME from DOMAINS D ,CATEGORIES C where D.DOMAIN_NAME = '"+$a_domain+"' AND C.CATEGORY_NAME = '"+$a_category+"' " ;
+	var $l_domainName = dbConnection($l_query);
+	if($l_domainName[0] == null)
+		return false;
+	
+}
+
+
+function dbFetchSubscriberPin($a_msisdn){
+	
+	var $l_query = "select MESSAGE from SENTSMS where MSISDN='" + $a_msisdn + "' AND MESSAGE LIKE '%add initiated successfully%' AND MESSAGE LIKE '%Pin%'";
+	var $l_rs = dbConnection($l_query);
+	var $l_passwordString = $l_rs[0]["MESSAGE"];		
+
+		$l_data = $l_passwordString.split("Pin "); 
+	
+	var $l_password = $l_data[1].split(" ");		
+	return $l_password[0];
+}
+
+function isDomainCategoryExist($a_domain,$a_category) {
+	
+	var $l_query = "select DOMAIN_NAME from DOMAINS where DOMAIN_NAME='" + $a_domain + "' AND OWNER_CATEGORY='" + $a_domain + "' AND rownum<= 1" ;
+	
+	var $l_rs = dbConnection($l_query);
+	
+		return $l_rs[0];
+}
+
+
+
+

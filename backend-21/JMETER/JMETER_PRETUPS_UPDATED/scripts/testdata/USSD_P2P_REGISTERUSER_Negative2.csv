@@ -1,0 +1,2 @@
+TestcaseType,TestcaseId,Module,Description
+Negative,TUNG13211,Register user API through USSD,Register user through USSD by leaving the required fields like msisdn

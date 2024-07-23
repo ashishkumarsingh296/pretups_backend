@@ -1,0 +1,2 @@
+TestcaseId,TestcaseType,Module,Description
+TUNG22420,Negative,SOS Settlement EXTGW,To verify that if transaction is pending for settlement between user A and User B and user C initiates settlement request then gets proper response.

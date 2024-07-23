@@ -1,0 +1,2 @@
+TestcaseId,TestcaseType,Module,Description
+TUNG13011,Negative,LMS Point enquiry through USSD,To verify that Channel User cannot enquire their Loyalty Points Enquiry through USSD if Channel User PIN is incorrect

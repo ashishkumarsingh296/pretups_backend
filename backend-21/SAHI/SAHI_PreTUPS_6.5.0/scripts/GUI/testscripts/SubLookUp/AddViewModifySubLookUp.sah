@@ -1,0 +1,232 @@
+//#######################################
+//
+// This script to add view and modify subLookUp
+//
+//
+//#######################################
+
+
+
+_includeOnce("../../../../utility/ImportPackage.sah");
+
+
+
+var $g_subLookUp  = _readCSVFile("../../../GUI/testdata/SubLookUp.csv");
+	
+
+
+//======================Pre-requisite check============================
+_log("Setup", "custom4");
+
+
+var $lookUp;
+var $subLookUp;
+
+
+addViewModifySubLookUp();
+
+
+function addViewModifySubLookUp() {
+	
+	
+	$lookUp = $g_subLookUp[1][0];
+	$subLookUp = varriableSubLookUp();
+	
+	
+	// ...........  To add Sub look Up  ........................ //
+	
+	
+	var $l_row = 2;
+	var $l_col = 0;
+	var $t1 = _testcase($g_subLookUp[$l_row][$l_col++], $g_subLookUp[$l_row][$l_col++]);
+	$t1.start();
+	
+	var $l_error = addSubLookUp();
+	
+	if($l_error == true){
+		_log("shashi " + $subLookUp);
+		var $l_naCsv = _readCSVFile("../../../GUI/testdata/NA_Login.csv");
+		$l_naCsv[17][2] = $subLookUp;
+		_writeCSVFile($l_naCsv, "../../../GUI/testdata/NA_Login.csv", 1); // Writes the newly created Channel User in a csv file.
+		_click(_link($g_LinkLogout));
+		_log("SubLookUp is added successfully");
+	}
+	
+	$t1.end();
+	_closeBrowser();
+	_wait(1000);
+	_openBrowser();
+	
+	// ...........  To add View sub look Up  ........................ //
+	
+	
+	var $l_row = 3;
+	var $l_col = 0;
+	var $t2 = _testcase($g_subLookUp[$l_row][$l_col++], $g_subLookUp[$l_row][$l_col++]);
+	$t2.start();
+	
+	viewNewSubLookUp();
+	
+	$t2.end();
+	_closeBrowser();
+	_wait(1000);
+	_openBrowser();
+	
+// ...........  To modify newly added  sub look Up  ........................ //
+	
+	
+	var $l_row = 4;
+	var $l_col = 0;
+	var $t4 = _testcase($g_subLookUp[$l_row][$l_col++], $g_subLookUp[$l_row][$l_col++]);
+	$t4.start();
+	
+	var $l_error = modifyNewSubLookUp();
+	
+	if($l_error == true){
+		_log("shashi " + $subLookUp);
+		var $l_naCsv = _readCSVFile("../../../GUI/testdata/NA_Login.csv");
+		$l_naCsv[17][2] = $subLookUp;
+		_writeCSVFile($l_naCsv, "../../../GUI/testdata/NA_Login.csv", 1); // Writes the newly created Channel User in a csv file.
+		_click(_link($g_LinkLogout));
+		_log("SubLookUp is modified successfully");
+	
+	$t4.end();
+	_closeBrowser();
+	_wait(1000);
+	
+	
+}
+
+	
+}
+
+function addSubLookUp() {
+	
+	var $g_assertSubLookUpAddedSuccessfully = "Sub lookup successfully added";
+	
+	login($g_appURL, $g_LangEnglish, $g_superAdmin, $g_password, $g_assertMessage); // Login into the application with super Admin
+	_click(_link("Masters"));
+	_click(_link("Add subLookUp"));
+	_assertExists(_div("Add sub lookup"));
+	_setSelected(_select("lookupCode"), $lookUp );
+	_setValue(_textbox("subLookupName"), $subLookUp);
+	_click(_submit($g_BtnSubmit));
+	_click(_submit($g_BtnConfirm));
+	_assertExists(_listItem($g_assertSubLookUpAddedSuccessfully));
+
+
+	
+	if(_exists(_listItem("/"+$g_assertSubLookUpAddedSuccessfully+".*/"))){
+		return true;
+	}	
+	else{
+		_log("SubLookUp has not been added successfully");
+		return false;
+	}
+}
+
+
+function viewNewSubLookUp() {
+	
+	var $l_naCsv = _readCSVFile("../../../GUI/testdata/NA_Login.csv");
+	$subLookUp = $l_naCsv[17][2] ;
+	
+	login($g_appURL, $g_LangEnglish, $g_superAdmin, $g_password, $g_assertMessage); // Login into the application with super Admin
+	
+	_click(_link("Masters"));
+	_click(_link("Modify subLookUp"));
+	_setSelected(_select("lookupCode"), $lookUp);
+	_setSelected(_select("subLookupCode"), $subLookUp);
+	_click(_submit($g_BtnSubmit));
+	
+	_assertEqual($subLookUp, _getValue(_textbox("subLookupName")));
+	
+}
+
+
+
+function modifyNewSubLookUp(){
+	
+	var $l_naCsv = _readCSVFile("../../../GUI/testdata/NA_Login.csv");
+	$subLookUp = $l_naCsv[17][2] ;
+	
+	var $temp_subLookUp = $subLookUp + "M";
+
+	
+	var $g_assertSubLookUpModifiedSuccessfully = "Sub lookup successfully modified";
+	
+	login($g_appURL, $g_LangEnglish, $g_superAdmin, $g_password, $g_assertMessage); // Login into the application with super Admin
+	
+	_click(_link("Masters"));
+	_click(_link("Modify subLookUp"));
+	_setSelected(_select("lookupCode"), $lookUp);
+	_setSelected(_select("subLookupCode"), $subLookUp);
+	_click(_submit($g_BtnSubmit));
+	_setValue(_textbox("subLookupName"), $temp_subLookUp);
+	_click(_submit($g_BtnSubmit));
+	_click(_submit($g_BtnConfirm));
+	
+	_assertExists(_listItem($g_assertSubLookUpModifiedSuccessfully));
+	
+	if(_exists(_listItem("/"+$g_assertSubLookUpModifiedSuccessfully+".*/"))){
+		return true;
+	}	
+	else{
+		_log("SubLookUp has not been modified successfully");
+		return false;
+	}
+	
+}
+
+
+
+
+
+
+function varriableSubLookUp(){
+	 
+	var $l_time = new Date();
+	var $keyword = "Sub"+ $l_time.getHours()+$l_time.getMinutes(); //AUTONAcurrentTime
+	
+	return $keyword;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

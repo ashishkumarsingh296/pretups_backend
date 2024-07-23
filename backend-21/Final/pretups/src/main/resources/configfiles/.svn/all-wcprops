@@ -1,0 +1,161 @@
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/49554/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/resources/configfiles
+END
+ESAPI_en_US.properties
+K 25
+svn:wc:ra_dav:version-url
+V 139
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/resources/configfiles/ESAPI_en_US.properties
+END
+Messages_arabic.properties
+K 25
+svn:wc:ra_dav:version-url
+V 143
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/resources/configfiles/Messages_arabic.properties
+END
+MessageResources_french.properties
+K 25
+svn:wc:ra_dav:version-url
+V 151
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/resources/configfiles/MessageResources_french.properties
+END
+ConfigFilesChanges5.5.3.txt_1
+K 25
+svn:wc:ra_dav:version-url
+V 146
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/resources/configfiles/ConfigFilesChanges5.5.3.txt_1
+END
+Messages_6.0.txt
+K 25
+svn:wc:ra_dav:version-url
+V 133
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/resources/configfiles/Messages_6.0.txt
+END
+validation.properties
+K 25
+svn:wc:ra_dav:version-url
+V 138
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/resources/configfiles/validation.properties
+END
+KPIConfig.props
+K 25
+svn:wc:ra_dav:version-url
+V 132
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/resources/configfiles/KPIConfig.props
+END
+Messages5.5.3.txt (NOT TO BE USED)
+K 25
+svn:wc:ra_dav:version-url
+V 159
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/resources/configfiles/Messages5.5.3.txt%20(NOT%20TO%20BE%20USED)
+END
+ConfigFilesChanges_6.0.txt
+K 25
+svn:wc:ra_dav:version-url
+V 143
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/resources/configfiles/ConfigFilesChanges_6.0.txt
+END
+Messages5.6.1.txt (NOT TO BE USED)
+K 25
+svn:wc:ra_dav:version-url
+V 159
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/resources/configfiles/Messages5.6.1.txt%20(NOT%20TO%20BE%20USED)
+END
+VomsFileUploadLog.props
+K 25
+svn:wc:ra_dav:version-url
+V 140
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/resources/configfiles/VomsFileUploadLog.props
+END
+ConfigFilesChanges5.6.1.txt (NOT TO BE USED)
+K 25
+svn:wc:ra_dav:version-url
+V 169
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/resources/configfiles/ConfigFilesChanges5.6.1.txt%20(NOT%20TO%20BE%20USED)
+END
+MessageResourcesConvert.sh
+K 25
+svn:wc:ra_dav:version-url
+V 143
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/resources/configfiles/MessageResourcesConvert.sh
+END
+MessageResources_arabic.txt
+K 25
+svn:wc:ra_dav:version-url
+V 144
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/resources/configfiles/MessageResources_arabic.txt
+END
+Messages.txt (NOT TO BE USED)
+K 25
+svn:wc:ra_dav:version-url
+V 154
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/resources/configfiles/Messages.txt%20(NOT%20TO%20BE%20USED)
+END
+Messages_french.properties
+K 25
+svn:wc:ra_dav:version-url
+V 143
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/resources/configfiles/Messages_french.properties
+END
+ESAPI.properties
+K 25
+svn:wc:ra_dav:version-url
+V 133
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/resources/configfiles/ESAPI.properties
+END
+MessageResources_6.0.txt
+K 25
+svn:wc:ra_dav:version-url
+V 141
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/resources/configfiles/MessageResources_6.0.txt
+END
+CompileScriptFor ExtUser.txt
+K 25
+svn:wc:ra_dav:version-url
+V 147
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/resources/configfiles/CompileScriptFor%20ExtUser.txt
+END
+MessageResources5.5.3.txt (NOT TO BE USED)
+K 25
+svn:wc:ra_dav:version-url
+V 167
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/resources/configfiles/MessageResources5.5.3.txt%20(NOT%20TO%20BE%20USED)
+END
+MessageResources5.6.1.txt (NOT TO BE USED)
+K 25
+svn:wc:ra_dav:version-url
+V 167
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/resources/configfiles/MessageResources5.6.1.txt%20(NOT%20TO%20BE%20USED)
+END
+New Messages.xls
+K 25
+svn:wc:ra_dav:version-url
+V 135
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/resources/configfiles/New%20Messages.xls
+END
+NewServicesErrorCode5.6.2.xlsx
+K 25
+svn:wc:ra_dav:version-url
+V 147
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/resources/configfiles/NewServicesErrorCode5.6.2.xlsx
+END
+NewServicesErrorCode5.6.1.xlsx
+K 25
+svn:wc:ra_dav:version-url
+V 147
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/resources/configfiles/NewServicesErrorCode5.6.1.xlsx
+END
+ExcelFileConstants.props
+K 25
+svn:wc:ra_dav:version-url
+V 141
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/resources/configfiles/ExcelFileConstants.props
+END
+MessageResources.txt (NOT TO BE USED)
+K 25
+svn:wc:ra_dav:version-url
+V 162
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/resources/configfiles/MessageResources.txt%20(NOT%20TO%20BE%20USED)
+END

@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<!DOCTYPE webaxn SYSTEM "i18n.dtd">
+<widget version="1.0">
+	<name>calculator</name>
+	<description>calculator</description>
+	<author>comviva</author>
+	<license>Comviva Technologies</license>
+	<identifier>965029172</identifier>
+	<icon src="calculator.png"/>
+	<content src="calculator.html"/>
+	<x-selection onfocusbackground="#b0b0b0"/>
+	
+	<x-menugroup id="retailer">			
+		<x-menu caption="&rsk.back;" x-softkey="right" href="exit:"></x-menu>
+	</x-menugroup>
+	
+	
+	
+</widget>

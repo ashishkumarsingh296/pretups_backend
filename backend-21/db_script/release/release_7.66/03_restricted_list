@@ -1,0 +1,77 @@
+INSERT INTO role_ui_mapping (role_ui_parent_id, role_ui_id, rule_code) VALUES('adminChannelUser', 'Black_list_Msisdn', 'BLACKLISTMGMT');
+INSERT INTO role_ui_mapping (role_ui_parent_id, role_ui_id, rule_code) VALUES('adminChannelUser', 'Delete_restricted_Msisdn', 'DELRESSUB');
+INSERT INTO role_ui_mapping (role_ui_parent_id, role_ui_id, rule_code) VALUES('adminChannelUser', 'Upload_restricted_Msisdn', 'BLKREGSUB');
+INSERT INTO role_ui_mapping (role_ui_parent_id, role_ui_id, rule_code) VALUES('adminChannelUser', 'Approve_Restricted_List', 'RESTAPPROVEMSISDN');
+INSERT INTO role_ui_mapping (role_ui_parent_id, role_ui_id, rule_code) VALUES('adminChannelUser', 'Black_list_msisdn', 'BLACKLISTMGMT');
+INSERT INTO role_ui_mapping (role_ui_parent_id, role_ui_id, rule_code) VALUES('adminChannelUser', 'Unblack_list_msisdn', 'UNBLKSUBS');
+
+
+insert
+	into
+		pages_ui (page_code,
+		module_code,
+		page_url,
+		menu_name,
+		show_menu,
+		sequence_no,
+		menu_level,
+		parent_page_code,
+		image,
+		role_code,
+		domain_type,
+		category_code,
+		page_type,
+		app_name,
+		is_default)
+	values('P_SUBS_MGMT',
+	'COMMON',
+	'/changeIt',
+	'Subscriber Managment',
+	'Y',
+	21,
+	'1',
+	'ROOT',
+	'assets/images/o2c_icons/operatortochannel.svg',
+	null,
+	null,
+	null,
+	null,
+	'eTopup',
+	null);
+
+INSERT INTO pages_ui (page_code, module_code, page_url, menu_name, show_menu, sequence_no, menu_level, parent_page_code, image, role_code, domain_type, category_code, page_type, app_name, is_default) VALUES('BLACK_UNBLACK_SUBSC', 'COMMON', '/blackUnblackListSubscribers', 'Black/Unblack list subscribers', 'Y', 21.3, '2', 'P_SUBS_MGMT', NULL, NULL, 'OPERATOR', NULL, NULL, 'eTopup', NULL);
+INSERT INTO pages_ui (page_code, module_code, page_url, menu_name, show_menu, sequence_no, menu_level, parent_page_code, image, role_code, domain_type, category_code, page_type, app_name, is_default) VALUES('REST_LIST_MGMT', 'COMMON', '/uplDeltRestList', 'Restricted list managment', 'Y', 21.2, '2', 'P_SUBS_MGMT', NULL, NULL, 'OPERATOR', NULL, NULL, 'eTopup', NULL);
+INSERT INTO pages_ui (page_code, module_code, page_url, menu_name, show_menu, sequence_no, menu_level, parent_page_code, image, role_code, domain_type, category_code, page_type, app_name, is_default) VALUES('VIEW_REST_SUB', 'COMMON', '/viewResList', 'View restricted subscribers', 'Y', 21.1, '2', 'P_SUBS_MGMT', NULL, NULL, NULL, NULL, NULL, 'eTopup', NULL);
+
+INSERT INTO page_ui_roles (role_code, page_code) VALUES('UNBLKSUBS', 'BLACK_UNBLACK_SUBSC');
+INSERT INTO page_ui_roles (role_code, page_code) VALUES('BLACKLISTMGMT', 'BLACK_UNBLACK_SUBSC');
+
+INSERT INTO page_ui_roles (role_code,page_code) VALUES 
+('BLKREGSUB','REST_LIST_MGMT')
+,('DELRESSUB','REST_LIST_MGMT')
+;
+
+INSERT INTO page_ui_roles (role_code,page_code) VALUES 
+('VIEWRESTRICTMSISDN','VIEW_REST_SUB')
+;
+
+
+update
+	pages_ui
+set
+	module_code = 'COMMON',
+	page_url = '/focap2',
+	menu_name = 'Restricted subscriber list',
+	show_menu = 'Y',
+	sequence_no = 4.4,
+	menu_level = '2',
+	parent_page_code = 'P_APPR_L1',
+	image = null,
+	role_code = null,
+	domain_type = 'OPERATOR',
+	category_code = 'BCU',
+	page_type = null,
+	app_name = 'eTopup',
+	is_default = null
+where
+	page_code = 'P_APPR_L1_RES_LIST';

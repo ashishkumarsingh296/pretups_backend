@@ -1,0 +1,2 @@
+TestcaseId,TestcaseType,Module,Description
+TUNG12873,Negative,Private Recharge,To check that an unsucessful recharge happens when amount is not entered

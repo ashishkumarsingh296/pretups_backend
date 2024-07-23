@@ -1,0 +1,15 @@
+TestcaseId,TestcaseType,Module,Description
+,Negative,Voucher Consumption Request,To verify that Voucher Consumption Request is unsuccesfull with all blank
+,Negative,Voucher Consumption Request,To verify that Voucher Consumption Request is unsuccessful with invalid PIN
+,Positive,Voucher Consumption Request,To verify that Voucher Consumption Request is successful with  SUBID
+,Negative,Voucher Consumption Request,To verify that Voucher Consumption Request is unsuccessful with INFO_TYPE tag blank
+,Negative,Voucher Consumption Request,To verify that Voucher Consumption Request  with SNO blank
+,Negative,Voucher Consumption Request,To verify that Voucher Consumption Request with TXNID blank
+,Negative,Voucher Consumption Request,To verify that Voucher Consumption Request with SUBID blank
+,Negative,Voucher Consumption Request,To verify that Voucher Consumption Request with PIN blank
+,Positive,Voucher Consumption Request,To verify that Voucher Consumption Request is succesfull with all fields
+,Negative,Voucher Consumption Request,To verify that voucher consumption request is not succesful if voucher is in GE state
+,Negative,Voucher Consumption Request,To verify that voucher consumption request is not succesful if voucher is in PE state
+,Negative,Voucher Consumption Request,To verify that voucher consumption request is not succesful if voucher is in WH state
+,Negative,Voucher Consumption Request,To verify that voucher consumption request is not succesful if voucher is in OH state
+,Negative,Voucher Consumption Request,To verify that voucher consumption request is not succesful if voucher is in ST   state

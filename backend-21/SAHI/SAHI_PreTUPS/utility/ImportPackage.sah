@@ -1,0 +1,21 @@
+//################################################
+//#Company Name: Mahindra Comviva Technologies Ltd.
+//#Application Name: Pretups
+//#Objective: Files included are common for each script used for automating Pretups Application
+//#Author Name: Nidhi Singh
+//#Created Date: 16/01/2014
+//###############################################
+
+//====================Import Scripts=======================
+_includeOnce("../utility/Screenshot.sah");	//For taking screenshot in case of error
+_includeOnce("../utility/Readexcel.sah");	//For getting global variables
+_includeOnce("../utility/ReadAssertions.sah"); //For reading common assertions
+_includeOnce("../utility/ReadAllData.sah"); // Reading Master Data
+_includeOnce("../utility/CurrentTime.sah");	//For fetching current time
+_includeOnce("../utility/LeftMenuBar.sah");	//For Pretups Left Panel Links
+_includeOnce("../utility/ReadMSISDN.sah");	//Read MSISDN from csv file
+_includeOnce("../scripts/DB/Pretups_GUI_Queries.sah");
+_includeOnce("../utility/RandomString.sah");	//For generating random strings
+_includeOnce("../scripts/GUI/testscripts/Login/Login_Common.sah");	//For login into the application
+_includeOnce("../scripts/GUI/testscripts/User_Management/UserManagement_Common.sah"); //For creating Admin
+_includeOnce("../scripts/GUI/testscripts/Channel_Domain/ChannelDomains_Common.sah"); //For creating Domains 

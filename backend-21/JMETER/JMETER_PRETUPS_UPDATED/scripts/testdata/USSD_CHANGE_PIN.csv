@@ -1,0 +1,7 @@
+TestcaseId,TestcaseType,Module,Description
+,Positive,USSD Change Pin CP2P,To verify Change Pin request is successful with all valid details.
+,Positive,USSD Change Pin CP2P,To verify Change Pin request is not successful if NEWPIN tag is blank
+,Positive,USSD Change Pin CP2P,To verify Change Pin request is not successful if PIN tag is blank
+,Positive,USSD Change Pin CP2P,To verify Change Pin request is not successful if Confirm PIN tag is blank
+,Negative,USSD Change Pin CP2P,To verify Change Pin request is not successful New PIN entered is same as old PIN entered in API.
+,Negative,USSD Change Pin CP2P,To verify Change Pin request is not successful is NewPIN entered and Confirm PIN entered are not same.

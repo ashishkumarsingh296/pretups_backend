@@ -1,0 +1,2 @@
+TestcaseId,TestcaseType,Module,Description
+TUNG13049,Positive,O2C transfer through EXTGW,"To Verify operator user can initiate ""FOC"" Operator to Channel Transfer"

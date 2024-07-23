@@ -1,0 +1,2 @@
+TestcaseId,TestcaseType,Module,Description
+TUNG12353 ,Positive,Lite Recharge through USSD,Validate Lite Recharge request (LRC) with all correct details.

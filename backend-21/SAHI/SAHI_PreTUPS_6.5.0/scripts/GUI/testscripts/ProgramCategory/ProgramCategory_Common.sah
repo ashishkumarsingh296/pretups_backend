@@ -1,0 +1,208 @@
+
+var $g_programCategory;
+var $g_minPeriod;
+var $g_maxPeriod;
+var $g_earningType;
+var $g_redWallet;
+var $g_rewardType;
+var $g_redFrequency;
+var $g_assertion;
+
+function commonVaribleToAddProgamCategoryRules($g_row, $g_col) {
+	
+		$g_programCategory = $g_programCategoryDetails[$g_row][$g_col++] ;
+		$g_minPeriod = $g_programCategoryDetails[$g_row][$g_col++] ;
+		$g_maxPeriod = $g_programCategoryDetails[$g_row][$g_col++] ;
+		$g_earningType = $g_programCategoryDetails[$g_row][$g_col++] ;
+		$g_redWallet = $g_programCategoryDetails[$g_row][$g_col++] ;
+		$g_rewardType = $g_programCategoryDetails[$g_row][$g_col++] ;
+		$g_redFrequency = $g_programCategoryDetails[$g_row][$g_col++] ;
+		$g_assertion = $g_programCategoryDetails[$g_row][$g_col++] ;
+	
+}
+
+
+function invalidMinPeriod() {
+	
+	_click(_link("User Program Management"));
+	_click(_heading4("Create program"));
+	_setSelected(_select("programType"), $g_programCategory );
+	_click(_submit("Submit"));
+	_click(_heading3("Define Program Category Rules"));
+	_setValue(_textbox("minPeriod"), $g_minPeriod);
+	_setValue(_textbox("maxPeriod"), $g_maxPeriod );
+	_setSelected(_select("programEarningSelList"), [$g_earningType]);
+	_setSelected(_select("redempWalletType"), $g_redWallet );
+	_click(_checkbox("pointsForParent"));
+	_setSelected(_select("rewardTypeSelList"), [$g_rewardType]);
+	_setSelected(_select("redempFreqSelList"), [$g_redFrequency]);
+	_click(_submit("Submit"));
+	_assertExists(_span($g_assertion));
+	
+}
+function invalidMaxPeriod() {
+	
+	_click(_link("User Program Management"));
+	_click(_link("Create program"));
+	//_wait(10000);
+	_click(_heading4("Create program"));
+	
+	_setSelected(_select("programType"), $g_programCategory );
+	_click(_submit("Submit"));
+	_click(_heading3("Define Program Category Rules"));
+	_setValue(_textbox("minPeriod"), $g_minPeriod);
+	_setValue(_textbox("maxPeriod"), $g_maxPeriod );
+	_setSelected(_select("programEarningSelList"), [$g_earningType]);
+	_setSelected(_select("redempWalletType"), $g_redWallet );
+	_click(_checkbox("pointsForParent"));
+	_setSelected(_select("rewardTypeSelList"), [$g_rewardType]);
+	_setSelected(_select("redempFreqSelList"), [$g_redFrequency]);
+	_click(_submit("Submit"));
+	_assertExists(_span($g_assertion));
+}
+
+function MaxPeriodRequired() {
+	
+	_click(_link("User Program Management"));
+	_click(_link("Create program"));
+	//_wait(10000);
+	_click(_heading4("Create program"));
+	_setSelected(_select("programType"), $g_programCategory );
+	_click(_submit("Submit"));
+	_click(_heading3("Define Program Category Rules"));
+	_setValue(_textbox("minPeriod"), $g_minPeriod);
+	_setValue(_textbox("maxPeriod"), $g_maxPeriod );
+	_setSelected(_select("programEarningSelList"), [$g_earningType]);
+	_setSelected(_select("redempWalletType"), $g_redWallet );
+	_click(_checkbox("pointsForParent"));
+	_setSelected(_select("rewardTypeSelList"), [$g_rewardType]);
+	_setSelected(_select("redempFreqSelList"), [$g_redFrequency]);
+	_click(_submit("Submit"));
+	_assertExists(_span($g_assertion));
+}
+function MinPeriodRequired() {
+	
+	_click(_link("User Program Management"));
+	_click(_link("Create program"));
+
+	_click(_heading4("Create program"));
+	_setSelected(_select("programType"), $g_programCategory );
+	_click(_submit("Submit"));
+	_click(_heading3("Define Program Category Rules"));
+	_setValue(_textbox("minPeriod"), $g_minPeriod);
+	_setValue(_textbox("maxPeriod"), $g_maxPeriod );
+	_setSelected(_select("programEarningSelList"), [$g_earningType]);
+	_setSelected(_select("redempWalletType"), $g_redWallet );
+	_click(_checkbox("pointsForParent"));
+	_setSelected(_select("rewardTypeSelList"), [$g_rewardType]);
+	_setSelected(_select("redempFreqSelList"), [$g_redFrequency]);
+	_click(_submit("Submit"));
+	_assertExists(_span($g_assertion));
+}
+function ProgramEarningTypeRequired() {
+	
+	_click(_link("User Program Management"));
+	_click(_link("Create program"));
+	
+	_click(_heading4("Create program"));
+	_setSelected(_select("programType"), $g_programCategory );
+	_click(_submit("Submit"));
+	_click(_heading3("Define Program Category Rules"));
+	_setValue(_textbox("minPeriod"), $g_minPeriod);
+	_setValue(_textbox("maxPeriod"), $g_maxPeriod );
+	//_setSelected(_select("programEarningSelList"), [$g_earningType]);
+	_setSelected(_select("redempWalletType"), $g_redWallet );
+	_click(_checkbox("pointsForParent"));
+	_setSelected(_select("rewardTypeSelList"), [$g_rewardType]);
+	_setSelected(_select("redempFreqSelList"), [$g_redFrequency]);
+	_click(_submit("Submit"));
+	_assertExists(_span($g_assertion));
+}
+function RewardTypeRequired() {
+	
+	_click(_link("User Program Management"));
+	_click(_link("Create program"));
+	
+	_click(_heading4("Create program"));
+	_setSelected(_select("programType"), $g_programCategory );
+	_click(_submit("Submit"));
+	_click(_heading3("Define Program Category Rules"));
+	_setValue(_textbox("minPeriod"), $g_minPeriod);
+	_setValue(_textbox("maxPeriod"), $g_maxPeriod );
+	_setSelected(_select("programEarningSelList"), [$g_earningType]);
+	_setSelected(_select("redempWalletType"), $g_redWallet );
+	_click(_checkbox("pointsForParent"));
+//	_setSelected(_select("rewardTypeSelList"), [$g_rewardType]);
+	_setSelected(_select("redempFreqSelList"), [$g_redFrequency]);
+	_click(_submit("Submit"));
+	_assertExists(_span($g_assertion));
+}
+function RedemptionFrequencyRequired() {
+	
+	_click(_link("User Program Management"));
+	_click(_link("Create program"));
+
+	_click(_heading4("Create program"));
+	_setSelected(_select("programType"), $g_programCategory );
+	_click(_submit("Submit"));
+	_click(_heading3("Define Program Category Rules"));
+	_setValue(_textbox("minPeriod"), $g_minPeriod);
+	_setValue(_textbox("maxPeriod"), $g_maxPeriod );
+	_setSelected(_select("programEarningSelList"), [$g_earningType]);
+	_setSelected(_select("redempWalletType"), $g_redWallet );
+	_click(_checkbox("pointsForParent"));
+	_setSelected(_select("rewardTypeSelList"), [$g_rewardType]);
+	//_setSelected(_select("redempFreqSelList"), [$g_redFrequency]);
+	_click(_submit("Submit"));
+	_assertExists(_span($g_assertion));
+}
+function MaxPeriodMore() {
+	
+	_click(_link("User Program Management"));
+	_click(_link("Create program"));
+
+	_click(_heading4("Create program"));
+	_setSelected(_select("programType"), $g_programCategory );
+	_click(_submit("Submit"));
+	_click(_heading3("Define Program Category Rules"));
+	_setValue(_textbox("minPeriod"), $g_minPeriod);
+	_setValue(_textbox("maxPeriod"), $g_maxPeriod );
+	_setSelected(_select("programEarningSelList"), [$g_earningType]);
+	_setSelected(_select("redempWalletType"), $g_redWallet );
+	_click(_checkbox("pointsForParent"));
+	_setSelected(_select("rewardTypeSelList"), [$g_rewardType]);
+	_setSelected(_select("redempFreqSelList"), [$g_redFrequency]);
+	_click(_submit("Submit"));
+	_assertExists(_span($g_assertion));
+}
+function DefineSuccessful() {
+	
+	_click(_link("User Program Management"));
+	_click(_link("Create program"));
+	//
+	_click(_heading4("Create program"));
+	_setSelected(_select("programType"), $g_programCategory );
+	_click(_submit("Submit"));
+	_click(_heading3("Define Program Category Rules"));
+	_setValue(_textbox("minPeriod"), $g_minPeriod);
+	_setValue(_textbox("maxPeriod"), $g_maxPeriod );
+	_setSelected(_select("programEarningSelList"), [$g_earningType]);
+	_setSelected(_select("redempWalletType"), $g_redWallet );
+	_click(_checkbox("pointsForParent"));
+	_setSelected(_select("rewardTypeSelList"), [$g_rewardType]);
+	_setSelected(_select("redempFreqSelList"), [$g_redFrequency]);
+	_click(_submit("Submit"));
+	_click(_heading3("Define Program Category Rules"));
+	_wait(10000);
+	_click(_submit("Confirm"));
+	_assertExists(_span($g_assertion));
+}
+
+
+
+
+
+
+
+
+    

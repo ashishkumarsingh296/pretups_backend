@@ -1,0 +1,5 @@
+Test Case No.,Discription,Division Type,Division Name,ShortCode,Status,Assertion
+TEST001,Super Admin login into application and added a division,Operator,AUT Division,AUTNAME,Active,Divison added successfully
+TEST002,Super admin try to create an application without enter any division details,,,,,Division type is required.
+TEST003,Super admin try to modify division in the system,,AUT Division,AUTNAMEM,,Division modified successfully
+TEST004,Super admin login into application try to delete division ,,AUT Division,,,Division deleted successfully

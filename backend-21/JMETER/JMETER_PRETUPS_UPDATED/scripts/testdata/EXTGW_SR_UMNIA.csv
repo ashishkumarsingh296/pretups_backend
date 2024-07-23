@@ -1,0 +1,30 @@
+TestcaseId,PAYMENTTYPE,TRFCATEGORY,TestcaseType,Module,Description
+,,,Positive,User Suspend and Resume,To verify that Operator user is able to suspend user with all valid details
+,,,Negative,User Suspend and Resume,To verify that proper notification appear if suspend request is executed for already suspended user.
+,,,Negative,User Suspend and Resume,To verify that Channel user is not able to perform C2C  in suspended state
+,CHQ,SALE,Negative,User Suspend and Resume,To verify that Channel user is not able to perform O2C  in suspended state
+,,,Positive,User Suspend and Resume,To verfiy that operator user is able to resume user with all the valid details entered in the API
+,,,Positive,User Suspend and Resume,To verfiy that Suspend request is successful if external reference number is missng
+,,,Negative,User Suspend and Resume,To verfiy that SUSPEND request not successful if Employee code is missing.
+,,,Negative,User Suspend and Resume,To verfiy that SUSPEND request not successful if category code is missing.
+,,,Negative,User Suspend and Resume,To verfiy that SUSPEND request not successful if login id and password are missing
+,,,Negative,User Suspend and Resume,To verfiy that SUSPEND request not successful if login id  is invalid.
+,,,Negative,User Suspend and Resume,To verfiy that SUSPEND request not successful if only password is missing
+,,,Negative,User Suspend and Resume,To verfiy that SUSPEND request not successful if network code is missing
+,,,Negative,User Suspend and Resume,To verfiy that SUSPEND request not successful if MSISDN is missing
+,,,Negative,User Suspend and Resume,To verfiy that SUSPEND request not successful if MSISDN is invalid
+,,,Negative,User Suspend and Resume,To verfiy that SUSPEND request not successful if channel user Login ID is missing
+,,,Negative,User Suspend and Resume,To verfiy that SUSPEND request not successful if channel user Login ID is invalid
+,,,Positive,User Suspend and Resume,To verfiy that Resume request is successful if external reference number is missing
+,,,Positive,User Suspend and Resume,To verify that channel user is able to perform C2C once resumed.
+,CHQ,SALE,Positive,User Suspend and Resume,To verify that channel user is able to perform O2C once resumed.
+,,,Negative,User Suspend and Resume,To verify that proper notification appear if resume request is executed for already active user.
+,,,Negative,User Suspend and Resume,To verfiy that suspend / resume request is not successful if action is other than S and R.
+,,,Negative,User Suspend and Resume,To verify that resume request is not successful if employee code is missing
+,,,Negative,User Suspend and Resume,To verify that resume request is not successful if category code is missing
+,,,Negative,User Suspend and Resume,To verify that resume request is not successful if LoginID and password is missing
+,,,Negative,User Suspend and Resume,To verify that resume request is not successful if only password is missing
+,,,Negative,User Suspend and Resume,To verify that resume request is not successful if Network code is missing
+,,,Negative,User Suspend and Resume,To verify that resume request is not successful if MSISDN is missing
+,,,Negative,User Suspend and Resume,To verify that resume request is not successful if User loginID is missing
+,,,Negative,User Suspend and Resume,To verify that suspend resume request is not successful if Action is missing

@@ -1,0 +1,442 @@
+//#Company Name: Mahindra Comviva Technologies Ltd.
+//#Application Name: Pretups
+//#Objective: It will add common profiles.
+//#Author Name: Nidhi Singh
+//#Created Date: 03/02/2014
+//###############################################
+
+//===========================Import Scripts============================	 
+
+
+var $l_commCsv = _readCSVFile("../../../GUI/testdata/CommissionProfile_Details.csv"); //Reads data from a csv file to add Commission Profile.
+var $l_transCsv = _readCSVFile("../../../GUI/testdata/TransferProfile_Details.csv");
+var $l_categoryTransCsv = _readCSVFile("../../../GUI/testdata/CategoryLevelTranferProfile_Details.csv");
+var $l_row = 1;
+var $l_col = 1;
+var $g_calendarImg = $l_commCsv[$l_row][++$l_col];
+var $g_applicableFromHour;
+var $g_addCommProfImg = $l_commCsv[$l_row][++$l_col];
+var $g_multipleOf = $l_commCsv[$l_row][++$l_col];
+var $g_minTransfer = $l_commCsv[$l_row][++$l_col];
+var $g_maxTransfer = $l_commCsv[$l_row][++$l_col];
+var $g_startRange = $l_commCsv[$l_row][++$l_col];
+var $g_endRange = $l_commCsv[$l_row][++$l_col];
+var $g_commType =  $l_commCsv[$l_row][++$l_col];
+var $g_commRate =  $l_commCsv[$l_row][++$l_col];
+var $g_tax1Rate =  $l_commCsv[$l_row][++$l_col];
+var $g_tax2Rate = $l_commCsv[$l_row][++$l_col];
+var $g_tax3Rate =  $l_commCsv[$l_row][++$l_col];
+
+
+var $g_description;
+var $g_status;
+var $g_checkbox;
+var $g_daily;
+var $a_monthly;
+var $g_monthly;
+var $g_transProfUsername;
+var $g_shortCode;
+
+
+
+var $a_domCode;
+var $a_catCode;
+
+var $tempApplicableFrom;
+
+/**
+ *  This function adds User Grade from Super Admin's account
+ *	@param[in] - 
+ *			a_domCode Domain Code
+ *	@return - null
+ */
+
+function addUserGrade($a_domCode){	
+	var $g_ugGradeCode = variableForUserGrade($g_autoPrefix); //Automatically generated User Name
+	var $g_ugGradeName = variableForGradeName($g_autoPrefix); //Automatically generated Grade Name
+	_click(_link($g_LeftMenuBar_ChannelDomain));
+	_click(_link($g_LeftMenuBar_GradeMgmt));
+	_setSelected(_select("domainCodeforDomain"), ("/" + $a_domCode + ".*/"));
+	
+	
+	_log("shashi 0909" + $g_catCode );
+	
+	if($g_catCode.match($g_OwnerCateOne) == null || $g_catCode.match($g_OwnerCateOne) == null)
+			_setSelected(_select("categoryCode"), $g_catCode);
+	
+	_click(_submit($g_BtnSubmit));
+	_click(_submit($g_BtnAdd));
+	_setValue(_textbox("gradeCode"), $g_ugGradeCode);
+	_setValue(_textbox("gradeName"), $g_ugGradeName);
+	_click(_submit($g_BtnSave));
+	confirmButton();
+	return $g_ugGradeName;
+}
+
+/**
+ *  This function will automatically generate User Grade
+ *  @param[in] -
+ *  		a_Prefix "AUTO" as prefix
+ *	@return - 
+ *			l_username User Grade
+ */
+
+function variableForUserGrade($a_Prefix){
+	 $l_time = timeStampTwo(); // fetch current time(CurretnTime)
+	 $l_username = $a_Prefix + "UG" + $l_time; //AUTOUGcurrentTime
+	 return $l_username;
+}
+
+/**
+ *  This function will automatically generate Grade Name
+ *  @param[in] -
+ *  		a_Prefix "AUTO" as prefix
+ *	@return - 
+ *			l_username User Name
+ */
+
+function variableForGradeName($a_Prefix){
+	 $l_time = currentTime(); // fetch current time(CurretnTime)
+	 $l_username = $a_Prefix + $l_time; //AUTOcurrentTime
+	 return $l_username;
+}
+
+/**
+ *  This function will read data from a csv file 
+ *  @param[in] -
+ *  		$row row no.
+ *	@return - 
+ *			$col colm no.
+ */
+
+function readVariablesForAddingCategoryLevelTransferProfile($a_row, $a_col){
+	$g_description = $l_categoryTransCsv[$a_row][$a_col++];
+	$g_daily = $l_categoryTransCsv[$a_row][$a_col++];
+	$g_weekly = $l_categoryTransCsv[$a_row][$a_col++];
+	$g_monthly =$l_categoryTransCsv[$a_row][$a_col++];
+}
+
+/**
+ * This function is used to add Category Level Transfer Control Profile from Profile Management
+ * @param [in] -
+ *            a_domCode Domain Code for which Commission Profile is to be added
+ * @param [in] -
+ *            a_catCode Category Code for which Commission Profile is to be added
+ * @returns - null
+ */
+
+function addCategoryLevelTransferProfile($a_domCode, $a_catCode){
+	$g_categoryTransferProfileUserName = variableForCategoryLevelTransProf($g_autoPrefix);
+	$g_shortName = variableForShortName($g_autoPrefix);
+	_click(_link($g_LeftMenuBar_ProfileMgmt));
+	_click(_link($g_LeftMenuBar_CategoryLevelProfileMgmt));
+	_setSelected(_select("domainTypeCode"), $a_domCode);
+	
+	if($a_catCode.match($g_OwnerCateOne) == null || $a_catCode.match($g_OwnerCateOne) == null)
+		_setSelected(_select("domainCodeforCategory"), $a_catCode);
+
+	_click(_submit($g_BtnSubmit));
+	// Shashi 
+	
+	
+	_log("shashi " + _isVisible(_div($g_transferControlProfileDetails)));
+	if(_isVisible(_div($g_transferControlProfileDetails)))
+		return false;
+	
+	_setValue(_textbox("profileName"), $g_categoryTransferProfileUserName);
+	_setValue(_textbox("shortName"), $g_shortName);
+	_setValue(_textbox("description"), $g_description);
+	productBalancePreference();
+	dailyTCP($g_daily);
+	weeklyTCP($g_weekly);
+	monthlyTCP($g_monthly);
+	_click(_submit("Save"));
+	confirmButton();
+	return true;
+}
+
+/**
+ *  This function will automatically generate Category Level Transfer Profile User Name
+ *  @param[in] -
+ *  		a_Prefix "AUTO" as prefix
+ *	@return - 
+ *			l_username User Name
+ */
+
+function variableForCategoryLevelTransProf($a_Prefix){
+	 $l_time = currentTime(); // fetch current time(CurretnTime)
+	 $l_username = $a_Prefix + "CLTP" + $l_time; //AUTOTPcurrentTime
+	 return $l_username;
+}
+
+/**
+ *  This function will automatically generate short name for Category Level TCP
+ *  @param[in] -
+ *  		a_Prefix "AUTO" as prefix
+ *	@return - 
+ *			l_username User Name
+ */
+
+function variableForShortName($a_Prefix){
+	 $l_time = currentTime(); // fetch current time(CurretnTime)
+	 $l_shortName = $a_Prefix + $l_time; //AUTOcurrentTime
+	 return $l_shortName;
+}
+
+
+
+
+
+/**
+ * This function is used to add Commission Profile from Profile Management
+ * @param [in] -
+ *            a_domCode Domain Code for which Commission Profile is to be added
+ * @returns - null
+ */
+
+function addCommissionProfile($a_domCode, $a_catCode){	
+	var $g_commProfUsername = variableForCommProf($g_autoPrefix);
+	var $g_shortCode = randomStringForShortCode();
+	_click(_link($g_LeftMenuBar_ProfileMgmt));
+	_click(_link($g_LeftMenuBar_CommProf));
+	_setSelected(_select("domainCode"), ("/" + $a_domCode + ".*/"));
+	_setSelected(_select("categoryCode"), ("/" + $a_catCode + ".*/"));
+	_click(_submit($g_BtnAdd));
+	
+	$tempApplicableFrom = _getCellText(_cell(1, _near(_cell("Current server time :"))));
+	
+	$g_applicableFromHour = fetchHoursAndMinuts($tempApplicableFrom);
+	
+	_setValue(_textbox("profileName"), $g_commProfUsername);
+	_setValue(_textbox("shortCode"), $g_shortCode);
+	_click(_image($g_calendarImg));
+	_setValue(_textbox("applicableFromDate"), $g_currentDate);
+	_setValue(_textbox("applicableFromHour"), $g_applicableFromHour);
+	_click(_image($g_addCommProfImg));
+	_popup("eRecharge")._setSelected(_select("productCode"), "eTopUP");
+	_popup("eRecharge")._setValue(_textbox("multipleOf"), $g_multipleOf);
+	_popup("eRecharge")._setValue(_textbox("minTransferValue"), $g_minTransfer);
+	_popup("eRecharge")._setValue(_textbox("maxTransferValue"), $g_maxTransfer);
+	_popup("eRecharge")._click(_checkbox("taxCalculatedOnFlag"));
+	_popup("eRecharge")._click(_checkbox("taxOnFOCFlag"));
+	_popup("eRecharge")._setValue(_textbox("commSlabsListIndexed[0].startRangeAsString"), $g_startRange);
+	_popup("eRecharge")._setValue(_textbox("commSlabsListIndexed[0].endRangeAsString"), $g_endRange);
+	_popup("eRecharge")._setSelected(_select("commSlabsListIndexed[0].commType"), $g_commType);
+	_popup("eRecharge")._setValue(_textbox("commSlabsListIndexed[0].commRateAsString"), $g_commRate);
+	_popup("eRecharge")._setValue(_textbox("commSlabsListIndexed[0].tax1RateAsString"), $g_tax1Rate);
+	_popup("eRecharge")._setValue(_textbox("commSlabsListIndexed[0].tax2RateAsString"), $g_tax2Rate);
+	_popup("eRecharge")._setValue(_textbox("commSlabsListIndexed[0].tax3RateAsString"), $g_tax3Rate);
+	_popup("eRecharge")._click(_submit($g_BtnAdd));
+	
+	_click(_submit($g_BtnSave));
+	
+	confirmButton();	
+	return $g_commProfUsername;
+}
+
+/**
+ *  This function will automatically generate username for Commission Profile
+ * 	@param [in] -
+ * 				a_Prefix "AUTO"
+ *	@return - 
+ *			l_username username for Commission Profile
+ */ 
+
+function variableForCommProf($a_Prefix){
+	 $l_time = currentTime(); // fetch current time(CurrentTime)
+	 $l_username = $a_Prefix + "CP" + $l_time; //AUTOCPcurrentTime
+	 return $l_username;
+}
+
+/**
+ * This function is used to fetch variable from a csv
+ * @param [in] -
+ *            $a_row Row No of csv
+ * @param [in] -
+ *            $a_col Column No of csv
+ * @returns - null
+ */ 
+
+function readVariablesForAddingTransferProfile($a_row, $a_col){
+	$g_description = $l_transCsv[$a_row][$a_col++];
+	$g_status = $l_transCsv[$a_row][$a_col++];
+	$g_checkbox = $l_transCsv[$a_row][$a_col++];
+	$g_daily = $l_transCsv[$a_row][$a_col++];
+	$g_weekly = $l_transCsv[$a_row][$a_col++];
+	$g_monthly =$l_transCsv[$a_row][$a_col++];
+}
+
+/**
+ * This function is used to add Transfer Control Profile from Profile Management
+ * @param [in] -
+ *            a_domCode Domain Code for which Commission Profile is to be added
+ * @returns - null
+ */
+
+function addTransferProfile($a_domCode, $a_catCode){
+	$g_transProfUsername = variableForTransProf($g_autoPrefix); // Automatically generated Transfer Profile username
+	$g_shortCode = randomStringForShortCode(); // Random String for short code
+	_click(_link($g_LeftMenuBar_ProfileMgmt));
+	_click(_link($g_LeftMenuBar_TCP));
+	
+	
+	_setSelected(_select("domainTypeCode"), ("/" + $a_domCode + ".*/"));
+	_setSelected(_select("domainCodeforCategory"),("/" + $a_catCode + ".*/"));
+	_click(_submit($g_BtnSubmit));
+	
+	_log("shashi " + _isVisible(_div($g_transferControlProfileDetails)));
+	if(_isVisible(_div($g_transferControlProfileDetails)))
+	return false;
+	
+	_setValue(_textbox("profileName"), $g_transProfUsername);
+	_setValue(_textbox("shortName"), $g_shortCode);
+	_setValue(_textbox("description"), $g_description);
+	_setSelected(_select("status"), $g_status);
+	//_click(_checkbox($g_checkbox));
+	productBalancePreference();
+	dailyTCP($g_daily);
+	weeklyTCP($g_weekly);
+	monthlyTCP($g_monthly);
+	_click(_submit($g_BtnSave));
+	confirmButton();
+	return $g_transProfUsername;
+}
+
+/**
+ *  This function will automatically generate username for Transfer Control Profile
+ * 	@param [in] -
+ * 				a_Prefix "AUTO"
+ *	@return - 
+ *			l_username username for Transfer Control Profile
+ */ 
+
+function variableForTransProf($a_Prefix){
+	 $l_time = currentTime(); // fetch current time(CurretnTime)
+	 $l_username = $a_Prefix + "TP" + $l_time; //AUTOTPcurrentTime
+	 return $l_username;
+}
+
+/**
+ *  This function is used to add Product Balance Preferences
+ * 	@param [in] - null			
+ *	@return - null		
+ */
+
+function productBalancePreference(){
+	_setValue(_textbox("productBalanceIndexed[0].minBalance"), 10);
+	_setValue(_textbox("productBalanceIndexed[0].maxBalance"), 1000);
+	_setValue(_textbox("productBalanceIndexed[0].c2sMinTxnAmt"), 10);
+	_setValue(_textbox("productBalanceIndexed[0].c2sMaxTxnAmt"), 1000);
+	_setValue(_textbox("productBalanceIndexed[0].altBalance"), 500);
+	_setValue(_textbox("productBalanceIndexed[0].allowedMaxPercentage"), 50);
+	// shashi 
+	_setValue(_textbox("productBalanceIndexed[1].minBalance"), 10);
+	_setValue(_textbox("productBalanceIndexed[1].maxBalance"), 1000);
+	_setValue(_textbox("productBalanceIndexed[1].c2sMinTxnAmt"), 10);
+	_setValue(_textbox("productBalanceIndexed[1].c2sMaxTxnAmt"), 1000);
+	_setValue(_textbox("productBalanceIndexed[1].altBalance"), 500);
+	_setValue(_textbox("productBalanceIndexed[1].allowedMaxPercentage"), 50);
+	//fiza added for etopup
+	_setValue(_textbox("productBalanceIndexed[2].minBalance"), 10);
+	_setValue(_textbox("productBalanceIndexed[2].maxBalance"), 1000);
+	_setValue(_textbox("productBalanceIndexed[2].c2sMinTxnAmt"), 10);
+	_setValue(_textbox("productBalanceIndexed[2].c2sMaxTxnAmt"), 1000);
+	_setValue(_textbox("productBalanceIndexed[2].altBalance"), 500);
+	_setValue(_textbox("productBalanceIndexed[2].allowedMaxPercentage"), 50);
+}
+
+/**
+ *  This function is used to add Daily Transfer control preferences
+ * 	@param [in] - null			
+ *	@return - null		
+ */
+
+function dailyTCP($a_daily){
+	_setValue(_textbox("dailyInCount"), $a_daily);
+	_setValue(_textbox("dailyInAltCount"), $a_daily);
+	_setValue(_textbox("dailyInValue"), $a_daily);
+	_setValue(_textbox("dailyInAltValue"), $a_daily);
+	_setValue(_textbox("dailyOutCount"), $a_daily);
+	_setValue(_textbox("dailyOutAltCount"), $a_daily);
+	_setValue(_textbox("dailyOutValue"), $a_daily);
+	_setValue(_textbox("dailyOutAltValue"), $a_daily);
+	_setValue(_textbox("dailySubscriberOutCount"), $a_daily);
+	_setValue(_textbox("dailySubscriberOutAltCount"), $a_daily);
+	_setValue(_textbox("dailySubscriberOutValue"), $a_daily);
+	
+	_setValue(_textbox("dailySubscriberOutAltValue"), $a_daily);
+	
+	_setValue(_textbox("dailySubscriberInCount"), $a_daily);
+	_setValue(_textbox("dailySubscriberInAltCount"), $a_daily);
+	_setValue(_textbox("dailySubscriberInValue"), $a_daily);	
+	_setValue(_textbox("dailySubscriberInAltValue"), $a_daily);
+	
+}
+
+/**
+ *  This function is used to add Weekly Transfer control preferences
+ * 	@param [in] - null			
+ *	@return - null		
+ */ 
+
+function weeklyTCP($a_weekly){
+	_setValue(_textbox("weeklyInCount"), $a_weekly);
+	_setValue(_textbox("weeklyInAltCount"), $a_weekly);
+	_setValue(_textbox("weeklyInValue"), $a_weekly);
+	_setValue(_textbox("weeklyInAltValue"), $a_weekly);
+	_setValue(_textbox("weeklyOutCount"), $a_weekly);
+	_setValue(_textbox("weeklyOutAltCount"), $a_weekly);
+	_setValue(_textbox("weeklyOutValue"), $a_weekly);
+	_setValue(_textbox("weeklyOutAltValue"), $a_weekly);
+	_setValue(_textbox("weeklySubscriberOutCount"), $a_weekly);
+	_setValue(_textbox("weeklySubscriberOutAltCount"), $a_weekly);
+	_setValue(_textbox("weeklySubscriberOutValue"), $a_weekly);
+	
+	_setValue(_textbox("weeklySubscriberOutAltValue"), $a_weekly);
+	
+	_setValue(_textbox("weeklySubscriberInCount"), $a_weekly);
+	_setValue(_textbox("weeklySubscriberInAltCount"), $a_weekly);
+	_setValue(_textbox("weeklySubscriberInValue"), $a_weekly);
+	_setValue(_textbox("weeklySubscriberInAltValue"), $a_weekly);
+	
+	
+}
+
+/**
+ *  This function is used to add Monthly Transfer control preferences
+ * 	@param [in] - null			
+ *	@return - null		
+ */
+
+function monthlyTCP($a_monthly){
+	_setValue(_textbox("monthlyInCount"), $a_monthly);
+	_setValue(_textbox("monthlyInAltCount"), $a_monthly);
+	_setValue(_textbox("monthlyInValue"), $a_monthly);
+	_setValue(_textbox("monthlyInAltValue"), $a_monthly);
+	_setValue(_textbox("monthlyOutCount"), $a_monthly);
+	_setValue(_textbox("monthlyOutAltCount"), $a_monthly);
+	_setValue(_textbox("monthlyOutValue"), $a_monthly);
+	_setValue(_textbox("monthlyOutAltValue"), $a_monthly);
+	_setValue(_textbox("monthlySubscriberOutCount"), $a_monthly);
+	_setValue(_textbox("monthlySubscriberOutAltCount"), $a_monthly);
+	_setValue(_textbox("monthlySubscriberOutValue"), $a_monthly);
+	_setValue(_textbox("monthlySubscriberOutAltValue"), $a_monthly);
+	_setValue(_textbox("monthlySubscriberInCount"), $a_monthly);
+	_setValue(_textbox("monthlySubscriberInAltCount"), $a_monthly);
+	_setValue(_textbox("monthlySubscriberInValue"), $a_monthly);
+	_setValue(_textbox("monthlySubscriberInAltValue"), $a_monthly);
+	
+}
+
+/**
+*  This function clicks on Confirm button 
+*	@param[in] - null
+*/
+	
+function confirmButton(){
+	_click(_submit($g_BtnConfirm));	
+}
+
+
+
+

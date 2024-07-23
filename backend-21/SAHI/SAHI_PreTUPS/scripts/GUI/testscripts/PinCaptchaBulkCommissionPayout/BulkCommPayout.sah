@@ -1,0 +1,87 @@
+
+
+// This is script to approve Bulk Commission payout approval level one.
+
+
+//===========================Import Scripts============================	 
+	_includeOnce("../../../../utility/ImportPackage.sah");	//For importing common files
+	
+	_includeOnce("../../../GUI/testscripts/PinCaptchaBulkCommissionPayout/BulkCommPayout_Common.sah"); //For adding batch name for File 	
+
+//======================Pre-requisite check============================
+_log("Setup", "custom4");
+
+// Login with channel admin to Approve batch FOC
+
+var $l_naCsv = _readCSVFile("../../../GUI/testdata/NA_Login.csv"); //Reads Channel Admin login ID from csv file
+var $g_channelAdmin = $l_naCsv[2][1];
+	if($g_channelAdmin == "null"){ //If Channel Admin is not present then create it 
+		createCA(); //Function defined in UserManagement_Common.sah
+		var $l_naCsv = _readCSVFile("../../../GUI/testdata/NA_Login.csv"); //Reads Channel Admin login ID from csv file
+		 $g_channelAdminn = $l_naCsv[2][1];
+		login($g_appURL, $g_LangEnglish, $g_channelAdminn, $g_commonPassword, $g_assertWelcome); //Login as Channel Admin
+	}
+	else{	 
+		login($g_appURL, $g_LangEnglish, $g_channelAdmin, $g_commonPassword, $g_assertWelcome); //Login as Channel Admin(Login_Common.sah)
+	}
+
+
+// ............... Function to approve BulkCommissionPayoutApprovalLevelOne
+	
+//approveBulkCommissionPayout();
+	
+	
+	
+// ............... Function to reject BulkCommissionPayoutApprovalLevelOne 
+
+
+//rejectBulkCommissionPayoutLevel1();
+
+//............... Function to approve BulkCommissionPayoutApprovalLevelOne leaving pin field empty
+
+
+
+//n_approveBulkCommissionPayoutApprovalLevelOne_empty_pin();
+
+
+//............... Function to approve BulkCommissionPayoutApprovalLevelOne entering invalid pin
+
+//n_approveBulkCommissionPayoutApprovalLevelOne_invalid_pin();
+
+
+//...........Function to reject BulkCommissionPayoutApprovalLevelOne leaving pin field empty @Approval level 1
+//n_rejectBulkCommissionPayoutApprovalLevelOne_empty_pin();
+
+//...........Function to reject BulkCommissionPayoutApprovalLevelOne providing invalid pin  @Approval level 1	
+//n_rejectBulkCommissionPayoutApprovalLevelOne_invalid_pin();
+	
+//...........Function to process BulkCommissionPayoutApprovalLevelOne providing valid pin  @Approval level 1	
+//processBulkCommissionPayoutLevel1();
+
+//...........Function to process BulkCommissionPayoutApprovalLevelOne providing invalid pin  @Approval level 1	
+//n_processBulkCommissionPayoutLevel1_invalid_pin();
+
+//...........Function to process BulkCommissionPayoutApprovalLevelOne providing empty pin  @Approval level 1	
+//n_processBulkCommissionPayoutLevel1_empty_pin();
+	
+//...........Function for Bulk Commission Payout Upload
+//BulkCommissionPayoutUpload();
+
+//...........Function for Bulk Commission Payout Upload when pin is wrong
+//n_BulkCommissionPayoutUpload_invalidpin();
+
+//...........Function for Bulk Commission Payout Upload when pin field is empty
+
+n_BulkCommissionPayoutUpload_emptyPin();
+
+
+
+
+
+
+	
+	
+	
+
+
+

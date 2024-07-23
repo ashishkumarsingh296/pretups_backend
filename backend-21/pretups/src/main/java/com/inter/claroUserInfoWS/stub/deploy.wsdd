@@ -1,0 +1,329 @@
+<!-- Use this file to deploy some handlers/chains and services      -->
+<!-- Two ways to do this:                                           -->
+<!--   java org.apache.axis.client.AdminClient deploy.wsdd          -->
+<!--      after the axis server is running                          -->
+<!-- or                                                             -->
+<!--   java org.apache.axis.utils.Admin client|server deploy.wsdd   -->
+<!--      from the same directory that the Axis engine runs         -->
+
+<deployment
+    xmlns="http://xml.apache.org/axis/wsdd/"
+    xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
+  <!-- Services from StreetSellerWSService WSDL service -->
+
+  <service name="StreetSellerWSSoap" provider="java:RPC" style="wrapped" use="literal">
+      <parameter name="wsdlTargetNamespace" value="http://www.openuri.org/"/>
+      <parameter name="wsdlServiceElement" value="StreetSellerWSService"/>
+      <parameter name="schemaQualified" value="http://pe/com/claro/esb/services/sap/streetseller/schemas/distribuidor/distribuidorDeudaTot.xsd,http://www.openuri.org/,http://pe/com/claro/esb/services/sap/streetseller/schemas/distribuidor/distribuidorStatus.xsd,http://pe/com/claro/esb/services/sap/streetseller/schemas/factura/factura.xsd,http://pe/com/claro/esb/services/sap/streetseller/schemas/distribuidor/distribuidorData.xsd"/>
+      <parameter name="wsdlServicePort" value="StreetSellerWSSoap"/>
+      <parameter name="className" value="com.inter.claroUserInfoWS.stub.StreetSellerWSServiceSoapBindingImpl"/>
+      <parameter name="wsdlPortType" value="StreetSellerWSSoap"/>
+      <parameter name="typeMappingVersion" value="1.2"/>
+      <operation name="obtenerFactura" qname="operNS:obtenerFactura" xmlns:operNS="http://www.openuri.org/" returnQName="retNS:facturaResponse" xmlns:retNS="http://pe/com/claro/esb/services/sap/streetseller/schemas/factura/factura.xsd" returnType="rtns:facturaResponseType" xmlns:rtns="http://pe/com/claro/esb/services/sap/streetseller/schemas/factura/factura.xsd" soapAction="http://www.openuri.org/obtenerFactura" >
+        <parameter qname="pns:facturaRequest" xmlns:pns="http://pe/com/claro/esb/services/sap/streetseller/schemas/factura/factura.xsd" type="tns:facturaRequestType" xmlns:tns="http://pe/com/claro/esb/services/sap/streetseller/schemas/factura/factura.xsd"/>
+      </operation>
+      <operation name="obtenerDeudaDistribuidor" qname="operNS:obtenerDeudaDistribuidor" xmlns:operNS="http://www.openuri.org/" returnQName="retNS:distribuidorDeudaResponse" xmlns:retNS="http://pe/com/claro/esb/services/sap/streetseller/schemas/distribuidor/distribuidorDeudaTot.xsd" returnType="rtns:distribuidorDeudaResponseType" xmlns:rtns="http://pe/com/claro/esb/services/sap/streetseller/schemas/distribuidor/distribuidorDeudaTot.xsd" soapAction="http://www.openuri.org/obtenerDeudaDistribuidor" >
+        <parameter qname="pns:distribuidorDeudaRequest" xmlns:pns="http://pe/com/claro/esb/services/sap/streetseller/schemas/distribuidor/distribuidorDeudaTot.xsd" type="tns:distribuidorDeudaRequestType" xmlns:tns="http://pe/com/claro/esb/services/sap/streetseller/schemas/distribuidor/distribuidorDeudaTot.xsd"/>
+      </operation>
+      <operation name="obtenerDatosDistribuidor" qname="operNS:obtenerDatosDistribuidor" xmlns:operNS="http://www.openuri.org/" returnQName="retNS:distribuidorDataResponse" xmlns:retNS="http://pe/com/claro/esb/services/sap/streetseller/schemas/distribuidor/distribuidorData.xsd" returnType="rtns:distribuidorDataResponseType" xmlns:rtns="http://pe/com/claro/esb/services/sap/streetseller/schemas/distribuidor/distribuidorData.xsd" soapAction="http://www.openuri.org/obtenerDatosDistribuidor" >
+        <parameter qname="pns:distribuidorDataRequest" xmlns:pns="http://pe/com/claro/esb/services/sap/streetseller/schemas/distribuidor/distribuidorData.xsd" type="tns:distribuidorDataRequestType" xmlns:tns="http://pe/com/claro/esb/services/sap/streetseller/schemas/distribuidor/distribuidorData.xsd"/>
+      </operation>
+      <operation name="obtenerEstadoDistribuidor" qname="operNS:obtenerEstadoDistribuidor" xmlns:operNS="http://www.openuri.org/" returnQName="retNS:distribuidorStatusResponse" xmlns:retNS="http://pe/com/claro/esb/services/sap/streetseller/schemas/distribuidor/distribuidorStatus.xsd" returnType="rtns:distribuidorStatusResponseType" xmlns:rtns="http://pe/com/claro/esb/services/sap/streetseller/schemas/distribuidor/distribuidorStatus.xsd" soapAction="http://www.openuri.org/obtenerEstadoDistribuidor" >
+        <parameter qname="pns:distribuidorStatusRequest" xmlns:pns="http://pe/com/claro/esb/services/sap/streetseller/schemas/distribuidor/distribuidorStatus.xsd" type="tns:distribuidorStatusRequestType" xmlns:tns="http://pe/com/claro/esb/services/sap/streetseller/schemas/distribuidor/distribuidorStatus.xsd"/>
+      </operation>
+      <operation name="obtenerDistribuidor" qname="operNS:obtenerDistribuidor" xmlns:operNS="http://www.openuri.org/" returnQName="retNS:distribuidorDataResponse" xmlns:retNS="http://pe/com/claro/esb/services/sap/streetseller/schemas/distribuidor/distribuidorData.xsd" returnType="rtns:distribuidorDataResponseType" xmlns:rtns="http://pe/com/claro/esb/services/sap/streetseller/schemas/distribuidor/distribuidorData.xsd" soapAction="http://www.openuri.org/obtenerDistribuidor" >
+        <parameter qname="pns:distribuidorDataRequest" xmlns:pns="http://pe/com/claro/esb/services/sap/streetseller/schemas/distribuidor/distribuidorData.xsd" type="tns:distribuidorDataRequestType" xmlns:tns="http://pe/com/claro/esb/services/sap/streetseller/schemas/distribuidor/distribuidorData.xsd"/>
+      </operation>
+      <parameter name="allowedMethods" value="obtenerDatosDistribuidor obtenerDeudaDistribuidor obtenerFactura obtenerDistribuidor obtenerEstadoDistribuidor"/>
+
+      <typeMapping
+        xmlns:ns="http://pe/com/claro/esb/services/sap/streetseller/schemas/distribuidor/distribuidorData.xsd"
+        qname="ns:>datosDistribuidor>email"
+        type="java:java.lang.String"
+        serializer="org.apache.axis.encoding.ser.SimpleSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.SimpleDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://pe/com/claro/esb/services/sap/streetseller/schemas/distribuidor/distribuidorData.xsd"
+        qname="ns:distribuidorDataResponseType"
+        type="java:com.inter.claroUserInfoWS.stub.DistribuidorDataResponseType"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://pe/com/claro/esb/services/sap/streetseller/schemas/distribuidor/distribuidorDeudaTot.xsd"
+        qname="ns:distribuidorDeudaInfoType"
+        type="java:com.inter.claroUserInfoWS.stub.DistribuidorDeudaInfoType"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://pe/com/claro/esb/services/sap/streetseller/schemas/factura/factura.xsd"
+        qname="ns:facturaDatosType"
+        type="java:com.inter.claroUserInfoWS.stub.FacturaDatosType"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://pe/com/claro/esb/services/sap/streetseller/schemas/factura/factura.xsd"
+        qname="ns:>datosFactura>estado"
+        type="java:java.lang.String"
+        serializer="org.apache.axis.encoding.ser.SimpleSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.SimpleDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://pe/com/claro/esb/services/sap/streetseller/schemas/factura/factura.xsd"
+        qname="ns:datosFactura"
+        type="java:com.inter.claroUserInfoWS.stub.DatosFactura"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://pe/com/claro/esb/services/sap/streetseller/schemas/distribuidor/distribuidorData.xsd"
+        qname="ns:datosDistribuidor"
+        type="java:com.inter.claroUserInfoWS.stub.DatosDistribuidor"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://pe/com/claro/esb/services/sap/streetseller/schemas/factura/factura.xsd"
+        qname="ns:>datosFactura>impuesto"
+        type="java:java.lang.String"
+        serializer="org.apache.axis.encoding.ser.SimpleSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.SimpleDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://pe/com/claro/esb/services/sap/streetseller/schemas/factura/factura.xsd"
+        qname="ns:>datosFactura>nombre"
+        type="java:java.lang.String"
+        serializer="org.apache.axis.encoding.ser.SimpleSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.SimpleDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://pe/com/claro/esb/services/sap/streetseller/schemas/factura/factura.xsd"
+        qname="ns:>datosFactura>nroCliente"
+        type="java:java.lang.String"
+        serializer="org.apache.axis.encoding.ser.SimpleSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.SimpleDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://pe/com/claro/esb/services/sap/streetseller/schemas/factura/factura.xsd"
+        qname="ns:>datosFactura>nroDocComercial"
+        type="java:java.lang.String"
+        serializer="org.apache.axis.encoding.ser.SimpleSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.SimpleDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://pe/com/claro/esb/services/sap/streetseller/schemas/factura/factura.xsd"
+        qname="ns:facturaRequestType"
+        type="java:com.inter.claroUserInfoWS.stub.FacturaRequestType"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://pe/com/claro/esb/services/sap/streetseller/schemas/distribuidor/distribuidorStatus.xsd"
+        qname="ns:distribuidorStatusRequestType"
+        type="java:com.inter.claroUserInfoWS.stub.DistribuidorStatusRequestType"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://pe/com/claro/esb/services/sap/streetseller/schemas/distribuidor/distribuidorData.xsd"
+        qname="ns:>datosDistribuidor>periodoCicloPago"
+        type="java:java.lang.String"
+        serializer="org.apache.axis.encoding.ser.SimpleSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.SimpleDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://pe/com/claro/esb/services/sap/streetseller/schemas/distribuidor/distribuidorDeudaTot.xsd"
+        qname="ns:distribuidorDeudaRequestType"
+        type="java:com.inter.claroUserInfoWS.stub.DistribuidorDeudaRequestType"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://pe/com/claro/esb/services/sap/streetseller/schemas/distribuidor/distribuidorStatus.xsd"
+        qname="ns:distribuidorStatusResponseType"
+        type="java:com.inter.claroUserInfoWS.stub.DistribuidorStatusResponseType"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://pe/com/claro/esb/services/sap/streetseller/schemas/distribuidor/distribuidorData.xsd"
+        qname="ns:>datosDistribuidor>limiteCredito"
+        type="java:java.lang.String"
+        serializer="org.apache.axis.encoding.ser.SimpleSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.SimpleDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://pe/com/claro/esb/services/sap/streetseller/schemas/distribuidor/distribuidorData.xsd"
+        qname="ns:>datosDistribuidor>nroIdentFiscal"
+        type="java:java.lang.String"
+        serializer="org.apache.axis.encoding.ser.SimpleSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.SimpleDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://pe/com/claro/esb/services/sap/streetseller/schemas/distribuidor/distribuidorData.xsd"
+        qname="ns:>datosDistribuidor>nombre"
+        type="java:java.lang.String"
+        serializer="org.apache.axis.encoding.ser.SimpleSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.SimpleDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://pe/com/claro/esb/services/sap/streetseller/schemas/factura/factura.xsd"
+        qname="ns:facturaInfoType"
+        type="java:com.inter.claroUserInfoWS.stub.FacturaInfoType"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://pe/com/claro/esb/services/sap/streetseller/schemas/distribuidor/distribuidorStatus.xsd"
+        qname="ns:distribuidorStatusInfoType"
+        type="java:com.inter.claroUserInfoWS.stub.DistribuidorStatusInfoType"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://pe/com/claro/esb/services/sap/streetseller/schemas/distribuidor/distribuidorDeudaTot.xsd"
+        qname="ns:distribuidorDeudaResponseType"
+        type="java:com.inter.claroUserInfoWS.stub.DistribuidorDeudaResponseType"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://pe/com/claro/esb/services/sap/streetseller/schemas/distribuidor/distribuidorData.xsd"
+        qname="ns:>datosDistribuidor>direccion"
+        type="java:java.lang.String"
+        serializer="org.apache.axis.encoding.ser.SimpleSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.SimpleDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://pe/com/claro/esb/services/sap/streetseller/schemas/distribuidor/distribuidorData.xsd"
+        qname="ns:>datosDistribuidor>adminName"
+        type="java:java.lang.String"
+        serializer="org.apache.axis.encoding.ser.SimpleSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.SimpleDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://pe/com/claro/esb/services/sap/streetseller/schemas/distribuidor/distribuidorData.xsd"
+        qname="ns:>datosDistribuidor>telefono"
+        type="java:java.lang.String"
+        serializer="org.apache.axis.encoding.ser.SimpleSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.SimpleDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://pe/com/claro/esb/services/sap/streetseller/schemas/distribuidor/distribuidorDeudaTot.xsd"
+        qname="ns:distribuidorDeudaDatosType"
+        type="java:com.inter.claroUserInfoWS.stub.DistribuidorDeudaDatosType"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://pe/com/claro/esb/services/sap/streetseller/schemas/distribuidor/distribuidorData.xsd"
+        qname="ns:distribuidorDataDatosType"
+        type="java:com.inter.claroUserInfoWS.stub.DistribuidorDataDatosType"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://pe/com/claro/esb/services/sap/streetseller/schemas/distribuidor/distribuidorData.xsd"
+        qname="ns:>datosDistribuidor>ciudad"
+        type="java:java.lang.String"
+        serializer="org.apache.axis.encoding.ser.SimpleSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.SimpleDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://pe/com/claro/esb/services/sap/streetseller/schemas/distribuidor/distribuidorData.xsd"
+        qname="ns:>datosDistribuidor>nroDiasPago"
+        type="java:java.lang.String"
+        serializer="org.apache.axis.encoding.ser.SimpleSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.SimpleDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://pe/com/claro/esb/services/sap/streetseller/schemas/distribuidor/distribuidorData.xsd"
+        qname="ns:distribuidorDataInfoType"
+        type="java:com.inter.claroUserInfoWS.stub.DistribuidorDataInfoType"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://pe/com/claro/esb/services/sap/streetseller/schemas/distribuidor/distribuidorData.xsd"
+        qname="ns:distribuidorDataRequestType"
+        type="java:com.inter.claroUserInfoWS.stub.DistribuidorDataRequestType"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://pe/com/claro/esb/services/sap/streetseller/schemas/distribuidor/distribuidorData.xsd"
+        qname="ns:>datosDistribuidor>periodoPago"
+        type="java:java.lang.String"
+        serializer="org.apache.axis.encoding.ser.SimpleSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.SimpleDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://pe/com/claro/esb/services/sap/streetseller/schemas/factura/factura.xsd"
+        qname="ns:>datosFactura>fechaFactura"
+        type="java:java.lang.String"
+        serializer="org.apache.axis.encoding.ser.SimpleSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.SimpleDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://pe/com/claro/esb/services/sap/streetseller/schemas/factura/factura.xsd"
+        qname="ns:>datosFactura>valorNeto"
+        type="java:java.lang.String"
+        serializer="org.apache.axis.encoding.ser.SimpleSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.SimpleDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://pe/com/claro/esb/services/sap/streetseller/schemas/distribuidor/distribuidorData.xsd"
+        qname="ns:>datosDistribuidor>estado"
+        type="java:java.lang.String"
+        serializer="org.apache.axis.encoding.ser.SimpleSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.SimpleDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://pe/com/claro/esb/services/sap/streetseller/schemas/factura/factura.xsd"
+        qname="ns:facturaResponseType"
+        type="java:com.inter.claroUserInfoWS.stub.FacturaResponseType"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+  </service>
+</deployment>

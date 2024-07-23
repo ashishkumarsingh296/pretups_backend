@@ -1,0 +1,3 @@
+TestcaseId,TestcaseType,Module,Description
+TUNG12843 ,Negative,O2C withdraw through EXTGW,To check  that an unsuccessful o2c withdraw occurs when wrong ext code is present
+,Negative,O2C withdraw through EXTGW,To check  that an unsuccessful o2c withdraw occurs when wrong pin is entered

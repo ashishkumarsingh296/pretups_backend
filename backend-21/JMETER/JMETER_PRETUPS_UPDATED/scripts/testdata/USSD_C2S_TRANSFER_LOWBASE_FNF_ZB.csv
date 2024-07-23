@@ -1,0 +1,5 @@
+CELLID,MSISDN1,PIN,MSISDN2,AMOUNT,LANGUAGE1,LANGUAGE2,SELECTOR,TestcaseId,TestcaseType,Module,Description
+,7200009910,1357,7200002030,10,0,0,1,,Positive,Recharge from Main Distributor to Subscriber ,Using MSISDN and PIN
+,7200009910,1357,7200002030,50,0,0,1,,Positive,Recharge from Main Distributor to Subscriber ,Using MSISDN and PIN and amount more than minimum amount
+,7200009910,1357,7200002030,50,0,0,1,,Positive,Recharge from Main Distributor to Subscriber ,Using MSISDN and PIN and total amount less than maximum limit
+,7200009910,1357,7200002030,100,0,0,1,,Positive,Recharge from Main Distributor to Subscriber ,Using MSISDN and PIN and total amount more than maximum limit

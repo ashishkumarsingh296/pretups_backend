@@ -1,0 +1,6 @@
+---
+ - name: "creating the Directory in parallel to pretupshomei in SMSR"
+   shell: mkdir -p {{ pretups_smsrlogs }}/old_logs  {{ pretups_cronlogs }}/backup_logs chdir={{ from_path }}/{{ pretupsvar }}
+#_{{ tomcat_no }}
+#   shell: mkdir -p {{ pretups_smsrlogs }}_{{ tomcat_no }}/old_logs  {{ pretups_cronlogs }}_{{ tomcat_no }}/backup_logs chdir={{ from_path }}/{{ pretupsvar }}
+#

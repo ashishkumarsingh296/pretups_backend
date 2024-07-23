@@ -1,0 +1,319 @@
+//################################################
+//#Company Name: Mahindra Comviva Technologies Ltd.
+//#Application Name: Pretups
+//#Objective: It includes common functions for Login.
+//###############################################
+
+// This scripts contains all the common methods for two factor authentication.
+
+_includeOnce("../../../../utility/ImportPackage.sah");
+
+var $g_DriverName="oracle.jdbc.driver.OracleDriver";
+var $g_JDBCName="jdbc:Oracle:thin:@";
+
+	var $g_loginId;
+	var $g_password;
+	var $g_otp;
+	var $g_assertion;
+	var $db;
+/************Reads data from twoFA_login.csv file****************/
+	function commonVaribleForLogin($g_row, $g_col) {
+			$g_loginId = $g_loginDetails[$g_row][$g_col++];
+			 $g_password = $g_loginDetails[$g_row][$g_col++];
+			 $g_DecryptURL= $g_loginDetails[$g_row][$g_col++];
+	 		 $g_assertion= $g_loginDetails[$g_row][$g_col++];
+    		 $g_Domain= $g_loginDetails[$g_row][$g_col++];
+     		 $g_category= $g_loginDetails[$g_row][$g_col++];
+   			 $g_grade  = $g_loginDetails[$g_row][$g_col++];
+   			 $g_commission_profile= $g_loginDetails[$g_row][$g_col++];
+     		 $g_transferProfile=$g_loginDetails[$g_row][$g_col++];
+    		 $g_userloginID=$g_loginDetails[$g_row][$g_col++];
+		}
+/************Reads data from twoFA_login.csv file ****************/
+
+
+
+function Login($a_appURL, $a_language, $a_username, $a_password, $a_assertion)
+{
+	_navigateTo($a_appURL);
+	_setSelected(_select("language"), $a_language);
+	_setValue(_textbox("loginID"), $a_username);
+    _setValue(_password("password"), $a_password);
+	_click(_submit($g_BtnLogin));
+
+}
+function UpdatePrefCache(){
+  _click(_link("Masters"));
+  _click(_link("Update cache"));
+  _check(_checkbox("cacheParam", _in(_cell("Preference cache"))));
+  _click(_button("Submit"));
+  _click(_submit("Back"));
+}
+  
+function OracleDBConnection($DriverName,$JDBCName,$dbIP,$dbPort,$dbSid,$dbUserName,$dbPassword){
+
+            var $dbURL =   $JDBCName+ $dbIP + ":" + $dbPort + ":" + $dbSid;
+
+            var $dbConn = _getDB($DriverName, $dbURL, $dbUserName, $dbPassword);
+
+            _log("Created DB Connection");
+
+            return $dbConn;
+
+}
+
+
+function maxTryforResend($a_appURL, $a_language, $a_username, $a_password, $a_assertion){
+	 _navigateTo($a_appURL);
+	_setSelected(_select("language"), $a_language);
+	_setValue(_textbox("loginID"), $a_username);
+    _setValue(_password("password"), $a_password);
+	_click(_submit($g_BtnLogin));
+	  _wait(500);
+	_click(_submit("Re-Send OTP"));
+   _wait(500);
+	_click(_submit("Re-Send OTP"));
+   _wait(500);
+	_click(_submit("Re-Send OTP"));
+   _wait(500);
+	_click(_submit("Re-Send OTP"));
+   _wait(500);
+}
+
+function DisableTwoFactorAuthenticationAndUpdateCache($a_appURL, $a_language, $a_username, $a_password){
+_navigateTo($a_appURL);
+_setSelected(_select("language"), $a_language);
+_setValue(_textbox("loginID"),$a_username);
+_setValue(_password("password"),$a_password);
+_click(_submit("Login"));
+_click(_submit("Submit"));
+_click(_link("Preferences"));
+_setSelected(_select("module"), "Channel to Subscriber");
+_setSelected(_select("preferenceType"), "Category Preferences");
+_click(_submit("Submit"));
+//_click(_radio("preferenceIndexed[20].allowAction[1]"));
+  _check(_radio("/.*/", _leftOf(_cell("TWO Factor Authentication Req")),_under(_cell("Modify"))));
+//  _setValue(_textbox("preferenceIndexed[20].value"), "false");
+_setValue(_textbox("/.*/", _rightOf(_cell("TWO Factor Authentication Req"))), "false");
+_click(_button("Modify"));
+
+_click(_submit("Confirm"));
+_click(_link("Masters"));
+_click(_link("Update cache"));
+ // _wait(1000);
+_check(_checkbox("cacheParam", _in(_cell("Preference cache"))));
+  
+  //  _wait(1000);
+_click(_button("Submit"));
+_click(_submit("Back"));
+}
+
+function EnableTwoFactorAuthenticationAndUpdateCache($a_appURL, $a_language, $a_username, $a_password){
+//  Login($a_appURL, $a_language, $a_username, $a_password);
+  
+ 
+  $db = OracleDBConnection($g_DriverName,$g_JDBCName,$g_dbIP,$g_dbPort,$g_dbSid,$g_dbUserName,$g_dbPassword);
+   DeleteTwoAuthFromControlPref();
+  
+//  UpdatePrefCache();
+ // _click(_link($g_LinkLogout));
+  
+_navigateTo($a_appURL);
+_setSelected(_select("language"), $a_language);
+_setValue(_textbox("loginID"),$a_username);
+_setValue(_password("password"),$a_password);
+_click(_submit("Login"));
+_click(_submit("Submit"));
+_click(_link("Preferences"));
+_setSelected(_select("module"), "Channel to Subscriber");
+_setSelected(_select("preferenceType"), "Category Preferences");
+_click(_submit("Submit"));
+//_click(_radio("preferenceIndexed[20].allowAction[1]"));
+  _check(_radio("/.*/", _leftOf(_cell("TWO Factor Authentication Req")),_under(_cell("Modify"))));
+//  _setValue(_textbox("preferenceIndexed[20].value"), "true");
+_setValue(_textbox("/.*/", _rightOf(_cell("TWO Factor Authentication Req"))), "true");
+_click(_button("Modify"));
+_click(_submit("Confirm"));
+_click(_link("Masters"));
+_click(_link("Update cache"));
+_check(_checkbox("cacheParam", _in(_cell("Preference cache"))));
+_click(_button("Submit"));
+_click(_submit("Back"));
+}
+
+function DeleteTwoAuthFromControlPref(){
+  var $PrefCode = $db.select("Select Preference_code From control_preferences where Preference_code='TWO_FA_REQ' ");
+  if($PrefCode!=""){
+  $db.update("Delete From control_preferences where Preference_code='TWO_FA_REQ'");
+  }else{
+    _log("No Control Pref code is present in DB related to Two fact Auth");
+  }
+	//commit;
+}
+function categoryPreferenceschangesanduserabletologin($a_appURL, $a_LangEnglish, $a_loginId, $a_password, $a_DecryptURL,$a_assertMessage)
+{
+  var  $a_appURL=$a_appURL; 
+  var  $a_language=$a_LangEnglish;
+  var  $a_username= $a_loginId;
+  var $a_password= $a_password;
+  var $a_DecryptEncryptURL=$a_DecryptURL;
+  var $a_assertMessage=$a_assertMessage;
+  
+  
+  
+   loginwithOtp($a_appURL,$a_language, $a_username, $a_password,$a_DecryptEncryptURL,$a_assertMessage);
+  _click(_link("Profile management"));
+  _click(_link("Preferences"));
+  _click(_link("Control preferences"));
+  _setSelected(_select("module"), "Channel to Subscriber");
+  //_click(_submit("Submit"));
+    /*Added missing*/
+	if(_isVisible(_select("controlCode"))==true){
+    _setSelected(_select("controlCode"), "Category");
+	}else{
+		_log("Only 1 Category type is exist and skipped to select dropdown");
+	}
+  _click(_submit("Submit"));
+    /*Added*/
+  _setSelected(_select("preferenceCode"), "TWO Factor Authentication Req");
+  _click(_submit("Submit"));
+_click(_radio("/.*/", _leftOf(_cell("Network Admin")),_under(_cell("Modify"))));
+_setValue(_textbox("/.*/", _rightOf(_cell("Network Admin"))),"false");
+  _click(_button("Submit"));
+  _click(_submit("Confirm"));
+  _click(_link("Masters"));
+  _click(_link("Update cache"));
+  _check(_checkbox("cacheParam", _in(_cell("Preference cache"))));
+  _click(_button("Submit"));
+  _click(_submit("Back"));
+  
+}
+
+
+function DisableTwoFactorAuthenticationforGrade($a_appURL,$a_language, $a_username, $a_password,$a_assertMessage,$a_Domain, $a_category,$a_grade)
+{  _navigateTo($a_appURL);
+_setSelected(_select("language"), $a_language);
+_setValue(_textbox("loginID"),$a_username);
+_setValue(_password("password"),$a_password);
+_click(_submit("Login"));
+ _click(_submit("Submit"));
+_click(_link("Channel domain"));
+_click(_link("Grade management"));
+ _setSelected(_select("domainCodeforDomain"), $a_Domain);
+ _setSelected(_select("categoryCode"), $a_category);
+_click(_submit("Submit"));
+
+ _check(_radio("radioIndex", _leftOf(_cell($a_grade, _under(_cell("Grade code"))))));
+_click(_submit("Modify"));
+_uncheck(_checkbox("twoFAallowed"));
+_click(_submit("Save"));
+_click(_submit("Confirm"));
+}
+function EnableTwoFactorAuthenticationforGrade($a_appURL,$a_language, $a_username, $a_password,$a_assertMessage,$a_Domain, $a_category,$a_grade)
+{
+   _navigateTo($a_appURL);
+_setSelected(_select("language"), $a_language);
+_setValue(_textbox("loginID"),$a_username);
+_setValue(_password("password"),$a_password);
+_click(_submit("Login"));
+_click(_submit("Submit"));
+_click(_link("Channel domain"));
+_click(_link("Grade management"));
+_setSelected(_select("domainCodeforDomain"), $a_Domain);
+  _setSelected(_select("categoryCode"), $a_category);
+_click(_submit("Submit"));
+ _check(_radio("radioIndex", _leftOf(_cell($a_grade, _under(_cell("Grade code"))))));
+_click(_submit("Modify"));
+ _checkbox("twoFAallowed", _near(_cell("Two factor Authentication Allowed :")))
+_click(_submit("Save"));
+_click(_submit("Confirm"));
+
+}
+
+
+//function to assign grade to user and login with that user
+function AssignGradeAndLoginwithuser($a_appURL, $a_LangEnglish, $a_loginId, $a_password, $a_DecryptURL,$a_assertMessage,$a_grade,$a_commission_profile,$a_transferProfile,$a_userloginID)
+{
+  var  $a_appURL=$a_appURL; 
+  var  $a_language=$a_LangEnglish;
+    var  $a_username= $a_loginId;
+        var $a_password= $a_password;
+          var $a_DecryptEncryptURL=$a_DecryptURL;
+            var $a_assertMessage=$a_assertMessage;
+ loginwithOtp($a_appURL,$a_language, $a_username, $a_password,$a_DecryptEncryptURL,$a_assertMessage);
+ // loginwithoutOtp($a_appURL,$a_language, $a_username, $a_password,$a_assertMessage);
+_click(_link("Channel user"));
+_click(_link("Associate profile"));
+_setValue(_textbox("searchLoginId"), $a_userloginID);
+_click(_submit("Submit"));
+ // _log($g_dbIP);
+  $db = OracleDBConnection($g_DriverName,$g_JDBCName,$g_dbIP,$g_dbPort,$g_dbSid,$g_dbUserName,$g_dbPassword);
+	var $Query = "select Grade_Name from CHANNEL_GRADES where status='Y' and IS_2FA_ALLOWED='Y' and grade_code='"+$a_grade+"'";
+	_log("DB Query: "+$Query);
+ 	var $Grade = $db.select($Query);
+	 _log($Grade[0][0]);
+
+  _setSelected(_select("userGradeId"), $Grade[0][0]);
+_setSelected(_select("commissionProfileSetId"), $a_commission_profile);
+  _setSelected(_select("trannferProfileId"), $a_transferProfile);
+
+_click(_submit("Save"));
+_click(_submit("Confirm"));
+
+}
+/*******************FUNCTION TO DECRYPT STARTS ***********/
+function DecryptPwd($DecryptEncryptURL,$EnOTP){
+
+	 var $instanceId = _launchNewBrowser($DecryptEncryptURL); 		//launching new browser with encrypt/decrypt url and get instance ID
+	_wait(10000,_isVisible(_cell("Input Area ::"))); 				//Wait till Input textbox visible
+	_selectBrowser($instanceId); 									//Select the browser of particular Instance ID
+
+	_highlight(_textbox("/.*/", _in(_cell("Input Area ::"))));
+	_wait(1000);
+	_setValue(_textbox("/.*/", _in(_cell("Input Area ::"))),$EnOTP);
+	_click(_submit("Decrypt Text"));
+	var $OTP = _getText(_cell("res"));
+	return $OTP;
+  _closeBrowser();//return decrypt no
+}
+/*******************FUNCTION TO DECRYPT ENDS ***********/
+/*************FUNCTION TO LOGIN WITH OTP STARTS***********/
+function loginwithOtp($a_appURL,$a_language, $a_username, $a_password,$a_DecryptEncryptURL,$a_assertMessage){
+
+	_navigateTo($a_appURL);
+	_setSelected(_select("language"), $a_language);
+	_setValue(_textbox("loginID"), $a_username);
+	_setValue(_password("password"), $a_password);
+	_click(_submit("Login"));
+	_wait(10000,_isVisible(_password("otp"))); 
+
+	_wait(1000);
+  var $db = OracleDBConnection($g_DriverName,$g_JDBCName,$g_dbIP,$g_dbPort,$g_dbSid,$g_dbUserName,$g_dbPassword);
+//	var $db = OracleDBConnection("oracle.jdbc.driver.OracleDriver","jdbc:Oracle:thin:@","172.16.11.121","1522","test12c","pretups_67_test1","pretups_67_test1");
+	var $EnOTP = $db.select("SELECT OTP_PIN from user_otp where user_id =(select user_id from users where login_id='"+$a_username+"')");
+	//var $a_UserName = $db.select("SELECT USER_NAME from USERS where user_id =(select user_id from users where login_id='"+$a_username+"')");
+	var $OTP = DecryptPwd($a_DecryptEncryptURL,$EnOTP);	//calling DecryptPwd utility and get otp 
+	_wait(3000);
+	_selectBrowser();									//Selecting main browser
+
+	_setValue(_password("otp"),$OTP);
+	_click(_submit("Submit"));
+	_wait(500);
+}
+			
+/*************FUNCTION TO LOGIN WITH OTP ENDS***********/
+
+/*************FUNCTION TO LOGIN WITH-OUT OTP STARTS********/
+function  loginwithoutOtp($a_appURL,$a_language, $a_username, $a_password,$a_assertMessage){
+  _navigateTo($a_appURL);
+	_setSelected(_select("language"), $a_language);
+	_setValue(_textbox("loginID"), $a_username);
+	_setValue(_password("password"), $a_password);
+	_click(_submit("Login"));
+  _wait(5000);
+}
+/*************FUNCTION TO LOGIN WITH-OUT OTP ENDS********/
+
+
+
+

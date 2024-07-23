@@ -1,0 +1,8 @@
+TestcaseId,TestcaseType,Module,Description
+TUNG12773,Negative,Confirm Unbar user through Restful API,To verify module is required to unbar user
+TUNG12774,Negative,Confirm Unbar user through Restful API,To verify user type is required to unbar user
+TUNG12775,Negative,Confirm Unbar user through Restful API,To verify MSISDN is required to unbar user
+TUNG12776,Negative,Confirm Unbar user through Restful API,To verify barred reason is required to unbar user
+TUNG12777,Negative,Confirm Unbar user through Restful API,To verify no operation should perform if provides incorrect data
+TUNG12778,Negative,Confirm Unbar user through Restful API,Toverify all mandatory fields are required
+TUNG12779,Negative,Confirm Unbar user through Restful API,To verify no operation should perform if provides incorrect data

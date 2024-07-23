@@ -1,0 +1,16 @@
+TestcaseId,TestcaseType,Module,Description
+,Positive,USSD Channel to Channel Withdraw,To verfiy C2C Withdraw is successful with valid MSISDN and PIN
+,Positive,USSD Channel to Channel Withdraw,To verify C2C Withdraw is successful if receiver channel user is barred as receiver
+,Positive,USSD Channel to Channel Withdraw,To verify C2C Withdraw is successful if sender channel user is barred as sender
+,Negative,USSD Channel to Channel Withdraw,To verify C2C Withdraw is not successful if TCP of sender is suspended.
+,Negative,USSD Channel to Channel Withdraw,To verify C2C Withdraw is not successful if TCP of receiver is suspended.
+,Negative,USSD Channel to Channel Withdraw,To verify C2C Withdraw is not successful if transfer rule is suspended.
+,Negative,USSD Channel to Channel Withdraw,To verify C2C Withdraw is not successful if receiver is insuspended.
+,Positive,USSD Channel to Channel Withdraw,To verify C2C Withdraw is successful if sender is outsuspended.
+,Positive,USSD Channel to Channel Withdraw,To verify C2C Withdraw is successful if product code is blank
+,Negative,USSD Channel to Channel Withdraw,To verify C2C Withdraw is not successful if Quantity is blank
+,Positive,USSD Channel to Channel Withdraw,To verify C2C Withdraw is not successful if language code is invalid
+,Negative,USSD Channel to Channel Withdraw,To verify C2C Withdraw is not successful if MSISDN2 is blank
+,Negative,USSD Channel to Channel Withdraw,To verify C2C Withdraw is not successful if PIN is blank
+,Negative,USSD Channel to Channel Withdraw,To verify C2C Withdraw is not successful if PIN invalid
+,Negative,USSD Channel to Channel Withdraw,To verify C2C Withdraw is not successful if topup value is negative

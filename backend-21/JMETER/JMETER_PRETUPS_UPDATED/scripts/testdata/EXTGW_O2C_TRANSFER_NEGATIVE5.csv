@@ -1,0 +1,2 @@
+TRFCATEGORY,PAYMENTTYPE,TestcaseId,TestcaseType,Module,Description
+SALE,CHQ,TUNG13048,Negative,O2C transfer through EXTGW,To check if  msisdn is present but pin  is not present in the request then o2c is not successful

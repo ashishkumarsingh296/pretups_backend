@@ -1,0 +1,736 @@
+# Set root logger level to DEBUG and its only appender to A1.
+log4j.rootLogger=DEBUG, A1, MYFILE
+#log4j.rootLogger=ERROR, MYFILE
+#log4j.rootLogger=DEBUG,A1
+log4j.logger.org.apache.commons.digester.Digester=info
+log4j.logger.org.apache.catalina.startup.TldConfig=info
+log4j.logger.org.apache.struts.util.PropertyMessageResources=info
+log4j.logger.org.apache.catalina.session.ManagerBase=info
+log4j.logger.com.btsl.pretups.preference.businesslogic.PreferenceCache=info
+log4j.logger.org.apache.jasper.servlet.JspServlet=info
+log4j.logger.org.apache.catalina.core.ApplicationDispatcher=info
+log4j.logger.com.btsl.menu.MenuBL=info
+log4j.logger.org.apache.commons.beanutils.ConvertUtils=info
+log4j.logger.org.apache.commons.beanutils.BeanUtils=info
+log4j.logger.org.apache.jasper.compiler.SmapUtil$SDEInstaller=info
+log4j.logger.org.apache.catalina.core.StandardWrapper=info
+log4j.logger.org.apache.struts.action.RequestProcessor=info
+log4j.logger.org.apache.struts.util.RequestUtils=info
+log4j.logger.org.apache.struts.util.ModuleUtils=info
+# A1 is set to be a ConsoleAppender.
+log4j.appender.A1=org.apache.log4j.ConsoleAppender
+
+# A1 uses PatternLayout.
+log4j.appender.A1.layout=org.apache.log4j.PatternLayout
+log4j.appender.A1.layout.ConversionPattern=%d : %-4r [%t] %-5p %c %x - %m%n
+
+log4j.appender.MYFILE=org.apache.log4j.DailyRollingFileAppender
+log4j.appender.MYFILE.File=<Tomcat-Path>/logs/PreTUPs_out.log
+#log4j.appender.MYFILE.MaxFileSize=1000KB
+log4j.appender.ChannelGatewayRequestLog.DatePattern='.'yyyy-MM-dd
+#log4j.appender.ChannelGatewayRequestLog.DatePattern='.'yyyy-MM-dd-HH
+#log4j.appender.ChannelGatewayRequestLog.DatePattern='.'yyyy-MM-dd-HH-mm
+log4j.appender.MYFILE.layout=org.apache.log4j.PatternLayout
+log4j.appender.MYFILE.layout.ConversionPattern=%5p [%t] (%F%L) - %m%n
+
+#Entries for Channel Gateway Request Log
+log4j.logger.com.btsl.pretups.channel.logging.ChannelGatewayRequestLog=INFO,ChannelGatewayRequestLog
+log4j.additivity.com.btsl.pretups.channel.logging.ChannelGatewayRequestLog=false
+log4j.appender.ChannelGatewayRequestLog=org.apache.log4j.DailyRollingFileAppender
+log4j.appender.ChannelGatewayRequestLog.File=<Tomcat-Path>/logs/channelGatewayRequestLog.log
+##log4j.appender.ChannelGatewayRequestLog.MaxFileSize=100KB
+log4j.appender.ChannelGatewayRequestLog.DatePattern='.'yyyy-MM-dd
+#log4j.appender.ChannelGatewayRequestLog.DatePattern='.'yyyy-MM-dd-HH
+#log4j.appender.ChannelGatewayRequestLog.DatePattern='.'yyyy-MM-dd-HH-mm
+log4j.appender.ChannelGatewayRequestLog.layout=org.apache.log4j.PatternLayout
+log4j.appender.ChannelGatewayRequestLog.layout.ConversionPattern=%d   %m%n
+
+#Entries for P2P Gateway Request Log
+log4j.logger.com.btsl.pretups.p2p.logging.P2PGatewayRequestLog=INFO,P2PGatewayRequestLog
+log4j.additivity.com.btsl.pretups.p2p.logging.P2PGatewayRequestLog=false
+log4j.appender.P2PGatewayRequestLog=org.apache.log4j.DailyRollingFileAppender
+log4j.appender.P2PGatewayRequestLog.File=<Tomcat-Path>/logs/p2pGatewayRequestLog.log
+##log4j.appender.P2PGatewayRequestLog.MaxFileSize=100KB
+log4j.appender.P2PGatewayRequestLog.DatePattern='.'yyyy-MM-dd
+#log4j.appender.P2PGatewayRequestLog.DatePattern='.'yyyy-MM-dd-HH
+#log4j.appender.P2PGatewayRequestLog.DatePattern='.'yyyy-MM-dd-HH-mm
+log4j.appender.P2PGatewayRequestLog.layout=org.apache.log4j.PatternLayout
+log4j.appender.P2PGatewayRequestLog.layout.ConversionPattern=%d   %m%n
+
+#Entries for Balance Logger
+log4j.logger.com.btsl.pretups.channel.logging.BalanceLogger=INFO,BalanceLogger
+log4j.additivity.com.btsl.pretups.channel.logging.BalanceLogger=false
+log4j.appender.BalanceLogger=org.apache.log4j.DailyRollingFileAppender
+log4j.appender.BalanceLogger.File=<Tomcat-Path>/logs/balanceLog.log
+##log4j.appender.BalanceLogger.MaxFileSize=100KB
+log4j.appender.BalanceLogger.DatePattern='.'yyyy-MM-dd
+#log4j.appender.BalanceLogger.DatePattern='.'yyyy-MM-dd-HH-mm
+#log4j.appender.BalanceLogger.DatePattern='.'yyyy-MM-dd-HH-mm
+log4j.appender.BalanceLogger.layout=org.apache.log4j.PatternLayout
+log4j.appender.BalanceLogger.layout.ConversionPattern=%d   %m%n
+
+
+#Entries for Transaction Logger
+log4j.logger.com.btsl.pretups.logging.TransactionLog=INFO,TransactionLog
+#log4j.logger.com.btsl.pretups.logging.TransactionLog=ERROR,TransactionLog
+log4j.additivity.com.btsl.pretups.logging.TransactionLog=false
+log4j.appender.TransactionLog=org.apache.log4j.DailyRollingFileAppender
+log4j.appender.TransactionLog.File=<Tomcat-Path>/logs/transactionLog.log
+##log4j.appender.TransactionLog.MaxFileSize=100KB
+log4j.appender.TransactionLog.DatePattern='.'yyyy-MM-dd
+#log4j.appender.TransactionLog.DatePattern='.'yyyy-MM-dd-HH
+#log4j.appender.TransactionLog.DatePattern='.'yyyy-MM-dd-HH-mm
+log4j.appender.TransactionLog.layout=org.apache.log4j.PatternLayout
+log4j.appender.TransactionLog.layout.ConversionPattern=%d   %m%n
+
+#Entries for UnauthorizedAccess Logger
+log4j.logger.com.btsl.pretups.logging.UnauthorizedAccessLog=INFO,UnauthorizedAccessLog
+log4j.additivity.com.btsl.pretups.logging.UnauthorizedAccessLog=false
+log4j.appender.UnauthorizedAccessLog=org.apache.log4j.DailyRollingFileAppender
+log4j.appender.UnauthorizedAccessLog.File=<Tomcat-Path>/logs/unauthorizedAccessLog.log
+##log4j.appender.UnauthorizedAccessLog.MaxFileSize=100KB
+log4j.appender.UnauthorizedAccessLog.DatePattern='.'yyyy-MM-dd
+log4j.appender.UnauthorizedAccessLog.layout=org.apache.log4j.PatternLayout
+log4j.appender.UnauthorizedAccessLog.layout.ConversionPattern=%d   %m%n
+
+#Entries for Diff CreditLog
+log4j.logger.com.btsl.pretups.channel.logging.DiffCreditLog=INFO,DiffCreditLog
+log4j.additivity.com.btsl.pretups.channel.logging.DiffCreditLog=false
+log4j.appender.DiffCreditLog=org.apache.log4j.DailyRollingFileAppender
+log4j.appender.DiffCreditLog.File=<Tomcat-Path>/logs/diffCreditLog.log
+##log4j.appender.DiffCreditLog.MaxFileSize=100KB
+log4j.appender.DiffCreditLog.DatePattern='.'yyyy-MM-dd
+log4j.appender.DiffCreditLog.layout=org.apache.log4j.PatternLayout
+log4j.appender.DiffCreditLog.layout.ConversionPattern=%d   %m%n
+
+#Entries for Order Credit Request Log
+log4j.logger.com.btsl.pretups.logging.OrderCreditLog=INFO,OrderCreditLog
+log4j.additivity.com.btsl.pretups.logging.OrderCreditLog=false
+log4j.appender.OrderCreditLog=org.apache.log4j.DailyRollingFileAppender
+log4j.appender.OrderCreditLog.File=<Tomcat-Path>/logs/OrderCreditLog.log
+#log4j.appender.OrderCreditLog.DatePattern='.'yyyy-MM-dd
+log4j.appender.OrderCreditLog.layout=org.apache.log4j.PatternLayout
+log4j.appender.OrderCreditLog.layout.ConversionPattern=%d   %m%n
+
+#Entries for Order Line Request Log
+log4j.logger.com.btsl.pretups.logging.OrderLineLog=INFO,OrderLineLog
+log4j.additivity.com.btsl.pretups.logging.OrderLineLog=false
+log4j.appender.OrderLineLog=org.apache.log4j.DailyRollingFileAppender
+log4j.appender.OrderLineLog.File=<Tomcat-Path>/logs/OrderLineLog.log
+log4j.appender.OrderLineLog.DatePattern='.'yyyy-MM-dd
+log4j.appender.OrderLineLog.layout=org.apache.log4j.PatternLayout
+log4j.appender.OrderLineLog.layout.ConversionPattern=%d   %m%n
+
+#Entries for BarredMsisdnLog Request Log
+log4j.logger.com.btsl.pretups.logging.BarredMsisdnLog=INFO,BarredMsisdnLog
+log4j.additivity.com.btsl.pretups.logging.BarredMsisdnLog=false
+log4j.appender.BarredMsisdnLog=org.apache.log4j.DailyRollingFileAppender
+log4j.appender.BarredMsisdnLog.File=<Tomcat-Path>/logs/BarredMsisdnLog.log
+log4j.appender.BarredMsisdnLog.DatePattern='.'yyyy-MM-dd
+log4j.appender.BarredMsisdnLog.layout=org.apache.log4j.PatternLayout
+log4j.appender.BarredMsisdnLog.layout.ConversionPattern=%d   %m%n
+
+#Entries for MessageSentLog  Logger
+log4j.logger.com.btsl.pretups.logging.MessageSentLog=DEBUG,MessageSentLog
+log4j.additivity.com.btsl.pretups.logging.MessageSentLog=false
+log4j.appender.MessageSentLog=org.apache.log4j.DailyRollingFileAppender
+log4j.appender.MessageSentLog.File=<Tomcat-Path>/logs/messageSentLog.log
+
+## The below entry needs to be enabled only when Jmeter suite is run.
+#log4j.appender.MessageSentLog.File=<Tomcat-Path>/logs/messageSentLog_jmeter.log
+
+##log4j.appender.MessageSentLog.MaxFileSize=100KB
+log4j.appender.MessageSentLog.DatePattern='.'yyyy-MM-dd
+#log4j.appender.MessageSentLog.DatePattern='.'yyyy-MM-dd-HH
+#log4j.appender.MessageSentLog.DatePattern='.'yyyy-MM-dd-HH-mm
+log4j.appender.MessageSentLog.layout=org.apache.log4j.PatternLayout
+log4j.appender.MessageSentLog.layout.ConversionPattern=%d   %m%n
+
+#Entries for the APDU log for OTA
+log4j.logger.com.btsl.ota.util.APDULogger=INFO,APDULogger
+log4j.additivity.com.btsl.ota.util.APDULogger=false
+log4j.appender.APDULogger=org.apache.log4j.DailyRollingFileAppender
+log4j.appender.APDULogger.File=<Tomcat-Path>/logs/APDUResponse.log
+##log4j.appender.APDULogger.MaxFileSize=1000KB
+log4j.appender.APDULogger.DatePattern='.'yyyy-MM-dd
+log4j.appender.APDULogger.layout=org.apache.log4j.PatternLayout
+log4j.appender.APDULogger.layout.ConversionPattern=%d   %m%n
+
+#Entries for the OTA server log
+log4j.logger.com.btsl.ota.util.OTALogger=INFO,OTALogger
+log4j.additivity.com.btsl.ota.util.OTALogger=false
+log4j.appender.OTALogger=org.apache.log4j.DailyRollingFileAppender
+log4j.appender.OTALogger.File=<Tomcat-Path>/logs/OTAMessage.log
+##log4j.appender.OTALogger.MaxFileSize=1000KB
+log4j.appender.OTALogger.DatePattern='.'yyyy-MM-dd
+log4j.appender.OTALogger.layout=org.apache.log4j.PatternLayout
+log4j.appender.OTALogger.layout.ConversionPattern=%d   %m%n
+
+#Entries for Icc File processing logs
+log4j.logger.com.btsl.common.IccFileProcessLog=INFO,IccFileProcessLog
+log4j.additivity.com.btsl.common.IccFileProcessLog=false
+log4j.appender.IccFileProcessLog=org.apache.log4j.DailyRollingFileAppender
+log4j.appender.IccFileProcessLog.File=<Tomcat-Path>/logs/iccFileProcess.log
+##log4j.appender.IccFileProcessLog.MaxFileSize=1000KB
+log4j.appender.IccFileProcessLog.DatePattern='.'yyyy-MM-dd
+log4j.appender.IccFileProcessLog.layout=org.apache.log4j.PatternLayout
+log4j.appender.IccFileProcessLog.layout.ConversionPattern=%d   %m%n
+
+#Entries for Login,Logout and Session expired Logger
+log4j.logger.com.btsl.login.LoginLogger=INFO,LoginLogger
+log4j.additivity.com.btsl.login.LoginLogger=false
+log4j.appender.LoginLogger=org.apache.log4j.DailyRollingFileAppender
+log4j.appender.LoginLogger.File=<Tomcat-Path>/logs/loginLog.log
+##log4j.appender.LoginLogger.MaxFileSize=100KB
+log4j.appender.LoginLogger.DatePattern='.'yyyy-MM-dd
+log4j.appender.LoginLogger.layout=org.apache.log4j.PatternLayout
+log4j.appender.LoginLogger.layout.ConversionPattern=%d   %m%n
+
+#Entries for Admin Operation Log
+log4j.logger.com.btsl.pretups.logging.AdminOperationLog=INFO,AdminOperationLog
+log4j.additivity.com.btsl.pretups.logging.AdminOperationLog=false
+log4j.appender.AdminOperationLog=org.apache.log4j.DailyRollingFileAppender
+log4j.appender.AdminOperationLog.File=<Tomcat-Path>/logs/adminOpeartionLog.log
+##log4j.appender.AdminOperationLog.MaxFileSize=100KB
+log4j.appender.AdminOperationLog.DatePattern='.'yyyy-MM-dd
+log4j.appender.AdminOperationLog.layout=org.apache.log4j.PatternLayout
+log4j.appender.AdminOperationLog.layout.ConversionPattern=%d   %m%n
+
+#Entries for Cache Operation Log
+log4j.logger.com.btsl.pretups.logging.CacheOperationLog=INFO,CacheOperationLog
+log4j.additivity.com.btsl.pretups.logging.CacheOperationLog=false
+log4j.appender.CacheOperationLog=org.apache.log4j.DailyRollingFileAppender
+log4j.appender.CacheOperationLog.File=<Tomcat-Path>/logs/cacheOpeartionLog.log
+##log4j.appender.CacheOperationLog.MaxFileSize=100KB
+log4j.appender.CacheOperationLog.DatePattern='.'yyyy-MM-dd
+log4j.appender.CacheOperationLog.layout=org.apache.log4j.PatternLayout
+log4j.appender.CacheOperationLog.layout.ConversionPattern=%d   %m%n
+
+#Entries for Routing Operation Log
+log4j.logger.com.btsl.pretups.logging.RoutingFileProcessLog=INFO,RoutingFileProcessLog
+log4j.additivity.com.btsl.pretups.logging.RoutingFileProcessLog=false
+log4j.appender.RoutingFileProcessLog=org.apache.log4j.DailyRollingFileAppender
+log4j.appender.RoutingFileProcessLog.File=<Tomcat-Path>/logs/routingFileProcessingLog.log
+##log4j.appender.RoutingFileProcessLog.MaxFileSize=100KB
+log4j.appender.RoutingFileProcessLog.DatePattern='.'yyyy-MM-dd
+log4j.appender.RoutingFileProcessLog.layout=org.apache.log4j.PatternLayout
+log4j.appender.RoutingFileProcessLog.layout.ConversionPattern=%d   %m%n
+
+#Entries for Bar Bulk Operation Log
+log4j.logger.com.btsl.pretups.logging.BarFileProccesingLog=INFO,BarFileProccesingLog
+log4j.additivity.com.btsl.pretups.logging.BarFileProccesingLog=false
+log4j.appender.BarFileProccesingLog=org.apache.log4j.DailyRollingFileAppender
+log4j.appender.BarFileProccesingLog.File=<Tomcat-Path>/logs/barFileProccesingLog.log
+##log4j.appender.BarFileProccesingLog.MaxFileSize=100KB
+log4j.appender.BarFileProccesingLog.DatePattern='.'yyyy-MM-dd
+log4j.appender.BarFileProccesingLog.layout=org.apache.log4j.PatternLayout
+log4j.appender.BarFileProccesingLog.layout.ConversionPattern=%5p [%t] (%F:%L) - %m%n
+
+#Entries for Unregister Subscribers in Bulk Operation Log
+log4j.logger.com.btsl.pretups.p2p.logging.UnregisterSubscribersFileProcessLog=INFO,UnregisterSubscribersFileProcessLog
+log4j.additivity.com.btsl.pretups.p2p.logging.UnregisterSubscribersFileProcessLog=false
+log4j.appender.UnregisterSubscribersFileProcessLog=org.apache.log4j.DailyRollingFileAppender
+log4j.appender.UnregisterSubscribersFileProcessLog.File=<Tomcat-Path>/logs/UnregisterSubscribersFileProcessLog.log
+##log4j.appender.UnregisterSubscribersFileProcessLog.MaxFileSize=100KB
+log4j.appender.UnregisterSubscribersFileProcessLog.DatePattern='.'yyyy-MM-dd
+log4j.appender.UnregisterSubscribersFileProcessLog.layout=org.apache.log4j.PatternLayout
+log4j.appender.UnregisterSubscribersFileProcessLog.layout.ConversionPattern=%5p [%t] (%F:%L) - %m%n
+
+#Entries for Unregister Channel Users in Bulk Operation Log
+log4j.logger.com.btsl.pretups.logging.UnregisterChUsersFileProcessLog=INFO,UnregisterChUsersFileProcessLog
+log4j.additivity.com.btsl.pretups.logging.UnregisterChUsersFileProcessLog=false
+log4j.appender.UnregisterChUsersFileProcessLog=org.apache.log4j.DailyRollingFileAppender
+log4j.appender.UnregisterChUsersFileProcessLog.File=<Tomcat-Path>/logs/UnregisterChUsersFileProcessLog.log
+##log4j.appender.UnregisterChUsersFileProcessLog.MaxFileSize=100KB
+log4j.appender.UnregisterChUsersFileProcessLog.DatePattern='.'yyyy-MM-dd
+log4j.appender.UnregisterChUsersFileProcessLog.layout=org.apache.log4j.PatternLayout
+log4j.appender.UnregisterChUsersFileProcessLog.layout.ConversionPattern=%5p [%t] (%F:%L) - %m%n
+
+#Entries for Database Archiving and Purging Loger
+#log4j.logger.com.btsl.pretups.logging.DatabasePurgingLog=INFO,DatabasePurgingLog
+#log4j.appender.DatabasePurgingLog=org.apache.log4j.DailyRollingFileAppender
+#log4j.appender.DatabasePurgingLog.File=<Tomcat-Path>/logs/DatabasePurgingLog.log
+#log4j.appender.DatabasePurgingLog.DatePattern='.'yyyy-MM-dd
+#log4j.appender.DatabasePurgingLog.layout=org.apache.log4j.PatternLayout
+#log4j.appender.DatabasePurgingLog.layout.ConversionPattern=%d   %m%n
+
+#Entries for Processes Loger
+#log4j.logger.com.btsl.pretups.logging.ProcessesLog=INFO,ProcessesLog
+#log4j.appender.ProcessesLog=org.apache.log4j.DailyRollingFileAppender
+#log4j.appender.ProcessesLog.File=<Tomcat-Path>/logs/ProcessesLog.log
+#log4j.appender.ProcessesLog.DatePattern='.'yyyy-MM-dd
+#log4j.appender.ProcessesLog.layout=org.apache.log4j.PatternLayout
+#log4j.appender.ProcessesLog.layout.ConversionPattern=%d   %m%n
+
+#Entries for Network Stock Operation Log
+log4j.logger.com.btsl.pretups.logging.NetworkStockLog=INFO,NetworkStockLog
+log4j.additivity.com.btsl.pretups.logging.NetworkStockLog=false
+log4j.appender.NetworkStockLog=org.apache.log4j.DailyRollingFileAppender
+log4j.appender.NetworkStockLog.File=<Tomcat-Path>/logs/networkStockLog.log
+##log4j.appender.NetworkStockLog.MaxFileSize=100KB
+log4j.appender.NetworkStockLog.DatePattern='.'yyyy-MM-dd
+log4j.appender.NetworkStockLog.layout=org.apache.log4j.PatternLayout
+log4j.appender.NetworkStockLog.layout.ConversionPattern=%d   %m%n
+
+#Entries for the Event Logger
+log4j.logger.com.btsl.event.EventLogger=DEBUG,EventLog
+log4j.additivity.com.btsl.event.EventLogger=false
+log4j.appender.EventLog=org.apache.log4j.DailyRollingFileAppender
+log4j.appender.EventLog.File=<Tomcat-Path>/logs/EventLog.log
+log4j.appender.EventLog.DatePattern='.'yyyy-MM-dd
+log4j.appender.EventLog.layout=org.apache.log4j.PatternLayout
+log4j.appender.EventLog.layout.ConversionPattern= %d- %m%n
+
+#Entries for Web Recharge Log
+log4j.logger.com.btsl.pretups.channel.logging.WebRechargeLogger=INFO,WebRechargeLogger
+log4j.additivity.com.btsl.pretups.channel.logging.WebRechargeLogger=false
+log4j.appender.WebRechargeLogger=org.apache.log4j.DailyRollingFileAppender
+log4j.appender.WebRechargeLogger.File=<Tomcat-Path>/logs/WebRechargeLog.log
+#log4j.appender.WebRechargeLogger.MaxFileSize=100KB
+log4j.appender.WebRechargeLogger.DatePattern='.'yyyy-MM-dd
+log4j.appender.WebRechargeLogger.layout=org.apache.log4j.PatternLayout
+log4j.appender.WebRechargeLogger.layout.ConversionPattern=%d   %m%n
+
+#############NEW Entriesm ########################
+## Log file configuration entries for ICCID MSISDN association file processing,
+## ICCID MSISDN file processing logs will be written in this file
+log4j.logger.com.btsl.pretups.logging.AssociateMsisdnFileProcessLog=INFO,AssociateMsisdnFileProcessLog
+log4j.additivity.com.btsl.pretups.logging.AssociateMsisdnFileProcessLog=false
+log4j.appender.AssociateMsisdnFileProcessLog=org.apache.log4j.DailyRollingFileAppender
+log4j.appender.AssociateMsisdnFileProcessLog.File=<Tomcat-Path>/logs/associateFileProccesingLog.log
+log4j.appender.AssociateMsisdnFileProcessLog.DatePattern='.'yyyy-MM-dd
+log4j.appender.AssociateMsisdnFileProcessLog.layout=org.apache.log4j.PatternLayout
+log4j.appender.AssociateMsisdnFileProcessLog.layout.ConversionPattern=%5p [%t] (%F:%L) - %m%n
+
+## Log file configuration entries for Channel user log, log of channel user infromation
+## modification will be maintaied in this log
+log4j.logger.com.btsl.pretups.logging.ChannelUserLog=INFO,ChannelUserLog
+log4j.additivity.com.btsl.pretups.logging.ChannelUserLog=false
+log4j.appender.ChannelUserLog=org.apache.log4j.DailyRollingFileAppender
+log4j.appender.ChannelUserLog.File=<Tomcat-Path>/logs/ChannelUser.log
+log4j.appender.ChannelUserLog.DatePattern='.'yyyy-MM-dd
+log4j.appender.ChannelUserLog.layout=org.apache.log4j.PatternLayout
+log4j.appender.ChannelUserLog.layout.ConversionPattern=%m%n
+
+## Log file configuration entries for restricted MSISDN file processing, log of the restricted MSISDN
+## file processing will be maintaied in this log (Corporate Subscribers Management Log)
+log4j.logger.com.btsl.pretups.logging.RestrictedMsisdnLog=INFO,RestrictedMsisdnLog
+log4j.additivity.com.btsl.pretups.logging.RestrictedMsisdnLog=false
+log4j.appender.RestrictedMsisdnLog=org.apache.log4j.DailyRollingFileAppender
+log4j.appender.RestrictedMsisdnLog.File=<Tomcat-Path>/logs/RestrictedMsisdnLog.log
+log4j.appender.RestrictedMsisdnLog.DatePattern='.'yyyy-MM-dd
+log4j.appender.RestrictedMsisdnLog.layout=org.apache.log4j.PatternLayout
+log4j.appender.RestrictedMsisdnLog.layout.ConversionPattern=%5p [%t] (%F:%L) - %m%n
+
+
+## Log file configuration entries for Schedule/Re-schedule file processing,
+## Schedule/Re-schedule file processing logs will be written in this file
+log4j.logger.com.btsl.pretups.logging.ScheduleFileProcessLog=INFO,ScheduleFileProcessLog
+log4j.additivity.com.btsl.pretups.logging.ScheduleFileProcessLog=false
+log4j.appender.ScheduleFileProcessLog=org.apache.log4j.DailyRollingFileAppender
+log4j.appender.ScheduleFileProcessLog.File=<Tomcat-Path>/logs/ScheduleFileProcessLog.log
+#log4j.appender.ScheduleFileProcessLog.MaxFileSize=100KB
+log4j.appender.ScheduleFileProcessLog.DatePattern='.'yyyy-MM-dd
+log4j.appender.ScheduleFileProcessLog.layout=org.apache.log4j.PatternLayout
+log4j.appender.ScheduleFileProcessLog.layout.ConversionPattern=%d   %m%n
+
+## Log file configuration entries for Restricted Subscribers Black List Management, log of
+## Restricted Subscribers Black List Management will be maintaied in this log
+log4j.logger.com.btsl.pretups.logging.BlackListLog=INFO,BlackListLog
+log4j.additivity.com.btsl.pretups.logging.BlackListLog=false
+log4j.appender.BlackListLog=org.apache.log4j.DailyRollingFileAppender
+log4j.appender.BlackListLog.File=<Tomcat-Path>/logs/BlackListLog.log
+log4j.appender.BlackListLog.DatePattern='.'yyyy-MM-dd
+log4j.appender.BlackListLog.layout=org.apache.log4j.PatternLayout
+log4j.appender.BlackListLog.layout.ConversionPattern=%5p [%t] (%F:%L) - %m%n
+
+## Log file configuration entries for Operator user log, log of Operator user infromation
+## modification will be maintaied in this log
+log4j.logger.com.btsl.pretups.logging.OperatorUserLog=INFO,OperatorUserLog
+log4j.additivity.com.btsl.pretups.logging.OperatorUserLog=false
+log4j.appender.OperatorUserLog=org.apache.log4j.DailyRollingFileAppender
+log4j.appender.OperatorUserLog.File=<Tomcat-Path>/logs/OperatorUser.log
+log4j.appender.OperatorUserLog.DatePattern='.'yyyy-MM-dd
+log4j.appender.OperatorUserLog.layout=org.apache.log4j.PatternLayout
+log4j.appender.OperatorUserLog.layout.ConversionPattern=%m%n
+
+
+## Log file configuration entries for Batch FOC Module
+## Batch FOC Module Management will be maintaied in this log
+#Entries for Batch FOC Initiation log
+log4j.logger.com.btsl.pretups.logging.BatchFocFileProcessLog=INFO,BatchFocFileProcessLog
+log4j.additivity.com.btsl.pretups.logging.BatchFocFileProcessLog=false
+log4j.appender.BatchFocFileProcessLog=org.apache.log4j.DailyRollingFileAppender
+log4j.appender.BatchFocFileProcessLog.File=<Tomcat-Path>/logs/BatchFocFileProcessLog.log
+log4j.appender.BatchFocFileProcessLog.DatePattern='.'yyyy-MM-dd
+log4j.appender.BatchFocFileProcessLog.layout=org.apache.log4j.PatternLayout
+log4j.appender.BatchFocFileProcessLog.layout.ConversionPattern=%5p [%t] (%F:%L) - %m%n
+
+## Log file configuration entries for Batches log, log of Batch infromation
+## modification will be maintaied in this log
+log4j.logger.com.btsl.pretups.logging.BatchesLog=INFO,BatchesLog
+log4j.additivity.com.btsl.pretups.logging.BatchesLog=false
+log4j.appender.BatchesLog=org.apache.log4j.DailyRollingFileAppender
+log4j.appender.BatchesLog.File=<Tomcat-Path>/logs/Batches.log
+#log4j.appender.BatchesLog.MaxFileSize=100KB
+log4j.appender.BatchesLog.DatePattern='.'yyyy-MM-dd
+log4j.appender.BatchesLog.layout=org.apache.log4j.PatternLayout
+log4j.appender.BatchesLog.layout.ConversionPattern=%m%n
+
+##For Alarm Sender Class
+log4j.logger.com.btsl.alarm.AlarmSender=DEBUG,AlarmSenderLog
+log4j.additivity.com.btsl.alarm.AlarmSender=false
+log4j.appender.AlarmSenderLog=org.apache.log4j.DailyRollingFileAppender
+log4j.appender.AlarmSenderLog.File=<Tomcat-Path>/logs/AlarmSender.log
+log4j.appender.AlarmSenderLog.DatePattern='.'yyyy-MM-dd
+log4j.appender.AlarmSenderLog.layout=org.apache.log4j.PatternLayout
+log4j.appender.AlarmSenderLog.layout.ConversionPattern=%m%n
+
+
+## Entries for VOMs Module
+#Logger for VOMS batches
+log4j.logger.com.btsl.voms.vomslogging.VomsBatchInfoLog=INFO,VomsBatchInfoLog
+log4j.appender.VomsBatchInfoLog=org.apache.log4j.DailyRollingFileAppender
+log4j.appender.VomsBatchInfoLog.File=<Tomcat-Path>/logs/VomsBatchInfoLog_output.log
+log4j.appender.VomsBatchInfoLog.DatePattern='.'yyyy-MM-dd
+log4j.appender.VomsBatchInfoLog.layout=org.apache.log4j.PatternLayout
+log4j.appender.VomsBatchInfoLog.layout.ConversionPattern=%5p [%t] (%F:%L) - %m%n
+
+#Logger for VOMS voucher change status
+log4j.logger.com.btsl.voms.vomslogging.VomsVoucherChangeStatusLog=INFO,VomsVoucherChangeStatusLog
+log4j.appender.VomsVoucherChangeStatusLog=org.apache.log4j.DailyRollingFileAppender
+log4j.appender.VomsVoucherChangeStatusLog.File=<Tomcat-Path>/logs/voucherstatus_output.log
+log4j.appender.VomsVoucherChangeStatusLog.DatePattern='.'yyyy-MM-dd
+log4j.appender.VomsVoucherChangeStatusLog.layout=org.apache.log4j.PatternLayout
+log4j.appender.VomsVoucherChangeStatusLog.layout.ConversionPattern=%5p [%t] (%F:%L) - %m%n
+
+
+#Logger for reconciliation
+log4j.logger.INTID00002=INFO,REC
+log4j.appender.REC=org.apache.log4j.DailyRollingFileAppender
+log4j.appender.REC.File=<Tomcat-Path>/logs/INTID02.log
+#log4j.appender.REC.MaxFileSize=100KB
+#log4j.appender.REC.DatePattern='.'yyyy-MM-dd-HH
+log4j.appender.REC.DatePattern='.'yyyy-MM-dd
+log4j.appender.REC.layout=org.apache.log4j.PatternLayout
+log4j.appender.REC.layout.ConversionPattern= %m%n
+
+## Log file configuration entries for MNP File processing,
+## MNP file processing logs will be written in this file
+log4j.logger.com.btsl.pretups.logging.MNPPocessingLog=INFO,MNPPocessingLog
+log4j.additivity.com.btsl.pretups.logging.MNPPocessingLog=false
+log4j.appender.MNPPocessingLog=org.apache.log4j.DailyRollingFileAppender
+log4j.appender.MNPPocessingLog.File=<Tomcat-Path>/logs/MNPPocessingLog.log
+log4j.appender.MNPPocessingLog.DatePattern='.'yyyy-MM-dd
+log4j.appender.MNPPocessingLog.layout=org.apache.log4j.PatternLayout
+log4j.appender.MNPPocessingLog.layout.ConversionPattern=%5p [%t] (%F:%L) - %m%n
+
+
+
+
+##########################################################################################
+log4j.logger.com.btsl.pretups.logging.HeartBeatSentLog=INFO,HeartBeatSentLog
+log4j.appender.HeartBeatSentLog.layout.ConversionPattern=%d   %m%n
+log4j.appender.DirectPayOutSuccessLog.layout=org.apache.log4j.PatternLayout
+log4j.logger.com.btsl.pretups.logging.DirectPayOutErrorLog=INFO, DirectPayOutErrorLog
+log4j.additivity.com.btsl.pretups.logging.DirectPayOutSuccessLog=false
+log4j.appender.DirectPayOutSuccessLog=org.apache.log4j.DailyRollingFileAppender
+log4j.appender.UnregisterSubscribersFileProcessLog.File=<Tomcat-Path>/logs/UnregisterSubscribersFileProcessLog.log
+log4j.appender.DirectPayOutSuccessLog.DatePattern='.'yyyy-MM-dd
+log4j.logger.INTID00009=INFO,REC
+log4j.appender.HeartBeatSentLog.DatePattern='.'yyyy-MM-dd
+log4j.appender.HeartBeatSentLog=org.apache.log4j.DailyRollingFileAppender
+log4j.additivity.com.btsl.pretups.logging.HeartBeatSentLog=false
+log4j.additivity.com.btsl.pretups.logging.DirectPayOutErrorLog=false
+log4j.appender.DirectPayOutErrorLog.DatePattern='.'yyyy-MM-dd
+log4j.appender.DirectPayOutErrorLog=org.apache.log4j.DailyRollingFileAppender
+log4j.appender.DirectPayOutErrorLog.layout.ConversionPattern=%m%n
+log4j.appender.DirectPayOutErrorLog.File=<Tomcat-Path>/logs/DirectPayOutErrorLog.log
+log4j.appender.DirectPayOutSuccessLog.layout.ConversionPattern=%m%n
+log4j.appender.HeartBeatSentLog.File=<Tomcat-Path>/logs/heartBeatSentLog.log
+log4j.appender.HeartBeatSentLog.layout=org.apache.log4j.PatternLayout
+log4j.logger.com.btsl.pretups.logging.DirectPayOutSuccessLog=INFO, DirectPayOutSuccessLog
+log4j.appender.DirectPayOutErrorLog.layout=org.apache.log4j.PatternLayout
+log4j.appender.DirectPayOutSuccessLog.File=<Tomcat-Path>/logs/DirectPayOutSuccessLog.log
+#log4j.appender.HeartBeatSentLog.MaxFileSize=100KB
+
+
+# ***********  Added By Babu Kunwar For Corporate IAT Recharge Logging   ************** #
+## Log file configuration entries for IATAssociateMSISDNFileProcessingLog,
+## IATAssociateMSISDNFileProcessingLog file processing logs will be written in this file
+log4j.logger.com.btsl.pretups.logging.IATAssociateMSISDNFileProcessingLog=INFO,IATAssociateMSISDNFileProcessingLog
+log4j.additivity.com.btsl.pretups.logging.IATAssociateMSISDNFileProcessingLog=false
+log4j.appender.IATAssociateMSISDNFileProcessingLog=org.apache.log4j.DailyRollingFileAppender
+log4j.appender.IATAssociateMSISDNFileProcessingLog.File=<Tomcat-Path>/logs/IATAssociateMSISDNFileProcessingLog.log
+#log4j.appender.IATAssociateMSISDNFileProcessingLog.MaxFileSize=100KB
+log4j.appender.IATAssociateMSISDNFileProcessingLog.DatePattern='.'yyyy-MM-dd
+log4j.appender.IATAssociateMSISDNFileProcessingLog.layout=org.apache.log4j.PatternLayout
+log4j.appender.IATAssociateMSISDNFileProcessingLog.layout.ConversionPattern=%d   %m%n
+
+## Log file configuration entries for IATRestrictedMSISDNLog,
+## IATRestrictedMSISDNLog file processing logs will be written in this file
+log4j.logger.com.btsl.pretups.logging.IATRestrictedMSISDNLog=INFO,IATRestrictedMSISDNLog
+log4j.additivity.com.btsl.pretups.logging.IATRestrictedMSISDNLog=false
+log4j.appender.IATRestrictedMSISDNLog=org.apache.log4j.DailyRollingFileAppender
+log4j.appender.IATRestrictedMSISDNLog.File=<Tomcat-Path>/logs/IATRestrictedMSISDNLog.log
+#log4j.appender.IATRestrictedMSISDNLog.MaxFileSize=100KB
+log4j.appender.IATRestrictedMSISDNLog.DatePattern='.'yyyy-MM-dd
+log4j.appender.IATRestrictedMSISDNLog.layout=org.apache.log4j.PatternLayout
+log4j.appender.IATRestrictedMSISDNLog.layout.ConversionPattern=%d   %m%n
+
+## Log file configuration entries for IATScheduleTopupLogs,
+## IATScheduleTopupLogs file processing logs will be written in this file
+log4j.logger.com.btsl.pretups.logging.IATScheduleTopupLogs=INFO,IATScheduleTopupLogs
+log4j.additivity.com.btsl.pretups.logging.IATScheduleTopupLogs=false
+log4j.appender.IATScheduleTopupLogs=org.apache.log4j.DailyRollingFileAppender
+log4j.appender.IATScheduleTopupLogs.File=<Tomcat-Path>/logs/IATScheduleTopupLogs.log
+#log4j.appender.IATScheduleTopupLogs.MaxFileSize=100KB
+log4j.appender.IATScheduleTopupLogs.DatePattern='.'yyyy-MM-dd
+log4j.appender.IATScheduleTopupLogs.layout=org.apache.log4j.PatternLayout
+log4j.appender.IATScheduleTopupLogs.layout.ConversionPattern=%d   %m%n
+
+
+########## Added by nilesh : for Logger ##########
+
+#Entries for OneLineTXNLogC2S Logger
+log4j.logger.com.btsl.pretups.logging.OneLineTXNLogC2S=INFO,OneLineTXNLogC2S
+#log4j.logger.com.btsl.pretups.logging.OneLineTXNLogC2S=ERROR,OneLineTXNLogC2S
+#log4j.additivity.com.btsl.pretups.logging.OneLineTXNLogC2S=false
+log4j.additivity.com.btsl.pretups.logging.OneLineTXNLogC2S=true
+#log4j.appender.OneLineTXNLogC2S=org.apache.log4j.DailyRollingFileAppender
+log4j.appender.OneLineTXNLogC2S=com.btsl.logging.MyDailyRollingFileAppender
+log4j.appender.OneLineTXNLogC2S.File=<Tomcat-Path>/logs/OneLineTXNLogC2S.log
+##log4j.appender.OneLineTXNLogC2S.MaxFileSize=100KB
+log4j.appender.OneLineTXNLogC2S.DatePattern='.'yyyy-MM-dd
+#log4j.appender.OneLineTXNLogC2S.DatePattern='.'yyyy-MM-dd-HH
+#log4j.appender.OneLineTXNLogC2S.DatePattern='.'yyyy-MM-dd-HH-mm
+#log4j.appender.OneLineTXNLogC2S.layout=org.apache.log4j.PatternLayout
+log4j.appender.OneLineTXNLogC2S.layout=com.btsl.logging.MyPatternLayout
+log4j.appender.OneLineTXNLogC2S.layout.ConversionPattern=%d{HH:mm:ss,SSS}:%m%n
+
+
+#Entries for OneLineTXNLog Logger
+log4j.logger.com.btsl.pretups.logging.OneLineTXNLogP2P=INFO,OneLineTXNLogP2P
+#log4j.logger.com.btsl.pretups.logging.OneLineTXNLogP2P=ERROR,OneLineTXNLogP2P
+log4j.additivity.com.btsl.pretups.logging.OneLineTXNLogP2P=false
+log4j.appender.OneLineTXNLogP2P=org.apache.log4j.DailyRollingFileAppender
+log4j.appender.OneLineTXNLogP2P.File=<Tomcat-Path>/logs/OneLineTXNLogP2P.log
+##log4j.appender.OneLineTXNLogP2P.MaxFileSize=100KB
+log4j.appender.OneLineTXNLogP2P.DatePattern='.'yyyy-MM-dd
+#log4j.appender.OneLineTXNLogP2P.DatePattern='.'yyyy-MM-dd-HH
+#log4j.appender.OneLineTXNLogP2P.DatePattern='.'yyyy-MM-dd-HH-mm
+log4j.appender.OneLineTXNLogP2P.layout=org.apache.log4j.PatternLayout
+log4j.appender.OneLineTXNLogP2P.layout.ConversionPattern=%d   %m%n
+
+#Entries for OneLineTXNLogCHNL Logger
+log4j.logger.com.btsl.pretups.logging.OneLineTXNLogCHNL=INFO,OneLineTXNLogCHNL
+#log4j.logger.com.btsl.pretups.logging.OneLineTXNLogCHNL=ERROR,OneLineTXNLogCHNL
+log4j.additivity.com.btsl.pretups.logging.OneLineTXNLogCHNL=false
+log4j.appender.OneLineTXNLogCHNL=org.apache.log4j.DailyRollingFileAppender
+log4j.appender.OneLineTXNLogCHNL.File=<Tomcat-Path>/logs/OneLineTXNLogCHNL.log
+##log4j.appender.OneLineTXNLogCHNL.MaxFileSize=100KB
+log4j.appender.OneLineTXNLogCHNL.DatePattern='.'yyyy-MM-dd
+#log4j.appender.OneLineTXNLogCHNL.DatePattern='.'yyyy-MM-dd-HH
+#log4j.appender.OneLineTXNLogCHNL.DatePattern='.'yyyy-MM-dd-HH-mm
+log4j.appender.OneLineTXNLogCHNL.layout=org.apache.log4j.PatternLayout
+log4j.appender.OneLineTXNLogCHNL.layout.ConversionPattern=%d   %m%n
+
+log4j.logger.com.btsl.pretups.logging.ChannelRequestDailyLog=INFO,ChannelRequestDailyLog
+log4j.additivity.com.btsl.pretups.logging.ChannelRequestDailyLog=false
+log4j.appender.ChannelRequestDailyLog=org.apache.log4j.DailyRollingFileAppender
+log4j.appender.ChannelRequestDailyLog.File=<Tomcat-Path>/logs/ChannelRequestDailyLog.log
+log4j.appender.ChannelRequestDailyLog.DatePattern='.'yyyy-MM-dd
+#log4j.appender.ChannelRequestDailyLog.DatePattern='.'yyyy-MM-dd-HH
+#log4j.appender.ChannelRequestDailyLog.DatePattern='.'yyyy-MM-dd-HH-mm
+log4j.appender.ChannelRequestDailyLog.layout=org.apache.log4j.PatternLayout
+log4j.appender.ChannelRequestDailyLog.layout.ConversionPattern=%5p [%t] (%F:%L) - %m%n
+
+
+
+
+//added by ankuj for LMB
+
+##=====Lmb Force settle logs========
+log4j.logger.com.btsl.loadtest.loadgenerator.LMBForceSettleLog=INFO,LMBForceSettleLog
+log4j.additivity.com.btsl.loadtest.loadgenerator.LMBForceSettleLog=false
+log4j.appender.LMBForceSettleLog=org.apache.log4j.DailyRollingFileAppender
+log4j.appender.LMBForceSettleLog.File=<Tomcat-Path>/logs/LMBForceSettleLog.log
+##log4j.appender.LMBForceSettleLog.MaxFileSize=100KB
+log4j.appender.LMBForceSettleLog.DatePattern='.'yyyy-MM-dd
+log4j.appender.LMBForceSettleLog.layout=org.apache.log4j.PatternLayout
+log4j.appender.LMBForceSettleLog.layout.ConversionPattern=%d   %m%n
+
+
+
+##=====GMB logs========
+log4j.logger.com.btsl.loadtest.loadgenerator.GiveMeBalanceRequestResponseLog=INFO,GiveMeBalanceRequestResponseLog
+log4j.additivity.com.btsl.loadtest.loadgenerator.GiveMeBalanceRequestResponseLog=false
+log4j.appender.GiveMeBalanceRequestResponseLog=org.apache.log4j.DailyRollingFileAppender
+log4j.appender.GiveMeBalanceRequestResponseLog.File=<Tomcat-Path>/logs/GiveMeBalanceRequestResponseLog.log
+##log4j.appender.GiveMeBalanceRequestResponseLog.MaxFileSize=100KB
+log4j.appender.GiveMeBalanceRequestResponseLog.DatePattern='.'yyyy-MM-dd
+log4j.appender.GiveMeBalanceRequestResponseLog.layout=org.apache.log4j.PatternLayout
+log4j.appender.GiveMeBalanceRequestResponseLog.layout.ConversionPattern=%d   %m%n
+##===========================================
+
+
+###########Struts2 related configurations start.
+
+log4j.logger.org.apache.struts2=INFO
+log4j.logger.com.opensymphony=INFO
+
+# default Freemarker log level
+log4j.logger.freemarker=warn
+
+log4j.logger.freemarker.runtime=debug
+
+# messages about compilation & caching of FM templates -
+# 'debug' shows which templates are being used and when.
+log4j.logger.freemarker.cache=warn
+
+log4j.logger.com.opensymphony.xwork2.util.OgnlUtil=error
+log4j.logger.com.opensymphony.xwork2.ognl.OgnlValueStack=error
+
+###########Struts2 related configurations ends.
+###queue logger
+log4j.logger.com.btsl.pretups.channel.logging.QueueLogger=INFO,QueueLogger
+log4j.additivity.com.btsl.pretups.channel.logging.QueueLogger=false
+log4j.appender.QueueLogger=org.apache.log4j.DailyRollingFileAppender
+log4j.appender.QueueLogger.File=<Tomcat-Path>/logs/QueueLogger.log
+###log4j.appender.QueueLogger.MaxFileSize=100KB
+log4j.appender.QueueLogger.DatePattern='.'yyyy-MM-dd
+##log4j.appender.QueueLogger.DatePattern='.'yyyy-MM-dd-HH
+##log4j.appender.QueueLogger.DatePattern='.'yyyy-MM-dd-HH-mm
+log4j.appender.QueueLogger.layout=org.apache.log4j.PatternLayout
+log4j.appender.ChannelRequestDailyLog.layout.ConversionPattern=%5p [%t] (%F:%L) - %m%n
+
+## Log file configuration entries for CSV Hourly File Generator Process file processing, log of the CSV Monthly File Generator Process
+## file processing will be maintaied in this log (Corporate CSV Monthly File Generator Process Log)
+log4j.logger.com.btsl.pretups.processes.csvgenerator.CSVMonthlyFileGeneratorProcess=DEBUG,CSVMonthlyFileGeneratorProcess
+log4j.additivity.com.btsl.pretups.processes.csvgenerator.CSVMonthlyFileGeneratorProcess=false
+log4j.appender.CSVMonthlyFileGeneratorProcess=org.apache.log4j.DailyRollingFileAppender
+log4j.appender.CSVMonthlyFileGeneratorProcess.File=<Tomcat-Path>/logs/CSVMonthlyFileGeneratorProcess.log
+log4j.appender.CSVMonthlyFileGeneratorProcess.DatePattern='.'yyyy-MM-dd
+log4j.appender.CSVMonthlyFileGeneratorProcess.layout=org.apache.log4j.PatternLayout
+log4j.appender.CSVMonthlyFileGeneratorProcess.layout.ConversionPattern=%d:%5p [%t] (%F:%L) - %m%n
+
+## Log file configuration entries for Csv Hourly Process Dao file processing, log of the CsvHourlyProcessDAO
+## file processing will be maintaied in this log (Corporate Csv Hourly Process DAO Log)
+log4j.logger.com.btsl.pretups.processes.businesslogic.CsvHourlyProcessDAO=DEBUG,CsvHourlyProcessDAO
+log4j.additivity.com.btsl.pretups.processes.businesslogic.CsvHourlyProcessDAO=false
+log4j.appender.CsvHourlyProcessDAO=org.apache.log4j.DailyRollingFileAppender
+log4j.appender.CsvHourlyProcessDAO.File=<Tomcat-Path>/logs/CsvHourlyProcessDAO.log
+log4j.appender.CsvHourlyProcessDAO.DatePattern='.'yyyy-MM-dd
+log4j.appender.CsvHourlyProcessDAO.layout=org.apache.log4j.PatternLayout
+log4j.appender.CsvHourlyProcessDAO.layout.ConversionPattern=%d:%5p [%t] (%F:%L) - %m%n
+
+
+
+## Log file configuration entries for ScheduleTopUp process, Single line logger of the schedule topup
+## batch process will be maintained here
+log4j.logger.com.btsl.pretups.channel.logging.ScheduledBatchLogger=INFO,ScheduledBatchLogger
+log4j.additivity.com.btsl.pretups.channel.logging.ScheduledBatchLogger=false
+log4j.appender.ScheduledBatchLogger=org.apache.log4j.DailyRollingFileAppender
+log4j.appender.ScheduledBatchLogger.File=<Tomcat-Path>/logs/ScheduledBatchLog.log
+#log4j.appender.ScheduledBatchLogger.MaxFileSize=100KB
+log4j.appender.ScheduledBatchLogger.DatePattern='.'yyyy-MM-dd
+log4j.appender.ScheduledBatchLogger.layout=org.apache.log4j.PatternLayout
+log4j.appender.ScheduledBatchLogger.layout.ConversionPattern=%d   %m%n 
+
+
+## Log file configuration entries for ScheduleTopUp process, Single line logger of the schedule topup
+## request process will be maintained here, for schedule topup processing request wise log
+## check this log file
+log4j.logger.com.btsl.pretups.channel.logging.ScheduledTopUpLogger=INFO,ScheduledTopUpLogger
+log4j.additivity.com.btsl.pretups.channel.logging.ScheduledTopUpLogger=false
+log4j.appender.ScheduledTopUpLogger=org.apache.log4j.DailyRollingFileAppender
+log4j.appender.ScheduledTopUpLogger.File=<Tomcat-Path>/logs/ScheduledTopUpLog.log
+#log4j.appender.ScheduledTopUpLogger.MaxFileSize=100KB
+log4j.appender.ScheduledTopUpLogger.DatePattern='.'yyyy-MM-dd
+log4j.appender.ScheduledTopUpLogger.layout=org.apache.log4j.PatternLayout
+log4j.appender.ScheduledTopUpLogger.layout.ConversionPattern=%d   %m%n 
+
+
+## Log file configuration entries for WhiteList processing, Single line logger of the whiete list
+## management will be maintained here,
+log4j.logger.com.btsl.pretups.logging.FileProcessLogger=INFO,FileProcessLogger
+log4j.additivity.com.btsl.pretups.logging.FileProcessLogger=false
+log4j.appender.FileProcessLogger =org.apache.log4j.DailyRollingFileAppender
+log4j.appender.FileProcessLogger.File =<Tomcat-Path>/logs/FileProcessLog.log
+#log4j.appender.FileProcessLogger.MaxFileSize=100KB
+log4j.appender.FileProcessLogger.DatePattern='.'yyyy-MM-dd
+log4j.appender.FileProcessLogger.layout=org.apache.log4j.PatternLayout
+log4j.appender.FileProcessLogger.layout.ConversionPattern=%d   %m%n
+
+
+## Log file configuration entries for LMB SOSSettlement process
+log4j.logger.com.btsl.pretups.logging.SOSSettlementRequestLog=INFO,SOSSettlementRequestLog
+log4j.additivity.com.btsl.pretups.logging.SOSSettlementRequestLog=false
+log4j.appender.SOSSettlementRequestLog=org.apache.log4j.DailyRollingFileAppender
+log4j.appender.SOSSettlementRequestLog.File=<Tomcat-Path>/logs/SOSSettlementRequestLog.log
+log4j.appender.SOSSettlementRequestLog.DatePattern='.'yyyy-MM-dd
+log4j.appender.SOSSettlementRequestLog.layout=org.apache.log4j.PatternLayout
+log4j.appender.SOSSettlementRequestLog.layout.ConversionPattern=%5p [%t] (%F:%L) - %m%n 
+
+
+#Entries for GreetingMsgSentLog  Logger
+log4j.logger.com.btsl.pretups.logging.GreetingMsgSentLog=DEBUG,GreetingMsgSentLog
+log4j.additivity.com.btsl.pretups.logging.GreetingMsgSentLog=false
+log4j.appender.GreetingMsgSentLog=org.apache.log4j.DailyRollingFileAppender
+log4j.appender.GreetingMsgSentLog.File=<Tomcat-Path>/logs/GreetingMsgSentLog.log
+##log4j.appender.GreetingMsgLog.MaxFileSize=100KB
+log4j.appender.GreetingMsgSentLog.DatePattern='.'yyyy-MM-dd
+#log4j.appender.GreetingMsgLog.DatePattern='.'yyyy-MM-dd-HH
+#log4j.appender.GreetingMsgLog.DatePattern='.'yyyy-MM-dd-HH-mm
+log4j.appender.GreetingMsgSentLog.layout=org.apache.log4j.PatternLayout
+log4j.appender.GreetingMsgSentLog.layout.ConversionPattern=%d   %m%n
+
+
+
+#Entries for AmbigousSettlementErrorLog  Logger
+log4j.logger.com.btsl.pretups.logging.AmbigousSettlementErrorLog=INFO,AmbigousSettlementErrorLog
+log4j.additivity.com.btsl.pretups.logging.AmbigousSettlementErrorLog=false
+log4j.appender.AmbigousSettlementErrorLog=org.apache.log4j.DailyRollingFileAppender
+log4j.appender.AmbigousSettlementErrorLog.File=<Tomcat-Path>/logs/ambigousSettlementErrorLog.log
+##log4j.appender.AmbigousSettlementErrorLog.MaxFileSize=100KB
+log4j.appender.AmbigousSettlementErrorLog.DatePattern='.'yyyy-MM-dd
+#log4j.appender.AmbigousSettlementErrorLog.DatePattern='.'yyyy-MM-dd-HH
+#log4j.appender.AmbigousSettlementErrorLog.DatePattern='.'yyyy-MM-dd-HH-mm
+log4j.appender.AmbigousSettlementErrorLog.layout=org.apache.log4j.PatternLayout
+log4j.appender.AmbigousSettlementErrorLog.layout.ConversionPattern=%d   %m%n 
+
+
+#Entries for ActivityLog  Logger
+log4j.logger.com.btsl.pretups.logging.ActivityLog=INFO,ActivityLog
+log4j.additivity.com.btsl.pretups.logging.ActivityLog=false
+log4j.appender.ActivityLog=org.apache.log4j.DailyRollingFileAppender
+log4j.appender.ActivityLog.File=<Tomcat-Path>/logs/activityLog.log
+##log4j.appender.ActivityLog.MaxFileSize=100KB
+log4j.appender.ActivityLog.DatePattern='.'yyyy-MM-dd
+#log4j.appender.ActivityLog.DatePattern='.'yyyy-MM-dd-HH
+#log4j.appender.ActivityLog.DatePattern='.'yyyy-MM-dd-HH-mm
+log4j.appender.ActivityLog.layout=org.apache.log4j.PatternLayout
+log4j.appender.ActivityLog.layout.ConversionPattern=%d   %m%n 
+
+## Log file configuration entries for Auto O2C Logger,
+## Auto O2C logs will be written in this file
+log4j.logger.com.btsl.pretups.channel.logging.AutoO2CLogger=INFO,AutoO2CLogger
+log4j.additivity.com.btsl.pretups.channel.logging.AutoO2CLogger=false
+log4j.appender.AutoO2CLogger=org.apache.log4j.DailyRollingFileAppender
+log4j.appender.AutoO2CLogger.File=<Tomcat-Path>/logs/AutoO2CLogger.log
+#log4j.appender.AutoO2CLogger.MaxFileSize=100KB
+log4j.appender.AutoO2CLogger.DatePattern='.'yyyy-MM-dd
+log4j.appender.AutoO2CLogger.layout=org.apache.log4j.PatternLayout
+log4j.appender.AutoO2CLogger.layout.ConversionPattern=%d   %m%n
+
+
+
+## Auto C2C logs will be written in this file
+log4j.logger.com.btsl.pretups.channel.logging.AutoC2CLogger=INFO,AutoC2CLogger
+log4j.additivity.com.btsl.pretups.channel.logging.AutoC2CLogger=false
+log4j.appender.AutoC2CLogger=org.apache.log4j.DailyRollingFileAppender
+log4j.appender.AutoC2CLogger.File=<Tomcat-Path>/logs/AutoC2CLogger.log
+#log4j.appender.AutoC2CLogger.MaxFileSize=100KB
+log4j.appender.AutoC2CLogger.DatePattern='.'yyyy-MM-dd
+log4j.appender.AutoC2CLogger.layout=org.apache.log4j.PatternLayout
+log4j.appender.AutoC2CLogger.layout.ConversionPattern=%d   %m%n

@@ -1,0 +1,5 @@
+loginId,password,domainCode,categoryCode,grphDomainCode,gradeCode,type,externalCode,TestcaseId,TestcaseType,Module,Description
+btnadm,1357,,,,,COMMPSL,,TUNG12909,Negative,Load commission profile status,To verify mandatory fields are required
+btnadm,1357,DIST,,,,COMMPSL,,TUNG12910,Negative,Load commission profile status,To verify category code is required
+btnadm,1357,,DIST:DIST:1,,,COMMPSL,,TUNG12911,Negative,Load commission profile status,To verify domain code is required
+btnadm,1357,DIST,DIST:DIST:1,ZAR:DIST:ZainArea,DIST:GR1,COMMPSL,,TUNG12912,Positive,Load commission profile status,To load list of commission profiles

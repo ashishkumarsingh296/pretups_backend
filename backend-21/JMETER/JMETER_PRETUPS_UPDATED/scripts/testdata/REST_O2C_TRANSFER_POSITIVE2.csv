@@ -1,0 +1,2 @@
+TestcaseId,TestcaseType,Module,Description
+TUNG13043,Positive,O2C transfer through EXTGW,To check  that a successful o2c occurs when loginID and password are present

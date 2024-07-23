@@ -1,0 +1,145 @@
+##########################################################################################################
+#
+#       If IN POST PAID interface IN file is added in PreTUPS from superadmin
+#       then.
+#       File with this at and name of the IN ID.txt should be created at
+#       the
+#       path of the INFiles (defined in Constants.props).
+#
+#       Values of the variables in this file should be updated with the values
+#       provided by the
+#       Mobile Operator IN team and IN id would be defined in the
+#       Constants.props under key DB_POOL_IN_IDS
+#
+############################################################################################################
+
+
+#This factor would be used to conver the system amount to IN amount and INAmount to System amount(This would be integer).
+MULT_FACTOR_DB=1
+
+##Prefix to be removed from the mobile number, leave blank if nothing is to be removed
+MSISDN_REMOVE_PREFIX=
+
+##Prefix to be added to the mobile number as prefix, leave blank if nothing is to be added as prefix
+MSISDN_ADD_PREFIX=
+
+#This flag is used to round the request amount.
+ROUND_FLAG=Y
+################################################## DB Related parameters
+
+#Contains the Name with full path of DBUtility class that would handle calling of stored procedure Billing System.
+DBUTILITY_HANDLER_CLASS=com.inter.postvfe.dbutil.PostVfeDBUtility
+
+MULT_FACTOR_CORBA=100
+#Defines the Connection url of DB system.
+
+POSTVFE_DB_CONN_URL=jdbc:oracle:thin:@10.230.91.74:1524:BSCSPRD2
+
+#POSTVFE_DB_CONN_URL=jdbc:oracle:thin:@10.230.85.75:1524:BSCSPRE2
+
+
+#Defines the user name of Database.
+POSTVFE_DB_USERNAME=ETOPUPDB
+
+#Defines the Password of Database.
+POSTVFE_DB_PASS=ETOPUPDB1234
+#Defines the minimum size of db connection pool.
+POSTVFE_DB_MINPOOLSIZE=2
+
+#Defines the maximum size of db connection pool.
+POSTVFE_DB_MAXPOOLSIZE=5
+
+#This is optional parameter
+POSTVFE_DB_POOL_LOG_FILE=
+
+##Defines that the validation of subscriber(Receiver) is required for RC
+PPB_R=Y
+
+
+#Mapping of IN language with system language (IN Langauge1:PreTUPS Langauge1,IN Langauge2:PreTUPS
+LANGUAGE_MAPPING=0:1,1:0
+######################################################
+INSTANCE_ID=22
+NO_ALLWD_AMB_TXN=10000
+THRESHOLD_TIME=10000
+EXPIRY_TIME=10000
+
+CANCEL_COMMAND_STATUS_MAPPING=250:250
+CANCEL_NA=NA
+CANCEL_TXN_ALLOWED=N
+SYSTEM_STATUS_MAPPING_CREDIT_ADJ=250:250
+SYSTEM_STATUS_MAPPING_CREDIT_BCK=250:250
+SYSTEM_STATUS_MAPPING_CREDIT=250:250
+SYSTEM_STATUS_MAPPING_DEBIT_ADJ=250:250
+INTFCE_CLSR_SUPPORT=N
+AUTO_RESUME_SUPPORT=N
+REMARK1=
+REMARK2=
+WARN_TIMEOUT=100000
+
+#-----------------Ved Start--------------------
+
+#Defines the name with full path of the class that would be pooled
+CLIENT_HANDLER_CLASS=com.btsl.pretups.inter.postvfe.CorbaWrapper
+
+CMS_POOL_1.cmscon=CMS_POOL_1
+CMS_POOL_1.user=ETOPUP
+CMS_POOL_1.password=ETOPUP1234
+CMS_POOL_1.maxconn=5
+CMS_POOL_1.serverName=com/lhs/public/soi/fedfactory1
+CMS_POOL_1.serviceObjectName=CIL
+CMS_POOL_1.serviceObjectVersion=1_VFE_1
+
+CMS_POOL_1.propsFile=/pretupshome/tomcat5_smsr/webapps/pretups/WEB-INF/classes/orb.properties
+
+#Pool size to pool the number of socket connections.
+MAX_POOL_SIZE=2
+
+#Defines the sleep time between the pooling of oject.
+POOL_SLEEP=1000
+
+#By this factor INModule would multiply the amount while sending the request and recieved amount from IN would be devided.
+CMS_MULT_FACTOR=100
+
+POOL_INIT_TIME=300
+POOL_INT_TIME=300000
+#-----------------Ved End--------------------
+
+END_URL=http://10.230.91.74:8085/CMSWebService/CMSInvokeService
+#########POST VFE STUB PARAMS RAHUL##########################
+#############Header Params###############
+USER_NAME=ETOPUP
+PASSWORD=ETOPUP1234
+WF_NAME_VAL=PG_ValidateInquiry
+WF_NAME_CR=WritePayment
+##############ReQUEST PARAMS##################
+SYNCHRONOUS_MODE=
+TRANSX_CODE=
+PAYMENT_MODE=C
+SYNCHRONOUS_MODE=true
+#TRANSX_CODE=CE2IN-X2
+TRANSX_CODE=CE2DD-X3
+RT_CAUSERNAME=ETOPUP
+RT_CAREM=test
+#Defines the Currency that would be used for the interface.
+CURRENCY_ID=43
+POST_BALANCE_ENQ_SUCCESS=Y
+############################################################
+MULTIPLICATION_FACTOR=100
+#############################CDR Related Postpaid Params#############
+CDR_FIELD_SEPARATOR=,
+INTERFACE_CLASS=com.inter.post.cdr.VFECDRGeneration
+SERVICE_TYPE=PPB
+FILE_CREATE_SLEEP_TIME=100
+FILE_SIZE_RECORD=N
+FILE_SIZE=1
+INITIAL_FILE_NAME=PPB
+RECORD_TYPE=001
+INVOICE_NUM=0000
+FILE_PATH=
+FILE_EXTENTION=.csv
+CDRFILE_MULTIPLICATION_FACTOR=100
+ROUND_FLAG=Y
+CDR_HEADER_NAME=X,Y,Z
+CHNL_NAME=TPUP
+

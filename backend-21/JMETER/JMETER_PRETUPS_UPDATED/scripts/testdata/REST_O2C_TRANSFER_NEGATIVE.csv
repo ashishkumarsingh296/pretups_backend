@@ -1,0 +1,4 @@
+TestcaseId,TestcaseType,Module,Description,
+,Negative,O2C transfer through REST with MSISDN ,TO verify that when  MSISDN is enter then pin is mandatory ,
+,Negative,O2C transfer through REST with Loginid ,To verify that Request O2C using login ID, Password is mandatory in REST API.
+,Negative,O2C transfer through REST with without Extcode,To verify that XML request sholud fail when mandatory tags are not filled in json request,

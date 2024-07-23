@@ -1,0 +1,8 @@
+loginID,password,dataLoginID,type1,externalCode,TestcaseId,TestcaseType,Module,Description
+,1357,superadmin,CHANGENETWORK,,TUNG17832,Negative,Change Network,"To verfy validation message appears ""Login Id is not available in request"" when LOGIN_ID   not provided"
+superadmin,,superadmin,CHANGENETWORK,, TUNG17833,Negative,Change Network,"To verify validation messsage appears ""Password is not available in request"" when password is not provided"
+superadmin1,1357,superadmin,CHANGENETWORK,,TUNG17827,Negative,Change Network,"To verify validation message appears ""User does not exists in the system"" when wrong LOGIN_ID provided"
+superadmin,1234,superadmin,CHANGENETWORK,,TUNG17828,Negative,Change Network,"To verify validation message appears ""User ID or Password is incorrec"" when wrong PASSWORD provided"
+superadmin,1357,superadmin,,, TUNG17829,Negative,Change Network,"To verify validation message appears ""Action type does not exists in the request"" when TYPE is not provided"
+superadmin,1357,superadmin1,CHANGENETWORK,, TUNG17830,Negative,Change Network,"To verify validation message appears ""invalid.login.id"" when provide invalid login id"
+superadmin,1357,,CHANGENETWORK,, TUNG17831,Negative,Change Network,"To verify validation message appears ""login.id.required"" when do not provide dataLoginID"

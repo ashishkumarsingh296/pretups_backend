@@ -1,0 +1,2 @@
+TestcaseType,TestcaseId,Module,Description
+Negative,DEREG02,De-Register user API through USSD,De-Register user through USSD by passing Invalid pin

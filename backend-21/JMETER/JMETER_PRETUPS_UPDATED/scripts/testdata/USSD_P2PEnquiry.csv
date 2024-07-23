@@ -1,0 +1,7 @@
+TestcaseId,TestcaseType,Module,Description
+,Positive,P2P subscriber enquiry,To verify that Last Transfer request is successful when all mandatory details are provided
+,Positive,P2P subscriber enquiry,To verify that Last Transfer request is successful when PIN is blank
+,Negative,P2P subscriber enquiry,To verify that Last Transfer request is not successful when value 0000 is provided in PIN Tag
+,Negative,P2P subscriber enquiry,To verify that Last Transfer request is not successful when MSISDN is blank
+,Negative,P2P subscriber enquiry,To verify that Last Transfer request is not successful when PIN is invalid
+,Negative,P2P subscriber enquiry,To verify that Last Transfer request is not successful when type tag is blank

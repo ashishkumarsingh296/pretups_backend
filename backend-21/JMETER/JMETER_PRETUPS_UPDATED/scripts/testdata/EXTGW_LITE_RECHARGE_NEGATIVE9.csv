@@ -1,0 +1,2 @@
+TestcaseId,TestcaseType,Module,Description
+TUNG12349,Negative,Lite Recharge through EXTGW,To validate that LRC request is not successful if MSISDN1 is not entered.

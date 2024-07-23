@@ -1,0 +1,8 @@
+---
+ - name: copying war at remote location
+   debug: msg=" remote location is {{ Tomcat_Path }}"  
+
+ - name: Copying pretups.war to the destination
+   become: true
+   remote_user: "{{ USER_NAME }}"
+   copy: src=pretups.war dest={{ Tomcat_Path }}/webapps/ mode=0755 owner={{ USER_NAME }} group={{ GROUP_NAME }}

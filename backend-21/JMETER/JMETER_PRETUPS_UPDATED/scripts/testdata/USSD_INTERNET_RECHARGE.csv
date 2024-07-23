@@ -1,0 +1,7 @@
+MSISDN1,PIN,MSISDN2,AMOUNT,NOTIFICATION_MSISDN,LANGUAGE1,LANGUAGE2,SELECTOR,TestcaseId,TestcaseType,Module,Description
+7255555555,1357,7200005544,100,7200005544,0,0,1,TUNG13147,Positive,Internet Recharge through USSD,To check that a successful recharge happens when only msisdn and pin are entered along with other mandatory fields
+7255555555,1357,7200005544,,7200005544,0,0,1,TUNG13148,Negative,Internet Recharge through USSD,To check that an unsucessful recharge happens when amount is not enterd
+7255555555,1357,7200005544,100,7200005544,0,0,,TUNG13149,Negative,Internet Recharge through USSD,To check that an unsucessful recharge happens when selector is not enterd
+7255555555,,7200005544,100,7200005544,0,0,1,TUNG13150,Negative,Internet Recharge through USSD,To check that if MSISDN is filled then PIN is also manadatory
+7255555555,1357,,100,7200005544,0,0,1,TUNG13151,Negative,Internet Recharge through USSD,To check that if subscriber msisdn is not entered recharge does not happen
+7255555555,1357,7200005544,100,,0,0,1,TUNG13152,Negative,Internet Recharge through USSD,To check that an unsucessful recharge happens when notification msisdn is not enterd

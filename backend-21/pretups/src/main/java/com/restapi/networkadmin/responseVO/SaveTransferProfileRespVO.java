@@ -1,0 +1,8 @@
+package com.restapi.networkadmin.responseVO;
+
+import com.btsl.common.BaseResponse;
+
+public class SaveTransferProfileRespVO extends BaseResponse {
+	
+
+}

@@ -1,0 +1,141 @@
+
+
+
+
+_includeOnce("../../../../utility/ImportPackage.sah");
+
+var $g_divisionType;
+var $g_divisionName;
+var $g_divisionCode;
+var $g_status;
+var $assertion;
+
+var $g_departmentName;
+var $g_departmentCode;
+
+
+
+function commonVariableForDivision($g_row, $g_col) {
+	
+	$g_divisionType = $g_DivisionDetails[$g_row][$g_col++];
+	$g_divisionName = $g_DivisionDetails[$g_row][$g_col++];
+	$g_divisionCode = $g_DivisionDetails[$g_row][$g_col++];
+	$g_status = $g_DivisionDetails[$g_row][$g_col++];
+	$assertion = $g_DivisionDetails[$g_row][$g_col++];
+	
+}
+
+
+
+
+
+
+function addDivision() {
+	
+	_click(_link("Masters"));
+	_click(_link("Division management"));
+	_click(_submit("Add"));
+	_setSelected(_select("divDeptType"), $g_divisionType);
+	_setValue(_textbox("divDeptName"), $g_divisionName);
+	_setValue(_textbox("divDeptShortCode"), $g_divisionCode);
+	_setSelected(_select("status"), $g_status);
+	_click(_submit("Submit"));
+	_click(_submit("confirm"));
+	
+	_assertExists(_listItem("/"+$assertion+ ".*/"));
+
+}
+
+function addDivisionWithoutDetails() {
+	
+	_click(_link("Masters"));
+	_click(_link("Division management"));
+	_click(_submit("Add"));
+	_setSelected(_select("divDeptType"), $g_divisionType);
+	_setValue(_textbox("divDeptName"), $g_divisionName);
+	_setValue(_textbox("divDeptShortCode"), $g_divisionCode);
+	_setSelected(_select("status"), $g_status);
+	_click(_submit("Submit"));
+	_assertExists(_listItem("/"+$assertion+ ".*/"));
+
+	
+}
+
+function modifyDivisionDetails() {
+	_click(_link("Masters"));
+	_click(_link("Division management"));
+	_click(_radio("radioIndex", _near(_cell($g_divisionName))));
+	_click(_submit("Modify"));
+	_setValue(_textbox("divDeptShortCode"), $g_divisionCode);
+	_click(_submit($g_BtnModify));
+	_click(_submit($g_BtnConfirm));
+	_assertExists(_listItem("/"+$assertion+ ".*/"));
+}
+
+
+
+
+function deleteDivision() {
+	_click(_link("Masters"));
+	_click(_link("Division management"));
+	_click(_radio("radioIndex", _near(_cell($g_divisionName))));
+	_click(_button("Delete"));
+	_assertExists(_listItem("/"+$assertion+ ".*/"));
+	
+}
+
+
+// ....................... Here is the methods for department ....................... //
+
+function commonVariableForDepartment($g_row, $g_col) {
+	$g_divisionType = $g_DepartmentDetails[$g_row][$g_col++];;
+	$g_divisionName = $g_DepartmentDetails[$g_row][$g_col++];;
+	$g_departmentName = $g_DepartmentDetails[$g_row][$g_col++];;
+	$g_departmentCode = $g_DepartmentDetails[$g_row][$g_col++];;
+	$assertion = $g_DepartmentDetails[$g_row][$g_col++];;
+	
+	
+}
+
+function addDepartment() {
+	_click(_link("Masters"));
+	_click(_link("Department management"));
+	_setSelected(_select("divDeptType"),$g_divisionType );
+	_setSelected(_select("divisionId"),$g_divisionName );
+	_click(_submit("Submit"));
+	_click(_submit("Add"));
+	_setValue(_textbox("divDeptName"), $g_departmentName);
+	_setValue(_textbox("divDeptShortCode"), $g_departmentCode );
+	_click(_submit("Submit"));
+	_click(_submit("Confirm"));
+	_assertExists(_listItem("/"+$assertion+ ".*/"));
+	
+}
+
+function addDepartmentWithoutDetails() {
+	_click(_link("Masters"));
+	_click(_link("Department management"));
+	_setSelected(_select("divDeptType"),$g_divisionType );
+	_setSelected(_select("divisionId"),$g_divisionName );
+	_click(_submit("Submit"));
+	_assertExists(_listItem("/"+$assertion+ ".*/"));
+}
+
+
+function modifyDepartmentDetails() {
+	_click(_link("Masters"));
+	_click(_link("Department management"));
+	_setSelected(_select("divDeptType"),$g_divisionType );
+	_setSelected(_select("divisionId"),$g_divisionName );
+	_click(_submit("Submit"));
+	_click(_radio("radioIndex", _near(_cell($g_departmentName))));
+	_click(_submit("Modify"));
+	_setValue(_textbox("divDeptShortCode"), $g_departmentCode );
+	_click(_submit("Submit"));
+	_click(_submit("Confirm"));
+	_assertExists(_listItem("/"+$assertion+ ".*/"));
+	
+}
+
+
+

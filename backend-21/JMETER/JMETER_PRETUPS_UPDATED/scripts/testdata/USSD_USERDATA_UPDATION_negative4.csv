@@ -1,0 +1,2 @@
+TestcaseId,TestcaseType,Module,Description
+TUNG10204,Negative,User Data update through USSD,To verify that the User Data Updation request is not processed if invalid PIN is entered in the request.

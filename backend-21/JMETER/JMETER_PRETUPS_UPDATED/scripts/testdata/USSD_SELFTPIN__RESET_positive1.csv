@@ -1,0 +1,2 @@
+TestcaseId,TestcaseType,Module,Description
+TUNG10188 ,Positive,Self TPIN Reset through USSD,To check that the user is able to Reset the PIN through USSD using Reset PIN request.

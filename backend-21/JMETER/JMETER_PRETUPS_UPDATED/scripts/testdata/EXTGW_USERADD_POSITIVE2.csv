@@ -1,0 +1,2 @@
+TestcaseId,TestcaseType,Module,Description
+TUNG12809,Positive,Add user API through REST,To verify that channel user is created when enter EXTCODE in Rest API request

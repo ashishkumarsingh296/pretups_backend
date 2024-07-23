@@ -1,0 +1,161 @@
+
+
+// This scripts contains all method to bar channel users in the system 
+
+_includeOnce("../../../../utility/ImportPackage.sah");
+
+var $l_naCsv = _readCSVFile("../../../GUI/testdata/NA_Login.csv");
+
+
+	var $g_module;
+	var $g_userType;
+	var $g_barringType;
+	var $g_msisdn;
+	var $g_name;
+	var $g_barredReason;
+	var $g_assertion;
+	var $a_Prefix;
+	
+	
+	function commonVaribleToBarChannelUser($g_row, $g_col) {
+		
+		$g_module = $g_barChannelUser[$g_row][$g_col++];
+		$g_userType = $g_barChannelUser[$g_row][$g_col++];
+		$g_barringType = $g_barChannelUser[$g_row][$g_col++];
+		$g_msisdn = $g_barChannelUser[$g_row][$g_col++];
+		$g_barredReason = $g_barChannelUser[$g_row][$g_col++];
+		$g_assertion = $g_barChannelUser[$g_row][$g_col++];
+	}
+	
+	// $g_name = name(); .......... For futher use 
+	
+	
+	function name(){
+		 $l_time = currentTime(); // fetch current time(CurretnTime)
+		 var  $l_name = "AUT" + $l_time; //AUTONAcurrentTime
+		 return $l_name;
+	}
+		
+	// Common methods user for barring channel user in the system  ...... 
+	
+function test() {
+	_click(_link("Masters"));
+	_click(_link("Bar user"));
+	_assertExists(_div("Add barred user"));
+	_setSelected(_select("module"), "Channel to Subscriber");
+	_setSelected(_select("userType"), "Sender");
+	_setSelected(_select("barredType"), "Bar_test");
+	_setValue(_textbox("msisdn"), "7233333333");
+	_setValue(_textbox("name"), "testName");
+	_click(_cell(61));
+	_setValue(_textarea("barredReason"), "basasasas");
+	_click(_submit("Submit"));
+	_click(_submit("Back"));
+	_click(_button("Reset"));
+	_click(_submit("Submit"));
+	_click(_submit("Confirm"));
+	_assertExists(_listItem("Mobile number 7233333333 successfully barred."));
+}
+
+	function CommonMethodForBarringUserOne() {
+		_click(_link("Masters"));
+	 	_click(_link("Bar user"));
+		_assertExists(_div("Add barred user"));
+	}
+
+     function commonMethodForBarringUser() {
+    	 	CommonMethodForBarringUserOne();
+    		_setSelected(_select("module"), $g_module);
+    		_setSelected(_select("userType"), $g_userType);
+    		_setSelected(_select("barredType"), $g_barringType);
+    		_setValue(_textbox("msisdn"), $g_msisdn);
+    		_setValue(_textbox("name"),$g_name );
+    		_setValue(_textarea("barredReason"), $g_barredReason);
+    }
+
+
+   // ............ Methods For Test cases .............. //   
+     
+	 
+     
+     function toCheckPopulatedValueInModule() {
+    	 CommonMethodForBarringUserOne();
+    	 _setSelected(_select("module"), 2);
+			var $temp = _getSelectedText(_select("module"));
+			if($temp == $g_module ) {_log("Successful");}
+			else { _log("Failed");}
+    }
+     
+     function toCheckPopulatedValueInUserType() {
+    	 CommonMethodForBarringUserOne();
+    	 _setSelected(_select("userType"), 2);
+			var $temp = _getSelectedText(_select("userType"));
+			if($temp == $g_userType ) {_log("Successful");}
+			else { _log("Failed");}
+    }
+	
+     function toCheckPopulatedValueInBarringType() {
+    	 CommonMethodForBarringUserOne();
+    	 _setSelected(_select("module"), $g_module);
+    	 
+    	 _setSelected(_select("barredType"), 2);
+			var $temp = _getSelectedText(_select("barredType"));
+			if($temp == $g_barringType ) {_log("Successful");}
+			else { _log("Failed");}
+    }
+	
+     function barChannelUserWithInvalidDetails() {
+    	 commonMethodForBarringUser();
+    	 submit();
+    	 _assertExists(_listItem("/"+ $g_assertion +".*/"));
+	}
+     
+    function toChecKResetButtonOnAddBarUserPage() {
+		commonMethodForBarringUser();
+		buttonReset();
+		if(_getValue(_textbox("msisdn")) == "") {_log("Successful")}
+		else {_log("Failed Reset Check");}
+	}
+     
+    function toChecKBackButtonOnAddBarUserConfirmPage() {
+    	commonMethodForBarringUser();
+    	submit();
+    	_assertExists(_submit("Confirm"));
+    	back();
+    	_assertExists(_submit("Submit"));
+    }
+    
+    function barChannelUser() {
+    	$g_name = name();
+    	commonMethodForBarringUser();
+    	submit();
+    	confirm();
+    	 _assertExists(_listItem("/"+ $g_assertion +".*/"));
+    	 
+    	 if(_exists(_listItem("/"+$g_assertion+".*/"))){
+				$l_naCsv[28][1] = $g_name;
+				_writeCSVFile($l_naCsv, "../../../GUI/testdata/NA_Login.csv", 1); // Write the ref number of O2C initiation for further approval 
+				_log("Channel user barred in the system");
+			}
+			else {
+				_log("Channel user is not barred in the system");
+			}
+    	
+	}
+    
+    function barAlreadyBarredChannelUser() {
+    	commonMethodForBarringUser();
+    	submit();
+    	 _assertExists(_listItem("/"+ $g_assertion +".*/"));
+	}
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    

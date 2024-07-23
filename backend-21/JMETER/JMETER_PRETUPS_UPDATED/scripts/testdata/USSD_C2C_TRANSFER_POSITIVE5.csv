@@ -1,0 +1,3 @@
+TestcaseId,TestcaseType,Module,Description
+TUNG13125,Positive,Channel to Channel Transfer through USSD,"To verify that success ""C2C Transfer"" response field contain all the  fields values in the character limit"
+

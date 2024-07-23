@@ -1,0 +1,132 @@
+//#######################################
+//
+// This script to add, approve, view, modify, supspend and resume LMS profile.
+//
+//#######################################
+
+
+
+_includeOnce("../../../../utility/ImportPackage.sah");
+_includeOnce("../../../GUI/testscripts/LMS/LoyalityProfileManagement_Common.sah"); //For adding C2S card group	
+
+
+//======================Pre-requisite check============================
+_log("Setup", "custom4");
+
+
+
+//If NA deos not exist
+var $l_naCsv = _readCSVFile("../../../GUI/testdata/NA_Login.csv"); //Reads the network admin credentials 
+var $g_networkAdmin1 = $l_naCsv[1][1];
+if($g_networkAdmin1 == "null"){
+	createNA(); // UserManagement_Common.sah
+	var $l_naCsv1 = _readCSVFile("../../../GUI/testdata/NA_Login.csv");
+	$g_networkAdmin1 = $l_naCsv1[1][1];
+	login($g_appURL,  $g_LangEnglish, $g_networkAdmin1, $g_commonPassword, $g_assertWelcome);
+}else{	 
+	login($g_appURL,  $g_LangEnglish, $g_networkAdmin1, $g_commonPassword, $g_assertWelcome);
+}
+
+//==================== Add and Modify loyality profile management ==================//
+
+
+
+
+
+var $g_loyalityManagementDetails = _readCSVFile("../../../GUI/testdata/LoyalityProfileManagement_Details.csv"); //Reads the Card group details
+
+
+
+for(var $g_row = 1; $g_loyalityManagementDetails[$g_row] != null; $g_row++){
+	
+			var $g_col = 0;
+			var $temp_testCaseNo = $g_loyalityManagementDetails[$g_row][$g_col++];
+			var $t = _testcase($temp_testCaseNo, $g_loyalityManagementDetails[$g_row][$g_col++]);
+			
+			
+			
+			
+			$t.start();
+			if($temp_testCaseNo == "TEST001"){
+				varriableForLoyalityProfileManagement($g_row, $g_col);
+				addLoyalityProfile();
+			}
+			else if($temp_testCaseNo == "TEST002"){
+				approveLoyalityProfile();
+			}
+			else if($temp_testCaseNo == "TEST003"){
+				viewLoyalityProfile();
+			}
+			else if($temp_testCaseNo == "TEST004"){
+				modifyProfileName();
+			}
+			else if($temp_testCaseNo == "TEST005"){
+				suspendLoyalityProfile();
+			}
+			else if($temp_testCaseNo == "TEST006"){
+				resumeLoyalityProfile();
+			}
+			
+			else if($temp_testCaseNo == "TEST007" || $temp_testCaseNo == "TEST008" || $temp_testCaseNo == "TEST008"
+				|| $temp_testCaseNo == "TEST009" || $temp_testCaseNo == "TEST010" || $temp_testCaseNo == "TEST011" || $temp_testCaseNo == "TEST012" || $temp_testCaseNo == "TEST013" ){
+				
+				
+				
+				varriableForLoyalityProfileManagement($g_row, $g_col);
+				
+				if($temp_testCaseNo == "TEST008" || $temp_testCaseNo == "TEST008"){
+				addLoyalityProfileWithoutDetailsOne();
+				}
+				addLoyalityProfileWithoutDetailsOne();
+				
+			}
+
+			else if($temp_testCaseNo == "TEST014" || $temp_testCaseNo == "TEST015" || $temp_testCaseNo == "TEST016"
+				|| $temp_testCaseNo == "TEST017" || $temp_testCaseNo == "TEST018" || $temp_testCaseNo == "TEST019"
+				|| $temp_testCaseNo == "TEST020" || $temp_testCaseNo == "TEST021" || $temp_testCaseNo == "TEST022" 
+				|| $temp_testCaseNo == "TEST023" || $temp_testCaseNo == "TEST024" || $temp_testCaseNo == "TEST025" || $temp_testCaseNo == "TEST025"){
+				
+				varriableForLoyalityProfileManagement($g_row, $g_col);
+				addLoyalityProfileWithoutVolumeProfile();
+			}
+			
+			
+			else{
+				
+				varriableForLoyalityProfileManagement($g_row, $g_col);
+				addLoyalityProfileWithoutVolumeProfile();
+			}
+				
+			
+			
+			
+			$t.end();
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

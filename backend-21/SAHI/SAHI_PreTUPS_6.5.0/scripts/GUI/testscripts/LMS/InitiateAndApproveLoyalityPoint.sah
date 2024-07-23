@@ -1,0 +1,109 @@
+//#######################################
+//
+// This script to intiate and approve loyality stock points
+//
+//#######################################
+
+
+
+_includeOnce("../../../../utility/ImportPackage.sah");
+_includeOnce("../../../GUI/testscripts/LMS/InitiateAndApproveLoyalityPoint_Common.sah"); //For adding C2S card group	
+
+
+//======================Pre-requisite check============================
+_log("Setup", "custom4");
+
+
+
+//If NA deos not exist
+var $l_naCsv = _readCSVFile("../../../GUI/testdata/NA_Login.csv"); //Reads the network admin credentials 
+var $g_networkAdmin1 = $l_naCsv[1][1];
+if($g_networkAdmin1 == "null"){
+	createNA(); // UserManagement_Common.sah
+	var $l_naCsv1 = _readCSVFile("../../../GUI/testdata/NA_Login.csv");
+	$g_networkAdmin1 = $l_naCsv1[1][1];
+	login($g_appURL,  $g_LangEnglish, $g_networkAdmin1, $g_commonPassword, $g_assertWelcome);
+}else{	 
+	login($g_appURL,  $g_LangEnglish, $g_networkAdmin1, $g_commonPassword, $g_assertWelcome);
+}
+
+//==================== intiate and approve LMS  ==================//
+
+
+
+var $g_loyalityStockDetails = _readCSVFile("../../../GUI/testdata/LoyalityStockDetails.csv"); //Reads the Card group details
+
+
+
+for(var $g_row = 1; $g_loyalityStockDetails[$g_row] != null; $g_row++){
+	
+			var $g_col = 0;
+			var $temp_testCaseNo = $g_loyalityStockDetails[$g_row][$g_col++];
+			var $t = _testcase($temp_testCaseNo, $g_loyalityStockDetails[$g_row][$g_col++]);
+			
+			$t.start();
+			
+			if($temp_testCaseNo == "TEST001"){
+				varriableForInitiateAndApproveLoyalitySotck($g_row, $g_col);
+				initiateLoyalityStock();
+			}
+			else if($temp_testCaseNo == "TEST002"){
+				varriableForInitiateAndApproveLoyalitySotck($g_row, $g_col);
+				approveLoyalityPoints();
+			}
+			
+			else if($temp_testCaseNo == "TEST003"  || $temp_testCaseNo == "TEST004" || $temp_testCaseNo == "TEST005" 
+					|| $temp_testCaseNo == "TEST006"){
+				varriableForInitiateAndApproveLoyalitySotck($g_row, $g_col);
+				initiateLoyalityStockWithoutDetails();
+			}
+			
+			else if($temp_testCaseNo == "TEST007"){
+				varriableToApproveLoyalityQuantity($g_row, $g_col);
+				approveLoyalitypointsWithoutDetails();
+				
+			}
+			
+			else if($temp_testCaseNo == "TEST008"  || $temp_testCaseNo == "TEST009" 
+				|| $temp_testCaseNo == "TEST010"){
+				varriableToApproveLoyalityQuantity($g_row, $g_col);
+				approveloyalityPointsWithoutDetails();
+			}
+			
+			else if($temp_testCaseNo == "TEST011"){
+				varriableForInitiateAndApproveLoyalitySotck($g_row, $g_col);
+				approveLoyalityPoints();
+				
+			}
+			
+			
+			$t.end();
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

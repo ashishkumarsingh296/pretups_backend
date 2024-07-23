@@ -1,0 +1,344 @@
+//######################################
+//
+// Common methods to add to negative operators users 
+//
+//#######################################
+
+
+
+var $g_fisrtName;
+var $g_lastName;
+var $g_shortName;
+var $g_usernamePrefixCode;
+var $g_externalCode;
+var $g_subscriberCode;
+var $g_mobileNumber;
+var $g_contactNumber;
+var $g_ssn;
+var $g_status;
+var $g_designation;
+var $g_divisionCode;
+var $g_departmentCode;
+var $g_address1;
+var $g_address2;
+var $g_city;
+var $g_state;
+var $g_country;
+var $g_email;
+var $g_calendarImg;
+var $g_loginID;
+var $g_webPassword;
+
+
+var $g_number;
+var $g_smsPIN;
+var $g_confPIN;
+var $g_discription;
+
+var $g_confirmPassword;
+var $g_ip = "";
+var $g_allowedTimeFrom;
+var $g_allowedTimeTo;
+var $g_geography;
+var $g_roleType;
+var $g_newPassword;
+
+var $g_networkAdmin;
+var $g_channelAdminUsername;
+
+;
+
+var $g_assertion;
+
+
+function commonVaribleForOperatorUsers ()
+{
+	
+	$g_fisrtName = $g_networkAdminDetails[$g_row][$g_col++];
+	$g_lastName = $g_networkAdminDetails[$g_row][$g_col++];
+	$g_shortName = $g_networkAdminDetails[$g_row][$g_col++];
+	$g_usernamePrefixCode = $g_networkAdminDetails[$g_row][$g_col++];
+	$g_externalCode = $g_networkAdminDetails[$g_row][$g_col++];
+	$g_subscriberCode = $g_networkAdminDetails[$g_row][$g_col++];
+	$g_mobileNumber = $g_networkAdminDetails[$g_row][$g_col++];
+	$g_ssn = $g_networkAdminDetails[$g_row][$g_col++];
+	$g_status = $g_networkAdminDetails[$g_row][$g_col++];
+	$g_designation = $g_networkAdminDetails[$g_row][$g_col++];
+	$g_divisionCode = $g_networkAdminDetails[$g_row][$g_col++];
+	$g_departmentCode = $g_networkAdminDetails[$g_row][$g_col++];
+	$g_address1 = $g_networkAdminDetails[$g_row][$g_col++];
+	$g_address2 = $g_networkAdminDetails[$g_row][$g_col++];
+	$g_city = $g_networkAdminDetails[$g_row][$g_col++];
+	$g_state = $g_networkAdminDetails[$g_row][$g_col++];
+	$g_country = $g_networkAdminDetails[$g_row][$g_col++];
+	$g_email = $g_networkAdminDetails[$g_row][$g_col++];
+	$g_calendarImg = $g_networkAdminDetails[$g_row][$g_col++];
+	$g_loginID = $g_networkAdminDetails[$g_row][$g_col++];
+	$g_webPassword = $g_networkAdminDetails[$g_row][$g_col++];
+	$g_confirmPassword = $g_networkAdminDetails[$g_row][$g_col++];
+	$g_ip = $g_networkAdminDetails[$g_row][$g_col++];
+	$g_allowedTimeFrom = $g_networkAdminDetails[$g_row][$g_col++];
+	$g_allowedTimeTo = $g_networkAdminDetails[$g_row][$g_col++];
+	$g_roleType = $g_networkAdminDetails[$g_row][$g_col++];
+	$g_assertion = $g_networkAdminDetails[$g_row][$g_col++];
+
+}
+
+
+
+
+function commonVariableForCAAndCC($a_row, $a_col) {
+	
+
+	$g_fisrtName = $g_channelAdminDetails[$a_row][$a_col++];
+	$g_lastName = $g_channelAdminDetails[$a_row][$a_col++];
+	$g_shortName = $g_channelAdminDetails[$a_row][$a_col++];
+	$g_usernamePrefixCode = $g_channelAdminDetails[$a_row][$a_col++];
+	$g_externalCode = $g_channelAdminDetails[$a_row][$a_col++];
+	$g_subscriberCode = $g_channelAdminDetails[$a_row][$a_col++];
+	$g_mobileNumber = $g_channelAdminDetails[$a_row][$a_col++];
+	$g_ssn = $g_channelAdminDetails[$a_row][$a_col++];
+	$g_status = $g_channelAdminDetails[$a_row][$a_col++];
+	$g_designation = $g_channelAdminDetails[$a_row][$a_col++];
+	$g_divisionCode = $g_channelAdminDetails[$a_row][$a_col++];
+	$g_departmentCode = $g_channelAdminDetails[$a_row][$a_col++];
+	$g_address1 = $g_channelAdminDetails[$a_row][$a_col++];
+	$g_address2 = $g_channelAdminDetails[$a_row][$a_col++];
+	$g_city = $g_channelAdminDetails[$a_row][$a_col++];
+	$g_state = $g_channelAdminDetails[$a_row][$a_col++];
+	$g_country = $g_channelAdminDetails[$a_row][$a_col++];
+	$g_email = $g_channelAdminDetails[$a_row][$a_col++];
+	$g_calendarImg = $g_channelAdminDetails[$a_row][$a_col++];
+	$g_loginID = $g_channelAdminDetails[$a_row][$a_col++];
+	$g_webPassword = $g_channelAdminDetails[$a_row][$a_col++];
+	$g_confirmPassword = $g_channelAdminDetails[$a_row][$a_col++];
+	$g_ip = $g_channelAdminDetails[$a_row][$a_col++];
+	$g_allowedTimeFrom = $g_channelAdminDetails[$a_row][$a_col++];
+	$g_allowedTimeTo = $g_channelAdminDetails[$a_row][$a_col++];
+	$g_roleType = $g_channelAdminDetails[$a_row][$a_col++];
+	$g_number = $g_channelAdminDetails[$a_row][$a_col++];
+	$g_smsPIN = $g_channelAdminDetails[$a_row][$a_col++];
+	$g_confPIN = $g_channelAdminDetails[$a_row][$a_col++];
+	$g_assertion = $g_channelAdminDetails[$a_row][$a_col++];
+	
+	
+	
+	_log("shashi 1111 " + $g_number );
+}
+
+function addNetworkAdmin() {
+	
+	_click(_link($g_leftMenuBar_OperatorUser));
+	_click(_link($g_leftMenuBar_AddOperatorUser));
+	_setSelected(_select("categoryCode"), $g_CategoryNA); // Selects NA option from drop-down.
+	_click(_submit($g_BtnSubmit));
+	_assertExists(_div($g_assertOp));
+	_assertExists(_row($g_assertAddNA));
+	commonDetailsForCreatingOperatorUser();
+	_click(_link($g_LinkAssignGeo));
+	_popup("eRecharge")._assertExists(_div($g_assertGeo), _lastAlert());
+	_popup("eRecharge")._click(_radio("geographicalCode", _submit("Add")));
+	_popup("eRecharge")._click(_submit($g_BtnAdd));
+	//_click(_radio("roleType"));
+	_click(_link($g_LinkAssignRoles));
+	_popup("eRecharge")._assertExists(_div($g_assertRole), _lastAlert());
+	_popup("eRecharge")._click(_checkbox($g_roleType));
+	_popup("eRecharge")._click(_submit($g_BtnAdd));
+	_click(_submit($g_BtnSave));
+	
+}
+
+function addSubSuperAdmin() {
+	
+	_click(_link($g_leftMenuBar_OperatorUser));
+	_click(_link($g_leftMenuBar_AddOperatorUser));
+	_setSelected(_select("categoryCode"), $g_CategorySubSA); // Selects sub super admin from the drop down 
+	_click(_submit($g_BtnSubmit));
+	_assertExists(_div($g_assertOp));
+	_assertExists(_row($g_assertAddSA));
+	commonDetailsForCreatingOperatorUser();
+	_click(_link($g_LinkAssignGeo));
+	_popup("eRecharge")._assertExists(_div($g_assertGeo), _lastAlert());
+	_popup("eRecharge")._click(_radio("geographicalCode", _submit("Add")));
+	_popup("eRecharge")._click(_submit($g_BtnAdd));
+	//_click(_radio("roleType"));
+	_click(_link($g_LinkAssignRoles));
+	_popup("eRecharge")._assertExists(_div($g_assertRole), _lastAlert());
+	_popup("eRecharge")._click(_checkbox($g_roleType));
+	_popup("eRecharge")._click(_submit($g_BtnAdd));
+	_click(_submit($g_BtnSave));
+	
+}
+
+function commonDetailsForCreatingOperatorUser()
+{
+	_setValue(_textbox("firstName"), $g_fisrtName);
+	_setValue(_textbox("lastName"), $g_lastName);
+	_setValue(_textbox("shortName"), $g_shortName);
+	_setSelected(_select("userNamePrefixCode"), $g_usernamePrefixCode);
+	_setValue(_textbox("externalCode"), $g_externalCode);
+	_setValue(_textbox("empCode"), $g_subscriberCode);
+	_setValue(_textbox("msisdn"), $g_mobileNumber);
+	_setValue(_textbox("ssn"), $g_ssn);
+	_setValue(_textbox("contactNo"), $g_mobileNumber);
+	_setSelected(_select("status"), $g_status);
+	_setValue(_textbox("designation"), $g_designation);
+	_setSelected(_select("divisionCode"), $g_divisionCode);
+	_setValue(_textbox("address1"), $g_address1);
+	_setValue(_textbox("address2"), $g_address2);
+	_setValue(_textbox("city"), $g_city);
+	_setValue(_textbox("state"), $g_state);
+	_setValue(_textbox("country"), $g_country);
+	_setValue(_textbox("email"), $g_email);
+	_click(_image($g_calendarImg));
+	_setValue(_textbox("appointmentDate"), $g_currentDate);
+	_setValue(_textbox("webLoginID"), $g_loginID); 
+	_setValue(_password("showPassword"), $g_webPassword);
+	_setValue(_password("confirmPassword"), $g_confirmPassword);
+	_setValue(_textarea("allowedIPs"), $g_ip);
+	for(var $i=0; $i<7; $i++){
+		_click(_checkbox("allowedDays[" + $i + "]"));
+	}
+	_setValue(_textbox("allowedFormTime"), $g_allowedTimeFrom);
+	_setValue(_textbox("allowedToTime"), $g_allowedTimeTo);
+}
+
+
+function commonDetailsForCreatingCAAndCC() {
+	
+	
+	_setValue(_textbox("firstName"), $g_fisrtName);
+	_setValue(_textbox("lastName"), $g_lastName);
+	_setValue(_textbox("shortName"), $g_shortName);
+	_setSelected(_select("userNamePrefixCode"), $g_usernamePrefixCode);
+	_setValue(_textbox("externalCode"), $g_externalCode);
+	_setValue(_textbox("empCode"), $g_subscriberCode);
+	_setValue(_textbox("ssn"), $g_ssn);
+	_setValue(_textbox("contactNo"), $g_mobileNumber);
+	_setSelected(_select("status"), $g_status);
+	_setValue(_textbox("designation"), $g_designation);
+	_setSelected(_select("divisionCode"), $g_divisionCode);
+	_setValue(_textbox("address1"), $g_address1);
+	_setValue(_textbox("address2"), $g_address2);
+	_setValue(_textbox("city"), $g_city);
+	_setValue(_textbox("state"), $g_state);
+	_setValue(_textbox("country"), $g_country);
+	_setValue(_textbox("email"), $g_email);
+	_click(_image($g_calendarImg));
+	_setValue(_textbox("appointmentDate"), $g_currentDate);
+	_setValue(_textbox("webLoginID"), $g_loginID); 
+	_setValue(_password("showPassword"), $g_webPassword);
+	_setValue(_password("confirmPassword"), $g_confirmPassword);
+	_setValue(_textarea("allowedIPs"), $g_ip);
+	for(var $i=0; $i<7; $i++){
+		_click(_checkbox("allowedDays[" + $i + "]"));
+	}
+	_setValue(_textbox("allowedFormTime"), $g_allowedTimeFrom);
+	_setValue(_textbox("allowedToTime"), $g_allowedTimeTo);
+
+	
+	
+}
+
+function addChannelAdmin() {
+	
+	_click(_link($g_leftMenuBar_OperatorUser));
+	_click(_link("Add operator user"));
+	_setSelected(_select("categoryCode"), $g_CategoryCA);
+	_click(_submit($g_BtnSubmit));
+	_assertExists(_div("Add operator user details"));
+	_assertExists(_cell("Channel Admin", _near(_cell("Category :"))));
+	commonDetailsForCreatingCAAndCC(); // Function is defind for common details of channel admin and channel domain
+	_click(_link($g_LinkAssignGeo));
+	_popup("eRecharge")._assertExists(_div($g_assertGeo), _lastAlert());
+	_popup("eRecharge")._click(_checkbox("checkNetwork", _in(_cell("Associated geographies (Zone)"))));
+	//_popup("eRecharge")._click(_checkbox("geographicalCodeArray", _near(_checkbox("checkNetwork"))));
+	_popup("eRecharge")._click(_submit($g_BtnAdd));
+	_click(_link($g_LinkAssignRoles));
+	_popup("eRecharge")._assertExists(_div($g_assertRole), _lastAlert());
+	_popup("eRecharge")._click(_checkbox($g_roleType));
+	_popup("eRecharge")._click(_submit($g_BtnAdd));
+	_click(_link($g_LinkAssignDomains));
+	_popup("eRecharge")._assertExists(_div($g_assertDomains), _lastAlert());
+	_popup("eRecharge")._click(_checkbox($g_roleType));
+	_popup("eRecharge")._click(_submit($g_BtnAdd));
+	
+	
+	// shashi added 
+	
+	_click(_link($g_LinkAssignServices));
+	_popup("eRecharge")._assertExists(_div($g_assertServices), _lastAlert());
+	_popup("eRecharge")._click(_checkbox($g_roleType));
+	_popup("eRecharge")._click(_submit($g_BtnAdd));
+	
+	_click(_link($g_LinkAssignPhoneNumbers));
+	
+	_popup("eRecharge")._assertExists(_div($g_assertPhoneNumbers), _lastAlert());
+	_popup("eRecharge")._setValue(_textbox("msisdnListIndexed[0].msisdn"), $g_number);
+	_popup("eRecharge")._setValue(_password("msisdnListIndexed[0].showSmsPin"), $g_smsPIN);
+	_popup("eRecharge")._setValue(_password("msisdnListIndexed[0].confirmSmsPin"), $g_confPIN);
+	_popup("eRecharge")._setSelected(_select("msisdnListIndexed[0].phoneProfile"), "Channel Admin");
+	//_popup("eRecharge")._click(_submit($g_BtnAdd).click());
+	_popup("eRecharge")._call(_submit("Add").click());
+	
+	 if(_condition(_exists(_popup("eRecharge")._font("Validation Error")))){
+		
+		_log("shashi");
+		_popup("eRecharge")._assertExists(_listItem("/"+$g_assertion +".*/" ));
+		_popup("eRecharge")._click(_link("Close"));
+	 	return;
+	    } 
+	 
+	
+	_click(_link($g_LinkAssignProducts));
+	_popup("eRecharge")._assertExists(_div($g_assertProducts), _lastAlert());
+	_popup("eRecharge")._click(_checkbox($g_roleType));
+	_popup("eRecharge")._click(_submit($g_BtnAdd));
+
+	_click(_submit($g_BtnSave));
+	
+	_assertExists(_listItem("/"+$g_assertion +".*/"));
+	
+	if(_exists(_listItem("/"+$g_assertion +".*/")))
+		return true;
+	else 
+		return false;
+}
+
+function addCustomerCare() {
+	_click(_link($g_leftMenuBar_OperatorUser));
+	_click(_link("Add operator user"));
+	_setSelected(_select("categoryCode"), $g_CategoryCC);
+	_click(_submit($g_BtnSubmit));
+	_assertExists(_div("Add operator user details"));
+	_assertExists(_cell("Customer Care", _near(_cell("Category :"))));
+	commonDetailsForCreatingOperatorUser();
+	_click(_link($g_LinkAssignGeo));
+	_popup("eRecharge")._assertExists(_div($g_assertGeo), _lastAlert());
+	_popup("eRecharge")._click(_radio("geographicalCode", _submit("Add")));
+	_popup("eRecharge")._click(_submit($g_BtnAdd));
+	_click(_link($g_LinkAssignRoles));
+	_popup("eRecharge")._assertExists(_div($g_assertRole), _lastAlert());
+	_popup("eRecharge")._click(_checkbox($g_roleType));
+	_popup("eRecharge")._click(_submit($g_BtnAdd));
+	_click(_submit($g_BtnSave));
+	
+	_assertExists(_listItem("/" + $g_assertion + ".*/"));
+	
+	if(_exists(_listItem("/" + $g_assertion + ".*/")))
+		return true;
+	else 
+		return false;
+	
+	
+	
+	
+}
+
+
+
+
+
+
+
+

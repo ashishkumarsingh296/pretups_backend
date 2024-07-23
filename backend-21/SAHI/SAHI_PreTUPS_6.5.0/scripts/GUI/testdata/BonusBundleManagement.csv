@@ -1,0 +1,18 @@
+Test Case No,Test Case Decsription,BundleName,Bundle Code,Bundle Type,Bundle Status ,ResponseFromIN,Assertion
+TEST001,Given that a network admin and add a new bonus bundle into system,CVG_TEST,CGVTEST,Amount ,Active ,Active,Bonus bundle added successfully
+TEST002,Given that a network admin logged into application and try to view status of bonus bundle,CVG,,,,,
+TEST003,Given that a network admin logged into application and try to add  bonus bundle without giving mandatory field,CVG,,,,,Bundle code is required.
+TEST004,Given that a network admin logged into application and try to modify  bonus bundle without giving mandatory field,CVG_TEST,,,,,Bundle code is required.
+TEST005,Given that a network admin logged into application and try to modify  bonus bundle ,CVG_TEST,CVG_TESTM,,,,Bonus bundle modified successfully
+TEST006,Given that a network admin logged try to add bonus bundle without any details,,,,,,Bundle name is required.
+TEST007,Given that a network admin logged try to add bonus bundle CODE,CVG_TEST,,Amount ,Active ,Active,Bundle code is required.
+TEST008,Given that a network admin logged try to add bonus bundle without bundle status,CVG_TEST,CGVTEST,Amount ,,,Please select status
+TEST009,Given that a network admin logged try to add bonus bundle without any without reponse from IN,CVG_TEST,CGVTEST,Amount ,Active ,,Please select response from IN status
+TEST010,Given that a network admin logged try to add bonus bundle without bunlde type,CVG_TEST,CGVTEST,,Active ,Active,Please select bundle type
+TEST011,Given than nw admin loggin into application and verify that value in Status dropdown get populated,,,,,,
+TEST012,Verify that functionality of reset button on add bonus bundle page ,CVG,Test,,,,
+TEST013,Veriy the functionality of back button from add bonus bundle confirm page,CVG_TEST,CGVTEST,Amount ,Active ,Active,
+TEST014,Verify that network admin cant delete the bonus bulde if it is mapped with sub service ,VG,,,,,Bundle is mapped with sub service. So it cannot be deleted.
+TEST015,"Verify that bundle name should be unique in the system, if you will use the existing name then it will display error msg message",VG,CGVTEST,Amount ,Active ,Active,Bundle name already exists
+TEST016,Verify the functionality of reset button while modifying the name of bonus bundle name ,VG,,,,,
+TEST017,Verify the functionality of back button while modifying the name of bonus bundle name ,VG,CVGTEST,Amount ,Active ,Active,

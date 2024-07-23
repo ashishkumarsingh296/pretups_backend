@@ -1,0 +1,51 @@
+INSERT INTO pages_ui
+(page_code, module_code, page_url, menu_name, show_menu, sequence_no, menu_level, parent_page_code, image, role_code, domain_type, category_code, page_type, app_name, is_default)
+VALUES('P_NW_INTERFACE_MAP', 'COMMON', '/interfaceMapping', 'Service Product Interface Mapping', 'Y', 27, '1', 'ROOT', 'assets/images/home/svg/home.svg', NULL, 'OPERATOR', 'NWADM', NULL, 'eTopup', NULL);
+
+------
+
+INSERT INTO page_ui_roles
+(role_code, page_code)
+VALUES('ROLESRVMAP', 'P_NW_INTERFACE_MAP');
+
+
+-------
+
+INSERT INTO page_ui_roles
+(role_code, page_code)
+VALUES('ROLEMSRVMAP', 'P_NW_INTERFACE_MAP');
+
+
+-----
+INSERT INTO page_ui_roles
+(role_code, page_code)
+VALUES('ROLESRVVMAP', 'P_NW_INTERFACE_MAP');
+
+--------
+UPDATE roles
+SET role_name='Add Product Interface Mapping', group_name='Service Product Interface Mapping', status='Y', role_type='A', from_hour=NULL, to_hour=NULL, group_role='N', application_id='1', gateway_types='WEB', role_for='B', is_default='N', is_default_grouprole='N', access_type='B', sub_group_name='Sub_Group', sub_group_role='N', view_roles='Y'
+WHERE role_code='ROLESRVMAP' AND domain_type='OPERATOR';
+
+
+----
+UPDATE roles
+SET role_name='Modify Product Interface Mapping', group_name='Service Product Interface Mapping', status='Y', role_type='A', from_hour=NULL, to_hour=NULL, group_role='N', application_id='1', gateway_types='WEB', role_for='B', is_default='N', is_default_grouprole='N', access_type='B', sub_group_name='Sub_Group', sub_group_role='N', view_roles='Y'
+WHERE role_code='ROLEMSRVMAP' AND domain_type='OPERATOR';
+
+--------
+
+UPDATE roles
+SET role_name='View Product Interface Mapping', group_name='Service Product Interface Mapping', status='Y', role_type='A', from_hour=NULL, to_hour=NULL, group_role='N', application_id='1', gateway_types='WEB', role_for='B', is_default='N', is_default_grouprole='N', access_type='B', sub_group_name='Sub_Group', sub_group_role='N', view_roles='Y'
+WHERE role_code='ROLESRVVMAP' AND domain_type='OPERATOR';
+
+------
+
+INSERT INTO role_ui_mapping
+(role_ui_parent_id, role_ui_id, rule_code)
+VALUES('networkAdmin', 'Modify_Product_Interface_Map', 'ROLEMSRVMAP');
+
+----
+
+INSERT INTO role_ui_mapping
+(role_ui_parent_id, role_ui_id, rule_code)
+VALUES('networkAdmin', 'Add_Product_Interface_Map', 'ROLESRVMAP');

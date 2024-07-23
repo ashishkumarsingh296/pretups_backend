@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<!DOCTYPE webaxn SYSTEM "i18n.dtd">
+<widget version="1.0">
+	<name>PRETUPS Withdraw</name>
+	<description>Withdraw</description>
+	<author>Comviva</author>
+	<license>Comviva Technologies</license>
+	<identifier>221608327</identifier>
+	<type>2</type>
+	<icon src="withdraw.png"/>
+	<content src="withdraw.html" />
+	<content bearer="2" src="withdrawUSSD.html"/>
+	<x-title background="#788593" color="white" fontstyle="bold" fontsize="14"/>
+	<x-scrollbar background="grey" color="#788593"/>
+	<x-softkeystyle background="#788593" color="white" fontstyle="bold" fontsize="14"/>
+	<x-menustyle background="white" color="black" onfocuscolor="white"/>	
+	<x-selection onfocusbackground="#778899"/>
+	<x-userdata-access>179878594</x-userdata-access>
+	<x-menugroup id="withdraw">
+		<x-menu caption="&pre.rsk.back;" x-softkey="right" href="wgt:179878594/1.0/:displayMain();"/>
+    	</x-menugroup>
+    	  	<x-menugroup id="post">			
+		<x-menu caption="&pre.lsk.ok;" x-softkey="right" href="#"/>
+	</x-menugroup>
+	
+	
+</widget>
+

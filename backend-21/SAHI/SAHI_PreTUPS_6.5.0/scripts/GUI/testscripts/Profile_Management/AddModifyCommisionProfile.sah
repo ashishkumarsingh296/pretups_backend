@@ -1,0 +1,93 @@
+//######################################
+//
+//This script to add negative test caes for Bonus Bund
+//
+//#######################################
+
+
+//===== import scripts ===//
+_includeOnce("../../../../utility/ImportPackage.sah");
+_includeOnce("../../../GUI/testscripts/Profile_Management/CommissionProfile_Common.sah"); //For adding C2S card group	
+
+
+
+//If Network Admin doesn't exist create it first then create network stock deduction
+
+var $l_naCsv = _readCSVFile("../../../GUI/testdata/NA_Login.csv"); //Reads the network admin credentials 
+var $g_row = 4;
+var $g_col = 1;
+var $g_networkAdmin1 = $l_naCsv[1][1];
+if($g_networkAdmin1 == "null"){  
+	createNA();  // UserManagement_Common.sah
+	var $l_naCsv1 = _readCSVFile("../../../GUI/testdata/NA_Login.csv");
+	$g_networkAdmin1 = $l_naCsv1[1][1];
+	login($g_appURL, $g_LangEnglish, $g_networkAdmin1, $g_commonPassword, $g_assertWelcome);
+}else	 
+	login($g_appURL,  $g_LangEnglish, $g_networkAdmin1, $g_commonPassword, $g_assertWelcome);
+
+ 
+
+// ....................... Test cases for bonus bundle managament ............. //
+
+var $g_commissionProfileDetails = _readCSVFile("../../../GUI/testdata/NewCommissionProfile_Details.csv"); //Reads the Card group details
+
+
+
+	for(var $g_row = 1; $g_commissionProfileDetails[$g_row] != null; $g_row++){
+		
+				var $g_col = 0;
+				var $temp_testCaseNo = $g_commissionProfileDetails[$g_row][$g_col++];
+				var $t = _testcase($temp_testCaseNo, $g_commissionProfileDetails[$g_row][$g_col++]);
+				
+				$t.start();
+				
+				if($temp_testCaseNo == "TEST001"){
+					commonVaribleForCommisionProfile($g_row, $g_col);
+					addCommissionProfile();
+				}
+				else if($temp_testCaseNo == "TEST002"){
+					commonVaribleForCommisionProfile($g_row, $g_col);
+					ModifyCommissionProfile();
+				}
+				else if($temp_testCaseNo == "TEST003"){
+					commonVaribleForCommisionProfile($g_row, $g_col);
+					viewBackRestButtonOnCommissionProfile();
+				}
+				else if($temp_testCaseNo == "TEST004"){
+					commonVaribleForCommisionProfile($g_row, $g_col);
+					addCommissionProfileWithExistingShortCode();
+				}
+				else if($temp_testCaseNo == "TEST005"){
+					commonVaribleForCommisionProfile($g_row, $g_col);
+					addCommissionProfileWithPastDate();
+				}
+				else if($temp_testCaseNo == "TEST006"){
+					commonVaribleForCommisionProfile($g_row, $g_col);
+					toViewConcernedPage();
+				}
+				else if($temp_testCaseNo == "TEST007"){
+					commonVaribleForCommisionProfile($g_row, $g_col);
+					toViewExistingCommisssionProfile();
+				}
+				
+				else if($temp_testCaseNo == "TEST008"){
+					commonVaribleForCommisionProfile($g_row, $g_col);
+					toCheckResetButtonCommisssionProfile();
+				}
+				
+				
+				$t.end();
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+

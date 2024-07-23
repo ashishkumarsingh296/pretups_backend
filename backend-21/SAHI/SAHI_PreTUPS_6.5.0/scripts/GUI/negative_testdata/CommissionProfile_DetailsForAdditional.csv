@@ -1,0 +1,2 @@
+ProfileName,ShortCode,Applicable From,Applicable From,CommProf,MultipleOf,Min Value,Max Value,FromRange,ToRange,AdditionalComm
+Testing,TEST,calendar-icon.gif,23:59,Add commission profile,1,1,1000,1,100,Add additional commission

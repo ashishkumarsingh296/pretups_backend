@@ -1,0 +1,4 @@
+MSISDN,TestcaseId,TestcaseType,Module,Description
+7200000100,TUNG12879 ,P,Private Recharge Enquiry,To verify that an already registered subscriber can initate enquiry request
+,TUNG12880,N,Private Recharge Enquiry,To verify that registration request fails on if mandatory field is not filled
+7285967496,TUNG12881,P,Private Recharge Enquiry,To verify that an unregistered subscriber cannot initate enquiry request

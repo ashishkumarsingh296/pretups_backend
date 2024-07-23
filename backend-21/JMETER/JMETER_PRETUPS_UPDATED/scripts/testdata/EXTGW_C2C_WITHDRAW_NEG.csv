@@ -1,0 +1,9 @@
+TestcaseId,TestcaseType,Module,Description
+,Negative,C2C Withdraw,To verify C2C withdraw is not successful if TCP of sender is suspended.
+,Negative,C2C Withdraw,To verify C2C withdraw is not successful if TCP of receiver is suspended.
+,Negative,C2C Withdraw,To verify C2C withdraw is not successful if receiver is insuspended.
+,Positive,C2C Withdraw,To verify C2C withdraw is successful if receiver is outsuspended.
+,Negative,C2C Withdraw,To verify C2C withdraw is not successful if product code is blank
+,Negative,C2C Withdraw,To verify C2C withdraw is not successful if Quantity is blank
+,Positive,C2C Withdraw,To verify C2C withdraw is  successful if language code is invalid
+,Negative,C2C Withdraw,To verify C2C withdraw is not successful if reference number length is greater than 20

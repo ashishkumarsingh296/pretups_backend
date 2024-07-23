@@ -1,0 +1,3 @@
+TestcaseId,TestcaseType,Module,Description
+,Negative,Voucher Recharge,To verify Voucher Recharge fails with all blank
+,Negative,Voucher Recharge,To verify Voucher Recharge fails with invalid voucher Code

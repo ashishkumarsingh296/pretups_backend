@@ -1,0 +1,101 @@
+
+
+// This is script to approve O2C.
+
+
+//===========================Import Scripts============================	 
+_includeOnce("../../../../utility/ImportPackage.sah");	//For importing common files
+
+_includeOnce("../../../GUI/testscripts/PinCaptchaO2C/O2CBatchApproval_Common.sah"); //For adding batch name for File 	
+
+//======================Pre-requisite check============================
+_log("Setup", "custom4");
+
+// Login with channel admin to Approve batch O2C
+
+var $l_naCsv = _readCSVFile("../../../GUI/testdata/NA_Login.csv"); //Reads Channel Admin login ID from csv file
+var $g_channelAdmin = $l_naCsv[2][1];
+	if($g_channelAdmin == "null"){ //If Channel Admin is not present then create it 
+	createCA(); //Function defined in UserManagement_Common.sah
+	var $l_naCsv = _readCSVFile("../../../GUI/testdata/NA_Login.csv"); //Reads Channel Admin login ID from csv file
+	 $g_channelAdminn = $l_naCsv[2][1];
+	login($g_appURL, $g_LangEnglish, $g_channelAdminn, $g_commonPassword, $g_assertWelcome); //Login as Channel Admin
+}
+else{	 
+	login($g_appURL, $g_LangEnglish, $g_channelAdmin, $g_commonPassword, $g_assertWelcome); //Login as Channel Admin(Login_Common.sah)
+}
+
+
+// ............... Function to approve Batch O2C level1
+
+approveO2CbatchApprovalLevel1();
+
+//...................Negative test case for approving O2c with empty pin
+n_approveO2CBatchApprLevelOne_empty_pin();
+
+
+n_approveO2CBatchApprLevelOne_invalid_pin();
+
+
+rejectO2CbatchApprovalLevelOne();
+
+n_rejectO2CbatchApprovalLevelOne_empty_pin();
+
+n_rejectO2CbatchApprovalLevelOne_invalid_pin();
+
+
+processO2CbatchApprovalLevelOne();
+
+//...........Function to process BulkCommissionPayoutApprovalLevelOne providing invalid pin  @Approval level 1	
+n_processO2CbatchApprovalLevel1_invalid_pin();
+
+//...........Function to process BulkCommissionPayoutApprovalLevelOne providing empty pin  @Approval level 1	
+n_processO2CbatchApprovalLevel1_empty_pin();
+
+processO2CbatchApprovalLevelOne_cancle();
+
+processO2CbatchApprovalLevelOne_back();
+
+
+
+// ............... Function to approve Batch O2C level 2
+	
+approveO2CbatchApprovalLevel2();
+	
+//...................Negative test case for approving O2c with empty pin
+n_approveO2CBatchApprLevelTwo_empty_pin();
+
+//...................Negative test case for approving O2c with invalid pin
+n_approveO2CBatchApprLevelTwo_invalid_pin();
+
+rejectO2CbatchApprovalLevelTwo();
+n_rejectO2CbatchApprovalLevelTwo_empty_pin();
+n_rejectO2CbatchApprovalLevelOne_invalid_pin();	
+processO2CbatchApprovalLevelTwo();
+n_processO2CbatchApprovalLevel1_invalid_pin();
+n_processO2CbatchApprovalLevel2_empty_pin();
+processO2CbatchApprovalLevelTwo_cancle();
+processO2CbatchApprovalLevelTwo_back();
+
+
+rejectO2CbatchApprovalLevelOne_cancle();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

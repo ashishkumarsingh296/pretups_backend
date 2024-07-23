@@ -1,0 +1,9 @@
+TestcaseId,TestcaseType,Module,Description
+TUNG12847 ,Negative,O2C return through EXTGW,To check if neither of user (MSISDN -pin   extcode )is not present in the request then o2c return is not successful
+TUNG12848 ,Negative,O2C return through EXTGW,To check if  product code is not present in the request then o2c retrun is not successful
+TUNG12849,Negative,O2C return through EXTGW,To check if  amount is not present in the request then o2c return is not successful
+TUNG12850 ,Negative,O2C return through EXTGW,To check if  txn date is not present in the request then o2c return is not successful
+TUNG12851 ,Negative,O2C return through EXTGW,To check if  txn number is not present in the request then o2c return is not successful
+TUNG12852,Negative,O2C return through EXTGW,To check if  msisdn is present but pin  is not present in the request then o2c return is not successful
+TUNG12853,Negative,O2C return through EXTGW,To check  that an unsuccessful o2c return occurs when wrong ext code is present
+,Negative,O2C return through EXTGW,To check  that an unsuccessful o2c return occurs when PIN is invalid

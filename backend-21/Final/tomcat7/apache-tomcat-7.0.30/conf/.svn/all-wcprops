@@ -1,0 +1,47 @@
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/tomcat7/apache-tomcat-7.0.30/conf
+END
+logging.properties
+K 25
+svn:wc:ra_dav:version-url
+V 130
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/tomcat7/apache-tomcat-7.0.30/conf/logging.properties
+END
+catalina.policy
+K 25
+svn:wc:ra_dav:version-url
+V 127
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/tomcat7/apache-tomcat-7.0.30/conf/catalina.policy
+END
+catalina.properties
+K 25
+svn:wc:ra_dav:version-url
+V 131
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/tomcat7/apache-tomcat-7.0.30/conf/catalina.properties
+END
+context.xml
+K 25
+svn:wc:ra_dav:version-url
+V 123
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/tomcat7/apache-tomcat-7.0.30/conf/context.xml
+END
+tomcat-users.xml
+K 25
+svn:wc:ra_dav:version-url
+V 128
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/tomcat7/apache-tomcat-7.0.30/conf/tomcat-users.xml
+END
+server.xml
+K 25
+svn:wc:ra_dav:version-url
+V 122
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/tomcat7/apache-tomcat-7.0.30/conf/server.xml
+END
+web.xml
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/tomcat7/apache-tomcat-7.0.30/conf/web.xml
+END

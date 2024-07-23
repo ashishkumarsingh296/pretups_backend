@@ -1,0 +1,50 @@
+TestCaseNo.,TestCase Description,Service Class Code,Service Class Name,Status,P2P Sender Allowed Status,P2P Sender denied Status,P2P receiver Allowed Status,P2P receiver denied Status,C2S receiver Allowed Status,C2S receiver denied Status,Assertion
+TEST001,Given that super admin login into application and try to add service class without any details ,,,,,,,,,,Service class code is required.
+TEST002,Given that super admin login into application and try to add service class without service class code,,ClassTest,Active,Yes,No,Yes,No,Yes ,No,Service class code is required.
+TEST003,Given that super admin login into application and try to add service class without service class name,SERVCODE,,Active,Yes,No,Yes,No,Yes ,No,Service class name is required.
+TEST004,Given that super admin login into application and try to add service class without status,SERVCODE,ClassTest,,Yes,No,Yes,No,Yes ,No,Status is required.
+TEST005,Given that super admin login into application and try to add service class without P2P Sender allowed status,SERVCODE,ClassTest,Active,,No,Yes,No,Yes ,No,P2P sender allowed status is required.
+TEST006,Given that super admin login into application and try to add service class without P2P receiver allowed status,SERVCODE,ClassTest,Active,Yes,No,,No,Yes ,No,P2P receiver allowed status is required.
+TEST007,Given that super admin login into application and try to add service class without C2S receiver allowed status,SERVCODE,ClassTest,Active,Yes,No,Yes,No,,No,C2S receiver allowed status is required.
+TEST008,Try to add service class with a service code having more than one word,SERV CODE,ClassTest,Active,Yes,No,Yes,No,Yes ,No,Service class code should be alphanumeric single word.
+TEST009,Try to add service class with a service code consist of only special charactor,^%^%^%**&,ClassTest,Active,Yes,No,Yes,No,Yes ,No,Service class code should be alphanumeric single word.
+TEST010,Try to add service class with a service code containg one or more charactor,SERV@CODE,ClassTest,Active,Yes,No,Yes,No,Yes ,No,Service class code should be alphanumeric single word.
+TEST011,Try to add service class with a service code having more than one spaces,SE CO DE,ClassTest,Active,Yes,No,Yes,No,Yes ,No,Service class code should be alphanumeric single word.
+TEST012,Try to add service class with a service code as negative number,-1000,ClassTest,Active,Yes,No,Yes,No,Yes ,No,Service class code should be alphanumeric single word.
+TEST013,Try to add service class with a service code as decimal number,0.01,ClassTest,Active,Yes,No,Yes,No,Yes ,No,Service class code should be alphanumeric single word.
+TEST014,Try to submit  P2P sender allowed status values saperated  by double comma,SERVCODE,ClassTest,Active,"Yes ,, No",No,Yes,No,Yes ,No,In P2P sender allowed status field blank value is not allowed between commas.
+TEST015,Try to submit  P2P sender denied status values saperated  by double comma,SERVCODE,ClassTest,Active,Yes,"No ,, Yes",Yes,No,Yes ,No,In P2P sender denied status field blank value is not allowed between commas.
+TEST016,Try to submit  P2P receiver allowed status values saperated  by double comma,SERVCODE,ClassTest,Active,Yes,No,"Yes ,, No",No,Yes ,No,In P2P receiver allowed status field blank value is not allowed between commas.
+TEST017,Try to submit  P2P receiver denied status values saperated  by double comma,SERVCODE,ClassTest,Active,Yes,No,Yes,"No ,, Yes",Yes ,No,In P2P receiver denied status field blank value is not allowed between commas.
+TEST018,Try to submit  C2S receiver allowed status values saperated  by double comma,SERVCODE,ClassTest,Active,Yes,No,Yes,No,"Yes ,, No",No,In C2S receiver allowed status field blank value is not allowed between commas.
+TEST019,Try to submit  C2S receiver denied status values saperated  by double comma,SERVCODE,ClassTest,Active,Yes,No,Yes,No,Yes ,"No ,, Yes",In C2S receiver denied status field blank value is not allowed between commas.
+TEST020,Try to submit same P2P sender allowed status values separated by comma ,SERVCODE,ClassTest,Active,"Yes,Yes",No,Yes,No,Yes ,No,P2P sender allowed status should not contain repeated value as Yes.
+TEST021,Try to submit same P2P sender denied status values separated by comma ,SERVCODE,ClassTest,Active,Yes,"No,No",Yes,No,Yes ,No,P2P sender denied status should not contain repeated value as No.
+TEST022,Try to submit same P2P receiver allowed status values separated by comma ,SERVCODE,ClassTest,Active,Yes,No,"Yes,Yes",No,Yes ,No,P2P receiver allowed status should not contain repeated value as Yes.
+TEST023,Try to submit same P2P receiver denied status values separated by comma ,SERVCODE,ClassTest,Active,Yes,No,Yes,"No,No",Yes ,No,P2P receiver denied status should not contain repeated value as No.
+TEST024,Try to submit same C2S receiver allowed status values separated by comma ,SERVCODE,ClassTest,Active,Yes,No,Yes,No,"Yes,Yes",No,C2S receiver allowed status should not contain repeated value as Yes.
+TEST025,Try to submit same C2S receiver denied status values separated by comma ,SERVCODE,ClassTest,Active,Yes,No,Yes,No,Yes ,"No,No",C2S receiver denied status should not contain repeated value as No.
+TEST026,Try to submit  P2P Sender allowed and P2P Sender denied status are same,SERVCODE,ClassTest,Active,Yes,Yes,Yes,No,Yes ,No,Values in P2P sender allowed status should not be repeated in P2P sender denied status.
+TEST027,Try to submit  P2P receiver allowed and P2P receiver denied status are same,SERVCODE,ClassTest,Active,Yes,No,Yes,Yes,Yes ,No,Values in P2P receiver allowed status should not be repeated in P2P receiver denied status.
+TEST028,Try to submit  C2S receiver allowed and C2S receiver denied status are same,SERVCODE,ClassTest,Active,Yes,No,Yes,No,Yes ,Yes,Values in C2S receiver allowed status should not be repeated in C2S receiver denied status.
+TEST029,Try to submit  P2P Sender allowed status as ALL and one more value which is separated by comma,SERVCODE,ClassTest,Active,"ALL,Yes",,ALL,,ALL,,In P2P sender allowed status 'ALL' should be alone.
+TEST030,Try to submit  P2P receiver allowed status as ALL and one more value which is separated by comma,SERVCODE,ClassTest,Active,Yes,,"ALL,Yes",,ALL,,In P2P receiver allowed status 'ALL' should be alone.
+TEST031,Try to submit  C2S receiver allowed status as ALL and one more value which is separated by comma,SERVCODE,ClassTest,Active,Yes,,ALL,,"ALL,Yes",,In C2S receiver allowed status 'ALL' should be alone.
+TEST032,"Try to submit P2P sender denied status with some values when P2P sender allowed status is ""ALL""  ",SERVCODE,ClassTest,Active,ALL,No,ALL,,ALL,,P2P sender denied status should be blank when P2P sender allowed status is ALL.
+TEST033,"Try to submit P2P receiver denied status with some values when P2P receiver allowed status is ""ALL""  ",SERVCODE,ClassTest,Active,ALL,,ALL,No,ALL,,P2P receiver denied status should be blank when P2P receiver allowed status is ALL.
+TEST034,"Try to submit C2S receiver denied status with some values when C2S receiver allowed status is ""ALL""  ",SERVCODE,ClassTest,Active,ALL,,ALL,,ALL,No,C2S Receiver denied status should be blank when C2S receiver allowed status is ALL.
+TEST035,"Try to submit P2P sender denied status as ""ALL""",SERVCODE,ClassTest,Active,Yes,ALL,Yes,,Yes,,ALL is not allowed in P2P sender denied status.
+TEST036,"Try to submit P2P receiver denied status as ""ALL""",SERVCODE,ClassTest,Active,Yes,,Yes,ALL,Yes,,ALL is not allowed in P2P receiver denied status.
+TEST037,"Try to submit C2S receiver denied status as ""ALL""",SERVCODE,ClassTest,Active,Yes,,Yes,,Yes,ALL,ALL is not allowed in C2S receiver denied status.
+TEST038,Try to submit comma before P2P sender allowed status value,SERVCODE,ClassTest,Active,",Yes",No,Yes,No,Yes ,No,In P2P sender allowed status field comma should not be at first place.
+TEST039,Try to submit comma after P2P sender allowed status value,SERVCODE,ClassTest,Active,"Yes,",No,Yes,No,Yes ,No,In P2P sender allowed status field comma should not be at last place.
+TEST040,Try to submit comma before P2P sender denied status value,SERVCODE,ClassTest,Active,Yes,",No",Yes,No,Yes ,No,In P2P sender denied status field comma should not be at first place.
+TEST041,Try to submit comma after P2P sender denied status value,SERVCODE,ClassTest,Active,Yes,"No,",Yes,No,Yes ,No,In P2P sender denied status field comma should not be at last place.
+TEST042,Try to submit comma before P2P receiver allowed status value,SERVCODE,ClassTest,Active,Yes,No,",Yes",No,Yes ,No,In P2P receiver allowed status field comma should not be at first place.
+TEST043,Try to submit comma after P2P receiver allowed status value,SERVCODE,ClassTest,Active,Yes,No,"Yes,",No,Yes ,No,In P2P receiver allowed status field comma should not be at last place.
+TEST044,Try to submit comma before P2P receiver denied status value,SERVCODE,ClassTest,Active,Yes,No,Yes,",No",Yes ,No,In P2P receiver denied status field comma should not be at first place.
+TEST045,Try to submit comma after P2P receiver denied status value,SERVCODE,ClassTest,Active,Yes,No,Yes,"No,",Yes ,No,In P2P receiver denied status field comma should not be at last place.
+TEST046,Try to submit comma before C2S receiver allowed status value,SERVCODE,ClassTest,Active,Yes,No,Yes,No,",Yes ",No,In C2S receiver allowed status field comma should not be at first place.
+TEST047,Try to submit comma after C2S receiver allowed status value,SERVCODE,ClassTest,Active,Yes,No,Yes,No,"Yes ,",No,In C2S receiver allowed status field comma should not be at last place.
+TEST048,Try to submit comma before C2S receiver denied status value,SERVCODE,ClassTest,Active,Yes,No,Yes,No,Yes ,",No",In C2S receiver denied status field comma should not be at first place.
+TEST049,Try to submit comma after C2S receiver denied status value,SERVCODE,ClassTest,Active,Yes,No,Yes,No,Yes ,"No,",In C2S receiver denied status field comma should not be at last place.

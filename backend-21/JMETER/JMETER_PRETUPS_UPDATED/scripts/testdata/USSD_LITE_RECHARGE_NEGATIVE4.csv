@@ -1,0 +1,2 @@
+TestcaseId,TestcaseType,Module,Description
+TUNG12358 ,Negative,Lite Recharge through USSD,Check invalid receiver  should show error

@@ -1,0 +1,21 @@
+TestCaseNo.,Discription,Domain Type,Channel Domain Code,Channel Domain Name,NOC Category,Assertion
+TEST001,Try to submit without giving any details of channel domain,,,,,Channel Domain type is required.
+TEST002,Try to creation channel domain only with domain type,Distributor Channel,,,,Channel Domain code is required.
+TEST003,Try to submit without domain type,,DOMCODE,TestDomain,1,Channel Domain type is required.
+TEST004,Try to submit without number of categories,Distributor Channel,DOMCODE,TestDomain,,Number of Channel categories is required.
+TEST005,Try to create a pllication without channel domain name,Distributor Channel,DOMCODE,,1,Channel Domain name is required.
+TEST006,Try to create a domain without domain code,Distributor Channel,,TestDomain,1,Channel Domain code is required.
+TEST007,Try to create domain without name and category,Distributor Channel,DOMCODE,,,Channel Domain name is required.
+TEST008,Try to create domain only with domain type and name,Distributor Channel,,TestDomain,,Channel Domain code is required.
+TEST009,Try to submit only with NOC,Distributor Channel,,,1,Channel Domain code is required.
+TEST010,Try to submit a domain code having more than one word ,Distributor Channel,test domain,,1,Channel Domain code should be alphanumeric single word
+TEST011,Try to submit a domain code containing special charactor,Distributor Channel,test@domain,,,Channel Domain code should be alphanumeric single word
+TEST012,try to submit a domain code contaning only special charactor,Distributor Channel,&*&*&*,,,Channel Domain code should be alphanumeric single word
+TEST013,Try to submit a domain containing more than one space,Distributor Channel, t s t ,,,Channel Domain code should be alphanumeric single word
+TEST014,Try to submit domain code as a negative number,Distributor Channel,-100,,,Channel Domain code should be alphanumeric single word
+TEST015,Try to submit domain code contaning decimal value,Distributor Channel,0.01,,,Channel Domain code should be alphanumeric single word
+TEST016,Try to submit alphabet as number of categories,Distributor Channel,DOMCODE,TestDomain,k,Number of Channel categories must be an integer.
+TEST017,Try to submit zero as a number of categories ,Distributor Channel,DOMCODE,TestDomain,0,No of categories should be greater than or equal to 1.
+TEST018,Try to submit a special charactor as number of categories,Distributor Channel,DOMCODE,TestDomain,#,Number of Channel categories must be an integer.
+TEST019,Try to add negative number of category ,Distributor Channel,DOMCODE,TestDomain,-9,Number of Channel categories must be an integer.
+TEST020,Try to submit negative domain code and number of categories,Distributor Channel,-100,TestDomain,-9,Channel Domain code should be alphanumeric single word

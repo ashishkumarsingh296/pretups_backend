@@ -1,0 +1,2 @@
+PIN,PRODUCTCODE,LANGUAGE1,TestcaseId,TestcaseType,Module,Description
+1111,101,,TUNG23131,Negative,REST -  C2C withdraw,TO verify that when  LOGinid is enter then password is mandatory .

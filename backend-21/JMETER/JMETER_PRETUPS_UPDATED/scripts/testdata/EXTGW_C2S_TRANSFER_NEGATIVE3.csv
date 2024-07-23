@@ -1,0 +1,2 @@
+EXTNWCODE,AMOUNT,LANGUAGE1,LANGUAGE2,SELECTOR,TestcaseId,TestcaseType,Module,Description
+NG,100,0,0,1,TUNG12980,Negative,Recharge from Main Distributor to Subscriber ,To verify that Between MSISDN LOGINID and EXTCODE value of one of them must be present

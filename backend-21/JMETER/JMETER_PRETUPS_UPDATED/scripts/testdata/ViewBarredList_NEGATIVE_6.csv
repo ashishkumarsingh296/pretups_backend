@@ -1,0 +1,2 @@
+TestcaseId,TestcaseType,Module,Description
+TUNG12801,Negative,View barred list through RESTFul API,To verify form date is required to get barred user list

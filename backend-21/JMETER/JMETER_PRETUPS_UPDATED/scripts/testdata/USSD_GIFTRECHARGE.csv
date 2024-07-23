@@ -1,0 +1,6 @@
+MSISDN1,PIN,MSISDN2,AMOUNT,LANGUAGE1,LANGUAGE2,SELECTOR,GIFTER_MSISDN,GIFTER_NAME,GIFTER_LANGUAGE,TestcaseId,TestcaseType,Module,Description
+7212121514,1358,7212345600,100,0,0,1,7255111223,harshad,1,TUNG13127,Positive,Gift Recharge through USSD,ByMsisdn and Pin
+7212121514,,7212345600,100,0,0,1,7255111223,harshad,1,TUNG13128,Negative,Gift Recharge through USSD,only Msisdn Given no Pin is given
+7212121514,1358,7212345600,100,0,0,,7255111223,harshad,1,TUNG13129,Negative,Gift Recharge through USSD,Selector Value kept Blank
+,,7212345600,100,0,0,1,7255111223,harshad,1,TUNG13130,Negative,Gift Recharge through USSD,No login Credentials Given
+7212121514,1357,7212345600,100,0,0,1,7255111223,harshad,1,TUNG13131,Negative,Gift Recharge through USSD,invalid Msisdn and Pin

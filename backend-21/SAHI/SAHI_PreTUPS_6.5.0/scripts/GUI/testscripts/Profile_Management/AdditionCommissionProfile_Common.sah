@@ -1,0 +1,163 @@
+
+
+// This scripts contains all the common methods for bonus bundle management.
+
+_includeOnce("../../../../utility/ImportPackage.sah");
+
+
+
+
+
+
+var $g_domain;
+var $g_category;
+var $g_geographicalDomain;
+var $g_grade;
+var $g_profileName;
+var $g_shortCode;
+var $g_calendarImg;
+var $g_applicableFromHour;
+var $g_addCommProfImg;
+var $g_multipleOf;
+var $g_minTransfer;
+var $g_maxTransfer;
+var $g_startRange;
+var $g_endRange;
+var $g_commType;
+var $g_commRate;
+var $g_tax1Rate;
+var $g_tax2Rate;
+var $g_tax3Rate;
+
+var $g_serviceName;
+var $g_gatewayCode;
+var $g_applicableFrom;
+var $g_applicableTo;
+var $g_timeSlab;
+var $g_comRate;
+var $g_diffFact;
+var $g_tax1;
+var $g_tax2;
+
+var $g_assertion;
+
+
+
+function commonVaribleForAdditionalCommisionProfile($g_row, $g_col) {
+	
+	$g_domain  = $g_additionalCommissionProfileDetails[$g_row][$g_col++];
+	$g_category = $g_additionalCommissionProfileDetails[$g_row][$g_col++];
+	$g_geographicalDomain = $g_additionalCommissionProfileDetails[$g_row][$g_col++];
+	$g_grade = $g_additionalCommissionProfileDetails[$g_row][$g_col++];
+	$g_profileName = $g_additionalCommissionProfileDetails[$g_row][$g_col++];
+	$g_shortCode = $g_additionalCommissionProfileDetails[$g_row][$g_col++];
+	$g_calendarImg = $g_additionalCommissionProfileDetails[$g_row][$g_col++];
+	$g_applicableFromHour = $g_additionalCommissionProfileDetails[$g_row][$g_col++];
+	$g_multipleOf = $g_additionalCommissionProfileDetails[$g_row][$g_col++];
+	$g_minTransfer = $g_additionalCommissionProfileDetails[$g_row][$g_col++];
+	$g_maxTransfer = $g_additionalCommissionProfileDetails[$g_row][$g_col++];
+	$g_startRange = $g_additionalCommissionProfileDetails[$g_row][$g_col++];
+	$g_endRange = $g_additionalCommissionProfileDetails[$g_row][$g_col++];
+	$g_commRate = $g_additionalCommissionProfileDetails[$g_row][$g_col++];
+	$g_tax1Rate = $g_additionalCommissionProfileDetails[$g_row][$g_col++];
+	$g_tax2Rate = $g_additionalCommissionProfileDetails[$g_row][$g_col++];
+	$g_tax3Rate = $g_additionalCommissionProfileDetails[$g_row][$g_col++];
+	
+	$g_serviceName = $g_additionalCommissionProfileDetails[$g_row][$g_col++];
+	$g_gatewayCode = $g_additionalCommissionProfileDetails[$g_row][$g_col++];
+	$g_applicableFrom  = $g_additionalCommissionProfileDetails[$g_row][$g_col++];
+	$g_applicableTo  = $g_additionalCommissionProfileDetails[$g_row][$g_col++];
+	$g_timeSlab = $g_additionalCommissionProfileDetails[$g_row][$g_col++];
+	$g_comRate  = $g_additionalCommissionProfileDetails[$g_row][$g_col++];
+	$g_diffFact = $g_additionalCommissionProfileDetails[$g_row][$g_col++];
+	$g_tax1 = $g_additionalCommissionProfileDetails[$g_row][$g_col++];
+	$g_tax2 = $g_additionalCommissionProfileDetails[$g_row][$g_col++];
+	
+	$g_assertion = $g_additionalCommissionProfileDetails[$g_row][$g_col++];
+	
+	
+}
+
+function resetButtonOnAdditionalCommissionProfile() {
+	
+	addCommissionProfile();
+	addAdditionalCommissionProfile();
+	_popup("eRecharge")._click(_reset("Reset"));
+
+	_popup("eRecharge")._click(_link("Close"));
+	
+}
+
+function addAdditionalCommissionProfileOne() {
+	
+	addCommissionProfile();
+	addAdditionalCommissionProfile();
+	
+	
+	_popup("eRecharge")._click(_submit("Add"));
+	_click(_submit("Save"));
+	_click(_submit("Confirm"));
+	
+	_assertExists(_listItem("/" + $g_assertion + ".*/"));
+
+}
+
+
+
+
+
+function addCommissionProfile() {
+	
+	_click(_link("Profile management"));
+	_click(_link("Commission profile"));
+	_setSelected(_select("domainCode"), $g_domain );
+	_setSelected(_select("categoryCode"), $g_category);
+	_setSelected(_select("grphDomainCode"), $g_geographicalDomain);
+	_setSelected(_select("gradeCode"), $g_grade);
+	_click(_submit("Add"));
+	_setValue(_textbox("profileName"), $g_profileName);
+	_setValue(_textbox("shortCode"), $g_shortCode);
+	_click(_image($g_calendarImg));
+	_setValue(_textbox("applicableFromDate"), $g_currentDate);
+	_setValue(_textbox("applicableFromHour"), $g_applicableFromHour);
+	_click(_image("Add commission profile"));
+	_popup("eRecharge")._setSelected(_select("productCode"), "eTopUP");
+	_popup("eRecharge")._setValue(_textbox("multipleOf"), $g_multipleOf);
+	_popup("eRecharge")._setValue(_textbox("minTransferValue"), $g_minTransfer );
+	_popup("eRecharge")._setValue(_textbox("maxTransferValue"), $g_maxTransfer);
+	_popup("eRecharge")._click(_checkbox("taxOnFOCFlag"));
+	_popup("eRecharge")._click(_checkbox("taxCalculatedOnFlag"));
+	_popup("eRecharge")._setValue(_textbox("commSlabsListIndexed[0].startRangeAsString"), $g_startRange);
+	_popup("eRecharge")._setValue(_textbox("commSlabsListIndexed[0].endRangeAsString"), $g_endRange);
+	_popup("eRecharge")._setValue(_textbox("commSlabsListIndexed[0].commRateAsString"), $g_commRate);
+	_popup("eRecharge")._setValue(_textbox("commSlabsListIndexed[0].tax1RateAsString"), $g_tax1Rate);
+	_popup("eRecharge")._setValue(_textbox("commSlabsListIndexed[0].tax2RateAsString"), $g_tax2Rate);
+	_popup("eRecharge")._setValue(_textbox("commSlabsListIndexed[0].tax3RateAsString"), $g_tax3Rate);
+	_popup("eRecharge")._click(_submit("Add"));
+	
+	
+}
+
+function addAdditionalCommissionProfile() {
+	
+	_click(_image("Add additional commission"));
+	_popup("eRecharge")._setSelected(_select("serviceCode"), $g_serviceName);
+	_popup("eRecharge")._setSelected(_select("gatewayCode"), $g_gatewayCode);
+	_popup("eRecharge")._setValue(_textbox("minTransferValue"), $g_minTransfer);
+	_popup("eRecharge")._setValue(_textbox("maxTransferValue"), $g_maxTransfer);
+	
+	_popup("eRecharge")._setValue(_textbox("applicableFromAdditional"),"12/12/15");
+	_popup("eRecharge")._setValue(_textbox("applicableToAdditional"), "12/12/16");
+
+	_popup("eRecharge")._setValue(_textbox("additionalCommissionTimeSlab"), $g_timeSlab );
+	_popup("eRecharge")._setValue(_textbox("addSlabsListIndexed[0].startRangeAsString"), $g_startRange);
+	_popup("eRecharge")._setValue(_textbox("addSlabsListIndexed[0].endRangeAsString"), $g_endRange);
+	_popup("eRecharge")._setValue(_textbox("addSlabsListIndexed[0].addCommRateAsString"), $g_comRate);
+	_popup("eRecharge")._setValue(_textbox("addSlabsListIndexed[0].diffrentialFactorAsString"), $g_diffFact);
+	_popup("eRecharge")._setValue(_textbox("addSlabsListIndexed[0].tax1RateAsString"), $g_tax1);
+	_popup("eRecharge")._setValue(_textbox("addSlabsListIndexed[0].tax2RateAsString"), $g_tax2);
+	
+
+}
+
+

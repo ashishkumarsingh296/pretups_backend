@@ -1,0 +1,2 @@
+TestcaseId,TestcaseType,Module,Description
+TUNG10197 ,Negative,Self TPIN Reset through USSD,To verify that the Reset PIN  request is not processed if  alphanumeric New PIN is entered in the request.

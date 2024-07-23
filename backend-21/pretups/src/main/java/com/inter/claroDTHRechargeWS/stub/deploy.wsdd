@@ -1,0 +1,83 @@
+<!-- Use this file to deploy some handlers/chains and services      -->
+<!-- Two ways to do this:                                           -->
+<!--   java org.apache.axis.client.AdminClient deploy.wsdd          -->
+<!--      after the axis server is running                          -->
+<!-- or                                                             -->
+<!--   java org.apache.axis.utils.Admin client|server deploy.wsdd   -->
+<!--      from the same directory that the Axis engine runs         -->
+
+<deployment
+    xmlns="http://xml.apache.org/axis/wsdd/"
+    xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
+  <!-- Services from ebsTransaccionDTHPrepago WSDL service -->
+
+  <service name="ebsTransaccionDTHPrepago" provider="java:RPC" style="document" use="literal">
+      <parameter name="wsdlTargetNamespace" value="http://claro.com.pe/eai/ws/ventas/transacciondthprepago"/>
+      <parameter name="wsdlServiceElement" value="ebsTransaccionDTHPrepago"/>
+      <parameter name="schemaQualified" value="http://claro.com.pe/eai/ws/ventas/transacciondthprepago"/>
+      <parameter name="wsdlServicePort" value="ebsTransaccionDTHPrepago"/>
+      <parameter name="className" value="com.inter.claroDTHRechargeWS.stub.TransaccionDTHPrepagoPortTypeSOAP11BindingImpl"/>
+      <parameter name="wsdlPortType" value="TransaccionDTHPrepagoPortType"/>
+      <parameter name="typeMappingVersion" value="1.2"/>
+      <operation name="recargarDTHPrepago" qname="recargarDTHPrepago" returnQName="retNS:recargarDTHPrepagoResponse" xmlns:retNS="http://claro.com.pe/eai/ws/ventas/transacciondthprepago" returnType="rtns:>recargarDTHPrepagoResponse" xmlns:rtns="http://claro.com.pe/eai/ws/ventas/transacciondthprepago" soapAction="http://claro.com.pe/eai/ws/ventas/transacciondthprepago/recargarDTHPrepago" >
+        <parameter qname="pns:recargarDTHPrepagoRequest" xmlns:pns="http://claro.com.pe/eai/ws/ventas/transacciondthprepago" type="tns:>recargarDTHPrepagoRequest" xmlns:tns="http://claro.com.pe/eai/ws/ventas/transacciondthprepago"/>
+      </operation>
+      <operation name="extornarDTHPrepago" qname="extornarDTHPrepago" returnQName="retNS:extornarDTHPrepagoResponse" xmlns:retNS="http://claro.com.pe/eai/ws/ventas/transacciondthprepago" returnType="rtns:>extornarDTHPrepagoResponse" xmlns:rtns="http://claro.com.pe/eai/ws/ventas/transacciondthprepago" soapAction="http://claro.com.pe/eai/ws/ventas/transacciondthprepago/extornarDTHPrepago" >
+        <parameter qname="pns:extornarDTHPrepagoRequest" xmlns:pns="http://claro.com.pe/eai/ws/ventas/transacciondthprepago" type="tns:>extornarDTHPrepagoRequest" xmlns:tns="http://claro.com.pe/eai/ws/ventas/transacciondthprepago"/>
+      </operation>
+      <operation name="pagosDTHenLinea" qname="pagosDTHenLinea" returnQName="retNS:pagosDTHenLineaResponse" xmlns:retNS="http://claro.com.pe/eai/ws/ventas/transacciondthprepago" returnType="rtns:>pagosDTHenLineaResponse" xmlns:rtns="http://claro.com.pe/eai/ws/ventas/transacciondthprepago" soapAction="http://claro.com.pe/eai/ws/ventas/transacciondthprepago/pagosDTHenLinea" >
+        <parameter qname="pns:pagosDTHenLineaRequest" xmlns:pns="http://claro.com.pe/eai/ws/ventas/transacciondthprepago" type="tns:>pagosDTHenLineaRequest" xmlns:tns="http://claro.com.pe/eai/ws/ventas/transacciondthprepago"/>
+      </operation>
+      <parameter name="allowedMethods" value="pagosDTHenLinea extornarDTHPrepago recargarDTHPrepago"/>
+
+      <typeMapping
+        xmlns:ns="http://claro.com.pe/eai/ws/ventas/transacciondthprepago"
+        qname="ns:>pagosDTHenLineaResponse"
+        type="java:com.inter.claroDTHRechargeWS.stub.PagosDTHenLineaResponse"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://claro.com.pe/eai/ws/ventas/transacciondthprepago"
+        qname="ns:>recargarDTHPrepagoRequest"
+        type="java:com.inter.claroDTHRechargeWS.stub.RecargarDTHPrepagoRequest"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://claro.com.pe/eai/ws/ventas/transacciondthprepago"
+        qname="ns:>extornarDTHPrepagoResponse"
+        type="java:com.inter.claroDTHRechargeWS.stub.ExtornarDTHPrepagoResponse"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://claro.com.pe/eai/ws/ventas/transacciondthprepago"
+        qname="ns:>pagosDTHenLineaRequest"
+        type="java:com.inter.claroDTHRechargeWS.stub.PagosDTHenLineaRequest"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://claro.com.pe/eai/ws/ventas/transacciondthprepago"
+        qname="ns:>extornarDTHPrepagoRequest"
+        type="java:com.inter.claroDTHRechargeWS.stub.ExtornarDTHPrepagoRequest"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://claro.com.pe/eai/ws/ventas/transacciondthprepago"
+        qname="ns:>recargarDTHPrepagoResponse"
+        type="java:com.inter.claroDTHRechargeWS.stub.RecargarDTHPrepagoResponse"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+  </service>
+</deployment>

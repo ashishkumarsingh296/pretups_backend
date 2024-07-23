@@ -1,0 +1,14 @@
+#########################################################################################################
+##
+##      ClientBLConstants.props
+##
+#########################################################################################################
+
+#ClientExtAPIXMLStringParser_obj
+ClientExtAPIXMLStringParser_obj=com.client.pretups.gateway.util.ClientExtAPIXMLStringParser
+
+#ChannelTransferDAO_obj
+ChannelTransferDAO_obj=com.client.pretups.channel.transfer.businesslogic.ChannelTransferDAO
+
+#C2SRechargeBL_obj
+C2SRechargeBL_obj=com.client.pretups.channel.transfer.businesslogic.C2SRechargeBL

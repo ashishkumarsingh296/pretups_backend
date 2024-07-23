@@ -1,0 +1,2 @@
+PASSWORD,PRODUCTCODE,LANGUAGE1,TestcaseId,TestcaseType,Module,Description
+1111,101,,TUNG23139,Negative,REST - C2C return,TO verify that when  LOGinid is enter then password is mandatory .

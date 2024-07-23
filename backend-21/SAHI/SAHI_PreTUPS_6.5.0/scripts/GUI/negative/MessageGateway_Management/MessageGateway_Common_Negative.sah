@@ -1,0 +1,222 @@
+
+
+
+
+_includeOnce("../../../../utility/ImportPackage.sah");
+
+var $l_naCsv = _readCSVFile("../../../GUI/testdata/NA_Login.csv");
+
+var $g_gatewayCode;
+var $g_gatewayName;
+var $g_gatewayType;
+var $g_host;
+var $g_protocol;
+
+var $g_servicePort;
+var $g_authenticationType;
+var $g_loginId;
+var $l_password;
+var $g_cnfPassword;
+var $g_status;
+var $g_contentType;
+var $g_encryptionLevel;
+var $g_pushPort;
+var $g_pushStatus;
+var $g_pushLoginId;
+var $g_pushPwd;
+var $g_pushCnfpwd;
+var $g_destinationNumber;
+var $g_timeout;
+var $g_assertion;
+
+
+
+
+function commonVaribleToAddMessageGateway($a_row, $a_column) {
+	
+	$g_gatewayCode = $g_messageGatewayDetails[$a_row][$a_column++];
+	$g_gatewayName = $g_messageGatewayDetails[$a_row][$a_column++];
+	$g_gatewayType = $g_messageGatewayDetails[$a_row][$a_column++];
+	$g_host = $g_messageGatewayDetails[$a_row][$a_column++];
+	$g_protocol = $g_messageGatewayDetails[$a_row][$a_column++];
+
+	$g_servicePort = $g_messageGatewayDetails[$a_row][$a_column++];
+	$g_authenticationType = $g_messageGatewayDetails[$a_row][$a_column++];
+	$g_loginId = $g_messageGatewayDetails[$a_row][$a_column++];
+	$l_password = $g_messageGatewayDetails[$a_row][$a_column++];
+	$g_cnfPassword = $g_messageGatewayDetails[$a_row][$a_column++];
+	$g_status = $g_messageGatewayDetails[$a_row][$a_column++];
+	$g_contentType = $g_messageGatewayDetails[$a_row][$a_column++];
+	$g_encryptionLevel = $g_messageGatewayDetails[$a_row][$a_column++];
+	$g_pushPort = $g_messageGatewayDetails[$a_row][$a_column++];
+	$g_pushStatus = $g_messageGatewayDetails[$a_row][$a_column++];
+	$g_pushLoginId = $g_messageGatewayDetails[$a_row][$a_column++];
+	$g_pushPwd = $g_messageGatewayDetails[$a_row][$a_column++];
+	$g_pushCnfpwd = $g_messageGatewayDetails[$a_row][$a_column++];
+	$g_destinationNumber = $g_messageGatewayDetails[$a_row][$a_column++];
+	$g_timeout = $g_messageGatewayDetails[$a_row][$a_column++];
+	$g_assertion = $g_messageGatewayDetails[$a_row][$a_column++];
+
+}
+
+
+
+
+
+function addMessageGateway() {
+	
+	var $tempt = "Add message gateway";
+	
+	
+	_click(_link("Message gateway"));
+	_assertExists(_div("Add message gateway"));
+	_setValue(_textbox("messageGatewayVO.gatewayCode"), $g_gatewayCode);
+	_setValue(_textbox("messageGatewayVO.gatewayName"), $g_gatewayName);
+	_setSelected(_select("messageGatewayVO.gatewayType"), $g_gatewayType);
+	_setValue(_textbox("messageGatewayVO.host"), $g_host);
+	_setSelected(_select("messageGatewayVO.protocol"), $g_protocol);
+	_click(_checkbox("reqDetailCheckbox"));
+	_click(_checkbox("pushDetailCheckbox"));
+	_click(_submit($g_BtnSubmit));
+	
+	
+	if($g_servicePort == "" && $g_authenticationType == ""){
+	
+	_assertExists(_div("/"+$tempt+".*/"));
+	
+	if(_exists(_div("/"+$tempt+".*/"))){
+				_log("shashi");
+					return;
+			}
+	
+	}
+	else {
+	
+	_assertExists(_div("Message gateway details"));
+	_setValue(_textbox("messageGatewayVO.requestGatewayVO.servicePort"),$g_servicePort );
+	_setSelected(_select("messageGatewayVO.requestGatewayVO.authType"), $g_authenticationType);
+	_setValue(_textbox("messageGatewayVO.requestGatewayVO.loginID"), $g_loginId);
+	_setValue(_password("messageGatewayVO.requestGatewayVO.password"), $l_password);
+	_setValue(_password("messageGatewayVO.requestGatewayVO.confirmPassword"), $g_cnfPassword);
+	_setSelected(_select("messageGatewayVO.requestGatewayVO.status"), $g_status);
+	_setSelected(_select("messageGatewayVO.requestGatewayVO.contentType"), $g_contentType);
+	_setSelected(_select("messageGatewayVO.requestGatewayVO.encryptionLevel"), $g_encryptionLevel);
+	
+	_setValue(_textbox("messageGatewayVO.responseGatewayVO.port"), $g_pushPort);
+	_setSelected(_select("messageGatewayVO.responseGatewayVO.status"), $g_pushStatus);
+	_setValue(_textbox("messageGatewayVO.responseGatewayVO.loginID"), $g_pushLoginId);
+	_setValue(_password("messageGatewayVO.responseGatewayVO.password"), $g_pushPwd);
+	_setValue(_password("messageGatewayVO.responseGatewayVO.confirmPassword"), $g_pushCnfpwd);
+	_setValue(_textbox("messageGatewayVO.responseGatewayVO.destNo"), $g_destinationNumber);
+	_setValue(_textbox("timeOut"), $g_timeout);
+	_click(_submit($g_BtnSubmit));
+	return;
+	}
+}
+
+
+
+function selectMessageGatewayForModification($g_gatewayName) {
+	
+	_click(_link("Message gateway"));
+	_click(_link("Modify message gateway"));
+	_assertExists(_div("Modify message gateway"));
+	_click(_radio("gatewayCode", _near(_cell($g_gatewayName))));
+	_click(_submit($g_BtnModify));
+}
+	
+	
+	
+
+	// ........... Function for common varriable for modification in message gateway .... //
+	
+function commonVaribleToModifyMessageGateway($a_row, $a_column) {
+	
+	
+	$g_gatewayName = $g_messageGatewayDetails[$a_row][$a_column++];
+	$g_host = $g_messageGatewayDetails[$a_row][$a_column++];
+	$g_protocol = $g_messageGatewayDetails[$a_row][$a_column++];
+
+	$g_servicePort = $g_messageGatewayDetails[$a_row][$a_column++];
+	$g_authenticationType = $g_messageGatewayDetails[$a_row][$a_column++];
+	$g_loginId = $g_messageGatewayDetails[$a_row][$a_column++];
+	$l_password = $g_messageGatewayDetails[$a_row][$a_column++];
+	$g_cnfPassword = $g_messageGatewayDetails[$a_row][$a_column++];
+	$g_status = $g_messageGatewayDetails[$a_row][$a_column++];
+	$g_contentType = $g_messageGatewayDetails[$a_row][$a_column++];
+	$g_encryptionLevel = $g_messageGatewayDetails[$a_row][$a_column++];
+	$g_pushPort = $g_messageGatewayDetails[$a_row][$a_column++];
+	$g_pushStatus = $g_messageGatewayDetails[$a_row][$a_column++];
+	$g_pushLoginId = $g_messageGatewayDetails[$a_row][$a_column++];
+	$g_pushPwd = $g_messageGatewayDetails[$a_row][$a_column++];
+	$g_pushCnfpwd = $g_messageGatewayDetails[$a_row][$a_column++];
+	$g_destinationNumber = $g_messageGatewayDetails[$a_row][$a_column++];
+	$g_timeout = $g_messageGatewayDetails[$a_row][$a_column++];
+	$g_assertion = $g_messageGatewayDetails[$a_row][$a_column++];
+
+}	
+
+function modifyMessageGateway() {
+	
+		
+		var $tempt = "Modify message gateway";
+		
+		_assertExists(_div($tempt));
+		
+		_setValue(_textbox("messageGatewayVO.gatewayName"), $g_gatewayName);
+		_setValue(_textbox("messageGatewayVO.host"), $g_host);
+		_setSelected(_select("messageGatewayVO.protocol"), $g_protocol);
+		_click(_submit($g_BtnSubmit));
+		
+		
+		if($g_servicePort == "" && $g_authenticationType == ""){
+		
+		_assertExists(_div("/"+$tempt+".*/"));
+		
+		if(_exists(_div("/"+$tempt+".*/"))){
+					_log("shashi");
+						return;
+				}
+		
+		}
+		else {
+		
+		_assertExists(_div("Message gateway details"));
+		_setValue(_textbox("messageGatewayVO.requestGatewayVO.servicePort"),$g_servicePort );
+		_setSelected(_select("messageGatewayVO.requestGatewayVO.authType"), $g_authenticationType);
+		_setValue(_textbox("messageGatewayVO.requestGatewayVO.loginID"), $g_loginId);
+		_setValue(_password("messageGatewayVO.requestGatewayVO.password"), $l_password);
+		_setValue(_password("messageGatewayVO.requestGatewayVO.confirmPassword"), $g_cnfPassword);
+		_setSelected(_select("messageGatewayVO.requestGatewayVO.status"), $g_status);
+		_setSelected(_select("messageGatewayVO.requestGatewayVO.contentType"), $g_contentType);
+		_setSelected(_select("messageGatewayVO.requestGatewayVO.encryptionLevel"), $g_encryptionLevel);
+		
+		_setValue(_textbox("messageGatewayVO.responseGatewayVO.port"), $g_pushPort);
+		_setSelected(_select("messageGatewayVO.responseGatewayVO.status"), $g_pushStatus);
+		_setValue(_textbox("messageGatewayVO.responseGatewayVO.loginID"), $g_pushLoginId);
+		_setValue(_password("messageGatewayVO.responseGatewayVO.password"), $g_pushPwd);
+		_setValue(_password("messageGatewayVO.responseGatewayVO.confirmPassword"), $g_pushCnfpwd);
+		_setValue(_textbox("messageGatewayVO.responseGatewayVO.destNo"), $g_destinationNumber);
+		_setValue(_textbox("timeOut"), $g_timeout);
+		_click(_submit($g_BtnSubmit));
+		return;
+		}
+}
+
+	
+
+	
+	
+	
+	
+	
+
+
+
+
+
+
+
+
+
+

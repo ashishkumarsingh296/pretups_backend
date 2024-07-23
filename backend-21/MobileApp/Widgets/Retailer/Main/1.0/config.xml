@@ -1,0 +1,58 @@
+<?xml version="1.0"?>
+<!DOCTYPE webaxn SYSTEM "i18n.dtd">
+<widget version="1.0">
+	<name>PRETUPS</name>
+	<description>Prepaid Recharge</description>
+	<author>Comviva</author>
+	<license>Comviva Technologies</license>
+	<identifier>179878594</identifier>
+	<icon src="pretups.png"/>
+	<content src="pretups.html" />
+	<x-title background="#788593" color="white" fontstyle="bold" fontsize="14"/>
+	<x-scrollbar background="grey" color="#788593"/>
+	<x-softkeystyle background="#788593" color="white" fontstyle="bold" fontsize="14"/>
+	<x-menustyle background="white" color="black" onfocuscolor="white"/>	
+	<x-selection onfocusbackground="#778899"/>
+	<x-userdata-access>979446865</x-userdata-access>
+	<x-menugroup id="login">
+		<!-- <x-menu caption="&pre.lsk.submit;" x-softkey="left" href="javascript:verify($mobilenu,$pwd);"/> -->
+		<x-menu caption="&pre.rsk.exit;" x-softkey="right" href="exit:"/>
+    	</x-menugroup>
+	<x-menugroup id="loginv1">
+		<x-menu caption="&pre.rsk.exit;" x-softkey="right" href="exit:"/>
+    	</x-menugroup>
+
+	<x-menugroup id="forgot">
+		<x-menu caption="&pre.rsk.back;" x-softkey="right" href="close:"/>
+    	</x-menugroup>
+	<x-menugroup id="signup">
+		<x-menu caption="&pre.rsk.back;" x-softkey="right" href="exit:"/>
+    	</x-menugroup>
+	
+	<x-menugroup id="terms">
+		<x-menu caption="&pre.rsk.back;" x-softkey="right" href="close:"/>
+    	</x-menugroup>
+
+	<x-menugroup id="Menu">
+        <x-menu x-softkey="left">
+		<!-- <x-menuitem caption="&pre.lsk.logout;"  href="javascript:logout();"/>
+		<x-menuitem caption="&pre.lsk.select;"  href="#"/> -->
+		</x-menu>
+		<x-menu caption="&pre.rsk.exit;" x-softkey="right" href="exit:"/>
+    </x-menugroup>
+	<x-menugroup id="post1">			
+		<x-menu caption="&pre.lsk.ok;" x-softkey="right" href="keypad://clearall?name=$mobilenu$;$pin$"/> 
+	</x-menugroup>
+	<x-menugroup id="Menu_Recharge1">			
+		<x-menu caption="&pre.rsk.back;" x-softkey="right" href="javascript:displayMain();"/>
+	</x-menugroup>
+	<x-menugroup id="confirmboxExit"> 
+	<x-menu caption="&pre.lsk.ok;" x-softkey="left" href="javascript:displayMain();"/>
+	</x-menugroup> 
+	<x-menugroup id="exitApp">
+	<x-menu caption="&pre.lsk.no;" x-softkey="left" href="#"/>
+	<x-menu caption="&pre.lsk.yes;" x-softkey="right" href="exit:"/> 
+	</x-menugroup>
+	
+</widget>
+

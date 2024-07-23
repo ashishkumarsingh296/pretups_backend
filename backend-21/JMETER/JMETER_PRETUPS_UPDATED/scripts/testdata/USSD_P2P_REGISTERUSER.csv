@@ -1,0 +1,4 @@
+TestcaseType,MSISDN,SUB_TYPE,TestcaseId,Module,Description
+Positive,7891000011,PRE,TUNG13206,Register user API through USSD,Register user through USSD by adding the required fields
+Negative,7891000012,,TUNG13210,Register user API through USSD,Register user through USSD by leaving the required fields
+Negative,,PRE,TUNG13211,Register user API through USSD,Register user through USSD by leaving the required fields like msisdn

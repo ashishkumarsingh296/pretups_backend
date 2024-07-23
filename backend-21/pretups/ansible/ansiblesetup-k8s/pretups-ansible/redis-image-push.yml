@@ -1,0 +1,26 @@
+---
+
+
+- name: "Trying to create registry user."
+  hosts: private_registry
+  serial: 1
+  become: yes
+  user: "{{ ansible_ssh_user }}"
+  gather_facts: true
+  vars_files:
+    - roles/create_user/vars/main.yml
+  roles: 
+    - {role: create_user, tags: create_user_web}
+
+
+- name: "Pushing Image to Private Docker Registry"
+  hosts: private_registry
+  serial: 1
+  become: yes
+  user: "{{ ansible_ssh_user }}"
+  gather_facts: true
+  #vars_files:
+  #  - roles/create_user/vars/main.yml
+  roles: 
+    - {role: redis_reg_image_push}
+

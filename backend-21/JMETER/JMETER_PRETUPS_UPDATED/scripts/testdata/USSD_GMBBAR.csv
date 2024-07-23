@@ -1,0 +1,6 @@
+MSISDN1,MSISDN2,TestcaseId,TestcaseType,Module,Description
+7200001044,7200001010,,Positive,Give Me Balance,GMB BAR should  be Successful from USSD
+7200001044,7200001010,,Negative,Give Me Balance,GMB BAR should Not  be Successful from USSD when  user is already barred for GMB by the Reciever Msisdn
+,7200001011,,Negative,Give Me Balance,GMB BAR should Not  be Successful from USSD  when Mandatory Parameters are missing
+7246,7200001012,,Negative,Give Me Balance,GMB BAR should Not be Successful from USSD When MSISDN1 Length is not Between Specified SystemPreference MIN_MSISDN_LENGTH and MAX_MSISDN_LENGTH
+7200004447,7200,,Negative,Give Me Balance,GMB BAR should Not be Successful from USSD When MSISDN2 Length is not Between Specified SystemPreference MIN_MSISDN_LENGTH and MAX_MSISDN_LENGTH

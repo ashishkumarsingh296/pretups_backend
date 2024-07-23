@@ -1,0 +1,2 @@
+TestcaseId,TestcaseType,Module,Description
+TUNG12341,Positive,Lite Recharge through EXTGW,Validate that only a single IN hit happens during recharge for topup i.e no validation IN hit.

@@ -1,0 +1,8 @@
+---
+ - name: "Starting PreTUPS application"
+   #sudo: true
+   #sudo_user: "{{ pretups_user }}"
+   command: nohup sh {{ Tomcat_Path }}/bin/pretupsStart.sh
+   ignore_errors: true
+   tags: 
+    - sadhan

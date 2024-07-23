@@ -1,0 +1,2 @@
+TestcaseId,TestcaseType,Module,Description
+TUNG12796,Negative,View barred list through RESTFul API,To verify mandatory fields is required

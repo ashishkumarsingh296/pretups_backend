@@ -1,0 +1,2 @@
+TestcaseId,TestcaseType,Module,Description
+TUNG13150,Negative,Internet Recharge through USSD,To check that if MSISDN is filled then PIN is also manadatory

@@ -1,0 +1,65 @@
+---
+########################################################
+# Author           Date        Remarks
+#------------    -----------  ---------
+#Sadhan Kumar K  25-07-2016    Initial Creation
+#
+# This file takes care of file Patch.
+#########################################################
+
+ - include: ../../validate/tasks/validatePathCheckPatch.yml
+  
+ - name: Taking Backup of Original files for Patch Types other than WAR.
+   shell: cp {{ item.path}}/{{ item.fileName}} {{ item.path}}/{{ item.fileName}}{{ BackupExtn }}
+   with_items:
+     - "{{ PatchConfigfiles }}"
+   register: out
+   when: item.patchType !='WAR' and item.patchType !='JAVA'
+   failed_when: false
+   tags:
+     - Bkp
+
+ - name: Applying Patch for patch types:['FILE-SYNC']
+   shell: rsync -arzh {{ item.backupFilePath }}/{{ item.fileName}} {{ item.path}}/{{ item.fileName}}
+   with_items:
+     - "{{ PatchConfigfiles }}"
+   when: item.patchType =='FILE-SYNC'
+   register: applyPatchSync
+   tags:
+     - applyPatchSync
+
+ - name: Applying Patch for patch types:['JSP','JAR','XML', 'CLASSFILE']
+   copy: src="files/{{ item.fileName }}" dest="{{ item.path }}/"
+   with_items:
+     - "{{ PatchConfigfiles }}"
+   when: item.patchType not in PROP_PATCH_TYPES and item.patchType !='WAR' and item.patchType !='FILE-SYNC' and item.patchType !='JAVA'
+   register: applyPatch
+   tags:
+     - applyPatch
+
+ - name: Applying Patch for patch types:['PROP-NEWLINE']
+   lineinfile: dest="{{ item.path}}/{{ item.fileName }}" insertafter=EOF line="{{ item.line }}"
+   with_items:
+     - "{{ PatchConfigfiles }}"
+   when: item.patchType =="PROP-NEWLINE"
+   register: applyPropNewLinePatch
+   tags:
+     - applyPropNewLinePatch
+
+ - name: Applying Patch for patch types:['PROP-MODIFY']
+   lineinfile: dest="{{ item.path}}/{{ item.fileName}}" regexp="{{ item.key }}" line="{{ item.key }}{{ item.value }}"
+   with_items:
+     - "{{ PatchConfigfiles }}"
+   when: item.patchType =="PROP-MODIFY"
+   register: applyPropModifyPatch
+   tags:
+     - applyPropModifyPatch
+
+ - name: Applying Patch for patch types:['PROP-REMOVE']
+   lineinfile: dest="{{ item.path}}/{{ item.fileName}}" state="absent" line="{{ item.line }}"
+   with_items:
+     - "{{ PatchConfigfiles }}"
+   when: item.patchType =="PROP-REMOVE"
+   register: applyPropRemovePatch
+   tags:
+     - applyPropRemovePatch

@@ -1,0 +1,125 @@
+###########################################################################################################
+##	Alcatel 1.0 IN file
+##	If IN interface of Alcatel1.0 is added in PreTUPS from superadmin then.
+##	File with this content and name of the IN ID.txt should be created at the 
+##	path of the INFiles (defined in Constants.props).
+##
+##	Values of the variables in this file should be updated with the values provided by the 
+##	Mobile Operator IN team
+##
+############################################################################################################
+
+## Used to Identify requesting entity at IN for RP2P it is BHARTIC2S
+CP_ID_C2S=BHARTIC2S
+
+## Used to Identify requesting entity at IN for CP2P it is BHARTIP2P
+CP_ID_P2P=BHARTIP2P
+
+## Used by IN, to routing the message to diffrent entity. For Bharti case it is 1.
+APPLICATION=1
+
+## Currency to be Send to IN interface
+TRANS_CURRENCY=1
+
+## URL on which request to be send.
+URL=http://127.0.0.1:5003/pretups/AlcatelTestServer
+
+## Prefix to be removed from the MSISDN before sending to the IN interface
+MSISDN_REMOVE_PREFIX=0
+
+## prefix to be added with MSISDN before sending request to the IN interface
+MSISDN_ADD_PREFIX=
+
+## The time upto which request has to wait for connection to the IN interface. It is in miliseconds.
+CONNECT_TIMEOUT=5000
+
+## The time upto which request has to wait to read the response form the IN interface in the validation stage. It is in miliseconds.
+READ_TIMEOUT_VAL=5000
+
+## The time upto which request has to wait to read the response form the IN interface in the TopUP stage. It is in miliseconds.
+READ_TIMEOUT_TOP=10000
+
+## If the response from the IN is received after this time then an alarm will be send to OAM as IN is taking more time
+WARN_TIMEOUT=4000
+
+## ALLOWED Service Type, LDCC is not allowed here if want to enable add here(LDCC "1" added on 22/03/07), PreTUPS will allow the topup of these service type numbers
+ALLOWED_SERVICE_TYPE=0,2,10,1
+
+## LDCC service type
+SERVICE_TYPE_CODE_LDCC=1
+
+## LDCC service type
+SERVICE_TYPE_LDCC=LDCC
+
+#Is keep allow true or false, if keep alive is true set "Y", if it is false set "N",if it is not set then default value would be N
+KEEP_ALIVE=Y
+
+#Indicates whether Cancel request supported by IN or not.(Possible values are Y/N)
+CANCEL_TXN_ALLOWED=N
+
+##If any ambiguous response is received from IN, then retry/cancel command is sent to IN. Then response of retry/cancel is matched in the IN file and mapped error code (250/206/200) is picked and sent to Controller.
+##SYSTEM_STATUS_MAPPING=INErrCode1,INErrCode2,INErrCode3,INErrCode4:system_err_code1|INErrCode5,INErrCode6:system_err_code2
+##system_err_code1 and system_err_code2 will be sent to system and written in recon log file.
+#SYSTEM_STATUS_MAPPING=250:250
+##If receiver credit is AMBIGUOS, then in SYSTEM_PREFERENCE, CREDIT_BACK_ALLOWED should be N.
+
+#If an ambiguous case occurs while credit, mapped error code can be set to one of the codes(SUCCESS, FAIL and AMBIGUOUS)
+SYSTEM_STATUS_MAPPING_CREDIT=250:250
+
+#If an ambiguous case occurs while credit, mapped error code can be set to one of the codes(SUCCESS, FAIL and AMBIGUOUS)
+SYSTEM_STATUS_MAPPING_CREDIT_ADJ=250:250
+
+#If an ambiguous case occurs while debitAdjust, mapped error code cannot be SUCCESS. It can only be FAIL or AMBIGUOUS
+SYSTEM_STATUS_MAPPING_DEBIT_ADJ=250:250
+
+#If an ambiguous case occurs while credit Back, mapped error code can not be fail, it can only be SUCCESS or AMBIGOUOS
+SYSTEM_STATUS_MAPPING_CREDIT_BCK=250:250
+
+##If any ambiguous response is received from IN, check if cancel txn allowed or not in the system. if not, pick mapped error code against NA otherwise pick mapped error code (206/250) against received response code of Cancellation from IN. 
+##CANCEL_COMMAND_STATUS_MAPPING=INErrCode1,INErrCode2,INErrCode3,INErrCode4:cancel_err_code1|INErrCode5,INErrCode6:cancel_err_code2
+##cancel_err_code1, cancel_err_code2 will be written in recon log file.
+CANCEL_COMMAND_STATUS_MAPPING=NA:450
+
+#Defines the cancel command status when cancel not supported by IN. 
+CANCEL_NA=NA
+
+##This flag should be Y if interface closure feature is to be provided to client
+INTFCE_CLSR_SUPPORT=N
+
+#maximum number of ambiguous transactions allowed till threshold time.
+NO_ALLWD_AMB_TXN=5
+
+##time duration in which maximum number of ambiguous transactions is defined
+THRESHOLD_TIME=240000
+
+##Time duration after which interface suspension expires.
+EXPIRY_TIME=60000
+
+##Auto Resumption supported by IN or not.
+AUTO_RESUME_SUPPORT=N
+
+##Number of retry attempts while validation (Currently Retry is not supported by Alcatel10)
+VAL_RETRY_CNT=0
+
+##Number of retry attempts while recharge request (Currently Retry is not supported by Alcatel10)
+CREDIT_RETRY_CNT=0
+
+##Number of retry attempts while sending Adjustment request (Currently Retry is not supported by Alcatel10)
+ADJ_RETRY_CNT=0
+
+##Number of retry attempts while sending Cancel request (Currently Cancel Request is not supported by Alcatel10)
+CNCL_RETRY_CNT=0
+
+##Sleep time between two retries (Currently Retry is not supported by Alcatel10)
+RETRY_SLEEP_TIME=0
+
+##Error Codes when retry has to be made  (Currently Retry is not supported by Alcatel10)
+RETRY_CASES=
+
+##Remark1 in Reconcialiationlog
+REMARK1=
+
+##Remark1 in Reconcialiationlog
+REMARK2=
+
+

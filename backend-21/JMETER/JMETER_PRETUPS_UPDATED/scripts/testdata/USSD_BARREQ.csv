@@ -1,0 +1,3 @@
+TestcaseId,TestcaseType,Module,Description
+,Positive,USSD Self Bar,To verify that Self Bar request is successful when all mandatory details are provided
+,Negative,USSD Self Bar,To verify that Self Bar request is not successful when MSISDN is blank

@@ -1,0 +1,2 @@
+TestcaseId,TestcaseType,Module,Description
+TUNG12738,Negative,Lite Recharge through USSD,User is barred as sender and performing the txn

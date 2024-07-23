@@ -1,0 +1,216 @@
+//################################################
+//#Company Name: Mahindra Comviva Technologies Ltd.
+//#Application Name: Pretups
+//#Objective: It includes common functions for Channel Domains
+//#Author Name: Nidhi Singh
+//#Created Date: 22/01/2014
+//###############################################
+
+var $flag = 0;
+var $timeStamp = timeStampTwo(); //Concat with Domain name as It should be unique.
+var $g_i = 1;
+
+var $g_domainType; //Fetch Domain Type
+var $g_domainName; //Fetch Domain Name
+var $g_NOC; //Fetch No of Categories
+var $l_noc;
+var $g_categoryName; //Fetch Category Name
+var $g_geoDomain; //Fetch Geographical Domain
+var $g_roleType; // Fetch Role Type
+var $a_colOut;
+var $g_domainCode; //Automatically generated Domain Code
+var $g_categoryCode; //Automatically generated Category Code
+var $l_rowIn;
+var $g_categoryTransferProfileUserName;
+
+var $a = 0 ;
+
+/**
+ *  This function fetches values for Domain from csv
+ * @param [in] -
+ *            a_rowOut Row No. in csv
+ * @returns - null
+ */	
+function variableForCreateDomain($a_rowOut){
+	$a_colOut = 0;
+	$g_domainType = $g_DomainCSV[$a_rowOut][$a_colOut++]; //Fetch Domain Type
+	$g_domainName = $g_DomainCSV[$a_rowOut][$a_colOut++]; //Fetch Domain Name
+	$g_NOC = $g_DomainCSV[$a_rowOut][$a_colOut++]; //Fetch No of Categories
+	
+}
+
+/**
+ *  This function fetches values for Categories from csv
+ * @param [in] -
+ *            a_rowOut Row No. in csv
+ * @returns - null
+ */	
+
+function variableForCreateCategory($a_rowOut){
+	$g_categoryName = $g_DomainCSV[$a_rowOut][$a_colOut++]; //Fetch Category Name
+	$g_geoDomain = $g_DomainCSV[$a_rowOut][$a_colOut++]; //Fetch Geographical Domain
+	$g_roleType = $g_DomainCSV[$a_rowOut][$a_colOut++]; // Fetch Role Type
+}
+
+/**
+ *  This function creates Domain
+ * @param [in] -
+ *            a_domainType Type of the Domain
+ * @param [in] -
+ *            a_domainCode Domain Code
+ * @param [in] -
+ *            a_domainName Name of the Domain
+ * @returns - True/False based on Condition
+ */	
+function addDomain($a_domainType, $a_domainCode, $a_domainName){
+	_click(_link($g_LeftMenuBar_ChannelDomain));
+	_click(_link($g_LeftMenuBar_AddChannelDomain));
+	_assertExists(_div($g_assertViewDomainDet)); 
+	_click(_submit($g_BtnAdd));
+	_assertExists(_div($g_assertAddDomainDetails)); 
+	_setSelected(_select("domainTypeCode"), $a_domainType);
+	_setValue(_textbox("domainCodeforDomain"), $a_domainCode);
+	//_setValue(_textbox("domainName"), $a_domainName + $timeStamp);
+	_setValue(_textbox("domainName"), $a_domainName);	
+	_setValue(_textbox("numberOfCategories"), $g_NOC);
+	_click(_submit($g_BtnSubmit));
+	if(_exists(_listItem($g_assertMaximumLimitOfDomains))==true)
+		a = 1;
+	else if(_exists(_listItem($g_assertDomainCodeExists))== true)	
+		a = 2;
+	else if(_exists(_listItem($g_assertDomainNameExists))== true)
+		a = 3;
+	else		
+		a =0;
+	
+	return a;
+	
+}
+
+/**
+ *  This function creates Owner category inside a domain along with domain creation
+ * @param [in] -
+ *            a_categoryName Name of the Category
+ * @param [in] -
+ *            a_geoDomain Geo. Domain of the Category
+ * @param [in] -
+ *            a_roleType Role Type of the Category
+ * @returns - null
+ */	
+	
+function addCategory($a_categoryName, $a_geoDomain, $a_roleType, $a_domainName){
+
+		_log("shashi 11 " + $l_categoryCode);
+	
+	var $g_userIDPrefix = randomString(); ////Automatically generated userIDPrefix
+	var $l_categoryCode = genChannelCategoryCode($g_autoPrefix);
+	
+	
+	_log("shashi 11 " + $l_categoryCode);
+	_setValue(_textbox("categoryCode"), $l_categoryCode);
+	//_setValue(_textbox("categoryName"), $a_categoryName + $timeStamp );
+	_setValue(_textbox("categoryName"), $a_categoryName);
+	
+	
+	
+	
+	_setSelected(_select("grphDomainType"), $a_geoDomain);
+	_setSelected(_select("fixedRoles"), $a_roleType);
+	_click(_checkbox("outletsAllowed"));
+	_setValue(_textbox("userIdPrefix"), $g_userIDPrefix);
+	_click(_checkbox("hierarchyAllowed"));
+	_click(_link($g_LinkAssignRoles));
+	_popup("eRecharge")._assertExists(_div($g_assertRole));
+	_popup("eRecharge")._click(_checkbox("checkall"));
+	_popup("eRecharge")._click(_submit($g_BtnAdd));
+	_click(_checkbox("checkArray"));
+	_click(_checkbox("checkArray[2]"));
+	_click(_checkbox("checkArray[4]"));
+	_click(_checkbox("multipleLoginAllowed"));
+
+	var $l_chkBoxes = new Array();
+	$l_chkBoxes = _collect("_checkbox", "/.*/");
+	for( var $i = 1; $i < $l_chkBoxes.length; $i++){
+	      _check($l_chkBoxes[$i]);
+	}
+	_setValue(_textbox("maxTxnMsisdn"), "2");
+	_click(_submit($g_BtnSubmit));
+	_assertExists(_submit($g_BtnConfirm)); 
+	_click(_submit($g_BtnConfirm));	
+	
+	if(_exists(_listItem("UserID prefix " + $g_userIDPrefix + " alreday exists" ))== true)
+		a = 1;
+	else if(_exists(_listItem($g_assertCategoryCodeExists))== true)	
+		a = 2;
+	else if(_exists(_listItem($g_assertCategoryNameExists))== true)
+		a = 3;
+	else		
+		a =0;
+	
+	return a;
+}
+
+/**
+ *  This function creates rest of the categories
+ * @param [in] -
+ *            a_domainName Name of the Domain
+ * @param [in] -
+ *            l_rowOut Outer row
+ * @param [in] -
+ *            a_colIn Column No 
+ * @returns - null
+ */	
+
+function addCategoryFromLeftPanel($a_domainName, $a_rowOut, $a_colIn){
+	_click(_link($g_LeftMenuBar_AddChannelCat));	
+	_click(_link($g_LeftMenuBar_AddChannelCat));
+	_setSelected(_select("domainCodeforCategory"), $a_domainName);
+	_click(_submit($g_BtnSubmit));
+	_assertExists(_div($g_assertViewCategoryDetails)); 
+	_click(_submit($g_BtnAdd));
+	_assertExists(_cell($g_domainCode, _near(_cell("Domain code:"))));	
+	
+	$a_categoryName = $g_DomainCSV[$a_rowOut][$a_colIn++];
+	$a_geoDomain = $g_DomainCSV[$a_rowOut][$a_colIn++];
+	$a_roleType = $g_DomainCSV[$a_rowOut][$a_colIn++];
+	
+	addCategory($a_categoryName, $a_geoDomain, $a_roleType);		
+}
+
+/**
+ *  This function reads unique no. from csv and concat it with "AUTO" and generates channel domain code and writes back the next unique no. generated to csv
+ *	@param[in] - null
+ *	@return - domain code
+ */	
+	
+function genChannelDomainCode($a_autoPrefix){
+	var $l_umCsv = _readCSVFile("../../../GUI/testdata/UserManagement_CreateNA.csv"); 
+	var $l_domainCode1 =  $l_umCsv[1][26];
+	var $l_domainCode;
+	$l_domainCode = parseInt($l_domainCode1);
+	$l_domainCode = $l_domainCode + 1;
+	$l_domainCode = $l_domainCode.toString();
+	$l_domainCode2 = $a_autoPrefix + $l_domainCode; //AUTOcurrentTime
+	$l_umCsv[1][26] = $l_domainCode;
+	_writeCSVFile($l_umCsv, "../../../GUI/testdata/UserManagement_CreateNA.csv", 1);
+	return $l_domainCode2;
+}
+
+/**
+ *  This function reads unique no. from csv and concat it with "AUTO" and generates channel category code and writes back the next unique no. generated to csv
+ *	@param[in] - null
+ *	@return - category code
+ */
+
+function genChannelCategoryCode($a_autoPrefix){
+	var $l_umCsv = _readCSVFile("../../../GUI/testdata/UserManagement_CreateNA.csv");
+	var $l_categoryCode1 =  $l_umCsv[1][27];
+	var $l_categoryCode;
+	$l_categoryCode = parseInt($l_categoryCode1);
+	$l_categoryCode = $l_categoryCode + 1;
+	$l_categoryCode = $l_categoryCode.toString();
+	$l_categoryCode2 = $a_autoPrefix + $l_categoryCode; //AUTO800
+	$l_umCsv[1][27] = $l_categoryCode;
+	_writeCSVFile($l_umCsv, "../../../GUI/testdata/UserManagement_CreateNA.csv", 1);
+	return $l_categoryCode2;
+}

@@ -1,0 +1,2 @@
+TestcaseId,TestcaseType,Module,Description
+TUNG22335,Negative,SOS Settlement USSD,To verify thatwhen mandatory parameters are missing then proper response is returned.

@@ -1,0 +1,15 @@
+---
+########################################################
+# Author           Date        Remarks
+#------------    -----------  ---------
+#Sadhan Kumar K  25-07-2016    Initial Creation
+#
+# This file Runs the role of Patch.
+#########################################################
+
+- name: PATCH INSTALLATION ROLE
+  hosts: smspservers
+  vars_files:
+    - roles/vars/devVars.yml
+  roles:
+   - { role: doPatch, tags: doPatch}

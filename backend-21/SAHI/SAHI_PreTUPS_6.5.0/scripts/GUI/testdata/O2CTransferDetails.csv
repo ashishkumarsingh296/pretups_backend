@@ -1,0 +1,2 @@
+TestCaseNo. ,Discription,Quantity,Initiation Remarks,Payment Type,Date,Level 1 App. Remark,Level two remark
+"TEST010	",Given a application in which channel admin login and initiate for O2C Transfer,70,Initiate O2C Transfer,Cash,calendar-icon.gif,O2C approval at level one,O2C approval at level two

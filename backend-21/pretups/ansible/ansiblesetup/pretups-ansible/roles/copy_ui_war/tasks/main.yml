@@ -1,0 +1,85 @@
+---
+ - name: copying pretups-ui war at remote location
+   debug: msg=" remote location is {{ Tomcat_Path }}"  
+
+# - name: Copying pretups-ui.war to the destination
+#   become: true
+#   remote_user: "{{ USER_NAME }}"
+#   copy: src=pretups-ui.war dest={{ Tomcat_Path }}/webapps/ mode=0755 owner={{ USER_NAME }} group={{ GROUP_NAME }}
+
+ - name: Create a pretups-ui directory
+   file:
+     path: "{{ Tomcat_Path }}/webapps/pretups-ui"
+     state: directory
+     owner: "{{ USER_NAME }}"
+     group: "{{ GROUP_NAME }}"
+
+
+ - name: Copying pretups-ui folder to the webapp destination
+   become: true
+   remote_user: "{{ USER_NAME }}"
+   ansible.builtin.copy:
+     src: pretups-ui/.
+     dest: "{{ Tomcat_Path }}/webapps/pretups-ui/"
+     owner: "{{ USER_NAME }}"
+     group: "{{ GROUP_NAME }}"
+
+ - name: "let's make it work: main.js: replace the cd dir"
+   replace: dest="{{ Tomcat_Path }}/webapps/pretups-ui/main.2b3f3ae81486eaef1da7.js" regexp='http://172.30.24.113:8086/voucherMgmt/v1' replace='http://{{ PRETUPS_LOGIN_SERVER_IP }}:{{ PRETUPS_LOGIN_SERVER_PORT }}/voucherMgmt/v1' encoding='cp1252'
+
+ - name: "let's make it work: index.html: replace the cd dir"
+   replace: dest="{{ Tomcat_Path }}/webapps/pretups-ui/index.html" regexp='http://172.30.24.113:9747/pretups-ui/' replace='http://{{ PRETUPS_LOGIN_SERVER_IP }}:{{ SERVER_PORT }}/pretups-ui/' encoding='cp1252'
+
+ - name: "let's make it work: index.html: replace the cd dir"
+   replace: dest="{{ Tomcat_Path }}/webapps/pretups-ui/index.html" regexp='http://172.30.24.113:9879/pretups/' replace='http://{{ PRETUPS_LOGIN_SERVER_IP }}:{{ SERVER_PORT }}/pretups/' encoding='cp1252'
+
+
+
+
+ - name: Create a pretups-login directory
+   file:
+     path: "{{ Tomcat_Path }}/pretups-login"
+     state: directory
+     owner: "{{ USER_NAME }}"
+     group: "{{ GROUP_NAME }}"
+
+ - name: Move directory contents
+   ansible.builtin.copy:
+     src: pretups-login/.
+     dest: "{{ Tomcat_Path }}/pretups-login/"
+     owner: "{{ USER_NAME }}"
+     group: "{{ GROUP_NAME }}"
+
+ - name: "let's make it work: loginstart.sh: replace the cd dir"
+   replace: dest="{{ Tomcat_Path }}/pretups-login/loginstart.sh" regexp='CHANGEDIR' replace='{{ Tomcat_Path }}/pretups-login/' encoding='cp1252'
+
+ - name: "let's make it work: loginstart.sh: replace the cd dir"
+   replace: dest="{{ Tomcat_Path }}/pretups-login/loginstart.sh" regexp='LOGINPORT' replace='{{ PRETUPS_LOGIN_SERVER_PORT }}' encoding='cp1252'
+
+ - name: "let's make it work: loginstart.sh: replace the EXPORTJAVAHOME"
+   replace: dest="{{ Tomcat_Path }}/pretups-login/loginstart.sh" regexp='EXPORTJAVAHOME' replace='/home/{{ USER_NAME }}/jdk1.8.0_74' encoding='cp1252'
+
+ - name: "let's make it work: loginstart.sh: replace the EXPORTJAVAHOME"
+   replace: dest="{{ Tomcat_Path }}/pretups-login/loginstart.sh" regexp='EXPORTPATH' replace='/home/{{ USER_NAME }}/jdk1.8.0_74/bin' encoding='cp1252'
+
+
+
+ - name: Copy policy files US and local
+   ansible.builtin.copy:
+     src: pretups-login/US_export_policy.jar
+     dest: "/home/{{ USER_NAME }}/jdk1.8.0_74/jre/lib/security/"
+     owner: "{{ USER_NAME }}"
+     group: "{{ GROUP_NAME }}"
+
+
+ - name: Copy policy files US and local
+   ansible.builtin.copy:
+     src: pretups-login/local_policy.jar
+     dest: "/home/{{ USER_NAME }}/jdk1.8.0_74/jre/lib/security/"
+     owner: "{{ USER_NAME }}"
+     group: "{{ GROUP_NAME }}"
+
+
+
+ - name: Execute the script
+   command: sh "{{ Tomcat_Path }}/pretups-login/loginstart.sh"

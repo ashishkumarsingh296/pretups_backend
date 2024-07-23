@@ -1,0 +1,2 @@
+TestcaseId,TestcaseType,Module,Description
+TUNG10200 ,Positive,User Data update through USSD,To verify that the User Data Updation request is run successfully.

@@ -1,0 +1,2 @@
+PRODUCTCODE,LANGUAGE1,TestcaseId,TestcaseType,Module,Description
+101,,TUNG23070,Positive,REST - Channel to Channel Transfer,To verify that Channel to Channel request is sucessfully using Login and Password in Rest API request

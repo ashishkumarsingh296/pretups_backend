@@ -1,0 +1,95 @@
+//#######################################
+//
+// This script to add and modify new department
+//
+//#######################################
+
+
+
+_includeOnce("../../../../utility/ImportPackage.sah");
+_includeOnce("../../../GUI/testscripts/DivisionAndDepartmentMgmt/DivisionAndDepartment_Common.sah"); //For adding C2S card group	
+
+
+//======================Pre-requisite check============================
+_log("Setup", "custom4");
+
+//====Login into Application====
+login($g_appURL, $g_LangEnglish, $g_superAdmin, $g_password, $g_assertMessage); //calls the Login function in Login.sah with the parameters(url, language, username, password, assertion)
+
+
+//==================== Division Management ==================//
+
+
+var $g_DivisionDetails = _readCSVFile("../../../GUI/testdata/Division_Details.csv"); //Reads the network details
+
+
+
+for(var $g_row = 1; $g_DivisionDetails[$g_row] != null; $g_row++){
+
+		var $g_col = 0;
+		var $temp_testCaseNo = $g_DivisionDetails[$g_row][$g_col++];
+		var $t = _testcase($temp_testCaseNo, $g_DivisionDetails[$g_row][$g_col++]);
+		
+		$t.start();
+		
+		if($temp_testCaseNo == "TEST001"){
+			commonVariableForDivision($g_row, $g_col);
+			addDivision();
+		}
+		
+		else if($temp_testCaseNo == "TEST002"){
+			commonVariableForDivision($g_row, $g_col);
+			addDivisionWithoutDetails();
+		}
+		
+		else if($temp_testCaseNo == "TEST003"){
+			commonVariableForDivision($g_row, $g_col);
+			modifyDivisionDetails();
+		}
+		else if($temp_testCaseNo == "TEST004"){
+			commonVariableForDivision($g_row, $g_col);
+			deleteDivision();
+		}
+		
+		
+		
+		
+		$t.end();
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

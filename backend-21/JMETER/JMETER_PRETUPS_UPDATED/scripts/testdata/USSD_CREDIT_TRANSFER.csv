@@ -1,0 +1,5 @@
+MSISDN1,PIN,MSISDN2,AMOUNT,LANGUAGE1,LANGUAGE2,SELECTOR,TestcaseId,TestcaseType,Module,Description
+7201010121,0,7200001050,1,1,1,1,TUNG13187,Positive,Credit Transfer,To validate successful credit transfer
+7201010121,0,7200001050,1,1,1,1,TUNG13188,Negative,Credit Transfer,To validate negative test case of credit transfer while MSISDN1 is missing
+7201010121,,7200001050,1,1,1,1,TUNG13189,Positive,Credit Transfer,To validate successful credit transfer while PIN is missing
+7201010121,0,,1,1,1,1,TUNG13190,Negative,Credit Transfer,To validate negative test case of credit transfer while MSISDN2 is missing

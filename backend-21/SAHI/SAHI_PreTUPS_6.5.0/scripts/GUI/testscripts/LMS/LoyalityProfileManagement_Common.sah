@@ -1,0 +1,279 @@
+
+
+
+_includeOnce("../../../../utility/ImportPackage.sah");
+
+
+var $g_promotionType;
+var $g_profileName;
+var $g_product;
+var $g_fromDate;
+var $g_toDate;
+var $g_applicableFromTime;
+var $g_applicableToTime;
+var $g_parentContribution;
+var $g_modules;
+var $g_service;
+var $g_target;
+var $g_points;
+var $g_assertion;
+
+var $a_Prefix;
+var $a_tempFromDate;
+var $a_tempToDate;
+
+
+function varriableForLoyalityProfileManagement($g_row, $g_col) {
+	
+	$g_promotionType = $g_loyalityManagementDetails[$g_row][$g_col++];
+	$g_profileName = $g_loyalityManagementDetails[$g_row][$g_col++];
+	$g_product = $g_loyalityManagementDetails[$g_row][$g_col++];
+	$g_fromDate = $g_loyalityManagementDetails[$g_row][$g_col++];
+	$g_toDate = $g_loyalityManagementDetails[$g_row][$g_col++];
+	$g_applicableFromTime = $g_loyalityManagementDetails[$g_row][$g_col++];
+	$g_applicableToTime = $g_loyalityManagementDetails[$g_row][$g_col++];
+	$g_parentContribution = $g_loyalityManagementDetails[$g_row][$g_col++];
+	$g_modules = $g_loyalityManagementDetails[$g_row][$g_col++];
+	$g_service = $g_loyalityManagementDetails[$g_row][$g_col++];
+	$g_target = $g_loyalityManagementDetails[$g_row][$g_col++];
+	$g_points = $g_loyalityManagementDetails[$g_row][$g_col++];
+	$g_assertion = $g_loyalityManagementDetails[$g_row][$g_col++];
+
+	
+	
+}
+
+
+
+function addLoyalityProfile() {
+	
+	$g_profileName = varriableLoylityprofile();
+	
+	$a_tempFromDate = ddmmyyFormat($g_fromDate);
+	$a_tempToDate = ddmmyyFormat($g_toDate);
+	
+	
+	_click(_link("Loyalty Management"));
+	_click(_submit("Add"));
+	addLoyalityProfileDetails();
+	assignVolumeProfile();
+	_wait(1000);
+	save();
+	confirm();
+	_assertExists(_listItem("/" + $g_assertion + ".*/"));
+	
+
+	if(_exists(_listItem("/"+$g_assertion+".*/"))){
+		
+		var $l_naCsv = _readCSVFile("../../../GUI/testdata/NA_Login.csv");
+		$l_naCsv[22][1] = $g_profileName;
+		_writeCSVFile($l_naCsv, "../../../GUI/testdata/NA_Login.csv", 1); // Writes the newly created Channel User in a csv file.
+		_log("Loyality profile is added successfully");
+	} else
+		{
+		_log("Loyality profile is not added");
+		}
+}
+
+
+function addLoyalityProfileDetails() {
+
+	_setSelected(_select("promotionType"), $g_promotionType);
+	_setValue(_textbox("profileName"), $g_profileName);
+	_setSelected(_select("productCode"), $g_product);
+	_setValue(_textbox("applicableFromDate"), $a_tempFromDate);
+	_setValue(_textbox("applicableToDate"), $a_tempToDate);
+	_setValue(_textbox("applicableFromHour"), $g_applicableFromTime);
+	_setValue(_textbox("applicableToHour"), $g_applicableToTime);
+	_setValue(_textbox("prtContribution"), $g_parentContribution);
+	
+}
+
+function approveLoyalityProfile() {
+
+	var $l_naCsv = _readCSVFile("../../../GUI/testdata/NA_Login.csv");
+	$g_profileName = $l_naCsv[22][1];
+	
+	_click(_link("Loyalty Management"));
+	_click(_link("Approve Loyalty Profile"));
+	_setSelected(_select("profileSetID"), $g_profileName);
+	_click(_submit("Submit"));
+	_assertExists(_div("Add loyalty profile"));
+	_click(_submit("Approve"));
+	_assertExists(_listItem("Profile " + $g_profileName + " is successfully Approved"));
+
+}
+
+function viewLoyalityProfile() {
+	
+	var $l_naCsv = _readCSVFile("../../../GUI/testdata/NA_Login.csv");
+	$g_profileName = $l_naCsv[22][1];
+	
+	
+	_click(_link("Loyalty Management"));
+	_setSelected(_select("profileSetID"), $g_profileName);
+	_setSelected(_select("proifleVersionID"), "1");
+	_click(_submit("View"));
+	_assertExists(_div("View loyalty profile"));
+	_assertExists(_cell($g_profileName, _near(_cell("Profile name :"))));
+
+}
+
+
+function modifyProfileName() {
+	
+	var $l_naCsv = _readCSVFile("../../../GUI/testdata/NA_Login.csv");
+	$g_profileName = $l_naCsv[22][1];
+	
+	$g_assertion = "Loyalty profile successfully modified";
+	
+	_click(_link("Loyalty Management"));
+	_setSelected(_select("profileSetID"), $g_profileName);
+	_click(_submit("Modify"));
+	_assertExists(_div("Modify loyalty profile"));
+	_setValue(_textbox("applicableToHour"), "23:55");
+	_click(_submit("Save"));
+	_click(_submit("Confirm"));
+	
+	_assertExists(_listItem("/" + $g_assertion + ".*/"));
+	
+}
+
+
+function suspendLoyalityProfile() {
+	
+	var $l_naCsv = _readCSVFile("../../../GUI/testdata/NA_Login.csv");
+	$g_profileName = $l_naCsv[22][1];
+	
+	$g_assertion = "Successfully suspended";
+	
+	_click(_link("Loyalty Management"));
+	_setSelected(_select("profileSetID"), $g_profileName);
+	_click(_submit("Suspend"));
+	
+	_assertExists(_listItem("/" + $g_assertion + ".*/"));
+
+}
+
+
+
+function resumeLoyalityProfile() {
+	
+	var $l_naCsv = _readCSVFile("../../../GUI/testdata/NA_Login.csv");
+	$g_profileName = $l_naCsv[22][1];
+	
+	_click(_link("Loyalty Management"));
+	_click(_link("Resume Promotion"));
+	_assertExists(_div("Loyalty profile resume"));
+	_setSelected(_select("profileSetID"), $g_profileName );
+	_click(_submit("Resume"));
+	_click(_submit("Resume"));
+	_assertExists(_listItem("Profile " + $g_profileName + " is successfully Resumed"));
+
+}
+
+
+
+function assignVolumeProfile() {
+	
+	_click(_image("Add volume profile"));
+	
+	_popup("eRecharge")._setSelected(_select("moduleType"), $g_modules);
+	_popup("eRecharge")._setSelected(_select("serviceCode"), $g_service );
+	_popup("eRecharge")._setValue(_textbox("amountSlabsListIndexed[0].startRangeAsString"), $g_target);
+	_popup("eRecharge")._setValue(_textbox("amountSlabsListIndexed[0].pointsAsString"), $g_points);
+	_popup("eRecharge")._click(_submit("Add"));
+}
+
+
+function varriableLoylityprofile(){
+	 
+	var $l_time = new Date();
+	var $keyword = "LMP"+ $l_time.getHours()+$l_time.getMinutes(); //AUTONAcurrentTime
+	 return $keyword;
+ }
+
+
+
+
+function confirm() {
+	_click(_submit("Confirm"));
+}
+
+
+function save() {
+	_click(_submit("Save"));
+}
+
+
+
+
+//// ................................................... ////
+
+function addLoyalityProfileWithoutDetailsOne() {
+	
+	_click(_link("Loyalty Management"));
+	_click(_submit("Add"));
+	addLoyalityProfileDetails();
+	save();
+	_assertExists(_listItem("/" + $g_assertion + ".*/"));
+
+	
+}
+
+function addLoyalityProfileWithoutDetailsTwo() {
+	
+	$a_tempFromDate = "";
+	$a_tempToDate = "";
+	
+	_click(_link("Loyalty Management"));
+	_click(_submit("Add"));
+	addLoyalityProfileDetails();
+	save();
+	_assertExists(_listItem("/" + $g_assertion + ".*/"));
+
+	
+}
+
+
+function addLoyalityProfileWithoutVolumeProfile() {
+	
+	
+	$a_tempFromDate = ddmmyyFormat($g_fromDate);
+	$a_tempToDate = ddmmyyFormat($g_toDate);
+	
+	
+	
+	_click(_link("Loyalty Management"));
+	_click(_submit("Add"));
+	addLoyalityProfileDetails();
+	assignVolumeProfile();
+	
+	
+	if(_condition(_exists(_popup("eRecharge")._div("Add volume profile details"))))
+	{
+			_log("shashi for pop up  ");
+			_popup("eRecharge")._assertExists(_listItem("/" +$g_assertion+".*/"));
+			_popup("eRecharge")._click(_link("Close"));
+			
+	}
+	else {
+		_click(_submit($g_BtnSave));
+		}
+	
+	
+	
+}
+
+
+
+
+
+
+
+
+
+
+
+
+

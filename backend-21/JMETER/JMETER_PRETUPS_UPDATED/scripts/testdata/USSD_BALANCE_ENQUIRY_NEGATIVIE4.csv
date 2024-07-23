@@ -1,0 +1,2 @@
+TestcaseId,TestcaseType,Module,Description
+,N,BALANCE,To check that a user is unable to enquire its balance by  entering pin and not msisdn

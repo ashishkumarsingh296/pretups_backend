@@ -1,0 +1,28 @@
+//################################################
+//#Company Name: Mahindra Comviva Technologies Ltd.
+//#Application Name: Pretups
+//#Objective:To Read from excel file.
+//#Author Name: Nidhi Singh
+//#Created Date: 17/01/2014
+//###############################################
+
+//================Read the data from PretupsConfigInputs file====================
+
+var $l_readExcel = _readExcelFile("../conf/PretupsConfigInputs.xlsx", "Sheet1");
+
+var $l_row = 3;
+var $l_col = 2;
+
+var $g_appURL = $l_readExcel[$l_row++][$l_col];	//application web URL
+var $g_autoPrefix = $l_readExcel[$l_row++][$l_col];	//automation prefix used to create users etc.
+var $g_superAdmin = $l_readExcel[$l_row++][$l_col]; //Super admin user name 
+var $g_password = $l_readExcel[$l_row++][$l_col]/1; //Super admin password
+var $g_commonPassword = $l_readExcel[$l_row++][$l_col]; //Common password for all users.
+
+//DB details
+var $g_dbIP = $l_readExcel[$l_row++][$l_col];			//IP address of database server
+var $g_dbPort = $l_readExcel[$l_row++][$l_col]/1;	//port number of database server
+var $g_dbSid = $l_readExcel[$l_row++][$l_col];			//SID of database server
+var $g_dbUserName = $l_readExcel[$l_row++][$l_col];		//database user name
+var $g_dbPassword = $l_readExcel[$l_row++][$l_col];		//database password
+var $g_commonPIN = $l_readExcel[$l_row++][$l_col];		//Common PIN   added by shashi

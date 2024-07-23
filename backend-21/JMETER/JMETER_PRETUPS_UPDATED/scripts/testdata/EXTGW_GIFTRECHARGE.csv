@@ -1,0 +1,11 @@
+DATE,EXTNWCODE,MSISDN,PIN,LOGINID,PASSWORD,EXTCODE,EXTREFNUM,MSISDN2,AMOUNT,LANGUAGE1,LANGUAGE2,SELECTOR,GIFTER_MSISDN,GIFTER_NAME,GIFTER_LANGUAGE,TestcaseId,TestcaseType,Module,Description
+,NG,7212121514,1358,,,,abcd,7212345600,100,0,0,1,7255111223,harshad,1,TUNG13072,Positive,Gift Recharge,ByMsisdn and Pin
+,NG,,,harshadm,1358,,,7212345600,100,0,0,1,7255111223,harshad,1,TUNG13073,Positive,Gift Recharge,By Login Id and password
+,NG,,,,,303278,,7212345600,100,0,0,1,7255111223,harshad,1,TUNG13074,Positive,Gift Recharge,By External code
+,NG,7212121514,1358,harshadm,1358,303278,,7212345600,100,0,0,1,7255111223,harshad,1,TUNG13077,Positive,Gift Recharge,All the Details
+,,7212121514,1358,,,,abcd,7212345600,100,0,0,1,7255111223,harshad,1,TUNG13071,Negative,Gift Recharge,By null value in External network Code
+,NG,7212121514,,,,,abcd,7212345600,100,0,0,1,7255111223,harshad,1,TUNG13075,Negative,Gift Recharge,only Msisdn Given no Pin is given
+,NG,,,harshadm,,,abcd,7212345600,100,0,0,1,7255111223,harshad,1,TUNG13076,Negative,Gift Recharge,Invalid Login Credentials
+,NG,7212121514,1358,,,,abcd,7212345600,100,0,0,,7255111223,harshad,1,TUNG12830,Negative,Gift Recharge,Selector Value kept Blank
+,NG,,,,,,abcd,7212345600,100,0,0,1,7255111223,harshad,1,TUNG12831,Negative,Gift Recharge,No login Credentials Given
+,NG,7212121514,1357,,,,abcd,7212345600,100,0,0,1,7255111223,harshad,1,TUNG12832 ,Negative,Gift Recharge,invalid Msisdn and Pin

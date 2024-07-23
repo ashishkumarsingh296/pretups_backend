@@ -1,0 +1,251 @@
+###########################################################################################################
+#	CS3Bangladesh  IN file
+#	If IN interface of CS3 is added in PreTUPS from superadmin then.
+#	File with this content and name of the IN ID.txt should be created at the 
+#	path of the INFiles (defined in Constants.props).
+#	
+#	Values of the variables in this file should be updated with the values provided by the 
+#	Mobile Operator IN team
+#
+#	Define the interface id as value of SCH_IN_IDS in the Constants.props to initialize the
+#	details of all node exist in this interface
+#	
+############################################################################################################
+
+
+########################Common detail of interface for ALL Nodes- Start############################################
+
+##Defines the max number by which the next node would be checked for scheduling
+MAX_ALWD_NO=2
+
+##Defines the maximum number node supported by IN
+MAX_NODE=1
+
+##Defines the retry attempt to get the scheduled node,in the case of connection error.
+RETRY_NUM=3
+
+##Used for the request header for the authentication of request and would be set by the operator
+HEADER_HOST_NAME=air/1.1/1.0
+
+##Used in the request xml string and would be set by operator.
+HOST_NAME=21
+
+##Used for authentication if the host name is not present.
+USER_AGENT=AMD/1.1
+
+##Defines the type of node set by opertor.
+NODE_TYPE=EXT
+
+##This flag is used to define whether rounding of amount should be or not.
+ROUND_FLAG=Y
+
+##This defines the FirstIVRCall
+FIRST_FLAG=Y
+
+##Currency for the interface.
+#CURRENCY1=DL
+
+
+## The content type with which request is send to IN 
+CONTENT_TYPE=text/xml
+
+## The Factor by which the transaction amout to be multiplied before sending to IN.
+MULT_FACTOR=100
+
+## Prefix to be removed from the mobile number, leave blank if nothing is to be removed
+MSISDN_REMOVE_PREFIX=250
+
+## Prefix to be added to the mobile number, leave blank if nothing is to be added as prefix
+MSISDN_ADD_PREFIX=250
+
+##Defines the mapping of Interface language with the pretups language( format- IN_LANG1:PTUPS_LANG1,IN_LANG2:PTUPS_LANG2)
+LANGUAGE_MAPPING=1:0,0:1
+
+#Transaction date time format
+TRANS_DATE_TIME=yyyyMMdd'T'HH:mm:ss+SSSS
+
+
+##Allowed status,this status would be set when the status fetched from IN would match the 
+ALLOWED_STATUS=ACTIVE
+
+##Denied status,this status would be set when the status fetched from IN is not matched with the status defined in ACCOUNT_FLAGS.
+
+DENIED_STATUS=NOTACTIVE
+
+##Defines the list of active account status(seprated with comma)
+ACCOUNT_FLAGS=11111111,11100011,10101111
+
+#for SuperRefillT value of this flag should be Y
+SUPER_REFILLT=N
+
+#This parameter defines the Instance id and would be associated with the IN-Transaction id. It.s value would be different for the SMSR and SMSP instances, PLS CHECK.
+#INSTANCE_ID=10
+
+#The value of this field is required for the Message capability flag for the getAccountDetailsT request.
+MSG_CAP_FLAG=00100000
+
+
+#This would be used to define the optional ExternalData1 parameter
+EXTERNAL_DATA1=ZEBRA
+
+#This is used to define whether ExternalData2 is required or not. If this has value Y then
+EXTERNAL_DATA2_REQUIRED=Y
+
+#Value of the EXTERNAL_DATA2 if the value of EXTERNAL_DATA2_REQUIRED=Y then must define this tag.It's value may be empty.
+EXTERNAL_DATA2=ZEBRA
+
+#This would defined whether the PreTUPS txn id would be used or IN would use different transaction id.
+PRETUPS_ID_AS_ORGN_TXN_ID=N
+
+
+
+########################Common detail of interface for ALL Nodes- END############################################
+
+########################Details for individual Nodes- Start############################################
+###CS3 NODE 1 detail###
+#CS3 Node HTTP URL, this url will be provided by the operator to establish the Http connection with pretups.
+URL_1=http://127.0.0.1:5555/pretups55/CS3BangladeshTestServer1
+
+# Connection timeout for the node url
+CONN_TIMEOUT_1=10000
+
+#Maximum connection can be made to the node
+MAX_CON_NODE_1=5
+
+#Read timeout for the validate stage
+VAL_READ_TIMEOUT_1=10000
+
+#Read timeout for the TopUp stage
+TOP_READ_TIMEOUT_1=10000
+
+#In the case when connection is not established for the node, it will blocked forthis duration.
+EXPIRY_TIME_1=40000
+
+#keep alive falg for node
+KEEP_ALIVE_1=Y
+
+#Read warning time for node, should be less than the validate read timeout, if IN takes more than this time alarm will be raised.
+WARN_TIME_1=4000
+
+
+
+
+########################Details for individual Nodes- END############################################
+
+
+#Indicates whether Cancel request supported by IN or not.(Possible values are Y/N)
+CANCEL_TXN_ALLOWED=N
+
+##If any ambiguous response is received from IN, then retry/cancel command is sent to IN. Then response of retry/cancel is matched in the IN file and mapped error code (250/206/200) is picked and sent to Controller.
+##SYSTEM_STATUS_MAPPING=INErrCode1,INErrCode2,INErrCode3,INErrCode4:system_err_code1|INErrCode5,INErrCode6:system_err_code2
+##system_err_code1 and system_err_code2 will be sent to system and written in recon log file.
+#SYSTEM_STATUS_MAPPING=250:250
+##If receiver credit is AMBIGUOS, then in SYSTEM_PREFERENCE, CREDIT_BACK_ALLOWED should be N.
+
+#If an ambiguous case occurs while credit, mapped error code can be set to one of the codes(SUCCESS, FAIL and AMBIGUOUS)
+SYSTEM_STATUS_MAPPING_CREDIT=250:250
+
+#If an ambiguous case occurs while credit, mapped error code can be set to one of the codes(SUCCESS, FAIL and AMBIGUOUS)
+SYSTEM_STATUS_MAPPING_CREDIT_ADJ=250:250
+
+#If an ambiguous case occurs while debitAdjust, mapped error code cannot be SUCCESS. It can only be FAIL or AMBIGUOUS
+SYSTEM_STATUS_MAPPING_DEBIT_ADJ=250:250
+
+#If an ambiguous case occurs while credit Back, mapped error code can not be fail, it can only be SUCCESS or AMBIGOUOS
+SYSTEM_STATUS_MAPPING_CREDIT_BCK=250:250
+
+
+##If any ambiguous response is received from IN, check if cancel txn allowed or not in the system. if not, pick mapped error code against NA otherwise pick mapped error code (206/250) against received response code of Cancellation from IN. 
+##CANCEL_COMMAND_STATUS_MAPPING=INErrCode1,INErrCode2,INErrCode3,INErrCode4:cancel_err_code1|INErrCode5,INErrCode6:cancel_err_code2
+##cancel_err_code1, cancel_err_code2 will be written in recon log file.
+CANCEL_COMMAND_STATUS_MAPPING=NA:450
+
+#Defines the cancel command status when cancel not supported by IN. 
+CANCEL_NA=NA
+
+##This flag should be Y if interface closure feature is to be provided to client
+INTFCE_CLSR_SUPPORT=N
+
+#maximum number of ambiguous transactions allowed till threshold time.
+NO_ALLWD_AMB_TXN=5
+
+##time duration in which maximum number of ambiguous transactions is defined
+THRESHOLD_TIME=240000
+
+##Time duration after which interface suspension expires.
+EXPIRY_TIME=60000
+
+##Auto Resumption supported by IN or not.
+AUTO_RESUME_SUPPORT=N
+
+##Number of retry attempts while validation (Currently Retry is not supported by cs3)
+VAL_RETRY_CNT=20000
+
+##Number of retry attempts while recharge request (Currently Retry is not supported by cs3)
+CREDIT_RETRY_CNT=20000
+
+##Number of retry attempts while sending Adjustment request (Currently Retry is not supported by cs3)
+ADJ_RETRY_CNT=20000
+
+##Number of retry attempts while sending Cancel request (Currently Cancel Request is not supported by cs3)
+CNCL_RETRY_CNT=20000
+
+##Sleep time between two retries (Currently Retry is not supported by cs3)
+RETRY_SLEEP_TIME=20000
+
+##Error Codes when retry has to be made  (Currently Retry is not supported by cs3)
+RETRY_CASES=
+
+##Remark1 in Reconcialiationlog
+REMARK1=
+
+##Remark1 in Reconcialiationlog
+REMARK2=
+## Added for super refillT if it's value  is Y then system will run for super refillT otherwise it will be normal refill.
+SUPER_REFILLT=N
+
+
+### This parameter would be used in the IN Transaction id.  02/08/07
+###### Note Please make sure the value of this parameter would be depend on the instance e.g. For SMSR its value=2 and for SMSP its value=3.
+INSTANCE_ID=10
+
+##number of bits of Accountflag from which we will decide account status
+ACNT_STATUS_BIT_CNT=1
+
+##keep alive flag for connection
+KEEP_ALIVE=N
+
+
+WARN_TIMEOUT=50000
+
+CONNECT_TIME_OUT=10000
+
+
+NAI=1
+
+CURRENCY=DL
+
+REFILL_ACNT_AFTER_FLAG=N
+
+
+USERNAME_1=COMVIVA_1
+
+PASSWORD_1=93f3b1c3239a9dae59c6d08885549d3f
+
+NO_ALLWD_AMB_TXN_1=5
+
+THRESHOLD_TIME_1=10000
+
+
+READ_TIME_OUT=20000
+
+RETRY_COUNT_VAL=3
+
+
+
+
+
+
+
+
+

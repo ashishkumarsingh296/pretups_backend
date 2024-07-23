@@ -1,0 +1,17 @@
+TestcaseId,TestcaseType,Module,Description
+,Positive,Last Transaction Details,To verfiy that Last Transaction request is successful.
+,Positive,Last Transaction Details,To verfiy that Last Transaction request is successful with only MSISDN and PIN.
+,Positive,Last Transaction Details,To verfiy that Last Transaction request is successful with only LoginID and Password.
+,Positive,Last Transaction Details,To verfiy that Last Transaction request is successful with only External Code.
+,Positive,Last Transaction Details,To verfiy that Last Transaction request is successful if date is blank
+,Positive,Last Transaction Details,To verfiy that Last Transaction request is successful if EXTREFNUM is blank.
+,Negative,Last Transaction Details,To verfiy that Last Transaction request is not successful if PIN is incorrect.
+,Negative,Last Transaction Details,To verfiy that Last Transaction request is not successful if Password is incorrect.
+,Negative,Last Transaction Details,To verfiy that Last Transaction request is not successful if External code is incorrect.
+,Negative,Last Transaction Details,To verfiy that Last Transaction request is not successful if LoginID is incorrect.
+,Positive,Last Transaction Details,To verfiy that Last Transaction request is  successful if only  LoginID is present but Password is blank
+,Negative,Last Transaction Details,To verfiy that Last Transaction request is not successful if only  MSISDN is present but PIN is blank
+,Negative,Last Transaction Details,To verfiy that Last Transaction request is not successful external network code is invalid.
+,Positive,Last Transaction Details,To verfiy that Last Transaction request successfully show the  O2C transaction performed to user as last transaction 
+,Positive,Last Transaction Details,To verfiy that Last Transaction request successfully show the  C2C transaction performed to user as last transaction 
+,Positive,Last Transaction Details,To verfiy that Last Transaction request successfully show the  C2S transaction performed to user as last transaction 

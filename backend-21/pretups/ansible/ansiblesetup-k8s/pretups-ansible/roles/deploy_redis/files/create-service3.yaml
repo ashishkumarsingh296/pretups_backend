@@ -1,0 +1,48 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: redis-ha-cluster-sentinel-service-lbl
+  name: redis-ha-cluster-sentinel-service
+spec:
+  type: NodePort
+  ports:
+    - port: 26379
+      nodePort: 31301
+  selector:
+    app: redis-ha-cluster-sentinel-lbl
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: redis-ha-cluster-startup-redis-master-service-lbl
+  name: redis-ha-cluster-startup-redis-master-service
+spec:
+  type: NodePort
+  ports:
+    - port: 6379
+      nodePort: 31302
+  selector:
+    app: redis-ha-cluster-redis-master-lbl
+
+
+---
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: redis-ha-cluster-redis-slave-lbl-service
+spec:
+  type: NodePort
+  ports:
+  - port: 80
+    protocol: TCP
+    targetPort: 5000
+    nodePort: 31303
+  selector:
+      app: redis-ha-cluster-redis-slave-lbl
+        - containerPort: 5000

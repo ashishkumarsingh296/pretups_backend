@@ -1,0 +1,8 @@
+TestcaseId,TestcaseType,Module,Description
+,Negative,Modify user API through EXTGW,To verfiy that User modification API not execute successfully if Network code is blank
+,Negative,Modify user API through EXTGW,To verfiy that User modification API not execute successfully if User Primary Number is blank
+,Negative,Modify user API through EXTGW,To verfiy that User modification API not execute successfully if User Name  is blank
+,Negative,Modify user API through EXTGW,To verfiy that User modification API not execute successfully if User Name Prefix is blank
+,Negative,Modify user API through EXTGW,To verfiy that User modification API not execute successfully if employee code LoginID and MSISDN of initiator are blank
+,Negative,Modify user API through EXTGW,To verfiy that User modification API not execute successfully if Network Code is invalid
+,Negative,Modify user API through EXTGW,To verfiy that User modification API not execute successfully if User Name Prefix is other then Mr/Miss/Mrs 

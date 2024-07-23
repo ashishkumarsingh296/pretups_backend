@@ -1,0 +1,2 @@
+TestcaseId,TestcaseType,Module,Description
+TUNG12855 ,P,BALANCE,To check that a user is able to enquire its balance by entering login id  and password

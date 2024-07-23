@@ -1,0 +1,55 @@
+---
+
+ - name: Create an pretups_ui_image directory
+   file:
+     path: "/{{ REG_DIR }}/pretups_login_ui_image"
+     state: directory
+     owner: "{{ PRIVATE_REG_USER_NAME }}"
+     group: "{{ PRIVATE_REG_GROUP_NAME }}"
+
+
+ - name: Copying private reg - DockerFile, apachae Tomcat and pretups.war to the destination
+   become: true
+   remote_user: "{{ PRIVATE_REG_USER_NAME }}"
+   ansible.builtin.copy:
+     src: private_reg/.
+     dest: "/{{ REG_DIR }}/pretups_login_ui_image"
+     owner: "{{ PRIVATE_REG_USER_NAME }}"
+     group: "{{ PRIVATE_REG_GROUP_NAME }}"
+     mode: '0777'
+
+ - name: "Replace the configured parameters - application.properties"
+   replace: dest="/{{ REG_DIR }}/pretups_login_ui_image/pretups_login/application.properties" regexp='LOGIN_MODULE_CONTAINER_PORT' replace='{{ LOGIN_MODULE_CONTAINER_PORT }}' encoding='cp1252'
+
+
+ - name: "Replace the configured parameters - loginstart.sh"
+   replace: dest="/{{ REG_DIR }}/pretups_login_ui_image/pretups_login/loginstart.sh" regexp='LOGIN_MODULE_CONTAINER_PORT' replace='{{ LOGIN_MODULE_CONTAINER_PORT }}' encoding='cp1252'
+
+ - name: "Replace the configured parameters - application.properties"
+   replace: dest="/{{ REG_DIR }}/pretups_login_ui_image/pretups_login/application.properties" regexp='PRETUPS_IP:PRETUPS_NODEPORT' replace='{{ PRETUPS_IP }}:{{ PRETUPS_NODEPORT}}' encoding='cp1252'
+
+
+
+
+ - name: Build an Image
+   become: true
+   remote_user: "{{ PRIVATE_REG_USER_NAME }}"
+   command: chdir="/{{ REG_DIR }}/pretups_login_ui_image"  docker build  -t pretups-ui-login:v1 -f DockerFile .
+
+
+ - name: Tag an Image
+   become: true
+   remote_user: "{{ PRIVATE_REG_USER_NAME }}"
+   command: docker image tag pretups-ui-login:v1 localhost:5000/pretups-ui-login:v1
+
+
+ - name: Push the Image changes
+   become: true
+   remote_user: "{{ PRIVATE_REG_USER_NAME }}"
+   command: docker image push localhost:5000/pretups-ui-login:v1
+
+#docker run  -e ENV_DOCKER_REGISTRY_HOST=172.30.38.52 -e ENV_DOCKER_REGISTRY_PORT=5000 -p 8080:80 konradkleine/docker-registry-frontend
+
+
+
+

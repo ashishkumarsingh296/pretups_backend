@@ -1,0 +1,2 @@
+TestcaseId,TestcaseType,Module,Description
+TUNG12350,Negative,Lite Recharge through EXTGW,To validate that LRC is not successful without language 1.

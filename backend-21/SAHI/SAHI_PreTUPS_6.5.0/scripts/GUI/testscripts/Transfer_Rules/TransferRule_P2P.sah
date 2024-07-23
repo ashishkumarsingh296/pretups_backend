@@ -1,0 +1,89 @@
+//################################################
+//#Company Name: Mahindra Comviva Technologies Ltd.
+//#Application Name: Pretups
+//#Objective:To add Transfer Rule from Peer to Peer
+//#Author Name: Nidhi Singh
+//#Created Date: 26/02/2014
+//###############################################
+
+//===========================Import Scripts============================	 
+_includeOnce("../../../../utility/ImportPackage.sah");
+_includeOnce("../../../GUI/testscripts/Transfer_Rules/TransferRule_Common.sah"); //For adding O2C Transfer Rules	
+_includeOnce("../../../GUI/testscripts/User_Management/UserManagement_Common.sah"); //For creating NA	
+_includeOnce("../../../DB/Pretups_GUI_Queries.sah");
+_includeOnce("../../../GUI/testscripts/Card_Group/CardGroup_Common.sah"); //For adding C2P card group	
+
+//======================Pre-requisite check============================
+_log("Setup", "custom4");
+
+//If NA deos not exist, first create it and then create the Transfer Rules
+var $l_naCsv = _readCSVFile("../../../GUI/testdata/NA_Login.csv"); //Reads the network admin credentials 
+var $g_row = 4;
+var $g_col = 1;
+var $g_networkAdmin1 = $l_naCsv[1][1];
+if($g_networkAdmin1 == "null"){
+	createNA(); // UserManagement_Common.sah
+	var $l_naCsv1 = _readCSVFile("../../../GUI/testdata/NA_Login.csv");
+	$g_networkAdmin1 = $l_naCsv1[1][1];
+	login($g_appURL,  $g_LangEnglish, $g_networkAdmin1, $g_commonPassword, $g_assertWelcome);
+}else{	 
+	login($g_appURL,  $g_LangEnglish, $g_networkAdmin1, $g_commonPassword, $g_assertWelcome);
+}
+
+
+
+//==================== Create a peer to peer card group ==================//
+
+var $g_P2PCardDetails = _readCSVFile("../../../GUI/testdata/P2PCardGroup_Details.csv"); //Reads the Card group details
+
+var $g_row = 1;
+var $g_col = 0;
+var $t = _testcase($g_P2PCardDetails[$g_row][$g_col++], $g_P2PCardDetails[$g_row][$g_col++]);
+$t.start();
+variableForP2PCardGroup($g_row, $g_col); //defind in CardGroup_Common.sah
+
+var $ifRuleExists = addP2PCardGruop(); //defind in CardGroup_Common.sah
+$t.end();
+
+if($ifRuleExists == false){
+	_assertExists(_listItem("Card group details successfully added"));
+	
+	var $g_cardGroupName = _readCSVFile("../../../GUI/testdata/P2PTransferRules_Details.csv");
+	$g_cardGroupName[1][7] = $g_cardGroupSetName;
+	_writeCSVFile($g_cardGroupName, "../../../GUI/testdata/P2PTransferRules_Details.csv", 1);
+	
+		_log("P2P Card group is added successfully.");
+}
+else{
+	_log("P2P Card gropu is already exists");
+}
+
+
+
+
+//============Create a Peer-2-Peer Transfer Rule==============
+//fetchServiceClass(); //Fetch Service Class from DB(Pretups_GUI_Queries.sah)
+//fetchRecieverServiceClass(); //Fetch Receiver Class from DB(Pretups_GUI_Queries.sah)
+
+
+
+var $g_P2PTRDetails = _readCSVFile("../../../GUI/testdata/P2PTransferRules_Details.csv"); //Reads the Transfer Rules details
+var $g_row1 = 1;
+var $g_col1 = 0;
+//var $t = _testcase($g_P2PTRDetails[$g_row1][$g_col1++], $g_P2PTRDetails[$g_row1][$g_col1++]);
+//$t.start();
+variableForP2PTransferRule(1,2);	//(TransferRule_Common.sah)
+var $ifRuleExists = addP2PTransferRule();
+//$t.end();
+if($ifRuleExists == false){
+_assertExists(_listItem("Transfer rule is added successfully"));
+_log("Peer-to-Peer Transfer rule is added successfully.");
+}
+else{
+	_log("Peer-to-Peer Transfer rule already exists.");
+}
+
+//==================================================
+_log("Tear Down", "custom4");
+
+

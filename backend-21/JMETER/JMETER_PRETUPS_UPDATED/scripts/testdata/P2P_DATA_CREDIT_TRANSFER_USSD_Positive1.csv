@@ -1,0 +1,2 @@
+TestcaseId,TestcaseType,Module,Description
+,Positive,Data Credit Transfer,To validate successful credit transfer with all the mandatory as well as optional parameters

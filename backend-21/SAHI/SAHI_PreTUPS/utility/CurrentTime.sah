@@ -1,0 +1,340 @@
+//###############################################
+//#Company Name: Mahindra Comviva Technologies Ltd.
+//#Application Name: Pretups
+//#Objective:To fetch Current Time
+//#Author Name: Anantha Sakthi
+//#Created Date: 09/10/2012
+//#Last Modified By: Nidhi Singh on 15/01/2013
+//##############################################
+
+/**
+ *  This function fetches the current system time
+ *	@param[in] - null
+ *	@return - date, month, hours, minutes, seconds
+ */
+
+function currentTime() {
+	var $l_currentTime = new Date();	//Global method for fetching current system date
+	var $l_year = $l_currentTime.getYear();
+	var $l_month = $l_currentTime.getMonth() + 1;
+	var $l_date = $l_currentTime.getDate();
+	var $l_hours = $l_currentTime.getHours();
+	var $l_minutes = $l_currentTime.getMinutes();
+	var $l_seconds = $l_currentTime.getSeconds();
+
+	if ($l_hours < 10) {
+		var $l_hours = "0" + $l_hours;
+	}
+	
+	if ($l_minutes < 10) {
+		var $l_minutes = "0" + $l_minutes;
+	}
+
+	if ($l_seconds < 10) {
+		var $l_seconds = "0" + $l_seconds;
+	}
+
+	if ($l_month < 10) {
+		var $l_month = "0" + $l_month;
+	}
+
+	if ($l_date < 10) {
+		var $l_date = "0" + $l_date;
+	}
+	
+	return $l_date + "" + $l_month + "" + $l_hours + "" + $l_minutes + "" + $l_seconds;
+	
+}
+
+/**
+ *  This function returns system current date
+ *	@param[in] - null
+ *	@return - date, month, year
+ */
+
+function currentDate(){
+	var $l_currentTime = new Date();	//Global method for fetching current system date
+	var $l_year = $l_currentTime.getFullYear();
+	var $l_month = $l_currentTime.getMonth() + 1;
+	var $l_date = $l_currentTime.getDate();
+
+	if ($l_month < 10) {
+		var $l_month = "0" + $l_month;
+	}
+
+	if ($l_date < 10) {
+		var $l_date = "0" + $l_date;
+	}
+
+	return $l_date + "/" + $l_month + "/" + $l_year;
+}
+
+/**
+ *  This function returns previous year date
+ *	@param[in] - $a_year
+ *	@return - date, month, year
+ */
+
+function previousYearDate($a_year){
+	var $l_currentTime = new Date();	//Global method for fetching current system date
+	var $l_year = $l_currentTime.getFullYear() - $a_year;
+	var $l_month = $l_currentTime.getMonth() + 1;
+	var $l_date = $l_currentTime.getDate();
+
+	if ($l_month < 10) {
+		var $l_month = "0" + $l_month;
+	}
+
+	if ($l_date < 10) {
+		var $l_date = "0" + $l_date;
+	}
+
+	return $l_date + "/" + $l_month + "/" + $l_year;
+}
+
+/**
+ *  This function returns next year date
+ *	@param[in] - $a_year
+ *	@return - date, month, year
+ */
+
+function nextYearDate($a_year){
+	var $l_currentTime = new Date();	//Global method for fetching current system date
+	var $l_year = $l_currentTime.getFullYear() + $a_year;
+	var $l_month = $l_currentTime.getMonth() + 1;
+	var $l_date = $l_currentTime.getDate();
+
+	if ($l_month < 10) {
+		var $l_month = "0" + $l_month;
+	}
+
+	if ($l_date < 10) {
+		var $l_date = "0" + $l_date;
+	}
+
+	return $l_date + "/" + $l_month + "/" + $l_year;
+}
+
+/**
+ *  This function returns system yesterday date
+ *	@param[in] - null
+ *	@return - date, month, year
+ */
+
+function yesterdayDate(){
+	var $l_currentTime = new Date();	//Global method for fetching current system date
+	var $l_year = $l_currentTime.getFullYear();
+	var $l_month = $l_currentTime.getMonth() + 1;
+	var $l_date = $l_currentTime.getDate() - 1;
+
+	if ($l_month < 10) {
+		var $l_month = "0" + $l_month;
+	}
+
+	if ($l_date < 10) {
+		var $l_date = "0" + $l_date;
+	}
+
+	return $l_date + "/" + $l_month + "/" + $l_year;
+}
+
+/**
+ *  This function returns system current day
+ *	@param[in] - null
+ *	@return - day
+ */
+
+function currentDay() {
+	var l_currentTime = new Date();	//Global method for fetching current system date
+	var l_day = l_currentTime.getDay();
+	return l_day;
+}
+
+/**
+ *  This function returns system current time by decreasing two hours
+ *	@param[in] - null
+ *	@return - hours, minutes
+ */
+
+function timeStampTwo() {
+	var l_currentTime = new Date(); // Global method for fetching current system date									 
+	var $l_hrs = l_currentTime.getHours();
+	var $l_min = l_currentTime.getMinutes();
+
+	if ($l_hrs == 0  && $l_hrs < 24) {
+		$l_hrs = 24;
+		$l_hrs = $l_hrs - 2;
+	} else {
+		$l_hrs = $l_hrs - 2;
+	}
+
+	if ($l_min < 10) {
+		$l_min = "0" + $l_min;
+	}
+
+	if ($l_hrs < 10) {
+		$l_hrs = "0" + $l_hrs;
+	}
+
+		_log("shashi 1 "   + $l_hrs + ":" + $l_min );
+
+	return $l_hrs + ":" + $l_min;
+}
+
+/** This function returns system current time by decreasing one hour
+ *	@param[in] - null
+ *	@return - hours, minutes
+ */
+
+function timeStampOne() {
+	var l_currentTime = new Date(); // Global method for fetching current system date
+	var $l_hrs = l_currentTime.getHours();
+	var $l_min = l_currentTime.getMinutes();
+
+	if ($l_hrs == 0 && $l_hrs < 24) {
+		$l_hrs = 24;
+		$l_hrs = $l_hrs - 1;
+	} else {
+		$l_hrs = $l_hrs - 1;
+	}
+
+	if ($l_min < 10) {
+		$l_min = "0" + $l_min;
+	}
+	if ($l_hrs < 10) {
+		$l_hrs = "0" + $l_hrs;
+	}
+	return $l_hrs + ":" + $l_min;
+}
+
+/** This function returns current server time after fetching the vlaues from GUI
+ *	@param[in] - null
+ *	@return - current server time
+ */
+ 
+function serverTime(){
+	var $headerString = _getText(_span("header"));
+	var $firstDataAfterSplit = $headerString.split("Time : ");	
+	var $secondDataAfterSplit = $firstDataAfterSplit[1].split(" | Last ");	
+	var $thirdDataAfterSplit = $secondDataAfterSplit[0].split(" ");
+	var $actualServerTime = $thirdDataAfterSplit[0].split(",");	//20/03/13
+	var $date = $actualServerTime.toString().substring(0,2);
+	var $month = $actualServerTime.toString().substring(3,5);
+	var $year = "20" + $actualServerTime.toString().substring(6,8);
+	return $date + "/" + $month + "/" + $year;
+}
+
+/**
+ *  This function fetches the current system time
+ *	@param[in] - null
+ *	@return - date, month, hours, minutes, seconds
+ */
+
+function hoursAndMinutes() {
+	var $l_currentTime = new Date();	//Global method for fetching current system date
+	var $l_year = $l_currentTime.getYear();
+	var $l_month = $l_currentTime.getMonth() + 1;
+	var $l_date = $l_currentTime.getDate();
+	var $l_hours = $l_currentTime.getHours();
+	var $l_minutes = $l_currentTime.getMinutes();
+	var $l_seconds = $l_currentTime.getSeconds();
+
+	if ($l_hours < 10) {
+		var $l_hours = "0" + $l_hours;
+	}
+	
+	if ($l_minutes < 10) {
+		var $l_minutes = "0" + $l_minutes;
+	}
+
+	if ($l_seconds < 10) {
+		var $l_seconds = "0" + $l_seconds;
+	}
+
+	if ($l_month < 10) {
+		var $l_month = "0" + $l_month;
+	}
+
+	if ($l_date < 10) {
+		var $l_date = "0" + $l_date;
+	}
+	
+	return $l_hours + "" + $l_minutes + "" + $l_seconds;
+	
+}
+
+/**
+ *  This function fetches the current system date in dd mmm yyyy format
+ *	@param[in] - null
+ *	@return - date, month, hours
+ */
+
+function ddmmmyyyy() {
+	var $d = new Date();
+	var $month_name = new Array(12);
+	$month_name[0] = "Jan";
+	$month_name[1] = "Feb";
+	$month_name[2] = "Mar";
+	$month_name[3] = "Apr";
+	$month_name[4] = "May";
+	$month_name[5] = "Jun";
+	$month_name[6] = "Jul";
+	$month_name[7] = "Aug";
+	$month_name[8] = "Sep";
+	$month_name[9] = "Oct";
+	$month_name[10] = "Nov";
+	$month_name[11] = "Dec";
+	var $month_day = $d.getDay() + 1;
+	return $month_day + " " + ($month_name[$d.getMonth()]) + ' ' + ($d.getFullYear() + 2);
+}
+
+/**
+ *  This function fetches the current system date in dd mm yy format
+ *	@param[in] - null
+ *	@return - date, month, year
+ */
+function ddmmyy() {
+	var $l_currentTime = new Date();	//Global method for fetching current system date
+	var $l_month = $l_currentTime.getMonth() + 1; //January is 0!
+	var $l_date = $l_currentTime.getDate();
+	var $l_year = $l_currentTime.getFullYear().toString().substr(2,2);
+	
+	if ($l_month < 10) {
+		var $l_month = "0" + $l_month;
+	}
+
+	if ($l_date < 10) {
+		var $l_date = "0" + $l_date;
+	}
+	
+	return $l_date + "/" + $l_month + "/" + $l_year;
+	
+}
+
+/** This function returns system current time
+ *	@param[in] - null
+ *	@return - hours, seconds
+ */
+
+function timeStampTwo() {
+	var $l_currentTime = new Date(); // Global method for fetching current system date
+	var $l_date = $l_currentTime.getDate();
+	var $l_hours = $l_currentTime.getHours();
+	var $l_sec = $l_currentTime.getSeconds();
+
+	if ($l_date < 10) {
+		var $l_date = "0" + $l_date;
+	}
+	
+	if ($l_hours < 10) {
+		var $l_hours = "0" + $l_hours;
+	}
+
+	if ($l_sec < 10) {
+		$l_sec = "0" + $l_sec;
+	}
+	var $l_timestamp = $l_hours.toString() + $l_sec.toString();
+	
+	
+	return $l_timestamp;
+}

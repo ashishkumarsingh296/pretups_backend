@@ -1,0 +1,46 @@
+--- 
+ - name: "DB: Making base Directory in Database Server"
+   file: dest="~/{{ BASEDIR }}" state=directory owner={{ db_user }} group={{ db_group }} mode=0755
+   tags:
+     - DbDirectory_postgress
+
+ - shell: pwd chdir=~/{{ BASEDIR }}
+   register: Base_DIR
+   tags:
+     - DbDirectory_postgress
+
+ - name: " debug: path of the directory to ship scripts"
+   debug: msg=" path is {{ Base_DIR.stdout }}"
+   tags:
+     - DbDirectory
+
+ - name: "DB: Making temp Directory in Database Server"
+   file: dest="{{ BASE_DIR }}/{{ Temp_Dir }}" state=directory owner={{ db_user }} group={{ db_group }} mode=0755
+   tags:
+     - DbDirectory_postgress
+
+ - name: Making Directory TableSpace for "DATA" in Database Server
+   file: dest="{{ BASE_DIR }}/{{ Temp_Dir }}/{{ item.Table_Space_Name }}" state=directory
+   with_items:
+            - "{{ Table_space_entries }}"
+   tags:
+     - DbDirectory_postgress
+
+# - name: Making Directory TableSpace for "INDEX" in Database Server
+#   file: dest="{{ BASE_DIR }}/{{ Temp_Dir }}/{{ item. }}" state=directory
+#    with_items:
+#            - "{{ Table_space_entries }}"
+#    tags:
+#      - DbDirectory_Index
+
+ - name: Shipping Pretups Database Sql Files
+   template: src={{ item }} dest="{{ BASE_DIR }}/{{ Temp_Dir }}/"
+   with_fileglob:
+   - "{{ SCRIPTS_DB_FOLDER_NAME }}/*"
+   tags:
+     - DbDirectory_postgress_ship
+
+ - name: "DB: copying the dump files to the DB server"
+   copy: src="{{ PRETUPS_POSTGRES_DUMP }}.{{ DUMP_FORMAT }}"  dest="{{ BASE_DIR }}/{{ Temp_Dir }}"
+   tags:
+    - dump_postgress

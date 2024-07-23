@@ -1,0 +1,6 @@
+<span class='recTypeText'>1.Acceptance</span>
+<span class='termsub'>Lorem ipsum dolor ist amet, consectetur adipiscing elit.Nulam mattis lobortis sollicitudin. Curabitur pretium vitae sem vel luctus.Cras venenatis luctus euismod.praesent condimentium uma vitae fringilla tristique,Quisque poseuere a sapien at fermentum.Suspendisse lectus ipsum,pellentesque mattis dui vel ,scelerisque ullamcorper magna.</span>
+<span class='termsub'>duis commodo lorem eget vehicula faucibus dolor risus lacinia massa id aliquam ipsum neque sed nulla.Inter tincidunt mauris ut ante porttitor.</span>
+<span class='recTypeText'>2.Under Advicement</span> 
+<span class='termsub'>Duis is quam ullamcorper,portitor orci eu,blandit erat Integer elementum justo et odio moleste ultrices in erat est,dapibus vel ultricies nec,venenatis lacus vivamus justo tellus facilsis et ultricies sit  amet felis tellus vestibu lum augue me feugaiat ac portutor id ,diagnissim vel arcu Maus luctus est eu dignissim.</span>
+<span class='termsub'>Duis commodi lerem eget vehiculla faucibus,dolor risus lacin ia massa id aliquam ipsum neque sed nulla interger tincidunt mauris ut ante portitor.</span>

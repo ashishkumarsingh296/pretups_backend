@@ -1,0 +1,10 @@
+---
+- name: Nodejs deployment playbook
+  hosts: nodejs-nodes       # Inventory hosts group / server to act on
+  become: yes               # If to escalate privilege
+  become_method: sudo       # Set become method
+  remote_user: root         # Update username for remote server
+  vars:
+    redis: { version: 2.8.8 }
+  roles:
+    - nodejs

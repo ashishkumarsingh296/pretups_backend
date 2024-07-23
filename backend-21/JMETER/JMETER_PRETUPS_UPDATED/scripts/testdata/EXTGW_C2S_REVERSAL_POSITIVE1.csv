@@ -1,0 +1,2 @@
+RCSELECTOR,LANGUAGE1,LANGUAGE2,TestcaseId,TestcaseType,Module,Description
+1,,,TUNG12180 ,Positive,Recharge Reversal from Main Distributor to Subscriber ,C2S Recharge Reversal should work through external gateway with transaction id and sender details.

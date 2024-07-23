@@ -1,0 +1,5 @@
+TestcaseId,TestcaseType,Module,Description
+,Negative,User Balance Enquiry,To check that a user is unable to enquire its balance by not entering PIN
+,Negative,User Balance Enquiry,To check that a user is unable to enquire its balance by not entering MSISDN
+,Negative,User Balance Enquiry,To check that a user is unable to enquire its balance by not entering Password
+,Negative,User Balance Enquiry,To check that a user is unable to enquire its balance by not entering MSISDN_PIN LoginId_Password and ExternalCode

@@ -1,0 +1,92 @@
+//######################################
+//
+// This script is to suspend, approve and resume channel user in the system  
+//
+//#######################################
+
+
+//===== import scripts ===//
+_includeOnce("../../../../utility/ImportPackage.sah");
+_includeOnce("../../../GUI/testscripts/ChannelUser_Management/SuspendApprovalResumeUser_Common.sah"); //to suspend, approve and resume channel user in the system 
+
+
+
+//If CA deos not exist, first create it and then initiate O2C transfer inthe system ..... 
+var $l_naCsv = _readCSVFile("../../../GUI/testdata/NA_Login.csv"); //Reads the network admin credentials 
+var $g_channelAdmin = $l_naCsv[2][1];
+if($g_channelAdmin == "null"){
+	createCA(); // UserManagement_Common.sah
+	var $l_naCsv1 = _readCSVFile("../../../GUI/testdata/NA_Login.csv");
+	$g_channelAdmin = $l_naCsv1[2][1];
+	login($g_appURL,  $g_LangEnglish, $g_channelAdmin, $g_commonPassword, $g_assertWelcome);
+}else{	 
+	login($g_appURL,  $g_LangEnglish, $g_channelAdmin, $g_commonPassword, $g_assertWelcome);
+}
+	
+
+ 
+
+// ....................... Test cases  to suspend, approve and resume channel user in the system     ............. //
+
+var $g_suspendApproveResumeUser = _readCSVFile("../../../GUI/testdata/SuspendApproveAndResumeChannelUser.csv"); // Read Channel channel user detials which needs to be set
+
+
+
+	for(var $g_row = 1; $g_suspendApproveResumeUser[$g_row] != null; $g_row++){
+		
+				var $g_col = 0;
+				var $number =   testCaseNumber($g_suspendApproveResumeUser[$g_row][$g_col]);
+				var $t = _testcase($g_suspendApproveResumeUser[$g_row][$g_col++], $g_suspendApproveResumeUser[$g_row][$g_col++]);
+				
+				$t.start();
+				commonVaribleToSuspendApproveResumeUser($g_row, $g_col);
+				
+				// to request for channel user suspension request 
+				
+				if($number ==1 ){ toCheckSubmitButtonOnSuspendChannelUserPage(); }
+				else if($number ==2 ){ toChecKBackButtonOnSuspendChannelUserCnfPage(); }
+				else if($number > 2 && $number < 8 ) { suspendWithInvalidDetails(); }
+				else if ($number == 8 ) { suspendChannelUser(); }
+				else if ($number == 9 ) { suspendTheSuspendedUser(); }
+				
+				// Test cases for approval of channel user suspension in the system 
+				
+				else if($number > 9 && $number < 15 ) { approveWithInvalidDetails(); }
+				else if ($number == 15 ) { toChecKBackButtonOnUserApprovalCnfPage(); }
+				else if ($number == 16 ) { toDiscardUserApprovalSuspension(); }
+				else if ($number == 17 ) { backCheckFromApprovalCnfPage(); }
+				else if ($number == 18 ) { cancelCheckFromApprovalCnfPage(); }
+				else if ($number == 19 ) { approveChannelUserSuspension(); }
+				
+				// Test Cases to resume channel user in the system 
+				
+				else if($number > 19 && $number < 25 ) { resumeWithInvalidDetails(); }
+				
+				else if ($number == 25 ) { backCheckFromChannelUserResumePage(); }
+				else if ($number == 26 ) { resumeWithoutSelectingAnyUser(); }
+				
+				else if ($number == 27 ) { backCheckFromChannelUserResumeCnfPage(); }
+				else if ($number == 28 ) { cancelCheckFromChannelUserResumeCnfPage(); }
+				
+				else if ($number == 29 ) { resumeSuspendedChannelUser(); }
+				
+				
+				
+				
+				
+				
+				$t.end();
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+

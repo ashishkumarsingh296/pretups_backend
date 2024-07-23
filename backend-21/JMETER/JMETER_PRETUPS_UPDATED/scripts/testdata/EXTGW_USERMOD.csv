@@ -1,0 +1,6 @@
+DATE,EXTNWCODE,EMPCODE,LOGINID,PASSWORD,MSISDN,PIN,EXTREFNUM,NETWORKCODE,USERMSISDN,EXTERNALCODE,NEWEXTERNALCODE,USERNAME,SHORTNAME,USERNAMEPREFIX,SUBSCRIBERCODE,CONTACTPERSON,CONTACTNUMBER,SSN,ADDRESS1,ADDRESS2,CITY,STATE,COUNTRY,EMAILID,WEBLOGINID,WEBPASSWORD,MSISDN1,MSISDN2,MSISDN3,TestcaseId,TestcaseType,Module,Description
+05-09-2016,NG,,btdist,1357,,,4568,NG,,55662377,123313,,,,11,,,,,222,33,44,55,sa@gmail.com,sadist12,com@123,7200088866,,,TUNG12819,Positive,Modify user API through EXTGW,Add user through EXTGW by adding the required fields
+05-09-2016,NG,,,,,,,NG,,,,,,,11,,,,,222,33,44,55,,sadist12,com@123,7200088866,,,TUNG12820,Negative,Modify user API through EXTGW,Modify user through EXTGW by leaving the mandatory fields empty.
+05-09-2016,NG,,btdist,1357,,,4568,NG,,55662377,aaaaaa,,,,11,,,,,222,33,44,55,sa@gmail.com,sadist12,com@123,7200088866,,,TUNG12821,Negative,Modify user API through EXTGW,Enter alphanumeric external code
+05-09-2016,NG,,qwerty,1357,,,4568,NG,,55662377,123313,,,,11,,,,,222,33,44,55,sa@gmail.com,sadist12,com@123,7200088866,,,TUNG12822,Negative,Modify user API through EXTGW,Enter invalid loginid or password
+05-09-2016,NG,,btdist,1357,,,4568,NG,,55662377,123313,,,,11,,,,,222,33,44,55,sa&gmail.com,sadist12,com@123,7200088866,,,TUNG12823,Negative,Modify user API through EXTGW,Enter email id in wrong format

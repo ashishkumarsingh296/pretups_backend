@@ -1,0 +1,2 @@
+TestcaseId,TestcaseType,Module,Description
+TUNG10185,Positive,Self TPIN iniitiate through USSD,To verify that the OTP is generated according to the length defined  for Initiate PIN Reset request.

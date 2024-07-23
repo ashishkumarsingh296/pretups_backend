@@ -1,0 +1,2 @@
+TestcaseId,TestcaseType,Module,Description
+TUNG13154,Negative,Voucher Consumption through EXTGW,To verify  that user will be validated on the basis of the MSISDN and PIN if MSISDN value is available

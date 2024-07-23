@@ -1,0 +1,13 @@
+<!ELEMENT cp_reply (cp_id,cp_transaction_id,op_transaction_id,result,credit_balance,end_val_date,end_inact_date,profile,prof_lang,acc_status,lock_information,service_type)>
+<!ELEMENT cp_id (#PCDATA)>
+<!ELEMENT cp_transaction_id (#PCDATA)>
+<!ELEMENT op_transaction_id (#PCDATA)>
+<!ELEMENT result (#PCDATA)>
+<!ELEMENT credit_balance (#PCDATA)>
+<!ELEMENT end_val_date (#PCDATA)>
+<!ELEMENT end_inact_date (#PCDATA)>
+<!ELEMENT profile (#PCDATA)>
+<!ELEMENT prof_lang (#PCDATA)>
+<!ELEMENT acc_status (#PCDATA)>
+<!ELEMENT lock_information (#PCDATA)>
+<!ELEMENT service_type (#PCDATA)>

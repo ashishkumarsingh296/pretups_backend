@@ -1,0 +1,19 @@
+##########################################################################################################
+##
+##      KafkaConstants.props
+##
+##      This is the kafka key-value configuration file of the PreTUPS system. Operator specific configuration
+##      changes will be done in this file. 
+##
+##########################################################################################################
+
+
+
+bootstrap.servers=172.30.24.97:9092
+client.id=client1
+linger.ms=0
+max.request.size=1048576
+batch.size=0
+buffer.memory=33554432
+producer.type=sync
+acks=all

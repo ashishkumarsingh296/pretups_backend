@@ -1,0 +1,2 @@
+TestcaseId,TestcaseType,Module,Description
+TUNG13122,Positive,Channel to Channel Transfer through USSD,"To verify that channel user is unable to successfully initiate the ""transfer request"" through USSD if the type field is having value other than ""TRFREQ""."

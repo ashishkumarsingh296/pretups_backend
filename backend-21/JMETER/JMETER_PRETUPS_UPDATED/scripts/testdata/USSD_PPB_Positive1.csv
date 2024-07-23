@@ -1,0 +1,2 @@
+TestcaseId,TestcaseType,Module,Description
+TUNG12983,Positive,Postpaid Bill Payment through USSD,"To verify that channel user is able to initiate the ""PPB"" request for subscriber through USSD with all the mandatory fields."

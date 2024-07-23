@@ -1,0 +1,12 @@
+TestCaseNo. ,Discription,LoyalityP Poing,Message,Assertion ,Assertion for Approve loyality points
+TEST001,Given that network admin logged into apllication and try to initiate loyality stock,100,Initiate loyality stock,Loyalty stock request initiated,
+TEST002,Given that network admin logged into apllication and try to approve loyality stock,100,90,Loyalty stock approved successfully,
+TEST003,Given that network admin loggged into application and try to initiate loyality stock with without submit any value,,,Please enter Loyalty Point Requested value.,
+TEST004,Given that network admin logged into apllication and try to initiate loyality stock with character as loyality point,ABCD,Remarks,invalid stock value it should Be numeric.,
+TEST005,Given that network admin logged into apllication and try to intiate by with negative loyality point,-100,Remarks,invalid stock value it should be greater then zero.,
+TEST006,Given that network admin logged into apllication and try to intiate with loyality points having spaces,100 10,Remarks,invalid stock value it should Be numeric.,
+TEST007,Given that network admin loggin into application and try to approve without any approved quantity,150,Remarks,,please Enter approval value.
+TEST008,Given that network admin loggin into application and try to approve more than initated quantity,150,Remarks,160,Approved quantity is more than requested quantity.
+TEST009,Given that network admin loggin into application and try to approve negative quantity,150,Remarks,-100,Invalid approved value should be greater or equal to 0.
+TEST010,Given that network admin loggin into application and try to approve String as approved quantity,150,Remarks,ABCD,Invalid approval value it should numeric.
+TEST011,Given that network admin loggin into application and approve the initiated quantity,150,150,Loyalty stock approved successfully,

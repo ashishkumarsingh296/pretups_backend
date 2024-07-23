@@ -1,0 +1,96 @@
+<?xml version="1.0"?>
+<!DOCTYPE webaxn SYSTEM "i18n.dtd">
+<widget version="1.0">
+	<name>PRETUPS RECHARGE</name>
+	<description>Prepaid Recharge</description>
+	<author>Comviva</author>
+	<license>Comviva Technologies</license>
+	<identifier>979446865</identifier>
+	<type>2</type>
+	<sms key="PRC" shortcode="1111" api="processRechargeSMS"/>
+	<icon src="recharge.png"/>
+	<content src="recharge.html" />
+	<content bearer="2" src="rechargeUSSD.html"/>
+	<x-title background="#788593" color="white" fontstyle="bold" fontsize="14"/>
+	<x-scrollbar background="grey" color="#788593"/>
+	<x-softkeystyle background="#788593" color="white" fontstyle="bold" fontsize="14"/>
+	<x-menustyle background="white" color="black" onfocuscolor="white"/>	
+	<x-selection onfocusbackground="#778899"/>
+	<x-userdata-access>179878594</x-userdata-access>
+	<x-userdata-access perm="3">121929525</x-userdata-access>
+	<x-userdata-access perm="3">158106024</x-userdata-access>
+	<x-userdata-access perm="3">189153428</x-userdata-access>
+	<x-userdata-access perm="3">194232707</x-userdata-access>
+	<x-userdata-access perm="3">194750352</x-userdata-access>
+	<x-userdata-access perm="3">203139478</x-userdata-access>
+	<x-userdata-access perm="3">914499429</x-userdata-access>
+	<x-userdata-access perm="3">221608327</x-userdata-access>
+	<x-userdata-access perm="3">915403602</x-userdata-access>
+	<x-userdata-access perm="3">243664544</x-userdata-access>
+	
+	
+	<x-menugroup id="Menu_Recharge">
+	 <x-menu caption="&pre.rsk.exit;" x-softkey="right" href="exit:"/>
+    </x-menugroup>
+    <x-menugroup id="Main_Menu">
+	 <x-menu caption="&pre.rsk.exit;" x-softkey="right" href="exit:"/>
+    </x-menugroup>
+    <x-menugroup id="transfer">
+		 <x-menu caption="&pre.rsk.exit;" x-softkey="right" href="exit:"/>
+    </x-menugroup>
+    <x-menugroup id="withdraw">
+		 <x-menu caption="&pre.rsk.exit;" x-softkey="right" href="exit:"/>
+    </x-menugroup>
+    <x-menugroup id="otherbal">
+		 <x-menu caption="&pre.rsk.exit;" x-softkey="right" href="exit:"/>
+    </x-menugroup>
+    
+    <x-menugroup id="billpay">
+		 <x-menu caption="&pre.rsk.exit;" x-softkey="right" href="exit:"/>
+    </x-menugroup>
+    <x-menugroup id="returnstock">
+		 <x-menu caption="&pre.rsk.exit;" x-softkey="right" href="exit:"/>
+    </x-menugroup>
+    <x-menugroup id="reports">
+		 <x-menu caption="&pre.rsk.exit;" x-softkey="right" href="exit:"/>
+    </x-menugroup>
+    <x-menugroup id="giftRecharge">
+		 <x-menu caption="&pre.rsk.exit;" x-softkey="right" href="exit:"/>
+    </x-menugroup>
+    <x-menugroup id="elecvocher">
+		 <x-menu caption="&pre.rsk.exit;" x-softkey="right" href="exit:"/>
+    </x-menugroup>
+    <x-menugroup id="changepin">
+		 <x-menu caption="&pre.rsk.exit;" x-softkey="right" href="exit:"/>
+    </x-menugroup>
+	 <x-menugroup id="settingslist">
+		 <x-menu caption="&pre.rsk.exit;" x-softkey="right" href="close:"/>
+    </x-menugroup>
+    
+    <x-menugroup id="rechargeStatus">
+		 <x-menu caption="&pre.rsk.exit;" x-softkey="right" href="close:"/>
+    </x-menugroup>
+
+ <x-menugroup id="menulist">
+		 <x-menu caption="&pre.rsk.exit;" x-softkey="right" href="close:"/>
+    </x-menugroup>
+
+    <x-menugroup id="alert">			
+		<x-menu caption="&pre.lsk.ok;" x-softkey="right" href=""/>
+	</x-menugroup>
+	 <x-menugroup id="rechargeReq">	
+    		<x-menu caption="&pre.lsk.ok;" x-softkey="left" href="#"/>
+		<!--  <x-menu caption="&pre.lsk.ok;" x-softkey="left" href="sms:$mobile?body=$message"/>
+		<x-menu caption="&pre.rsk.cancel;" x-softkey="right" href="javascript:rechargeMenu();"/>  -->
+	</x-menugroup>
+    <x-menugroup id="post">			
+		<x-menu caption="&pre.lsk.ok;" x-softkey="right" href="#"/>
+	</x-menugroup>
+	
+	<x-menugroup id="exitApp">
+	<x-menu caption="&pre.lsk.no;" x-softkey="left" href="#"/>
+	<x-menu caption="&pre.lsk.yes;" x-softkey="right" href="exit:"/> 
+	</x-menugroup>
+	
+</widget>
+

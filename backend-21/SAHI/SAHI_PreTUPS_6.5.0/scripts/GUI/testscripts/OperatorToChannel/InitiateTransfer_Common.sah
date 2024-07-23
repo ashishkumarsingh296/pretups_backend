@@ -1,0 +1,203 @@
+
+
+// This scripts contains all the common methods to initiate O2C transfer
+
+_includeOnce("../../../../utility/ImportPackage.sah");
+
+var $l_naCsv = _readCSVFile("../../../GUI/testdata/NA_Login.csv");
+
+
+	var $g_msisdn;
+	var $g_productType;
+	var $g_refNumber;
+	var $g_quantity;
+	var $g_remarks;
+	var $g_paymentType;
+	var $g_calendarImg;
+	var $g_PIN;
+	var $g_assertion;
+	var $a_Prefix;
+	
+	
+	function commonVaribleToInitiateO2C($g_row, $g_col) {
+		
+		$g_msisdn = $g_O2CTransfer[$g_row][$g_col++];
+		$g_productType = $g_O2CTransfer[$g_row][$g_col++];
+		$g_refNumber = $g_O2CTransfer[$g_row][$g_col++];
+		$g_quantity = $g_O2CTransfer[$g_row][$g_col++];
+		$g_remarks = $g_O2CTransfer[$g_row][$g_col++];
+		$g_paymentType = $g_O2CTransfer[$g_row][$g_col++];
+		$g_calendarImg = $g_O2CTransfer[$g_row][$g_col++];
+		$g_PIN = $g_O2CTransfer[$g_row][$g_col++];
+		$g_assertion = $g_O2CTransfer[$g_row][$g_col++];
+	}
+	
+	// $g_refNumber = referenceNumber($g_autoPrefix); .......... For futher use 
+	
+	
+		function initiateO2CTransferCommonOne() {
+
+			_click(_link("Operator to channel"));
+			_click(_link("Initiate transfer"));
+			_assertExists(_div("Search channel user"));
+			_setValue(_textbox("userCode"), $g_msisdn);
+			_setSelected(_select("productTypeWithUserCode"), $g_productType);
+		}
+		
+		function addO2CTransferDetailsCommon() {
+			_assertExists(_div("Operator to channel transfer details"));
+			_setValue(_textbox("refrenceNum"), $g_refNumber);
+			_setValue(_textbox("dataListIndexed[0].requestedQuantity"), $g_quantity);
+			_setValue(_textarea("remarks"), $g_remarks);
+			_setSelected(_select("paymentInstCode"), $g_paymentType);
+			_click(_image($g_calendarImg));
+			_setValue(_textbox("paymentInstDate"), $g_currentDate);
+			_setValue(_password("smsPin"), $g_PIN);
+		}
+
+     // .................. ////////////////////////////// 		
+		
+		function initiateO2CTransferCommonTwo() {
+			initiateO2CTransferCommonOne();
+			submit();
+			_assertExists(_listItem("/"+ $g_assertion +".*/"));
+		}
+		
+		function toCheckPopulatedValueInProductType() {
+			_click(_link("Operator to channel"));
+			_click(_link("Initiate transfer"));
+			_setSelected(_select("productTypeWithUserCode"), 1);
+			var $temp = _getSelectedText(_select("productTypeWithUserCode"));
+			if($temp == $g_productType ) {_log("Successful");}
+			else { _log("Failed");}
+		}
+
+		function toCheckResetFunctionalityOnSearchChannelUserPage() {
+			
+			initiateO2CTransferCommonOne();
+			buttonReset();
+			if(_getValue(_textbox("userCode")) == "") {_log("Successful")}
+			else {_log("Failed Reset Check");}
+		}
+		
+		function toCheckBackFunctionalityOnO2CTransferDetailspage() {
+			initiateO2CTransferCommonOne();
+			submit();
+			addO2CTransferDetailsCommon();
+			Back();
+			_assertExists(_div("Search channel user"));
+		}
+		
+		function toCheckResetFunctionalityOnO2CTransferDetailspage() {
+			initiateO2CTransferCommonOne();
+			submit();
+			addO2CTransferDetailsCommon();
+			reset();
+			if(_getValue(_textbox("refrenceNum")) == "") {_log("Successful")}
+			else {_log("Failed Reset Check");}
+		}
+		
+		function initiateO2CTransferCommonThree() {
+			initiateO2CTransferCommonOne();
+			submit();
+			addO2CTransferDetailsCommon();
+			submit();
+			_assertExists(_listItem("/"+ $g_assertion +".*/"));
+		}
+		
+		function toCheckSubmitFunctionalityOnO2CTransferDetailspage() {
+			initiateO2CTransferCommonOne();
+			submit();
+			addO2CTransferDetailsCommon();
+			submit();
+			_assertExists(_div("Operator to channel transfer details confirmation"));
+			_assertExists(_submit("Confirm"));
+		}
+		
+		function toCheckBackFunctionalityOnConfirmPage() {
+			initiateO2CTransferCommonOne();
+			submit();
+			addO2CTransferDetailsCommon();
+			submit();
+			_assertExists(_div("Operator to channel transfer details confirmation"));
+			Back();
+			_assertExists(_div("Operator to channel transfer details"));
+		}
+		
+		function toCheckvaluesInInstructionType() {
+			initiateO2CTransferCommonOne();
+			submit();
+			_setSelected(_select("paymentInstCode"), 2);
+			//var $temp = _getSelectedText(_select("paymentInstCode"));
+			
+			var $temp = _getText(_select("paymentInstCode"));
+			
+			if($temp == $g_paymentType ) {_log("Successful");}
+			else { _log("Failed");}
+			
+			_getText(_select("paymentInstCode"));
+			
+		}
+		
+		function initiateO2CTransfer() {
+			
+			$g_refNumber = referenceNumber($g_autoPrefix);
+			
+			initiateO2CTransferCommonOne();
+			submit();
+			addO2CTransferDetailsCommon();
+			submit();
+			_assertExists(_div("Operator to channel transfer details confirmation"));
+			confirm();
+			_assertExists(_listItem("/"+ $g_assertion +".*/"));
+			
+			
+			if(_exists(_listItem("/"+$g_assertion+".*/"))){
+				$l_naCsv[26][1] = $g_refNumber;
+				_writeCSVFile($l_naCsv, "../../../GUI/testdata/NA_Login.csv", 1); // Write the ref number of O2C initiation for further approval 
+				_log("O2C Transfer has been initiated successfully");
+			}
+			else {
+				_log("O2C Transfer has not been initiated successfully");
+			}
+		}
+		
+	
+	function Back() {
+		_click(_submit("Back"));
+	}
+	
+	function submit() {
+		_click(_submit("Submit"));
+	}
+	
+	function confirm() {
+		_click(_submit($g_BtnConfirm));
+	}
+	
+	
+	function reset(){
+		_click(_reset("Reset"));
+	}
+	
+	function buttonReset() {
+		_click(_button("Reset"));
+		
+	}
+	
+	
+	
+	
+	
+	function referenceNumber($a_Prefix){
+		 $l_time = currentTime(); // fetch current time(CurretnTime)
+		 var  $l_name = $l_time; //AUTONAcurrentTime
+		 return $l_name;
+	}
+
+
+
+
+	 
+	
+	

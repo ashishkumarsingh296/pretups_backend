@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="PreTUPS Automation Suite" parallel="none">
+ <test name="SIT" preserve-order="true">
+     <classes>
+	  <class name="com.testscripts.sit.SIT_NetworkStock"/>
+      <class name="com.testscripts.sit.SIT_C2SCardGroup"/>
+      <class name="com.testscripts.sit.SIT_ChannelUserCreation"/>
+      <class name="com.testscripts.sit.SIT_NetworkService"/>
+      <class name="com.testscripts.sit.SIT_PromotionalCardGroup"/>
+      <class name="com.testscripts.sit.SIT_PromotionalTransferRule"/>
+      <class name="com.testscripts.sit.SIT_PrivateRecharge"/>
+      <class name="com.testscripts.sit.SIT_NetworkPrefix"/>
+      <class name="com.testscripts.sit.SIT_C2SReconciliation"/>
+      <class name="com.testscripts.sit.SIT_GeograpichalDomainManagement"/>
+      <class name="com.testscripts.sit.SIT_OperatorToChannel"/>
+      <class name="com.testscripts.sit.SIT_ChannelUserModify"/>
+      <class name="com.testscripts.sit.SIT_P2PReconciliation"/>
+      <class name="com.testscripts.sit.SIT_AddC2STransferRule"/>
+      <class name="com.testscripts.sit.SIT_ViewC2STransferRule"/>
+      <class name="com.testscripts.sit.SIT_ModifyC2STransferRule"/>
+      <class name="com.testscripts.prerequisites.UpdateCache"/>
+      <class name="com.testscripts.sit.SIT_GradeCreation"/>
+      <class name="com.testscripts.sit.SIT_OperatorUserCreation"/>
+      <class name="com.testscripts.sit.SIT_TCP"/>
+      <class name="com.testscripts.sit.SIT_DivisionDeptManagement"/>
+      <class name="com.testscripts.sit.SIT_Channel2ChannelTransfer"/>
+  	  <class name="com.testscripts.sit.SIT_SubLookUps"/>
+      <class name="com.testscripts.sit.SIT_InterfaceManagement"/>
+      <class name="com.testscripts.sit.SIT_GroupRoleManagement"/>
+      <class name="com.testscripts.sit.SIT_NetworkManagement"/>
+      <class name="com.testscripts.sit.SIT_ServiceClassManagement"/>
+      <class name="com.testscripts.sit.SIT_CommProfile"/>
+	  <class name="com.testscripts.sit.SIT_CommProfileCBC"/>
+	  <class name="com.testscripts.prerequisites.UpdateCache"/>
+	  <class name="com.testscripts.sit.SIT_AutoO2C"/>
+      <class name="com.testscripts.sit.SIT_UserTransferCountValidationO2C"/>
+      <class name="com.testscripts.sit.SIT_UserTransferCountValidationC2C"/>
+      <class name="com.testscripts.sit.SIT_TransactionReverse_O2C"/> 
+      <class name="com.testscripts.sit.SIT_TransactionReverseC2C"/>
+      <class name="com.testscripts.sit.SIT_C2STransfer"/>
+      <class name="com.testscripts.sit.SIT_C2C_Return"/>
+      <class name="com.testscripts.sit.SIT_C2CWithdraw"/> 
+ 	  <class name="com.testscripts.sit.SIT_RoamRecharge"/>
+      <class name="com.testscripts.sit.SIT_GiftRecharge"/> 
+      <class name="com.testscripts.sit.SIT_PostpaidBillPayment"/>
+      <class name="com.testscripts.sit.SIT_O2CTransferRuleCreation"/>
+      <class name="com.testscripts.sit.SIT_ADDP2PTransferRule"/>
+      <class name="com.testscripts.sit.SIT_ModifyP2PTransferRule"/>
+      <class name="com.testscripts.sit.SIT_O2CReconsilation"/>
+      <class name="com.testscripts.sit.SIT_P2PCardGroup"/>
+      <class name="com.testscripts.sit.SIT_VoucherCardGroup"/>
+      <class name="com.testscripts.sit.SIT_AddChannelUser"/>
+      <class name="com.testscripts.sit.SIT_BatchO2CTransfer"/>
+     </classes>
+  </test>
+</suite>

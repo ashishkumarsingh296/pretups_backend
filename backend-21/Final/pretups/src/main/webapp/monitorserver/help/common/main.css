@@ -1,0 +1,17 @@
+.newstyle {  font-family: Arial; font-size: 10px; background-color: #FFFFFF; text-align: left; vertical-align: top; background-image: url(../common/images/blbkgnd.gif); color: #000000}
+.heading1 {  font-family: Arial; font-size: 16px; font-style: normal; font-weight: bold; background-color: #FFFFFF; text-align: left; vertical-align: top; color: #000066}
+.description {  font-family: Arial, Helvetica, sans-serif; font-size: 10px; font-style: normal; font-weight: bold; text-align: left; vertical-align: top; color: #000000; background-color: #FFFFFF}
+.example1 {  font-family: Arial; font-size: 10px; font-style: normal; font-weight: normal; color: #000000; background-color: #FFFFFF; text-align: left; vertical-align: top}
+.label_head1 {  font-family: Arial; font-size: 11px; font-style: normal; font-weight: bolder; text-align: left; vertical-align: top; color: #000000; background-color: #FFFFFF; bold;}
+.notes1 {  font-family: Arial; font-size: 10px; font-style: normal; font-weight: normal; text-align: left; vertical-align: top; color: #000000; background-color: #FFFFFF}
+.overview1 {  font-family: Arial; font-size: 10px; font-style: normal; font-weight: normal; text-align: left; vertical-align: top; color: #000000}
+.validation1 {  font-family: Arial; font-size: 10px; font-style: normal; font-weight: normal; text-align: left; vertical-align: top; color: #000000}
+.mandatory {  font-family: Arial; font-size: 10px; font-style: normal; font-weight: normal; color: #CC0000; text-align: left; vertical-align: top}
+.mandatory_star {  font-family: Arial, Helvetica, sans-serif; font-size: 9px; font-style: normal; font-weight: normal; color: #CC0000; text-align: left; vertical-align: top}
+.popup_label {  font-family: Verdana; font-size: 12px; font-style: normal; font-weight: bold; text-align: left; vertical-align: top; color: #000066}
+.popup_content {  font-family: Verdana; font-size: 9px; font-style: normal; font-weight: normal; text-align: left; vertical-align: top}
+.heading2 {  font-family: Arial; font-size: 12px; background-color: #FFFFFF; text-align: left; vertical-align: top; font-style: normal; font-weight: bold; color: #000000}
+.heading3 {  font-family: Arial; font-size: 10px; font-style: normal; font-weight: bold; color: #000000; background-color: #FFFFFF; text-align: left; vertical-align: top}
+.label_value { background-color: #FFFFFF;}
+.btn { font-family: Arial; font-size: 11px; font-style: normal; font-weight: bolder; text-align: left; vertical-align: top; color: #000000; background-color: #FFFFFF; bold; }
+.back { BACKGROUND-COLOR: #cccccc }

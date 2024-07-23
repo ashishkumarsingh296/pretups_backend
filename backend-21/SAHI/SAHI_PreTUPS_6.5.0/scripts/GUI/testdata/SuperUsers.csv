@@ -1,0 +1,16 @@
+Test Case No.,Discription,Last Name,Shortname,UserName PrefixCode,SSN,Contact number,Status,Designation,Division Code,Department Code,Address 1,Address 2,City,State,Country,Email,Calendar,Web password,Confirm password,Allowed Time From,Allowed Time To,Network,Role Type,Assertion
+TEST001,To verify that superadmin is able to create a super network admin  successfully.,Comviva,com,Mr,521,7215151515,New,Super_NA,IT division,IT department,abc,xyz,Delhi,Delhi,India,super@gmail.com,calendar-icon.gif,com@1234,com@1234,0:00,23:59,checkall,checkall,request successfully accepted
+TEST002,To check whether super admin is able to approve super network admin,Comviva,com,Mr,521,7215151515,New,Super_NA,IT division,IT department,abc,xyz,Delhi,Delhi,India,super@gmail.com,calendar-icon.gif,com@1234,com@1234,0:00,23:59,checkall,checkall,successfully approved
+TEST003,To check whether super admin is able to modify super network admin,,,,,,,,,,,,,,,,,,,,,,,successfully updated
+TEST004,To check whether super admin is able to view super network admin,,,,,,,,,,,,,,,,,,,,,,,
+TEST005,To verify that superadmin is able to create a super channel admin  successfully.,Comviva,com,Mr,521,7215151501,New,Super_BCU,IT division,IT department,abc,xyz,Delhi,Delhi,India,super@gmail.com,calendar-icon.gif,com@1234,com@1234,0:00,23:59,checkall,checkall,request successfully accepted
+TEST006,To check whether super admin is able to approve super channel admin,Comviva,com,Mr,521,7215151501,New,Super_BCU,IT division,IT department,abc,xyz,Delhi,Delhi,India,super@gmail.com,calendar-icon.gif,com@1234,com@1234,0:00,23:59,checkall,checkall,successfully approved
+TEST007,To check whether super admin is able to modify super channel admin,,,,,,,,,,,,,,,,,,,,,,,successfully updated
+TEST008,To check whether super admin is able to view super channel admin,,,,,,,,,,,,,,,,,,,,,,,
+TEST009,To verify that superadmin is able to create a super customer care  successfully.,Comviva,com,Mr,521,7215151500,New,Super_CCE,IT division,IT department,abc,xyz,Delhi,Delhi,India,super@gmail.com,calendar-icon.gif,com@1234,com@1234,0:00,23:59,checkall,checkall,request successfully accepted
+TEST010,To check whether super admin is able to approve super cce,Comviva,com,Mr,521,7215151500,New,Super_CCE,IT division,IT department,abc,xyz,Delhi,Delhi,India,super@gmail.com,calendar-icon.gif,com@1234,com@1234,0:00,23:59,checkall,checkall,successfully approved
+TEST011,To check whether super admin is able to modify super cce,,,,,,,,,,,,,,,,,,,,,,,successfully updated
+TEST012,To check whether super admin is able to view super cce,,,,,,,,,,,,,,,,,,,,,,,
+TEST013,To check if super cce is able to login in system,,,,,,,,,,,,,,,,,com@1234,,,,,,
+TEST014,To check if super network admin is able to login in system,,,,,,,,,,,,,,,,,com@1234,,,,,,
+TEST015,To check if superchannel admin is able to login in system,,,,,,,,,,,,,,,,,com@1234,,,,,,

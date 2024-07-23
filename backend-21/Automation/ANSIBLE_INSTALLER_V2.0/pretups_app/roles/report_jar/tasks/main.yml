@@ -1,0 +1,7 @@
+---
+ - name: "start the jar for reporting purpose"
+   remote_user: "{{ USER_NAME }}"
+   become: true
+#   shell: ~/{{ JDK_SOFT_LINK }}_{{ tomcat_no }}/bin/java -jar lib/ClearReports.jar -forceimportConfig User/Default  classes/com/inet/report/configuration_Default.properties  chdir={{ Tomcat_Path }}/webapps/pretups/WEB-INF/
+
+   shell: ~/{{ JDK_SOFT_LINK }}/bin/java -jar lib/ClearReports.jar -forceimportConfig User/Default  classes/com/inet/report/configuration_Default.properties  chdir={{ Tomcat_Path }}/webapps/pretups/WEB-INF/

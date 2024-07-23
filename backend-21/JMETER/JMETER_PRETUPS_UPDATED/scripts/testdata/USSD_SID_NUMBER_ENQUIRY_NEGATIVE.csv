@@ -1,0 +1,2 @@
+TestcaseId,TestcaseType,Module,Description
+TUNG12880,N,Private Recharge Enquiry,To verify that registration request fails on if mandatory field is not filled

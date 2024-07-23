@@ -1,0 +1,12 @@
+#PROCESS_ID=MF_EXT_USR_LIST, OTHER_MF_EXT_USR_LIST, OTHER_MF_USER_BALANCE, MF_USER_BALANCE, RC_C2S_TRANSFER_DETAILS, PPB_C2S_TRANSFER_DETAILS, EVD_C2S_TRANSFER_DETAILS, OTHER_MF_C2C_TRANSFER_DETAILS, MF_C2C_TRANSFER_DETAILS, ADDITIONAL_COMMISSION_DETAILS, DEL_REJ_CHNL_USER_LIST
+PROCESS_ID=BONUS
+MAX_ROWS=65000
+FILE_SUBSTR_DATE_FORMAT=_ddMMyy_hhmmss_
+DATE_FORMAT=dd/MM/yyyy
+DATE_TIME_FORMAT=dd/MM/yy hh:mm:ss
+
+BONUS_DIR=<Tomcat-path>/logs/csvreports/BONUS/
+BONUS_HEADER=Date, Distributor Name, Dealer Msisdn, Pos Id, Pos Name, Msisdn, Transactions Amount, Bonus amount 
+BONUS_QRY=SELECT rownum,sysdate||','||uo.user_name||','||b.msisdn||','||b.employee_code||','||b.user_name||','||c.associated_msisdn ||','||ct.TRANSFER_VALUE||','||a.MARGIN_AMOUNT FROM users b,channel_users c, users uo, c2s_transfers ct,adjustments a WHERE ct.TRANSFER_DATE_TIME between ? and ? and  b.user_id=c.user_id and b.owner_id=uo.user_id and ct.TRANSFER_ID=a.REFERENCE_ID and a.ENTRY_TYPE='CR' and ct.SENDER_ID=b.USER_ID 
+BONUS_EXT=.csv
+BONUS_PREFIX_NAME=BONSU_TRACKINGREPORT

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="PreTUPS Automation Suite" parallel="none" preserve-order="true">
+
+   <test name="Pre-Requisite" preserve-order="true">
+    <classes>
+      <class name="com.testscripts.prerequisites.PreRequisite_DivisionManagment"/>
+      <class name="com.testscripts.prerequisites.PreRequisite_NetworkAdminCreation"/>
+      <class name="com.testscripts.prerequisites.PreRequisite_GeographicalDomainManagement"/>
+      <class name="com.testscripts.prerequisites.PreRequisite_OperatorUserCreation"/>
+      <class name="com.testscripts.prerequisites.PreRequisite_GradeCreation"/>
+	  <class name="com.testscripts.prerequisites.PreRequisite_GroupRoleManagement"/>
+      <class name="com.testscripts.prerequisites.PreRequisite_TCPCreation"/>
+      <class name="com.testscripts.prerequisites.PreRequisite_CommissionProfileCreation"/>
+      <class name="com.testscripts.prerequisites.PreRequisite_C2SCardGroupCreation"/>
+      <class name="com.testscripts.prerequisites.PreRequisite_O2CTransferRuleCreation"/>
+      <class name="com.testscripts.prerequisites.PreRequisite_C2CTransferRuleCreation"/>
+      <class name="com.testscripts.prerequisites.PreRequisite_C2STransferRuleCreation"/>
+      <class name="com.testscripts.prerequisites.UpdateCache"/>
+      <class name="com.testscripts.prerequisites.PreRequisite_ChannelUserCreation"/>
+      <class name="com.testscripts.prerequisites.PreRequisite_NetworkStockCreation"/>
+      <class name="com.testscripts.prerequisites.PreRequisite_O2CTransfer"/>
+      <class name="com.testscripts.prerequisites.PreRequisite_Channel2ChannelTransfer"/>
+      <class name="com.testscripts.prerequisites.PreRequisite_C2STransfer"/>
+      <class name="com.testscripts.prerequisites.PreRequisite_P2PCardGroupCreation"/>
+	  <class name="com.testscripts.prerequisites.PreRequisite_MultiCurrencyCreation"/>	
+    </classes>
+  </test>
+
+</suite>

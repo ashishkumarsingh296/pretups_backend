@@ -1,0 +1,10 @@
+DATE,EXTNWCODE,MSISDN,PIN,LOGINID,PASSWORD,EXTCODE,EXTREFNUM,MSISDN2,AMOUNT,SELECTOR,LANGUAGE1,LANGUAGE2,TestcaseId,TestcaseType,Module,Description
+,NG,7277777776,2468,,,,,1.11E+14,100,1,,,TUNG12870 ,,Private Recharge,To check that a successful recharge happens when only msisdn and pin are entered along with other mandatory fields
+,NG,,,del,com@1234,,,1.11E+14,100,1,,,TUNG12871,,Private Recharge,To check that a successful recharge happens when only loginid and password are entered along with other mandatory fields
+,NG,,,,,5231,,1.11E+14,100,1,,,TUNG12872,,Private Recharge,To check that a successful recharge happens when only extcode is entered along with other mandatory fields
+,NG,7277777776,2468,,,,,1.11E+14,,1,,,TUNG12873,,Private Recharge,To check that an unsucessful recharge happens when amount is not enterd
+,NG,,,,,5231,,1.11E+14,100,,,,TUNG12874,,Private Recharge,To check that an unsucessful recharge happens when selector is not enterd
+,,7277777776,2468,,,,,1.11E+14,100,1,,,TUNG12875,,Private Recharge,To check that an unsucessful recharge happens when extnetwork code is not enterd
+,NG,7277777776,,,,,,1.11E+14,100,1,,,TUNG12876,,Private Recharge,To check that if MSISDN is filled then PIN is also manadatory
+,NG,,,del,,,,1.11E+14,100,1,,,TUNG12877,,Private Recharge,To check that if login id is filled then passowrd is also manadatory
+,NG,,,,,5231,,,100,1,,,TUNG12878,,Private Recharge,To check that if subscriber msisdn is not entered recharge does not happen

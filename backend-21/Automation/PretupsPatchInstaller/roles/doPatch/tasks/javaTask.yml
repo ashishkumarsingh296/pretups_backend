@@ -1,0 +1,46 @@
+- name: Copying JAVA files to a folder(JAVA)
+  connection: local
+  run_once: true
+  copy: src="files/{{ item.fileName }}" dest="{{JAVA_FOLDER_PATH}}/{{ item.fileName }}"
+  when: isJAVAPatch == true
+  with_items:
+    - "{{ PatchConfigfiles }}"
+  tags:
+    - JAVA_PATCH
+
+- name: Compiling the java files
+  connection: local
+  run_once: true
+  shell: sh {{COMPILE_FILE_PATH}}/tempCompile.sh
+  when: isJAVAPatch == true
+  with_items:
+    - "{{ PatchConfigfiles }}"
+  tags:
+    - JAVA_PATCH
+
+- name: Validating Whether Class File exists at remote Location
+  stat:
+    path: "{{ item[0].TomcatHomePath }}/webapps/pretups/WEB-INF/classes/{{item[1].path}}{{ item[1].fileName.split('.java')|first }}.class"
+  with_nested:
+    - "{{ CatalinaConfig }}"
+    - "{{ PatchConfigfiles }}"
+  register: Class_File_Exists  
+  when: isWarPatch == false and item[1].patchType == 'JAVA'
+
+- name: Making backup files of existing files
+  copy: src={{Local_TOMCAT_PATH}}/webapps/pretups/WEB-INF/classes/{{item[1].item[1].path}}/{{ item[1].item[1].fileName.split('.java')|first }}.class  dest={{item[0].TomcatHomePath}}/webapps/pretups/WEB-INF/classes/{{item[1].item[1].path}}/{{ item[1].item[1].fileName.split('.java')|first }}.class{{ BackupExtn }}
+  when: isWarPatch == false and item[1].item[1].patchType == 'JAVA' and item[1].stat.exists
+  with_nested:
+    - "{{ CatalinaConfig }}"
+    - "{{Class_File_Exists.results}}"
+  ignore_errors: true
+  tags: JAVA_PATCH
+
+- name: Copying Class files to a remote
+  copy: src="{{Local_TOMCAT_PATH}}/webapps/pretups/WEB-INF/classes/{{item[1].path}}{{ item[1].fileName.split('.java')|first }}.class" dest="{{item[0].TomcatHomePath}}/webapps/pretups/WEB-INF/classes/{{item[1].path}}"
+  when: isWarPatch == false and item[1].patchType == 'JAVA'
+  with_nested:
+    - "{{ CatalinaConfig }}"
+    - "{{ PatchConfigfiles }}"
+  tags:
+     - JAVA_PATCH

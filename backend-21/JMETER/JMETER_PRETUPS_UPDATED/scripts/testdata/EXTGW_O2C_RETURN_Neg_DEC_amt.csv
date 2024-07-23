@@ -1,0 +1,3 @@
+TestcaseId,TestcaseType,Module,Description
+,Negative,O2C Return through EXTGW,To check  that o2c Return is not successful if amount is negative
+,Negative,O2C Return through EXTGW,To check  that O2C Return is not successful if entered amount is in decimal

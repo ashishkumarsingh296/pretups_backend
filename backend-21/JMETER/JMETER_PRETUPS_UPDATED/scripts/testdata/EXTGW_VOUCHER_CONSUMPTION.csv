@@ -1,0 +1,8 @@
+DATE,EXTNWCODE,MSISDN,PIN,LOGINID,PASSWORD,EXTCODE,EXTREFNUM,MSISDN2,AMOUNT,VOUCHERCODE,SERIAL_NO,LANGUAGE1,CELLID,SWITCHID,LANGUAGE2,SELECTOR,TestcaseId,TestcaseType,Module,Description
+,NG,729313937,1357,,,,,,50,6.10E+13,,0,,,,1,TUNG13153,Positive,Voucher Consumption through EXTGW,To verify that user is able to consume the voucher through EXTGW Api
+,NG,729313937,,,,,,,50,6.10E+13,,0,,,,1,TUNG13154,Negative,Voucher Consumption through EXTGW,To verify  that user will be validated on the basis of the MSISDN and PIN if MSISDN value is available
+,NG,,,,,3442343,,,50,6.10E+13,,0,,,,1,TUNG13155,Negative,Voucher Consumption through EXTGW,To verify  that user will be validated on the basis of the EXTCODE if EXTCODE value is available
+,NG,,,dist1,1357,,,,50,6.10E+13,,0,,,,1,TUNG13156,Negative,Voucher Consumption through EXTGW,To verify  that user will be validated on the basis of the LOGINID and PASSWORD if LOGINID value is available
+,NG,729313937,1357,dist1,1357,3442343,,,50,6.10E+13,,0,,,,1,TUNG13157,Positive,Voucher Consumption through EXTGW,To verify  that user will be validated on the basis of the all the values if all three  (LOGINID EXTCODE and MSISDN) values are available
+,NG,729313937,1357,,,,,,50,,,0,,,,1,TUNG13158,Negative,Voucher Consumption through EXTGW,To verify that the request is not processed if voucher code is not present.
+,NG,729313937,1357,,,,,,50,,,0,,,,,TUNG13159,Negative,Voucher Consumption through EXTGW,To verify that the request is not processed if selector is not present.

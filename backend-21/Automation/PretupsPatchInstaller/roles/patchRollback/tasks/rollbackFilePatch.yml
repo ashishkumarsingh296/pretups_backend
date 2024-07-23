@@ -1,0 +1,42 @@
+---
+########################################################
+# Author           Date        Remarks
+#------------    -----------  ---------
+#PreTUPS_RoadMap  25-07-2016    Initial Creation
+#
+# This file takes care of Rollback of File patch.
+#########################################################
+
+ - include: ../../validate/tasks/validatePathCheckRollback.yml
+
+ - name: Rolling back the patch and Replacing the Backup Original file for PatchType other than WAR.
+   shell: "mv {{ item.path}}/{{ item.fileName}}{{ BackupExtn }} {{ item.path}}/{{ item.fileName}} "
+   with_items:
+     - "{{ PatchConfigfiles }}"
+   failed_when: false
+   when: isWarPatch==false and item.patchType !='WAR' and isJAVAPatch == false
+   register: rollbackPatch
+   ignore_errors: yes
+   tags:
+     - rollbackPatch
+
+ - name: Taking TomcatHomePath in a register
+   set_fact: TomcatHome="{{ item.TomcatHomePath }}"
+   with_items:
+     - "{{ CatalinaConfig }}"
+
+ - name: Rolling back the Constants.props.
+   shell: "mv -f {{ TomcatHome }}/conf/pretups/Constants.props{{ BackupExtn }} {{ TomcatHome }}/conf/pretups/Constants.props"
+   when: isConstant_Props == true
+   ignore_errors: yes
+   tags:
+     - rollbackConstants_props
+
+ - name: Rolling back the LogConfig.props.
+   shell: "mv -f {{ TomcatHome }}/conf/pretups/LogConfig.props{{ BackupExtn }} {{ TomcatHome }}/conf/pretups/LogConfig.props"
+   when: isLog_Config == true
+   ignore_errors: yes
+   tags:
+     - rollbackLogConfig_props
+
+ 

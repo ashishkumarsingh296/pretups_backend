@@ -1,0 +1,2 @@
+TestcaseId,TestcaseType,Module,Description
+TUNG22336,Negative,SOS Settlement USSD,To verify that if parent or owner enters wrong pin then gets proper response.

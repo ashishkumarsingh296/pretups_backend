@@ -1,0 +1,15 @@
+loginId,password,subscriberMobileNo,rechargeAmount,type,externalCode,TestcaseId,TestcaseType,Module,Description
+btchadm,1357,7200002030,50,LBSEENQ,,TUNG13291,Positive,Low Base Transaction Enquiry,To validate Eligibility details display when provide correct value in all input fields
+btchadm,1357,7200002030,,LBSEENQ,,TUNG13586,Negative,Low Base Transaction Enquiry,To validate  recharge amount is required validation is working
+btchadm,1357,7200002030,Hkhkjh,LBSEENQ,,TUNG13585,Negative,Low Base Transaction Enquiry,To validate  Alphanumeric validation is working on Recharge amount textbox for Low Base Subscriber Eligibility Enquiry form
+btchadm,1357,7200002030,%&^%,LBSEENQ,,TUNG13584,Negative,Low Base Transaction Enquiry,To validate Special  is working on Recharge amount textbox for Low Base Subscriber Eligibility Enquiry form
+btchadm,1357,,50,LBSEENQ,,TUNG13583 ,Negative,Low Base Transaction Enquiry,To validate Subscriber Mobile no is required validation is working
+btchadm,1357,adasdsad,,LBSEENQ,,TUNG13582 ,Negative,Low Base Transaction Enquiry,To validate Alphanumeric validation is working on Subscriber Mobile Number textbox for Low Base Subscriber Eligibility Enquiry form
+btchadm,1357,%^&%&,,LBSEENQ,,TUNG13581 ,Negative,Low Base Transaction Enquiry,To validate Special Character validation is working on Subscriber Mobile Number textbox for Low Base Subscriber Eligibility Enquiry form
+btchadm,1357,,,LBSEENQ,,TUNG13285,Negative,Low Base Transaction Enquiry,To validate validation is working for new Low Base Subscriber Eligibility Enquiry form
+btchadm,1357,dasdsad,erwerew,LBSEENQ,,TUNG13286,Negative,Low Base Transaction Enquiry,To validate Special and Alphanumeric validation is working on Recharge Amount textbox for Low Base Subscriber Eligibility Enquiry form
+btchadm,1357,^&%^&,^*&*^,LBSEENQ,,TUNG13287,Negative,Low Base Transaction Enquiry,To validate Special Character validation is working on Recharge Amount and Subscriber Mobile Number textbox for Low Base Subscriber Eligibility Enquiry form
+btchadm,1357,7200002030,50,,,TUNG13580 ,Negative,Low Base Transaction Enquiry,"To validate ""Action type does not exists in the request"" message display when type not provided"
+btdist,1357,7200002030,50,LBSEENQ,,TUNG13579 ,Negative,Low Base Transaction Enquiry,"To validate ""User is not authorized to perform this action"" message display when user is not authorize to perform this action"
+btchadm,1357,2343243243,50,LBSEENQ,,TUNG13290,Negative,Low Base Transaction Enquiry,"To validate  ""low.base.transaction.no.data.found.for.this.subscriber"" message comes when no data found"
+,,,,,,TUNG13289,Negative,Low Base Transaction Enquiry,"To validate ""No data found for this subscriber message appears when wrong input value provided"

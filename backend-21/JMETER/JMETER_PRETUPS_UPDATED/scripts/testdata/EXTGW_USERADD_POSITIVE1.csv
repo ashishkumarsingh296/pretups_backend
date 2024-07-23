@@ -1,0 +1,2 @@
+TestcaseId,TestcaseType,Module,Description
+,Positive,Add user API through EXTGW,To verfiy that User Creation API not execute successfully if Geography Code is invalid 

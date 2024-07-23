@@ -1,0 +1,2 @@
+TestcaseId,TestcaseType,Module,Description
+ TUNG17812 ,Positive,Change network,To validate that user is able to get a list of networks

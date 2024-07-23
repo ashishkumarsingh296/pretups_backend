@@ -1,0 +1,104 @@
+###########################################################################################################
+#	BANK IN file
+#	If IN interface of BANK is added in PreTUPS from superadmin then.
+#	File with this content and name of the IN ID.txt should be created at
+#	the 
+#	path of the INFiles (defined in Constants.props).
+#	
+#	Values of the variables in this file should be updated with the values
+#	provided by the 
+#	Mobile Operator IN team
+#
+#	Define the interface id as value of SCH_IN_IDS in the Constants.props
+#	to initialize the
+#	details of all node exist in this interface
+#	
+############################################################################################################
+
+
+## The Factor by which the transaction amout to be multiplied before sending to IN.
+MULTIPLICATION_FACTOR=100
+
+## Prefix to be removed from the mobile number, leave blank if nothing is to be removed
+MSISDN_REMOVE_PREFIX=
+
+## Prefix to be added to the mobile number, leave blank if nothing is to be added as prefix
+MSISDN_ADD_PREFIX=
+
+## Basic Authentication value to be sent in header
+BASIC_AUTH_VAL=YWlyY2VsOi4vbnhMcXZaJCM
+
+URL=http://172.16.1.121:6077/pretups/bankTestServer
+
+# Connection timeout for the node url
+CONNECT_TIME_OUT=1000
+
+#Read timeout for the TopUp stage
+READ_TIMEOUT_TOP=10000
+
+#In the case when connection is not established for the node, it will blocked forthis duration.
+EXPIRY_TIME=40000
+
+#keep alive falg for node
+KEEP_ALIVE=Y
+
+#Read warning time for node, should be less than the validate read timeout, if IN takes more than this time alarm will be raised.
+WARN_TIME=4000
+
+
+##Defines that the validation of subscriber(senders) is required for PCR
+PCR_S=N
+
+##Defines that the validation of subscriber(Receiver) is required for PCRS
+PCR_R=N
+
+
+##If any ambiguous response is received from IN, then retry/cancel command is sent to IN. Then response of retry/cancel is matched in the IN file and mapped error code (250/206/200) is picked and sent to Controller.
+##SYSTEM_STATUS_MAPPING=INErrCode1,INErrCode2,INErrCode3,INErrCode4:system_err_code1|INErrCode5,INErrCode6:system_err_code2
+##system_err_code1 and system_err_code2 will be sent to system and written in recon log file.
+#SYSTEM_STATUS_MAPPING=250:250
+##If receiver credit is AMBIGUOS, then in SYSTEM_PREFERENCE, CREDIT_BACK_ALLOWED should be N.
+
+#If an ambiguous case occurs while credit, mapped error code can be set to one of the codes(SUCCESS, FAIL and AMBIGUOUS)
+SYSTEM_STATUS_MAPPING_CREDIT=250:250
+
+#If an ambiguous case occurs while credit, mapped error code can be set to one of the codes(SUCCESS, FAIL and AMBIGUOUS)
+SYSTEM_STATUS_MAPPING_CREDIT_ADJ=250:250
+
+#If an ambiguous case occurs while debitAdjust, mapped error code cannot be SUCCESS. It can only be FAIL or AMBIGUOUS
+SYSTEM_STATUS_MAPPING_DEBIT_ADJ=250:250
+
+#If an ambiguous case occurs while credit Back, mapped error code can not be fail, it can only be SUCCESS or AMBIGOUOS
+SYSTEM_STATUS_MAPPING_CREDIT_BCK=250:250
+
+##If any ambiguous response is received from IN, check if cancel txn allowed or not in the system. if not, pick mapped error code against NA otherwise pick mapped error code (206/250) against received response code of Cancellation from IN. 
+##CANCEL_COMMAND_STATUS_MAPPING=INErrCode1,INErrCode2,INErrCode3,INErrCode4:cancel_err_code1|INErrCode5,INErrCode6:cancel_err_code2
+##cancel_err_code1, cancel_err_code2 will be written in recon log file.
+CANCEL_COMMAND_STATUS_MAPPING=NA:450
+
+#Defines the cancel command status when cancel not supported by IN. 
+CANCEL_NA=NA
+
+
+#maximum number of ambiguous transactions allowed till threshold time.
+NO_ALLWD_AMB_TXN=999999
+
+##time duration in which maximum number of ambiguous transactions is defined
+THRESHOLD_TIME=60000
+
+##Time duration after which interface suspension expires.
+EXPIRY_TIME=432000000
+
+##Auto Resumption supported by IN or not.
+AUTO_RESUME_SUPPORT=N
+
+##Remark1 in Reconcialiationlog
+REMARK1=
+
+##Remark1 in Reconcialiationlog
+REMARK2=
+
+###
+HDFC=1A2345
+
+

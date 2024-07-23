@@ -1,0 +1,12 @@
+DATE,EXTNWCODE,MSISDN1,PIN,LOGINID,PASSWORD,EXTCODE,EXTREFNUM,MSISDN2,EXTCODE2,LOGINID2,PRODUCTCODE,QTY,LANGUAGE1,TestcaseId,TestcaseType,Module,Description
+,NG,7200009910,1357,,,,,7212121514,,,101,45,,TUNG13102,Positive,Channel to Channel Return,Using MSISDN and PIN
+,,7200009910,1357,,,,,7212121514,,,101,45,,TUNG12835 ,Negative,Channel to Channel Return,Blank Value in NETWORK Code
+,NG,7200009910,1358,,,,,7212121514,,,101,45,,TUNG12836 ,Negative,Channel to Channel Return,MSISDN AND PIN Does not match
+,NG,7200009910,1357,,,,,7212121514,,,151,45,,TUNG12837,Negative,Channel to Channel Return,Different Product Id
+,NG,7200009910,1357,,,,,,,,101,45,,TUNG13105,Negative,Channel to Channel Return,Reciever Left Blank
+,NG,,,harshadm,1358,,,7200009910,,,101,45,,TUNG13101,Negative,Channel to Channel Return,with Login Id and Password
+,NG,,,harshadm,1389,,,7200009910,,,101,45,,TUNG13101,Negative,Channel to Channel Return,with invalid Login Id and Password
+,NG,,,,,303278,,,,btdist,101,45,,TUNG13102,Positive,Channel to Channel Return,Sender is using External Code and Reciever with loginid
+,NG,,,,,303278,,7200009910,,,101,45,,TUNG13104,Positive,Channel to Channel Return,Sender is using External Code and Reciever with Msisdn
+,NG,,,,,303278,,,2345345,,101,45,,TUNG13103,Positive,Channel to Channel Return,Sender is using External Code and Reciever with External Code
+,NG,7200009910,,,,,,,,,101,45,,TUNG13100,Positive,Channel to Channel Return,Pin Left Blank

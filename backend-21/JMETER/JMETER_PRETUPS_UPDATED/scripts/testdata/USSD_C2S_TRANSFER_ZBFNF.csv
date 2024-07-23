@@ -1,0 +1,4 @@
+CELLID,MSISDN1,PIN,MSISDN2,AMOUNT,LANGUAGE1,LANGUAGE2,SELECTOR,TestcaseId,TestcaseType,Module,Description
+,7200009910,1357,7200002030,10,0,0,1,,Positive,Recharge from Main Distributor to Subscriber ,Using MSISDN and PIN where MSISDN2 is ZeroBase Subscriber
+,7200009910,1357,7200002030,10,0,0,1,,Positive,Recharge from Main Distributor to Subscriber ,Using MSISDN and PIN where MSISDN2 is FnF Subscriber
+,7200009910,1357,7200220000,10,0,0,1,,Positive,Recharge from Main Distributor to Subscriber ,Using MSISDN and PIN where MSISDN2 is neither Fnf Subscriber Or ZeroBase Subscriber

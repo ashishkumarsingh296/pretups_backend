@@ -1,0 +1,47 @@
+//######################################
+//
+//This script to add negative of grade management
+//
+//#######################################
+
+
+//===== import scripts ===//
+_includeOnce("../../../../utility/ImportPackage.sah");
+_includeOnce("CreateDomain_Common_Negative.sah");
+
+
+
+//===== Pre-Condition check ==== //
+//====== Login into the application ====== //
+login($g_appURL, $g_LangEnglish, $g_superAdmin, $g_password, $g_assertMessage);
+
+	commonVaribaleForDomainAndCategory();
+	var $l_error = addChannelDomain();
+	if($l_error) {
+		_assertExists(_div($g_assertAddOwnerCategoryDetails));
+		addChannelDomainAndCategory();
+		_click(_submit($g_BtnConfirm));
+	}
+	else {
+		_log("Create channel domain one's again");
+	}
+	
+	
+// ============================================//	
+	
+	var $g_gradeMgmt = _readCSVFile("../../negative_testdata/GradeMgmtNegativeCases.csv");
+	
+	for(var $g_row = 1; $g_gradeMgmt[$g_row] != null; $g_row++){
+		var $g_col = 0;
+		var $t = _testcase($g_gradeMgmt[$g_row][$g_col++], $g_gradeMgmt[$g_row][$g_col++]);
+		$t.start();
+		variableForGradeMgmt($g_row, $g_col);
+		
+		addGradeDetails();
+		_assertExists(_listItem($a_assertion));
+		
+		$t.end();
+	}
+
+	
+		

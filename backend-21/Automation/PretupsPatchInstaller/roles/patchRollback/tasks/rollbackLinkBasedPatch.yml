@@ -1,0 +1,18 @@
+---
+########################################################
+# Author           Date        Remarks
+#------------    -----------  ---------
+#PreTUPS_RoadMap  25-07-2016    Initial Creation
+#
+# This file takes care of Rollback of File patch.
+#########################################################
+
+ - name: unlink soft link of the old pretups 
+   file: path="{{item.TomcatHomePath }}/webapps/{{ PRETUPS_SOFT_LINK }}" state=absent
+   with_items:
+     - "{{ CatalinaConfig }}"
+
+ - name: making soft link of the pretups package created above 
+   file: src="{{ LinkDirectoryPath }}/{{ OldPackageName }}" dest="{{item.TomcatHomePath }}/webapps/{{ PRETUPS_SOFT_LINK }}" state=link force=yes
+   with_items:
+     - "{{ CatalinaConfig }}"

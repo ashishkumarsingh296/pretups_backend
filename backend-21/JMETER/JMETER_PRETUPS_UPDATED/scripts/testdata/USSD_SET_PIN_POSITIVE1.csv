@@ -1,0 +1,2 @@
+EXTNWCODE,MSISDN1,PIN,NEWPIN,CONFIRMPIN,LANGUAGE1,REMARKS,TestcaseId,TestcaseType,Module,Description
+NG,7200009910,2468,1393,1393,0,,TUNG13160,Positive,Set PIN,To verify that Change PIN can be done through USSD.

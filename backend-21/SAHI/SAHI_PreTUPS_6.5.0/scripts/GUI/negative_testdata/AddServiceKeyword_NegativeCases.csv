@@ -1,0 +1,38 @@
+TestCase Details,TestCase Description,Service Type,Keyword,Msg Getway,Receive Port,Name,Status,Menu,Sub Menu,Allowed version,Assertion
+TEST001,Super admin try to add new keyword wihtout any details,,,,,,,,,,Service type is required.
+TEST002,Try to add new service keyword without service type,,AUTRC,SMSC,8080,Recharge,Active ,Recharge,Auto Recharge,,Service type is required.
+TEST003,Try to add new service keyword without service keyword,Customer Recharge,,SMSC,8080,Recharge,Active ,Recharge,Auto Recharge,,Keyword is required.
+TEST004,Try to add new service keyword without message getway type,Customer Recharge,AUTRC,,8080,Recharge,Active ,Recharge,Auto Recharge,,Message gateway type is required.
+TEST005,Try to add new service keyword without receiving port number,Customer Recharge,AUTRC,SMSC,,Recharge,Active ,Recharge,Auto Recharge,,Receive port is required.
+TEST006,Try to add new service keyword without service name,Customer Recharge,AUTRC,SMSC,8080,,Active ,Recharge,Auto Recharge,,Name is required.
+TEST007,Try to add new service keyword without status,Customer Recharge,AUTRC,SMSC,8080,Recharge,,Recharge,Auto Recharge,,Status is required.
+TEST008,Try to submit keyword having more than one digit,Customer Recharge,AUT  RC,SMSC,8080,Recharge,Active ,Recharge,Auto Recharge,,Keyword should contain alphanumeric single word.
+TEST009,Try to submit keyword having one special charactor,Customer Recharge,$AUTRC,SMSC,8080,Recharge,Active ,Recharge,Auto Recharge,,Keyword should contain alphanumeric single word.
+TEST010,Try to submit keyword containg only special charactor,Customer Recharge,$@$@%,SMSC,8080,Recharge,Active ,Recharge,Auto Recharge,,Keyword should contain alphanumeric single word.
+TEST011,Try to submit keyword containg number in decimal form,Customer Recharge,1212.1,SMSC,8080,Recharge,Active ,Recharge,Auto Recharge,,Keyword should contain alphanumeric single word.
+TEST012,Try to submit keyword as number contaning a negative sign,Customer Recharge,-1001,SMSC,8080,Recharge,Active ,Recharge,Auto Recharge,,Keyword should contain alphanumeric single word.
+TEST013,Try to submit keyword as number contaning a positive sign sign,Customer Recharge,1111,SMSC,8080,Recharge,Active ,Recharge,Auto Recharge,,Keyword should contain alphanumeric single word.
+TEST014,Try to submit keyword as number containing one or more space,Customer Recharge,100 1,SMSC,8080,Recharge,Active ,Recharge,Auto Recharge,,Keyword should contain alphanumeric single word.
+TEST015,Try to submit receiving port as String,Customer Recharge,AUTRC,SMSC,String,Recharge,Active ,Recharge,Auto Recharge,,is not a valid port string.
+TEST016,Try to submit receivingm port containg one or more charactor,Customer Recharge,AUTRC,SMSC,1000P,Recharge,Active ,Recharge,Auto Recharge,,is not a valid port string.
+TEST017,Try to submit receiving port as decimal value,Customer Recharge,AUTRC,SMSC,1000.1,Recharge,Active ,Recharge,Auto Recharge,,is not a valid port string.
+TEST018,Try to submit receiving port as set of special charator,Customer Recharge,AUTRC,SMSC,#!&^%#!,Recharge,Active ,Recharge,Auto Recharge,,is not a valid port string.
+TEST019,Try to submit receiving port containg one or more special charactor,Customer Recharge,AUTRC,SMSC,100#,Recharge,Active ,Recharge,Auto Recharge,,is not a valid port string.
+TEST020,Try to submit two receiving port separated by space ,Customer Recharge,AUTRC,SMSC,8080 8888,Recharge,Active ,Recharge,Auto Recharge,,is not a valid port string.
+TEST021,Try to submit  two port one of them containing charator,Customer Recharge,AUTRC,SMSC,"8080, 8888P",Recharge,Active ,Recharge,Auto Recharge,,is not a valid port string.
+TEST022,Try to submit two receiving port separated by decimal,Customer Recharge,AUTRC,SMSC,8080. 888,Recharge,Active ,Recharge,Auto Recharge,,is not a valid port string.
+TEST023,Try to submit  two same receiving saparated by comma,Customer Recharge,AUTRC,SMSC,"10,10",Recharge,Active ,Recharge,Auto Recharge,,should not be repeated.
+TEST024,Try to submit menu name as set of charactor,Customer Recharge,AUTRC,SMSC,8080,Recharge,Active ,%$%$%$%,Auto Recharge,,Menu must contain only alphanumeric values.
+TEST025,Try to submit menu contaning one or more special charactor,Customer Recharge,AUTRC,SMSC,8080,Recharge,Active ,Menu#,Auto Recharge,,Menu must contain only alphanumeric values.
+TEST026,Try to submit menu name as decimal number,Customer Recharge,AUTRC,SMSC,8080,Recharge,Active ,1005.5,Auto Recharge,,Menu must contain only alphanumeric values.
+TEST027,Try to submit menu name as set of negative number,Customer Recharge,AUTRC,SMSC,8080,Recharge,Active ,-10001,Auto Recharge,,Menu must contain only alphanumeric values.
+TEST028,Try to submit menu name as a positive number,Customer Recharge,AUTRC,SMSC,8080,Recharge,Active ,1111,Auto Recharge,,Menu must contain only alphanumeric values.
+TEST029,Try to submit sub menu name as set of charactor,Customer Recharge,AUTRC,SMSC,8080,Recharge,Active ,Recharge,%$%$%$%,,Sub menu must contain only alphanumeric values.
+TEST030,Try to submit sub menu contaning one or more special charactor,Customer Recharge,AUTRC,SMSC,8080,Recharge,Active ,Recharge,Recharge#,,Sub menu must contain only alphanumeric values.
+TEST031,Try to submit sub menu name as decimal number,Customer Recharge,AUTRC,SMSC,8080,Recharge,Active ,Recharge,1005.5,,Sub menu must contain only alphanumeric values.
+TEST032,Try to submit sub menu name as set of negative number,Customer Recharge,AUTRC,SMSC,8080,Recharge,Active ,Recharge,-10001,,Sub menu must contain only alphanumeric values.
+TEST033,Try to submit sub menu name as a positive number,Customer Recharge,AUTRC,SMSC,8080,Recharge,Active ,Recharge,1111,,Sub menu must contain only alphanumeric values.
+TEST034,Try to submit allowed version as a string,Customer Recharge,AUTRC,SMSC,8080,Recharge,Active ,Recharge,Auto Recharge,ABCDE,Allowed version should contain comma separated list of versions
+TEST035,Try to submit allowed version with alphbet susbcript,Customer Recharge,AUTRC,SMSC,8080,Recharge,Active ,Recharge,Auto Recharge,6.2a,Allowed version should contain comma separated list of versions
+TEST036,Try to submit allowed version as a interger,Customer Recharge,AUTRC,SMSC,8080,Recharge,Active ,Recharge,Auto Recharge,6,is not a valid allowed version. Allowed version should contain comma separated list of versions
+TEST037,"Try to submit allowed version in invalid format, eg. Containing two decimal",Customer Recharge,AUTRC,SMSC,8080,Recharge,Active ,Recharge,Auto Recharge,6..2,is not a valid allowed version. Allowed version should contain comma separated list of versions

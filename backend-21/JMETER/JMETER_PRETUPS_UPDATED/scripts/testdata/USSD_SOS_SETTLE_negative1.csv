@@ -1,0 +1,2 @@
+TestcaseId,TestcaseType,Module,Description
+TUNG22333,Negative,SOS Settlement USSD,To verify that parent or owner will get proper response if there is no pending transaction for settlement.

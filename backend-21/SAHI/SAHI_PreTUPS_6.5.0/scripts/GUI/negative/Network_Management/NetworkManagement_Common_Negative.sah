@@ -1,0 +1,137 @@
+
+
+var $g_networkCode;
+var $g_networkName;
+var $g_ShortName;
+var $g_CompanyName;
+var $g_headerName;
+var $g_ERPCode;
+var $g_address1;
+var $g_address2;
+var $g_city;
+var $g_state;
+var $g_zipCode;
+var $g_country;
+var $g_remarks;
+var $g_language1;
+var $g_language2;
+var $g_tax1;
+var $g_tax2;
+var $g_countryPrefixCode;
+var $g_serviceID;
+var $g_assertion;
+
+
+function commonVaribleForAddNetworks($a_row, $a_col) {
+	$g_networkCode = $g_networkDetails[$a_row][$a_col++];
+	$g_networkName = $g_networkDetails[$a_row][$a_col++];
+	$g_ShortName = $g_networkDetails[$a_row][$a_col++];
+	$g_CompanyName = $g_networkDetails[$a_row][$a_col++];
+	$g_headerName = $g_networkDetails[$a_row][$a_col++];
+	$g_ERPCode = $g_networkDetails[$a_row][$a_col++];
+	$g_address1 = $g_networkDetails[$a_row][$a_col++];
+	$g_address2 = $g_networkDetails[$a_row][$a_col++];
+	$g_city = $g_networkDetails[$a_row][$a_col++];
+	$g_state = $g_networkDetails[$a_row][$a_col++];
+	$g_zipCode = $g_networkDetails[$a_row][$a_col++];
+	$g_country = $g_networkDetails[$a_row][$a_col++];
+	$g_remarks = $g_networkDetails[$a_row][$a_col++];
+	$g_language1 = $g_networkDetails[$a_row][$a_col++];
+	$g_language2 = $g_networkDetails[$a_row][$a_col++];
+	$g_tax1 = $g_networkDetails[$a_row][$a_col++];
+	$g_tax2 = $g_networkDetails[$a_row][$a_col++];
+	$g_countryPrefixCode = $g_networkDetails[$a_row][$a_col++];
+	$g_serviceID = $g_networkDetails[$a_row][$a_col++];
+	$g_assertion = $g_networkDetails[$a_row][$a_col++];
+}
+
+function addNewNetwork() {
+	
+	_click(_link("Masters"));
+	_click(_link("Network management"));
+	_click(_submit("Add"));
+	_setValue(_textbox("networkCode"), $g_networkCode);
+	_setValue(_textbox("networkName"), $g_networkName);
+	_setValue(_textbox("networkShortName"), $g_ShortName);
+	_setValue(_textbox("companyName"),$g_CompanyName );
+	_setValue(_textbox("reportHeaderName"), $g_headerName);
+	_setValue(_textbox("erpNetworkCode"), $g_ERPCode);
+	_setValue(_textbox("address1"),	$g_address1 );
+	_setValue(_textbox("address2"), $g_address2);
+	_setValue(_textbox("city"), $g_city);
+	_setValue(_textbox("state"), $g_state);
+	_setValue(_textbox("zipCode"), $g_zipCode);
+	_setValue(_textbox("country"), $g_country);
+	_setValue(_textarea("remarks"), $g_remarks);
+	_setValue(_textarea("language1Message"), $g_language1);
+	_setValue(_textarea("language2Message"), $g_language2 );
+	_setValue(_textbox("text1Value"), $g_tax1);
+	_setValue(_textbox("text2Value"), $g_tax2);
+	_setValue(_textbox("countryPrefixCode"), $g_countryPrefixCode);
+	_setSelected(_select("serviceSetID"), $g_serviceID);
+	_click(_submit($g_BtnSave));
+
+}
+
+
+commonVaribleToModifyNetwork
+
+
+function commonVaribleToModifyNetwork($a_row, $a_col) {
+	$g_networkName = $g_modifyNetworkDetails[$a_row][$a_col++];
+	$g_ShortName = $g_modifyNetworkDetails[$a_row][$a_col++];
+	$g_CompanyName = $g_modifyNetworkDetails[$a_row][$a_col++];
+	$g_headerName = $g_modifyNetworkDetails[$a_row][$a_col++];
+	$g_ERPCode = $g_modifyNetworkDetails[$a_row][$a_col++];
+	$g_address1 = $g_modifyNetworkDetails[$a_row][$a_col++];
+	$g_address2 = $g_modifyNetworkDetails[$a_row][$a_col++];
+	$g_city = $g_modifyNetworkDetails[$a_row][$a_col++];
+	$g_state = $g_modifyNetworkDetails[$a_row][$a_col++];
+	$g_zipCode = $g_modifyNetworkDetails[$a_row][$a_col++];
+	$g_country = $g_modifyNetworkDetails[$a_row][$a_col++];
+	$g_remarks = $g_modifyNetworkDetails[$a_row][$a_col++];
+	$g_language1 = $g_modifyNetworkDetails[$a_row][$a_col++];
+	$g_language2 = $g_modifyNetworkDetails[$a_row][$a_col++];
+	$g_tax1 = $g_modifyNetworkDetails[$a_row][$a_col++];
+	$g_tax2 = $g_modifyNetworkDetails[$a_row][$a_col++];
+	$g_countryPrefixCode = $g_modifyNetworkDetails[$a_row][$a_col++];
+	$g_serviceID = $g_modifyNetworkDetails[$a_row][$a_col++];
+	$g_assertion = $g_modifyNetworkDetails[$a_row][$a_col++];
+}
+
+function modifyNetwork($g_network) {
+	
+	
+	_log("shashi in " + $g_networkName );
+	_click(_link("Masters"));
+	_click(_link("Network management"));
+	_click(_radio("code", _near(_cell($g_network))));
+	_click(_submit("Modify"));
+	_assertExists(_div("Modify network details"));
+	_setValue(_textbox("networkName"), $g_networkName);
+	_setValue(_textbox("networkShortName"), $g_ShortName);
+	_setValue(_textbox("companyName"),$g_CompanyName );
+	_setValue(_textbox("reportHeaderName"), $g_headerName);
+	_setValue(_textbox("erpNetworkCode"), $g_ERPCode);
+	_setValue(_textbox("address1"),	$g_address1 );
+	_setValue(_textbox("address2"), $g_address2);
+	_setValue(_textbox("city"), $g_city);
+	_setValue(_textbox("state"), $g_state);
+	_setValue(_textbox("zipCode"), $g_zipCode);
+	_setValue(_textbox("country"), $g_country);
+	_setValue(_textarea("remarks"), $g_remarks);
+	_setValue(_textarea("language1Message"), $g_language1);
+	_setValue(_textarea("language2Message"), $g_language2 );
+	_setValue(_textbox("text1Value"), $g_tax1);
+	_setValue(_textbox("text2Value"), $g_tax2);
+	_setValue(_textbox("countryPrefixCode"), $g_countryPrefixCode);
+	_setSelected(_select("serviceSetID"), $g_serviceID);
+	_click(_submit($g_BtnSave));
+
+}
+
+
+
+
+
+

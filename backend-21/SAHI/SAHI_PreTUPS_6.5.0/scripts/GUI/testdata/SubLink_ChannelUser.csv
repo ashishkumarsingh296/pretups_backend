@@ -1,0 +1,18 @@
+Operator to channel,Masters,Channel to channel,Withdrawal,Channel user,Channel reports-user,Access control Mgmt.,Channel reports-O2C,Channel reports-C2C,Channel reports-C2S,Channel enquiry,C2S transfer,Channel reports - Summary
+Initiate transfer,Bar user,C2C transfer,Withdraw,Add channel user,External user roles report,User password Mgmt.,O2C Transfer Acknowledgement,Channel transfer details,C2S transfer,C2S transfers Enquiry,C2S recharge,Operation summary report
+Return,View barred list,Return,,Modify channel user,User balance movement summary,PIN/Password history report,O2C transfer details,Staff C2C transfer details,Additional commission detail,Bulk voucher download enquiry,C2S reversal,Transaction summary report
+,Change language,Initiate C2C batch,,Channel user PIN Mgmt.,User Closing Balance,,,Staff self C2C reports,Additional commission summary,C2C transfer enquiry,,
+,,Approve C2C batch,,Change notification language,User zero balance counter detail,,,,Staff C2S transfer report,View channel user,,
+,,Initiate C2C batch withdraw,,Associate profile,User zero balance counter summary,,,,Time based C2S transfers report,View self details,,
+,,Approve C2C batch withdraw,,Delete channel user,,,,,,O2C transfers,,
+,,,,View user hierarchy,,,,,,Batch user enquiry,,
+,,,,Suspend channel user,,,,,,Batch C2C transfer Enquiry,,
+,,,,Batch user initiate,,,,,,Self balance,,
+,,,,Self details modify,,,,,,User balance,,
+,,,,Add staff user,,,,,,Self profile thresholds,,
+,,,,Modify staff user,,,,,,User profile thresholds,,
+,,,,View staff user,,,,,,Staff C2S transfers,,
+,,,,Change PIN,,,,,,Staff C2C transfer enquiry,,
+,,,,Change self PIN,,,,,,Staff self C2C details,,
+,,,,Suspend staff user,,,,,,Staff self C2S details,,
+,,,,Resume staff user,,,,,,,,

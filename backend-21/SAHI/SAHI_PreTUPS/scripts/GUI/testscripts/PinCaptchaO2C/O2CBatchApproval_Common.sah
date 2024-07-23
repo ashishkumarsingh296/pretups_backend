@@ -1,0 +1,1076 @@
+//###############################################
+//#Company Name: Mahindra Comviva Technologies Ltd.
+//#Application Name: Pretups
+//#Objective:Pin captcha test case:Common function for o2c transfer approve, batch reject and process file.
+//#Author Name: Shashi
+//#Created Date: 10/06/2015
+//###############################################
+
+_includeOnce("../../../../utility/ImportPackage.sah");	//For importing common files
+var $l_PinCaptchaO2C = _readCSVFile("../../testdata/PinCaptchaO2C.csv");
+
+
+var $g_btachName;
+var $g_languageOne;
+var $g_languageTwo;
+var $g_remarks;
+var $g_PIN;
+var $g_assert;
+
+
+var $l_row;
+var $l_col;
+
+
+function approveO2CbatchApprovalLevel1() {
+	
+	var $l_row = 4;
+	var $l_col = 0;
+	
+	var $t1 = _testcase($l_PinCaptchaO2C[$l_row][$l_col++], $l_PinCaptchaO2C[$l_row][$l_col++]);
+
+	$t1.start();
+	
+	
+	initiateO2CTransfer($l_row,$l_col);
+	
+	approveO2CBatchApprLevelOne();
+
+	$t1.end();
+	
+	
+	
+	
+}
+
+function initiateO2CTransfer($l_row,$l_col) {
+	
+	$g_btachName = $l_PinCaptchaO2C[$l_row][$l_col++];
+	$g_languageOne = $l_PinCaptchaO2C[$l_row][$l_col++];
+	$g_languageTwo = $l_PinCaptchaO2C[$l_row][$l_col++];
+	$g_remarks = $l_PinCaptchaO2C[$l_row][$l_col++];
+	$g_PIN  =$l_PinCaptchaO2C[$l_row][$l_col++];
+	$g_assert = $l_PinCaptchaO2C[$l_row][$l_col++];
+
+}
+
+function approveO2CBatchApprLevelOne() {
+	
+
+
+		_click(_link($g_LeftMenuBar_O2C)); // Link to operator to channel _click(_link("Operator to channel"));
+		
+		_assertExists(_link($g_LeftMenuBar_ApproveBatchO2CLevelOne));
+		
+		_click(_link($g_LeftMenuBar_ApproveBatchO2CLevelOne));
+		
+		_assertExists(_div("Level 1 Batch O2C transfer approval"));
+		
+		_click(_radio("selectedIndex", _near(_cell($g_btachName))));
+		
+		_click(_submit("Submit", _near(_cell($g_btachName))));
+		
+		_assertExists(_cell("Batch name :", _near(_cell($g_btachName))));
+		
+		_click(_submit("Batch approve"));
+		_setValue(_textarea("defaultLang"), $g_languageOne);
+		_setValue(_textarea("secondLang"), $g_languageTwo);
+		_setValue(_textarea("firstApproverRemarks"), $g_remarks);
+		_setValue(_password("smsPin"), $g_PIN);
+		
+		_click(_button("Approve"));
+		_assertExists(_listItem($g_assert));
+			
+}
+
+
+function n_approveO2CBatchApprLevelOne_empty_pin() {
+	
+	var $l_row = 5;
+	var $l_col = 0;
+	
+	var $t1 = _testcase($l_PinCaptchaO2C[$l_row][$l_col++], $l_PinCaptchaO2C[$l_row][$l_col++]);
+
+	$t1.start();
+	
+	
+	initiateO2CTransfer($l_row,$l_col);
+	
+	n_approveO2CBatchApprLevel1_empty_pin();
+
+	$t1.end();
+	
+		
+}
+
+function n_approveO2CBatchApprLevel1_empty_pin(){
+	_click(_link($g_LeftMenuBar_O2C)); // Link to operator to channel _click(_link("Operator to channel"));
+	
+	_assertExists(_link($g_LeftMenuBar_ApproveBatchO2CLevelOne));
+	
+	_click(_link($g_LeftMenuBar_ApproveBatchO2CLevelOne));
+	
+	_assertExists(_div("Level 1 Batch O2C transfer approval"));
+	
+	_click(_radio("selectedIndex", _near(_cell($g_btachName))));
+	
+	_click(_submit("Submit", _near(_cell($g_btachName))));
+	
+	_assertExists(_cell("Batch name :", _near(_cell($g_btachName))));
+	
+	_click(_submit("Batch approve"));
+	_setValue(_textarea("defaultLang"), $g_languageOne);
+	_setValue(_textarea("secondLang"), $g_languageTwo);
+	_setValue(_textarea("firstApproverRemarks"), $g_remarks);
+	_setValue(_password("smsPin"), $g_PIN);
+	
+	_click(_button("Approve"));
+	_assertExists(_listItem($g_assert));
+}
+
+
+function n_approveO2CBatchApprLevelOne_invalid_pin() {
+	
+	var $l_row = 6;
+	var $l_col = 0;
+	
+	var $t1 = _testcase($l_PinCaptchaO2C[$l_row][$l_col++], $l_PinCaptchaO2C[$l_row][$l_col++]);
+
+	$t1.start();
+	
+	
+	initiateO2CTransfer($l_row,$l_col);
+	
+	n_approveO2CBatchApprLevel1_invalid_pin();
+
+	$t1.end();
+
+		
+}
+
+function n_approveO2CBatchApprLevel1_invalid_pin(){
+	_click(_link($g_LeftMenuBar_O2C)); // Link to operator to channel _click(_link("Operator to channel"));
+	
+	_assertExists(_link($g_LeftMenuBar_ApproveBatchO2CLevelOne));
+	
+	_click(_link($g_LeftMenuBar_ApproveBatchO2CLevelOne));
+	
+	_assertExists(_div("Level 1 Batch O2C transfer approval"));
+	
+	_click(_radio("selectedIndex", _near(_cell($g_btachName))));
+	
+	_click(_submit("Submit", _near(_cell($g_btachName))));
+	
+	_assertExists(_cell("Batch name :", _near(_cell($g_btachName))));
+	
+	_click(_submit("Batch approve"));
+	_setValue(_textarea("defaultLang"), $g_languageOne);
+	_setValue(_textarea("secondLang"), $g_languageTwo);
+	_setValue(_textarea("firstApproverRemarks"), $g_remarks);
+	_setValue(_password("smsPin"), $g_PIN);
+	
+	_click(_button("Approve"));
+	_assertExists(_listItem($g_assert));
+	
+}
+
+function rejectO2CbatchApprovalLevelOne() {
+	var $l_row = 9;
+	var $l_col = 0;
+	
+	var $t1 = _testcase($l_PinCaptchaO2C[$l_row][$l_col++], $l_PinCaptchaO2C[$l_row][$l_col++]);
+
+	$t1.start();
+	
+	
+	initiateO2CTransfer($l_row,$l_col);
+	
+	rejectO2CbatchApprovalLevel1();
+
+	$t1.end();
+		
+}
+
+function rejectO2CbatchApprovalLevel1() {
+	
+	_click(_link($g_LeftMenuBar_O2C)); // Link to operator to channel _click(_link("Operator to channel"));
+	
+	_assertExists(_link($g_LeftMenuBar_ApproveBatchO2CLevelOne));
+	
+	_click(_link($g_LeftMenuBar_ApproveBatchO2CLevelOne));
+	
+	_assertExists(_div("Level 1 Batch O2C transfer approval"));
+	
+	_click(_radio("selectedIndex", _near(_cell($g_btachName))));
+	
+	_click(_submit("Submit", _near(_cell($g_btachName))));
+	
+	_assertExists(_cell("Batch name :", _near(_cell($g_btachName))));
+	
+	_click(_submit("Batch reject"));
+	_setValue(_textarea("defaultLang"), $g_languageOne);
+	_setValue(_textarea("secondLang"), $g_languageTwo);
+	_setValue(_textarea("firstApproverRemarks"), $g_remarks);
+	_setValue(_password("smsPin"), $g_PIN);
+	
+	_click(_button("Reject"));
+	_assertExists(_listItem($g_assert));
+		
+}
+
+
+// function to reject batch O2CApprovalLevelOne leaving pin field empty
+function n_rejectO2CbatchApprovalLevelOne_empty_pin(){
+	
+	var $l_row = 7;
+	var $l_col = 0;
+	
+	var $t1 = _testcase($l_PinCaptchaO2C[$l_row][$l_col++], $l_PinCaptchaO2C[$l_row][$l_col++]);
+
+	$t1.start();
+	
+	
+	initiateO2CTransfer($l_row,$l_col);
+	
+	n_rejectO2CbatchApprovalLevel1_emptypin();
+
+	$t1.end();
+	
+}
+
+function n_rejectO2CbatchApprovalLevel1_emptypin(){
+	_click(_link($g_LeftMenuBar_O2C)); // Link to operator to channel _click(_link("Operator to channel"));
+	
+	_assertExists(_link($g_LeftMenuBar_ApproveBatchO2CLevelOne));
+	
+	_click(_link($g_LeftMenuBar_ApproveBatchO2CLevelOne));
+	
+	_assertExists(_div("Level 1 Batch O2C transfer approval"));
+	
+	_click(_radio("selectedIndex", _near(_cell($g_btachName))));
+	
+	_click(_submit("Submit", _near(_cell($g_btachName))));
+	
+	_assertExists(_cell("Batch name :", _near(_cell($g_btachName))));
+	
+	_click(_submit("Batch reject"));
+	_setValue(_textarea("defaultLang"), $g_languageOne);
+	_setValue(_textarea("secondLang"), $g_languageTwo);
+	_setValue(_textarea("firstApproverRemarks"), $g_remarks);
+	_setValue(_password("smsPin"), $g_PIN);
+	
+	_click(_button("Reject"));
+	_assertExists(_listItem($g_assert));
+}
+
+
+
+// function to reject BatchO2CApprovalLevelOne  providing invalid pin
+
+function n_rejectO2CbatchApprovalLevelOne_invalid_pin(){
+	
+	var $l_row = 8;
+	var $l_col = 0;
+	
+	var $t1 = _testcase($l_PinCaptchaO2C[$l_row][$l_col++], $l_PinCaptchaO2C[$l_row][$l_col++]);
+
+	$t1.start();
+	
+	
+	initiateO2CTransfer($l_row,$l_col);
+	
+	n_rejectO2CbatchApprovalLevel1_invalidpin();
+
+	$t1.end();
+	
+}
+
+function n_rejectO2CbatchApprovalLevel1_invalidpin(){
+	_click(_link($g_LeftMenuBar_O2C)); // Link to operator to channel _click(_link("Operator to channel"));
+	
+	_assertExists(_link($g_LeftMenuBar_ApproveBatchO2CLevelOne));
+	
+	_click(_link($g_LeftMenuBar_ApproveBatchO2CLevelOne));
+	
+	_assertExists(_div("Level 1 Batch O2C transfer approval"));
+	
+	_click(_radio("selectedIndex", _near(_cell($g_btachName))));
+	
+	_click(_submit("Submit", _near(_cell($g_btachName))));
+	
+	_assertExists(_cell("Batch name :", _near(_cell($g_btachName))));
+	
+	_click(_submit("Batch reject"));
+	_setValue(_textarea("defaultLang"), $g_languageOne);
+	_setValue(_textarea("secondLang"), $g_languageTwo);
+	_setValue(_textarea("firstApproverRemarks"), $g_remarks);
+	_setValue(_password("smsPin"), $g_PIN);
+	
+	_click(_button("Reject"));
+	_assertExists(_listItem($g_assert));
+}
+
+function processO2CbatchApprovalLevelOne() {
+	
+	var $l_row = 10;
+	var $l_col = 0;
+	
+	var $t1 = _testcase($l_PinCaptchaO2C[$l_row][$l_col++], $l_PinCaptchaO2C[$l_row][$l_col++]);
+
+	$t1.start();
+	
+	
+	initiateO2CTransfer($l_row,$l_col);
+	
+	processO2CbatchApprovalLevel1();
+
+	$t1.end();
+		
+}
+
+function processO2CbatchApprovalLevel1(){
+	
+	_click(_link($g_LeftMenuBar_O2C)); // Link to operator to channel _click(_link("Operator to channel"));
+	
+	_assertExists(_link($g_LeftMenuBar_ApproveBatchO2CLevelOne));
+	
+	_click(_link($g_LeftMenuBar_ApproveBatchO2CLevelOne));
+	
+	_assertExists(_div("Level 1 Batch O2C transfer approval"));
+	
+	_click(_radio("selectedIndex", _near(_cell($g_btachName))));
+	
+	_click(_submit("Submit", _near(_cell($g_btachName))));
+	
+	_setFile2(_file("file"), $g_remarks);    //Here remarks is file path to be uploaded
+	
+	_assertExists(_cell("Batch name :", _near(_cell($g_btachName))));
+	
+	_click(_submit("Process file"));
+	_setValue(_textarea("defaultLang"), $g_languageOne);
+	_setValue(_textarea("secondLang"), $g_languageTwo);
+	_setValue(_password("smsPin"), $g_PIN);
+	_click(_submit("Process file"));
+	_assertExists(_listItem($g_assert));
+
+}
+
+
+function n_processO2CbatchApprovalLevel1_invalid_pin() {
+	
+	var $l_row = 11;
+	var $l_col = 0;
+	
+	var $t1 = _testcase($l_PinCaptchaO2C[$l_row][$l_col++], $l_PinCaptchaO2C[$l_row][$l_col++]);
+
+	$t1.start();
+	
+	
+	initiateO2CTransfer($l_row,$l_col);
+	
+	n_processO2CbatchApprovalLevelone_invalid_pin();
+
+	$t1.end();
+		
+}
+
+
+function n_processO2CbatchApprovalLevelone_invalid_pin(){
+
+_click(_link($g_LeftMenuBar_O2C)); // Link to operator to channel _click(_link("Operator to channel"));
+	
+	_assertExists(_link($g_LeftMenuBar_ApproveBatchO2CLevelOne));
+	
+	_click(_link($g_LeftMenuBar_ApproveBatchO2CLevelOne));
+	
+	_assertExists(_div("Level 1 Batch O2C transfer approval"));
+	
+	_click(_radio("selectedIndex", _near(_cell($g_btachName))));
+	
+	_click(_submit("Submit", _near(_cell($g_btachName))));
+	
+	_setFile2(_file("file"), $g_remarks);    //Here remarks is file path to be uploaded
+	
+	_assertExists(_cell("Batch name :", _near(_cell($g_btachName))));
+	
+	_click(_submit("Process file"));
+	_setValue(_textarea("defaultLang"), $g_languageOne);
+	_setValue(_textarea("secondLang"), $g_languageTwo);
+	_setValue(_password("smsPin"), $g_PIN);
+	_click(_submit("Process file"));
+	_assertExists(_listItem($g_assert));
+}
+
+function n_processO2CbatchApprovalLevel1_empty_pin() {
+	
+	var $l_row = 12;
+	var $l_col = 0;
+	
+	var $t1 = _testcase($l_PinCaptchaO2C[$l_row][$l_col++], $l_PinCaptchaO2C[$l_row][$l_col++]);
+
+	$t1.start();
+	
+	
+	initiateO2CTransfer($l_row,$l_col);
+	
+	n_processO2CbatchApprovalLevelone_empty_pin();
+
+	$t1.end();
+		
+}
+function n_processO2CbatchApprovalLevelone_empty_pin(){
+
+	_click(_link($g_LeftMenuBar_O2C)); // Link to operator to channel _click(_link("Operator to channel"));
+		
+		_assertExists(_link($g_LeftMenuBar_ApproveBatchO2CLevelOne));
+		
+		_click(_link($g_LeftMenuBar_ApproveBatchO2CLevelOne));
+		
+		_assertExists(_div("Level 1 Batch O2C transfer approval"));
+		
+		_click(_radio("selectedIndex", _near(_cell($g_btachName))));
+		
+		_click(_submit("Submit", _near(_cell($g_btachName))));
+		
+		_setFile2(_file("file"), $g_remarks);    //Here remarks is file path to be uploaded
+		
+		_assertExists(_cell("Batch name :", _near(_cell($g_btachName))));
+		
+		_click(_submit("Process file"));
+		_setValue(_textarea("defaultLang"), $g_languageOne);
+		_setValue(_textarea("secondLang"), $g_languageTwo);
+		_setValue(_password("smsPin"), $g_PIN);
+		_click(_submit("Process file"));
+		_assertExists(_listItem($g_assert));
+	}
+
+
+function approveO2CbatchApprovalLevel2() {
+	
+	var $l_row = 13;
+	var $l_col = 0;
+	
+	var $t1 = _testcase($l_PinCaptchaO2C[$l_row][$l_col++], $l_PinCaptchaO2C[$l_row][$l_col++]);
+
+	$t1.start();
+	
+	
+	initiateO2CTransfer($l_row,$l_col);
+	
+	approveO2CBatchApprLevelTwo();
+
+	$t1.end();
+	
+	
+	
+	
+}
+
+function approveO2CBatchApprLevelTwo() {
+	
+
+
+		_click(_link($g_LeftMenuBar_O2C)); // Link to operator to channel _click(_link("Operator to channel"));
+		
+		_assertExists(_link($g_LeftMenuBar_ApproveBatchO2CLevelTwo));
+		
+		_click(_link($g_LeftMenuBar_ApproveBatchO2CLevelTwo));
+		
+		_click(_radio("selectedIndex", _near(_cell($g_btachName))));
+		
+		_click(_submit("Submit"));
+		
+		_assertExists(_div("Level 2 Batch O2C transfer approval"));
+		
+		_assertExists(_cell("Batch name :", _near(_cell($g_btachName))));
+		
+		_click(_submit("Batch approve"));
+		_setValue(_textarea("defaultLang"), $g_languageOne);
+		_setValue(_textarea("secondLang"), $g_languageTwo);
+		_setValue(_textarea("secondApproverRemarks"), $g_remarks);
+		_setValue(_password("smsPin"), $g_PIN);
+		
+		_click(_button("Approve"));
+		_assertExists(_listItem($g_assert));
+			
+}
+
+
+function n_approveO2CBatchApprLevelTwo_empty_pin() {
+	
+	var $l_row = 14;
+	var $l_col = 0;
+	
+	var $t1 = _testcase($l_PinCaptchaO2C[$l_row][$l_col++], $l_PinCaptchaO2C[$l_row][$l_col++]);
+
+	$t1.start();
+	
+	
+	initiateO2CTransfer($l_row,$l_col);
+	
+	n_approveO2CBatchApprLevel2_empty_pin();
+
+	$t1.end();
+	
+		
+}
+
+function n_approveO2CBatchApprLevel2_empty_pin(){
+	_click(_link($g_LeftMenuBar_O2C)); // Link to operator to channel _click(_link("Operator to channel"));
+	
+	_assertExists(_link($g_LeftMenuBar_ApproveBatchO2CLevelTwo));
+	
+	_click(_link($g_LeftMenuBar_ApproveBatchO2CLevelTwo));
+	
+	_click(_radio("selectedIndex", _near(_cell($g_btachName))));
+	
+	_click(_submit("Submit"));
+	
+	_assertExists(_div("Level 2 Batch O2C transfer approval"));
+	
+	_assertExists(_cell("Batch name :", _near(_cell($g_btachName))));
+	
+	_click(_submit("Batch approve"));
+	_setValue(_textarea("defaultLang"), $g_languageOne);
+	_setValue(_textarea("secondLang"), $g_languageTwo);
+	_setValue(_textarea("secondApproverRemarks"), $g_remarks);
+	_setValue(_password("smsPin"), $g_PIN);
+	
+	_click(_button("Approve"));
+	_assertExists(_listItem($g_assert));
+}
+
+
+function n_approveO2CBatchApprLevelTwo_invalid_pin() {
+	
+	var $l_row = 15;
+	var $l_col = 0;
+	
+	var $t1 = _testcase($l_PinCaptchaO2C[$l_row][$l_col++], $l_PinCaptchaO2C[$l_row][$l_col++]);
+
+	$t1.start();
+	
+	
+	initiateO2CTransfer($l_row,$l_col);
+	
+	n_approveO2CBatchApprLevel2_invalid_pin();
+
+	$t1.end();
+
+		
+}
+
+function n_approveO2CBatchApprLevel2_invalid_pin(){
+	_click(_link($g_LeftMenuBar_O2C)); // Link to operator to channel _click(_link("Operator to channel"));
+	
+	_assertExists(_link($g_LeftMenuBar_ApproveBatchO2CLevelTwo));
+	
+	_click(_link($g_LeftMenuBar_ApproveBatchO2CLevelTwo));
+	
+	_click(_radio("selectedIndex", _near(_cell($g_btachName))));
+	
+	_click(_submit("Submit"));
+	
+	_assertExists(_div("Level 2 Batch O2C transfer approval"));
+	
+	_assertExists(_cell("Batch name :", _near(_cell($g_btachName))));
+	
+	_click(_submit("Batch approve"));
+	_setValue(_textarea("defaultLang"), $g_languageOne);
+	_setValue(_textarea("secondLang"), $g_languageTwo);
+	_setValue(_textarea("secondApproverRemarks"), $g_remarks);
+	_setValue(_password("smsPin"), $g_PIN);
+	_click(_button("Approve"));
+	_assertExists(_listItem($g_assert));
+	
+}
+
+function rejectO2CbatchApprovalLevelOne_cancle() {
+	var $l_row = 9;
+	var $l_col = 0;
+	
+	var $t1 = _testcase($l_PinCaptchaO2C[$l_row][$l_col++], $l_PinCaptchaO2C[$l_row][$l_col++]);
+
+	$t1.start();
+	
+	
+	initiateO2CTransfer($l_row,$l_col);
+	
+	rejectO2CbatchApprovalLevel1_cancle();
+
+	$t1.end();
+		
+}
+
+function rejectO2CbatchApprovalLevel1_cancle() {
+	
+	_click(_link($g_LeftMenuBar_O2C)); // Link to operator to channel _click(_link("Operator to channel"));
+	
+	_assertExists(_link($g_LeftMenuBar_ApproveBatchO2CLevelOne));
+	
+	_click(_link($g_LeftMenuBar_ApproveBatchO2CLevelOne));
+	
+	_assertExists(_div("Level 1 Batch O2C transfer approval"));
+	
+	_click(_radio("selectedIndex", _near(_cell($g_btachName))));
+	
+	_click(_submit("Submit", _near(_cell($g_btachName))));
+	
+	_assertExists(_cell("Batch name :", _near(_cell($g_btachName))));
+	
+	_click(_submit("Batch reject"));
+	_click(_submit("Cancel"));
+	_assertExists(_div("Level 1 Batch O2C transfer approval"));
+		
+}
+
+function processO2CbatchApprovalLevelOne_cancle() {
+	
+	var $l_row = 10;
+	var $l_col = 0;
+	
+	var $t1 = _testcase($l_PinCaptchaO2C[$l_row][$l_col++], $l_PinCaptchaO2C[$l_row][$l_col++]);
+
+	$t1.start();
+	
+	
+	initiateO2CTransfer($l_row,$l_col);
+	
+	processO2CbatchApprovalLevel1_cancle();
+
+	$t1.end();
+		
+}
+
+function processO2CbatchApprovalLevel1_cancle(){
+	
+	_click(_link($g_LeftMenuBar_O2C)); // Link to operator to channel _click(_link("Operator to channel"));
+	
+	_assertExists(_link($g_LeftMenuBar_ApproveBatchO2CLevelOne));
+	
+	_click(_link($g_LeftMenuBar_ApproveBatchO2CLevelOne));
+	
+	_assertExists(_div("Level 1 Batch O2C transfer approval"));
+	
+	_click(_radio("selectedIndex", _near(_cell($g_btachName))));
+	
+	_click(_submit("Submit", _near(_cell($g_btachName))));
+	
+	_setFile2(_file("file"), $g_remarks);    //Here remarks is file path to be uploaded
+	
+	_assertExists(_cell("Batch name :", _near(_cell($g_btachName))));
+	
+	_click(_submit("Process file"));
+	_setValue(_textarea("defaultLang"), $g_languageOne);
+	_setValue(_textarea("secondLang"), $g_languageTwo);
+	_setValue(_password("smsPin"), $g_PIN);
+	_click(_submit("Cancel"));
+	_assertExists(_div("Level 1 Batch O2C transfer approval"));
+
+}
+
+function processO2CbatchApprovalLevelOne_back() {
+	
+	var $l_row = 10;
+	var $l_col = 0;
+	
+	var $t1 = _testcase($l_PinCaptchaO2C[$l_row][$l_col++], $l_PinCaptchaO2C[$l_row][$l_col++]);
+
+	$t1.start();
+	
+	
+	initiateO2CTransfer($l_row,$l_col);
+	
+	processO2CbatchApprovalLevel1_back();
+
+	$t1.end();
+		
+}
+
+function processO2CbatchApprovalLevel1_back(){
+	
+	_click(_link($g_LeftMenuBar_O2C)); // Link to operator to channel _click(_link("Operator to channel"));
+	
+	_assertExists(_link($g_LeftMenuBar_ApproveBatchO2CLevelOne));
+	
+	_click(_link($g_LeftMenuBar_ApproveBatchO2CLevelOne));
+	
+	_assertExists(_div("Level 1 Batch O2C transfer approval"));
+	
+	_click(_radio("selectedIndex", _near(_cell($g_btachName))));
+	
+	_click(_submit("Submit", _near(_cell($g_btachName))));
+	
+	_setFile2(_file("file"), $g_remarks);    //Here remarks is file path to be uploaded
+	
+	_assertExists(_cell("Batch name :", _near(_cell($g_btachName))));
+	
+	_click(_submit("Process file"));
+	_setValue(_textarea("defaultLang"), $g_languageOne);
+	_setValue(_textarea("secondLang"), $g_languageTwo);
+	_setValue(_password("smsPin"), $g_PIN);
+	_click(_submit("Back"));
+	_assertExists(_div("Level 1 Batch O2C transfer approval"));
+
+}
+
+
+function rejectO2CbatchApprovalLevelTwo() {
+	var $l_row = 38;
+	var $l_col = 0;
+	
+	var $t1 = _testcase($l_PinCaptchaO2C[$l_row][$l_col++], $l_PinCaptchaO2C[$l_row][$l_col++]);
+
+	$t1.start();
+	
+	
+	initiateO2CTransfer($l_row,$l_col);
+	
+	rejectO2CbatchApprovalLevel2();
+
+	$t1.end();
+		
+}
+
+function rejectO2CbatchApprovalLevel2() {
+	
+	_click(_link($g_LeftMenuBar_O2C)); // Link to operator to channel _click(_link("Operator to channel"));
+	
+	_assertExists(_link($g_LeftMenuBar_ApproveBatchO2CLevelTwo));
+	
+	_click(_link($g_LeftMenuBar_ApproveBatchO2CLevelTwo));
+	
+	_assertExists(_div("Level 2 Batch O2C transfer approval"));
+	
+	_click(_radio("selectedIndex", _near(_cell($g_btachName))));
+	
+	_click(_submit("Submit", _near(_cell($g_btachName))));
+	
+	_assertExists(_cell("Batch name :", _near(_cell($g_btachName))));
+	
+	_click(_submit("Batch reject"));
+	_setValue(_textarea("defaultLang"), $g_languageOne);
+	_setValue(_textarea("secondLang"), $g_languageTwo);
+	_setValue(_textarea("secondApproverRemarks"), $g_remarks);
+	_setValue(_password("smsPin"), $g_PIN);
+	
+	_click(_button("Reject"));
+	_assertExists(_listItem($g_assert));
+		
+}
+
+
+// function to reject batch O2CApprovalLevelOne leaving pin field empty
+function n_rejectO2CbatchApprovalLevelTwo_empty_pin(){
+	
+	var $l_row = 36;
+	var $l_col = 0;
+	
+	var $t1 = _testcase($l_PinCaptchaO2C[$l_row][$l_col++], $l_PinCaptchaO2C[$l_row][$l_col++]);
+
+	$t1.start();
+	
+	
+	initiateO2CTransfer($l_row,$l_col);
+	
+	n_rejectO2CbatchApprovalLevel2_emptypin();
+
+	$t1.end();
+	
+}
+
+function n_rejectO2CbatchApprovalLevel2_emptypin(){
+	_click(_link($g_LeftMenuBar_O2C)); // Link to operator to channel _click(_link("Operator to channel"));
+	
+	_assertExists(_link($g_LeftMenuBar_ApproveBatchO2CLevelTwo));
+	
+	_click(_link($g_LeftMenuBar_ApproveBatchO2CLevelTwo));
+	
+	_assertExists(_div("Level 2 Batch O2C transfer approval"));
+	
+	_click(_radio("selectedIndex", _near(_cell($g_btachName))));
+	
+	_click(_submit("Submit", _near(_cell($g_btachName))));
+	
+	_assertExists(_cell("Batch name :", _near(_cell($g_btachName))));
+	
+	_click(_submit("Batch reject"));
+	_setValue(_textarea("defaultLang"), $g_languageOne);
+	_setValue(_textarea("secondLang"), $g_languageTwo);
+	_setValue(_textarea("secondApproverRemarks"), $g_remarks);
+	_setValue(_password("smsPin"), $g_PIN);
+	
+	_click(_button("Reject"));
+	_assertExists(_listItem($g_assert));
+}
+
+
+
+// function to reject BatchO2CApprovalLevelOne  providing invalid pin
+
+function n_rejectO2CbatchApprovalLevelOne_invalid_pin(){
+	
+	var $l_row = 37;
+	var $l_col = 0;
+	
+	var $t1 = _testcase($l_PinCaptchaO2C[$l_row][$l_col++], $l_PinCaptchaO2C[$l_row][$l_col++]);
+
+	$t1.start();
+	
+	
+	initiateO2CTransfer($l_row,$l_col);
+	
+	n_rejectO2CbatchApprovalLevel2_invalidpin();
+
+	$t1.end();
+	
+}
+
+function n_rejectO2CbatchApprovalLevel2_invalidpin(){
+	_click(_link($g_LeftMenuBar_O2C)); // Link to operator to channel _click(_link("Operator to channel"));
+	
+	_assertExists(_link($g_LeftMenuBar_ApproveBatchO2CLevelTwo));
+	
+	_click(_link($g_LeftMenuBar_ApproveBatchO2CLevelTwo));
+	
+	_assertExists(_div("Level 2 Batch O2C transfer approval"));
+	
+	_click(_radio("selectedIndex", _near(_cell($g_btachName))));
+	
+	_click(_submit("Submit", _near(_cell($g_btachName))));
+	
+	_assertExists(_cell("Batch name :", _near(_cell($g_btachName))));
+	
+	_click(_submit("Batch reject"));
+	_setValue(_textarea("defaultLang"), $g_languageOne);
+	_setValue(_textarea("secondLang"), $g_languageTwo);
+	_setValue(_textarea("secondApproverRemarks"), $g_remarks);
+	_setValue(_password("smsPin"), $g_PIN);
+	
+	_click(_button("Reject"));
+	_assertExists(_listItem($g_assert));
+}
+
+function processO2CbatchApprovalLevelTwo() {
+	
+	var $l_row = 39;
+	var $l_col = 0;
+	
+	var $t1 = _testcase($l_PinCaptchaO2C[$l_row][$l_col++], $l_PinCaptchaO2C[$l_row][$l_col++]);
+
+	$t1.start();
+	
+	
+	initiateO2CTransfer($l_row,$l_col);
+	
+	processO2CbatchApprovalLevel2();
+
+	$t1.end();
+		
+}
+
+function processO2CbatchApprovalLevel2(){
+	
+	_click(_link($g_LeftMenuBar_O2C)); // Link to operator to channel _click(_link("Operator to channel"));
+	
+	_assertExists(_link($g_LeftMenuBar_ApproveBatchO2CLevelTwo));
+	
+	_click(_link($g_LeftMenuBar_ApproveBatchO2CLevelTwo));
+	
+	_assertExists(_div("Level 2 Batch O2C transfer approval"));
+	
+	_click(_radio("selectedIndex", _near(_cell($g_btachName))));
+	
+	_click(_submit("Submit", _near(_cell($g_btachName))));
+	
+	_setFile2(_file("file"), $g_remarks);    //Here remarks is file path to be uploaded
+	
+	_assertExists(_cell("Batch name :", _near(_cell($g_btachName))));
+	
+	_click(_submit("Process file"));
+	_setValue(_textarea("defaultLang"), $g_languageOne);
+	_setValue(_textarea("secondLang"), $g_languageTwo);
+	_setValue(_password("smsPin"), $g_PIN);
+	_click(_submit("Process file"));
+	_assertExists(_listItem($g_assert));
+
+}
+
+
+function n_processO2CbatchApprovalLevel1_invalid_pin() {
+	
+	var $l_row = 40;
+	var $l_col = 0;
+	
+	var $t1 = _testcase($l_PinCaptchaO2C[$l_row][$l_col++], $l_PinCaptchaO2C[$l_row][$l_col++]);
+
+	$t1.start();
+	
+	
+	initiateO2CTransfer($l_row,$l_col);
+	
+	n_processO2CbatchApprovalLeveltwo_invalid_pin();
+
+	$t1.end();
+		
+}
+
+
+function n_processO2CbatchApprovalLeveltwo_invalid_pin(){
+
+_click(_link($g_LeftMenuBar_O2C)); // Link to operator to channel _click(_link("Operator to channel"));
+	
+	_assertExists(_link($g_LeftMenuBar_ApproveBatchO2CLevelTwo));
+	
+	_click(_link($g_LeftMenuBar_ApproveBatchO2CLevelTwo));
+	
+	_assertExists(_div("Level 2 Batch O2C transfer approval"));
+	
+	_click(_radio("selectedIndex", _near(_cell($g_btachName))));
+	
+	_click(_submit("Submit", _near(_cell($g_btachName))));
+	
+	_setFile2(_file("file"), $g_remarks);    //Here remarks is file path to be uploaded
+	
+	_assertExists(_cell("Batch name :", _near(_cell($g_btachName))));
+	
+	_click(_submit("Process file"));
+	_setValue(_textarea("defaultLang"), $g_languageOne);
+	_setValue(_textarea("secondLang"), $g_languageTwo);
+	_setValue(_password("smsPin"), $g_PIN);
+	_click(_submit("Process file"));
+	_assertExists(_listItem($g_assert));
+}
+
+function n_processO2CbatchApprovalLevel2_empty_pin() {
+	
+	var $l_row = 41;
+	var $l_col = 0;
+	
+	var $t1 = _testcase($l_PinCaptchaO2C[$l_row][$l_col++], $l_PinCaptchaO2C[$l_row][$l_col++]);
+
+	$t1.start();
+	
+	
+	initiateO2CTransfer($l_row,$l_col);
+	
+	n_processO2CbatchApprovalLeveltwo_empty_pin();
+
+	$t1.end();
+		
+}
+function n_processO2CbatchApprovalLeveltwo_empty_pin(){
+
+	_click(_link($g_LeftMenuBar_O2C)); // Link to operator to channel _click(_link("Operator to channel"));
+		
+		_assertExists(_link($g_LeftMenuBar_ApproveBatchO2CLevelTwo));
+		
+		_click(_link($g_LeftMenuBar_ApproveBatchO2CLevelTwo));
+		
+		_assertExists(_div("Level 2 Batch O2C transfer approval"));
+		
+		_click(_radio("selectedIndex", _near(_cell($g_btachName))));
+		
+		_click(_submit("Submit", _near(_cell($g_btachName))));
+		
+		_setFile2(_file("file"), $g_remarks);    //Here remarks is file path to be uploaded
+		
+		_assertExists(_cell("Batch name :", _near(_cell($g_btachName))));
+		
+		_click(_submit("Process file"));
+		_setValue(_textarea("defaultLang"), $g_languageOne);
+		_setValue(_textarea("secondLang"), $g_languageTwo);
+		_setValue(_password("smsPin"), $g_PIN);
+		_click(_submit("Process file"));
+		_assertExists(_listItem($g_assert));
+	}
+
+function processO2CbatchApprovalLevelTwo_cancle() {
+	
+	var $l_row = 39;
+	var $l_col = 0;
+	
+	var $t1 = _testcase($l_PinCaptchaO2C[$l_row][$l_col++], $l_PinCaptchaO2C[$l_row][$l_col++]);
+
+	$t1.start();
+	
+	
+	initiateO2CTransfer($l_row,$l_col);
+	
+	processO2CbatchApprovalLevel2_cancle();
+
+	$t1.end();
+		
+}
+
+function processO2CbatchApprovalLevel2_cancle(){
+	
+	_click(_link($g_LeftMenuBar_O2C)); // Link to operator to channel _click(_link("Operator to channel"));
+	
+	_assertExists(_link($g_LeftMenuBar_ApproveBatchO2CLevelTwo));
+	
+	_click(_link($g_LeftMenuBar_ApproveBatchO2CLevelTwo));
+	
+	_assertExists(_div("Level 2 Batch O2C transfer approval"));
+	
+	_click(_radio("selectedIndex", _near(_cell($g_btachName))));
+	
+	_click(_submit("Submit", _near(_cell($g_btachName))));
+	
+	_setFile2(_file("file"), $g_remarks);    //Here remarks is file path to be uploaded
+	
+	_assertExists(_cell("Batch name :", _near(_cell($g_btachName))));
+	
+	_click(_submit("Process file"));
+	_setValue(_textarea("defaultLang"), $g_languageOne);
+	_setValue(_textarea("secondLang"), $g_languageTwo);
+	_setValue(_password("smsPin"), $g_PIN);
+	_click(_submit("Cancel"));
+	_assertExists(_div("Level 2 Batch O2C transfer approval"));
+
+}
+
+function processO2CbatchApprovalLevelTwo_back() {
+	
+	var $l_row = 39;
+	var $l_col = 0;
+	
+	var $t1 = _testcase($l_PinCaptchaO2C[$l_row][$l_col++], $l_PinCaptchaO2C[$l_row][$l_col++]);
+
+	$t1.start();
+	
+	
+	initiateO2CTransfer($l_row,$l_col);
+	
+	processO2CbatchApprovalLevel2_back();
+
+	$t1.end();
+		
+}
+
+function processO2CbatchApprovalLevel2_back(){
+	
+	_click(_link($g_LeftMenuBar_O2C)); // Link to operator to channel _click(_link("Operator to channel"));
+	
+	_assertExists(_link($g_LeftMenuBar_ApproveBatchO2CLevelTwo));
+	
+	_click(_link($g_LeftMenuBar_ApproveBatchO2CLevelTwo));
+	
+	_assertExists(_div("Level 2 Batch O2C transfer approval"));
+	
+	_click(_radio("selectedIndex", _near(_cell($g_btachName))));
+	
+	_click(_submit("Submit", _near(_cell($g_btachName))));
+	
+	_setFile2(_file("file"), $g_remarks);    //Here remarks is file path to be uploaded
+	
+	_assertExists(_cell("Batch name :", _near(_cell($g_btachName))));
+	
+	_click(_submit("Process file"));
+	_setValue(_textarea("defaultLang"), $g_languageOne);
+	_setValue(_textarea("secondLang"), $g_languageTwo);
+	_setValue(_password("smsPin"), $g_PIN);
+	_click(_submit("Back"));
+	_assertExists(_div("Level 2 Batch O2C transfer approval"));
+
+}

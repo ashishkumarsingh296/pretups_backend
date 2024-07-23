@@ -1,0 +1,44 @@
+# for understandin: open the pretupsStop.sh from the Final folder of PreTUPS #
+---
+# - name: "pretupsStop.sh: setting pretups user HOME directory"
+##   shell: sed -i 's/<HOME_DIR>/{{ PROJECT_ROOT }}/g' "{{ Tomcat_Path }}"/bin/pretupsStop.sh
+#   lineinfile: dest="{{ Tomcat_Path }}/bin/pretupsStop.sh" regexp='(.*)<HOME_DIR>(.*)' line="HOME={{ PROJECT_ROOT }}; export HOME"
+
+# - name: "pretupsStop.sh: setting Soft link of jdk path"
+#   shell: sed -i 's/<JAVA_INSTALLED_LINK>/{{ JDK_SOFT_LINK }}/g' "{{ Tomcat_Path }}"/bin/pretupsStop.sh
+
+# - name: "pretupsStop.sh: setting Tomcat installation directory path"
+##   shell: sed -i 's/$HOME\/<TOMCAT_INSTALLED_DIR>/{{ Tomcat_Path }}/g' "{{ Tomcat_Path }}"/bin/pretupsStop.sh
+#   replace: dest="{{ Tomcat_Path }}/bin/pretupsStop.sh" regexp='(.*)\$HOME\/<TOMCAT_INSTALLED_DIR>(.*)' replace='\1{{ Tomcat_Path }}\2'
+
+# - name: "pretupsStop.sh: setting the PATH variable of the REMOTE HOST"
+##   debug: msg="ansbile variable is= {{ ansible_env.PATH }}"
+##   replace: dest="{{ Tomcat_Path }}"/bin/pretupsStop.sh regexp='(.*):$PATH:(.*)' replace='\1:$PATH:/usr/local/sbin:/usr/local/bin:{{ ansible_env.PATH }}:\2'
+#   shell:  sed -i 's/\:\$PATH\:/\:\$PATH\:\/usr\/local\/sbin\:\/usr\/local\/bin\:\/usr\/lib64\/qt-3.3\/bin\:/g' "{{ Tomcat_Path }}"/bin/pretupsStop.sh
+
+# - name: "pretupsStop.sh: putting new CLASSPATH in place of the old CLASSPATH"
+#   lineinfile: dest="{{ Tomcat_Path }}/bin/pretupsStop.sh" regexp='^CLASSPATH=(.*)$' line={{ CLASSPATH }}
+
+
+ - name: "pretupsStop.sh: replace the variable with the concrete value: TOMCAT_PATH"
+   #shell: sed -i 's/<Tomcat-Path>/{{ SED_VARIABLE }}/g' pretupsStop.sh chdir={{ Tomcat_Path }}/bin
+   replace: dest="{{ Tomcat_Path }}/bin/pretupsStop.sh"  regexp='^(.*)<Tomcat-Path>(.*)$' replace='\1{{ Tomcat_Path }}\2'
+
+# - name: "pretupsStop.sh: changing the tomcat bin directory"
+##   replace: dest="{{ Tomcat_Path }}"/bin/pretupsStop.sh regexp='(.*)\$HOME\/tomcat5_601\/bin\/(.*)' replace='\1{{ Tomcat_Path }}/bin\2'
+#   replace: dest="{{ Tomcat_Path }}"/bin/pretupsStop.sh regexp='(.*)\<Tomcat-Path>\/bin\/(.*)' replace='\1{{ Tomcat_Path }}/bin\2'
+
+ - name: "pretupsStop.sh: putting proper Tomcat name for killing "
+   lineinfile: dest="{{ Tomcat_Path }}/bin/pretupsStop.sh" regexp='(.*)abc=`ps -aef | grep(.*)' line="abc=`ps -aef| grep -a {{ Tomcat_Path }} |awk  '{ print $2 }'|cut -f1`"
+
+ - name: "pretupsStop.sh: unhash the kill statement"
+   shell: sed -i 's/^#kill -9/kill -15/g' "{{ Tomcat_Path }}"/bin/pretupsStop.sh
+
+ - name: "pretupsStop.sh: changing the BrandName: from: Telesoft # To: Mahindra Comviva"
+   shell: sed -i 's/Telesoft/Mahindra Comviva/g' "{{ Tomcat_Path }}"/bin/pretupsStop.sh
+
+ - name: "pretupsStop.sh: setting the stopping Message"
+   lineinfile: dest="{{ Tomcat_Path }}/bin/pretupsStop.sh" regexp='(.*)Stopping the PreTUPS(.*)' line='echo " Stopping the PreTUPS {{ VERSION_NO }} {{ CLIENT_NAME }} Server, Please wait....."'
+
+
+

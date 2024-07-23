@@ -1,0 +1,2 @@
+TestcaseId,TestcaseType,Module,Description
+TUNG12860 ,P,Internet Recharge,To check that a successful recharge happens when only msisdn and pin are entered along with other mandatory fields

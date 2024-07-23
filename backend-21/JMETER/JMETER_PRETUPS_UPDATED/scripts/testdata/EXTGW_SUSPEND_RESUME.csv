@@ -1,0 +1,19 @@
+TestcaseId,PAYMENTTYPE,TRFCATEGORY,TestcaseType,Module,Description
+,,,Positive,User Suspend and Resume,To suspend the channel user
+,,,Negative,User Suspend and Resume,To verify that Channel user is not able to perform C2C in suspended state.
+,CHQ,SALE,Negative,User Suspend and Resume,To verify that Channel user is not able to perform O2C  in suspended state
+,,,Negative,User Suspend and Resume,To verfiy that SUSPEND request not execute successfully if MSISDN2 is blank
+,,,Negative,User Suspend and Resume,To verfiy that SUSPEND request not execute successfully if MSISDN1 is blank
+,,,Negative,User Suspend and Resume,To verfiy that SUSPEND request not execute successfully if PIN is blank
+,,,Negative,User Suspend and Resume,To verfiy that SUSPEND request not execute successfully if Network Code is blank
+,,,Negative,User Suspend and Resume,To verfiy that SUSPEND request not execute successfully if Action is blank
+,,,Negative,User Suspend and Resume,To verfiy that SUSPEND request not execute successfully if PIN is invalid
+,,,Positive,User Suspend and Resume,To verify that Resume request is successful for channel user
+,,,Positive,User Suspend and Resume,To verify that Channel user is able to perform C2C after getting resumed
+,CHQ,SALE,Positive,User Suspend and Resume,To verify that Channel user is able to perform O2C after getting resumed
+,,,Negative,User Suspend and Resume,To verfiy that Resume request not execute successfully if MSISDN2 is blank
+,,,Negative,User Suspend and Resume,To verfiy that Resume request not execute successfully if MSISDN1 is blank
+,,,Negative,User Suspend and Resume,To verfiy that Resume request not execute successfully if PIN is blank
+,,,Negative,User Suspend and Resume,To verfiy that Resume request not execute successfully if Network Code is blank
+,,,Negative,User Suspend and Resume,To verfiy that Resume request not execute successfully if Action is other than S or R
+,,,Negative,User Suspend and Resume,To verfiy that Resume request not execute successfully if PIN is invalid

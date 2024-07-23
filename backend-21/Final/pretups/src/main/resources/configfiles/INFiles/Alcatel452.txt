@@ -1,0 +1,152 @@
+###########################################################################################################
+#	Alcatel 452 IN file
+#	If IN interface of Alcatel452 is added in PreTUPS from superadmin then.
+#	File with this content and name of the IN ID.txt should be created at the 
+#	path of the INFiles (defined in Constants.props).
+#
+#	Values of the variables in this file should be updated with the values provided by the 
+#	Mobile Operator IN team
+#
+############################################################################################################
+
+#Alcatel452 CP_ID for C2S module, will be provided by Mobile operator IN team
+CP_ID_C2S=Bharti
+
+#Alcatel452 CP_ID for P2P module, will be provided by Mobile operator IN team
+CP_ID_P2P=Bharti
+
+#Prefix to be removed from the mobile number, leave blank if nothing is to be removed
+MSISDN_REMOVE_PREFIX=
+
+#Prefix to be added to the mobile number as prefix, leave blank if nothing is to be added as prefix
+MSISDN_ADD_PREFIX=
+
+#Application to be trigered (the OSP.For E-top up), value will be provieded by Mobile operator IN team, Fixed value 1
+APPLICATION=1
+
+#Mapping of IN language with system language (IN Langauge1:PreTUPS Langauge1,IN Langauge2:PreTUPS Langauge2)
+LANGUAGE_MAPPING=3:0,5:0,4:1
+
+
+##Used to Round the amount
+ROUND_FLAG=Y
+
+##This is used to define whether the lock info from response would be check or not.
+LOCK_FLAG=N
+
+#URL for the connection
+#URL=http://172.36.1.209:5555/pretups/Alcatel452SimulatorServlet
+#URL=http://202.56.229.157/pretups/Alcatel452SimulatorServlet
+#URL=http://41.221.176.21:8091/servlet/HDS
+URL=http://10.104.2.10:8091/servlet/HDS
+
+
+#Connect Timeout
+CONNECT_TIMEOUT=60000
+
+#Read time out validation
+READ_TIMEOUT_VAL=60000
+
+#Read time out topup
+READ_TIMEOUT_TOP=60000
+
+#Warn time out
+WARN_TIMEOUT=60000
+
+#keep alive falg for node
+KEEP_ALIVE=N
+
+#Indicates whether Cancel request supported by IN or not.(Possible values are Y/N)
+CANCEL_TXN_ALLOWED=N
+
+##If receiver credit is AMBIGUOS, then in SYSTEM_PREFERENCE, CREDIT_BACK_ALLOWED should be N.
+#If an ambiguous case occurs while credit, mapped error code can be set to one of the codes(SUCCESS, FAIL and AMBIGUOUS)
+SYSTEM_STATUS_MAPPING_CREDIT=250:250
+
+#If an ambiguous case occurs while credit, mapped error code can be set to one of the codes(SUCCESS, FAIL and AMBIGUOUS)
+SYSTEM_STATUS_MAPPING_CREDIT_ADJ=250:250
+
+#If an ambiguous case occurs while debitAdjust, mapped error code cannot be SUCCESS. It can only be FAIL or AMBIGUOUS
+SYSTEM_STATUS_MAPPING_DEBIT_ADJ=250:250
+
+#If an ambiguous case occurs while credit Back, mapped error code can not be fail, it can only be SUCCESS or AMBIGOUOS
+SYSTEM_STATUS_MAPPING_CREDIT_BCK=250:250
+
+
+##If any ambiguous response is received from IN, check if cancel txn allowed or not in the system. if not, pick mapped error code against NA otherwise pick mapped error code (206/250) against received response code of Cancellation from IN. 
+CANCEL_COMMAND_STATUS_MAPPING=NA:450
+
+#Defines the cancel command status when cancel not supported by IN. 
+CANCEL_NA=NA
+
+##This flag should be Y if interface closure feature is to be provided to client
+INTFCE_CLSR_SUPPORT=N
+
+#maximum number of ambiguous transactions allowed till threshold time.
+NO_ALLWD_AMB_TXN=5
+
+##time duration in which maximum number of ambiguous transactions is defined
+THRESHOLD_TIME=240000
+
+##Time duration after which interface suspension expires.
+EXPIRY_TIME=432000000
+
+##Auto Resumption supported by IN or not.
+AUTO_RESUME_SUPPORT=N
+
+##Remark1 in Reconcialiationlog
+REMARK1=
+
+##Remark1 in Reconcialiationlog
+REMARK2=
+
+#Bundle names for SMS
+SMS_BUNDLE_NAME=SMS
+
+#Bundle names for Data
+MMS_BUNDLE_NAME=Data
+
+#Bundle names for Voice
+VOICE_BUNDLE_NAME=Voice
+
+#Bonus Bundle names for SMS
+SMS_BONUS_BUNDLE_NAME=SMS_Bonus
+
+#Bonus Bundle names for MMS
+MMS_BONUS_BUNDLE_NAME=Data_Bonus
+
+#Multiplication factor for to get the system amount.
+#For MAIN Account
+MAIN_MULT_FACTOR=1
+
+#For SMS Account
+SMS_MULT_FACTOR=1
+
+#For MMS Account
+MMS_MULT_FACTOR=1
+
+#Bonus is allowed or not.
+SEPERATE_BONUS_ALLOWED=Y
+
+#In case of bdl_type=0, the the respective amount send to the IN should be round value or not.
+ROUND_FLAG_FOR_UNIT=Y
+
+#Multiplication factor for system in amount.
+SYSTEM_IN_MULT_FACTOR=1
+
+#Multiplication factor for system out amount.
+SYSTEM_OUT_MULT_FACTOR=100
+
+#This field is used to seperate the bonus validity from the main main validity.
+ADD_MAIN_AND_BUNUS_VALIDITY=Y
+
+#Voice bonus is allowed with SMS or MMS.
+VOICE_BUNDLE_WITH_SMS_MMS=N
+
+#Bundles name(Should be comma(,) seperated if more than one names) defined in
+#this parameter will be not allowed to send in the RP2P/CP2P transfer request.
+BARRED_BUNDLE_NAMES=
+
+#Seperator for bundle names.
+BUNDLE_NAMES_SEPERATOR=%2C
+

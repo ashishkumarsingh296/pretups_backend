@@ -1,0 +1,10 @@
+TestCaseNo. ,Discription,Prog. Category,Min Period,Max Period,Earning Type,Red Wallet,Reward Type,Red. Frequency,Assertion
+TEST001,Given that network admin login into application and try to add prog cat  rules by giving min period as string,Commercial Challenge,ABC,900,Transaction Based,INC,Bonus e-recharge,Monthly,Min Period is Numeric Value Only
+TEST002,Given that network admin login into application and try to add prog cat  rules by giving max period as string,Commercial Challenge,900,ABC,Transaction Based,FOC,Air Time,Weekly,Max period is Numeric Value Only
+TEST003,Given that network admin login into application and try to add prog cat  rules by giving max period as null,Commercial Challenge,900,,Target Based,FOC,Air Time,Weekly,Max period is Required Field
+TEST004,Given that network admin login into application and try to add prog cat  rules by giving min period as null,Commercial Challenge,,900,Target Based,FOC,Bonus e-recharge,Monthly,Min Period is Required Field
+TEST005,Given that network admin login into application and try to add prog cat  rules by not selecting any Earning Type,Loyalty Management,100,900,,INC,Bonus e-recharge,Monthly,Program Earning Type is Required Field
+TEST006,Given that network admin login into application and try to add prog cat  rules by not selecting any Reward Type,Loyalty Management,100,900,Target Based,INC,,Monthly,Reward Type is Required Field
+TEST007,Given that network admin login into application and try to add prog cat  rules by not selecting any Redemption Frequency Type,Loyalty Management,100,900,Target Based,INC,Bonus e-recharge,,Redemption Frequency is Required Field
+TEST008,Given that network admin login into application and try to add prog cat  rules by giving Max Period Less Than Min Period,Loyalty Management,900,100,Target Based,INC,Bonus e-recharge,Monthly,Max Period Should be more than  Min Period
+TEST009,Given that network admin login into application and try to add prog cat  rules giving all the required fileds and min period less than max period,Loyalty Management,100,900,Target Based,INC,Bonus e-recharge,Monthly,Program Rules Defined Successfully

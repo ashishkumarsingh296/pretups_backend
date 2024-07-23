@@ -1,0 +1,143 @@
+###########################################################################################################
+##	Huawei Web Service IN file
+##	If IN interface of Huawei is added in PreTUPS from superadmin then.
+##	File with this content and name of the IN ID.txt should be created at the 
+##	path of the INFiles (defined in Constants.props).
+##
+##	Values of the variables in this file should be updated with the values provided by the 
+##	Mobile Operator IN team
+##
+############################################################################################################
+
+#This value used to find the wsdd file used by the SOAP Stub
+WSDD_LOCATION=/pretupshome/tomcat5_smsr/webapps/pretups/WEB-INF/classes/configfiles/INFiles/client_deploy.wsdd
+
+
+READ_TIMEOUT=10000
+
+USER_NAME=COMVIVA
+
+
+WARN_TIME=10000
+
+EXPIRY_TIME=120000
+
+## The Multiplication Factor by which the transaction amout during recharge to be multiplied before sending to IN.
+MULT_FACTOR=.01
+
+##This flag is used to define whether rounding of amount should be or not.
+ROUND_FLAG=Y
+
+MSISDN_REMOVE_PREFIX=0
+
+##Defines the mapping of Interface language with the pretups language( format-IN_LANG1:PTUPS_LANG1,IN_LANG2:PTUPS_LANG2)
+LANGUAGE_MAPPING=1:1,2:0
+
+#Command ID for different services.
+RC_COMMAND_ID=Payment
+VU_COMMAND_ID=TransferAccount
+
+#Currency for the transaction.
+CURRENCY=INR
+
+##keep alive flag for connection
+KEEP_ALIVE=N
+
+##Indicates whether Cancel request supported by IN or not.(Possible values are Y/N)
+CANCEL_TXN_ALLOWED=N
+
+##If an ambiguous case occurs while credit, mapped error code can be set to one of the codes(SUCCESS, FAIL and AMBIGUOUS)
+SYSTEM_STATUS_MAPPING_CREDIT=250:250
+
+##If an ambiguous case occurs while credit, mapped error code can be set to one of the codes(SUCCESS, FAIL and AMBIGUOUS)
+SYSTEM_STATUS_MAPPING_CREDIT_ADJ=250:250
+
+##If an ambiguous case occurs while debitAdjust, mapped error code cannot be SUCCESS. It can only be FAIL or AMBIGUOUS
+SYSTEM_STATUS_MAPPING_DEBIT_ADJ=250:250
+
+##If an ambiguous case occurs while credit Back, mapped error code can not be fail, it can only be SUCCESS or AMBIGOUOS
+SYSTEM_STATUS_MAPPING_CREDIT_BCK=250:250
+
+
+##If any ambiguous response is received from IN, check if cancel txn allowed or not in the system. if not, pick mapped error code against NA otherwise pick mapped error code (206/250) against received response code of Cancellation from IN.
+##CANCEL_COMMAND_STATUS_MAPPING=INErrCode1,INErrCode2,INErrCode3,INErrCode4:cancel_err_code1|INErrCode5,INErrCode6:cancel_err_code2
+##cancel_err_code1, cancel_err_code2 will be written in recon log file.
+CANCEL_COMMAND_STATUS_MAPPING=NA:450
+
+##Remark1 in Reconcialiationlog
+REMARK1=
+
+##Remark1 in Reconcialiationlog
+REMARK2=
+
+WARN_TIMEOUT=10000
+
+#Read time out for validation request.
+READ_TIMEOUT_VAL=7000
+
+#Read time out for credit request.
+READ_TIMEOUT_CREDIT=7000
+
+#Read time out for debit request.
+READ_TIMEOUT_DEBIT=7000
+
+THRESHOLD_TIME=1000
+EXPIRY_TIME=1000
+
+PROCESS_SLEEP_TIME=500
+
+##Defines the cancel command status when cancel not supported by IN.
+CANCEL_NA=NA
+
+CONNECT_TIME_OUT=3000
+READ_TIME_OUT=7000
+
+##keep alive flag for connection
+KEEP_ALIVE=N
+
+#End URL of the web service.
+END_URL=http://172.16.6.11:7782//services/CBSInterfaceAccountMgrService
+
+PW_CALLBACK=com.btsl.pretups.inter.huawei_webservices.PWCallback
+
+#Soap action URI
+SOAP_ACTION_URI=http://www.huawei.com/bme/cbsinterface/cbs/accountmgr
+
+#Parameters for validation, whether validation is required on IN or not. 
+VALIDATE_RC_R=N
+VALIDATE_VU_S=N
+VALIDATE_VU_R=N
+VALIDATE_EVD_R=Y
+VALIDATE_EVR_R=Y
+VALIDATE_PRC_S=N
+VALIDATE_PRC_R=N
+VALIDATE_PREG_S=Y
+VALIDATE_ACCINFO_S=Y
+
+#Parameters for debit, whether debit is separate request or clubbed with credit in P2P transfer request on IN or not. 
+DEBIT_VU_S=N
+
+#Account type value for pre-paid and post-paid account
+ACCOUNT_TYPE_PRE=2000
+ACCOUNT_TYPE_POST=3000
+
+#Payment mode for the transaction (IN finds out the source of the request based on this parameter).
+PAYMENT_MODE=1003
+
+#Whether seperate bonus is allowed or not
+SEPERATE_BONUS_ALLOWED=N
+
+# Request header request type for the transaction
+REQ_HEADER_TYPE=Event
+
+# Request header transaction ID
+REQ_HEADER_TRANX_TYPE=trans001
+
+# Request header version
+REQ_HEADER_VERSION=1.2
+
+# Request header version
+REQ_HEADER_SEQ_ID=2232
+
+#Account Status when validity extension is applicable. This variable will be passed to controller in the map.
+VAL_EXT_ACNT_STATUS=03

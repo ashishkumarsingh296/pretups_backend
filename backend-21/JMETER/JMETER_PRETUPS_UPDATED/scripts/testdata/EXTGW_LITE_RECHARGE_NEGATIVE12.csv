@@ -1,0 +1,2 @@
+TestcaseId,TestcaseType,Module,Description
+TUNG12726 ,Negative,Lite Recharge through EXTGW,Delete initiated user should try to initiate the lite recharge request.

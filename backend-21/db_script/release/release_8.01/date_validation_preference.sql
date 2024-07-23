@@ -1,0 +1,3 @@
+INSERT INTO system_preferences
+(preference_code, "name", "type", value_type, default_value, min_value, max_value, max_size, description, modified_allowed, display, "module", remarks, created_on, created_by, modified_on, modified_by, allowed_values, fixed_value)
+VALUES('SYSTEM_DATE_FORMAT_VALIDATE', 'System Date Format Validate', 'SYSTEMPRF', 'STRING', '\d{2}/\d{2}/\d{4}', NULL, NULL, 50, 'Date format accepted by the system', 'N', 'Y', 'C2S', 'Date format accepted by the system of date value', '2005-07-13 00:00:00.000', 'ADMIN', '2005-07-13 00:00:00.000', 'ADMIN', NULL, 'Y');

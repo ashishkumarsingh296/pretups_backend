@@ -1,0 +1,52 @@
+########################################
+MESSAGES FOR 551 version
+########################################
+
+## Message updated for private recharge [Flash message ]
+6705=Serial number for voucher of  MRP {1}  is {4} PIN is {3}, Trasaction ID is {0}.
+
+
+14514=mclass^2&pid^61:14514:Invalid message format, correct message format is {0}
+14515=mclass^2&pid^61:14515:Invalid card type.
+14516=mclass^2&pid^61:14516:Invalid expiry date, expiry date can only be numeric.
+14517=mclass^2&pid^61:14517:Invalid nick name, nick name can only be alphabetic.
+14518=mclass^2&pid^61:14518:Invalid bank name, bank name can only be alphabetic.
+14519=mclass^2&pid^61:14519:You are presently not a registered subscriber in PreTUPS system.
+14520=mclass^2&pid^61:14520:Your request cannot be processed at this time. Please try again later.
+14521=mclass^2&pid^61:14521:Your request is successfull.
+14522=mclass^2&pid^61:14522:Your request cannot be processed at this time. Please try again later.
+14523=mclass^2&pid^61:14523:Invalid card number, card number can only be numeric.
+14524=mclass^2&pid^61:14524:Your request cannot be processed at this time. Please try again later.
+14525=mclass^2&pid^61:14525:Card details already registered in PreTUPS system.
+14526=mclass^2&pid^61:14526:Nick name already registered in PreTUPS system. Please choose different nick name.
+
+
+14527=mclass^2&pid^61:14527:CVV number you have entered is incorrect. Please check.
+14528=mclass^2&pid^61:14528:Nick name you have entered is incorrect. Please check.
+14529=mclass^2&pid^61:14529:Please confirm your transaction status from customer care, transaction ID is {1}, amount is {2}.
+14530=mclass^2&pid^61:14530:Your transfer request for transaction ID {1} of amount {2} can not be processed.
+14531=mclass^2&pid^61:14531:Transaction number {0} to recharge {1} INR is successful. Your new balance is {1} INR, new validity till {2} & access fee is {5}.
+14532=mclass^2&pid^61:14532:Transaction number {0} to recharge {1} INR is successful. Your new balance is {1} INR, new validity till {2} & access fee is {5}.
+14533=mclass^2&pid^61:14533:Transaction number {0} of {1} INR is successful. Transferred value is {2} INR, access fee is {6} INR. Your new balance is {3} and validity is {4}.
+14534=mclass^2&pid^61:14534:Transaction number {0} of {1} INR is successful. Transferred value is {2} INR, access fee is {6} INR. Your new balance is {3} and validity is {4}.
+14535=mclass^2&pid^61:14535:Transaction number {0} to transfer {1} INR is successful. Transferred value is {2} & access fee is {4} INR. Please check your balance.
+14536=mclass^2&pid^61:14536:Transaction number {0} to transfer {1} INR is successful. Transferred value is {2} & access fee is {4} INR. Please check your balance.
+14537=mclass^2&pid^61:14537:Transaction number {1} of {2} for {0} is successful. Your new balance is {5}. Your transfer value {3} and receiver transfer value is {4}
+14538=mclass^2&pid^61:14538:Transaction number {1} to transfer {2} INR to {0} is successful. Your new balance is {5} INR. Your transfer value is {3} INR and the access fee is {6} INR.
+14539=mclass^2&pid^61:14539:Transaction No. {1} to transfer {2} INR to {0} is successful. Your transfer value is {3} INR and the access fee is {5} INR.
+14540=mclass^2&pid^61:14540:Transaction number {1} to transfer {2} INR to {0} is under process.
+14541=mclass^2&pid^61:14541:Your account has been credited back for failed transaction number {1} to transfer {2} INR to {0}. Your current balance is {3} INR.
+14542=mclass^2&pid^61:14542:Your account has been credited back for failed transaction number {1} to transfer {2} INR to {0}.
+14543=mclass^2&pid^61:14543:Your request to transfer {2} INR to {0} will be processed in a short time. Transaction number is {1}.
+14544=mclass^2&pid^61:14544:Transaction number {0} to transfer {1} INR is under process. Your transfer value will be {2} INR.
+14545=mclass^2&pid^61:14545:No default card details found. Please register a card first. 
+
+18910=mclass^2&pid^61:18910:Transaction number {1} to {6} to send {5} vouchers of {2} KSH to {0} is under process. Your new balance is {4} KSH.
+18881=mclass^2&pid^61:18881:You can download only {2} to {0} number of vouchers in a request.
+
+##New messages for user migration
+191919=mclass^2&pid^61:191919:You have been linked to {0} of partner {1}
+191920=mclass^2&pid^61:191920:{0} has been linked to your sim
+
+
+

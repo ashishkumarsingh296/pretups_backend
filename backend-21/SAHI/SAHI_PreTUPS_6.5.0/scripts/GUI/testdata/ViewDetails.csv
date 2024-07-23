@@ -1,0 +1,6 @@
+Test Case No,Test Case Decsription,Category,Operator User
+TEST001,Given that  super admin login into application and and view self details,Super Admin,
+TEST002,Given that  super admin login into application and and view operator details,Network Admin,btnadm(btnadm)
+TEST003,Given that a super admin loggin into application and try to view Networks in the system,,
+TEST004,Given that  super admin login into application and and view category details of channel Domain,DIst1,Super Distributor
+TEST005,Given that a super admin loogin into application and update the all server chache,,

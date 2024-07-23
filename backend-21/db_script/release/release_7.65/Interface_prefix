@@ -1,0 +1,15 @@
+INSERT INTO pages_ui
+(page_code, module_code, page_url, menu_name, show_menu, sequence_no, menu_level, parent_page_code, image, role_code, domain_type, category_code, page_type, app_name, is_default)
+VALUES('P_NW_INT_PREFIXES', 'COMMON', '/interfacePrefix', 'Interface Prefix', 'Y', 1, '1', 'ROOT', 'assets/images/updateCache/svg/updateCache.svg', NULL, 'OPERATOR', 'NWADM', 'home_configuration', NULL, NULL);
+
+
+---
+INSERT INTO page_ui_roles
+(role_code, page_code)
+VALUES('INTNTPREFIX', 'P_NW_INT_PREFIXES');
+
+
+-----
+UPDATE roles
+SET role_name='Interface Prefix', group_name='Masters', status='Y', role_type='A', from_hour=NULL, to_hour=NULL, group_role='N', application_id='1', gateway_types='WEB', role_for='B', is_default='N', is_default_grouprole='N', access_type='B', sub_group_name='Sub_Group', sub_group_role='N', view_roles='Y'
+WHERE role_code='INTNTPREFIX' AND domain_type='OPERATOR';

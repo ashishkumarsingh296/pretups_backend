@@ -1,0 +1,3015 @@
+
+
+#API endpoint Desc
+promoTransfeRuleDropDowns.summary=Promotional transfer rule Dependency dropdowns
+promoTransfeRuleDropDowns.description=Promotional transfer rule Dependency dropdowns
+
+c2s-rest-receiver_userhierarchy.summary=Test Summary
+c2s-rest-receiver_userhierarchy.description=Test Description
+
+viewUserHierarchy.summary=Test Summary
+viewUserHierarchy.description=Test Description
+
+#Added manually
+c2cvoucherapproval.summary=C2C Voucher Approval API
+c2cvoucherapproval.description=C2C Voucher Approal API
+
+c2cvomstrfini.summary=C2C Voucher Transfer Initiate API
+c2cvomstrfini.description=C2C Voucher Transfer Initiate API
+
+c2ctrfappr.summary=C2C Stock Transfer Approval API
+c2ctrfappr.description=C2C Stock Transfer Approval API
+
+getDepartementListByDivID.summary=Fetches the Departments by Division
+getDepartementListByDivID.description=Fetches the Departments by Division
+
+
+pinChange.summary=PIN Change API
+pinChange.description=PIN Change API
+
+barUnbarBulk.summary=Bar UnBar Bulk Operation API
+barUnbarBulk.description=Bar UnBar Bulk Operation API
+
+
+bulkuserapprovereject.summary=Bulk User Approval/Rejection API
+bulkuserapprovereject.description=Bulk User Approval/Rejection API
+
+
+sendOTPUserTransfer.summary=Send OTP for User Transfer API
+sendOTPUserTransfer.description=Send OTP for User Transfer API
+
+
+channelUserApprovalList.summary=Channel User Approval List API
+channelUserApprovalList.description=Channel User Approval List API \n Fetches the list which are pending for approval.
+
+batchUserInitiate.summary=Batch User Initiate API
+batchUserInitiate.description=Batch User Initiate API
+
+actionOnUser.summary=Action on User
+actionOnUser.description=Action On User
+
+UserListByStatus.summary=Fetches the User(s) based on status
+UserListByStatus.description=Fetches the User(s) based on status
+
+fetchuservoucherlist.summary=Fetch User Vouchers List
+fetchuservoucherlist.description=Fetch User Vouchers List
+
+
+fetchuserservicelist.summary=Fetch Users Service(s) List
+fetchuserservicelist.description=Fetch Users Service(s) List
+
+fetchuserproductlist.summary=Fetch Users Product(s) List
+fetchuserproductlist.description=Fetch Users Product(s) List
+
+
+commissionProfileBy.summary=Commission Profile related API
+commissionProfileBy.description=Commission Profile related API
+
+
+userthreshold.summary=User Threshold API
+userthreshold.description=User Threshold API
+
+loadProfileList.summary=Loads the profile(s) of the User
+loadProfileList.description=Loads the profile(s) of the User
+
+
+associateProfile.summary=API to associate the profile of a User
+associateProfile.description=API to associate the profile of a User
+
+
+
+modifyCommissionProfile.summary=Modify Commission Profile API
+modifyCommissionProfile.description=Modify Commission Profile API
+
+
+makeDefaultCommissionProfile.summary=Makes a Commission Profile default
+makeDefaultCommissionProfile.description=Makes a Commission Profile default
+
+
+commissionProfileView.summary=Commission Profile View API
+commissionProfileView.description=Commission Profile View API
+
+
+batchAddCommisionProfileUploadProcess.summary=batchAddCommisionProfileUploadProcess
+batchAddCommisionProfileUploadProcess.description=batchAddCommisionProfileUploadProcess
+
+addCommissionProfile.summary=addCommissionProfile
+addCommissionProfile.description=addCommissionProfile
+
+getlist.summary=getlist
+getlist.description=getlist
+
+divDepTypeList.summary=divDepTypeList
+divDepTypeList.description=divDepTypeList
+
+
+  
+  getC2CTxnsForReversal.summary=Channel To Channel  (C2C) Admin Transaction  For Reversal
+  getC2CTxnsForReversal.description=Channel To Channel  (C2C) Admin Transaction  For Reversal
+  
+  reverseC2CTxn.summary=Channel To Channel (C2C) Transaction Reversal
+  reverseC2CTxn.description=Channel To Channel (C2C) Transaction Reversal
+  
+  downloadFileTest.summary=Channel To Channel (C2C) Download File For Testing
+  downloadFileTest.description=Channel To Channel (C2C) Download File For Testing
+  
+  generateTokenAPI.summary=Generate Token For Login
+  generateTokenAPI.description=Generate Token For Login
+  
+  refreshTokenApi.summary=Refresh Token API
+  refreshTokenApi.description=Refresh Token API
+  
+  shutdownServer.summary=Shutdown Server
+  shutdownServer.description=Shutdown Server
+  
+  calculateSignature.summary=Calculate Signature
+  calculateSignature.description=Calculate Signature
+  
+  commonReportAPI.summary=Common Reports
+  commonReportAPI.description=Common Reports
+  
+  customReports.summary=Fetch Custom Reports Templates
+  customReports.description=Fetch Custom Reports Templates
+  
+  fetchPages.summary=Fetch Pages
+  fetchPages.description=Fetch Pages
+  
+  fetchRoles.summary=Fetch Roles
+  fetchRoles.description=Fetch Roles
+  
+  fetchRules.summary=Fetch Rules
+  fetchRules.description=Fetch Rules
+  
+  fetchTabs.summary=Fetch Tabs
+  fetchTabs.description=Fetch Tabs
+  
+  getLocaleList.summary=Locale List fetching
+  getLocaleList.description=Locale List fetching
+  
+  getLOVList.summary=Common Reports fetching LOV List
+  getLOVList.description=Common Reports fetching LOV List
+  
+  login.summary=User Login to login any user
+  login.description=User Login to login any user
+  
+  logout.summary=User Logout to logout from Current Session
+  logout.description=User Logout to logout from Current Session
+  
+  captcha.summary=Bot Controller Captacha
+  captcha.description=Bot Controller Captacha
+  
+  bulkUploadOperations.summary=Bulk operation Actions To Upload File On Server to
+  bulkUploadOperations.description=Bulk operation Actions To Upload File On Server to
+  
+  c2cbulkApproval.summary=Channel To Channel (C2C) Bulk Approval
+  c2cbulkApproval.description=Channel To Channel (C2C) Bulk Approval
+  
+  loadAllApprovalBatches.summary=Load All Bulk Approval List
+  loadAllApprovalBatches.description=Load All Bulk Approval List
+  
+  c2cbatchapprocess.summary=C2C Bulk process Approval
+  c2cbatchapprocess.description=C2C Bulk process Approval
+  
+  download.summary=C2C File Download
+  download.description=C2C File Download
+  
+  uploadFile.summary=Upload Base64 encoded file for C2C batch processing
+  uploadFile.description=Upload Base64 encoded file for C2C batch processing
+  
+  autocomplete.summary=Auto complete User Details
+  autocomplete.description=Auto complete User Details
+  
+  c2cret.summary=C2C Receiver C2C RETURN
+  c2cret.description=Returns the stock back to the sender(channel user) from the receiver(channel user).
+  
+  c2ctrf.summary=C2C Receiver C2C StockTransfer
+  c2ctrf.description=Transfer of stock from one channel to another channel user.
+  
+  c2ctrfmul.summary=C2C Receiver C2C StockTransfer Multiple
+  c2ctrfmul.description=C2C Receiver C2C StockTransfer Multiple
+  
+  c2cvcrapplist.summary=C2C Receiver C2C Transfer Approval List
+  c2cvcrapplist.description=Fetches the list of transactions pending for approval.
+  
+  c2cviewvc.summary=C2C Receiver C2C Transfer Detail
+  c2cviewvc.description=Fetches all the details of a particular transfer.
+  
+  c2cvomstrf.summary=C2C Receiver C2C Voucher Transfer
+  c2cvomstrf.description=Transfer of vouchers from one channel to another channel user.
+  
+  are debited and credited to respective users..summary=are debited and credited to respective users.
+  are debited and credited to respective users..description=are debited and credited to respective users.
+  
+  c2cwithdraw.summary=C2C Receiver C2C WITHDRAW
+  c2cwithdraw.description=Pretups provide facility that Channel users at any point of time can withdraw the available balance fully or partially from other Channel users operating under him
+  
+  BUY API FOR CALCULATION.summary= BUY API FOR CALCULATION
+  BUY API FOR CALCULATION.description= BUY API FOR CALCULATION
+  
+  SOS Credit Limit Update Details.summary=SOS Credit Limit Update Details
+  SOS Credit Limit Update Details.description=SOS Credit Limit Update Details
+  
+  SOS Credit Limit View Details.summary=SOS Credit Limit View Details
+  SOS Credit Limit View Details.description=SOS Credit Limit View Details
+  
+  c2sbulkreverse.summary=C2S Bulk reversal
+  c2sbulkreverse.description=This API reverses multiple Channel to Reversal transactions at once
+  
+  c2cstockdetails.summary=C2S Receiver C2C Channel User Stock Details
+  c2cstockdetails.description=C2S Receiver C2C Channel User Stock Details
+  
+  c2cvoucherdetails.summary=C2S Receiver C2C Channel User Voucher Details
+  c2cvoucherdetails.description=C2S Receiver C2C Channel User Voucher Details
+  
+  c2sprodtxndetails.summary=C2S Receiver Channel User Service Details
+  c2sprodtxndetails.description=C2S Receiver Channel User Service Details
+  
+  monthly).summary=monthly)
+  monthly).description=monthly)
+  
+  c2sUserBalance.summary=C2S Receiver User Balance Info
+  c2sUserBalance.description=This api fetches the balance of the channel user
+  
+  getdomaincategory.summary=C2S Receiver Get Domain And Category
+  getdomaincategory.description=Fetches all the domain and the categories under it in that network
+  
+  getUserWidget.summary=C2S Receiver Get User Allowed Widget
+  getUserWidget.description=C2S Receiver Get User Allowed Widget
+  
+  o2cstockdetails.summary=C2S Receiver O2C Channel User Stock Details
+  o2cstockdetails.description=C2S Receiver O2C Channel User Stock Details
+  
+  pasbdet.summary=c2s Receiver passbook view
+  pasbdet.description=The passbook report can be fetched using date range and product code.Date range for the report can’t be more than x days. x is configurable in the system.
+  
+  PendingTxnListCount.summary=c2s Receiver Pending Txn List Count
+  PendingTxnListCount.description=This api gives the list of the pending transactions that are lest for approval
+  
+  txncalview.summary=c2sReceiver txn api for calculation
+  txncalview.description=This api calculates the txn details of the entered amount and returns the list to display the calculations
+  
+  userHierarchyDownload.summary=c2s Receiver user Hierarchy Download
+  userHierarchyDownload.description=Logged in user would download list of users under his own geographical domain hierarch
+  
+  UserHierarchyList.summary=c2s Receiver User Hierarchy List
+  UserHierarchyList.description=Logged in user would view list of users under his own geographical domain hierarch
+  
+  userinfo.summary=c2s Receiver Sender Receiver Details
+  userinfo.description=the user will get the Receiver and Sender Details for transaction
+  
+  usrincview.summary=c2s Receiver Total Income detailed view
+  usrincview.description=the user will get the total income Details for transaction
+  
+  DD .summary= and  All
+  DD .description= and  All
+  
+  c2sbulkEVD.summary=c2s Services c2s bulk EVD
+  c2sbulkEVD.description=Chanel users would like to distribute electornic vouchers to the subscribers in bulk. It will help them in doing electronic distribution to multiple subscribers.
+  
+  cancelBatch.summary=c2s Services Cancel Batch Recharge
+  cancelBatch.description=this api gives the user the option to cancel bulk recharge by uploading file
+  
+  cancelSingleMsisdnBatch.summary=c2s Services cancel Single Msisdn Batch
+  cancelSingleMsisdnBatch.description=this api gives the user the option to cancel single msisdn batch by uploading file
+  
+  domainCode.summary=c2s Services Get doamin Code details
+  domainCode.description=this api fetches all the domain codes that are there in the system
+  
+  dvd.summary=c2s Services Digital Voucher Distribution
+  dvd.description=Telecom operators would like to distribute vouchers digitally e.g. A subscriber can login to subscriber app and purchase a voucher. This will give the flexibility to the customer to do the recharge independent of purchase i.e. customer can purchase the voucher at one time but can use later as per the need
+  
+  dvdBulk.summary=c2s Services Bulk Digital Voucher Distribution
+  dvdBulk.description=Chanel users would like to distribute digital vouchers to the subscribers in bulk. It will help them in doing voucher distribution to multiple subscribers.
+  
+  EVR process would provide the functionality to recharge the prepaid subscriber’s account from Channel user account. Subscriber account would be recharged based on the vouchers that are maintained by the system.summary=EVR process would provide the functionality to recharge the prepaid subscriber’s account from Channel user account. Subscriber account would be recharged based on the vouchers that are maintained by the system
+  EVR process would provide the functionality to recharge the prepaid subscriber’s account from Channel user account. Subscriber account would be recharged based on the vouchers that are maintained by the system.description=EVR process would provide the functionality to recharge the prepaid subscriber’s account from Channel user account. Subscriber account would be recharged based on the vouchers that are maintained by the system
+  
+  fixlinerc.summary=c2s Services Fix Line Recharge
+  fixlinerc.description=Channel to Subscriber Recharge process provides functionality to recharge the Prepaid subscriber account from channel user account. Channel to Subscriber Request would come from following sources
+  
+  getCategories.summary=c2s Services Get user categories for recharge
+  getCategories.description=this api fetches all the category codes that are there in a particular domain
+  
+  {domainCode}.summary=c2s Services Get categories by hierarchy without tranfer rules
+  {domainCode}.description=this api fetches all the category codes that are there in a particular domain
+  
+  getDenomination.summary=c2s Services Get Denominations For MVD
+  getDenomination.description=this api fetches all the domain that are there for dvd
+  
+  getReversalList.summary=Get recharge list For reversal
+  getReversalList.description=Api fetches the list of transaction eligible for reverse based on either mobile number or transaction ID
+  
+  date range.summary= date range
+  date range.description= date range
+  
+  grc.summary=Gift Recharge
+  grc.description=This api is used to start a gift recharge transaction via channel user
+  
+  mvd.summary=Multiple Voucher Distribution
+  mvd.description=This api is used to generate multiple voucher transaction via channel user
+  
+  postpaid.summary=Post Paid Bill Payment
+  postpaid.description=This api is used for postpaid recharge transaction to subscriber
+  
+  rcrev.summary=Recharge Reversal
+  rcrev.description=This api is used to reverse the customer rechrge
+  
+  rctrf.summary=Prepaid Recharge
+  rctrf.description=this api is used to start a customer recharge transaction
+  
+  rescheduleBatchRecharge.summary=Reschedule Batch Recharge
+  rescheduleBatchRecharge.description=this api is used to change date of scheduled batches
+  
+  servicesList.summary=C2S Services
+  servicesList.description=this api fetches the list of services assigned to the user
+  
+  {serviceName}.summary=Fetch Sub Services For Service Types
+  {serviceName}.description=this api fetches the list of sub-services assigned to the user
+  
+  {serviceName}.summary=User Services With Balance
+  {serviceName}.description=this api fetches the balance of user
+  
+  add user widget to home screen.summary= add user widget to home screen
+  add user widget to home screen.description= add user widget to home screen
+  
+  {msisdn}.summary=View c2s bulk recharge details
+  {msisdn}.description=this api is used to view c2s bulk tranasctions
+  
+  viewScheduleTopup.summary=View Schedule Topup
+  viewScheduleTopup.description=View Schedule Topup
+  
+  viewScheduleTopupReport.summary=View Schedule TopupReport
+  viewScheduleTopupReport.description=View Schedule TopupReport
+  
+  loadAllUsers.summary=Load all users in logged in user hierarchy
+  loadAllUsers.description=this api fetches the list of users
+  
+  loadUserPhoneList.summary=Load all mobile number details
+  loadUserPhoneList.description=this api fetches the mobile details of given user
+  
+  updateNotificationLang.summary=Load all mobile number details
+  updateNotificationLang.description=this api update notification language
+  
+  alldomains.summary=Get All domains
+  alldomains.description=this api fetches domain list given to user
+  
+  allgeodomains.summary=Get All Geodomains
+  allgeodomains.description=this api fetches all geographical domain of user
+  
+  approvalbarredfordlt.summary=Channel users in barred request to barred
+  approvalbarredfordlt.description=this api fetches the list of channel user eligible for barring
+  
+  updateDetails.summary=O2C Credit Limit
+  updateDetails.description=this api updates the credit limint for o2c
+  
+  BarreduserList.summary=Barred Approval Users
+  BarreduserList.description=this api fetches the lsit of user in barred_msisnd table
+  
+  reject the bulk request of user approval.summary=reject the bulk request of user approval
+  reject the bulk request of user approval.description=reject the bulk request of user approval
+  
+  bulkuserprocess.summary=Upload Base64 encoded file for Batch User Approval of Channel Users
+  bulkuserprocess.description=this api upload and process excel file for bulk user addition
+  
+  downloadbulkapprovalfile.summary=Download bulk file which contains users list for approval
+  downloadbulkapprovalfile.description=Download bulk file which contains users list for approval
+  
+  loadbatchlistforapproval.summary=This method load batch listing
+  loadbatchlistforapproval.description= based on domainCode and geographyCode
+  
+  bulksusrescu.summary=Bulk Suspend Resume Channel User
+  bulksusrescu.description=Bulk Suspend Resume Channel User
+  
+  CAC2STrfRev.summary=Transfer Reversal Info
+  CAC2STrfRev.description=Transfer Reversal Info
+  
+  CAC2STrfRevList.summary=Transfer Reversal List Info
+  CAC2STrfRevList.description=Transfer Reversal List Info
+  
+  ChangeUserStatusByAdmin.summary=Change User Status By Admin
+  ChangeUserStatusByAdmin.description=Change User Status By Admin
+  
+  channelUserBulkStatusChange.summary=Channel User Bulk Status Change
+  channelUserBulkStatusChange.description=Channel User Bulk Status Change
+  
+  channelUserList.summary=channelUserList
+  channelUserList.description=channelUserList
+  
+  channelUserListByAdmin.summary=channelUserListByAdmin
+  channelUserListByAdmin.description=channelUserListByAdmin
+  
+  channelUserListByParent.summary=channelUserListByParent
+  channelUserListByParent.description=channelUserListByParent
+  
+  cnfusermig.summary=Confirm User Migration
+  cnfusermig.description=Confirm User Migration
+  
+  {categoryCode}.summary=Authorization
+  {categoryCode}.description=Authorization
+  
+  createBatchByAdmin.summary=Create Batch By Admin
+  createBatchByAdmin.description=Create Batch By Admin
+  
+  deRegisterSubscriberBatch.summary=Upload Base64 encoded file for Batch DeRegistration of Subscribers
+  deRegisterSubscriberBatch.description=Upload Base64 encoded file for Batch DeRegistration of Subscribers
+  
+  downloadAutoTemplate.summary=Download Auto Template By Admin
+  downloadAutoTemplate.description=Download Auto Template By Admin
+  
+  downloadAutoUserList.summary=Download Auto User List By Admin
+  downloadAutoUserList.description=Download Auto User List By Admin
+  
+  downloadBulkModifyUsersList.summary=Download Bulk Modify Users List
+  downloadBulkModifyUsersList.description=Download Bulk Modify Users List
+  
+  downloadBulkUserTemplate.summary=Bulk Add User Template Download
+  downloadBulkUserTemplate.description=Bulk Add User Template Download
+  
+  downloadFile.summary=downloadFile
+  downloadFile.description=downloadFile
+  
+  downloadFileForAssosiateAlert.summary=Download File For Assosiate Alert
+  downloadFileForAssosiateAlert.description=Download File For Assosiate Alert
+  
+  downloadusermigtemplate.summary=User Movement Template
+  downloadusermigtemplate.description=User Movement Template
+  
+  fetchnpusr.summary=No Parent Userlist
+  fetchnpusr.description=No Parent Userlist
+  
+  getBatchList.summary=Get Batch List
+  getBatchList.description=Get Batch List
+  
+  getDenomination.summary=Get Denomination
+  getDenomination.description=Get Denomination
+  
+  getParentCategoryList.summary=Load list of Parent Category on the basis of child category
+  getParentCategoryList.description=Load list of Parent Category on the basis of child category
+  
+  initiateBulkUpload.summary=Channel admin initiate bulk upload
+  initiateBulkUpload.description=Bulk user creation process is performed using the file upload and a batch number will be generated after successfully processing the uploaded file
+  
+  o2ctxndetails.summary=Channel admin O2C Transaction Details
+  o2ctxndetails.description=Loads O2C transaction details based on the TransactionID
+  
+  o2ctxnreversal.summary=Channel Admin Reverse O2C Transaction
+  o2ctxnreversal.description=O2C Transaction reverse for stock transferred to channel user against a particular transaction
+  
+  o2CTxnReversalList.summary=Channel Adminn Reverse O2C Transaction list
+  o2CTxnReversalList.description=Reverse List of O2C Transactions for stock transferred to channel user against a particular transaction
+  
+  ownerListAndcuListO2ctxnrev.summary=Channel Admin Load Owner user or Channel user List for Transaction Reversal
+  ownerListAndcuListO2ctxnrev.description=Load owner user list or channel user list for O2C Transaction reversal list
+  
+  owneruserlist.summary=Channel Admin Load Owner User List
+  owneruserlist.description=Load all Owner users List
+  
+  parentuserlist.summary=Channel Admin Load Parent User List
+  parentuserlist.description=Load all Parent User List
+  
+  processBulkC2CSOSFile.summary=Channel Admin Process Bulk C2C SOS File
+  processBulkC2CSOSFile.description=Process C2C SOS file
+  
+  approvalrestrictedlist.summary=Channel Admin Restricted List Management Approval
+  approvalrestrictedlist.description=Approve Restricted Management List
+  
+  blacklistallsubscriber.summary=Channel Admin Restricted List Management Blacklist All Subscriber
+  blacklistallsubscriber.description=Black list All subscribers based on the MSISDN
+  
+  blacklistmultiplesubscribers.summary=Channel Admin Restricted List Management Blacklist Multiple Subscriber
+  blacklistmultiplesubscribers.description=BlackList Multiple subscribers by uploading the file with list of MSISDN
+  
+  blacklistsinglesubscriber.summary=Channel Admin Restricted List Management Blacklist Single Subscriber
+  blacklistsinglesubscriber.description=Blacklist Single Subscriber based on MSISDN
+  
+  deleterestrictedsubscriber.summary=Channel Admin Restricted List Management Delete
+  deleterestrictedsubscriber.description=The operator will permanently delete the subscriber from the restricted MSISDN list database
+  
+  loaddropdowns.summary=Channel Admin Restricted List Management Load
+  loaddropdowns.description=Load the Information related to Login User
+  
+  loadsubscriberlistforblacklistsingle.summary=Channel Admin Restricted List Management Load Subscriber List For Blacklist
+  loadsubscriberlistforblacklistsingle.description=Loads the Subscriber List for BlackList
+  
+  loadsubscriberlistfordelete.summary=Channel Admin Restricted List Management Load Subscriber List For Delete
+  loadsubscriberlistfordelete.description=Loads the Subscriber List for Delete
+  
+  loadsubscriberlistforunblack.summary=Channel Admin Restricted List Management Load Subscriber List For Unblack
+  loadsubscriberlistforunblack.description=Loads the Subscriber List for Unblacklist
+  
+  searchuserlistbasedonkeyword.summary=Channel Admin Restricted List Management search user
+  searchuserlistbasedonkeyword.description=load the user list whose name is entered in the text box.
+  
+  unblacklistallsubscriber.summary=Channel Admin Restricted List Management Unblacklist All
+  unblacklistallsubscriber.description=The process will unblacklist all the subscribers
+  
+  unblacklistselectedsubscriber.summary=Channel Admin Restricted List Management Unblacklist Selected subscriber
+  unblacklistselectedsubscriber.description=The process will unblacklist the selected subscribers
+  
+  updateapprstrctdlist.summary=Channel Admin Restricted List Management Update Approval List
+  updateapprstrctdlist.description=The Process will update the approval Restricted list
+  
+  uploadrestrictedlist.summary=Channel Admin Restricted List Management Upload
+  uploadrestrictedlist.description=The process to Upload the restricted list
+  
+  viewrestrictedlist.summary=Channel Admin Restricted List Management View
+  viewrestrictedlist.description=The process too view the restricted list
+  
+  sendPinAdmin.summary=Channel Admin Send PIN
+  sendPinAdmin.description=This link would be provided to Operator user for resending the PIN of a Voucher
+  
+  staffUserListByParent.summary=Channel Admin Staff User List Parent
+  staffUserListByParent.description=Parent user would be allowed to create its staff users
+  
+  suspendResumeStaff.summary=Channel Admin Suspend Resume Staff
+  suspendResumeStaff.description=Used for Suspend as well as resume Staff user
+  
+  Resume the user hierarchy by channel admin.summary=Resume the user hierarchy by channel admin
+  Resume the user hierarchy by channel admin.description=Resume the user hierarchy by channel admin
+  
+  trfuserhierarchy.summary=Channel admin Transfer user hierarchy
+  trfuserhierarchy.description=this api is used to transfer the user hierarchy from one parent user to another parent user.
+  
+  uploadAndProcessBatchAssosiateAlert.summary=Channel admin Upload and process batch associate alert
+  uploadAndProcessBatchAssosiateAlert.description=this api is used to Assosiate Alert Msisdn of Channel Users
+  
+  uploadBulkModifyUser.summary=Channel admin Upload bulk modify user
+  uploadBulkModifyUser.description=this api is used to modify channel user in bulk
+  
+  UserHierarchyListCA.summary=Channel admin User hierarchy list channel admin
+  UserHierarchyListCA.description=this api is used to fetch user hierachy information
+  
+  viewBatchDetailAdmin.summary=View Batch List Admin
+  viewBatchDetailAdmin.description=View Batch List Admin
+  
+  viewBatchListAdmin.summary=View Batch List Admin
+  viewBatchListAdmin.description=View Batch List Admin
+  
+  alertCounterSummary.summary=Alert Counter Summary Enquiry
+  alertCounterSummary.description=Alert Counter Summary Enquiry
+  
+  batchC2cTransferDetails.summary=Channel enquiry batch C2C tranfer details
+  batchC2cTransferDetails.description=this api is used to fetch channel to channel transfer details in bulk.
+  
+  c2sEnquiry.summary=Channel enquiry C2S enquiry
+  c2sEnquiry.description=this api is used to fetch channel to subscriber enquiry details
+  
+  enquiryO2cAndC2c.summary=Channel enquiry Operator to channel and channel to channel
+  enquiryO2cAndC2c.description=used to fetch operator to channel or channel to channel transaction details.
+  
+  .summary=Channel user add
+  .description=this api is used to add channel user
+  
+  delete request. .summary=delete request.
+  delete request. .description=delete request.
+  
+  areasearch.summary=Search Area
+  areasearch.description=Search Area
+  
+  areasearchadmin.summary=Search Area for channel user.
+  areasearchadmin.description=Search Area for channel user.
+  
+  create channel user in bulk.summary=create channel user in bulk
+  create channel user in bulk.description=create channel user in bulk
+  
+  channelUserApproval.summary=Channel user Channel use approval
+  channelUserApproval.description=this api is used to approve channel user
+  
+  channelUsersList.summary=Channel user Channel user list
+  channelUsersList.description=this api is used to fetch channel users based on certain parameters
+  
+  confirmUserTransfer.summary=Channel User Transfer
+  confirmUserTransfer.description=Channel User Transfer
+  
+  {idValue}.summary=Channel User delete by ID
+  {idValue}.description=This api is used to delete a channel user
+  
+  {idValue}.summary=Channel User Details
+  {idValue}.description=Fetching details of a channel user based on their user ID.
+  
+  fetchUserTransferDetails.summary=Channel User Fetching Transfer Details
+  fetchUserTransferDetails.description=Retrieving details related to transfers for a channel user.
+  
+  getCategoryListC2C.summary=Channel User Fetching CategoryList
+  getCategoryListC2C.description=Retrieving the list of categories for a channel user(C2C).
+  
+  modify.summary=Channel User Modify Channel User Details
+  modify.description=Modifies details of a channel user.
+  
+  rolesServices.summary=Channel User Fetch Roles and Services
+  rolesServices.description=Retrieves roles and services associated with a channel user.
+  
+  {userId}.summary=Channel User Authorization
+  {userId}.description=This pertains to authorizing channel user access or permissions based on their unique user ID.
+  
+  bulkerrorfile.summary=Channel To Channel File Service Bulk Append Error in Excel File To Download
+  bulkerrorfile.description=This functionality involves the retrieval of an Excel file that consolidates bulk append errors within the Channel to Channel (C2C) file services. Users can download this file to review and address errors encountered during bulk append operations.
+  
+  downloadBatchTxnWdrRecords.summary=Channel to Channel File Service Download C2C Batch Transfer Withdraw
+  downloadBatchTxnWdrRecords.description=Allows users to download Channel to Channel (C2C) batch transfer withdrawal records.
+  
+  downloadDvdMasterSheet.summary=Channel To Channel File Service Digital Voucher Denomination Master Sheet Download
+  downloadDvdMasterSheet.description=This feature allows users to download a comprehensive master sheet providing detailed information related to Channel to Channel (C2C) Digital Voucher Denomination(DVD) transactions.
+  
+  downloadDvdTemplate.summary=Channel To Channel Digital Voucher Denomination Template Download
+  downloadDvdTemplate.description=This functionality allows users to download a template sheet specifically designed for digital voucher denomination within the Channel to Channel (C2C) system. The sheet serves as a structured guide for managing and configuring voucher denominations.
+  
+  downloadFixedRCTemplate.summary=Channel to Channel File Service Fixed Line Recharge Template Download
+  downloadFixedRCTemplate.description=This feature allows users to download a template designed for fixed-line recharge transactions within the Channel to Channel (C2C) system. The template serves as a structured guide for managing and processing fixed-line recharge requests.
+  
+  downloadGiftRCTemplate.summary=Channel to Channel File Service Gift Recharge Template Download
+  downloadGiftRCTemplate.description=This functionality enables users to download a template designed specifically for gift recharge transactions within the Channel to Channel (C2C) system. The template serves as a structured guide for managing and processing gift recharge requests.
+  
+  downloadInternetRCTemplate.summary=Channel to Channel File Service Internet Recharge Template Download
+  downloadInternetRCTemplate.description=This feature enables users to download a template designed for internet recharge transactions within the Channel to Channel (C2C) system. The template provides a structured guide for managing and processing internet recharge requests efficiently.
+  
+  downloadInternetRCUserList.summary=Channel to Channel File Service Internet Recharge Restricted User List Download
+  downloadInternetRCUserList.description=This functionality allows users to download a list of restricted users specifically applicable to internet recharge transactions within the Channel to Channel (C2C) system. The list provides information on users with restricted access or permissions for these transactions.
+  
+  downloadO2cPurchaseOrWithdrawTemplate.summary=Channel to Channel File Service Operator To Channel PurchaseOrWithdraw Template
+  downloadO2cPurchaseOrWithdrawTemplate.description=This feature enables users to download a template designed for purchase or withdrawal transactions between operators and channels within the Channel to Channel (C2C) system. The template serves as a structured guide for managing and processing these transactions efficiently.
+  
+  downloadOperatorUserReport.summary=Channel to Channel File Service Operator User Report Download
+  downloadOperatorUserReport.description=This feature allows users to download a comprehensive report providing details about operator users within the Channel to Channel (C2C) system. The report serves as a valuable resource for managing and analyzing information related to operators associated with the channel.
+  
+  downloadRCTemplate.summary=Channel to Channel File Service Customer Recharge Template Download
+  downloadRCTemplate.description=This functionality enables users to download a template specifically designed for customer recharge transactions within the Channel to Channel File Service. The template provides a structured guide for managing and processing customer recharge requests efficiently.
+  
+  downloadRCUserList.summary=Customer Recharge Restricted User List Download
+  downloadRCUserList.description=Customer Recharge Restricted User List Download
+  
+  downloadScheduledReport.summary=Scheduled Batch Report Download
+  downloadScheduledReport.description=Scheduled Batch Report Download
+  
+  {transferType}.summary=C2C Batch File Template Download
+  {transferType}.description=C2C Batch File Template Download
+  
+  downloadUserReport.summary=Channel User Report Download
+  downloadUserReport.description=Channel User Report Download
+  
+  downloadUsersList.summary=Download Users List API
+  downloadUsersList.description=Download Users List API
+  
+  batchSchedule.summary=Batch Schedule Report Download
+  batchSchedule.description=Batch Schedule Report Download
+  
+  {fileType}.summary=View Batch Report API
+  {fileType}.description=View Batch Report API
+  
+  viewScheduleTopupReportDownlaod.summary=View Schedule Topup
+  viewScheduleTopupReportDownlaod.description=View Schedule Topup
+  
+  downloadUsersBatch.summary=Download Users List API
+  downloadUsersBatch.description=Download Users List API
+  
+  postLogs.summary=Prints activity logs
+  postLogs.description=Prints activity logs
+  
+  changePassword.summary=change password
+  changePassword.description=change password
+  
+  forgotPassword.summary=Forgot password
+  forgotPassword.description=Forgot password
+  
+  getOTP.summary=Get OTP
+  getOTP.description=Get OTP
+  
+  passwordChangeOnLogin.summary=password change on login
+  passwordChangeOnLogin.description=password change on login
+  
+  validateOTP.summary=Get OTP
+  validateOTP.description=Get OTP
+  
+  redemption.summary=Redemption API
+  redemption.description=Redemption API
+  
+  addgeodomain.summary=Add Geographical Domain
+  addgeodomain.description=Add Geographical Domain
+  
+  addO2CTransferRule.summary=Add Association and transfer rules for O2C
+  addO2CTransferRule.description=Add Association and transfer rules for O2C
+  
+  addserviceproductamountmappingdetails.summary=Add Service Product Amount Mapping Details
+  addserviceproductamountmappingdetails.description=Add Service Product Amount Mapping Details
+  
+  addStockFinal.summary=add the initiated stock
+  addStockFinal.description=add the initiated stock
+  
+  addTransferRule.summary=addTransferRule
+  addTransferRule.description=addTransferRule
+  
+  approvaLevelOneStockTxn.summary=Approve the stock transaction at level one
+  approvaLevelOneStockTxn.description=Approve the stock transaction at level one
+  
+  approvaLevelTwoStockTxn.summary=Approve the stock transaction at level two
+  approvaLevelTwoStockTxn.description=Approve the stock transaction at level two
+  
+  batchoperateuserdelete.summary=Batch Operate User Delete
+  batchoperateuserdelete.description=Batch Operate User Delete
+  
+  addModifyC2SCardGroupTemplist.summary=add Modify C2S CardGroupTemp list
+  addModifyC2SCardGroupTemplist.description=add Modify C2S CardGroupTemp list
+  
+  addTempC2SCardGroupList.summary=add Temp C2S CardGroup List
+  addTempC2SCardGroupList.description=add Temp C2S CardGroup List
+  
+  calculatetransfervalue.summary=Calcuate card group transfer value
+  calculatetransfervalue.description= fee and tax based on amount
+  
+  changedefaultcardgroup.summary=Change Default Card Group
+  changedefaultcardgroup.description=Change Default Card Group
+  
+  deleteTempModifyC2SCardGroupList.summary=delete Temp Modify C2S CardGroupList
+  deleteTempModifyC2SCardGroupList.description=delete Temp Modify C2S CardGroupList
+  
+  getcardgrouptransferrulevalue.summary=Get Card Group TransferRule Value
+  getcardgrouptransferrulevalue.description=Get Card Group TransferRule Value
+  
+  loadC2SCardGroupAmountDetailsList.summary=Load C2SCardGroup AmountDetails List
+  loadC2SCardGroupAmountDetailsList.description=Load C2SCardGroup AmountDetails List
+  
+  loadC2SCardGroupServices.summary=Load C2S CardGroup Services
+  loadC2SCardGroupServices.description=Load C2S CardGroup Services
+  
+  loadC2SCardGroupSetNameList.summary=load C2S CardGroup Set Name List
+  loadC2SCardGroupSetNameList.description=load C2S CardGroup Set Name List
+  
+  loadC2SCardGroupVersionList.summary=Load C2SCardGroup version List
+  loadC2SCardGroupVersionList.description=Load C2SCardGroup version List
+  
+  loadc2scardgroupversionlistbasedonsetidandfromdate.summary=Load C2S CardGroup VersionList based On SetID And FromDate
+  loadc2scardgroupversionlistbasedonsetidandfromdate.description=Load C2S CardGroup VersionList based On SetID And FromDate
+  
+  loadcardgroupcalculatetransferruledropdowns.summary=Load Card Group Calculate Transfer Rule Drop Downs
+  loadcardgroupcalculatetransferruledropdowns.description=Load Card Group Calculate Transfer Rule Drop Downs
+  
+  modifyC2SCardGroupSave.summary=Modify C2S CardGroup Save
+  modifyC2SCardGroupSave.description=Modify C2S CardGroup Save
+  
+  saveC2SCardGroupList.summary=save C2S CardGroup List
+  saveC2SCardGroupList.description=save C2S CardGroup List
+  
+  viewc2scardroupdetails.summary=view C2S CardGroup Details
+  viewc2scardroupdetails.description=view C2S CardGroup Details
+  
+  C2SDropdownList.summary=C2S Dropdown List
+  C2SDropdownList.description=C2S Dropdown List
+  
+  loadlist.summary=load C2S Reconciliation List
+  loadlist.description=load C2S Reconciliation List
+  
+  loadtransferdetails.summary=Fetch the reconciliation details based on transer ID
+  loadtransferdetails.description=Fetch the reconciliation details based on transer ID
+  
+  Fail reconciliation transfer.summary=Fail reconciliation transfer
+  Fail reconciliation transfer.description=Fail reconciliation transfer
+  
+  C2STransferList.summary=C2S Transfer List
+  C2STransferList.description=C2S Transfer List
+  
+  changeStatusForCommissionProfile.summary=Change Staus For Commission Profile
+  changeStatusForCommissionProfile.description=Change Staus For Commission Profile
+  
+  deleteCommissionProfileSet.summary=Network admin Commission profile Delete commission profile set
+  deleteCommissionProfileSet.description=this api is used to delete the commission profile
+  
+  downloadBatchAddCommProfTemplate.summary=Download Commission Profile Template
+  downloadBatchAddCommProfTemplate.description=Download Commission Profile Template
+  
+  downloadBatchModifyCommissionProfileTemplate.summary=Download Batch Commission Profile Template
+  downloadBatchModifyCommissionProfileTemplate.description=Download Batch Commission Profile Template
+  
+  gatewayList.summary=Gateway List
+  gatewayList.description=Gateway List
+  
+  geoGradeList.summary=Geo Grade List
+  geoGradeList.description=Geo Grade List
+  
+  getSubServiceList.summary=Get Sub Service List
+  getSubServiceList.description=Get Sub Service List
+  
+  loadVersionListBasedOnDate.summary=Network admin Commission profile Load version list based on date
+  loadVersionListBasedOnDate.description=Loads all the version of that commission profile which were created after the given date
+  
+  productList.summary=Product List
+  productList.description=Product List
+  
+  suspendResumeCommissionProfileSet.summary=suspend or resume commission profile set based on commisssion profile set id
+  suspendResumeCommissionProfileSet.description=suspend or resume commission profile set based on commisssion profile set id
+  
+  uploadFileForBatchModifyCommissionProfile.summary=Upload File For Batch Commission Profile
+  uploadFileForBatchModifyCommissionProfile.description=Upload File For Batch Commission Profile
+  
+  viewList.summary=View List
+  viewList.description=View List
+  
+  confirmStock.summary=confirm all the stock details and sum the amount
+  confirmStock.description=confirm all the stock details and sum the amount
+  
+  confirmStockLevelOne.summary=confirm all the stock details and sum the approved quantityamount at level one
+  confirmStockLevelOne.description=confirm all the stock details and sum the approved quantityamount at level one
+  
+  deleteC2STransferRule.summary=deleteTransferRule
+  deleteC2STransferRule.description=deleteTransferRule
+  
+  deletegeodomain.summary=Delete Geographical Domain
+  deletegeodomain.description=Delete Geographical Domain
+  
+  deleteO2CTransferRule.summary=Delete transfer rules for O2C
+  deleteO2CTransferRule.description=Delete transfer rules for O2C
+  
+  deleteserviceproductamountmappingdetails.summary=Delete Service Product Amount Mapping Detail
+  deleteserviceproductamountmappingdetails.description=Delete Service Product Amount Mapping Detail
+  
+  displayStockLevelOne.summary=Displays the selected stock from the approval level one list
+  displayStockLevelOne.description=Displays the selected stock from the approval level one list
+  
+  displayStockLevelTwo.summary=Displays the selected stock from the approval level two list
+  displayStockLevelTwo.description=Displays the selected stock from the approval level two list
+  
+  displayStockTxnDetailsView.summary=Display the selected stock
+  displayStockTxnDetailsView.description=Display the selected stock
+  
+  downloadc2scardgrpfile.summary=Download File for Batch modify C2S Card Group
+  downloadc2scardgrpfile.description=Download File for Batch modify C2S Card Group
+  
+  downloadTemplateFileForUsrDefaultConfig.summary=Download Template For Selected Domain
+  downloadTemplateFileForUsrDefaultConfig.description=Download Template For Selected Domain
+  
+  fetchctrlpreflist.summary=Control Preference Lists
+  fetchctrlpreflist.description=Control Preference Lists
+  
+  geodomainList.summary=Geographical Domain Type List
+  geodomainList.description=Geographical Domain Type List
+  
+  geodomtypelist.summary=Geographical Domain Type List
+  geodomtypelist.description=Geographical Domain Type List
+  
+  {type}.summary=Get the Card Group Names for Batch modify C2S Card Group
+  {type}.description=Get the Card Group Names for Batch modify C2S Card Group
+  
+  {type}.summary=Get the Service type list for Batch modify C2S Card Group
+  {type}.description=Get the Service type list for Batch modify C2S Card Group
+  
+  initiateStock.summary=Load product list for available stock
+  initiateStock.description=Load product list for available stock
+  
+  getinterfacenetworkmappingprefixlist.summary=This methods loads the Network Prefix List of a particular list. This is the entry point for Interface Network Mapping Prefix
+  getinterfacenetworkmappingprefixlist.description=This methods loads the Network Prefix List of a particular list. This is the entry point for Interface Network Mapping Prefix
+  
+  saveinterfacenetworkmappingprefix.summary=This methods Update the Interface Network Prefix Mapping Details in DB
+  saveinterfacenetworkmappingprefix.description=This methods Update the Interface Network Prefix Mapping Details in DB
+  
+  levelOneApprovalList.summary=Load list for approval level one
+  levelOneApprovalList.description=Load list for approval level one
+  
+  levelTwoApprovalList.summary=Load list for approval level two
+  levelTwoApprovalList.description=Load list for approval level two
+  
+  loadallproductamountdetails.summary=Get All Service Product Mapping Amount Details
+  loadallproductamountdetails.description=Get All Service Product Mapping Amount Details
+  
+  loadc2scardgroupstatuslist.summary=load c2s cardgroup status list
+  loadc2scardgroupstatuslist.description=load c2s cardgroup status list
+  
+  loadDomainListForOperator.summary=Load Category Domain List For Operator
+  loadDomainListForOperator.description=Load Category Domain List For Operator
+  
+  loadDomainListForOperatorFromUserDefault.summary=Load Category Domain List For Operator
+  loadDomainListForOperatorFromUserDefault.description=Load Category Domain List For Operator
+  
+  loadDownLoadFile.summary=Load DownLoadFile
+  loadDownLoadFile.description=Load DownLoadFile
+  
+  loadNetworkPreferenceList.summary=Load Network Preference List
+  loadNetworkPreferenceList.description=Load Network Preference List
+  
+  loadPromotionalLevelList.summary=Load PromotionalLevel List
+  loadPromotionalLevelList.description=Load PromotionalLevel List
+  
+  loadSearchCriteria.summary=Load SearchCriteria
+  loadSearchCriteria.description=Load SearchCriteria
+  
+  loadServiceClassList.summary=Load Service Class List
+  loadServiceClassList.description=Load Service Class List
+  
+  loadServiceClassPreferenceList.summary=Load Service Class Preference List
+  loadServiceClassPreferenceList.description=Load Service Class Preference List
+  
+  loadStockTxnListView.summary=Load stock transaction list based on given filters
+  loadStockTxnListView.description=Load stock transaction list based on given filters
+  
+  loadToCategoryList.summary=Load To Category List
+  loadToCategoryList.description=Load To Category List
+  
+  loadTransferRulesList.summary=Load Transfer Rules List
+  loadTransferRulesList.description=Load Transfer Rules List
+  
+  modifybatchc2scardgrp.summary=Batch modify C2S Card Group
+  modifybatchc2scardgrp.description=Batch modify C2S Card Group
+  
+  modifygeodomain.summary=Modify Geographical Domain
+  modifygeodomain.description=Modify Geographical Domain
+  
+  modifyserviceproductamountmappingdetails.summary=Modify Service Product Amount Mapping Details
+  modifyserviceproductamountmappingdetails.description=Modify Service Product Amount Mapping Details
+  
+  modifyTransferRule.summary=modifyTransferRule
+  modifyTransferRule.description=modifyTransferRule
+  
+  addnetworkproductmappingdetails.summary=add the list of network product Mapping Detail
+  addnetworkproductmappingdetails.description=add the list of network product Mapping Detail
+  
+  loadnetworkproductmappingdetails.summary=load the list of network product Mapping Detail
+  loadnetworkproductmappingdetails.description=load the list of network product Mapping Detail
+  
+  loadNetworkServicesData.summary=loadNetworkServicesData
+  loadNetworkServicesData.description=loadNetworkServicesData
+  
+  loadServiceTypeList.summary=loadServiceTypeList
+  loadServiceTypeList.description=loadServiceTypeList
+  
+  updateNetworkServices.summary=updateNetworkServices
+  updateNetworkServices.description=updateNetworkServices
+  
+  approve.summary=Stock Dedcution Approval
+  approve.description=Stock Dedcution Approval
+  
+  displaylist.summary=View Current Stock
+  displaylist.description=View Current Stock
+  
+  initiatestockdeduction.summary=Initiate Network Stock Deduction List
+  initiatestockdeduction.description=Initiate Network Stock Deduction List
+  
+  initiatestockdeduction.summary=Initiate Stock Deduction
+  initiatestockdeduction.description=Initiate Stock Deduction
+  
+  reject.summary=Stock Dedcution Rejection
+  reject.description=Stock Dedcution Rejection
+  
+  retrievestockdeductiontransactiondetails.summary=stock deduction transaction details waiting for approval
+  retrievestockdeductiontransactiondetails.description=stock deduction transaction details waiting for approval
+  
+  stockdeductiontransactionlist.summary=List of stock deduction transactions waiting for approval
+  stockdeductiontransactionlist.description=List of stock deduction transactions waiting for approval
+  
+  submitinitiatestock.summary=Confirm Stock Deduction
+  submitinitiatestock.description=Confirm Stock Deduction
+  
+  add.summary=Add Operator User
+  add.description=Add Operator User
+  
+  {userId}.summary=Check msisdn for operator user
+  {userId}.description=Check msisdn for operator user
+  
+  {categoryCode}.summary=Get Role list for operator user
+  {categoryCode}.description=Get Role list for operator user
+  
+  {userId}.summary=Get Domain list for operator user
+  {userId}.description=Get Domain list for operator user
+  
+  {categoryCode}.summary=Get Geography list for operator user
+  {categoryCode}.description=Get Geography list for operator user
+  
+  {logvalue}.summary=Get Geography list for operator user
+  {logvalue}.description=Get Geography list for operator user
+  
+  {userId}.summary=Get Product list for operator user
+  {userId}.description=Get Product list for operator user
+  
+  {categoryCode}.summary=Get Service list for operator user
+  {categoryCode}.description=Get Service list for operator user
+  
+  {userId}.summary=Get Voucher list for operator user
+  {userId}.description=Get Voucher list for operator user
+  
+  getcategorylist.summary=Get Category list for operator user
+  getcategorylist.description=Get Category list for operator user
+  
+  modify.summary=Modify Operator User
+  modify.description=Modify Operator User
+  
+  parentgeodomtypelist.summary=Parent Geographical Domain Type List
+  parentgeodomtypelist.description=Parent Geographical Domain Type List
+  
+  parentlistsearch.summary=Parent Geographical Domain Type Search
+  parentlistsearch.description=Parent Geographical Domain Type Search
+  
+  rejectStockTxn.summary=This method is called to reject the StockTxn at any level (level1 or level2)
+  rejectStockTxn.description=This method is called to reject the StockTxn at any level (level1 or level2)
+  
+  savec2scardgroupstatuslist.summary=save c2s cardgroup status list
+  savec2scardgroupstatuslist.description=save c2s cardgroup status list
+  
+  srvprdtamtmapservicelist.summary=Service Product Amount Mapping Load Service and Product List
+  srvprdtamtmapservicelist.description=Service Product Amount Mapping Load Service and Product List
+  
+  updatectrlpref.summary=Modify or Delete Control Preference
+  updatectrlpref.description=Modify or Delete Control Preference
+  
+  updateNetworkPreferenceByList.summary=Modify or Delete Network Preference
+  updateNetworkPreferenceByList.description=Modify or Delete Network Preference
+  
+  updateO2CTransferRule.summary=Modify transfer rules for O2C
+  updateO2CTransferRule.description=Modify transfer rules for O2C
+  
+  updateServiceClassPreferenceByList.summary=Modify or Delete Service Class Preference
+  updateServiceClassPreferenceByList.description=Modify or Delete Service Class Preference
+  
+  uploadAndProcessFile.summary=upload And ProcessFile
+  uploadAndProcessFile.description=upload And ProcessFile
+  
+  uploadTemplateFileForUsrDefaultConfig.summary=Upload Template File For Seleted Domain
+  uploadTemplateFileForUsrDefaultConfig.description=Upload Template File For Seleted Domain
+  
+  viewStockTxnDropdowns.summary=Load all dropdowns and daterange
+  viewStockTxnDropdowns.description=Load all dropdowns and daterange
+  
+  caltrnsfrvalue.summary=Calculate Voucher CardGroup Transfer Value
+  caltrnsfrvalue.description=Calculate Voucher CardGroup Transfer Value
+  
+  changedefaultvmscardgroup.summary=Change Default Voucher Card Group
+  changedefaultvmscardgroup.description=Change Default Voucher Card Group
+  
+  chngvmscrdgpstatuslist.summary=Change Voucher cardgroup status list
+  chngvmscrdgpstatuslist.description=Change Voucher cardgroup status list
+  
+  deletevmscardgrp.summary=Delete Voucher CardGroup
+  deletevmscardgrp.description=Delete Voucher CardGroup
+  
+  getvmscardgrouptrfrulevalue.summary=Get Voucher Card Group Transfer Value
+  getvmscardgrouptrfrulevalue.description=Get Voucher Card Group Transfer Value
+  
+  loadc2svmscrdgrpverlistbasedonsetid.summary=Load Voucher CardGroup VersionList based On SetID And FromDate
+  loadc2svmscrdgrpverlistbasedonsetid.description=Load Voucher CardGroup VersionList based On SetID And FromDate
+  
+  loaddenominationdetails.summary=Load all Voucher Denomination Details Dropdowns List
+  loaddenominationdetails.description=Load all Voucher Denomination Details Dropdowns List
+  
+  loadvmscardgroupstatuslist.summary=Load Voucher Cardgroup Status List
+  loadvmscardgroupstatuslist.description=Load Voucher Cardgroup Status List
+  
+  loadvmscardgrpdropdowns.summary=Load Voucher CardGroup Add drop down list
+  loadvmscardgrpdropdowns.description=Load Voucher CardGroup Add drop down list
+  
+  loadvmscardgrpversions.summary=Load Voucher CardGroup Version list
+  loadvmscardgrpversions.description=Load Voucher CardGroup Version list
+  
+  loadvouchercrdgrpSrvs.summary=Load Voucher CardGroup Services
+  loadvouchercrdgrpSrvs.description=Load Voucher CardGroup Services
+  
+  modifyvouchercrgrp.summary=Modify Voucher CardGroup List
+  modifyvouchercrgrp.description=Modify Voucher CardGroup List
+  
+  savevouchercrgrp.summary=Save Voucher CardGroup List
+  savevouchercrgrp.description=Save Voucher CardGroup List
+  
+  viewvouchercardroupdetails.summary=View Voucher CardGroup Details
+  viewvouchercardroupdetails.description=View Voucher CardGroup Details
+  
+  addNetworkInterface.summary=save interface
+  addNetworkInterface.description=save interface
+  
+  {networkInterfaceId}.summary=delete network interface
+  {networkInterfaceId}.description=delete network interface
+  
+  interfaceCategoryListTemplate.summary=List all Interface categories
+  interfaceCategoryListTemplate.description=List all Interface categories
+  
+  interfaceNamesList.summary=List all Interface Names
+  interfaceNamesList.description=List all Interface Names
+  
+  modifyNetworkInterface.summary=save interface
+  modifyNetworkInterface.description=save interface
+  
+  {networkInterfaceId}.summary=List all Interface Names
+  {networkInterfaceId}.description=List all Interface Names
+  
+  networkInterfaceList.summary=List of Network Interfaces
+  networkInterfaceList.description=List of Network Interfaces
+  
+  loadNetworkPrefixDetails.summary=Loading network prefix details
+  loadNetworkPrefixDetails.description=Loading network prefix details
+  
+  saveNetworkPrefixDetails.summary=Save network Prefix details
+  saveNetworkPrefixDetails.description=Save network Prefix details
+  
+  addPromoTransferData.summary=Add promo transfer data
+  addPromoTransferData.description=Add promo transfer data
+  
+  deletePromoTransferData.summary=Delete promo transfer data
+  deletePromoTransferData.description=Delete promo transfer data
+  
+  deleteTransferControlProfile.summary=delete transfer control profile
+  deleteTransferControlProfile.description=delete transfer control profile
+  
+  fetchTransferProfileDetails.summary=fetch transfer profile details by category
+  fetchTransferProfileDetails.description=fetch transfer profile details by category
+  
+  loadPromoParentUserData.summary=Load parent user data
+  loadPromoParentUserData.description=Load parent user data
+  
+  loadTransferprofileDataByCat.summary=Load transfer profile details by category
+  loadTransferprofileDataByCat.description=Load transfer profile details by category
+  
+  modifyTransferControlProfile.summary=Modify transfer control profile
+  modifyTransferControlProfile.description=Modify transfer control profile
+  
+  promoTransfeRuleDropDowns.summary=Promotional transfer rule Dependency dropdowns
+  promoTransfeRuleDropDowns.description=Promotional transfer rule Dependency dropdowns
+  
+  saveTransferControlProfile.summary=Save transfer control profile
+  saveTransferControlProfile.description=Save transfer control profile
+  
+  searchPromoTransferData.summary=Search promo transfer data
+  searchPromoTransferData.description=Search promo transfer data
+  
+  transferProfileDashboardList.summary=Trasnfer profile dashboad list
+  transferProfileDashboardList.description=Trasnfer profile dashboad list
+  
+  updatePromoTransferData.summary=Modify promo transfer data
+  updatePromoTransferData.description=Modify promo transfer data
+  
+  calculateSignature.summary=Calculate Signature
+  calculateSignature.description=Calculate Signature
+  
+  generateNonce.summary=processGenerateNonce
+  generateNonce.description=processGenerateNonce
+  
+  batchCommissionUserListDownload.summary=O2C Batch Commission user List Download
+  batchCommissionUserListDownload.description=O2C Batch Commission user List Download
+  
+  BulkComBatchProcess.summary=Bulk Commission Batch Process
+  BulkComBatchProcess.description=Bulk Commission Batch Process
+  
+  commissionBatchAppRej.summary=Bulk Commission Batch Approval Reject
+  commissionBatchAppRej.description=Bulk Commission Batch Approval Reject
+  
+  focBatchStockTrf.summary=Foc Batch Stock Transfer
+  focBatchStockTrf.description=Foc Batch Stock Transfer
+  
+  getBulkApprDetail.summary=Bulk O2C Approval Deails
+  getBulkApprDetail.description=Bulk O2C Approval Deails
+  
+  getBulkApprvList.summary=Bulk O2C Approval List
+  getBulkApprvList.description=Bulk O2C Approval List
+  
+  o2CBatchAppRej.summary=O2CBatchApprovalReject
+  o2CBatchAppRej.description=O2CBatchApprovalReject
+  
+  o2CBatchProcess.summary=O2CBatchProcess
+  o2CBatchProcess.description=O2CBatchProcess
+  
+  o2cBatchStockTrf.summary=O2C Batch Stock Transfer
+  o2cBatchStockTrf.description=O2C Batch Stock Transfer
+  
+  o2CBatchWithdraw.summary=O2CBatchWithdraw
+  o2CBatchWithdraw.description=O2CBatchWithdraw
+  
+  focInitiate.summary=Foc Request for stock
+  focInitiate.description=Foc Request for stock
+  
+  chUserPaymentTypes&Ranges.summary=get channel user Payment Types & Ranges
+  chUserPaymentTypes&Ranges.description=get channel user Payment Types & Ranges
+  
+  focApproval.summary=FOC Approval
+  focApproval.description=FOC Approval
+  
+  gatewayPaymentHandler.summary=Handle Online Payment
+  gatewayPaymentHandler.description=Handle Online Payment
+  
+  getApprovalList.summary=O2C Approval List
+  getApprovalList.description=O2C Approval List
+  
+  getChannelUserDetails.summary=ChannelUserList
+  getChannelUserDetails.description=ChannelUserList
+  
+  getGeoDomainCatDetails.summary=GeographicalDomainCategoryDetails
+  getGeoDomainCatDetails.description=GeographicalDomainCategoryDetails
+  
+  getO2CProducts.summary=Get Products For O2C
+  getO2CProducts.description=Get Products For O2C
+  
+  getOwnerUserDetails.summary=OwnerUserList
+  getOwnerUserDetails.description=OwnerUserList
+  
+  getSearchDetails.summary=SearchDetails
+  getSearchDetails.description=SearchDetails
+  
+  getUserInfo.summary=Get O2C User Info
+  getUserInfo.description=Get O2C User Info
+  
+  o2cTxnApprovalDetails.summary=Load O2C Transaction Details for approval level one
+  o2cTxnApprovalDetails.description= two and three
+  
+  o2cVoucherApproval.summary=O2C Voucher Approval
+  o2cVoucherApproval.description=O2C Voucher Approval
+  
+  o2cvoucherInitiate.summary=O2C Request for Voucher Initiate
+  o2cvoucherInitiate.description=O2C Request for Voucher Initiate
+  
+  o2cvouchertransfer.summary=O2C Request for Voucher Transfer
+  o2cvouchertransfer.description=O2C Request for Voucher Transfer
+  
+  o2cWithdrawl.summary=O2C Withdrawl
+  o2cWithdrawl.description=O2C Withdrawl
+  
+  stockApproval.summary=O2C Stock Approval
+  stockApproval.description=O2C Stock Approval
+  
+  stockInitiate.summary=Initiate O2C Request for Stock
+  stockInitiate.description=Initiate O2C Request for Stock
+  
+  stockInitiateByOpt.summary=Initiate O2C Request for Stock
+  stockInitiateByOpt.description=Initiate O2C Request for Stock
+  
+  stockReturn.summary=O2C Return Request for Stock
+  stockReturn.description=O2C Return Request for Stock
+  
+  roles.summary=Get Roles
+  roles.description=Get Roles
+  
+  getEVDAvailableVoucherDenom.summary=View available voucher denominations for evd
+  getEVDAvailableVoucherDenom.description=View available voucher denominations for evd
+  
+  getSystemPreferences.summary=Returns the list of System Preferences
+  getSystemPreferences.description=Returns the list of System Preferences
+  
+  UpdateSystemPreferences.summary=Updates the list of System Preferences
+  UpdateSystemPreferences.description=Updates the list of System Preferences
+  
+  additionCommisionSummaryC2S.summary=Additional commision summary search report
+  additionCommisionSummaryC2S.description=Additional commision summary search report
+  
+  bulkuserAdditionStatusRpt.summary=Bulk user addition status report
+  bulkuserAdditionStatusRpt.description=Bulk user addition status report
+  
+  c2ctransferCommissionRpt.summary=Channel to Channel transfer commission report
+  c2ctransferCommissionRpt.description=Channel to Channel transfer commission report
+  
+  c2CtransferCommissionRptDownload.summary=Channel to Channel commission report download
+  c2CtransferCommissionRptDownload.description=Channel to Channel commission report download
+  
+  c2StransferCommissionRptDownload.summary=Channel to transfer commission report download
+  c2StransferCommissionRptDownload.description=Channel to transfer commission report download
+  
+  CUbulkStatusChangeTemplate.summary=Channel User Bulk Status Change Template File Download
+  CUbulkStatusChangeTemplate.description=Channel User Bulk Status Change Template File Download
+  
+  downloadAddtnlCommSummryRpt.summary=Additional commission summary report download
+  downloadAddtnlCommSummryRpt.description=Additional commission summary report download
+  
+  downloadBulkUserStatusRpt.summary=Bulk user addition status report download
+  downloadBulkUserStatusRpt.description=Bulk user addition status report download
+  
+  downloadLargeOfflineReportByTaskID.summary=Offline report download
+  downloadLargeOfflineReportByTaskID.description=Offline report download
+  
+  downloadO2ctransferdetailsRpt.summary=Operator to Channel transfer details report download
+  downloadO2ctransferdetailsRpt.description=Operator to Channel transfer details report download
+  
+  downloadOfflineReportByTaskID.summary=Offline report download
+  downloadOfflineReportByTaskID.description=Offline report download
+  
+  fetchStaffUserDetails.summary=Fetch Staff users
+  fetchStaffUserDetails.description=Fetch Staff users
+  
+  fetchUserNameAutoSearch.summary=Fetch username Autosearch
+  fetchUserNameAutoSearch.description=Fetch username Autosearch
+  
+  getCommissionSlabDetails.summary=Get commission slab details
+  getCommissionSlabDetails.description=Get commission slab details
+  
+  getLookUPListbyType.summary=getLookUPListbyType
+  getLookUPListbyType.description=getLookUPListbyType
+  
+  getO2CTransferAcknowledgement.summary=Opertor to channel transfer acknowledgement details
+  getO2CTransferAcknowledgement.description=Opertor to channel transfer acknowledgement details
+  
+  getParentandOwnerProfileInfo.summary=Get parent & owner Info
+  getParentandOwnerProfileInfo.description=Get parent & owner Info
+  
+  lowthreshHoldRpt.summary=Low thresh hold report
+  lowthreshHoldRpt.description=Low thresh hold report
+  
+  lowThresholdDownload.summary=Low threshold download
+  lowThresholdDownload.description=Low threshold download
+  
+  o2cAcknowledgePDFDownload.summary=O2C acknowledge dowload in PDF format
+  o2cAcknowledgePDFDownload.description=O2C acknowledge dowload in PDF format
+  
+  o2cTransferAcknowldgeRptDownload.summary=Operator to channel transfer acknowledgement details download
+  o2cTransferAcknowldgeRptDownload.description=Operator to channel transfer acknowledgement details download
+  
+  o2cTransferDetailsSearch.summary=Operator to Channel transfer detail search report
+  o2cTransferDetailsSearch.description=Operator to Channel transfer detail search report
+  
+  offlineDownlaoadActionByTaskID.summary=Offline report download by task ID
+  offlineDownlaoadActionByTaskID.description=Offline report download by task ID
+  
+  passbookDownload.summary=Passbook download
+  passbookDownload.description=Passbook download
+  
+  passbookOthersDownload.summary=Passbook others details
+  passbookOthersDownload.description=Passbook others details
+  
+  passbookSearch.summary=Passbook search details
+  passbookSearch.description=Passbook search details
+  
+  pinPassHistDownload.summary=Pin Password History download
+  pinPassHistDownload.description=Pin Password History download
+  
+  pinPassHistorySearch.summary=pin password history search
+  pinPassHistorySearch.description=pin password history search
+  
+  viewOfflineRptProcessStatusList.summary=View all offline Report process status
+  viewOfflineRptProcessStatusList.description=View all offline Report process status
+  
+  getLookupsCache.summary=lookupsCache
+  getLookupsCache.description=lookupsCache
+  
+  getPreferenceCache.summary=preferenceCache
+  getPreferenceCache.description=preferenceCache
+  
+  getSublookupsCache.summary=sublookupsCache
+  getSublookupsCache.description=sublookupsCache
+  
+  regex.summary=Get Regular Expression
+  regex.description=Get Regular Expression
+  
+  async-reports.summary=Async Reports
+  async-reports.description=Async Reports
+  
+  commonReportAPI.summary=Common Reports
+  commonReportAPI.description=Common Reports
+  
+  alertCounterReportDownload.summary=Alert Counter Summary Report Download
+  alertCounterReportDownload.description=Alert Counter Summary Report Download
+  
+  bulkc2cReportDownload.summary=C2C bulk Enquiry Report Download
+  bulkc2cReportDownload.description=C2C bulk Enquiry Report Download
+  
+  viewbarredUserList.summary=view barred user list
+  viewbarredUserList.description=view barred user list
+  
+  viewC2cAndO2cDownloadReport.summary=View C2C And OC2 Enquiry Report Download
+  viewC2cAndO2cDownloadReport.description=View C2C And OC2 Enquiry Report Download
+  
+  viewC2SEnquiryReportDownload.summary=View C2S Enquiry Report Download
+  viewC2SEnquiryReportDownload.description=View C2S Enquiry Report Download
+  
+  .summary=Load all reprint vouchers
+  .description=Load all reprint vouchers
+  
+  addserviceMgmtData.summary=Add service mgmt data
+  addserviceMgmtData.description=Add service mgmt data
+  
+  searchServiceMgmtData.summary=Search service managemet data
+  searchServiceMgmtData.description=Search service managemet data
+  
+  servicMgmtInputValues.summary=Input drop down values data
+  servicMgmtInputValues.description=Input drop down values data
+  
+  deleteServicePrdMapping.summary=This API is to delete the details of Service Product mapping
+  deleteServicePrdMapping.description=This API is to delete the details of Service Product mapping
+  
+  getUIinputDetails.summary=This API is to fetch the UI details for drop down values
+  getUIinputDetails.description=This API is to fetch the UI details for drop down values
+  
+  modifyServicePrdMapping.summary=This API is to modify the details of Service Product mapping
+  modifyServicePrdMapping.description=This API is to modify the details of Service Product mapping
+  
+  saveServicePrdMapping.summary=This API is to save the details of Service Product mapping
+  saveServicePrdMapping.description=This API is to save the details of Service Product mapping
+  
+  serarchServicePrdMapping.summary=serarchServicePrdMapping
+  serarchServicePrdMapping.description=serarchServicePrdMapping
+  
+  addServiceKeyword.summary=Add service keyword
+  addServiceKeyword.description=Add service keyword
+  
+  deleteserviceKeywordbyID.summary=Delete service keywords by service keyword ID
+  deleteserviceKeywordbyID.description=Delete service keywords by service keyword ID
+  
+  fetchserviceKeywordbyID.summary=Fetch service keywords by service keyword ID
+  fetchserviceKeywordbyID.description=Fetch service keywords by service keyword ID
+  
+  getMessageGatewayList.summary=Get message gateway list
+  getMessageGatewayList.description=Get message gateway list
+  
+  getserviceKeywordbyServiceType.summary=Get service keywords by service type
+  getserviceKeywordbyServiceType.description=Get service keywords by service type
+  
+  getserviceTypeList.summary=Get service type list
+  getserviceTypeList.description=Get service type list
+  
+  modifyServiceKeyword.summary=Modify service keyword
+  modifyServiceKeyword.description=Modify service keyword
+  
+  sendSms.summary=processSendSms
+  sendSms.description=processSendSms
+  
+  getStaffUser.summary=Get Staff Users
+  getStaffUser.description=Get Staff Users
+  
+  {idValue}.summary=Delete a Staff User
+  {idValue}.description=Delete a Staff User
+  
+  addStaffUser.summary=Add Staff User
+  addStaffUser.description=Add Staff User
+  
+  editStaffUser.summary=Edit Staff User
+  editStaffUser.description=Edit Staff User
+  
+  fetchRoles.summary=Fetch User Roles
+  fetchRoles.description=Fetch User Roles
+  
+  {idValue}.summary=Staff User Details
+  {idValue}.description=Staff User Details
+  
+  getServices.summary=Return the list of Services
+  getServices.description=Return the list of Services
+  
+  addAgent.summary=Add agent
+  addAgent.description=Add agent
+  
+  addCategory.summary=Add category
+  addCategory.description=Add category
+  
+  addcattrfprofile.summary=Add Category Transfer Profile
+  addcattrfprofile.description=Add Category Transfer Profile
+  
+  addChannelDomain.summary=Add channel domain
+  addChannelDomain.description=Add channel domain
+  
+  addChannelTransferRule.summary=addChannelTransferRule
+  addChannelTransferRule.description=addChannelTransferRule
+  
+  addDepartment.summary=Add Department By Admin
+  addDepartment.description=Add Department By Admin
+  
+  addDivision.summary=Add Division By Admin
+  addDivision.description=Add Division By Admin
+  
+  addGrade.summary=Add Grade
+  addGrade.description=Add Grade
+  
+  addGroupRole.summary=Add Group Role
+  addGroupRole.description=Add Group Role
+  
+  addMessageGateway.summary=Add Message Gateway
+  addMessageGateway.description=Add Message Gateway
+  
+  assignGeography.summary=assign Geography By Admin
+  assignGeography.description=assign Geography By Admin
+  
+  assignList.summary=assign list By Admin
+  assignList.description=assign list By Admin
+  
+  categoryInfo.summary=Category Info
+  categoryInfo.description=Category Info
+  
+  categoryList.summary=Category List By Admin
+  categoryList.description=Category List By Admin
+  
+  changeUserNetwork.summary=Change user network from the list
+  changeUserNetwork.description=Change user network from the list
+  
+  channelDomainList.summary=Channel Domain List By Admin
+  channelDomainList.description=Channel Domain List By Admin
+  
+  channelToChannelTransferruleDropdown.summary=Drop Down
+  channelToChannelTransferruleDropdown.description=Drop Down
+  
+  channelTransferRuleView.summary=Channel TransferRule View
+  channelTransferRuleView.description=Channel TransferRule View
+  
+  deleteCategory.summary=Delete category By Admin
+  deleteCategory.description=Delete category By Admin
+  
+  deletecattrfprofile.summary=Delete Category Transfer Profile
+  deletecattrfprofile.description=Delete Category Transfer Profile
+  
+  deleteChannelDomain.summary=Delete channel domain By Admin
+  deleteChannelDomain.description=Delete channel domain By Admin
+  
+  deleteChannelTransferRule.summary=Delete Channel Transfer Rule
+  deleteChannelTransferRule.description=Delete Channel Transfer Rule
+  
+  deleteDepartment.summary=Delete Department By Admin
+  deleteDepartment.description=Delete Department By Admin
+  
+  deleteDivision.summary=Delete division By Admin
+  deleteDivision.description=Delete division By Admin
+  
+  deleteGateway.summary=delete gateway
+  deleteGateway.description=delete gateway
+  
+  deleteGrade.summary=Delete Grade
+  deleteGrade.description=Delete Grade
+  
+  deleteGroupRole.summary=Delete Group Role
+  deleteGroupRole.description=Delete Group Role
+  
+  deleteMessagegGateway.summary=Delete Message Gateway By Admin
+  deleteMessagegGateway.description=Delete Message Gateway By Admin
+  
+  deleteOperatorUser.summary=Delete Operator User
+  deleteOperatorUser.description=Delete Operator User
+  
+  departmentList.summary=Department SMSC Profile List By Admin
+  departmentList.description=Department SMSC Profile List By Admin
+  
+  departmentListAdmin.summary=Department List By Admin
+  departmentListAdmin.description=Department List By Admin
+  
+  displayMessageGateway.summary=Display Message Gateway Details
+  displayMessageGateway.description=Display Message Gateway Details
+  
+  Dep Type List By Admin.summary=Dep Type List By Admin
+  Dep Type List By Admin.description=Dep Type List By Admin
+  
+  divisionList.summary=Division List By Admin
+  divisionList.description=Division List By Admin
+  
+  divisionListForDepartment.summary=Division List For Department By Admin
+  divisionListForDepartment.description=Division List For Department By Admin
+  
+  addagent.summary=Add Agent For Domain-Management
+  addagent.description=Add Agent For Domain-Management
+  
+  addCategory.summary=Add Category For Domain-Management
+  addCategory.description=Add Category For Domain-Management
+  
+  deleteDomain.summary=Domain Management
+  deleteDomain.description=Domain Management
+  
+  displayList.summary=Domain Management
+  displayList.description=Domain Management
+  
+  getRolesForDomainManagement.summary=Roles For Domain Management
+  getRolesForDomainManagement.description=Roles For Domain Management
+  
+  validateChannelCategory.summary=Validate Channel Category
+  validateChannelCategory.description=Validate Channel Category
+  
+  downloadBatchOperatorUserInitiateTemplate.summary=Download Operator Users Initiate File Template
+  downloadBatchOperatorUserInitiateTemplate.description=Download Operator Users Initiate File Template
+  
+  fetchtrfcatprofile.summary=Get Category Profile List
+  fetchtrfcatprofile.description=Get Category Profile List
+  
+  gatewayList.summary=Gateway List By Admin
+  gatewayList.description=Gateway List By Admin
+  
+  getCatAgentScreenInputDetails.summary=Get category Screen input details
+  getCatAgentScreenInputDetails.description=Get category Screen input details
+  
+  getCategoryInfoByAdmin.summary=Category Info By domaincode and category code
+  getCategoryInfoByAdmin.description=Category Info By domaincode and category code
+  
+  {divID}.summary=Get department list by division id
+  {divID}.description=Get department list by division id
+  
+  getdomainmgmtlist.summary=Domain Mangagment
+  getdomainmgmtlist.description=Domain Mangagment
+  
+  getGradeTypeList.summary=Get Category and Domain List for Grade Management
+  getGradeTypeList.description=Get Category and Domain List for Grade Management
+  
+  getUserDetails.summary=Get User Details
+  getUserDetails.description=Get User Details
+  
+  infoList.summary=Info List By Admin
+  infoList.description=Info List By Admin
+  
+  add.summary=Add Interface Details.
+  add.description=Add Interface Details.
+  
+  delete.summary=Delete Interface Details
+  delete.description=Delete Interface Details
+  
+  getdetailsbyid.summary=get the Details of Interface.
+  getdetailsbyid.description=get the Details of Interface.
+  
+  load.summary=populate the Details of Interface.
+  load.description=populate the Details of Interface.
+  
+  loadinterfacetype.summary=populate the Details of Interface types.
+  loadinterfacetype.description=populate the Details of Interface types.
+  
+  modify.summary=modify Interface Details.
+  modify.description=modify Interface Details.
+  
+  loadApprovalOperatorUsersList.summary=loadApprovalOperatorUsersList
+  loadApprovalOperatorUsersList.description=loadApprovalOperatorUsersList
+  
+  loadclasshandler.summary=Load Class Handler List
+  loadclasshandler.description=Load Class Handler List
+  
+  loadDomainList.summary=Domain List
+  loadDomainList.description=Domain List
+  
+  loadGatewayTypeAndSubType.summary=Load Gateway Type And SubType
+  loadGatewayTypeAndSubType.description=Load Gateway Type And SubType
+  
+  loadNetworkList.summary=Load the network list for change
+  loadNetworkList.description=Load the network list for change
+  
+  loadRolesByGroupRoleCode.summary=Load Roles List By Group Role Code
+  loadRolesByGroupRoleCode.description=Load Roles List By Group Role Code
+  
+  loadRolesListByGroupRole.summary=Load Roles List By Group Role
+  loadRolesListByGroupRole.description=Load Roles List By Group Role
+  
+  loadTransferRuleList.summary=TransferRule List
+  loadTransferRuleList.description=TransferRule List
+  
+  messageGatewayList.summary=Message Gateway List By Admin
+  messageGatewayList.description=Message Gateway List By Admin
+  
+  modcattrfprofile.summary=Modify Category Transfer Profile
+  modcattrfprofile.description=Modify Category Transfer Profile
+  
+  modifyChannelDomain.summary=Modify channel domain
+  modifyChannelDomain.description=Modify channel domain
+  
+  modifyDepartment.summary=Modify Department
+  modifyDepartment.description=Modify Department
+  
+  modifyDivision.summary=Modify division
+  modifyDivision.description=Modify division
+  
+  modifyGateway.summary=Modify gateway
+  modifyGateway.description=Modify gateway
+  
+  modifyGrade.summary=Modify Grade
+  modifyGrade.description=Modify Grade
+  
+  modifyMessagegGateway.summary=Modify Message Gateway By Admin
+  modifyMessagegGateway.description=Modify Message Gateway By Admin
+  
+  add.summary=Add Service Class
+  add.description=Add Service Class
+  
+  {name}.summary=Delete service class
+  {name}.description=Delete service class
+  
+  {id}.summary=Get list for service class
+  {id}.description=Get list for service class
+  
+  modify.summary=Modify Service Class
+  modify.description=Modify Service Class
+  
+  smscProfileList.summary=SMSC Profile List By Admin
+  smscProfileList.description=SMSC Profile List By Admin
+  
+  updateCache.summary=Update Cache
+  updateCache.description=Update Cache
+  
+  updateCacheList.summary=Get Cache and Instances List
+  updateCacheList.description=Get Cache and Instances List
+  
+  updateCategoryAgent.summary=Update category with Agent
+  updateCategoryAgent.description=Update category with Agent
+  
+  updateCategoryOnly.summary=Update category only
+  updateCategoryOnly.description=Update category only
+  
+  updateChannelTransferRule.summary=Update Channel TransferRule
+  updateChannelTransferRule.description=Update Channel TransferRule
+  
+  updateGroupRole.summary=Update Group Role
+  updateGroupRole.description=Update Group Role
+  
+  updateMessageGateway.summary=Update Message Gateway
+  updateMessageGateway.description=Update Message Gateway
+  
+  updateStatusOfChannelDomain.summary=Delete channel domain By Admin
+  updateStatusOfChannelDomain.description=Delete channel domain By Admin
+  
+  uploadBatchOperatorUserInitiate.summary=Upload Base64 encoded file for Batch User Initiation of Operator Users
+  uploadBatchOperatorUserInitiate.description=Upload Base64 encoded file for Batch User Initiation of Operator Users
+  
+  viewGradeList.summary=View Grade List
+  viewGradeList.description=View Grade List
+  
+  viewGroupRoles.summary=View Group Roles
+  viewGroupRoles.description=View Group Roles
+  
+  viewOperatorUser.summary=View the operator users
+  viewOperatorUser.description=View the operator users
+  
+  isPinChangeOnTxRequired.summary=Checking pin change on transaction
+  isPinChangeOnTxRequired.description=Checking pin change on transaction
+  
+  dashboardService.summary=Dashboard Sync Service
+  dashboardService.description=Dashboard Sync Service
+  
+  barredUserList.summary=Barred Channel User List
+  barredUserList.description=Barred Channel User List
+  
+  unbar bulk.summary=unbar bulk
+  unbar bulk.description=unbar bulk
+  
+  barUnbarUser.summary=Bar a Channel User
+  barUnbarUser.description=Bar a Channel User
+  
+  getUserInfoForBarring.summary=Get User Info For Barring
+  getUserInfoForBarring.description=Get User Info For Barring
+  
+  passwordManagement.summary=Manage password for user
+  passwordManagement.description=Manage password for user
+  
+  Self Pin Change.summary=Self Pin Change
+  Self Pin Change.description=Self Pin Change
+  
+  pinManagement.summary=Reset or send PIN for channel users
+  pinManagement.description=Reset or send PIN for channel users
+  
+  pinManagementAdmin.summary=Reset or send PIN for channel users
+  pinManagementAdmin.description=Reset or send PIN for channel users
+  
+  suspendResume.summary=Suspend Resume User
+  suspendResume.description=Suspend Resume User
+  
+  getAvailableVoucherCounts.summary=View available voucher count
+  getAvailableVoucherCounts.description=View available voucher count
+  
+  getVoucherBatchList.summary=View batch list available for voucher download
+  getVoucherBatchList.description=View batch list available for voucher download
+  
+  getvouchercounts.summary=View available voucher count
+  getvouchercounts.description=View available voucher count
+  
+  getVoucherDownloadFile.summary=Download voucher file
+  getVoucherDownloadFile.description=Download voucher file
+  
+  getvoucherinfo.summary=View available voucher info
+  getvoucherinfo.description=View available voucher info
+  
+  validatetvoucherinfo.summary=Validate voucher info
+  validatetvoucherinfo.description=Validate voucher info
+  
+  Reedem Api..summary=Reedem Api.
+  Reedem Api..description=Reedem Api.
+  
+  approvalbarredfordlt.summary=Channel users in barred request to barred
+  approvalbarredfordlt.description=Channel users in barred request to barred
+  
+  BarreduserList.summary=Barred Approval Users
+  BarreduserList.description=Barred Approval Users
+  
+  chUserPaymentTypes&Ranges.summary=get channel user Payment Types & Ranges
+  chUserPaymentTypes&Ranges.description=get channel user Payment Types & Ranges
+
+  
+  
+  
+  
+  auth.management.name=وحدة إدارة المصادقة لأغراض المصادقة
+auth.management.desc=وحدة إدارة المصادقة لأغراض المصادقة وحدة إدارة المصادقة لأغراض المصادقة وحدة إدارة المصادقة لأغراض المصادقة
+
+PreTUPS_Desc=PreTUPS™ is an evolved and comprehensive prepaid account management and recharge distribution platform. \n It enables telecom operators to rapidly create and efficiently manage multi-level distribution hierarchy for retailing telecom products and services.  
+  
+#C2C
+
+
+C2CBuyVoucherController.name=Channel To Channel APIs
+C2CBuyVoucherController.desc=Channel users transfer stock to other channel users through C2C transfers. \n By default, parent channel users transfer TopUp value to their child channel users.
+
+
+C2CBuyVoucherCountInfoController.name=Channel To Channel APIs
+C2CBuyVoucherCountInfoController.desc=Channel users transfer stock to other channel users through C2C transfers. \n By default, parent channel users transfer TopUp value to their child channel users.
+
+
+C2CFileController.name=Channel To Channel APIs
+C2CFileController.desc=Channel users transfer stock to other channel users through C2C transfers. \n By default, parent channel users transfer TopUp value to their child channel users.
+
+C2CStockApprovalController.name=Channel To Channel APIs
+C2CStockApprovalController.desc=Channel users transfer stock to other channel users through C2C transfers. \n By default, parent channel users transfer TopUp value to their child channel users.
+
+
+C2CStockTransferController.name=Channel To Channel APIs
+C2CStockTransferController.desc=Channel users transfer stock to other channel users through C2C transfers. \n By default, parent channel users transfer TopUp value to their child channel users.
+
+C2CTransferDetailController.name=Channel To Channel APIs
+C2CTransferDetailController.desc=Channel users transfer stock to other channel users through C2C transfers. \n By default, parent channel users transfer TopUp value to their child channel users.
+
+C2CVoucherApprvlController.name=Channel To Channel APIs
+C2CVoucherApprvlController.desc=Channel users transfer stock to other channel users through C2C transfers. \n By default, parent channel users transfer TopUp value to their child channel users.
+
+C2CVoucherTransferController.name=Channel To Channel APIs
+C2CVoucherTransferController.desc=Channel users transfer stock to other channel users through C2C transfers. \n By default, parent channel users transfer TopUp value to their child channel users.
+
+
+BulkAutoC2CSOSCreditLimitController.name=Channel To Channel APIs
+BulkAutoC2CSOSCreditLimitController.desc=Channel users transfer stock to other channel users through C2C transfers. \n By default, parent channel users transfer TopUp value to their child channel users.
+
+C2CBulkController.name=Channel To Channel APIs
+C2CBulkController.desc=Channel users transfer stock to other channel users through C2C transfers. \n By default, parent channel users transfer TopUp value to their child channel users.
+
+
+GetCategoryListC2C.name=Channel To Channel APIs
+GetCategoryListC2C.desc=Channel users transfer stock to other channel users through C2C transfers. \n By default, parent channel users transfer TopUp value to their child channel users.
+
+AutoC2cSosCreditLimitController.name=Channel To Channel APIs
+AutoC2cSosCreditLimitController.desc=Channel users transfer stock to other channel users through C2C transfers. \n By default, parent channel users transfer TopUp value to their child channel users.
+
+C2CBulkApprovalController.name=Channel To Channel APIs
+C2CBulkApprovalController.desc=Channel users transfer stock to other channel users through C2C transfers. \n By default, parent channel users transfer TopUp value to their child channel users.
+
+C2CFileUploadApiController.name=Channel To Channel APIs
+C2CFileUploadApiController.desc=Channel users transfer stock to other channel users through C2C transfers. \n By default, parent channel users transfer TopUp value to their child channel users.
+
+C2CReturnController.name=Channel To Channel APIs
+C2CReturnController.desc=Channel users transfer stock to other channel users through C2C transfers. \n By default, parent channel users transfer TopUp value to their child channel users.
+
+C2CTransferMultController.name=Channel To Channel APIs
+C2CTransferMultController.desc=Channel users transfer stock to other channel users through C2C transfers. \n By default, parent channel users transfer TopUp value to their child channel users.
+
+C2CTrfInitiateController.name=Channel To Channel APIs
+C2CTrfInitiateController.desc=Channel users transfer stock to other channel users through C2C transfers. \n By default, parent channel users transfer TopUp value to their child channel users.
+
+C2CVoucherTransferAPICalculationController.name=Channel To Channel APIs
+C2CVoucherTransferAPICalculationController.desc=Channel users transfer stock to other channel users through C2C transfers. \n By default, parent channel users transfer TopUp value to their child channel users.
+
+
+C2CWithdrawController.name=Channel To Channel APIs
+C2CWithdrawController.desc=Channel users transfer stock to other channel users through C2C transfers. \n By default, parent channel users transfer TopUp value to their child channel users.
+
+
+
+#O2C
+
+O2CApprovalController.name=Operator To Channel APIs
+O2CApprovalController.desc=Channel Administrators transfers stock to channel users through O2C transfers. \n 1) Channel Administrators initiate stock transfers upon requests from channel users.\n 2) All O2C stock transfers require approval from authorized Channel Administrators. \n 3) After approval from authorized Channel Administrators, the transferred value is credited to channel users’ accounts.
+
+
+O2CApprovalListController.name=Operator To Channel APIs
+O2CApprovalListController.desc=Channel Administrators transfers stock to channel users through O2C transfers. \n 1) Channel Administrators initiate stock transfers upon requests from channel users.\n 2) All O2C stock transfers require approval from authorized Channel Administrators. \n 3) After approval from authorized Channel Administrators, the transferred value is credited to channel users’ accounts.
+
+O2CBatchApprovalController.name=Operator To Channel APIs
+O2CBatchApprovalController.desc=Channel Administrators transfers stock to channel users through O2C transfers. \n 1) Channel Administrators initiate stock transfers upon requests from channel users.\n 2) All O2C stock transfers require approval from authorized Channel Administrators. \n 3) After approval from authorized Channel Administrators, the transferred value is credited to channel users’ accounts.
+
+O2CBatchController.name=Operator To Channel APIs
+O2CBatchController.desc=Channel Administrators transfers stock to channel users through O2C transfers. \n 1) Channel Administrators initiate stock transfers upon requests from channel users.\n 2) All O2C stock transfers require approval from authorized Channel Administrators. \n 3) After approval from authorized Channel Administrators, the transferred value is credited to channel users’ accounts.
+
+
+
+
+O2cController.name=Operator To Channel APIs
+O2cController.desc=Channel Administrators transfers stock to channel users through O2C transfers. \n 1) Channel Administrators initiate stock transfers upon requests from channel users.\n 2) All O2C stock transfers require approval from authorized Channel Administrators. \n 3) After approval from authorized Channel Administrators, the transferred value is credited to channel users’ accounts.
+
+
+O2CReturnRestController.name=Operator To Channel APIs
+O2CReturnRestController.desc=Channel Administrators transfers stock to channel users through O2C transfers. \n 1) Channel Administrators initiate stock transfers upon requests from channel users.\n 2) All O2C stock transfers require approval from authorized Channel Administrators. \n 3) After approval from authorized Channel Administrators, the transferred value is credited to channel users’ accounts.
+
+
+
+AssociateO2CTransferRuleController.name=Operator To Channel APIs
+AssociateO2CTransferRuleController.desc=Channel Administrators transfers stock to channel users through O2C transfers. \n 1) Channel Administrators initiate stock transfers upon requests from channel users.\n 2) All O2C stock transfers require approval from authorized Channel Administrators. \n 3) After approval from authorized Channel Administrators, the transferred value is credited to channel users’ accounts.
+
+
+AutoO2CCreditLimitController.name=Operator To Channel APIs
+AutoO2CCreditLimitController.desc=Channel Administrators transfers stock to channel users through O2C transfers. \n 1) Channel Administrators initiate stock transfers upon requests from channel users.\n 2) All O2C stock transfers require approval from authorized Channel Administrators. \n 3) After approval from authorized Channel Administrators, the transferred value is credited to channel users’ accounts.
+
+
+
+O2cTxnReversalController.name=Operator To Channel APIs
+O2cTxnReversalController.desc=Channel Administrators transfers stock to channel users through O2C transfers. \n 1) Channel Administrators initiate stock transfers upon requests from channel users.\n 2) All O2C stock transfers require approval from authorized Channel Administrators. \n 3) After approval from authorized Channel Administrators, the transferred value is credited to channel users’ accounts.
+
+
+GetUserInfoForO2C.name=Operator To Channel APIs
+GetUserInfoForO2C.desc=Channel Administrators transfers stock to channel users through O2C transfers. \n 1) Channel Administrators initiate stock transfers upon requests from channel users.\n 2) All O2C stock transfers require approval from authorized Channel Administrators. \n 3) After approval from authorized Channel Administrators, the transferred value is credited to channel users’ accounts.
+
+
+O2CAutoApprovalController.name=Operator To Channel APIs
+O2CAutoApprovalController.desc=Channel Administrators transfers stock to channel users through O2C transfers. \n 1) Channel Administrators initiate stock transfers upon requests from channel users.\n 2) All O2C stock transfers require approval from authorized Channel Administrators. \n 3) After approval from authorized Channel Administrators, the transferred value is credited to channel users’ accounts.
+
+
+O2CChannelUserSearchApiController.name=Operator To Channel APIs
+O2CChannelUserSearchApiController.desc=Channel Administrators transfers stock to channel users through O2C transfers. \n 1) Channel Administrators initiate stock transfers upon requests from channel users.\n 2) All O2C stock transfers require approval from authorized Channel Administrators. \n 3) After approval from authorized Channel Administrators, the transferred value is credited to channel users’ accounts.
+
+
+
+
+O2CGetGeoDomCatApiController.name=Operator To Channel APIs
+O2CGetGeoDomCatApiController.desc=Channel Administrators transfers stock to channel users through O2C transfers. \n 1) Channel Administrators initiate stock transfers upon requests from channel users.\n 2) All O2C stock transfers require approval from authorized Channel Administrators. \n 3) After approval from authorized Channel Administrators, the transferred value is credited to channel users’ accounts.
+
+
+
+O2CInitiateByAdminController.name=Operator To Channel APIs
+O2CInitiateByAdminController.desc=Channel Administrators transfers stock to channel users through O2C transfers. \n 1) Channel Administrators initiate stock transfers upon requests from channel users.\n 2) All O2C stock transfers require approval from authorized Channel Administrators. \n 3) After approval from authorized Channel Administrators, the transferred value is credited to channel users’ accounts.
+
+
+O2CInitiateController.name=Operator To Channel APIs
+O2CInitiateController.desc=Channel Administrators transfers stock to channel users through O2C transfers. \n 1) Channel Administrators initiate stock transfers upon requests from channel users.\n 2) All O2C stock transfers require approval from authorized Channel Administrators. \n 3) After approval from authorized Channel Administrators, the transferred value is credited to channel users’ accounts.
+
+
+
+O2COwnerSearchApiController.name=Operator To Channel APIs
+O2COwnerSearchApiController.desc=Channel Administrators transfers stock to channel users through O2C transfers. \n 1) Channel Administrators initiate stock transfers upon requests from channel users.\n 2) All O2C stock transfers require approval from authorized Channel Administrators. \n 3) After approval from authorized Channel Administrators, the transferred value is credited to channel users’ accounts.
+
+
+O2CSearchApiController.name=Operator To Channel APIs
+O2CSearchApiController.desc=Channel Administrators transfers stock to channel users through O2C transfers. \n 1) Channel Administrators initiate stock transfers upon requests from channel users.\n 2) All O2C stock transfers require approval from authorized Channel Administrators. \n 3) After approval from authorized Channel Administrators, the transferred value is credited to channel users’ accounts.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#C2S
+
+C2SCardGroupController.name=Channel To Subscriber APIs
+C2SCardGroupController.desc=1. Channels users transfer talktime to subscribers through C2S transfers \n 2. The stock moves out of the network to subscribers through channel users.
+
+
+ModifyBatchC2SCardGroupController.name=Channel To Subscriber APIs
+ModifyBatchC2SCardGroupController.desc=1. Channels users transfer talktime to subscribers through C2S transfers \n 2. The stock moves out of the network to subscribers through channel users.
+
+
+C2SCardGroupStatusController.name=Channel To Subscriber APIs
+C2SCardGroupStatusController.desc=1. Channels users transfer talktime to subscribers through C2S transfers \n 2. The stock moves out of the network to subscribers through channel users.
+
+
+
+C2STransferRuleController.name=Channel To Subscriber APIs
+C2STransferRuleController.desc=1. Channels users transfer talktime to subscribers through C2S transfers \n 2. The stock moves out of the network to subscribers through channel users.
+
+
+
+C2SBulkReversalRestController.name=Channel To Subscriber APIs
+C2SBulkReversalRestController.desc=1. Channels users transfer talktime to subscribers through C2S transfers \n 2. The stock moves out of the network to subscribers through channel users.
+
+CAC2STransferReversalController.name=Channel To Subscriber APIs
+CAC2STransferReversalController.desc=1. Channels users transfer talktime to subscribers through C2S transfers \n 2. The stock moves out of the network to subscribers through channel users.
+
+
+C2SBulkRechargeController.name=Channel To Subscriber APIs
+C2SBulkRechargeController.desc=1. Channels users transfer talktime to subscribers through C2S transfers \n 2. The stock moves out of the network to subscribers through channel users.
+
+C2SReverseController.name=Channel To Subscriber APIs
+C2SReverseController.desc=1. Channels users transfer talktime to subscribers through C2S transfers \n 2. The stock moves out of the network to subscribers through channel users.
+
+
+C2SServicesController.name=Channel To Subscriber APIs
+C2SServicesController.desc=1. Channels users transfer talktime to subscribers through C2S transfers \n 2. The stock moves out of the network to subscribers through channel users.
+
+
+C2SSubServicesController.name=Channel To Subscriber APIs
+C2SSubServicesController.desc=1. Channels users transfer talktime to subscribers through C2S transfers \n 2. The stock moves out of the network to subscribers through channel users.
+
+
+
+#User Management System
+
+
+GetRolesAndServicesController.name=User Management System APIs
+GetRolesAndServicesController.desc=1
+
+
+SuspendResumeRestController.name=User Management System APIs
+SuspendResumeRestController.desc=1
+
+
+TransactionPinManagementController.name=Administration APIs
+TransactionPinManagementController.desc=1
+
+UserDeleteController.name=User Management System APIs
+UserDeleteController.desc=1
+
+UserPropertiesListsController.name=User Management System APIs
+UserPropertiesListsController.desc=1
+
+
+
+FetchBarUserListController.name=User Management System APIs
+FetchBarUserListController.desc=1
+
+
+GetStaffUserController.name=User Management System APIs
+GetStaffUserController.desc=1
+
+
+BarUnbarBulkAdminController.name=User Management System APIs
+BarUnbarBulkAdminController.desc=1
+
+
+BarUnbarUserController.name=User Management System APIs
+BarUnbarUserController.desc=1
+
+
+ChannelUserServices.name=User Management System APIs
+ChannelUserServices.desc=1
+
+DeleteStaffUserController.name=User Management System APIs
+DeleteStaffUserController.desc=1
+
+
+
+ViewUserController.name=User Management System APIs
+ViewUserController.desc=1
+
+
+OperatorApprovalController.name=User Management System APIs
+OperatorApprovalController.desc=1
+
+
+
+PasswordManagementController.name=User Management System APIs
+PasswordManagementController.desc=1
+
+
+
+DeleteOperatorUserController.name=User Management System APIs
+DeleteOperatorUserController.desc=1
+
+
+StaffUserController.name=User Management System APIs
+StaffUserController.desc=1
+
+
+OperatorUserController.name=User Management System APIs
+OperatorUserController.desc=1
+
+
+UserDefaultConfigurationMangamentController.name=User Management System APIs
+UserDefaultConfigurationMangamentController.desc=1
+
+
+UserAssociateProfileController.name=User Management System APIs
+UserAssociateProfileController.desc=1
+
+
+GetRolesAndServicesController.name=User Management System APIs
+GetRolesAndServicesController.desc=1
+
+
+
+
+ModifyChannelUser.name=User Management System APIs
+ModifyChannelUser.desc=1
+
+
+
+ChannelUserApprovalAddorEdit.name=User Management System APIs
+ChannelUserApprovalAddorEdit.desc=1
+
+
+
+ChannelUserApprovalSuspendController.name=User Management System APIs
+ChannelUserApprovalSuspendController.desc=1
+
+
+
+ChannelUserApprvListController.name=User Management System APIs
+ChannelUserApprvListController.desc=1
+
+
+
+ChannelUserServicesController.name=User Management System APIs
+ChannelUserServicesController.desc=1
+
+ServiceProductInterfaceMappingController.fetchSAPData.name = Fetch user data
+ServiceProductInterfaceMappingController.fetchSAPData.desc = Fetches user data based on external code and network
+
+
+
+ChannelUserTransferController.name=User Management System APIs
+ChannelUserTransferController.desc=1
+
+
+
+AddChannelUser.name=User Management System APIs
+AddChannelUser.desc=1
+
+
+ChannelEnquiryController.name=User Management System APIs
+ChannelEnquiryController.desc=1
+
+
+BatchUserApproveController.name=User Management System APIs
+BatchUserApproveController.desc=1
+
+
+SuspendResumeStaffController.name=User Management System APIs
+SuspendResumeStaffController.desc=1
+
+
+
+UserMovementController.name=User Management System APIs
+UserMovementController.desc=1
+
+
+
+ChangeUserStatusByAdminController.name=User Management System APIs
+ChangeUserStatusByAdminController.desc=1
+
+
+
+ChannelUserListController.name=User Management System APIs
+ChannelUserListController.desc=1
+
+DownloadUserListController.name=User Management System APIs
+DownloadUserListController.desc=1
+
+
+FetchChannelUserDetailsController.name=User Management System APIs
+FetchChannelUserDetailsController.desc=1
+
+
+
+
+
+
+
+
+AdminTxnReverseController.name=Transaction related APIs
+AdminTxnReverseController.desc=Admin Transaction Services
+  
+  
+  
+  
+  
+  
+  
+  
+  GetChannelUsersListController.name=User Management System APIs
+  GetChannelUsersListController.desc=1
+  
+  
+  
+  GetDomainCategoryController.name=Miscellaneous APIs
+  GetDomainCategoryController.desc=1
+  
+  
+  GetDomainCategoryParentController.name=Miscellaneous APIs
+  GetDomainCategoryParentController.desc=1
+  
+  
+  HomeScreenTransactionController.name=Miscellaneous APIs
+  HomeScreenTransactionController.desc=1
+  
+  
+  
+  PretupsUIReportsController.name=Report Management APIs
+  PretupsUIReportsController.desc=1
+  
+  
+  SenderReceiverDetailsController.name=Unknown
+  SenderReceiverDetailsController.desc=1
+  
+  
+  SenderReceiverDetailsController.name=Unknown
+  SenderReceiverDetailsController.desc=1
+  
+  
+  TransactionAPICalculationController.name=Transaction Management APIs
+  TransactionAPICalculationController.desc=1
+  
+  
+  UserPaymentTypesController.name=Miscellaneous APIs
+  UserPaymentTypesController.desc=1
+  UserPaymentTypesController.processCP2PUserRequest.name= Process CP2P user request
+  UserPaymentTypesController.processCP2PUserRequest.desc=Process CP2P user request
+
+  
+  
+  
+  
+  
+  
+  DownloadScheduleBatchReport.name=Report Management APIs
+  DownloadScheduleBatchReport.desc}=1
+  
+  
+  
+  
+  
+  ViewBatchDownloadReport.name=Report Management APIs
+  ViewBatchDownloadReport.desc=1
+  
+  
+  
+  ViewScheduleTopupDownlaodReport.name=Report Management APIs
+  ViewScheduleTopupDownlaodReport.desc=1
+  
+  
+  
+  
+  
+  ChannelToChannelTransferApproavlListController.name=Channel To Channel APIs
+  ChannelToChannelTransferApproavlListController.desc=Channel users transfer stock to other channel users through C2C transfers. \n By default, parent channel users transfer TopUp value to their child channel users.
+
+
+
+DownloadBatchFileApproveWithdraw.name=Unknown
+  DownloadBatchFileApproveWithdraw.desc=1
+  
+  
+  AssosiateAlertMsisdnController.name=Miscellaneous APIs
+  AssosiateAlertMsisdnController.desc=1
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  CreateBatchForVoucherDownloadController.name=Voucher Management System APIs
+  CreateBatchForVoucherDownloadController.desc=1
+  
+  
+  
+  DeRegisterSubscriberBatchController.name=Channel To Subscriber APIs
+  DeRegisterSubscriberBatchController.desc=1. Channels users transfer talktime to subscribers through C2S transfers \n 2. The stock moves out of the network to subscribers through channel users.
+  
+  
+  
+  
+  
+  
+  
+  VoucherPinResendController.name=Voucher Management System APIs
+  VoucherPinResendController.desc=1
+  
+  
+  
+  BulkOperationController.name=Unknown
+  BulkOperationController.desc=1
+  
+  
+  
+  RestrictedListMgmtController.name=Miscelleneous APIs
+  RestrictedListMgmtController.desc=1
+  
+  
+  
+  ServiceMgmtController.name=Configuration related APIs
+  ServiceMgmtController.desc=1
+  
+  
+  
+  
+  
+  EnquiryReportDownload.name=Reports Management APIs
+  EnquiryReportDownload.desc=1
+  
+  
+  
+  ViewC2cAndO2cDownloadReport.name=Operator To Channel APIs
+  ViewC2cAndO2cDownloadReport.desc=Channel Administrators transfers stock to channel users through O2C transfers. \n 1) Channel Administrators initiate stock transfers upon requests from channel users.\n 2) All O2C stock transfers require approval from authorized Channel Administrators. \n 3) After approval from authorized Channel Administrators, the transferred value is credited to channel users’ accounts.
+  
+  
+  
+  
+  
+  BotController.name=Bot Controller APIs
+  #BotController.desc=1. abcd \n 2. Channel Administrators transfers stock to channel users through O2C transfers. \n 1) Channel Administrators initiate stock transfers upon requests from channel users.\n 2) All O2C stock transfers require approval from authorized Channel Administrators. \n 3) After approval from authorized Channel Administrators, the transferred value is credited to channel users’ accounts.
+BotController.desc=1. Channels users transfer talktime to subscribers through C2S transfers \n 2. The stock moves out of the network to subscribers through channel users.
+
+
+
+ChangeNotificationLanguageAPIController.name=Configuration related APIs
+  ChangeNotificationLanguageAPIController.desc=1
+  
+  
+  
+  
+  DownloadTemplateChannelUser.name=User Management System APIs
+  DownloadTemplateChannelUser.desc=1
+  
+  
+  
+  
+  
+  
+  
+  ReprintVoucherController.name=Voucher Management System APIs
+  ReprintVoucherController.desc=1
+  
+  
+  
+  
+  
+  
+  
+  UserThresholdController.name=User Management System APIs
+  UserThresholdController.desc=1
+  
+  
+  
+  LoggerController.name=Miscellaneous APIs
+  LoggerController.desc=1
+  
+  LoginController.name=Authentication Management APIs
+LoginController.desc=Authentication Management APIs
+  
+  AddBatchPromotionalTransferRuleController.name=Transfer Rule Management APIs
+  AddBatchPromotionalTransferRuleController.desc=1
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  ControlPreferenceController.name=Configuration related APIs
+  ControlPreferenceController.desc=1
+  
+  
+  
+  GeographicalDomainController.name=Miscellaneous APIs
+  GeographicalDomainController.desc=1
+  
+  
+  
+  InitiateStockTransactionController.name=Transaction Management APIs
+  InitiateStockTransactionController.desc=1
+  
+  
+  
+  LevelOneApprovalController.name=Miscellaneous APIs
+  LevelOneApprovalController.desc=1
+  
+  
+  
+  LevelTwoApprovalController.name=Miscellaneous APIs
+  LevelTwoApprovalController.desc=1
+  
+  
+  
+  
+  
+  
+  
+  
+  NetworkPreferenceController.name=Configuration related APIs
+  NetworkPreferenceController.desc=1
+  
+  
+  
+  PromoTransferRuleController.name=Transfer Rule Management APIs
+  PromoTransferRuleController.desc=1
+  
+  
+  
+  ServiceClassPreferenceController.name=Configuration related APIs
+  ServiceClassPreferenceController.desc=1
+  
+  
+  
+  ServiceProductAmountMappingController.name=Configuration related APIs
+  ServiceProductAmountMappingController.desc=1
+  
+  
+  TransferProfileController.name=Transfer Profile Management APIs
+  TransferProfileController.desc=1
+  
+  
+  
+  
+  
+  ViewStockTransactionController.name=Transaction Management APIs
+  ViewStockTransactionController.desc=1
+  
+  
+  
+  
+  BatchCommissionProfileController.name=Commission Management System APIs
+  BatchCommissionProfileController.desc=1
+  
+  
+  
+  CommissionProfileController.name=Commission Management System APIs
+  CommissionProfileController.desc=1
+  
+  
+  
+  
+  InterfacePrefixController.name=Configuration related APIs
+  InterfacePrefixController.desc=1
+  
+  
+  
+  
+  
+  NetworkInterfacesController.name=Configuration related APIs
+  NetworkInterfacesController.desc=1
+  
+  
+  
+  
+  
+  
+  NetworkAdminFeatureController.name=Configuration related APIs
+  NetworkAdminFeatureController.desc=1
+  
+  
+  
+  
+  NetworkProductMappingController.name=Configuration related APIs
+  NetworkProductMappingController.desc=1
+  
+  
+  
+  NetworkServicesController.name=Configuration related APIs
+  NetworkServicesController.desc=1
+  
+  
+  
+  NetworkStockController.name=Stock related APIs
+  NetworkStockController.desc=1
+
+  
+  ServicePrdMappingController.name=Configuration related APIs
+  ServicePrdMappingController.desc=1
+  
+  
+  
+  VoucherCardGroupController.name=Voucher Management System APIs
+  VoucherCardGroupController.desc=1
+  
+  
+  
+  FOCApprovalController.name=Operator To Channel APIs
+  FOCApprovalController.desc=Channel Administrators transfers stock to channel users through O2C transfers. \n 1) Channel Administrators initiate stock transfers upon requests from channel users.\n 2) All O2C stock transfers require approval from authorized Channel Administrators. \n 3) After approval from authorized Channel Administrators, the transferred value is credited to channel users’ accounts.
+  
+  
+  
+  FOCInitiateController.name=Operator To Channel APIs
+  FOCInitiateController.desc=Channel Administrators transfers stock to channel users through O2C transfers. \n 1) Channel Administrators initiate stock transfers upon requests from channel users.\n 2) All O2C stock transfers require approval from authorized Channel Administrators. \n 3) After approval from authorized Channel Administrators, the transferred value is credited to channel users’ accounts.
+  
+  
+  
+  
+  
+  BasicOperatorUserController.name=User Management System APIs
+  BasicOperatorUserController.desc=1
+  
+  
+  PrintVoucherController.name=Voucher Management System APIs
+  PrintVoucherController.desc=1
+  
+  
+  
+  PreferencesController.name=Configuration related APIs
+  PreferencesController.desc=1
+  
+  
+  RedisController.name=Configuration related APIs
+  RedisController.desc=1
+  
+  RedisController.lookupsCache.name= REDIS lookupcache
+  RedisController.lookupsCache.desc=lookupcache
+  
+  RedisController.sublookupsCache.name= REDIS sublookupscache
+  RedisController.sublookupsCache.desc= sublookupscache
+  
+  RedisController.preferenceCache.name=REDIS preferencecache
+  RedisController.preferenceCache.desc=preferencecache
+
+  
+  
+  
+  ReportController.name=Report Management APIs
+  ReportController.desc=1
+  
+  
+  
+  BarredUserlistDownload.name=User Management System APIs
+  BarredUserlistDownload.desc=1
+  
+  
+  
+  
+  ReportsDownloadController.name=Report Management APIs
+  ReportsDownloadController.desc=1
+  
+  
+  
+  NonceGenerator.name=Miscellaneous APIs
+  NonceGenerator.desc=1
+  
+  
+  
+  SmsGatewaySimulator.name=Simulator APIs
+  SmsGatewaySimulator.desc=1
+  
+  
+  
+  
+  
+  
+  
+  
+  AddMessageGatewayController.name=Configuration related APIs
+  AddMessageGatewayController.desc=1
+  
+  
+  
+  BatchOperatorUserInitiateController.name=User Management System APIs
+  BatchOperatorUserInitiateController.desc=1
+  
+  
+  CategoryManagementController.name=Configuration related APIs
+  CategoryManagementController.desc=1
+  
+  
+  
+  CategoryTransferProfileController.name=Transfer Profile Management APIs
+  CategoryTransferProfileController.desc=1
+  
+  
+  ChannelDomainController.name=Miscellaneous APIs
+  ChannelDomainController.desc=1
+  
+  
+  
+  ChannelToChannelTransferRuleManagementController.name=Transfer Rule Management APIs
+  ChannelToChannelTransferRuleManagementController.desc=1
+  
+  
+  
+  
+  
+  DivisionManagementController.name=Configuration related APIs
+  DivisionManagementController.desc=1
+  
+  
+  GatewayMappingController.name=Configuration related APIs
+  GatewayMappingController.desc=1
+    
+    
+    
+    
+    GradeManagementController.name=Configuration related APIs
+    GradeManagementController.desc=1
+    
+    
+    
+    GroupRoleManagementController.name=User Management System APIs
+    GroupRoleManagementController.desc=1
+    
+    
+    
+    
+    InfoForEditOperatorController.name=Miscellaneous APIs
+    InfoForEditOperatorController.desc=1
+    
+    
+    
+    NetworkChangeController.name=Miscellaneous APIs
+    NetworkChangeController.desc=1
+    
+    
+    
+    
+    UpdateCacheController.name=Miscellaneous APIs
+    UpdateCacheController.desc=1
+    
+    
+    
+    DomainManagementController.name=Configuration related APIs
+    DomainManagementController.desc=1
+    
+    
+    InterfaceManagementController.name=Configuration related APIs
+    InterfaceManagementController.desc=1
+    
+    
+    ServiceClassManagementController.name=Configuration related APIs
+    ServiceClassManagementController.desc=1
+    
+    
+    
+    DownloadReportApiController.name=Report Management APIs
+    DownloadReportApiController.desc=1
+    
+    
+    
+    
+    DownloadReportforScheduledBatch.name=Report Management APIs
+    DownloadReportforScheduledBatch.desc=1
+    
+    
+    DownloadTemplateController.name=Report Management APIs
+    DownloadTemplateController.desc=1
+    
+    
+    
+    
+    GrafanaController.name=Miscellaneous APIs
+    GrafanaController.desc=1
+  
+    
+    PinManagementAdminController.name=Administration APIs
+    PinManagementAdminController.desc=1
+    
+    
+    PinManagementController.name=Administration APIs
+    PinManagementController.desc=1
+    
+    RegularExpressionController.name=Miscellaneous APIs
+    RegularExpressionController.desc=1
+    
+    
+    VoucherController.name=Voucher Management System APIs
+    VoucherController.desc=1
+    
+    VoucherCountInfoController.name=Voucher Management System APIs
+    VoucherCountInfoController.desc=1
+    
+    VoucherInfoServices.name=Voucher Management System APIs
+    VoucherInfoServices.desc=1
+    
+    OAuthenticationController.name=Authentication Management APIs
+    OAuthenticationController.desc=Authentication Management APIs
+
+#Reconciliation
+
+C2SReconciliationController.name=Reconciliation APIs
+C2SReconciliationController.desc=This functionality is for Network Admin \n 1. C2S Reconciliation \n 2. O2C Reconciliation \n 3. P2P Reconciliation
+
+O2CReconciliationController.name=Reconciliation APIs
+O2CReconciliationController.desc=This functionality is for Network Admin \n 1. C2S Reconciliation \n 2. O2C Reconciliation \n 3. P2P Reconciliation
+
+BulkAmbiguousSettlementController.name=Reconciliation APIs
+BulkAmbiguousSettlementController.desc=This functionality is for Network Admin \n 1. C2S Reconciliation \n 2. O2C Reconciliation \n 3. P2P Reconciliation
+
+O2CReconciliationController.o2cReconciliationList.name=load C2S Reconciliation List
+O2CReconciliationController.o2cReconciliationList.desc=load C2S Reconciliation List
+
+O2CReconciliationController.o2cReconciliationTransactionDetail.name=Fetch the reconciliation details based on transer ID
+O2CReconciliationController.o2cReconciliationTransactionDetail.desc=Fetch the reconciliation details based on transer ID
+
+O2CReconciliationController.o2CReconciliationFail.name=Fail reconciliation transfer
+O2CReconciliationController.o2CReconciliationFail.desc=Fail reconciliation transfer
+
+O2CReconciliationController.orderApproval.name=Approve reconciliation transfer
+O2CReconciliationController.orderApproval.desc=Approve reconciliation transfer
+
+#ServiceProductInterfaceMapping
+ServiceProductInterfaceMappingController.name=Service Product Interface Mapping APIs
+ServiceProductInterfaceMappingController.desc=This functionality is for Network Admin \n 1. Service Product Interface Mapping APIs
+
+ServiceProductInterfaceMappingController.getServiceTypesAndInterfaceList.name = Service types and interface list
+ServiceProductInterfaceMappingController.getServiceTypesAndInterfaceList.desc = This methods loads the Network Prefix List of a particular list. This is the entry point for Interface Network Mapping Prefix
+
+ServiceProductInterfaceMappingController.getServiceInterfaceMappingForView.name = Service interface mapping list for view
+ServiceProductInterfaceMappingController.getServiceInterfaceMappingForView.desc = This methods loads the service product interface mapping list.
+
+ServiceProductInterfaceMappingController.getServiceInterfaceMappingForAdd.name = Service interfacemapping list for add
+ServiceProductInterfaceMappingController.getServiceInterfaceMappingForAdd.desc = This methods loads the prepaid series, postpaid series and service product interface mapping list.
+
+ServiceProductInterfaceMappingController.addServiceInterfaceMapping.name = Add service interface mapping
+ServiceProductInterfaceMappingController.addServiceInterfaceMapping.desc = This methods add service product interface mapping
+
+ServiceProductInterfaceMappingController.getServiceInterfaceMappingForModify.name = Service interface mapping list for modify
+ServiceProductInterfaceMappingController.getServiceInterfaceMappingForModify.desc = This methods loads the prepaid series, postpaid series and service product interface mapping list for modify.
+
+ServiceProductInterfaceMappingController.modifyServiceInterfaceMapping.name =  Modify service interface mapping
+ServiceProductInterfaceMappingController.modifyServiceInterfaceMapping.desc = This method modify service product interface mapping
+
+ServiceProductInterfaceMappingController.deleteServiceInterfaceMapping.name = Delete service interface mapping
+ServiceProductInterfaceMappingController.deleteServiceInterfaceMapping.desc = This method deletes service product interface mapping
+
+#Service Type Selector Mapping 
+ServiceTypeSelectorMappingController.name= Service Type Selector Mapping APIs
+ServiceTypeSelectorMappingController.desc= This functionality is for Network Admin \n 1. Service Type Selector Mapping CURD APIs
+
+ServiceTypeSelectorMappingController.loadsrvtypedropdown.name= Service Type Selector Mapping drop down API
+ServiceTypeSelectorMappingController.loadsrvtypedropdown.desc= Service Type Selector Mapping drop down API
+
+ServiceTypeSelectorMappingController.load.name=Service Type Selector Mapping Load API
+ServiceTypeSelectorMappingController.load.desc=It will load all Details of Service Type Selector Mapping
+
+ServiceTypeSelectorMappingController.add.name= Service Type Selector Mapping Add API
+ServiceTypeSelectorMappingController.add.desc= Service Type Selector Mapping Add API
+
+ServiceTypeSelectorMappingController.modify.name=Service Type Selector Mapping Modify API
+ServiceTypeSelectorMappingController.modify.desc=Service Type Selector Mapping Modify API
+
+ServiceTypeSelectorMappingController.view.name=Service Type Selector Mapping Modify API
+ServiceTypeSelectorMappingController.view.desc=Service Type Selector Mapping Modify API
+
+ServiceTypeSelectorMappingController.delete.name=Service Type Selector Mapping delete API
+ServiceTypeSelectorMappingController.delete.desc=Service Type Selector Mapping delete API
+
+#Message Management 
+MessageManagementController.name= MessageManagememt APIs
+MessageManagementController.desc= This functionality is for Network Admin \n 1. Message Management APIs
+
+MessageManagementController.LoadMessageDetails.name = Load Message Details
+MessageManagementController.LoadMessageDetails.desc = Load message details based on the message code.
+
+MessageManagementController.ModifyMessageDetails.name = Modify Message Details
+MessageManagementController.ModifyMessageDetails.desc = Modify the message details.
+
+MessageManagementController.Downloadmessagefile.name = Download Messages
+MessageManagementController.Downloadmessagefile.desc = Download all the messages in file
+
+MessageManagementController.UploadMessageFile.name = Upload Messages
+MessageManagementController.UploadMessageFile.desc = Modify the messages and upload the file.
+
+
+#BatchC2STransferRuleAddModify
+batchC2STransferRuleController.name=Batch C2S Transfer Rule Add and Modify
+batchC2STransferRuleController.desc=This functionality is for Batch C2S Transfer Rule Add and Modify for Network Admin
+
+#iccidimsikeymanagementController 
+iccidimsikeymanagementController.name= iccidimsikeymanagementController APIs
+iccidimsikeymanagementController.desc= This functionality is for Network Admin \n 1. Associate and Re Associate MSISDN With ICCID APIs \n 2. upload and process MSISDN With ICCID APIs \n 3. enquire and history MSISDN With ICCID APIs \n 4. delete MSISDN With ICCID APIs
+
+iccidimsikeymanagementController.associateMSISDNWithICCID.name= Associate MSISDN with ICCID API
+iccidimsikeymanagementController.associateMSISDNWithICCID.desc= Associate MSISDN with ICCID API
+
+iccidimsikeymanagementController.reassociateMSISDNWithICCID.name= ReAssociate MSISDN with ICCID API
+iccidimsikeymanagementController.reassociateMSISDNWithICCID.desc= ReAssociate MSISDN with ICCID API
+
+iccidimsikeymanagementController.icciddelete.name= ICCID/IMSI Delete
+iccidimsikeymanagementController.icciddelete.desc = ICCID/IMSI Delete
+
+iccidimsikeymanagementController.icciddeletebulk.name= ICCID/IMSI Delete in bulk
+iccidimsikeymanagementController.icciddeletebulk.desc = ICCID/IMSI Delete in bulk
+
+iccidimsikeymanagementController.uploadmsisdn.name= Upload and process MSISDN with iccid
+iccidimsikeymanagementController.uploadmsisdn.desc= Upload and process MSISDN with iccid
+
+iccidimsikeymanagementController.loadcorrecticcidmsisdn.name = Load Correct ICCID MSISDN
+iccidimsikeymanagementController.loadcorrecticcidmsisdn.desc = Load Correct ICCID MSISDN
+
+iccidimsikeymanagementController.correcticcidmsisdn.name = Correct ICCID MSISDN API
+iccidimsikeymanagementController.correcticcidmsisdn.desc = Correct ICCID MSISDN API
+
+iccidimsikeymanagementController.iccidImsiMsisdnListFilterByIccid.name = Iccid imsi msisdn list filter by iccid
+iccidimsikeymanagementController.iccidImsiMsisdnListFilterByIccid.desc = Iccid imsi msisdn list filter by iccid
+
+iccidimsikeymanagementController.iccidImsiMsisdnListFilterByMsisdn.name = Iccid imsi msisdn list filter by msisdn
+iccidimsikeymanagementController.iccidImsiMsisdnListFilterByMsisdn.desc = Iccid imsi msisdn list filter by msisdn
+
+iccidimsikeymanagementController.iccidhistory.name = ICCID IMSI MSISDN history
+iccidimsikeymanagementController.iccidhistory.desc = ICCID IMSI MSISDN history 
+
+#BatchUploadICCIDKey
+batchUploadICCIDKeyController.name=Batch Upload ICCID Key
+batchUploadICCIDKeyController.desc=This functionality is for Batch Upload ICCID Key for Network Admin
+
+#Channel Admin API's
+ChannelAdminUserHierarchyController.name=Channel Admin User Hierarchy API's
+ChannelAdminUserHierarchyController.desc=Channel Admin User Hierarchy
+
+batchC2STransferRuleController.downloadtemplate.name=Batch C2S transfer download Template 
+batchC2STransferRuleController.downloadtemplate.desc=Batch C2S transfer download Template API
+batchC2STransferRuleController.processbatchc2stransferrule.name=Batch C2S transfer process batch
+batchC2STransferRuleController.processbatchc2stransferrule.desc=Batch C2S transfer process batch API
+batchUploadICCIDKeyController.processbatchkeyupload.name=Process batch key upload
+batchUploadICCIDKeyController.processbatchkeyupload.desc=Process batch key upload API
+
+#needs to be updated
+P2PEnquiryRestController.name=dummmy
+P2PEnquiryRestController.desc=1
+
+dummy.name=dummmy
+dummy.desc=1
+
+dummy.summary = dummmmy
+dummy.description = dummmmmmy desc
+  
+  #CellIdGroupManagement
+cellIdManagementController.name = Cell ID Group Management Controller
+cellIdManagementController.desc = This API is for network admin \n 1. Get Cell Group List \n 2. Add Cell Group \n 3. Modify Cell Group ID \n 4. Delete Cell group \n 5. Download Cell ID Associate Template \n 6. Associate Cell Id
+
+cellIdManagementController.cellGroupManagementList.name = Cell Group Management List
+cellIdManagementController.cellGroupManagementList.desc = This API get list of all cell groups present under network.
+
+cellIdManagementController.cellGroupManagementAdd.name = Add Cell group
+cellIdManagementController.cellGroupManagementAdd.desc = This API adds cell groups.
+
+cellIdManagementController.cellGroupManagementModify.name = Modify Cell group
+cellIdManagementController.cellGroupManagementModify.desc = This API modifies cell group.s
+
+cellIdManagementController.cellGroupManagementDelete.name = Delete Cell group
+cellIdManagementController.cellGroupManagementDelete.desc = This API deletes cell groups.
+
+cellIdManagementController.cellGroupIdAssociateTemplate.name = Download Cell ID Associate Template
+cellIdManagementController.cellGroupIdAssociateTemplate.desc = This API is used to download the template for cell id associate.
+
+cellIdManagementController.cellGroupIdAssociate.name = Associate Cell group Ids
+cellIdManagementController.cellGroupIdAssociate.desc = This API is used to associate cell ids to cell groups.
+
+cellIdManagementController.cellGroupIdReassociateTemplate.name = Download Cell ID Reassociate Template
+cellIdManagementController.cellGroupIdReassociateTemplate.desc = This API is used to download the template for cell id reassociate.
+
+cellIdManagementController.cellGroupIdReassociate.name = Reassociate Cell group Ids
+cellIdManagementController.cellGroupIdReassociate.desc = This API is used to reassociate cell ids to cell groups.
+
+#Super Admin Network Management
+networkManagmentController.name = Super Admin Network Management Controller
+networkManagmentController.name = This API is for super admin \n 1. Network List By Admin \n 2. Load the network list for change API \n 3.Modify Network List API \n 4.Load the network list for change API \n 5.Modify Network Details API
+
+networkManagmentController.getNetworkListByAdmin.name=Network List By Admin
+networkManagmentController.getNetworkListByAdmin.desc=Network List By Admin
+
+
+networkManagmentController.loadNetworkList.name=Load the network list for change API
+networkManagmentController.loadNetworkList.desc=Load the network list for change API
+
+networkManagmentController.modifyNetwork.name= Modify Network List API
+networkManagmentController.modifyNetwork.desc= Modify Network List API
+
+networkManagmentController.getServiceSetId.name=Load the network list for change API
+networkManagmentController.getServiceSetId.desc=Load the network list for change API
+
+networkManagmentController.modifyNetworkDetail.name=Modify Network Details API
+networkManagmentController.modifyNetworkDetail.desc=Modify Network Details API
+  
+#Sublookup API's
+SubLookUpController.name=Sublookup API's
+SubLookUpController.desc=This is a superadmin functionality to handle sublookup
+
+SubLookUpController.loadLookUpList.name=lookup list
+SubLookUpController.loadLookUpList.desc=Loads the lookup dropdown
+
+SubLookUpController.loadSubLookUpList.name=lookup sublookup list
+SubLookUpController.loadSubLookUpList.desc=Loads the sublookup based on the lookup code
+
+SubLookUpController.addSublookUp.name=Add Sublookup
+SubLookUpController.addSublookUp.desc=Add sublookup to the lookup
+
+SubLookUpController.subLookUpDetails.name=Get Sublookup Details
+SubLookUpController.subLookUpDetails.desc=Get sublookup for modify
+
+SubLookUpController.modifySubLookUp.name=Modify Sublookup
+SubLookUpController.modifySubLookUp.desc=Modify sublookup based on the sublookup code
+
+SubLookUpController.deleteSubLookUp.name=Delete sublookup
+SubLookUpController.deleteSubLookUp.desc=Delete sublookup based on the sublookup code
+
+ReportController.getValidations.name=Get Validations
+ReportController.getValidations.desc=Get Validations for reports
+
+#Subscriber routing API's
+SubscriberRoutingController.name=Subscriber routing API's
+SubscriberRoutingController.desc=This is a superadmin functionality to handle subscriber routing
+
+SubscriberRoutingController.add.name=Add Subscriber Routing
+SubscriberRoutingController.add.desc=Map Interface with mobile numbers
+
+SubscriberRoutingController.loadInterface.name=Load Interfaces
+SubscriberRoutingController.loadInterface.desc=Loads Interfaces based on the Interface Type
+
+SubscriberRoutingController.bulkAddSubscriberRouting.name=Bulk Add Subscriber Routing
+SubscriberRoutingController.bulkAddSubscriberRouting.desc=Add Subscriber Routing in bulk
+
+SubscriberRoutingController.deleteSubscriberRouting.name=Delete Subscriber Routing
+SubscriberRoutingController.deleteSubscriberRouting.desc=Delete routed mobile numbers
+
+SubscriberRoutingController.bulkDeleteSubscriberRouting.name=Bulk Delete Subscriber Routing
+SubscriberRoutingController.bulkDeleteSubscriberRouting.desc=Bulk Delete routed mobile numbers
+  
+#STK Services
+STKServicesController.name = STK Services Controller
+STKServicesController.desc = This API is for Superadmin to add sim services and assign user sim services
+
+STKServicesController.userTypeServiceList.name = Loads user type and service set list
+STKServicesController.userTypeServiceList.desc = Loads user type and service set list
+
+STKServicesController.generateByteCode.name = Generates bytecode from wml code
+STKServicesController.generateByteCode.desc = Generates bytecode from wml code
+
+STKServicesController.pushWml.name = Pushes service to mobile number
+STKServicesController.pushWml.desc = Pushes service to mobile number
+
+STKServicesController.addService.name = Adds new sim services
+STKServicesController.addService.desc = Adds new sim services
+
+STKServicesController.simProfileCategoryList.name = Loads user type, profile and sim profile list
+STKServicesController.simProfileCategoryList.desc = Loads user type, profile and sim profile list
+
+STKServicesController.userSimServicesList.name = Loads user sim services list
+STKServicesController.userSimServicesList.desc = Loads user sim services list
+
+STKServicesController.simServicesList.name = Loads sim services list based on search string
+STKServicesController.simServicesList.desc = Loads sim services list based on search string
+
+STKServicesController.calculateOffset.name = Calculates the starting offset position and used and free offsets
+STKServicesController.calculateOffset.desc = Calculates the starting offset position and used and free offsets
+
+STKServicesController.assignService.name = Assigns user sim services
+STKServicesController.assignService.desc = Assigns user sim services
+
+STKServicesController.updateService.name = Update sim services
+STKServicesController.updateService.desc = Update sim services
+
+STKServicesController.loadServiceDetails.name = Load user sim service details
+STKServicesController.loadServiceDetails.desc = Load user sim service details
+  
+  
+  #GeographyCellId Mapping 
+GeographyCellIdMappingController.name = Geography  CellIdMapping Controller
+GeographyCellIdMappingController.desc = This API is for Networkadmin to associate cell id
+
+GeographyCellIdMappingController.downloadTemplateToGeographyCellIdMapping.name = Download template file Cell Id Mapping
+GeographyCellIdMappingController.downloadTemplateToGeographyCellIdMapping.desc = Download template file Cell Id Mapping
+
+GeographyCellIdMappingController.uploadFileToAssociatecellId.name = Upload template file to Cell Id Mapping
+GeographyCellIdMappingController.uploadFileToAssociatecellId.desc = Upload template file to Cell Id Mapping
+
+#Network Admin Loan Profile Management
+loanMainController.name = Network Admin Loan Main Controller
+loanMainController.name = This API is for Network admin \n 1. Load Loan Profile List  \n 2. View Loan Profile \n 3.Delete Loan Profile \n 4.Load product list \n 5.Modify Loan Profile Details API \n 6.Add Loan Profile Details API
+
+loanMainController.getLoanProfileList.name=Load Loan Profile List 
+loanMainController.getLoanProfileList.desc=Load Loan Profile List
+loanMainController.viewLoanProfileByID.name=View Loan Profile 
+loanMainController.viewLoanProfileByID.desc=View Loan Profile 
+
+loanMainController.deleteLoanProfileByID.name= Delete Loan Profile
+loanMainController.deleteLoanProfileByID.desc= Delete Loan Profile
+
+loanMainController.getProductList.name=Load product list
+loanMainController.getProductList.desc=Load product list
+
+loanMainController.modifyLoanProfileDetail.name=Modify Loan Profile Details API
+loanMainController.modifyLoanProfileDetail.desc=Modify Loan Profile Details API
+
+loanMainController.addLoanProfile.name=Add Loan Profile Details API
+loanMainController.addLoanProfile.desc=Add Loan Profile Details API
+
+#Loyalty Management Service
+loyaltyManagementController.name=Loyalty Management Service Controller
+loyaltyManagementController.desc= This  loyalty API'S are awarded to the user based on the rules defined in the loyalty profile.
+
+loyaltyManagementController.loadProfileVersionsList.name=Load all the matching Profiles version details
+loyaltyManagementController.loadprofileVersionsList.desc=Load all the matching Profiles version details
+
+loyaltyManagementController.loadversionsList.name=Load All versions for particular profile
+loyaltyManagementController.loadversionsList.desc=Load All versions for particular profile
+
+loyaltyManagementController.view.name=View profile full details
+loyaltyManagementController.view.desc=View profile full details
+
+loyaltyManagementController.loadModulesAndServices.name=Load module and services list
+loyaltyManagementController.loadModulesAndServices.desc=Load module and services list
+
+loyaltyManagementController.add.name=Initiate loyalty Profile details
+loyaltyManagementController.add.desc=Initiate loyalty Profile details
+
+loyaltyManagementController.delete.name=delete loyalty Profile details
+loyaltyManagementController.delete.desc=delete loyalty Profile details
+
+loyaltyManagementController.modify.name=modify loyalty Profile details
+loyaltyManagementController.modify.desc=modify loyalty Profile details
+
+loyaltyManagementController.suspend.name=suspend loyalty Profile details
+loyaltyManagementController.suspend.desc=suspend loyalty Profile details
+
+loyaltyManagementController.approve.name=approve loyalty Profile details
+loyaltyManagementController.approve.desc=approve loyalty Profile details
+
+loyaltyManagementController.loadmsgs.name=Load Messages loyalty Profile details
+loyaltyManagementController.loadmsgs.desc=Load Messages loyalty Profile details
+
+loyaltyManagementController.updatemsgs.name=Update Messages loyalty Profile details
+loyaltyManagementController.updatemsgs.desc=Update Messages loyalty Profile details
+
+loyaltyManagementController.resume.name=Resume loyalty Profile details
+loyaltyManagementController.resume.desc=Resume loyalty Profile details
+
+loyaltyManagementController.aprvprfl.name=Load Approve Profiles And Versions details
+loyaltyManagementController.aprvprfl.desc=Load Approve Profiles And Versions details
+
+loyaltyManagementController.aprvprfls.name=Load Approve Profiles Details
+loyaltyManagementController.aprvprfls.desc=Load Approve Profiles Details
+
+#Update Sim Transaction Id
+updateSIMTXNIdController.name.name=Update Sim Transaction Id
+updateSIMTXNIdController.name.desc= This  will Update single and builk Sim Transaction Id
+
+updateSIMTXNIdController.update.name=Update Sim Transaction Id
+updateSIMTXNIdController.update.desc=Update Sim Transaction Id
+
+updateSIMTXNIdController.updatebulk.name=Update bulk Sim Transaction Id
+updateSIMTXNIdController.updatebulk.desc=Update bulk Sim Transaction Id

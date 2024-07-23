@@ -1,0 +1,27 @@
+---
+########################################################
+# Author           Date        Remarks
+#------------    -----------  ---------
+#Sadhan Kumar K  25-07-2016    Initial Creation
+#
+# This file takes care of Stopping the OAM.
+#########################################################
+
+ - debug: msg="Entered OAMStop.yml.............."
+
+ - name: Stop OAM
+   shell: nohup sh kannelStop.sh chdir={{OAMPath}}/bin
+   ignore_errors: yes
+   register: OAMStop
+   tags:
+     - OAMStop
+
+ - name: wait for OAM to stop
+   wait_for: timeout=10
+   tags:
+     - OAMStop
+
+ - debug: msg="OAM Stopped!"
+   when: SMSCStop|success
+   tags:
+     - OAMStop

@@ -1,0 +1,69 @@
+//######################################
+//
+//This script is fro c2s reversal through cce 
+//
+//#######################################
+
+
+//===== import scripts ===//
+_includeOnce("../../../../utility/ImportPackage.sah");
+_includeOnce("../../../GUI/testscripts/C2SReversalForCCEAndBCU/C2SReversalForCCEAndBCU_Common.sah"); 
+
+//======================Pre-requisite check============================
+_log("Setup", "custom4");
+
+// login with cce
+
+var $l_naCsv = _readCSVFile("../../../GUI/testdata/NA_Login.csv"); //Reads the credentials 
+var $g_cce = $l_naCsv[29][1];
+
+login($g_appURL,  $g_LangEnglish, $g_cce, $g_commonPassword, $g_assertWelcome);
+	
+
+
+
+
+
+// ....................... Test cases for c2s reversal transaction  ............. //
+
+var $g_C2SReversalDetails = _readCSVFile("../../../GUI/testdata/C2SReversalForCCEAndBCU.csv"); //Reads  details 
+
+
+
+	for(var $g_row = 1; $g_C2SReversalDetails[$g_row] != null; $g_row++){
+		
+				var $g_col = 0;
+				var $number =   testCaseNumber($g_C2SReversalDetails[$g_row][$g_col]);
+							
+				var $t = _testcase($g_C2SReversalDetails[$g_row][$g_col++], $g_C2SReversalDetails[$g_row][$g_col++]);
+			
+				$t.start();
+				
+				commonVaribleForC2SReversal($g_row, $g_col);
+				
+				if($number == 1)
+					toCheckIfSenderMSISDNNotEntered();
+				else if($number == 2)
+					toCheckIfMSISDNNotEntered();
+				else if($number == 3)
+					toCheckIfTXNIDEntered();
+				else if($number == 4)
+					reversalSuccessfullWithMSISDN();
+				else if($number == 5)
+					reversalSuccessfullWithTXNID();
+				else if($number == 6)
+					reversalFailsWithMSISDN();
+				else if($number == 7)
+					reversalFailsWithTXNID();
+				else if($number == 8)
+					reversalAmbiguousWithMSISDN();
+				else if($number == 9)
+					reversalAmbiguousWithTXNID();
+					
+					
+				$t.end();
+	}
+
+
+
+	

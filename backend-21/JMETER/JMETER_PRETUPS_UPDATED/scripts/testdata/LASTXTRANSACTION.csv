@@ -1,0 +1,14 @@
+TestcaseId,TestcaseType,Module,Description
+,Positive,Last X Transaction,To verfiy that Last X Transaction request is successful.
+,Positive,Last X Transaction,To verfiy that Last X Transaction request is successful with only MSISDN and PIN.
+,Positive,Last X Transaction,To verfiy that Last X Transaction request is successful with only LoginID and Password.
+,Positive,Last X Transaction,To verfiy that Last X Transaction request is successful with only External Code.
+,Positive,Last X Transaction,To verfiy that Last X Transaction request is successful if date is blank
+,Positive,Last X Transaction,To verfiy that Last X Transaction request is successful if EXTREFNUM is blank.
+,Negative,Last X Transaction,To verfiy that Last X Transaction request is not successful if PIN is incorrect.
+,Negative,Last X Transaction,To verfiy that Last X Transaction request is not successful if Password is incorrect.
+,Negative,Last X Transaction,To verfiy that Last X Transaction request is not successful if External code is incorrect.
+,Negative,Last X Transaction,To verfiy that Last X Transaction request is not successful if LoginID is incorrect.
+,Negative,Last X Transaction,To verfiy that Last X Transaction request is not successful if only  LoginID is present but Password is blank
+,Negative,Last X Transaction,To verfiy that Last X Transaction request is not successful if only  MSISDN is present but PIN is blank
+,Negative,Last X Transaction,To verfiy that Last X Transaction request is not successful if network code is invalid

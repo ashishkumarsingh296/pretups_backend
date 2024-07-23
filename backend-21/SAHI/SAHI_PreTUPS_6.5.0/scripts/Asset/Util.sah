@@ -1,0 +1,24 @@
+//* Include *
+_includeOnce("Datastructure.sah");
+
+/**
+ * 
+ * @param $select {object} - Select Accessor
+ * @param $options {array[]} - expected options
+ * @param $strict {array[]}  - verify that option
+ */
+function verifyDropdownOption($select, $options){
+	try{
+		var $list = _getOptions($select, "name");
+		if($list){
+			for (var $i=0; $i<$options.length; $i++){
+				_assertTrue($list.indexOf($options[$i]) >= 0, "Verify option '"+ $options[$i] + "' is available");
+			}
+		}else{
+			_logException("Failed to fetch Options", "ERROR");
+		}
+	}catch(e){
+		_logException(e);
+		_log("Failed to verify Select Options", "ERROR");
+	}	
+}

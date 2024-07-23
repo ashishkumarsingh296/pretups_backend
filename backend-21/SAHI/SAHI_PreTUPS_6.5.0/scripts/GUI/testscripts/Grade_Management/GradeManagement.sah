@@ -1,0 +1,66 @@
+//######################################
+//
+//This script to add negative test caes for Bonus Bund
+//
+//#######################################
+
+
+//===== import scripts ===//
+_includeOnce("../../../../utility/ImportPackage.sah");
+_includeOnce("../../../GUI/testscripts/Grade_Management/GradeManagement_Common.sah"); //For adding C2S card group	
+
+
+
+//====Login into Application====
+login($g_appURL, $g_LangEnglish, $g_superAdmin, $g_password, $g_assertMessage); //calls the Login function in Login.sah with the parameters(url, language, username, password, assertion)
+
+
+
+
+// ....................... Test cases for bonus bundle managament ............. //
+
+var $g_gradeDetails = _readCSVFile("../../../GUI/testdata/GradeManagement.csv"); //Reads the Card group details
+
+
+
+	for(var $g_row = 1; $g_gradeDetails[$g_row] != null; $g_row++){
+		
+				var $g_col = 0;
+				var $temp_testCaseNo = $g_gradeDetails[$g_row][$g_col++];
+				var $t = _testcase($temp_testCaseNo, $g_gradeDetails[$g_row][$g_col++]);
+				
+				$t.start();
+				
+				if($temp_testCaseNo == "TEST001"){
+					commonVaribleToAddGrade($g_row, $g_col);
+					addGrade();
+				}
+				else if($temp_testCaseNo == "TEST002"){
+					commonVaribleToAddGrade($g_row, $g_col);
+					addGradeWithoutDomain();
+				}
+				else if($temp_testCaseNo == "TEST003"){
+					commonVaribleToAddGrade($g_row, $g_col);
+					addGradeWithoutGradeCode();
+				}
+				else if($temp_testCaseNo == "TEST004"){
+					commonVaribleToAddGrade($g_row, $g_col);
+					modifyGrade();
+				}
+				
+				
+				$t.end();
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+

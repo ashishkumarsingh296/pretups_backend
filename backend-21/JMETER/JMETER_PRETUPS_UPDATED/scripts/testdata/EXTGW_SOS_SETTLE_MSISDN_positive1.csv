@@ -1,0 +1,2 @@
+TestcaseId,TestcaseType,Module,Description
+TUNG22316,Positive,SOS Settlement EXTGW,To verify that parent or owner can hit SOS settlement request through EXTGW using Msisdn and pin by entering mandatory parameters only

@@ -1,0 +1,98 @@
+##############################################################################################################################
+#
+#            ----------------------PATCH INSTALLER CONFIGURATION FILE------------------------------
+#
+#PLEASE GIVE A " SPACE " after COLON in each variable,then enter the configuration .Please Use Space Bar not Tab for space.
+#
+# Author: PreTUPSRoadMap
+# Date: 22/10/2018
+#
+##############################################################################################################################
+
+#Enter 'true' or 'false' for whether tomcat start and stop is required or not during patch installation.
+
+isTomcatStartStopRequired: true
+
+#Enter the Tomcat Home Path and Start Stop File Names,if multiple tomcats in a single server,copy paste below and give neccessary Configuration.
+
+CatalinaConfig:
+- TomcatHomePath: /ansiblehome/apache-tomcat-8.0.30_smsr1
+  StartFileName: pretupsStart.sh
+  StopFileName: pretupsStop.sh
+
+#Enter the ansible path at which PretupsPathInstaller exists. Do not end path with '/'.
+Ansible_Path: /Ansible
+
+#Enter 'true' or 'false' for whether SMSC start and stop is required or not during patch installation.If 'true', provide complete path of SMSC Gateway	
+
+isSMSCStartStopRequired: false
+SMSCPath:
+
+#Enter 'true' or 'false' for whether OAM start and stop is required or not during patch installation.If 'true', provide complete path of OAM Server
+
+isOAMStartStopRequired: false
+OAMPath:
+
+#Enter 'true' or 'false' for whether WAR patch is involved or not in this patch installation.
+
+isWarPatch: false
+
+#Enter 'true' or 'false' for whether File patch(Except WAR and JAVA) is involved or not in this patch installation.
+
+isfilePatch: false
+
+#Enter the Backup path where the entire tomcat instance will be backed up.
+
+BackupWarInstancePath: /pretupsHome/Backup
+
+#Enter the Backup Extension needed to be appended to the Backup of Original Files.
+
+BackupExtn: _BKP_12-10-2018
+
+#Enter Whether COM directory Structure is available for Patch Deployment
+
+isComPatch: false
+
+#Enter whether JAVA patch is involved or not in this patch installation.
+isJAVAPatch: false
+
+#Enter backup path for pretups
+BackupPretupsInstancePath: /ansiblehome
+
+#Enter 'true' if Link Based Patch else 'false'.If Link Based Patch is available then enter following values.
+#LinkDirectoryPath signifies the actual path where old package is available(Do not use '/' at the end of the path)
+#OldPackageName signifies the actual existing old package name.
+#NewPackageName signifies the name of the new pretups package name.
+#PRETUPS_SOFT_LINK signifies name of the soft-link.
+
+isLinkBasedPatch: false
+LinkDirectoryPath: /ansiblehome/apache-tomcat-8.0.30_smsr1
+OldPackageName: webapps
+NewPackageName: webapps1
+PRETUPS_SOFT_LINK: pretups
+
+#Set 'true' if constant.props/logConfig.props are to be patched else 'false'.
+isConstant_Props: true
+isLog_Config: false
+
+#Following are variable for properties files present inside the configfiles folder. Write the complete filename with extension.
+propFileName1: MessageResources.properties
+propFileName2: MessageResources_en_US.properties
+propFileName3: 
+propFileName4: 
+propFileName5: 
+propFileName6: 
+propFileName7: 
+propFileName8: 
+propFileName9: 
+propFileName10: 
+propFileName11: 
+propFileName12: 
+
+
+## PATCH TYPES SUPPORTED::: 'WAR','JAR','JSP','CLASSFILE','XML', 'JAVA', 'PROP-NEWLINE','PROP-MODIFY','PROP-REMOVE','FILE-SYNC','DB-SCRIPTS' ******
+## For Java Related Patches provide java file path from package(com/btsl)
+PatchConfigfiles:
+- patchType: JAVA
+  fileName: fgsfgasdfsdfasd.java
+  path: ""

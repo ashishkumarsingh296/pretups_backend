@@ -1,0 +1,4 @@
+Before doing any c2s reversal transcation make sure that a succesful c2s recharge is being done by the retailer to a subscriber .
+Accordingly update the .csv file for the columns : sender msisdn, subscriber msisdn , transaction id.
+For fail scenario: comverseresponse.props need to be change (comment ACCOUNT_INFO)
+For ambiguous scenario: increase time for SLEEP parameter (DEBIT_SLEEP/REFILL_SLEEP)

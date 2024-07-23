@@ -1,0 +1,2 @@
+TestcaseId,TestcaseType,Module,Description
+TUNG13137,Positive,Fix line Recharge through EXTGW,To verify that  C2S Transfer (Fix Recharge) request is successful through EXTGW

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="PreTUPS Automation Suite" parallel="none">
+  <test name="VMS" preserve-order="true">
+     <classes>
+		<class name="com.testscripts.sit.SIT_VMS"/>
+		<class name="com.testscripts.sit.SIT_OPERATOR_USER_CREATION_PHYSICAL"/>
+		<class name="com.testscripts.sit.SIT_VMS_Physical"/>
+		<class name="com.testscripts.sit.SIT_OPRATOR_USER_CREATION_VMS_Electronics"/>
+		<class name="com.testscripts.sit.SIT_VMS_Electronics"/>
+		<class name="com.testscripts.sit.SIT_VMS_Negative"/>
+		<class name="com.testscripts.sit.SIT_VMS_NETWORKADMIN"/>
+		<class name="com.testscripts.sit.SIT_VoucherExpiryExtension"/>
+		<class name="com.testscripts.sit.SIT_VMS_BUNDLE"/>
+		<class name="com.testscripts.sit.SIT_O2CTransfer_Bundle"/>
+	  </classes>
+  </test>
+</suite>

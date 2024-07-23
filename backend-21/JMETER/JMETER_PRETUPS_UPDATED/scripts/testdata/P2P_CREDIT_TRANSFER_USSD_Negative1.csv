@@ -1,0 +1,2 @@
+TestcaseId,TestcaseType,Module,Description
+TUNG13188,Negative,Credit Transfer,To validate negative test case of credit transfer while MSISDN1 is missing

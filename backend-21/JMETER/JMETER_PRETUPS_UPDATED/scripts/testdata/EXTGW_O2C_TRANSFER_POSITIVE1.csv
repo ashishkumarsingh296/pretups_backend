@@ -1,0 +1,3 @@
+TestcaseId,TestcaseType,Module,Description
+TUNG13043,Positive,O2C transfer through EXTGW,To check  that a successful o2c occurs when msisdn and pin are present
+TUNG13049,Positive,O2C transfer through EXTGW,"To Verify operator user can initiate ""FOC"" Operator to Channel Transfer"

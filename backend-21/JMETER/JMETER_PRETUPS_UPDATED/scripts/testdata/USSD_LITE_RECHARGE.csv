@@ -1,0 +1,26 @@
+MSISDN1,PIN,MSISDN2,AMOUNT,LANGUAGE1,LANGUAGE2,SELECTOR,SERVICECLASS,TestcaseId,TestcaseType,Module,Description
+7255555555,1357,7233665522,10,1,1,1,ALL,TUNG12353 ,Positive,Lite Recharge through USSD,Validate Lite Recharge request (LRC) with all correct details.
+,1357,7233665522,10,1,1,1,ALL,TUNG12354 ,Negative,Lite Recharge through USSD,Validate Lite Recharge request (LRC) mandatory parameters.
+7255555555,1357,7233665522,10,1,1,1,ALL,TUNG12355 ,Positive,Lite Recharge through USSD,Validate that only a single IN hit happens during recharge for topup i.e no validation IN hit.
+8133333333,1357,7233665522,10,1,1,1,ALL,TUNG12356 ,Negative,Lite Recharge through USSD,Check invalid sender msisdn should show error
+7255555555,4343,7233665522,10,1,1,1,ALL,TUNG12357 ,Negative,Lite Recharge through USSD,Check invalid pin should show error
+7255555555,1357,8787878787,10,1,1,1,ALL,TUNG12358 ,Negative,Lite Recharge through USSD,Check invalid receiver  should show error
+7255555555,1357,7233665522,100000,1,1,1,ALL,TUNG12359,Negative,Lite Recharge through USSD,Check invalid amount  should show error
+7255555555,1357,7233665522,10,9,1,1,ALL,TUNG12360,Negative,Lite Recharge through USSD,Check invalid sender language  should show error
+7255555555,1357,7233665522,10,1,51,1,ALL,TUNG12361,Negative,Lite Recharge through USSD,Check invalid receiver language  should show error
+7255555555,1357,7233665522,10,1,1,21,ALL,TUNG12362,Negative,Lite Recharge through USSD,Check invalid sub service selector should show error
+7255555555,1357,7233665522,10,1,1,21,CO,TUNG12363,Negative,Lite Recharge through USSD,Check invalid service class should show error
+7255555555,1357,7233665522,10,,1,1,ALL,TUNG12364,Positive,Lite Recharge through USSD,"Validate Lite Recharge request
+(LRC) optional parameters.
+Optional  parameters are:
+language1"
+7255555555,1357,7233665522,10,1,,1,ALL,TUNG12365,Positive,Lite Recharge through USSD,"Validate Lite Recharge request
+(LRC) optional parameters.
+Optional  parameters are:
+language2"
+7255555555,1357,7233665522,19.5,1,1,1,ALL,TUNG12737,Positive,Lite Recharge through USSD,perform recharge with decimal amount
+7255555544,1357,7233665522,10,1,1,1,ALL,TUNG12738,Negative,Lite Recharge through USSD,User is barred as sender and performing the txn
+7255555521,1357,7233665522,10,1,1,1,ALL,TUNG12739,Negative,Lite Recharge through USSD,Suspended user should try to initiate the lite recharge request.
+7255331555,1357,7233665522,10,1,1,1,ALL,TUNG12742,Negative,Lite Recharge through USSD,Delete initiated user should try to initiate the lite recharge request.
+7255555555,1357,7233665522,10,1,1,1,ALL,TUNG12743,Negative,Lite Recharge through USSD,User with insufficient balance should try to initiate the lite recharge request.
+7255555555,1357,7233665522,10,1,1,1,ALL,TUNG12744,Negative,Lite Recharge through USSD,User with low threshold  count should try to initiate the lite recharge request.

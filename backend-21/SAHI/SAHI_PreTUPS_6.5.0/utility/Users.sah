@@ -1,0 +1,3 @@
+// Include
+_includeOnce("Datastructure.sah");
+var $channelAdmin = new User("btchadm", "1357"); //TODO, it should be base set user like SAH_CHADMIN

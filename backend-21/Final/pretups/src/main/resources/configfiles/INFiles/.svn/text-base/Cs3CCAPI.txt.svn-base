@@ -1,0 +1,176 @@
+###########################################################################################################
+#	Cs3CCAPI IN file
+#	If IN interface of Cs3CCAPI is added in PreTUPS from superadmin then.
+#	File with this content and name of the IN ID.txt should be created at the 
+#	path of the INFiles (defined in Constants.props).
+#
+#	Values of the variables in this file should be updated with the values provided by the 
+#	Mobile Operator IN team
+#	Corresponding to this file make an entry in the Constant.props under key POOL_IN_IDS.
+############################################################################################################
+
+
+## The Factor by whih the transaction amout to be multiplied before sending to IN.
+MULTIPLICATION_FACTOR=100
+
+##This flag is used to decide whether the amount should be rounded or not. 
+ROUND_FLAG=N
+
+##Login and password which is used to connect with IN
+USER_NAME=telesoft
+PASSWORD=tele123
+
+##Currency to be send to the IN Interface, value will be provieded by Mobile operator IN team 
+CURRENCY=0
+
+##Defines the mapping of Interface language with the pretups language( format- IN_LANG1:PTUPS_LANG1,IN_LANG2:PTUPS_LANG2)
+LANGUAGE_MAPPING=1:0,0:1
+
+## Time out for connection to connect, value in milliseconds
+CONNECT_TIMEOUT=5000
+
+##This parameter shows number of retry attempt to send request to IN 
+RETRY_CON_INVAL=3
+
+##sleep time , which is used to sleep the thread when connection is failed while sending a request
+SLEEP_CON_INVAL=500
+
+## Warning time for reading content from the IN interface, if IN interface takes time more than this, O&M alarm will be raised, value should be less than the READ_TIMEOUT_VAL variable 
+WARN_TIMEOUT=1500
+
+##Define maximum size of pool of connections
+MAX_POOL_SIZE=2
+
+##This parameter defined for sleep time to add new connection in Pool
+POOL_SLEEP=300
+
+##This parameters defined for sleep time to get connection from the Free Bucket
+SLEEP_TIME=200
+
+##This parameter is defined for retry attempt for C2S module
+C2S_RETRY_ATTEMPT=3
+
+##This parameter is defined for retry attempt for P2P module
+P2P_RETRY_ATTEMPT=3
+
+##This parameter is defined for class which will dynamically selected by Pool Manager 
+CLIENT_HANDLER_CLASS=com.btsl.pretups.inter.cs3ccapi.CS3CCAPISocketWrapper
+
+##Define IP address for a socket.
+##Remote testing IP
+SOCKET_IP=192.168.20.68
+
+##Define listening port
+SOCKET_PORT=7020
+
+##Define Socket time out
+SOCKET_TIMEOUT=5000
+
+#Prefix to be removed from the mobile number, leave blank if nothing is to be removed
+MSISDN_REMOVE_PREFIX=
+
+#Prefix to be added to the mobile number as prefix, leave blank if nothing is to be added as prefix
+MSISDN_ADD_PREFIX=880
+
+##This flag shows whether the subscriber would be validated on actual IN or Not.
+VALIDATION=Y
+
+##After sending the request, response is read after waiting this time.
+SLEEP_RESP_READ=100
+
+
+##Defines that the validation of subscriber(senders) is required for PRC
+PRC_S=N
+
+##Defines that the validation of subscriber(Receiver) is required for PRC
+PRC_R=N
+
+##Defines that the validation of subscriber(Receiver) is required for RC
+RC_R=N
+
+##Defines that the validation of subscriber(senders) is required for ACCINFO
+ACCINFO_S=Y
+
+##Defines that the validation of subscriber(senders) is required for PREG
+PREG_S=Y
+
+##Defines that the validation of subscriber(Receiver) is required for EVD
+EVD_R=N
+
+##Defines that the validation of subscriber(Receiver) is required for EVR
+EVR_R=N
+
+
+##Only new balance in recharge response would be devided by RECH_RESP_DIV_FACTOR
+RECH_RESP_DIV_FACTOR=1
+
+
+#Indicates whether Cancel request supported by IN or not.(Possible values are Y/N)
+CANCEL_TXN_ALLOWED=N
+
+##If any ambiguous response is received from IN, then retry/cancel command is sent to IN. Then response of retry/cancel is matched in the IN file and mapped error code (250/206/200) is picked and sent to Controller.
+##SYSTEM_STATUS_MAPPING=INErrCode1,INErrCode2,INErrCode3,INErrCode4:system_err_code1|INErrCode5,INErrCode6:system_err_code2
+##system_err_code1 and system_err_code2 will be sent to system and written in recon log file.
+#SYSTEM_STATUS_MAPPING=250:250
+##If receiver credit is AMBIGUOS, then in SYSTEM_PREFERENCE, CREDIT_BACK_ALLOWED should be N.
+
+#If an ambiguous case occurs while credit, mapped error code can be set to one of the codes(SUCCESS, FAIL and AMBIGUOUS)
+SYSTEM_STATUS_MAPPING_CREDIT=250:250
+
+#If an ambiguous case occurs while credit, mapped error code can be set to one of the codes(SUCCESS, FAIL and AMBIGUOUS)
+SYSTEM_STATUS_MAPPING_CREDIT_ADJ=250:250
+
+#If an ambiguous case occurs while debitAdjust, mapped error code cannot be SUCCESS. It can only be FAIL or AMBIGUOUS
+SYSTEM_STATUS_MAPPING_DEBIT_ADJ=250:250
+
+#If an ambiguous case occurs while credit Back, mapped error code can not be fail, it can only be SUCCESS or AMBIGOUOS
+SYSTEM_STATUS_MAPPING_CREDIT_BCK=250:250
+
+##If any ambiguous response is received from IN, check if cancel txn allowed or not in the system. if not, pick mapped error code against NA otherwise pick mapped error code (206/250) against received response code of Cancellation from IN. 
+##CANCEL_COMMAND_STATUS_MAPPING=INErrCode1,INErrCode2,INErrCode3,INErrCode4:cancel_err_code1|INErrCode5,INErrCode6:cancel_err_code2
+##cancel_err_code1, cancel_err_code2 will be written in recon log file.
+CANCEL_COMMAND_STATUS_MAPPING=NA:450
+
+#Defines the cancel command status when cancel not supported by IN. 
+CANCEL_NA=NA
+
+##This flag should be Y if interface closure feature is to be provided to client
+INTFCE_CLSR_SUPPORT=N
+
+#maximum number of ambiguous transactions allowed till threshold time.
+NO_ALLWD_AMB_TXN=5
+
+##time duration in which maximum number of ambiguous transactions is defined
+THRESHOLD_TIME=240000
+
+##Time duration after which interface suspension expires.
+EXPIRY_TIME=60000
+
+##Auto Resumption supported by IN or not.
+AUTO_RESUME_SUPPORT=N
+
+##Number of retry attempts while validation (Currently Retry is not supported by CS3CCAPI)
+VAL_RETRY_CNT=0
+
+##Number of retry attempts while recharge request (Currently Retry is not supported by CS3CCAPI)
+CREDIT_RETRY_CNT=0
+
+##Number of retry attempts while sending Adjustment request (Currently Retry is not supported by CS3CCAPI)
+ADJ_RETRY_CNT=0
+
+##Number of retry attempts while sending Cancel request (Currently Cancel Request is not supported by CS3CCAPI)
+CNCL_RETRY_CNT=0
+
+##Sleep time between two retries (Currently Retry is not supported by CS3CCAPI)
+RETRY_SLEEP_TIME=0
+
+##Error Codes when retry has to be made  (Currently Retry is not supported by CS3CCAPI)
+RETRY_CASES=
+
+##Remark1 in Reconcialiationlog
+REMARK1=
+
+##Remark1 in Reconcialiationlog
+REMARK2=
+
+

@@ -1,0 +1,25 @@
+TestCaseNo. ,Discription,Item Name,Item Code,Current Stock,Loyality Points,Assertion
+TEST001,Given that network admin logged into apllication and try to add loyality items,,,1000,10,Item added successfully.
+TEST002,Given that network admin logged into apllication and try to view loyality items,,,,,
+TEST003,Given that network admin logged into apllication and try to modify,,,1010,10,Item Modified successfully.
+TEST004,Given that a network admin loggin into aplication and try to check reset button while loyality item add page,ITEMNAME,ITEMNAME,1000,10,
+TEST005,Given that network admin logged into apllication try to add loyality items without giving any details,,,,,Please enter code for the item.
+TEST006,Given that network admin logged into apllication try to add loyality items without item name,,ITEMCODE,1000,10,Please enter name for the item.
+TEST007,Given that network admin logged into apllication try to add loyality items without item code,ITEMNAME,,1000,10,Please enter code for the item.
+TEST008,Given that network admin logged into apllication try to add loyality items without current stock,ITEMNAME,ITEMCODE,,10,Please enter stock value.
+TEST009,Given that network admin logged into apllication try to add loyality items without loyality points,ITEMNAME,ITEMCODE,1000,,Please enter Loyalty Points value.
+TEST010,Given that network admin logged into apllication try to add loyality items having multi word item code,ITEMNAME,ITEM CODE,1000,10,Item code should be alphanumeric.
+TEST011,Given that network admin logged into apllication try to add loyality items having item code cotaing special charator,ITEMNAME,ITEM@CODE,1000,10,Item code should be alphanumeric.
+TEST012,Given that network admin logged into apllication try to add loyality items with item code consist of special charactor ,ITEMNAME,&^^%^,1000,10,Item code should be alphanumeric.
+TEST013,Given that network admin logged into apllication try to add loyality items with current stock as string,ITEMNAME,ITEMCODE,ABCD,10,Invalid Stock value it should be numeric.
+TEST014,Given that network admin logged into apllication try to add loyality items with current stock as negative,ITEMNAME,ITEMCODE,-100,10,Invalid Stock value it should be greater then zero.
+TEST015,Given that network admin logged into apllication try to add loyality items with current stock as zero,ITEMNAME,ITEMCODE,0,10,Invalid Stock value it should be greater then zero.
+TEST016,Given that network admin logged into apllication try to add loyality points with current stock as string,ITEMNAME,ITEMCODE,1000,ABH,Invalid Loyality points value it should be numeric.
+TEST017,Given that network admin logged into apllication try to add loyality items with current stock as negative,ITEMNAME,ITEMCODE,1000,-10,Invalid Loyality points value it should be greater then zero.
+TEST018,Given that network admin logged into apllication try to add loyality items with current stock as zero,ITEMNAME,ITEMNAME,1000,0,Invalid Loyality points value it should be greater then zero.
+TEST019,Given that a network admin loggin into aplication and try to modify name loyality items with current stock as String,,,ABCD,10,Invalid Stock value it should be numeric.
+TEST020,Given that a network admin loggin into aplication and try to modify name loyality items with current stock as -negative,,,-100,10,Invalid Stock value it should be greater then zero.
+TEST021,Given that a network admin loggin into aplication and try to modify name loyality items with current stock as zero,,,0,10,Invalid Stock value it should be greater then zero.
+TEST022,Given that a network admin loggin into aplication and try to modify name loyality items with loyality points as String,,,1000,ABH,Invalid Loyality points value it should be numeric.
+TEST023,Given that a network admin loggin into aplication and try to modify name loyality items with loyality points as -negative,,,1000,-10,Invalid Loyality points value it should be greater then zero.
+TEST024,Given that a network admin loggin into aplication and try to modify name loyality items with loyality points as zero,,,1000,0,Invalid Loyality points value it should be greater then zero.

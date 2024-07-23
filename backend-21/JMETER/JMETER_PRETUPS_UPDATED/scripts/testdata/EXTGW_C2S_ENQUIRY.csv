@@ -1,0 +1,29 @@
+TestcaseId,TestcaseType,Module,Description
+,Positive,C2S Transfer Enquiry,To verfiy that C2S Enquiry is successful with all valid details.
+,Positive,C2S Transfer Enquiry,To verfiy that C2S Enquiry is successful if from date  is blank in request
+,Positive,C2S Transfer Enquiry,To verfiy that C2S Enquiry is successful if to date  is blank in request
+,Positive,C2S Transfer Enquiry,To verfiy that C2S Enquiry is successful if transaction id is blank in request
+,Positive,C2S Transfer Enquiry,To verfiy that C2S Enquiry is successful if Date tag is blank in request
+,Positive,C2S Transfer Enquiry,To verfiy that C2S Enquiry is successful if Service type is blank in request
+,Positive,C2S Transfer Enquiry,To verfiy that C2S Enquiry is successful if Category code is blank in request
+,Positive,C2S Transfer Enquiry,To verfiy that C2S Enquiry is successful if Category code and Employee code both are blank in request
+,Positive,C2S Transfer Enquiry,To verfiy that C2S Enquiry is successful if external reference number  is blank in request
+,Positive,C2S Transfer Enquiry,To verfiy that C2S Enquiry is successful if Sender MSISDN  is blank in request
+,Positive,C2S Transfer Enquiry,To verfiy that C2S Enquiry is successful if MSISDN2  is blank in request
+,Positive,C2S Transfer Enquiry,To verfiy that C2S Enquiry is successful if Transaction id and Sender MSISDN are blank in request
+,Positive,C2S Transfer Enquiry,To verfiy that C2S Enquiry is successful if Transaction id and MSISDN2 are blank in request
+,Positive,C2S Transfer Enquiry,To verfiy that C2S Enquiry is successful if Sender MSISDN and MSISDN2 are blank in request
+,Negative,C2S Transfer Enquiry,To verfiy that C2S Enquiry is not successful if Netowrk code is invalid in request
+,Negative,C2S Transfer Enquiry,To verfiy that C2S Enquiry is not successful if Netowrk code is blank in request
+,Negative,C2S Transfer Enquiry,To verfiy that C2S Enquiry is not successful if transaction id is other than C2S in request
+,Negative,C2S Transfer Enquiry,To verfiy that C2S Enquiry is not successful if type tag is blank in request
+,Negative,C2S Transfer Enquiry,To verfiy that C2S Enquiry is not successful if category code is present but employee code is blank in request
+,Negative,C2S Transfer Enquiry,To verfiy that C2S Enquiry is not successful if category code is present but employee code is invalid in request
+,Negative,C2S Transfer Enquiry,To verfiy that C2S Enquiry is not successful if category code is invalid in request
+,Negative,C2S Transfer Enquiry,To verfiy that C2S Enquiry is not successful if receiver MSISDN is invalid in request
+,Negative,C2S Transfer Enquiry,To verfiy that C2S Enquiry is not successful if sender MSISDN is invalid in request
+,Positive,C2S Transfer Enquiry,To verfiy that C2S Enquiry is  successful for service type PPB in request
+,Negative,C2S Transfer Enquiry,To verfiy that C2S Enquiry is not successful if login id is invalid
+,Negative,C2S Transfer Enquiry,To verfiy that C2S Enquiry is not successful if login id is present and password is blank
+,Positive,C2S Transfer Enquiry,To verfiy that C2S Enquiry is successful and Response shows Record type as DETAIL when Transaction id present in request.
+,Positive,C2S Transfer Enquiry,To verfiy that C2S Enquiry is successful and Response shows Record type as SUMMARY when Transaction id present in request.

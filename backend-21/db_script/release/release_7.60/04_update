@@ -1,0 +1,56 @@
+UPDATE pages_ui
+SET module_code='HOME', page_url='/home', menu_name='Home', show_menu='Y', sequence_no=0, menu_level='1', parent_page_code='ROOT', image='assets/images/home/svg/home.svg', role_code=NULL, domain_type=NULL, category_code=NULL, page_type=NULL, app_name='eTopup'
+WHERE page_code='P_HOME_MAIN';
+UPDATE pages_ui
+SET module_code='COMMON', page_url='/changeIt', menu_name='Network Stock', show_menu='Y', sequence_no=12, menu_level='1', parent_page_code='ROOT', image='assets/images/channelUser/svg/channelUserIcon.svg', role_code=NULL, domain_type='OPERATOR', category_code='NWADM', page_type=NULL, app_name='eTopup'
+WHERE page_code='P_NW_NW_STOCK_MAIN';
+UPDATE pages_ui
+SET module_code='COMMON', page_url='/network-stock/initiate-transaction', menu_name='Initiate Stock', show_menu='Y', sequence_no=12.1, menu_level='2', parent_page_code='P_NW_NW_STOCK_MAIN', image=NULL, role_code=NULL, domain_type='OPERATOR', category_code='NWADM', page_type=NULL, app_name='eTopup'
+WHERE page_code='P_NWINITSTOCK';
+UPDATE pages_ui
+SET module_code='COMMON', page_url='/network-stock/view-stock', menu_name='View stock transactions', show_menu='Y', sequence_no=12.2, menu_level='2', parent_page_code='P_NW_NW_STOCK_MAIN', image=NULL, role_code=NULL, domain_type='OPERATOR', category_code='NWADM', page_type=NULL, app_name='eTopup'
+WHERE page_code='P_NW_VW_STOCK';
+UPDATE pages_ui
+SET module_code='COMMON', page_url='/changeIt', menu_name='View current stock', show_menu='Y', sequence_no=12.3, menu_level='2', parent_page_code='P_NW_NW_STOCK_MAIN', image=NULL, role_code=NULL, domain_type='OPERATOR', category_code='NWADM', page_type=NULL, app_name='eTopup'
+WHERE page_code='P_VIEWNWSTK';
+UPDATE pages_ui
+SET module_code='COMMON', page_url='/network-stock/app-stock_level1', menu_name='Network Stock', show_menu='Y', sequence_no=7.2, menu_level='2', parent_page_code='P_NW_APP_L1_MAIN', image=NULL, role_code=NULL, domain_type='OPERATOR', category_code='NWADM', page_type=NULL, app_name='eTopup'
+WHERE page_code='P_NWSTKAPPRL';
+UPDATE pages_ui
+SET module_code='COMMON', page_url='/network-stock/app-stock_level2', menu_name='Network Stock', show_menu='Y', sequence_no=8.2, menu_level='2', parent_page_code='P_NW_APP_L2_MAIN', image=NULL, role_code=NULL, domain_type='OPERATOR', category_code='NWADM', page_type=NULL, app_name='eTopup'
+WHERE page_code='P_NW_APP_L2_NW_STK';
+
+UPDATE page_ui_roles
+SET role_code='ININWSTOCK', page_code='P_NWINITSTOCK'
+WHERE role_code='ININWSTOCK' AND page_code='P_NWINITSTOCK';
+UPDATE page_ui_roles
+SET role_code='NWLEVL1APPROVAL', page_code='P_NWSTKAPPRL'
+WHERE role_code='NWLEVL1APPROVAL' AND page_code='P_NWSTKAPPRL';
+UPDATE page_ui_roles
+SET role_code='VIEWSTOCKTXNS', page_code='P_NW_VW_STOCK'
+WHERE role_code='VIEWSTOCKTXNS' AND page_code='P_NW_VW_STOCK';
+UPDATE page_ui_roles
+SET role_code='VIEWSTOCKTXNS', page_code='P_NW_NW_STOCK_MAIN'
+WHERE role_code='VIEWSTOCKTXNS' AND page_code='P_NW_NW_STOCK_MAIN';
+UPDATE page_ui_roles
+SET role_code='NWLEVL2APPROVAL', page_code='P_NW_APP_L2_NW_STK'
+WHERE role_code='NWLEVL2APPROVAL' AND page_code='P_NW_APP_L2_NW_STK';
+UPDATE page_ui_roles
+SET role_code='ININWSTOCK', page_code='P_NW_NW_STOCK_MAIN'
+WHERE role_code='ININWSTOCK' AND page_code='P_NW_NW_STOCK_MAIN';
+UPDATE page_ui_roles
+SET role_code='VIEWCURRENTSTOCK', page_code='P_NW_NW_STOCK_MAIN'
+WHERE role_code='VIEWCURRENTSTOCK' AND page_code='P_NW_NW_STOCK_MAIN';
+
+INSERT INTO page_ui_roles
+(role_code, page_code)
+VALUES('NETWORKPREFIX', 'P_NW_NW_PREFIX_MAIN');
+INSERT INTO page_ui_roles
+(role_code, page_code)
+VALUES('NETPROMAP', 'P_NW_NW_PRODUCT_MAP');
+INSERT INTO pages_ui
+(page_code, module_code, page_url, menu_name, show_menu, sequence_no, menu_level, parent_page_code, image, role_code, domain_type, category_code, page_type, app_name)
+VALUES('P_NW_NW_PRODUCT_MAP', 'COMMON', '/network-product-mapping', 'Network Product Mapping', 'Y', 11, '1', 'ROOT', 'assets/images/home/svg/home.svg', NULL, 'OPERATOR', 'NWADM', NULL, 'eTopup');
+INSERT INTO pages_ui
+(page_code, module_code, page_url, menu_name, show_menu, sequence_no, menu_level, parent_page_code, image, role_code, domain_type, category_code, page_type, app_name)
+VALUES('P_NW_NW_PREFIX_MAIN', 'COMMON', '/network-prefix', 'Network Prefixes', 'Y', 1, '1', 'ROOT', 'assets/images/updateCache/svg/updateCache.svg', NULL, 'OPERATOR', 'NWADM', 'home_configuration', NULL);

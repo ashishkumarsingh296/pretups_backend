@@ -1,0 +1,13 @@
+---
+ - name: "Running the WEB playbook"
+   hosts: appservers
+ - include: WEB_site.yml
+
+# - name: "Running the SMSR playbook"
+#   hosts: smsr_servers
+# - include: SMSR_site.yml
+
+# - name: "Running the SMSP playbook"
+#   hosts: smsp_servers
+# - include: SMSP_site.yml
+

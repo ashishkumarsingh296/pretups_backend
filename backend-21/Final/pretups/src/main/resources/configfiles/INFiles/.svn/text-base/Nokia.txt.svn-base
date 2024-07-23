@@ -1,0 +1,216 @@
+###########################################################################################################
+#	
+#	If IN interface of Nokia IN file is added in PreTUPS from superadmin then.
+#	File with this content and name of the IN ID.txt should be created at the 
+#	path of the INFiles (defined in Constants.props).
+#
+#	Values of the variables in this file should be updated with the values provided by the 
+#	Mobile Operator IN team
+#	
+#	Define the interface id as value of POOL_IN_IDS in the Constants.props to Pool the IN.
+#
+############################################################################################################
+################################## NOKIA SPECIFIC ENTRIES ######################################### 
+
+#This is used to define the Client class path, it should be full qualified path of the Client Class
+CLIENT_HANDLER_CLASS=com.btsl.pretups.inter.nokia.NokiaClientPP
+
+
+##This would used to initialize the ORB and would be set by the IN Team/Operator
+IT_LOCAL_HOSTNAME=localhost
+
+##This would used to initialize the ORB and would be set by the IN Team/Operator
+IT_NAMES_SERVER_HOST=n1smia
+
+#This would used to initialize the ORB and would be set by the IN Team/Operator
+IT_USE_HOSTNAME_IN_IOR=true
+
+#This would used to initialize the ORB and would be set by the IN Team/Operator
+IT_BIND_USING_IIOP=true
+
+
+##This would used to initialize the ORB and would be set by the IN Team/Operator
+IT_DAEMON_PORT=1570
+
+##This would used to initialize the ORB and would be set by the IN Team/Operator
+IT_ORBIXD_PORT=1570
+
+##This would used to initialize the ORB and would be set by the IN Team/Operator
+IT_IIOP_PORT=1570
+
+##This would used to initialize the ORB and would be set by the IN Team/Operator
+IT_ORBIXD_IIOP_PORT=1570
+
+##This would used to initialize the ORB and would be set by the IN Team/Operator
+IT_NAMES_PORT=1570
+
+##This would used to initialize the ORB and would be set by the IN Team/Operator
+IT_NS_PORT=1570
+
+##This would used to set the connection time out for the remote object refference.
+IT_CONNECTION_TIMEOUT=30000
+
+##This would used to set the connection time out for the remote object refference.
+IT_DEFAULT_TIMEOUT=60000
+
+##This would used to initialize the ORB and would be set by the IN Team/Operator
+PIN_DURING_BIND=false
+
+
+#This represents the maximum number of client object would be stored against the interface.
+MAX_POOL_SIZE=2
+
+#Defines the sleep time between the pooling of two ojects.
+POOL_SLEEP=1000
+
+#C2S module request would wait upto the number of times,if there is no client object is free to process the request.
+C2S_RETRY_ATTEMPT=2
+
+#P2P module request would wait upto the number of times,if there is no client object is free to process the request.
+P2P_RETRY_ATTEMPT=3
+
+#If there is no client object in the freeList then,request would sleep for the given time, it would be comman for C2S &P2P.
+SLEEP_TIME=1000
+
+#This is used to define the retry attempt if the connection invalidate(remote object reference invalidated)
+RETRY_CON_INVAL=1
+
+#This method is used to decide whether the balance query should be executed after Recharging or Charging.
+BALANCE_QUERY=Y
+
+
+#Defines the login id which is used for authentication while getting the refference of remote object.
+LOGIN_ID=ncc
+
+#Defines the password which is used for user authentication while getting the refference of remote object.
+PASSWORD=ncc
+
+#Defines the IP address, from where the remote service is registered.
+#IP_ADDRESS=172.16.12.122
+
+#Defines the PORT, from where the remote service is registered.
+#IN_P0RT=6067
+
+#This flag is used to round the request amount.
+ROUND_FLAG=Y
+
+
+#Applies only when recharge a prepaid expiry subscriber’s account and the value of UseRules in the subscriber’s profile is 1.
+#If the value is 0 or no value is defined, recharge rules are not used, set by the IN team.
+APPLICATION=1
+
+#Valid msisdn length
+MSISDNLength=10
+
+##Decide whether Firs Flag is supported by IN or not.
+FIRST_FLAG=Y
+
+##Prefix to be removed from the mobile number, leave blank if nothing is to be removed
+MSISDN_REMOVE_PREFIX=
+
+##Prefix to be added to the mobile number as prefix, leave blank if nothing is to be added as prefix
+MSISDN_ADD_PREFIX=+44
+
+##Multiplication factor for to get the system amount.????????
+MULTIPLICATION_FACTOR=1
+
+
+##Mapping of IN language with system language (IN Langauge1:PreTUPS Langauge1,IN Langauge2:PreTUPS Langauge2)
+LANGUAGE_MAPPING=EN:0,SN:1
+
+
+##Ambiguous cases(error codes) provided by the operator,that are separated by comma,if any.
+AMBIGUOUS_CASES=
+
+
+##Lenght of INTransaction id(This length exludes the length of minute,2).
+IN_TXN_LENGTH=4
+
+
+#Warning time for reading content from the IN interface, if IN interface takes time more than this, O&M alarm will be raised 
+WARN_TIMEOUT=3000
+
+#Values for which is recharge is allowed
+RECHARGE_ALLOWED=1
+
+####Jar to be included idl.jar,OPCI.jar,OrbixWeb.jar in the lib folder
+
+
+
+#Indicates whether Cancel request supported by IN or not.(Possible values are Y/N)
+CANCEL_TXN_ALLOWED=N
+
+##If any ambiguous response is received from IN, then retry/cancel command is sent to IN. Then response of retry/cancel is matched in the IN file and mapped error code (250/206/200) is picked and sent to Controller.
+##SYSTEM_STATUS_MAPPING=INErrCode1,INErrCode2,INErrCode3,INErrCode4:system_err_code1|INErrCode5,INErrCode6:system_err_code2
+##system_err_code1 and system_err_code2 will be sent to system and written in recon log file.
+#SYSTEM_STATUS_MAPPING=250:250
+##If receiver credit is AMBIGUOS, then in SYSTEM_PREFERENCE, CREDIT_BACK_ALLOWED should be N.
+
+#If an ambiguous case occurs while credit, mapped error code can be set to one of the codes(SUCCESS, FAIL and AMBIGUOUS)
+SYSTEM_STATUS_MAPPING_CREDIT=250:250
+
+#If an ambiguous case occurs while credit, mapped error code can be set to one of the codes(SUCCESS, FAIL and AMBIGUOUS)
+SYSTEM_STATUS_MAPPING_CREDIT_ADJ=250:250
+
+#If an ambiguous case occurs while debitAdjust, mapped error code cannot be SUCCESS. It can only be FAIL or AMBIGUOUS
+SYSTEM_STATUS_MAPPING_DEBIT_ADJ=250:250
+
+#If an ambiguous case occurs while credit Back, mapped error code can not be fail, it can only be SUCCESS or AMBIGOUOS
+SYSTEM_STATUS_MAPPING_CREDIT_BCK=250:250
+
+
+##If any ambiguous response is received from IN, check if cancel txn allowed or not in the system. if not, pick mapped error code against NA otherwise pick mapped error code (206/250) against received response code of Cancellation from IN. 
+##CANCEL_COMMAND_STATUS_MAPPING=INErrCode1,INErrCode2,INErrCode3,INErrCode4:cancel_err_code1|INErrCode5,INErrCode6:cancel_err_code2
+##cancel_err_code1, cancel_err_code2 will be written in recon log file.
+CANCEL_COMMAND_STATUS_MAPPING=NA:450
+
+#Defines the cancel command status when cancel not supported by IN. 
+CANCEL_NA=NA
+
+##This flag should be Y if interface closure feature is to be provided to client
+INTFCE_CLSR_SUPPORT=N
+
+#maximum number of ambiguous transactions allowed till threshold time.
+NO_ALLWD_AMB_TXN=5
+
+##time duration in which maximum number of ambiguous transactions is defined
+THRESHOLD_TIME=240000
+
+##Time duration after which interface suspension expires.
+EXPIRY_TIME=60000
+
+##Auto Resumption supported by IN or not.
+AUTO_RESUME_SUPPORT=N
+
+##Number of retry attempts while validation (Currently Retry is not supported by Nokia IN)
+VAL_RETRY_CNT=0
+
+##Number of retry attempts while recharge request (Currently Retry is not supported by Nokia IN)
+CREDIT_RETRY_CNT=0
+
+##Number of retry attempts while sending Adjustment request (Currently Retry is not supported by Nokia IN)
+ADJ_RETRY_CNT=0
+
+##Number of retry attempts while sending Cancel request (Currently Cancel Request is not supported by Nokia IN)
+CNCL_RETRY_CNT=0
+
+##Sleep time between two retries (Currently Retry is not supported by Nokia IN)
+RETRY_SLEEP_TIME=0
+
+##Error Codes when retry has to be made  (Currently Retry is not supported by Nokia IN)
+RETRY_CASES=
+
+##Remark1 in Reconcialiationlog
+REMARK1=
+
+##Remark1 in Reconcialiationlog
+REMARK2=
+
+
+### This parameter would be used in the IN Transaction id.  02/08/07
+###### Note Please make sure the value of this parameter would be depend on the instance e.g. For SMSR its value=2 and for SMSP its value=3.
+INSTANCE_ID=2
+
+
+
+

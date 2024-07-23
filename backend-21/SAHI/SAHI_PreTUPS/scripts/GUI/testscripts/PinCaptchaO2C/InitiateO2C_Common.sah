@@ -1,0 +1,152 @@
+//###############################################
+//#Company Name: Mahindra Comviva Technologies Ltd.
+//#Application Name: Pretups
+//#Objective:Pin captcha test case:Common function for initiate O2c transfer
+//#Author Name: Shashi
+//#Created Date: 12/06/2015
+//###############################################
+
+_includeOnce("../../../../utility/ImportPackage.sah");	//For importing common files
+var $l_PinCaptchaO2C = _readCSVFile("../../testdata/PinCaptchaO2C.csv");
+
+
+var $g_btachName;
+var $g_languageOne;
+var $g_languageTwo;
+var $g_remarks;
+var $g_PIN;
+var $g_assert;
+
+
+var $l_row;
+var $l_col;
+
+
+function initiateBatchO2CTransfer() {
+	
+	var $l_row = 1;
+	var $l_col = 0;
+	
+	var $t1 = _testcase($l_PinCaptchaO2C[$l_row][$l_col++], $l_PinCaptchaO2C[$l_row][$l_col++]);
+
+	$t1.start();
+	
+	
+	initiateO2Ctransfer($l_row,$l_col);
+	
+	initiateBatchO2CTrans();
+
+	$t1.end();
+		
+}
+
+function initiateO2Ctransfer($l_row,$l_col) {	
+	
+	$g_btachName = $l_PinCaptchaO2C[$l_row][$l_col++];
+	$g_languageOne = $l_PinCaptchaO2C[$l_row][$l_col++];
+	$g_languageTwo = $l_PinCaptchaO2C[$l_row][$l_col++];
+	$g_remarks = $l_PinCaptchaO2C[$l_row][$l_col++];
+	$g_PIN  = $l_PinCaptchaO2C[$l_row][$l_col++];
+	$g_assert = $l_PinCaptchaO2C[$l_row][$l_col++];
+
+}
+
+function initiateBatchO2CTrans() {
+
+		_click(_link($g_LeftMenuBar_O2C));
+		_assertExists(_link($g_LeftMenuBar_InitaiteBatchO2CTrans));
+		_click(_link($g_LeftMenuBar_InitaiteBatchO2CTrans));
+		_setSelected(_select("geographicalDomainCode"), "ZainZone");
+		_setSelected(_select("domainCode"), "Dist1");
+		_setSelected(_select("categoryCode"), "Super Distributor");
+		_setSelected(_select("productCode"), "eTopUP");
+		_setValue(_textbox("batchName"), $g_btachName);
+		_assertExists(_div("Initiate batch O2C transfer"));
+		_setFile2(_file("file"), $g_remarks);
+		_click(_submit("Submit"));
+		_setValue(_textarea("defaultLang"), $g_languageOne);
+		_setValue(_textarea("secondLang"), $g_languageTwo);
+		_setValue(_password("smsPin"), $g_PIN);
+		_click(_submit("Confirm"));
+		_assertExists(_listItem("/"+$g_assert+ ".*/"));
+			
+}
+
+//Negative test case invalid pin
+function n_initiateBatchO2CTrans_invalidPin() {
+	
+	var $l_row = 2;
+	var $l_col = 0;
+	
+	var $t1 = _testcase($l_PinCaptchaO2C[$l_row][$l_col++], $l_PinCaptchaO2C[$l_row][$l_col++]);
+
+	$t1.start();
+	
+	
+	initiateO2Ctransfer($l_row,$l_col);
+	
+	n_initiateBatchO2CTransfer_invalidPin();
+
+	$t1.end();
+		
+}
+
+function n_initiateBatchO2CTransfer_invalidPin() {
+
+	_click(_link($g_LeftMenuBar_O2C));
+	_assertExists(_link($g_LeftMenuBar_InitaiteBatchO2CTrans));
+	_click(_link($g_LeftMenuBar_InitaiteBatchO2CTrans));
+	_setSelected(_select("geographicalDomainCode"), "ZainZone");
+	_setSelected(_select("domainCode"), "Dist1");
+	_setSelected(_select("categoryCode"), "Super Distributor");
+	_setSelected(_select("productCode"), "eTopUP");
+	_setValue(_textbox("batchName"), $g_btachName);
+	_assertExists(_div("Initiate batch O2C transfer"));
+	_setFile2(_file("file"), $g_remarks);
+	_click(_submit("Submit"));
+	_setValue(_textarea("defaultLang"), $g_languageOne);
+	_setValue(_textarea("secondLang"), $g_languageTwo);
+	_setValue(_password("smsPin"), $g_PIN);
+	_click(_submit("Confirm"));
+	_assertExists(_listItem($g_assert));
+		
+}
+
+//negative test case empty pin
+function n_initiateBatchO2CTrans_emptyPin() {
+	
+	var $l_row = 3;
+	var $l_col = 0;
+	
+	var $t1 = _testcase($l_PinCaptchaO2C[$l_row][$l_col++], $l_PinCaptchaO2C[$l_row][$l_col++]);
+
+	$t1.start();
+	
+	
+	initiateO2Ctransfer($l_row,$l_col);
+	
+	n_initiateBatchO2CTransfer_emptyPin();
+
+	$t1.end();
+		
+}
+function n_initiateBatchO2CTransfer_emptyPin() {
+
+	_click(_link($g_LeftMenuBar_O2C));
+	_assertExists(_link($g_LeftMenuBar_InitaiteBatchO2CTrans));
+	_click(_link($g_LeftMenuBar_InitaiteBatchO2CTrans));
+	_setSelected(_select("geographicalDomainCode"), "ZainZone");
+	_setSelected(_select("domainCode"), "Dist1");
+	_setSelected(_select("categoryCode"), "Super Distributor");
+	_setSelected(_select("productCode"), "eTopUP");
+	_setValue(_textbox("batchName"), $g_btachName);
+	_assertExists(_div("Initiate batch O2C transfer"));
+	_setFile2(_file("file"), $g_remarks);
+	_click(_submit("Submit"));
+	_setValue(_textarea("defaultLang"), $g_languageOne);
+	_setValue(_textarea("secondLang"), $g_languageTwo);
+	_setValue(_password("smsPin"), $g_PIN);
+	_click(_submit("Confirm"));
+	_assertExists(_listItem($g_assert));
+		
+}

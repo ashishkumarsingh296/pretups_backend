@@ -1,0 +1,66 @@
+//######################################
+//
+// This script to manage channel User PIN in the system 
+//
+//#######################################
+
+
+//===== import scripts ===//
+_includeOnce("../../../../utility/ImportPackage.sah");
+_includeOnce("../../../GUI/testscripts/ChannelUser_Management/UserPINManagement_Common.sah"); //to view barred channel user in the system 
+
+
+
+//If CA deos not exist, first create it and then initiate O2C transfer inthe system ..... 
+var $l_naCsv = _readCSVFile("../../../GUI/testdata/NA_Login.csv"); //Reads the network admin credentials 
+var $g_channelAdmin = $l_naCsv[2][1];
+if($g_channelAdmin == "null"){
+	createCA(); // UserManagement_Common.sah
+	var $l_naCsv1 = _readCSVFile("../../../GUI/testdata/NA_Login.csv");
+	$g_channelAdmin = $l_naCsv1[2][1];
+	login($g_appURL,  $g_LangEnglish, $g_channelAdmin, $g_commonPassword, $g_assertWelcome);
+}else{	 
+	login($g_appURL,  $g_LangEnglish, $g_channelAdmin, $g_commonPassword, $g_assertWelcome);
+}
+	
+
+ 
+
+// ....................... Test cases to manage channel User PIN in the system    ............. //
+
+var $g_resetUserPIN = _readCSVFile("../../../GUI/testdata/ChannelUserPINMgmt.csv"); // Read Channel channel user detials which needs to be set
+
+
+
+	for(var $g_row = 1; $g_resetUserPIN[$g_row] != null; $g_row++){
+		
+				var $g_col = 0;
+				var $number =   testCaseNumber($g_resetUserPIN[$g_row][$g_col]);
+				var $t = _testcase($g_resetUserPIN[$g_row][$g_col++], $g_resetUserPIN[$g_row][$g_col++]);
+				
+				$t.start();
+				commonVaribleToResetResendUserPIN($g_row, $g_col);
+				
+				
+				
+				if($number ==1 ){ resetPINOfUser(); }
+				else if($number ==2 ){ resendPINOfUser(); }
+				else if($number ==3 ){ toCheckSubmitButtonOnPINMgmt(); }
+				else if($number > 3 && $number < 9 ) { resetOrResendWithInvalidDetails(); }
+				else if ($number == 9 ) { toChecKBackButtonOnPINMgmtCnfPage(); }
+				else if ($number == 10 ) { toChecKCancelButtonOnPINMgmtCnfPage(); }
+				$t.end();
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+

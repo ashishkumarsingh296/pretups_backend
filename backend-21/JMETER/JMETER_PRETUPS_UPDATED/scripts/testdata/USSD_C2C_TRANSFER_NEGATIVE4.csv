@@ -1,0 +1,2 @@
+TestcaseId,TestcaseType,Module,Description
+TUNG13121,Negative,Channel to Channel Transfer through USSD,"To verify that channel user is unable to initiate the ""transfer"" through USSD if ""MSISDN"" field is having value with country code."

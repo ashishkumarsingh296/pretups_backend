@@ -1,0 +1,2 @@
+EXTNWCODE,EXTCODE,PRODUCTCODE,QTY,REMARKS,TestcaseId,TestcaseType,Module,Description
+NG,123312,101,10,,TUNG12853,Negative,O2C return through EXTGW,To check  that an unsuccessful o2c return occurs when wrong ext code is present

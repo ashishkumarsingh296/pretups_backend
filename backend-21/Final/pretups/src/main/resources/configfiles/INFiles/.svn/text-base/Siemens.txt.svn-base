@@ -1,0 +1,139 @@
+###########################################################################################################
+#	Siemens IN file
+#	If IN interface of Siemens is added in PreTUPS from superadmin then.
+#	File with this content and name of the IN ID.txt should be created at the 
+#	path of the INFiles (defined in Constants.props).
+#
+#	Values of the variables in this file should be updated with the values provided by the 
+#	Mobile Operator IN team
+#
+############################################################################################################
+
+## Time out for HTTP connection to connect, value in milliseconds
+CONNECT_TIMEOUT=5000
+
+## Time out for reading content from HTTP connection in validate stage, PreTUPS will wait for content upto this time. value in milliseconds
+READ_TIMEOUT_VAL=5000
+
+## Time out for reading content from HTTP connection in topup stage, PreTUPS will wait for content upto this time. value in milliseconds
+READ_TIMEOUT_TOP=10000
+
+
+## Warning time for reading content from the IN interface, if IN interface takes time more than this, O&M alarm will be raised, value should be less than the READ_TIMEOUT_VAL variable 
+WARN_TIMEOUT=5000
+
+
+## Is keep allow true or false (true means connection pooling at the PCP/IP level), if keep alive is true set "Y", if it is false set "N"
+KEEP_ALIVE=Y
+
+## The content type with which request is send to IN 
+CONTENT_TYPE=text/html
+
+## The Factor by whih the transaction amout to be multiplied before sending to IN.
+MULTIPLICATION_FACTOR=100
+
+## Prefix to be removed from the mobile number, leave blank if nothing is to be removed
+MSISDN_REMOVE_PREFIX=
+
+## Prefix to be added to the mobile number, leave blank if nothing is to be added as prefix
+MSISDN_ADD_PREFIX=
+
+## common string that is used while sending the request of getAccountInfo,debitAdjust or credit.
+COMMON_STRING=ReqCred.Role=4&ReqCred.UserId= PreTUPS service charger &ReqCred.PIN=&AccessFrontendId=PreTUPSClient1&ConsumerAccountId=0&ConsumerPIN=&MerchantId=PreTUPS-1&ProductId=E-TOPUP&Money.Currency=FCFA&Money.Amount=10000&RoutingInfo=&AccountType=1&ClusterName=C1
+
+## URL of the Siemens IN interface
+URL=http://172.16.1.109:5003/pretups/SiemensTestServer?
+
+#Inactivity end  date format,provided by the operator
+DATE_FORMAT=dd/MM/yyyy
+
+#Transaction date format,present in the request
+TRANS_DATE_TIME=dd/MM/yyyy hh:mm:ss
+
+##This flag is used to decide whether the amount should be rounded or not.
+ROUND_FLAG=Y
+
+
+##Defines the ambiguous cases which are separated by comma.
+AMBIGUOUS_CASES=-103,-109
+
+
+
+
+
+#Indicates whether Cancel request supported by IN or not.(Possible values are Y/N)
+CANCEL_TXN_ALLOWED=N
+
+##If any ambiguous response is received from IN, then retry/cancel command is sent to IN. Then response of retry/cancel is matched in the IN file and mapped error code (250/206/200) is picked and sent to Controller.
+##SYSTEM_STATUS_MAPPING=INErrCode1,INErrCode2,INErrCode3,INErrCode4:system_err_code1|INErrCode5,INErrCode6:system_err_code2
+##system_err_code1 and system_err_code2 will be sent to system and written in recon log file.
+#SYSTEM_STATUS_MAPPING=250:250
+##If receiver credit is AMBIGUOS, then in SYSTEM_PREFERENCE, CREDIT_BACK_ALLOWED should be N.
+
+#If an ambiguous case occurs while credit, mapped error code can be set to one of the codes(SUCCESS, FAIL and AMBIGUOUS)
+SYSTEM_STATUS_MAPPING_CREDIT=250:250
+
+#If an ambiguous case occurs while credit, mapped error code can be set to one of the codes(SUCCESS, FAIL and AMBIGUOUS)
+SYSTEM_STATUS_MAPPING_CREDIT_ADJ=250:250
+
+#If an ambiguous case occurs while debitAdjust, mapped error code cannot be SUCCESS. It can only be FAIL or AMBIGUOUS
+SYSTEM_STATUS_MAPPING_DEBIT_ADJ=250:250
+
+#If an ambiguous case occurs while credit Back, mapped error code can not be fail, it can only be SUCCESS or AMBIGOUOS
+SYSTEM_STATUS_MAPPING_CREDIT_BCK=250:250
+
+
+##If any ambiguous response is received from IN, check if cancel txn allowed or not in the system. if not, pick mapped error code against NA otherwise pick mapped error code (206/250) against received response code of Cancellation from IN. 
+##CANCEL_COMMAND_STATUS_MAPPING=INErrCode1,INErrCode2,INErrCode3,INErrCode4:cancel_err_code1|INErrCode5,INErrCode6:cancel_err_code2
+##cancel_err_code1, cancel_err_code2 will be written in recon log file.
+CANCEL_COMMAND_STATUS_MAPPING=NA:450
+
+#Defines the cancel command status when cancel not supported by IN. 
+CANCEL_NA=NA
+
+##This flag should be Y if interface closure feature is to be provided to client
+INTFCE_CLSR_SUPPORT=N
+
+#maximum number of ambiguous transactions allowed till threshold time.
+NO_ALLWD_AMB_TXN=5
+
+##time duration in which maximum number of ambiguous transactions is defined
+THRESHOLD_TIME=240000
+
+##Time duration after which interface suspension expires.
+EXPIRY_TIME=60000
+
+##Auto Resumption supported by IN or not.
+AUTO_RESUME_SUPPORT=N
+
+##Number of retry attempts while validation (Currently Retry is not supported by Siemens)
+VAL_RETRY_CNT=0
+
+##Number of retry attempts while recharge request (Currently Retry is not supported by Siemens)
+CREDIT_RETRY_CNT=0
+
+##Number of retry attempts while sending Adjustment request (Currently Retry is not supported by Siemens)
+ADJ_RETRY_CNT=0
+
+##Number of retry attempts while sending Cancel request (Currently Cancel Request is not supported by Siemens)
+CNCL_RETRY_CNT=0
+
+##Sleep time between two retries (Currently Retry is not supported by Siemens)
+RETRY_SLEEP_TIME=0
+
+##Error Codes when retry has to be made  (Currently Retry is not  supported by Siemens )
+RETRY_CASES=
+
+##Remark1 in Reconcialiationlog
+REMARK1=
+
+##Remark1 in Reconcialiationlog
+REMARK2=
+
+
+### This parameter would be used in the IN Transaction id.
+###### Note Please make sure the value of this parameter would be depend on the instance e.g. For SMSR its value=2 and for SMSP its value=3.
+INSTANCE_ID=2
+
+
+

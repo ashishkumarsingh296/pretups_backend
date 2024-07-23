@@ -1,0 +1,47 @@
+//######################################
+//
+//This script to add negative cases for channel category creation.
+//
+//#######################################
+
+
+//===== import scripts ===//
+_includeOnce("../../../../utility/ImportPackage.sah");
+_includeOnce("CreateDomain_Common_Negative.sah");
+
+// ===== Pre-Condition check ==== //
+// Not applicable 
+
+// ====== Login into the application ====== //
+login($g_appURL, $g_LangEnglish, $g_superAdmin, $g_password, $g_assertMessage);
+
+
+var $g_ChannelCategory = _readCSVFile("../../negative_testdata/ChannelCategoriesNegativeCases.csv");
+
+
+	$a_domainCode = genChannelDomainCode($g_autoPrefix); //Automatically generate Domain Code
+	$a_domainName = genChannelCategoryCode($g_autoPrefix); //Automatically generate Category Code
+		
+		var $l_error = addChannelDomain();
+		
+		
+		
+		
+		if($l_error) {
+			for(var $g_row = 1; $g_ChannelCategory[$g_row] != null; $g_row++){
+			//for(var $g_row = 6; $g_ChannelCategory[$g_row] != 12; $g_row++){
+				var $g_col = 0;
+				var $t = _testcase($g_ChannelCategory[$g_row][$g_col++], $g_ChannelCategory[$g_row][$g_col++]);
+				$t.start();
+				variableForChannelCategory($g_row, $g_col);
+				
+				addChannelDomainAndCategory();
+				_assertExists(_listItem($assertion));
+				
+				$t.end();
+			}
+		}else {
+			_log("Try to insert domain variable one's again");
+			
+		}
+

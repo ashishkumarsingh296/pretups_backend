@@ -1,0 +1,32 @@
+[appservers]
+#WEB
+172.30.20.31
+#172.16.10.214
+#tomcat_web1
+
+[smsr_servers]
+#SMSR
+#tomcat_smsr1
+
+[smsp_servers]
+#SMSP
+#tomcat_smsp1
+
+[dbservers]
+#172.16.1.156 ansible_ssh_user=oracle ansible_ssh_pass=oracle
+172.16.11.121 ansible_ssh_user=pgdb ansible_ssh_pass=pgdb
+#172.16.11.121 ansible_ssh_user=ora12c ansible_ssh_pass=ora12c
+#172.16.7.32 ansible_ssh_user=oracle ansible_ssh_pass=oracle
+#172.16.7.23 ansible_ssh_user=ora11g ansible_ssh_pass=ora11g
+
+
+[testing]
+#172.16.10.200
+
+[OAMservers]
+#172.16.1.155
+#172.16.11.91
+
+[SMSGWservers]
+#172.16.1.155
+#172.16.11.91

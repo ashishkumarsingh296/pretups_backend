@@ -1,0 +1,144 @@
+##This flag should be Y if interface closure feature is to be provided to
+client
+INTFCE_CLSR_SUPPORT=N
+
+##This flag is used to define whether rounding of amount should be or not.
+ROUND_FLAG=Y
+
+WARN_TIMEOUT=10000
+
+## The Factor by which the transaction amout to be multiplied before sending to IN.
+MULT_FACTOR=100
+
+##Defines the mapping of Interface language with the pretups language( format-
+IN_LANG1:PTUPS_LANG1,IN_LANG2:PTUPS_LANG2)
+LANGUAGE_MAPPING=English:0,Kinyarwanda:1
+
+RC_R=Y
+PRC_S=Y
+PRC_R=Y
+PCR_R=Y
+PCR_S=Y
+
+CURRENCY=INR
+
+##keep alive flag for connection
+KEEP_ALIVE=N
+
+##Indicates whether Cancel request supported by IN or not.(Possible values are
+Y/N)
+CANCEL_TXN_ALLOWED=N
+
+##If an ambiguous case occurs while credit, mapped error code can be set to
+one of the codes(SUCCESS, FAIL and AMBIGUOUS)
+SYSTEM_STATUS_MAPPING_CREDIT=250:250
+
+##If an ambiguous case occurs while credit, mapped error code can be set to
+one of the codes(SUCCESS, FAIL and AMBIGUOUS)
+SYSTEM_STATUS_MAPPING_CREDIT_ADJ=250:250
+
+##If an ambiguous case occurs while debitAdjust, mapped error code cannot be
+SUCCESS. It can only be FAIL or AMBIGUOUS
+SYSTEM_STATUS_MAPPING_DEBIT_ADJ=250:250
+
+##If an ambiguous case occurs while credit Back, mapped error code can not be
+fail, it can only be SUCCESS or AMBIGOUOS
+SYSTEM_STATUS_MAPPING_CREDIT_BCK=250:250
+
+
+##If any ambiguous response is received from IN, check if cancel txn allowed
+or not in the system. if not, pick mapped error code against NA otherwise pick
+mapped error code (206/250) against received response code of Cancellation
+from IN.
+##CANCEL_COMMAND_STATUS_MAPPING=INErrCode1,INErrCode2,INErrCode3,INErrCode4:cancel_err_code1|INErrCode5,INErrCode6:cancel_err_code2
+##cancel_err_code1, cancel_err_code2 will be written in recon log file.
+CANCEL_COMMAND_STATUS_MAPPING=NA:450
+
+##Defines the cancel command status when cancel not supported by IN.
+CANCEL_NA=NA
+
+##Sleep time between two retries
+RETRY_SLEEP_TIME=10000
+
+##Remark1 in Reconcialiationlog
+REMARK1=
+
+##Remark1 in Reconcialiationlog
+REMARK2=
+
+MSISDN_REMOVE_PREFIX=0
+
+#INTFCE_BONUS_REQUIRED=N
+
+#REQUESTED_AMOUNT_FLAG=Y
+
+URL_1=http://172.16.11.91:3535/pretups/ComverseTestServer
+##COMV_SOAP_URL=http://localhost:8080/comverse/ComverseTestServer
+#COMV_SOAP_URL=http://172.17.201.73/ccws/ccws.asmx
+COMV_INIT_ID=comviva
+COMV_INIT_PASSWORD=Comvivain
+
+##this parameter is set in header of soap msg
+Soap_Val_Action=RetrieveSubscriberLite
+Soap_Top_Action=NonVoucherRecharge
+Soap_Adj_Action=CreditAccount
+
+CONNECT_TIME_OUT=10000
+READ_TIME_OUT=20000
+
+##following state subscriber are allow to make recharge
+Comv_Soap_Rchg_State=Suspended(S1),Suspended(S2),Active,Idle,Await 1st Recharg
+
+##this parameter is set in
+_urlConnection.setRequestProperty("SOAPAction",p_soapAction);
+SoapAction_VAL=http://comverse-in.com/prepaid/ccws/RetrieveSubscriberLite
+SoapAction_TOP=http://comverse-in.com/prepaid/ccws/NonVoucherRecharge
+SoapAction_ADJ=http://comverse-in.com/prepaid/ccws/CreditAccount
+
+
+#Soap_1st_Flag=Await 1st Recharg
+
+
+
+READ_TIMEOUT_VAL=2000
+RETRY_COUNT_VAL=3
+
+READ_TIMEOUT_CREDIT=2000
+RETRY_COUNT_CREDIT=3
+
+READ_TIMEOUT_DEBIT=2000
+RETRY_COUNT_DEBIT=3
+
+
+
+
+NO_ALLWD_AMB_TXN=3
+THRESHOLD_TIME=1000
+EXPIRY_TIME=1000
+
+PROCESS_SLEEP_TIME=500
+
+USER_NAME=COMVIVA
+
+PASSWORD=comvivain
+#PASSWORD=JOE5HV3AfZdqJi59eZfMFwXeN4s=
+
+END_URL=http://172.17.201.73/ccws/ccws.asmx
+
+SOAP_ACTION_URI=http://comverse-in.com/prepaid/ccws
+
+WSDD_LOCATION=/pretupshome/pretups/tomcat6_smsr/webapps/pretups/WEB-INF/classes/configfiles/INFiles/client_deploy.wsdd
+
+RECH_COMMENT=Comvivac2s
+
+XFER_COMMENT=Comvivap2p
+
+CORE_BAL_NAME=Core
+
+WARN_TIMEOUT=1000
+MSISDN_ADD_PREFIX=250
+
+MSISDN_REMOVE_PREFIX=250
+RC_R=Y
+LMBSTDBT_R
+

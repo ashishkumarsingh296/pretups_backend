@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="PreTUPS Automation Suite" parallel="none">
+    <suite-files>
+   		<suite-file path="Suite_DataBuilder.xml"/>
+        <suite-file path="Suite_PreRequisite.xml"/>
+        <suite-file path="Suite_Smoke.xml"/>
+        <suite-file path="Suite_UAP.xml"/>
+        <suite-file path="Suite_SIT.xml"/>
+        <suite-file path="Suite_VMS.xml"/>
+    </suite-files>
+</suite>

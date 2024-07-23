@@ -1,0 +1,10 @@
+UPDATE pages_ui
+SET module_code='COMMON', page_url='/operatorUser/domainMangement', menu_name='Domain Management', show_menu='Y', sequence_no=4.1, menu_level='2', parent_page_code='P_SU_CHNL_DMN_MAIN', image=NULL, role_code=NULL, domain_type='OPERATOR', category_code='SUADM', page_type=NULL, app_name='eTopup'
+WHERE page_code='P_SU_CHNL_DMN_MGMT';
+
+UPDATE page_ui_roles
+SET role_code='DOMAINMGMT', page_code='P_SU_CHNL_DMN_MGMT'
+WHERE role_code='DOMAINMGMT' AND page_code='P_SU_CHNL_DMN_MGMT';
+
+
+

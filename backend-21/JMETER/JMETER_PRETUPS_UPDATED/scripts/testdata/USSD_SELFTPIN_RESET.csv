@@ -1,0 +1,12 @@
+MSISDN,OTP,ANSWER,NEWPIN,CONFIRMNEWPIN,TestcaseId,TestcaseType,Module,Description
+7255555555,243179,Shaina,1357,1357,TUNG10188 ,Positive,Self TPIN Reset through USSD,To check that the user is able to Reset the PIN through USSD using Reset PIN request.
+,243179,Shaina,1357,1357,TUNG10189 ,Negative,Self TPIN Reset through USSD,To verify that the Reset PIN  request is not processed if MSISDN is not entered in the request.
+7255sdw555,243179,Shaina,1357,1357,TUNG10190 ,Negative,Self TPIN Reset through USSD,To verify that the Reset PIN  request is not processed if invalid MSISDN is entered in the request.
+7255555555,,Shaina,1357,1357,TUNG10191 ,Negative,Self TPIN Reset through USSD,To verify that the Reset PIN  request is not processed if  mandatory field is not entered in the request.
+7255555555,abcd,Shaina,1357,1357,TUNG10192 ,Negative,Self TPIN Reset through USSD,To verify that the Reset PIN  request is not processed if invalid OTP is entered in the request.
+7255555555,243179,Shaina,1357,1357,TUNG10193 ,Positive,Self TPIN Reset through USSD,To verify that the latest OTP is considered if Initiate PIN Reset Request is hit multiple times.
+7255555555,243179,Shaina,1357,1357,TUNG10194 ,Negative,Self TPIN Reset through USSD,To verify that the Reset PIN  request is not processed if  OTP is expired.
+7255555555,243179,xyz,1357,1357,TUNG10195 ,Negative,Self TPIN Reset through USSD,To verify that the Reset PIN  request is not processed if  security answer is incorrect.
+7255555555,243179,sfds,13571357,13571357,TUNG10196 ,Negative,Self TPIN Reset through USSD,To verify that the Reset PIN  request is not processed if New PIN is entered with invalid length.
+7255555555,243179,Shaina,abc123,abc123,TUNG10197 ,Negative,Self TPIN Reset through USSD,To verify that the Reset PIN  request is not processed if  alphanumeric New PIN is entered in the request.
+7255555555,243179,Shaina,1357,1358,TUNG10198 ,Negative,Self TPIN Reset through USSD,To verify that the Reset PIN  request is not processed if  New Pin and Confirm New Pin are different.

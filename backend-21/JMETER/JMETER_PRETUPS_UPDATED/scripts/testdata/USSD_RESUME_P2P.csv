@@ -1,0 +1,3 @@
+MSISDN1,PIN,TestcaseId,TestcaseType,Module,Description
+7891786398,,TUNG13205,Negative,Subscriber Resumed ,Pin left blank
+7891786398,1357,TUNG13203,Positive,Subscriber Resumed ,by msisdn and pin

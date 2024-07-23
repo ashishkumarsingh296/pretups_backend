@@ -1,0 +1,162 @@
+<!-- Use this file to deploy some handlers/chains and services      -->
+<!-- Two ways to do this:                                           -->
+<!--   java org.apache.axis.client.AdminClient deploy.wsdd          -->
+<!--      after the axis server is running                          -->
+<!-- or                                                             -->
+<!--   java org.apache.axis.utils.Admin client|server deploy.wsdd   -->
+<!--      from the same directory that the Axis engine runs         -->
+
+<deployment
+    xmlns="http://xml.apache.org/axis/wsdd/"
+    xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
+  <!-- Services from TransaccionPagos WSDL service -->
+
+  <service name="TransaccionPagosSOAP" provider="java:RPC" style="document" use="literal">
+      <parameter name="wsdlTargetNamespace" value="http://claro.com.pe/eai/oac/transaccionpagos/"/>
+      <parameter name="wsdlServiceElement" value="TransaccionPagos"/>
+      <parameter name="schemaQualified" value="http://claro.com.pe/eai/oac/transaccionpagos/"/>
+      <parameter name="wsdlServicePort" value="TransaccionPagosSOAP"/>
+      <parameter name="className" value="com.inter.claroCollPayWS.stub.TransaccionPagosSOAPImpl"/>
+      <parameter name="wsdlPortType" value="TransaccionPagos"/>
+      <parameter name="typeMappingVersion" value="1.2"/>
+      <operation name="crearPago" qname="crearPago" returnQName="retNS:crearPagoResponse" xmlns:retNS="http://claro.com.pe/eai/oac/transaccionpagos/" returnType="rtns:>crearPagoResponse" xmlns:rtns="http://claro.com.pe/eai/oac/transaccionpagos/" soapAction="http://claro.com.pe/eai/oac/transaccionpagos/crearPago" >
+        <parameter qname="pns:crearPago" xmlns:pns="http://claro.com.pe/eai/oac/transaccionpagos/" type="tns:>crearPago" xmlns:tns="http://claro.com.pe/eai/oac/transaccionpagos/"/>
+      </operation>
+      <operation name="crearAnulacion" qname="crearAnulacion" returnQName="retNS:crearAnulacionResponse" xmlns:retNS="http://claro.com.pe/eai/oac/transaccionpagos/" returnType="rtns:>crearAnulacionResponse" xmlns:rtns="http://claro.com.pe/eai/oac/transaccionpagos/" soapAction="http://claro.com.pe/eai/oac/transaccionpagos/crearAnulacion" >
+        <parameter qname="pns:crearAnulacion" xmlns:pns="http://claro.com.pe/eai/oac/transaccionpagos/" type="tns:>crearAnulacion" xmlns:tns="http://claro.com.pe/eai/oac/transaccionpagos/"/>
+      </operation>
+      <parameter name="allowedMethods" value="crearAnulacion crearPago"/>
+
+      <typeMapping
+        xmlns:ns="http://claro.com.pe/eai/oac/transaccionpagos/"
+        qname="ns:>crearPagoResponse"
+        type="java:com.inter.claroCollPayWS.stub.CrearPagoResponse"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <arrayMapping
+        xmlns:ns="http://claro.com.pe/eai/oac/transaccionpagos/"
+        qname="ns:CrearPagoDetDocumentosReqType"
+        type="java:com.inter.claroCollPayWS.stub.CrearPagoDetDocumentoReqType[]"
+        innerType="cmp-ns:CrearPagoDetDocumentoReqType" xmlns:cmp-ns="http://claro.com.pe/eai/oac/transaccionpagos/"
+        encodingStyle=""
+      />
+      <arrayMapping
+        xmlns:ns="http://claro.com.pe/eai/oac/transaccionpagos/"
+        qname="ns:CrearPagoDetDocumentosRespType"
+        type="java:com.inter.claroCollPayWS.stub.CrearPagoDetDocumentoRespType[]"
+        innerType="cmp-ns:CrearPagoDetDocumentoRespType" xmlns:cmp-ns="http://claro.com.pe/eai/oac/transaccionpagos/"
+        encodingStyle=""
+      />
+      <arrayMapping
+        xmlns:ns="http://claro.com.pe/eai/oac/transaccionpagos/"
+        qname="ns:CrearPagoDetServiciosRespType"
+        type="java:com.inter.claroCollPayWS.stub.CrearPagoDetServicioRespType[]"
+        innerType="cmp-ns:CrearPagoDetServicioRespType" xmlns:cmp-ns="http://claro.com.pe/eai/oac/transaccionpagos/"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://claro.com.pe/eai/oac/transaccionpagos/"
+        qname="ns:CrearAnulDetDocumentoRespType"
+        type="java:com.inter.claroCollPayWS.stub.CrearAnulDetDocumentoRespType"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://claro.com.pe/eai/oac/transaccionpagos/"
+        qname="ns:CrearAnulDetServicioRespType"
+        type="java:com.inter.claroCollPayWS.stub.CrearAnulDetServicioRespType"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://claro.com.pe/eai/oac/transaccionpagos/"
+        qname="ns:>crearPago"
+        type="java:com.inter.claroCollPayWS.stub.CrearPago"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://claro.com.pe/eai/oac/transaccionpagos/"
+        qname="ns:>crearAnulacionResponse"
+        type="java:com.inter.claroCollPayWS.stub.CrearAnulacionResponse"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://claro.com.pe/eai/oac/transaccionpagos/"
+        qname="ns:>crearAnulacion"
+        type="java:com.inter.claroCollPayWS.stub.CrearAnulacion"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://claro.com.pe/eai/oac/transaccionpagos/"
+        qname="ns:CrearPagoDetDocumentoReqType"
+        type="java:com.inter.claroCollPayWS.stub.CrearPagoDetDocumentoReqType"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://claro.com.pe/eai/oac/transaccionpagos/"
+        qname="ns:CrearPagoDetDocumentoRespType"
+        type="java:com.inter.claroCollPayWS.stub.CrearPagoDetDocumentoRespType"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://claro.com.pe/eai/oac/transaccionpagos/"
+        qname="ns:AuditType"
+        type="java:com.inter.claroCollPayWS.stub.AuditType"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <arrayMapping
+        xmlns:ns="http://claro.com.pe/eai/oac/transaccionpagos/"
+        qname="ns:CrearAnulDetServiciosRespType"
+        type="java:com.inter.claroCollPayWS.stub.CrearAnulDetServicioRespType[]"
+        innerType="cmp-ns:CrearAnulDetServicioRespType" xmlns:cmp-ns="http://claro.com.pe/eai/oac/transaccionpagos/"
+        encodingStyle=""
+      />
+      <arrayMapping
+        xmlns:ns="http://claro.com.pe/eai/oac/transaccionpagos/"
+        qname="ns:CrearPagoDetServiciosReqType"
+        type="java:com.inter.claroCollPayWS.stub.CrearPagoDetServicioReqType[]"
+        innerType="cmp-ns:CrearPagoDetServicioReqType" xmlns:cmp-ns="http://claro.com.pe/eai/oac/transaccionpagos/"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://claro.com.pe/eai/oac/transaccionpagos/"
+        qname="ns:CrearPagoDetServicioRespType"
+        type="java:com.inter.claroCollPayWS.stub.CrearPagoDetServicioRespType"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <arrayMapping
+        xmlns:ns="http://claro.com.pe/eai/oac/transaccionpagos/"
+        qname="ns:CrearAnulDetDocumentosRespType"
+        type="java:com.inter.claroCollPayWS.stub.CrearAnulDetDocumentoRespType[]"
+        innerType="cmp-ns:CrearAnulDetDocumentoRespType" xmlns:cmp-ns="http://claro.com.pe/eai/oac/transaccionpagos/"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://claro.com.pe/eai/oac/transaccionpagos/"
+        qname="ns:CrearPagoDetServicioReqType"
+        type="java:com.inter.claroCollPayWS.stub.CrearPagoDetServicioReqType"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+  </service>
+</deployment>

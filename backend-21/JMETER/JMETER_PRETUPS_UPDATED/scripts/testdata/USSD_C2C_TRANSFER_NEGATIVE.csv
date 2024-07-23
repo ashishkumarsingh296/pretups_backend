@@ -1,0 +1,5 @@
+MSISDN1,MSISDN2,TOPUPVALUE,PRODUCTCODE,LANGUAGE1,PIN,TestcaseId,TestcaseType,Module,Description
+,,,101,90,,TUNG13118,Negative,Channel to Channel Transfer through USSD,"To verify that channel user is unable to initiate the ""transfer"" through USSD with all the mandatory fields are left blank."
+fdsfdsf1514,72000099sdfd10,,101,90,,TUNG13119,Negative,Channel to Channel Transfer through USSD,"To verify that channel user is unable to initiate the ""transfer"" through USSD with all the mandatory fields having invalid characters."
+7212121514,7200009910,100000,151,90,,TUNG13120,Negative,Channel to Channel Transfer through USSD,"To verify that channel user is unable to initiate the ""transfer"" through USSD if ""TOPUPVALUE"" field is having value more than channel user balance."
+9.17E+11,7200009910,,101,90,,TUNG13121,Negative,Channel to Channel Transfer through USSD,"To verify that channel user is unable to initiate the ""transfer"" through USSD if ""MSISDN"" field is having value with country code."

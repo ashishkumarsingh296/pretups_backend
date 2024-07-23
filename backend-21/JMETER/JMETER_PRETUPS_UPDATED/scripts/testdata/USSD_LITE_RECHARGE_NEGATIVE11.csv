@@ -1,0 +1,2 @@
+TestcaseId,TestcaseType,Module,Description
+TUNG12739,Negative,Lite Recharge through USSD,Suspended user should try to initiate the lite recharge request.

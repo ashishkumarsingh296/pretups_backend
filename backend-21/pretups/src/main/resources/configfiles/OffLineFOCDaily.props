@@ -1,0 +1,11 @@
+PROCESS_ID=OF_FOCR
+MAX_ROWS=65000
+FILE_SUBSTR_DATE_FORMAT=_ddMMyy_hhmmss
+DATE_FORMAT=dd/MM/yyyy
+DATE_TIME_FORMAT=dd/MM/yy hh:mm:ss
+
+OF_FOCR_DIR=<Report-Generation-Path>
+OF_FOCR_HEADER=Transfer DATE,Parent name,Parent msisdn,Owner id,Owner Name,EXTERNAL_CODE,User MSISDN,REQUESTED_QUANTITY,EXT_TXN_NO,TRANSFER_ID
+OF_FOCR_QRY=select Rownum,(ct.TRANSFER_DATE||','||p.user_name||','||p.msisdn||','||o.user_id||','||o.user_name||','||u.EXTERNAL_CODE||','||u.MSISDN||','||ct.REQUESTED_QUANTITY||','||ct.EXT_TXN_NO||','||ct.TRANSFER_ID) as DATA from channel_transfers ct,users u ,users p,users o where ct.FROM_USER_ID=u.USER_ID(+) and u.PARENT_ID=p.USER_ID(+) and u.OWNER_ID=o.USER_ID(+) and TYPE='FOC' and ct.TRANSFER_DATE >? and ct.TRANSFER_DATE <= ?
+OF_FOCR_EXT=.csv
+OF_FOCR_PREFIX_NAME=OFFLINE_FOC

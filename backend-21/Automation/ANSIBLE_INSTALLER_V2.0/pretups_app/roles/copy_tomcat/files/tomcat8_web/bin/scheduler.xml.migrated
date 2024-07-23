@@ -1,0 +1,512 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<inet:Scheduler xmlns:inet="http://www.inetsoftware.de" password="001AD4839EDC51F71F3166B9F40133003A13DDF08ED75CF60E286FAEE8A5D3F3C1" logfile="" enabled="true" loglevel="0" activated="true" xml_version="1.0">
+
+  <useractions>
+
+  </useractions>
+
+  <userproperties>
+
+  </userproperties>
+
+  <options>
+
+    <option name="pop3host" value="&#60;pop3host&#62;"/>
+
+    <option name="smtphost" value="&#60;smtphost&#62;"/>
+
+    <option name="maxworker" value="5"/>
+
+    <option name="pop3port" value="110"/>
+
+    <option name="user" value="&#60;user&#62;"/>
+
+    <option name="smtpport" value="25"/>
+
+    <option name="sender" value="&#60;sender&#62;"/>
+
+    <option name="propertieschecker" value=""/>
+
+    <option name="emailauth" value="0"/>
+
+    <option name="password" value="0099AA794265851622B7966FF9C78F140A93A0450E74971626AF8B79A331F47899"/>
+
+  </options>
+
+  <tasks>
+
+    <task name="C2SNORCPSW01D" description="" enabled="true" deleteIfExpired="true">
+
+      <executiontime>
+
+        <intervaltype value="4"/>
+
+        <startdate value="1970-01-01 05:30:00 IST"/>
+
+        <year>
+
+        </year>
+
+        <month>
+
+        </month>
+
+        <week>
+
+        </week>
+
+        <day>
+
+        </day>
+
+        <hour>
+
+          <time value="0"/>
+
+        </hour>
+
+        <minute>
+
+          <time value="0"/>
+
+        </minute>
+
+      </executiontime>
+
+      <reports>
+
+        <report name="C2SNORCPSW01D">
+
+          <properties>
+
+            <property name="promptmultfactor">
+
+<![CDATA[100]]>
+            </property>
+
+            <property name="datasource">
+
+<![CDATA[pdsora7.dll]]>
+            </property>
+
+            <property name="promptrptheadername">
+
+<![CDATA[Comviva]]>
+            </property>
+
+            <property name="promptsystemdatetimeformat">
+
+<![CDATA[dd/MM/yy HH:mm:ss]]>
+            </property>
+
+            <property name="promptrptcode">
+
+<![CDATA[C2SNORCPSW01]]>
+            </property>
+
+            <property name="promptnetworkname">
+
+<![CDATA[Network]]>
+            </property>
+
+            <property name="promptnetworkcode">
+
+<![CDATA[NG]]>
+            </property>
+
+            <property name="report">
+
+<![CDATA[file:///home/pretups/tomcat8_duplicate/webapps/pretups/WEB-INF/reports/c2sNoOfRechargeCustProfileSlabWise.rpt]]>
+            </property>
+
+            <property name="promptdayormonth">
+
+<![CDATA[04/04/16]]>
+            </property>
+
+            <property name="promptfromdate">
+
+<![CDATA[Date2016,04,04]]>
+            </property>
+
+            <property name="locale">
+
+<![CDATA[en]]>
+            </property>
+
+            <property name="export_fmt">
+
+<![CDATA[xls]]>
+            </property>
+
+            <property name="prompttodate">
+
+<![CDATA[Date2016,04,04]]>
+            </property>
+
+          </properties>
+
+        </report>
+
+      </reports>
+
+      <actions>
+
+        <action name="File Action" class="com.inet.report.schedule.FileAction">
+
+          <properties>
+
+            <property name="appenddate">
+
+true
+            </property>
+
+            <property name="path">
+
+<![CDATA[/home/pretups/tomcat8_duplicate/webapps/pretups//home/pretups/tomcat8_duplicate/logs/scheduledreports/]]>
+            </property>
+
+            <property name="appendtime">
+
+true
+            </property>
+
+          </properties>
+
+        </action>
+
+      </actions>
+
+    </task>
+
+    <task name="NGBC0000011408C2SNORCPSW01M Thu Apr 21 00:00:00 IST 2016" description="" enabled="true" deleteIfExpired="true">
+
+      <executiontime>
+
+        <intervaltype value="4"/>
+
+        <startdate value="2016-04-21 00:00:00 IST"/>
+
+        <enddate value="2016-04-22 00:00:00 IST"/>
+
+        <year>
+
+        </year>
+
+        <month>
+
+        </month>
+
+        <week>
+
+        </week>
+
+        <day>
+
+        </day>
+
+        <hour>
+
+          <time value="23"/>
+
+        </hour>
+
+        <minute>
+
+          <time value="59"/>
+
+        </minute>
+
+      </executiontime>
+
+      <reports>
+
+        <report name="NGBC0000011408C2SNORCPSW01M Thu Apr 21 00:00:00 IST 2016">
+
+          <properties>
+
+            <property name="promptmultfactor">
+
+<![CDATA[100]]>
+            </property>
+
+            <property name="datasource">
+
+<![CDATA[pdsora7.dll]]>
+            </property>
+
+            <property name="promptrptheadername">
+
+<![CDATA[Comviva]]>
+            </property>
+
+            <property name="promptsystemdatetimeformat">
+
+<![CDATA[dd/MM/yy HH:mm:ss]]>
+            </property>
+
+            <property name="promptrptcode">
+
+<![CDATA[C2SNORCPSW01]]>
+            </property>
+
+            <property name="promptnetworkname">
+
+<![CDATA[Network]]>
+            </property>
+
+            <property name="promptnetworkcode">
+
+<![CDATA[NG]]>
+            </property>
+
+            <property name="report">
+
+<![CDATA[file:///home/pretups/tomcat8_duplicate/webapps/pretups/WEB-INF/reports/c2sNoOfRechargeCustProfileSlabWise.rpt]]>
+            </property>
+
+            <property name="promptdayormonth">
+
+<![CDATA[04/16]]>
+            </property>
+
+            <property name="promptfromdate">
+
+<![CDATA[Date2016,04,01]]>
+            </property>
+
+            <property name="locale">
+
+<![CDATA[en]]>
+            </property>
+
+            <property name="export_fmt">
+
+<![CDATA[xls]]>
+            </property>
+
+            <property name="prompttodate">
+
+<![CDATA[Date2016,04,30]]>
+            </property>
+
+          </properties>
+
+        </report>
+
+      </reports>
+
+      <actions>
+
+        <action name="File Action" class="com.inet.report.schedule.FileAction">
+
+          <properties>
+
+            <property name="appenddate">
+
+true
+            </property>
+
+            <property name="path">
+
+<![CDATA[/home/pretups/tomcat8_duplicate/webapps/pretups//home/pretups/tomcat8_duplicate/logs/scheduledreports/NGBC0000011408/RPTNRDW01A/]]>
+            </property>
+
+            <property name="appendtime">
+
+true
+            </property>
+
+          </properties>
+
+        </action>
+
+      </actions>
+
+    </task>
+
+    <task name="C2SDEWTRP01D" description="" enabled="true" deleteIfExpired="true">
+
+      <executiontime>
+
+        <intervaltype value="4"/>
+
+        <startdate value="1970-01-01 05:30:00 IST"/>
+
+        <year>
+
+        </year>
+
+        <month>
+
+        </month>
+
+        <week>
+
+        </week>
+
+        <day>
+
+        </day>
+
+        <hour>
+
+          <time value="0"/>
+
+        </hour>
+
+        <minute>
+
+          <time value="0"/>
+
+        </minute>
+
+      </executiontime>
+
+      <reports>
+
+        <report name="C2SDEWTRP01D">
+
+          <properties>
+
+            <property name="promptloginuserid">
+
+<![CDATA[NGBC0000011408]]>
+            </property>
+
+            <property name="export_fmt">
+
+<![CDATA[xls]]>
+            </property>
+
+            <property name="promptzonename">
+
+<![CDATA[ALL]]>
+            </property>
+
+            <property name="promptrptcode">
+
+<![CDATA[C2SDEWTRP01]]>
+            </property>
+
+            <property name="promptzonecode">
+
+<![CDATA[ALL]]>
+            </property>
+
+            <property name="promptmultfactor">
+
+<![CDATA[100]]>
+            </property>
+
+            <property name="promptfromdate">
+
+<![CDATA[Date2016,04,05]]>
+            </property>
+
+            <property name="datasource">
+
+<![CDATA[pdsora7.dll]]>
+            </property>
+
+            <property name="promptdateormonth">
+
+<![CDATA[05/04/16]]>
+            </property>
+
+            <property name="promptdomainname">
+
+<![CDATA[Dist1]]>
+            </property>
+
+            <property name="promptdomaincode">
+
+<![CDATA[DIST]]>
+            </property>
+
+            <property name="locale">
+
+<![CDATA[en]]>
+            </property>
+
+            <property name="report">
+
+<![CDATA[file:///home/pretups/tomcat8_duplicate/webapps/pretups/WEB-INF/reports/c2sDenoWiseTrfCustProfileNew.rpt]]>
+            </property>
+
+            <property name="promptreportheadername">
+
+<![CDATA[Comviva]]>
+            </property>
+
+            <property name="promptcategoryname">
+
+<![CDATA[ALL]]>
+            </property>
+
+            <property name="promptsystemdatetimeformat">
+
+<![CDATA[dd/MM/yy HH:mm:ss]]>
+            </property>
+
+            <property name="promptnetworkname">
+
+<![CDATA[Network]]>
+            </property>
+
+            <property name="promptcategorycode">
+
+<![CDATA[ALL]]>
+            </property>
+
+            <property name="prompttodate">
+
+<![CDATA[Date2016,04,05]]>
+            </property>
+
+            <property name="promptnetworkcode">
+
+<![CDATA[NG]]>
+            </property>
+
+          </properties>
+
+        </report>
+
+      </reports>
+
+      <actions>
+
+        <action name="File Action" class="com.inet.report.schedule.FileAction">
+
+          <properties>
+
+            <property name="appenddate">
+
+true
+            </property>
+
+            <property name="path">
+
+<![CDATA[/home/pretups/tomcat8_duplicate/webapps/pretups//home/pretups/tomcat8_duplicate/logs/scheduledreports/]]>
+            </property>
+
+            <property name="appendtime">
+
+true
+            </property>
+
+          </properties>
+
+        </action>
+
+      </actions>
+
+    </task>
+
+  </tasks>
+
+</inet:Scheduler>
+

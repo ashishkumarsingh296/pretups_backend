@@ -1,0 +1,2 @@
+TestcaseId,TestcaseType,Module,Description
+TUNG12795,Positive,View barred list through RESTFul API,To verify list of barred user coming when provide correct MSISDN

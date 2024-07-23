@@ -1,0 +1,12 @@
+LOGIN_ID,PASSWORD,DATA_LOGINID,SERVICE_CODE,FILE_TYPE,TYPE,EXTERNAL_CODE,TestcaseId,TestcaseType,Module,Description
+,,corpuser,RC,CORPORAE,SCTPTEMPL,,1,Negative,Batch Schedule Recharge,"To verfy validation message appears ""Login Id or External code is not available in request"" when LOGIN_ID or EXTERNAL_CODE  not provided"
+corpuser,,corpuser,RC,CORPORAE,SCTPTEMPL,,2,Negative,Batch Schedule Recharge,"To verify validation messsage appears ""Password is not available in request"" when password is not provided"
+corpuser1,1357,corpuser,RC,CORPORAE,SCTPTEMPL,,3,Negative,Batch Schedule Recharge,"To verify validation message appears ""User does not exists in the system"" when wrong LOGIN_ID provided"
+corpuser,abcd,corpuser,RC,CORPORAE,SCTPTEMPL,,4,Negative,Batch Schedule Recharge,"To verify validation message appears ""User ID or Password is incorrec"" when wrong PASSWORD provided"
+,,corpuser,RC,CORPORAE,SCTPTEMPL,dsadsad,5,Negative,Batch Schedule Recharge,"To verify validation message  appears ""User does not exists in the system"" when wrong extternal code provided"
+corpuser,1357,corpuser,RC,CORPORAE,,,6,Negative,Batch Schedule Recharge,"To verify validation message appears ""Action type does not exists in the request"" when TYPE is not provided"
+corpuser,1357,,RC,CORPORAE,SCTPTEMPL,,7,Negative,Batch Schedule Recharge,"To verify validation message appears ""loginid.is.required"" when DATA_LOGINID not provided"
+corpuser,1357,corpuser,,CORPORAE,SCTPTEMPL,,8,Negative,Batch Schedule Recharge,"To verify validation message appears when ""schedule.recharge.service.is.required"" SERVICE_TYPE is not provided"
+corpuser,1357,corpuser,RC,,SCTPTEMPL,,9,Negative,Batch Schedule Recharge,"To verify validation message appears ""schedule.recharge.filetype.is.required"" when FILE_TYPE is not provided"
+corpuser,1357,,,,SCTPTEMPL,,10,Negative,Batch Schedule Recharge,"To verify all three fields validation messages appear when DATA_LOGINID, SERVICE_TYPE and FILE_TYPE not provided"
+btdist,1357,corpuser,RC,CORPORAE,SCTPTEMPL,,11,Negative,Batch Schedule Recharge,To verify user is authorize to download template

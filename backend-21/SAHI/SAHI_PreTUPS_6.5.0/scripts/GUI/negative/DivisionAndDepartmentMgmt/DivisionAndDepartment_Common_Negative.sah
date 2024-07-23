@@ -1,0 +1,300 @@
+
+
+
+
+_includeOnce("../../../../utility/ImportPackage.sah");
+
+var $g_divisionType;
+var $g_divisionName;
+var $g_divisionCode;
+var $g_status;
+
+var $g_departmentName;
+var $g_departmentCode;
+
+
+
+function commonVariableForDivision($a_row, $a_column) {
+	
+	$g_divisionType = $l_divisionType;
+	$g_divisionName = divisionName($g_autoPrefix);
+	$g_divisionCode = genDivisionCode($g_autoPrefix);
+	$g_status = "Active";
+	
+}
+
+
+function genDivisionCode($a_autoPrefix){
+	var $l_umCsv = _readCSVFile("../../../GUI/testdata/UserManagement_CreateNA.csv");
+	var $l_division1 =  $l_umCsv[1][27];
+	var $l_division;
+	var $l_division2;
+	$l_division = parseInt($l_division1);
+	$l_division = $l_division + 1;
+	$l_division = $l_division.toString();
+	$l_division2 = $a_autoPrefix + $l_division; //AUTO800
+	
+	$l_umCsv[1][27] = $l_division;
+	_writeCSVFile($l_umCsv, "../../../GUI/testdata/UserManagement_CreateNA.csv", 1);
+	
+	return $l_division2;
+}
+
+
+
+function divisionName($g_autoPrefix){
+	 $l_time = currentTime(); // fetch current time(CurretnTime)
+	var $l_divisionName = $g_autoPrefix + "DIV" + $l_time; //AUTONAcurrentTime
+	 return $l_divisionName;
+}
+
+
+
+
+function addAndModifyDivision() {
+	
+	var $t1 = _testcase("TEST064","Super Admin login into application and added a division ");
+	$t1.start();
+	commonVariableForDivision();
+	
+	var $l_error = addNewDivision();
+	
+	if($l_error == true){
+		var $l_naCsv = _readCSVFile("../../../GUI/testdata/NA_Login.csv");
+		$l_naCsv[15][2] = $g_divisionName;
+		
+		_writeCSVFile($l_naCsv, "../../../GUI/testdata/NA_Login.csv", 1); // Writes the newly created Channel User in a csv file.
+		_click(_link($g_LinkLogout));
+		_log("Division has been is added successfully");
+	}
+	
+	$t1.end();
+	_closeBrowser();
+	_wait(1000);
+	_openBrowser();
+	
+	// ================= Try to modify the newly added division ================== //
+	
+	login($g_appURL, $g_LangEnglish, $g_superAdmin, $g_password, $g_assertMessage); // Login into the application with super Admin 
+	var $t2 = _testcase("TEST065", "Given super admin login into application and try to modify name of newly added division");
+	$t2.start();
+	var $error = modifyDivision($g_divisionCode);
+	if($error == true)
+		_log("Successfully modified the newly added division");
+	
+	$t2.end();
+	_closeBrowser();
+	
+}
+
+
+function addNewDivision() {
+	
+	_click(_link("Masters"));
+	_click(_link("Division management"));
+	_assertExists(_div("View division details"));
+	_click(_submit("Add"));
+	_setSelected(_select("divDeptType"), $g_divisionType);
+	_setValue(_textbox("divDeptName"), $g_divisionName);
+	_setValue(_textbox("divDeptShortCode"), $g_divisionCode);
+	_setSelected(_select("status"), $g_status);
+	_click(_submit("Submit"));
+	_click(_submit("confirm"));
+	
+	_assertExists(_listItem("Divison added successfully"));
+
+	if(_exists(_listItem("/"+"Divison added successfully"+".*/"))){
+		return true;
+	}	
+	else{
+		_log("Division has not been added successfully");
+		return false;
+	}
+}
+
+
+function modifyDivision($g_divisionCode) {
+	
+	var $l_divCode;
+	$l_divCode = $g_divisionCode.toString() + "M";
+	
+	_click(_link("Masters"));
+	_click(_link("Division management"));
+	_assertExists(_div("View division details"));
+	_click(_radio("radioIndex", _near(_cell($g_divisionCode))));
+	_click(_submit("Modify"));
+	_setValue(_textbox("divDeptShortCode"), $l_divCode);
+	_click(_submit($g_BtnModify));
+	_click(_submit($g_BtnConfirm));
+	_assertExists(_listItem("Division modified successfully"));
+	
+	if(_exists(_listItem("/"+"Division modified successfully"+".*/"))){
+		return true;
+	}
+	
+}
+
+ // ================================= To Add and Modify new department ================= //
+
+function addAndModifyDepartName() {
+
+	var $t1 = _testcase("TEST066","Super Admin login into application try to add new department ");
+	$t1.start();
+	
+	$g_departmentName = departmentName($g_autoPrefix);
+	$g_departmentCode = genDepartmentCode($g_autoPrefix);
+	
+	var $l_error = addNewDepartment();
+	
+	if($l_error == true){
+		var $l_naCsv = _readCSVFile("../../../GUI/testdata/NA_Login.csv");
+		$l_naCsv[15][3] = $g_departmentName;
+		
+		_writeCSVFile($l_naCsv, "../../../GUI/testdata/NA_Login.csv", 1); // Writes the newly created Channel User in a csv file.
+		_click(_link($g_LinkLogout));
+		_log("Department has been is added successfully");
+	}
+	
+	$t1.end();
+	_closeBrowser();
+	_wait(1000);
+	_openBrowser();
+	
+	// ================= Try to modify the newly added division ================== //
+	
+	login($g_appURL, $g_LangEnglish, $g_superAdmin, $g_password, $g_assertMessage); // Login into the application with super Admin 
+	var $t2 = _testcase("TEST067", "Given super admin login into application and try to modify name of newly added department");
+	$t2.start();
+	var $error = modifyDepartment($g_departmentName);
+	if($error == true)
+		_log("Successfully modified the newly added department");
+	
+	$t2.end();
+	_closeBrowser();
+	_wait(1000);
+	_openBrowser();
+	
+	// ================= Try to delete a division when a departmentis already created under that =================== //
+	
+	login($g_appURL, $g_LangEnglish, $g_superAdmin, $g_password, $g_assertMessage); // Login into the application with super Admin 
+	var $t3 = _testcase("TEST068", "Given super admin login into application and try to delete a division under which a department is already created ");
+	$t3.start();
+	var $error = deleteDivision($p_divisionName);
+	if($error == true)
+		_log("Unable to delete division");
+	
+	$t3.end();
+	_closeBrowser();
+	
+}
+
+
+function genDepartmentCode($a_autoPrefix){
+	var $l_umCsv = _readCSVFile("../../../GUI/testdata/UserManagement_CreateNA.csv");
+	var $l_division1 =  $l_umCsv[1][27];
+	var $l_division;
+	var $l_division2;
+	$l_division = parseInt($l_division1);
+	$l_division = $l_division + 1;
+	$l_division = $l_division.toString();
+	$l_division2 = $a_autoPrefix + $l_division; //AUTO800
+	
+	$l_umCsv[1][27] = $l_division;
+	_writeCSVFile($l_umCsv, "../../../GUI/testdata/UserManagement_CreateNA.csv", 1);
+	
+	return $l_division2;
+}
+
+
+
+function departmentName($g_autoPrefix){
+	 $l_time = currentTime(); // fetch current time(CurretnTime)
+	var $l_divisionName = $g_autoPrefix + "DEP" + $l_time; //AUTONAcurrentTime
+	 return $l_divisionName;
+}
+
+
+function addNewDepartment() {
+	
+	var $p = false;
+	
+	_click(_link("Masters"));
+	_click(_link("Department management"));
+	_setSelected(_select("divDeptType"), $l_divisionType);
+	
+	_log("shashi ii" + $p_divisionName);
+	var $p = _assertEqual($p_divisionName, _getSelectedText(_select("divisionId")));
+	
+	_log("shashi " + $p)
+	
+	if($p == false)
+	_setSelected(_select("divisionId"), $p_divisionName);
+	
+	
+	_click(_submit("Submit"));
+	_click(_submit("Add"));
+	_setValue(_textbox("divDeptName"), $g_departmentName);
+	_setValue(_textbox("divDeptShortCode"), $g_departmentCode);
+	_click(_submit($g_BtnSubmit));
+	_click(_submit($g_BtnConfirm));
+	_assertExists(_listItem("Department added successfully"));
+
+	if(_exists(_listItem("/"+"Department added successfully"+".*/"))){
+		return true;
+	}	
+	else{
+		_log("Department has not been added successfully");
+		return false;
+	}
+}
+
+
+function modifyDepartment($g_departmentName) {
+	
+	var $l_deptName;
+	$l_deptName = $g_departmentName.toString() + "M";
+	
+	_click(_link("Masters"));
+	_click(_link("Department management"));
+	_setSelected(_select("divDeptType"), $l_divisionType);
+	_setSelected(_select("divisionId"), $p_divisionName);
+	_click(_submit("Submit"));
+	
+	_click(_radio("radioIndex", _near(_cell($g_departmentName))));
+	_click(_submit("Modify"));
+	
+	_setValue(_textbox("divDeptName"), $l_deptName);
+	_click(_submit("Submit"));
+	_click(_submit("confirm"));
+	_assertExists(_listItem("Department modified successfully."));
+
+	if(_exists(_listItem("/"+"Department modified successfully."+".*/"))){
+		return true;
+	}
+	
+}
+
+
+function deleteDivision($p_divisionName) {
+	
+	var $l_string = "One or more departments exist under that division, delete the associated department first";
+	
+	_click(_link("Masters"));
+	_click(_link("Division management"));
+	_assertExists(_div("View division details"));
+	_click(_radio("radioIndex", _near(_cell($p_divisionName))));
+	_click(_button("Delete"));
+	_assertExists(_listItem("/"+$l_string+".*/"));
+	
+	if(_exists(_listItem("/"+$l_string+".*/"))){
+		return true;
+	}
+	
+	
+	
+	
+	
+}
+
+
+

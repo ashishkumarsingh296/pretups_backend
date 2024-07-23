@@ -1,0 +1,9 @@
+LOGIN_ID,PASSWORD,DATA_LOGINID,TYPE,BATCHID,SCH_STATUS,STATUSIN,TestcaseId,TestcaseType,Module,Description
+,,corpuser,VIEWSCHRCBATCH2,,,,,1,Negative,View Schedule Recharge in Batch,"To verfy validation message appears ""Login Id is not available in request"" when LOGIN_ID   not provided"
+corpuser,,corpuser,VIEWSCHRCBATCH2,,,,,2,Negative,View Schedule Recharge in Batch,"To verify validation messsage appears ""Password is not available in request"" when password is not provided"
+corpuser1,1357,corpuser,VIEWSCHRCBATCH2,,,,,3,Negative,View Schedule Recharge in Batch,"To verify validation message appears ""User does not exists in the system"" when wrong LOGIN_ID provided"
+corpuser,abcd,corpuser,VIEWSCHRCBATCH2,,,,,4,Negative,View Schedule Recharge in Batch,"To verify validation message appears ""User ID or Password is incorrec"" when wrong PASSWORD provided"
+corpuser,1357,corpuser,,,,,,5,Negative,View Schedule Recharge in Batch,"To verify validation message appears ""Action type does not exists in the request"" when TYPE is not provided"
+corpuser,1357,,VIEWSCHRCBATCH2,,,,,6,Negative,View Schedule Recharge in Batch,"To verify validation message appears ""loginid.is.required"" when loginid  not provided"
+corpuser,1357,corpuser,VIEWSCHRCBATCH2,,,,,7,Negative,View Schedule Recharge in Batch,"To verify validation message appears ""There is no Schedule Found"" when BATCHID is not provided and all other details are present"
+corpuser,1357,corpuser,VIEWSCHRCBATCH2,,Y,,,8,Negative,View Schedule Recharge in Batch,"To verfiy validation message appears ""There is no Schedule Found"" when sch_status is other than ""E,C,S"""

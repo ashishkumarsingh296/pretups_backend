@@ -1,0 +1,2 @@
+PRODUCTCODE,QTY,REMARKS,TestcaseId,TestcaseType,Module,Description
+101,10,,TUNG13042,Positive,O2C return through EXTGW,To verify that Channel admin can return amount from his channel users by extcode only

@@ -1,0 +1,2 @@
+TestcaseId,TestcaseType,Module,Description
+TUNG12875,Negative,Private Recharge,To check that an unsucessful recharge happens when external network code is not entered

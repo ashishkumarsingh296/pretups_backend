@@ -1,0 +1,4 @@
+LOGIN_ID,PASSWORD,USER_ID,SERVICE_CODE,TYPE,TestcaseId,TestcaseType,Module,Description
+corpuser,1357,INCO0000000296,,LOADBATCHLIST,1,NEGATIVE,Reschedule batch Recharge,To validate unsuccessful request for loading scheduled batch list while service code is missing
+corpuser,1357,,RC,LOADBATCHLIST,2,NEGATIVE,Reschedule batch Recharge,To validate unsuccessful request for loading scheduled batch list while user id is missing
+corpuser,1357,,,LOADBATCHLIST,3,NEGATIVE,Reschedule batch Recharge,"To validate unsuccessful request for loading scheduled batch list while user id, service code is missing"

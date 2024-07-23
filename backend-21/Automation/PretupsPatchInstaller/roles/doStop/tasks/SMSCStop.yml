@@ -1,0 +1,27 @@
+---
+########################################################
+# Author           Date        Remarks
+#------------    -----------  ---------
+#Sadhan Kumar K  25-07-2016    Initial Creation
+#
+# This file takes care of Stopping the SMSC.
+#########################################################
+
+ - debug: msg="Entered SMSCStop.yml.............."
+
+ - name: Stop SMSC
+   shell: nohup sh kannelStop.sh chdir={{SMSCPath}}/bin
+   ignore_errors: yes
+   register: SMSCStop
+   tags:
+     - SMSCStop
+
+ - name: wait for SMSC to stop
+   wait_for: timeout=10
+   tags:
+     - SMSCStop
+
+ - debug: msg="SMSC Stopped!"
+   when: SMSCStop|success
+   tags:
+     - SMSCStop

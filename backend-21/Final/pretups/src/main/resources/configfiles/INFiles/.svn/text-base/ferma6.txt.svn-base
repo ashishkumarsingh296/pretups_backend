@@ -1,0 +1,148 @@
+#################################################################
+##
+##	Ferma 6 IN file
+##	If IN interface of Alcatel1.0 is added in PreTUPS from superadmin then.
+##	File with this content and name of the IN ID.txt should be created at the 
+##	path of the INFiles (defined in Constants.props).
+##
+##	Values of the variables in this file should be updated with the values provided by the 
+##	Mobile Operator IN team
+##
+############################################################################################################
+
+## URL of the FERMA Node1
+URL1=http://172.16.1.121:5003/pretups/Ferma6TestServer
+
+## URL of the FERMA Node2
+URL2=
+
+## The time upto which request has to wait for connection to the server. It is in miliseconds.
+CONNECT_TIMEOUT=5000
+
+## The time upto which request has to wait to read the response form server in validate stage. It is in miliseconds.
+READ_TIMEOUT_VAL=5000
+
+## The time upto which request has to wait to read the response form server in TopUp stage. It is in miliseconds.
+READ_TIMEOUT_TOP=5000
+
+## The time upto which request has to wait to read the response form server in login stage. It is in miliseconds.
+READ_TIMEOUT=5000
+
+## The time after which an alarm will be raised if the response of the read is not received, It is in miliseconds.
+WARN_TIMEOUT=4000
+
+## Identifier type; values predefined by PPD. 1 = GSM network
+ACCESS_TYPE=1
+
+## Identify the balance(s) to retrieve.
+BALANCE_ID=1
+
+## Currency Multiplication factor used to multiply the amount before sending to the IN.
+MULTIPLICATION_FACTOR=1
+
+## Minimum hold duration to other node if node 1 is down. it is in miliseconds.
+MIN_HOLD_DURATION=1000
+
+## Maximum hold duration to other node if node 1 is down. it is in miliseconds.
+MAX_HOLD_DURATION=600000
+
+## Number of times to try the relogin. if interface id expires.
+MIN_LOGIN_RETRY_TIME=1
+
+## Prefix to be removed from the mobile number before sending the request to IN, leave it blank if nothing is to be removed 
+MSISDN_REMOVE_PREFIX=
+
+## Prefix to be added with mobile number before sending the request to IN, leave it blank if nothing is to be added 
+MSISDN_ADD_PREFIX=
+
+## User id to be sent to the IN in the login request
+USER=user1
+
+## password to be sent to the IN in the login request
+PASSWORD=user1
+
+## Protocol version supported by interface
+PROTOCOLVERSION=1.0
+
+#Is keep allow true or false, if keep alive is true set "Y", if it is false set "N",if it is not set then default value would be N
+KEEP_ALIVE=Y
+
+#Indicates whether Cancel request supported by IN or not.(Possible values are Y/N)
+CANCEL_TXN_ALLOWED=N
+
+##If any ambiguous response is received from IN, then retry/cancel command is sent to IN. Then response of retry/cancel is matched in the IN file and mapped error code (250/206/200) is picked and sent to Controller.
+##SYSTEM_STATUS_MAPPING=INErrCode1,INErrCode2,INErrCode3,INErrCode4:system_err_code1|INErrCode5,INErrCode6:system_err_code2
+##system_err_code1 and system_err_code2 will be sent to system and written in recon log file.
+##If receiver credit is AMBIGUOS, then in SYSTEM_PREFERENCE, CREDIT_BACK_ALLOWED should be N.
+
+#If an ambiguous case occurs while credit, mapped error code can be set to one of the codes(SUCCESS, FAIL and AMBIGUOUS)
+SYSTEM_STATUS_MAPPING_CREDIT=3:206|100,30,250:250
+
+#If an ambiguous case occurs while credit, mapped error code can be set to one of the codes(SUCCESS, FAIL and AMBIGUOUS)
+SYSTEM_STATUS_MAPPING_CREDIT_ADJ=3:206|100,30,250:250
+
+#If an ambiguous case occurs while debitAdjust, mapped error code cannot be SUCCESS. It can only be FAIL or AMBIGUOUS
+SYSTEM_STATUS_MAPPING_DEBIT_ADJ=3:206|100,30,250:250
+
+#If an ambiguous case occurs while credit Back, mapped error code can not be fail, it can only be SUCCESS or AMBIGOUOS
+SYSTEM_STATUS_MAPPING_CREDIT_BCK=3:200|100,30,250:250
+
+
+##If any ambiguous response is received from IN, check if cancel txn allowed or not in the system. if not, pick mapped error code against NA otherwise pick mapped error code (206/250) against received response code of Cancellation from IN. 
+##CANCEL_COMMAND_STATUS_MAPPING=INErrCode1,INErrCode2,INErrCode3,INErrCode4:cancel_err_code1|INErrCode5,INErrCode6:cancel_err_code2
+##cancel_err_code1, cancel_err_code2 will be written in recon log file.
+CANCEL_COMMAND_STATUS_MAPPING=NA:450
+
+#Defines the cancel command status when cancel not supported by IN. 
+CANCEL_NA=NA
+
+##This flag should be Y if interface closure feature is to be provided to client
+INTFCE_CLSR_SUPPORT=N
+
+#maximum number of ambiguous transactions allowed till threshold time.
+NO_ALLWD_AMB_TXN=5
+
+##time duration in which maximum number of ambiguous transactions is defined
+THRESHOLD_TIME=180000
+
+##Time duration after which interface suspension expires.
+EXPIRY_TIME=60000
+
+##Auto Resumption supported by IN or not.
+AUTO_RESUME_SUPPORT=N
+
+##Number of retry attempts while validation
+VAL_RETRY_CNT=0
+
+##Number of retry attempts while recharge request
+CREDIT_RETRY_CNT=1
+
+##Number of retry attempts while sending Adjustment request
+ADJ_RETRY_CNT=0
+
+##Number of retry attempts while sending Cancel request (Currently Cancel Request is not supported by Ferma6)
+CNCL_RETRY_CNT=0
+
+##Sleep time between two retries
+RETRY_SLEEP_TIME=200
+
+##Error Codes when retry has to be made 
+RETRY_CASES=30,3
+
+##Remark1 in Reconciliation log
+REMARK1=
+
+##Remark2 in Reconciliation log
+REMARK2=
+
+##This described which account info command to be used, by the Ferma6 INHandler.
+ACCOUNT_INFO_COMMAND=ACC_INFO1
+#ACCOUNT_INFO_COMMAND=ACC_INFO2
+
+## This field will be defining the account period limit.
+# This limit signifies after how much period a subscriber can not use services.
+NEW_ACCOUNT_PERIOD_LIMIT=30
+
+## Different services for this check is applicable.
+# The value could be comma separated
+ALLOWED_SERVICE_TYPE= RC,PRC

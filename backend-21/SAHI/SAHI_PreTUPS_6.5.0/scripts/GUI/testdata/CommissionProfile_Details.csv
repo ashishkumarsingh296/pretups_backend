@@ -1,0 +1,2 @@
+TestCase Details,TestCase Description,Date,CommProf,MultipleOf,minTransferValue,maxTransferValue,startRange,endRange,commType,commRate,tax1Rate,tax2Rate,tax3Rate
+CEGTA00011,Given a network admin when logs into the application then can successfully add Commision Profile.,calendar-icon.gif,Add commission profile,1,50,500,50,200,Amt,2.6,10,10,10

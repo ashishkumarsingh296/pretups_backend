@@ -1,0 +1,12 @@
+DATE,EXTNWCODE,MSISDN,PIN,LOGINID,PASSWORD,EXTCODE,EXTREFNUM,MSISDN2,AMOUNT,LANGUAGE1,LANGUAGE2,SELECTOR,NOTIFICATION_MSISDN,TestcaseId,TestcaseType,Module,Description
+,NG,7255555555,1357,,,,,7200005544,100,0,0,1,7255555555,TUNG13137,Positive,Fix line Recharge through EXTGW,To verify that  C2S Transfer (Fix Recharge) request is successful through EXTGW
+,NG,7255555555,1357,,,,,7200005544,100,0,0,1,7255555555,TUNG13138,Positive,Fix line Recharge through EXTGW,"To verify that  C2S Transfer (Fix Recharge)  should work through EXTGW when only mandatory tags are filled , Leaving the data in optional tags"
+,NG,7255555555,1357,,,,,7200005544,100,0,0,1,7255555555,TUNG13139,Positive,Fix line Recharge through EXTGW,"To verify the response XML of successful  
+C2S Transfer (Fix Recharge)"
+,NG,7255555555,1357,,,,,,100,0,0,1,7255555555,TUNG13140,Negative,Fix line Recharge through EXTGW,To verify that C2S Transfer (Fix Recharge)  request  sholud fail when mandatory tags are not filled in XML request
+,NG,7255555555,1357,,,,,7200005544,100,0,0,1,7255555555,TUNG13141,Positive,Fix line Recharge through EXTGW,"To verify that C2S Transfer (Fix Recharge)  should be sucessfull  if between MSISDN, LOGINID and EXTCODE value, Only MSISDN is present other two are  left blank"
+,NG,,,dist1,1357,,,7200005544,100,0,0,1,7255555555,TUNG13142,Positive,Fix line Recharge through EXTGW,"To verify that  C2S Transfer (Fix Recharge)  should be sucessfull  if between MSISDN, LOGINID and EXTCODE value, Only LOGINID is present other two are  left blank"
+,NG,,,,,234234,,7200005544,100,0,0,1,7255555555,TUNG13143,Positive,Fix line Recharge through EXTGW,"To verify that C2S Transfer (Fix Recharge)  should be sucessfull  if between MSISDN, LOGINID and EXTCODE value, Only EXTCODE is present other two are  left blank"
+,NG,7255555555,,,,,,,100,0,0,1,7255555555,TUNG13144,Negative,Fix line Recharge through EXTGW,To verify that for C2S Transfer (Fix Recharge)  When MSISDN is available in request then PIN is mandatory for the request
+,NG,,,dist1,,,,7200005544,100,0,0,1,7255555555,TUNG13145,Negative,Fix line Recharge through EXTGW,To verify When LOGINID is available in request then PASSWORD is mandatory for the request.
+,NG,7255555555,1357,dist1,1357,234234,,7200005544,100,0,0,1,7255555555,TUNG13146,Positive,Fix line Recharge through EXTGW,"To verify that C2S Transfer (Fix Recharge) should be sucessfull  when MSISDN , LOGINID and EXTCODE. are present in the request"

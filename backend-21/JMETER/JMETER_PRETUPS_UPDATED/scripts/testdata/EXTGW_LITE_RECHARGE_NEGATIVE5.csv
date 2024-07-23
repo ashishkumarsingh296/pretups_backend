@@ -1,0 +1,2 @@
+TestcaseId,TestcaseType,Module,Description
+TUNG12345,Negative,Lite Recharge through EXTGW,To Verify that  invalid amount  should show error for LRC

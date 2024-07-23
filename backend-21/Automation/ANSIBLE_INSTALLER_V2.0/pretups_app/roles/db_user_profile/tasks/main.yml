@@ -1,0 +1,14 @@
+---
+ - name: "DB: creating user profile"
+   shell: "{{ item }} chdir={{ BASE_DIR }}/{{ Temp_Dir }}" 
+   with_items:
+   - sqlplus / as sysdba << EOT @user_profile_creation.sql exit; EOT 
+   ignore_errors: yes
+   register: db_user_profile_create_var
+   failed_when: '"ERROR" in db_user_profile_create_var.stdout'
+   tags:
+     - db_user_profile_create_tag
+
+# - name: "DB: script:user_profile_creation.sh"
+#   shell: /bin/sh user_profile_creation.sh chdir={{ BASE_DIR }}/{{ Temp_Dir }}
+

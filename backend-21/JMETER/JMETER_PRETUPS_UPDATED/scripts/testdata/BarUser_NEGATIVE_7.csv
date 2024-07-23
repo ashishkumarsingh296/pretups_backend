@@ -1,0 +1,2 @@
+TestcaseId,TestcaseType,Module,Description
+TUNG12763,Negative,Bar user through Restful API,To verify user type is required to bar user

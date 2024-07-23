@@ -1,0 +1,11 @@
+MSISDN1,PIN,MSISDN2,SERVICETYPE,SUBSERVICE,AMOUNT,TestcaseId,TestcaseType,Module,Description
+7255555555,5690,7233665522,RC,1,100,TUNG12196,Positive,Card group enquiry USSD,To Verify that Card group enquiry is sucessfully while enter the mandatory values in USSD API.
+7255555555,5690,7233665522,RC,1,100,TUNG12197,Positive,Card group enquiry USSD,To Verify that Card group enquiry is sucessfully while enter the mandatory and Non mandatory  values in USSD API.
+7255555555,,7233665522,RC,1,100,TUNG12198,Positive,Card group enquiry USSD,To verify that valid user is able to perform card enquiry successfully via USSD when user entered only msisdn but not pin
+7255555555,5690,7233665522,RC,1,1000000,TUNG12199,Negative,Card group enquiry USSD,To verify that valid user is not  able to perform card enquiry via USSD when user entered amount which is not present in an slab
+7255555555,5690,7233665522,,1,100,TUNG12200,Negative,Card group enquiry USSD,To verify that valid user is not  able to perform card enquiry via USSD when user has not entered service type.
+7255555555,5690,7233665522,WEB,1,100,TUNG12201,Negative,Card group enquiry USSD,To verify that valid user is not  able to perform card enquiry via USSD when user has entered invalid  service type.
+,5690,,RC,1,100,TUNG12202,Negative,Card group enquiry USSD,To Verify that Card group enquiry is not sucessfully while not enter the  mandatory  values in USSD API.
+7255555500,5690,7233665522,RC,1,100,TUNG12715 ,Negative,Card group enquiry USSD,To verify that suspended user is not able to perform card group enquiry via USSD.
+7255555599,5690,7233665522,RC,1,100,TUNG12717 ,Negative,Card group enquiry USSD,To verify that barred user is not able to perform card group enquiry via USSD.
+7255555544,5690,7233665522,RC,1,100,TUNG12719 ,Negative,Card group enquiry USSD,To verify that delete initiated user is not able to perform card group enquiry via USSD.

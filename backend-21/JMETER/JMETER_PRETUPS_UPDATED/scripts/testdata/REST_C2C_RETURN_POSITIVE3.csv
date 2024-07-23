@@ -1,0 +1,2 @@
+PRODUCTCODE,QTY,LANGUAGE1,TestcaseId,TestcaseType,Module,Description
+101,45,,TUNG23137,Positive,REST - C2C return,To verify that In case of EXTCODE Request should be successful

@@ -1,0 +1,9 @@
+loginId,password,module,userType,msisdn,barredReason,barredTypeList,type,externalCode,TestcaseId,TestcaseType,Module,Description
+btchadm,1357,C2S,RECEIVER,7214177112,Testing,SL017,CONUNBARUSER,,TUNG12772,Positive,Confirm Unbar user through Restful API,To verify user unbarred successfully
+btchadm,1357,C2S,RECEIVER,,Testing,SL017,CONUNBARUSER,,TUNG12773,Negative,Confirm Unbar user through Restful API,To verify module is required to unbar user
+btchadm,1357,C2S,,7249802627,Testing,SL017,CONUNBARUSER,,TUNG12774,Negative,Confirm Unbar user through Restful API,To verify user type is required to unbar user
+btchadm,1357,C2S,RECEIVER,,Testing,SL017,CONUNBARUSER,,TUNG12775,Negative,Confirm Unbar user through Restful API,To verify MSISDN is required to unbar user
+btchadm,1357,C2S,RECEIVER,7249802627,,SL017,CONUNBARUSER,,TUNG12776,Negative,Confirm Unbar user through Restful API,To verify barred reason is required to unabr user
+btchadm,1357,C2S,RECEIVER,7249802627,Testing,,CONUNBARUSER,,TUNG12777,Negative,Confirm Unbar user through Restful API,To verify no operation should perform if provides incorrect data
+btchadm,1357,,,,,,CONUNBARUSER,,TUNG12778,Negative,Confirm Unbar user through Restful API,Toverify all mandatory fields are required
+btchadm,1357,C2S,RECEIVER,7249802627,Testing,SL0179,CONUNBARUSER,,TUNG12779,Negative,Confirm Unbar user through Restful API,To verify no operation should perform if provides incorrect data

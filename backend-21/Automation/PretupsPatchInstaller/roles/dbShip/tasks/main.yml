@@ -1,0 +1,11 @@
+---
+ - include: ../../validate/tasks/validateUserEntry.yml
+
+ - include: dbScripts.yml
+   hosts: dbservers
+   when: isDbPatch == true
+
+ - debug: msg="Patching is done Successfully."
+  # when: applyPropModifyPatch|success and applyPropRemovePatch|success and applyPropNewLinePatch |success and applyPatch|success and applyPatchWar|success and applyPatchSync|success
+   tags:
+     - applyPropModifyPatch

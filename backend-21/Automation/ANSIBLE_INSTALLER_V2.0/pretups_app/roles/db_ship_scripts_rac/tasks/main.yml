@@ -1,0 +1,106 @@
+---
+# - name: "DB: create basic directory structure as per document"
+ #  command: mkdir -p /srv/oradata/oradata1  /srv/oradata/oradata2 /srv/oradata/oradata3 /srv/oradata/oradata4 /srv/oradata/index /srv/oradata/redologs /srv/oradata/archive /srv/oradata/backup /orabin/oracle/diag   /srv/oradata/oradata1/control  /srv/oradata/oradata2/control  /srv/oradata/oradata1/spfile  /srv/oradata/oradata1/datafiles  /srv/oradata/oradata2/datafiles   /srv/oradata/oradata3/datafiles  /srv/oradata/oradata4/datafiles   /srv/oradata/index/datafiles   /srv/oradata/redologs/redo_logs  /srv/oradata/redologs/redo_logs  /srv/oradata/archive/archive-logsmkdir  /srv/oradata/backup chdir=/ 
+
+ #- name: "DB: changing the owner of the created directories"
+  # command: chown -R  {{ db_user }}:{{ db_group }} /srv/oradata/oradata1  /srv/oradata/oradata2 /srv/oradata/oradata3 /srv/oradata/oradata4 /srv/oradata/index /srv/oradata/redologs /srv/oradata/archive /srv/oradata/backup /orabin/oracle/diag   /srv/oradata/oradata1/control  /srv/oradata/oradata2/control  /srv/oradata/oradata1/spfile  /srv/oradata/oradata1/datafiles  /srv/oradata/oradata2/datafiles   /srv/oradata/oradata3/datafiles  /srv/oradata/oradata4/datafiles   /srv/oradata/index/datafiles   /srv/oradata/redologs/redo_logs  /srv/oradata/redologs/redo_logs  /srv/oradata/archive/archive-logsmkdir  /srv/oradata/backup 
+
+ #- name: "DB: changing the permission to 755 for oracle user"
+  # command: chmod  755  /srv/oradata/oradata1  /srv/oradata/oradata2 /srv/oradata/oradata3 /srv/oradata/oradata4 /srv/oradata/index /srv/oradata/redologs /srv/oradata/archive /srv/oradata/backup /orabin/oracle/diag   /srv/oradata/oradata1/control  /srv/oradata/oradata2/control  /srv/oradata/oradata1/spfile  /srv/oradata/oradata1/datafiles  /srv/oradata/oradata2/datafiles   /srv/oradata/oradata3/datafiles  /srv/oradata/oradata4/datafiles   /srv/oradata/index/datafiles   /srv/oradata/redologs/redo_logs  /srv/oradata/redologs/redo_logs  /srv/oradata/archive/archive-logsmkdir 
+
+ - name: "DB: Making base Directory in Database Server"
+   file: dest="~/{{ BASEDIR }}" state=directory owner={{ db_user }} group={{ db_group }} mode=0755
+   tags:
+     - DbDirectory
+
+ - shell: pwd chdir=~/{{ BASEDIR }}
+   register: Base_DIR
+   tags:
+     - DbDirectory
+
+ - name: " debug: path of the directory to ship scripts"
+   debug: msg=" path is {{ Base_DIR.stdout }}"
+   tags:
+     - DbDirectory
+
+ - name: "DB: Making temp Directory in Database Server"
+   file: dest="{{ BASE_DIR }}/{{ Temp_Dir }}" state=directory owner={{ db_user }} group={{ db_group }} mode=0755
+   tags:
+     - DbDirectory
+
+# - name: "DB: copying the sql files to the DB server"
+  # template: src=master_data_pretups_live.sql  dest="{{ BASE_DIR }}/{{ Temp_Dir }}" owner={{ db_user }} group={{ db_group }} mode=0755
+ #  tags:
+ #   - master_data
+
+# - name: "DB: copying the masterdata files to the DB server"
+  # template: src=PreTups_Live.sql  dest="{{ BASE_DIR }}/{{ Temp_Dir }}" owner={{ db_user }} group={{ db_group }} mode=0755
+ #  tags:
+  #  - DDL_DML
+
+ #- name: "DB: copying the table space scripts"
+  # template: src=createtablespace.sql  dest="{{ BASE_DIR }}/{{ Temp_Dir }}" owner={{ db_user }} group={{ db_group }} mode=0755
+   #tags:
+    #- create_table_space_tags
+
+ - name: "DB: copying the database dump"
+   copy: src={{ item }}.dmp  dest="{{ BASE_DIR }}/{{ Temp_Dir }}" owner={{ db_user }} group={{ db_group }} mode=0755
+   with_items:
+            - "{{ Dump_name }}"
+   tags:
+    - database_dump_tags
+
+ - name: "DB: copying the user profile creation scripts"
+   template: src=user_profile_creation.sql  dest="{{ BASE_DIR }}/{{ Temp_Dir }}" owner={{ db_user }} group={{ db_group }} mode=0755
+   tags:
+    - user_profile_creation_tags
+   when: isDB_USER_PROFILENeeded
+
+ - name: "DB: copying the grant permission scripts"
+   template: src=grant_perm_schema_user.sql  dest="{{ BASE_DIR }}/{{ Temp_Dir }}" owner={{ db_user }} group={{ db_group }} mode=0755
+   tags:
+    - grant_perm_schema_user_tags
+
+ - name: "DB: copying the pretups schema creation scripts"
+   template: src=create_pretups_schema.sql  dest="{{ BASE_DIR }}/{{ Temp_Dir }}" owner={{ db_user }} group={{ db_group }} mode=0755
+   tags:
+    - create_pretups_schema_tags
+
+ #- name: "DB: copying the table space assignment scripts"
+  # template: src=assign_table_space.sql  dest="{{ BASE_DIR }}/{{ Temp_Dir }}" owner={{ db_user }} group={{ db_group }} mode=0755
+   #tags:
+    #- assign_table_space_tags
+
+# - name: "DB: copying the customization scripts"
+#   template: src=customize.sql  dest="{{ BASE_DIR }}/{{ Temp_Dir }}" owner={{ db_user }} group={{ db_group }} mode=0755
+#   with_items:
+#    - "{{ customizations }}"
+#   tags:
+#    - customize_tags
+
+# - name: "DB: copying the customization scripts"
+#   copy: src={{ item }} dest="{{ BASE_DIR }}/{{ Temp_Dir }}" owner={{ db_user }} group={{ db_group }} mode=0755
+#   with_fileglob:
+#        - ~/customize*.sql
+
+# - name: "DB: ship the shell scripts: customize.sh"
+#   template: src=customize.sh dest="{{ BASE_DIR }}/{{ Temp_Dir }}" mode=0755 owner={{ db_user }} group={{ db_group }}
+
+# - name: "DB: ship all the shell scripts:assign_table_space.sh"
+#   template: src=assign_table_space.sh dest="{{ BASE_DIR }}/{{ Temp_Dir }}" mode=0755 owner={{ db_user }} group={{ db_group }}
+
+# - name: "DB: ship all the shell scripts:grant_perm_schema_user.sh"
+#   template: src=grant_perm_schema_user.sh dest="{{ BASE_DIR }}/{{ Temp_Dir }}" mode=0755 owner={{ db_user }} group={{ db_group }}
+
+# - name: "DB: ship all the shell scripts:master_data_pretups_live.sh"
+#   template: src=master_data_pretups_live.sh dest="{{ BASE_DIR }}/{{ Temp_Dir }}" mode=0755 owner={{ db_user }} group={{ db_group }}
+
+# - name: "DB: ship all the shell scripts:user_profile_creation.sh"
+#   template: src=user_profile_creation.sh dest="{{ BASE_DIR }}/{{ Temp_Dir }}" mode=0755 owner={{ db_user }} group={{ db_group }}
+
+# - name: "DB: ship all the shell scripts:PreTups_Live.sh"
+#   template: src=PreTups_Live.sh dest="{{ BASE_DIR }}/{{ Temp_Dir }}" mode=0755 owner={{ db_user }} group={{ db_group }}
+
+# - name: "DB: ship all the shell scripts:create_pretups_schema.sh"
+#   template: src=create_pretups_schema.sh dest="{{ BASE_DIR }}/{{ Temp_Dir }}" mode=0755 owner={{ db_user }} group={{ db_group }}
+

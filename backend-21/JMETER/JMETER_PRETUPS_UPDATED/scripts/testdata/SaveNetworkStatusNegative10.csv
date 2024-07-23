@@ -1,0 +1,2 @@
+TestcaseId,TestcaseType,Module,Description
+,Negative,Network Status,"To verify validation message appears ""network.networkstatus.errors.language.required"" when do not provide newlanguageMessage"

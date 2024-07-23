@@ -1,0 +1,226 @@
+
+
+// This scripts contains all the common methods for bonus bundle management.
+
+_includeOnce("../../../../utility/ImportPackage.sah");
+
+
+
+
+
+
+var $g_domain;
+var $g_category;
+var $g_geographicalDomain;
+var $g_grade;
+var $g_profileName;
+var $g_shortCode;
+var $g_calendarImg;
+var $g_applicableFromHour;
+var $g_addCommProfImg;
+var $g_multipleOf;
+var $g_minTransfer;
+var $g_maxTransfer;
+var $g_startRange;
+var $g_endRange;
+var $g_commType;
+var $g_commRate;
+var $g_tax1Rate;
+var $g_tax2Rate;
+var $g_tax3Rate;
+var $g_assertion;
+
+
+
+function commonVaribleForCommisionProfile($g_row, $g_col) {
+	
+	$g_domain  = $g_commissionProfileDetails[$g_row][$g_col++];
+	$g_category = $g_commissionProfileDetails[$g_row][$g_col++];
+	$g_geographicalDomain = $g_commissionProfileDetails[$g_row][$g_col++];
+	$g_grade = $g_commissionProfileDetails[$g_row][$g_col++];
+	$g_profileName = $g_commissionProfileDetails[$g_row][$g_col++];
+	$g_shortCode = $g_commissionProfileDetails[$g_row][$g_col++];
+	$g_calendarImg = $g_commissionProfileDetails[$g_row][$g_col++];
+	$g_applicableFromHour = $g_commissionProfileDetails[$g_row][$g_col++];
+	$g_addCommProfImg = $g_commissionProfileDetails[$g_row][$g_col++];
+	$g_multipleOf = $g_commissionProfileDetails[$g_row][$g_col++];
+	$g_minTransfer = $g_commissionProfileDetails[$g_row][$g_col++];
+	$g_maxTransfer = $g_commissionProfileDetails[$g_row][$g_col++];
+	$g_startRange = $g_commissionProfileDetails[$g_row][$g_col++];
+	$g_endRange = $g_commissionProfileDetails[$g_row][$g_col++];
+	$g_commType = $g_commissionProfileDetails[$g_row][$g_col++];
+	$g_commRate = $g_commissionProfileDetails[$g_row][$g_col++];
+	$g_tax1Rate = $g_commissionProfileDetails[$g_row][$g_col++];
+	$g_tax2Rate = $g_commissionProfileDetails[$g_row][$g_col++];
+	$g_tax3Rate = $g_commissionProfileDetails[$g_row][$g_col++];
+	$g_assertion = $g_commissionProfileDetails[$g_row][$g_col++];
+
+}
+
+
+
+function addCommissionProfile() {
+	
+	
+	_click(_link("Profile management"));
+	_click(_link("Commission profile"));
+	_setSelected(_select("domainCode"), $g_domain );
+	_setSelected(_select("categoryCode"), $g_category);
+	_setSelected(_select("grphDomainCode"), $g_geographicalDomain);
+	_setSelected(_select("gradeCode"), $g_grade);
+	_click(_submit("Add"));
+	_setValue(_textbox("profileName"), $g_profileName);
+	_setValue(_textbox("shortCode"), $g_shortCode);
+	_click(_image($g_calendarImg));
+	_setValue(_textbox("applicableFromDate"), $g_currentDate);
+	_setValue(_textbox("applicableFromHour"), $g_applicableFromHour);
+	_click(_image("Add commission profile"));
+	_popup("eRecharge")._setSelected(_select("productCode"), "eTopUP");
+	_popup("eRecharge")._setValue(_textbox("multipleOf"), "1");
+	_popup("eRecharge")._setValue(_textbox("minTransferValue"), "1");
+	_popup("eRecharge")._setValue(_textbox("maxTransferValue"), "1000");
+	_popup("eRecharge")._click(_checkbox("taxOnFOCFlag"));
+	_popup("eRecharge")._click(_checkbox("taxCalculatedOnFlag"));
+	_popup("eRecharge")._setValue(_textbox("commSlabsListIndexed[0].startRangeAsString"), "1");
+	_popup("eRecharge")._setValue(_textbox("commSlabsListIndexed[0].endRangeAsString"), "500");
+	_popup("eRecharge")._setValue(_textbox("commSlabsListIndexed[0].commRateAsString"), "1");
+	_popup("eRecharge")._setValue(_textbox("commSlabsListIndexed[0].tax1RateAsString"), "1");
+	_popup("eRecharge")._setValue(_textbox("commSlabsListIndexed[0].tax2RateAsString"), "1");
+	_popup("eRecharge")._setValue(_textbox("commSlabsListIndexed[0].tax3RateAsString"), "1");
+	_popup("eRecharge")._click(_submit("Add"));
+	_click(_submit($g_BtnSave));
+	_click(_submit($g_BtnConfirm));	
+	
+	_assertExists(_listItem("/" + $g_assertion + ".*/"));
+	
+	
+}
+
+
+function ModifyCommissionProfile() {
+	
+	_click(_link("Profile management"));
+	_click(_link("Commission profile"));
+	_setSelected(_select("domainCode"), $g_domain );
+	_setSelected(_select("categoryCode"), $g_category);
+	_setSelected(_select("grphDomainCode"), $g_geographicalDomain);
+	_setSelected(_select("gradeCode"), $g_grade);
+	_click(_submit("Modify"));
+	_setSelected(_select("selectCommProfileSetID"), $g_profileName);
+	_click(_submit("Modify"));
+	_setValue(_textbox("shortCode"), $g_shortCode);
+	_click(_submit($g_BtnSave));
+	_click(_submit($g_BtnConfirm));	
+	
+	_assertExists(_listItem("/" + $g_assertion + ".*/"));
+	
+	
+}
+
+
+function addOperatorUserWithoutSelectingCategory() {
+
+	_click(_link("Operator users"));
+	_click(_link("Add operator user"));
+	_click(_submit("Submit"));
+	_assertExists(_listItem("Category is required."));
+
+}
+
+
+function viewBackRestButtonOnCommissionProfile() {
+	
+	_click(_link("Profile management"));
+	_click(_link("Commission profile"));
+	_setSelected(_select("domainCode"), $g_domain );
+	_setSelected(_select("categoryCode"), $g_category);
+	_setSelected(_select("grphDomainCode"), $g_geographicalDomain);
+	_setSelected(_select("gradeCode"), $g_grade);
+	_click(_submit("Add"));
+	_assertExists(_submit("Back", _near(_reset("Reset", _near(_submit("Save"))))));
+	
+}
+
+
+
+function addCommissionProfileWithExistingShortCode() {
+	addCommissionProfile();
+	
+}
+
+
+function addCommissionProfileWithPastDate() {
+	_click(_link("Profile management"));
+	_click(_link("Commission profile"));
+	_setSelected(_select("domainCode"), $g_domain );
+	_setSelected(_select("categoryCode"), $g_category);
+	_setSelected(_select("grphDomainCode"), $g_geographicalDomain);
+	_setSelected(_select("gradeCode"), $g_grade);
+	_click(_submit("Add"));
+	_setValue(_textbox("profileName"), $g_profileName);
+	_setValue(_textbox("shortCode"), $g_shortCode);
+	_setValue(_textbox("applicableFromDate"), "12/12/12");
+	_setValue(_textbox("applicableFromHour"), $g_applicableFromHour);
+	
+	_click(_submit($g_BtnSave));
+	_assertExists(_listItem("/" + $g_assertion + ".*/"));
+	
+}
+
+
+function toViewConcernedPage() {
+	
+	submitDomainCategoryForCommissionProfile();
+	_click(_submit("View"));
+
+	_assertExists(_submit("Back", _near(_submit("Submit"))));
+
+}
+
+function toViewExistingCommisssionProfile() {
+	submitDomainCategoryForCommissionProfile();
+	_click(_submit("View"));
+	
+	_setSelected(_select("selectCommProfileSetID"), $g_profileName );
+	_click(_submit("Submit"));
+	_assertExists(_div("Commission profile set version list"));
+	_assertExists(_submit("Back", _near(_submit("Submit"))));
+	
+	
+
+}
+
+
+
+
+function submitDomainCategoryForCommissionProfile(){
+	_click(_link("Profile management"));
+	_click(_link("Commission profile"));
+	_setSelected(_select("domainCode"), $g_domain );
+	_setSelected(_select("categoryCode"), $g_category);
+	_setSelected(_select("grphDomainCode"), $g_geographicalDomain);
+	_setSelected(_select("gradeCode"), $g_grade);
+}
+
+
+function toCheckResetButtonCommisssionProfile() {
+	
+	submitDomainCategoryForCommissionProfile();
+	
+	_click(_submit("Add"));
+	_setValue(_textbox("profileName"), $g_profileName);
+	_setValue(_textbox("shortCode"), $g_shortCode);
+	_click(_image($g_calendarImg));
+	_setValue(_textbox("applicableFromDate"), $g_currentDate);
+	_setValue(_textbox("applicableFromHour"), $g_applicableFromHour);
+	
+	
+	
+	_click(_reset("Reset"));
+	if(_getValue(_textbox("profileName")) == "")
+			_log("test case is successful");
+		
+}
+
+
+

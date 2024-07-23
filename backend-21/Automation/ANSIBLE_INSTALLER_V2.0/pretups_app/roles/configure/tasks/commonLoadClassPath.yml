@@ -1,0 +1,18 @@
+ - name: "changing the JAVA_OPTS for all the processScripts: setting pretups user HOME directory"
+   lineinfile: dest="{{ Tomcat_Path }}/conf/pretups/commonLoadClassPath.sh" regexp='(.*)<HOME_DIR>(.*)' line="HOME={{ PROJECT_ROOT }}; export HOME"
+
+ - name: "changing the JAVA_OPTS for all the processScripts: setting Soft link of jdk path"
+   shell: sed -i 's/<JAVA_INSTALLED_LINK>/{{ JDK_SOFT_LINK }}/g' "{{ Tomcat_Path }}"/conf/pretups/commonLoadClassPath.sh
+
+ - name: "changing the JAVA_OPTS for all the processScripts: setting Tomcat installation directory path"
+   replace: dest="{{ Tomcat_Path }}/conf/pretups/commonLoadClassPath.sh" regexp='(.*)\$HOME\/<TOMCAT_INSTALLED_DIR>(.*)' replace='\1{{ Tomcat_Path }}\2'
+
+ - name: " changing the LANG for all the processScripts"
+   lineinfile: dest="{{ Tomcat_Path }}/conf/pretups/commonLoadClassPath.sh" regexp='^LANG=(.*)$' line="LANG={{ LANG_PRO }}; export LANG;" 
+   
+# - name: "changing the JAVA_OPTS for all the processScripts: putting new CLASSPATH in place of the old CLASSPATH"
+#   lineinfile: dest="{{ Tomcat_Path }}/conf/pretups/commonLoadClassPath.sh" regexp='^CLASSPATH=(.*)$' line={{ CLASSPATH }}
+
+ - name: " changing the JAVA_OPTS for all the processScripts"
+   lineinfile: dest="{{ Tomcat_Path }}/conf/pretups/commonLoadClassPath.sh" regexp='^JAVA_OPTS=(.*)$' line="JAVA_OPTS=\"{{ XMS_PROCESS }} {{ XMX_PROCESS }}\"; export JAVA_OPTS;"
+   

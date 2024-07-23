@@ -1,0 +1,2 @@
+LANGUAGE1,LANGUAGE2,TestcaseId,TestcaseType,Module,Description
+,,TUNG12184 ,Negative,Recharge Reversal from Main Distributor to Subscriber ,C2S Recharge Reversal should not work through external gateway if  transaction id is not added.

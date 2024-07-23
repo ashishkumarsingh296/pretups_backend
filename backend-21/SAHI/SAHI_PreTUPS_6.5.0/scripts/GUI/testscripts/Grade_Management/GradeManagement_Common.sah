@@ -1,0 +1,87 @@
+
+
+// This scripts contains all the common methods for bonus bundle management.
+
+_includeOnce("../../../../utility/ImportPackage.sah");
+
+
+	var $g_domain;
+	var $g_category;
+	var $g_gradeCode;
+	var $g_gradeName;
+	var $g_assertion;
+	
+	var $l_modifyBonusbundleName;
+	
+
+	
+	function commonVaribleToAddGrade($g_row, $g_col) {
+		$g_domain = $g_gradeDetails[$g_row][$g_col++];
+		$g_category = $g_gradeDetails[$g_row][$g_col++]
+		$g_gradeCode = $g_gradeDetails[$g_row][$g_col++]
+		$g_gradeName = $g_gradeDetails[$g_row][$g_col++]
+		$g_assertion = $g_gradeDetails[$g_row][$g_col++]
+		
+	}
+		
+	
+	function addGrade() {
+		_click(_link("Channel domain"));
+		_click(_link("Grade management"));
+		_setSelected(_select("domainCodeforDomain"), $g_domain);
+		_setSelected(_select("categoryCode"), $g_category);
+		_click(_submit("Submit"));
+		_click(_submit("Add"));
+		_setValue(_textbox("gradeCode"), $g_gradeCode);
+		_setValue(_textbox("gradeName"),$g_gradeName);
+		_click(_submit("Save"));
+		_click(_submit("Confirm"));
+		
+		_assertExists(_listItem("/"+ $g_assertion + ".*/"));
+		
+	}
+	
+	
+	function addGradeWithoutDomain() {
+		_click(_link("Channel domain"));
+		_click(_link("Grade management"));
+		_setSelected(_select("domainCodeforDomain"), $g_domain);
+		_setSelected(_select("categoryCode"), $g_category);
+		_click(_submit("Submit"));
+		_assertExists(_listItem("/"+ $g_assertion + ".*/"));
+	}
+	
+	
+	function addGradeWithoutGradeCode() {
+		_click(_link("Channel domain"));
+		_click(_link("Grade management"));
+		_setSelected(_select("domainCodeforDomain"), $g_domain);
+		_setSelected(_select("categoryCode"), $g_category);
+		_click(_submit("Submit"));
+		_click(_submit("Add"));
+		_setValue(_textbox("gradeCode"), $g_gradeCode);
+		_setValue(_textbox("gradeName"),$g_gradeName);
+		_click(_submit("Save"));
+		_assertExists(_listItem("/"+ $g_assertion + ".*/"));
+		
+	}
+	
+	
+	function modifyGrade() {
+		_click(_link("Channel domain"));
+		_click(_link("Grade management"));
+		_setSelected(_select("domainCodeforDomain"), $g_domain);
+		_setSelected(_select("categoryCode"), $g_category);
+		_click(_submit("Submit"));
+		_click(_radio("radioIndex", _near(_cell($g_gradeCode))));
+		_click(_submit("Modify"));
+		_setValue(_textbox("gradeName"), $g_gradeName );
+		_click(_submit("Save"));
+		_click(_submit("Confirm"));
+		_assertExists(_listItem("/"+ $g_assertion + ".*/"));
+	}
+	
+	
+	
+	
+	

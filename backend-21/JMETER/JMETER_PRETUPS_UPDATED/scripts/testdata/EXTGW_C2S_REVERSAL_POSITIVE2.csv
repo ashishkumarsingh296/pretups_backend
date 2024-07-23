@@ -1,0 +1,4 @@
+RCSELECTOR,LANGUAGE1,LANGUAGE2,TestcaseId,TestcaseType,Module,Description
+1,,,TUNG12181 ,Positive,Recharge Reversal from Main Distributor to Subscriber ,C2S Recharge Reversal should work through external gateway when all parameters are added.
+1,,,TUNG12186 ,Positive,Recharge Reversal from Main Distributor to Subscriber ,Retailer commission should be reversed when reversal is initiated through external gateway.
+1,,,TUNG12191 ,Positive,Recharge Reversal from Main Distributor to Subscriber ,Threshold(daily/weekly/monthly) should be applicable for  Recharge Reversal through external gateway.

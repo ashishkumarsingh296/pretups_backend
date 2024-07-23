@@ -1,0 +1,4 @@
+ACCOUNT_INFO=<?xml version="1.0"?><!DOCTYPE cp_reply SYSTEM "cp_reply.dtd"><cp_reply><cp_id>BHARTIC2S</cp_id><cp_transaction_id>000000</cp_transaction_id><op_transaction_id></op_transaction_id><result>0</result><credit_balance>100813</credit_balance><end_val_date>06/12/2006</end_val_date><end_inact_date>04/03/2007</end_inact_date><profile>CLASSIQUE</profile><prof_lang>1</prof_lang><acc_status>ACTIVE</acc_status></cp_reply>
+ACCOUNT_CREDIT=<?xml version="1.0"?><!DOCTYPE cp_reply SYSTEM "cp_reply.dtd"><cp_reply><cp_id>BHARTIC2S</cp_id><cp_transaction_id>000000</cp_transaction_id><result>0</result></cp_reply>
+ACCOUNT_DEBIT=<?xml version="1.0"?><!DOCTYPE cp_reply SYSTEM "cp_reply.dtd"><cp_reply><cp_id>BHARTIC2S</cp_id><cp_transaction_id>000000</cp_transaction_id><result>0</result></cp_reply> 
+

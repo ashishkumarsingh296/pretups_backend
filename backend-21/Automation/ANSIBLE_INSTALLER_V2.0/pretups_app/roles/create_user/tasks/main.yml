@@ -1,0 +1,10 @@
+---
+ - name: create the group of pretups - Example group command from Ansible Playbooks
+   group: name={{ GROUP_NAME }} state=present
+
+ - name: basic user creation - Create user and attach with the previosuly created group
+   user: name={{ USER_NAME }} group={{ GROUP_NAME }} password={{ password }}  state=present home=/{{ HOME_DIR_NAME }}
+
+ - name: 'setting home directory variable'
+   debug: msg="ansible path variable is {{ ansible_env.PATH }}"s
+#   include: home_directory.yml

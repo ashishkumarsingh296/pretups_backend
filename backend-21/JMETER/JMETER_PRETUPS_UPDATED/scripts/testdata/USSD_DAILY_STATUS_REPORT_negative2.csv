@@ -1,0 +1,2 @@
+TestcaseId,TestcaseType,Module,Description
+TUNG13035,Negative,Daily status report through USSD,To verify that channel user is unable to initiate the request if all the fields having more than the maximum limit of characters

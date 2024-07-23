@@ -1,0 +1,985 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.btsl.pretups</groupId>
+	<artifactId>vms</artifactId>
+	<packaging>war</packaging>
+	<version>6.3.2</version>
+	<name>Pretups Maven Webapp</name>
+	<description>VMS Transaction Project</description>
+	<url>http://localhost:8080/vms</url>
+
+
+	<repositories>
+		<repository>
+			<id>PreTUPS Internal Repository</id>
+			<url>file://${basedir}/project_repo_lib</url>
+		</repository>
+	</repositories>
+
+	<properties>
+
+		<project.hudson.deploy.url>
+			http://172.16.9.33:8080/hudson-2.2.1
+		</project.hudson.deploy.url>
+
+		<project.svn.url>
+			http://172.16.1.57/PRETUPS/branches/PreTUPS_Maven/Code/
+		</project.svn.url>
+
+		<project.site.deploy.url>
+			file://172.16.9.33/tomcat-7.0.27/webapps/mavenizedPreTUPS_new/
+		</project.site.deploy.url>
+
+		<project.build.directory>
+			${basedir}/target/classes
+		</project.build.directory>
+
+		<project.site.pmd.configurationFile>
+			${basedir}/src/site/resources/config/pmd-ruleSets/rule_error_errorHigh.xml
+		</project.site.pmd.configurationFile>
+
+		<project.site.checkstyle.configurationFile>
+			${basedir}/src/site/resources/config/checkstyle/checkstyle.xml
+		</project.site.checkstyle.configurationFile>
+
+		<project.site.inforeports.custonBundle>
+			${project.basedir}/src/site/custom/project-info-report.properties
+		</project.site.inforeports.custonBundle>
+
+		<project.build.sourceEncoding>
+			UTF-8
+		</project.build.sourceEncoding>
+
+		<project.reporting.outputEncoding>
+			UTF-8
+		</project.reporting.outputEncoding>
+
+	</properties>
+
+	<scm>
+		<connection>scm:svn:${project.svn.url}</connection>
+		<developerConnection>
+			scm:svn:${project.svn.url}
+		</developerConnection>
+		<url>${project.svn.url}</url>
+		<!-- <username>username</username> <password>password</password> -->
+	</scm>
+
+	<reporting>
+
+		<plugins>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>
+					maven-project-info-reports-plugin
+				</artifactId>
+				<inherited>false</inherited>
+				<version>2.7</version>
+				<configuration>
+					<!-- By default -->
+					<customBundle>
+						${project.site.inforeports.custonBundle}
+					</customBundle>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jxr-plugin</artifactId>
+				<version>2.3</version>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-pmd-plugin</artifactId>
+				<version>2.7.1</version>
+				<reportSets>
+					<reportSet>
+						<reports>
+							<report>pmd</report>
+						</reports>
+					</reportSet>
+				</reportSets>
+
+				<configuration>
+					<rulesets>
+						<!--<ruleset>${project.site.pmd.configurationFile}</ruleset> -->
+						<ruleset>
+							C:\MFS_Workspace\preTUPS_Maven\preTUPS_Maven\src\site\resources\config\pmd-ruleSets\rule_error_errorHigh.xml
+						</ruleset>
+					</rulesets>
+					<sourceEncoding>utf-8</sourceEncoding>
+					<minimumTokens>100</minimumTokens>
+					<targetJdk>1.8</targetJdk>
+					<argLine>-Xmx2048m</argLine>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-javadoc-plugin</artifactId>
+				<version>2.9.1</version>
+				<configuration>
+					<encoding>
+						${project.reporting.outputEncoding}
+					</encoding>
+					<encoding>UTF-8</encoding>
+					<excludePackageNames>
+						com.btsl.pretups.inter.*
+					</excludePackageNames>
+					<show>public</show>
+					<quiet>true</quiet>
+					<minmemory>1g</minmemory>
+					<maxmemory>1g</maxmemory>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>jdepend-maven-plugin</artifactId>
+				<version>2.0-beta-2</version>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.rat</groupId>
+				<artifactId>apache-rat-plugin</artifactId>
+				<version>0.8</version>
+			</plugin>
+
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>findbugs-maven-plugin</artifactId>
+				<version>2.5.2</version>
+				<configuration>
+					<fork>true</fork>
+					<maxHeap>1024</maxHeap>
+					<minmemory>1g</minmemory>
+					<maxmemory>1g</maxmemory>
+					<xmlOutput>true</xmlOutput>
+					<excludeFilterFile>
+						C:\MFS_Workspace\preTUPS_Maven\preTUPS_Maven\src\site\resources\config\findbugs-exclude.xml
+					</excludeFilterFile>
+					<omitVisitors>
+						ExplicitSerialization,BooleanReturnNull,CheckImmutableAnnotation,CloneIdiom,
+						ComparatorIdiom,DontCatchIllegalMonitorStateException,DontUseEnum,DroppedException,
+						EmptyZipFileEntry,EqualsOperandShouldHaveClassCompatibleWithThis,FinalizerNullsFields,
+						FindOpenStream,InheritanceUnsafeGetResource,InstantiateStaticClass,IteratorIdioms,
+						ReadReturnShouldBeChecked,FindRefComparison,FindUnrelatedTypesInGenericContainer,IncompatMask,
+						Naming,FindHEmismatch,FindNullDeref,FormatStringChecker,MethodReturnCheck,
+						OverridingEqualsNotSymmetrical,DumbMethods,SerializableIdiom,FindPuzzlers,FindUseOfNonSerializableValue,
+						InitializationChain,NoteUnconditionalParamDerefs,FindFinalizeInvocations,AppendingToAnObjectOutputStream,
+						BadAppletConstructor,BadSyntaxForRegularExpression,BadlyOverriddenAdapter,CheckExpectedWarnings,
+						FindMaskedFields,FindNullDerefsInvolvingNonShortCircuitEvaluation,FindSelfComparison2,FindUninitializedGet,
+						InfiniteLoop,InfiniteRecursiveLoop,InitializeNonnullFieldsInConstructor,IntCast2LongAsInstant,InvalidJUnitTest,
+						QuestionableBooleanAssignment,ReadOfInstanceFieldInMethodInvokedByConstructorInSuperclass,RepeatedConditionals,
+						SuperfluousInstanceOf,SuspiciousThreadInterrupted,UncallableMethodOfAnonymousClass,VarArgsProblems,
+						CheckTypeQualifiers,FindBadCast2,FindDeadLocalStores,FindFieldSelfAssignment,FindFloatEquality,
+						FindLocalSelfAssignment2,FindSelfComparison,IDivResultCastToDouble,SwitchFallthrough,UnreadFields,
+						BadUseOfReturnValue,CallToUnsupportedMethod,ConfusedInheritance,ConfusionBetweenInheritedAndOuterMethod,
+						DuplicateBranches,FindBadForLoop,FindCircularDependencies,FindNonShortCircuit,FindUselessControlFlow,
+						InconsistentAnnotations,LoadOfKnownNullValue,MultithreadedInstanceAccess,PreferZeroLengthArrays,
+						PublicSemaphores,RedundantInterfaces,RuntimeExceptionCapture,UselessSubclassMethod,XMLFactoryBypass,
+						FindUnsatisfiedObligation,LostLoggerDueToWeakReference,DefaultEncodingDetector,DoInsideDoPrivileged,
+						FindReturnRef,MutableStaticFields,AtomicityProblem,DontIgnoreResultOfPutIfAbsent,FindDoubleCheck,
+						FindEmptySynchronizedBlock,FindInconsistentSync2,FindJSR166LockMonitorenter,FindMismatchedWaitOrNotify,
+						FindNakedNotify,FindRunInvocations,FindSleepWithLockHeld,FindSpinLoop,FindTwoLockWait,FindUnconditionalWait,
+						FindUnreleasedLock,FindUnsyncGet,LazyInit,MutableLock,StartInConstructor,StaticCalendarDetector,
+						SynchronizeAndNullCheckField,SynchronizeOnClassLiteralNotGetClass,SynchronizingOnContentsOfFieldToProtectField,
+						VolatileUsage,WaitInLoop,BadResultSetAccess
+					</omitVisitors>
+					<onlyAnalyze>
+						org.codehaus.mojo.findbugs.*
+					</onlyAnalyze>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-report-plugin</artifactId>
+				<version>2.13</version>
+			</plugin>
+
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>cobertura-maven-plugin</artifactId>
+				<version>2.5.2</version>
+				<configuration>
+					<argLine>-Xmx512m -XX:MaxPermSize=256m</argLine>
+				</configuration>
+
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-checkstyle-plugin</artifactId>
+				<version>2.10</version>
+				<configuration>
+					<configLocation>
+						${project.site.checkstyle.configurationFile}
+					</configLocation>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>versions-maven-plugin</artifactId>
+				<version>2.0</version>
+			</plugin>
+
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>taglist-maven-plugin</artifactId>
+				<version>2.4</version>
+			</plugin>
+
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>dashboard-maven-plugin</artifactId>
+				<version>1.0.0-beta-1</version>
+			</plugin>
+
+		</plugins>
+
+	</reporting>
+
+	<distributionManagement>
+		<site>
+			<id>site.server</id>
+			<url>${project.site.deploy.url}</url>
+		</site>
+	</distributionManagement>
+
+	<dependencies>
+	
+		<dependency>
+			<groupId>com.univocity</groupId>
+			<artifactId>univocity-parsers</artifactId>
+			<version>2.2.3</version>
+			<type>jar</type>
+		</dependency>
+
+		<dependency>
+			<groupId>activation</groupId>
+			<artifactId>activation</artifactId>
+			<version>1.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>alepokenyastub</groupId>
+			<artifactId>alepokenyastub</artifactId>
+			<version>1.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>antlr</groupId>
+			<artifactId>antlr</artifactId>
+			<version>1.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>mail</groupId>
+			<artifactId>mail</artifactId>
+			<version>1.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>menu</groupId>
+			<artifactId>menu</artifactId>
+			<version>1.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>servlet</groupId>
+			<artifactId>servlet</artifactId>
+			<version>1.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>slf4j-api</groupId>
+			<artifactId>slf4j-api</artifactId>
+			<version>1.6.1</version>
+		</dependency>
+
+		<dependency>
+			<groupId>log4j-1.2.9</groupId>
+			<artifactId>log4j-1.2.9</artifactId>
+			<version>1.2.9</version>
+		</dependency>
+
+		<dependency>
+			<groupId>struts</groupId>
+			<artifactId>struts</artifactId>
+			<version>1.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>cos</groupId>
+			<artifactId>cos</artifactId>
+			<version>1.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>commons-beanutils</groupId>
+			<artifactId>commons-beanutils</artifactId>
+			<version>1.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>commons-collections</groupId>
+			<artifactId>commons-collections</artifactId>
+			<version>1.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>commons-digester</groupId>
+			<artifactId>commons-digester</artifactId>
+			<version>1.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>commons-discovery-0.2</groupId>
+			<artifactId>commons-discovery-0.2</artifactId>
+			<version>0.2</version>
+		</dependency>
+
+		<!-- <dependency> <groupId>commons-fileupload</groupId> <artifactId>commons-fileupload</artifactId> 
+			<version>1.0</version> </dependency> -->
+		<dependency>
+			<groupId>commons-fileupload</groupId>
+			<artifactId>commons-fileupload</artifactId>
+			<version>1.3</version>
+		</dependency>
+
+		<dependency>
+			<groupId>commons-lang</groupId>
+			<artifactId>commons-lang</artifactId>
+			<version>1.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>commons-logging</groupId>
+			<artifactId>commons-logging</artifactId>
+			<version>1.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>commons-validator</groupId>
+			<artifactId>commons-validator</artifactId>
+			<version>1.3.1</version>
+		</dependency>
+
+		<dependency>
+			<groupId>comversestub</groupId>
+			<artifactId>comversestub</artifactId>
+			<version>1.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>comversetrstub</groupId>
+			<artifactId>comversetrstub</artifactId>
+			<version>1.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>struts-legacy</groupId>
+			<artifactId>struts-legacy</artifactId>
+			<version>1.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>taglibs</groupId>
+			<artifactId>taglibs</artifactId>
+			<version>1.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>commons-codec</groupId>
+			<artifactId>commons-codec</artifactId>
+			<version>1.4</version>
+		</dependency>
+
+		<dependency>
+			<groupId>uganda_volubill</groupId>
+			<artifactId>uganda_volubill</artifactId>
+			<version>1.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>axis</groupId>
+			<artifactId>axis</artifactId>
+			<version>1.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>jaxrpc</groupId>
+			<artifactId>jaxrpc</artifactId>
+			<version>1.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>jaxrpc-api</groupId>
+			<artifactId>jaxrpc-api</artifactId>
+			<version>1.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>saaj</groupId>
+			<artifactId>saaj</artifactId>
+			<version>1.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>saaj-impl</groupId>
+			<artifactId>saaj-impl</artifactId>
+			<version>1.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>saaj-api</groupId>
+			<artifactId>saaj-api</artifactId>
+			<version>1.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>wsdl4j-1.5.1</groupId>
+			<artifactId>wsdl4j-1.5.1</artifactId>
+			<version>1.5.1</version>
+		</dependency>
+
+		<dependency>
+			<groupId>crimson</groupId>
+			<artifactId>crimson</artifactId>
+			<version>1.0</version>
+		</dependency>
+
+		<!--<dependency> <groupId>crystal</groupId> <artifactId>crystal</artifactId> 
+			<version>1.0</version> </dependency> -->
+
+		<dependency>
+			<groupId>pager-taglib</groupId>
+			<artifactId>pager-taglib</artifactId>
+			<version>1.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>jaxrpc-impl</groupId>
+			<artifactId>jaxrpc-impl</artifactId>
+			<version>1.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>jaxrpc-impl_1</groupId>
+			<artifactId>jaxrpc-impl_1</artifactId>
+			<version>1.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>jaxrpc-spi</groupId>
+			<artifactId>jaxrpc-spi</artifactId>
+			<version>1.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>OPCI</groupId>
+			<artifactId>OPCI</artifactId>
+			<version>1.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>OrbixWeb</groupId>
+			<artifactId>OrbixWeb</artifactId>
+			<version>1.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>ojdbc5</groupId>
+			<artifactId>ojdbc5</artifactId>
+			<version>5</version>
+		</dependency>
+
+		<dependency>
+			<groupId>omt_huawei</groupId>
+			<artifactId>omt_huawei</artifactId>
+			<version>1.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>jxl</groupId>
+			<artifactId>jxl</artifactId>
+			<version>1.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>ReportViewer</groupId>
+			<artifactId>ReportViewer</artifactId>
+			<version>1.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>ClearReports</groupId>
+			<artifactId>ClearReports</artifactId>
+			<version>1.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>wss4j-1.5.7</groupId>
+			<artifactId>wss4j-1.5.7</artifactId>
+			<version>1.5.7</version>
+		</dependency>
+
+		<dependency>
+			<groupId>nls_charset12</groupId>
+			<artifactId>nls_charset12</artifactId>
+			<version>12</version>
+		</dependency>
+
+		<dependency>
+			<groupId>authapi</groupId>
+			<artifactId>authapi</artifactId>
+			<version>1.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>rsaexternal</groupId>
+			<artifactId>rsaexternal</artifactId>
+			<version>1.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>edtftpj-1.5.4</groupId>
+			<artifactId>edtftpj-1.5.4</artifactId>
+			<version>1.5.4</version>
+		</dependency>
+
+		<dependency>
+			<groupId>FastInfoset</groupId>
+			<artifactId>FastInfoset</artifactId>
+			<version>1.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>jakarta-oro</groupId>
+			<artifactId>jakarta-oro</artifactId>
+			<version>1.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>idl</groupId>
+			<artifactId>idl</artifactId>
+			<version>1.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>excelapi</groupId>
+			<artifactId>excelapi</artifactId>
+			<version>1.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>c3p0</groupId>
+			<artifactId>c3p0</artifactId>
+			<version>0.9.1.2</version>
+		</dependency>
+
+		<dependency>
+			<groupId>ESAPI</groupId>
+			<artifactId>ESAPI</artifactId>
+			<version>2.0-rc4</version>
+		</dependency>
+
+		<dependency>
+			<groupId>libgetsetsnmp</groupId>
+			<artifactId>libgetsetsnmp</artifactId>
+			<version>1.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>log4j-1.2.7</groupId>
+			<artifactId>log4j-1.2.7</artifactId>
+			<version>1.2.7</version>
+		</dependency>
+
+		<dependency>
+			<groupId>j-ftp</groupId>
+			<artifactId>j-ftp</artifactId>
+			<version>1.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>milton-api</groupId>
+			<artifactId>milton-api</artifactId>
+			<version>1.5.3</version>
+		</dependency>
+
+		<dependency>
+			<groupId>mobinilpoststub</groupId>
+			<artifactId>mobinilpoststub</artifactId>
+			<version>1.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>jsr173_api</groupId>
+			<artifactId>jsr173_api</artifactId>
+			<version>1.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>Scheduler</groupId>
+			<artifactId>Scheduler</artifactId>
+			<version>1.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>CCLib</groupId>
+			<artifactId>CCLib</artifactId>
+			<version>1.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>json-simple</groupId>
+			<artifactId>json-simple</artifactId>
+			<version>1.1.1</version>
+		</dependency>
+
+		<dependency>
+			<groupId>milton-servlet</groupId>
+			<artifactId>milton-servlet</artifactId>
+			<version>1.4</version>
+		</dependency>
+
+		<dependency>
+			<groupId>unboundid-ldapsdk</groupId>
+			<artifactId>unboundid-ldapsdk</artifactId>
+			<version>1.1.3</version>
+		</dependency>
+
+		<dependency>
+			<groupId>xfire-core</groupId>
+			<artifactId>xfire-core</artifactId>
+			<version>1.2.6</version>
+		</dependency>
+
+		<dependency>
+			<groupId>ognl</groupId>
+			<artifactId>ognl</artifactId>
+			<version>3.0.6</version>
+		</dependency>
+
+		<dependency>
+			<groupId>struts2-core</groupId>
+			<artifactId>struts2-core</artifactId>
+			<version>2.3.15.1</version>
+		</dependency>
+
+		<dependency>
+			<groupId>struts2-sitemesh-plugin</groupId>
+			<artifactId>struts2-sitemesh-plugin</artifactId>
+			<version>2.3.15.1</version>
+		</dependency>
+
+		<dependency>
+			<groupId>struts2-tiles3-plugin</groupId>
+			<artifactId>struts2-tiles3-plugin</artifactId>
+			<version>2.3.15.1</version>
+		</dependency>
+
+		<dependency>
+			<groupId>xwork-core</groupId>
+			<artifactId>xwork-core</artifactId>
+			<version>2.3.15.1</version>
+		</dependency>
+
+		<dependency>
+			<groupId>struts2-dojo-plugin</groupId>
+			<artifactId>struts2-dojo-plugin</artifactId>
+			<version>2.1.6</version>
+		</dependency>
+
+		<dependency>
+			<groupId>simplecaptcha</groupId>
+			<artifactId>simplecaptcha</artifactId>
+			<version>1.2.1</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/com.ibm.icu/icu4j -->
+		<dependency>
+			<groupId>com.ibm.icu</groupId>
+			<artifactId>icu4j</artifactId>
+			<version>61.1</version>
+			<systemPath>${basedir}/src/main/webapp/WEB-INF/lib/icu4j-61.1.jar</systemPath>
+			<scope>system</scope>
+		</dependency>
+		<dependency>
+		    <groupId>org.owasp.encoder</groupId>
+		    <artifactId>encoder</artifactId>
+		    <version>1.2</version>
+		    <systemPath>${basedir}/src/main/webapp/WEB-INF/lib/encoder-1.2.jar</systemPath>
+			<scope>system</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.google.guava</groupId>
+			<artifactId>guava</artifactId>
+			<version>21.0</version>
+			<systemPath>${basedir}/src/main/webapp/WEB-INF/lib/guava-21.0.jar</systemPath>
+			<scope>system</scope>
+     </dependency>
+		<dependency>
+			<groupId>org.apache.poi</groupId>
+			<artifactId>poi</artifactId>
+			<version>3.17</version>
+			<systemPath>${basedir}/src/main/webapp/WEB-INF/lib/poi-3.17.jar</systemPath>
+			<scope>system</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.poi</groupId>
+			<artifactId>poi-ooxml</artifactId>
+			<version>3.17</version>
+			<systemPath>${basedir}/src/main/webapp/WEB-INF/lib/poi-ooxml-3.17.jar</systemPath>
+			<scope>system</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.poi</groupId>
+			<artifactId>poi-ooxml-schemas</artifactId>
+			<version>3.17</version>
+			<systemPath>${basedir}/src/main/webapp/WEB-INF/lib/poi-ooxml-schemas-3.17.jar</systemPath>
+			<scope>system</scope>
+		</dependency>
+
+	</dependencies>
+
+	<build>
+
+		<finalName>vms</finalName>
+		<resources>
+			<resource>
+				<directory>src/main/resources</directory>
+				<filtering>true</filtering>
+				<includes>
+					<!-- <include>**/*.xml</include> <include>**/*.properties</include> -->
+					<include>Constants.props</include>
+					<include>LogConfig.props</include>
+					<include>ESAPI.properties</include>
+					<include>KPIConfig.props</include>
+					<include>MessageResources.properties</include>
+					<include>Messages.properties</include>
+					<include>QueryFile.props</include>
+					<include>Reports_label.properties</include>
+					<include>validation.properties</include>
+				</includes>
+			</resource>
+
+			<resource>
+				<directory>src/main/resources</directory>
+				<filtering>false</filtering>
+				<!-- <excludes> <exclude>**/*.xml</exclude> </excludes> -->
+			</resource>
+			<resource>
+				<directory>src/main/java</directory>
+				<includes>
+					<include>**/*.xml</include>
+					<include>**/*.properties</include>
+				</includes>
+			</resource>
+
+			<!-- <resource> <directory>src/main/tag</directory> <targetPath>lib</targetPath> 
+				</resource> -->
+
+		</resources>
+
+		<pluginManagement>
+			<plugins>
+				<!-- To disable creation of META-INF/maven files -->
+
+				<plugin>
+					<groupId>org.codehaus.mojo</groupId>
+					<artifactId>tomcat-maven-plugin</artifactId>
+					<version>1.1</version>
+					<dependencies>
+						<dependency>
+							<groupId>org.codehaus.mojo</groupId>
+							<artifactId>tomcat-maven-plugin</artifactId>
+							<version>1.1</version>
+						</dependency>
+					</dependencies>
+				</plugin>
+
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-jar-plugin</artifactId>
+					<version>2.3</version>
+					<configuration>
+						<includes>
+							<include>
+								${project.build.directory}/generated-classes/**/*.class
+							</include>
+						</includes>
+						<excludes>
+							<exclude>
+								${project.build.directory}/classes/**/*.class
+							</exclude>
+						</excludes>
+					</configuration>
+				</plugin>
+
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-compiler-plugin</artifactId>
+					<version>3.1</version>
+					<configuration>
+						<source>1.8</source>
+						<target>1.8</target>
+						<encoding>Cp1252</encoding>
+						<verbose>true</verbose>
+						<!--<fork>true</fork> -->
+						<!-- <executable>${JAVA_1_6_HOME}/bin/javac</executable> -->
+
+						<excludes>
+							<exclude>com/btsl/db/pool/OJDBC14PoolManager.java</exclude>
+							<exclude>com/btsl/db/pool/UCPPoolManager.java</exclude>
+							<exclude>com/selftopup/**/*.java</exclude>
+							<exclude>com/btsl/pretups/inter/al*/**/*.java</exclude>
+							<exclude>com/btsl/pretups/inter/bank/**/*.java</exclude>
+							<exclude>com/btsl/pretups/inter/billpayment/**/*.java</exclude>
+							<exclude>com/btsl/pretups/inter/cboss/**/*.java</exclude>
+							<exclude>com/btsl/pretups/inter/citipg/**/*.java</exclude>
+							<exclude>com/btsl/pretups/inter/comversetg/**/*.java</exclude>
+							<exclude>com/btsl/pretups/inter/comversetr/**/*.java</exclude>
+							<exclude>com/btsl/pretups/inter/cs5*/**/*.java</exclude>
+							<exclude>com/btsl/pretups/inter/eri*/**/*.java</exclude>
+							<exclude>com/btsl/pretups/inter/ferm*/**/*.java</exclude>
+							<exclude>com/btsl/pretups/inter/ethopiabillpayment/**/*.java</exclude>
+							<exclude>com/btsl/pretups/inter/huawei*/**/*.java</exclude>
+							<exclude>com/btsl/pretups/inter/iat/**/*.java</exclude>
+							<exclude>com/btsl/pretups/inter/kan*/**/*.java</exclude>
+							<exclude>com/btsl/pretups/inter/mobi*/**/*.java</exclude>
+							<exclude>com/btsl/pretups/inter/meditel/**/*.java</exclude>
+							<exclude>com/btsl/pretups/inter/nokia/**/*.java</exclude>
+							<exclude>com/btsl/pretups/inter/postvfe/**/*.java</exclude>
+							<exclude>com/btsl/pretups/inter/postonline/**/*.java</exclude>
+							<exclude>com/btsl/pretups/inter/post/**/*.java</exclude>
+							<exclude>com/btsl/pretups/inter/sie*/**/*.java</exclude>
+							<exclude>com/btsl/pretups/inter/telnet/**/*.java</exclude>
+							<exclude>com/btsl/pretups/inter/socket/**/*.java</exclude>
+							<exclude>com/btsl/pretups/inter/uganda_webservices/**/*.java</exclude>
+							<exclude>com/btsl/pretups/inter/vas*/**/*.java</exclude>
+							<exclude>com/btsl/pretups/inter/zte*/**/*.java</exclude>
+							<exclude>com/btsl/pretups/inter/module/Handler*.java</exclude>
+							<exclude>com/btsl/pretups/inter/meditel/**/*.java</exclude>
+
+							<exclude>com/inter/al*/**/*.java</exclude>
+							<exclude>com/inter/bank/**/*.java</exclude>
+							<exclude>com/inter/billpayment/**/*.java</exclude>
+							<exclude>com/inter/cboss/**/*.java</exclude>
+							<exclude>com/inter/citipg/**/*.java</exclude>
+							<exclude>com/inter/comversetg/**/*.java</exclude>
+							<exclude>com/inter/comversetr/**/*.java</exclude>
+							<exclude>com/inter/cs5*/**/*.java</exclude>
+							<exclude>com/inter/eri*/**/*.java</exclude>
+							<exclude>com/inter/ferm*/**/*.java</exclude>
+							<exclude>com/inter/ethopiabillpayment/**/*.java</exclude>
+							<exclude>com/inter/huawei*/**/*.java</exclude>
+							<exclude>com/inter/iat/**/*.java</exclude>
+							<exclude>com/inter/kan*/**/*.java</exclude>
+							<exclude>com/inter/mobi*/**/*.java</exclude>
+							<exclude>com/inter/nokia/**/*.java</exclude>
+							<exclude>com/inter/meditel/**/*.java</exclude>
+							<exclude>com/inter/postvfe/**/*.java</exclude>
+							<exclude>com/inter/postonline/**/*.java</exclude>
+							<exclude>com/inter/post/**/*.java</exclude>
+							<exclude>com/inter/sie*/**/*.java</exclude>
+							<exclude>com/inter/telnet/**/*.java</exclude>
+							<exclude>com/inter/socket/**/*.java</exclude>
+							<exclude>com/inter/uganda_webservices/**/*.java</exclude>
+							<exclude>com/inter/vas*/**/*.java</exclude>
+							<exclude>com/inter/zte*/**/*.java</exclude>
+							<exclude>com/inter/module/Handler*.java</exclude>
+
+						</excludes>
+					</configuration>
+				</plugin>
+
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-war-plugin</artifactId>
+					<version>2.1.1</version>
+					<configuration>
+						<excludes>jsp/selftopup*/**/*.*,jsp/faq_*/**/*.*,jsp/help_*/**/*.*,jsp/webhelps/webhelps*/*.*,monitorserver/**/*.*,WEB-INF/reports_ar*/**/*.*,WEB-INF/selftopup_s*/**/*.*</excludes>
+						<archive>
+							<addMavenDescriptor>
+								false
+							</addMavenDescriptor>
+						</archive>
+					</configuration>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-javadoc-plugin</artifactId>
+					<executions>
+						<execution>
+							<id>attach-javadocs</id>
+							<goals>
+								<goal>jar</goal>
+							</goals>
+						</execution>
+					</executions>
+				</plugin>
+
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-site-plugin</artifactId>
+					<version>3.3</version>
+					<dependencies>
+						<dependency><!-- add support for ssh/scp for site deploy -->
+							<groupId>org.apache.maven.wagon</groupId>
+							<artifactId>wagon-ssh</artifactId>
+							<version>1.0</version>
+						</dependency>
+					</dependencies>
+				</plugin>
+
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>
+						maven-surefire-report-plugin
+					</artifactId>
+					<version>2.6</version>
+					<configuration>
+						<skipTests>flase</skipTests>
+					</configuration>
+				</plugin>
+
+				<plugin>
+					<groupId>org.codehaus.mojo</groupId>
+					<artifactId>sql-maven-plugin</artifactId>
+					<version>1.5</version>
+					<dependencies>
+						<!-- specify the dependent jdbc driver here -->
+						<dependency>
+							<groupId>ojdbc5</groupId>
+							<artifactId>ojdbc5</artifactId>
+							<version>11.1.0.7.0</version>
+						</dependency>
+					</dependencies>
+					<configuration>
+						<driver>oracle.jdbc.driver.OracleDriver</driver>
+						<url>
+							jdbc:oracle:thin:@172.16.1.156:1521:prtp
+						</url>
+						<!-- <username>mobiquity_b7</username> <password>mobiquity_b7</password> -->
+						<settingsKey>182DBServer</settingsKey>
+						<skip>false</skip>
+						<onError>abort</onError>
+						<keepFormat>false</keepFormat>
+						<autocommit>false</autocommit>
+					</configuration>
+				</plugin>
+
+
+			</plugins>
+
+		</pluginManagement>
+
+	</build>
+
+</project>

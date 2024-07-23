@@ -1,0 +1,2 @@
+TestcaseId,TestcaseType,Module,Description
+,Negative,View Network,"To verfy validation message appears ""Login Id is not available in request"" when LOGIN_ID   not provided"

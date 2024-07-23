@@ -1,0 +1,562 @@
+<html xmlns:util="in.co.sahi.util.XSLUtils">
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<style>
+					div{padding:3px;}
+					a{text-decoration:none;color:white;}
+					a.INFO{color:black;}
+					a.START,a.STOP{color:black;font-weight:bold;}
+					div.INFO{background-color:white;}
+					div.SUCCESS{background-color:green;color:white}
+					div.FAILURE,div.ERROR{background-color:red;color:white}
+					a.CUSTOM, a.CUSTOM2, a.CUSTOM4{color:black}
+					div.CUSTOM{background-color:yellow;}
+					div.CUSTOM1{background-color:orange;}
+					div.CUSTOM2{background-color:#EFEFEF;}
+					div.CUSTOM3{background-color:green;}
+					div.CUSTOM4{background-color:violet;}
+					div.CUSTOM5{background-color:indigo;}
+					div.networkActivity{float:right;width:200px;color:#ccc;cursor:pointer;display:none;padding:0px;}
+					a.SCRIPT{text-decoration:underline;}
+					span.extra{color:#CCC;margin-left:20px;}
+					div.SKIPPED{background-color:#eed;}
+					a.SKIPPED{color:gray;}
+					tr.step_SUCCESS{background-color:lightgreen;color:black;}
+					tr.step_FAILURE{background-color:red;color:white;}
+					div.GROUP {padding:0px;}
+					div.GROUP_LABEL {font-weight: bold;cursor:pointer; padding:5px;}
+					div.GROUP_INNER{padding:10px;display:none;border:1px solid gray;}
+				
+					table.summary {border-top:1px solid gray;border-right:1px solid
+					gray;border-spacing:0px;border-collapse:collapse;}
+					table.summary td{border-bottom:1px solid gray;border-left:1px solid
+					gray;padding:5px;text-align:right;}
+					td a.SCRIPT{float:left;}
+					tr.FAILURE{background-color:red;color:white;}
+					tr.SUCCESS{background-color:green;color:white;}
+					a{color:white;}
+					
+					body *{font-family:verdana;font-size:10pt;}
+					body {margin:10px; background-color:lightyellow;}
+					
+					tr.step_SUCCESS{background-color:lightgreen;color:black;}
+					tr.step_FAILURE{background-color:red;color:white;}
+					
+					#navbar a{color: blue;}
+					#navbar {padding:2px;border:1px solid white;border-bottom:1px solid gray;padding:1px}
+				</style>
+</head>
+<body onunload="onUnload()" onload="onLoad()">
+<script type="text/javascript">var scriptReportID = 'Login_firefox__11Feb2014__11_32_49_523'</script><span>
+<h2>
+				Script Name: Login.sah</h2>
+</span>
+<table class="summary" style="background-color:white;margin-top:20px;width:800px;">
+<tr>
+<td>Test</td><td>Total Steps</td><td>Failures</td><td>Errors</td><td>Success Rate</td><td>Time Taken (ms)</td><td>Node</td><td>Load</td><td>Browser</td>
+</tr>
+<tr class="SUCCESS">
+<td>Login.sah</td><td>34</td><td>0</td><td>0</td><td>100
+							%
+						</td><td>33280</td><td>localhost:9999</td><td>0</td><td>firefox</td>
+</tr>
+<tr>
+<td colspan="9" style="text-align:left">Report Id: Pretups_MasterSuite_GUI_firefox__11Feb2014__11_32_49_523 | </td>
+</tr>
+</table>
+<table id="testCaseSummaryTable" class="summary" style="background-color:white;margin-top:20px;width:350px;">
+<tr>
+<td>Total Test Cases</td><td>Passed</td><td>Failed</td><td>Success Rate</td>
+</tr>
+<tr class="SUCCESS">
+<td>1</td><td>1</td><td>0</td><td>100
+							%
+						</td>
+</tr>
+</table>
+<table class="summary" style="background-color:white;margin-top:20px;width:700px;">
+<tr>
+<td>Test Case Id</td><td>Description</td><td>Status</td><td>Time Taken</td>
+</tr>
+<tr class="SUCCESS">
+<td>CEGTA0001</td><td>Given an application with valid credentials when a user logs into the application then the user should be able to login into the application</td><td>SUCCESS</td><td>31295</td>
+</tr>
+</table>
+<br>
+<div style="padding:10px;background-color:white;border:1px solid #ddd;">
+<div class="START">
+<a class="START">Starting script</a><a style="padding:10px; font-size:11px; color:black; text-decoration:underline;" href="javascript:void(0)" onclick="javascript:expandAll('false'); return false;">Expand All</a><a style="color:black; font-size:11px; text-decoration:underline;" href="javascript:void(0)" onclick="javascript:collapseAll('false'); return false;">Collapse All</a>
+</div>
+						
+							<div class="GROUP">
+				 		
+				 		<div class="GROUP_LABEL">[+] readMSISDNFromCSV()</div>
+						
+						<div class="GROUP_INNER">
+						
+						
+					
+					</div></div>
+					
+					
+						
+							<div class="GROUP">
+				 		
+				 		<div class="GROUP_LABEL">[+] ddmmyy()</div>
+						
+						<div class="GROUP_INNER">
+						
+						
+					
+					</div></div>
+					
+					
+						
+							<div class="GROUP">
+				 		
+				 		<div class="GROUP_LABEL">[+] timeStampTwo()</div>
+						
+						<div class="GROUP_INNER">
+						
+						
+					
+					</div></div>
+					
+					
+						
+							<div class="GROUP">
+				 		
+				 		<div class="GROUP_LABEL">[+] variableForUserGrade("AUT")</div>
+						
+						<div class="GROUP_INNER">
+						
+						
+						
+							<div class="GROUP">
+				 		
+				 		<div class="GROUP_LABEL">[+] timeStampTwo()</div>
+						
+						<div class="GROUP_INNER">
+						
+						
+					
+					</div></div>
+					
+					
+					
+					</div></div>
+					
+					
+						
+							<div class="GROUP">
+				 		
+				 		<div class="GROUP_LABEL">[+] variableForGradeName("AUT")</div>
+						
+						<div class="GROUP_INNER">
+						
+						
+						
+							<div class="GROUP">
+				 		
+				 		<div class="GROUP_LABEL">[+] currentTime()</div>
+						
+						<div class="GROUP_INNER">
+						
+						
+					
+					</div></div>
+					
+					
+					
+					</div></div>
+					
+					<div class="CUSTOM4">
+<div id="networkActivityLink1" class="networkActivity" onclick="showHideNetworkActivity(this, 'Login_firefox__11Feb2014__11_32_49_523', '1')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/PretupsTA/scripts/GUI/testscripts/Login/Login.sah&amp;n=14">Set up</span><span class="extra">
+								[547 ms] [11:32:51.411]
+							</span>
+<div id="harInfo1" style="display:none"></div>
+</div>
+						
+							<div class="GROUP">
+				 		
+				 		<div class="GROUP_LABEL">[CEGTA0001] Given an application with valid credentials when a user logs into the application then the user should be able to login into the application</div>
+						
+						<div class="GROUP_INNER">
+						
+						
+						
+							<div class="GROUP">
+				 		
+				 		<div class="GROUP_LABEL">[+] login("http://172.16.1.121:9922/pretups", "English", "superadmin", 1357, "Welcome")</div>
+						
+						<div class="GROUP_INNER">
+						
+						<div class="INFO">
+<div id="networkActivityLink2" class="networkActivity" onclick="showHideNetworkActivity(this, 'Login_firefox__11Feb2014__11_32_49_523', '2')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/PretupsTA/scripts/GUI/testscripts/Login/Login_Common.sah&amp;n=23">_navigateTo("http://172.16.1.121:9922/pretups")</span><span class="extra">
+								[111 ms] [11:32:51.556]
+							</span>
+<div id="harInfo2" style="display:none"></div>
+</div>
+<div class="INFO">
+<div id="networkActivityLink3" class="networkActivity" onclick="showHideNetworkActivity(this, 'Login_firefox__11Feb2014__11_32_49_523', '3')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/PretupsTA/scripts/GUI/testscripts/Login/Login_Common.sah&amp;n=24">_setSelected(_select("language"), "English")</span><span class="extra">
+								[827 ms] [11:32:52.383]
+							</span>
+<div id="harInfo3" style="display:none"></div>
+</div>
+<div class="INFO">
+<div id="networkActivityLink4" class="networkActivity" onclick="showHideNetworkActivity(this, 'Login_firefox__11Feb2014__11_32_49_523', '4')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/PretupsTA/scripts/GUI/testscripts/Login/Login_Common.sah&amp;n=25">_setValue(_textbox("loginID"), "superadmin")</span><span class="extra">
+								[142 ms] [11:32:52.525]
+							</span>
+<div id="harInfo4" style="display:none"></div>
+</div>
+<div class="CUSTOM1">
+<div id="networkActivityLink4" class="networkActivity" onclick="showHideNetworkActivity(this, 'Login_firefox__11Feb2014__11_32_49_523', '4')" title="Show Network Activity">Show Network Activity</div>[ReferenceError: event is not defined (http://172.16.1.121:9922/pretups/jsp/common/popcalendar.js:703), ReferenceError: event is not defined (http://172.16.1.121:9922/pretups/jsp/common/popcalendar.js:703), ReferenceError: event is not defined (http://172.16.1.121:9922/pretups/jsp/common/popcalendar.js:703), ReferenceError: event is not defined (http://172.16.1.121:9922/pretups/jsp/common/popcalendar.js:703), ReferenceError: event is not defined (http://172.16.1.121:9922/pretups/jsp/common/popcalendar.js:703), ReferenceError: event is not defined (http://172.16.1.121:9922/pretups/jsp/common/popcalendar.js:703), ReferenceError: event is not defined (http://172.16.1.121:9922/pretups/jsp/common/popcalendar.js:703), ReferenceError: event is not defined (http://172.16.1.121:9922/pretups/jsp/common/popcalendar.js:703), ReferenceError: event is not defined (http://172.16.1.121:9922/pretups/jsp/common/popcalendar.js:703), ReferenceError: event is not defined (http://172.16.1.121:9922/pretups/jsp/common/popcalendar.js:703)]<span class="extra">
+								[79 ms] [11:32:52.604]
+							</span>
+<div id="harInfo4" style="display:none"></div>
+</div>
+<div class="INFO">
+<div id="networkActivityLink5" class="networkActivity" onclick="showHideNetworkActivity(this, 'Login_firefox__11Feb2014__11_32_49_523', '5')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/PretupsTA/scripts/GUI/testscripts/Login/Login_Common.sah&amp;n=26">_setValue(_password("password"), 1357)</span><span class="extra">
+								[63 ms] [11:32:52.667]
+							</span>
+<div id="harInfo5" style="display:none"></div>
+</div>
+<div class="CUSTOM1">
+<div id="networkActivityLink5" class="networkActivity" onclick="showHideNetworkActivity(this, 'Login_firefox__11Feb2014__11_32_49_523', '5')" title="Show Network Activity">Show Network Activity</div>[ReferenceError: event is not defined (http://172.16.1.121:9922/pretups/jsp/common/popcalendar.js:703), ReferenceError: event is not defined (http://172.16.1.121:9922/pretups/jsp/common/popcalendar.js:703), ReferenceError: event is not defined (http://172.16.1.121:9922/pretups/jsp/common/popcalendar.js:703), ReferenceError: event is not defined (http://172.16.1.121:9922/pretups/jsp/common/popcalendar.js:703)]<span class="extra">
+								[64 ms] [11:32:52.731]
+							</span>
+<div id="harInfo5" style="display:none"></div>
+</div>
+<div class="INFO">
+<div id="networkActivityLink6" class="networkActivity" onclick="showHideNetworkActivity(this, 'Login_firefox__11Feb2014__11_32_49_523', '6')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/PretupsTA/scripts/GUI/testscripts/Login/Login_Common.sah&amp;n=27">_click(_submit("Login"))</span><span class="extra">
+								[63 ms] [11:32:52.794]
+							</span>
+<div id="harInfo6" style="display:none"></div>
+</div><!--SAHI_TESTCASE_FAIL_MARKER-->
+						
+							<div class="GROUP">
+				 		
+				 		<div class="GROUP_LABEL">[+] onScriptError([object])</div>
+						
+						<div class="GROUP_INNER">
+						
+						<div class="INFO">
+<div id="networkActivityLink8" class="networkActivity" onclick="showHideNetworkActivity(this, 'Login_firefox__11Feb2014__11_32_49_523', '8')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/PretupsTA/utility/Screenshot.sah&amp;n=16">_call(window.resizeTo(2280, 2024))</span><span class="extra">
+								[921 ms] [11:33:19.566]
+							</span>
+<div id="harInfo8" style="display:none"></div>
+</div>
+<div class="INFO">
+<div id="networkActivityLink11" class="networkActivity" onclick="showHideNetworkActivity(this, 'Login_firefox__11Feb2014__11_32_49_523', '11')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/PretupsTA/utility/Screenshot.sah&amp;n=17">_focusWindow()</span><span class="extra">
+								[2918 ms] [11:33:22.484]
+							</span>
+<div id="harInfo11" style="display:none"></div>
+</div>
+<div class="INFO">
+<div id="networkActivityLink12" class="networkActivity" onclick="showHideNetworkActivity(this, 'Login_firefox__11Feb2014__11_32_49_523', '12')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/PretupsTA/utility/Screenshot.sah&amp;n=18">_takeScreenShot()</span><span class="extra">
+								[1 ms] [11:33:22.485]
+							</span><a href="/_s_/dyn/Log_viewLogs/images/Login_firefox__11Feb2014__11_32_49_523_12.jpg" style="margin:0px;padding:0px" target="_blank"><img style="margin-top:15px;margin-bottom:30px;display:block;" src="/_s_/dyn/Log_viewLogs/images/Login_firefox__11Feb2014__11_32_49_523_12.jpg" height="337"></a>
+<div id="harInfo12" style="display:none"></div>
+</div>
+					
+					</div></div>
+					
+					<div class="SUCCESS">
+<div id="networkActivityLink13" class="networkActivity" onclick="showHideNetworkActivity(this, 'Login_firefox__11Feb2014__11_32_49_523', '13')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/PretupsTA/scripts/GUI/testscripts/Login/Login_Common.sah&amp;n=31">_assertExists(_span("/" + "Welcome" + ".*/"))</span><span class="extra">
+								[48 ms] [11:33:22.659]
+							</span>
+<div id="harInfo13" style="display:none"></div>
+</div>
+					
+					</div></div>
+					
+					
+					
+					</div></div>
+					
+					<div class="CUSTOM4">
+<div id="networkActivityLink14" class="networkActivity" onclick="showHideNetworkActivity(this, 'Login_firefox__11Feb2014__11_32_49_523', '14')" title="Show Network Activity">Show Network Activity</div>
+<span title="scripts/PretupsTA/scripts/GUI/testscripts/Login/Login.sah&amp;n=30">Tear Down</span><span class="extra">
+								[48 ms] [11:33:22.787]
+							</span>
+<div id="harInfo14" style="display:none"></div>
+</div>
+<div class="STOP">
+<a class="STOP">Stopping script</a>
+</div>
+<script type="text/javascript">
+		
+		var openedElement = new Array();
+		var cookieHashMap = {};
+		function hideImage(i){i.style.display='none';}
+        var divs = document.getElementsByTagName('DIV'); 
+        for (var i=0; i<divs.length; i++){
+        	var d = divs[i]; 
+        	if (d.className == 'GROUP') { attachFn(d); markStatus(d);} 
+        }
+        function attachFn(d){ d.getElementsByTagName('DIV')[0].onclick = function () {showHideDiv(d);}	} 
+        function getInnerDiv(d){var els = d.getElementsByTagName('DIV'); for (var i=0; i<els.length;i++) {if (els[i].className == 'GROUP_INNER') return els[i];}}
+        function showHideDiv(groupDiv){
+        	var stepsDiv = getInnerDiv(groupDiv);
+        	var els = document.getElementsByTagName('DIV');
+        	for(var i = 0; i < els.length; i++){
+        		if (els[i] == stepsDiv){
+        			if(stepsDiv.style.display == 'block'){
+        				removeFromCookieArray(i);
+        				stepsDiv.style.display = 'none';
+        				changeIconToPlus(groupDiv);
+        				break;
+        			}else{
+        				stepsDiv.style.display = 'block';
+        				addToCookieArray(i);
+        				changeIconToMinus(groupDiv);
+        				break;
+        			}
+        		}	
+        	}
+        }; 
+        
+        function changeIconToMinus(groupDiv){
+        	if(groupDiv.className.indexOf("GROUP_LABEL") == 0){
+        		if(groupDiv.innerHTML.indexOf("[+]" == 0)){
+        			groupDiv.innerHTML = groupDiv.innerHTML.replace("[+]", "[-]");
+        		}
+        	}
+        	else{
+        		var div = getGroupLabelDiv(groupDiv);
+        		if(div){
+        			div.innerHTML = div.innerHTML.replace("[+]", "[-]");
+        		}
+        	}
+        }
+        
+        function changeIconToPlus(groupDiv){
+        	if(groupDiv.className.indexOf("GROUP_LABEL") == 0){
+        		if(groupDiv.innerHTML.indexOf("[-]" == 0)){
+        			groupDiv.innerHTML = groupDiv.innerHTML.replace("[-]", "[+]");
+        		}
+        	}
+        	else{
+        		var div = getGroupLabelDiv(groupDiv);
+        		if(div){
+        			div.innerHTML = div.innerHTML.replace("[-]", "[+]");
+        		}
+        	}
+        }
+        
+        function getGroupLabelDiv(groupDiv){
+        	var div = groupDiv.getElementsByTagName("DIV");
+        	for(var i=0;i<div.length;i++){
+        		if(div[i].className.indexOf("GROUP_LABEL") == 0){
+        			return div[i];
+        		}
+        	}
+        }
+        
+        function showHideNetworkActivity(el, scriptId, stepId){
+        	if(document.getElementById('harInfo' + stepId).innerHTML == ""){
+        		var html = "<iframe onload=\"setAutoHeight('harIFrame" + stepId +"')\" id=\"harIFrame" + stepId +"\" src=\"/_s_/dyn/pro/HARViewer_viewHARLogs?scriptReportId=" + scriptId + "&stepId=" + stepId + "\" style=\"width:100%;\"  frameborder=\"0\" />";
+        		document.getElementById('harInfo' + stepId).innerHTML = html;
+        	}
+        	var plus = "Show Network Activity";
+        	var minus = "Hide Network Activity";
+        	if(el.innerHTML == plus){
+        		el.innerHTML = minus;
+        		document.getElementById('harInfo' + stepId).style.display = "block";
+        	} else {
+        		el.innerHTML = plus;
+        		document.getElementById('harInfo' + stepId).style.display = "none";
+        	}
+        }
+        
+        function expandAll(isExcel){
+	        if(isExcel == "true"){
+	        	ignoregroup_showHideAll(true);
+	        }
+	        else{
+	        	var allDiv = document.getElementsByTagName('DIV');
+	        	for(var i=0; i<allDiv.length; i++){
+	        		if(allDiv[i].className == "GROUP_INNER"){
+	        			allDiv[i].style.display = "block";
+	        			addToCookieArray(i);
+	        			var iconDiv = allDiv[i].parentNode.children[0];
+						if(iconDiv.className.indexOf("GROUP_LABEL") == 0){
+							iconDiv.innerHTML = iconDiv.innerHTML.replace("[+]", "[-]");
+						}
+	        		}
+	        	}
+	        }
+        }
+        
+        function collapseAll(isExcel){
+        	if(isExcel == "true"){
+	        	ignoregroup_showHideAll(false);
+	        }
+	        else{
+	        	var allDiv = document.getElementsByTagName('DIV');
+	        	for(var i=0; i<allDiv.length; i++){
+	        		if(allDiv[i].className == "GROUP_INNER"){
+	        			allDiv[i].style.display = "none";
+	        			removeFromCookieArray(i);
+	        			var iconDiv = allDiv[i].parentNode.children[0];
+						if(iconDiv.className.indexOf("GROUP_LABEL") == 0){
+							iconDiv.innerHTML = iconDiv.innerHTML.replace("[-]", "[+]");
+						}
+	        		}
+	        	}
+	        }
+        }
+        
+        function setNetworkActivityLinks(){
+			var xmlhttp;
+			if (window.XMLHttpRequest){ // code for IE7+, Firefox, Chrome, Opera, Safari
+				xmlhttp=new XMLHttpRequest();
+			} else {// code for IE6, IE5
+				xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+  			}
+  			xmlhttp.onreadystatechange = function() {
+				if (this.readyState==4 && this.status==200) {
+			    	var steps = xmlhttp.responseText;
+			    	steps = steps.substring(1,steps.lastIndexOf("]"));
+			    	steps = steps.split(", ");
+			    	for(i = 0; i < steps.length; i++){
+			    		try{
+			    			document.getElementById('networkActivityLink' + steps[i]).style.display = 'block';
+			    		}catch(err){
+			    		}
+			    	}
+			    }
+			}
+  			xmlhttp.open("GET","/_s_/dyn/pro/HARViewer_getStepsWithNetworkActivity?scriptReportId=" + scriptReportID ,true);
+			xmlhttp.send();
+		}
+        function setAutoHeight(id){
+        	return;
+			var newheight;
+			if(document.getElementById(id)){
+				newheight=document.getElementById(id).contentWindow.document.body.scrollHeight;
+			}
+			document.getElementById(id).style.height= (newheight) + "px";
+		}
+		
+		
+        
+		function markStatus(d) {d.getElementsByTagName('DIV')[0].className += (d.innerHTML.indexOf('<!--SAHI_TESTCASE_FAIL_MARKER-->') == -1) ? ' SUCCESS' : ' FAILURE'};
+		function addToCookieArray(element){
+			openedElement.push(element)
+		}
+		function removeFromCookieArray(element){
+			removeByValue(openedElement,element)
+		}
+		function removeByValue(arr, val) {
+			for ( var i = 0; i < arr.length; i++) {
+				if (arr[i] == val) {
+					arr.splice(i, 1);
+					break;
+				}
+			}
+		}
+		function onLoad(){
+			var cookieValue = readCookie("OpenedElement");
+			if(cookieValue){
+				cookieHashMap = eval("("+cookieValue+")");
+				openedElement=cookieHashMap[scriptReportID];
+				if (!openedElement) openedElement = [];
+				delete cookieHashMap[scriptReportID];
+				var els = document.getElementsByTagName('DIV');
+				for(var i = 0; i < openedElement.length; i++){
+					els[openedElement[i]].style.display = 'block';
+					var iconDiv = els[openedElement[i]].parentNode.children[0];
+					if(iconDiv.className.indexOf("GROUP_LABEL") == 0){
+						iconDiv.innerHTML = iconDiv.innerHTML.replace("[+]", "[-]");
+					}
+        		}
+			}
+			setNetworkActivityLinks();
+		}
+		function onUnload(){
+			var count = 0;
+			var firstElement;
+			for(firstElement in cookieHashMap){
+				break;
+			}
+			for(var j in cookieHashMap){
+				count++;
+			}
+			if(count == 10){
+				delete cookieHashMap[firstElement];
+			}
+			cookieHashMap[scriptReportID] = openedElement;
+			var cookieValue = getJSON(cookieHashMap);
+			createCookie("OpenedElement", cookieValue, 1);
+		}
+		function getJSON(o) {
+			var s = "{";
+			for (var i in o) {
+				s += "'" + i + "':[" + o[i] + "],"
+			}
+			s += "}";
+			return s;
+		}
+		function createCookie(name,value,days)
+		{
+			if (days) {
+				var date = new Date();
+				date.setTime(date.getTime()+(days*24*60*60*1000));
+				var expires = "; expires="+date.toGMTString();
+			}
+			else var expires = "";
+			document.cookie = name+"="+value+expires+"; path=/";
+		}
+		
+		function readCookie(name)
+		{
+			var nameEQ = name + "=";
+			var ca = document.cookie.split(';');
+			for(var i=0;i < ca.length;i++)
+			{
+				var c = ca[i];
+				c = c.replace(/[,][}]$/,'}');
+				while (c.charAt(0)==' ') c = c.substring(1,c.length);
+				if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+			}
+			return null;
+		}
+		function fixImagePaths(){
+			if (location.href.indexOf("_s_") != -1) return;
+			var imgs = document.getElementsByTagName('IMG'); 
+	        for (var i=0; i<imgs.length; i++){
+	        	var img = imgs[i]; 	        	
+ 				if (img.src.indexOf("Log_viewLogs/images") != -1) {
+ 					img.src = makeRelative(img.src);
+ 					if (img.parentNode.tagName.toLowerCase() == "a") {
+ 						img.parentNode.href = makeRelative(img.parentNode.href);
+ 					}
+ 				}
+	        }
+		}
+		function makeRelative(s){
+			var ix = s.indexOf("/images/"); 
+			if (ix != -1) {
+				s = s.substring(ix+1);
+			}
+			return s;
+		}
+		fixImagePaths();
+        
+        </script>
+</div>
+<style>div.GROUP_LABEL {display:block;}</style>
+</body>
+</html>

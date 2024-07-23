@@ -1,0 +1,84 @@
+//######################################
+//
+//This script to add negative test caes for Bonus Bund
+//
+//#######################################
+
+
+//===== import scripts ===//
+_includeOnce("../../../../utility/ImportPackage.sah");
+
+// ===== Pre-Condition check ==== //
+
+//If Network Admin doesn't exist create it first then create network stock deduction
+
+var $l_naCsv = _readCSVFile("../../../GUI/testdata/NA_Login.csv"); //Reads the network admin credentials 
+var $g_row = 4;
+var $g_col = 1;
+var $g_networkAdmin1 = $l_naCsv[1][1];
+if($g_networkAdmin1 == "null"){  
+	createNA();  // UserManagement_Common.sah
+	var $l_naCsv1 = _readCSVFile("../../../GUI/testdata/NA_Login.csv");
+	$g_networkAdmin1 = $l_naCsv1[1][1];
+	login($g_appURL, $g_LangEnglish, $g_networkAdmin1, $g_commonPassword, $g_assertWelcome);
+}else	 
+	login($g_appURL,  $g_LangEnglish, $g_networkAdmin1, $g_commonPassword, $g_assertWelcome);
+
+ 
+// =============== Add Negative test cases of network stock initiation ================== // 
+
+	var $t1 = _testcase("TEST001", "Given a network admin try to add bonus bundle without any details");
+	$t1.start();
+
+	addBonusBundle("","","","","");
+	_assertExists(_listItem("/"+"Bundle name is required."+".*/"));
+	$t1.end();
+
+	// =============== Add Negative test cases of network stock initiation ================== // 
+
+	var $t1 = _testcase("TEST002", "Given a network admin try to add bonus bundle without bundle name");
+	$t1.start();
+	addBonusBundle("","CODE","Amount","Active","Active");
+	_assertExists(_listItem("/"+"Bundle name is required."+".*/"));
+	$t1.end();
+
+
+	// =============== Add Negative test cases of network stock initiation ================== // 
+
+	var $t1 = _testcase("TEST003", "Given a network admin try to add bonus bundle without bundle Code");
+	$t1.start();
+	addBonusBundle("BundleName","","Amount","Active","Active");
+	_assertExists(_listItem("/"+"Bundle code is required."+".*/"));
+	$t1.end();
+
+	// =============== Add Negative test cases of network stock initiation ================== // 
+
+	var $t1 = _testcase("TEST004", "Given a network admin try to add bonus bundle without bundle Type");
+	$t1.start();
+	addBonusBundle("BundleName","Code","","Active","Active");
+	_assertExists(_listItem("/"+"Please select bundle type"+".*/"));
+	$t1.end();
+
+	// =============== Add Negative test cases of network stock initiation ================== // 
+
+	var $t1 = _testcase("TEST005", "Given a network admin try to add bonus bundle without bundle Status");
+	$t1.start();
+	addBonusBundle("BundleName","Code","Amount","","Active");
+	_assertExists(_listItem("/"+"Please select status"+".*/"));
+	$t1.end();
+
+	
+	// =============== Add Negative test cases of network stock initiation ================== // 
+
+	var $t1 = _testcase("TEST006", "Given a network admin try to add bonus bundle without Response from IN");
+	$t1.start();
+	addBonusBundle("BundleName","Code","Amount","Active","");
+	_assertExists(_listItem("/"+"Bundle name is required."+".*/"));
+	$t1.end();
+
+
+
+
+
+
+

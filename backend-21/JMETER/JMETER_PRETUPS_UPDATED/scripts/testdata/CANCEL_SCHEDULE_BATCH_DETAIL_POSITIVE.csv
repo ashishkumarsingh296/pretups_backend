@@ -1,0 +1,2 @@
+TestcaseId,TestcaseType,Module,Description
+,POSITIVE,CANCEL Batch SCHEDULE RECHARGE,TO verify that Corporate User is able to Cancel whole batch 

@@ -1,0 +1,13 @@
+TestcaseId,TestcaseType,Module,Description
+,Positive,USSD Customer Recharge,To verfiy that Customer Recharge is successful with only MSISDN and PIN.
+,Positive,USSD Customer Recharge,To verfiy that Customer Recharge is successful if channel user is barred as Receiver.
+,Positive,USSD Customer Recharge,To verify Customer Recharge is successful if channel user is insuspended.
+,Negative,USSD Customer Recharge,To verify Customer Recharge is not successful if channel user is outsuspended.
+,Negative,USSD Customer Recharge,To verify Customer Recharge is not successful if TCP of channel user is suspended.
+,Negative,USSD Customer Recharge,To verify Customer Recharge is not successful if channel user is suspended.
+,Negative,USSD Customer Recharge,To verify Customer Recharge is not successful if channel user is barred as sender.
+,Negative,USSD Customer Recharge,To verify Customer Recharge not successful if PIN is missing.
+,Negative,USSD Customer Recharge,To verify Customer Recharge not successful if PIN is invalid.
+,Negative,USSD Customer Recharge,To verify Customer Recharge not successful if MSISDN2 is missing.
+,Positive,USSD Customer Recharge,To verify Customer Recharge is successful if Selector is missing.
+,Negative,USSD Customer Recharge,To verify Customer Recharge not successful if Amount is negative.

@@ -1,0 +1,77 @@
+_includeOnce("../../../../utility/ImportPackage.sah");
+
+var $g_etopupmainaccountname;
+var $g_etopupbonusaccountname;	
+var $g_postetopupbonusaccountname;	
+var $g_postetopupmainaccountname;	
+var $g_postetopupmain1accountname;
+var $g_postetopupbonus1accountname;	
+var $g_etopupaccountpriority1;	
+var $g_etopupaccountpriority2;
+var $g_posttopupaccountpriority1;
+var $g_posttopupaccountpriority2;
+var $g_posttopupaccountpriority3;
+var $g_posttopupaccountpriority4;
+var $g_assertion;
+
+function commonVariableForMasters($a_row, $a_column) {
+	 $g_etopupmainaccountname=$g_muCsv[$a_row][$a_column++];
+	 $g_etopupbonusaccountname=$g_muCsv[$a_row][$a_column++];	
+	 $g_postetopupbonusaccountname=$g_muCsv[$a_row][$a_column++];	
+	 $g_postetopupmainaccountname=$g_muCsv[$a_row][$a_column++];	
+	 $g_postetopupmain1accountname=$g_muCsv[$a_row][$a_column++];
+	 $g_postetopupbonus1accountname=$g_muCsv[$a_row][$a_column++];	
+	 
+	 $g_etopupaccountpriority1=$g_muCsv[$a_row][$a_column++];	
+	 $g_etopupaccountpriority2=$g_muCsv[$a_row][$a_column++];
+	 $g_posttopupaccountpriority1=$g_muCsv[$a_row][$a_column++];
+	 $g_posttopupaccountpriority2=$g_muCsv[$a_row][$a_column++];
+	 $g_posttopupaccountpriority3=$g_muCsv[$a_row][$a_column++];
+	 $g_posttopupaccountpriority4=$g_muCsv[$a_row][$a_column++];
+	 $g_assertion=$g_muCsv[$a_row][$a_column++];
+	 
+	 _log("shashi "  +  $g_assertion);
+}
+
+function mastersClick()
+{
+	_setValue(_textbox("dataListIndexed[0].accountName"), $g_etopupmainaccountname);
+	_setValue(_textbox("dataListIndexed[1].accountName"), $g_etopupbonusaccountname);
+	_setValue(_textbox("dataListIndexed[2].accountName"), $g_postetopupbonusaccountname);
+	_setValue(_textbox("dataListIndexed[3].accountName"), $g_postetopupmainaccountname);
+	_setValue(_textbox("dataListIndexed[4].accountName"), $g_postetopupmain1accountname);
+	_setValue(_textbox("dataListIndexed[5].accountName"), $g_postetopupbonus1accountname);
+	_setSelected(_select("dataListIndexed[0].accountPriority"), $g_etopupaccountpriority1);
+	_setSelected(_select("dataListIndexed[1].accountPriority"), $g_etopupaccountpriority2);
+	_setSelected(_select("dataListIndexed[2].accountPriority"), $g_posttopupaccountpriority1);
+	_setSelected(_select("dataListIndexed[3].accountPriority"), $g_posttopupaccountpriority2);
+	_setSelected(_select("dataListIndexed[4].accountPriority"), $g_posttopupaccountpriority3);
+	_setSelected(_select("dataListIndexed[5].accountPriority"), $g_posttopupaccountpriority4);
+	}
+
+function mastersUserWallet() {
+	_click(_link("Masters"));
+	_click(_link("User Wallet Configuration"));
+	mastersClick();
+	_click(_submit("modify"));
+	_assertExists(_listItem($g_assertion));
+	if(_exists(_listItem("/"+$g_assertion +".*/")))
+		return true;
+	
+}
+
+function mastersModify(){
+	_click(_link("Masters"));
+	_click(_link("User Wallet Configuration"));
+	mastersClick();
+	_click(_submit("modify"));
+	_click(_submit("confirm"));
+	_assertExists(_listItem("Product Wallet detail is modified successfully."));
+	_assertExists(_listItem($g_assertion));
+	if(_exists(_listItem("/"+$g_assertion +".*/")))
+		return true;
+	
+
+}
+
+

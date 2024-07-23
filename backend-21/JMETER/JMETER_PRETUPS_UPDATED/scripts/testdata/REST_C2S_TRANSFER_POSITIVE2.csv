@@ -1,0 +1,8 @@
+TestcaseId,TestcaseType,Module,Description
+TUNG23080,Positive,REST -  C2S Transfer Service (Customer Recharge),To verify that Channel to Subscriber request is sucessfully using MSISDN and PIN in Rest API request
+TUNG23078,Positive,REST -  C2S Transfer Service (Customer Recharge),To verify that Channel to Subscriber request is sucessfully using Login and Password in Rest API request
+TUNG23079,Positive,REST -  C2S Transfer Service (Customer Recharge),To verify that Channel to Subscriber request is sucessfully using EXTCODE in Rest API request
+TUNG23084,Positive,REST -  C2S Transfer Service (Customer Recharge),"To verify that Channel to Subscriber request is sucessfully when  EXTCODE ,login id & password, and msisdn pin is present in Rest API request"
+TUNG23081,Negative,REST -  C2S Transfer Service (Customer Recharge),To verify that when  LOGinid is enter then password is mandatory .
+TUNG23082,Negative,REST -  C2S Transfer Service (Customer Recharge),TO verify that when  MSISDN is enter then pin is mandatory .
+TUNG23083,Negative,REST -  C2S Transfer Service (Customer Recharge),To verify that Json request sholud fail when mandatory tags are not filled in json request

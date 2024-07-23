@@ -1,0 +1,2 @@
+TestCase Details,TestCase Description,description,status,Checkbox,Daily,Weekly,Monthly
+CEGTA00012,Given a network admin when logs into the application then he/she can successfully add Transfer Profile.,Testing,Active,isDefault,100,1000,10000

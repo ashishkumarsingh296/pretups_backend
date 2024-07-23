@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Suite" preserve-order="true">
+  <test name="Test">
+    <classes>
+      <class name="testcases.TC_02_ApproveLMS"/>
+      <class name="testcases.TC_03_ViewLMS"/>
+      <class name="testcases.TC_04_Suspend"/>
+      <class name="testcases.TC_05_ResumeProfile"/>
+      <class name="testcases.TC_06_DeleteProfile"/>
+      <class name="testcases.TC_07_AddLMS_items"/>
+      <class name="testcases.TC_08_ModifyLMS_items"/>
+      <class name="testcases.TC_08_DeleteLMS_items"/>
+      <class name="testcases.TC_09_ViewLMS_items"/>
+    </classes>
+  </test> <!-- Test -->
+</suite> <!-- Suite -->

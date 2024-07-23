@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<!DOCTYPE webaxn SYSTEM "i18n.dtd">
+<widget version="1.0">
+	<name>PRETUPS REPORTS</name>
+	<description>Reports</description>
+	<author>Comviva</author>
+	<license>Comviva Technologies</license>
+	<identifier>194750352</identifier>
+	<type>2</type>
+	<icon src="reports.png"/>
+	<content src="reports.html" />
+	<content bearer="2" src="reportsUSSD.html"/>
+	<x-title background="#788593" color="white" fontstyle="bold" fontsize="14"/>
+	<x-scrollbar background="grey" color="#788593"/>
+	<x-softkeystyle background="#788593" color="white" fontstyle="bold" fontsize="14"/>
+	<x-menustyle background="white" color="black" onfocuscolor="white"/>	
+	<x-selection onfocusbackground="#778899"/>
+	<x-userdata-access>179878594</x-userdata-access>
+	<x-menugroup id="Prereports">
+		<!-- <x-menu caption="&pre.lsk.submit;" x-softkey="left" href="#"/> -->
+		<x-menu caption="&pre.rsk.back;" x-softkey="right" href="wgt:179878594/1.0/:displayMain();"/>
+    </x-menugroup>
+    <x-menugroup id="Last5Tran">			
+		<x-menu caption="&pre.rsk.back;" x-softkey="right" href="#"/>
+	</x-menugroup>
+	<x-menugroup id="stockBal">			
+		<x-menu caption="&pre.rsk.back;" x-softkey="right" href="#"/>
+	</x-menugroup>
+	<x-menugroup id="Dailyreport">			
+		<x-menu caption="&pre.rsk.back;" x-softkey="right" href="#"/>
+	</x-menugroup>
+	<x-menugroup id="agentbalance">			
+		<x-menu caption="&pre.rsk.back;" x-softkey="right" href="#"/>
+	</x-menugroup>
+	<x-menugroup id="post">			
+		<x-menu caption="&pre.lsk.ok;" x-softkey="right" href="#"/>
+	</x-menugroup>
+	<x-menugroup id="popUp">			
+		<x-menu caption="&pre.rsk.back;" x-softkey="right" href="close:"/>
+	</x-menugroup>
+	
+	
+</widget>
+

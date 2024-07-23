@@ -1,0 +1,2 @@
+TestcaseId,TestcaseType,Module,Description
+TUNG13138,Positive,Fix line Recharge through EXTGW,"To verify that  C2S Transfer (Fix Recharge)  should work through EXTGW when only mandatory tags are filled , Leaving the data in optional tags"

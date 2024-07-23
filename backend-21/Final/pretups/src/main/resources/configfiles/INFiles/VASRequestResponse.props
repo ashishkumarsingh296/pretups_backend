@@ -1,0 +1,7 @@
+test=Response=0&Message=Request for product test  has been processed successfully&TransactionID=
+Msg=Response=0&Message=Request for product Msg  has been processed successfully&TransactionID=
+RmFree=Response=0&Message=Request for product RmFree  has been processed successfully&TransactionID=
+GPRS=Response=0&Message=Request for product GPRS  has been processed successfully&TransactionID=
+Ct001=Response=0&Message=Request for product Ct001  has been processed successfully&TransactionID=
+message=Response=0&Message=Request for product message  has been processed successfully&TransactionID=
+INVALID_PRODUCT=Response=1&Message=Invalid Product&TransactionID=

@@ -1,0 +1,23 @@
+---
+ - name: Copying createtablespace.sql file to host machine
+   template: src=createtablespace.sql  dest="{{ BASE_DIR }}/{{ Temp_Dir }}" owner={{ db_user }} group={{ db_group }}  mode=0755
+
+ - name: Dynamic query creation for Table Space
+   lineinfile:
+    dest: "{{ BASE_DIR }}/{{ Temp_Dir }}/createtablespace.sql"
+    insertbefore: 'spool off;'
+    line: "create tablespace  {{ item.Table_Space_Name }} datafile '{{ item.Data_file_name }}' size {{ item.Data_file_size }} ;"
+   with_items:
+            - "{{ Table_space_entries }}"
+   tags:
+     - createTableSpace
+
+ - name: "DB: Create Table Space"
+   shell: "{{ item }} chdir={{ BASE_DIR }}/{{ Temp_Dir }}"
+   with_items:
+   - sqlplus / as sysdba << EOT @createtablespace.sql exit; EOT 
+   ignore_errors: yes
+   register: PreTUPS_TbSp
+   failed_when: '"ERROR" in PreTUPS_TbSp.stdout'
+   tags:
+     - createTableSpace

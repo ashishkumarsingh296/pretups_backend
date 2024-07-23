@@ -1,0 +1,2 @@
+TestcaseId,TestcaseType,Module,Description
+,Negative,Data Credit Transfer,To validate negative test case of credit transfer while MSISDN1 is missing

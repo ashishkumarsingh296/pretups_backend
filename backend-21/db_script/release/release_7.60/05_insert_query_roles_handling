@@ -1,0 +1,3 @@
+INSERT INTO page_ui_roles
+(role_code, page_code)
+VALUES('SUSCOMMPROFILE', 'P_NW_COMM_PROF');

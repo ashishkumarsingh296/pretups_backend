@@ -1,0 +1,24 @@
+---
+########################################################
+# Author           Date        Remarks
+#------------    -----------  ---------
+#PreTUPS_RoadMap  25-07-2016    Initial Creation
+#
+# This file takes care of Rollback of File patch.
+#########################################################
+
+ - name: Deleting backup COM Directory
+   command: rm -rf {{ item.TomcatHomePath }}/webapps/pretups
+   with_items:
+     - "{{ CatalinaConfig }}"
+   register: rollbackCOM
+   tags:
+     - rollbackCOM
+
+ - name: Rolling back the patch for COM Directory
+   command: mv -f {{ BackupPretupsInstancePath }}/pretups{{BackupExtn}} {{ item.TomcatHomePath }}/webapps/pretups
+   with_items:
+     - "{{ CatalinaConfig }}"
+   register: rollbackCOM
+   tags:
+     - rollbackCOM

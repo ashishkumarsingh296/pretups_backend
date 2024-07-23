@@ -1,0 +1,1 @@
+The User status should be Active(Y) before exceuting this script and also in system preferences for the entry ADMINISTRBLY_USER_STATUS_CHANG in the default value there must also be Y:EX

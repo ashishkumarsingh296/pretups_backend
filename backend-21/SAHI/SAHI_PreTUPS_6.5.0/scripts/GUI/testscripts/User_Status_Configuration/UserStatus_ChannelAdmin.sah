@@ -1,0 +1,75 @@
+//######################################
+//
+//This script to add, modify and view user status in the system 
+//
+//#######################################
+
+
+//===== import scripts ===//
+_includeOnce("../../../../utility/ImportPackage.sah");
+_includeOnce("../../../GUI/testscripts/User_Status_Configuration/UserStatus_Common.sah"); //For adding user status configuration in the system 
+
+//======================Pre-requisite check============================
+_log("Setup", "custom4");
+
+//If NA deos not exist, first create it and then create the Card Group
+var $l_naCsv = _readCSVFile("../../../GUI/testdata/NA_Login.csv"); //Reads the network admin credentials 
+var $g_channelAdmin = $l_naCsv[2][1];
+if($g_channelAdmin == "null"){
+	createCA(); // UserManagement_Common.sah
+	var $l_naCsv1 = _readCSVFile("../../../GUI/testdata/NA_Login.csv");
+	$g_channelAdmin = $l_naCsv1[2][1];
+	login($g_appURL,  $g_LangEnglish, $g_channelAdmin, $g_commonPassword, $g_assertWelcome);
+}else{	 
+	login($g_appURL,  $g_LangEnglish, $g_channelAdmin, $g_commonPassword, $g_assertWelcome);
+}
+	
+
+
+// ....................... Test cases for User stauts configuration  ............. //
+
+var $g_userStatusDetails = _readCSVFile("../../../GUI/testdata/UserStatusConiguration_ChannelAdmin.csv"); //Reads user status details 
+
+
+
+	for(var $g_row = 1; $g_userStatusDetails[$g_row] != null; $g_row++){
+		
+				var $g_col = 0;
+				var $number =   testCaseNumber($g_userStatusDetails[$g_row][$g_col]);
+				
+				
+			
+				var $t = _testcase($g_userStatusDetails[$g_row][$g_col++], $g_userStatusDetails[$g_row][$g_col++]);
+			
+			
+				commonVarriableForStatus($g_row, $g_col);
+				
+				
+				$t.start();
+				
+				if($number  > 0 && $number  < 4 ){
+					changeStatusOfNonexistingUser();
+				}
+				else if ($number  == 4 ){
+					ChangeAndCheckStatus();
+				}
+					
+				$t.end();
+	}
+
+
+
+	
+	
+	
+	
+
+
+
+
+
+
+
+
+
+

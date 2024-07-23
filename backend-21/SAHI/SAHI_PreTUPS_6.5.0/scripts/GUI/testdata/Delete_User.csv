@@ -1,0 +1,15 @@
+TestCaseNo. ,Discription,MSSIDN,REMARKS,Assertion1,Assertion2
+TEST001,To check the deletion link exists,,,,
+TEST002,To move forward to delete,7234567844,akanksha,Delete,
+TEST003,To delete the user,7234567844,akanksha,Delete," for deletion is successfully accepted, required approval"
+TEST004,To check the message on deletion of the same user ,7234567844,akanksha,No user exists with this mobile number,
+TEST005,To check the message when mandatory field remarks is not entered,7234567844,,Remarks Required,
+TEST006,To check the message when mandatory field loginid/msisdn/category  and remarks both  not entered,,,Enter search value,Remarks Required
+TEST007,To check the approval deletion link exists,,,User approval for delete,
+TEST008,To navigate thourgh the approval link,7234567844,akanksha,User approval list for delete,Approve
+TEST009,To discard the deletion,7234567844,akanksha,Confirm,No changes occurred
+TEST0010,To reject the deletion,7234567844,akanksha,Reject,
+TEST0011,To delete the user once more because we rejected. ,7234567844,akanksha,Delete," for deletion is successfully accepted, required approval"
+TEST0012,To try to delete a user which is not leaf user.,7200009908,akanksha,User cannot be deleted its child user exists,
+TEST0013,To approve the deletion of the user,7234567844,akanksha,Confirm,
+TEST0014,To delete a user who has FOC transaction pending,7289451414,akanksha,,"User cannot be deleted, some "

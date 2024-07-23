@@ -1,0 +1,111 @@
+
+// ...................... Verify Names of link and sublink by Channel User ...... 
+//
+//
+//
+//........................Roles And Responsibility Channel User .............................. 
+
+_includeOnce("../../../../utility/ImportPackage.sah");
+
+var $g_linkChannelUser = _readCSVFile("../../../GUI/testdata/Link_ChannelUser.csv"); // Read Links For SuperAdmin
+
+var $g_subLinkChannelUser = _readCSVFile("../../../GUI/testdata/SubLink_ChannelUser.csv"); //Read Sub Links For SuperAdmin
+
+
+var $g_writeLinkChannelUser =  _readCSVFile("../../../GUI/testdata/Write_Link_ChannelUser.csv");
+
+
+//If CA deos not exist, first create it and then initiate O2C transfer inthe system ..... 
+var $l_naCsv = _readCSVFile("../../../GUI/testdata/NA_Login.csv"); //Reads the network admin credentials 
+var $g_channelUser = $l_naCsv[3][1];
+if($g_channelUser == "null"){
+	createCA(); // UserManagement_Common.sah
+	var $l_naCsv1 = _readCSVFile("../../../GUI/testdata/NA_Login.csv");
+	$g_channelUser = $l_naCsv1[2][1];
+	login($g_appURL,  $g_LangEnglish, $g_channelUser, $g_commonPassword, $g_assertWelcome);
+}else{	 
+	login($g_appURL,  $g_LangEnglish, $g_channelUser, $g_commonPassword, $g_assertWelcome);
+}
+	
+
+ // ........................ Test script .......................... //
+
+
+_assertExists(_div("/" + "Category :" + ".*/"));
+
+var $rw = 0;
+var $cl = 1;
+
+for(var $g_row = 1; $g_linkChannelUser[$g_row] != null; $g_row++){
+		
+	var $g_col = 0;
+	$rw = 0;
+	
+	
+	_assertExists(_link($g_linkChannelUser[$g_row][$g_col]));
+
+	if(_exists(_link($g_linkChannelUser[$g_row][$g_col]))){
+	
+		_click(_link($g_linkChannelUser[$g_row][$g_col]))
+		_log( $g_linkChannelUser[$g_row][$g_col] + " : link is visible");
+		
+		$g_writeLinkChannelUser[$rw++][$cl] = $g_linkChannelUser[$g_row][$g_col] + " is available";
+		_writeCSVFile($g_writeLinkChannelUser, "../../../GUI/testdata/Write_Link_ChannelUser.csv", 1);
+		
+		
+		for(var $g_innerLink = 0;   $g_subLinkChannelUser[0][$g_innerLink] != null; $g_innerLink++){
+			
+			if( $g_linkChannelUser[$g_row][$g_col] == $g_subLinkChannelUser[0][$g_innerLink])
+			{
+				for(var $g_tempRow = 1; $g_subLinkChannelUser[$g_tempRow] != null; $g_tempRow++ ){
+					
+					if($g_subLinkChannelUser[$g_tempRow][$g_innerLink] == "")
+							break;
+					
+					_assertExists(_link($g_subLinkChannelUser[$g_tempRow][$g_innerLink]));
+					
+					if(_exists(_link($g_subLinkChannelUser[$g_tempRow][$g_innerLink]))){
+						_click(_link($g_subLinkChannelUser[$g_tempRow][$g_innerLink]))
+						_log( $g_subLinkChannelUser[$g_tempRow][$g_innerLink] + " : Sub-link under link " + $g_linkChannelUser[$g_row][$g_col] +" is visible " );
+						
+						$g_writeLinkChannelUser[$rw++][$cl] = $g_subLinkChannelUser[$g_tempRow][$g_innerLink] + " is available";
+						_writeCSVFile($g_writeLinkChannelUser, "../../../GUI/testdata/Write_Link_ChannelUser.csv", 1);
+						
+					}else{
+						_log( $g_subLinkChannelUser[$g_tempRow][$g_innerLink] + " : Sub-link under link " + $g_linkChannelUser[$g_row][$g_col] +" is not visible " );
+						
+						$g_writeLinkChannelUser[$rw++][$cl] = $g_subLinkChannelUser[$g_tempRow][$g_innerLink] + " is not available";
+						_writeCSVFile($g_writeLinkChannelUser, "../../../GUI/testdata/Write_Link_ChannelUser.csv", 1);
+						
+					}
+				}
+					
+					
+				}
+				
+		}	
+			
+			
+		}else{
+			_log( $g_linkChannelUser[$g_row][$g_col] + " : link is not visible");
+			
+			$g_writeLinkChannelUser[$rw++][$cl] = $g_linkChannelUser[$g_row][$g_col] + " is not available";
+			_writeCSVFile($g_writeLinkChannelUser, "../../../GUI/testdata/Write_Link_ChannelUser.csv", 1);
+		}
+		
+	$cl++;
+		
+	}
+	
+
+
+	
+	
+	
+	
+	
+
+
+
+
+

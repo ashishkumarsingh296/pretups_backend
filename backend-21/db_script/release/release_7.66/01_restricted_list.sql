@@ -1,0 +1,1 @@
+INSERT INTO role_ui_mapping(role_ui_parent_id, role_ui_id, rule_code)VALUES('adminChannelUser', 'Approve_Restricted_List', 'RESTAPPROVEMSISDN');

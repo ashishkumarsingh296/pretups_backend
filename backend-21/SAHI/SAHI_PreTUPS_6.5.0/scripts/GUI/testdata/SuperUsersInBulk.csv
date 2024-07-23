@@ -1,0 +1,4 @@
+"Test Case No.","Discription","File path","asssertion1"
+"TEST016","To check whether super admin is able to upload super network admin in bulk","C:\Users\parul.nagpal\Desktop\SUNADMOPTUSR310316_1424.xls","Batch operator users have been created successfully"
+"TEST017","To check whether super admin is able to upload super channel admin in bulk","C:\Users\parul.nagpal\Desktop\SUBCUOPTUSR010416_100644.xls","Batch operator users have been created successfully"
+"TEST018","To check whether super admin is able to upload super cce in bulk","C:\Users\parul.nagpal\Desktop\SUCCEOPTUSR180316_121744.xls","Batch operator users have been created successfully"

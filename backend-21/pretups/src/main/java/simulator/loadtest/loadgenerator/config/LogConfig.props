@@ -1,0 +1,116 @@
+# Set root logger level to DEBUG and its only appender to A1.
+log4j.rootLogger=DEBUG, A1
+#log4j.rootLogger=ERROR, MYFILE
+log4j.logger.org.apache.commons.digester.Digester=info
+log4j.logger.org.apache.catalina.startup.TldConfig=info
+log4j.logger.org.apache.struts.util.PropertyMessageResources=info
+log4j.logger.org.apache.catalina.session.ManagerBase=info
+log4j.logger.com.btsl.pretups.preference.businesslogic.PreferenceCache=info
+log4j.logger.org.apache.jasper.servlet.JspServlet=info
+log4j.logger.org.apache.catalina.core.ApplicationDispatcher=info
+log4j.logger.com.btsl.menu.MenuBL=info
+log4j.logger.org.apache.commons.beanutils.ConvertUtils=info
+log4j.logger.org.apache.commons.beanutils.BeanUtils=info
+log4j.logger.org.apache.jasper.compiler.SmapUtil$SDEInstaller=info
+log4j.logger.org.apache.catalina.core.StandardWrapper=info
+log4j.logger.org.apache.struts.action.RequestProcessor=info
+log4j.logger.org.apache.struts.util.RequestUtils=info
+log4j.logger.org.apache.struts.util.ModuleUtils=info
+# A1 is set to be a ConsoleAppender.
+log4j.appender.A1=org.apache.log4j.ConsoleAppender
+
+# A1 uses PatternLayout.
+log4j.appender.A1.layout=org.apache.log4j.PatternLayout
+log4j.appender.A1.layout.ConversionPattern=%d : %-4r [%t] %-5p %c %x - %m%n
+
+log4j.appender.MYFILE=org.apache.log4j.DailyRollingFileAppender
+log4j.appender.MYFILE.File=d:\\logs\\PreTUPs_out.log
+#log4j.appender.MYFILE.MaxFileSize=1000KB
+log4j.appender.LoadTestLog.DatePattern='.'yyyy-MM-dd
+log4j.appender.MYFILE.layout=org.apache.log4j.PatternLayout
+#log4j.appender.MYFILE.layout.ConversionPattern=%5p [%t] (%F:%L) - %m%n
+
+##=============LoadTest Log=====================
+log4j.logger.com.btsl.loadtest.loadgenerator.LoadTestLog=INFO,LoadTestLog
+log4j.additivity.com.btsl.loadtest.loadgenerator.LoadTestLog=false
+log4j.appender.LoadTestLog=org.apache.log4j.DailyRollingFileAppender
+log4j.appender.LoadTestLog.File=/home/safaricom_dev/tomcat5/logs/LoadTestLog.log
+##log4j.appender.LoadTestLog.MaxFileSize=100KB
+log4j.appender.LoadTestLog.DatePattern='.'yyyy-MM-dd
+log4j.appender.LoadTestLog.layout=org.apache.log4j.PatternLayout
+log4j.appender.LoadTestLog.layout.ConversionPattern=%d   %m%n
+
+##=========load test Memory log================
+log4j.logger.com.btsl.loadtest.loadgenerator.LoadTestMemoryLog=INFO,LoadTestMemoryLog
+log4j.additivity.com.btsl.loadtest.loadgenerator.LoadTestMemoryLog=false
+log4j.appender.LoadTestMemoryLog=org.apache.log4j.DailyRollingFileAppender
+log4j.appender.LoadTestMemoryLog.File=/home/safaricom_dev/tomcat5/logs/LoadTestMemoryLog.log
+##log4j.appender.LoadTestMemoryLog.MaxFileSize=100KB
+log4j.appender.LoadTestMemoryLog.DatePattern='.'yyyy-MM-dd
+log4j.appender.LoadTestMemoryLog.layout=org.apache.log4j.PatternLayout
+log4j.appender.LoadTestMemoryLog.layout.ConversionPattern=%d   %m%n
+##=================================================================
+
+##=========Detaild Log================
+log4j.logger.com.btsl.loadtest.loadgenerator.DetailLog=INFO,DetailLog
+log4j.additivity.com.btsl.loadtest.loadgenerator.DetailLog=false
+log4j.appender.DetailLog=org.apache.log4j.DailyRollingFileAppender
+log4j.appender.DetailLog.File=/home/safaricom_dev/tomcat5/logs/DetailLog.log
+##log4j.appender.DetailLog.MaxFileSize=100KB
+log4j.appender.DetailLog.DatePattern='.'yyyy-MM-dd
+log4j.appender.DetailLog.layout=org.apache.log4j.PatternLayout
+log4j.appender.DetailLog.layout.ConversionPattern=%d   %m%n
+##=================================================================
+
+##=========Counting Log================
+log4j.logger.com.btsl.loadtest.loadgenerator.CountingLog=INFO,CountingLog
+log4j.additivity.com.btsl.loadtest.loadgenerator.CountingLog=false
+log4j.appender.CountingLog=org.apache.log4j.DailyRollingFileAppender
+log4j.appender.CountingLog.File=/home/safaricom_dev/tomcat5/logs/CountingLog.log
+##log4j.appender.CountingLog.MaxFileSize=100KB
+log4j.appender.CountingLog.DatePattern='.'yyyy-MM-dd
+log4j.appender.CountingLog.layout=org.apache.log4j.PatternLayout
+log4j.appender.CountingLog.layout.ConversionPattern=%d   %m%n
+##=================================================================
+
+##========Server0 Log================
+log4j.logger.com.btsl.loadtest.loadgenerator.Server0Log=INFO,Server0Log
+log4j.additivity.com.btsl.loadtest.loadgenerator.Server0Log=false
+log4j.appender.Server0Log=org.apache.log4j.DailyRollingFileAppender
+log4j.appender.Server0Log.File=/home/safaricom_dev/tomcat5/logs/Server0Log.log
+##log4j.appender.Server0Log.MaxFileSize=100KB
+log4j.appender.Server0Log.DatePattern='.'yyyy-MM-dd
+log4j.appender.Server0Log.layout=org.apache.log4j.PatternLayout
+log4j.appender.Server0Log.layout.ConversionPattern=%d   %m%n
+##=================================================================
+
+##========Server1 Log================
+log4j.logger.com.btsl.loadtest.loadgenerator.Server1Log=INFO,Server1Log
+log4j.additivity.com.btsl.loadtest.loadgenerator.Server1Log=false
+log4j.appender.Server1Log=org.apache.log4j.DailyRollingFileAppender
+log4j.appender.Server1Log.File=/home/safaricom_dev/tomcat5/logs/Server1Log.log
+##log4j.appender.Server1Log.MaxFileSize=100KB
+log4j.appender.Server1Log.DatePattern='.'yyyy-MM-dd
+log4j.appender.Server1Log.layout=org.apache.log4j.PatternLayout
+log4j.appender.Server1Log.layout.ConversionPattern=%d   %m%n
+##=================================================================
+##========Server2 Log================
+log4j.logger.com.btsl.loadtest.loadgenerator.Server2Log=INFO,Server2Log
+log4j.additivity.com.btsl.loadtest.loadgenerator.Server12Log=false
+log4j.appender.Server2Log=org.apache.log4j.DailyRollingFileAppender
+log4j.appender.Server2Log.File=/home/safaricom_dev/tomcat5/logs/Server2Log.log
+##log4j.appender.Server2Log.MaxFileSize=100KB
+log4j.appender.Server2Log.DatePattern='.'yyyy-MM-dd
+log4j.appender.Server2Log.layout=org.apache.log4j.PatternLayout
+log4j.appender.Server2Log.layout.ConversionPattern=%d   %m%n
+##=================================================================
+##========Server3 Log================
+log4j.logger.com.btsl.loadtest.loadgenerator.Server3Log=INFO,Server3Log
+log4j.additivity.com.btsl.loadtest.loadgenerator.Server3Log=false
+log4j.appender.Server3Log=org.apache.log4j.DailyRollingFileAppender
+log4j.appender.Server3Log.File=/home/safaricom_dev/tomcat5/logs/Server3Log.log
+##log4j.appender.Server3Log.MaxFileSize=100KB
+log4j.appender.Server3Log.DatePattern='.'yyyy-MM-dd
+log4j.appender.Server3Log.layout=org.apache.log4j.PatternLayout
+log4j.appender.Server3Log.layout.ConversionPattern=%d   %m%n
+##=================================================================

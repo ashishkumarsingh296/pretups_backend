@@ -1,0 +1,272 @@
+####################################New entries for PreTUPS5.6.2########################################################################
+
+#######################Start here for Constants.props ###########################################################
+
+########### new entry for 5.8 version ###########
+
+#########added by Jasmine kaur#########
+## Database current schema
+currentschema=PRETUPS561_DEV
+
+#Data base type DB2
+databasetype=DB2
+
+#JNDI name for DB2
+DataSourceJNDIName=PretupsDB2
+ReportDataSourceJNDIName=PretupsDB2
+
+datasourcedriver=com.ibm.db2.jcc.DB2Driver
+
+##### added by nilesh: for email notification for O2C #####
+NOTIFICATION_SUBJECT_APPROVER=Need approval
+NOTIFICATION_SUBJECT_USER=Transfer Approved
+#For Ext. User Req. 
+EXT_USER_REG_GROUP_ROLE_REQ=Y
+EXT_GROUP_ROLE=Y
+
+######## Two columns Longitude and Latitude added by nilesh in DWH ########
+
+DWH_MASTER_FILE_LABEL=CHANNEL USER ID,PARENT USER ID,OWNER USER ID,USER TYPE,EXTERNAL CODE,PRIMARY MSISDN,USER STATUS,LOGIN ID,CATEGORY CODE,CATEGORY NAME,GEOGRAPHICAL DOMAIN CODE,GEOGRAPHICAL DOMAIN NAME,CHANNEL USER NAME,CITY,STATE,COUNTRY,LONGITUDE,LATITUDE
+
+
+##########################ENtries for message script used to upload the messsage sheet in DB #############333
+## added for upload of messages in DB through script
+UploadMessageFilePath=/pretupshome/pretups_otn/tomcat5_web/
+
+
+#GMB props:
+USERID=pretups_1357
+PASSWD=pretups_1357
+FLARES_UDP_IP=127.0.0.1
+FLARES_UDP_PORT=8004
+
+##############Lend Me balance Related change #####################
+
+LMBSETTLEFILEPATH=/pretupsvar/pretups_weblogs/pretups58/logs/LMB/
+ARCHIVEFILEPATHLMBSETTLE=/pretupsvar/pretups_weblogs/LMBArchive/
+
+SOS_FAIL_MESSAGE_REQ=Y
+
+#This paramenter is in milliseconds
+SLEEP_TIME_SOS_SETTLEMENT=1000
+
+# Define SOS Settlement for all networks
+SOS_SETTLE_GTW_CODE_DL=SMSC
+
+## SOS Amount Multiple Factor
+report.amountmultiplefactor=100
+
+###################    LMB CHANGES for force settle    #######################################
+LMB_FORCE_SETTLE_FILE_PATH=/pretupsvar/pretups_weblogs/ForceSettleLMB/
+LMB_FORCE_SETTLE_ARCHIVE_FILE_PATH=/pretupsvar/pretups_weblogs/ForceSettleLMBArchive/
+OTHER_FILE_SIZE_LMB_FORCE_SETTLE=1024
+MAX_NO_RECORDS_IN_LMB_FILE=1000
+ALLOWED_PER_ERR_LMB=10
+LMB_SETTLE_DATE_FORMAT=dd/MM/yy
+###############################################
+
+############Added by ankuj for the process to  bulk upload recharge amounts for subscribers######
+
+LMB_BLKUPL_FILE_PATH=/pretupsvar/pretups_weblogs/LMB/LMBPath/
+LMB_BLKUPL_ARCHIVE_FILE_PATH=/pretupsvar/pretups_weblogs/LMB/LMBArchive/
+
+############end of changes Added by ankuj for the process to  bulk upload recharge amounts for subscribers######
+
+###################################Enrties related to the LMB DWH (Data Ware House)###########################
+## LMB DWH transaction file labels
+#LMB_DWH_TRANSACTION_FILE_LABEL=TRANSACTION_ID,RECHARGE_DATE,RECHARGE_DATE_TIME,SUBSCRIBER_MSISDN,SOS_RECHARGE_AMOUNT,SOS_CREDIT_AMOUNT,SOS_DEBIT_AMOUNT,PRODUCT_CODE,SOS_RECHARGE_STATUS,SERVICE_TYPE,PREVIOUS_BALANCE,POST_BALANCE,SUBSCRIBER_TYPE,SUB_SERVICE,SERVICE_CLASS_CODE,VALIDITY,TAX1_VALUE,TAX2_VALUE,PROCESS_FEE_VALUE,BONUS_VALUE,GRACE_PERIOD,BONUS_VALIDITY,VALPERIOD_TYPE,KEY_VALUE
+
+LMB_DWH_TRANSACTION_FILE_LABEL=TRANSACTION_ID,SUBSCRIBER_MSISDN,RECHARGE_DATE, RECHARGE_DATE_TIME,SOS_RECHARGE_AMOUNT,SOS_CREDIT_AMOUNT,SOS_DEBIT_AMOUNT,SOS_RECHARGE_STATUS,ERROR_STATUS,INTERFACE_RESPONSE_CODE,NETWORK_CODE,PRODUCT_CODE,REQUEST_GATEWAY_TYPE,REQUEST_GATEWAY_CODE,SERVICE_TYPE,ACCOUNT_STATUS,SERVICE_CLASS_CODE,CARD_GROUP_CODE,TAX1_VALUE,TAX2_VALUE,PROCESS_FEE_VALUE,VALIDITY,BONUS_VALUE,GRACE_PERIOD,BONUS_VALIDITY,VALPERIOD_TYPE,PREVIOUS_BALANCE,POST_BALANCE,SETTLEMENT_STATUS,SETTLEMENT_DATE,SETTLEMENT_FLAG,SETTLEMENT_RECON_FLAG,SETTLEMENT_RECON_DATE,RECONCILIATION_FLAG,RECONCILIATION_DATE,LMB_AMTAT_IN,LMB_DEBIT_UPDATE_STATUS,LMB_CREDIT_UPDATE_STATUS,SETTLEMENT_ERROR_CODE,SETTLEMENT_PREVIOUS_BALANCE,CELL_ID,SWITCH_ID,KEY_VALUE
+
+## LMB  DWH transaction file name
+LMB_DWH_TRANSACTION_FILE_NAME=SOSTransactions
+
+## C2S DWH files path, files will stored here at the time of DWH processing and after
+## files will be moved at the final path
+LMB_DWH_MASTER_DIRECTORY=/pretupsvar/pretups_weblogs/SOS_DWH_MASTERDATA/
+
+## LMB DWH final files path, files will be moved in this directory after processing,
+## files will be maintained in this directory for 7 days. This directory path is being
+## used in DWHFileCreation also,if changing here, change there also
+
+LMB_DWH_FINAL_DIRECTORY=/pretupsvar/pretups_weblogs/SOS_DWH_FINALDATA/
+
+## LMB DWH files extension
+LMB_DWH_FILE_EXT=.csv
+
+## LMB DWH file length, maximum number of records in DWH file, if there are more records than this count then next file will be created
+LMB_DWH_MAX_FILE_LENGTH=50000
+
+#to make addition of header and footer
+LMB_DWH_ADD_HEADER_FOOTER=Y
+############VOMS NEW MODULE ENTRIES##############
+VOMS_ORDER_SLAB_LENGTH=5
+RAND_PIN_GEN=53
+VOMS_DOWNLOAD_FILE_PATH=/pretupshome/pretups58_dev/tomcat5_web/logs/voms/
+VOMS_DOWNLOAD_FILE_NAME=Voms
+VOMS_DOWNLOAD_UTIL_NAME=Voms_decrypt.zip
+VOMS_DOWNLOAD_UTIL_PATH=/pretupshome/pretups58_dev/tomcat5_web/logs/voms/
+#########################end of LMB DWH ##############################33
+
+############## end of Lend Me balance Related changes #####################
+
+########ADDED by Anu Garg for bug fixing #############
+
+CHECK_FOR_SERVICE_CLASSES=SERID00018,SERID00006
+DOWNLOADRELATIVEPATH=/pretupshome/pretups58_dev/tomcat5_web/logs/
+
+#######################Ends here for Constants.props#############################################################
+
+
+----------------------------------------------------------------------------------------------------------------
+
+
+#######################Start here for LogConfig.props ###########################################################
+
+//added by ankuj for LMB
+
+##=========Lmb Force settle logs================
+log4j.logger.com.btsl.loadtest.loadgenerator.LMBForceSettleLog=INFO,LMBForceSettleLog
+log4j.additivity.com.btsl.loadtest.loadgenerator.LMBForceSettleLog=false
+log4j.appender.LMBForceSettleLog=org.apache.log4j.DailyRollingFileAppender
+log4j.appender.LMBForceSettleLog.File=/pretupshome/pretups58_dev/tomcat5_web/logs/LMBForceSettleLog.log
+##log4j.appender.LMBForceSettleLog.MaxFileSize=100KB
+log4j.appender.LMBForceSettleLog.DatePattern='.'yyyy-MM-dd
+log4j.appender.LMBForceSettleLog.layout=org.apache.log4j.PatternLayout
+log4j.appender.LMBForceSettleLog.layout.ConversionPattern=%d   %m%n
+
+########## Added by nilesh : consolidated for Logger ##########
+
+#Entries for OneLineTXNLogC2S Logger
+log4j.logger.com.btsl.pretups.logging.OneLineTXNLogC2S=INFO,OneLineTXNLogC2S
+#log4j.logger.com.btsl.pretups.logging.OneLineTXNLogC2S=ERROR,OneLineTXNLogC2S
+log4j.additivity.com.btsl.pretups.logging.OneLineTXNLogC2S=false
+log4j.appender.OneLineTXNLogC2S=org.apache.log4j.DailyRollingFileAppender
+log4j.appender.OneLineTXNLogC2S.File=/pretupshome/pretups58_dev/tomcat5_web/logs/OneLineTXNLogC2S.log
+##log4j.appender.OneLineTXNLogC2S.MaxFileSize=100KB
+log4j.appender.OneLineTXNLogC2S.DatePattern='.'yyyy-MM-dd
+log4j.appender.OneLineTXNLogC2S.layout=org.apache.log4j.PatternLayout
+log4j.appender.OneLineTXNLogC2S.layout.ConversionPattern=%d   %m%n
+
+
+#Entries for OneLineTXNLog Logger
+log4j.logger.com.btsl.pretups.logging.OneLineTXNLogP2P=INFO,OneLineTXNLogP2P
+#log4j.logger.com.btsl.pretups.logging.OneLineTXNLogP2P=ERROR,OneLineTXNLogP2P
+log4j.additivity.com.btsl.pretups.logging.OneLineTXNLogP2P=false
+log4j.appender.OneLineTXNLogP2P=org.apache.log4j.DailyRollingFileAppender
+log4j.appender.OneLineTXNLogP2P.File=/pretupshome/pretups58_dev/tomcat5_web/logs/OneLineTXNLogP2P.log
+##log4j.appender.OneLineTXNLogP2P.MaxFileSize=100KB
+log4j.appender.OneLineTXNLogP2P.DatePattern='.'yyyy-MM-dd
+log4j.appender.OneLineTXNLogP2P.layout=org.apache.log4j.PatternLayout
+log4j.appender.OneLineTXNLogP2P.layout.ConversionPattern=%d   %m%n
+
+#Entries for OneLineTXNLogCHNL Logger
+log4j.logger.com.btsl.pretups.logging.OneLineTXNLogCHNL=INFO,OneLineTXNLogCHNL
+#log4j.logger.com.btsl.pretups.logging.OneLineTXNLogCHNL=ERROR,OneLineTXNLogCHNL
+log4j.additivity.com.btsl.pretups.logging.OneLineTXNLogCHNL=false
+log4j.appender.OneLineTXNLogCHNL=org.apache.log4j.DailyRollingFileAppender
+log4j.appender.OneLineTXNLogCHNL.File=/pretupshome/pretups58_dev/tomcat5_web/logs/OneLineTXNLogCHNL.log
+##log4j.appender.OneLineTXNLogCHNL.MaxFileSize=100KB
+log4j.appender.OneLineTXNLogCHNL.DatePattern='.'yyyy-MM-dd
+log4j.appender.OneLineTXNLogCHNL.layout=org.apache.log4j.PatternLayout
+log4j.appender.OneLineTXNLogCHNL.layout.ConversionPattern=%d   %m%n
+
+#### end of logger : nilesh
+
+##=========GMB logs================
+log4j.logger.com.btsl.loadtest.loadgenerator.GiveMeBalanceRequestResponseLog=INFO,GiveMeBalanceRequestResponseLog
+log4j.additivity.com.btsl.loadtest.loadgenerator.GiveMeBalanceRequestResponseLog=false
+log4j.appender.GiveMeBalanceRequestResponseLog=org.apache.log4j.DailyRollingFileAppender
+log4j.appender.GiveMeBalanceRequestResponseLog.File=/pretupshome/pretups58_dev/tomcat5_web/logs/GiveMeBalanceRequestResponseLog.log
+##log4j.appender.GiveMeBalanceRequestResponseLog.MaxFileSize=100KB
+log4j.appender.GiveMeBalanceRequestResponseLog.DatePattern='.'yyyy-MM-dd
+log4j.appender.GiveMeBalanceRequestResponseLog.layout=org.apache.log4j.PatternLayout
+log4j.appender.GiveMeBalanceRequestResponseLog.layout.ConversionPattern=%d   %m%n
+##======================================================================================
+
+#######################Ends here for LogConfig.props#############################################################
+
+-----------------------------------------------------------------------------------------------------------------
+#######################Starts here for ProcessLogConfig.props####################################################
+
+## Log file configuration entries for LMB SOSSettlement process
+log4j.logger.com.btsl.pretups.logging.SOSSettlementRequestLog=INFO,SOSSettlementRequestLog
+log4j.additivity.com.btsl.pretups.logging.SOSSettlementRequestLog=false
+log4j.appender.SOSSettlementRequestLog=org.apache.log4j.DailyRollingFileAppender
+log4j.appender.SOSSettlementRequestLog.File=/pretupsvar/pretups_weblogs/SOSSettlementRequestLog.log
+log4j.appender.SOSSettlementRequestLog.DatePattern='.'yyyy-MM-dd
+log4j.appender.SOSSettlementRequestLog.layout=org.apache.log4j.PatternLayout
+log4j.appender.SOSSettlementRequestLog.layout.ConversionPattern=%5p [%t] (%F:%L) - %m%n 
+
+#######################Ends here for ProcessLogConfig.props####################################################
+----------------------------------------------------------------------------------------------------------------
+
+
+#######################Start here for struts-config.xml##########################################################
+
+######### added for lmb force settlement module ##############
+
+/WEB-INF/classes/configfiles/forcelmb/validation-forcelmb.xml
+
+/WEB-INF/classes/configfiles/cp2pbuddymgt/validation-cp2pbuddymgt.xml
+
+#######################Ends here for struts-config.xml###########################################################
+
+----------------------------------------------------------------------------------------------------------------
+
+
+#######################Start here for validator-rules.xml########################################################
+
+
+
+
+
+#######################Ends here for validator-rules.xml#########################################################
+
+----------------------------------------------------------------------------------------------------------------
+
+
+#######################Start here for web.xml####################################################################
+
+######Added by ankuj for the LMB service############  
+  <servlet>
+   <servlet-name>ComverseTestServer</servlet-name>
+    <servlet-class>com.btsl.pretups.inter.comverse.ComverseTestServer</servlet-class>
+        <init-param>
+            <param-name>responseFilePath</param-name>
+            <param-value>/WEB-INF/classes/configfiles/INFiles/comverseResponse.props</param-value>
+         </init-param>
+        <load-on-startup>6</load-on-startup>
+  </servlet>
+
+
+<servlet-mapping>
+    <servlet-name>ComverseTestServer</servlet-name>
+    <url-pattern>/ComverseTestServer</url-pattern>
+</servlet-mapping>
+
+#####################VOMS#######################
+ <servlet>
+    <servlet-name>VomsReciever</servlet-name>
+    <servlet-class>com.btsl.pretups.channel.receiver.VomsReciever</servlet-class>
+  </servlet>
+   <servlet-mapping>
+    <servlet-name>VomsReciever</servlet-name>
+    <url-pattern>/VomsReciever</url-pattern>
+  </servlet-mapping>
+
+
+########LMB changes end here#####################
+
+######### added for lmb force settlement module ##############
+/WEB-INF/classes/configfiles/forcelmb/struts-config-forcelmb.xml
+
+/WEB-INF/classes/configfiles/cp2pbuddymgt/struts-config-cp2pbuddymgt.xml
+
+
+
+#######################Ends here for web.xml#####################################################################
+  
+
+
+####################################PreTUPS5.6.2 Entries ends ######################################################################

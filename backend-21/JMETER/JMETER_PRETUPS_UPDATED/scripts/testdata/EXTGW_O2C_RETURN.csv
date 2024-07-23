@@ -1,0 +1,10 @@
+EXTNWCODE,MSISDN,PIN,EXTCODE,EXTNUMBER,EXTTXNDATE,PRODUCTCODE,QTY,REMARKS,TestcaseId,TestcaseType,Module,Description
+NG,7277777776,1357,,3791,02-09-16,101,10,O2C Withdraw,TUNG13041,Positive,O2C return through EXTGW,"To verify that Channel Users can Return TopUp Credits, to their Operators by entering msisdn and pin"
+NG,,,,3782,02-09-16,101,10,,TUNG12847 ,Negative,O2C return through EXTGW,"To check if neither of user (MSISDN -pin  , extcode )is not present in the request then o2c return is not successful"
+NG,7277777776,1357,,3773,02-09-16,,10,,TUNG12848 ,Negative,O2C return through EXTGW,To check if  product code is not present in the request then o2c retrun is not successful
+NG,7277777776,1357,,3764,02-09-16,101,,,TUNG12849,Negative,O2C return through EXTGW,To check if  amount is not present in the request then o2c return is not successful
+NG,7277777776,1357,,3755,02-09-16,101,10,,TUNG12850 ,Negative,O2C return through EXTGW,To check if  txn date is not present in the request then o2c return is not successful
+NG,7277777776,1357,,,02-09-16,101,10,,TUNG12851 ,Negative,O2C return through EXTGW,To check if  txn number is not present in the request then o2c return is not successful
+NG,7277777776,,,3788,02-09-16,101,10,,TUNG12852,Negative,O2C return through EXTGW,To check if  msisdn is present but pin  is not present in the request then o2c return is not successful
+NG,,,678,3789,02-09-16,101,10,,TUNG13042,Positive,O2C return through EXTGW,To verify that Channel admin can return amount from his channel users by extcode only
+NG,,,528,3787,02-09-16,101,10,,TUNG12853,Negative,O2C return through EXTGW,To check  that an unsuccessful o2c return occurs when wrong ext code is present

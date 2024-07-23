@@ -1,0 +1,2 @@
+EXTNWCODE,PRODUCTCODE,QTY,REMARKS,TestcaseId,TestcaseType,Module,Description
+NG,101,10,,TUNG12851 ,Negative,O2C return through EXTGW,To check if  txn number is not present in the request then o2c return is not successful

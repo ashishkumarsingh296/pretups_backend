@@ -1,0 +1,201 @@
+/**
+ * Create Channel User
+ * @param $user {object} - User Object
+ */
+function createChannelUser($user){
+	try{
+		if ($user.ExistingUser){
+			_log("SAHI User Exists in the system - " + $user.UserName, "CUSTOM1");
+		}else{
+			// Login as Channel Admin
+			login($channelAdmin);
+
+			_log("Adding Channer User: " + $user.UserName, "CUSTOM5");
+			// Start Wizard Page 1
+			_click(_link("Channel user"));
+			_click(_link("Add channel user"));
+
+			_setSelected(_select("domainCode"), $user.ChannelUserType.Domain, "Select Domain");
+			_setSelected(_select("channelCategoryCode"), $user.ChannelUserType.Category, "Select Category");
+
+			if($user.ChannelUserType.ParentCategory){
+				_setSelected(_select("parentCategoryCode"), $user.ChannelUserType.ParentCategory, "Select Parent Category");
+			}
+			_click(_submit("Submit"));
+
+			// Select the Owner User and Parent User
+			if ($user.ChannelUserType.OwnerUser){			
+				selectUserFromSearch(_cell("Owner user :"), $user.ChannelUserType.OwnerUser);	
+
+				if ($user.ChannelUserType.ParentUser){
+					selectUserFromSearch(_cell("Parent user :"), $user.ChannelUserType.ParentUser);
+				}
+				_click(_submit("Submit"));
+			}
+			// End Wizard Page 1
+
+			// Add Channel User Detail 
+			_setValue(_textbox("firstName"), $user.FirstName);
+			_setValue(_textbox("shortName"), $user.ShortName);
+			_setValue(_textbox("lastName") , "Last Name"); // hard - coded the last name
+			_setSelected(_select("userNamePrefixCode"), "Mr");
+			_setValue(_textbox("externalCode"), $user.ExternalCode); // unique code TODO- ?? is providing MSISDN is correct
+			_setSelected(_select("outletCode"), $CONFIG.OUTLET);
+			_setValue(_textbox("email"), $user.EMail);
+
+			//Assign Phone Number
+			if (_isVisible(_link("Assign phone numbers"))){
+				_click(_link("Assign phone numbers"));
+				_popup("eRecharge")._setValue(_textbox("msisdnListIndexed[0].msisdn"), $user.MSISDN);
+				_popup("eRecharge")._setValue(_password("msisdnListIndexed[0].showSmsPin"), $user.PIN);
+				_popup("eRecharge")._setValue(_password("msisdnListIndexed[0].confirmSmsPin"), $user.PIN);
+				_popup("eRecharge")._setSelected(_select("msisdnListIndexed[0].phoneProfile"), $user.ChannelUserType.Category);
+				_popup("eRecharge")._click(_submit("Add") ,"Add Details");
+			}
+
+			// Assign Geography
+			if (_isVisible(_link("Assign geographies"))){
+				_click(_link("Assign geographies"));
+				_popup("eRecharge")._click(_radio("geographicalCode"));
+				_popup("eRecharge")._click(_submit("Add") ,"Add Details");
+			}
+
+			// Assign Roles TODO - Specific Role assignment
+			if (_isVisible(_link("Assign roles"))){
+				_click(_link("Assign roles"));
+				_popup("eRecharge")._click(_checkbox("checkall"));
+				_popup("eRecharge")._click(_submit("Add") ,"Add Roles");
+			}
+
+			// Assign Roles TODO - Specific Role assignment
+			if (_isVisible(_link("Assign services"))){
+				_click(_link("Assign services"));
+				_popup("eRecharge")._click(_checkbox("checkall"));
+				_popup("eRecharge")._click(_submit("Add") ,"Add Services");
+			}
+
+			// Assign Grade and Profile Information
+			_setSelected(_select("userGradeId"), $user.Grade.USER_GRADE);
+			_setSelected(_select("commissionProfileSetId"), $user.Grade.COMMISION_PROFILE);
+			_setSelected(_select("trannferProfileId"), $user.Grade.TRANSFER_PROFILE);
+
+			// Provide the User login ID and Password
+			_setValue(_textbox("webLoginID"), $user.UserName);
+			_setValue(_password("showPassword"), $CONFIG.USER_CREATION_PASSWORD);
+			_setValue(_password("confirmPassword"), $CONFIG.USER_CREATION_PASSWORD);
+			_click(_submit("Save"));
+			_click(_submit("Confirm"));	
+			_assertVisible(_listItem("User " + $user.FirstName+ " Last Name successfully added"));
+			// TODO - below is not functional, approving channel user, functionality might vary in future
+			//approveChannelUser();
+			changeFirstTimePassword($user);
+		}
+	}catch(e){
+		_logException(e);
+		_log("Failed to Create the Channel User", "error");
+	}
+}
+
+/**
+ * Login Function
+ * @param $user - User Object
+ * 
+ * TODO - Include more scenarios
+ * TODO - Use Object Repository
+ */
+function login($user){
+	try{
+		_navigateTo($CONFIG.URL); // Navigate to the Page
+
+		if (_isVisible(_select("language"))){
+			_setSelected(_select("language"), $CONFIG.LANGUAGE , "Set the Language");
+		}
+
+		_setValue(_textbox("loginID"), $user.UserName, "Set the UserName");
+		_setValue(_password("password"), $user.Password, "Set the Password");
+
+		if(_isVisible(_submit("Login"))){
+			_click(_submit("Login"));
+		}else if(_isVisible(_submit("Entrada al sistema"))){
+			_click(_submit("Entrada al sistema")); // for Spanish
+		} 
+
+		if (_isVisible(_submit("Re-login"))){
+			_click(_submit("Re-login"));
+		}
+		_assertVisible(_link("Logout"), "Verify Login as User:" + $user.UserName);
+	}catch(e){
+		_logException(e);
+		_log("Failed to Login as User:" + $user.UserName , "error");
+	}	
+}
+
+/**
+ * Change first time password
+ * @param $user
+ */
+function changeFirstTimePassword($user){
+	try{
+		if (_isVisible(_link("Logout"))){
+			_click(_link("Logout"));		
+		}
+		_navigateTo($CONFIG.URL); // Navigate to the Page
+
+		if (_isVisible(_select("language"))){
+			_setSelected(_select("language"), $CONFIG.LANGUAGE , "Set the Language");
+		}
+
+		_setValue(_textbox("loginID"), $user.UserName, "Set the UserName");
+		_setValue(_password("password"), $CONFIG.USER_CREATION_PASSWORD);
+
+		if(_isVisible(_submit("Login"))){
+			_click(_submit("Login"));
+		}else if(_isVisible(_submit("Entrada al sistema"))){
+			_click(_submit("Entrada al sistema")); // for Spanish
+		} 
+
+		if (_isVisible(_submit("Re-login"))){
+			_click(_submit("Re-login"));
+		}	
+		_setValue(_password("oldPassword"), $CONFIG.USER_CREATION_PASSWORD);
+		_setValue(_password("newPassword"), $user.Password);
+		_setValue(_password("confirmNewPassword"), $user.Password);
+		_click(_submit("Submit"));
+
+		_assertVisible(_listItem("Successfully changed password"));
+
+	}catch(e){
+		_logException(e);
+		_log("Failed to change the First time Password", "error");
+	}	
+}
+
+/**
+ * Select a user using search functionality
+ * @param $label
+ * @param $user
+ * TODO - need more anchors to identify modal window
+ */
+function selectUserFromSearch($label, $user){
+	try{
+		if (_condition(_isVisible(_div("cssmenu")))){
+			_click(_image("search.gif", _near(_label($label))));
+			_wait(1000);
+			if(_isVisible(_select("userList"))){
+				_setSelected(_select("userList"), $user.FirstName + " Last Name");
+				_click(_button("Submit"));
+			}else if(_isVisible(_select("channelUserList"))){
+				_setSelected(_select("channelUserList"), $user.FirstName + " Last Name");
+				_click(_button("Submit[1]"));
+			}					
+			_wait(1000);
+		}else{
+			_setValue(_textbox(0, _rightOf($label)), $user.FirstName);
+			_click(_image("search.gif", _rightOf($label)));
+		}
+
+	}catch(e){
+		_logException(e);
+		_log("Failed to select using search", "error");
+	}
+}

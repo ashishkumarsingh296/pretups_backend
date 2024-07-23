@@ -1,0 +1,2 @@
+TestcaseId,TestcaseType,Module,Description
+TUNG12339,Positive,Lite Recharge through EXTGW,Validate Lite Recharge request (LRC) with all correct details.

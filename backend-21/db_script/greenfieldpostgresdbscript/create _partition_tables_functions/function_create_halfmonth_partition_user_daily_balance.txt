@@ -1,0 +1,47 @@
+CREATE OR REPLACE FUNCTION pretupsdatabase.function_create_halfmonth_partition_user_daily_balance(table_name character varying, partition_key character varying, table_space character varying, date_from character varying, date_to character varying, table_ext character varying)
+
+RETURNS void
+
+LANGUAGE plpgsql
+
+AS $function$
+
+declare
+
+
+
+seq integer;
+
+
+
+
+
+BEGIN
+
+
+
+                                EXECUTE 'CREATE TABLE ' || table_name||'_' || table_ext ||  '(LIKE ' || table_name||'   INCLUDING ALL) INHERITS('|| table_name||') tablespace '||table_space||';';
+
+                                EXECUTE 'ALTER TABLE '|| table_name||'_' || table_ext || ' ADD CONSTRAINT ' || table_name||'_' || table_ext || ' CHECK ( '||partition_key||' >=  DATE '||quote_literal(date_from)||' AND '||partition_key||' < DATE '||quote_literal(date_to)||');';
+
+                                EXECUTE 'CREATE TRIGGER '||table_name||'_updatepartition_trigger BEFORE UPDATE ON ' ||  table_name||'_' || table_ext || ' FOR EACH ROW EXECUTE PROCEDURE user_daily_balances_update_trigger('||table_name||'_' || table_ext ||','||table_name||','||partition_key||');';
+
+
+
+END
+
+$function$
+
+
+
+
+
+select function_create_halfmonth_partition_user_daily_balance('user_daily_balances', 'balance_date', 'misp_data', '2017-08-01', '2017-08-16', 'aug1' );
+
+select function_create_halfmonth_partition_user_daily_balance('user_daily_balances', 'balance_date', 'misp_data', '2017-08-16', '2017-09-01', 'aug2' );
+
+select function_create_halfmonth_partition_user_daily_balance('user_daily_balances', 'balance_date', 'misp_data', '2017-09-01', '2017-09-16', 'sep1' );
+
+select function_create_halfmonth_partition_user_daily_balance('user_daily_balances', 'balance_date', 'misp_data', '2017-09-16', '2017-10-01', 'sep2');
+
+

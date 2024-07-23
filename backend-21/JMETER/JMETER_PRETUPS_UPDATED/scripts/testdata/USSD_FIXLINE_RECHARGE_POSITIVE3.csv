@@ -1,0 +1,2 @@
+TestcaseId,TestcaseType,Module,Description
+TUNG13134,Positive,Fix Line Recharge through USSD,To verify the response XML of successful  C2S Transfer (Fix Recharge)

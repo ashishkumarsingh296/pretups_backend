@@ -1,0 +1,8 @@
+TestCaseNo.,Description,FilePath,
+TEST001, To verify if the link for geographical domain - cell id management is visible to the network admin(in case the network admin has been asigned the role for it,,
+TEST002,To verify that network admin cant upload file without having any details,C:/Users/shashi.singh1/Desktop/GeoFencing_Input/Geo_01.xls,The file has no records
+TEST003,To verify that network admin can't upload file with invalid geographical domain details,C:/Users/shashi.singh1/Desktop/GeoFencing_Input/Geo_02.xls,View error log
+TEST004,To verify that network admin can't upload file with invalid cell ID code,C:/Users/shashi.singh1/Desktop/GeoFencing_Input/Geo_03.xls,View error log
+TEST005,To verify that network admin can't upload file with invalid cell ID name,C:/Users/shashi.singh1/Desktop/GeoFencing_Input/Geo_04.xls,View error log
+TEST006,"To verify that nwtwork admin can't upload same file again in the system, if it does so, then it'll display error msg",C:/Users/shashi.singh1/Desktop/GeoFencing_Input/Geo_04.xls,A file with the same name already exists on the server. Please select another file name
+TEST007,Verify that network admin can upload a file for cell ID management,C:/Users/shashi.singh1/Desktop/GeoFencing_Input/Geo_05.xls,Cell Ids batch association completed.

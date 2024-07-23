@@ -1,0 +1,10 @@
+TestcaseId,TestcaseType,Module,Description
+,Positive,Geography API,To verfiy that Gegraphy API execute successfully with all valid details.
+,Positive,Geography API,To verfiy that Gegraphy API execute succesfully if  geography code is not presentbut parent details exist in API
+,Positive,Geography API,To verfiy that Gegraphy API execute succesfully if only MSISDN present without loginid and external code
+,Positive,Geography API,To verfiy that Gegraphy API execute succesfully if only LoginID present without MSISDN and external code
+,Positive,Geography API,To verfiy that Gegraphy API execute succesfully if only external code present without MSISDN and loginid
+,Positive,Geography API,To verfiy that Gegraphy API execute succesfully when external reference number is blank
+,Positive,Geography API,To verfiy that Gegraphy API execute succesfully when Date is blank
+,Negative,Geography API,To verfiy that Gegraphy API request not successful when Category code is blank
+,Negative,Geography API,To verfiy that Gegraphy API request not successful when Network Code is blank

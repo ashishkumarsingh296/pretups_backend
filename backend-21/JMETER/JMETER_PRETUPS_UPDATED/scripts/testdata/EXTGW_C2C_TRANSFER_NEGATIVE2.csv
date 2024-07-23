@@ -1,0 +1,2 @@
+PIN,PRODUCTCODE,QTY,LANGUAGE1,TestcaseId,TestcaseType,Module,Description
+0,101,90,,TUNG13090,Negative,Channel to Channel Transfer, To Verify C2C is not Working when MSISDN AND PIN Does not match

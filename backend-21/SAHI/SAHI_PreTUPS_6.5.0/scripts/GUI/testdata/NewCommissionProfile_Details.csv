@@ -1,0 +1,9 @@
+TestCase Details,TestCase Description,Domain,Category,Geo Domain,Grade,Profile Name,Short Name,Date,Time,MultipleOf,Min Value,Max value,startRange,endRange,commType,commRate,tax1Rate,tax2Rate,tax3Rate,Assertion
+TEST001,Given that network admin login into application and try to add a new commision profile,Dist1,Super Distributor,ALL,ALL,AUT Profile,AUTPROF,calendar-icon.gif,23:59,1,1,1000,1,500,Amt,2.6,10,10,10,Commission profile successfully added
+TEST002,Given that a network admin loggin into application and try to modify existing commission profile,Dist1,Super Distributor,ALL,ALL,AUT Profile,AUTPROFM,,,,,,,,,,,,,Commission profile successfully updated
+TEST003,Given that a network admin loggin into application and view add reset and back button after selecting domain and category,Dist1,Super Distributor,ALL,ALL,AUT Profile,,,,,,,,,,,,,,
+TEST004,Given that a network admin loggin into application and try to use exsting short code,Dist1,Super Distributor,ALL,ALL,AUT ProfileM,AUTPROFM,calendar-icon.gif,23:59,1,1,1000,1,500,Amt,2.6,10,10,10,
+TEST005,Given that a network admin loggin into application and try to add a commision profile with past date,Dist1,Super Distributor,ALL,ALL,AUT Profile,AUUTUNB,12/12/2012,23:59,,,,,,,,,,,Applicable from should be greater than or equal to today's date and time
+TEST006,Given that a network admin loggin into application and after submitting domain category click view button it should go to next page,Dist1,Super Distributor,ALL,ALL,AUT Profile,AUUTUNB,calendar-icon.gif,23:59,,,,,,,,,,,
+TEST007,Given that a network admin loggin into application and try to view existing commission profile in the system,Dist1,Super Distributor,ALL,ALL,AUT Profile,,,,,,,,,,,,,,
+TEST008,Given that a network admin loggin into application and try check reset button,Dist1,Super Distributor,ALL,ALL,AUT Profile,AUUTUNB,calendar-icon.gif,23:59,,,,,,,,,,,

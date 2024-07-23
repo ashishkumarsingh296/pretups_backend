@@ -1,0 +1,38 @@
+
+
+_includeOnce("../../../../utility/ImportPackage.sah");
+
+
+Hi();
+
+//gettingTime();
+
+function gettingTime() {
+	
+	var $time = new Date();
+	
+	var $hour = $time.getHours();
+	var $min = $time.getMinutes();
+	
+	
+	_log("shashi  "+ $time );
+	/*_log("shashi  "+ $hour );
+
+	_log("shashi  "+ $min );*/
+	_closeBrowser();
+}
+
+
+function Hi(){
+	var $l_currentTime = new Date();	//Global method for fetching current system date
+	var $l_year = $l_currentTime.getFullYear();
+	var $l_month = $l_currentTime.getMonth() + 1;
+	var $l_date = $l_currentTime.getDate();
+
+	var $hr = $l_currentTime.getHours();
+	var $min = $l_currentTime.getMinutes();
+	
+
+
+	_log("shashi " + $hr + "/" + $min + "/" + $l_year);
+}

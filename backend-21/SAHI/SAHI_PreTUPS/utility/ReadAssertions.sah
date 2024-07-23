@@ -1,0 +1,69 @@
+//################################################
+//#Company Name: Mahindra Comviva Technologies Ltd.
+//#Application Name: Pretups
+//#Objective:To Read from excel file.
+//#Author Name: Nidhi Singh
+//#Created Date: 17/01/2014
+//###############################################
+
+//================Read the data from CommonAssertion file====================
+
+var $l_readAssertions = _readExcelFile("../conf/CommonAssertions.xlsx", "Sheet1");
+
+var $l_row = 0;
+var $l_col = 0;
+
+var $g_assertWelcome = $l_readAssertions[$l_row++][$l_col]; // Assertion when user Logins
+var $g_assertOp = $l_readAssertions[$l_row++][$l_col]; // Assertion when Operator is created
+var $g_assertAddNA = $l_readAssertions[$l_row++][$l_col]; //Assertion: Category : Network Admin
+var $g_assertAddSA = $l_readAssertions[$l_row++][$l_col]; // Assertion for Category : Sub Super Admin
+var $g_assertGeo = $l_readAssertions[$l_row++][$l_col]; // Assertion for Add Geography
+var $g_assertRole = $l_readAssertions[$l_row++][$l_col]; // Assertion for Add Roles
+var $g_assertChangePass = $l_readAssertions[$l_row++][$l_col]; // Assertion for Change Password
+var $g_assertSuccess = $l_readAssertions[$l_row++][$l_col]; // Assertion for Successfully Change Password
+var $g_assertViewDomainDet = $l_readAssertions[$l_row++][$l_col]; // Assertion for View Channel domain details
+var $g_assertAddDomainDetails = $l_readAssertions[$l_row++][$l_col];// Assertion for Add Channel domain details
+var $g_assertAddOwnerCategoryDetails = $l_readAssertions[$l_row++][$l_col]; // Assertion for Add owner Channel category details
+var $g_assertViewCategoryDetails = $l_readAssertions[$l_row++][$l_col]; // Assertion for View channel category details
+var $g_assertDomainAddedSuccessfully = $l_readAssertions[$l_row++][$l_col]; // Assertion for Domain added successfully
+var $g_assertCategoryAddedSuccessfully = $l_readAssertions[$l_row++][$l_col]; // Assertion for Category added successfully
+var $g_assertDomains = $l_readAssertions[$l_row++][$l_col]; // Assertion for Assign Domains
+var $g_assertProducts = $l_readAssertions[$l_row++][$l_col]; // Assertion for Assign Products
+var $g_assertCommProf = $l_readAssertions[$l_row++][$l_col]; // Assertion for Add Commission Profile
+var $g_assertTransProf = $l_readAssertions[$l_row++][$l_col]; // Assertion for Add Transfer Control Profile
+var $g_assertGradesuccessfullyAdded = $l_readAssertions[$l_row++][$l_col]; // Assertion for Grade added successfully
+var $g_assertAdminDealerSearch = $l_readAssertions[$l_row++][$l_col]; // Assertion for Admin Dealer Search
+var $g_assertChannelUserDelSuccessfully = $l_readAssertions[$l_row++][$l_col]; // Assertion for Channel User deletion
+var $g_assertTransferRuleAddedSuccessfully = $l_readAssertions[$l_row++][$l_col]; // Assertion for Transfer Rule addition
+var $g_assertTransferRuleExists = $l_readAssertions[$l_row++][$l_col]; // Assertion for Transfer Rule already exists
+var $g_assertMaximumLimitOfDomains = $l_readAssertions[$l_row++][$l_col]; // Assertion for Transfer Rule already exists
+var $g_assertDomainCodeExists = $l_readAssertions[$l_row++][$l_col]; // Assertion for domain code already exists
+var $g_assertDomainNameExists = $l_readAssertions[$l_row++][$l_col]; // Assertion for domain name already exists
+var $g_assertCategoryCodeExists = $l_readAssertions[$l_row++][$l_col]; // Assertion for category code already exists
+var $g_assertCategoryNameExists = $l_readAssertions[$l_row++][$l_col]; // Assertion for category name already exists
+var $g_assertTransferRuleExist = $l_readAssertions[$l_row++][$l_col]; // Assertion for Transfer Rule already exists
+var $g_assertGradeCodeExist = $l_readAssertions[$l_row++][$l_col]; // Assertion for Grade Code already exists
+var $g_assertCommProfileExist = $l_readAssertions[$l_row++][$l_col]; // Assertion for Commission Profile already exists
+var $g_assertProfileNameofTCPExist = $l_readAssertions[$l_row++][$l_col]; // Assertion for Profile Name of TCP already exists
+var $g_assertShortNameofTCPExist = $l_readAssertions[$l_row++][$l_col]; // Assertion for Short Name of TCP already exists
+var $g_assertSelectNetwork = $l_readAssertions[$l_row++][$l_col]; // Assertion for selecting network while login with super admin
+var $g_assertMessage = $l_readAssertions[$l_row++][$l_col]; // Assertion when super admin logins
+var $g_assertServices = $l_readAssertions[$l_row++][$l_col]; // Assertion for add services
+var $g_assertPhoneNumbers = $l_readAssertions[$l_row++][$l_col]; // Assertion for add phone numbers
+var $g_transferControlProfileDetails = $l_readAssertions[$l_row++][$l_col]; // Assertion category level transfer control profile details
+var $g_assertAddCardGroupDetails = $l_readAssertions[$l_row++][$l_col]; // Assertion for add phone numbers
+var $g_assertCardGroupDetails = $l_readAssertions[$l_row++][$l_col]; // Assertion for add phone numbers
+var $g_assertCardGroupAddedSuccessfully = $l_readAssertions[$l_row++][$l_col]; // Assertion for add phone numbers
+var $g_assertCardgroupAlreadyExists = $l_readAssertions[$l_row++][$l_col]; // Assertion for add phone numbers
+var $g_assertApprovalTransaction = $l_readAssertions[$l_row++][$l_col]; // Assertion for approval of network stock
+var $g_netwrokStockInitiation = $l_readAssertions[$l_row++][$l_col]; // Assertion for network stock Initiation
+var $g_netwrokStockApproval = $l_readAssertions[$l_row++][$l_col]; // Assertion for network stock approval
+var $g_netwrokStockCompletion = $l_readAssertions[$l_row++][$l_col]; // Assertion for network stock completion
+var $g_O2CTransferDetailsAssertion = $l_readAssertions[$l_row++][$l_col]; // Assertion for O2C transfer Details
+var $g_O2CTransferDetailsConfirmation = $l_readAssertions[$l_row++][$l_col]; // Assertion for O2C transfer Details confirmation
+var $g_O2CTransferInitiation = $l_readAssertions[$l_row++][$l_col]; // Assertion for successfully initiation O2C transfer
+var $g_O2CTransferComplete = $l_readAssertions[$l_row++][$l_col]; // Assertion for successfully approval of transfer at level one
+
+
+
+

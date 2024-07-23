@@ -1,0 +1,548 @@
+//###############################################
+//#Company Name: Mahindra Comviva Technologies Ltd.
+//#Application Name: Pretups
+//#Objective:Common function for Channel User module
+//#Author Name: Nidhi Singh
+//#Created Date: 03/02/2014
+//###############################################
+
+_includeOnce("../../../../utility/ImportPackage.sah");	//For importing common files
+var $l_ChUser = _readCSVFile("../../testdata/ChUser_Details.csv");
+
+$g_msisdnUM = readMSISDNFromCSV(); //Reads the MSISDN(Mobile No) from a csv file.
+$g_currentDate = ddmmyy(); //Get the current time in format dd/mm/yy
+var $g_domCode;
+var $g_catCode;
+var $g_geographicalArea;
+var $g_shortName;
+var $g_usernamePrefixCode;
+var $g_empCode;
+var $g_externalCode;
+var $g_contactPerson;
+var $g_contactMob;
+var $g_ssn;
+var $g_designation;
+var $g_outletCode;
+var $g_address1;
+var $g_address2;
+var $g_city;
+var $g_state;
+var $g_country;
+var $g_email;
+var $g_company;
+var $g_calendarImg;
+var $l_Lang;
+var $g_confirmPassword;
+var $g_phoneNo;
+var $g_smsPin;
+var $g_desc;
+var $g_allowedTimeFrom = "00:00";
+var $g_allowedTimeTo =  "23:59";
+var $g_latitude = "77:11";
+var $g_longitude ="65:12";
+var $g_ip = "";
+var $g_username = variableForChannelUser($g_autoPrefix);	//Variable for creating channel user(ChannelUsr_Common.sah)
+var $g_ugGradeName;
+var $g_commProfUsername;
+var $g_transProfUsername;
+var $g_transferRuleType;
+var $g_channelAdminn;
+
+
+
+// User status configuration 
+var $a_gateway;
+var $a_user;
+var $a_domain;
+
+
+
+
+
+
+function createCU(){	
+	var $l_naCsv = _readCSVFile("../../../GUI/testdata/NA_Login.csv"); //Reads Channel Admin login ID from csv file
+	var $g_channelAdmin = $l_naCsv[2][1];
+		if($g_channelAdmin == "null"){ //If Channel Admin is not present then create it 
+			createCA(); //Function defined in UserManagement_Common.sah
+			var $l_naCsv = _readCSVFile("../../../GUI/testdata/NA_Login.csv"); //Reads Channel Admin login ID from csv file
+			 $g_channelAdminn = $l_naCsv[2][1];
+			login($g_appURL, $g_LangEnglish, $g_channelAdminn, $g_commonPassword, $g_assertWelcome); //Login as Channel Admin
+		}
+		else{	 
+			login($g_appURL, $g_LangEnglish, $g_channelAdmin, $g_commonPassword, $g_assertWelcome); //Login as Channel Admin(Login_Common.sah)
+		}
+	
+			
+		_click(_link($g_LinkLogout));
+		
+		//_wait(2000);
+		
+		$g_domCode = $l_ChUser[1][2];
+		$g_catCode = $l_ChUser[1][3];
+		
+		
+		
+		
+	
+
+	//======================User Grade Creation============================	
+	var $t1 = _testcase("CEGTA0009", "Given a super admin when logs into the application then he/she can successfully add User Grade");
+		$t1.start();
+		login($g_appURL, $g_LangEnglish, $g_superAdmin, $g_password, $g_assertMessage); //calls the Login function in Login.sah with the parameters for super admin
+		$g_ugGradeName = addUserGrade($g_domCode);	//Adding User Grade(function defined in ProfileManagement_Common.sah)
+		while(_exists(_listItem($g_assertGradeCodeExist))){
+			$g_ugGradeName = addUserGrade($g_domCode);
+		}
+		$l_ChUser[1][27] = $g_ugGradeName;
+		_writeCSVFile($l_ChUser, "../../testdata/ChUser_Details.csv", 1);
+		
+		_assertExists(_listItem($g_assertGradesuccessfullyAdded));
+		$t1.end();
+		_log("User Grade added Successfully");
+		
+	
+	//======================Category Level Transfer Profile Creation============================	
+	var $l_categoryTransCsv = _readCSVFile("../../../GUI/testdata/CategoryLevelTranferProfile_Details.csv");
+	var $row = 1;
+	var $col = 0;
+		var $t2 = _testcase($l_categoryTransCsv[$row][$col++], $l_categoryTransCsv[$row][$col++]);
+		$t2.start();
+		readVariablesForAddingCategoryLevelTransferProfile($row, $col); // Function defined in ProfileManagement_Common.sah
+		var $1_error = addCategoryLevelTransferProfile($g_domCode, $g_catCode); // Add Transfer Control Profile(function defined in ProfileManagement_Common.sah)
+		if($1_error == false)
+		_log("Category Level Profile already exists");
+		else
+		{
+		_assertExists(_listItem($g_assertTransProf));
+		_click(_link($g_LinkLogout));
+		_log("Category Level Transfer Profile added Successfully");
+		}
+		$t2.end();
+		
+		_closeBrowser();
+		_openBrowser();
+		_wait(2000);
+		
+	
+	//======================Commission Profile Creation============================	
+	var $l_commCsv = _readCSVFile("../../../GUI/testdata/CommissionProfile_Details.csv");
+	var $row = 1;
+	var $col = 0;
+		var $t3 = _testcase($l_commCsv[$row][$col++], $l_commCsv[$row][$col++]);
+		$t3.start();
+		var $l_naCsv = _readCSVFile("../../../GUI/testdata/NA_Login.csv");
+		var $l_networkAdmin = $l_naCsv[1][1];
+		login($g_appURL,  $g_LangEnglish, $l_networkAdmin, $g_commonPassword, $g_assertWelcome);
+		$g_commProfUsername = addCommissionProfile($g_domCode, $g_catCode); // Add Commission Profile(function defined in ProfileManagement_Common.sah)
+		while(_exists(_listItem($g_assertCommProfileExist))){
+			$g_commProfUsername = addCommissionProfile($g_domCode);
+		}
+		
+		$l_ChUser[1][28] = $g_commProfUsername;
+		_writeCSVFile($l_ChUser, "../../testdata/ChUser_Details.csv", 1);
+		
+		_assertExists(_listItem($g_assertCommProf));
+		$t3.end();
+		_log("Commission Profile added Successfully");
+
+	//======================Transfer Profile Creation============================	
+	var $l_transCsv = _readCSVFile("../../../GUI/testdata/TransferProfile_Details.csv");
+	var $row = 1;
+	var $col = 0;
+		var $t4 = _testcase($l_transCsv[$row][$col++], $l_transCsv[$row][$col++]);
+		$t4.start();
+		readVariablesForAddingTransferProfile($row, $col); // Function defined in ProfileManagement_Common.sah
+		$g_transProfUsername = addTransferProfile($g_domCode, $g_catCode); // Add Transfer Control Profile(function defined in ProfileManagement_Common.sah)
+		
+		if($g_transProfUsername == false )
+		{
+		_log("Transfer control profile aleady exists");
+		} else {
+		while(_exists(_listItem($g_assertProfileNameofTCPExist) && _listItem($g_assertShortNameofTCPExist))){
+			$g_transProfUsername = addTransferProfile($g_domCode, $g_catCode);
+		}
+		$l_ChUser[1][29] = $g_transProfUsername;
+		_writeCSVFile($l_ChUser, "../../testdata/ChUser_Details.csv", 1);
+		_assertExists(_listItem($g_assertTransProf));
+		}
+		_click(_link($g_LinkLogout));
+		$t4.end();
+		_log("Transfer Profile added Successfully");
+		
+		_closeBrowser();
+		_openBrowser();
+		_wait(2000);
+
+
+
+//======================Channel User Creation============================
+	var $l_col = 0;
+	var $l_row = 1;
+	var $t = _testcase($l_ChUser[$l_row][$l_col++], $l_ChUser[$l_row][$l_col++]);
+		$t.start();
+		var $l_naCsv = _readCSVFile("../../../GUI/testdata/NA_Login.csv"); //Reads Channel Admin login ID from csv file
+			 $g_channelAdminn = $l_naCsv[2][1];
+		
+		login($g_appURL, $g_LangEnglish, $g_channelAdminn, $g_commonPassword, $g_assertWelcome);
+			//$l_col = $l_col + 2;
+		defineVariableToCreateCU($l_row, $l_col);	//Defining variable to create channel user(function defined in ChannelUser_Common.sah)
+		
+		
+		// addStatusAndService($g_catCode);
+		
+		
+		createChannelUser();	//Creating Channel Users(function defined in ChannelUser_Common.sah)
+		confirmCreationOfUser();	//Conforming Channel Users(ChannelUser_Common.sah)
+		
+		_assertExists(_listItem("/" + "successfully accepted"+ ".*/" ));
+		
+		var $l_naCsv = _readCSVFile("../../../GUI/testdata/NA_Login.csv");
+		$l_naCsv[3][1] = $g_username;
+		$l_naCsv[9][1] = $g_msisdnUM;  // for O2C  transfer and C2S recharge 
+		_writeCSVFile($l_naCsv, "../../../GUI/testdata/NA_Login.csv", 1); // Writes the newly created Channel User in a csv file.
+		_click(_link($g_LinkLogout));
+		$t.end();
+		_log("Channel User Created Successfully");
+
+		_closeBrowser();
+		_openBrowser();
+		_wait(2000);
+			
+
+		// ...............  This method is to configure user status by super admin  ......... //
+		
+		var $t5 = _testcase("CEGTA015", "Given a super admin when logs into the application then he/she can change user status");
+		$t5.start();
+		login($g_appURL, $g_LangEnglish, $g_superAdmin, $g_password, $g_assertMessage); //calls the Login function in Login.sah with the parameters for super admin
+		
+		$a_gateway = $l_ChUser[5][1] ;
+		$a_user = $l_ChUser[6][1] ;
+		$a_domain = $l_ChUser[1][2] ;
+
+		userStatusConfiguration();
+		
+		_click(_link($g_LinkLogout));
+		$t5.end();
+		_closeBrowser();
+		_openBrowser();
+		_wait(2000);
+		
+		
+
+//=====Change Password of Channel user created=======		
+	var $row = 2;
+	var $col = 0;
+	var $g_channelUser = $l_naCsv[3][1];
+	var $t2 = _testcase($l_ChUser[$row][$col++], $l_ChUser[$row][$col++]);
+	$t2.start();		
+	changeOldPasswordToNew($g_channelUser);
+	$t2.end();
+	_log("Thus the password of the Channel User created is changed successfully");
+	
+	//=====Change PIN of Channel user created=======		
+	var $row = 3;
+	var $col = 0;
+	var $g_channelUser = $l_naCsv[3][1];
+	var $t3 = _testcase($l_ChUser[$row][$col++], $l_ChUser[$row][$col++]);
+	$t3.start();		
+	changePINToNew($g_channelUser);
+	$t3.end();
+	_log("Thus the PIN of the Channel User created is changed successfully");
+	
+	
+	
+	
+}
+	
+/**
+ * This function is used to fetch variable from a csv
+ * @param [in] -
+ *            $a_row Row No of csv
+ * @param [in] -
+ *            $a_column Column No of csv
+ * @returns - null
+ */
+
+function defineVariableToCreateCU($a_row, $a_column){
+	 $g_domCode = $l_ChUser[$a_row][$a_column++];
+	 $g_catCode = $l_ChUser[$a_row][$a_column++];
+	 $g_geographicalArea = $l_ChUser[$a_row][$a_column++];
+	 $g_parentCategory = $l_ChUser[$a_row][$a_column++];
+	 $g_shortName = $l_ChUser[$a_row][$a_column++];
+	 $g_usernamePrefixCode = $l_ChUser[$a_row][$a_column++];
+	 $g_empCode = $l_ChUser[$a_row][$a_column++];
+	 $g_contactPerson =  $l_ChUser[$a_row][$a_column++];
+	 $g_contactMob =  $l_ChUser[$a_row][$a_column++];
+	 $g_ssn = $l_ChUser[$a_row][$a_column++];
+	 $g_designation =  $l_ChUser[$a_row][$a_column++];
+	 $g_outletCode = $l_ChUser[$a_row][$a_column++];
+	 $g_address1 =  $l_ChUser[$a_row][$a_column++];
+	 $g_address2 =  $l_ChUser[$a_row][$a_column++];
+	 $g_city =  $l_ChUser[$a_row][$a_column++];
+	 $g_state =  $l_ChUser[$a_row][$a_column++];
+	 $g_country =  $l_ChUser[$a_row][$a_column++];
+	 $g_email =  $l_ChUser[$a_row][$a_column++];
+	 $g_company = $l_ChUser[$a_row][$a_column++];
+	 $g_calendarImg =  $l_ChUser[$a_row][$a_column++];
+	 $l_Lang = $l_ChUser[$a_row][$a_column++];
+	 $g_webPassword =  $l_ChUser[$a_row][$a_column++];
+	 $g_newPassword =  $l_ChUser[$a_row][$a_column++];
+	 $g_smsPin = $l_ChUser[$a_row][$a_column++];
+	 $g_desc = $l_ChUser[$a_row][$a_column++];
+	 $g_ugGradeName =  $l_ChUser[$a_row][$a_column++];
+	 $g_commProfUsername = $l_ChUser[$a_row][$a_column++];
+	 $g_transProfUsername = $l_ChUser[$a_row][$a_column++];
+	 $g_transferRuleType = $l_ChUser[$a_row][$a_column++];
+	 $g_allowedTimeFrom = "00:00";
+	 $g_allowedTimeTo =  "23:59";
+	 $g_latitude = "77:11";
+	 $g_longitude ="65:12";
+	 $g_ip = "";
+	 
+}
+
+/**
+ * This function is used to create Channel User
+ * @param [in] - null
+ * @returns - null
+ */
+
+function createChannelUser(){
+		_click(_link($g_LeftMenuBar_ChannelUser));
+		_click(_link($g_LeftMenuBar_AddChannelUser));
+		_setSelected(_select("domainCode"), ("/" + $g_domCode + ".*/")); 
+		_setSelected(_select("channelCategoryCode"), ("/" + $g_catCode + ".*/"));
+		_setSelected(_select("parentDomainCode"), $g_geographicalArea);
+		_click(_submit($g_BtnSubmit));
+		_assertExists(_cell(("/" + $g_domCode + ".*/"), _near(_cell("Domain :"))));
+		_setValue(_textbox("firstName"), $g_username);
+		_setSelected(_select("userNamePrefixCode"), $g_usernamePrefixCode);
+		_setValue(_textbox("shortName"), $g_shortName);
+		_setValue(_textbox("externalCode"), $g_msisdnUM);
+		_setValue(_textbox("empCode"), $g_empCode);
+		_setValue(_textbox("contactPerson"), $g_contactPerson);
+		_setValue(_textbox("contactNo"), $g_msisdnUM);
+		//_setValue(_textbox("ssn"), $g_ssn);
+		_setValue(_textbox("designation"), $g_designation);
+		_setSelected(_select("outletCode"), $g_outletCode);
+		_setValue(_textbox("address1"), $g_address1);
+		_setValue(_textbox("address2"), $g_address2);
+		_setValue(_textbox("city"), $g_city);
+		_setValue(_textbox("state"), $g_state);
+		_setValue(_textbox("country"), $g_country);
+		_setValue(_textbox("email"), $g_email);
+		_setValue(_textbox("company"), $g_company);
+		_click(_image($g_calendarImg));
+		_setValue(_textbox("appointmentDate"), $g_currentDate);
+		_setSelected(_select("userLanguage"), $l_Lang);
+		_setValue(_textbox("longitude"), $g_longitude);
+		_setValue(_textbox("latitude"), $g_latitude);
+		_setValue(_textbox("webLoginID"), $g_username);
+		_setValue(_password("showPassword"), $g_webPassword);
+		_setValue(_password("confirmPassword"), $g_webPassword);
+		var $l_chkBoxes = new Array();
+		$l_chkBoxes = _collect("_checkbox", "/.*/");
+		
+		/*for( var $i = 1; $i < $l_chkBoxes.length; $i++){
+		      _check($l_chkBoxes[$i]);
+		}
+		*/
+		_setValue(_textbox("allowedFormTime"), $g_allowedTimeFrom);
+		_setValue(_textbox("allowedToTime"), $g_allowedTimeTo);
+		_click(_link("Assign phone numbers"));
+		_popup("eRecharge")._setValue(_textbox("msisdnListIndexed[0].msisdn"), $g_msisdnUM);
+		_popup("eRecharge")._setValue(_password("msisdnListIndexed[0].showSmsPin"), $g_smsPin);
+		_popup("eRecharge")._setValue(_password("msisdnListIndexed[0].confirmSmsPin"), $g_smsPin);
+		_popup("eRecharge")._setSelected(_select("msisdnListIndexed[0].phoneProfile"), $g_catCode);
+		_popup("eRecharge")._click(_submit($g_BtnAdd));
+		if($g_domCode.match(/Head Quarter/g)){
+			/*_click(_link("Assign geographies"));
+			_popup("eRecharge")._setValue(_textbox("searchDomainTextArrayIndexed[0]"), "%");
+			_popup("eRecharge")._click(_image("search.gif"));
+			_popup("eRecharge")._setSelected(_select("domainId"), "ZainArea");
+			_popup("eRecharge")._click(_button("Submit"));
+			_popup("eRecharge")._click(_radio("geographicalCode"));
+			_popup("eRecharge")._click(_submit("Add"));*/
+			
+			
+			//fiza changed for adding subarea 
+			_click(_link("Assign geographies"));
+			_selectWindow("eRecharge");
+			_setValue(_textbox("searchDomainTextArrayIndexed[0]"), "ZainArea");
+			_click(_image("search.gif"));
+			_click(_radio("geographicalCode"));
+			_click(_submit("Add"));
+
+			
+		}
+		else{
+		_click(_link("Assign roles"));
+		_popup("eRecharge")._click(_checkbox("checkall"));
+		_popup("eRecharge")._click(_submit($g_BtnAdd));
+		_click(_link("Assign geographies"));
+		_popup("eRecharge")._click(_submit($g_BtnAdd));
+		}
+		
+		_click(_link("Assign services"));
+		_popup("eRecharge")._assertExists(_div("Assign services"), _lastAlert());
+		
+		
+		// Shashi 
+		//if(_assert(_isVisible(_cell("No service list exists", _near(_cell("Associated services"))));
+		//_click(_link("Close"));
+
+		
+		_popup("eRecharge")._click(_checkbox("checkall"));
+		_popup("eRecharge")._click(_submit($g_BtnAdd));
+		
+		
+		_setSelected(_select("userGradeId"),$g_ugGradeName );
+		_setSelected(_select("commissionProfileSetId"),$g_commProfUsername );
+		_setSelected(_select("trannferProfileId"),$g_transProfUsername );
+		_setSelected(_select("trannferRuleTypeId"), $g_transferRuleType);
+		_click(_submit($g_BtnSave));
+}
+
+/**
+*  This function clicks on Confirm button 
+*	@param[in] - null
+*/
+	
+function confirmCreationOfUser(){
+	_click(_submit($g_BtnConfirm));	
+}
+	
+/**
+*  This function generates unique channel user code 
+*	@param[in] - 
+*  			a_Prefix "AUTO"
+*	@return - channel code
+*/
+	
+function variableForChannelUser($a_Prefix){
+	 $l_time = currentTime(); // fetch current time(CurretnTime)
+	 $l_username = $a_Prefix + "CU" + $l_time; //AUTONAcurrentTime
+	 return $l_username;
+}
+
+/**
+*	@param[in] - 
+*  			a_domCode Domain Code
+*  @param [in] -
+*  			a_ugGradeName Grade Name
+*  @param [in] -
+*  			a_username Channel User
+*	@return - null
+*/
+	
+function approveUser($a_domCode, $a_ugGradeName, $a_username){	
+	_click(_link($g_LeftMenuBar_ChannelUser));
+	_click(_link($g_LeftMenuBar_UserApproval));
+	_setSelected(_select("domainCode"), ("/" + $a_domCode + ".*/"));
+	_click(_submit($g_BtnSubmit));
+	_click(_radio("userId", _near(_cell($a_username))));
+	_click(_submit($g_BtnSubmit));
+	_setSelected(_select("outletCode"), $g_outletCode);
+	_setSelected(_select("userGradeId"), ("/" + $a_ugGradeName + ".*/"));
+	_setSelected(_select("commissionProfileSetId"), $g_commProfUsername);
+	_setSelected(_select("trannferProfileId"), $g_transProfUsername);
+	_click(_submit($g_BtnApprove));
+	_click(_submit($g_BtnConfirm));
+}
+
+/**
+*  This function will delete Channel User 
+*	@param[in] - 
+*  			a_domCode Domain Code
+*  @param [in] -
+*  			a_username Channel User
+*	@return - null
+*/
+	
+function delChannelUser($a_domCode, $a_username){
+	var $waitFor = 2000;
+	_click(_link($g_LeftMenuBar_ChannelUser));
+	_click(_link($g_LeftMenuBar_DelChannelUser));
+	_setSelected(_select("domainCode"), ("/" + $a_domCode + ".*/"));
+	_wait($waitFor);
+	_setSelected(_select("channelCategoryCode"), ("/" + $g_catCode + ".*/"));
+	_setValue(_textarea("eventRemarks"), "test");
+	_click(_submit($g_BtnSubmit));
+	_setValue(_textbox("searchTextArrayIndexed[0]"), $a_username);
+	_click(_image("search.gif"));
+	_wait($waitFor);
+	_click(_submit($g_BtnSubmit));
+	_click(_submit($g_BtnDelete));
+	_click(_link($g_LeftMenuBar_ApproveDelChannelUser));
+	_setSelected(_select("domainCode"), ("/" + $a_domCode + ".*/"));
+	_setValue(_textarea("eventRemarks"), "test");
+	_click(_submit($g_BtnSubmit));
+	_click(_submit($g_BtnSubmit));
+	_click(_submit($g_BtnConfirm));
+	_assertExists(_listItem($g_assertChannelUserDelSuccessfully));
+}
+
+// =============================== Channel User fo C2C ============================ //
+
+
+
+		
+// ================================= For User status configuration ================= //
+
+
+
+function userStatusConfiguration() {
+	_click(_link("Masters"));
+	_click(_link("User Status Configuration"));
+	_setSelected(_select("gatewayType"), $a_gateway);
+	_setSelected(_select("userType"), $a_user);
+	_setSelected(_select("domainCode"), $a_domain );
+	_click(_submit("Add"));
+	
+	
+	_assertExists(_div("Change User Status Allowed"));
+	
+	if(_exists(_listItem("User already exists , Try modify"))){
+		
+		_log("User status is alreday configured for this category")
+		return;
+		
+	} else {
+		
+		_click(_checkbox("userSenderAllowedstatusFlag"));
+		_click(_checkbox("userSenderAllowedstatusFlag[1]"));
+		_click(_checkbox("userSenderAllowedstatusFlag[2]"));
+		_click(_checkbox("userSenderAllowedstatusFlag[3]"));
+		_click(_checkbox("userSenderAllowedstatusFlag[4]"));
+		_click(_checkbox("userSenderDeniedstatusFlag[5]"));
+		_click(_checkbox("userReceiverAllowedstatusFlag"));
+		_click(_checkbox("userReceiverAllowedstatusFlag[1]"));
+		_click(_checkbox("userReceiverAllowedstatusFlag[2]"));
+		_click(_checkbox("userReceiverAllowedstatusFlag[3]"));
+		_click(_checkbox("userReceiverAllowedstatusFlag[4]"));
+		_click(_checkbox("userReceiverDeniedstatusFlag[5]"));
+		_click(_checkbox("webLoginAllowedstatusFlag"));
+		_click(_checkbox("webLoginAllowedstatusFlag[1]"));
+		_click(_checkbox("webLoginAllowedstatusFlag[2]"));
+		_click(_checkbox("webLoginAllowedstatusFlag[3]"));
+		_click(_checkbox("webLoginAllowedstatusFlag[4]"));
+		_click(_checkbox("webLoginDeniedstatusFlag[5]"));
+		_click(_submit("Submit"));
+		_click(_submit("Confirm"));
+		_assertExists(_listItem("User added Successfully"));
+		
+	}
+	
+}
+
+
+		
+		
+	
+
+	
+
+	
+	
+	

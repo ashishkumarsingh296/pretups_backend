@@ -1,0 +1,2 @@
+TestcaseId,TestcaseType,Module,Description
+TUNG12362,Negative,Lite Recharge through USSD,Check invalid sub service selector should show error

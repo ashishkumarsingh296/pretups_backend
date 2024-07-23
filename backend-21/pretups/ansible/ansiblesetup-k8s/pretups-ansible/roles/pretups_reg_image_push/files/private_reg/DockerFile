@@ -1,0 +1,9 @@
+FROM openjdk:11
+WORKDIR /data1/pretupsapp
+COPY apache-tomcat-9.0.31_smsr apache-tomcat-9.0.31_smsr
+COPY pretups.war apache-tomcat-9.0.31_smsr/webapps/pretups.war
+COPY conf apache-tomcat-9.0.31_smsr/conf
+ARG MYJAVAOPTS
+ENV JAVA_OPTS=$MYJAVAOPTS
+#CMD ["apache-tomcat-9.0.31_smsr/bin/catalina.sh", "run"]
+CMD apache-tomcat-9.0.31_smsr/bin/catalina.sh start && tail -f /data1/pretupsapp/catalina.out

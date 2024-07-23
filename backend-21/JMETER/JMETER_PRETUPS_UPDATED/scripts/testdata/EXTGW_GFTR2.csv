@@ -1,0 +1,3 @@
+TestcaseId,TestcaseType,Module,Description
+,Negative,Gift Recharge,To verify Gift Recharge not successful if PIN not present with ALL
+,Negative,Gift Recharge,To verify Gift Recharge not successful if PIN is invalid

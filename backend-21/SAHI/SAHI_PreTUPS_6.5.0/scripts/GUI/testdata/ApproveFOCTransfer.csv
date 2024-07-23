@@ -1,0 +1,17 @@
+TestCaseNo. ,Discription,MSISDN,Assertion
+TEST001,Given that channel admin loggin into application and verify that initated FOC transfer is waiting for approval,7233333333,
+TEST002,Veify that channel admin can't initiate approval without giving MSISDN or other channel user  details ,,Mobile number is required.
+TEST003,"Verify that, when you entered the MSIDN which is not initiated for FOC, it'll give error",7200000001,not found
+TEST004,Verify that you cant enter the user MSISDN which is not valid for FOC approval,720,MSISDN is incorrect.
+TEST005,Verify the functionality of reset button on select channel user for FOC (for search channel user),7233333333,
+TEST006,"Verify the functionality of back button on FOC trasnfer details page, which'll take back to u on search channel user page",7233333333,
+TEST007,Verify the fuctionality of back button on transfer approve level one page,7233333333,
+TEST008,Verify that channel admin can reject the intiated FOC tranfer ,7233333333,
+TEST009,Verify that after reset valus will be flushed on FOC transfer level one approve page,7233333333,
+TEST010,Verify the functionality of back button on FOC level one approval page.,7233333333,
+TEST011,"Verify that after clicking approve, it will ask for confimation ",7233333333,
+TEST012,Verify that channel admin can go to the back page after clikcing back button ,7233333333,
+TEST013,"Veirify that channel admin can cancel the, approval of initiated FOC tranfer",7233333333,
+TEST014,"Verify that after giving all correct details for FOC approval, it will be approved at level one",7233333333,Approved level 1
+TEST015,"Verify that after approval having done on level one, it will go for level two approval",7233333333,
+TEST016,Verify that channel admin will FOC transfer at level two,,

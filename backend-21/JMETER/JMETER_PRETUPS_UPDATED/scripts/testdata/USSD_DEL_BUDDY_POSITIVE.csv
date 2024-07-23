@@ -1,0 +1,2 @@
+TestcaseId,TestcaseType,Module,Description
+TUNG2861,Positive,P2P delete buddy,To verify that Delete Buddy request is successful if all mandatory fields are filled valid values

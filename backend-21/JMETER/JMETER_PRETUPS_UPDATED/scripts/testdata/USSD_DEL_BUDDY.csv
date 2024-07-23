@@ -1,0 +1,5 @@
+MSISDN1,MSISDN_NAME,PIN,TestcaseId,TestcaseType,Module,Description
+7891000006,7891786311,2468,TUNG2861,Positive,P2P delete buddy,To verify that Delete Buddy request is successful if all mandatory fields are filled valid values
+,7891786311,2468,TUNG2862,Negative,P2P delete buddy,To verify that Delete Buddy request is not successful if MSISDN1  field is invalid.
+7891000100,,2468,TUNG2862,Negative,P2P delete buddy,To verify that Delete Buddy request is not successful if  MSISDN_NAME field is invalid.
+7891000100,7891786311,,4,Negative,P2P delete buddy,To verify that Delete Buddy request is not successful if  PIN is empty.

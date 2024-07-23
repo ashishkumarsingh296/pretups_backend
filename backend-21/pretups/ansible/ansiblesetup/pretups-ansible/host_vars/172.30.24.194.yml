@@ -1,0 +1,158 @@
+#donot change this variable name
+INSTANCE_TYPE: WEB
+
+
+USER_NAME: pretupsRev_demo
+ansible_ssh_user: prtp7_27orc1
+ansible_ssh_pass: prtp7_27orc1
+
+#specify group name to create or existing group name to use
+GROUP_NAME: pretupsRev_demo
+
+#specify home directory partition name to create or existing
+#Home directory of user will be this directory only
+HOME_DIR_NAME: home/pretupsRev_demo
+
+
+JRE_NAME: jdk1.8.0_74
+
+#JDK_SOFT_LINK will be the name of soft link for jdk
+JDK_SOFT_LINK: PRETUPS_WEB
+
+
+#specify log directory partition name for logs to create or existing
+LOG_DIR_NAME: pretupsRev_demo_log
+
+#specify log path directory which will be inside pretupsvar directory (logs will be at /pretupsvar/given_dir_name_here
+#whatever name is provided here, ansible will create providedname directory inside pretupsvar and logs will be there only, path will be inside LogConfig
+LOG_DIRECTORY_FOLDER_NAME: Pretups_logs_WEB
+
+
+#tomcat_name is the name of tomcat, If name is "abc_tomcat" then "abc_tomcat.tar.gz" must be present inside pretups_app/roles/copy_tomcat/files
+tomcat_name: tomcat8
+
+
+
+#Following parameters are jdk and tomcat configuration related, may or may not be changed as per need.
+connectionTimeout: 500000
+maxThreads: 200
+minSpareThreads: 50
+maxSpareThreads: 75
+enableLookups: false
+maxHttpHeaderSize: 8192
+acceptCount: 50
+disableUploadTimeout: true
+#redirectPort and redirectPort_AJP should be changed
+redirectPort: 8443
+enableLookups_AJP: false
+redirectPort_AJP: 8445
+#JAVA_OPTS for PreTUPS application
+Xms: 512
+Xmx: 1024
+Xmn: 256
+
+
+
+
+#variable for placing the catalina.out . This variable is changed in tomcat/bin/catalina.sh file. Donot change this
+CATALINA_OUT_LOG_PATH_WEB: "/{{ LOG_DIR_NAME }}/{{ LOG_DIRECTORY_FOLDER_NAME }}"
+
+
+
+#Following entries are for database. DBNAME is the encrypted value of DB_Name(Schema name of DB)
+#If below fields are not required for any specific database, no need to change their values
+DBType: oracle  # provide input whether database is (oracle/ postgres)
+
+##If dataBase is postgres
+## The name of owner of Database with password
+USERNAME: d3f6a25a40cdbee8
+PASSWORD: d3f6a25a40cdbee8
+
+
+DBIP: 172.30.24.131
+DBIP_CON_STRING: 172.30.24.131
+DBPORT: 1521
+SID: test2
+DB_Name: pretups71
+DBNAME: 850fbba62c8491cd5ca1fb47046d3338
+DBPWD: 850fbba62c8491cd5ca1fb47046d3338
+
+
+#INSTANCE_ID is for application INSTANCE_ID in Constant.props
+INSTANCE_ID: 15
+
+
+#OAM IP
+OAM_HOST_IP: 172.30.20.31
+
+
+
+
+################  Report related configuration  #######
+report_licensekey: AC1001-9B8F-D02556-E20115-04F8
+cache_report_IP: 172.16.11.121
+cache_report_PORT: 1522
+cache_report_SID: test12c
+cache.db.driverclass: org.postgressql.Driver
+cache_report_db_password: pretups71
+cache_report_db_username: pretups71
+odbc_report_IP: 172.16.11.121
+odbc_report_PORT: 1522
+odbc_report_SID: test12c
+odbc_user: pretups71
+odbc_password: pretups71
+oracle_report_IP: 172.16.11.121
+oracle_report_PORT: 1522
+oracle_report_SID: test12c
+oracle_inet_class: com.inet.report.DatabaseOracle
+oracle_user: pretups71
+oracle_password: pretups71
+########### pdsodbc.dll.xml & pdsora7.dll.xml configuration ########
+db_user_name: pretups71
+db_password: pretups71
+
+
+
+
+
+#Admin mobile no
+ADMIN_MOBILE: 99717008
+#DB min and max pool size configuration
+minpoolsize: 20
+poolsize: 22
+#Country Code
+COUNTRY_CODE: 224
+
+
+#Is SMSC Gateway installation needed (true/false)
+SMSC_NEEDED: false
+#SMSCGateway_name is the name of SMSCGateway, If name is "abc_SMSCGateway" then "abc_SMSCGateway.tar.gz" must be present inside pretups_app/roles/copy_SMSCGateway/files 
+SMSCGateway_name: SMSCGateway
+#SMSCGateway logs will be created inside SMSCGatewaylogs folder
+SMSCGatewayslogs: SMSCGatewayslogs
+#URL for SMSCGateway sms-service
+URL: http://127.0.0.1:9898
+
+
+
+
+#SHUTDOWN_PORT , CONNECTOR_PORT and AJP_CONNECTOR_PORT are for various ports defined in server.xml. These port values must be changed
+SHUTDOWN_PORT: 8785
+CONNECTOR_PORT: 9879
+AJP_CONNECTOR_PORT: 8874
+
+#same as CONNECTOR_PORT duplicated
+SERVER_PORT: 9879
+
+
+################# Added in 6.5 ########
+LANG_PRO: en_US
+XMS_PROCESS: -Xms512m
+XMX_PROCESS: -Xmx512m
+
+
+
+
+
+PRETUPS_LOGIN_SERVER_IP: 172.30.24.194
+PRETUPS_LOGIN_SERVER_PORT: 5068

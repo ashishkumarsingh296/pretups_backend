@@ -1,0 +1,66 @@
+//######################################
+//
+// This script to change PIN of channel user in the system 
+//
+//#######################################
+
+
+//===== import scripts ===//
+_includeOnce("../../../../utility/ImportPackage.sah");
+_includeOnce("../../../GUI/testscripts/ChannelUser_Management/ChangePIN_Common.sah"); //to view barred channel user in the system 
+
+
+
+//If CA deos not exist, first create it and then initiate O2C transfer inthe system ..... 
+var $l_naCsv = _readCSVFile("../../../GUI/testdata/NA_Login.csv"); //Reads the network admin credentials 
+var $g_channelAdmin = $l_naCsv[2][1];
+if($g_channelAdmin == "null"){
+	createCA(); // UserManagement_Common.sah
+	var $l_naCsv1 = _readCSVFile("../../../GUI/testdata/NA_Login.csv");
+	$g_channelAdmin = $l_naCsv1[2][1];
+	login($g_appURL,  $g_LangEnglish, $g_channelAdmin, $g_commonPassword, $g_assertWelcome);
+}else{	 
+	login($g_appURL,  $g_LangEnglish, $g_channelAdmin, $g_commonPassword, $g_assertWelcome);
+}
+	
+
+ 
+
+// ....................... Test cases to change PIN of channel user in the system    ............. //
+
+var $g_changeUserPIN = _readCSVFile("../../../GUI/testdata/ChangeChannelUserPIN.csv"); // Read Channel channel user detials which needs to be set
+
+
+
+	for(var $g_row = 1; $g_changeUserPIN[$g_row] != null; $g_row++){
+		
+				var $g_col = 0;
+				var $number =   testCaseNumber($g_changeUserPIN[$g_row][$g_col]);
+				var $t = _testcase($g_changeUserPIN[$g_row][$g_col++], $g_changeUserPIN[$g_row][$g_col++]);
+				
+				$t.start();
+				commonVaribleToChangeUserPIN($g_row, $g_col);
+				
+				if($number ==1 ){ checkSubmitButtonChangePINPage(); }
+				else if($number > 1 && $number < 7 ) { changePINWithInvalidDetails(); }
+				else if($number == 7 ){ checkBackButtonOnChaangePINPage(); }
+				else if($number ==8 ){ checkResetButtonOnChaangePINPage(); }
+				else if($number ==9 ){ changePINWithoutSelectingUser(); }
+				else if($number > 9 && $number < 20 ) { changePINWithInvalidDetailsTwo(); }
+				else if($number == 20 ){ backCheckOnUserPINChangeCnfPage(); }
+				else if($number == 21 || $number == 22  ){ changeChannelUserPIN(); }
+				$t.end();
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+

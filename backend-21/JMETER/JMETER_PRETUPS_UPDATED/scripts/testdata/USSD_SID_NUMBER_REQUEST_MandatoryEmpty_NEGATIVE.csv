@@ -1,0 +1,2 @@
+TestcaseId,TestcaseType,Module,Description
+TUNG12889 ,N,Private Registration,To verify that registration request fails on if mandatory field is not filled

@@ -1,0 +1,2 @@
+PIN,PRODUCTCODE,LANGUAGE1,TestcaseId,TestcaseType,Module,Description
+1111,101,,TUNG23141,Negative,REST - C2C return,To verify that Json request sholud fail when mandatory tags are not filled in json request

@@ -1,0 +1,9 @@
+EXTNWCODE,MSISDN1,PIN,NEWPIN,CONFIRMPIN,LANGUAGE1,REMARKS,TestcaseId,TestcaseType,Module,Description
+NG,7200009910,2468,1393,1393,0,,TUNG13160,Positive,Set PIN,To verify that Change PIN can be done through USSD.
+NG,7200009910,2468,1393,1393,0,,TUNG13161,Positive,Set PIN,To verify that Set Pin request is successful if all the mandatory fields are filled with valid values
+NG,,1357,1358,1358,0,,TUNG13162,Negative,Set PIN,To verify that error is displayed if MSISDN is left empty.
+PB,7212121514,1357,1358,1358,,,TUNG13163,Negative,Set PIN,To verify that error is displayed if invalid network code is entered.
+NG,7212121514,dadds,1358,1358,,,TUNG13164,Negative,Set PIN,To verify that error is displayed if invalid PIN is entered.
+NG,7212121514,1357,2467,3322,,,TUNG13165,Negative,Set PIN,To verify that error is displayed if new pin and confirm pin are different.
+NG,7212121514,1357,1358,1358,23,,TUNG13166,Negative,Set PIN,To verify that error is displayed if invalid language code is entered.
+NG,7212121514,1358,1358,1358,0,,TUNG13167,Negative,Set PIN,To verify that error is displayed if new pin is same as old PIN.

@@ -1,0 +1,4 @@
+TestCased,Discription,GetwayType,Host,Protocol,ServicePort,AuthenticationType,,Password,Status,ContentType,Encryption Level,Port,Status,LoginId,Password,DestNumber,TimeOut
+TEST104,Given that superadmin logged into application and try to add a message gateway,EXTGW,172.16.5.1,HTTP,8080,IP,test,12354,Active,XML,MASTER_KEY,8181,Active,Test,12354,5000,10000
+TEST105,Given that superadmin logged into application and try to view a message gateway,,,,,,,,,,,,,,,,
+TEST106,Given that superadmin logged into application and try to modify a message gateway,,,,,,,,,,,,,,,,

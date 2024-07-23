@@ -1,0 +1,90 @@
+
+// ...................... Verify Names of link and sublink by Channel Admin ...... 
+//
+//
+//
+//........................Roles And Responsibility Channel Admin .............................. 
+
+_includeOnce("../../../../utility/ImportPackage.sah");
+
+var $g_linkChannelAdmin = _readCSVFile("../../../GUI/testdata/Link_ChannelAdmin.csv"); // Read Links For SuperAdmin
+
+var $g_subLinkChannelAdmin = _readCSVFile("../../../GUI/testdata/SubLink_ChannelAdmin.csv"); //Read Sub Links For SuperAdmin
+
+
+
+
+
+//If CA deos not exist, first create it and then initiate O2C transfer inthe system ..... 
+var $l_naCsv = _readCSVFile("../../../GUI/testdata/NA_Login.csv"); //Reads the network admin credentials 
+var $g_channelAdmin = $l_naCsv[2][1];
+if($g_channelAdmin == "null"){
+	createCA(); // UserManagement_Common.sah
+	var $l_naCsv1 = _readCSVFile("../../../GUI/testdata/NA_Login.csv");
+	$g_channelAdmin = $l_naCsv1[2][1];
+	login($g_appURL,  $g_LangEnglish, $g_channelAdmin, $g_commonPassword, $g_assertWelcome);
+}else{	 
+	login($g_appURL,  $g_LangEnglish, $g_channelAdmin, $g_commonPassword, $g_assertWelcome);
+}
+	
+
+ // ........................ Test script .......................... //
+
+
+_assertExists(_div("/" + "Category : Channel Admin" + ".*/"));
+
+
+
+for(var $g_row = 1; $g_linkChannelAdmin[$g_row] != null; $g_row++){
+		
+	var $g_col = 0;
+	
+	
+	_assertExists(_link($g_linkChannelAdmin[$g_row][$g_col]));
+
+	if(_exists(_link($g_linkChannelAdmin[$g_row][$g_col]))){
+	
+		_click(_link($g_linkChannelAdmin[$g_row][$g_col]))
+		_log( $g_linkChannelAdmin[$g_row][$g_col] + " : link is visible");
+		
+		for(var $g_innerLink = 0;   $g_subLinkChannelAdmin[0][$g_innerLink] != null; $g_innerLink++){
+			
+			if( $g_linkChannelAdmin[$g_row][$g_col] === $g_subLinkChannelAdmin[0][$g_innerLink])
+			{
+				for(var $g_tempRow = 1; $g_subLinkChannelAdmin[$g_tempRow] != null; $g_tempRow++ ){
+					
+					if($g_subLinkChannelAdmin[$g_tempRow][$g_innerLink] == "")
+							break;
+					
+					_assertExists(_link($g_subLinkChannelAdmin[$g_tempRow][$g_innerLink]));
+					
+					if(_exists(_link($g_subLinkChannelAdmin[$g_tempRow][$g_innerLink]))){
+						_click(_link($g_subLinkChannelAdmin[$g_tempRow][$g_innerLink]))
+						_log( $g_subLinkChannelAdmin[$g_tempRow][$g_innerLink] + " : Sub-link under link " + $g_linkChannelAdmin[$g_row][$g_col] +" is visible " );
+					}
+				}
+					
+					
+				}
+				
+		}	
+			
+			
+		}
+		
+		
+		
+	}
+	
+
+
+	
+	
+	
+	
+	
+
+
+
+
+

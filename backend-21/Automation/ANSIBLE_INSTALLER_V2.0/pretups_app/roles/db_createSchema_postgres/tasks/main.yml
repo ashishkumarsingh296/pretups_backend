@@ -1,0 +1,34 @@
+---
+ - name: "DB: create pretups schema user"
+   shell: "psql -d {{ PRETUPS_POSTGRES_DB_NAME }} -f {{ item }}.sql chdir={{ BASE_DIR }}/{{ Temp_Dir }}/"
+   with_items:
+            - "{{ PRETUPS_POSTGRES_SchemaFile }}"
+   ignore_errors: yes
+   register: PretupsSchema_Db
+  # failed_when: PretupsSchema_Db.stderr != ""
+   when: ISDUMP != true
+   tags:
+     - PretupsSchema
+
+ - name: ALTER the Privileages
+   shell: "{{ item }} chdir={{ BASE_DIR }}/{{ Temp_Dir }}/"
+   with_items:
+   - psql -d {{ DEFAULT_POSTGRES_DB }} -c "ALTER ROLE {{ PRETUPS_POSTGRES_DB_USER }} IN DATABASE {{ PRETUPS_POSTGRES_DB_NAME }} SET search_path = {{ PRETUPS_POSTGRES_Schema }};"
+   ignore_errors: yes
+   register: Alter_Privileages
+  # failed_when: Alter_Privileages.stderr !=""
+  # when: Pretups_Tablespace_Creation
+  # when: ISDUMP != true
+   tags:
+     - Alter_Privilege
+
+ - name: "DB: running additional postgres queries"
+   shell: "psql -d {{ PRETUPS_POSTGRES_DB_NAME }} -f {{ item }}.sql chdir={{ BASE_DIR }}/{{ Temp_Dir }}/"
+   with_items:
+            - "{{ ManualScriptsName }}"
+   ignore_errors: yes
+   register: PretupsSchema_Db
+  # failed_when: PretupsSchema_Db.stderr != ""
+   when: IsManualScripts == true
+   tags:
+     - PretupsSchema

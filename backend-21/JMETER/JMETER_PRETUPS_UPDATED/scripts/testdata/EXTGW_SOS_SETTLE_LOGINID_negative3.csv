@@ -1,0 +1,2 @@
+TestcaseId,TestcaseType,Module,Description
+TUNG22325,Negative,SOS Settlement EXTGW,To verify that when mandatory parameters are missing then proper response is returned.

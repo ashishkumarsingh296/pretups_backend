@@ -1,0 +1,2 @@
+TestcaseId,TestcaseType,Module,Description
+TUNG12989,Positive,Postpaid Bill Payment through USSD,"To verify that TXNSTATUS field contain 200 value if ""PPB"" response is generated successfully else it display value other than 200"

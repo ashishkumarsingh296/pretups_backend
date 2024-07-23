@@ -1,0 +1,121 @@
+//######################################
+//
+//This script to add, modify, view and delete the bonus bundle in the system 
+//
+//#######################################
+
+
+//===== import scripts ===//
+_includeOnce("../../../../utility/ImportPackage.sah");
+_includeOnce("../../../GUI/testscripts/Bonus_Bundle_Management/BonusBundle_Common.sah"); //For adding C2S card group	
+
+
+
+//If Network Admin doesn't exist create it first then create network stock deduction
+
+var $l_naCsv = _readCSVFile("../../../GUI/testdata/NA_Login.csv"); //Reads the network admin credentials 
+var $g_row = 4;
+var $g_col = 1;
+var $g_networkAdmin1 = $l_naCsv[1][1];
+if($g_networkAdmin1 == "null"){  
+	createNA();  // UserManagement_Common.sah
+	var $l_naCsv1 = _readCSVFile("../../../GUI/testdata/NA_Login.csv");
+	$g_networkAdmin1 = $l_naCsv1[1][1];
+	login($g_appURL, $g_LangEnglish, $g_networkAdmin1, $g_commonPassword, $g_assertWelcome);
+}else	 
+	login($g_appURL,  $g_LangEnglish, $g_networkAdmin1, $g_commonPassword, $g_assertWelcome);
+
+ 
+
+// ....................... Test cases for bonus bundle managament ............. //
+
+var $g_bonusBundleDetails = _readCSVFile("../../../GUI/testdata/BonusBundleManagement.csv"); //Reads the Card group details
+
+
+
+	for(var $g_row = 1; $g_bonusBundleDetails[$g_row] != null; $g_row++){
+		
+				var $g_col = 0;
+				var $number =   testCaseNumber($g_bonusBundleDetails[$g_row][$g_col]);
+				
+				
+			
+				var $t = _testcase($g_bonusBundleDetails[$g_row][$g_col++], $g_bonusBundleDetails[$g_row][$g_col++]);
+			
+				$t.start();
+				
+
+
+				if($number == 1)
+				{
+					commonVaribleToAddBonusBundle($g_row, $g_col);
+					addNewBonusBundle();
+				}
+				else if($number == 2){
+				//commonVaribleToAddBonusBundle($g_row, $g_col);
+					ViewBonusBundle();
+				}
+								
+				else if($number == 3){
+					commonVaribleToAddBonusBundle($g_row, $g_col);
+					addNewBonusBundleWithoutMandoryField();
+				}
+				else if($number == 4){
+					commonVaribleToAddBonusBundle($g_row, $g_col);
+					ModifyBonusBundleWithoutMandoryField();
+				}
+				else if($number == 5){
+					commonVaribleToAddBonusBundleModification($g_row, $g_col);
+					ModifyBonusBundle();
+				}
+				else if($number > 5  && $number < 11){
+					commonVaribleToAddBonusBundle($g_row, $g_col);
+					addBonusBundle();
+				}
+								
+				else if($number ==  11 )
+					populateTypeStatus();
+				 else if($number == 12){
+					 commonVaribleToAddBonusBundle($g_row, $g_col)
+					 checkFunctionalityOfReset();
+				 }
+				 else if($number == 13){
+					 commonVaribleToAddBonusBundle($g_row, $g_col)
+					 checkFunctionalityOfBackFormConfirmPage();
+				 }
+				 else if($number == 14){
+					 commonVaribleToAddBonusBundle($g_row, $g_col)
+					 deleteMappedBonusBundle();
+				 }
+				 else if($number == 15){
+					 commonVaribleToAddBonusBundle($g_row, $g_col)
+					 addBonusBundleWithExistingName();
+				 }
+				 else if($number == 16){
+					 commonVaribleToAddBonusBundle($g_row, $g_col)
+					 verifyFunctionalityOfResetWhileModifying();
+				 }
+				 else if($number == 17){
+					 commonVaribleToAddBonusBundle($g_row, $g_col)
+					 functionalityOfBackButtonFromCnfPage();
+				 }
+				
+				
+				 
+				
+				 
+				$t.end();
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+

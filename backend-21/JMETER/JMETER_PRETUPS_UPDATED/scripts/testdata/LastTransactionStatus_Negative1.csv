@@ -1,0 +1,2 @@
+TestcaseId,TestcaseType,Module,Description
+,Negative,Last Transaction Status,To validate negative test case of Last Transfer Status while MSISDN1 is missing

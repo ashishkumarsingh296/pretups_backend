@@ -1,0 +1,76 @@
+//#######################################
+//
+// This script is to add negative cases while try to add message gateway.
+//
+//
+//#######################################
+
+
+
+_includeOnce("../../../../utility/ImportPackage.sah");
+_includeOnce("MessageGateway_Common_Negative.sah"); //For adding message gateway	
+
+
+//====Login into Application====
+login($g_appURL, $g_LangEnglish, $g_superAdmin, $g_password, $g_assertMessage); //calls the Login function in Login.sah with the parameters(url, language, username, password, assertion)
+
+
+
+//===============Add New Service Keyword ===============================//
+
+
+var $g_messageGatewayDetails = _readCSVFile("../../negative_testdata/AddMessageGateway_NegativeCases.csv");
+
+		for(var $g_row = 1; $g_messageGatewayDetails[$g_row] != null; $g_row++){
+			//for(var $g_row = 33; $g_row != 38; $g_row++){
+			var $g_col = 0;
+			var $t = _testcase($g_messageGatewayDetails[$g_row][$g_col++], $g_messageGatewayDetails[$g_row][$g_col++]);
+			$t.start();
+			commonVaribleToAddMessageGateway($g_row, $g_col);
+			addMessageGateway();
+			
+			_assertExists(_listItem("/" + $g_assertion + ".*/"));
+			
+			
+			if(_exists(_listItem("/"+$g_assertion+".*/")) == false)
+				_log("Test Case failed");
+			$t.end();
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

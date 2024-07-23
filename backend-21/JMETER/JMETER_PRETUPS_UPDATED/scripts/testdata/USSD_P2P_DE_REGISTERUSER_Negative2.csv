@@ -1,0 +1,2 @@
+TestcaseType,TestcaseId,Module,Description
+Negative,DEREG03,De-Register user API through USSD,De-Register user through USSD by leaving the required fields like msisdn

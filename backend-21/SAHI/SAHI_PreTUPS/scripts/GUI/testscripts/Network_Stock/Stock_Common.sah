@@ -1,0 +1,133 @@
+//##########################################
+//
+//
+//Objective: - Objective of this script to initiate and approve network stock
+//
+//
+//###########################################
+
+
+var $referenceNumber;
+var $requestedQuantity;
+var $initiationRemarks;
+var $firstLevelApprovalRemark;
+var $secondLevelApprovalRemark;
+var $1_error1 = 0;
+
+
+function variableForNetworkStock($a_row, $a_col){
+
+		$referenceNumber = randomNumber();
+		$requestedQuantity = $g_NetworkStock[$a_row][$a_col++];
+		$initiationRemarks = $g_NetworkStock[$a_row][$a_col++];
+		$firstLevelApprovalRemark = $g_NetworkStock[$a_row][$a_col++];
+		$secondLevelApprovalRemark = $g_NetworkStock[$a_row][$a_col++];
+}
+	
+	
+
+function NetworkStockCreation(){
+
+			var $g_row = 1;
+			var $g_col = 0;
+			var $t1 = _testcase($g_NetworkStock[$g_row][$g_col++], $g_NetworkStock[$g_row][$g_col++]);
+			$t1.start();
+			variableForNetworkStock($g_row, $g_col);
+			var $1_error = initiateNetorkStock();
+			if($1_error == false){
+				_log("Network stock can't be initiated ")
+			} else{
+				_log("Network Stock creation has been initiated")
+			}
+			$t1.end();
+				_wait(1000);
+				_closeBrowser();
+				_openBrowser();
+				
+				
+	//################  Leval 1 approval network stock  ##############//
+			
+			var $t2 = _testcase("TEST0005", "Given a network admin logs into application and approve level 1 Network stock transaction");
+				$t2.start();
+				var $g_networkAdmin1 = $l_naCsv[1][1];
+				login($g_appURL, $g_LangEnglish, $g_networkAdmin1, $g_commonPassword, $g_assertWelcome); //Login as Channel Admin
+				approveLevelOne($referenceNumber); // Function defined in ChannelUser_Common.sah for approving Channel User
+				$t2.end();
+				_log("Network Stock level one approval");
+			  
+
+  	//################# Level 2 approval network stock ##################///
+  	
+			if($1_error1 == 0){
+				var $t3 = _testcase("TEST0006", "Given a network admin logs into application and approve level 2 Network stock transaction");
+				$t3.start();
+				var $g_networkAdmin1 = $l_naCsv[1][1];
+				login($g_appURL, $g_LangEnglish, $g_networkAdmin1, $g_commonPassword, $g_assertWelcome); //Login as Channel Admin
+				approveLeveltwo($referenceNumber); // Function defined in ChannelUser_Common.sah for approving Channel User
+				$t3.end();
+				_log("Network Stock level two approval");
+					}
+		  	else
+		  		{
+		  			_log("This transaction is completed at level one. ")
+		  		}
+
+
+} 
+
+
+function initiateNetorkStock(){
+			_click(_link($g_LeftMenuBar_NetworkStock));
+			_click(_link($g_LeftMenuBar_InitiateStock));
+			_setValue(_textbox("referenceNumber"), $referenceNumber);
+			_setValue(_textbox("stockProductIndexed[0].requestedQuantity"), $requestedQuantity);
+			_setValue(_textarea("remarks"), $initiationRemarks);
+			_click(_submit($g_BtnSubmit));
+			confirmButton();
+			
+			if(_exists(_listItem("/" + $g_netwrokStockInitiation + ".*/"))){
+				return true;
+			}
+			else 
+				return false;
+}
+
+function approveLevelOne($referenceNumber){
+	_click(_link($g_LeftMenuBar_NetworkStock));
+	_click(_link($g_LeftMenuBar_LevelOneApproval));
+	_click(_radio("radioIndex", _near(_cell($referenceNumber))));
+	_click(_submit("View stock details"));
+	_setValue(_textarea("firstLevelRemarks"), $firstLevelApprovalRemark);
+	_click(_submit($g_BtnApprove));
+	
+	// if(!_assertExists(_bold($g_netwrokStockCompletion))){
+	_log("shashi 11 " + $g_netwrokStockCompletion );
+	//_assertExists(_span("Note: This is the final approval for this stock transaction."));
+	
+	if(_exists(_bold($g_netwrokStockCompletion)) == true){
+		$1_error1 = 1;
+	}
+	
+	confirmButton();
+	_assertExists(_listItem("/" + $g_netwrokStockApproval + ".*/"));	
+	
+}
+
+function approveLeveltwo($referenceNumber){
+
+	_click(_link($g_LeftMenuBar_NetworkStock));
+	_click(_link($g_LeftMenuBar_LevelTwoApproval));
+	_click(_radio("radioIndex", _near(_cell($referenceNumber))));
+	_click(_submit("View stock details"));
+	_setValue(_textarea("secondLevelRemarks"), $secondLevelApprovalRemark);
+	_click(_submit($g_BtnApprove));
+	
+	confirmButton();
+	_assertExists(_listItem("/" + $g_netwrokStockApproval + ".*/"));	
+	
+}
+
+
+function confirmButton(){
+	_click(_submit($g_BtnConfirm));	
+}

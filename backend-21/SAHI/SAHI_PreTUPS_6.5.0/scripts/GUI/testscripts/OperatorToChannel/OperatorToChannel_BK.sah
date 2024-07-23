@@ -1,0 +1,70 @@
+//#######################################
+//
+// To initiate O2C transfer 	 
+//
+//
+//#######################################
+
+
+_includeOnce("../../../../utility/ImportPackage.sah");
+_includeOnce("../../../GUI/testscripts/OperatorToChannel/OperatorToChannel_Common.sah"); //For initiate and approve O2C transaction 
+
+//======================Pre-requisite check============================
+_log("Setup", "custom4");
+
+//If CA deos not exist, first create it and then initiate O2C transfer inthe system ..... 
+var $l_naCsv = _readCSVFile("../../../GUI/testdata/NA_Login.csv"); //Reads the network admin credentials 
+var $g_channelAdmin = $l_naCsv[2][1];
+if($g_channelAdmin == "null"){
+	createCA(); // UserManagement_Common.sah
+	var $l_naCsv1 = _readCSVFile("../../../GUI/testdata/NA_Login.csv");
+	$g_channelAdmin = $l_naCsv1[2][1];
+	login($g_appURL,  $g_LangEnglish, $g_channelAdmin, $g_commonPassword, $g_assertWelcome);
+}else{	 
+	login($g_appURL,  $g_LangEnglish, $g_channelAdmin, $g_commonPassword, $g_assertWelcome);
+}
+	
+	
+//========================= Initiate a O2C transfer ==============//	
+	
+var $g_O2CTransferDetails = _readCSVFile("../../../GUI/testdata/O2CTransferDetails.csv"); //Reads the Card group details
+
+		
+		var $g_msisdn = $l_naCsv[9][1];
+		var $g_row = 1;
+		var $g_col = 0;
+		var $t = _testcase($g_O2CTransferDetails[$g_row][$g_col++], $g_O2CTransferDetails[$g_row][$g_col++]);
+		$t.start();
+		
+		O2CTransferDetails($g_msisdn);
+		initiateO2Ctransfer();
+		$t.end();
+		
+		
+// ===================================//		
+		
+		
+		
+				
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+	

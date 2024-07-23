@@ -1,0 +1,25 @@
+//###############################################
+//#Company Name: Mahindra Comviva Technologies Ltd.
+//#Application Name: Pretups
+//#Objective: To fetch Test Case number from TestCaseID
+//#Author Name: Shashi Ranjan 
+//#Created Date: 27/07/2015
+//##############################################
+
+
+/**
+ *  This function extract test case no. form test case ID
+ *  	@param[in] - Test Case ID
+ *	@return - test case no.
+ */
+
+
+
+
+var $l_temp;
+
+function testCaseNumber($l_temp) {
+	var $len = $l_temp.length;
+	var $subStr = $l_temp.substring(4,$len); 
+	return(parseInt($subStr, 10));
+}

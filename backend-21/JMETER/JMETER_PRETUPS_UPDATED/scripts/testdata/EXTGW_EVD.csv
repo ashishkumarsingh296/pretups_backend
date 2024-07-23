@@ -1,0 +1,32 @@
+DATE,EXTNWCODE,MSISDN,PIN,LOGINID,PASSWORD,EXTCODE,EXTREFNUM,MSISDN2,AMOUNT,LANGUAGE1,LANGUAGE2,SELECTOR,TestcaseId,TestcaseType,Module,Description
+,NG,7788667709,1357,,,2345345,,7211200121,110,0,0,1,TUNG13168,Positive,EVD through EXTGW,To check that EVD can be done through EXTGW when either MSISDN LOGINID or EXTCODE is present in the request message or when all three of them is present
+,NG,7788667709,1357,,,2345345,,7211200121,110,0,0,1,TUNG13169,Positive,EVD through EXTGW,To verify  that user is able to perform a successful C2S transaction through C2S XML API and correct amount is deducted from channel user when it is performed
+,NG,7788667709,1357,,,2345345,,7211200121,110,0,0,1,TUNG13170,Positive,EVD through EXTGW,"To verify  that  C2S XML API contains following parameters tags :
+TYPE
+DATE
+EXTNWCODE
+MSISDN
+PIN
+LOGINID
+PASSWORD
+EXTCODE
+EXTREFNUM
+MSISDN2
+AMOUNT
+LANGUAGE1
+LANGUAGE2
+SELECTOR"
+,NG,7788667709,1357,,,2345345,,7211200121,110,0,0,1,TUNG13171,Positive,EVD through EXTGW,To verify  that API for C2S Transfer(EVD) is successfully executed when the value of TYPE tag is EXEVDREQ
+,NG,7788667709,1357,,,2345345,,7211200121,110,0,0,1,TUNG13172,Positive,EVD through EXTGW,To verify  that user will be validated on the basis of the MSISDN and PIN if MSISDN value is available
+,NG,,,,,2345345,,7211200121,110,0,0,1,TUNG13173,Positive,EVD through EXTGW,To verify  that user will be validated on the basis of the EXTCODE if EXTCODE value is available
+,NG,,,dist1,com@123,2345345,,7211200121,110,0,0,1,TUNG13174,Positive,EVD through EXTGW,To verify  that user will be validated on the basis of the LOGINID and PASSWORD if LOGINID value is available
+,NG,7788667709,1357,dist1,com@123,2345345,,7211200121,110,0,0,1,TUNG13175,Positive,EVD through EXTGW,To verify  that user will be validated on the basis of the all the values if all three  (LOGINID EXTCODE and MSISDN) values are available
+,,7788667709,1357,,,2345345,,7211200121,110,0,0,1,TUNG13176,Negative,EVD through EXTGW,"To verify  that API for C2S Transfer(EVD) XML API is not successfully executed if value in field ""EXTNWCODE"" is missing for C2S Transfer(EVD)"
+,NG,7788667709,,,,2345345,,7211200121,110,0,0,1,TUNG13177,Negative,EVD through EXTGW,"To verify  that API for C2S Transfer(EVD) XML API is not successfully executed if value in field ""PIN"" is missing for C2S Transfer(EVD)"
+,NG,7788667709,1357,,,2345345,,,110,0,0,1,TUNG13178,Negative,EVD through EXTGW,"To verify  that API for C2S Transfer(EVD) XML API is not successfully executed if value in field ""MSISDN2"" is missing for C2S Transfer(EVD)"
+,NG,7788667709,1357,,,2345345,,7211200121,,0,0,1,TUNG13179,Negative,EVD through EXTGW,"To verify  that API for C2S Transfer(EVD) XML API is not successfully executed if value in field ""AMOUNT"" is missing for C2S Transfer(EVD)"
+,NG,7788667709,1357,,,2345345,,7211200121,110,0,0,,TUNG13180,Negative,EVD through EXTGW,"To verify  that API for C2S Transfer(EVD) XML API is not executed if value in field ""SELECTOR"" is missing for C2S Transfer(EVD)"
+,NG,7788667709,1357,,,2345345,,7211200121,110,0,0,1,TUNG13181,Positive,EVD through EXTGW,"To verify that Transaction ID is generated against each C2S Transfer(EVD) request with TAG ""TXNID"""
+,NG,7788667709,1357,,,2345345,,7211200121,110,0,0,1,TUNG13182,Positive,EVD through EXTGW,To verify  that in response XML API for C2S Transfer(EVD) is successfully executed when the value of TYPE tag is EXEVDRESP
+,NG,7788667709,1357,,,2345345,,7211200121,110,0,0,1,TUNG13183,Positive,EVD through EXTGW,To verify  that response XML is not received without the DATE mentioned in it.
+,NG,7788667709,1357,,,2345345,,7211200121,110,0,0,1,TUNG13184,Positive,EVD through EXTGW,"To verify that Response message is generated against each C2S Transfer(EVD) request with TAG ""MESSAGE"""

@@ -1,0 +1,68 @@
+//#######################################
+//
+// This script to add and modify new department
+//
+//#######################################
+
+
+
+_includeOnce("../../../../utility/ImportPackage.sah");
+_includeOnce("../../../GUI/testscripts/DivisionAndDepartmentMgmt/DivisionAndDepartment_Common.sah"); //For adding C2S card group	
+
+
+//======================Pre-requisite check============================
+_log("Setup", "custom4");
+
+//====Login into Application====
+login($g_appURL, $g_LangEnglish, $g_superAdmin, $g_password, $g_assertMessage); //calls the Login function in Login.sah with the parameters(url, language, username, password, assertion)
+
+
+//==================== Create a channel to subscriber card group ==================//
+_log("Setup", "custom4");
+
+
+var $l_naCsv = _readCSVFile("../../../GUI/testdata/NA_Login.csv");
+var $l_divisionType = $l_naCsv[15][1];
+var $p_divisionName = $l_naCsv[15][2];
+
+addAndModifyDepartName(); 
+
+//==================================================
+_log("Tear Down", "custom4");
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,35 @@
+---
+ - name: copying apache-tomcat-8
+   remote_user: "{{ USER_NAME }}"
+   become: yes
+   unarchive: src={{ tomcat_name }}.tar.gz dest=~/ creates=no mode=0755 owner={{ USER_NAME }} group={{ GROUP_NAME }}
+
+
+
+
+ - name: print the tomcat name
+   debug: msg="tomcat is {{ tomcat_name }}"
+
+ - name: registering a variable with the tomcat patch directory FOR WEB
+   remote_user: "{{ USER_NAME }}"
+   become: yes
+   shell: /bin/pwd chdir=~/{{ tomcat_name }}
+   register: tomcat_path
+
+ - name: Copying pretupsStart.sh- not always  required
+   become: true
+   remote_user: "{{ USER_NAME }}"
+   ansible.builtin.copy:
+     src: pretupsStart.sh
+     dest: "{{ tomcat_path.stdout }}/bin/"
+     owner: "{{ USER_NAME }}"
+     group: "{{ GROUP_NAME }}"
+     mode:  0755
+
+
+ - name: print tomcat_path
+   debug: msg="tomcat_path is {{ tomcat_path.stdout }}"
+
+ - name: print environment path variable of pretups user
+   debug: msg="pretups path variable is {{ ansible_env.PATH }}"
+

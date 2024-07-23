@@ -1,0 +1,21 @@
+TestcaseId,TestcaseType,Module,Description
+,Positive,Customer Recharge,To verfiy that C2S recharge is successful with only MSISDN and PIN.
+,Positive,Customer Recharge,To verfiy that C2S recharge is successful with only Login ID and Password.
+,Positive,Customer Recharge,To verfiy that C2S recharge is successful with only EXTCODE
+,Positive,Customer Recharge,To verfiy that C2S recharge is successful with ALL
+,Positive,Customer Recharge,To verify C2S recharge is successful if channel user is barred as receiver.
+,Positive,Customer Recharge,To verify C2S recharge is successful if Date is not present
+,Positive,Customer Recharge,To verify C2S recharge is successful if user is insuspended
+,Negative,Customer Recharge,To verify C2S recharge is not successful if user is outsuspended
+,Negative,Customer Recharge,To verify C2S recharge is not successful if TCP is suspended
+,Negative,Customer Recharge,To verify C2S recharge is not successful if channel user is suspended
+,Negative,Customer Recharge,To verify C2S recharge is not successful if channel user barred as sender
+,Negative,Customer Recharge,To verify C2S not successful if EXTNWCODE not present
+,Negative,Customer Recharge,To verify C2S not successful if  EXTNWCODE invalid
+,Negative,Customer Recharge,To verify C2S not successful if Password is invalid
+,Negative,Customer Recharge,To verify C2S not successful if Password is missing when Login ID present
+,Positive,Customer Recharge,To verify C2S is successful if external reference number is not unique
+,Negative,Customer Recharge,To verify C2S not successful if MSISDN2 is missing
+,Negative,Customer Recharge,To verify C2S not successful if Amount is not present
+,Positive,Customer Recharge,"To verify C2S is successful if Selector is missing, as it perform transaction with default selector value in system"
+,Negative,Customer Recharge,To verify C2S not successful if Amount present is negative

@@ -1,0 +1,88 @@
+//######################################
+//
+// This script to approve initiated FOC transfer ..... 
+//
+//#######################################
+
+
+//===== import scripts ===//
+_includeOnce("../../../../utility/ImportPackage.sah");
+_includeOnce("../../../GUI/testscripts/OperatorToChannel/FOCApproval_Common.sah"); //To approve initiated FOC trasnfer in the system 
+
+
+
+//If CA deos not exist, first create it and then initiate O2C transfer inthe system ..... 
+var $l_naCsv = _readCSVFile("../../../GUI/testdata/NA_Login.csv"); //Reads the network admin credentials 
+var $g_channelAdmin = $l_naCsv[2][1];
+if($g_channelAdmin == "null"){
+	createCA(); // UserManagement_Common.sah
+	var $l_naCsv1 = _readCSVFile("../../../GUI/testdata/NA_Login.csv");
+	$g_channelAdmin = $l_naCsv1[2][1];
+	login($g_appURL,  $g_LangEnglish, $g_channelAdmin, $g_commonPassword, $g_assertWelcome);
+}else{	 
+	login($g_appURL,  $g_LangEnglish, $g_channelAdmin, $g_commonPassword, $g_assertWelcome);
+}
+	
+
+ 
+
+// ....................... Test cases to approve initiated the FOC transfer in the system  ............. //
+
+var $g_approveFOCTransfer = _readCSVFile("../../../GUI/testdata/ApproveFOCTransfer.csv"); //Reads the O2C transfer details 
+
+
+
+	for(var $g_row = 1; $g_approveFOCTransfer[$g_row] != null; $g_row++){
+		
+				var $g_col = 0;
+				var $number =   testCaseNumber($g_approveFOCTransfer[$g_row][$g_col]);
+				var $t = _testcase($g_approveFOCTransfer[$g_row][$g_col++], $g_approveFOCTransfer[$g_row][$g_col++]);
+				
+				
+				$t.start();
+				commonVaribleToApproveFOC($g_row, $g_col);
+				
+				
+				
+				
+				if($number == 1){ viewInitiatedFOCTransfer(); }
+				else if($number > 1 && $number < 5){ invalidMSISDForFOCTransfer(); }
+				else if ($number == 5 ) { toChecKResetButtonOnSearchChannelUser(); }
+				else if ($number == 6 ) { toChecKBackButtonOnFOCOrderListPage(); }
+				else if ($number == 7 ) { toChecKBackButtonOnLevelOnePage(); }
+				else if ($number == 8 ) { toChecKRejectButtonOnLevelOnePage(); }
+				else if ($number == 9 ) { toChecKResetButtonOnLevelOnePage(); }
+				else if ($number == 10 ) { toChecKBackButtonOnLevelOnePage(); }
+				else if ($number == 11 ) { toChecKApprovekButtonOnLevelOnePage(); }
+				else if ($number == 12 ) { toChecKBackButtonOnConfirmationPage(); }
+				else if ($number == 13 ) { toChecKCancelButtonOnConfirmationPage(); }
+				else if ($number == 14 ) { approvalFOCAtLevelOne(); }
+				else if ($number == 15 ) { viewFOCTransferAtLevelTwoApproval(); }
+				else if ($number == 16 ) { approveFOCTransferAtLevelTwo(); }
+				
+				
+				
+				
+				
+				
+				else if ($number == 9 || $number == 17  ) { invalidTxnDate(); }
+				else if($number > 9 && $number < 17){ invalidDetailsForO2CApproval(); }
+				
+				
+			
+				
+				$t.end();
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+

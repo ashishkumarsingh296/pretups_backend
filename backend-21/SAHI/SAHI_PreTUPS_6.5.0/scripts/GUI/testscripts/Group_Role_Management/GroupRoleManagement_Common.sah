@@ -1,0 +1,111 @@
+
+
+
+
+_includeOnce("../../../../utility/ImportPackage.sah");
+ 
+var $l_naCsv = _readCSVFile("../../../GUI/testdata/NA_Login.csv");
+
+
+var $g_domain;
+var $g_category;
+var $g_roleCode;
+var $g_roleName;
+var $g_groupName;
+var $g_fromHour;
+var $g_toHour;
+var $g_assertion;
+
+
+
+
+
+function commonVariableForGroupRole($g_row, $g_col) {
+	$g_domain = $g_GroupRolesDetails[$g_row][$g_col++];
+	$g_category = $g_GroupRolesDetails[$g_row][$g_col++];;
+	$g_roleCode = $g_GroupRolesDetails[$g_row][$g_col++];;
+	$g_roleName = $g_GroupRolesDetails[$g_row][$g_col++];;
+	$g_groupName = $g_GroupRolesDetails[$g_row][$g_col++];;
+	$g_fromHour = $g_GroupRolesDetails[$g_row][$g_col++];;
+	$g_toHour = $g_GroupRolesDetails[$g_row][$g_col++];;
+	$g_assertion = $g_GroupRolesDetails[$g_row][$g_col++];;
+	
+}
+
+
+
+
+function addGroupRole() {
+	_click(_link("Masters"));
+	_click(_link("Group role management"));
+	_setSelected(_select("domainCode"), $g_domain);
+	_setSelected(_select("categoryCode"), $g_category);
+	_click(_submit($g_BtnSubmit));
+	_assertExists(_div("Group roles list"));
+	_click(_submit($g_BtnAdd));
+	_setValue(_textbox("roleCode"), $g_roleCode);
+	_setValue(_textbox("roleName"), $g_roleName);
+	_setValue(_textbox("groupName"), $g_groupName);
+	_setValue(_textbox("fromHour"), $g_fromHour);
+	_setValue(_textbox("toHour"), $g_toHour);
+	_click(_checkbox("checkall"));
+	_click(_submit($g_BtnSave));
+	_click(_submit($g_BtnConfirm));
+	
+	_assertExists(_listItem("/"+ $g_assertion + ".*/"));
+	
+}
+
+function addGroupRoleWithoutDomain() {
+	_click(_link("Masters"));
+	_click(_link("Group role management"));
+	_setSelected(_select("domainCode"), $g_domain);
+	_setSelected(_select("categoryCode"), $g_category);
+	_click(_submit($g_BtnSubmit));
+	_assertExists(_listItem("/"+ $g_assertion + ".*/"));
+} 
+
+
+function addGroupRoleWithoutRoleCode() {
+	_click(_link("Masters"));
+	_click(_link("Group role management"));
+	_setSelected(_select("domainCode"), $g_domain);
+	_setSelected(_select("categoryCode"), $g_category);
+	_click(_submit($g_BtnSubmit));
+	_assertExists(_div("Group roles list"));
+	_click(_submit($g_BtnAdd));
+	_setValue(_textbox("roleCode"), $g_roleCode);
+	_setValue(_textbox("roleName"), $g_roleName);
+	_setValue(_textbox("groupName"), $g_groupName);
+	_setValue(_textbox("fromHour"), $g_fromHour);
+	_setValue(_textbox("toHour"), $g_toHour);
+	_click(_checkbox("checkall"));
+	_click(_submit($g_BtnSave));
+	_assertExists(_listItem("/"+ $g_assertion + ".*/"));
+	
+}
+
+
+function modifyGroupRole() {
+	
+	_click(_link("Masters"));
+	_click(_link("Group role management"));
+	_setSelected(_select("domainCode"), $g_domain);
+	_setSelected(_select("categoryCode"), $g_category);
+	_click(_submit($g_BtnSubmit));
+	_assertExists(_div("Group roles list"));
+	_click(_radio("code", _near(_cell($g_roleName))));
+	_click(_submit("Modify"));
+	_setValue(_textbox("roleCode"), $g_roleCode);
+	_setValue(_textbox("roleName"), $g_roleName);
+	_setValue(_textbox("groupName"), $g_groupName);
+	_setValue(_textbox("fromHour"), $g_fromHour);
+	_setValue(_textbox("toHour"), $g_toHour);
+	_click(_checkbox("checkall"));
+	_click(_submit($g_BtnSave));
+	_assertExists(_listItem("/"+ $g_assertion + ".*/"));
+	
+}
+
+
+

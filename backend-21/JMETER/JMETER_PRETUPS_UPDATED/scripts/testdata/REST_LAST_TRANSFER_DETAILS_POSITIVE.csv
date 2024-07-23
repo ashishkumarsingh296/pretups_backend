@@ -1,0 +1,5 @@
+TestcaseId,TestcaseType,Module,Description
+,Positive,Last Transfer Details,To check that a user is able to enquire its Last Transfer Details by entering MSISDN and PIN
+,Positive,Last Transfer Details,To check that a user is able to enquire its Last Transfer Details by entering LoginId and Password
+,Positive,Last Transfer Details,To check that a user is able to enquire its Last Transfer Details by entering External Code
+,Positive,Last Transfer Details,To check that a user is able to enquire its Last Transfer Details by entering MSISDN_PIN LoginId_Password and ExternalCode

@@ -1,0 +1,4 @@
+IMEI,EXTNWCODE,DATE,MSISDN,PIN,LANGUAGE1,TestcaseId,TestcaseType,Module,Description
+,NG,05-09-2016,7255555555,1357,,TUNG13010,Positive,LMS Point enquiry through USSD,To verify that Channel User can enquire their Loyalty Points Enquiry through USSD
+,NG,05-09-2016,7255555555,2468,,TUNG13011,Negative,LMS Point enquiry through USSD,To verify that Channel User can enquire their Loyalty Points Enquiry through USSD if Channel User PIN is incorrect
+,NG,05-09-2016,7255555555,1357,,TUNG13012,Negative,LMS Point enquiry through USSD,To verify that Channel User can not enquire their Loyalty Points Enquiry through USSD if Channel User do not have any loyality points

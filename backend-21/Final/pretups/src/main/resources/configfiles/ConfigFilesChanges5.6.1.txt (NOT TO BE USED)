@@ -1,0 +1,195 @@
+####################################New entries for PreTUPS5.6.1########################################################################
+
+#######################Start here for Constants.props ###########################################################
+##			Entries For Corporate IAT Recharge    		##
+iatBulkRegFileUploadPath=C:/Pretups_log/iatFileUpload/
+iatArchiveDirectoryPath=C:/Pretups_log/iatFileUpload/iatArchive/
+MAX_IAT_RESTRICTED_LIST_SIZE=5000
+
+
+######   Entries for bulk update of SIM transactionID  ######
+## Upload file path and delimeter for SIM txn id updation in bulk
+UploadFileForBulkUpdationOfTempTxnIDPath=C:/tomcat-5/logs/BulkTxnID/
+DelimiterForUploadedFileForBulkUpdationOfTempTxnID=,
+## Archive file path for temp txn id updation in bulk after processing
+ArchiveFilePathForBulkUpdationOfTempTxnID=C:/tomcat-5/logs/UpdatedInBulk/
+NO_OF_FILE_CONTENTS_FOR_BULK_UPDATION_OF_TEMP_TXN_ID=5000
+OTHER_FILE_SIZE_FOR_BULK_UPDATION_OF_TEMP_TXN_ID=5242880
+
+####### ENd for bulk update of SIM transactionID ####
+
+###### Added by Amit Raheja ########################
+DownloadC2STransferEnqPath=/home/pretups_mobinil54/tomcat5_web/logs/download
+DownloadC2STransferEnqtFileName=C2STransferDetails
+######### Addition ends ######################
+
+###############ADDED by Harpreet for EVR###############################
+HUAWEI_POOL_IN_IDS=INTID00011
+HUAWEIEVR_DB_POOL_IN_IDS=INTID00011
+##############Addition Ends###################################
+
+
+##############Added for sending the EMAIL Notification during the Enable vouchers less than the defined threshhold####
+VOUCHER_ALERT_MAIL_NOTIFICATION_REPORT_FILE_PATH=C:\\
+VOUCHER_ALERT_MAIL_NOTIFICATION_REPORT_FILE_PRIFIX=VOUCHERALERTSTATUS
+VOUCHER_ALERT_MAIL_NOTIFICATION_REPORT_MAIL_SEND=Y
+VOUCHER_ALERT_MAIL_NOTIFICATION_REPORT_MAIL_DEFAULT=shamit.jain@comviva.com
+VOUCHER_ALERT_MAIL_NOTIFICATION_REPORT_MAIL_FROM=shamit.jain@comviva.com
+VOUCHER_ALERT_MAIL_NOTIFICATION_REPORT_MAIL_SUBJECT=Voucher Alert Status Report
+VOUCHER_ALERT_MAIL_NOTIFICATION_REPORT_MAIL_BCC=
+VOUCHER_ALERT_MAIL_NOTIFICATION_REPORT_MAIL_CC=
+VOUCHER_ALERT_MAIL_NOTIFICATION_REPORT_MAIL_MESSAGE=Voucher Alert Status Report. Please find the attached sheet
+
+
+#####################Added By Harpreet For Email Notification for Low Balance Alert######################################
+AUTH_NEEDED_SMTP_NOTIFICATION=Y
+LOW_BALANCE_ALERT_NOTIFICATION_FROM=harpreet.kaur@comviva.com
+LOW_BALANCE_ALERT_NOTIFICATION_SUBJECT=Low balance alert
+LOW_BALANCE_ALERT_NOTIFICATION_CONTENT=Balance of a channel user is below alerting balance
+USER_NAME=harpreet.kaur@comviva.com
+PASSWORD=abac@1357
+CHANNELUSER_MSISDN=Channel user Msisdn:
+CHANNELUSER_Name=Channel user name:
+
+
+
+########## Added by Anu Garg for C2S or C2C transaction spacific dial##############
+UploadFileForC2sC2cTransSummaryRptPath=C:/logs/c2sc2ctranssummary/
+DelimiterForUploadedFileForC2sC2cTransSummaryRpt=,
+## Archive file path for 
+ArchiveFilePathForC2sC2cTransSummaryRpt=C:/logs/c2sc2ctranssummaryarch/
+## Upload file size of other files in bytes (1024 - 1KB, 10240 - 10KB, 1048576 - 1MB,5242880 - 5 MB)
+OTHER_FILE_SIZE_FOR_C2SC2CTRANSSUMMARY=5242880
+## Entry for no. of contents check in the file for c2c or c2s transaction summary
+NO_OF_CONTENTS_FOR_C2SC2CTRANSSUMMARY=5000
+
+#size of window
+C2SC2CTRANSSUMMARY_POPUP_WINDOW_SIZE=resizable=yes,status=no,scrollbars=yes,width=600,height=750,top=100,left=100
+
+## Size details for the error message popup window
+C2SC2CTRANSSUMMARY_ERRORMSG_POPUP_WINDOW_SIZE=resizable=yes,status=no,scrollbars=yes,width=500,height=550,top=100,left=100
+
+###Xls filename and filepath
+DownloadBatchC2STransSummaryFileNamePrefix=C2STransaction_
+DownloadBatchC2STransSummaryRptPath=C:\\logs\\userC2STransSummary\\
+DownloadBatchC2CTransSummaryFileNamePrefix=C2CTransaction_
+DownloadBatchC2CTransSummaryRptPath=C:\\logs\\userC2CTransSummary\\
+
+#entries for Hourly RP2P DWH process(all the directories must be exixt because script will not create directory automatically).
+#below are the source server parameter entries (db server where C2S DWH will be generated)
+HOURLYC2SDWH_HOSTIP=172.16.7.172
+HOURLYC2SDWH_USERNAME=oracle
+HOURLYC2SDWH_PASSWORD=oracle123
+HOURLYC2SDWH_SERVERDIR=/datadisk1/oracle/c2sdwh
+#below is the local server detail where cron script execute.
+HOURLYC2SDWH_LOCALDIR=/disk1/pretups3/c2sdwh
+#below are the destination server details, where hourly C2S DWH csv file need to put.
+HOURLYC2SDWH_DESTHOSTIP=172.16.7.172
+HOURLYC2SDWH_DESTUSERNAME=oracle
+HOURLYC2SDWH_DESTPASSWORD=oracle123
+HOURLYC2SDWH_DESTSERVERDIR=/datadisk1/oracle/c2sdwh1
+
+
+#######################Ends here for Constants.props#############################################################
+
+
+----------------------------------------------------------------------------------------------------------------
+
+
+#######################Start here for LogConfig.props ###########################################################
+# ***********  Added By Babu Kunwar For Corporate IAT Recharge Logging   ************** #
+## Log file configuration entries for IATAssociateMSISDNFileProcessingLog,
+## IATAssociateMSISDNFileProcessingLog file processing logs will be written in this file
+log4j.logger.com.btsl.pretups.logging.IATAssociateMSISDNFileProcessingLog=INFO,IATAssociateMSISDNFileProcessingLog
+log4j.additivity.com.btsl.pretups.logging.IATAssociateMSISDNFileProcessingLog=false
+log4j.appender.IATAssociateMSISDNFileProcessingLog=org.apache.log4j.DailyRollingFileAppender
+log4j.appender.IATAssociateMSISDNFileProcessingLog.File=C:/Pretups_log/pretups553_logs/IATAssociateMSISDNFileProcessingLog.log
+#log4j.appender.IATAssociateMSISDNFileProcessingLog.MaxFileSize=100KB
+log4j.appender.IATAssociateMSISDNFileProcessingLog.DatePattern='.'yyyy-MM-dd
+log4j.appender.IATAssociateMSISDNFileProcessingLog.layout=org.apache.log4j.PatternLayout
+log4j.appender.IATAssociateMSISDNFileProcessingLog.layout.ConversionPattern=%d   %m%n 
+
+## Log file configuration entries for IATRestrictedMSISDNLog,
+## IATRestrictedMSISDNLog file processing logs will be written in this file
+log4j.logger.com.btsl.pretups.logging.IATRestrictedMSISDNLog=INFO,IATRestrictedMSISDNLog
+log4j.additivity.com.btsl.pretups.logging.IATRestrictedMSISDNLog=false
+log4j.appender.IATRestrictedMSISDNLog=org.apache.log4j.DailyRollingFileAppender
+log4j.appender.IATRestrictedMSISDNLog.File=C:/Pretups_log/pretups553_logs/IATRestrictedMSISDNLog.log
+#log4j.appender.IATRestrictedMSISDNLog.MaxFileSize=100KB
+log4j.appender.IATRestrictedMSISDNLog.DatePattern='.'yyyy-MM-dd
+log4j.appender.IATRestrictedMSISDNLog.layout=org.apache.log4j.PatternLayout
+log4j.appender.IATRestrictedMSISDNLog.layout.ConversionPattern=%d   %m%n
+
+## Log file configuration entries for IATScheduleTopupLogs,
+## IATScheduleTopupLogs file processing logs will be written in this file
+log4j.logger.com.btsl.pretups.logging.IATScheduleTopupLogs=INFO,IATScheduleTopupLogs
+log4j.additivity.com.btsl.pretups.logging.IATScheduleTopupLogs=false
+log4j.appender.IATScheduleTopupLogs=org.apache.log4j.DailyRollingFileAppender
+log4j.appender.IATScheduleTopupLogs.File=C:/Pretups_log/pretups553_logs/IATScheduleTopupLogs.log
+#log4j.appender.IATScheduleTopupLogs.MaxFileSize=100KB
+log4j.appender.IATScheduleTopupLogs.DatePattern='.'yyyy-MM-dd
+log4j.appender.IATScheduleTopupLogs.layout=org.apache.log4j.PatternLayout
+log4j.appender.IATScheduleTopupLogs.layout.ConversionPattern=%d   %m%n
+
+
+
+
+#######################Ends here for LogConfig.props#############################################################
+
+----------------------------------------------------------------------------------------------------------------
+
+
+#######################Start here for struts-config.xml##########################################################
+#added by jasmine kaur
+/WEB-INF/classes/configfiles/messages/validation-messages.xml,
+
+
+#######################Ends here for struts-config.xml###########################################################
+
+----------------------------------------------------------------------------------------------------------------
+
+
+#######################Start here for validator-rules.xml########################################################
+
+
+
+
+
+#######################Ends here for validator-rules.xml#########################################################
+
+----------------------------------------------------------------------------------------------------------------
+
+
+#######################Start here for web.xml####################################################################
+######################ADDED by Harpreet for EVR#########################################
+<servlet>
+    <servlet-name>HuaweiEVRTestServlet</servlet-name>
+    <servlet-class>com.btsl.pretups.inter.huaweievr.HuaweiEVRTestServlet</servlet-class>
+    <init-param>
+            <param-name>HuaweiEVRxmlfilepath</param-name>
+            <param-value>/WEB-INF/classes/configfiles/INFiles/HuaweiEVRValRequestResponse.props</param-value>
+    </init-param>
+    <load-on-startup>6</load-on-startup>
+</servlet>
+<servlet>
+    <servlet-name>HuaweiEVRDBPoolLoaderServlet</servlet-name>
+    <servlet-class>com.btsl.pretups.inter.huaweievr.HuaweiEVRDBPoolLoaderServlet</servlet-class>
+    <load-on-startup>3</load-on-startup>
+</servlet>
+
+
+<servlet-mapping>
+    <servlet-name>HuaweiEVRTestServlet</servlet-name>
+    <url-pattern>/HuaweiEVRTestServlet</url-pattern>
+  </servlet-mapping>
+<servlet-mapping>
+   <servlet-name>HuaweiEVRDBPoolLoaderServlet</servlet-name>
+   <url-pattern>/HuaweiEVRDBPoolLoaderServlet</url-pattern>
+</servlet-mapping>
+######################Addition ends#########################################
+
+
+
+#######################Ends here for web.xml#####################################################################
+
+####################################PreTUPS5.6.1 Entries ends ######################################################################

@@ -1,0 +1,10 @@
+TestCaseNo.,Discription,Grade Code,Grade Name,Assertion
+TEST001,Try to submit without providing any grade details.,,,Grade code is required.
+TEST002,Try to submit only with grade code,CODE,,Grade name is required.
+TEST003,Try to submit only with grade name,,Test01,Grade code is required.
+TEST004,Try to submit category code having one space,CO DE,,Grade code should be alphanumeric single word.
+TEST005,Try to submit category code contaning special charactor,CODE*12,,Grade code should be alphanumeric single word.
+TEST006,Try to submit category code consist of special charactor,!@#$,,Grade code should be alphanumeric single word.
+TEST007,Try to submit category code contaning decimal value,1.1,,Grade code should be alphanumeric single word.
+TEST008,Try to submit negative number as category code,-100,,Grade code should be alphanumeric single word.
+TEST009,Try to submit category code as number having space,1 1,,Grade code should be alphanumeric single word.

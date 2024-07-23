@@ -1,0 +1,22 @@
+TestCaseNo. ,Discription,MSISDN,ExtNumber,Ext. Date ,App. Quan,Remarks ,Assertion
+TEST001,Given that channel admin loggin into application and verify that initated O2C transfer is waiting for approval,7233333333,,,,Approved ,
+TEST002,Veify that channel admin can't initiate approval without giving MSISDN or other channel user  details ,,,,,Approved ,Mobile number is required.
+TEST003,"Verify that, when you entered the MSIDN which is not initiated for O2C, it'll give error",7200000001,,,,Approved ,not found
+TEST004,Verify that you cant enter the user MSISDN which is not valid for O2C approval,720,,,,Approved ,MSISDN is incorrect.
+TEST005,Verify the functionality of reset button on select domain page(for search channel user),7233333333,,,,Approved ,
+TEST006,"Verify the functionality of back button on O2C trasnfer details page, which'll take back to u on search domain page",7233333333,,,,Approved ,
+TEST007,Verify the fuctionality of back button on transfer approve level one page,7233333333,,,,Approved ,
+TEST008,Verify that channel admin can reject the intiated O2C tranfer ,7233333333,,,,Approved ,
+TEST009,Verify that external tx no. is required while approving O2C transfer in the system ,7233333333,,calendar-icon.gif,100,Approved ,External TXN number is required
+TEST010,Verify that transaction date is required while going to approve O2C transfer in the system,7233333333,123564,,100,Approved ,External TXN date is required
+TEST011,"Verify that, zero amount cant be approved",7233333333,123564,calendar-icon.gif,0,Approved ,"Approval quantity for product eTopUP, should be greater than zero."
+TEST012,"Verify that you entered the amount which is not valid, then it will display an error msg ",7233333333,123564,calendar-icon.gif,10 0,Approved ,"Approval quantity for product eTopUP, should be numeric."
+TEST013,"Verify that, you cant approve quantity more than requested quantity in the system ",7233333333,123564,calendar-icon.gif,110,Approved ,Approval 1 quantity should not be greater than requested quantity
+TEST014,Verify that you can not be approve negative quantity in the system ,7233333333,123564,calendar-icon.gif,-100,Approved ,"Approval quantity for product eTopUP, should be greater than zero."
+TEST015,Verify that external code cant be non numeric ,7233333333,Shashi,calendar-icon.gif,100,Approved ,External TXN number should be positive and non fractional numeric value.
+TEST016,Verify that external transasction number cant have special character ,7233333333,454@3,calendar-icon.gif,100,Approved ,External TXN number should be positive and non fractional numeric value.
+TEST017,Verify that you cant enter the invalid date in external transaction field ,7233333333,124545,calendar-icon.gif,100,Approved ,External TXN date is not valid
+TEST018,"Verify that after submitting all the the correct details, it'll go to confirm page ",7233333333,124545,calendar-icon.gif,100,Approved ,
+TEST019,Verify the functionality of back button on trnasfer level one approval confirm page,7233333333,124545,calendar-icon.gif,100,Approved ,
+TEST020,"Verify the functionality of cancel button on, O2C approval level one confirm page",7233333333,124545,calendar-icon.gif,100,Approved ,
+TEST021,Verify that channel admin can approve the requested qunatity of O2C transfer,7233333333,124545,calendar-icon.gif,100,Approved ,

@@ -1,0 +1,10 @@
+java -jar utilities-keystore-1.0.8-SNAPSHOT.jar  C:/login_certs 1 pretups_trunk_dev
+Key Store Full path |C:/login_certs/aespassEnanT.jks
+-------------------------------
+Key Store Password |3bf238653b8a5467f4a8849a53b320da
+-------------------------------
+Plain Text Password | Alias Name | key store Key password | Encrypted Password
+------------------------------------------------------------------------------
+keystore passwordhlUNXobN
+pretups_trunk_dev|SCHEMA_EhCs2|a53f72edc078b523e5042eccc0ba8ef3|ATXPB9b5AjuUnNOrNKlNd+6sZo3osrFmYsQLtWBmLIuauW68aYiitVmOxrOEUiSbafE=
+------------------------------------------------------------------------------

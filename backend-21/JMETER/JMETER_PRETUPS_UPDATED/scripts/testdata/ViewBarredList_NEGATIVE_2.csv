@@ -1,0 +1,2 @@
+TestcaseId,TestcaseType,Module,Description
+Negative,View barred list through RESTFul API,View barred list through RESTFul API,To verify msisdn is valid or not

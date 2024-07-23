@@ -1,0 +1,2 @@
+PRODUCTCODE,QTY,LANGUAGE1,TestcaseId,TestcaseType,Module,Description
+101,90,,TUNG13098,Negative,Channel to Channel Transfer,with only Login Id and  no Password

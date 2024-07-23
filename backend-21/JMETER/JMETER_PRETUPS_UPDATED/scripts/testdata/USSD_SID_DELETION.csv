@@ -1,0 +1,6 @@
+MSISDN,SID,TestcaseId,TestcaseType,Module,Description
+7299999992,1.11E+14,TUNG12882 ,P,Private Recharge: SID deletion,To verify that an already registered subscriber can initate deletion request
+,,TUNG12883,N,Private Recharge: SID deletion,To verify that deletion request fails on if mandatory field is not filled
+7245896780,,TUNG12884,P,Private Recharge: SID deletion,To verify that an unregistered subscriber cannot initate deletion request
+7285968596,,TUNG12885 ,N,Private Recharge: SID deletion,To verify that deletion request fails on if sid is not filled
+,1.11E+14,TUNG12886 ,N,Private Recharge: SID deletion,To verify that deletion request fails on if msidn is not filled

@@ -1,0 +1,187 @@
+
+
+// This scripts contains all method to suspend and resume user hierarchy in the system
+
+_includeOnce("../../../../utility/ImportPackage.sah");
+
+var $l_naCsv = _readCSVFile("../../../GUI/testdata/NA_Login.csv");
+
+
+	var $g_msisdn;
+	var $g_assertion;
+	var $a_Prefix;
+	
+	var $g_geoDomain;
+	var $g_domain;
+	
+	
+	
+	
+	function commonVaribleToSuspendResumeUserHierarchy($g_row, $g_col) {
+		
+		$g_msisdn = $g_suspendApproveUserHierarchy[$g_row][$g_col++];
+		$g_assertion = $g_suspendApproveUserHierarchy[$g_row][$g_col++];
+		
+	}
+	
+	
+	// Common methods to suspend and resume channel user hierarchy in the system 
+	
+
+// .............................. Shashi is here ....................................... //
+	
+	
+	// To suspend user hierarchy in the system 
+	
+	function test11() {
+		
+		_click(_link("Channel user transfer"));
+		_click(_link("Suspend user hierarchy"));
+		_assertExists(_div("Select parent user to suspend user"));
+		_setValue(_textbox("msisdn"), "7233333333");
+		_click(_submit("Submit"));
+		_click(_submit("Back"));
+		_click(_submit("Submit"));
+		_assertExists(_div("Suspend user hierarchy"));
+		_click(_submit("Confirm"));
+	}
+	
+	
+	function commonMethodToSuspendUserHirarchy() {
+		_click(_link("Channel user transfer"));
+		_click(_link("Suspend user hierarchy"));
+		_assertExists(_div("Select parent user to suspend user"));
+		_setValue(_textbox("msisdn"), $g_msisdn);
+		_click(_submit("Submit"));
+	}
+	
+	function checkSubmitButtonOnSuspendUserHirarchyPage() {
+		_click(_link("Channel user transfer"));
+		_click(_link("Suspend user hierarchy"));
+		_assertExists(_div("Select parent user to suspend user"));
+		_assertExists(_submit("Submit"));
+	}
+	
+	function verifyValuesInGeoDomainDropDown() {
+		
+		$g_geoDomain  = $g_suspendApproveUserHierarchy[$g_row][$g_col++];
+		_click(_link("Channel user transfer"));
+		_click(_link("Suspend user hierarchy"));
+		_assertExists(_div("Select parent user to suspend user"));
+		_setSelected(_select("zoneCode"), 1);
+		if(_getSelectedText(_select("zoneCode")) == $g_geoDomain) { _log("Successful"); }
+		else { _log("Test case is failed"); }
+	}
+	
+	function verifyValuesInDomainDropDown() {
+		
+		$g_domain  = $g_suspendApproveUserHierarchy[$g_row][$g_col++];
+		_click(_link("Channel user transfer"));
+		_click(_link("Suspend user hierarchy"));
+		_assertExists(_div("Select parent user to suspend user"));
+		_setSelected(_select("domainCode"), 1);
+		if(_getSelectedText(_select("domainCode")) == $g_domain) { _log("Successful"); }
+		else { _log("Test case is failed"); }
+	}
+	
+	function suspendUserHierarchyWithInvalidDetails() {
+		commonMethodToSuspendUserHirarchy();
+		 _assertExists(_listItem("/"+ $g_assertion +".*/"));
+	}
+	
+	function backButtonOnSuspendUserHierarchyCnfPage() {
+		commonMethodToSuspendUserHirarchy();
+		back();
+		if(_getValue(_textbox("msisdn")) == $g_msisdn) {_log("Successful")}
+		else {_log("Failed back Check");}
+	}
+	
+	function cancelButtonOnSuspendUserHierarchyCnfPage() {
+		commonMethodToSuspendUserHirarchy();
+		cancel();
+		if(_getValue(_textbox("msisdn")) == "") {_log("Successful")}
+		else {_log("Failed back Check");}
+	}
+	
+	function suspendUserHierarchy() {
+		commonMethodToSuspendUserHirarchy();
+		confirm();
+		_assertExists(_listItem("/"+ $g_assertion +".*/"));
+	}
+	
+	
+	// Methods to resume channel user hierarchy in the system ...... 
+	
+	function test() {
+		_click(_link("Channel user transfer"));
+		_click(_link("Resume user hierarchy"));
+		_assertExists(_div("Select parent user to resume user"));
+		_setValue(_textbox("msisdn"), "7233333333");
+		_click(_submit("Submit"));
+		_assertExists(_cell("Suspended", _near(_cell("Status"))));
+		_click(_submit("Back"));
+		_assertExists(_div("Resume user hierarchy"));
+	}
+	
+	function commonMethodToResumeChannelHierarchy() {
+		_click(_link("Channel user transfer"));
+		_click(_link("Resume user hierarchy"));
+		_assertExists(_div("Select parent user to resume user"));
+		_setValue(_textbox("msisdn"), $g_msisdn);
+		_click(_submit("Submit"));
+	}
+	
+	// Methods for test cases ..... 
+	
+	function viewSuspendedUserHirarchy() {
+		commonMethodToResumeChannelHierarchy();
+		_assertExists(_div("Resume user hierarchy"));
+		_assertExists(_cell("Suspended", _near(_cell("Status"))));
+	}
+	
+	function resumeUserHierarchyWithInvalidDetails() {
+		commonMethodToResumeChannelHierarchy();
+		_assertExists(_listItem("/"+ $g_assertion +".*/"));
+	}
+	
+	function checkSubmitButtonOnResumeUserHirarchyPage() {
+		_click(_link("Channel user transfer"));
+		_click(_link("Resume user hierarchy"));
+		_assertExists(_div("Select parent user to resume user"));
+		_assertExists(_submit("Submit"));
+	}
+	
+	function checkConfirmButtonOnResumeUserHirarchyCnfPage() {
+		commonMethodToResumeChannelHierarchy();
+		
+		_assertExists(_submit("Confirm"));
+	}
+	
+	function backButtonOnResumeUserHierarchyCnfPage() {
+		commonMethodToResumeChannelHierarchy();
+		back();
+		if(_getValue(_textbox("msisdn")) == $g_msisdn) {_log("Successful")}
+		else {_log("Failed back Check");}
+	}
+	
+	function cancelButtonOnResumeUserHierarchyCnfPage() {
+		commonMethodToResumeChannelHierarchy();
+		cancel();
+		if(_getValue(_textbox("msisdn")) == "") {_log("Successful")}
+		else {_log("Failed back Check");}
+	}
+	
+	function resumeUserHierarchy() {
+		commonMethodToResumeChannelHierarchy();
+		confirm();
+		_assertExists(_listItem("/"+ $g_assertion +".*/"));
+	}
+	
+	
+	
+	
+	// .............................. Shashi is here ....................................... //
+	
+	
+		
+	

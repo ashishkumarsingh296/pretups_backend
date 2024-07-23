@@ -1,0 +1,2 @@
+TestcaseId,TestcaseType,Module,Description
+,Positive,Last Transaction Status,To verfiy that Last Transaction Status is successful with all mandatory fields.

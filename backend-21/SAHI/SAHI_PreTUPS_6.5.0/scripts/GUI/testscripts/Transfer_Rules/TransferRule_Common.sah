@@ -1,0 +1,559 @@
+//################################################
+//#Company Name: Mahindra Comviva Technologies Ltd.
+//#Application Name: Pretups
+//#Objective:Includes common functions for Transfer Rule from Operator to Channel
+//#Author Name: Nidhi Singh
+//#Created Date: 12/02/2014
+//###############################################
+_includeOnce("../../../../utility/ImportPackage.sah");
+var $g_hiercEXL = _readExcelFile("../../../GUI/testdata/Hierarchy.xlsx", "Transfer Rules"); //Read Transfer Rules information from Hierarchy excel sheet
+var $g_C2STRDetailsInBulk = _readCSVFile("../../../GUI/testdata/TransferRuleInBulk.csv");
+var $g_domain1;
+var $g_domain2;
+var $g_commomDomain;
+var $g_startRow;
+var $g_endRow;
+var $g_startCol;
+var $g_endCol;
+var $l_col2;
+var $firstApprovalLimit;
+var $secondApprovalLimit;
+var $transferType;
+var $cntrlTransferLevel;
+var $cntrlWithdrawLevel;
+var $cntrlReturnLevel;
+var $crossCntrlTransferLevel;
+var $receiverSubscriberType;
+var $receiverServiceClassID;
+var $serviceType;
+var $subServiceTypeId;
+var $cardGroupSetID;
+var $g_i = 1;
+var $ifRuleExists;
+var $g_categoryCode;
+var $g_gradeCode;
+// added for batch transfer rule
+var $g_batchname= randomStringForShortCode();
+var $g_filePath;
+var $g_assertion1;
+var g_domain3;
+function commonVaribleForTransferRulesInBulk($a_row, $a_column)
+	{
+      	$g_network = $g_C2STRDetailsInBulk[$a_row][$a_column++];
+		$g_filePath = $g_C2STRDetailsInBulk[$a_row][$a_column++];
+		$g_assertion1 = $g_C2STRDetailsInBulk[$a_row][$a_column++];
+	}
+
+/**
+ *  This function fetches values for adding transfer rules from csv
+ * @param [in] -
+ *            a_row Row No. in csv
+ * @param [in] -          
+ *            a_col Column No. in csv
+ * @returns - null
+ */	
+function variableForTransferRules($a_row, $a_col){
+	$g_domain1 = $l_naCsv[$a_row][$a_col];
+    $g_domain2 = $l_naCsv[$a_row++][++$a_col];
+    $g_startRow = $l_naCsv[$a_row++][--$a_col]/1;
+    $g_endRow = $l_naCsv[$a_row++][$a_col]/1;
+    $g_startCol = $l_naCsv[$a_row++][$a_col]/1;
+    $g_endCol = $l_naCsv[$a_row++][$a_col]/1;
+}
+
+/**
+ *  This function fetches values for adding Operator-to-Channel transfer rules from csv
+ * @param [in] -
+ *            a_row1 Row No. in csv
+ * @param [in] -          
+ *            a_col1 Column No. in csv
+ * @returns - null
+ */	
+
+function variableFor02CTransferRule($a_row1, $a_col1){
+	$firstApprovalLimit = $g_O2CTRDetails[$a_row1][$a_col1++];
+	$secondApprovalLimit = $g_O2CTRDetails[$a_row1][$a_col1++];
+}
+
+/**
+ *  This function fetches values for adding Channel-to-Channel transfer rules from csv
+ * @param [in] -
+ *            a_row1 Row No. in csv
+ * @param [in] -          
+ *            a_col1 Column No. in csv
+ * @returns - null
+ */	
+
+function variableForC2CTransferRule($a_row1, $a_col1){
+	$transferType = $g_C2CTRDetails[$a_row1][$a_col1++];
+	$cntrlTransferLevel = $g_C2CTRDetails[$a_row1][$a_col1++];
+	$cntrlWithdrawLevel = $g_C2CTRDetails[$a_row1][$a_col1++];
+	$cntrlReturnLevel = $g_C2CTRDetails[$a_row1][$a_col1++];
+	$crossCntrlTransferLevel = $g_C2CTRDetails[$a_row1][$a_col1++];
+}
+
+/**
+ *  This function is for parsing the excel sheet for creating operator-to-channel transfer rule
+ * @param [in] - null          
+ * @returns - null
+ */	
+
+function common_O2C(){
+	var $opRow = fetchOperator();
+	for(var $l_col1 = $g_startCol;$l_col1 < $g_endCol; ){
+		if($g_hiercEXL[$opRow][$l_col1] == ""){
+			$l_col1++;	
+		}
+		if($g_hiercEXL[$opRow][$l_col1] != ""){
+			var $g_categoryName = $g_hiercEXL[5][$l_col1];
+			var $g_function = $g_hiercEXL[7][$l_col1];
+			 $ifRuleExists = addO2C_TransferRule($g_categoryName, $g_function);
+			$l_col1++;	
+		}	
+	}
+	return $ifRuleExists;
+}
+
+
+/**
+ *  This function is for parsing the excel sheet for fetching the operator name
+ * @param [in] - null          
+ * @returns - l_op Row no of the operator
+ * 			
+ */	
+
+function fetchOperator(){
+
+	_log ("shashi 1111 "  + $g_hiercEXL[6][3] + "shashi 1111 "  + $g_hiercEXL[7][10] );
+	for (var $l_op = 0;$l_op < $g_endRow; $l_op++){
+		
+		if($g_hiercEXL[$l_op][3] == "Domains_and_Categories"){
+			return (++$l_op);
+			
+			_log("shashi " + $l_op +" shashi");
+		}
+	}
+}
+
+/**
+ *  This function adds operator-to-channel transfer rule
+ * @param [in] -
+ *            a_categoryName Category existing under a domain
+ * @param [in] -          
+ *            a_function Functionality of the rule
+ * @returns - null
+ */
+
+function addO2C_TransferRule($a_categoryName, $a_function){
+	$g_domainName = $l_naCsv[4][$g_i++];
+	$a_categoryName = $a_categoryName.trim();
+	_click(_link($g_LeftMenuBar_TransferRule));
+	_click(_link($g_LeftMenuBar_O2CTransferRule));
+	_setSelected(_select("domainCode"), $g_domainName);
+	_click(_submit($g_BtnSubmit));
+	
+	// added by shashi
+	/*
+	if(_exists(_cell("To category")) == true){ //Transfer Rule already exists
+		_click(_submit($g_BtnView));
+		_click(_submit($g_BtnBack));
+		
+		return true;
+		*/
+		
+	if(_exists(_cell("To category")) == true){	
+		
+		if(_exists(_cell($a_categoryName, _near(_cell("To category"))))){
+			_click(_radio("radioIndex", _near(_cell($a_categoryName))));
+			_click(_submit($g_BtnView));
+			_click(_submit($g_BtnBack));
+			return true;
+		}
+	}
+	else { //Transfer Rule does not exists
+		_click(_submit($g_BtnAdd));
+		_setSelected(_select("toCategory", _near(_cell($g_domainName))), $a_categoryName);
+		//_setSelected(_select("To category :", _near(_cell($g_domainName))), $a_categoryName);//changed by fiza for TransferRule_O2C.sah 
+		var $a_indvfuncn_Splits = $a_function.split(",");
+		for(var $l_j=0; $l_j<$a_indvfuncn_Splits.length; $l_j++){
+			var $l_function = $a_indvfuncn_Splits[$l_j].trim();
+			if($l_function == "T"){
+				_click(_checkbox("transferAllowed"));
+				_click(_checkbox("dpAllowed"));
+			}else if($l_function == "F"){
+				_click(_checkbox("focAllowed"));			
+			}else if($l_function == "W"){
+				_click(_radio("withdrawAllowed"));
+			}
+		}
+		_setValue(_textbox("firstApprovalLimit", _near(_cell($g_domainName))), $firstApprovalLimit);
+		_setValue(_textbox("secondApprovalLimit", _near(_cell($g_domainName))), $secondApprovalLimit);
+		_click(_checkbox("productArray"));
+		_click(_submit($g_BtnAdd));
+		confirmAdditionOfTransferRule();
+		return false;
+	}	
+	
+}
+
+/**
+ *  This function is used to click on Button Confirm
+ *	@return - null		
+ */
+
+function confirmAdditionOfTransferRule(){
+	_click(_submit($g_BtnConfirm));	
+}
+
+/**
+ *  This function is for parsing the excel sheet for creating channel-to-channel transfer rule
+ * @param [in] - null          
+ * @returns - null
+ */	
+
+function common_C2C(){
+	for(var $l_row=$g_startRow;$l_row < $g_endRow; $l_row++){
+		
+		if($g_hiercEXL[$l_row][3] == "Domain1"){
+		_log("shashi " + $g_hiercEXL[$l_row][3] );
+			$g_commomDomain = $g_domain1;
+			$g_fromDomain = $g_domain1;
+			$g_toDomain = $g_domain2;
+		}
+		else if($g_hiercEXL[$l_row][3] == "Domain2"){
+			$g_commomDomain = $g_domain2;
+			$g_fromDomain = $g_domain2;
+			$g_toDomain = $g_domain1;
+		}
+		var $g_index = $g_hiercEXL[$l_row][2]; // Index of the Parent Category
+		
+		_log("shashi for index " + $g_index);
+		
+		var $g_fromCategory = $g_hiercEXL[$l_row][3];
+			
+			_log("shashi for CATEGORY " + $g_fromCategory);
+		
+		for($l_col2=$g_startCol;$l_col2<$g_endCol; ){
+			if($g_hiercEXL[$l_row][$l_col2] == ""){
+				$l_col2++;	
+			}
+		else if($g_hiercEXL[$l_row][$l_col2] != ""){
+				if($g_hiercEXL[$l_row][$l_col2] == "Tc"){
+				var $g_Tocategory = $g_hiercEXL[5][$l_col2];
+				var $g_allowedParentIndex = toGetParent($g_Tocategory);
+				addC2C_CrossTransferRule($g_fromDomain, $g_toDomain, $g_fromCategory, $g_Tocategory); // For Cross-Selling
+				$l_col2++;
+			}
+			else{
+				var $g_Tocategory = $g_hiercEXL[5][$l_col2];
+				var $g_allowedParentIndex = toGetParent($g_Tocategory);
+				var $g_function = $g_hiercEXL[$l_row][$l_col2];
+			
+				
+				addC2C_TransferRule($g_commomDomain, $g_fromCategory, $g_Tocategory, $g_function, $g_allowedParentIndex, $g_index, $l_row);
+				$l_col2++;	
+			}
+		}
+	}
+	
+	}
+}
+
+/**
+ *  This function is for fetching the Parent of the From category
+ * @param [in] - 
+ * 				a_Tocategory To category      
+ * @returns - 
+ * 				l_allowedParentIndex The parent index of the from category
+ */	
+
+function toGetParent($a_Tocategory){
+	var $l_row1;
+	for($l_row1=9; $l_row1<$g_endRow; $l_row1++){
+		if($g_hiercEXL[$l_row1][3] == $a_Tocategory){
+			var $l_allowedParentIndex = $g_hiercEXL[$l_row1][4];
+			break;
+		}		
+	}
+	return $l_allowedParentIndex;
+}
+	
+/**
+ *  This function is for the parent association 
+ * @param [in] - 
+ * 				a_allowedParentIndex The parent index of the from category 
+ * @param [in] - 
+ *     			a_index Index of the To category
+ * @returns - null
+ */	
+
+	function parentAssociation($a_allowedParentIndex, $a_index){
+		if($a_allowedParentIndex.match(/or/g)){
+			var $api = $a_allowedParentIndex.split('or');
+			for(var $j=0; $j<$api.length; $j++){
+				var $func_api = $api[$j].trim();
+				if($func_api == $a_index/1){
+					_click(_radio("parentAssociationAllowed"));
+				}
+				}
+		} 
+		else{
+			if($a_allowedParentIndex == $a_index){
+				_click(_radio("parentAssociationAllowed"));
+			}
+			else{
+				_click(_radio("parentAssociationAllowed[1]"));
+			}
+			}
+	}
+
+/**
+ * This function adds channel-to-channel transfer rule
+ * @param [in] -
+ *            a_commomDomain Domain where Transfer Rule is to be added
+ * @param [in] -  
+ * 			  a_fromCategory From Category
+ * @param [in] -  
+ * 			  a_Tocategory To Category   
+ * @param [in] -     
+ *            a_function Functionality of the rule
+ * @param [in] -          
+ *            g_allowedParentIndex The parent index of the from category
+ * @param [in] -          
+ *            g_index Index of parent category         
+ * @returns - null
+ */
+	
+function addC2C_TransferRule($a_commomDomain, $a_fromCategory, $a_Tocategory, $a_function, $g_allowedParentIndex, $g_index){
+	_click(_link($g_LeftMenuBar_TransferRule));
+	_click(_link($g_LeftMenuBar_C2CTransferRule));
+	_setSelected(_select("domainCode"), $a_commomDomain);
+	_setSelected(_select("toDomainCode"), $a_commomDomain);
+	_click(_submit($g_BtnSubmit));
+	_click(_submit($g_BtnAdd));
+	_setSelected(_select("fromCategory"), $a_fromCategory);
+	_setSelected(_select("toCategory"), $a_Tocategory);
+	parentAssociation($g_allowedParentIndex, $g_index);
+	_click(_checkbox("restrictedMsisdnAccess"));
+	_click(_checkbox("restrictedRechargeAccess"));
+	_setSelected(_select("transferType"), $transferType);
+	var $g_indvfuncn_Splits = $a_function.split(",");
+	for(var $j=0; $j<$g_indvfuncn_Splits.length; $j++){
+		var $func = $g_indvfuncn_Splits[$j].trim();
+		if($func == "T"){
+			_click(_radio("directTransferAllowed"));
+			_click(_radio("transferChnlBypassAllowed"));
+			_setSelected(_select("cntrlTransferLevel"), $cntrlTransferLevel);
+			_click(_checkbox("fixedTransferCategory"));
+		}
+		else if($func == "W"){
+			_click(_radio("withdrawAllowed"));
+			_click(_radio("withdrawChnlBypassAllowed"));
+			_setSelected(_select("cntrlWithdrawLevel"), $cntrlWithdrawLevel);
+			_click(_checkbox("fixedWithdrawCategory"));
+		}
+	}
+		_setSelected(_select("cntrlReturnLevel"), $cntrlReturnLevel);
+		_click(_checkbox("productArray"));
+		_click(_submit($g_BtnAdd));
+		confirmAdditionOfTransferRule();
+		if(_exists(_listItem("/" +$g_assertTransferRuleExists + ".*/"))){
+			_log("Transfer rule alreday exists beween " + $a_fromCategory + " and " + $a_Tocategory );
+			$l_col2++;	
+		}
+		
+		
+}
+	
+	
+	
+
+/**
+ * This function adds cross channel-to-channel transfer rule
+ * @param [in] -
+ *            a_fromDomain From domain
+ * @param [in] -
+ *            a_toDomain To domain
+ * @param [in] -  
+ * 			  a_fromCategory From Category
+ * @param [in] -  
+ * 			  a_Tocategory To Category         
+ * @returns - null
+ */
+
+function addC2C_CrossTransferRule($a_fromDomain, $a_toDomain, $a_fromCategory, $a_Tocategory){
+	_click(_link($g_LeftMenuBar_TransferRule));
+	_click(_link($g_LeftMenuBar_C2CTransferRule));
+	_setSelected(_select("domainCode"), $a_fromDomain);
+	_setSelected(_select("toDomainCode"), $a_toDomain);
+	_click(_submit($g_BtnSubmit));
+	_click(_submit($g_BtnAdd));
+	_setSelected(_select("fromCategory"), $a_fromCategory);
+	_setSelected(_select("toCategory"), $a_Tocategory);
+	_click(_checkbox("restrictedMsisdnAccess"));
+	_click(_checkbox("restrictedRechargeAccess"));
+	_setSelected(_select("transferType"), $transferType);
+	_click(_radio("directTransferAllowed"));
+	_setSelected(_select("cntrlTransferLevel"), $crossCntrlTransferLevel);
+	_click(_checkbox("fixedTransferCategory"));
+	_click(_checkbox("fixedTransferCategory[1]"));
+	_click(_checkbox("fixedTransferCategory[2]"));
+	_click(_checkbox("fixedTransferCategory[3]"));
+	_setSelected(_select("cntrlWithdrawLevel"), $cntrlReturnLevel);
+	_setSelected(_select("cntrlReturnLevel"), $cntrlReturnLevel);
+	_click(_checkbox("productArray"));
+	_click(_submit($g_BtnAdd));
+	confirmAdditionOfTransferRule();
+	if(_exists(_listItem($g_assertTransferRuleExists))){
+		$l_col2++;	
+	}	
+}
+
+/**
+ *  This function fetches values for adding Channel-to-Subscriber transfer rules from csv
+ * @param [in] -
+ *            a_row1 Row No. in csv
+ * @param [in] -          
+ *            a_col1 Column No. in csv
+ * @returns - null
+ */	
+
+function variableForC2STransferRule($a_row1, $a_col1){
+	 $g_domain3=$g_C2STRDetails[$a_row1][$a_col1++];
+	 $g_categoryCode=$g_C2STRDetails[$a_row1][$a_col1++];
+	 $g_gradeCode=$g_C2STRDetails[$a_row1][$a_col1++];
+	 $receiverSubscriberType = $g_C2STRDetails[$a_row1][$a_col1++];
+	 $receiverServiceClassID = $g_C2STRDetails[$a_row1][$a_col1++];
+	 $serviceType = $g_C2STRDetails[$a_row1][$a_col1++];
+	 $subServiceTypeId = $g_C2STRDetails[$a_row1][$a_col1++];
+	 $cardGroupSetID = $g_C2STRDetails[$a_row1][$a_col1++];
+	
+}
+
+/**
+ * This function adds cross Channel-to-Subscriber transfer rule
+ * @param [in] - null    
+ * @returns - null
+ */
+
+function addC2STransferRule(){
+	_click(_link($g_LeftMenuBar_TransferRule));
+	_click(_link($g_LeftMenuBar_C2STransferRule));
+	_setSelected(_select("c2STransferRulesIndexed[0].senderSubscriberType"), $g_domain3);
+	_setSelected(_select("c2STransferRulesIndexed[0].categoryCode"), $g_categoryCode);
+	_setSelected(_select("c2STransferRulesIndexed[0].gradeCode"), $g_gradeCode);
+	_setSelected(_select("c2STransferRulesIndexed[0].receiverSubscriberType"), $receiverSubscriberType); // "/" + $a_assertion + ".*/"
+	_wait(200);
+	_setSelected(_select("c2STransferRulesIndexed[0].receiverServiceClassID"), "/" + $receiverServiceClassID + ".*/");
+	_setSelected(_select("c2STransferRulesIndexed[0].serviceType"), $serviceType);
+	_setSelected(_select("c2STransferRulesIndexed[0].subServiceTypeId"), $subServiceTypeId);
+	_setSelected(_select("c2STransferRulesIndexed[0].cardGroupSetID"), $cardGroupSetID);
+	_click(_submit($g_BtnAdd));
+	confirmAdditionOfTransferRule();
+	if(_exists(_listItem("/" + $g_assertTransferRuleExist + ".*/"))){
+		return true;
+	}
+	else{
+		return false;
+	}
+}
+
+/**
+ *  This function fetches values for adding Peer-to-Peer transfer rules from csv
+ * @param [in] -
+ *            a_row1 Row No. in csv
+ * @param [in] -          
+ *            a_col1 Column No. in csv
+ * @returns - null
+ */	
+
+function variableForP2PTransferRule($a_row1, $a_col1){
+	 $SubscriberType = $g_P2PTRDetails[$a_row1][$a_col1++];
+	 $senderServiceClassID = $g_P2PTRDetails[$a_row1][$a_col1++];
+	 $receiverServiceClassID = $g_P2PTRDetails[$a_row1][$a_col1++];
+	 $serviceType = $g_P2PTRDetails[$a_row1][$a_col1++];
+	 $subServiceTypeId = $g_P2PTRDetails[$a_row1][$a_col1++];
+	 $cardGroupSetID = $g_P2PTRDetails[$a_row1][$a_col1++];
+}
+
+/**
+ * This function adds cross Peer-to-Peer transfer rule
+ * @param [in] - null    
+ * @returns - null
+ */
+
+function addP2PTransferRule(){
+	_click(_link($g_LeftMenuBar_TransferRule));
+	//_click(_link("Add P2P transfer rules"));
+	_setSelected(_select("transferRulesIndexed[0].senderSubscriberType"), $SubscriberType);
+	_setSelected(_select("transferRulesIndexed[0].senderServiceClassID"), "/" + $senderServiceClassID + ".*/");
+	_setSelected(_select("transferRulesIndexed[0].receiverSubscriberType"), $SubscriberType);
+	_setSelected(_select("transferRulesIndexed[0].receiverServiceClassID"), "/" + $receiverServiceClassID + ".*/");
+	_setSelected(_select("transferRulesIndexed[0].serviceType"), $serviceType);
+	_setSelected(_select("transferRulesIndexed[0].subServiceTypeId"), $subServiceTypeId);
+	_setSelected(_select("transferRulesIndexed[0].cardGroupSetID"), $cardGroupSetID);
+	_click(_submit($g_BtnAdd));
+	confirmAdditionOfTransferRule();
+	if(_exists(_listItem("/" + $g_assertTransferRuleExist + ".*/"))){
+		return true;
+	}
+	else{
+		return false;
+	}
+}
+
+function addC2STRInBatch()
+{
+  
+
+_click(_link("Transfer rules"));
+
+_click(_link("Batch C2S transfer rules creation-modification"));
+
+_setFile2(_file("file"), $g_filePath);
+_setValue(_textbox("batchName"), $g_batchname);
+_click(_submit("Submit"));
+_click(_submit("Confirm"));
+  _assertExists(_listItem("/" + $g_assertion1 + ".*/"));
+
+}
+
+
+function dupFileC2STRInBatch()
+{
+  
+  
+_click(_link("Transfer rules"));
+_click(_link("Batch C2S transfer rules creation-modification"));
+_setFile2(_file("file"), $g_filePath);
+_setValue(_textbox("batchName"), $g_batchname);
+_click(_submit("Submit"));
+_click(_submit("Confirm"));
+
+_assertExists(_listItem("/" + $g_assertion1 + ".*/"));
+
+}
+
+function emptyC2STRInBatch()
+{
+  _click(_link("Transfer rules"));
+_click(_link("Batch C2S transfer rules creation-modification"));
+_setFile2(_file("file"), $g_filePath);
+_setValue(_textbox("batchName"),  $g_batchname);
+_click(_submit("Submit"));
+_click(_submit("Confirm"));
+_assertExists(_listItem("/" + $g_assertion1 + ".*/"));
+
+}
+
+function  modifyC2STRInBatch()
+{
+  _click(_link("Transfer rules"));
+_click(_link("Batch C2S transfer rules creation-modification"));
+_setFile2(_file("file"), $g_filePath);
+_setValue(_textbox("batchName"),  $g_batchname);
+_click(_submit("Submit"));
+_click(_submit("Confirm"));
+_assertExists(_listItem("/" + $g_assertion1 + ".*/"));
+
+}

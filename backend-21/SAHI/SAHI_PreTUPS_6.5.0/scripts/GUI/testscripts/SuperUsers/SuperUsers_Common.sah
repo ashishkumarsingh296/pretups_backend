@@ -1,0 +1,471 @@
+
+
+// This scripts contains all the common methods for super users (super network admin,super cce , super channel admin)
+
+_includeOnce("../../../../utility/ImportPackage.sah");
+
+var $g_SuperDetails = _readCSVFile("../../../GUI/testdata/SuperUsers.csv")
+var $g_SuperDetailsInBulk = _readCSVFile("../../../GUI/testdata/SuperUsersInBulk.csv");
+
+$g_msisdnUM = readMSISDNFromCSV();
+$g_extcode =randomNumber();
+$g_subcribercode = randomStringForShortCode();
+$g_batchname= randomStringForShortCode();
+
+var $g_shortName;
+var $g_usernamePrefixCode;
+var $g_externalCode;
+var $g_subscriberCode;
+var $g_ssn;
+var $g_status;
+var $g_designation;
+var $g_divisionCode;
+var $g_departmentCode;
+var $g_address1;
+var $g_address2;
+var $g_city;
+var $g_state;
+var $g_country;
+var $g_email;
+var $g_calendarImg;
+var $g_webPassword;
+var $g_confirmPassword;
+var $g_allowedTimeFrom;
+var $g_allowedTimeTo;
+var $g_geography;
+var $g_roleType;
+var $g_newPassword;
+var $g_ip = "";
+var $g_networkAdmin;
+var $g_channelAdminUsername;
+var $g_smsPin;
+var $g_desc;
+var $g_assertion;
+var $g_cceUsername	;
+var $g_assertion1;
+var $g_filePath;	
+var $g_newpassword="com#1234";
+	/**
+	*  These functions will automatically generate username for SUNADM,SUCCE,SUBCU
+	*		
+	*/
+	
+	function variableForSuperNA($a_Prefix)
+	{
+	 
+	 $l_time = currentTime(); // fetch current time(CurretnTime)
+	 $l_username = $a_Prefix + "SUNA" + $l_time; 
+	 return $l_username;
+	}
+	
+	function variableForSuperChannelAdmin($a_Prefix)
+	{
+	 
+	 $l_time = currentTime(); // fetch current time(CurretnTime)
+	 $l_username = $a_Prefix + "SUBCU" + $l_time; 
+	 return $l_username;
+	}
+	
+	function variableForSuperCCE($a_Prefix)
+	{
+	 
+	 $l_time = currentTime(); // fetch current time(CurretnTime)
+	 $l_username = $a_Prefix + "SUCCE" + $l_time; 
+	 return $l_username;
+	}
+	
+	function commonVaribleForSuperUsersInBulk($a_row, $a_column)
+	{
+		$g_filePath = $g_SuperDetailsInBulk[$g_row][$g_col++];
+		$g_assertion1 = $g_SuperDetailsInBulk[$g_row][$g_col++];
+	}
+	
+
+	function commonVaribleForSuperUsers($a_row, $a_column)
+	{
+			
+	$g_lastName = $g_SuperDetails[$a_row][$a_column++];
+	$g_shortName = $g_SuperDetails[$a_row][$a_column++];
+	$g_usernamePrefixCode = $g_SuperDetails[$a_row][$a_column++];
+	$g_ssn = $g_SuperDetails[$a_row][$a_column++];
+	$g_contactNumber = $g_SuperDetails[$a_row][$a_column++];
+	$g_status =  $g_SuperDetails[$a_row][$a_column++];
+	$g_designation =  $g_SuperDetails[$a_row][$a_column++];
+	$g_divisionCode	=  $g_SuperDetails[$a_row][$a_column++];
+	$g_departmentCode =  $g_SuperDetails[$a_row][$a_column++];
+	$g_address1 =  $g_SuperDetails[$a_row][$a_column++];
+	$g_address2 =  $g_SuperDetails[$a_row][$a_column++];
+	$g_city =  $g_SuperDetails[$a_row][$a_column++];
+	$g_state =  $g_SuperDetails[$a_row][$a_column++];
+	$g_country =  $g_SuperDetails[$a_row][$a_column++];
+	$g_email =  $g_SuperDetails[$a_row][$a_column++];
+	$g_calendarImg =  $g_SuperDetails[$a_row][$a_column++];
+	$g_webPassword = $g_SuperDetails[$a_row][$a_column++];
+	$g_confirmPassword =  $g_SuperDetails[$a_row][$a_column++];
+	$g_ip = "";
+	$g_allowedTimeFrom = $g_SuperDetails[$a_row][$a_column++];
+	$g_allowedTimeTo =  $g_SuperDetails[$a_row][$a_column++];
+	$g_network =  $g_SuperDetails[$a_row][$a_column++];
+	$g_roleType =  $g_SuperDetails[$a_row][$a_column++];
+	$g_assertion = $g_SuperDetails[$a_row][$a_column++];
+		
+			
+	}
+	
+	function createSuperNA()
+	{
+	
+	$g_firstName = variableForSuperNA("A");
+			
+	_click(_link("Operator users"));
+	_click(_link("Add operator user"));
+	_setSelected(_select("categoryCode"), "Super Network Admin");
+	_click(_submit("Submit"));
+			
+	_setValue(_textbox("firstName"), $g_firstName);
+			
+	_setSelected(_select("userNamePrefixCode"), $g_usernamePrefixCode);
+	_setValue(_textbox("externalCode"), $g_extcode);
+	_setValue(_textbox("empCode"), $g_subcribercode);
+			
+	_setValue(_textbox("msisdn"), $g_msisdnUM); 
+			
+	_setSelected(_select("divisionCode"), $g_divisionCode);
+	_setValue(_textbox("email"), $g_email);
+			
+	_setValue(_textbox("webLoginID"),$g_firstName );
+			
+	
+	_click(_link("Assign Network"));
+	_selectWindow("eRecharge");
+	_check(_checkbox("checkNetwork"));
+	_click(_submit("Add"));
+	_selectWindow();
+	_click(_link("Assign roles"));
+	_selectWindow("eRecharge");
+	_check(_checkbox("checkall"));
+	_click(_submit("Add"));
+	_selectWindow();
+	//Enter password and confirm	
+	_setValue(_password("showPassword"), $g_webPassword);
+	_setValue(_password("confirmPassword"), $g_confirmPassword);
+	
+	_click(_submit("Save"));
+	_click(_submit("Confirm"));
+	_assertExists(_listItem("/" + $g_assertion + ".*/"));
+
+	
+	}
+		
+	function approveSuperNA()
+	{
+     _click(_link("Operator users"));
+	_click(_link("Operator user approval"));
+	_setValue(_textbox("searchLoginId"), $g_firstName);
+	_click(_submit("Submit"));
+	_click(_submit("Submit"));
+	_click(_submit("Approve"));
+	_click(_submit("Confirm"));
+	_assertExists(_listItem("/" + $g_assertion + ".*/"));
+	
+	}	
+	
+	function modifySuperNA()
+	{
+		_click(_link("Operator users"));
+		_click(_link("Modify operator user"));
+		_setSelected(_select("categoryCode"), "Super Network Admin");
+		_setValue(_textbox("userName"), $g_firstName);
+		_click(_submit("Submit"));
+		 _setValue(_textbox("email"), "superna@gmail.com");
+		_click(_submit("Modify"));
+		_click(_submit("Confirm"));
+		_assertExists(_listItem("/" + $g_assertion + ".*/"));
+      
+      
+	}
+	
+	function viewSuperNA()
+	{
+      	_click(_link("Operator users"));
+		_click(_link("View operator user"));
+		_setSelected(_select("categoryCode"), "Super Network Admin");
+		_setValue(_textbox("userName"),$g_firstName );
+		_click(_submit("Submit"));
+		_click(_submit("Back"));
+
+	}
+	
+	function superNALogin()
+	{
+      	_click(_link("Logout"));
+      	_navigateTo($g_appURL);
+		_setValue(_textbox("loginID"), $g_firstName);
+		_setValue(_password("password"),  $g_webPassword);
+		_click(_submit("Login"));
+        _setValue(_password("oldPassword"), $g_webPassword);
+		_setValue(_password("newPassword"), $g_newpassword);
+		_setValue(_password("confirmNewPassword"), $g_newpassword);
+		_click(_submit("Submit"));
+		_check(_radio("code"));
+		_click(_submit("Submit"));
+
+	}
+	
+	function createSuperCA()
+	{
+		$g_channelAdminUsername = variableForSuperChannelAdmin("C");
+		
+		_click(_link("Operator users"));
+		_setSelected(_select("categoryCode"), "Super Channel Admin");
+		_click(_submit("Submit"));
+
+		_setValue(_textbox("firstName"), $g_channelAdminUsername);
+		_setSelected(_select("userNamePrefixCode"), $g_usernamePrefixCode);
+		_setValue(_textbox("externalCode"), $g_extcode);
+		_setValue(_textbox("empCode"), $g_subcribercode);
+
+		_setValue(_textbox("msisdn"), $g_msisdnUM );
+
+		_setSelected(_select("divisionCode"), $g_divisionCode);
+		_setValue(_textbox("email"), $g_email);
+		
+		_setValue(_textbox("webLoginID"),$g_channelAdminUsername );
+
+		
+		_click(_link("Assign geographies"));
+		_selectWindow("eRecharge");
+		_check(_checkbox("checkNetwork"));
+		_click(_submit("Add"));
+		_selectWindow();
+		_click(_link("Assign roles"));
+		_selectWindow("eRecharge");
+		_check(_checkbox("checkall"));
+		_click(_submit("Add"));
+		_selectWindow();
+		_click(_link("Assign domains"));
+		_selectWindow("eRecharge");
+		_click(_cell("Associated domains"));
+		_check(_checkbox("checkall"));
+		_click(_submit("Add"));
+		_selectWindow();
+		/*
+        _click(_link("Assign phone numbers"));
+		_selectWindow("eRecharge");
+		_setValue(_textbox("msisdnListIndexed[0].msisdn"), $g_msisdnUM);
+		_setValue(_password("msisdnListIndexed[0].showSmsPin"), "1357");
+		_setValue(_password("msisdnListIndexed[0].confirmSmsPin"), "1357");
+		_setSelected(_select("msisdnListIndexed[0].phoneProfile"), "Super Channel Admin");
+		_click(_submit("Add"));
+		_selectWindow();
+      */
+		_click(_link("Assign products"));
+		_selectWindow("eRecharge");
+		_check(_checkbox("checkall"));
+		_click(_submit("Add"));
+		_selectWindow();
+		//Entering Password and confirm
+		_setValue(_password("showPassword"), $g_webPassword);
+		_setValue(_password("confirmPassword"),  $g_confirmPassword);
+		_click(_submit("Save"));
+		_click(_submit("Confirm"));
+		_assertExists(_listItem("/" + $g_assertion + ".*/"));
+
+				
+	}
+	
+	function approveSuperCA()
+	{
+		_click(_link("Operator user approval"));
+		_setValue(_textbox("searchLoginId"), $g_channelAdminUsername);
+		_click(_submit("Submit"));
+		_click(_submit("Submit"));
+		_click(_submit("Approve"));
+		_click(_submit("Confirm"));
+		_assertExists(_listItem("/" + $g_assertion + ".*/"));
+	}
+	
+	function modifySuperCA()
+	{
+		_click(_link("Operator users"));
+		_click(_link("Modify operator user"));
+		_setSelected(_select("categoryCode"), "Super Channel Admin");
+		_setValue(_textbox("userName"), $g_channelAdminUsername);
+		_click(_submit("Submit"));
+        _setValue(_textbox("email"), "superbcu@gmail.com");
+		//_setSelected(_select("status"), "Suspended");
+		_click(_submit("Modify"));
+		_click(_submit("Confirm"));
+		_assertExists(_listItem("/" + $g_assertion + ".*/"));
+		
+		
+	}
+	
+	function viewSuperCA()
+	{
+		_click(_link("View operator user"));
+		_setSelected(_select("categoryCode"), "Super Channel Admin");
+		_setValue(_textbox("userName"), $g_channelAdminUsername);
+		_click(_submit("Submit"));
+		_click(_submit("Back"));
+		
+	}
+	
+	function superCALogin()
+	{
+      	_click(_link("Logout"));
+      	_navigateTo($g_appURL);
+		_setValue(_textbox("loginID"), $g_channelAdminUsername);
+		_setValue(_password("password"),  $g_webPassword);
+		_click(_submit("Login"));
+        _setValue(_password("oldPassword"), $g_webPassword);
+		_setValue(_password("newPassword"), $g_newpassword);
+		_setValue(_password("confirmNewPassword"), $g_newpassword);
+		_click(_submit("Submit"));
+		_check(_radio("code"));
+		_click(_submit("Submit"));
+      	
+
+	}
+	
+	function createSuperCCE()
+	{
+		$g_cceUsername = variableForSuperCCE("B");
+		
+		_click(_link("Operator users"));
+		_setSelected(_select("categoryCode"), "Super Customer Care");
+		_click(_submit("Submit"));
+		
+		_setValue(_textbox("firstName"), $g_cceUsername);
+		
+		_setSelected(_select("userNamePrefixCode"), $g_usernamePrefixCode);
+		_setValue(_textbox("externalCode"), $g_extcode);
+		_setValue(_textbox("empCode"), $g_subcribercode);
+		
+		_setValue(_textbox("msisdn"), $g_msisdnUM);
+		
+		_setSelected(_select("divisionCode"), $g_divisionCode);
+		_doubleClick(_textbox("email"));
+		_setValue(_textbox("email"), $g_email);
+		
+		_setValue(_textbox("webLoginID"), $g_cceUsername);
+		
+		
+		_click(_link("Assign Network"));
+		_selectWindow("eRecharge");
+		_check(_checkbox("checkNetwork"));
+		_click(_submit("Add"));
+		_selectWindow();
+		_click(_link("Assign roles"));
+		_selectWindow("eRecharge");
+		_check(_checkbox("checkall"));
+		_click(_submit("Add"));
+	
+		_selectWindow();
+			_wait(2000);
+		//Entering Password and confirm
+		_setValue(_password("showPassword"), $g_webPassword);
+		_setValue(_password("confirmPassword"), $g_confirmPassword);
+		_click(_submit("Save"));
+		_click(_submit("Confirm"));
+		_assertExists(_listItem("/" + $g_assertion + ".*/"));
+		
+	}
+	
+	function approveSuperCCE()
+	{
+      	_click(_link("Operator users"));
+		_click(_link("Operator user approval"));
+		_setValue(_textbox("searchLoginId"),$g_cceUsername );
+		_click(_submit("Submit"));
+		_click(_submit("Submit"));
+		_click(_submit("Approve"));
+		_click(_submit("Confirm"));
+		_assertExists(_listItem("/" + $g_assertion + ".*/"));
+      
+	}
+		
+		
+	function modifySuperCCE()
+	{
+      	_click(_link("Operator users"));
+		_click(_link("Modify operator user"));
+		_setSelected(_select("categoryCode"), "Super Customer Care");
+		_setValue(_textbox("userName"), $g_cceUsername);
+		_click(_submit("Submit"));
+        _setValue(_textbox("email"), "supercce@gmail.com");
+		//_setSelected(_select("status"), "Suspended");
+		_click(_submit("Modify"));
+		_click(_submit("Confirm"));
+		_assertExists(_listItem("/" + $g_assertion + ".*/"));
+		
+	}
+	
+	function viewSuperCCE()
+	{
+      	_click(_link("Operator users"));
+		_click(_link("View operator user"));
+		_setSelected(_select("categoryCode"), "Super Customer Care");
+		_setValue(_textbox("userName"), $g_cceUsername );
+		_click(_submit("Submit"));
+		_click(_submit("Back"));
+		
+	}	
+	
+	function superCCELogin()
+	{
+      	_click(_link("Logout"));
+      	_navigateTo($g_appURL);
+		_setValue(_textbox("loginID"), $g_cceUsername);
+		_setValue(_password("password"),  $g_webPassword);
+		_click(_submit("Login"));
+        _setValue(_password("oldPassword"), $g_webPassword);
+		_setValue(_password("newPassword"), $g_newpassword);
+		_setValue(_password("confirmNewPassword"), $g_newpassword);
+		_click(_submit("Submit"));
+		_check(_radio("code"));
+		_click(_submit("Submit"));
+      	
+
+	}
+	
+	function batchSuperNA()
+	{
+      	_click(_link("Operator users"));
+		_click(_link("Batch operator user initiate"));
+		_setSelected(_select("categoryCode"), "Super Network Admin");
+		_setFile2(_file("file"), $g_filePath );
+		_setValue(_textbox("batchName"), $g_batchname);
+		_click(_submit("Submit"));
+		_click(_submit("Confirm"));
+		_assertExists(_listItem("/" + $g_assertion1 + ".*/"));
+		
+	}
+	
+	function batchSuperCA()
+	{
+     	 _click(_link("Operator users"));
+		_click(_link("Batch operator user initiate"));
+		_setSelected(_select("categoryCode"), "Super Channel Admin");
+		_setFile2(_file("file"), $g_filePath);
+		_setValue(_textbox("batchName"), $g_batchname);
+		_click(_submit("Submit"));
+		_click(_submit("Confirm"));
+		_assertExists(_listItem("/" + $g_assertion1 + ".*/"));
+		
+	}
+	
+	function batchSuperCCE()
+	{
+		_click(_link("Operator users"));      
+		_click(_link("Batch operator user initiate"));
+		_setSelected(_select("categoryCode"), "Super Customer Care");
+		_setFile2(_file("file"), $g_filePath);
+		_setValue(_textbox("batchName"), $g_batchname);
+		_click(_submit("Submit"));
+		_click(_submit("Confirm"));
+		_assertExists(_listItem("/" + $g_assertion1 + ".*/"));
+	
+	}
+	
+	

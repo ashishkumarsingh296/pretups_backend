@@ -1,0 +1,189 @@
+
+//################################################
+//#Company Name: Mahindra Comviva Technologies Ltd.
+//#Application Name: Pretups
+//#Objective:To check for view MSISDN Association
+//#Author Name: Girish Dutt Shukla
+//#Created Date: 05/02/2015
+//###############################################
+
+_includeOnce("../../../../utility/ImportPackage.sah");
+
+
+var $g_msisdn;	
+var $g_domain;
+var $g_category;	
+var $g_user;
+var $g_loginid;
+var $g_assertion;
+
+function viewAssociationByMSISDN() {
+	$g_msisdn = $g_view[1][0];
+	_click(_link("Channel user"));
+	_click(_link("View MSISDN Association"));
+	_assertExists(_div("View MSISDN Association"));
+	_setValue(_textbox("searchMsisdn"), $g_msisdn);
+	_click(_submit("Submit"));
+	_assertExists(_cell($g_msisdn, _near(_cell("MSISDN"))));
+	
+	if(_exists(_cell($g_msisdn, _near(_cell("MSISDN")))))
+		_log("Girish is Here");
+	
+}
+
+function viewAssociationByLoginid(){
+	
+	$g_loginid=$g_view[3][0];
+	$g_user = fetchUserName($g_loginid);
+	
+	_log("Girish " + $g_user);
+	
+	_click(_link("Channel user"));
+	_click(_link("View MSISDN Association"));
+	_assertExists(_div("View MSISDN Association"));
+	_setValue(_textbox("searchLoginId"), $g_loginid);
+	_click(_submit("Submit"));
+	
+	_assertExists(_cell($g_user[0], _near(_cell("User Name"))));
+
+	//if(_exists(_cell($g_msisdn, _near(_cell("User Name")))))
+		_log("Girish is Here" + $g_loginid);
+}
+
+function viewAssociationByDomainAndCat() {
+	
+	readVariableForuser();
+	
+	_log("shashi " + $g_user);
+	
+	_click(_link("Channel user"));
+	_click(_link("View MSISDN Association"));
+	_setSelected(_select("domainCode"), "Distributor domain");
+	_setSelected(_select("channelCategoryCode"), "Master users");
+	_click(_submit("Submit"));
+	_setValue(_textbox("searchTextArrayIndexed[0]"), "%");
+	_click(_image("search.gif"));
+	_selectWindow("eRecharge");
+	_setSelected(_select("userId"), "/"+$g_user+"./");
+	_click(_button("Submit"));
+	_selectWindow();
+	_click(_submit("Submit"));
+	_assertExists(_cell($g_user, _near(_cell("User Name"))));
+	if(_exists(_cell($g_user, _near(_cell("User Name")))))
+		_log("Girish is Here"); 
+}
+
+
+function readVariableForuser() {
+
+	$g_domain = $g_view[2][1];
+	$g_category = $g_view[2][2];	
+	$g_user= $g_view[2][3];
+
+}
+
+
+
+function commonVariableForView($a_row, $a_column) {
+	 $g_msisdn=$g_view[$a_row][$a_column++];
+	 $g_loginid=$g_view[$a_row][$a_column++];	
+	 $g_domain=$g_view[$a_row][$a_column++];
+	 $g_category=$g_view[$a_row][$a_column++];	
+	 $g_assertion=$g_view[$a_row][$a_column++];
+
+}
+
+
+
+function viewClick()
+{
+	_click(_link("Channel user"));
+	_click(_link("View MSISDN Association"));
+	_setValue(_textbox("searchMsisdn"), $g_msisdn);
+	_setValue(_textbox("searchLoginId"), $g_loginid);
+	_setSelected(_select("domainCode"), $g_domain);
+	_setSelected(_select("channelCategoryCode"), $g_category);
+	_click(_submit("Submit"));
+	_assertExists(_listItem($g_assertion));
+	if(_exists(_listItem("/"+$g_assertion +".*/")))
+		return true;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

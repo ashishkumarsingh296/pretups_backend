@@ -1,0 +1,71 @@
+//######################################
+//
+//This script to add negative cases of channel admin creation
+//
+//#######################################
+
+
+//===== import scripts ===//
+_includeOnce("../../../../utility/ImportPackage.sah");
+_includeOnce("../Operator_Users/OperatorUsers_Common_Negative.sah");
+_includeOnce("../../testscripts/User_Management/UserManagement_Common.sah");
+
+
+//===== Pre-Condition check ==== //
+
+
+// If Network Admin doesn't exist create it first then create channel Admin 
+var $l_naCsv = _readCSVFile("../../../GUI/testdata/NA_Login.csv"); //Reads the network admin credentials 
+var $g_row = 4;
+var $g_col = 1;
+var $g_networkAdmin1 = $l_naCsv[1][1];
+if($g_networkAdmin1 == "null"){
+	createNA();  // UserManagement_Common.sah
+	var $l_naCsv1 = _readCSVFile("../../../GUI/testdata/NA_Login.csv");
+	$g_networkAdmin1 = $l_naCsv1[1][1];
+	login($g_appURL,  $g_LangEnglish, $g_networkAdmin1, $g_commonPassword, $g_assertWelcome);
+}else{	 
+	login($g_appURL,  $g_LangEnglish, $g_networkAdmin1, $g_commonPassword, $g_assertWelcome);
+}
+
+
+
+// ==========  Try to create customer care ========================== //
+var $g_networkAdminDetails = _readCSVFile("../../negative_testdata/CustomerCare_NegativeCases.csv");
+
+
+
+	for(var $g_row = 1; $g_networkAdminDetails[$g_row] != null; $g_row++){
+//for(var $g_row = 58; $g_row != 74; $g_row++){
+
+
+	var $g_col = 0;
+	var $t = _testcase($g_networkAdminDetails[$g_row][$g_col++], $g_networkAdminDetails[$g_row][$g_col++]);
+	$t.start();
+
+	commonVaribleForOperatorUsers($g_row, $g_col);
+	var $l_error = addCustomerCare();
+	
+	if($l_error == false)
+		_log("Assertion failed");
+	
+	
+	$t.end();
+}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
+
+
+
+
+
+
+

@@ -1,0 +1,8 @@
+DATE,MSISDN,PIN,POINTS,LANGUAGE1,TestcaseId,TestcaseType,Module,Description
+06-09-2016,7255555555,1357,10,,TUNG13013,Positive,LMS Point Redemption through EXTGW,To verify that channel User can redeem the Loyalty Points through USSD
+06-09-2016,7255555555,2468,10,,TUNG13014,Negative,LMS Point Redemption through EXTGW,To verify that Channel User can not redeem their Loyalty Points through USSD if Channel User PIN is incorrect
+06-09-2016,7255555555,1357,0,,TUNG13015,Negative,LMS Point Redemption through EXTGW,To verify that Channel User can not redeem the loyality points if redemption points entered is zero
+06-09-2016,7255555555,1357,10000,,TUNG13016,Negative,LMS Point Redemption through EXTGW,To verify that Channel User can not redeem the loyality points if redemption points entered is more than the acumulated points
+06-09-2016,7255555555,1357,5.5,,TUNG13017,Negative,LMS Point Redemption through EXTGW,To verify that Channel User can not redeem the loyality points if redemption points entered is in Decimal
+06-09-2016,7255555555,1357,-5,,TUNG13018,Negative,LMS Point Redemption through EXTGW,To verify that Channel User can not redeem the loyality points if redemption points entered is in negative
+06-09-2016,7255555555,1357,,,TUNG13019,Negative,LMS Point Redemption through EXTGW,To verify that Channel User can not redeem the loyality points if no points entered for redemption

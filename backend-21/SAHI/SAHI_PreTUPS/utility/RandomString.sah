@@ -1,0 +1,74 @@
+//#############################################################################
+//#Company Name: Comviva Technologies Ltd.
+//#Application Name: Pretups
+//#Objective:To generate random strings
+//#Author Name: Nidhi Singh
+//#Created Date: 24/01/2014
+//#############################################################################
+
+/**
+ *  This function generates random strings in the range [A-Z, a-z] and length is 2 characters for User Prefix Code
+ *	@param[in] - null
+ *	@return - randomstring
+ */
+
+//=======================Read the User Management to get UserIDPrefix===========================
+function randomString(){
+	var $l_umCsv = _readCSVFile("../../../GUI/testdata/UserManagement_CreateNA.csv");
+	var $g_userIDPrefix =  $l_umCsv[1][25]; //Get the userId and perform the whole process
+	$g_userIDPrefix[0][0] = $g_userIDPrefix;
+	var $resNextChar = nextChar($g_userIDPrefix); //Call the nextChar() function to generate the next char
+	$resNextChar = $resNextChar.toString();
+	
+	$l_umCsv[1][25] = $resNextChar;
+	
+	_writeCSVFile($l_umCsv, "../../../GUI/testdata/UserManagement_CreateNA.csv", 1); //writing back used MSISDN in the file
+	return $resNextChar;
+}
+
+function nextChar($String){ 
+	if($String[1]== "z" || $String[1]== "Z"){
+		return String.fromCharCode($String.charCodeAt(0) + 1) + "a";
+		}
+	else{
+        return String.fromCharCode($String.charCodeAt(0)) + String.fromCharCode($String.charCodeAt(1) + 1);
+	}
+}
+
+/**
+ *  This function generates random strings
+ *	@param[in] - null
+ *	@return - randomstring
+ */
+
+function randomStringForShortCode() {    
+	var $l_chars = "ABCDEFGHIJKLMNOPQRSTUVWXTZabcdefghiklmnopqrstuvwxyz";
+	var $l_lengthOfString = 4;
+	var $l_randomString = '';
+	for (var $i = 0; $i < $l_lengthOfString; $i++) {
+		var $l_randomNum = Math.floor(Math.random() * $l_chars.length);
+		$l_randomString += $l_chars.substring($l_randomNum, $l_randomNum + 1);
+	}	
+	return $l_randomString;
+}
+
+function randomNumber(){
+	var $num = "01234567892324542124581254454";
+	var $lengthOfnumber = 5;
+	var $randomNumber='';
+	for(var $i=0; $i < $lengthOfnumber; $i++ ){
+	var $randomNumber = Math.floor(Math.random() * $num.length);
+	
+		$randomNumber += $num.substring($randomNumber, $randomNumber + 1);
+	}
+	return $randomNumber;
+}
+
+
+
+
+
+
+
+
+

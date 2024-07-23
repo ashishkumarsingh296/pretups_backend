@@ -1,0 +1,23 @@
+##############################################################################################################################
+#
+#            ----------------------PATCH INSTALLER CONFIGURATION FILE------------------------------
+#
+#PLEASE GIVE A " SPACE " after COLON in each variable,then enter the configuration .Please Use Space Bar not Tab for space.
+#
+# Author: PreTUPS_RoadMap
+# Date: 25/07/2016
+#
+##############################################################################################################################
+
+#Enter 'true' or 'false' for whether DB patch is involved or not in this patch installation. If true provide the schema name and password
+
+isDbPatch: true
+PRETUPS_SCHEMA_USER_NAME: pretups74_dev
+PRETUPS_SCHEMA_PASSWORD: pretups74_dev
+
+## PATCH TYPES SUPPORTED:::'DB-SCRIPTS' ******
+
+PatchConfigfiles:
+- patchType: DB-SCRIPTS
+  fileName: pqr.sql
+  path: "/data1/dump"

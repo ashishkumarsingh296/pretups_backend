@@ -1,0 +1,2 @@
+TestcaseId,TestcaseType,Module,Description
+TUNG12809,Positive,Add user API through REST,To verify that channel user is not created when external network code is blank in Rest API request

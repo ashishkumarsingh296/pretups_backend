@@ -1,0 +1,9 @@
+---
+ - name: "let's make it work: LogConfig.props: replace the variable with the concrete value: pretupsvar/pretups_weblogs"
+   replace: dest={{ Tomcat_Path }}/conf/pretups/LogConfig.props regexp='^(.*)<Tomcat-Path>/logs(.*)$' replace='\1{{ CATALINA_OUT_LOG_PATH_SMSR }}\2'
+ 
+ - name: "let's make it work: catalina.sh: replace the existing catalina.out path to provided path"
+   lineinfile: dest={{ Tomcat_Path }}/bin/catalina.sh regexp='(.*)CATALINA_OUT=(.*)' line='CATALINA_OUT={{ CATALINA_OUT_LOG_PATH_SMSR }}/catalina.out'
+
+ - name: "let's make it work: ProcessLogConfig.props: replace the variable with the concrete value: pretupsvar/pretups_weblogs"
+   replace: dest={{ Tomcat_Path }}/conf/pretups/ProcessLogConfig.props regexp='^(.*)<Tomcat-Path>/logs(.*)$' replace='\1{{ CATALINA_OUT_LOG_PATH_SMSR }}\2'

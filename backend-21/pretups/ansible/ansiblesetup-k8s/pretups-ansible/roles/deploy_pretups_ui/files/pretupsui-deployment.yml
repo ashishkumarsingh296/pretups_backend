@@ -1,0 +1,25 @@
+--- 
+apiVersion: apps/v1
+kind: Deployment
+metadata: 
+  name: pretups-ui-deployment
+  labels: 
+    app: pretups-ui
+spec: 
+  replicas: 1
+  selector:
+    matchLabels:
+      app: pretups-ui
+  template: 
+    metadata: 
+      labels: 
+        app: pretups-ui
+    spec: 
+      containers: 
+        - 
+          image: "REGISTRY_IP:REGISTRY_PORT/pretups-uiapp:v1"
+          imagePullPolicy: Always
+          name: pretups-ui
+          ports: 
+            - 
+              containerPort: PRETUPS_UI_CONTAINER_PORT

@@ -1,0 +1,2 @@
+TestcaseId,TestcaseType,Module,Description
+TUNG13167,Negative,Set PIN,To verify that error is displayed if new pin is same as old PIN.

@@ -1,0 +1,20 @@
+//#############################################################################
+//#Company Name: Comviva Technologies Ltd.
+//#Application Name: Mobiquity
+//#Objective:To take screenshot on failure.
+//#Author Name: Anantha Sakthi
+//#Created Date: 09/10/2012
+//#############################################################################
+
+/**
+ *  This function is used to take screenshot on failure
+ *	@param[in] - e 	exception if any error occurs
+ *	@return - null
+ */
+
+function onScriptError($e) {
+	_call(window.resizeTo(2280, 2024));
+	_focusWindow();
+	_takeScreenShot();
+}
+onScriptFailure = onScriptError; 

@@ -1,0 +1,13 @@
+//* Include *
+_includeOnce("Datastructure.sah");
+/**
+ * Method to execute an Oracle DB query
+ * @param $query 
+ * @returns
+ */
+function executeQuery($query){
+	var $dbURL =  "jdbc:oracle:thin:@" + $CONFIG.DB_IP + ":" + $CONFIG.DB_PORT + ":" + $CONFIG.DB_SID;
+	var $db = _getDB("oracle.jdbc.driver.OracleDriver", $dbURL, $CONFIG.DB_USERNAME, $CONFIG.DB_PASSWORD);
+	var $result = $db.select($query);
+	return ($result);
+}

@@ -1,0 +1,4 @@
+PROTOCOL http
+ADDRESS localhost
+PORT 7987
+UUID 1ee7a8de-a75d-4f19-96de-bc793c2291ca

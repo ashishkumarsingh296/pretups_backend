@@ -1,0 +1,2 @@
+PRODUCTCODE,LANGUAGE1,TestcaseId,TestcaseType,Module,Description
+101,,TUNG23129,Positive,REST -  C2C withdraw,To verify that In case of EXTCODE Request should be successful

@@ -1,0 +1,23 @@
+TestCaseNo. ,Discription,MSISDN,Geography,Domain,Category,User,Assertion
+TEST001,"Verify that submit button is getting displayed, And geography and  msisdn are getting displayed in the system",,,,,,
+TEST002,To check the message when text is enetered in  MSISDN field,asdfg,,,,,Not a valid MSISDN
+TEST003,To check the message when alphanumeric is enetered in  MSISDN field,as34vbb54,,,,,Not a valid MSISDN
+TEST004,To check the message when special character is enetered in  MSISDN field,!@#$%^&,,,,,Not a valid MSISDN
+TEST005,To check the message when msisdn entered either less than MIN_MSISDN_LENGTH or greater than MAX_MSISDN_LENGTH  ,12,,,,,Not a valid MSISDN
+TEST006,To check the message when MSISDN entered is not in system.,222222222,,,,,Details of user not found
+TEST007,To check the message when MSISDN entered is not associated with any of the Program(loyalty/etc).,7203111111,,,,,Channel user didn't participated in any program
+TEST008,To check the message when MSISDN entered did'nt made any points.,7200002299,,,,,User did not made any point yet
+TEST009,To test bonus point enquiry through MSISDN,7200002208,,,,,
+TEST0010,To populate category by selecting a domain .,,,Dist1,,,Super Distributor
+TEST0011,To populate category by selecting 'ALL' domain .,,,ALL,,,Corporate Executive
+TEST0012,"To populate users from the  selected geography, domain, category.",,ZainArea,Dist1,Super Distributor,,
+TEST0013,"To check the message when no user exists on selected geography, domain, category . ",,ntest,Dist1,Super Distributor,,No user exits
+TEST0014,"To check the message when no user exists on selected geography, domain, for 'ALL'  categories . ",,ntest,Dist1,ALL,,No user exits
+TEST0015,"To check the message when no user exists on selected geography,for  'ALL' domains, for 'ALL'  categories . ",,ntest,ALL,ALL,,No user exits
+TEST0016,"To test bonus point(s) for selected geography,domain,category and for 'ALL' users ",,ZainArea,Dist1,Super Distributor,ALL,
+TEST0017,"To see bonus point(s) for selected geography,domain,category and user ",,ZainArea,Dist1,Super Distributor,shainatest,
+TEST0018,"To see message for selected geography,domain,category and user,when the user has no  points ",,ZainArea,Dist1,Super Distributor,shaintest1,User did not made any point yet.
+TEST0019,"To see message for selected geography,domain,category and user,when the user has no profile associated. ",,ZainArea,Dist1,Super Distributor,abc,Channel user didn't participated in any program
+TEST0020,"To see bonus point(s) for 'ALL' category and selected geography,domain, and 'ALL'  user ",,ZainArea,Dist1,ALL,ALL,
+TEST0021,"To see bonus point(s) for 'ALL' geography, 'ALL' domain, 'ALL' category and 'ALL'  user ",,ZainArea,Dist1,ALL,ALL,
+TEST0022,To check the message when MSISDN and (geography or domain or category ) is not entered/selected,,,,,,Mandatory field is Required

@@ -1,0 +1,13 @@
+TestCaseNo. ,Discription,Module,User Type,Barring Type,MSISDN ,Barred Reason,Assertion
+TEST001,Verify that values in the module drop down are getting populated while going to baar channel user,Channel to Subscriber,,,,,
+TEST002,Verify that values in the user type drop down are getting populated while going to baar channel user,,Sender,,,,
+TEST003,Verify that values in the barring type drop down are getting populated while going to baar channel user,Channel to Subscriber,,,,,
+TEST004,"Verify that without giving module name, channel admin cant bar user in the system",,Sender,,7233333333,Bar channel User,Module is required.
+TEST005,"Verify that without giving MSISDN, channel admin cant bar user in the system",Channel to Subscriber,Sender,Bar_test,,Bar channel User,Mobile number is required.
+TEST006,Verify that channel admin cant bar user without user type,Channel to Subscriber,,Bar_test,7233333333,Bar channel User,User type is required.
+TEST007,Given that channel admin try to bar user in the system with a invalid mobile number,Channel to Subscriber,Sender,Bar_test,72,Bar channel User,Mobile number is not a valid mobile
+TESt008,"Given that channel admin try to bar the user in the system, which is not existing in the system",Channel to Subscriber,Sender,Bar_test,7200000002,Bar channel User,No channel user information exist for the mobile number
+TEST009,Verify the functionality of reset button on  Add barred user page in the system ,Channel to Subscriber,Sender,Bar_test,7200000002,Bar channel User,
+TEST010,Verify the functionality of back button on add barred user confirm page ,Channel to Subscriber,Sender,Bar_test,7233333333,Bar channel User,
+TEST011,Verify that channel admin can bar channel user in the system ,Channel to Subscriber,Sender,Bar_test,7233333333,Bar channel User,successfully barred.
+TEST012,"Verify that if channel admin try to barr a channel user which is already bar then, it will display error msg",Channel to Subscriber,Sender,Bar_test,7233333333,Bar channel User,The user is already barred in the system.

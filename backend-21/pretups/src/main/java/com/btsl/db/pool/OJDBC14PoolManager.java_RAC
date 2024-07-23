@@ -1,0 +1,759 @@
+package com.btsl.db.pool;
+
+import java.sql.Connection;
+import java.sql.SQLException;
+
+import com.btsl.common.BTSLBaseException;
+import com.btsl.common.BaseException;
+import com.btsl.db.util.BTSLDBManager;
+import com.btsl.event.EventComponentI;
+import com.btsl.event.EventHandler;
+import com.btsl.event.EventIDI;
+import com.btsl.event.EventLevelI;
+import com.btsl.event.EventStatusI;
+import com.btsl.logging.Log;
+import com.btsl.logging.LogFactory;
+import com.btsl.util.BTSLUtil;
+import com.btsl.util.Constants;
+
+import oracle.jdbc.pool.OracleConnectionCacheImpl;
+import oracle.jdbc.pool.OracleConnectionPoolDataSource;
+
+/* OJDBC14PoolManager.java
+ * Name                                 Date            History
+ *------------------------------------------------------------------------
+ * Abhijit Singh Chauhan              14/11/2006         Initial Creation
+ * Ankit Singhal					  26/09/2008         Modified for RAC
+ *------------------------------------------------------------------------
+ * Copyright (c) 2006 Bharti Telesoft Ltd.
+ */
+
+public class OJDBC14PoolManager extends BTSLDBManager
+{
+   private boolean creatingPool=false;
+	private Log _log=LogFactory.getLog(this.getClass().getName());
+	
+	
+	private static String DB_CONN_FAILED="00000";
+	private static OracleConnectionPoolDataSource _ods=null;
+	private static OracleConnectionPoolDataSource _ods_single=null;
+	private static OracleConnectionCacheImpl _ocacheimpl = null;
+	private static OracleConnectionCacheImpl _ocacheSingleimpl = null;
+	
+	/**
+    * This method returns connection from the connection pool, if there is no connection
+    * in the pool then adds new connection in the connection pool.
+    * @return Connection, database connection
+    * @param none
+    * 
+    */
+    public Connection getConnection() throws BTSLBaseException
+    {
+        Connection dbConnection=null;
+		try
+        {
+            if(_ocacheimpl==null)
+			{
+				if(!createPool())
+	            	throw new BaseException(DB_CONN_FAILED);
+			}
+			try
+		    {
+		    	//Getting connection from Connection pool
+				dbConnection = _ocacheimpl.getConnection();
+				//Setting Autocommit false
+            	dbConnection.setAutoCommit(false);
+            	try
+            	{
+					//Rolling back the transaction - if any
+            	    dbConnection.rollback();          
+            	}
+            	catch(SQLException sqe1)
+            	{
+            	    _log.error("getConnection Rollback","Exception Error Code="+sqe1.getErrorCode());
+            	}
+		    }
+		    catch(SQLException sqe)
+		    {
+				sqe.printStackTrace();
+				int errorCode=sqe.getErrorCode();
+				_log.error("getConnection","Exception Error Code="+errorCode);
+				if(errorCode==17008)
+				{
+					_log.error("getConnection","Recreating pool");
+					//Creating pool
+					if(!createPool())
+						throw new BTSLBaseException(DB_CONN_FAILED);
+					//Getting connection from Connection pool
+					dbConnection = _ocacheimpl.getConnection();
+					//Setting Autocommit false
+					dbConnection.setAutoCommit(false);
+	            	try
+	            	{
+						//Rolling back the transaction - if any
+	            	    dbConnection.rollback();          
+	            	}
+	            	catch(SQLException sqe1)
+	            	{
+	            	    _log.error("getConnection Rollback","Exception Error Code="+sqe1.getErrorCode());
+	            	}
+				}
+				else
+					throw new BTSLBaseException(DB_CONN_FAILED);
+		    }
+		    catch(Exception e)
+			{
+				e.printStackTrace();
+				throw new BTSLBaseException(DB_CONN_FAILED);
+			}
+		    if(dbConnection==null)
+				throw new BTSLBaseException(DB_CONN_FAILED);
+		    //added error log to always print this line
+			if (_ocacheimpl != null )
+				_log.error("getConnection 10G","DB Connections  getting connection from connection pool :"+dbConnection+" active size:"+_ocacheimpl.getActiveSize()+" cache size:"+_ocacheimpl.getCacheSize());
+        }//end of try
+		catch(BTSLBaseException be)
+		{
+			EventHandler.handle(EventIDI.DATABASE_CONECTION_PROBLEM,EventComponentI.SYSTEM,EventStatusI.RAISED,EventLevelI.FATAL,"OJDBC14PoolManager[getConnection]","","","","Database Connection Problem");
+			throw be;
+	    }
+		catch(Exception ex)
+        {
+            // Trap errors
+			EventHandler.handle(EventIDI.DATABASE_CONECTION_PROBLEM,EventComponentI.SYSTEM,EventStatusI.RAISED,EventLevelI.FATAL,"OJDBC14PoolManager[getConnection]","","","","Database Connection Problem");
+			_log.error("getConnection","Error in Connecting to the Database \n"+ex.getMessage() +"\n");
+            ex.printStackTrace();
+            throw new BTSLBaseException(DB_CONN_FAILED);
+        }//end of catch
+		return dbConnection;
+    } // getConnection
+	
+	/**
+	* This method returns a single connection
+	* Creation date: (18/07/04)
+	* @return Connection, database connection
+	* @param none
+	*/
+	public Connection getSingleConnection()
+	{
+		Connection dbConnection=null;
+		try
+		{
+			if(_ocacheSingleimpl==null)
+			{
+				String db_url = Constants.getProperty("datasourceurl");
+					
+				String db_user = Constants.getProperty("userid");
+				if(db_user!=null)
+				db_user =BTSLUtil.decrypt3DesAesText(db_user);
+				String db_password = Constants.getProperty("passwd");
+				if(db_password!=null)
+				db_password = BTSLUtil.decrypt3DesAesText(db_password);
+
+				if(db_url!=null)
+				{
+					_ods_single = new OracleConnectionPoolDataSource(); 
+					// provide various attribute of database driver to make connection
+					_ods_single.setURL(db_url);
+					_ods_single.setNetworkProtocol("tcp");
+					_ods_single.setUser(db_user);
+					_ods_single.setPassword(db_password);
+					 
+					//Initialize the Connection Cache
+					_ocacheSingleimpl = new OracleConnectionCacheImpl(_ods_single);
+
+					// Set Max Limit for the Cache
+					_ocacheSingleimpl.setMaxLimit(1);
+
+					// Set Min Limit for the Cache
+					_ocacheSingleimpl.setMinLimit(1);
+ 
+					_ocacheSingleimpl.setCacheScheme(OracleConnectionCacheImpl.DYNAMIC_SCHEME);
+					
+				}
+				else
+					return null;
+			}//end of the m_connectionSinglePool
+
+			dbConnection = _ocacheSingleimpl.getConnection();
+			dbConnection.setAutoCommit(false);
+			if(_log.isDebugEnabled())
+				_log.error("getSingleConnection 10G","DB Connections  getting connection from connection pool :"+dbConnection+" active size:"+_ocacheSingleimpl.getActiveSize()+" cache size:"+_ocacheSingleimpl.getCacheSize());
+		}//end of try
+		catch(Exception ex)
+		{
+			// Trap errors
+			_log.error("getSingleConnection","Error in Connecting to the Database \n"+ex.getMessage() +"\n");
+			ex.printStackTrace();
+			EventHandler.handle(EventIDI.DATABASE_CONECTION_PROBLEM,EventComponentI.SYSTEM,EventStatusI.RAISED,EventLevelI.FATAL,"OJDBC14PoolManager[getSingleConnection]","","","","Database Connection Problem");
+		}//end of catch
+		return dbConnection;
+	} // getConnection
+	
+	public boolean createPool()
+	{
+		try
+		{
+			if(!creatingPool)
+			{
+				creatingPool=true;
+				if(_log.isDebugEnabled())
+				    _log.debug("createPool","Creating oracle connection pool");
+			
+				String db_url = Constants.getProperty("datasourceurl");
+				
+				String db_user = Constants.getProperty("userid");
+				if(db_user!=null)
+					db_user = BTSLUtil.decrypt3DesAesText(db_user);
+				String db_password = Constants.getProperty("passwd");
+				if(db_password!=null)
+					db_password = BTSLUtil.decrypt3DesAesText(db_password);
+				
+				String strMinPoolSize=Constants.getProperty("minpoolsize");
+				String strPoolSize=Constants.getProperty("poolsize");
+				String oraclePoolLogFile=Constants.getProperty("oraclePoolLogFile");
+				int minPoolSize=0;
+				try
+				{
+					minPoolSize=Integer.parseInt(strMinPoolSize);
+				}
+				catch(Exception e){minPoolSize=50;}
+				int poolSize=0;
+				try
+				{
+					poolSize=Integer.parseInt(strPoolSize);
+				}
+				catch(Exception e){e.printStackTrace();poolSize=60;}
+				if(_log.isDebugEnabled())
+					_log.debug("createPool 10G","userid=" + db_user + ", db password="+ db_password +", db_url="+ db_url+ ", minPoolSize="+ minPoolSize +" max poolSize="+poolSize+" oraclePoolLogFile="+oraclePoolLogFile );
+				try
+				{
+					if(db_url!=null)
+					{
+						// creating the instatnce of oracle datasource
+						_ods = new OracleConnectionPoolDataSource(); 
+						// provide various attribute of database driver to make connection
+						_ods.setURL(db_url);
+						_ods.setNetworkProtocol("tcp");
+						_ods.setUser(db_user);
+						_ods.setPassword(db_password);
+
+						// Initialize the Connection Cache
+						_ocacheimpl = new OracleConnectionCacheImpl(_ods);
+
+						// Set Max Limit for the Cache
+						_ocacheimpl.setMaxLimit(poolSize);
+
+						// Set Min Limit for the Cache
+						_ocacheimpl.setMinLimit(minPoolSize);
+	 
+						_ocacheimpl.setCacheScheme(OracleConnectionCacheImpl.DYNAMIC_SCHEME);
+						
+					}
+				}
+				catch(Exception e)
+				{
+					e.printStackTrace();
+					EventHandler.handle(EventIDI.DATABASE_CONECTION_PROBLEM,EventComponentI.SYSTEM,EventStatusI.RAISED,EventLevelI.FATAL,"OJDBC14PoolManager[createPool]","","","","Database Connection Problem");
+					return false;
+				}
+			}
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+			EventHandler.handle(EventIDI.DATABASE_CONECTION_PROBLEM,EventComponentI.SYSTEM,EventStatusI.RAISED,EventLevelI.FATAL,"OJDBC14PoolManager[createPool]","","","","Database Connection Problem");
+			return false;
+		}
+		finally
+		{
+			creatingPool=false;
+		}
+		return true;
+	}
+	
+	
+ 	private boolean creatingPoolReportDB=false;
+	private static String DB_CONN_FAILED_REPORTDB="00000";
+	private static OracleConnectionPoolDataSource _odsReportDB=null;
+	private static OracleConnectionPoolDataSource _ods_single_report_DB=null;
+	private static OracleConnectionCacheImpl _ocacheimplreportdb = null;
+	private static OracleConnectionCacheImpl _ocacheSingleimplreportdb = null;
+	
+	/**
+    * This method returns connection from the connection pool, if there is no connection
+    * in the pool then adds new connection in the connection pool.
+    * @return Connection, database connection
+    * @param none
+    * 
+    */
+    public Connection getReportDBConnection() throws BTSLBaseException
+    {
+        Connection dbConnection=null;
+		try
+        {
+            if(_ocacheimplreportdb==null)
+			{
+				if(!createPoolReportDB())
+	            	throw new BaseException(DB_CONN_FAILED_REPORTDB);
+			}
+			try
+		    {
+		    	//Getting connection from Connection pool
+				dbConnection = _ocacheimplreportdb.getConnection();
+				//Setting Autocommit false
+            	dbConnection.setAutoCommit(false);
+            	try
+            	{
+					//Rolling back the transaction - if any
+            	    dbConnection.rollback();          
+            	}
+            	catch(SQLException sqe1)
+            	{
+            	    _log.error("getReportDBConnection Rollback","Exception Error Code="+sqe1.getErrorCode());
+            	}
+		    }
+		    catch(SQLException sqe)
+		    {
+				sqe.printStackTrace();
+				int errorCode=sqe.getErrorCode();
+				_log.error("getReportDBConnection","Exception Error Code="+errorCode);
+				if(errorCode==17008)
+				{
+					_log.error("getReportDBConnection","Recreating pool");
+					//Creating pool
+					if(!createPoolReportDB())
+						throw new BTSLBaseException(DB_CONN_FAILED_REPORTDB);
+					//Getting connection from Connection pool
+					dbConnection = _ocacheimplreportdb.getConnection();
+					//Setting Autocommit false
+					dbConnection.setAutoCommit(false);
+	            	try
+	            	{
+						//Rolling back the transaction - if any
+	            	    dbConnection.rollback();          
+	            	}
+	            	catch(SQLException sqe1)
+	            	{
+	            	    _log.error("getReportDBConnection Rollback","Exception Error Code="+sqe1.getErrorCode());
+	            	}
+				}
+				else
+					throw new BTSLBaseException(DB_CONN_FAILED_REPORTDB);
+		    }
+		    catch(Exception e)
+			{
+				e.printStackTrace();
+				throw new BTSLBaseException(DB_CONN_FAILED_REPORTDB);
+			}
+		    if(dbConnection==null)
+				throw new BTSLBaseException(DB_CONN_FAILED_REPORTDB);
+		    //added error log to always print this line
+			if (_ocacheimplreportdb != null )
+				_log.error("getReportDBConnection 10G","DB Connections  getting connection from connection pool :"+dbConnection+" active size:"+_ocacheimplreportdb.getActiveSize()+" cache size:"+_ocacheimplreportdb.getCacheSize());
+        }//end of try
+		catch(BTSLBaseException be)
+		{
+			EventHandler.handle(EventIDI.DATABASE_CONECTION_PROBLEM,EventComponentI.SYSTEM,EventStatusI.RAISED,EventLevelI.FATAL,"OJDBC14PoolManager[getReportDBConnection]","","","","Database Connection Problem");
+			throw be;
+	    }
+		catch(Exception ex)
+        {
+            // Trap errors
+			EventHandler.handle(EventIDI.DATABASE_CONECTION_PROBLEM,EventComponentI.SYSTEM,EventStatusI.RAISED,EventLevelI.FATAL,"OJDBC14PoolManager[getReportDBConnection]","","","","Database Connection Problem");
+			_log.error("getReportDBConnection","Error in Connecting to the Database \n"+ex.getMessage() +"\n");
+            ex.printStackTrace();
+            throw new BTSLBaseException(DB_CONN_FAILED_REPORTDB);
+        }//end of catch
+		return dbConnection;
+    } // getConnection
+	
+	/**
+	* This method returns a single connection
+	* Creation date: (18/07/04)
+	* @return Connection, database connection
+	* @param none
+	*/
+	public Connection getReportDBSingleConnection()
+	{
+		Connection dbConnection=null;
+		try
+		{
+			if(_ocacheSingleimplreportdb==null)
+			{
+				String db_url = Constants.getProperty("reportdbdatasourceurl");
+					
+				String db_user = Constants.getProperty("reportdbuserid");
+				if(db_user!=null)
+				db_user = BTSLUtil.decrypt3DesAesText(db_user);
+				String db_password = Constants.getProperty("reportdbpasswd");
+				if(db_password!=null)
+				db_password = BTSLUtil.decrypt3DesAesText(db_password);
+				//System.out.println("getConnection() >> userid=" + db_user + ",  password="+ db_password+ ", db_url="+ db_url);
+				if(db_url!=null)
+				{
+					_ods_single_report_DB = new OracleConnectionPoolDataSource(); 
+					// provide various attribute of database driver to make connection
+					_ods_single_report_DB.setURL(db_url);
+					_ods_single_report_DB.setNetworkProtocol("tcp");
+					_ods_single_report_DB.setUser(db_user);
+					_ods_single_report_DB.setPassword(db_password);
+					 
+					//Initialize the Connection Cache
+					_ocacheSingleimplreportdb = new OracleConnectionCacheImpl(_ods_single_report_DB);
+
+					// Set Max Limit for the Cache
+					_ocacheSingleimplreportdb.setMaxLimit(1);
+
+					// Set Min Limit for the Cache
+					_ocacheSingleimplreportdb.setMinLimit(1);
+ 
+					_ocacheSingleimplreportdb.setCacheScheme(OracleConnectionCacheImpl.DYNAMIC_SCHEME);
+					
+				}
+				else
+					return null;
+			}//end of the m_connectionSinglePool
+
+			dbConnection = _ocacheSingleimplreportdb.getConnection();
+			dbConnection.setAutoCommit(false);
+			if(_log.isDebugEnabled())
+				_log.error("getReportDBSingleConnection 10G","DB Connections  getting connection from connection pool :"+dbConnection+" active size:"+_ocacheSingleimplreportdb.getActiveSize()+" cache size:"+_ocacheSingleimplreportdb.getCacheSize());
+		}//end of try
+		catch(Exception ex)
+		{
+			// Trap errors
+			_log.error("getReportDBSingleConnection","Error in Connecting to the Database \n"+ex.getMessage() +"\n");
+			ex.printStackTrace();
+			EventHandler.handle(EventIDI.DATABASE_CONECTION_PROBLEM,EventComponentI.SYSTEM,EventStatusI.RAISED,EventLevelI.FATAL,"OJDBC14PoolManager[getReportDBSingleConnection]","","","","Database Connection Problem");
+		}//end of catch
+		return dbConnection;
+	} // getConnection
+	
+	public boolean createPoolReportDB()
+	{
+		try
+		{
+			if(!creatingPoolReportDB)
+			{
+				creatingPoolReportDB=true;
+				if(_log.isDebugEnabled())
+				    _log.debug("createPoolReportDB","Creating oracle connection pool");
+			
+				String db_url = Constants.getProperty("reportdbdatasourceurl");
+				
+				String db_user = Constants.getProperty("reportdbuserid");
+				if(db_user!=null)
+					db_user = BTSLUtil.decrypt3DesAesText(db_user);
+				String db_password = Constants.getProperty("reportdbpasswd");
+				if(db_password!=null)
+					db_password = BTSLUtil.decrypt3DesAesText(db_password);
+				
+				String strMinPoolSize=Constants.getProperty("reportdbminpoolsize");
+				String strPoolSize=Constants.getProperty("reportdbpoolsize");
+				String oraclePoolLogFile=Constants.getProperty("oraclePoolLogFile");
+				int minPoolSize=0;
+				try
+				{
+					minPoolSize=Integer.parseInt(strMinPoolSize);
+				}
+				catch(Exception e){minPoolSize=50;}
+				int poolSize=0;
+				try
+				{
+					poolSize=Integer.parseInt(strPoolSize);
+				}
+				catch(Exception e){e.printStackTrace();poolSize=60;}
+				if(_log.isDebugEnabled())
+					_log.debug("createPoolReportDB 10G","userid=" + db_user + ", db password="+ db_password +", db_url="+ db_url+ ", minPoolSize="+ minPoolSize +" max poolSize="+poolSize+" oraclePoolLogFile="+oraclePoolLogFile );
+				try
+				{
+					if(db_url!=null)
+					{
+						// creating the instatnce of oracle datasource
+						_odsReportDB = new OracleConnectionPoolDataSource(); 
+						// provide various attribute of database driver to make connection
+						_odsReportDB.setURL(db_url);
+						_odsReportDB.setNetworkProtocol("tcp");
+						_odsReportDB.setUser(db_user);
+						_odsReportDB.setPassword(db_password);
+
+						// Initialize the Connection Cache
+						_ocacheimplreportdb = new OracleConnectionCacheImpl(_odsReportDB);
+
+						// Set Max Limit for the Cache
+						_ocacheimplreportdb.setMaxLimit(poolSize);
+
+						// Set Min Limit for the Cache
+						_ocacheimplreportdb.setMinLimit(minPoolSize);
+	 
+						_ocacheimplreportdb.setCacheScheme(OracleConnectionCacheImpl.DYNAMIC_SCHEME);
+						
+					}
+				}
+				catch(Exception e)
+				{
+					e.printStackTrace();
+					EventHandler.handle(EventIDI.DATABASE_CONECTION_PROBLEM,EventComponentI.SYSTEM,EventStatusI.RAISED,EventLevelI.FATAL,"OJDBC14PoolManager[createPoolReportDB]","","","","Database Connection Problem");
+					return false;
+				}
+			}
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+			EventHandler.handle(EventIDI.DATABASE_CONECTION_PROBLEM,EventComponentI.SYSTEM,EventStatusI.RAISED,EventLevelI.FATAL,"OJDBC14PoolManager[createPoolReportDB]","","","","Database Connection Problem");
+			return false;
+		}
+		finally
+		{
+			creatingPoolReportDB=false;
+		}
+		return true;
+	}
+	
+	
+	
+	private boolean creatingPoolCurrentReportDB=false;
+	private static String DB_CONN_FAILED_CURRENT_REPORTDB="00000";
+	private static OracleConnectionPoolDataSource _odsCurrentReportDB=null;
+	private static OracleConnectionPoolDataSource _ods_single_current_report_DB=null;
+	private static OracleConnectionCacheImpl _ocacheimplcurrentreportdb = null;
+	private static OracleConnectionCacheImpl _ocacheSingleimplcurrentreportdb = null;
+	
+	/**
+    * This method returns connection from the connection pool, if there is no connection
+    * in the pool then adds new connection in the connection pool.
+    * @return Connection, database connection
+    * @param none
+    * 
+    */
+    public Connection getCurrentReportDBConnection() throws BTSLBaseException
+    {
+
+        Connection dbConnection=null;
+		try
+        {
+            if(_ocacheimplcurrentreportdb==null)
+			{
+				if(!createPoolCurrentReportDB())
+	            	throw new BaseException(DB_CONN_FAILED_CURRENT_REPORTDB);
+			}
+			try
+		    {
+		    	//Getting connection from Connection pool
+				dbConnection = _ocacheimplcurrentreportdb.getConnection();
+				//Setting Autocommit false
+            	dbConnection.setAutoCommit(false);
+            	try
+            	{
+					//Rolling back the transaction - if any
+            	    dbConnection.rollback();          
+            	}
+            	catch(SQLException sqe1)
+            	{
+            	    _log.error("getConnection Rollback","Exception Error Code="+sqe1.getErrorCode());
+            	}
+		    }
+		    catch(SQLException sqe)
+		    {
+				sqe.printStackTrace();
+				int errorCode=sqe.getErrorCode();
+				_log.error("getCurrentReportDBConnection","Exception Error Code="+errorCode);
+				if(errorCode==17008)
+				{
+					_log.error("getCurrentReportDBConnection","Recreating pool");
+					//Creating pool
+					if(!createPoolCurrentReportDB())
+						throw new BTSLBaseException(DB_CONN_FAILED_CURRENT_REPORTDB);
+					//Getting connection from Connection pool
+					dbConnection = _ocacheimplcurrentreportdb.getConnection();
+					//Setting Autocommit false
+					dbConnection.setAutoCommit(false);
+	            	try
+	            	{
+						//Rolling back the transaction - if any
+	            	    dbConnection.rollback();          
+	            	}
+	            	catch(SQLException sqe1)
+	            	{
+	            	    _log.error("getCurrentReportDBConnection Rollback","Exception Error Code="+sqe1.getErrorCode());
+	            	}
+				}
+				else
+					throw new BTSLBaseException(DB_CONN_FAILED_CURRENT_REPORTDB);
+		    }
+		    catch(Exception e)
+			{
+				e.printStackTrace();
+				throw new BTSLBaseException(DB_CONN_FAILED_CURRENT_REPORTDB);
+			}
+		    if(dbConnection==null)
+				throw new BTSLBaseException(DB_CONN_FAILED_CURRENT_REPORTDB);
+		    //added error log to always print this line
+			if (_ocacheimplcurrentreportdb != null )
+				_log.error("getCurrentReportDBConnection 10G","DB Connections  getting connection from connection pool :"+dbConnection+" active size:"+_ocacheimplcurrentreportdb.getActiveSize()+" cache size:"+_ocacheimplcurrentreportdb.getCacheSize());
+        }//end of try
+		catch(BTSLBaseException be)
+		{
+			EventHandler.handle(EventIDI.DATABASE_CONECTION_PROBLEM,EventComponentI.SYSTEM,EventStatusI.RAISED,EventLevelI.FATAL,"OJDBC14PoolManager[getCurrentReportDBConnection]","","","","Database Connection Problem");
+			throw be;
+	    }
+		catch(Exception ex)
+        {
+            // Trap errors
+			EventHandler.handle(EventIDI.DATABASE_CONECTION_PROBLEM,EventComponentI.SYSTEM,EventStatusI.RAISED,EventLevelI.FATAL,"OJDBC14PoolManager[getCurrentReportDBConnection]","","","","Database Connection Problem");
+			_log.error("getCurrentReportDBConnection","Error in Connecting to the Database \n"+ex.getMessage() +"\n");
+            ex.printStackTrace();
+            throw new BTSLBaseException(DB_CONN_FAILED_CURRENT_REPORTDB);
+        }//end of catch
+		return dbConnection;
+    } // getConnection
+	
+	/**
+	* This method returns a single connection
+	* Creation date: (18/07/04)
+	* @return Connection, database connection
+	* @param none
+	*/
+	public Connection getCurrentReportDBSingleConnection()
+	{
+		Connection dbConnection=null;
+		try
+		{
+			if(_ocacheSingleimplcurrentreportdb==null)
+			{
+				String db_url = Constants.getProperty("currentDateRptDBDataSourceURL");
+					
+				String db_user = Constants.getProperty("currentReportDBUserId");
+				if(db_user!=null)
+				db_user =BTSLUtil.decrypt3DesAesText(db_user);
+				String db_password = Constants.getProperty("currentReportDBPasswd");
+				if(db_password!=null)
+				db_password = BTSLUtil.decrypt3DesAesText(db_password);
+
+				if(db_url!=null)
+				{
+					_ods_single_current_report_DB = new OracleConnectionPoolDataSource(); 
+					// provide various attribute of database driver to make connection
+					_ods_single_current_report_DB.setURL(db_url);
+					_ods_single_current_report_DB.setNetworkProtocol("tcp");
+					_ods_single_current_report_DB.setUser(db_user);
+					_ods_single_current_report_DB.setPassword(db_password);
+					 
+					//Initialize the Connection Cache
+					_ocacheSingleimplcurrentreportdb = new OracleConnectionCacheImpl(_ods_single_current_report_DB);
+
+					// Set Max Limit for the Cache
+					_ocacheSingleimplcurrentreportdb.setMaxLimit(1);
+
+					// Set Min Limit for the Cache
+					_ocacheSingleimplcurrentreportdb.setMinLimit(1);
+ 
+					_ocacheSingleimplcurrentreportdb.setCacheScheme(OracleConnectionCacheImpl.DYNAMIC_SCHEME);
+					
+				}
+				else
+					return null;
+			}//end of the m_connectionSinglePool
+
+			dbConnection = _ocacheSingleimplcurrentreportdb.getConnection();
+			dbConnection.setAutoCommit(false);
+			if(_log.isDebugEnabled())
+				_log.error("getCurrentReportDBSingleConnection 10G","DB Connections  getting connection from connection pool :"+dbConnection+" active size:"+_ocacheSingleimpl.getActiveSize()+" cache size:"+_ocacheSingleimpl.getCacheSize());
+		}//end of try
+		catch(Exception ex)
+		{
+			// Trap errors
+			_log.error("getCurrentReportDBSingleConnection","Error in Connecting to the Database \n"+ex.getMessage() +"\n");
+			ex.printStackTrace();
+			EventHandler.handle(EventIDI.DATABASE_CONECTION_PROBLEM,EventComponentI.SYSTEM,EventStatusI.RAISED,EventLevelI.FATAL,"OJDBC14PoolManager[getCurrentReportDBSingleConnection]","","","","Database Connection Problem");
+		}//end of catch
+		return dbConnection;
+	} // getConnection
+	
+	public boolean createPoolCurrentReportDB()
+	{
+
+		try
+		{
+			if(!creatingPoolCurrentReportDB)
+			{
+				creatingPoolCurrentReportDB=true;
+				if(_log.isDebugEnabled())
+				    _log.debug("createPoolCurrentReportDB","Creating oracle connection pool");
+			
+				String db_url = Constants.getProperty("currentDateRptDBDataSourceURL");
+				
+				String db_user = Constants.getProperty("currentReportDBUserId");
+				if(db_user!=null)
+					db_user = BTSLUtil.decrypt3DesAesText(db_user);
+				String db_password = Constants.getProperty("currentReportDBPasswd");
+				if(db_password!=null)
+					db_password = BTSLUtil.decrypt3DesAesText(db_password);
+				
+				String strMinPoolSize=Constants.getProperty("currentReportDBMinPoolSize");
+				String strPoolSize=Constants.getProperty("currentReportDBPoolSize");
+				String oraclePoolLogFile=Constants.getProperty("oraclePoolLogFile");
+				int minPoolSize=0;
+				try
+				{
+					minPoolSize=Integer.parseInt(strMinPoolSize);
+				}
+				catch(Exception e){minPoolSize=50;}
+				int poolSize=0;
+				try
+				{
+					poolSize=Integer.parseInt(strPoolSize);
+				}
+				catch(Exception e){e.printStackTrace();poolSize=60;}
+				if(_log.isDebugEnabled())
+					_log.debug("createPoolCurrentReportDB 10G","userid=" + db_user + ", db password="+ db_password +", db_url="+ db_url+ ", minPoolSize="+ minPoolSize +" max poolSize="+poolSize+" oraclePoolLogFile="+oraclePoolLogFile );
+				try
+				{
+					if(db_url!=null)
+					{
+						// creating the instatnce of oracle datasource
+						_odsCurrentReportDB = new OracleConnectionPoolDataSource(); 
+						// provide various attribute of database driver to make connection
+						_odsCurrentReportDB.setURL(db_url);
+						_odsCurrentReportDB.setNetworkProtocol("tcp");
+						_odsCurrentReportDB.setUser(db_user);
+						_odsCurrentReportDB.setPassword(db_password);
+
+						// Initialize the Connection Cache
+						_ocacheimplcurrentreportdb = new OracleConnectionCacheImpl(_odsCurrentReportDB);
+
+						// Set Max Limit for the Cache
+						_ocacheimplcurrentreportdb.setMaxLimit(poolSize);
+
+						// Set Min Limit for the Cache
+						_ocacheimplcurrentreportdb.setMinLimit(minPoolSize);
+	 
+						_ocacheimplcurrentreportdb.setCacheScheme(OracleConnectionCacheImpl.DYNAMIC_SCHEME);
+						
+					}
+				}
+				catch(Exception e)
+				{
+					e.printStackTrace();
+					EventHandler.handle(EventIDI.DATABASE_CONECTION_PROBLEM,EventComponentI.SYSTEM,EventStatusI.RAISED,EventLevelI.FATAL,"OJDBC14PoolManager[createPoolCurrentReportDB]","","","","Database Connection Problem");
+					return false;
+				}
+			}
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+			EventHandler.handle(EventIDI.DATABASE_CONECTION_PROBLEM,EventComponentI.SYSTEM,EventStatusI.RAISED,EventLevelI.FATAL,"OJDBC14PoolManager[createPoolCurrentReportDB]","","","","Database Connection Problem");
+			return false;
+		}
+		finally
+		{
+			creatingPoolCurrentReportDB=false;
+		}
+		return true;
+	}
+	
+}//end of class OJDBC14PoolManager
+

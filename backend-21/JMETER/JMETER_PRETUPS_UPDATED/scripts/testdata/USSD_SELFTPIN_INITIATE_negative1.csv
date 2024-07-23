@@ -1,0 +1,2 @@
+TestcaseId,TestcaseType,Module,Description
+TUNG10186 ,Negative,Self TPIN iniitiate through USSD,To verify that the Initiate PIN Reset request is not processed if MSISDN is not entered in the request.

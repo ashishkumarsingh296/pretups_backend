@@ -1,0 +1,132 @@
+###########################################################################################################
+#	Alcatel 432 IN file
+#	If IN interface of Alcatel432 is added in PreTUPS from superadmin then.
+#	File with this content and name of the IN ID.txt should be created at the 
+#	path of the INFiles (defined in Constants.props).
+#
+#	Values of the variables in this file should be updated with the values provided by the 
+#	Mobile Operator IN team
+#
+############################################################################################################
+
+#Alcatel 432 CP_ID for C2S module, will be provided by Mobile operator IN team
+CP_ID_C2S=TOPCPID1
+
+#Alcatel 432 CP_ID for P2P module, will be provided by Mobile operator IN team
+CP_ID_P2P=TOPCPID1
+
+#Prefix to be removed from the mobile number, leave blank if nothing is to be removed
+MSISDN_REMOVE_PREFIX=
+
+#Prefix to be added to the mobile number as prefix, leave blank if nothing is to be added as prefix
+MSISDN_ADD_PREFIX=
+
+#Application to be trigered (the OSP.For E-top up), value will be provieded by Mobile operator IN team, Fixed value 1
+APPLICATION=1
+
+#Transaction Currency to be send to the IN Interface, value will be provieded by Mobile operator IN team 
+TRANS_CURRENCY=1
+
+#URL of the Alcatel 432 IN interface
+#URL=http://192.168.200.3:8080/servlet/s2
+URL=http://172.16.1.109:5003/pretups/Alcatel432TestServer
+
+#Time out for HTTP connection to connect, value in milliseconds
+CONNECT_TIMEOUT=1000
+
+#Time out for reading content from HTTP connection,in validate stage, value in milliseconds
+READ_TIMEOUT_VAL=5000
+
+#Time out for reading content from HTTP connection,in TopUp stage, value in milliseconds
+READ_TIMEOUT_TOP=10000
+
+#Warning time for reading content from the IN interface, if IN interface takes time more than this, O&M alarm will be raised 
+WARN_TIMEOUT=3000
+
+#Is keep allow true or false, if keep alive is true set "Y", if it is false set "N"
+KEEP_ALIVE=Y
+
+#These are the values of the allowed service types (check for LDDC), values should be comma seperated, values will be provieded by Mobile operator IN team
+ALLOWED_SERVICE_TYPE=0
+
+#Mapping of IN language with system language (IN Langauge1:PreTUPS Langauge1,IN Langauge2:PreTUPS Langauge2)
+LANGUAGE_MAPPING=0:1,1:0
+
+#Whether to send the Bonus in separate account or combined with main credit and validity
+SEPERATE_SUB_ACCOUNT=Y
+
+#Multiplication factor for to get the system amount.
+MULTIPLICATION_FACTOR=100
+
+##Used to Round the amount
+ROUND_FLAG=Y
+
+#Indicates whether Cancel request supported by IN or not.(Possible values are Y/N)
+CANCEL_TXN_ALLOWED=N
+
+##If any ambiguous response is received from IN, then retry/cancel command is sent to IN. Then response of retry/cancel is matched in the IN file and mapped error code (250/206/200) is picked and sent to Controller.
+##SYSTEM_STATUS_MAPPING=INErrCode1,INErrCode2,INErrCode3,INErrCode4:system_err_code1|INErrCode5,INErrCode6:system_err_code2
+##system_err_code1 and system_err_code2 will be sent to system and written in recon log file.
+#SYSTEM_STATUS_MAPPING=250:250
+##If receiver credit is AMBIGUOS, then in SYSTEM_PREFERENCE, CREDIT_BACK_ALLOWED should be N.
+
+#If an ambiguous case occurs while credit, mapped error code can be set to one of the codes(SUCCESS, FAIL and AMBIGUOUS)
+SYSTEM_STATUS_MAPPING_CREDIT=250:250
+
+#If an ambiguous case occurs while credit, mapped error code can be set to one of the codes(SUCCESS, FAIL and AMBIGUOUS)
+SYSTEM_STATUS_MAPPING_CREDIT_ADJ=250:250
+
+#If an ambiguous case occurs while debitAdjust, mapped error code cannot be SUCCESS. It can only be FAIL or AMBIGUOUS
+SYSTEM_STATUS_MAPPING_DEBIT_ADJ=250:250
+
+#If an ambiguous case occurs while credit Back, mapped error code can not be fail, it can only be SUCCESS or AMBIGOUOS
+SYSTEM_STATUS_MAPPING_CREDIT_BCK=250:250
+
+##If any ambiguous response is received from IN, check if cancel txn allowed or not in the system. if not, pick mapped error code against NA otherwise pick mapped error code (206/250) against received response code of Cancellation from IN. 
+##CANCEL_COMMAND_STATUS_MAPPING=INErrCode1,INErrCode2,INErrCode3,INErrCode4:cancel_err_code1|INErrCode5,INErrCode6:cancel_err_code2
+##cancel_err_code1, cancel_err_code2 will be written in recon log file.
+CANCEL_COMMAND_STATUS_MAPPING=NA:450
+
+#Defines the cancel command status when cancel not supported by IN. 
+CANCEL_NA=NA
+
+##This flag should be Y if interface closure feature is to be provided to client
+INTFCE_CLSR_SUPPORT=N
+
+#maximum number of ambiguous transactions allowed till threshold time.
+NO_ALLWD_AMB_TXN=5
+
+##time duration in which maximum number of ambiguous transactions is defined
+THRESHOLD_TIME=240000
+
+##Time duration after which interface suspension expires.
+EXPIRY_TIME=60000
+
+##Auto Resumption supported by IN or not.
+AUTO_RESUME_SUPPORT=N
+
+##Number of retry attempts while validation (Currently Retry is not supported by Alcatel432)
+VAL_RETRY_CNT=0
+
+##Number of retry attempts while recharge request (Currently Retry is not supported by Alcatel432)
+CREDIT_RETRY_CNT=0
+
+##Number of retry attempts while sending Adjustment request (Currently Retry is not supported by Alcatel432)
+ADJ_RETRY_CNT=0
+
+##Number of retry attempts while sending Cancel request (Currently Cancel Request is not supported by Alcatel432)
+CNCL_RETRY_CNT=0
+
+##Sleep time between two retries (Currently Retry is not supported by Alcatel432)
+RETRY_SLEEP_TIME=0
+
+##Error Codes when retry has to be made  (Currently Retry is not supported by Alcatel432)
+RETRY_CASES=
+
+##Remark1 in Reconcialiationlog
+REMARK1=
+
+##Remark1 in Reconcialiationlog
+REMARK2=
+
+

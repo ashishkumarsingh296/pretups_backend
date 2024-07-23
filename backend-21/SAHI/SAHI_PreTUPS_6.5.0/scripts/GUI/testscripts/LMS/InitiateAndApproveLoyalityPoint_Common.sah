@@ -1,0 +1,100 @@
+
+
+
+
+var $g_loyalityPoints;
+var $g_remarks;
+var $g_assertion;
+
+var $g_approveQuanity;
+
+var $temp_approvedQuantity;
+
+
+
+
+function varriableForInitiateAndApproveLoyalitySotck($g_row, $g_col) {
+	
+	$g_loyalityPoints  = $g_loyalityStockDetails[$g_row][$g_col++];
+	$g_remarks =  $g_loyalityStockDetails[$g_row][$g_col++];
+	$g_assertion = $g_loyalityStockDetails[$g_row][$g_col++];
+}
+
+
+
+function initiateStock() {
+	_click(_link("Loyalty Stock"));
+	_click(_link("Initiate Loyalty Stock"));
+	_assertExists(_div("Initiate Loyalty Stock"));
+	_setValue(_textbox("requestedPointsString"), $g_loyalityPoints);
+	_setValue(_textarea("remarks"), $g_remarks);
+	_click(_submit("Submit"));
+	
+}
+
+
+function initiateLoyalityStock() {
+	initiateStock();
+	_click(_submit("Submit"));
+	_assertExists(_listItem("/" + $g_assertion + ".*/"));
+}
+
+
+
+function approveLoyalityPoints() {
+	
+	$temp_approvedQuantity = $g_remarks;
+	_click(_link("Loyalty Stock"));
+	_click(_link("Approve Loyalty Stock"));
+	_click(_radio("radioIndex", _near(_cell($g_loyalityPoints))));
+	_click(_submit("View stock details"));
+	_setValue(_textbox("approvedPointsAsString"), $temp_approvedQuantity);
+	_click(_submit("Submit"));
+	_assertExists(_listItem("/" + $g_assertion + ".*/"));
+}
+
+
+function initiateLoyalityStockWithoutDetails() {
+		initiateStock();
+		_assertExists(_listItem("/" + $g_assertion + ".*/"));
+}
+
+ // .............. Approve Loyality points negative ...... //
+
+function varriableToApproveLoyalityQuantity($g_row, $g_col) {
+	
+	$g_loyalityPoints  = $g_loyalityStockDetails[$g_row][$g_col++];
+	$g_remarks = $g_loyalityStockDetails[$g_row][$g_col++];
+	$g_approveQuanity = $g_loyalityStockDetails[$g_row][$g_col++];
+	$g_assertion =  $g_loyalityStockDetails[$g_row][$g_col++];
+}
+
+
+function approveLoyalitypointsWithoutDetails() {
+	initiateStock();
+	_click(_submit("Submit"));
+	approveloyalityPointsWithoutDetails();
+}
+
+
+function approveloyalityPointsWithoutDetails() {
+	_click(_link("Loyalty Stock"));
+	_click(_link("Approve Loyalty Stock"));
+	_click(_radio("radioIndex", _near(_cell($g_loyalityPoints))));
+	_click(_submit("View stock details"));
+	_setValue(_textbox("approvedPointsAsString"), $g_approveQuanity);
+	_click(_submit("Submit"));
+	_assertExists(_listItem("/" + $g_assertion + ".*/"));
+	
+}
+
+
+
+
+
+
+
+
+
+
+

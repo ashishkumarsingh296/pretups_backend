@@ -1,0 +1,108 @@
+##########################################################################################################
+##	
+##	Constants.props
+##
+##	This is the main configuration file of the PreTUPS system. Operator specific configuration 
+##	changes will be done in this file. after making any change in this file update server cache
+##	need to run from the superadmin or network admin web interface
+##
+##	In some case we have to restart the application server (Database connection related changes)
+##
+##      Changes in this file should be done very carefully as any change in this file will have major
+##	impact on the PreTUPS functioning
+##
+##########################################################################################################
+
+## Database Server URL details, consisting of Database(Oracle) Driver, Database server IP adderess,
+## Port on which databse is running,Database service ID
+#datasourceurl=jdbc:oracle:thin:@192.168.200.127:1521:PRTP
+datasourceurl=jdbc:oracle:thin:@172.16.1.109:1521:PRTP
+
+
+## Database user id and password, it is encypted. database user id and password should encrypted by 
+## a utility program. for encryption of login id and password send your login id and passward to 
+## Bharti, Bharti will provide the encrypted login id and password.
+##pretups_live
+#userid=42f8b1df22eaaa781c8f31c7884b6c04
+#passwd=42f8b1df22eaaa781c8f31c7884b6c04
+
+##pretups_ocm/pretups_ocm
+userid=42f8b1df22eaaa7874702a19540496bd
+passwd=42f8b1df22eaaa7874702a19540496bd
+
+
+#userid=42f8b1df22eaaa7874702a19540496bd
+#passwd=42f8b1df22eaaa7874702a19540496bd
+
+## Database connection POOL details, minimum pool size and maximum pool size, 
+## Minimum pool size should be more that maximum connection connection required by PreTUPS
+## in peak hours. maximum pool size should be higher than the minimum pool size.
+minpoolsize=50
+poolsize=75
+
+## If new geographical domain code is not defined in the system, then  whether user should be migrated or not
+ALLOW_MIGR_WITHOUT_GEODOMCODE=Y
+
+## Network code
+NETWORK_CODE=OC
+
+#IS_MULTIPLE_WALLET APPLICABLE OR NOT
+IS_MULTIPLE_WALLET=N
+
+#MULTIPLE WALLET VALUE
+MULTIPLE_WALLET_APPLY_DEFAULT_VALUE=FALSE
+
+#IS_ACTIVE_USERID_APPLIED APPLICABLE OR NOT
+IS_ACTIVE_USERID_APPLIED=N
+
+#CONV_FACTOR
+CONV_FACTOR=100
+
+
+#TO SEND THE SMS TO THE USERS DURING MIGRATION.
+ALLOW_SMS_ON_MIG=Y
+
+#TO SEND SMS TO THE PARENT USERS AND THE USERS ON ROLLBACK PROCESS.
+ALLOW_SMS_ON_ROLLBACK=Y
+
+## Directory path for writing the error and success file
+DIR_PATH=/home/pretups_ocm/tomcat5_web/webapps/pretups/pretups_scripts/userMigrationTool/files/
+
+#This field determined whether application server data source is to be used or application itself has to create and manage its db pool
+applicationpool=Y
+
+#Following field would be valid if applicationpool=N
+datasourcename= jdbc/pretupsdatasource
+
+#Following fields would depend on data source we are using
+poolmanagerclass=com.btsl.db.pool.OJDBC14PoolManager
+
+#This field would be used to determine helper class to be used(setFormOfUSe implementation currently)
+databasehelperclass= com.btsl.util.DatabaseHelperClass
+
+USER_PADDING_LENGTH=10
+
+reportdbdatasourceurl=jdbc:oracle:thin:@192.168.200.127:1521:PRTP
+reportdbuserid=42f8b1df22eaaa7874702a19540496bd
+reportdbpasswd=42f8b1df22eaaa7874702a19540496bd
+reportdbapplicationpool=Y
+reportdbdatabasehelperclass= com.btsl.util.DatabaseHelperClass
+reportdbdatasourcename= jdbc/pretupsdatasource
+reportdbpoolmanagerclass=com.btsl.db.pool.OJDBC14PoolManager
+reportdbminpoolsize=1
+reportdbpoolsize=1
+
+
+ALARM_SLEEP_TIME=1000
+ALARM_MAX_HOLD_TIME=10000
+SMS_EVENT_LEVELS=1,2
+SMS_EVENT_IDS=1,2,3,10,11,12,13,14
+ALARM_DEFAULT_LOCALE=en,US
+adminmobile=00000000000
+
+
+
+## Padding length for Batch generation
+BATCH_PADDING_LENGTH=5
+
+

@@ -1,0 +1,38 @@
+//################################################
+//#Company Name: Mahindra Comviva Technologies Ltd.
+//#Application Name: PretupsTA
+//#Objective: To login into the application
+//#Author Name: Nidhi Singh
+//#Created Date: 15/01/2014
+//###############################################
+
+//====Import Scripts====
+_includeOnce("../../../../utility/ImportPackage.sah");
+_includeOnce("../../../GUI/testscripts/Profile_Management/ProfileManagement_Common.sah");//For importing CommProfile functions
+
+//====Pre-Condition Check====
+_log("Set up","custom4");
+
+//====Login into the application====
+var $g_loginCSV = _readCSVFile("../../../GUI/testdata/Login.csv"); //Reads the Test Case no. and Description from the CSV file.
+var $row=1;
+var $col=1;
+var $t = _testcase($g_loginCSV[$row][$col++], $g_loginCSV[$row][$col++]); //1st Parameter:Test Case No.; 2nd Parameter:Test Case Description
+
+$t.start(); // Above test case starts.
+
+
+
+
+login($g_appURL, $g_LangEnglish, $g_superAdmin, $g_password, $g_assertMessage); //calls the Login function in Login.sah with the parameters(url, language, username, password, assertion) 
+
+$t.end(); // Above test case ends.
+
+//====Post Condition Check====
+_log("Tear Down","custom4");
+
+
+
+
+
+

@@ -1,0 +1,2 @@
+TestCase Details,TestCase Description,Transfer Type,Control Transfer Level,Control Withdraw Level,Control Return Level,Cross Control Transfer Level
+CEGTA00016,Given a network admin when logs into the application then he/she can add Channel to Channel Transfer Rule,Sale,Self,Owner,Not applicable,System

@@ -1,0 +1,30 @@
+---
+########################################################
+# Author           Date        Remarks
+#------------    -----------  ---------
+#PreTUPS_RoadMap  25-07-2016    Initial Creation
+#
+# This file takes care of Rollback of War patch.
+#########################################################
+
+ - include: ../../validate/tasks/validatePathCheckWarRollback.yml
+
+ - name: Rolling back the patch for Patch Type 'WAR'
+   shell: "rm -rf {{ item.path}}/{{ item.fileName.split('.war')|first}}* "
+   with_items:
+     - "{{ PatchConfigfiles }}"
+   when: isWarPatch == true and item.patchType =='WAR'
+   register: rollbackPatch
+   ignore_errors: yes
+   tags:
+     - rollbackPatch
+
+ - name: Replacing the Backup Original WAR Instance, if Applicable
+   shell: "rsync -rzh {{ BackupWarInstancePath }}/{{ item.oldWarName.split('.war')|first}}* {{ item.path }}/"
+   with_items:
+     - "{{ PatchConfigfiles }}"
+   when: isWarPatch ==true and item.patchType =='WAR'
+   register: rollbackPatch
+   ignore_errors: yes
+   tags:
+     - rollbackPatch

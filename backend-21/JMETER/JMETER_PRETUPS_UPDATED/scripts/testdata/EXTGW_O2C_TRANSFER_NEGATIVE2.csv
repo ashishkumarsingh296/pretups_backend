@@ -1,0 +1,3 @@
+PRODUCTCODE,QTY,TRFCATEGORY,PAYMENTTYPE,NETPAYABLEAMOUNT,REMARKS,TestcaseId,TestcaseType,Module,Description
+,10,SALE,CHQ,,,TUNG13044,Negative,O2C transfer through EXTGW,To check if  product code is not present in the request then o2c is not successful
+101,,SALE,CHQ,,,TUNG13045,Negative,O2C transfer through EXTGW,To check if  amount is not present in the request then o2c is not successful

@@ -1,0 +1,26 @@
+/*
+ * Name                                 Date            History
+ *------------------------------------------------------------------------
+ * Shashi Singh							29/10/2015      Initial Creation
+ *------------------------------------------------------------------------
+ * Class for log enhancement for the transaction log
+ */
+package com.btsl.logging;
+
+import org.apache.log4j.PatternLayout;
+
+public class MyPatternLayout extends PatternLayout {
+     
+@Override 
+   public String getHeader() {
+        return "LOG_TIME|TID|TRFDT|TRF_DT_TIME|SNW|SID|SCAT|PRD|S_MSISDN|RMSISDN|RNW|TRFVAL|E_CODE|REQ_GW_TYP|REQ_GW_CODE|REFID|SRVC_TYPE"+
+						"|DIFF_APPLICABLE|PINTOMSISDN|LANG|COUNTRY|SKEY|SKEYGENTIME|SKEYTOMSISDN|REQ_THRGH_QUE|CR_BK_ST|QTY|REC_FLG|REC_DT|REC_BY"+
+						"|CREATEDON|CREATEDBY|MODIFIEDON|MODIFIEDBY|TRF_ST|CDGRP_SETID|VER|CDGRP_ID|S_TRFVAL|R_ACCESSFEE|R_TX1TYP|R_TX1RT|R_TX1VAL"+
+						"|R_TX2TYP|R_TX2RT|R_TX2VAL|R_VAL|R_TRFVAL|R_BNSVAL|R_GRACE|R_BNSVLDTY|CDGRP_CODE|R_VLDTY_PD_TYP|TMP_TRFID|TRF_PROFID|COM_PROFID"+
+						"|DIFF_GVN|GPH_DM_CD|SRC_TYP|SUBSRVC|START_TIME|END_TIME|SNO|EX_CR_ITYP|BNS_DET|ACTUSRID|TXNTYP|VAL_ST|INT_TYP|INT_ID"+
+						"|IN_RESP_CD|IN_REFID|SUBTYP|SRVCCLS_CODE|MSISDN_PREEXP|MSISDN_NEWEXP|FRST_CALL|PRFX_ID|SRVC_CLS_ID|PROTO_ST|ACC_ST"+
+						"|ADJ_DR_TXNTYPE|ADJ_DR_TXNID|ADJ_DR_UPST|ADJ_CR_TXNTYP|ADJ_CR_TXNID|ADJ_CR_UPST|ADJVAL|S_PREBAL|R_PREBAL|S_POSTBAL"+
+						"|R_POSTBAL|S_CR_BK_PREBAL|S_CR_BK_POSTBAL|S_CR_SL_PREBAL|S_CR_SL_PREBAL|DEB_ST|REC_ENTYP|CRED_ST|SUBS_SID|REC_ST|CELLID|SWITCHID|" + "\r\n";
+    }
+}
+

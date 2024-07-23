@@ -1,0 +1,75 @@
+<!-- Use this file to deploy some handlers/chains and services      -->
+<!-- Two ways to do this:                                           -->
+<!--   java org.apache.axis.client.AdminClient deploy.wsdd          -->
+<!--      after the axis server is running                          -->
+<!-- or                                                             -->
+<!--   java org.apache.axis.utils.Admin client|server deploy.wsdd   -->
+<!--      from the same directory that the Axis engine runs         -->
+
+<deployment
+    xmlns="http://xml.apache.org/axis/wsdd/"
+    xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
+  <!-- Services from PaymentIFBinding WSDL service -->
+
+  <service name="PaymentIFBindingSoap12" provider="java:RPC" style="rpc" use="encoded">
+      <parameter name="wsdlTargetNamespace" value="urn:Foo"/>
+      <parameter name="wsdlServiceElement" value="PaymentIFBinding"/>
+      <parameter name="wsdlServicePort" value="PaymentIFBindingSoap12"/>
+      <parameter name="className" value="com.inter.righttel.paymentgateway.stub.PaymentIFBindingSoap12Impl"/>
+      <parameter name="wsdlPortType" value="PaymentIFBindingSoap"/>
+      <parameter name="typeMappingVersion" value="1.2"/>
+      <operation name="verifyTransaction" qname="operNS:verifyTransaction" xmlns:operNS="urn:Foo" returnQName="result" returnType="rtns:double" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="verifyTransaction" >
+        <parameter qname="String_1" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="String_2" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="verifyTransaction1" qname="operNS:verifyTransaction1" xmlns:operNS="urn:Foo" returnQName="result" returnType="rtns:double" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="String_1" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="String_2" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="reverseTransaction" qname="operNS:reverseTransaction" xmlns:operNS="urn:Foo" returnQName="result" returnType="rtns:double" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="reverseTransaction" >
+        <parameter qname="String_1" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="String_2" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="Username" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="Password" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="reverseTransaction1" qname="operNS:reverseTransaction1" xmlns:operNS="urn:Foo" returnQName="result" returnType="rtns:double" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="reverseTransaction1" >
+        <parameter qname="String_1" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="String_2" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="Password" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="Amount" type="tns:double" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <parameter name="allowedMethods" value="reverseTransaction reverseTransaction1 verifyTransaction verifyTransaction1"/>
+
+  </service>
+  <service name="PaymentIFBindingSoap" provider="java:RPC" style="rpc" use="encoded">
+      <parameter name="wsdlTargetNamespace" value="urn:Foo"/>
+      <parameter name="wsdlServiceElement" value="PaymentIFBinding"/>
+      <parameter name="wsdlServicePort" value="PaymentIFBindingSoap"/>
+      <parameter name="className" value="com.inter.righttel.paymentgateway.stub.PaymentIFBindingSoapImpl"/>
+      <parameter name="wsdlPortType" value="PaymentIFBindingSoap"/>
+      <parameter name="typeMappingVersion" value="1.2"/>
+      <operation name="verifyTransaction" qname="operNS:verifyTransaction" xmlns:operNS="urn:Foo" returnQName="result" returnType="rtns:double" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="verifyTransaction" >
+        <parameter qname="String_1" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="String_2" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="verifyTransaction1" qname="operNS:verifyTransaction1" xmlns:operNS="urn:Foo" returnQName="result" returnType="rtns:double" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="String_1" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="String_2" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="reverseTransaction" qname="operNS:reverseTransaction" xmlns:operNS="urn:Foo" returnQName="result" returnType="rtns:double" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="reverseTransaction" >
+        <parameter qname="String_1" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="String_2" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="Username" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="Password" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="reverseTransaction1" qname="operNS:reverseTransaction1" xmlns:operNS="urn:Foo" returnQName="result" returnType="rtns:double" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="reverseTransaction1" >
+        <parameter qname="String_1" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="String_2" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="Password" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="Amount" type="tns:double" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <parameter name="allowedMethods" value="reverseTransaction reverseTransaction1 verifyTransaction verifyTransaction1"/>
+
+  </service>
+</deployment>

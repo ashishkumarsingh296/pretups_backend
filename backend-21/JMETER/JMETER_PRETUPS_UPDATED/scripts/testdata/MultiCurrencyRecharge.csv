@@ -1,0 +1,5 @@
+DATE,MSISDN,PIN,TYPE,MSISDN2,AMOUNT,LANGUAGE1,LANGUAGE2,SELECTOR,CURRENCY,CELLID,SWITCHID,TestcaseId,TestcaseType,Module,Description
+,3104545455,1357,MCRTRFREQ,3108989888,1000,0,0,1,INR,50431034645,444,TUNG12917,Positive,Multicurrency Service,To perform multicurrency service from USSD with correct currency code
+,3104545455,1357,MCRTRFREQ,3108989888,1000,0,0,1,XYZ,50431034645,444,TUNG12918,Negative,Multicurrency Service,MultiCurrency Service using invalid Currency Code
+,3104545455,1357,MCRTRFREQ,3108989888,1000,0,0,1,INR,50431034645,444,TUNG12920,Positive,Multicurrency Service,Pre and Post balance verification with MultiCurrency Service
+,3104545455,1357,MCRTRFREQ,3108989888,1000,0,0,1,INR,50431034645,444,TUNG12921,Negative,Multicurrency Service,Perform new multicurrency recharge request  selecting same currency after currency rate updation

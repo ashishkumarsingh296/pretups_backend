@@ -1,0 +1,21 @@
+TestCaseNo. ,Discription,MSISDN ,Assertion,Geo Domain
+TEST001,"To verify that to suspend user hierarchy in the system, submit button should be over there",,,
+TEST002,Verify that value in the geographical domain dropdown getting populated while going to suspend user hierarchy,,,ZainZone
+TEST003,Verify that value in the domain dropdown getting populated while going to suspend user hierarchy,,,Dist1
+TEST004,Verify that MSISDN must be entered while suspending user hirarchu in the system,,Mobile number is required.,
+TEST005,Verify that MSISDN of user must be exisitng in the system,7200000099,No information found for the entered mobile number.,
+TEST006,Verify that entered MSISDN must be supported by tha network in the system,1000000000,Mobile number is from un supported network.,
+TEST007,Verify that MSISDN must be valid while going for suspend user hierarchy,72,MSISDN is incorrect.,
+TEST008,Verify the functionality of  back button suspend user hirarchy confirm page,7233333333,,
+TEST009,Verify the functionality of  cancel button suspend user hirarchy confirm page,7233333333,,
+TEST010,Verify that channel admin can suspend user hirarchy in the system ,7233333333,suspended successfully.,
+TEST011,Verify that channel admin can view the suspended user in the system,7233333333,,
+TEST012,Verify that MSISDN must be entered while resuming user hirarchy in the system,,Mobile number is required.,
+TEST013,Verify that MSISDN of user must be exisitng in the system while resuming user hierarchy ,7200000099,No information found for the entered mobile number.,
+TEST014,Verify that entered MSISDN must be supported by tha network in the system,1000000000,Mobile number is from un supported network.,
+TEST015,Verify that MSISDN must be valid while going for suspend user hierarchy,72,MSISDN is incorrect.,
+TEST016,Verify that submit button is present over thre while going to resume user hirarchy in the system,7233333333,,
+TEST017,Verify the functionality of back button resume user hierarchy page ,7233333333,,
+TEST018,Verify the functionality of cancel button resume user hierarchy page ,7233333333,,
+TEST019,Verify that confirm button is over there while going to resume user hierarchy in the system ,7233333333,,
+TEST020,Verify that channel admin can resume suspended user hierarchy in the system,7233333333,,

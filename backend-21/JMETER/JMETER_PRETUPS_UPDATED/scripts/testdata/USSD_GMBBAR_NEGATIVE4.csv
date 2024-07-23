@@ -1,0 +1,2 @@
+TestcaseId,TestcaseType,Module,Description
+P2PGMBBAR2,Negative,Give Me Balance,GMB BAR should Not be Successful from USSD When MSISDN2 Length is not Between Specified SystemPreference MIN_MSISDN_LENGTH and MAX_MSISDN_LENGTH

@@ -1,0 +1,13 @@
+EXTNWCODE,DATE,MSISDN,PIN,LOGINID,PASSWORD,EXTCODE,POINTS,LANGUAGE1,TestcaseId,TestcaseType,Module,Description
+NG,05-09-2016,7255555555,1357,,,,10,,TUNG13020,Positive,LMS Point Redemption through EXTGW,To verify that channel User can redeem the Loyalty Points through EXTGW
+NG,05-09-2016,7255555555,2468,,,,10,,TUNG13021,Negative,LMS Point Redemption through EXTGW,To verify that Channel User can not redeem their Loyalty Points through EXTGW if Channel User PIN is incorrect
+NG,05-09-2016,7255555555,1357,,,,0,,TUNG13022,Negative,LMS Point Redemption through EXTGW,To verify that Channel User can not redeem the loyality points if redemption points entered is zero
+NG,05-09-2016,7255555555,1357,,,,10000,,TUNG13023,Negative,LMS Point Redemption through EXTGW,To verify that Channel User can not redeem the loyality points if redemption points entered is more than the acumulated points
+NG,06-09-2016,7255555555,1357,,,,5.5,,TUNG13024,Negative,LMS Point Redemption through EXTGW,To verify that Channel User can not redeem the loyality points if redemption points entered is in Decimal
+NG,07-09-2016,7255555555,1357,,,,-5,,TUNG13025,Negative,LMS Point Redemption through EXTGW,To verify that Channel User can not redeem the loyality points if redemption points entered is in negetive
+NG,07-09-2016,7255555555,1357,,,,,,TUNG13026,Negative,LMS Point Redemption through EXTGW,To verify that Channel User can not redeem the loyality points if no points entered for redemption
+NG,05-09-2016,,,,,43534534,10,,TUNG13027,Positive,LMS Point Redemption through EXTGW,To verify that Channel User can redeem the loyality points if only external code of the channel user is entered
+NG,05-09-2016,,,dist1,1357,,10,,TUNG13028,Positive,LMS Point Redemption through EXTGW,To verify that Channel User can redeem the loyality points if only Login ID and Password of the user is entered
+NG,05-09-2016,7255555555,1357,,,,10,,TUNG13029,Positive,LMS Point Redemption through EXTGW,To verify that Channel User can redeem the loyality points if only MSISDN and PIN of the user is entered
+NG,05-09-2016,7255555555,1357,,,,10,,TUNG13030,Negative,LMS Point Redemption through EXTGW,To verify that Channel User can not redeem their Loyalty Points through EXTGW if Channel User is barred
+NG,05-09-2016,7255555555,1357,,,,10,,TUNG13031,Negative,LMS Point Redemption through EXTGW,To verify that Channel User can not redeem their Loyalty Points through EXTGW if LMS Points are expired

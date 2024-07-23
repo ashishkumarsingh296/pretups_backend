@@ -1,0 +1,2 @@
+TestcaseId,TestcaseType,Module,Description
+TUNG12762,Negative,Bar user through Restful API,To verify MSISDN can not be barred if user is not active in system

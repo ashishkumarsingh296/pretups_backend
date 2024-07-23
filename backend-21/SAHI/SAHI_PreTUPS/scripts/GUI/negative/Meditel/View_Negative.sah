@@ -1,0 +1,48 @@
+//################################################
+//#Company Name: Mahindra Comviva Technologies Ltd.
+//#Application Name: Pretups
+//#Objective:To check for view MSISDN Association
+//#Author Name: Girish Dutt Shukla
+//#Created Date: 05/02/2015
+//###############################################
+
+_includeOnce("../../../../utility/ImportPackage.sah");
+_includeOnce("../../../GUI/negative/Meditel/MSISDNAssociation_Common.sah"); //For adding used methods 
+
+//======================Pre-requisite check============================
+_log("Setup", "custom4");
+
+var $l_naCsv = _readCSVFile("../../../GUI/testdata/NA_Login.csv"); //Reads Channel Admin login ID from csv file
+var $g_channelAdmin = $l_naCsv[2][1];
+	if($g_channelAdmin == "null"){ //If Channel Admin is not present then create it 
+		createCA(); //Function defined in UserManagement_Common.sah
+		var $l_naCsv = _readCSVFile("../../../GUI/testdata/NA_Login.csv"); //Reads Channel Admin login ID from csv file
+		 $g_channelAdminn = $l_naCsv[2][1];
+		login($g_appURL, $g_LangEnglish, $g_channelAdminn, $g_commonPassword, $g_assertWelcome); //Login as Channel Admin
+	}
+	else{	 
+		login($g_appURL, $g_LangEnglish, $g_channelAdmin, $g_commonPassword, $g_assertWelcome); //Login as Channel Admin(Login_Common.sah)
+	}
+	
+	var $g_view  = _readCSVFile("../../negative_testdata/ViewMSISDNAssociationNegative.csv");
+	var $g_row;
+	var $g_col;
+	
+	
+	
+	for($g_row = 1; $g_view[$g_row] != null; $g_row++){
+		
+		//for($g_row = 1; $g_row < 2; $g_row++){
+		$g_col = 0;
+		var $t = _testcase($g_view[$g_row][$g_col++], $g_view[$g_row][$g_col++]);
+		$t.start();
+		commonVariableForView($g_row, $g_col);
+		
+		var $isview = viewClick();
+		
+		if($isview== true){
+			_log("Login into the application ");
+		}
+		
+		$t.end();
+	}

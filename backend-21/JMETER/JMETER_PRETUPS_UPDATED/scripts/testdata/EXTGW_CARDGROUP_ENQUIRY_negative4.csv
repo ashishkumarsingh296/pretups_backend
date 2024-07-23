@@ -1,0 +1,2 @@
+TestcaseId,TestcaseType,Module,Description
+TUNG12716,Negative,Card group enquiry EXTGW,To verify that suspended user is not able to perform card group enquiry via EXTGW.

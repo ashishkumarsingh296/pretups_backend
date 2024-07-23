@@ -1,0 +1,3 @@
+TestcaseId,TestcaseType,Module,Description
+,Positive,Modify user API through EXTGW,To verfiy that User Modification API execute successfully with MSISDN and PIN
+,Negative,Modify user API through EXTGW,To verfiy that User Modification API does not execute successfully with PIN blank

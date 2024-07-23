@@ -1,0 +1,258 @@
+
+
+//_includeOnce("../../testscripts/Profile_Management/ProfileManagement_Common.sah");
+_includeOnce("VarriableForProfileManagement_Negative.sah")
+
+var $a_domainName;
+var $a_categoryName;
+var $g_commProfUsername ;
+var $g_shortCode;
+var $g_calendarImg;
+var $g_applicableFromHour;
+var $g_product;
+var $g_multipleOf ;
+var $g_minTransfer;
+var $g_maxTransfer;
+var $g_startRange;
+var $g_endRange ;
+var $g_commType = "Pct";
+var $g_commRate;
+var $g_tax1Rate;
+var $g_tax2Rate;
+var $g_tax3Rate;
+var $g_assertion;
+
+
+var $g_addCommProfImg = "Add commission profile";
+
+
+
+function addCategoryLevelTCP() {
+
+	_log("shashi in count "+$g_dailyInCount);
+	_click(_link($g_LeftMenuBar_ProfileMgmt));
+	_click(_link($g_LeftMenuBar_CategoryLevelProfileMgmt));
+	_log("shashi in $a_domainName "+$a_domainName);
+	_setSelected(_select("domainTypeCode"), $a_domainName);
+	
+	_click(_submit($g_BtnSubmit));
+	
+	_assertExists(_div("Transfer control profile"));
+	
+	_setValue(_textbox("profileName"), $g_profileName);
+	_setValue(_textbox("shortName"), $g_shortName);
+	_setValue(_textbox("description"), $g_discription);
+	_log("shashi in count "+$g_dailyInCount);
+	productBalancePreferenceNegative();
+	_log("shashi in count "+$g_dailyInCount);
+	dailyTCPNegative();
+	weeklyTCPNegative();
+	monthlyTCPNegative();
+	_click(_submit($g_BtnSave));
+}
+
+
+function addTransferControlProfile() {
+	_click(_link($g_LeftMenuBar_ProfileMgmt));
+	_click(_link($g_LeftMenuBar_TCP));
+	_log("shashi in $a_domainName "+$a_domainName);
+	_setSelected(_select("domainTypeCode"), $a_domainName);
+	
+	_click(_submit($g_BtnSubmit));
+	
+	_assertExists(_div("Transfer control profile"));
+	
+	_setValue(_textbox("profileName"), $g_profileName);
+	_setValue(_textbox("shortName"), $g_shortName);
+	_setValue(_textbox("description"), $g_discription);
+	_log("shashi in count "+$g_dailyInCount);
+	_setSelected(_select("status"), "Active");
+	productBalancePreferenceNegative();
+	_log("shashi in count "+$g_dailyInCount);
+	dailyTCPNegative();
+	weeklyTCPNegative();
+	monthlyTCPNegative();
+	_click(_submit($g_BtnSave));
+	
+}
+
+
+
+
+function productBalancePreferenceNegative(){
+	_setValue(_textbox("productBalanceIndexed[0].minBalance"), $g_posteTopUpMin);
+	_setValue(_textbox("productBalanceIndexed[0].maxBalance"), $g_posteTopUpMax);
+	_setValue(_textbox("productBalanceIndexed[0].c2sMinTxnAmt"), $g_posteTopUpC2SMin);
+	_setValue(_textbox("productBalanceIndexed[0].c2sMaxTxnAmt"), $g_posteTopUpC2SMax);
+	_setValue(_textbox("productBalanceIndexed[0].altBalance"), $g_posteTopUpAltBalace);
+	_setValue(_textbox("productBalanceIndexed[0].allowedMaxPercentage"), $g_posteTopUpAldMaxPct);
+	// shashi 
+	_setValue(_textbox("productBalanceIndexed[1].minBalance"), $g_eTopUpMin);
+	_setValue(_textbox("productBalanceIndexed[1].maxBalance"), $g_eTopUpMax);
+	_setValue(_textbox("productBalanceIndexed[1].c2sMinTxnAmt"), $g_eTopUpC2SMin);
+	_setValue(_textbox("productBalanceIndexed[1].c2sMaxTxnAmt"), $g_eTopUpC2SMax);
+	_setValue(_textbox("productBalanceIndexed[1].altBalance"), $g_eTopUpAltBalace);
+	_setValue(_textbox("productBalanceIndexed[1].allowedMaxPercentage"), $g_eTopUpAldMaxPct);
+}
+
+
+function dailyTCPNegative(){
+	_setValue(_textbox("dailyInCount"), $g_dailyInCount);
+	_setValue(_textbox("dailyInAltCount"), $g_dailyInAltCount);
+	_setValue(_textbox("dailyInValue"), $g_dailyInValue);
+	_setValue(_textbox("dailyInAltValue"), $g_dailyInAltValue);
+	_setValue(_textbox("dailyOutCount"), $g_dailyOutCount);
+	_setValue(_textbox("dailyOutAltCount"), $g_dailyOutAltCount);
+	_setValue(_textbox("dailyOutValue"), $g_dailyOutValue);
+	_setValue(_textbox("dailyOutAltValue"), $g_dailyOutAltValue);
+	_setValue(_textbox("dailySubscriberOutCount"), $g_dailySubscriberOutCount);
+	_setValue(_textbox("dailySubscriberOutAltCount"), $g_dailySubscriberOutAltCount);
+	_setValue(_textbox("dailySubscriberOutValue"), $g_dailySubscriberOutValue);
+	_setValue(_textbox("dailySubscriberOutAltValue"), $g_dailySubscriberOutAltValue);
+	
+	_setValue(_textbox("dailySubscriberInCount"), $g_dailySubscriberInCount);
+	_setValue(_textbox("dailySubscriberInAltCount"), $g_dailySubscriberInAltCount);
+	_setValue(_textbox("dailySubscriberInValue"), $g_dailySubscriberInValue);	
+	_setValue(_textbox("dailySubscriberInAltValue"), $g_dailySubscriberInAltValue);
+	
+	
+}
+
+
+
+function weeklyTCPNegative(){
+	_setValue(_textbox("weeklyInCount"), $g_weeklyInCount );
+	_setValue(_textbox("weeklyInAltCount"), $g_weeklyInAltCount );
+	_setValue(_textbox("weeklyInValue"), $g_weeklyInValue );
+	_setValue(_textbox("weeklyInAltValue"),  $g_weeklyInAltValue );
+	_setValue(_textbox("weeklyOutCount"), $g_weeklyOutCount );
+	_setValue(_textbox("weeklyOutAltCount"), $g_weeklyOutAltCount);
+	_setValue(_textbox("weeklyOutValue"), $g_weeklyOutValue );
+	_setValue(_textbox("weeklyOutAltValue"), $g_weeklyOutAltValue );
+	_setValue(_textbox("weeklySubscriberOutCount"), $g_weeklySubscriberOutCount );
+	_setValue(_textbox("weeklySubscriberOutAltCount"), $g_weeklySubscriberOutAltCount );
+	_setValue(_textbox("weeklySubscriberOutValue"), $g_weeklySubscriberOutValue);
+	_setValue(_textbox("weeklySubscriberOutAltValue"), $g_weeklySubscriberOutAltValue );
+	
+	// for 6.3.1
+	
+	_setValue(_textbox("weeklySubscriberInCount"), $g_weeklySubscriberInCount);
+	_setValue(_textbox("weeklySubscriberInAltCount"), $g_weeklySubscriberInAltCount);
+	_setValue(_textbox("weeklySubscriberInValue"), $g_weeklySubscriberInValue);
+	_setValue(_textbox("weeklySubscriberInAltValue"), $g_weeklySubscriberInAltValue);
+}
+
+/**
+ *  This function is used to add Monthly Transfer control preferences
+ * 	@param [in] - null			
+ *	@return - null		
+ */
+
+
+function monthlyTCPNegative(){
+	_setValue(_textbox("monthlyInCount"), $g_monthlyInCount );
+	_setValue(_textbox("monthlyInAltCount"),  $g_monthlyInAltCount );
+	_setValue(_textbox("monthlyInValue"),  $g_monthlyInValue );
+	_setValue(_textbox("monthlyInAltValue"),  $g_monthlyInAltValue );
+	_setValue(_textbox("monthlyOutCount"), $g_monthlyOutCount );
+	_setValue(_textbox("monthlyOutAltCount"), $g_monthlyOutAltCount);
+	_setValue(_textbox("monthlyOutValue"), $g_monthlyOutValue);
+	_setValue(_textbox("monthlyOutAltValue"), $g_monthlyOutAltValue );
+	_setValue(_textbox("monthlySubscriberOutCount"), $g_monthlySubscriberOutCount );
+	_setValue(_textbox("monthlySubscriberOutAltCount"), $g_monthlySubscriberOutAltCount );
+	_setValue(_textbox("monthlySubscriberOutValue"), $g_monthlySubscriberOutValue );
+	_setValue(_textbox("monthlySubscriberOutAltValue"), $g_monthlySubscriberOutAltValue );
+	
+	_setValue(_textbox("monthlySubscriberInCount"), $g_monthlySubscriberInCount);
+	_setValue(_textbox("monthlySubscriberInAltCount"), $g_monthlySubscriberInAltCount);
+	_setValue(_textbox("monthlySubscriberInValue"), $g_monthlySubscriberInValue);
+	_setValue(_textbox("monthlySubscriberInAltValue"), $g_monthlySubscriberInAltValue);
+	
+}
+
+
+
+function variablesForCommisionProfile($a_row, $a_col) {
+	
+	
+
+	$g_commProfUsername  = $g_commissionProfileDetails[$a_row][$a_col++];
+	$g_shortCode = $g_commissionProfileDetails[$a_row][$a_col++];
+	$g_calendarImg = $g_commissionProfileDetails[$a_row][$a_col++];
+	$g_applicableFromHour = $g_commissionProfileDetails[$a_row][$a_col++];
+	$g_product = $g_commissionProfileDetails[$a_row][$a_col++];
+	$g_multipleOf  = $g_commissionProfileDetails[$a_row][$a_col++];
+	$g_minTransfer = $g_commissionProfileDetails[$a_row][$a_col++];
+	$g_maxTransfer = $g_commissionProfileDetails[$a_row][$a_col++];
+	$g_startRange = $g_commissionProfileDetails[$a_row][$a_col++];
+	$g_endRange  = $g_commissionProfileDetails[$a_row][$a_col++];
+	$g_commRate  = $g_commissionProfileDetails[$a_row][$a_col++];
+	$g_tax1Rate  = $g_commissionProfileDetails[$a_row][$a_col++];
+	$g_tax2Rate = $g_commissionProfileDetails[$a_row][$a_col++];
+	$g_tax3Rate = $g_commissionProfileDetails[$a_row][$a_col++];
+	$g_assertion = $g_commissionProfileDetails[$a_row][$a_col++];
+	
+}
+
+function addCommissionProfileDetails($a_domainName, $a_categoryName ) {
+	
+	_click(_link($g_LeftMenuBar_ProfileMgmt));
+	_click(_link($g_LeftMenuBar_CommProf));
+	_setSelected(_select("domainCode"), $a_domainName);
+	_setSelected(_select("categoryCode"), $a_categoryName);
+	_click(_submit($g_BtnAdd));
+	_assertExists(_div("Add commission profile"));
+	_setValue(_textbox("profileName"), $g_commProfUsername);
+	_setValue(_textbox("shortCode"), $g_shortCode);
+	_click(_image($g_calendarImg));
+	_setValue(_textbox("applicableFromDate"), $g_currentDate);
+	_setValue(_textbox("applicableFromHour"), $g_applicableFromHour);
+	_click(_image($g_addCommProfImg));
+	//_popup("eRecharge")._setSelected(_select("productCode"), $g_product);
+	_popup("eRecharge")._setValue(_textbox("multipleOf"), $g_multipleOf);
+	_popup("eRecharge")._setValue(_textbox("minTransferValue"), $g_minTransfer);
+	_popup("eRecharge")._setValue(_textbox("maxTransferValue"), $g_maxTransfer);
+	_popup("eRecharge")._click(_checkbox("taxCalculatedOnFlag"));
+	_popup("eRecharge")._click(_checkbox("taxOnFOCFlag"));
+	_popup("eRecharge")._setValue(_textbox("commSlabsListIndexed[0].startRangeAsString"), $g_startRange);
+	_popup("eRecharge")._setValue(_textbox("commSlabsListIndexed[0].endRangeAsString"), $g_endRange);
+	_popup("eRecharge")._setSelected(_select("commSlabsListIndexed[0].commType"), $g_commType);
+	_popup("eRecharge")._setValue(_textbox("commSlabsListIndexed[0].commRateAsString"), $g_commRate);
+	_popup("eRecharge")._setValue(_textbox("commSlabsListIndexed[0].tax1RateAsString"), $g_tax1Rate);
+	_popup("eRecharge")._setValue(_textbox("commSlabsListIndexed[0].tax2RateAsString"), $g_tax2Rate);
+	_popup("eRecharge")._setValue(_textbox("commSlabsListIndexed[0].tax3RateAsString"), $g_tax3Rate);
+	
+	_popup("eRecharge")._call(_submit("Add").click());
+	
+	
+	
+	if(_condition(_exists(_popup("eRecharge")._div("Add commission profile details"))))
+	{
+			_log("shashi for pop up  ");
+			_popup("eRecharge")._assertExists(_listItem("/" +$g_assertion+".*/"));
+			_popup("eRecharge")._click(_link("Close"));
+			return true;
+	}
+	else {
+		_click(_submit($g_BtnSave));
+		return false;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+}
+
+
+
+
+

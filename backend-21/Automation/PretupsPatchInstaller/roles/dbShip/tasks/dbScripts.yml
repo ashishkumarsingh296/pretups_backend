@@ -1,0 +1,20 @@
+---
+ - name: Copying dbScripts.sql file to host machine
+   copy: src="files/{{ item.fileName }}" dest="{{ item.path }}"
+   with_items:
+     - "{{ PatchConfigfiles }}"
+   when: item.patchType =='DB-SCRIPTS'
+   register: copyDbScripts
+   tags:
+     - copyDbScripts
+
+ - name: "DB: Executing Additional Queries"
+   shell: "sqlplus {{ PRETUPS_SCHEMA_USER_NAME }}/{{ PRETUPS_SCHEMA_PASSWORD }} << EOT @{{ item.fileName }} exit; EOT chdir={{ item.path }}"
+   with_items:
+   - "{{ PatchConfigfiles }}"
+   ignore_errors: yes
+   register: dbScripts
+   failed_when: '"ERROR" in dbScripts.stdout'
+   tags:
+    - copyDbScripts
+   when: isDbPatch

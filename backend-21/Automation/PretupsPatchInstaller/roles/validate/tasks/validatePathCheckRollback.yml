@@ -1,0 +1,35 @@
+---
+########################################################
+# Author           Date        Remarks
+#------------    -----------  ---------
+#Sadhan Kumar K  25-07-2016    Initial Creation
+#
+# This file takes care of Validating the Path entered 
+# by user for file patch exists in Remote Server or not 
+# for Rollback
+#########################################################
+
+ - name: Checking the Backup Original files exists or not in the remote server.
+   stat: path={{ item.path }}/{{ item.fileName }}{{ BackupExtn }}
+   with_items:
+     - "{{ PatchConfigfiles }}"
+   register: pathCheck
+   when: isWarPatch==false and item.patchType !='WAR' and item.patchType !='JAVA'
+   ignore_errors: yes
+   tags:
+     - OriginalFilesPathCheck
+
+ - name: Validating the Backup Patch files exists or not in the remote server.
+   fail: msg="The patch file path {{ item.item.path }}{{ item.item.fileName }}{{ BackupExtn }} doesnot exist in the remote server."  
+   failed_when: item.stat.exists == false
+   when: isWarPatch==false and item.item.patchType !='WAR' and item.item.patchType !='JAVA'
+   with_items: "{{pathCheck.results}}"
+   ignore_errors: yes
+   tags:
+     - OriginalFilesPathCheck
+
+ - debug: msg="All the Backup Original files exists - correct."
+   when: isWarPatch==false and pathCheck|success
+   ignore_errors: yes
+   tags:
+     - OriginalFilesPathCheck

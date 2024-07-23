@@ -1,0 +1,3 @@
+Test Case No,Test Case Decsription,Category,User Type,Domain,Category
+TEST002,Given that  channel admin login into application and and view self details,Channel Admin,,,
+TEST003,Given that  channel admin login into application and and view Channel Admin,Channel Admin,Channel user,Dist1,Super Distributor

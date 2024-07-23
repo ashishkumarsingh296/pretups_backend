@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="VMS_testsuit"  preserve-order="true" >
+  <test name="Testing of VMS"> 
+    <classes>
+           <class name="testcases.VMS_SuperAdmin_Till_Voucher_Initiation"/>
+  		   <class name="testcases.VMS_ChannelAdmin_Scenarios"/>
+  		   <class name="testcases.VMS_SuperAdmin_Invalid"/>
+  		   <class name="testcases.TestVoucherBurnRateIndicator"/>
+    </classes>
+  </test> <!-- Test -->
+</suite> <!-- Suite -->

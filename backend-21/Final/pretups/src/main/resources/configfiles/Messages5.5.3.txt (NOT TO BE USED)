@@ -1,0 +1,74 @@
+#######################New messages entries for PreTUPS5.5.3##########################################################
+# added by jasmine for private Recharge
+1002001=mclass^2&pid^61:1660:Invalid message format. The correct Message Format is: {0}
+1002002=mclass^2&pid^61:1661:Invalid SID length.It should be between {1} and {2}. 
+1002003=mclass^2&pid^61:1662:Invalid SID.sid should be numeric starting with country code {0}.It should be between {1} and {2}. 
+1002004=mclass^2&pid^61:1663:Invalid SID.sid should be Alpha numeric starting with alphabets.It should be between {1} and {2}. 
+1002005=mclass^2&pid^61:1664:SID already existing on System please send it again.
+1002006=mclass^2&pid^61:1665:You OLD SID is not matching with the previous SID.please send the vaild sid.
+1002007=mclass^2&pid^61:1666:SORRY you are not Registered.Please Register YOURSELF
+1002008=mclass^2&pid^61:1667:Sorry your OLD sid is not same.
+1002009=mclass^2&pid^61:1668:Sorry enter new SID.your previous sid is same.
+1002020=mclass^2&pid^61:1670:You are already registered.Send Modification request to modify your SID.
+1002021=mclass^2&pid^61:1671:User is not registered.
+1002110=mclass^2&pid^61:1669:Your SID is {0}
+
+##########USSD USER CREATION MESSAGES###
+1001001=mclass^2&pid^61:1001001:User Creation in this category is not possible.
+1001002=mclass^2&pid^61:1001002:User Creation UnSucessfull,Please try again.
+1001003=mclass^2&pid^61:1001003:Sorry,User Creation is not allowed.
+1001004=mclass^2&pid^61:1001004:Default Grade is not defined for this category.
+1001005=mclass^2&pid^61:1001005:Default Commission Profile is not defined for this category.
+1001006=mclass^2&pid^61:1001006:Default Transfer Profile is not defined for this category.
+1001007=mclass^2&pid^61:1001007:Default Geography is not defined for this category.
+1001008=mclass^2&pid^61:1001008:Default User Roles is/are not defined for this category.
+1001009=mclass^2&pid^61:1001009:Parent User is not in your hierarchy.
+1001010=mclass^2&pid^61:1001010:User already exists with this loginId,Please suggest another loginId.
+1001011=mclass^2&pid^61:1001011:User alredy exists with this external Code.
+1001012=mclass^2&pid^61:1001012:New User's msisdn is a ported msisdn.
+1001013=mclass^2&pid^61:1001013:User already exists with this msisdn.
+1001014=mclass^2&pid^61:1001014:Song Code is blank in request.
+
+1001114=mclass^2&pid^61:1001114:You are created under {0} successfully.
+1001115=mclass^2&pid^61:1001115:A new user {0} has been created under you.
+1001116=mclass^2&pid^61:1001116:{0} has been created under {1}.
+
+
+5935=mclass^2&pid^61:5935:This File Has been uploaded before.
+##added by Ankuj for private recharge##
+1002011=mclass^2&pid^61:1002011:Invalid message format.Please enter the requisite keywords.
+1002012=mclass^2&pid^61:1002012: Please enter the required SID.
+1002013=mclass^2&pid^61:1002013: Please enter valid SID.
+1002014=mclass^2&pid^61:1002014: Length of the SID is invalid.
+1002015=mclass^2&pid^61:1002015: MSISDN is null.
+1002016=mclass^2&pid^61:1002016: MSISDN is invalid.
+1002017=mclass^2&pid^61:1002017: Given SID is not present in our records.
+1002118=mclass^2&pid^61:1002118: The required sid is {0}
+1002019=mclass^2&pid^61:1002019: The given MSISDN is not present in our records.
+
+##Added by Ankuj for OMT version upgrade
+1003001=mclass^2&pid^61:1003001:Transaction type is not mentioned in the request.
+1003002=mclass^2&pid^61:1003002: Date range is not valid.
+1003003=mclass^2&pid^61:1003003: Record count exceeds the permissible limit.
+1003004=mclass^2&pid^61:1003004: invalid message format.
+1003005=mclass^2&pid^61:1003005: Network code is not provided.
+1003006=mclass^2&pid^61:1003006: No record available.
+
+## Changes done in Kenya
+7533=mclass^2&pid^61:7893:No such user exists.
+7549=mclass^2&pid^61:7893:Please change the password.
+4340=Invalid Authorization parameter. Please contact customer service.
+99999=Msg:99999:{4} For recharge pls. Press * 525 * code # and press OK. Value:{1} Quantity:{0} Code(s):{3}
+
+#Added By Babu Kunwar For VFE
+1001201=mclass^2&pid^61:1001201:RP2P Process has already been executed till current day.
+1001202=mclass^2&pid^61:1001202:Could not update the max done date.
+1001203=mclass^2&pid^61:1001203:Some error occured, process cannot continue.
+1001204=mclass^2&pid^61:1001204:Could not find data in constant file defined. MISSING ENTRIES
+1001205=mclass^2&pid^61:1001205:Unable to create directory.
+1001206=mclass^2&pid^61:1001206:Unable to move file to final directory
+######################New Message entries for PreTUPS5.5.3 ends here##################################################
+
+
+
+

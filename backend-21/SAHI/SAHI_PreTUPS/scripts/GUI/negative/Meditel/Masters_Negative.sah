@@ -1,0 +1,59 @@
+//################################################
+//#Company Name: Mahindra Comviva Technologies Ltd.
+//#Application Name: Pretups
+//#Objective:To check for user wallet configuration
+//#Author Name: Girish Dutt Shukla
+//#Created Date: 22/01/2015
+//###############################################
+
+
+_includeOnce("../../../../utility/ImportPackage.sah");
+_includeOnce("../../../GUI/negative/Meditel/MastersUserWalletConfiguration_Common.sah"); //For creating NA
+
+//======================Pre-requisite check============================
+_log("Setup", "custom4");
+
+//If NA deos not exist, first create it and then check for User wallet configuration
+var $l_naCsv = _readCSVFile("../../../GUI/testdata/NA_Login.csv"); //Reads the network admin credentials 
+var $g_row = 4;
+var $g_col = 1;
+var $g_networkAdmin1 = $l_naCsv[1][1];
+if($g_networkAdmin1 == "null"){
+	createNA(); // UserManagement_Common.sah
+	var $l_naCsv1 = _readCSVFile("../../../GUI/testdata/NA_Login.csv");
+	$g_networkAdmin1 = $l_naCsv1[1][1];
+	login($g_appURL,  $g_LangEnglish, $g_networkAdmin1, $g_commonPassword, $g_assertWelcome);
+}else{	 
+	login($g_appURL,  $g_LangEnglish, $g_networkAdmin1, $g_commonPassword, $g_assertWelcome);
+}
+
+
+ // =============================== ================================ //
+//var $g_muCsv = _readCSVFile("../../../GUI/negative_testdata/Masters_NegativeCases.csv");
+ var $g_muCsv = _readCSVFile("../../negative_testdata/Masters_NegativeCases.csv");
+
+var $g_row;
+var $g_col;
+
+
+_log("shashi " + $g_muCsv[1][0]);
+
+for($g_row = 1; $g_muCsv[$g_row] != null; $g_row++){
+	
+	//for($g_row = 1; $g_row < 2; $g_row++){
+	$g_col = 0;
+	var $t = _testcase($g_muCsv[$g_row][$g_col++], $g_muCsv[$g_row][$g_col++]);
+	$t.start();
+	commonVariableForMasters($g_row, $g_col);
+	
+	var $isMasters = mastersUserWallet();
+	
+	if($isMasters == true){
+		_log("Login into the application ");
+	}
+	
+	$t.end();
+}
+
+
+

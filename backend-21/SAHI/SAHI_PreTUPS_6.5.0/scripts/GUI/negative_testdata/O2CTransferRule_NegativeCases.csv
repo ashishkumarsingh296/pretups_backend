@@ -1,0 +1,19 @@
+TestCaseNo.,Discription,To Category,First Approval Limit,Second Approval limit,Product Assosiation,Assertion
+TEST001,Try to submit create O2C Transfer rule without giving any details,,,,,To category is required.
+TEST002,Try to submit create O2C Transfer rule without category,,500,1000,chekall,To category is required.
+TEST003,Try to submit create O2C Transfer rule without first approval limit,Administrator,,1000,chekall,First approval limit is required.
+TEST004,Try to submit create O2C Transfer rule without second approval limit,Administrator,500,,chekall,Second approval limit is required.
+TEST005,Try to submit create O2C Transfer rule without any product assosiation,Administrator,500,1000,,Please select one of the products.
+TEST006,Try to submit First approval limit more than second approval lmit,Administrator,1000,500,chekall,Second approval limit - 500 should be greater than or equal to first approval limit - 1000.
+TEST007,Try to submit First approval limit as set of charactor,Administrator,ABCD,1000,chekall,First approval limit is not a valid numeric value.
+TEST008,Try to submit First approval limit as negative amount,Administrator,-100,1000,chekall,First approval limit- -100 cannot contain negative values.
+TEST009,Try to submit First approval limit in percent form,Administrator,10%,1000,chekall,First approval limit is not a valid numeric value.
+TEST010,Try to submit First approval limit as invalid number format,Administrator,100...0,1000,chekall,First approval limit is not a valid numeric value.
+TEST011,Try to submit First approal limit in exponential form,Administrator,10^2,1000,chekall,First approval limit is not a valid numeric value.
+TEST012,Try to submit Second approval limit as set of charactor,Administrator,500,ABCD,chekall,Second approval limit is not a valid numeric value.
+TEST013,Try to submit Second approval limit as negative amount,Administrator,500,-1000,chekall,Second approval limit- -1000 cannot contain negative values.
+TEST014,Try to submit Second approval limit in percent form,Administrator,500,10%,chekall,Second approval limit is not a valid numeric value.
+TEST015,Try to submit Second approval limit as invalid number format,Administrator,500,100...0,chekall,Second approval limit is not a valid numeric value.
+TEST016,Try to submit Second approal limit in exponential form,Administrator,500,10^2,chekall,Second approval limit is not a valid numeric value.
+TEST017,Try to submit first approval limit as fraction form,Administrator,100/2,1000,chekall,First approval limit is not a valid numeric value.
+TEST018,Try to submit second level approval limit as fraction,Administrator,500,1000/2,chekall,Second approval limit is not a valid numeric value.

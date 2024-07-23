@@ -1,0 +1,14 @@
+/**
+ * Navigate to Channel User Transfer/Confirm  Page
+ * @param $link
+ */
+function navigateChannelUserTransfer($link){
+	_click(_link(/Channel user transfer/, _in(_span("Channel user transfer"))));
+	_wait(2000);
+	if (_condition(_isVisible(_div("cssmenu")))){
+		_mouseOver(_link(/Channel user transfer/));
+		_click(_span($link));
+	}else{
+		_log("Failed to Open the Channel User Page", "Error");
+	}
+}

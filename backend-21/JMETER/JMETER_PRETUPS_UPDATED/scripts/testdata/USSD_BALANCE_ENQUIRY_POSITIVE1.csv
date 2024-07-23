@@ -1,0 +1,2 @@
+TestcaseId,TestcaseType,Module,Description
+,Positive,BALANCE,To check that a user is able to enquire its balance by entering msisdn and pin

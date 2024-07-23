@@ -1,0 +1,2 @@
+TestcaseId,TestcaseType,Module,Description
+TUNG22417,Negative,SOS Settlement EXTGW,To verify that parent or owner enters wrong language code then gets proper response.

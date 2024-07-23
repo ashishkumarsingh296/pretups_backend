@@ -1,0 +1,2 @@
+TestcaseId,TestcaseType,Module,Description
+6,Negative,P2P Add Buddy,To Verify that Buddy Req fails if we give null pin

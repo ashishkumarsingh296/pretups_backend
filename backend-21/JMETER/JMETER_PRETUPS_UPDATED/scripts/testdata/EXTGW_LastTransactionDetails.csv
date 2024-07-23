@@ -1,0 +1,8 @@
+DATE,EXTNWCODE,MSISDN,PIN,LOGINID,PASSWORD,EXTCODE,EXTREFNUM,LANGUAGE1,TestcaseId,TestcaseType,Module,Description
+,NG,7212121514,1358,,,,,1,TUNG13065,Positive,Last Transaction Details,By msisdn and Pin
+,NG,,,harshadm,1358,,,1,TUNG13066,Positive,Last Transaction Details,By Login Id and Password
+,NG,,,,,303278,,1,TUNG13067,Positive,Last Transaction Details,By External Code
+,,7212121514,1358,,,,,1,TUNG13064,Negative,Last Transaction Details, network Code Blank
+,NG,7212121514,,,,,,1,TUNG13069,Negative,Last Transaction Details, No pin given
+,NG,,,harshadm,,,,1,TUNG13070,Negative,Last Transaction Details,Invalid Login credentials
+,NG,7212121514,1358,harshadm,1358,303278,,1,TUNG13072,Positive,Last Transaction Details,Entered all the Details

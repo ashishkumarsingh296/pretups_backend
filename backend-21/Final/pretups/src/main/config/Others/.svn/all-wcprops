@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/config/Others
+END
+command.dtd
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/config/Others/command.dtd
+END
+cp_request.dtd
+K 25
+svn:wc:ra_dav:version-url
+V 123
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/config/Others/cp_request.dtd
+END
+cp_reply.dtd
+K 25
+svn:wc:ra_dav:version-url
+V 121
+/CRM/MFS/PreTUPS5x_NG/!svn/ver/46117/Base%20Versions/PreTUPS_trunk/Code/Final/pretups/src/main/config/Others/cp_reply.dtd
+END

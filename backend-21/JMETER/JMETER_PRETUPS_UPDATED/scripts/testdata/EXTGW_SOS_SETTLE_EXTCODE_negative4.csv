@@ -1,0 +1,2 @@
+TestcaseId,TestcaseType,Module,Description
+TUNG22424,Negative,SOS Settlement EXTGW,To verify that parent or owner enters wrong extcode then gets proper response.
